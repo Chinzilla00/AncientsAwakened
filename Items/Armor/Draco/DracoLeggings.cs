@@ -51,7 +51,7 @@ The blazing fury of the Inferno rests in this armor");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 18);
-            recipe.AddIngredient(null, "DracoLeggings", 1);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(null, "KindledSuneate", 1);
             recipe.AddTile(null, "BinaryReassembler");
             recipe.SetResult(this);

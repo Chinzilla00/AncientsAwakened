@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                 }
             }
-            if (projectile.ai[3] == 0f)
+            if (projectile.ai[0] == 0f)
             {
                 projectile.rotation += projectile.velocity.X * 0.1f;
                 float num689 = 500f;
@@ -71,26 +71,26 @@ namespace AAMod.NPCs.Bosses.Yamata
                         }
                     }
                 }
-                projectile.ai[3] = (float)(num690 + 1);
-                if (projectile.ai[3] == 0f)
+                projectile.ai[0] = (float)(num690 + 1);
+                if (projectile.ai[0] == 0f)
                 {
-                    projectile.ai[3] = -15f;
+                    projectile.ai[0] = -15f;
                 }
-                if (projectile.ai[3] > 0f)
+                if (projectile.ai[0] > 0f)
                 {
                     float scaleFactor5 = (float)Main.rand.Next(35, 75) / 30f;
-                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.player[(int)projectile.ai[3] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
+                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
                     projectile.netUpdate = true;
                 }
             }
-            else if (projectile.ai[3] > 0f)
+            else if (projectile.ai[0] > 0f)
             {
-                Vector2 value23 = Vector2.Normalize(Main.player[(int)projectile.ai[3] - 1].Center - projectile.Center);
+                Vector2 value23 = Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center);
                 projectile.velocity = (projectile.velocity * 40f + value23 * 12f) / 41f;
             }
             else
             {
-                projectile.ai[3] += 1f;
+                projectile.ai[0] += 1f;
                 projectile.alpha -= 25;
                 if (projectile.alpha < 50)
                 {

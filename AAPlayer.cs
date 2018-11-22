@@ -191,7 +191,7 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
             bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useMire = ZoneMire || MoonAltar && !useYamata;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
@@ -862,32 +862,26 @@ namespace AAMod
                 }
                 if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
                 {
-                    target.AddBuff(mod.BuffType("Moonraze"), 1000);
+                    target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
             }
 
-
-            if (zeroSet && proj.melee && Main.rand.Next(2) == 0)
+            if (zeroSet && (proj.melee || proj.ranged) && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
             }
 
-            if (zeroSet && proj.ranged && Main.rand.Next(2) == 0)
+            if (dracoSet && (proj.melee || proj.magic) && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.WitheredArmor, 1000);
+                target.AddBuff(BuffID.Daybreak, 600);
             }
 
-            if (dracoSet && proj.melee && Main.rand.Next(2) == 0)
+            if (dreadSet && (proj.ranged || proj.thrown) && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.WitheredArmor, 600);
+                target.AddBuff(mod.BuffType<Moonraze>(), 600);
             }
 
-            if (dracoSet && proj.magic && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(BuffID.WitheredArmor, 600);
-            }
-            
-            if(Time && Main.rand.Next(2) == 0)
+            if (Time && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Chilled, 180);
                 target.AddBuff(mod.BuffType("TimeFrozen"), 300);
@@ -898,13 +892,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Confused, 180);
             }
 
-            if (valkyrieSet && proj.melee && Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(BuffID.Frostburn, 180);
-                target.AddBuff(BuffID.Chilled, 180);
-            }
-
-            if (valkyrieSet && proj.thrown && Main.rand.Next(2) == 0)
+            if (valkyrieSet && (proj.melee || proj.thrown) && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
