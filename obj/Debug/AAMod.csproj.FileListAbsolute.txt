@@ -1,0 +1,49 @@
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\obj\Debug\AAMod.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\AAMod.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\AAMod.pdb
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\bin\Debug\Terraria.exe
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\obj\Debug\AAMod.dll
+C:\Users\Anthony\Desktop\ancientsawakenedrepo\Ancients-Awakened\obj\Debug\AAMod.pdb
+C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.dll
+C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
+C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
+C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
+C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.csprojResolveAssemblyReference.cache
+C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.dll
+C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.pdb

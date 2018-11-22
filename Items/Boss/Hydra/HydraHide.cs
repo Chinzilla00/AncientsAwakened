@@ -1,0 +1,24 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace AAMod.Items.Boss.Hydra
+{
+    public class HydraHide : ModItem
+    {
+        public override void SetDefaults()
+        {
+
+            item.width = 22;
+            item.height = 24;
+            item.maxStack = 99;
+            item.rare = 1;
+			
+        }
+        
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dragon Scale");
+            Tooltip.SetDefault("The skin of a formidable foe");
+        }
+    }
+}

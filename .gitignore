@@ -1,0 +1,9 @@
+AAMod.csproj
+*.csproj
+.vs/AAMod/v15/.suo
+*.ide
+*.csproj
+.vs/AAMod/DesignTimeBuild/.dtbcache
+AAMod.csproj.user 
+AAMod.sln 
+AAMod.csproj.user

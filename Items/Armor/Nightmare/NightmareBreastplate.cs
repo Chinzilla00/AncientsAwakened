@@ -1,0 +1,43 @@
+using System;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace AAMod.Items.Armor.Nightmare
+{
+	[AutoloadEquip(EquipType.Body)]
+	public class NightmareBreastplate : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			Tooltip.SetDefault("7% increased thrown damage");
+			DisplayName.SetDefault("Nightmare Breastplate");
+		}
+
+		public override void SetDefaults()
+		{
+			item.width = 26;
+			item.height = 20;
+			item.value = Item.sellPrice(0, 1, 68, 0);
+			item.rare = 5;
+			item.defense = 10;
+		}
+		
+		public override void UpdateEquip(Player player)
+		{
+			player.thrownDamage += 0.07f; //7% throwing damage
+		}
+		
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "Nightmare_Bar", 8);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
+}
