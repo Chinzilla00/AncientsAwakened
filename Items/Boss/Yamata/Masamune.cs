@@ -20,14 +20,20 @@ Inflicts Moonraze");
 		{
             item.CloneDefaults(ItemID.Arkhalis);
             item.damage = 200;
-            item.melee = true;
             item.width = 70; 
-            item.height = 80;          
-            item.expert = true;
-            item.knockBack = 3;    
-            item.value = 1000000;
-            item.autoReuse = true;  
-            item.useTurn = true;
+            item.height = 80;
+            item.melee = true;
+            item.noMelee = true;
+            item.noUseGraphic = true;
+            item.channel = true;
+            item.useAnimation = 25;
+            item.useStyle = 5;
+            item.useTime = 5;
+            item.knockBack = 4f;
+            item.autoReuse = false;
+            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.shoot = mod.ProjectileType("Surasshu");
+            item.shootSpeed = 15f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -45,35 +51,6 @@ Inflicts Moonraze");
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);
         }
-
-        public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-
-            if (player.altFunctionUse == 2)
-            {
-                item.useStyle = 5;
-                item.shoot = mod.ProjectileType("Surasshu");
-                item.useTime = 66;
-                item.useAnimation = 6;
-                item.noMelee = true;
-                item.noUseGraphic = true;
-            }
-            else
-            {
-                item.useStyle = 1;
-                item.shoot = mod.ProjectileType("Masamune");
-                item.useTime = 26;
-                item.useAnimation = 26;
-                item.noMelee = false;
-                item.noUseGraphic = false;
-            }
-            return base.CanUseItem(player);
-		}
 
         public override void AddRecipes()
         {
