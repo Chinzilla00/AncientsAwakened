@@ -207,6 +207,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (MinionTimer == 300 && NPC.CountNPCS(mod.NPCType<YamataSoul>()) < 6)
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<YamataSoul>());
+
+                MinionTimer = 0;
             }
 
             if (!HeadsSpawned)
