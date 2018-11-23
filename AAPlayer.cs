@@ -186,11 +186,11 @@ namespace AAMod
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
+            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
-            player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;

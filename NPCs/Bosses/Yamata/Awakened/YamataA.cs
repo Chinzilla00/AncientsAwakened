@@ -181,9 +181,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public int eggFireRate = 1, mantidHealerCount = 4, playerTooFarDist = 800;
         public int[] totalHealers = null;
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
-        public bool flying = false, prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false, summonedHealers1 = false, summonedHealers2 = false;
+        public bool flying = false;
         public Player playerTarget = null;
-        public static int flyingTileCount = 4, totalMinionCount = 0;
+        public static int flyingTileCount = 4;
+        public int MinionTimer = 0;
+        
 
         //damage counts
         public int swipeDamage = 100, scytheDamage = 120, eggDamage = 90;
@@ -198,9 +200,15 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-
             Main.dayTime = false;
-            Main.time = 24000;
+            Main.time = 20000;
+
+            MinionTimer++;
+            if (MinionTimer == 300 && NPC.CountNPCS(mod.NPCType<YamataSoul>()) < 6)
+            {
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<YamataSoul>());
+            }
+
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
@@ -215,18 +223,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 HeadsSpawned = true;
             }
 
-
-
             if (npc.life <= npc.lifeMax / 5)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
             dustMantid = npc;
-            prevHalfHPLeft = halfHPLeft;
-            prevFourthHPLeft = fourthHPLeft;
-            halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
-            fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
-            mantidHealerCount = (Main.expertMode ? 5 : 4);
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];

@@ -32,18 +32,26 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.netAlways = true;
+            npc.alpha = 255;
 
         }
         public override void AI()
         {
-            if (npc.alpha > 0)
+            if (npc.alpha != 0)
             {
-                npc.alpha -= 30;
-                if (npc.alpha < 0)
+                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    npc.alpha = 0;
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("YamataADust"), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
                 }
             }
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.knockBackResist = 0f;

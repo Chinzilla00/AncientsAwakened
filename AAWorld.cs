@@ -966,7 +966,7 @@ namespace AAMod
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgen/Lake"), colorToTile, mod.GetTexture("Worldgen/LakeWalls"), colorToWall, mod.GetTexture("Worldgen/LakeWater"));
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y + 20, true);
             gen.Generate(origin.X, origin.Y + 2, true, true);
         }
 

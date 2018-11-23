@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         Dust expr_DDE2_cp_0 = Main.dust[num299];
                         expr_DDE2_cp_0.velocity.X = expr_DDE2_cp_0.velocity.X * 1.2f;
                         Dust expr_DE02_cp_0 = Main.dust[num299];
-                        expr_DE02_cp_0.velocity.Y = expr_DE02_cp_0.velocity.Y * 1.2f;
+                        expr_DE02_cp_0.velocity.Y = expr_DE02_cp_0.velocity.Y * 1.5f;
                         Main.dust[num299].scale *= num296;
                     }
                 }
