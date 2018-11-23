@@ -173,23 +173,22 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void NPCLoot()
         {
-            BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
-
+            if (Main.expertMode)
+            {
+                BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
+                npc.DropBossBags();
+                AAWorld.downedYamataA = true;
+            }
         }
 
         public float[] internalAI = new float[4];
-        public int eggFireRate = 1, mantidHealerCount = 4, playerTooFarDist = 800;
+        public int playerTooFarDist = 800;
         public int[] totalHealers = null;
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool flying = false;
         public Player playerTarget = null;
         public static int flyingTileCount = 4;
         public int MinionTimer = 0;
-        
-
-        //damage counts
-        public int swipeDamage = 100, scytheDamage = 120, eggDamage = 90;
-        public int normalDefense = 200, healingDefense = 500;
 
         //clientside stuff
 

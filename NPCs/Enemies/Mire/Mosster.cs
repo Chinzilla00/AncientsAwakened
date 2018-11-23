@@ -33,6 +33,19 @@ namespace AAMod.NPCs.Enemies.Mire
 
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreBackArm"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreBackLeg"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreBody"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreFrontArm"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreFrontLeg"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreHead"), 1f);
+            }
+        }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 

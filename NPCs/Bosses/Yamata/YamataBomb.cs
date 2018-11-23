@@ -1,16 +1,17 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
-	public class YamataBomb : ModProjectile
-	{
+    internal class YamataBomb : ModProjectile
+    {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            Main.projFrames[projectile.type] = 4;
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -22,104 +23,124 @@ namespace AAMod.NPCs.Bosses.Yamata
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 4;     //The recording mode
-		}
+            DisplayName.SetDefault("Abyssal Bomb");
+        }
 
-		public override void SetDefaults()
-		{
-			projectile.width = 14;               //The width of projectile hitbox
-			projectile.height = 14;              //The height of projectile hitbox
-			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
-			projectile.friendly = false;         //Can the projectile deal damage to enemies?
-			projectile.hostile = true;          //Is the projectile shoot by a ranged weapon?
-			projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			projectile.alpha = 20;              //How much light emit around the projectile
-			projectile.ignoreWater = true;
-			projectile.tileCollide = true;
-            projectile.aiStyle = 0;
+        public override void SetDefaults()
+        {
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.friendly = false;
+            projectile.hostile = true;
+            projectile.scale = 1.1f;
+            projectile.ignoreWater = true;
+            projectile.penetrate = 1;
+            projectile.alpha = 60;
+            projectile.timeLeft = 300;
             projectile.glowMask = customGlowMask;
-		}
+        }
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (projectile.timeLeft > 0)
             {
+                projectile.timeLeft--;
+            }
+            if (projectile.timeLeft == 0)
+            {
+                projectile.Kill();
+            }
+
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 6)
+            {
+                projectile.frame++;
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 4)
+                if (projectile.frame > 3)
                 {
                     projectile.frame = 0;
+                }
+            }
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 60;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
-                }
-            }
-            if (projectile.ai[0] == 0f)
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.rotation += projectile.velocity.X * 0.1f;
-                float num689 = 500f;
-                int num690 = -1;
-                for (int num691 = 0; num691 < 200; num691++)
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
                 {
-                    Player player = Main.player[num691];
-                    if (Collision.CanHit(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height))
-                    {
-                        float num692 = (player.Center - projectile.Center).Length();
-                        if (num692 < num689)
-                        {
-                            num690 = num691;
-                            num689 = num692;
-                        }
-                    }
-                }
-                projectile.ai[0] = (float)(num690 + 1);
-                if (projectile.ai[0] == 0f)
-                {
-                    projectile.ai[0] = -15f;
-                }
-                if (projectile.ai[0] > 0f)
-                {
-                    float scaleFactor5 = (float)Main.rand.Next(35, 75) / 30f;
-                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
-                    projectile.netUpdate = true;
+                    Player target = Main.player[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            else if (projectile.ai[0] > 0f)
+            for (int num189 = 0; num189 < 1; num189++)
             {
-                Vector2 value23 = Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center);
-                projectile.velocity = (projectile.velocity * 40f + value23 * 12f) / 41f;
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1f);
+
+                Main.dust[num190].scale *= 1.3f;
+                Main.dust[num190].fadeIn = 1f;
+                Main.dust[num190].noGravity = true;
             }
-            else
-            {
-                projectile.ai[0] += 1f;
-                projectile.alpha -= 25;
-                if (projectile.alpha < 50)
-                {
-                    projectile.alpha = 50;
-                }
-                projectile.velocity *= 0.95f;
-            }
-            if (projectile.ai[1] == 0f)
-            {
-                projectile.ai[1] = (float)Main.rand.Next(80, 121) / 100f;
-                projectile.netUpdate = true;
-            }
-            projectile.scale = projectile.ai[1] * 0.01f;
-            return;
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            Kill(0);
         }
 
         public override void Kill(int timeleft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].velocity *= 2f;
             }
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 500;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                Player target = Main.player[i];
+                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(target.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Venom"), 600);
+        }
+
+        
     }
 }

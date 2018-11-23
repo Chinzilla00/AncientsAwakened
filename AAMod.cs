@@ -307,40 +307,36 @@ namespace AAMod
         }
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            if (Main.gameMenu)
-                return;
-            if (priority > MusicPriority.Environment)
+            if (Main.gameMenu || priority > MusicPriority.Environment)
                 return;
             Player player = Main.LocalPlayer;
             if (!player.active)
                 return;
             if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
             {
-
-                // Make sure your logic here goes from lowest priority to highest so your intended priority is maintained.
-
                 if (player.HeldItem.type == ItemType("Sax"))
                 {
-
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne");
-
                     priority = MusicPriority.BossHigh;
-
                 }
-
             }
+            else
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
-
                 priority = MusicPriority.BossHigh;
+                return;
             }
+            else
             if (YamataMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
                 priority = MusicPriority.BossHigh;
+                return;
             }
+            if (priority == MusicPriority.BossHigh) return; //a boss is playing music, don't play biome music!
+
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             if (Ancients.ZoneInferno)
             {
@@ -355,13 +351,14 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
             }
+            else
             if (Ancients.ZoneMush)
             {
                 music = MusicID.Mushrooms;
             }
+            else
             if (Ancients.ZoneMire)
             {
-
                 if (player.ZoneRockLayerHeight)
                 {
                     priority = MusicPriority.BiomeHigh;
@@ -373,6 +370,7 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
                 }
             }
+            else
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;

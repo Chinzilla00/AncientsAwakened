@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -32,13 +33,13 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust1.noGravity = true;
-                dust1.velocity.Y -= 3;
+                dust1.velocity.Y -= 6;
                 dust2.noGravity = true;
-                dust2.velocity.Y -= 3;
+                dust2.velocity.Y -= 6;
                 dust3.noGravity = true;
-                dust3.velocity.Y -= 3;
+                dust3.velocity.Y -= 6;
                 dust4.noGravity = true;
-                dust4.velocity.Y -= 3;
+                dust4.velocity.Y -= 6;
             }
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
@@ -66,13 +67,13 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
                 dust1.noGravity = true;
-                dust1.velocity.Y -= 4;
+                dust1.velocity.Y -= 9;
                 dust2.noGravity = true;
-                dust2.velocity.Y -= 4;
+                dust2.velocity.Y -= 9;
                 dust3.noGravity = true;
-                dust3.velocity.Y -= 4;
+                dust3.velocity.Y -= 9;
                 dust4.noGravity = true;
-                dust4.velocity.Y -= 4;
+                dust4.velocity.Y -= 9;
             }
 
             if (timer == 900)

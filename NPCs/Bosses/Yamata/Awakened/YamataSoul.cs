@@ -23,11 +23,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.CloneDefaults(NPCID.ShadowFlameApparition);
             aiType = NPCID.ShadowFlameApparition;
             npc.aiStyle = NPCID.ShadowFlameApparition;
+            animationType = NPCID.ShadowFlameApparition;
             npc.npcSlots = 0;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
-            npc.aiStyle = -1;
+            npc.aiStyle = 86;
             npc.lifeMax = 9000;
             npc.defense = 30;
+            npc.noGravity = true;
             npc.damage = 80;
             npc.alpha = 255;
 
