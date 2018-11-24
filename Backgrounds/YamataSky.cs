@@ -44,7 +44,7 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                if (Main.dayTime)
+                if (!Main.dayTime)
                 {
                     spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                     spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 1), Color.Red * 0.05f * Intensity);

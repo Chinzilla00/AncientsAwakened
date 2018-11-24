@@ -153,7 +153,7 @@ You are immune to the Chaos State Debuff
             }
             for (float num6 = 1f; num6 <= (float)num5; num6 += 1f)
             {
-                Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 182, 0f, 0f, 0, Color.Cyan, 1f)];
+                Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, mod.DustType<Dusts.SpaceDust>(), 0f, 0f, 0, default(Color), 1f)];
                 dust.position = Vector2.Lerp(vector5, vector4, num6 / (float)num5);
                 dust.noGravity = true;
                 dust.velocity = Vector2.Zero;

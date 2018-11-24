@@ -40,6 +40,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 48;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
+            npc.noTileCollide = true;
             npc.boss = false;
 
 

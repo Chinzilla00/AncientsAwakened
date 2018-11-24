@@ -21,7 +21,7 @@ namespace AAMod.Items.Tools
             item.channel = true;
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.hammer = 100;
+            item.hammer = 120;
 			item.useStyle = 5;
 			item.knockBack = 6;
 			item.value = 550000;

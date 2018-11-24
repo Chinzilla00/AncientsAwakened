@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata
 {
-	public class AbyssArrowArrow : ModProjectile
+	public class AbyssArrow : ModProjectile
 	{
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()

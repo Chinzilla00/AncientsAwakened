@@ -14,6 +14,7 @@ using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
+using System.Collections.Generic;
 
 namespace AAMod
 {
@@ -1005,6 +1006,41 @@ namespace AAMod
         }
         #endregion
 
+        public override void ModifyDrawLayers(List<PlayerLayer> list)
+        {
+            BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterHead, PlayerLayer.Head, false);
+            BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterBody, PlayerLayer.Body, false);
+            BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterArm, PlayerLayer.Arms, false);
+            BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterLegs, PlayerLayer.Legs, false);
+            BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, true);
+        }
+
+        public override void ModifyDrawHeadLayers(List<PlayerHeadLayer> list)
+        {
+            BaseMod.BaseDrawing.AddPlayerHeadLayer(list, glAfterHead2, PlayerHeadLayer.Head, false);
+        }
+        
+        public PlayerLayer glAfterHead = new PlayerLayer("AAMod", "glAfterHead", PlayerLayer.Head, delegate (PlayerDrawInfo edi)
+        {
+            DrawAfterHead(edi, default(PlayerHeadDrawInfo), false);
+        });
+
+        public PlayerHeadLayer glAfterHead2 = new PlayerHeadLayer("AAMod", "glAfterHead2", PlayerHeadLayer.Head, delegate (PlayerHeadDrawInfo edhi)
+        {
+            try
+            {
+                DrawAfterHead(default(PlayerDrawInfo), edhi, true);
+            }
+            catch (Exception e) { BaseMod.BaseUtility.Chat("PLAYER HEAD DRAW ERROR: " + e.Message, Color.Red, true); ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+        });
+
+        public static Color GetItemColor(Player drawPlayer, Vector2 position)
+        {
+            if (drawPlayer == null || position == default(Vector2) || drawPlayer.selectedItem < 0 || drawPlayer.selectedItem >= drawPlayer.inventory.Length || drawPlayer.inventory[drawPlayer.selectedItem] == null) return Color.White;
+            Color c = Lighting.GetColor((int)((position.X + drawPlayer.width * 0.5f) / 16f), (int)((position.Y + drawPlayer.height * 0.5f) / 16f));
+            return drawPlayer.inventory[drawPlayer.selectedItem].GetAlpha(c);
+        }
+
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
         {
             Mod mod = AAMod.instance;
@@ -1023,7 +1059,27 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayHelmet")))
             {
-                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Draco/DoomsdayHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Doomsday/DoomsdayHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterVisor")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelm")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelmet")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHeaddress")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterHeaddress_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterMask")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
             }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
@@ -1036,7 +1092,11 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayChestplate")))
             {
-                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Draco/DoomsdayChestplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Doomsday/DoomsdayChestplate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterBreastplate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterBreastplate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
@@ -1049,9 +1109,13 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayChestplate")))
             {
-                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Draco/DoomsdayChestplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Doomsday/DoomsdayChestplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-        });
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterBreastplate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterBreastplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+        }); 
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
             Mod mod = AAMod.instance;
@@ -1062,9 +1126,13 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayLeggings")))
             {
-                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Draco/DoomsdayLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Doomsday/DoomsdayLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-        });
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterGreaves")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Darkmatter/DarkmatterGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+        }); 
 
         public static void DrawWingGlow(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default(Vector2), Vector2 framePos = default(Vector2))
         {

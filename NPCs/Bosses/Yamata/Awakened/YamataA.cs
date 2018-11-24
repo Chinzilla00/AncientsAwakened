@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
         }
 
-        
+
 
         public override bool G_CanSpawn(int x, int y, int type, Player player)
         {
@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public Vector2 bottomVisualOffset = default(Vector2);
         public Vector2 topVisualOffset = default(Vector2);
         public LegInfo[] legs = null;
-        public static NPC dustMantid = null;
+        public NPC dustMantid = null;
 
         public override void AI()
         {
@@ -296,6 +296,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public void AIMovementRunAway()
         {
+            Main.NewText("NYEHEHEHEHEHEHEH..! And don’t come back!", new Color(45, 46, 70));
             npc.velocity.X *= 0.9f;
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
             npc.velocity.Y += 0.25f;
@@ -308,13 +309,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-            YamataABody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
-            //BaseAI.AISpaceOctopus(npc, ref npc.ai, (flying ? 0.2f : 0.15f) * movementScalar2 * movementScalar, (flying ? 4f : 1f) * movementScalar2 * movementScalar, 120f, 40f, null);
+            YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
 
-        public static void YamataABody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
+        public void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
         {
             bool flyUpward = false;
             if (npc.justHit) { ai[2] = 0f; }
@@ -334,7 +334,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (inRangeX && inRangeY)
                 {
                     ai[2] += 1f;
-                    //i'm pretty sure projectile is never called, but it's in the original so...
                     if (ai[2] >= 30f && tileDist == 16)
                     {
                         flyUpward = true;
@@ -420,8 +419,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
             if (!tileBelowEmpty && npc.target > -1 && Main.player[npc.target].active && !Main.player[npc.target].dead && Math.Abs(Main.player[npc.target].Center.X - npc.Center.X) < 50) //force a hover
             {
-                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f; //slow the fuck down
-                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f; //slow the fuck down
+                if (Math.Abs(npc.velocity.X) > 0.3f) npc.velocity.X *= 0.9f;
+                if (Math.Abs(npc.velocity.Y) > 0.3f) npc.velocity.Y *= 0.9f;
             }
             else
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
@@ -465,9 +464,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public Rectangle topHitbox = default(Rectangle), bottomHitbox = default(Rectangle), leftHitbox = default(Rectangle), rightHitbox = default(Rectangle);
         public const int stateIdle = 0, stateMovementOnly = 1, stateArmScythes = 2, stateArmSpawns = 3, stateArmCombo = 4, stateFireEggs = 5, stateArmAndEggs = 6;
-        public static int[] timers = new int[] { 100, 60, 80, 170, 170, 160, 170 };
-        public static int[] statesToChangeTo = new int[] { stateMovementOnly, stateArmSpawns, stateArmCombo, stateFireEggs };
-        public static int[] statesToChangeToExpert = new int[] { stateMovementOnly, stateArmCombo, stateArmSpawns };
+        public int[] timers = new int[] { 100, 60, 80, 170, 170, 160, 170 };
+        public int[] statesToChangeTo = new int[] { stateMovementOnly, stateArmSpawns, stateArmCombo, stateFireEggs };
+        public int[] statesToChangeToExpert = new int[] { stateMovementOnly, stateArmCombo, stateArmSpawns };
         public void SwapAI(ref float aiTime)
         {
             topHitbox = bottomHitbox = leftHitbox = rightHitbox = default(Rectangle);
@@ -492,15 +491,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
             float dist = 999999999f;
             int foundPlayer = -1;
-            for (int m = 0; m < players.Length; m++)
-            {
-                Player p = Main.player[players[m]];
-                if (p.ZoneJungle && Vector2.Distance(p.Center, npc.Center) < dist) //prioritize players in the jungle
-                {
-                    dist = Vector2.Distance(p.Center, npc.Center);
-                    foundPlayer = p.whoAmI;
-                }
-            }
             if (foundPlayer != -1)
             {
                 BaseAI.SetTarget(npc, foundPlayer);
@@ -556,6 +546,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataANeck"), neckOrigin - Main.screenPosition,
                 new Rectangle(0, 0, 26, 40), drawColor, projRotation,
                 new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+                Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(center));
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector
@@ -624,7 +615,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-
             BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataATail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             legs[2].DrawLeg(sb, npc, dColor); //back legs
             legs[3].DrawLeg(sb, npc, dColor);
@@ -647,7 +637,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         float[] leftRotations = null, left2Rotations = null;
         float[] rightRotations = null, right2Rotations = null;
         public float movementRatio = 0f, movementRate = 0.01f, animMult = 1f;
-        public static float halfPI = (float)Math.PI / 2f;
+        public float halfPI = (float)Math.PI / 2f;
         public bool[] fired = new bool[4];
         public float[] hitRatios = null;
         public bool flatJoint = false;
@@ -682,7 +672,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         Vector2 pointToStandOn = default(Vector2);
         Vector2 legJoint = default(Vector2);
-        public static Texture2D[] textures = null;
+        public Texture2D[] textures = null;
 
         public LegInfo(int lType, Vector2 initialPos, YamataA m)
         {

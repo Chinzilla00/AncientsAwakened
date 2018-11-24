@@ -38,6 +38,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.boss = false;
+            npc.noTileCollide = true;
 
 
         }

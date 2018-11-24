@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 80;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
+            npc.noTileCollide = true;
 
         }
 
@@ -126,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(SoundID.Item34, npc.position);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("YamataABomb"), 20, 0, Main.myPlayer);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("YamataBomb"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
                         attackFrame = 0;
@@ -144,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(SoundID.Item34, npc.position);
                         for (int i = 0; i < 5; ++i)
                         {
-                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("YamataABreath"), 20, 0, Main.myPlayer);
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("YamataBreath"), 20, 0, Main.myPlayer);
                             Main.projectile[proj2].timeLeft = 60;
                             Main.projectile[proj2].damage = npc.damage / 4;
                         }
@@ -243,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                             new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 Texture2D texture = Main.npcTexture[npc.type];
-                Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataHead");
+                Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/YamataHead");
                 var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
                 if (fireAttack == false)
                 {
