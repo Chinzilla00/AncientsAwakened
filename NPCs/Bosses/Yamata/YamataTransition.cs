@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ModLoader;
-using AAMod;
+using Terraria.Localization;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -18,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.friendly = false;
         }
         public int timer;
+        public Player player;
         public override void AI()
         {
             timer++;
@@ -84,6 +89,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (timer == 1080)
             {
                 projectile.Kill();
+                
             }
 
         }
@@ -116,13 +122,36 @@ namespace AAMod.NPCs.Bosses.Yamata
             dust6.noGravity = true;
             dust6.velocity.Y -= 1;
 
+            SpawnBoss(player, "YamataA", "Yamata Awakened");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("...MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
 
             AAMod.YamataMusic = false;
 
-            NPC.NewNPC((int)projectile.position.X, (int)projectile.position.Y, mod.NPCType("YamataA"));
+            
         }
-        
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
+                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
+                if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                else
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                    {
+                        NetworkText.FromLiteral(npcName)
+                    }), new Color(175, 75, 255), -1);
+                }
+            }
+        }
+
     }
 }

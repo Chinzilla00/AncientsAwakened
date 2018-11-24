@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Mire
 {
@@ -24,11 +25,40 @@ namespace AAMod.NPCs.Enemies.Mire
 			npc.DeathSound = SoundID.NPCDeath6;
             npc.value = 240000f;
             npc.knockBackResist = .30f;
-            npc.aiStyle = 23;
-            animationType = 475;
+            npc.aiStyle = -1;
         }
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override void AI()
+        {
+            BaseAI.AIWeapon(npc, ref npc.ai, 120, 100, 9f, 1f, 1f);
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter < 3)
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+            else if (npc.frameCounter < 6)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else if (npc.frameCounter < 9)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else if (npc.frameCounter < 12)
+            {
+                npc.frame.Y = 3 * frameHeight;
+            }
+            else
+            {
+                npc.frameCounter = 0;
+            }
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
             return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && spawnInfo.spawnTileY > Main.worldSurface && !Main.dayTime ? .1f : 0f;
         }

@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				attackCooldown++;
 				TargetDirection = (float)Math.PI/2;
 			}
-            npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
+            /*npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
             if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
             {
                 f = -1;
@@ -230,7 +230,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             else if (npc.rotation >= TargetDirection)
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
-            }
+            }*/
+            BaseMod.BaseAI.LookAt(player.Center, npc, 0);
 
             Vector2 moveTo = new Vector2(Body.Center.X-(100+npc.ai[1]), Body.Center.Y-(130f - npc.ai[2]))- npc.Center;	
 			npc.velocity = (moveTo)*moveSpeedBoost;			
