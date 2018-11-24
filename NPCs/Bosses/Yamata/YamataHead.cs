@@ -53,7 +53,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int numberOfAttacks = 0;
         public int endAttack = 0;
         public int damage = 0;
-        public bool attackFrame = false;
         public float moveSpeedBoost = .04f;
         public NPC Body;
         public bool HoriSwitch = false;
@@ -63,6 +62,12 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Projectile Breath;
         private int MouthFrame;
         private int MouthCounter;
+        private bool fireAttack;
+        private int attackFrame;
+        private int attackCounter;
+        private int attackTimer;
+        public int fireTimer = 0;
+
         public override void AI()
         {
             if (Main.expertMode)
@@ -77,6 +82,21 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.realLife = (int)npc.ai[0];
             Player player = Main.player[npc.target];
             npc.TargetClosest(true);
+
+            if (fireAttack == true)
+            {
+                attackCounter++;
+                if (attackCounter > 10)
+                {
+                    attackFrame++;
+                    attackCounter = 0;
+                }
+                if (attackFrame >= 3)
+                {
+                    attackFrame = 2;
+                }
+            }
+
             if (!player.active || player.dead)
             {
                 npc.TargetClosest(false);
@@ -91,91 +111,53 @@ namespace AAMod.NPCs.Bosses.Yamata
                     return;
                 }
             }
-            if (npc.ai[3] == 2)
+            fireTimer++;
+            if (fireTimer >= 240 && fireAttack == false)
             {
-                attackFrame = true;
-                TargetDirection = (float)Math.PI / 2;
-                varTime++;
-                npc.ai[2] = 100;
-                if (varTime == 30 && Main.netMode !=1)
-                {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 10f, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-                }
-                if (varTime >= 60)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        npc.ai[1] = Main.rand.Next(-300, 300);
-                        npc.netUpdate = true;
-                    }
-                    endAttack++;
-                    varTime = 0;
+                fireAttack = true;
 
-                }
-                if (endAttack >= 10)
-                {
-                    npc.ai[3] = 0;
-                }
+                fireTimer = 0;
             }
-            else if (npc.ai[3] == 3)
+            if (fireAttack == true)
             {
-                attackFrame = true;
-                varTime++;
-                if (varTime < 120)
+                attackTimer++;
+                if (Main.rand.Next(3) == 0)
                 {
-                    npc.ai[2] = 100;
-                    npc.ai[1] = 0;
-                    TargetDirection = (float)Math.PI / 2;
-                }
-                else if (varTime == 180 && Main.netMode !=1)
-                {
-                    Breath = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
-                }
-                else if (varTime < 180)
-                {
-                    npc.ai[2] = 100;
-                    npc.ai[1] = 0;
-                    TargetDirection = (float)Math.PI / 2;
-                }
-                else if (varTime < 240)
-                {
-                    npc.ai[2] = -300;
-                    npc.ai[1] = 0;
-                    TargetDirection = (float)Math.PI / 2;
-                }
-                else if (varTime < 600)
-                {
-                    npc.ai[2] = -300;
-                    npc.ai[1] = 0;
-                    s = .5f;
-                    TargetDirection = (float)(player.Center - npc.Center).ToRotation();
+                    if (attackTimer == 40)
+                    {
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("YamataABomb"), 20, 0, Main.myPlayer);
+                        Main.projectile[proj2].damage = npc.damage / 3;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
+                    }
+                    if (attackTimer >= 80)
+                    {
+                        fireAttack = false;
+                    }
                 }
                 else
                 {
-                    if(Main.netMode !=1) Breath.Kill();
-                    s = 1;
-                    npc.ai[3] = 0;
-                }
-            }
-
-            else
-            {
-                attackFrame = false;
-                moveSpeedBoost = .04f;
-                varTime++;
-                if (varTime > 100)
-                {
-                    if (Main.netMode != 1)
+                    if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
                     {
-
-                        npc.ai[2] = Main.rand.Next(0, 100);
-
-                        npc.ai[1] = Main.rand.Next(-125, 125);
-                        npc.netUpdate = true;
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        for (int i = 0; i < 5; ++i)
+                        {
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("YamataABreath"), 20, 0, Main.myPlayer);
+                            Main.projectile[proj2].timeLeft = 60;
+                            Main.projectile[proj2].damage = npc.damage / 4;
+                        }
                     }
-                    varTime = 0;
+                    if (attackTimer >= 80)
+                    {
+                        fireAttack = false;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
+                    }
                 }
-                TargetDirection = (float)Math.PI / 2;
+
             }
 
 
@@ -205,7 +187,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
         public override void FindFrame(int frameHeight)
         {
-            if (attackFrame)
+            if (fireAttack)
             {
                 MouthCounter++;
                 if (MouthCounter > 10)
@@ -259,10 +241,21 @@ namespace AAMod.NPCs.Bosses.Yamata
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
                             new Rectangle(0, 0, 26, 40), drawColor, projRotation,
                             new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-                
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                            new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), drawColor, npc.rotation,
-                            new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
+
+                Texture2D texture = Main.npcTexture[npc.type];
+                Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataHead");
+                var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                if (fireAttack == false)
+                {
+                    spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
+                if (fireAttack == true)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = attackAni.Height / 3;
+                    int y6 = num214 * attackFrame;
+                    Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                         new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), Color.White, npc.rotation,
                         new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);

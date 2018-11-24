@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             float dist = npc.Distance(player.Center);
             fireTimer++;
-            if (dist > 400 && fireTimer >= 240 && fireAttack == false)
+            if (fireTimer >= 240 && fireAttack == false)
             {
                 fireAttack = true;
 
@@ -219,24 +219,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.frame.Y = 0 * frameHeight;
             }
         }
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAHead");
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (fireAttack == false)
-            {
-                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            }
-            if (fireAttack == true)
-            {
-                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = attackAni.Height / 3;
-                int y6 = num214 * attackFrame;
-                Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            }
-            return false;
-        }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             if (Main.netMode != 0)
@@ -268,6 +250,21 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataANeck"), neckOrigin - Main.screenPosition,
                             new Rectangle(0, 0, 26, 40), drawColor, projRotation,
                             new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+
+                Texture2D texture = Main.npcTexture[npc.type];
+                Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAHead");
+                var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                if (fireAttack == false)
+                {
+                    spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
+                if (fireAttack == true)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = attackAni.Height / 3;
+                    int y6 = num214 * attackFrame;
+                    Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
 
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                         new Rectangle(0, npc.frame.Y, 106, npc.frame.Y + 72), Color.White, npc.rotation,
