@@ -209,20 +209,20 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
                 MinionTimer = 0;
             }
-
-            if (!HeadsSpawned)
-            {
-                if (Main.netMode != 1)
+            
+                if (!HeadsSpawned)
                 {
-                    npc.realLife = npc.whoAmI;
-                    int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHead"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                    TrueHead = Main.npc[latestNPC];
+                    if (Main.netMode != 1)
+                    {
+                        npc.realLife = npc.whoAmI;
+                        int latestNPC = npc.whoAmI;
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHead"), 0, npc.whoAmI);
+                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                        TrueHead = Main.npc[latestNPC];
+                    }
+                    HeadsSpawned = true;
                 }
-                HeadsSpawned = true;
-            }
 
             if (npc.life <= npc.lifeMax / 5)
             {

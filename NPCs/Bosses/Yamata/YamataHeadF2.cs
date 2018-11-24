@@ -93,9 +93,22 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             Player player = Main.player[npc.target];
 				npc.TargetClosest(true);
-				
-			
-			if (!player.active || player.dead)
+
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1000)
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
+            }
+
+
+            if (!player.active || player.dead)
 			{
 				npc.TargetClosest(false);
 				player = Main.player[npc.target];
