@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                string[] lootTable = {  "Crescent", "Flairdra", "Masamune", "Toxibomb", "YamatasWrath" };
+                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (Main.expertMode)
             {
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
             }
             npc.value = 0f;
             npc.boss = false;

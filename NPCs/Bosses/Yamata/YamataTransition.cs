@@ -13,8 +13,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
         public override void SetDefaults()
         {
-            projectile.width = 144;
-            projectile.height = 144;
+            projectile.width = 1;
+            projectile.height = 1;
             projectile.friendly = false;
         }
         public int timer;
@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (timer == 900)
             {
-                Main.NewText("I hope you're ready...", new Color(45, 46, 70));
+                Main.NewText("YOU SHALL BE FACING...", new Color(45, 46, 70));
             }
 
             if (timer == 1080)
@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             dust6.velocity.Y -= 1;
 
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...TO FACE TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
+            Main.NewText("...MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
 
             AAMod.YamataMusic = false;
 
