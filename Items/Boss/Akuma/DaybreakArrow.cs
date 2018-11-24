@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Akuma
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Daybreak Arrow");
-			Tooltip.SetDefault(@"Scorches its target with the heat of the scorching sun
+			Tooltip.SetDefault(@"Scorches its target with the heat of the blazing sun
 Inflicts Daybroken
 Non-consumable");
 		}

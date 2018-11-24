@@ -77,24 +77,6 @@ namespace AAMod.Items.Armor.GoblinSlayer
             {
                 case 1:
                     return;
-                case 2:
-                    num4 = 0.5f;
-                    break;
-                case 3:
-                    num4 = 0.625f;
-                    break;
-                case 4:
-                    num4 = 0.75f;
-                    break;
-                case 5:
-                    num4 = 0.875f;
-                    break;
-                case 6:
-                    num4 = 1f;
-                    break;
-                case 7:
-                    num4 = 1.1f;
-                    break;
             }
             if (player.yoraiz0rEye < 7)
             {

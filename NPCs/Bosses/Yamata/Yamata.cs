@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                string[] lootTable = {  "Crescent", "Flairdra", "Masamune", "Toxibomb", "YamatasWrath" };
+                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (Main.expertMode)
             {
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
             }
             npc.value = 0f;
             npc.boss = false;
@@ -172,7 +172,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 bottomVisualOffset = default(Vector2);
         public Vector2 topVisualOffset = default(Vector2);
         public LegInfo[] legs = null;
-        public static NPC dustMantid = null;
+        public NPC dustMantid = null;
 
         public override void AI()
         {
@@ -265,7 +265,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.rotation = 0f;
         }
 
-        public static void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
+        public void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
         {
             bool flyUpward = false;
             if (npc.justHit) { ai[2] = 0f; }
@@ -414,9 +414,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public Rectangle topHitbox = default(Rectangle), bottomHitbox = default(Rectangle), leftHitbox = default(Rectangle), rightHitbox = default(Rectangle);
         public const int stateIdle = 0, stateMovementOnly = 1, stateArmScythes = 2, stateArmSpawns = 3, stateArmCombo = 4, stateFireEggs = 5, stateArmAndEggs = 6;
-        public static int[] timers = new int[] { 100, 60, 80, 170, 170, 160, 170 };
-        public static int[] statesToChangeTo = new int[] { stateMovementOnly, stateArmSpawns, stateArmCombo, stateFireEggs };
-        public static int[] statesToChangeToExpert = new int[] { stateMovementOnly, stateArmCombo, stateArmSpawns };
+        public int[] timers = new int[] { 100, 60, 80, 170, 170, 160, 170 };
+        public int[] statesToChangeTo = new int[] { stateMovementOnly, stateArmSpawns, stateArmCombo, stateFireEggs };
+        public int[] statesToChangeToExpert = new int[] { stateMovementOnly, stateArmCombo, stateArmSpawns };
         public void SwapAI(ref float aiTime)
         {
             topHitbox = bottomHitbox = leftHitbox = rightHitbox = default(Rectangle);
@@ -558,7 +558,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         float[] leftRotations = null, left2Rotations = null;
         float[] rightRotations = null, right2Rotations = null;
         public float movementRatio = 0f, movementRate = 0.01f, animMult = 1f;
-        public static float halfPI = (float)Math.PI / 2f;
+        public float halfPI = (float)Math.PI / 2f;
         public bool[] fired = new bool[4];
         public float[] hitRatios = null;
         public bool flatJoint = false;
@@ -593,7 +593,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         Vector2 pointToStandOn = default(Vector2);
         Vector2 legJoint = default(Vector2);
-        public static Texture2D[] textures = null;
+        public Texture2D[] textures = null;
 
         public LegInfo(int lType, Vector2 initialPos, Yamata m)
         {

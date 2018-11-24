@@ -72,9 +72,11 @@ namespace AAMod.Items.Boss.Akuma
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DaybreakIncinerite", 5);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(ItemID.LunarBar, 20);
-            recipe.AddTile(TileID.Anvils);   //at work bench
-            recipe.SetResult(this);  
+            recipe.AddTile(null, "BinaryReassembler");
+            recipe.SetResult(this);
             recipe.AddRecipe();
         }
 

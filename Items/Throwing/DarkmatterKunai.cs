@@ -19,11 +19,12 @@ namespace AAMod.Items.Throwing
             item.useStyle = 1;
 			item.knockBack = 0;
 			item.value = 8;
-			item.rare = 6;
+			item.rare = 11;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("DMK");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.consumable = true;
 		}
 
         public override void SetStaticDefaults()

@@ -40,6 +40,8 @@ namespace AAMod.Items.Accessories.Wings
             acceleration *= 3f;
         }
 
+        
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
