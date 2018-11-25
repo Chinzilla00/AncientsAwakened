@@ -8,22 +8,22 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 {
     public class DarkShredders : ModProjectile
     {
-        public static short customGlowMask = 0;
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DarkShredders");
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/" + GetType().Name + "_glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            
+            projectile.glowMask = customGlowMask;
+
         }
 
         public override void SetDefaults()
@@ -36,7 +36,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
             projectile.melee = true;  //Tells the game whether it is a melee projectile or not
             projectile.scale = 2f;
-            projectile.glowMask = customGlowMask;
+            
         }
         public override void AI()
         {

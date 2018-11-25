@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-	public class BogwoodChest : ModItem
+    public class BogwoodChest : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

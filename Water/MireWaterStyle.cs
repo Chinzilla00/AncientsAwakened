@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Water
 {
-	public class MireWaterStyle : ModWaterStyle
+    public class MireWaterStyle : ModWaterStyle
 	{
 		public override bool ChooseWaterStyle()
 		{

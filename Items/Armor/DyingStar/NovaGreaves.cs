@@ -1,14 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Armor.DyingStar
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
 	public class NovaGreaves : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class OroborosClock : ModTile
+    public class OroborosClock : ModTile
 	{
 		public override void SetDefaults()
 		{

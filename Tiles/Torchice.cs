@@ -1,4 +1,3 @@
-using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

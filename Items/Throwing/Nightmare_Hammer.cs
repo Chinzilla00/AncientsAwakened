@@ -1,14 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Throwing
 {
-	public class Nightmare_Hammer : ModItem
+    public class Nightmare_Hammer : ModItem
 	{
 		public override void SetDefaults()
 		{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class DragonArrow : ModProjectile
+    public class DragonArrow : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

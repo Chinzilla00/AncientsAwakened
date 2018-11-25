@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-	public class OrderSolution : ModItem
+    public class OrderSolution : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

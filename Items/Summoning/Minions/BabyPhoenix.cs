@@ -3,28 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-	public class BabyPhoenix : Minion2
+    public class BabyPhoenix : Minion2
 	{
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Baby Phoenix");
             Main.projFrames[projectile.type] = 8;
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Summoning/Minions/" + GetType().Name);
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
 
         } 
         public override void SetDefaults()
@@ -38,6 +26,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.minion = true;
             projectile.minionSlots = 1f;
         }
+        
 
         public override void AI()
         {

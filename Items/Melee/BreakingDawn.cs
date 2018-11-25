@@ -7,7 +7,7 @@ namespace AAMod.Items.Melee
 {
     public class BreakingDawn : ModItem
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Breaking Dawn");
@@ -15,7 +15,7 @@ namespace AAMod.Items.Melee
 
 		public override void SetDefaults()
 		{
-            item.glowMask = customGlowMask;
+            
 			item.damage = 200;
 			item.melee = true;
 			item.width = 60;

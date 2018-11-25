@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Mech
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class MechHelm : ModItem
 	{
 		public override void SetStaticDefaults()

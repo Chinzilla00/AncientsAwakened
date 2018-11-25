@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories.Wings
 {
-	[AutoloadEquip(EquipType.Wings)]
+    [AutoloadEquip(EquipType.Wings)]
 	public class Dragon_Wings : ModItem
 	{
 		public override void SetStaticDefaults()

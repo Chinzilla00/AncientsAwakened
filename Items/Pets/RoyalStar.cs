@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -6,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class RoyalStar : ModItem
+    public class RoyalStar : ModItem
 	{
         public override void SetStaticDefaults()
 		{

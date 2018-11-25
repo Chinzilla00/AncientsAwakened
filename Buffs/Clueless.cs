@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class Clueless : ModBuff
+    public class Clueless : ModBuff
 	{
 		public override void SetDefaults()
 		{

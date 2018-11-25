@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Enemies/Mire/Mosster_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            spriteBatch.Draw(mod.GetTexture("Glowmasks/Mosster_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
             npc.frame, Color.White, npc.rotation,
             new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }

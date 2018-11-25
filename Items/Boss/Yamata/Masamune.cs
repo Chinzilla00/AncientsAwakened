@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-	public class Masamune : ModItem
+    public class Masamune : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

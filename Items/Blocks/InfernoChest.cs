@@ -1,12 +1,8 @@
-using System;
-
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-	public class InfernoChest : ModItem
+    public class InfernoChest : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

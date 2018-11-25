@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-	public class vulture_feather : ModItem
+    public class vulture_feather : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

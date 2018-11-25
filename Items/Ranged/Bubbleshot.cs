@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-	public class Bubbleshot : ModItem
+    public class Bubbleshot : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,12 +1,12 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Armor.Draco.Dracokip
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class DracoDiverMask : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -101,9 +101,9 @@ namespace AAMod.NPCs.Bosses.Zero
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.projectileTexture[npc.type];
-            Texture2D texture1 = mod.GetTexture("NPCs/Bosses/Zero/ZeroTransition1");
-            Texture2D texture2 = mod.GetTexture("NPCs/Bosses/Zero/ZeroTransition2");
-            Texture2D texture3 = mod.GetTexture("NPCs/Bosses/Zero/ZeroTransition3");
+            Texture2D texture1 = mod.GetTexture("Glowmasks/ZeroTransition1");
+            Texture2D texture2 = mod.GetTexture("Glowmasks/ZeroTransition2");
+            Texture2D texture3 = mod.GetTexture("Glowmasks/ZeroTransition3");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (frame == false)
             {

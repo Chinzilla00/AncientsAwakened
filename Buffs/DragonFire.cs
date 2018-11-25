@@ -1,10 +1,9 @@
-using AAMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class DragonFire : ModBuff
+    public class DragonFire : ModBuff
 	{
 		public override void SetDefaults()
 		{

@@ -1,10 +1,9 @@
-using AAMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class HydraToxin : ModBuff
+    public class HydraToxin : ModBuff
 	{
 		public override void SetDefaults()
 		{

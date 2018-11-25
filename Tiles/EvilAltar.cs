@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class EvilAltar : ModTile
+    public class EvilAltar : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -1,28 +1,18 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
     public class Poppy : ModItem
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Poppy");
             Tooltip.SetDefault("");
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Melee/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
         }
         public override void SetDefaults()
         {
@@ -42,10 +32,29 @@ namespace AAMod.Items.Melee   //where is located
             item.useTurn = true; 
 			item.shoot =  121;
 			item.shootSpeed = 16f;
-            item.glowMask = customGlowMask;
+            
         }
 
-    
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-	//ported from my tAPI mod because I don't want to make more artwork
-	public class HydraTuneller : ModItem
+    //ported from my tAPI mod because I don't want to make more artwork
+    public class HydraTuneller : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

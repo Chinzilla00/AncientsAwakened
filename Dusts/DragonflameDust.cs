@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class DragonflameDust : ModDust
+    public class DragonflameDust : ModDust
 	{
 		public override void OnSpawn(Dust dust)
 		{

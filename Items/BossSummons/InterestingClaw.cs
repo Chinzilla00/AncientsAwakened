@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.BossSummons
 {
-	//imported from my tAPI mod because I'm lazy
-	public class InterestingClaw : ModItem
+    //imported from my tAPI mod because I'm lazy
+    public class InterestingClaw : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

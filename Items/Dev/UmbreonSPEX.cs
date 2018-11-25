@@ -1,30 +1,20 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 using System;
 
 namespace AAMod.Items.Dev
 {
     public class UmbreonSPEX : ModItem
 	{
-		public static short customGlowMask = 0;
+		
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Umbra");
 			Tooltip.SetDefault(@"A dark sword from a dark creature
 Blade of Night EX");
-			if (Main.netMode != 2)
-			{
-				Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-				for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-				{
-					glowMasks[i] = Main.glowMaskTexture[i];
-				}
-				glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Dev/UmbreonSPEX_Glow");
-				customGlowMask = (short)(glowMasks.Length - 1);
-				Main.glowMaskTexture = glowMasks;
-			}
 		}
 		
 		public override void SetDefaults()
@@ -43,10 +33,32 @@ Blade of Night EX");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("UmbreonSPProjectile");
 			item.shootSpeed = 18f;
-			item.glowMask = customGlowMask;
+			
 		}
-		
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 		    float spread = 20f * 0.0174f;
 		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

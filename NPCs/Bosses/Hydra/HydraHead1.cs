@@ -1,10 +1,7 @@
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System;
 using Microsoft.Xna.Framework;
-using Terraria.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 namespace AAMod.NPCs.Bosses.Hydra
 {
     public class HydraHead1 : Hydra
@@ -295,7 +292,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead1"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                             new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 48), drawColor, npc.rotation,
                             new Vector2(64 * 0.5f, 48 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead1_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraHead1_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                         new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 48), Color.White, npc.rotation,
                         new Vector2(64 * 0.5f, 48 * 0.5f), 1f, SpriteEffects.None, 0f);
             }

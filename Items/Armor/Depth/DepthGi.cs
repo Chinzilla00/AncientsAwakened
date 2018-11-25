@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Depth
 {
-	[AutoloadEquip(EquipType.Body)]
+    [AutoloadEquip(EquipType.Body)]
 	public class DepthGi : ModItem
 	{
 		public override void SetStaticDefaults()

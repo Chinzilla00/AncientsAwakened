@@ -1,9 +1,9 @@
 using Terraria;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Akuma;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using BaseMod;
 
 namespace AAMod.Items.BossSummons

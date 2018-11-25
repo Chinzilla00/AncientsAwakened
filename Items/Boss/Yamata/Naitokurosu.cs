@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Yamata
     public class Naitokurosu : ModItem
     {
 
-        public static short customGlowMask = 0;
+        
 
 
         public override void SetStaticDefaults()
@@ -29,7 +29,29 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
-            item.glowMask = customGlowMask;
+            
+        }
+
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

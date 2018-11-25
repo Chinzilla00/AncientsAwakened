@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class YamataABox : ModTile
+    class YamataABox : ModTile
 	{
 		public override void SetDefaults()
 		{

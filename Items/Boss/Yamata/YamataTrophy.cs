@@ -1,6 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Boss.Yamata
 {

@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-	public class Nightmare_Ore : ModItem
+    public class Nightmare_Ore : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

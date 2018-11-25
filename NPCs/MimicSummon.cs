@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.NPCs
 {
-	public class InfernoChestSummon : ModPlayer
+    public class InfernoChestSummon : ModPlayer
 	{
 		public int LastChest = 0;
 

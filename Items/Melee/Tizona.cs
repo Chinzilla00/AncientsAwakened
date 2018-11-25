@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Tizona : ModItem
+    public class Tizona : ModItem
 	{
 		public override void SetDefaults()
 		{

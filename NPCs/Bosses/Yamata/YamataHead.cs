@@ -3,12 +3,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
-using Terraria.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata
 {
-    public class YamataHead : Yamata
+    public class YamataHead : ModNPC
     {
+		public bool isAwakened = false;
+		
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yamata");
@@ -17,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
+			npc.life = npc.lifeMax = 100;
             if (!Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 130;
@@ -42,8 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 80;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
-            npc.noTileCollide = true;
-
+            npc.noTileCollide = false;
         }
 
         public int varTime = 0;
@@ -81,9 +81,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-            Player player = Main.player[npc.target];
+			
             npc.TargetClosest(true);
-
+            Player player = Main.player[npc.target];
             if (fireAttack == true)
             {
                 attackCounter++;
@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(SoundID.Item34, npc.position);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("YamataBomb"), 20, 0, Main.myPlayer);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
                         attackFrame = 0;
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(SoundID.Item34, npc.position);
                         for (int i = 0; i < 5; ++i)
                         {
-                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("YamataBreath"), 20, 0, Main.myPlayer);
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), 20, 0, Main.myPlayer);
                             Main.projectile[proj2].timeLeft = 60;
                             Main.projectile[proj2].damage = npc.damage / 4;
                         }
@@ -159,6 +159,19 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                 }
 
+            }
+
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1000)
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
             }
 
 
@@ -207,13 +220,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            
+        {   
             return false;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (Main.netMode != 0)
+            /*if (Main.netMode != 0)
             {
                 Body = Main.npc[(int)npc.ai[0]];
                 Vector2 neckOrigin = new Vector2(Body.Center.X, Body.Center.Y - 50);
@@ -260,13 +272,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                         new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), Color.White, npc.rotation,
                         new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
-            }
+            }*/
         }
         public override void BossHeadRotation(ref float rotation)
         {
-
             rotation = npc.rotation;
-
         }
         // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
         public override bool PreNPCLoot()

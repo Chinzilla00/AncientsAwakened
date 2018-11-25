@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class ZeroDust : ModDust
+    public class ZeroDust : ModDust
 	{
 		public static readonly int _type;
 

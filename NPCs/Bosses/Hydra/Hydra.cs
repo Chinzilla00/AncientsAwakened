@@ -218,7 +218,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 Vector2 distToProj = neckOrigin - head.Center;
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), neckOrigin - Main.screenPosition,
                 new Rectangle(0, 0, 14, 22), drawColor, projRotation,
                 new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
@@ -229,12 +229,12 @@ namespace AAMod.NPCs.Bosses.Hydra
                     distToProj = neckOrigin - center;    //update distance
                     distance = distToProj.Length();
                     //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
+                    spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
                         new Rectangle(0, 0, 14, 22), drawColor, projRotation,
                         new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), neckOrigin - Main.screenPosition,
                             new Rectangle(0, 0, 14, 22), drawColor, projRotation,
                             new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
 
@@ -249,16 +249,16 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Hydra/HydraTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/HydraTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
             if (Main.netMode == 0)
             {
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
+                DrawHead(sb, "Glowmasks/HydraHead2", "Glowmasks/HydraHead2_Glow", Head2, dColor);
+                DrawHead(sb, "Glowmasks/HydraHead3", "Glowmasks/HydraHead3_Glow", Head3, dColor);
             }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             if (Main.netMode == 0)
             {
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor);
+                DrawHead(sb, "Glowmasks/HydraHead1", "Glowmasks/HydraHead1_Glow", Head1, dColor);
             }
             return false;
         }

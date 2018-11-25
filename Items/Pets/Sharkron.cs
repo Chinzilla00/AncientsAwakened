@@ -6,7 +6,7 @@ namespace AAMod.Items.Pets
 {
     public class Sharkron : ModProjectile
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sharkron"); // Automatic from .lang files
@@ -20,7 +20,7 @@ namespace AAMod.Items.Pets
 			aiType = ProjectileID.ZephyrFish;
             projectile.width = 66;
             projectile.height = 56;
-            projectile.glowMask = customGlowMask;
+            
         }
 
 		public override bool PreAI()

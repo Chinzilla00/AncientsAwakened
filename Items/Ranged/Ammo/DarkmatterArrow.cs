@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-	public class DarkmatterArrow : ModItem
+    public class DarkmatterArrow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

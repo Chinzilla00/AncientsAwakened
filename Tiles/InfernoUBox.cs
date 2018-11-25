@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class InfernoUBox : ModTile
+    class InfernoUBox : ModTile
 	{
 		public override void SetDefaults()
 		{

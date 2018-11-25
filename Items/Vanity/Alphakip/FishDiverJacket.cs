@@ -1,5 +1,5 @@
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Alphakip

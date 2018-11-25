@@ -4,14 +4,12 @@ using System.Linq;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
-using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using AAMod.Tiles;
-using AAMod.Walls;
-using Terraria.GameContent.Achievements;
 using BaseMod;
 
 namespace AAMod

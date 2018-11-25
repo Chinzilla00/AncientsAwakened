@@ -1,10 +1,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Blocks
 {
-	public class Soul_Forge : ModItem
+    public class Soul_Forge : ModItem
 	{
         public override void SetStaticDefaults()
         {

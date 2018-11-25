@@ -1,17 +1,12 @@
-using System; 
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Worldgen;
 
 namespace AAMod.Items.DevTools
 {
-	//meant for testing, shows you how to run the generator
-	public class ChaosConverter : ModItem
+    //meant for testing, shows you how to run the generator
+    public class ChaosConverter : ModItem
 	{
         public override void SetDefaults()
         {

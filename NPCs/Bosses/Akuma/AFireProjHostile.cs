@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -8,21 +7,10 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     internal class AFireProjHostile : ModProjectile
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("NPCs/Bosses/Akuma/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Blazing Fury");
         }
 
@@ -37,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.penetrate = 1;
             projectile.alpha = 60;
             projectile.timeLeft = 300;
-            projectile.glowMask = customGlowMask;
+            
         }
 
         public override void AI()

@@ -1,10 +1,9 @@
-using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-	public class Razetus : ModCactus
+    public class Razetus : ModCactus
 	{
 		private Mod mod
 		{
@@ -16,7 +15,7 @@ namespace AAMod.Tiles
 
 		public override Texture2D GetTexture()
 		{
-			return mod.GetTexture("Tiles/Razetus");
+			return mod.GetTexture("Glowmasks/Razetus");
 		}
     }
 }

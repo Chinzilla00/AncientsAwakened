@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class BabyPhoenix : ModBuff
+    public class BabyPhoenix : ModBuff
 	{
 		public override void SetDefaults()
 		{

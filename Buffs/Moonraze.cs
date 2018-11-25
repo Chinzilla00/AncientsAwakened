@@ -1,4 +1,3 @@
-using AAMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 

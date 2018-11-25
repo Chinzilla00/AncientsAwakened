@@ -1,8 +1,6 @@
-using System; using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
@@ -10,7 +8,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-	public class HydraChow : ModItem
+    public class HydraChow : ModItem
 	{
 
         public override void SetStaticDefaults()

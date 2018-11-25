@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
     public class UnstableSingularity : ModItem
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Unstable Singularity");
@@ -17,17 +18,6 @@ namespace AAMod.Items.Boss.Zero
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
             ItemID.Sets.ItemNoGravity[item.type] = true;
-            if (Main.netMode != 2)
-            {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Zero/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -41,10 +31,32 @@ namespace AAMod.Items.Boss.Zero
             }
         }
 
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            item.glowMask = customGlowMask;
+            
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;

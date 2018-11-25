@@ -1,9 +1,9 @@
 ﻿using AAMod.Items.Tools;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.UI;
-using Microsoft.Xna.Framework;
 
 namespace AAMod.UI
 {

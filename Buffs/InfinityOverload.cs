@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class InfinityOverload : ModBuff
+    public class InfinityOverload : ModBuff
 	{
 		public override void SetDefaults()
 		{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class Energy_Cell_Pro : ModProjectile
+    public class Energy_Cell_Pro : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

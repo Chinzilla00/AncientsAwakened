@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-	public class L85A2 : ModItem
+    public class L85A2 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

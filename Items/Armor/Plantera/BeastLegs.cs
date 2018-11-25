@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Armor.Plantera
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
 	public class BeastLegs : ModItem
 	{
 		public override void SetStaticDefaults()

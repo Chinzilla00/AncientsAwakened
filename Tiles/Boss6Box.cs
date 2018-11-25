@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class Boss6Box : ModTile
+    class Boss6Box : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -33,7 +33,7 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/Boss6Box_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Boss6Box_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

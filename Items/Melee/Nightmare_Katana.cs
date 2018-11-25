@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Nightmare_Katana : ModItem
+    public class Nightmare_Katana : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

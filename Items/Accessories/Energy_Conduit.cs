@@ -1,13 +1,11 @@
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories
 {
-	public class Energy_Conduit : ModItem
+    public class Energy_Conduit : ModItem
 	{
 		public override void SetDefaults()
 		{
@@ -16,30 +14,41 @@ namespace AAMod.Items.Accessories
 			item.value = Item.sellPrice(0, 6, 0, 0);
 			item.rare = 8;
 			item.accessory = true;
-			item.glowMask = customGlowMask;
-		}
-		
-		public override void UpdateAccessory(Player player, bool hideVisual)
+            
+        }
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
 		{
             player.moveSpeed *= 1.5f;
 		}
 		
-		public static short customGlowMask = 0;
+		
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Energy Conduit");
 			Tooltip.SetDefault("50% increased movement speed");
-			if (Main.netMode != 2)
-			{
-				Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-				for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-				{
-					glowMasks[i] = Main.glowMaskTexture[i];
-				}
-				glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Accessories/" + this.GetType().Name + "_Glowmask");
-				customGlowMask = (short)(glowMasks.Length - 1);
-				Main.glowMaskTexture = glowMasks;
-			}
+			
 		}
 	}
 }

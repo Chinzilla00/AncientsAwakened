@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class IndigoSolution : ModDust
+    public class IndigoSolution : ModDust
 	{
 		public override void SetDefaults()
 		{

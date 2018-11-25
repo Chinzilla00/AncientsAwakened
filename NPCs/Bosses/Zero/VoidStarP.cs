@@ -8,8 +8,6 @@ namespace AAMod.NPCs.Bosses.Zero
     // to investigate: Projectile.Damage, (8843)
     class VoidStarP : ModProjectile
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Zero/VoidStarP"; } }
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.Homing[projectile.type] = true;

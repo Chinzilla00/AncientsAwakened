@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ID;
 using System.IO;
 using AAMod.NPCs.Bosses.Daybringer;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace AAMod.NPCs.Bosses.Nightcrawler
@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Nightcrawler/Nightcrawler_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/Nightcrawler_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
             }
@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 {
                     spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Nightcrawler/NightcrawlerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/NightcrawlerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
                 npc.frame, Color.White, npc.rotation,
                 new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
             }

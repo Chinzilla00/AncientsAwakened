@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class SABox : ModTile
+    class SABox : ModTile
 	{
 		public override void SetDefaults()
 		{

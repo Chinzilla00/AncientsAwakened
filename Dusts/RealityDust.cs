@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class RealityDust : ModDust
+    public class RealityDust : ModDust
 	{
         public override bool Update(Dust dust)
         {

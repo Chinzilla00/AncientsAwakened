@@ -1,27 +1,28 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata
 {
-	public class Toxibomb : ModProjectile
+    public class Toxibomb : ModProjectile
 	{
-        public static short customGlowMask = 0;
+
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/Yamata/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
             Main.projFrames[projectile.type] = 4;     //The recording mode
 		}
@@ -40,7 +41,7 @@ namespace AAMod.Projectiles.Yamata
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.glowMask = customGlowMask;
+            
 		}
 
         public override void AI()

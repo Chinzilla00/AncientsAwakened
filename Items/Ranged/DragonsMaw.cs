@@ -31,11 +31,11 @@ namespace AAMod.Items.Ranged
 
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Dragons Maw");
-      Tooltip.SetDefault("Transforms arrows into Flaming Arrows");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dragons Maw");
+            Tooltip.SetDefault("Transforms arrows into Flaming Arrows");
+        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

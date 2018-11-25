@@ -1,24 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
     // to investigate: Projectile.Damage, (8843)
     public class MorningStar : ModProjectile
 	{
-        public static short customGlowMask = 0;
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/" + GetType().Name);
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
@@ -38,7 +38,7 @@ namespace AAMod.Projectiles
             projectile.scale = 0.9f;
             projectile.melee = true;
             projectile.timeLeft = 300;
-            projectile.glowMask = customGlowMask;
+            
 
         }
 

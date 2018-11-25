@@ -1,14 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Armor.Paladin
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class Paladin_Helmet : ModItem
 	{
 		public override void SetStaticDefaults()

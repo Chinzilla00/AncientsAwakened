@@ -314,7 +314,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            Main.spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/VoidStar_Glow"), new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - ((float)Main.npcTexture[npc.type].Width * npc.scale / 2f) + (vector10.X * npc.scale), npc.position.Y - Main.screenPosition.Y + (float)npc.height - ((float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type]) + 4f + (vector10.Y * npc.scale) + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/VoidStar_Glow"), new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - ((float)Main.npcTexture[npc.type].Width * npc.scale / 2f) + (vector10.X * npc.scale), npc.position.Y - Main.screenPosition.Y + (float)npc.height - ((float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type]) + 4f + (vector10.Y * npc.scale) + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
             base.PostDraw(spriteBatch, drawColor);
         }
 

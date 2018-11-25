@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class MireBox : ModTile
+    class MireBox : ModTile
 	{
 		public override void SetDefaults()
 		{

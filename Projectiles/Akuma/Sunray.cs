@@ -1,29 +1,30 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Akuma
 {
-	public class Sunray : ModProjectile
+    public class Sunray : ModProjectile
 	{
-        public static short customGlowMask = 0;
+
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/Akuma/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
+            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Sun Portal");    //The recording mode
 		}
 
@@ -38,7 +39,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.alpha = 255;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
-            projectile.glowMask = customGlowMask;
+            
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

@@ -8,7 +8,8 @@ namespace AAMod.Projectiles.Yamata
     public class MidnightWrath : ModProjectile
     {
 
-        public static short customGlowMask = 0;
+
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
@@ -18,11 +19,12 @@ namespace AAMod.Projectiles.Yamata
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/Yamata/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
+
             DisplayName.SetDefault("Midnight Wrath");
         }
 

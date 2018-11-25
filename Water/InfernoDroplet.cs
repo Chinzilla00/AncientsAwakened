@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Water
 {
-	public class InfernoDroplet : ModGore
+    public class InfernoDroplet : ModGore
 	{
 		public override void OnSpawn(Gore gore)
 		{

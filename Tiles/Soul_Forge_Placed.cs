@@ -1,17 +1,14 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class Soul_Forge_Placed : ModTile
+    public class Soul_Forge_Placed : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -45,7 +42,7 @@ namespace AAMod.Tiles
 				zero = Vector2.Zero;
 			}
 			int height = tile.frameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(mod.GetTexture("Tiles/Soul_Forge_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Soul_Forge_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 	}
 }

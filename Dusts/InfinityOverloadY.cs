@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class InfinityOverloadY : ModDust
+    public class InfinityOverloadY : ModDust
 	{
 		public override void OnSpawn(Dust dust)
 		{

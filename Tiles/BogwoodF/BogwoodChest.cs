@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.BogwoodF
 {
-	public class BogwoodChest : ModTile
+    public class BogwoodChest : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public delegate void ExtraAction();
+    public delegate void ExtraAction();
 
 	public static class ProjectileDraw
 	{

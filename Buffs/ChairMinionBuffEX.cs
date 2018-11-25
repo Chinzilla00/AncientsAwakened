@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class ChairMinionBuffEX : ModBuff
+    public class ChairMinionBuffEX : ModBuff
 	{
 		public override void SetDefaults()
 		{

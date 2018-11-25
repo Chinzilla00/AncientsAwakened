@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories.Wings
 {
-	[AutoloadEquip(EquipType.Wings)]
+    [AutoloadEquip(EquipType.Wings)]
 	public class VultureWings : ModItem
 	{
 		public override void SetStaticDefaults()

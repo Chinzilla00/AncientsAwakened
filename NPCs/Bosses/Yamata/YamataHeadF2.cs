@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
@@ -38,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.boss = false;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
 
 
         }
@@ -93,22 +92,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             Player player = Main.player[npc.target];
 				npc.TargetClosest(true);
-
-            if (player != null)
-            {
-                float dist = npc.Distance(player.Center);
-                if (dist > 1000)
-                {
-                    npc.noTileCollide = true;
-                }
-                else
-                {
-                    npc.noTileCollide = false;
-                }
-            }
-
-
-            if (!player.active || player.dead)
+				
+			
+			if (!player.active || player.dead)
 			{
 				npc.TargetClosest(false);
 				player = Main.player[npc.target];
@@ -244,7 +230,23 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }*/
-            BaseMod.BaseAI.LookAt(player.Center, npc, 0);
+
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1000)
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
+            }
+
+            npc.spriteDirection = 1;
+			npc.rotation = 1.57f;			
+           // BaseMod.BaseAI.LookAt(player.Center, npc, 0);
 
             Vector2 moveTo = new Vector2(Body.Center.X-(100+npc.ai[1]), Body.Center.Y-(130f - npc.ai[2]))- npc.Center;	
 			npc.velocity = (moveTo)*moveSpeedBoost;			

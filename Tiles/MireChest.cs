@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class MireChest : ModTile
+    public class MireChest : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class Snagged : ModBuff
+    public class Snagged : ModBuff
 	{
 		public override void SetDefaults()
 		{

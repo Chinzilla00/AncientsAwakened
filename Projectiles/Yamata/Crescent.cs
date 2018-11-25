@@ -1,6 +1,6 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
@@ -8,21 +8,23 @@ namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Exam
     public class Crescent : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
 
-        public static short customGlowMask = 0;
+
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
             {
-                Microsoft.Xna.Framework.Graphics.Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Yamata/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
+
             DisplayName.SetDefault("Crescent");
         }
 

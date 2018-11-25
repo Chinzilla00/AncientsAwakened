@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories.Wings
 {
-	[AutoloadEquip(EquipType.Wings)]
+    [AutoloadEquip(EquipType.Wings)]
 	public class DraconianWings : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -20,6 +20,7 @@ namespace AAMod.Items.Accessories.Wings
 			item.value = 400000;
             item.rare = 2;
 			item.accessory = true;
+            
 		}
 		//these wings use the same values as the solar wings
 		public override void UpdateAccessory(Player player, bool hideVisual)

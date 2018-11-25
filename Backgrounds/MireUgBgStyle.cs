@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {
-	public class MireUgBgStyle : ModUgBgStyle
+    public class MireUgBgStyle : ModUgBgStyle
 	{
 		public override bool ChooseBgStyle()
 		{

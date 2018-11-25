@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
@@ -36,8 +37,29 @@ namespace AAMod.Items.Boss.Yamata
             item.rare = 11;
         }
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
-        
+
 
         public override void PostUpdate()
         {

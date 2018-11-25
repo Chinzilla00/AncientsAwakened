@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class InfernoChest : ModTile
+    public class InfernoChest : ModTile
 	{
 		public override void SetDefaults()
 		{

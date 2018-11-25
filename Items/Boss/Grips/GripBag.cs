@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips
 {
-	public class GripBag : ModItem
+    public class GripBag : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

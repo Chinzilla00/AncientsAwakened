@@ -1,8 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 using System;
 using System.Collections.Generic;
 
@@ -10,20 +10,9 @@ namespace AAMod.Items.Boss.Akuma
 {
     public class RadiantDawn : ModItem
     {
-        public static short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Boss/Akuma/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Radiant Dawn");
             Tooltip.SetDefault("Replaces Wooden Arrows with Bone Arrows");
         }
@@ -45,8 +34,30 @@ namespace AAMod.Items.Boss.Akuma
             item.shoot = mod.ProjectileType("FireRain");
             item.shootSpeed = 14f;
             item.useAmmo = 40;
-            item.glowMask = customGlowMask;
+            
             item.UseSound = SoundID.Item20;
+        }
+
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
         }
 
 

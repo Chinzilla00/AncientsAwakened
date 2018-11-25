@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace AAMod.Items.Armor.Mech
 {
-	[AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)]
 	public class MechLeggos : ModItem
 	{
 		public override void SetStaticDefaults()

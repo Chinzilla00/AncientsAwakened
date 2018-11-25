@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Dusts
 {
-	public class OrderSolution : ModDust
+    public class OrderSolution : ModDust
 	{
 		public override void SetDefaults()
 		{

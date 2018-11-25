@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod
 {
-	public class AAGlobalTile : GlobalTile
+    public class AAGlobalTile : GlobalTile
 	{
 		public static int glowTick = 0;
 		public static int glowMax = 100;

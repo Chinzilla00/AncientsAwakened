@@ -22,11 +22,11 @@ namespace AAMod.Items.Melee   //where is located
             item.shoot = mod.ProjectileType("DragonBreathP");
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("The Dragon's Breath");
-      Tooltip.SetDefault("It must need to brush it's teeth");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("The Dragon's Breath");
+            Tooltip.SetDefault("It must need to brush it's teeth");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

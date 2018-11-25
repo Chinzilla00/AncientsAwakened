@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Bloody_Mary : ModItem
+    public class Bloody_Mary : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

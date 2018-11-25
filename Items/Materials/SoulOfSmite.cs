@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-	public class SoulOfSmite : ModItem
+    public class SoulOfSmite : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -31,7 +31,7 @@ namespace AAMod.Items.Materials
 			item.rare = 3;
 		}
 
-		public override void PostUpdate()
+        public override void PostUpdate()
 		{
 			Lighting.AddLight(item.Center, Color.OrangeRed.ToVector3() * 0.55f * Main.essScale);
 		}

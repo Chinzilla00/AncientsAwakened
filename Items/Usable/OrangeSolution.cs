@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-	public class OrangeSolution : ModItem
+    public class OrangeSolution : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

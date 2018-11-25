@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-	class HydraBox : ModTile
+    class HydraBox : ModTile
 	{
 		public override void SetDefaults()
 		{

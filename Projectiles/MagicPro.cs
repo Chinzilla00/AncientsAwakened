@@ -5,7 +5,7 @@ using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
-	public class MagicPro : ModProjectile
+    public class MagicPro : ModProjectile
 	{
 		public override void SetDefaults()
 		{

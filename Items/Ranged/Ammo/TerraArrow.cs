@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-	public class TerraArrow : ModItem
+    public class TerraArrow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

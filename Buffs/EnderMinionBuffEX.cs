@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class EnderMinionBuffEX : ModBuff
+    public class EnderMinionBuffEX : ModBuff
 	{
 		public override void SetDefaults()
 		{

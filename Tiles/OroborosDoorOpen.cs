@@ -9,7 +9,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class OroborosDoorOpen : ModTile
+    public class OroborosDoorOpen : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -99,7 +99,7 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/OroborosDoorOpen_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/OroborosDoorOpen_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

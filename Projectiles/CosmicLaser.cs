@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class CosmicLaser : ModProjectile
+    public class CosmicLaser : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

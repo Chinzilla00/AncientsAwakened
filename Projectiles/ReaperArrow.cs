@@ -6,23 +6,24 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class ReaperArrow : ModProjectile
+    public class ReaperArrow : ModProjectile
 	{
-        public static short customGlowMask = 0;
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
+
             DisplayName.SetDefault("Reaper Arrow");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        //The recording mode

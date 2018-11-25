@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-	public class HK_MP5 : ModItem
+    public class HK_MP5 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

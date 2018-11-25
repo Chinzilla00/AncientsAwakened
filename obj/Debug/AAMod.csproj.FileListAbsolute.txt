@@ -14,13 +14,6 @@ C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
 C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
 C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.dll
 C:\Users\Alpha\source\repos\AAMod\obj\Debug\AAMod.pdb
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
-C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
 C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
 C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
 C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
@@ -47,3 +40,12 @@ C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.csprojResolveAssemblyReference.cache
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.dll
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csprojAssemblyReference.cache
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CoreCompileInputs.cache
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb

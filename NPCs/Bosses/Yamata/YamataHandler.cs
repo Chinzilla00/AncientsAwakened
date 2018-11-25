@@ -1,7 +1,6 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.IO;
 using Terraria;
 using Terraria.GameContent.Events;
@@ -9,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod
 {
-	public abstract class YamataBoss : ParentNPC
+    public abstract class YamataBoss : ParentNPC
 	{
 		public int frameWidth = 0;
 

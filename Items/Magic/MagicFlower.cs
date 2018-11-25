@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class MagicFlower : ModItem
+    public class MagicFlower : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

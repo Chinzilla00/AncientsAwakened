@@ -1,13 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Accessories
 {
-	public class Shadow_Orb : ModItem
+    public class Shadow_Orb : ModItem
 	{
 		public override void SetDefaults()
 		{

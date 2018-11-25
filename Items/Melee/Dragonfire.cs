@@ -23,11 +23,11 @@ namespace AAMod.Items.Melee   //where is located
             item.useTurn = true; 
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("The Dragonfire");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("The Dragonfire");
+            Tooltip.SetDefault("");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

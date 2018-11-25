@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Nightmare
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class NightmareHelmet : ModItem
 	{
 		public override void SetStaticDefaults()

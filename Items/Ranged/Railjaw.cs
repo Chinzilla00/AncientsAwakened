@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-	public class Railjaw : ModItem
+    public class Railjaw : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

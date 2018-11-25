@@ -37,7 +37,7 @@ namespace AAMod.Tiles
             Tile tile = Main.tile[x, y];
             if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
-                if (glowTex == null) glowTex = mod.GetTexture("Tiles/IncineriteOre_glow");
+                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/IncineriteOre_glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);
             }
         }

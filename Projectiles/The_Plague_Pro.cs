@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class The_Plague_Pro : ModProjectile
+    public class The_Plague_Pro : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
