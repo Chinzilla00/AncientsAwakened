@@ -42,7 +42,7 @@ namespace AAMod
             instance = this;
         }
 
-        public override void PostSetupContent()
+        public override void PostSetupContent() //Hey alpha... Please notice the method you are using... Anything called in this list is called on the menu... This comment was brought to you by: Chinzilla00!!
         {
             Mod AchievementLibs = ModLoader.GetMod("AchievementLibs");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
