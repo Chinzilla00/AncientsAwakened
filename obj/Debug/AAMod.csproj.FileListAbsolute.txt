@@ -47,3 +47,6 @@ C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.csprojResolveAssemblyReference.cache
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.dll
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.pdb
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\ReLogic.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\Terraria.exe

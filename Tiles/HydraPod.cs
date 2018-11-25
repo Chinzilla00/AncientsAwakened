@@ -25,7 +25,8 @@ namespace AAMod.Tiles
             Main.tileHammer[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.Origin = new Point16(0, 1);
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+            TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Hydra Pod");
             drop1 = mod.ItemType<HydrasSpear>(); //change me
@@ -39,9 +40,9 @@ namespace AAMod.Tiles
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = 0.9f;
+            r = 0.3f;
             g = 0.0f;
-            b = 0.3f;
+            b = 0.9f;
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
