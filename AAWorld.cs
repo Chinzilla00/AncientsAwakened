@@ -10,14 +10,14 @@ using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using AAMod.Tiles;
-using AAMod.Walls;
-using Terraria.GameContent.Achievements;
 using BaseMod;
 
 namespace AAMod
 {
     public class AAWorld : ModWorld
     {
+        public static int SmashDragonEgg = 2;
+        public static int SmashHydraPod = 2;
         //tile ints
         public static int mireTiles = 0;
         public static int infernoTiles = 0;
