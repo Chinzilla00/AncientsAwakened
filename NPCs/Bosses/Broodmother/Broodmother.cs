@@ -133,21 +133,23 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void AI()
         {
             int num1305 = 7;
+            bool DespawnAttempt = false;
             npc.noTileCollide = false;
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
-                npc.ai[0] = -1f;
+                DespawnAttempt = true;
             }
+
             else if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
                 Vector2 vector204 = Main.player[npc.target].Center - npc.Center;
                 if (Main.player[npc.target].dead || vector204.Length() > 3000f)
                 {
-                    npc.ai[0] = -1f;
+                    DespawnAttempt = true;
                 }
             }
             else
@@ -155,16 +157,15 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 Vector2 vector205 = Main.player[npc.target].Center - npc.Center;
                 if (npc.ai[0] > 1f && vector205.Length() > 1000f)
                 {
+                    DespawnAttempt = false;
                     npc.ai[0] = 1f;
                 }
             }
-            if (npc.ai[0] == -1f)
+            if (DespawnAttempt == true)
             {
                 Vector2 value50 = new Vector2(0f, -8f);
-                npc.velocity = ((npc.velocity * 11f) + value50) / 10f;
+                npc.velocity = ((npc.velocity * 3f) + value50) / 10f;
                 npc.noTileCollide = true;
-                npc.dontTakeDamage = true;
-                return;
             }
             if (npc.ai[0] == 0f)
             {

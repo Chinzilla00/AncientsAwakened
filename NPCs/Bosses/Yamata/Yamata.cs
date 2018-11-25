@@ -216,6 +216,20 @@ namespace AAMod.NPCs.Bosses.Yamata
             halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
             fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
             mantidHealerCount = (Main.expertMode ? 5 : 4);
+
+            if (playerTarget != null)
+            {
+                float dist = npc.Distance(playerTarget.Center);
+                if (dist > 1000)
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
+            }
+
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];

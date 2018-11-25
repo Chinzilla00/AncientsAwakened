@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ModLoader;
-using AAMod;
+using Terraria.Localization;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -18,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.friendly = false;
         }
         public int timer;
+        public Player player;
         public override void AI()
         {
             timer++;
@@ -117,12 +122,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             dust6.velocity.Y -= 1;
 
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
+            Main.NewText("...TO FACE TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
 
             AAMod.YamataMusic = false;
 
             NPC.NewNPC((int)projectile.position.X, (int)projectile.position.Y, mod.NPCType("YamataA"));
         }
-        
+
     }
 }
