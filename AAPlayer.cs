@@ -76,6 +76,7 @@ namespace AAMod
         public bool valkyrieSet;
         // Accessory bools.
         public bool clawsOfChaos;
+        public bool HydraPendant;
         public bool demonGauntlet;
         public bool StormClaw;
         public bool dwarvenGauntlet;
@@ -116,14 +117,7 @@ namespace AAMod
 
         public override void ResetEffects()
         {
-            AshRemover = false;
-            FogRemover = false;
-            clawsOfChaos = false;
-            demonGauntlet = false;
-            valkyrieSet = false;
-            kindledSet = false;
-            depthSet = false;
-            fleshrendSet = false;
+            //Minions
             enderMinion = false;
             enderMinionEX = false;
             ChairMinion = false;
@@ -131,11 +125,12 @@ namespace AAMod
             BabyPhoenix = false;
             LungMinion = false;
             DragonMinion = false;
-            infinityOverload = false;
-            discordInferno = false;
-            dragonFire = false;
-            hydraToxin = false;
-            terraBlaze = false;
+            //Biome
+            //Armor
+            valkyrieSet = false;
+            kindledSet = false;
+            depthSet = false;
+            fleshrendSet = false;
             goblinSlayer = false;
             tribalSet = false;
             trueTribal = false;
@@ -151,6 +146,12 @@ namespace AAMod
             darkmatterSetMa = false;
             darkmatterSetSu = false;
             darkmatterSetTh = false;
+            //Accessory
+            AshRemover = false;
+            FogRemover = false;
+            clawsOfChaos = false;
+            HydraPendant = false;
+            demonGauntlet = false;
             StormClaw = false;
             BrokenCode = false;
             dwarvenGauntlet = false;
@@ -162,14 +163,23 @@ namespace AAMod
             Soul = false;
             Space = false;
             TrueInfinityGauntlet = false;
+            Baolei = false;
+            Naitokurosu = false;
+            AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
+            //Debuffs
+            infinityOverload = false;
+            discordInferno = false;
+            dragonFire = false;
+            hydraToxin = false;
+            terraBlaze = false;
+            //Buffs
+            //Pets
             Broodmini = false;
             Raidmini = false;
             MiniProbe = false;
             Sharkron = false;
-            Baolei = false;
-            Naitokurosu = false;
             RoyalKitten = false;
-            AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
+            //EnemyChecks
             IsGoblin = false;
         }
 
@@ -540,6 +550,11 @@ namespace AAMod
                 {
                     multiplier *= 2f;
                 }
+            }
+
+            if (HydraPendant == true)
+            {
+                multiplier *= 1.15f;
             }
 
             while (useTime / multiplier < 1)

@@ -8,12 +8,16 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
 using AAMod.Backgrounds;
-using AAMod.UI;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
 using System.Reflection;
+using AAMod.Items.Materials;
+using AAMod.Items.Armor.Darkmatter;
+using AAMod.Items.Armor.Radium;
+using AAMod.Items.Boss;
+using AAMod.Items.Blocks;
 
 namespace AAMod
 {
@@ -23,7 +27,6 @@ namespace AAMod
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
         internal UserInterface UserInterface;
-        internal TerratoolUI TerratoolUI;
         public static bool AkumaMusic;
         public static bool YamataMusic;
         public static AAMod self = null;
@@ -163,9 +166,12 @@ namespace AAMod
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
+
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
+                VoidSky.Asteroids = GetTexture("Backgrounds/Asteroids");
+
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
@@ -186,8 +192,7 @@ namespace AAMod
                 Overlays.Scene["Fogless"] = new SimpleOverlay("Backgrounds/fogless", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fogless").UseOpacity(0.5f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
                 SkyManager.Instance["Fogless"] = new Fogless();
                 Fogless.FoglessTexture = GetTexture("Backgrounds/fogless");
-
-                TerratoolUI = new TerratoolUI();
+                
                 UserInterface = new UserInterface();
                 Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
                 Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
@@ -208,27 +213,27 @@ namespace AAMod
             // Registers the new recipe group with the specified name
             RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Darkmatter Helmet", new int[]
             {
-                ItemType("DarkmatterHeaddress"),
-                ItemType("DarkmatterHelm"),
-                ItemType("DarkmatterHelmet"),
-                ItemType("DarkmatterVisor"),
-                ItemType("DarkmatterMask"),
+                ItemType<DarkmatterVisor>(),
+                ItemType<DarkmatterHelm>(),
+                ItemType<DarkmatterHelmet>(),
+                ItemType<DarkmatterHeaddress>(),
+                ItemType<DarkmatterMask>()
             });
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:DarkmatterHelmets", group0);
 
             RecipeGroup group1 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Radium Helmet", new int[]
             {
-                ItemType("RadiumHat"),
-                ItemType("RadiumHeadgear"),
-                ItemType("RadiumHelmet"),
-                ItemType("RadiumHelm"),
-                ItemType("RadiumMask"),
+                ItemType<RadiumHat>(),
+                ItemType<RadiumHelm>(),
+                ItemType<RadiumHelmet>(),
+                ItemType<RadiumHeadgear>(),
+                ItemType<RadiumMask>()
             });
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:RadiumHelmets", group1);
 
-            RecipeGroup group2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Gold", new int[]
+            RecipeGroup group2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Gold", new int[]
             {
                 ItemID.GoldBar,
                 ItemID.PlatinumBar
@@ -246,29 +251,13 @@ namespace AAMod
             {
                 ItemType("UnstableSingularity"),
                 ItemType("CrucibleScale"),
-                ItemType("DreadScale"),
-                //ItemType("IceFragment"),
-                //ItemType("SandsOfTime"),
-                //ItemType("GreedCoin"),
-                //ItemType("GoddessFeather"),
-                //ItemType("Liferoot"),
-                //ItemType("ValorFragment"),
-                //ItemType("ShadowSilk"),
-                //ItemType("CarnalEssense"),
-                //ItemType("OceanRift"),
-                //ItemType("HallowPrism"),
-                //ItemType("EldritchEvil"),
-                //ItemType("FuryShard"),
+                ItemType("DreadScale")
             });
             RecipeGroup.RegisterGroup("AAMod:AncientMaterials", group4);
 
             RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Superancient Material", new int[]
             {
-                ItemType("ChaosSoul"),
-                //ItemType("UnifiedShroomite"),
-                //ItemType("InfinitySingularity"),
-                //ItemType("LostPhantom"),
-                //ItemType("RealityRift"),
+                ItemType("ChaosSoul")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
 
@@ -288,8 +277,8 @@ namespace AAMod
 
             RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Chaos Claw", new int[]
             {
-                ItemType("HydraClaw"),
-                ItemType("DragonClaw"),
+                ItemType<DragonClaw>(),
+                ItemType<HydraClaw>(),
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosClaw", group7);
 
@@ -300,11 +289,49 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:Iron", group8);
 
+            RecipeGroup group9 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Copper", new int[]
+            {
+                ItemID.CopperBar,
+                ItemID.TinBar
+            });
+            RecipeGroup.RegisterGroup("AAMod:Copper", group9);
+
+            RecipeGroup group10 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Silver", new int[]
+            {
+                ItemID.SilverBar,
+                ItemID.TungstenBar
+            });
+            RecipeGroup.RegisterGroup("AAMod:Silver", group10);
+
+            RecipeGroup group11 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Evil Bar", new int[]
+            {
+                ItemID.DemoniteBar,
+                ItemID.CrimtaneBar
+            });
+            RecipeGroup.RegisterGroup("AAMod:EvilBar", group11);
+
+            RecipeGroup group12 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Chaos Bar", new int[]
+            {
+                ItemType<IncineriteBar>(),
+                ItemType<AbyssiumBar>(),
+            });
+            RecipeGroup.RegisterGroup("AAMod:ChaosBar", group12);
+
+            RecipeGroup group13 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Evil/Chaos Bar", new int[]
+            {
+                ItemID.DemoniteBar,
+                ItemID.CrimtaneBar,
+                ItemType<IncineriteBar>(),
+                ItemType<AbyssiumBar>(),
+            });
+            RecipeGroup.RegisterGroup("AAMod:EvilorChaosBar", group13);
+
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
                 int index = RecipeGroup.recipeGroupIDs["Wood"];
-                RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType("Razewood"));
-                RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType("Bogwood"));
+                RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType<Razewood>());
+                RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType<Bogwood>());
+                RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType<OroborosWood>());
             }
         }
         public override void UpdateMusic(ref int music, ref MusicPriority priority)

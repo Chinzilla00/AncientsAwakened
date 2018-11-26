@@ -33,6 +33,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+            projectile.velocity.Y += 1;
             if (projectile.ai[0] < 8f)
             {
                 projectile.ai[0] = 8f;

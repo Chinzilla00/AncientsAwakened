@@ -23,6 +23,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         public NPC Head7;
         public bool HeadsSpawned = false;
 		public bool isAwakened = false;
+        private bool quarterHealth = false;
+        private bool threeQuarterHealth = false;
+        private bool HalfHealth = false;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -93,13 +96,15 @@ namespace AAMod.NPCs.Bosses.Yamata
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata");
             npc.noGravity = true;
             npc.netAlways = true;
-            for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
             frameWidth = 162;
             frameHeight = 118;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
-
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
             if (Main.expertMode)
             {
                 int playerCount = 0;
@@ -508,41 +513,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 				spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	
 				spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),head.frame, Color.White, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
                
-
-
-			   /*Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 50);
-                Vector2 center = head.Center;
-                Vector2 distToProj = neckOrigin - head.Center;
-                float projRotation = distToProj.ToRotation() - 1.57f;
-                float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture(neckTex), neckOrigin - Main.screenPosition,
-                new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-                Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(center));
-                while (distance > 30f && !float.IsNaN(distance))
-                {
-                    distToProj.Normalize();                 //get unit vector
-                    distToProj *= 30f;                      //speed = 30
-                    center += distToProj;                   //update draw position
-                    distToProj = neckOrigin - center;    //update distance
-                    distance = distToProj.Length();
-
-                    //Draw chain
-                    spriteBatch.Draw(mod.GetTexture(neckTex), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                }
-                spriteBatch.Draw(mod.GetTexture(neckTex), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
-                            head.frame, drawColor, head.rotation,
-                            new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);		
-                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
-                        head.frame, Color.White, head.rotation,
-                        new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	*/	
             }
         }
 
@@ -570,7 +540,67 @@ namespace AAMod.NPCs.Bosses.Yamata
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
             return false;
-        }		
+        }
+
+
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            int dust1 = mod.DustType<Dusts.YamataDust>();
+            int dust2 = mod.DustType<Dusts.YamataDust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (!AAWorld.downedYamata)
+            {
+                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                {
+                    Main.NewText("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    Main.NewText("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+                {
+                    Main.NewText("NGAAAAAAAAAAAAAH YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
+                    quarterHealth = true;
+                }
+
+
+            }
+            if (AAWorld.downedYamata)
+            {
+                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                {
+                    Main.NewText("I don't understand why you keep fighting me! I'm superior to you in every single way..!", new Color(45, 46, 70));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    Main.NewText("I'M GETTING FRUSTRATED AGAIN..!", new Color(45, 46, 70));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+                {
+                    Main.NewText("I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!", new Color(45, 46, 70));
+                    quarterHealth = true;
+                }
+            }
+        }
     }
 
     public class AnimationInfo

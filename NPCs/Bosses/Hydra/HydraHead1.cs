@@ -1,7 +1,9 @@
 using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 namespace AAMod.NPCs.Bosses.Hydra
 {
     public class HydraHead1 : Hydra
@@ -14,19 +16,16 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
-            npc.damage = 20;
+			npc.life = npc.lifeMax = 100;
+            npc.damage = 30;
             npc.defense = 10;
-            npc.width = 64;
-            npc.height = 80;
+            npc.width = 36;
+            npc.height = 32;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = false;
-
+            npc.noGravity = true;
         }
-
-        public int attackDelay = 600;
-        public int attackCooldown = 0;
 
         public int varTime = 0;
 
@@ -36,46 +35,49 @@ namespace AAMod.NPCs.Bosses.Hydra
         public int numberOfAttacks = 0;
         public int endAttack = 0;
         public int damage = 0;
-        public bool attackFrame = false;
         public float moveSpeedBoost = .04f;
         public NPC Body;
         public bool HoriSwitch = false;
         public int f = 1;
         public float TargetDirection = (float)Math.PI / 2;
         public float s = 1;
-        public Projectile laser;
+        public Projectile Breath;
         private int MouthFrame;
         private int MouthCounter;
-        bool killedbyplayer = true;
+        private bool fireAttack;
+        private int attackFrame;
+        private int attackCounter;
+        private int attackTimer;
+        public int fireTimer = 0;
 
         public override void AI()
         {
-            Body = Main.npc[(int)npc.ai[0]];
-            //npc.realLife = (int)npc.ai[0];
-            if (!Body.active)
-            {
-                killedbyplayer = false;
-                npc.life = 0;
-            }
-
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
-                attackDelay = 180;
             }
             else
             {
                 damage = npc.damage / 2;
             }
-
-
-
-
-
-
-            Player player = Main.player[npc.target];
+            Body = Main.npc[(int)npc.ai[0]];
+            npc.realLife = (int)npc.ai[0];
+			
             npc.TargetClosest(true);
-
+            Player player = Main.player[npc.target];
+            if (fireAttack == true)
+            {
+                attackCounter++;
+                if (attackCounter > 10)
+                {
+                    attackFrame++;
+                    attackCounter = 0;
+                }
+                if (attackFrame >= 3)
+                {
+                    attackFrame = 2;
+                }
+            }
 
             if (!player.active || player.dead)
             {
@@ -91,111 +93,68 @@ namespace AAMod.NPCs.Bosses.Hydra
                     return;
                 }
             }
-
-
-            if (attackCooldown > attackDelay)
+            fireTimer++;
+            if (fireTimer >= 240 && fireAttack == false)
             {
-                endAttack = 0;
-                if (Main.netMode != 1)
-                {
-                    npc.ai[3] = Main.rand.Next(2, 4);
-                    npc.netUpdate = true;
-                }
-                attackCooldown = 0;
+                fireAttack = true;
 
+                fireTimer = 0;
             }
-
-            if (npc.ai[3] == 2)
+            if (fireAttack == true)
             {
-                attackFrame = true;
-                TargetDirection = (float)Math.PI;
-                varTime++;
-
-                npc.ai[1] = 280;
-                if (varTime == 30)
+                attackTimer++;
+                if (Main.rand.Next(3) == 0)
                 {
-                    if (Main.netMode != 1)
+                    if (attackTimer == 40)
                     {
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10f, 0f, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
+                        Main.projectile[proj2].damage = npc.damage / 3;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
                     }
-                }
-                if (varTime >= 60)
-                {
-
-                    if (Main.netMode != 1)
+                    if (attackTimer >= 80)
                     {
-                        npc.ai[2] = Main.rand.Next(100, 500);
-                        npc.netUpdate = true;
+                        fireAttack = false;
                     }
-                    endAttack++;
-                    varTime = 0;
-
-                }
-                if (endAttack >= 10)
-                {
-                    npc.ai[3] = 0;
-                }
-            }
-            else if (npc.ai[3] == 3)
-            {
-
-                attackFrame = true;
-                TargetDirection = (float)Math.PI / 2;
-
-
-
-                varTime++;
-
-
-                npc.ai[2] = 0;
-
-                if (varTime >= 600)
-                {
-                    npc.ai[3] = 0;
-                    if (Main.netMode != 1) laser.Kill();
-                }
-                else if (varTime >= 300)
-                {
-                    npc.ai[1] = 100;
-
-                }
-                else if (varTime > 120)
-                {
-                    npc.ai[1] -= 400 / 180;
-
-                }
-                else if (varTime == 120 && Main.netMode != 1)
-                {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("HydraBomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else
                 {
-                    npc.ai[1] = 500;
-                }
-
-
-
-            }
-            else
-            {
-                attackFrame = false;
-                moveSpeedBoost = .04f;
-                varTime++;
-                if (varTime > 100)
-                {
-
-
-                    varTime = 0;
-                    if (Main.netMode != 1)
+                    if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
                     {
-                        npc.ai[2] = Main.rand.Next(-50, 50);
-                        npc.ai[1] = Main.rand.Next(0, 250);
-                        npc.netUpdate = true;
+                        Main.PlaySound(SoundID.Item34, npc.position);
+                        for (int i = 0; i < 5; ++i)
+                        {
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("HydraBreath"), 20, 0, Main.myPlayer);
+                            Main.projectile[proj2].timeLeft = 60;
+                            Main.projectile[proj2].damage = npc.damage / 4;
+                        }
+                    }
+                    if (attackTimer >= 80)
+                    {
+                        fireAttack = false;
+                        attackTimer = 0;
+                        attackFrame = 0;
+                        attackCounter = 0;
                     }
                 }
-                attackCooldown++;
-                TargetDirection = (float)Math.PI / 2;
+
             }
+
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1000)
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
+            }
+
 
             npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
             if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
@@ -218,17 +177,12 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
-
-
-            Vector2 moveTo = new Vector2(Body.Center.X + 100 + npc.ai[1], Body.Center.Y - (130f - npc.ai[2])) - npc.Center;
+            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (20f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
-
-
-
         }
         public override void FindFrame(int frameHeight)
         {
-            if (attackFrame)
+            if (fireAttack)
             {
                 MouthCounter++;
                 if (MouthCounter > 10)
@@ -236,9 +190,9 @@ namespace AAMod.NPCs.Bosses.Hydra
                     MouthFrame++;
                     MouthCounter = 0;
                 }
-                if (MouthFrame >= 3)
+                if (MouthFrame >= 2)
                 {
-                    MouthFrame = 2;
+                    MouthFrame = 1;
                 }
             }
             else
@@ -246,15 +200,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.frame.Y = 0 * frameHeight;
             }
         }
-        public override void BossHeadRotation(ref float rotation)
-        {
-
-            rotation = npc.rotation;
-
-        }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            
+        {   
             return false;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -268,8 +215,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                 float projRotation = distToProj.ToRotation() - 1.57f;
                 float distance = distToProj.Length();
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, 0, 13, 22), drawColor, projRotation,
+                            new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
                 while (distance > 30f && !float.IsNaN(distance))
                 {
                     distToProj.Normalize();                 //get unit vector
@@ -281,21 +228,25 @@ namespace AAMod.NPCs.Bosses.Hydra
 
                     //Draw chain
                     spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+                        new Rectangle(0, 0, 14, 22), drawColor, projRotation,
+                        new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 }
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, 0, 14, 22), drawColor, projRotation,
+                            new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
 
                 spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead1"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                            new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 48), drawColor, npc.rotation,
-                            new Vector2(64 * 0.5f, 48 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraHead1_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 48), Color.White, npc.rotation,
-                        new Vector2(64 * 0.5f, 48 * 0.5f), 1f, SpriteEffects.None, 0f);
+                            new Rectangle(0, npc.frame.Y, 36, npc.frame.Y + 32), drawColor, npc.rotation,
+                            new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead1_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                        new Rectangle(0, npc.frame.Y, 36, npc.frame.Y + 32), Color.White, npc.rotation,
+                        new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
         }
         // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
         public override bool PreNPCLoot()

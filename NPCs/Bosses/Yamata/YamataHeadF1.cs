@@ -41,7 +41,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.boss = false;
-
+            npc.noGravity = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
 
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -69,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Projectile laser;
         private int MouthFrame;
         private int MouthCounter;
-        bool killedbyplayer = true;
+        private bool killedbyplayer = true;
 
         public override void AI()
         {
@@ -222,30 +226,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 TargetDirection = (float)Math.PI/2;
             }
 
-            /*npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
-            if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
-            {
-                f = -1;
-            }
-            else
-            {
-                f = 1;
-            }
-            if (npc.rotation <= TargetDirection + MathHelper.ToRadians(4 * s) && npc.rotation >= TargetDirection - MathHelper.ToRadians(4 * s))
-            {
-                npc.rotation = TargetDirection;
-            }
-            else if (npc.rotation <= TargetDirection)
-            {
-                npc.rotation += MathHelper.ToRadians(2 * s) * f;
-            }
-            else if (npc.rotation >= TargetDirection)
-            {
-                npc.rotation -= MathHelper.ToRadians(2 * s) * f;
-            }*/
 			npc.spriteDirection = 1;
 			npc.rotation = 1.57f;
-            //BaseMod.BaseAI.LookAt(player.Center, npc, 0);
 
 
             Vector2 moveTo = new Vector2(Body.Center.X + 100 + npc.ai[1], Body.Center.Y - (130f - npc.ai[2])) - npc.Center;
@@ -311,12 +293,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                         new Vector2(64 * 0.5f, 48 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
         }
+
         public override void NPCLoot()
         {
-            if (killedbyplayer)
-            {
-                Main.NewText("OWIE!!!", new Color(45, 46, 70));
-            }
+            Main.NewText("OWIE!!!", new Color(45, 46, 70));
         }
         public override void FindFrame(int frameHeight)
         {

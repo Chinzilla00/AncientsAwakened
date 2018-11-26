@@ -1,11 +1,13 @@
-using BaseMod;
+using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
+using BaseMod;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -44,61 +46,35 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SetStaticDefaults()
         {
             displayName = "Hydra";
-            Main.npcFrameCount[npc.type] = 9;
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults()
         {
             npc.npcSlots = 100;
-            npc.width = 40;
-            npc.height = 45;
+            npc.width = 96;
+            animationType = NPCID.HellArmoredBonesSword;
+            npc.height = 78;
             npc.aiStyle = -1;
-            npc.damage = 35;
-            npc.defense = 9;
-            npc.lifeMax = 5000;
-            npc.value = Item.buyPrice(0, 5, 0, 0);
+            npc.damage = 30;
+            npc.defense = 10;
+            npc.lifeMax = 4000;
+            npc.value = Item.buyPrice(0, 2, 0, 0);
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Hydra");
             npc.noGravity = false;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
-            frameWidth = 74;
-            frameHeight = 44;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
-            if (Main.expertMode)
-            {
-                int playerCount = 0;
-                float bossHPScalar = 1f, scalarIncrement = 0.35f;
-                if (Main.netMode != 0)
-                {
-                    for (int i = 0; i < 255; i++)
-                    {
-                        if (Main.player[i].active)
-                        {
-                            playerCount++;
-                        }
-                    }
-                    for (int j = 1; j < playerCount; j++)
-                    {
-                        bossHPScalar += scalarIncrement;
-                        scalarIncrement += (1f - scalarIncrement) / 3f;
-                    }
-                }
-                ScaleExpertStats(playerCount, bossHPScalar);
-            }
+            bossBag = mod.ItemType("HydraBag");
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;
-        }
-
-        public override bool G_CanSpawn(int x, int y, int type, Player player)
-        {
-            return false;
+            potionType = ItemID.HealingPotion;
         }
 
         public override void NPCLoot()
@@ -118,24 +94,27 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.value = 0f;
             npc.boss = false;
-            
+
         }
 
         public float[] internalAI = new float[4];
-        public Rectangle frameBottom = new Rectangle(0, 0, 1, 1);
+        public int playerTooFarDist = 800;
+        public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
+        public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
+        public Player playerTarget = null;
 
-        
+        //clientside stuff
         public Vector2 bottomVisualOffset = default(Vector2);
         public Vector2 topVisualOffset = default(Vector2);
-        public static NPC dustMantid = null;
+		
 
         public override void AI()
         {
+
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
                 {
-                    npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("HydraHead1"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
@@ -152,115 +131,127 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 HeadsSpawned = true;
             }
-            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 7, 7, 1000000, true, 1000000, 1000000, true, null, false);
-        }
-        public override void FindFrame(int frameHeight)
-        {
+			
+            prevHalfHPLeft = halfHPLeft;
+            prevFourthHPLeft = fourthHPLeft;
+            halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
+            fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
 
-            npc.frameCounter++;
-            if (!npc.collideX)
+			if(playerTarget != null)
+			{
+				float dist = npc.Distance(playerTarget.Center);
+				if (dist > 1000)
+				{
+					npc.noTileCollide = true;
+				}
+				else
+				{
+					npc.noTileCollide = false;
+				}
+			}
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
-                npc.frame.Y = 0 * frameHeight;
+                npc.oldPos[m] = npc.oldPos[m - 1];
             }
-            else
+            npc.oldPos[0] = npc.position;
+
+            bool foundTarget = TargetClosest();
+            if (foundTarget)
             {
-                if (npc.frameCounter < 5)
-                {
-                    npc.frame.Y = 0 * frameHeight;
-                }
-                else if (npc.frameCounter < 10)
-                {
-                    npc.frame.Y = 1 * frameHeight;
-                }
-                else if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 2 * frameHeight;
-                }
-                else if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 3 * frameHeight;
-                }
-                else if (npc.frameCounter < 25)
-                {
-                    npc.frame.Y = 4 * frameHeight;
-                }
-                else if (npc.frameCounter < 30)
-                {
-                    npc.frame.Y = 5 * frameHeight;
-                }
-                else if (npc.frameCounter < 35)
-                {
-                    npc.frame.Y = 6 * frameHeight;
-                }
-                else if (npc.frameCounter < 40)
-                {
-                    npc.frame.Y = 7 * frameHeight;
-                }
-                else if (npc.frameCounter < 45)
-                {
-                    npc.frame.Y = 8 * frameHeight;
-                }
-                else
-                {
-                    npc.frameCounter = 0;
-                }
+                int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
+                npc.timeLeft = 300;
+                float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
+                if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
+                if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
+                if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
+                AIMovementNormal();
+            }else
+            {
+                AIMovementRunAway();
             }
+            bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             
         }
 
-
-        public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
+        public void AIMovementRunAway()
         {
-            if (head.active)
-            {
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 50);
-                Vector2 center = head.Center;
-                Vector2 distToProj = neckOrigin - head.Center;
-                float projRotation = distToProj.ToRotation() - 1.57f;
-                float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), neckOrigin - Main.screenPosition,
-                new Rectangle(0, 0, 14, 22), drawColor, projRotation,
-                new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-                while (distance > 30f && !float.IsNaN(distance))
-                {
-                    distToProj.Normalize();                 //get unit vector
-                    distToProj *= 30f;                      //speed = 30
-                    center += distToProj;                   //update draw position
-                    distToProj = neckOrigin - center;    //update distance
-                    distance = distToProj.Length();
-                    //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 14, 22), drawColor, projRotation,
-                        new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 14, 22), drawColor, projRotation,
-                            new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
-                            head.frame, drawColor, head.rotation,
-                            new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),
-                        head.frame, Color.White, head.rotation,
-                        new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-            }
+            npc.velocity.X *= 0.9f;
+            if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
+            npc.velocity.Y += 0.25f;
+			npc.noTileCollide = true;
+            npc.rotation = 0f;
+            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/HydraTail"), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
-            if (Main.netMode == 0)
+            float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
+            bool playerTooFar = playerDistance > playerTooFarDist;
+            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 7, 7, 1000000, true, 1000000, 1000000, true, null, false);
+            if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
+            npc.rotation = 0f;
+        }
+
+        
+
+        public bool TargetClosest()
+        {
+            int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
+            float dist = 999999999f;
+            int foundPlayer = -1;
+            if (foundPlayer != -1)
             {
-                DrawHead(sb, "Glowmasks/HydraHead2", "Glowmasks/HydraHead2_Glow", Head2, dColor);
-                DrawHead(sb, "Glowmasks/HydraHead3", "Glowmasks/HydraHead3_Glow", Head3, dColor);
+                BaseAI.SetTarget(npc, foundPlayer);
+                playerTarget = Main.player[foundPlayer];
+                return true;
             }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            if (Main.netMode == 0)
+            else
             {
-                DrawHead(sb, "Glowmasks/HydraHead1", "Glowmasks/HydraHead1_Glow", Head1, dColor);
+                for (int m = 0; m < players.Length; m++)
+                {
+                    Player p = Main.player[players[m]];
+                    if (Vector2.Distance(p.Center, npc.Center) < dist)
+                    {
+                        dist = Vector2.Distance(p.Center, npc.Center);
+                        foundPlayer = p.whoAmI;
+                    }
+                }
+            }
+            if (foundPlayer != -1)
+            {
+                BaseAI.SetTarget(npc, foundPlayer);
+                playerTarget = Main.player[foundPlayer];
+                return true;
             }
             return false;
         }
+
+        
+        public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
+        {
+            if (head != null && head.active)
+            {
+                string neckTex = ("NPCs/Bosses/Hydra/HydraNeck");
+                Texture2D neckTex2D = mod.GetTexture(neckTex);
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
+                Vector2 connector = head.Center;
+                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
+                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                
+            }
+        }
+
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
+            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
+            string tailTex = ("NPCs/Bosses/Hydra/HydraTail");
+            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
+            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor);
+            return false;
+        }		
     }
 }

@@ -12,6 +12,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetDefaults();
 			isAwakened = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
     }
 }

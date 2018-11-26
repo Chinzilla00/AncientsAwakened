@@ -35,12 +35,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (!AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 150000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 70;
                     npc.defense = 130;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 80;
                     npc.defense = 150;
@@ -49,12 +49,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (AAWorld.downedAkumaA)
             {
                 npc.lifeMax = 160000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 80;
                     npc.defense = 150;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 90;
                     npc.defense = 170;
@@ -231,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 					npc.netUpdate = true;
 				}
 			}
-            if (npc.life <= npc.lifeMax / 5)
+            if (npc.life <= npc.lifeMax / 3)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
@@ -269,11 +269,11 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 			}
             float speedval = 0f;
-            if (npc.life > npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life > npc.lifeMax / 3 && npc.type == mod.NPCType<AkumaA>())
             {
                 speedval = 9f;
             }
-            if (npc.life <= npc.lifeMax / 5 && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && npc.type == mod.NPCType<AkumaA>())
             {
                 speedval = 11f;
             }
@@ -438,16 +438,16 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life > npc.lifeMax / 5)
+            if (npc.life > npc.lifeMax / 3)
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA&& Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA&& Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -585,7 +585,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-            if (npc.life <= npc.lifeMax / 5)
+            if (npc.life <= npc.lifeMax / 3)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
@@ -643,16 +643,16 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life > npc.lifeMax / 5)
+            if (npc.life > npc.lifeMax / 3)
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -740,7 +740,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-            if (npc.life <= npc.lifeMax / 5)
+            if (npc.life <= npc.lifeMax  / 3)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
@@ -797,16 +797,16 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life > npc.lifeMax / 5)
+            if (npc.life > npc.lifeMax  / 3)
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax  / 3 && Panic == false && !AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax  / 3 && Panic == false && AAWorld.downedAkumaA == false && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -876,7 +876,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-            if (npc.life <= npc.lifeMax / 5)
+            if (npc.life <= npc.lifeMax  / 3)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
@@ -949,16 +949,16 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life > npc.lifeMax / 5)
+            if (npc.life > npc.lifeMax  / 3)
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax  / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Grrrrrr…! I refuse to be bested by you! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax  / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do ya? I like that about you, kid..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);

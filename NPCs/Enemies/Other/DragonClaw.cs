@@ -29,7 +29,11 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.12f; ;
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            {
+                return 0f;
+            }
+            return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

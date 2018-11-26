@@ -25,6 +25,7 @@ namespace AAMod.Projectiles
             }
             projectile.glowMask = customGlowMask;
 
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()

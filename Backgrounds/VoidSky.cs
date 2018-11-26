@@ -15,6 +15,7 @@ namespace AAMod.Backgrounds
 
 
         public static Texture2D PlanetTexture;
+        public static Texture2D Asteroids;
         public static Texture2D BGTexture;
         public Texture2D boltTexture;
         public Texture2D flashTexture;
@@ -25,6 +26,7 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/VoidBH");
+            Asteroids = TextureManager.Load("Backgrounds/Asteroids");
             boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
             flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
         }
@@ -53,7 +55,9 @@ namespace AAMod.Backgrounds
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids, Asteroidpos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(Asteroids.Width >> 1, Asteroids.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
         }
 

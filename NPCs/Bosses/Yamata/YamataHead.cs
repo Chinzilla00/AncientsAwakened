@@ -44,6 +44,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = false;
+            npc.noGravity = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public int varTime = 0;
@@ -223,57 +228,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         {   
             return false;
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            /*if (Main.netMode != 0)
-            {
-                Body = Main.npc[(int)npc.ai[0]];
-                Vector2 neckOrigin = new Vector2(Body.Center.X, Body.Center.Y - 50);
-                Vector2 center = npc.Center;
-                Vector2 distToProj = neckOrigin - npc.Center;
-                float projRotation = distToProj.ToRotation() - 1.57f;
-                float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-                while (distance > 30f && !float.IsNaN(distance))
-                {
-                    distToProj.Normalize();                 //get unit vector
-                    distToProj *= 30f;                      //speed = 30
-                    center += distToProj;                   //update draw position
-                    distToProj = neckOrigin - center;    //update distance
-                    distance = distToProj.Length();
 
 
-                    //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                        new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 26, 40), drawColor, projRotation,
-                            new Vector2(26 * 0.5f, 40 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                Texture2D texture = Main.npcTexture[npc.type];
-                Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Yamata/YamataHead");
-                var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-                if (fireAttack == false)
-                {
-                    spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                }
-                if (fireAttack == true)
-                {
-                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                    int num214 = attackAni.Height / 3;
-                    int y6 = num214 * attackFrame;
-                    Main.spriteBatch.Draw(attackAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, attackAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)attackAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/YamataHead_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, npc.frame.Y, 64, npc.frame.Y + 80), Color.White, npc.rotation,
-                        new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
-            }*/
-        }
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;

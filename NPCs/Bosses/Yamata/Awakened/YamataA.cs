@@ -11,7 +11,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 	{
 		bool cheated = false;
 		bool Panic = false;
-		
+        private bool tenthHealth = false;
+        private bool threeQuarterHealth = false;
+        private bool HalfHealth = false;
+
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
@@ -27,12 +30,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (!AAWorld.downedYamataA)
             {
                 npc.lifeMax = 140000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 80;
                     npc.defense = 80;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 100;
                     npc.defense = 90;
@@ -41,12 +44,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (AAWorld.downedYamataA)
             {
                 npc.lifeMax = 150000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 90;
                     npc.defense = 80;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 110;
                     npc.defense = 90;
@@ -78,8 +81,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                 }
                 ScaleExpertStats(playerCount, bossHPScalar);
-            }			
-		}
+            }
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+        }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
@@ -124,8 +131,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.AkumaADust>();
-            int dust2 = mod.DustType<Dusts.AkumaADust>();
+            int dust1 = mod.DustType<Dusts.YamataADust>();
+            int dust2 = mod.DustType<Dusts.YamataADust>();
             if (npc.life <= 0)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
@@ -140,16 +147,52 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (npc.life > npc.lifeMax / 5)
+            if (!AAWorld.downedYamataA)
+            {
+                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                {
+                    Main.NewText("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    Main.NewText("I'VE HAD IT UP TO HERE WITH YOUR SHENANIGANS!!! EAT VENOM YOU LITTLE HELLSPAWN!!!", new Color(146, 30, 68));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
+                {
+                    Main.NewText("STOP IT STOP IT STOP IT!!! I'M NOT GONNA LET YOU WIN!!!", new Color(146, 30, 68));
+                    tenthHealth = true;
+                }
+            }
+            if (AAWorld.downedYamataA)
+            {
+                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                {
+                    Main.NewText("You're an annoying little bugger, you know!", new Color(146, 30, 68));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    Main.NewText("DIE! WHY WON'T YOU JUST DIE ALREADY?!", new Color(146, 30, 68));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
+                {
+                    Main.NewText("STOP IT!!! I'M NOT GONNA LOSE AGAIN!!!", new Color(146, 30, 68));
+                    tenthHealth = true;
+                }
+            }
+            if (npc.life > npc.lifeMax / 3)
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
             {
                 Panic = true;
                 Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
             {
                 Panic = true;
                 Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));

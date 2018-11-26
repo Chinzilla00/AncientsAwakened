@@ -20,17 +20,17 @@ namespace AAMod.Tiles
 
         public override Texture2D GetTexture()
         {
-            return mod.GetTexture("Glowmasks/OroborosTree");
+            return mod.GetTexture("Tiles/OroborosTree");
         }
 
         public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
         {
-            return mod.GetTexture("Glowmasks/OroborosBranches");
+            return mod.GetTexture("Tiles/OroborosBranches");
         }
 
         public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
         {
-            return mod.GetTexture("Glowmasks/OroborosTreeTop");
+            return mod.GetTexture("Tiles/OroborosTreeTop");
         }
     }
 }

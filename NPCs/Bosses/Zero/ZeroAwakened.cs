@@ -35,12 +35,12 @@ namespace AAMod.NPCs.Bosses.Zero
             if (!AAWorld.downedZeroA)
             {
                 npc.lifeMax = 100000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 100;
                     npc.defense = 60;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 120;
                     npc.defense = 90;
@@ -49,12 +49,12 @@ namespace AAMod.NPCs.Bosses.Zero
             if (AAWorld.downedZeroA)
             {
                 npc.lifeMax = 120000;
-                if (npc.life > npc.lifeMax / 5)
+                if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 120;
                     npc.defense = 80;
                 }
-                if (npc.life <= npc.lifeMax / 5)
+                if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 140;
                     npc.defense = 110;
@@ -131,12 +131,12 @@ namespace AAMod.NPCs.Bosses.Zero
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
 
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (npc.life <= npc.lifeMax / 5 && Panic == false && AAWorld.downedZeroA == true && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZeroA == true && Main.expertMode)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -265,7 +265,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.color = color1;
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/DradonMode");
             }
-            if (npc.life <= npc.lifeMax / 5 && !DradonMode)
+            if (npc.life <= npc.lifeMax / 3 && !DradonMode)
             {
                 endTimer++;
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/End");

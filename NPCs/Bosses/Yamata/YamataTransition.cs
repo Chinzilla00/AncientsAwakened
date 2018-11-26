@@ -42,16 +42,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust4.noGravity = true;
                 dust4.velocity.Y -= 6;
             }
-            if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
+            if (timer == 375)    
             {
                 Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
                 AAMod.YamataMusic = true;
             }
-            if (timer == 550)
+            if (timer == 650)
             {
                 Main.NewText("You thought I was DONE..?!", new Color(45, 46, 70));
             }
-            if (timer == 725)
+            if (timer == 900)
             {
                 Main.NewText("HAH! AS IF!", new Color(45, 46, 70));
             }
@@ -75,11 +75,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust4.noGravity = true;
                 dust4.velocity.Y -= 9;
             }
-            if (timer == 900)
+            if (timer == 1100)
             {
-                Main.NewText("YOU SHALL BE FACING...", new Color(45, 46, 70));
+                Main.NewText("I HOPE YOU ARE READY...", new Color(45, 46, 70));
             }
-            if (timer == 1080)
+            if (timer == 1455)
             {
                 projectile.Kill();               
             }
@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             SpawnBoss(projectile.Center, "YamataA", "Yamata Awakened");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
+            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
             AAMod.YamataMusic = false; 
         }
 

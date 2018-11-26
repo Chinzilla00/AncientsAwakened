@@ -40,6 +40,7 @@ namespace AAMod.Projectiles.Yamata
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
+            projectile.knockBack = 0.1f;
             aiType = ProjectileID.WoodenArrowFriendly;
 		}
 

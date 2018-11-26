@@ -135,7 +135,20 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
                 npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
-                string[] lootTable = { "Battery", "ZeroArrow", "Vortex", "RiftShredder", "EventHorizon", "VoidStar", "RealityCannon", "TeslaHand", "ZeroStar", "Neutralizer" };
+                string[] lootTable =
+                {
+                    "Battery",
+                    "ZeroArrow",
+                    "Vortex",
+                    "EventHorizon",
+                    "RealityCannon",
+                    "RiftShredder",
+                    "VoidStar",
+                    "TeslaHand",
+                    "ZeroStar",
+                    "Neutralizer",
+                    "ZeroTerratool"
+                };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
