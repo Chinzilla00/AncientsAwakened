@@ -773,10 +773,10 @@ namespace AAMod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            mireTiles = tileCounts[mod.TileType("MireGrass")]+ tileCounts[mod.TileType("Depthstone")];
-            infernoTiles = tileCounts[mod.TileType("InfernoGrass")]+ tileCounts[mod.TileType("Depthstone")];
-            voidTiles = tileCounts[mod.TileType("Doomstone")] + tileCounts[mod.TileType("Apocalyptite")];
-            mushTiles = tileCounts[mod.TileType("Mycelium")];
+            mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>() + tileCounts[mod.TileType<Depthice>()]];
+            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>() + tileCounts[mod.TileType<Torchice>()]];
+            voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
+            mushTiles = tileCounts[mod.TileType<Mycelium>()];
         }
 
         private void AAWorldGen(GenerationProgress progress)
