@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,6 +22,9 @@ namespace AAMod.Items.Accessories
 @"Respawn time cut by 80%
 hitting enemies causes time for them to slow
 'Dread it. Run from it. Destiny still arives.'");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
+            ItemID.Sets.ItemNoGravity[item.type] = true;
         }
         public override void SetDefaults()
         {

@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod;
+using System;
+using BaseMod;
 
 namespace AAMod
 {
@@ -119,6 +122,7 @@ namespace AAMod
                 }
             }
         }
+        
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
@@ -528,6 +532,7 @@ namespace AAMod
 
         public override bool PreAI(NPC npc)
         {
+
             if (!npc.boss ||
                 npc.type != NPCID.WallofFlesh ||
                 npc.type != NPCID.SkeletronHand ||
@@ -619,6 +624,18 @@ namespace AAMod
                     return false;
                 }
             }
+            Vector2 voidcenter = new Vector2((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, 120);
+            try
+            {
+                if (npc.type == NPCID.Harpy || npc.type == NPCID.WyvernHead || npc.type == NPCID.MartianProbe)
+                {
+                    if (npc.timeLeft > 10 && Vector2.Distance(npc.Center, voidcenter) < 1000f)
+                    {
+                        npc.timeLeft = 10;
+                    }
+                }
+            }
+            catch (Exception e) { BaseUtility.LogFancy("MNPC PREAI ERROR: ", e); }
             return true;
         }   
     }

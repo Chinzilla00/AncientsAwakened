@@ -17,6 +17,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             soundType = 21;
             drop = mod.ItemType("RadiumOre");
+            dustType = mod.DustType("RadiumDust");
             AddMapEntry(new Color(100, 90, 0));
 			minPick = 225;
         }

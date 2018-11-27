@@ -17,6 +17,7 @@ namespace AAMod.Tiles
             soundType = 21;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("DynaskullOre");
+            dustType = mod.DustType("InfinityOverloadY");
             AddMapEntry(new Color(100, 100, 0));
 			minPick = 65;
         }

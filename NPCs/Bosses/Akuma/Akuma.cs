@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (fireAttack == true)
             {
                 attackTimer++;
-                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(103))
+                if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
                 {
                     for (int i = 0; i < 5; ++i)
                     {

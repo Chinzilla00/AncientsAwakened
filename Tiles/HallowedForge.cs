@@ -23,6 +23,7 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Hallowed Forge");
+            dustType = mod.DustType("DaybreakIncineriteDust");
             AddMapEntry(new Color(50, 50, 50), name);
             disableSmartCursor = true;
             adjTiles = new int[]

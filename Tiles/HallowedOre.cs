@@ -15,6 +15,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("HallowedOre");   //put your CustomBlock name
+            dustType = mod.DustType("DaybreakIncineriteDust");
             AddMapEntry(new Color(160, 160, 160));
 			minPick = 190;
         }

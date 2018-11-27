@@ -27,8 +27,9 @@ namespace AAMod
         public static ModHotKey InfinityHotKey;
         internal static AAMod instance;
         internal UserInterface UserInterface;
-        public static bool AkumaMusic;
-        public static bool YamataMusic;
+        public static bool AkumaMusic = false;
+        public static bool YamataMusic = false;
+        public static bool Slayer = false;
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
@@ -363,10 +364,18 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
 
                 priority = MusicPriority.BossHigh;
+                return;
             }
             if (YamataMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
+
+                priority = MusicPriority.BossHigh;
+                return;
+            }
+            if (Slayer == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroDeath");
 
                 priority = MusicPriority.BossHigh;
                 return;

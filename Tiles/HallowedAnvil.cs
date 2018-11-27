@@ -23,6 +23,7 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Hallowed Anvil");
+            dustType = mod.DustType("DaybreakIncineriteDust");
             AddMapEntry(new Color(50, 50, 50), name);
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.WorkBenches, TileID.MythrilAnvil, TileID.Anvils, TileID.CrystalBall, TileID.HeavyWorkBench, TileID.Autohammer};

@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
@@ -90,6 +91,18 @@ namespace AAMod.Projectiles
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
+                        if (wall == WallID.Sandstone || wall == WallID.CrimsonSandstone || wall == WallID.CorruptSandstone || wall == WallID.HallowSandstone)
+                        {
+                            Main.tile[k, l].wall = (ushort)mod.WallType("TorchsandstoneWall");
+                            WorldGen.SquareWallFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        if (wall == WallID.HardenedSand || wall == WallID.CrimsonHardenedSand || wall == WallID.CorruptHardenedSand || wall == WallID.HallowHardenedSand)
+                        {
+                            Main.tile[k, l].wall = (ushort)mod.WallType("TorchsandHardenedWall");
+                            WorldGen.SquareWallFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
                         if (type == 2)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("InfernoGrass");
@@ -114,7 +127,30 @@ namespace AAMod.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-
+                        else if (type == TileID.Sand || type == TileID.Crimsand || type == TileID.Ebonsand || type == TileID.Pearlsand)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("Torchsand");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (type == TileID.HardenedSand || type == TileID.CrimsonHardenedSand || type == TileID.CorruptHardenedSand || type == TileID.HallowHardenedSand)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("TorchsandHardened");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (type == TileID.Sandstone || type == TileID.CrimsonSandstone || type == TileID.CorruptSandstone || type == TileID.HallowSandstone)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("Torchsandstone");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (type == TileID.IceBlock || type == TileID.FleshIce || type == TileID.CorruptIce || type == TileID.HallowedIce)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("Torchice");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
                     }
                 }
 			}

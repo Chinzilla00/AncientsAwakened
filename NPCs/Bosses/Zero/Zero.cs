@@ -116,11 +116,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
-                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroTransition"));
+                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)
                 {
-                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }

@@ -21,6 +21,7 @@ namespace AAMod.Tiles
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
+            dustType = mod.DustType("FulguriteDust");
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 

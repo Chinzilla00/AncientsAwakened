@@ -16,6 +16,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             soundType = 21;
             drop = mod.ItemType("FulguriteShard");   //put your CustomBlock name
+            dustType = mod.DustType("FulguriteDust");
             AddMapEntry(new Color(204, 0, 150));
 			minPick = 200;
         }

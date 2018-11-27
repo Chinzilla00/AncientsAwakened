@@ -16,7 +16,7 @@ namespace AAMod.Projectiles
             projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.timeLeft = 240;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.aiStyle = 1; //
             aiType = ProjectileID.WoodenArrowFriendly;
         }
