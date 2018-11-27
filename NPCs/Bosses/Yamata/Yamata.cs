@@ -167,13 +167,65 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
         public Player playerTarget = null;
-        public static int flyingTileCount = 9, totalMinionCount = 0;
+        public static int flyingTileCount = 6, totalMinionCount = 0;
 		public int MinionTimer = 0;	
 
         //clientside stuff
         public Vector2 bottomVisualOffset = default(Vector2);
         public Vector2 topVisualOffset = default(Vector2);
         public LegInfo[] legs = null;
+		public bool[] headsSaidOw = new bool[6];
+
+		public void CheckOnHeads()
+		{
+			if(!isAwakened || Main.netMode == 1) return; //don't do this if you're awakened (no extra heads) or on the client, the head instances aren't set clientside
+			bool sayOw = false;
+			if(Head2 != null && Head2.life <= 0 && !headsSaidOw[0])
+			{
+				sayOw = headsSaidOw[0] = true;
+			}
+			if(Head3 != null && Head3.life <= 0 && !headsSaidOw[1])
+			{
+				sayOw = headsSaidOw[1] = true;
+			}
+			if(Head4 != null && Head4.life <= 0 && !headsSaidOw[2])
+			{
+				sayOw = headsSaidOw[2] = true;
+			}
+			if(Head5 != null && Head5.life <= 0 && !headsSaidOw[3])
+			{
+				sayOw = headsSaidOw[3] = true;
+			}
+			if(Head6 != null && Head6.life <= 0 && !headsSaidOw[4])
+			{
+				sayOw = headsSaidOw[4] = true;
+			}
+			if(Head7 != null && Head7.life <= 0 && !headsSaidOw[5])
+			{
+				sayOw = headsSaidOw[5] = true;
+			}
+			if(sayOw)
+			{
+				int headCount = 0;
+				if(Head2 != null && Head2.life > 0) headCount++;
+				if(Head3 != null && Head3.life > 0) headCount++;
+				if(Head4 != null && Head4.life > 0) headCount++;
+				if(Head5 != null && Head5.life > 0) headCount++;
+				if(Head6 != null && Head6.life > 0) headCount++;
+				if(Head7 != null && Head7.life > 0) headCount++;
+				if(headCount == 0) //killed all fake heads
+				{
+					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU WELP!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+				}else
+				if(headCount == 5) //killed one fake head
+				{
+					BaseUtility.Chat("I got more heads where that came from!!", new Color(45, 46, 70));					
+				}else	
+				{
+					BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+				}
+			}
+		}
 		
 
         public override void AI()
@@ -196,45 +248,55 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (Main.netMode != 1)
                 {
+					headsSaidOw = new bool[7];
 					if(isAwakened)
 					{
 						npc.realLife = npc.whoAmI;
 						int latestNPC = npc.whoAmI;
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHead"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						TrueHead = Main.npc[latestNPC];		
 					}else
 					{
 						int latestNPC = npc.whoAmI;
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHead"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						TrueHead = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head2 = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head3 = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head4 = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head5 = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head6 = Main.npc[latestNPC];
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
-						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head7 = Main.npc[latestNPC];
 					}
                 }
                 HeadsSpawned = true;
-            }
+            }else
+			{
+				CheckOnHeads();
+			}
+			
             if (isAwakened && npc.life <= npc.lifeMax / 5)
             {
+				int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+				if(music != newMusic)
+				{
+					BaseUtility.Chat("YOU THINK IM DONE YET?! I DONT THINK SO!!!!", new Color(146, 30, 68));
+				}
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
 			
@@ -248,6 +310,10 @@ namespace AAMod.NPCs.Bosses.Yamata
 				float dist = npc.Distance(playerTarget.Center);
 				if (dist > 1000)
 				{
+					if(!npc.noTileCollide && Main.netMode != 1)
+					{
+						BaseUtility.Chat("ARE YOU RUNNING AWAY?! GET BACK HERE!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+					}
 					npc.noTileCollide = true;
 				}
 				else
@@ -282,7 +348,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void AIMovementRunAway()
         {
-            Main.NewText("NYEHEHEHEHEHEHEH..! And don’t come back!", new Color(45, 46, 70));
+			if(Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
             npc.velocity.X *= 0.9f;
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
             npc.velocity.Y += 0.25f;
@@ -509,16 +575,15 @@ namespace AAMod.NPCs.Bosses.Yamata
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
 				Vector2 connector = head.Center;
-				BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
-				spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	
-				spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y),head.frame, Color.White, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
-               
+				BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
+				//spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	
+				//spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.position.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y),head.frame, Color.White, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-			if(!isAwakened)
+			/*if(!isAwakened)
 			{
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", Head2, dColor);
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", Head3, dColor);
@@ -526,7 +591,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head5, dColor);
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head6, dColor);
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head7, dColor);
-			}
+			}*/
 			string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
 			string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
@@ -538,7 +603,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				legs[1].DrawLeg(sb, npc, dColor);
 			}		
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
+           // DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
             return false;
         }
 
@@ -748,7 +813,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             float scalar = npc.velocity.Length();
             float outerLegDefault = 70f + (0.5f * scalar);
             float innerLegDefault = 50f + (0.5f * scalar);
-            float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the matriarch walks right
+            float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the npc walks right
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 			Vector2 defaultPlacement = default(Vector2);
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
@@ -761,7 +826,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
-            return ((flying) ? default(Vector2) : defaultPlacement);
+            return default(Vector2);
         }
 
         public Vector2 GetBodyConnector(NPC npc)

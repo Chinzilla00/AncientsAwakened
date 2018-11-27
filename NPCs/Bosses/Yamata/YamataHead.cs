@@ -6,8 +6,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata
 {
-
-    [AutoloadBossHead]
     public class YamataHead : ModNPC
     {
 		public bool isAwakened = false;
@@ -234,6 +232,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
+			npc.spriteDirection = -1;
         }
         public override void FindFrame(int frameHeight)
         {
@@ -255,12 +254,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.frame.Y = 0 * frameHeight;
             }
         }
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {   
-            return false;
+		
+		public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        {
+			if(Body != null && Body.modNPC is Yamata)
+			{
+				string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
+				((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
+			}
+            return true;
         }
-
-
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
