@@ -20,7 +20,7 @@ namespace AAMod.Items.Accessories.Wings
 			item.rare = 1;
 			item.accessory = true;
 		}
-		//these wings use the same values as the solar wings
+		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 25;

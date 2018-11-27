@@ -96,9 +96,32 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             Player player = Main.player[npc.target];
 				npc.TargetClosest(true);
-				
-			
-			if (!player.active || player.dead)
+
+            int num429 = 1;
+            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            {
+                num429 = -1;
+            }
+            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+            float num433 = 6f;
+            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            PlayerPos = num433 / PlayerPos;
+            PlayerPosX *= PlayerPos;
+            PlayerPosY *= PlayerPos;
+            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosY += npc.velocity.Y * 0.5f;
+            PlayerPosX += npc.velocity.X * 0.5f;
+            PlayerDistance.X -= PlayerPosX * 1f;
+            PlayerDistance.Y -= PlayerPosY * 1f;
+
+            if (!player.active || player.dead)
 			{
 				npc.TargetClosest(false);
 				player = Main.player[npc.target];
@@ -135,8 +158,18 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.ai[1] = 280;
 				if(varTime == 30 && Main.netMode !=1)
 				{
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10f, 0f, mod.ProjectileType("YamataBreath"), (int)(damage*.8f), 0f, Main.myPlayer);
-				}		
+                    if (varTime == 30)
+                    {
+                        for (int i = 0; i < 5; ++i)
+                        {
+                            if (Main.netMode != 1)
+                            {
+                                
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                            }
+                        }
+                    }
+                }		
 				if(varTime >= 60)
 				{
                     if (Main.netMode != 1)
@@ -184,7 +217,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 else if (varTime == 120 && Main.netMode != 1)
                 {
 
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("YamataBomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("YamataBomb"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
                 }
                 else
 				{
@@ -203,7 +236,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				{
                     if (Main.netMode != 1)
                     {
-                        npc.ai[2] = Main.rand.Next(-50, 50);
+                        npc.ai[2] = Main.rand.Next(0, 50);
 
                         npc.ai[1] = Main.rand.Next(0, 250);
                         npc.netUpdate = true;

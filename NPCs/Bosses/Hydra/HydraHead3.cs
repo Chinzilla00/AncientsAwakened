@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 TargetDirection = 0;
                 varTime++;
 
-                npc.ai[1] = 280;
+                npc.ai[1] = 100;
                 if (varTime == 30 && Main.netMode != 1)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10f, 0f, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 else if (varTime >= 300)
                 {
-                    npc.ai[1] = 100;
+                    npc.ai[1] = 30;
 
                 }
                 else if (varTime > 120)
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 else
                 {
-                    npc.ai[1] = 500;
+                    npc.ai[1] = 100;
                 }
 
 
@@ -187,7 +187,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     {
                         npc.ai[2] = Main.rand.Next(-50, 50);
 
-                        npc.ai[1] = Main.rand.Next(0, 250);
+                        npc.ai[1] = Main.rand.Next(0, 80);
                         npc.netUpdate = true;
                     }
                     varTime = 0;

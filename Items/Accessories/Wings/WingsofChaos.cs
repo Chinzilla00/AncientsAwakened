@@ -21,7 +21,7 @@ namespace AAMod.Items.Accessories.Wings
 			item.accessory = true;
             item.expert = true;
 		}
-		//these wings use the same values as the solar wings
+		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 600;

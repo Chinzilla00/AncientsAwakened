@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 TargetDirection = (float)Math.PI;
                 varTime++;
                 
-                npc.ai[1] = 280;
+                npc.ai[1] = 100;
                 if (varTime == 30)
                 {
                     if (Main.netMode != 1)
@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 else if (varTime >= 300)
                 {
-                    npc.ai[1] = 100;
+                    npc.ai[1] = 300;
                     
                 }
                 else if (varTime > 120)
@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 else
                 {
-                    npc.ai[1] = 500;
+                    npc.ai[1] = 100;
                 }
 
 
@@ -198,38 +198,15 @@ namespace AAMod.NPCs.Bosses.Hydra
                     if (Main.netMode != 1)
                     {
                         npc.ai[2] = Main.rand.Next(-50, 50);
-                        npc.ai[1] = Main.rand.Next(0, 250);
+                        npc.ai[1] = Main.rand.Next(0, 80);
                         npc.netUpdate = true;
                     }
                 }
                 attackCooldown++;
                 TargetDirection = (float)Math.PI/2;
             }
-
-            /*npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
-            if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
-            {
-                f = -1;
-            }
-            else
-            {
-                f = 1;
-            }
-            if (npc.rotation <= TargetDirection + MathHelper.ToRadians(4 * s) && npc.rotation >= TargetDirection - MathHelper.ToRadians(4 * s))
-            {
-                npc.rotation = TargetDirection;
-            }
-            else if (npc.rotation <= TargetDirection)
-            {
-                npc.rotation += MathHelper.ToRadians(2 * s) * f;
-            }
-            else if (npc.rotation >= TargetDirection)
-            {
-                npc.rotation -= MathHelper.ToRadians(2 * s) * f;
-            }*/
 			npc.spriteDirection = 1;
 			npc.rotation = 1.57f;
-            //BaseMod.BaseAI.LookAt(player.Center, npc, 0);
 
 
             Vector2 moveTo = new Vector2(Body.Center.X + 100 + npc.ai[1], Body.Center.Y - (20f - npc.ai[2])) - npc.Center;

@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Yamata
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shoot = 1;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 16f;
             item.useAmmo = 40;
         }
 
@@ -62,16 +62,6 @@ namespace AAMod.Items.Boss.Yamata
                 if (!flag11)
                 {
                     value9 -= vector7;
-                }
-                switch (Main.rand.Next(12))
-                {
-                    case 1: type = 408; break;
-                    default: break;
-                }
-                switch (Main.rand.Next(25))
-                {
-                    case 1: type = item.shoot; break;
-                    default: break;
                 }
                 int num121 = Projectile.NewProjectile(vector2.X + value9.X, vector2.Y + value9.Y, speedX, speedY, type, (int)((double)damage), knockBack, player.whoAmI, 0.0f, 0.0f);
                 Main.projectile[num121].noDropItem = true;

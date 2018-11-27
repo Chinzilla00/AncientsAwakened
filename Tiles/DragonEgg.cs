@@ -1,7 +1,10 @@
 using AAMod.Items.Materials;
+using AAMod.Items.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -14,6 +17,7 @@ namespace AAMod.Tiles
         public int drop3;
         public int drop4;
         public int drop5;
+        private Player player;
 
         public override void SetDefaults()
         {
@@ -28,11 +32,9 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Egg");
-            drop1 = mod.ItemType<DragonClaw>(); //change me
-            drop2 = mod.ItemType<DragonClaw>(); //change me
-            drop3 = mod.ItemType<DragonClaw>(); //change me
-            drop4 = mod.ItemType<DragonClaw>(); //change me
-            drop5 = mod.ItemType<DragonClaw>(); //change me
+            drop1 = mod.ItemType<Items.Melee.FlamingFury>(); //change me
+            drop2 = mod.ItemType<Items.Ranged.Railjaw>(); //change me
+            drop3 = mod.ItemType<Items.Magic.DragonsBreath>(); //change me
             AddMapEntry(new Color(200, 200, 200), name);
             disableSmartCursor = true;
         }
@@ -72,17 +74,38 @@ namespace AAMod.Tiles
             if (AAWorld.SmashDragonEgg == 2)
             {
                 AAWorld.SmashDragonEgg--;
-                //message
+                Main.NewText("The sound of the egg breaking echoes through the volcano...", Color.DarkOrange);
             }
             else if (AAWorld.SmashDragonEgg == 1)
             {
                 AAWorld.SmashDragonEgg--;
-                //message
+                Main.NewText("You hear a distant roar...", Color.DarkOrange);
             }
             else
             {
                 AAWorld.SmashDragonEgg = 2;
-                //boss
+                SpawnBoss(player, "Broodmother", "The Broodmother");
+            }
+        }
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
+                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
+                if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                else
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                    {
+                        NetworkText.FromLiteral(npcName)
+                    }), new Color(175, 75, 255), -1);
+                }
             }
         }
     }

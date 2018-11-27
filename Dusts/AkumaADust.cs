@@ -6,10 +6,6 @@ namespace AAMod.Dusts
 {
     public class AkumaADust : ModDust
 	{
-        public override void OnSpawn(Dust dust)
-        {
-            dust.scale *= 1.3f;
-        }
 
         public override bool Update(Dust dust)
         {

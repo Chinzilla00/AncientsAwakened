@@ -154,9 +154,33 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.PlaySound(SoundID.Item34, npc.position);
                         for (int i = 0; i < 5; ++i)
                         {
-                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
-                            Main.projectile[proj2].timeLeft = 60;
-                            Main.projectile[proj2].damage = npc.damage / 4;
+                            if (Main.netMode != 1)
+                            {
+                                int num429 = 1;
+                                if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+                                {
+                                    num429 = -1;
+                                }
+                                Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                                float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+                                float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                                float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+                                float num433 = 6f;
+                                PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                                PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                                PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                                PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                                PlayerPos = num433 / PlayerPos;
+                                PlayerPosX *= PlayerPos;
+                                PlayerPosY *= PlayerPos;
+                                PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                                PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                                PlayerPosY += npc.velocity.Y * 0.5f;
+                                PlayerPosX += npc.velocity.X * 0.5f;
+                                PlayerDistance.X -= PlayerPosX * 1f;
+                                PlayerDistance.Y -= PlayerPosY * 1f;
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
+                            }
                         }
                     }
                     if ((attackTimer == 30 || attackTimer == 60 || attackTimer == 79) && npc.HasBuff(103))

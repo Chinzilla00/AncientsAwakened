@@ -63,8 +63,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 60;
-            const float desiredFlySpeedInPixelsPerFrame = 20;
+            const int homingDelay = 00;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

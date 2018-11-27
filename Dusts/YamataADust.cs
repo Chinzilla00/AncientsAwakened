@@ -6,11 +6,6 @@ namespace AAMod.Dusts
 {
     public class YamataADust : ModDust
 	{
-        public override void OnSpawn(Dust dust)
-        {
-            dust.scale *= 1.3f;
-        }
-
         public override bool Update(Dust dust)
         {
             bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)dust.position.X / 16, (int)dust.position.Y / 16));

@@ -67,16 +67,13 @@ namespace AAMod.Projectiles.Yamata
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
             Dust dust1;
-            Dust dust2;
 
             dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
             dust1.noGravity = true;
-            dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
-            dust2.noGravity = true;
 
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 30;
+            const int homingDelay = 0;
+            const float desiredFlySpeedInPixelsPerFrame = 50;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -128,15 +125,10 @@ namespace AAMod.Projectiles.Yamata
             for (int num468 = 0; num468 < 20; num468++)
             {
                 Dust dust1;
-                Dust dust2;
 
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
                 dust1.noGravity = true;
                 dust1.velocity *= 2f;
-                dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
-                dust2.noGravity = true;
-                dust2.noGravity = true;
-                dust2.velocity *= 2f;
             }
         }
     }

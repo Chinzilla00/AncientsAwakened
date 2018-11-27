@@ -6,10 +6,6 @@ namespace AAMod.Dusts
 {
     public class YamataDust : ModDust
 	{
-        public override void OnSpawn(Dust dust)
-        {
-            dust.scale *= 1.3f;
-        }
 
         public override bool MidUpdate(Dust dust)
         {
