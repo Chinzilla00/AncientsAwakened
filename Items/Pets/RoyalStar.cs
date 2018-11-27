@@ -23,6 +23,7 @@ namespace AAMod.Items.Pets
 			item.CloneDefaults(ItemID.ZephyrFish);
 			item.shoot = mod.ProjectileType("RoyalKitten");
             item.buffType = mod.BuffType("RoyalKitten");
+            item.noUseGraphic = true;
 		}
 
 		public override void UseStyle(Player player)

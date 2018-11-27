@@ -11,9 +11,7 @@ namespace AAMod.Items.Boss.Yamata
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Masamune");
-            Tooltip.SetDefault(@"Right clicking quickly swings the blade in front of you
-Left clicking swings the blade and fires a shadow vortex
-Inflicts Moonraze");
+            Tooltip.SetDefault(@"Inflicts Moonraze");
 		}
 
 		public override void SetDefaults()

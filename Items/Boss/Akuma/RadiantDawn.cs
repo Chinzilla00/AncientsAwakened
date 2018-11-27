@@ -14,7 +14,6 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Radiant Dawn");
-            Tooltip.SetDefault("Replaces Wooden Arrows with Bone Arrows");
         }
 
         public override void SetDefaults()

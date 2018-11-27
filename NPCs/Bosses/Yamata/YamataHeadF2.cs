@@ -174,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				{
                     if (Main.netMode != 1)
                     {
-                        npc.ai[2] = Main.rand.Next(100, 500);
+                        npc.ai[2] = Main.rand.Next(100, 130);
                         npc.netUpdate = true;
                     }
 					endAttack++;

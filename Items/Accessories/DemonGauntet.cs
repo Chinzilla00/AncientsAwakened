@@ -83,7 +83,7 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.FireGauntlet, 1);
-                recipe.AddIngredient(ItemID.FleshKnuckles, 1);
+                recipe.AddIngredient(ItemID.PutridScent, 1);
                 recipe.AddIngredient(ItemID.SoulofNight, 10);
                 recipe.AddIngredient(ItemID.CursedFlame, 10);
                 recipe.AddTile(TileID.TinkerersWorkbench);

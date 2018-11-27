@@ -33,12 +33,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                dust1.scale *= 1.3f;
                 dust1.noGravity = true;
                 dust1.velocity.Y -= 6;
+                dust2.scale *= 1.3f;
                 dust2.noGravity = true;
                 dust2.velocity.Y -= 6;
+                dust3.scale *= 1.3f;
                 dust3.noGravity = true;
                 dust3.velocity.Y -= 6;
+                dust4.scale *= 1.3f;
                 dust4.noGravity = true;
                 dust4.velocity.Y -= 6;
             }
@@ -66,12 +70,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
                 dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+                dust1.scale *= 1.3f;
                 dust1.noGravity = true;
                 dust1.velocity.Y -= 9;
+                dust2.scale *= 1.3f;
                 dust2.noGravity = true;
                 dust2.velocity.Y -= 9;
+                dust3.scale *= 1.3f;
                 dust3.noGravity = true;
                 dust3.velocity.Y -= 9;
+                dust4.scale *= 1.3f;
                 dust4.noGravity = true;
                 dust4.velocity.Y -= 9;
             }
@@ -115,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             SpawnBoss(projectile.Center, "YamataA", "Yamata Awakened");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WEALP!!!", new Color(146, 30, 68));
+            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WHELP!!!", new Color(146, 30, 68));
             AAMod.YamataMusic = false; 
         }
 
@@ -126,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)center.X, (int)center.Y, bossType, 0);
-                Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 400f);
+                Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
                 Main.npc[npcID].netUpdate2 = true;			
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
                 /*f (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }

@@ -25,6 +25,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.noGravity = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
         }
 
         public int varTime = 0;
@@ -79,6 +80,30 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
             }
 
+            int num429 = 1;
+            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            {
+                num429 = -1;
+            }
+            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+            float num433 = 6f;
+            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            PlayerPos = num433 / PlayerPos;
+            PlayerPosX *= PlayerPos;
+            PlayerPosY *= PlayerPos;
+            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosY += npc.velocity.Y * 0.5f;
+            PlayerPosX += npc.velocity.X * 0.5f;
+            PlayerDistance.X -= PlayerPosX * 1f;
+            PlayerDistance.Y -= PlayerPosY * 1f;
+
             if (!player.active || player.dead)
             {
                 npc.TargetClosest(false);
@@ -108,7 +133,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(SoundID.Item34, npc.position);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), PlayerPosX, PlayerPosY, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
                         attackFrame = 0;
@@ -126,7 +151,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                         Main.PlaySound(SoundID.Item34, npc.position);
                         for (int i = 0; i < 5; ++i)
                         {
-                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 5f, npc.velocity.Y * 5f, mod.ProjectileType("HydraBreath"), 20, 0, Main.myPlayer);
+                            int proj2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("HydraBreath"), 20, 0, Main.myPlayer);
                             Main.projectile[proj2].timeLeft = 60;
                             Main.projectile[proj2].damage = npc.damage / 4;
                         }
