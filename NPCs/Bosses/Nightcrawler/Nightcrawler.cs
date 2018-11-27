@@ -84,6 +84,23 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore2"), 1f);
             }
         }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
+            }
+        }
     }
 
     class NightcrawlerBody : NightcrawlerHead
@@ -134,6 +151,23 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore3"), 1f);
             }
         }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
+            }
+        }
     }
 
     class NightcrawlerTail : NightcrawlerHead
@@ -170,6 +204,23 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NCGore4"), 1f);
+            }
+        }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
             }
         }
     }

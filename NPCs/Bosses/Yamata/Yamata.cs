@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetStaticDefaults()
         {
-            displayName = "Yamata";
+            displayName = "Yamata; Dread Nightmare";
         }
 
         public override void SetDefaults()
@@ -215,7 +215,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				if(Head7 != null && Head7.life > 0) headCount++;
 				if(headCount == 0) //killed all fake heads
 				{
-					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU WELP!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU INTO OBLIVION!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
 				}else
 				if(headCount == 5) //killed one fake head
 				{
@@ -232,7 +232,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             Main.dayTime = false;
             Main.time = 24000;
-	
 			if(isAwakened)
 			{
 				MinionTimer++;
@@ -290,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				CheckOnHeads();
 			}
 			
-            if (isAwakened && npc.life <= npc.lifeMax / 5)
+            if (isAwakened && npc.life <= npc.lifeMax / 3)
             {
 				int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
 				if(music != newMusic)
@@ -593,7 +592,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head7, dColor);
 			}*/
 			string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
-			string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
 			if(legs != null && legs.Length == 4)
 			{
@@ -665,6 +663,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                     quarterHealth = true;
                 }
             }
+        }
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 2)
+            {
+                Main.NewText("YOU CHEATED!!! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!", new Color(146, 30, 68));
+            }
+            return false;
         }
     }
 

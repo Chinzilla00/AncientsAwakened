@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Akuma Awakened");
+			DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
         }
@@ -539,11 +539,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
 
@@ -555,7 +555,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma Awakened");
+            DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
         }
 
         public override void SetDefaults()
@@ -693,11 +693,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }
@@ -708,7 +708,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma Awakened");
+            DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
         }
 
         public override void SetDefaults()
@@ -847,11 +847,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }
@@ -862,7 +862,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma Awakened");
+            DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
         }
 
         public override void SetDefaults()
@@ -998,11 +998,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }

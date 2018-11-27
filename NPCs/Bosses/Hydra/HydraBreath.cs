@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     }
                 }
             }
-            projectile.velocity.Y -= 1;
+            projectile.velocity.Y += 1;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

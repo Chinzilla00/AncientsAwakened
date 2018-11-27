@@ -102,7 +102,10 @@ namespace AAMod
         public bool dragonFire = false;
         public bool hydraToxin = false;
         public bool terraBlaze = false;
-
+        public bool Snagged = false;
+        public bool Snagged1 = false;
+        public bool YamataCount = false;
+        public bool YamataACount = false;
         //buffs
 
         //pets
@@ -111,6 +114,10 @@ namespace AAMod
         public bool MiniProbe = false;
         public bool Sharkron = false;
         public bool RoyalKitten = false;
+
+        //NPCcount
+
+        public static int yamata = -1;
 
         //Colors
         public static Color IncineriteColor = new Color((int)(242 * 0.7f), (int)(107 * 0.7f), 0);
@@ -365,6 +372,8 @@ namespace AAMod
 
         public override void PreUpdate()
         {
+            
+
             if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
@@ -496,9 +505,73 @@ namespace AAMod
                 knockback += 5f;
             }
         }
-
         
 
+
+        public void YamataSnag()
+        {
+            if (yamata >= 0 && Main.npc[yamata].active)
+            {
+                float num = Main.npc[yamata].position.X + 40f;
+                if (Main.npc[yamata].direction > 0)
+                {
+                    num -= 96f;
+                }
+                if (player.position.X + player.width > num && player.position.X < num + 140f && player.gross)
+                {
+                    player.noKnockback = false;
+                    player.Hurt(PlayerDeathReason.LegacyDefault(), 50, Main.npc[yamata].direction, false, false, false, -1);
+                }
+                if (!player.gross && player.position.Y > (float)((Main.maxTilesY - 250) * 16) && player.position.X > num - 1920f && player.position.X < num + 1920f)
+                {
+                    player.AddBuff(37, 10, true);
+                    Main.PlaySound(4, (int)Main.npc[yamata].position.X, (int)Main.npc[yamata].position.Y, 10, 1f, 0f);
+                }
+                if (player.gross)
+                {
+                    if (player.position.Y < (float)((Main.maxTilesY - 200) * 16))
+                    {
+                        player.AddBuff(38, 10, true);
+                    }
+                    if (Main.npc[yamata].direction < 0)
+                    {
+                        if (player.position.X + (float)(player.width / 2) > Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) + 40f)
+                        {
+                            player.AddBuff(38, 10, true);
+                        }
+                    }
+                    else if (player.position.X + (float)(player.width / 2) < Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) - 40f)
+                    {
+                        player.AddBuff(38, 10, true);
+                    }
+                }
+                if (Snagged)
+                {
+                    player.controlHook = false;
+                    player.controlUseItem = false;
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].aiStyle == 7)
+                        {
+                            Main.projectile[i].Kill();
+                        }
+                    }
+                    Vector2 center = player.Center;
+                    float num2 = Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) - center.X;
+                    float num3 = Main.npc[yamata].position.Y + (float)(Main.npc[yamata].height / 2) - center.Y;
+                    float num4 = (float)Math.Sqrt((double)(num2 * num2 + num3 * num3));
+                    if (num4 > 3000f)
+                    {
+                        player.KillMe(PlayerDeathReason.ByOther(11), 1000.0, 0, false);
+                        return;
+                    }
+                    if (Main.npc[yamata].position.X < 608f || Main.npc[yamata].position.X > (float)((Main.maxTilesX - 38) * 16))
+                    {
+                        player.KillMe(PlayerDeathReason.ByOther(12), 1000.0, 0, false);
+                    }
+                }
+            }
+        }
 
         public void DrawItem(int i)
         {

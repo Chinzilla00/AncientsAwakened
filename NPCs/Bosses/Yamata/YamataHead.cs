@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata
 {
+    [AutoloadBossHead]
     public class YamataHead : ModNPC
     {
 		public bool isAwakened = false;
-		
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata");
+            DisplayName.SetDefault("Yamata; Dread Nightmare");
             Main.npcFrameCount[npc.type] = 3;
         }
 
@@ -86,7 +86,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-			
+
+            if (!Body.active)
+            {
+                if (npc.timeLeft > 10) npc.timeLeft = 10;
+            }
+
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
@@ -179,7 +184,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2, PlayerPosY * 2, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * 1.5f), 0f, Main.myPlayer);
                             }
                         }
                         

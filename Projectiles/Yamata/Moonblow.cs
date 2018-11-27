@@ -54,10 +54,52 @@ namespace AAMod.Projectiles.Yamata
 					Main.dust[d].velocity.X *= 1.2f;
 					Main.dust[d].velocity.Y *= 1.2f;
 				}
-			}			
+			}
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 0;
+            const float desiredFlySpeedInPixelsPerFrame = 30;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
         }
 
-		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
+        public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
             target.AddBuff(mod.BuffType("Moonraze"), 500);
         }		

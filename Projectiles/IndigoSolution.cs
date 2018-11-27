@@ -124,12 +124,6 @@ namespace AAMod.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        if (type == 59)
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType("Darkmud");
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
                         else if (type == 60)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("MireGrass");

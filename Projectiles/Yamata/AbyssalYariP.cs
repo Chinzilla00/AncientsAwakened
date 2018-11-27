@@ -91,7 +91,7 @@ namespace AAMod.Projectiles.Yamata
             }
             
             //change to make more/less projectiles
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 2; i++)
             {
                 float screenY = Main.screenPosition.Y;
                 screenY += Main.rand.Next(Main.screenHeight);

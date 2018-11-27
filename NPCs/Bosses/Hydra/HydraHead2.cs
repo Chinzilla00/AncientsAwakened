@@ -5,11 +5,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Hydra
 {
-    public class HydraHead2 : Hydra
+    [AutoloadBossHead]
+    public class HydraHead2 : ModNPC
     {
-
-        public int PoisonTimer = 0;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hydra");
@@ -19,6 +17,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.lifeMax = 35000;
             npc.width = 36;
             npc.height = 32;
             npc.npcSlots = 0;
@@ -26,310 +25,113 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.noTileCollide = false;
             npc.boss = false;
             npc.noGravity = true;
-            music = mod.GetSoundSlot (SoundType.Music, "Sounds/Music/HydraTheme");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return 0f;
         }
-        public int attackDelay = 600;
-        public int attackCooldown = 0;
 
-        
-        public int varTime = 0;
-        
-        public int YvarOld = 0;
-        
-        public int XvarOld = 0;
-        public int numberOfAttacks = 0;
-        public int endAttack = 0;
+        public Hydra Body = null;
+        public bool killedbyplayer = true;
+        public bool leftHead = false;
         public int damage = 0;
-        public bool attackFrame = false;
-        public float moveSpeedBoost = .04f;
-        public NPC Body;
-        public bool HoriSwitch = false;
-        public int f = 1;
-        public float TargetDirection = (float)Math.PI / 2;
-        public float s = 1;
-        public Projectile laser;
-        private int MouthFrame;
-        private int MouthCounter;
-        bool killedbyplayer = true;
 
+        public int distFromBodyX = 50; //how far from the body to centeralize the movement points. (X coord)
+        public int distFromBodyY = 50; //how far from the body to centeralize the movement points. (Y coord)
+        public int movementVariance = 50; //how far from the center point to move.
 
         public override void AI()
         {
-            npc.realLife = (int)npc.ai[0];
-
-            Body = Main.npc[(int)npc.ai[0]];
-            npc.realLife = (int)npc.ai[0];
-            if (!Body.active)
+            if (Body == null)
             {
-                killedbyplayer = false;
-                npc.life = 0;
+                NPC npcBody = Main.npc[(int)npc.ai[0]];
+                if (npcBody.type == mod.NPCType("Hydra"))
+                {
+                    Body = (Hydra)npcBody.modNPC;
+                }
             }
-
+            npc.realLife = (int)npc.ai[0];
+            if (!Body.npc.active)
+            {
+                if (npc.timeLeft > 10) npc.timeLeft = 10;
+                killedbyplayer = false;
+                return;
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
-                attackDelay = 180;
+                //attackDelay = 180;
             }
             else
             {
                 damage = npc.damage / 2;
             }
+            npc.TargetClosest();
+            Player targetPlayer = Main.player[npc.target];
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
-
-            int num429 = 1;
-            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            if (Main.netMode != 1)
             {
-                num429 = -1;
-            }
-            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
-            float num433 = 6f;
-            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-            PlayerPos = num433 / PlayerPos;
-            PlayerPosX *= PlayerPos;
-            PlayerPosY *= PlayerPos;
-            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosY += npc.velocity.Y * 0.5f;
-            PlayerPosX += npc.velocity.X * 0.5f;
-            PlayerDistance.X -= PlayerPosX * 1f;
-            PlayerDistance.Y -= PlayerPosY * 1f;
-
-
-
-
-            Player player = Main.player[npc.target];
-            npc.TargetClosest(true);
-
-
-            if (!player.active || player.dead)
-            {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)
+                npc.ai[1]++;
+                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                if (leftHead) aiTimerFire += 30;
+                if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {
-                    npc.velocity = new Vector2(0f, 10f);
-                    if (npc.timeLeft > 10)
+                    for (int i = 0; i < 5; ++i)
                     {
-                        npc.timeLeft = 10;
+                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                        dir *= 5f;
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Hydra"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
-                    return;
                 }
-            }
-
-
-            if (attackCooldown > attackDelay)
-            {
-                endAttack = 0;
-                if (Main.netMode != 1)
+                else
+                if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
-                    npc.ai[3] = Main.rand.Next(2, 4);
+                    npc.ai[1] = 0;
+                    npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
+                    npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
                     npc.netUpdate = true;
                 }
-                attackCooldown = 0;
-
             }
-
-            if (npc.ai[3] == 2)
+            npc.rotation = 1.57f;
+            Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+            if (Vector2.Distance(nextTarget, npc.Center) < 40f)
             {
-                attackFrame = true;
-                TargetDirection = (float)Math.PI;
-                varTime++;
-                
-                npc.ai[1] = 100;
-                if (varTime == 30)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        for (int i = 0; i < 5; ++i)
-                        {
-                            if (Main.netMode != 1)
-                            {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-                            }
-                        }
-                    }
-                }
-                if (varTime >= 60)
-                {
-                   
-                    if (Main.netMode != 1)
-                    {
-                        npc.ai[2] = Main.rand.Next(50, 250);
-                        npc.netUpdate = true;
-                    }
-                    endAttack++;
-                    varTime = 0;
-
-                }
-                if (endAttack >= 10)
-                {
-                    npc.ai[3] = 0;
-                }
-            }
-            else if (npc.ai[3] == 3)
-            {
-
-                attackFrame = true;
-                TargetDirection = (float)Math.PI / 2;
-
-
-
-                varTime++;
-                
-               
-                npc.ai[2] = 0;
-
-                if (varTime >= 600)
-                {
-                    npc.ai[3] = 0;
-                    if(Main.netMode !=1) laser.Kill();
-                }
-                else if (varTime >= 300)
-                {
-                    npc.ai[1] = 300;
-                    
-                }
-                else if (varTime > 120)
-                {
-                    npc.ai[1] -= 400 / 180;
-                    
-                }
-                else if (varTime == 120 && Main.netMode !=1)
-                {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("AcidProj"), damage, 1f, Main.myPlayer, npc.whoAmI, 420)];
-                }
-                else
-                {
-                    npc.ai[1] = 100;
-                }
-
-
-
+                npc.velocity *= 0.9f;
+                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
             }
             else
             {
-                attackFrame = false;
-                moveSpeedBoost = .04f;
-                varTime++;
-                if (varTime > 100)
-                {
-                    
-
-                    varTime = 0;
-                    if (Main.netMode != 1)
-                    {
-                        npc.ai[2] = Main.rand.Next(-50, 50);
-                        npc.ai[1] = Main.rand.Next(0, 80);
-                        npc.netUpdate = true;
-                    }
-                }
-                attackCooldown++;
-                TargetDirection = (float)Math.PI/2;
+                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+                npc.velocity *= 5f;
             }
-			npc.spriteDirection = 1;
-			npc.rotation = 1.57f;
-
-
-            Vector2 moveTo = new Vector2(Body.Center.X + 100 + npc.ai[1], Body.Center.Y - (20f - npc.ai[2])) - npc.Center;
-                npc.velocity = (moveTo) * moveSpeedBoost;
-
-            if (player != null)
-            {
-                float dist = npc.Distance(player.Center);
-                if (dist > 1000)
-                {
-                    npc.noTileCollide = true;
-                }
-                else
-                {
-                    npc.noTileCollide = false;
-                }
-            }
-
+            npc.position += (Body.npc.oldPos[0] - Body.npc.position);
+            npc.spriteDirection = -1;
         }
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-
-            return false;
-        }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            if (Main.netMode != 0)
+            if (Body != null)
             {
-                Body = Main.npc[(int)npc.ai[0]];
-                Vector2 neckOrigin = new Vector2(Body.Center.X, Body.Center.Y - 50);
-                Vector2 center = npc.Center;
-                Vector2 distToProj = neckOrigin - npc.Center;
-                float projRotation = distToProj.ToRotation() - 1.57f;
-                float distance = distToProj.Length();
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 13, 22), drawColor, projRotation,
-                            new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-                while (distance > 30f && !float.IsNaN(distance))
-                {
-                    distToProj.Normalize();                 //get unit vector
-                    distToProj *= 30f;                      //speed = 30
-                    center += distToProj;                   //update draw position
-                    distToProj = neckOrigin - center;    //update distance
-                    distance = distToProj.Length();
-
-
-                    //Draw chain
-                    spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, 0, 14, 22), drawColor, projRotation,
-                        new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraNeck"), neckOrigin - Main.screenPosition,
-                            new Rectangle(0, 0, 14, 22), drawColor, projRotation,
-                            new Vector2(14 * 0.5f, 22 * 0.5f), 1f, SpriteEffects.None, 0f);
-                
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead2"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                            new Rectangle(0, npc.frame.Y, 36, npc.frame.Y + 32), drawColor, npc.rotation,
-                            new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Hydra/HydraHead2_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                        new Rectangle(0, npc.frame.Y, 36, npc.frame.Y + 32), Color.White, npc.rotation,
-                        new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                Body.DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", npc, lightColor);
             }
+            return true;
         }
+
         public override void FindFrame(int frameHeight)
         {
-            if (attackFrame)
-            {
-                MouthCounter++;
-                if (MouthCounter > 10)
-                {
-                    MouthFrame++;
-                    MouthCounter = 0;
-                }
-                if (MouthFrame >= 2)
-                {
-                    MouthFrame = 1;
-                }
-            }
-            else
-            {
-                npc.frame.Y = 0 * frameHeight;
-            }
         }
+
         public override void BossHeadRotation(ref float rotation)
         {
-
             rotation = npc.rotation;
-
         }
-        // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
+
         public override bool PreNPCLoot()
         {
             return false;

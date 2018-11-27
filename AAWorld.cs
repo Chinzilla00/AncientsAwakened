@@ -716,7 +716,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The Caverns shine with the light of the radiant sun for a brief moment", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
+                    Main.NewText("The hallow caverns shine with light for a brief moment", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);
@@ -923,7 +923,7 @@ namespace AAMod
                         {
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Stone || Main.tile[x, y].type == TileID.Crimstone || Main.tile[x, y].type == TileID.Ebonstone))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Depthstone"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Torchstone"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Sand || Main.tile[x, y].type == TileID.Dirt || Main.tile[x, y].type == TileID.Grass || Main.tile[x, y].type == TileID.FleshGrass || Main.tile[x, y].type == TileID.CorruptGrass || Main.tile[x, y].type == TileID.Mud || Main.tile[x, y].type == TileID.JungleGrass || Main.tile[x, y].type == TileID.Crimsand || Main.tile[x, y].type == TileID.Ebonsand))
@@ -943,37 +943,37 @@ namespace AAMod
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Sand || Main.tile[x, y].type == TileID.Ebonsand || Main.tile[x, y].type == TileID.Crimsand))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Depthsand"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Torchsand"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.HardenedSand ||  Main.tile[x, y].type == TileID.CrimsonHardenedSand || Main.tile[x, y].type == TileID.CorruptHardenedSand))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("DepthsandHardened"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("TorchsandHardened"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.Sandstone || Main.tile[x, y].type == TileID.CrimsonSandstone || Main.tile[x, y].type == TileID.CorruptSandstone))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Depthsandstone"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Torchsandstone"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
                             if (Main.tile[x, y] != null && (Main.tile[x, y].type == TileID.IceBlock || Main.tile[x, y].type == TileID.FleshIce || Main.tile[x, y].type == TileID.CorruptIce))
                             {
-                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Depthice"));
+                                Framing.GetTileSafely(x, y).type = (ushort)(mod.TileType("Torchice"));
                                 Framing.GetTileSafely(x, y).active(true);
                             }
 
                         }
                         if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.Stone || Main.tile[x, y].wall == WallID.EbonstoneUnsafe || Main.tile[x, y].wall == WallID.CorruptionUnsafe1 || Main.tile[x, y].wall == WallID.CorruptionUnsafe2 || Main.tile[x, y].wall == WallID.CorruptionUnsafe3 || Main.tile[x, y].wall == WallID.CorruptionUnsafe4 || Main.tile[x, y].wall == WallID.CorruptSandstone || Main.tile[x, y].wall == WallID.CrimstoneUnsafe || Main.tile[x, y].wall == WallID.CrimsonUnsafe1 || Main.tile[x, y].wall == WallID.CrimsonUnsafe2 || Main.tile[x, y].wall == WallID.CrimsonUnsafe3 || Main.tile[x, y].wall == WallID.CrimsonUnsafe4))
                         {
-                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("DepthstoneWall"));
+                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("TorchstoneWall"));
                         }
                         if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.Sandstone || Main.tile[x, y].wall == WallID.CrimsonSandstone || Main.tile[x, y].wall == WallID.CorruptSandstone))
                         {
-                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("DepthsandstoneWall"));
+                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("TorchsandstoneWall"));
                         }
                         if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.HardenedSand || Main.tile[x, y].wall == WallID.CrimsonHardenedSand || Main.tile[x, y].wall == WallID.CorruptHardenedSand))
                         {
-                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("DepthsandHardenedWall"));
+                            Framing.GetTileSafely(x, y).wall = (ushort)(mod.WallType("TorchsandHardenedWall"));
                         }
                         if (Main.tile[x, y] != null && (Main.tile[x, y].wall == WallID.Dirt || Main.tile[x, y].wall == WallID.DirtUnsafe || Main.tile[x, y].wall == WallID.DirtUnsafe1 || Main.tile[x, y].wall == WallID.DirtUnsafe2 || Main.tile[x, y].wall == WallID.DirtUnsafe3 || Main.tile[x, y].wall == WallID.DirtUnsafe4 || Main.tile[x, y].wall == WallID.Grass || Main.tile[x, y].wall == WallID.GrassUnsafe || Main.tile[x, y].wall == WallID.CorruptGrassUnsafe || Main.tile[x, y].wall == WallID.CrimsonGrassUnsafe || Main.tile[x, y].wall == WallID.HardenedSand || Main.tile[x, y].wall == WallID.CrimsonHardenedSand || Main.tile[x, y].wall == WallID.CorruptHardenedSand))
                         {
@@ -988,13 +988,13 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(255, 0, 0)] = mod.TileType("Depthstone");
-            colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
             colorToTile[Color.Black] = -1; //don't touch when genning
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(255, 0, 0)] = mod.WallType("DepthstoneWall");
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
             colorToWall[Color.Black] = -1; //don't touch when genning		
             
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgen/Volcano"), colorToTile, mod.GetTexture("Worldgen/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgen/VolcanoLava"));

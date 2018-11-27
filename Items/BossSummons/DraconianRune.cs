@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Akuma;
 using System.Collections.Generic;
 using BaseMod;
+using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
@@ -69,12 +70,24 @@ Only Usable during the day in the inferno");
 
         public override bool UseItem(Player player)
         {
+            Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-2000, 2000), (int)player.position.Y + Main.rand.Next(2000, 2000), mod.NPCType<AkumaA>());
+            SpawnBoss(player, "AkumaA", "Akuma Awakened; Blazing Fury Incarnate");
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
 
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
         public override void AddRecipes()
         {
             if (Main.expertMode)

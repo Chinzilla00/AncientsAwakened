@@ -1,11 +1,14 @@
+using Terraria.ModLoader;
+
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
+    [AutoloadBossHead]
     public class YamataAHead : YamataHead
     {
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            DisplayName.SetDefault("Yamata Awakened");
+            DisplayName.SetDefault("Yamata Awakened; Abyssal Wrath Incarnate");
         }
 
         public override void SetDefaults()

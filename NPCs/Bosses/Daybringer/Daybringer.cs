@@ -80,7 +80,24 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore1"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore2"), 1f);
             }
-        }       
+        }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
+            }
+        }
     }
 
     class DaybringerBody : DaybringerHead
@@ -132,6 +149,23 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore3"), 1f);
             }
         }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
+            }
+        }
     }
 
     class DaybringerTail : DaybringerHead
@@ -179,6 +213,24 @@ namespace AAMod.NPCs.Bosses.Daybringer
             if (npc.life <= 0 && npc.type == mod.NPCType<DaybringerHead>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DBGore4"), 1f);
+            }
+
+        }
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
             }
         }
     }

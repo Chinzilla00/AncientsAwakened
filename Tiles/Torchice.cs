@@ -18,7 +18,6 @@ namespace AAMod.Tiles
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchice");   //put your CustomBlock name
             AddMapEntry(new Color(50, 35, 0));
-            minPick = 65;
         }
     }
 }

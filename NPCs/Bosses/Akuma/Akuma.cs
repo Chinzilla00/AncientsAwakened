@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Akuma");
+			DisplayName.SetDefault("Akuma; Draconian Demon");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
 
@@ -417,7 +417,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (!Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedZero = true;
+                AAWorld.downedAkuma = true;
             }
         }
 
@@ -457,11 +457,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
 
@@ -473,7 +473,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma; Draconian Demon");
         }
 
         public override void SetDefaults()
@@ -599,11 +599,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
 
@@ -615,7 +615,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma; Draconian Demon");
         }
 
         public override void SetDefaults()
@@ -741,11 +741,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }
@@ -756,7 +756,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma");
+            DisplayName.SetDefault("Akuma; Draconian Demon");
         }
 
         public override void SetDefaults()
@@ -882,11 +882,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }

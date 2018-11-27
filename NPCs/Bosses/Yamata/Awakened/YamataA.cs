@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            displayName = "Yamata Awakened";
+            displayName = "Yamata Awakened; Abyssal Wrath Incarnate";
             Main.npcFrameCount[npc.type] = 7;			
         }	
 
@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (damage > npc.lifeMax / 2)
             {
                 cheated = true;
-                Main.NewText("CHEATER CHEATER PUMPKIN EATER! THAT HURT YOU KNOW!!!", new Color(146, 30, 68));
+                Main.NewText("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
             }
             return false;
         }

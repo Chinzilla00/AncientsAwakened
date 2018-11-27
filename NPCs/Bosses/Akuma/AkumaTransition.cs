@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("fanning the flames doesn't put them out...", new Color(180, 41, 32));
             }
 
-            if (timer == 1125)
+            if (timer == 1165)
             {
                 projectile.Kill();
             }

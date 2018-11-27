@@ -5,11 +5,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata
 {
+    [AutoloadBossHead]
     public class YamataHeadF1 : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata");
+            DisplayName.SetDefault("Yamata; Dread Nightmare");
             Main.npcFrameCount[npc.type] = 3;
         }
 
@@ -97,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
 						Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
 						dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X * 2, dir.Y * 2, mod.ProjectileType("YamataBreath"), (int)(damage * 1.5f), 0f, Main.myPlayer);
                     }	
 				}else
 				if(npc.ai[1] >= 200) //pick random spot to move head to
