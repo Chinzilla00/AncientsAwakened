@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             npc.aiStyle = 0;
             npc.width = 202;
-            npc.height = 196;
+            npc.height = 100;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;

@@ -12,6 +12,7 @@ namespace AAMod.Items.Boss.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eternal Twilight");
+            Tooltip.SetDefault("Falling Twilight EX");
         }
 
         public override void SetDefaults()
@@ -31,18 +32,7 @@ namespace AAMod.Items.Boss.Yamata
             item.shoot = 1;
             item.shootSpeed = 16f;
             item.useAmmo = 40;
-        }
-
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(45, 46, 70);
-                }
-            }
+            item.expert = true;
         }
 
 

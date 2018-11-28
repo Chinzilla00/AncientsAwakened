@@ -190,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Zero
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
             for (int k = 0; k < npc.oldPos.Length; k++)
             {
-                Texture2D ZeroTrail = mod.GetTexture("Glowmasks/ZeroTrail");
+                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
                 lightColor = new Color(k * 50, 0, 0);
                 Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
                 Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);

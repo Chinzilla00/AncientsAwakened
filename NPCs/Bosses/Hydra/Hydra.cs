@@ -116,15 +116,15 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (Main.netMode != 1)
                 {
                     int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("HydraHead1"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead1"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("HydraHead2"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead2"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("HydraHead3"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y -v60, mod.NPCType("HydraHead3"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     Head3 = Main.npc[latestNPC];

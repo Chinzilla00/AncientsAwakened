@@ -36,7 +36,6 @@ namespace AAMod.NPCs.Bosses.Hydra
         }
 
         public Hydra Body = null;
-        public bool killedbyplayer = true;
         public bool leftHead = false;
         public int damage = 0;
 
@@ -46,20 +45,11 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            if (Body == null)
-            {
-                NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType("Hydra"))
-                {
-                    Body = (Hydra)npcBody.modNPC;
-                }
-            }
+            
             npc.realLife = (int)npc.ai[0];
             if (!Body.npc.active)
             {
-                if (npc.timeLeft > 10) npc.timeLeft = 10;
-                killedbyplayer = false;
-                return;
+                if (npc.timeLeft > 10) npc.timeLeft = 0;
             }
             if (Main.expertMode)
             {
@@ -121,10 +111,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                 Body.DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", npc, lightColor);
             }
             return true;
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
         }
 
         public override void BossHeadRotation(ref float rotation)

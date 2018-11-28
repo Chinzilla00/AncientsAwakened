@@ -26,6 +26,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool quarterHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
+        private int alphaTimer = 90;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -307,7 +308,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			if(playerTarget != null)
 			{
 				float dist = npc.Distance(playerTarget.Center);
-				if (dist > 1000)
+				if (dist > 600)
 				{
 					if(!npc.noTileCollide && Main.netMode != 1)
 					{
@@ -592,6 +593,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head7, dColor);
 			}*/
 			string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
+            string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
 			if(legs != null && legs.Length == 4)
 			{
@@ -601,9 +603,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 				legs[1].DrawLeg(sb, npc, dColor);
 			}		
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-           // DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
+            DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
             return false;
         }
+
+
 
 
 

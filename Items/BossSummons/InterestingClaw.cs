@@ -10,8 +10,8 @@ namespace AAMod.Items.BossSummons
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Interesting Looking Claw");
-            Tooltip.SetDefault("It's oddly Clammy"
-                + "\nOnly BossSummons at night");
+            Tooltip.SetDefault(@"It's oddly Clammy
+Only usable at night");
 		}
 
 		public override void SetDefaults()

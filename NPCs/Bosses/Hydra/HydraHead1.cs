@@ -67,6 +67,10 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
+            if (!Body.active)
+            {
+                if (npc.timeLeft > 10) npc.timeLeft = 0;
+            }
 
             int num429 = 1;
             if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)

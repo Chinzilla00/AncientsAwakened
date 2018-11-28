@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (!Body.active)
             {
-                if (npc.timeLeft > 10) npc.timeLeft = 10;
+                if (npc.timeLeft > 10) npc.timeLeft = 0;
             }
 
             npc.TargetClosest(true);
