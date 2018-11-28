@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public NPC Head7;
         public bool HeadsSpawned = false;
         public bool isAwakened = false;
+        private bool tenthHealth = false;
         private bool quarterHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
@@ -86,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.lifeMax = 150000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            npc.defense = 999999999;
+            npc.dontTakeDamage = true;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -143,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
+                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool", "FallingTwilight", "AbyssalYari", "Sevenshot" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
@@ -162,10 +163,10 @@ namespace AAMod.NPCs.Bosses.Yamata
         public float[] internalAI = new float[4];
         public int playerTooFarDist = 800;
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
-        public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
         public Player playerTarget = null;
         public static int flyingTileCount = 6, totalMinionCount = 0;
         public int MinionTimer = 0;
+		public bool chasePlayer = false; //wether to rage after the running player
 
         //clientside stuff
         public Vector2 bottomVisualOffset = default(Vector2);
@@ -175,7 +176,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void CheckOnHeads()
         {
-            if (!isAwakened || Main.netMode == 1) return; //don't do this if you're awakened (no extra heads) or on the client, the head instances aren't set clientside
+			if(isAwakened || Main.netMode == 1) return; //don't do this if you're awakened (no extra heads) or on the client, the head instances aren't set clientside
             bool sayOw = false;
             if (Head2 != null && Head2.life <= 0 && !headsSaidOw[0])
             {
@@ -212,7 +213,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (Head7 != null && Head7.life > 0) headCount++;
                 if (headCount == 0) //killed all fake heads
                 {
-                    BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU WELP!!", new Color(45, 46, 70)); //used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+                    BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU INTO OBLIVION YOU LITTLE WORM!!!", new Color(45, 46, 70)); //used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
                 }
                 else
                 if (headCount == 5) //killed one fake head
@@ -227,20 +228,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
 
 
-        bool hahyoucantflygitpwned = false;
-
         public override void AI()
         {
-            if (playerTarget.wingTimeMax <= 0)
-            {
-                if (hahyoucantflygitpwned == false)
-                {
-                    hahyoucantflygitpwned = true;
-                    BaseUtility.Chat(isAwakened ? "" : "Oh and don't even THINK about flying! My ego is so massive, it's gravitational pull will yank ya right back down! NYEHEHEHEHEHEHEHEH...!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
-                }
-                playerTarget.wingTimeMax = 25;
-            }
-
             Main.dayTime = false;
             Main.time = 24000;
 
@@ -297,13 +286,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                 }
                 HeadsSpawned = true;
-            }
-            else
+            }else
             {
                 CheckOnHeads();
             }
 
-            if (isAwakened && npc.life <= npc.lifeMax / 3)
+            if (isAwakened && npc.life <= npc.lifeMax / 5)
             {
                 int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
                 if (music != newMusic)
@@ -312,25 +300,23 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
-
-            prevHalfHPLeft = halfHPLeft;
-            prevFourthHPLeft = fourthHPLeft;
-            halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
-            fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
-
+		
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 1000)
+                if (dist > 600)
                 {
                     if (!npc.noTileCollide && Main.netMode != 1)
                     {
                         BaseUtility.Chat("ARE YOU RUNNING AWAY?! GET BACK HERE!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                     }
+					if(!chasePlayer) npc.netUpdate = true;		
+					chasePlayer = true;
                     npc.noTileCollide = true;
-                }
-                else
+                }else
                 {
+					if(chasePlayer) npc.netUpdate = true;					
+					chasePlayer = false;
                     npc.noTileCollide = false;
                 }
             }
@@ -349,7 +335,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
-                AIMovementNormal();
+				AIMovementNormal(chasePlayer);					
             }
             else
             {
@@ -371,12 +357,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
         }
 
-        public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
+        public void AIMovementNormal(bool chasePlayer)
         {
-            float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
-            bool playerTooFar = playerDistance > playerTooFarDist;
-            YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
-            if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
+			float moveInterval = (chasePlayer ? 1f : 0.25f);
+			float moveIntervalHover = (chasePlayer ? 0.5f : 0.05f);
+            float movementMaxX = (chasePlayer ? 12f : 3f);
+			float movementMaxY = (chasePlayer ? 12f : 2f);
+            YamataBody(npc, ref npc.ai, true, moveInterval, movementMaxX, movementMaxY, moveIntervalHover, movementMaxY, 3);
+            //if (chasePlayer) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }
 
@@ -609,7 +597,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 			}*/
             string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
             string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+			
+            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             if (legs != null && legs.Length == 4)
             {
                 legs[2].DrawLeg(sb, npc, dColor); //back legs
@@ -656,10 +645,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    Main.NewText("NGAAAAAAAAAAAAAH YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
+                    Main.NewText("NYAAAAAAAAAAAAAH..! YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
                     quarterHealth = true;
                 }
-
+                if (npc.life <= npc.lifeMax / 5 && tenthHealth == false)
+                {
+                    Main.NewText("I'VE SQUASHED LIZARDS BIGGER THAN YOU! WHY WON'T YOU JUST FLATTEN?!", new Color(45, 46, 70));
+                    tenthHealth = true;
+                }
 
             }
             if (AAWorld.downedYamata)
@@ -678,6 +671,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     Main.NewText("I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!", new Color(45, 46, 70));
                     quarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 5 && tenthHealth == false)
+                {
+                    Main.NewText("I'M GONNA GRIND YOU INTO TOOTHPASTE YOU LITTLE WRETCH!!!", new Color(45, 46, 70));
+                    tenthHealth = true;
                 }
             }
         }

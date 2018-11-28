@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     npc.damage = 110;
                 }
             }
-            npc.defense = 999999999;
+            npc.dontTakeDamage = true;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(20, 0, 0, 0);

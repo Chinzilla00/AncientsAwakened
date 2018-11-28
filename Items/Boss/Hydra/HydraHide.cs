@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Hydra
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon Scale");
+            DisplayName.SetDefault("Hydra Hide");
             Tooltip.SetDefault("The skin of a formidable foe");
         }
     }

@@ -58,6 +58,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
         public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
         public int movementVariance = 60; //how far from the center point to move.
+		public Vector2 relativePosition = default(Vector2);
 
         public override void AI()
         {
@@ -69,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     Body = (Yamata)npcBody.modNPC;
                 }
             }
-            if (!Body.npc.active)
+            if (Body == null || !Body.npc.active)
             {
                 if (npc.timeLeft > 10)
                 {
@@ -127,7 +128,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            npc.position += (Body.npc.oldPos[0] - Body.npc.position);
+			if(Body.chasePlayer) //player trying to outrun it, force heads to keep up with body
+			{
+				relativePosition += npc.velocity;
+				npc.Center = Body.npc.Center + relativePosition;				
+			}else
+			{
+				npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
+				npc.position += Body.npc.velocity;
+			}
             npc.spriteDirection = -1;
         }
 

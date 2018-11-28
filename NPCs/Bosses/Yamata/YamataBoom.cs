@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+			projectile.aiStyle = -1;
         }
 
         public override void AI()
