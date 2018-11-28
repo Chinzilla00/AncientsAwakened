@@ -267,16 +267,16 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.life <= npc.lifeMax / 3 && !DradonMode)
             {
-                endTimer++;
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/End");
-                if (!introPlayed)
+                //endTimer++;
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+                /*if (!introPlayed)
                 {
                     music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/EndIntro");
                 }
                 if (endTimer >= 580)
                 {
                     introPlayed = true;
-                }
+                }*/
             }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
