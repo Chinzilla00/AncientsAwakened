@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool quarterHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
-        private int alphaTimer = 90;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -102,6 +101,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -142,7 +142,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void NPCLoot()
         {
             AAWorld.downedYamata = true;
+            alphaTimer--;
 
+            
 
             if (!Main.expertMode)
             {
@@ -150,7 +152,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
+                //npc.DropLoot(Items.Vanity.Mask.YamataMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                 Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
             }
@@ -227,10 +229,19 @@ namespace AAMod.NPCs.Bosses.Yamata
 				}
 			}
 		}
-		
 
+        private int alphaTimer = 90;
         public override void AI()
         {
+            alphaTimer--;
+            if (alphaTimer == 0)
+            {
+                npc.alpha -= 12;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
             Main.dayTime = false;
             Main.time = 24000;
 			if(isAwakened)

@@ -40,6 +40,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.noTileCollide = false;
             npc.boss = false;
             npc.noGravity = true;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -59,9 +60,19 @@ namespace AAMod.NPCs.Bosses.Yamata
 		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
 		public int movementVariance = 60; //how far from the center point to move.
 
-		public override void AI()
-		{
-			if(Body == null)
+        private int alphaTimer = 90;
+        public override void AI()
+        {
+            alphaTimer--;
+            if (alphaTimer == 0)
+            {
+                npc.alpha -= 12;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+            if (Body == null)
 			{
 				NPC npcBody = Main.npc[(int)npc.ai[0]];
 				if(npcBody.type == mod.NPCType("Yamata") || npcBody.type == mod.NPCType("YamataA"))

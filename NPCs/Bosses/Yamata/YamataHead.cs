@@ -45,6 +45,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.noGravity = true;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -74,8 +75,18 @@ namespace AAMod.NPCs.Bosses.Yamata
         private int attackTimer;
         public int fireTimer = 0;
 
+        private int alphaTimer = 90;
         public override void AI()
         {
+            alphaTimer--;
+            if (alphaTimer == 0)
+            {
+                npc.alpha -= 12;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
