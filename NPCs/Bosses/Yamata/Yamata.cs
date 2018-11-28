@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetStaticDefaults()
         {
-            displayName = "Yamata; Dread Nightmare";
+            displayName = "Yamata";
         }
 
         public override void SetDefaults()
@@ -65,31 +65,28 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 80;
-                npc.defense = 50;
                 npc.lifeMax = 120000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (!Main.expertMode && AAWorld.downedYamata)
             {
                 npc.damage = 90;
-                npc.defense = 70;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedYamataA)
             {
                 npc.damage = 80;
-                npc.defense = 60;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedYamataA)
             {
                 npc.damage = 100;
-                npc.defense = 80;
                 npc.lifeMax = 150000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
+            npc.defense = 999999999;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -867,6 +864,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
                 BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetBodyConnector(npc), 0f, null, 1f, false, null);
             }
+            BaseDrawing.DrawTexture(sb, textures[4], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
         }
     }
 }

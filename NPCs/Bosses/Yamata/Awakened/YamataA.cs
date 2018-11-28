@@ -33,12 +33,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 80;
-                    npc.defense = 80;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 100;
-                    npc.defense = 90;
                 }
             }
             if (AAWorld.downedYamataA)
@@ -47,14 +45,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 90;
-                    npc.defense = 80;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 110;
-                    npc.defense = 90;
                 }
             }
+            npc.defense = 999999999;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(20, 0, 0, 0);

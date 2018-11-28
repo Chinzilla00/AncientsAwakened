@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.realLife = (int)npc.ai[0];
             if (!Body.npc.active)
             {
-                if (npc.timeLeft > 10) npc.timeLeft = 0;
+                if (npc.timeLeft > 10) npc.timeLeft = 10;
             }
             if (Main.expertMode)
             {
