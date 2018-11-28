@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool quarterHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
-        private int alphaTimer = 90;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -216,7 +215,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (Head7 != null && Head7.life > 0) headCount++;
                 if (headCount == 0) //killed all fake heads
                 {
-                    BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU INTO OBLIVION!!", new Color(45, 46, 70));    //used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+                    BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU WELP!!", new Color(45, 46, 70)); //used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
                 }
                 else
                 if (headCount == 5) //killed one fake head
@@ -235,6 +234,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             Main.dayTime = false;
             Main.time = 24000;
+
             if (isAwakened)
             {
                 MinionTimer++;
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 CheckOnHeads();
             }
 
-            if (isAwakened && npc.life <= npc.lifeMax / 3)
+            if (isAwakened && npc.life <= npc.lifeMax / 5)
             {
                 int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
                 if (music != newMusic)
@@ -312,7 +312,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 600)
+                if (dist > 1000)
                 {
                     if (!npc.noTileCollide && Main.netMode != 1)
                     {
@@ -609,11 +609,9 @@ namespace AAMod.NPCs.Bosses.Yamata
                 legs[1].DrawLeg(sb, npc, dColor);
             }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);
+            // DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
             return false;
         }
-
-
 
 
 
@@ -673,14 +671,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     quarterHealth = true;
                 }
             }
-        }
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (damage > npc.lifeMax / 2)
-            {
-                Main.NewText("YOU CHEATED!!! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!", new Color(146, 30, 68));
-            }
-            return false;
         }
     }
 
@@ -877,7 +867,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
                 BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetBodyConnector(npc), 0f, null, 1f, false, null);
             }
-            BaseDrawing.DrawTexture(sb, textures[4], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
         }
     }
 }

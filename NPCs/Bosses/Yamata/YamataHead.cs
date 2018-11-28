@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-			npc.life = npc.lifeMax = 100;
+            npc.life = npc.lifeMax = 100;
             if (!Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 130;
@@ -45,7 +45,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.noGravity = true;
-            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -74,14 +73,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         private int attackCounter;
         private int attackTimer;
         public int fireTimer = 0;
-        
+
         public override void AI()
         {
-            npc.alpha -= 12;
-            if (npc.alpha < 0)
-            {
-                npc.alpha = 0;
-            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -92,11 +86,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-
-            if (!Body.active)
-            {
-                if (npc.timeLeft > 10) npc.timeLeft = 0;
-            }
 
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
@@ -148,7 +137,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!player.active || player.dead)
                 {
                     npc.velocity = new Vector2(0f, 10f);
-                    npc.alpha += 12;
                     if (npc.timeLeft > 10)
                     {
                         npc.timeLeft = 10;
@@ -191,10 +179,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2, PlayerPosY * 2, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * 1.5f), 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                             }
                         }
-                        
+
                     }
                     if (attackTimer >= 80)
                     {
@@ -242,15 +230,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
-            bool foundTarget = Main.player[npc.target].active;
-            if (!foundTarget)
-            {
-                npc.alpha += 12;
-                if (npc.alpha <= 255)
-                {
-                    npc.active = false;
-                }
-            }
+            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
+            npc.velocity = (moveTo) * moveSpeedBoost;
+            npc.spriteDirection = -1;
         }
         public override void FindFrame(int frameHeight)
         {
@@ -272,14 +254,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.frame.Y = 0 * frameHeight;
             }
         }
-		
-		public override bool PreDraw(SpriteBatch sb, Color lightColor)
+
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-			if(Body != null && Body.modNPC is Yamata)
-			{
-				string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-				((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
-			}
+            if (Body != null && Body.modNPC is Yamata)
+            {
+                string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
+                ((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
+            }
             return true;
         }
         public override void BossHeadRotation(ref float rotation)
