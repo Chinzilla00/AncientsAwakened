@@ -47,9 +47,21 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             
             npc.realLife = (int)npc.ai[0];
+            if (Body == null)
+            {
+                NPC npcBody = Main.npc[(int)npc.ai[0]];
+                if (npcBody.type == mod.NPCType("Hydra"))
+                {
+                    Body = (Hydra)npcBody.modNPC;
+                }
+            }
             if (!Body.npc.active)
             {
-                if (npc.timeLeft > 10) npc.timeLeft = 10;
+                if (npc.timeLeft > 10)
+                {
+                    npc.timeLeft = 10;
+                }
+                return;
             }
             if (Main.expertMode)
             {
