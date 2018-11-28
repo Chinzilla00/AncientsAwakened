@@ -60,17 +60,12 @@ namespace AAMod.NPCs.Bosses.Yamata
 		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
 		public int movementVariance = 60; //how far from the center point to move.
 
-        private int alphaTimer = 90;
         public override void AI()
         {
-            alphaTimer--;
-            if (alphaTimer == 0)
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
             {
-                npc.alpha -= 12;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
+                npc.alpha = 0;
             }
             if (Body == null)
 			{
@@ -133,10 +128,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.velocity *= 5f;
 			}
 			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-			npc.spriteDirection = -1;			
-		}
+			npc.spriteDirection = -1;
+            
+        }
 
-		public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
 			if(Body != null)
 			{

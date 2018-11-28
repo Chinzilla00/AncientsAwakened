@@ -74,18 +74,13 @@ namespace AAMod.NPCs.Bosses.Yamata
         private int attackCounter;
         private int attackTimer;
         public int fireTimer = 0;
-
-        private int alphaTimer = 90;
+        
         public override void AI()
         {
-            alphaTimer--;
-            if (alphaTimer == 0)
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
             {
-                npc.alpha -= 12;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
+                npc.alpha = 0;
             }
             if (Main.expertMode)
             {
@@ -153,6 +148,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!player.active || player.dead)
                 {
                     npc.velocity = new Vector2(0f, 10f);
+                    npc.alpha += 12;
                     if (npc.timeLeft > 10)
                     {
                         npc.timeLeft = 10;
@@ -246,9 +242,15 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.rotation -= MathHelper.ToRadians(2 * s) * f;
             }
-            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
-            npc.velocity = (moveTo) * moveSpeedBoost;
-			npc.spriteDirection = -1;
+            bool foundTarget = Main.player[npc.target].active;
+            if (!foundTarget)
+            {
+                npc.alpha += 12;
+                if (npc.alpha <= 255)
+                {
+                    npc.active = false;
+                }
+            }
         }
         public override void FindFrame(int frameHeight)
         {
