@@ -579,8 +579,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
                 Vector2 connector = head.Center;
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
-                //spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	
-                //spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.position.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y),head.frame, Color.White, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.position.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);	
+                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.position.X - Main.screenPosition.X, head.position.Y - Main.screenPosition.Y),head.frame, Color.White, head.rotation, new Vector2(64 * 0.5f, 80 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
         }
 

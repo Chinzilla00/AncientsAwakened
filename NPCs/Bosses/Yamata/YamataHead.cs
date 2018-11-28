@@ -45,6 +45,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.noGravity = true;
+            npc.boss = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
