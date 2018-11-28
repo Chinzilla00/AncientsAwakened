@@ -40,8 +40,8 @@ namespace AAMod.NPCs.Bosses.Hydra
         public int damage = 0;
 
         public int distFromBodyX = 50; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 50; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 50; //how far from the center point to move.
+        public int distFromBodyY = 70; //how far from the body to centeralize the movement points. (Y coord)
+        public int movementVariance = 60; //how far from the center point to move.
 
         public override void AI()
         {

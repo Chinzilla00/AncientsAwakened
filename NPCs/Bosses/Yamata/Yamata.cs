@@ -227,8 +227,20 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
 
 
+        bool hahyoucantflygitpwned = false;
+
         public override void AI()
         {
+            if (playerTarget.wingTimeMax <= 0)
+            {
+                if (hahyoucantflygitpwned == false)
+                {
+                    hahyoucantflygitpwned = true;
+                    BaseUtility.Chat(isAwakened ? "" : "Oh and don't even THINK about flying! My ego is so massive, it's gravitational pull will yank ya right back down! NYEHEHEHEHEHEHEHEH...!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                }
+                playerTarget.wingTimeMax = 25;
+            }
+
             Main.dayTime = false;
             Main.time = 24000;
 
@@ -291,7 +303,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 CheckOnHeads();
             }
 
-            if (isAwakened && npc.life <= npc.lifeMax / 5)
+            if (isAwakened && npc.life <= npc.lifeMax / 3)
             {
                 int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
                 if (music != newMusic)

@@ -38,6 +38,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.alpha = 60;
             projectile.timeLeft = 300;
             projectile.glowMask = customGlowMask;
+            projectile.aiStyle = 0;
         }
 
         public override void AI()
@@ -134,13 +135,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             return selectedTarget;
         }
 
-
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("Venom"), 600);
         }
-
-        
     }
 }
