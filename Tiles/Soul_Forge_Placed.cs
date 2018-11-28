@@ -23,6 +23,7 @@ namespace AAMod.Tiles
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Soul Forge");
+            dustType = mod.DustType<Dusts.InfinityOverloadG>();
             AddMapEntry(new Color(100, 100, 100), name);
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.AdamantiteForge };

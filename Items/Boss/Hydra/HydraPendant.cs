@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Hydra
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hydra Pendant");
-            Tooltip.SetDefault(@"15% Increased attack speed");
+            Tooltip.SetDefault(@"12% Increased damage");
         }
         public override void SetDefaults()
         {
@@ -21,7 +21,11 @@ namespace AAMod.Items.Boss.Hydra
         }
         public override void UpdateEquip(Player player)
         {
-            player.GetModPlayer<AAPlayer>().HydraPendant = true;
+            player.meleeDamage *= 1.12f;
+            player.rangedDamage *= 1.12f;
+            player.magicDamage *= 1.12f;
+            player.minionDamage *= 1.12f;
+            player.thrownDamage *= 1.12f;
         }
     }
 }

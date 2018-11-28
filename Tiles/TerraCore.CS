@@ -23,6 +23,7 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Core of Terraria");
+            dustType = 107;
             AddMapEntry(new Color(40, 200, 0), name);
             disableSmartCursor = true;
             adjTiles = new int[]

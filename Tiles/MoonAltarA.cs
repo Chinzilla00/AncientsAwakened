@@ -22,6 +22,7 @@ namespace AAMod.Tiles
             dustType = 1;
             animationFrameHeight = 56;
             disableSmartCursor = true;
+            dustType = mod.DustType<Dusts.YamataADust>();
             adjTiles = new int[] { TileID.LunarMonolith };
         }
 

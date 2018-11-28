@@ -116,7 +116,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             potionType = ItemID.SuperHealingPotion;   //boss drops
             AAWorld.downedZero = true;
-            Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+            Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -273,7 +273,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/EndIntro");
                 }
-                if (endTimer >= 660)
+                if (endTimer >= 580)
                 {
                     introPlayed = true;
                 }
@@ -351,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            if (dead2 || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            if (dead2)
             {
                 
                 if (Killed == false)
@@ -364,7 +364,23 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {
-                    npc.timeLeft = 10;
+                    npc.timeLeft = 200;
+                    return;
+                }
+            }
+            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                if (Killed == false)
+                {
+                    Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Killed = true;
+                }
+
+                Panic = false;
+                npc.velocity.Y = npc.velocity.Y - 0.04f;
+                if (npc.timeLeft > 10)
+                {
+                    npc.timeLeft = 200;
                     return;
                 }
             }

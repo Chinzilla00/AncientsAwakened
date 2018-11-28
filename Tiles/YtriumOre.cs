@@ -12,7 +12,8 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = false;  //true for block to emit light
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("YtriumOre");   //put your CustomBlock name
+            drop = mod.ItemType("YtriumOre");
+            dustType = mod.DustType<Dusts.YtriumDust>();
             AddMapEntry(new Color(160, 150, 0));
 			minPick = 100;
         }

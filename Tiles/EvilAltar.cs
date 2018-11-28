@@ -20,7 +20,8 @@ namespace AAMod.Tiles
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Evil Altar");
-			AddMapEntry(new Color(120, 0, 160), name);
+            dustType = mod.DustType<Dusts.InfinityOverloadP>();
+            AddMapEntry(new Color(120, 0, 160), name);
             adjTiles = new int[] { TileID.DemonAltar };
         }
 

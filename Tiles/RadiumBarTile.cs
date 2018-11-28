@@ -21,6 +21,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             drop = mod.ItemType("RadiumBar");   //put your CustomBlock name
+            dustType = mod.DustType<Dusts.RadiumDust>();
             AddMapEntry(new Color(200, 170, 100));
 			minPick = 0;
         }

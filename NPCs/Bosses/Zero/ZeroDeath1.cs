@@ -13,8 +13,8 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void SetDefaults()
         {
-            projectile.width = 200;
-            projectile.height = 178;
+            projectile.width = 1;
+            projectile.height = 1;
             projectile.penetrate = -1;
             projectile.hostile = false;
             projectile.friendly = false;
@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void AI()
         {
+            AAMod.Slayer = true;
             if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;

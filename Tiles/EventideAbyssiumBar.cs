@@ -21,6 +21,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             drop = mod.ItemType("EventideAbyssium");   //put your CustomBlock name
+            dustType = mod.DustType<Dusts.AbyssDust>();
             AddMapEntry(new Color(0, 0, 255));
 			minPick = 0;
         }

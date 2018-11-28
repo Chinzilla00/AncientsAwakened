@@ -784,7 +784,7 @@ namespace AAMod
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
             infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-            int j = 40;
+            int j = (int)Main.worldSurface;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
             {
                 j++;
@@ -808,7 +808,7 @@ namespace AAMod
                 }
             }
             infernoPos.Y = j;
-            int q = 40;
+            int q = (int)Main.worldSurface;
             while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
             {
                 q++;

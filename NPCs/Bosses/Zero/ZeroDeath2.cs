@@ -10,12 +10,12 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.projFrames[projectile.type] = 29;
+            Main.projFrames[projectile.type] = 30;
         }
         public override void SetDefaults()
         {
-            projectile.width = 80;
-            projectile.height = 44;
+            projectile.width = 1;
+            projectile.height = 1;
             projectile.penetrate = -1;
             projectile.hostile = false;
             projectile.friendly = false;
@@ -26,14 +26,14 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void AI()
         {
 
-            AAMod.Slayer = true;
+            
 
             if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 29)
+                if (++projectile.frame >= 30)
                 {
-                    projectile.frame = 28;
+                    projectile.frame = 29;
                 }
             }
             projectile.velocity.X *= 0.00f;
