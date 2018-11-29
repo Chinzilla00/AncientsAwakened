@@ -15,16 +15,31 @@ namespace AAMod.Items.DevTools
             item.maxStack = 1;
             item.rare = 10;
             item.value = 0;
-
 			item.useStyle = 1;
             item.useAnimation = 45;
             item.useTime = 45;		
         }
 
-		public override bool UseItem(Player player)
-		{
-			ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionHandler.CONVERTID_INFERNO);
-			return true;
-		}
-	}
+        public bool flag = false;
+
+        public override bool UseItem(Player player)
+        {
+            if (flag)
+            {
+                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionHandler.CONVERTID_INFERNO);
+            }
+            else
+            {
+                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionHandler.CONVERTID_MIRE);
+            }
+            flag = false;
+            return true;
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            flag = true;
+            return true;
+        }
+    }
 }
