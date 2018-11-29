@@ -8,12 +8,12 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 38;            //Sword damage
+            item.damage = 36;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 58;              //Sword width
             item.height = 60;             //Sword height
-            item.useTime = 26;          //how fast 
-            item.useAnimation = 26;     
+            item.useTime = 20;          //how fast 
+            item.useAnimation = 20;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 5;      //Sword knockback
             item.value = 3000;        
@@ -21,7 +21,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = false;   //if it's capable of autoswing.
             item.useTurn = true; 
-			item.shoot = 121;
+			item.shoot = 125;
 			item.shootSpeed = 15f;
         }
 
@@ -35,7 +35,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(null, "RubySaber", 1);
-			recipe.AddIngredient(null, "Poppy", 1);			//you need 1 DirtBlock
+            recipe.AddIngredient(ItemID.LargeRuby, 1);		//you need 1 DirtBlock
             recipe.AddTile(TileID.Anvils);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

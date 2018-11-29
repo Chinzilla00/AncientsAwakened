@@ -37,13 +37,5 @@ namespace AAMod.Backgrounds
         {
             return mod.GetBackgroundSlot("Backgrounds/MireBG");
         }
-        public override int ChooseMiddleTexture()
-        {
-            return mod.GetBackgroundSlot("Backgrounds/MireFG2");
-        }
-        public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
-        {
-            return mod.GetBackgroundSlot("Backgrounds/MireFG1");
-        }
     }
 }

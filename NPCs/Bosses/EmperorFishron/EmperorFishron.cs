@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.aiStyle = 69;
             npc.damage = 110;
             npc.defense = 70;
-            npc.lifeMax = 400000;
+            npc.lifeMax = 200000;
             npc.knockBackResist = 0f;
             npc.noTileCollide = true;
             npc.noGravity = true;
@@ -37,5 +37,23 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             aiType = NPCID.DukeFishron;
 			animationType = NPCID.DukeFishron;
 		}
-	}
+
+        public override void NPCLoot()
+        {
+            if (Main.expertMode)
+            {
+                npc.DropLoot(ItemID.ShrimpyTruffle);
+            }
+            string[] lootTable =
+            {
+                    "UltibladeTyphoon",
+                    "EFishWings",
+                    "EFlairon",
+                    "SoapBlaster"
+                };
+            int loot = Main.rand.Next(lootTable.Length);
+            npc.DropLoot(mod.ItemType(lootTable[loot]));
+        }
+
+    }
 }
