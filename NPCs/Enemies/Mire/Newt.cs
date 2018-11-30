@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.lifeMax = 210;
             npc.knockBackResist = 0.55f;
             npc.value = 100f;
+            npc.aiStyle = 3;
             aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
         }
@@ -44,7 +45,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime ? 1.25f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 1.25f : 0f;
         }
     }
 }

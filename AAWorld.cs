@@ -999,7 +999,7 @@ namespace AAMod
             
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgen/Volcano"), colorToTile, mod.GetTexture("Worldgen/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgen/VolcanoLava"));
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y - 50, true);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y + 110, true);
             gen.Generate(origin.X, origin.Y + 2, true, true);
         }
 
@@ -1019,7 +1019,7 @@ namespace AAMod
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgen/Lake"), colorToTile, mod.GetTexture("Worldgen/LakeWalls"), colorToWall, mod.GetTexture("Worldgen/LakeWater"));
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y - 80, true);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y + 80, true);
             gen.Generate(origin.X, origin.Y + 2, true, true);
         }
 

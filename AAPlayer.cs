@@ -282,10 +282,6 @@ namespace AAMod
                     }
                 }
             }
-            if (DragonShell)
-            {
-                npc.AddBuff(BuffID.Daybreak, 300);
-            }
 
             if (npc.type == NPCID.GoblinArcher
                         || npc.type == NPCID.GoblinPeon
@@ -308,6 +304,34 @@ namespace AAMod
             else
             {
                 player.endurance *= 1f;
+            }
+        }
+
+        public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
+        {
+            //crate chance
+            if (Main.rand.Next(100) < (10 + (player.cratePotion ? 10 : 0)))
+            {
+                if (liquidType == 0 && player.ZoneSnow)
+                {
+                    caughtType = mod.ItemType("IceCrate");
+                }
+                if (liquidType == 0 && player.ZoneDesert)
+                {
+                    caughtType = mod.ItemType("DesertCrate");
+                }
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+                {
+                    caughtType = mod.ItemType("InfernoCrate");
+                }
+                if ((liquidType == 0 || liquidType == 1)  && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                {
+                    caughtType = mod.ItemType("IceCrate");
+                }
+                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                {
+                    caughtType = mod.ItemType("HellCrate");
+                }
             }
         }
 

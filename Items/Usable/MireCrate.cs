@@ -41,7 +41,7 @@ namespace AAMod.Items.Usable
                 switch (item)
                 {
                     case 0:
-                        item = mod.ItemType("HydraSpear");
+                        item = mod.ItemType("HydrasSpear");
                         break;
                     case 1:
                         item = mod.ItemType("HydraTrishot");
