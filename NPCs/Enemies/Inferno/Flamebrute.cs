@@ -1,5 +1,7 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,17 +21,21 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 120;   //boss life
-            npc.damage = 12;  //boss damage
-            npc.defense = 6;    //boss defense
-            npc.knockBackResist = 2f;   //this boss will behavior like the DemonEye  //boss frame/animation 
+            npc.lifeMax = 120;
+            npc.damage = 12;
+            npc.defense = 6;
+            npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 6, 45);
-            aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
-            npc.aiStyle = 3;
+            npc.aiStyle = -1;
             npc.width = 82;
             npc.height = 78;
             npc.lavaImmune = true;
+        }
+
+        public override void AI()
+        {
+            AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 1f, 3, 4, 60, true, 10, 60, true, null, false);
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -59,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? .25f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 1f : 0f;
         }
 
         public override void NPCLoot()

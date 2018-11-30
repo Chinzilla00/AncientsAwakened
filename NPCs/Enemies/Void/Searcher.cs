@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Void
 		}
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && NPC.downedMoonlord) ? 1f : 0f;
+            return (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && NPC.downedMoonlord) ? 2f : 0f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

@@ -257,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
         {
             if (Main.hardMode)
             {
-                return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 0.25f : 0f;
+                return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 0.5f : 0f;
             }
             return 0f;
         }

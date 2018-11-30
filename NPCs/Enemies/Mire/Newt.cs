@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime ? .1f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime ? 1.25f : 0f;
         }
     }
 }

@@ -17,8 +17,10 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.BlueSlime);
-			npc.width = 32;
+            npc.aiStyle = 1;
+            npc.noGravity = false;
+            npc.noTileCollide = false;
+            npc.width = 32;
 			npc.height = 26;
 			npc.damage = 14;
 			npc.defense = 2;
@@ -28,14 +30,12 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 60f;
             npc.lavaImmune = true;
             npc.knockBackResist = 0.5f;
-			npc.aiStyle = 3;
-			aiType = NPCID.BlueSlime;
-			animationType = NPCID.BlueSlime;
-		}
+            animationType = 81;
+        }
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface && Main.dayTime ? 0.4f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface && Main.dayTime ? 2f : 0f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

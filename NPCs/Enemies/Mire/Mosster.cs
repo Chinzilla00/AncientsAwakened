@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.lifeMax = 80;   //boss life
             npc.damage = 18;  //boss damage
             npc.defense = 10;    //boss defense
-            npc.knockBackResist = 1f;   //this boss will behavior like the DemonEye  //boss frame/animation 
+            npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 6, 45);
             aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Enemies.Mire
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? .25f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 1f : 0f;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

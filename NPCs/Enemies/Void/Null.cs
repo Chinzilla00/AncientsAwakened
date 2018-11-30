@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Void
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return ((spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && AAWorld.downedZero && !Main.expertMode) || (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && AAWorld.downedZeroA && Main.expertMode)) ? .8f : 0f;
+            return ((spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && AAWorld.downedZero && !Main.expertMode) || (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid && AAWorld.downedZeroA && Main.expertMode)) ? 1f : 0f;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {

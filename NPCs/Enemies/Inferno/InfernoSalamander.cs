@@ -24,9 +24,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.defense = 14;    //boss defense
             npc.knockBackResist = 1f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.buyPrice(0, 0, 6, 45);
-            aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
-            npc.aiStyle = 3;
+            npc.aiStyle = -1;
             npc.width = 104;
             npc.height = 28;
             npc.npcSlots = 1f;
@@ -34,6 +33,11 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.noGravity = false;
             npc.noTileCollide = false;
 
+        }
+
+        public override void AI()
+        {
+            AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 2f, 3, 4, 60, true, 10, 60, true, null, false);
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -51,7 +55,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 0.25f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 1.25f : 0f;
         }
 
         public override void NPCLoot()

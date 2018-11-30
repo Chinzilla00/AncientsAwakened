@@ -37,7 +37,7 @@ namespace AAMod
 		{
 		}
 
-		public override void UpdateLifeRegen(NPC npc, ref int damage)
+        public override void UpdateLifeRegen(NPC npc, ref int damage)
 		{
 
             int before = npc.lifeRegen;
@@ -317,7 +317,7 @@ namespace AAMod
             //Wall Of Flesh
             if (npc.type == NPCID.Vulture)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("vulture_feather"), Main.rand.Next(0, 2));
+                Item.NewItem(npc.getRect(), mod.ItemType("vulture_feather"), Main.rand.Next(1, 3));
             }
             //Drippler
             if (npc.type == NPCID.Drippler)
@@ -326,11 +326,6 @@ namespace AAMod
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("Bloody_Mary"));
                 }
-            }
-            //Wyvern
-            if (npc.type == NPCID.WyvernBody)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("Dragon_Scale"), Main.rand.Next(0, 3));
             }
             if ((npc.type == NPCID.GoblinArcher
                 || npc.type == NPCID.GoblinPeon
@@ -494,35 +489,9 @@ namespace AAMod
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            if(spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid)
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                if (pool.ContainsKey(NPCID.Harpy))
-                {
-                    pool.Remove(NPCID.Harpy);
-                }
-                if (pool.ContainsKey(NPCID.MartianProbe))
-                {
-                    pool.Remove(NPCID.MartianProbe);
-                }
-                if (pool.ContainsKey(NPCID.WyvernHead))
-                {
-                    pool.Remove(NPCID.WyvernHead);
-                }
-            }
-            else if (spawnInfo.player.ZoneSkyHeight)
-            {
-                if (!pool.ContainsKey(NPCID.Harpy))
-                {
-                    pool.Add(NPCID.Harpy, SpawnCondition.Sky.Chance);
-                }
-                if (!pool.ContainsKey(NPCID.MartianProbe) && NPC.downedGolemBoss)
-                {
-                    pool.Add(NPCID.MartianProbe, SpawnCondition.MartianProbe.Chance);
-                }
-                if (!pool.ContainsKey(NPCID.WyvernHead) && Main.hardMode)
-                {
-                    pool.Add(NPCID.WyvernHead, SpawnCondition.Sky.Chance);
-                }
+                pool[0] = 0f;
             }
         }
 
