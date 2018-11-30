@@ -23,8 +23,9 @@ namespace AAMod.Projectiles.Akuma
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
-            DisplayName.SetDefault("Sun Portal");    //The recording mode
-		}
+            DisplayName.SetDefault("Sun Portal");
+            Main.projFrames[projectile.type] = 1;
+        }
 
 		public override void SetDefaults()
 		{

@@ -16,8 +16,8 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.DD2PetDragon);
-			aiType = ProjectileID.DD2PetDragon;
+			projectile.CloneDefaults(ProjectileID.DD2PetGhost);
+			aiType = ProjectileID.DD2PetGhost;
             projectile.width = 66;
             projectile.height = 56;
             
@@ -26,7 +26,7 @@ namespace AAMod.Items.Pets
 		public override bool PreAI()
 		{
 			Player player = Main.player[projectile.owner];
-			player.petFlagDD2Dragon = false; // Relic from aiType
+			player.petFlagDD2Ghost = false; // Relic from aiType
 			return true;
 		}
 

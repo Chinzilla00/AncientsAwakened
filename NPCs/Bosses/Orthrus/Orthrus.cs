@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.height = 78;
             npc.aiStyle = -1;
             npc.damage = 40;
-            npc.defense = 15;
+            npc.defense = 99999999;
             npc.lifeMax = 22000;
             npc.value = Item.buyPrice(0, 10, 0, 0);
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
@@ -111,11 +111,11 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     int latestNPC = npc.whoAmI;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead3"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;

@@ -3,7 +3,21 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod;
+using AAMod.NPCs.Bosses.Grips;
+using AAMod.NPCs.Bosses.Broodmother;
+using AAMod.NPCs.Bosses.Hydra;
+using AAMod.NPCs.Bosses.Daybringer;
+using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Orthrus;
+using AAMod.NPCs.Bosses.Raider;
+using AAMod.NPCs.Bosses.Retriever;
+using AAMod.NPCs.Bosses.Akuma;
+using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
+using AAMod.NPCs.Bosses.Zero;
+using AAMod.NPCs.Bosses.MushroomMonarch;
+using AAMod.NPCs.Bosses.Shen;
+
 using System;
 using BaseMod;
 
@@ -485,13 +499,39 @@ namespace AAMod
 
         }
 
-        
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) || 
+                NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()) ||
+                NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()) ||
+                NPC.AnyNPCs(mod.NPCType<Broodmother>()) ||
+                NPC.AnyNPCs(mod.NPCType<Hydra>()) ||
+                NPC.AnyNPCs(mod.NPCType<Raider>()) ||
+                NPC.AnyNPCs(mod.NPCType<Retriever>()) ||
+                NPC.AnyNPCs(mod.NPCType<Orthrus>()) ||
+                NPC.AnyNPCs(mod.NPCType<Daybringer>()) ||
+                NPC.AnyNPCs(mod.NPCType<Nightcrawler>()) ||
+                NPC.AnyNPCs(mod.NPCType<Daybringer>()) ||
+                NPC.AnyNPCs(mod.NPCType<Akuma>()) ||
+                NPC.AnyNPCs(mod.NPCType<AkumaA>()) || 
+                NPC.AnyNPCs(mod.NPCType<Yamata>()) ||
+                NPC.AnyNPCs(mod.NPCType<YamataA>()) ||
+                NPC.AnyNPCs(mod.NPCType<Zero>()) ||
+                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()) ||
+                NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
+            {
+                spawnRate = 0;
+                maxSpawns = 0;
+            }
+        }
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool[0] = 0f;
+                pool.Add(mod.NPCType("Searcher"), 1f);
+                pool.Add(mod.NPCType("Null"), 1f);
             }
         }
 

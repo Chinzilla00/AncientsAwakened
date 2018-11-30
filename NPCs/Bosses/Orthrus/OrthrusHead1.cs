@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(leftHead ? "OrthrusShock" : "OrthrusBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("OrthrusBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }
                 else
