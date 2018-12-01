@@ -15,7 +15,7 @@ namespace AAMod.Tiles
 
 		public override Texture2D GetTexture()
 		{
-			return mod.GetTexture("Glowmasks/Bogtus");
+			return mod.GetTexture("Tiles/Bogtus");
 		}
     }
 }

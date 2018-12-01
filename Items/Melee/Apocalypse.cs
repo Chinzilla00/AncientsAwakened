@@ -32,7 +32,6 @@ Horseman's Blade EX");
 			item.useAnimation = 17;
 			item.value = 1000000;
             item.expert = true;
-            item.shoot = mod.ProjectileType("Apocalypse");
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

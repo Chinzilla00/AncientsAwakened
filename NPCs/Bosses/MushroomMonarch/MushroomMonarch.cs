@@ -124,7 +124,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			if(Main.netMode != 1)
 			{
 				internalAI[0]++;
-				if (internalAI[0] >= 200)
+				if (internalAI[0] >= 180)
 				{
 					internalAI[0] = 0;
 					internalAI[1] = Main.rand.Next(3);

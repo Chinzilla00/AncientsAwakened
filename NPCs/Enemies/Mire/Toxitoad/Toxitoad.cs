@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
             }
             if (distance <= 150) // distance until it does the tongue attack
             {
-                if (Main.rand.Next(100) == 0) // so it wont do it repeatedly when the player is near. increase to lower the chance of it doing it
+                if (Main.rand.Next(60) == 0) // so it wont do it repeatedly when the player is near. increase to lower the chance of it doing it
                 {
                     if (tongueAttack == false && biteAttack == false)
                     {

@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             DisplayName.SetDefault("Singemander");
 
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[npc.type] = 5;
         }
 
         public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.defense = 14;    //boss defense
             npc.knockBackResist = 1f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.buyPrice(0, 0, 6, 45);
-            npc.aiStyle = -1;
+            npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
             npc.width = 104;
             npc.height = 28;
@@ -42,12 +42,10 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void AI()
         {
-            Player player = Main.player[npc.target];
-            float distance = npc.Distance(Main.player[npc.target].Center);
-            AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 2f, 3, 4, 60, true, 10, 60, true, null, false);
-            npc.frameCounter++;
+            Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             if (biteAttack == false)
             {
+                npc.frameCounter++;
                 if (npc.frameCounter >= 10)
                 {
                     npc.frameCounter = 0;
@@ -64,6 +62,28 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
+            if (player.Center.X > npc.Center.X) // so it faces the player
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+            if (biteAttack == true)
+            {
+                biteCounter++;
+                if (biteCounter > 10)
+                {
+                    biteFrame++;
+                    biteCounter = 0;
+                }
+                if (biteFrame >= 3)
+                {
+                    biteFrame = 0;
+                }
+            }
+            float distance = npc.Distance(Main.player[npc.target].Center);
             if (distance <= 50) // so it only bites when the player is right next to it
             {
                 if (biteAttack == false) // so it doesnt bite while its currently biting, and if its doing the tongue attack
@@ -84,25 +104,29 @@ namespace AAMod.NPCs.Enemies.Inferno
                     biteFrame = 0;
                 }
             }
+            if (biteAttack == false) // so it changes back to aiStyle 3 after the attacks are done
+            {
+                npc.aiStyle = 3;
+            }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D biteAni = mod.GetTexture("NPCs/Enemies/Inferno/InfernoSalamander");
+            Texture2D tongueAni = mod.GetTexture("NPCs/Enemies/Inferno/InfernoSalamande_Nom");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (biteAttack == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
+            {
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
             if (biteAttack == true)
             {
-                biteCounter++;
-                if (npc.frameCounter > 10)
-                {
-                    npc.frameCounter = 140;
-                    npc.frame.Y += 0;
-                    if (npc.frame.Y > 224)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-                if (biteFrame >= 3)
-                {
-                    biteFrame = 0;
-                }
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = biteAni.Height / 3; // 3 is the number of frames in the sprite sheet
+                int y6 = num214 * biteFrame;
+                Main.spriteBatch.Draw(biteAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, biteAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)biteAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
-           
+            return false;
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -112,9 +136,19 @@ namespace AAMod.NPCs.Enemies.Inferno
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            spriteBatch.Draw(mod.GetTexture("Glowmasks/InfernoSalamander_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            if (biteAttack == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
+            {
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/InfernoSalamander_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+            if (biteAttack == true)
+            {
+                spriteBatch.Draw(mod.GetTexture("Glowmasks/InfernoSalamander_Nom_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+                npc.frame, Color.White, npc.rotation,
+                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            }
+                
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
