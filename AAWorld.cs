@@ -854,7 +854,7 @@ namespace AAMod
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X, origin.Y + 2, true, true);
+            gen.Generate(origin.X, origin.Y - 20, true, true);
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
         }
@@ -876,7 +876,7 @@ namespace AAMod
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X, origin.Y + 2, true, true);
+            gen.Generate(origin.X, origin.Y - 20, true, true);
             MireBiome biome = new MireBiome();
             biome.Place(origin, WorldGen.structures);
         }

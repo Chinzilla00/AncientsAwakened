@@ -103,7 +103,7 @@ namespace AAMod.Worldgeneration
             Mod mod = AAMod.instance; //replace with your own
             bool DEV = true;
             //--- Initial variable creation
-            ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileJungleGrass = (ushort)mod.TileType("InfernoGrass"), tileDirt = TileID.Dirt, tileStone = (ushort)mod.TileType("Torchstone"); //change to types in your mod
+            ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileDirt = TileID.Dirt, tileStone = (ushort)mod.TileType("Torchstone"); //change to types in your mod
 
             int worldSize = GetWorldSize();
             int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
@@ -114,7 +114,6 @@ namespace AAMod.Worldgeneration
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
             {
                 TileID.Grass,
-                TileID.JungleGrass,
                 TileID.Dirt,
                 TileID.Stone,
                 TileID.Sand,
@@ -142,13 +141,6 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
 				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
-			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.JungleGrass }), //ensure we only replace the intended tile (in this case, grass)
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
-				new BaseMod.SetModTile(tileJungleGrass, true, true) //actually place the tile
-			}));
-
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
@@ -181,10 +173,10 @@ namespace AAMod.Worldgeneration
 
 		public RadialDitherTopMiddle2(int width, int height, float innerRadius, float outerRadius)
 		{
-			this._width = width;
-			this._height = height;
-			this._innerRadius = innerRadius;
-			this._outerRadius = outerRadius;
+			_width = width;
+			_height = height;
+			_innerRadius = innerRadius;
+			_outerRadius = outerRadius;
 		}
 
 		public override bool Apply(Point origin, int x, int y, params object[] args)

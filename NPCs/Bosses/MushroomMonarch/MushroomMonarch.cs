@@ -1,21 +1,45 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
+using ReLogic.Utilities;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
-
     [AutoloadBossHead]
     public class MushroomMonarch : ModNPC
     {
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			base.SendExtraAI(writer);
+			if((Main.netMode == 2 || Main.dedServ))
+			{
+				writer.Write((float)internalAI[0]);
+				writer.Write((float)internalAI[1]);
+			}
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			base.ReceiveExtraAI(reader);
+			if(Main.netMode == 1)
+			{
+				internalAI[0] = reader.ReadFloat();
+				internalAI[1] = reader.ReadFloat();
+			}	
+		}	
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushroom Monarch");
-
             Main.npcFrameCount[npc.type] = 8;
         }
 
@@ -41,106 +65,85 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             bossBag = mod.ItemType("MonarchBag");
 
         }
-
-        private int aiTimer;
-        private bool Jump;
-        private bool Charge;
-        private bool Walk;
-        private int JumpFrame;
-        private int JumpCounter;
-        private int JumpTimer;
-
-
+      
+		public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2;
+		public float[] internalAI = new float[2];
+		
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             npc.frameCounter++;
-            if (Walk == true || Charge == true)
+            if (internalAI[1] != AISTATE_JUMP) //walk or charge
             {
                 npc.frameCounter++;
-                if (npc.velocity.Y == 0)
-                {
-                    if (npc.frameCounter >= 10)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y += 74;
-                        if (npc.frame.Y > 432)
-                        {
-                            npc.frameCounter = 0;
-                            npc.frame.Y = 0;
-                        }
-                    }
-                }
-                else
+				if (npc.frameCounter >= 10)
+				{
+					npc.frameCounter = 0;
+					npc.frame.Y += 108;
+					if (npc.frame.Y > (108 * 4))
+					{
+						npc.frameCounter = 0;
+						npc.frame.Y = 0;
+					}
+				}
+                if(npc.velocity.Y != 0)
                 {
                     if (npc.velocity.Y < 0)
                     {
                         npc.frame.Y = 648;
-                    }
+                    }else
                     if (npc.velocity.Y > 0)
                     {
                         npc.frame.Y = 756;
                     }
                 }
-            }
-            if (Jump == true)
+            }else //jump
             {
                 if (npc.velocity.Y == 0)
                 {
                     npc.frame.Y = 540;
-                }
-                else
+                }else
                 {
                     if (npc.velocity.Y < 0)
                     {
                         npc.frame.Y = 648;
-                    }
+                    }else
                     if (npc.velocity.Y > 0)
                     {
                         npc.frame.Y = 756;
                     }
                 }
             }
-            else
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y = 0;
-            }
             if (player.Center.X > npc.Center.X) // so it faces the player
             {
                 npc.spriteDirection = -1;
-            }
-            else
+            }else
             {
                 npc.spriteDirection = 1;
             }
-            aiTimer++;
-            if (aiTimer >= 300)
-            {
-                aiTimer = 0;
-                int choice = Main.rand.Next(3);
-                if (choice == 0)
-                {
-                    Charge = false;
-                    Jump = false;
-                    Walk = true;
-                    AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 1f, 3, 4, 60, true, 10, 60, true, null, false);
-                }
-                if (choice == 1)
-                {
-                    Charge = false;
-                    Walk = false;
-                    Jump = true;
-                    BaseAI.AISlime(npc, ref npc.ai, true, 10, 6f, 4f, 6f, 5f);
-                }
-                if (choice == 2)
-                {
-                    Walk = false;
-                    Jump = false;
-                    Charge = true;
-                    BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);
-                }
-            }
+			if(Main.netMode != 1)
+			{
+				internalAI[0]++;
+				if (internalAI[0] >= 200)
+				{
+					internalAI[0] = 0;
+					internalAI[1] = Main.rand.Next(3);
+					npc.ai = new float[4];
+					npc.netUpdate = true;
+				}
+			}
+			if(internalAI[1] == AISTATE_WALK) //fighter
+			{
+                AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
+			}else
+			if(internalAI[1] == AISTATE_JUMP)//jumper
+			{
+				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -5f, 6f, -8f);				
+			}else //charger
+			{			
+                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				
+			}
         }
 
         public override void BossLoot(ref string name, ref int potionType)
