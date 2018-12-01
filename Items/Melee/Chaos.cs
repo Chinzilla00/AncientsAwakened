@@ -28,7 +28,7 @@ namespace AAMod.Items.Melee
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShot");
-            item.shootSpeed = 18f;
+            item.shootSpeed = 14f;
 		}
 
 		public override void AddRecipes()

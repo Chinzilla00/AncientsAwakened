@@ -101,10 +101,6 @@ namespace AAMod.NPCs.Bosses.Grips
         private bool switchMove = false;  //Creates a bool for this .cs only
         public override void AI()
         {
-            if (Main.dayTime)
-            {
-                npc.position.Y -= 300;  //disappears at night
-            }
             Target();
             DespawnHandler();
             if (switchMove)
@@ -165,25 +161,22 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.velocity = move;
             }
         }
-
         private void Target()
         {
             player = Main.player[npc.target]; // This will get the player target.
         }
         private void DespawnHandler()
         {
-            if (!player.active || player.dead)
+            if (!player.active || player.dead || Main.dayTime)
             {
                 npc.TargetClosest(false);
                 player = Main.player[npc.target];
-                if (!player.active || player.dead)        // If the player is dead and not active, the npc flies off-screen and despawns
+                npc.alpha -= 10;
+                npc.velocity.X = 0;
+                npc.velocity.Y = 0;
+                if (npc.alpha >= 255)
                 {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if (npc.timeLeft > 10)
-                    {
-                        npc.timeLeft = 10;
-                    }
-                    return;
+                    npc.active = false;
                 }
             }
         }

@@ -53,6 +53,11 @@ namespace AAMod.Projectiles
                 Item.NewItem((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height, mod.ItemType("DarkmatterKunai"));
             }
         }
-        
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Electrified"), 500);
+        }
+
     }
 }

@@ -56,21 +56,6 @@ Horseman's Blade EX");
             );
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-                    float spread = 45f * 0.0174f;
-                    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                    double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                    double deltaAngle = spread / 6f;
-                    double offsetAngle;
-                    for (int i = 0; i < 3; i++)
-                    {
-                        offsetAngle = startAngle + (deltaAngle * i);
-                        Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
-                    }
-                    return true;
-        }
-
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
@@ -83,6 +68,27 @@ Horseman's Blade EX");
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
+            float screenX = Main.screenPosition.X;
+            if (player.direction < 0)
+            {
+                screenX += Main.screenWidth;
+            }
+
+            //change to make more/less projectiles
+            float screenY = Main.screenPosition.Y;
+            screenY += Main.rand.Next(Main.screenHeight);
+            Vector2 vector = new Vector2(screenX, screenY);
+            float velocityX = target.Center.X - vector.X;
+            float velocityY = target.Center.Y - vector.Y;
+            velocityX += Main.rand.Next(-50, 51) * 0.1f;
+            velocityY += Main.rand.Next(-50, 51) * 0.1f;
+            int num5 = 24;
+            float num6 = (float)Math.Sqrt(velocityX * velocityX + velocityY * velocityY);
+            num6 = num5 / num6;
+            velocityX *= num6;
+            velocityY *= num6;
+            Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), mod.ProjectileType<Projectiles.Apocalypse>(), damage, 0f, player.whoAmI);
+            p.tileCollide = false;
             target.AddBuff(BuffID.OnFire, 400);
         }
 	}

@@ -77,7 +77,13 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             Main.dust[dust].velocity /= 1f;
  
         }
- 
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Electrified"), 500);
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
         {
             Texture2D texture = Main.projectileTexture[projectile.type];

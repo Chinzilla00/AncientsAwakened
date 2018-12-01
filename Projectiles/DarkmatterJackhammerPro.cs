@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
@@ -22,6 +23,12 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Darkmatter Jackhammer");
+        }
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Electrified"), 500);
         }
     }
 }

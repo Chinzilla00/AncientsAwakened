@@ -758,7 +758,7 @@ namespace AAMod
 
             if (darkmatterSetMe && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (kindledSet && Main.rand.Next(2) == 0)
@@ -1038,27 +1038,27 @@ namespace AAMod
 
             if (darkmatterSetMe && proj.melee && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (darkmatterSetRa && proj.ranged && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (darkmatterSetMa && proj.magic && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (darkmatterSetSu && proj.minion && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (darkmatterSetTh && proj.thrown && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Electrified, 180);
+                target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
             if (demonGauntlet && proj.melee && Main.rand.Next(2) == 0)

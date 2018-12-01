@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Grips
         {
             if (Main.dayTime)
             {
-                npc.position.Y -= 300;  //disappears at night
+                npc.position.Y -= 10;  //disappears at night
             }
             Target();
             DespawnHandler();
@@ -176,14 +176,15 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 npc.TargetClosest(false);
                 player = Main.player[npc.target];
-                if (!player.active || player.dead)        // If the player is dead and not active, the npc flies off-screen and despawns
+                if (!player.active || player.dead || Main.dayTime)        // If the player is dead and not active, the npc flies off-screen and despawns
                 {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if (npc.timeLeft > 10)
+                    npc.alpha -= 10;
+                    npc.velocity.X = 0;
+                    npc.velocity.Y = 0;
+                    if (npc.alpha >= 255)
                     {
-                        npc.timeLeft = 10;
+                        npc.active = false;
                     }
-                    return;
                 }
             }
         }

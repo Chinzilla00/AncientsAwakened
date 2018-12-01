@@ -53,6 +53,12 @@ namespace AAMod.NPCs.Bosses.Zero
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
+            int play = 0;
+            Player player = Main.player[play];
+            if (projectile.position.X == player.position.X || projectile.position.Y == player.position.Y)
+            {
+                projectile.Kill();
+            }
         }
 
         private int HomeOnTarget()

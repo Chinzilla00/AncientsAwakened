@@ -24,7 +24,11 @@ namespace AAMod.Projectiles
             projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("DMC");
         }
-
+        
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Electrified"), 500);
+        }
 
         public override void SetDefaults()
 		{

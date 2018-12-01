@@ -24,16 +24,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
         public override void AI()
         {
-            if (++projectile.frameCounter >= 2)
+            if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 4)
                 {
-                    projectile.frame = 1;
+                    projectile.frame = 0;
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y -= .5f;
+            projectile.velocity.Y -= .1f;
         }
     }
 }

@@ -48,7 +48,12 @@ namespace AAMod.Projectiles
             
 		}
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Electrified"), 500);
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			//Redraw the projectile with the color not influenced by light
 			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
