@@ -322,14 +322,14 @@ namespace AAMod
                         int y = Main.maxTilesY;
                         int tilesX = WorldGen.genRand.Next(0, x);
                         int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
-                        if (Main.tile[tilesX, tilesY].type == 59)
+                        if (Main.tile[tilesX, tilesY].type == TileID.Mud)
                         {
-                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
-                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
+                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
+                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
                         }
-                        if (Main.tile[tilesX, tilesY].type == 1)
+                        if (Main.tile[tilesX, tilesY].type == TileID.Stone)
                         {
-                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
+                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                         }
                     }
                 }));
@@ -785,7 +785,7 @@ namespace AAMod
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
             infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-            int j = (int)Main.worldSurface;
+            int j = (int)WorldGen.worldSurfaceHigh;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
             {
                 j++;
@@ -809,7 +809,7 @@ namespace AAMod
                 }
             }
             infernoPos.Y = j;
-            int q = (int)Main.worldSurface;
+            int q = (int)WorldGen.worldSurfaceHigh;
             while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
             {
                 q++;
