@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ModLoader;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
+using BaseMod;
 
 namespace AAMod.Backgrounds
 {
@@ -43,6 +45,37 @@ namespace AAMod.Backgrounds
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
+        int fogTimer = 0;
+        
+        private void FogProcess(Mod mod, SpriteBatch buffer)
+        {
+            fogTimer++;
+            Texture2D tex = mod.GetTexture("Backgrounds/fog");
+            int tileHeight = tex.Height;
+            int tileWidth = tex.Width;
+            if (fogTimer > tileWidth/2)
+            {
+                fogTimer = 0;
+            }
+            for (int y = 0; y < Main.screenHeight; y += tileHeight)
+            {
+                for (int x = 0; x < Main.screenWidth + fogTimer; x += tileWidth)
+                {
+                    Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+                    BaseDrawing.DrawTexture(buffer, tex, 0, Main.screenPosition + new Vector2(fogTimer + 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
+                }
+            }
+            for (int y = 0; y < Main.screenHeight; y += tileHeight)
+            {
+                for (int x = 0; x < Main.screenWidth + fogTimer; x += tileWidth)
+                {
+                    Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+                    fogColor *= 0.5f;
+                    BaseDrawing.DrawTexture(buffer, tex, 0, Main.screenPosition + new Vector2(fogTimer - 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
+                }
+            }
+        }
+
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
@@ -50,9 +83,10 @@ namespace AAMod.Backgrounds
             {
                 if (Main.dayTime /*&& ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))*/)
                 {
-                    Player player = Main.player[Main.myPlayer];
+                    /*Player player = Main.player[Main.myPlayer];
                     var FogPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(FogTexture, FogPos, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(FogTexture, FogPos, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);*/
+                    FogProcess(AAMod.instance, spriteBatch);
                 }
             }
         }

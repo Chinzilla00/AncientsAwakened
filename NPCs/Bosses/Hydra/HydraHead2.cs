@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Hydra
 {
     [AutoloadBossHead]
-    public class HydraHead2 : ModNPC
+    public class HydraHead2 : HydraHead1
     {
         public override void SetStaticDefaults()
         {
@@ -41,11 +41,11 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public int distFromBodyX = 50; //how far from the body to centeralize the movement points. (X coord)
         public int distFromBodyY = 70; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 60; //how far from the center point to move.
+        public int movementVariance = 30; //how far from the center point to move.
+		public Vector2 relativePosition = default(Vector2);
 
         public override void AI()
-        {
-            
+        {    
             npc.realLife = (int)npc.ai[0];
             if (Body == null)
             {
@@ -55,12 +55,10 @@ namespace AAMod.NPCs.Bosses.Hydra
                     Body = (Hydra)npcBody.modNPC;
                 }
             }
-            if (!Body.npc.active)
+            if (!Body.npc.active || Body.npc.life <= 0)
             {
-                if (npc.timeLeft > 10)
-                {
-                    npc.timeLeft = 10;
-                }
+                npc.life = 0;
+				npc.checkDead();
                 return;
             }
             if (Main.expertMode)
@@ -87,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X * 3, dir.Y * 3, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Hydra"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }
                 else
@@ -112,7 +110,15 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            npc.position += (Body.npc.oldPos[0] - Body.npc.position);
+			if(Body.chasePlayer) //player trying to outrun it, force heads to keep up with body
+			{
+				relativePosition += npc.velocity;
+				npc.Center = Body.npc.Center + relativePosition;				
+			}else
+			{
+				npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
+				npc.position += Body.npc.velocity;
+			}
             npc.spriteDirection = -1;
         }
 
