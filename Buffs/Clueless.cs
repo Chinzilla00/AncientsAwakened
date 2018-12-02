@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Fog");
-			Description.SetDefault("Can't see a thing");
+			Description.SetDefault("You can't see a thing");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
@@ -16,6 +16,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
+            player.GetModPlayer<AAPlayer>(mod).Clueless = true;
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))))
             {
                 player.buffTime[buffIndex] = 5;

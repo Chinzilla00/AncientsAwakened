@@ -106,6 +106,7 @@ namespace AAMod
         public bool Snagged1 = false;
         public bool YamataCount = false;
         public bool YamataACount = false;
+        public bool Clueless = false;
         //buffs
 
         //pets
@@ -179,6 +180,7 @@ namespace AAMod
             dragonFire = false;
             hydraToxin = false;
             terraBlaze = false;
+            Clueless = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -214,9 +216,7 @@ namespace AAMod
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
-            bool useFogless = FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
             player.ManageSpecialBiomeVisuals("Fog", useFog);
-            player.ManageSpecialBiomeVisuals("Fogless", useFogless);
         }
 
         public override bool CustomBiomesMatch(Player other)
@@ -1118,6 +1118,31 @@ namespace AAMod
         }
         #endregion
 
+
+        public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
+        {
+            if (Clueless)
+            {
+                drawInfo.upperArmorColor = Color.Black;
+                drawInfo.middleArmorColor = Color.Black;
+                drawInfo.lowerArmorColor = Color.Black;
+                drawInfo.hairColor = Color.Black;
+                drawInfo.eyeWhiteColor = Color.Black;
+                drawInfo.eyeColor = Color.Black;
+                drawInfo.faceColor = Color.Black;
+                drawInfo.bodyColor = Color.Black;
+                drawInfo.legColor = Color.Black;
+                drawInfo.shirtColor = Color.Black;
+                drawInfo.underShirtColor = Color.Black;
+                drawInfo.pantsColor = Color.Black;
+                drawInfo.shoeColor = Color.Black;
+                drawInfo.headGlowMaskColor = Color.Black;
+                drawInfo.bodyGlowMaskColor = Color.Black;
+                drawInfo.armGlowMaskColor = Color.Black;
+                drawInfo.legGlowMaskColor = Color.Black;
+            }
+
+        }
         public override void ModifyDrawLayers(List<PlayerLayer> list)
         {
             BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterHead, PlayerLayer.Head, false);

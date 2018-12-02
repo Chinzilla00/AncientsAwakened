@@ -47,7 +47,7 @@ namespace AAMod.Backgrounds
         }
         int fogTimer = 0;
         
-        private void FogProcess(Mod mod, SpriteBatch buffer)
+        public void FogProcess(Mod mod, SpriteBatch spriteBatch)
         {
             fogTimer++;
             Texture2D tex = mod.GetTexture("Backgrounds/fog");
@@ -57,12 +57,12 @@ namespace AAMod.Backgrounds
             {
                 fogTimer = 0;
             }
-            for (int y = 0; y < Main.screenHeight; y += tileHeight)
+            /*for (int y = 0; y < Main.screenHeight; y += tileHeight)
             {
                 for (int x = 0; x < Main.screenWidth + fogTimer; x += tileWidth)
                 {
                     Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-                    BaseDrawing.DrawTexture(buffer, tex, 0, Main.screenPosition + new Vector2(fogTimer + 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
+                    BaseDrawing.DrawTexture(spriteBatch, tex, 0, Main.screenPosition + new Vector2(fogTimer + 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
                 }
             }
             for (int y = 0; y < Main.screenHeight; y += tileHeight)
@@ -71,7 +71,25 @@ namespace AAMod.Backgrounds
                 {
                     Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
                     fogColor *= 0.5f;
-                    BaseDrawing.DrawTexture(buffer, tex, 0, Main.screenPosition + new Vector2(fogTimer - 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
+                    BaseDrawing.DrawTexture(spriteBatch, tex, 0, Main.screenPosition + new Vector2(fogTimer - 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
+                }
+            }*/
+            Viewport dimension = Main.graphics.GraphicsDevice.Viewport;
+
+            for (int i = 0; i < dimension.Width + fogTimer; i += tex.Width)
+            {
+                for (int j = 0; j < dimension.Height; j += tex.Height)
+                {
+                    spriteBatch.Draw(tex, new Rectangle(i - fogTimer, j, 1920, 1080), null, Color.White * 0.4f, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                }
+            }
+
+
+            for (int i = 0; i < Main.screenWidth + fogTimer; i += tex.Width)
+            {
+                for (int j = 0; j < Main.screenHeight; j += tex.Height)
+                {
+                    spriteBatch.Draw(tex, new Rectangle(i - fogTimer, j, 1920, 1080), null, Color.White * 0.5f, 0f, Vector2.Zero, SpriteEffects.None, 0f);
                 }
             }
         }
