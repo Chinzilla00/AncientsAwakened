@@ -57,23 +57,6 @@ namespace AAMod.Backgrounds
             {
                 fogTimer = 0;
             }
-            /*for (int y = 0; y < Main.screenHeight; y += tileHeight)
-            {
-                for (int x = 0; x < Main.screenWidth + fogTimer; x += tileWidth)
-                {
-                    Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-                    BaseDrawing.DrawTexture(spriteBatch, tex, 0, Main.screenPosition + new Vector2(fogTimer + 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
-                }
-            }
-            for (int y = 0; y < Main.screenHeight; y += tileHeight)
-            {
-                for (int x = 0; x < Main.screenWidth + fogTimer; x += tileWidth)
-                {
-                    Color fogColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-                    fogColor *= 0.5f;
-                    BaseDrawing.DrawTexture(spriteBatch, tex, 0, Main.screenPosition + new Vector2(fogTimer - 2, 0), Main.screenWidth, Main.screenHeight, 1f, 0f, 1, 1, new Rectangle(0, 0, tileWidth, tileHeight), fogColor);
-                }
-            }*/
             Viewport dimension = Main.graphics.GraphicsDevice.Viewport;
 
             for (int i = 0; i < dimension.Width + fogTimer; i += tex.Width)
@@ -99,11 +82,8 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                if (Main.dayTime /*&& ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))*/)
+                if (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)))
                 {
-                    /*Player player = Main.player[Main.myPlayer];
-                    var FogPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(FogTexture, FogPos, null, Color.White * FogTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);*/
                     FogProcess(AAMod.instance, spriteBatch);
                 }
             }

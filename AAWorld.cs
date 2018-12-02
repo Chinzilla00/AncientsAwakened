@@ -12,6 +12,8 @@ using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using BaseMod;
 using AAMod.Worldgeneration;
+using AAMod.Backgrounds;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod
 {
@@ -296,7 +298,6 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
-
         }
 
         private string NumberRand(int size)
@@ -445,6 +446,10 @@ namespace AAMod
                 WorldGen.GrowTree(position.X + i, y);
             }
         }
+
+        
+
+        
 
         /*public void ChaosChests(GenerationProgress progress)
         {

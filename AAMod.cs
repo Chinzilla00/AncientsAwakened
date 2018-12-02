@@ -225,8 +225,9 @@ namespace AAMod
                 SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
                 YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
 
-                Filters.Scene["AAMod:Fog"] =  new Filter(new FogSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
-                SkyManager.Instance["AAMod:Fog"] = new Fog();
+                Filters.Scene["Fog"] = new Filter(new ScreenShaderData("FilterBlizzardForeground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High);
+                Overlays.Scene["Fog"] = new SimpleOverlay("Backgrounds/fog", new ScreenShaderData("FilterBlizzardBackground").UseImage("Backgrounds/fog").UseOpacity(0.6f).UseImageScale(new Vector2(Main.screenWidth, Main.screenHeight)), EffectPriority.High, RenderLayers.All);
+                SkyManager.Instance["Fog"] = new Fog();
                 Fog.FogTexture = GetTexture("Backgrounds/fog");
                 
                 UserInterface = new UserInterface();
