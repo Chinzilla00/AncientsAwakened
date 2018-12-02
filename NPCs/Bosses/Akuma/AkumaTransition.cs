@@ -17,9 +17,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.friendly = false;
         }
         public int timer;
+        public bool ATransitionActive = false;
         public override void AI()
         {
             timer++;
+            ATransitionActive = true;
             if (timer < 900)
             {
                 Dust dust1;
@@ -76,6 +78,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void Kill(int timeleft)
         {
+            ATransitionActive = false;
             Dust dust1;
             Dust dust2;
             Dust dust3;

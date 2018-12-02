@@ -70,6 +70,7 @@ Only Usable at night");
             {
                 Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
             }
+
             return true;
 		}
 
@@ -91,6 +92,14 @@ Only Usable at night");
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                     return false;
+                }
+                for (int m = 0; m < Main.maxProjectiles; m++)
+                {
+                    Projectile p = Main.projectile[m];
+                    if (p != null && p.active && p.type == mod.ProjectileType("YamataTransition"))
+                    {
+                        return false;
+                    }
                 }
                 return true;
 			}

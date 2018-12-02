@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                                 PlayerPosX += npc.velocity.X * 0.5f;
                                 PlayerDistance.X -= PlayerPosX * 1f;
                                 PlayerDistance.Y -= PlayerPosY * 1f;
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaABreath"), 20, 0, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaABreath"), npc.damage, 0, Main.myPlayer);
                             }
                         }
                     }
@@ -187,7 +187,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     {
                         for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                         {
-                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 2f);
+                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), npc.damage, 0f, 100, default(Color), 2f);
                             Main.dust[num935].noGravity = true;
                             Main.dust[num935].velocity.Y -= 1f;
                         }

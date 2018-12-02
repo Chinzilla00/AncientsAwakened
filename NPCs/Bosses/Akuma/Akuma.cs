@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                             PlayerPosX += npc.velocity.X * 0.5f;
                             PlayerDistance.X -= PlayerPosX * 1f;
                             PlayerDistance.Y -= PlayerPosY * 1f;
-                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaBreath"), 20, 0, Main.myPlayer);
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaBreath"), npc.damage, 0, Main.myPlayer);
                         }
                     }
                 }

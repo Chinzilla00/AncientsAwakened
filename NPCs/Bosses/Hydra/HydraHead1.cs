@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(SoundID.Item34, npc.position);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 3f, npc.velocity.Y * 3f, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
                         attackFrame = 0;
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                             }
                         }
 

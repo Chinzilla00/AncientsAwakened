@@ -87,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Hydra"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X * 3, dir.Y * 3, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }
                 else

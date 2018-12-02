@@ -11,6 +11,7 @@ namespace AAMod.Items.BossSummons
 {
     public class DraconianSigil : ModItem
     {
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Draconian Sun Sigil");
@@ -61,6 +62,14 @@ Only Usable during the day");
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
                     return false;
+                }
+                for (int m = 0; m < Main.maxProjectiles; m++)
+                {
+                    Projectile p = Main.projectile[m];
+                    if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
+                    {
+                        return false;
+                    }
                 }
                 return true;
             }

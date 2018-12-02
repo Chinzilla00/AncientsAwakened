@@ -62,6 +62,14 @@ Only Usable during the day in the inferno");
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(0, 191, 255), false);
                     return false;
                 }
+                for (int m = 0; m < Main.maxProjectiles; m++)
+                {
+                    Projectile p = Main.projectile[m];
+                    if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
             if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You can only use that rune in the Inferno, kid.", new Color(180, 41, 32), false);

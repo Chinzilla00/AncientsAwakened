@@ -162,5 +162,10 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 1.25f : 0f;
         }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MirePod"));
+        }
     }
 }

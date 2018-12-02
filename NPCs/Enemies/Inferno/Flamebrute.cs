@@ -127,28 +127,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }
-            if (biteAttack == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
-            {
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/Flamebrute_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-            if (biteAttack == true)
-            {
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/Flamebrute_Smash_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-
-        }
-
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
