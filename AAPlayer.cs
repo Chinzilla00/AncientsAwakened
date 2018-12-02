@@ -216,7 +216,7 @@ namespace AAMod
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
-            player.ManageSpecialBiomeVisuals("Fog", useFog);
+            player.ManageSpecialBiomeVisuals("AAMod:Fog", useFog);
         }
 
         public override bool CustomBiomesMatch(Player other)
