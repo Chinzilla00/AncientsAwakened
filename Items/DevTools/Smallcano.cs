@@ -10,11 +10,11 @@ using AAMod.Worldgeneration;
 
 namespace AAMod.Items.DevTools
 {
-	public class Minilake : ModItem
+	public class Smallcano : ModItem
 	{
 		public override void SetStaticDefaults()
 		{	
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Generates a Lake below you", "'Careful not to use it near your house!'" });					
+            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Generates a Volcano below you", "'Careful not to use it near your house!'" });					
 		}		
 		
         public override void SetDefaults()
@@ -35,16 +35,16 @@ namespace AAMod.Items.DevTools
 		{
             Mod mod = AAMod.instance;
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(255, 0, 0)] = mod.TileType("Depthstone");
-            colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
             colorToTile[Color.Black] = -1; //don't touch when genning
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(255, 0, 0)] = mod.WallType("DepthstoneWall");
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
             colorToWall[Color.Black] = -1; //don't touch when genning		
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point origin = new Point((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f));
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             gen.Generate(origin.X, origin.Y - 40, true, true);

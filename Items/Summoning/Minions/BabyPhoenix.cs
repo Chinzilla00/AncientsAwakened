@@ -21,7 +21,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.width = 28;
             projectile.height = 28;
             projectile.aiStyle = 54;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;

@@ -18,12 +18,11 @@ namespace AAMod.Worldgeneration
 	{
 		public override bool Place(Point origin, StructureMap structures)
 		{
-			//this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
-			
-			Mod mod = AAMod.instance; //replace with your own
+			Mod mod = AAMod.instance;
 			bool DEV = true;			
 			//--- Initial variable creation
-			ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileJungleGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"); //change to types in your mod
+			ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"),
+			tileIce = (ushort)mod.TileType("Depthice"), tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone");
 
 			int worldSize = GetWorldSize();
 			int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
@@ -33,53 +32,60 @@ namespace AAMod.Worldgeneration
 			Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
 			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
 			{
-				TileID.Grass,
-                TileID.JungleGrass,
-                TileID.Dirt,
-				TileID.Stone,
-				TileID.Sand,
-				TileID.SnowBlock,
-				TileID.IceBlock,
 				TileID.BlueDungeonBrick,
 				TileID.PinkDungeonBrick,
 				TileID.GreenDungeonBrick
 			}).Output(dictionary));
-			
-			int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
-			int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock];
-			int sandBiomeCount = dictionary[TileID.Sand];
+
 			int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
 
-			if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+			if (dungeonCount > 0) //don't gen if you're in the Dungeon at all
 			{
-				if(Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ", Normal: " + normalBiomeCount + ", Ice: " + IceBlockBiomeCount + ", Sand: " + sandBiomeCount + ".");
+				if(Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ".");
 				return false;
 			}
 
 			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass }), //ensure we only replace the intended tile (in this case, grass)
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.JungleGrass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
 				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
-			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.JungleGrass }), //ensure we only replace the intended tile (in this case, grass)
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
-				new BaseMod.SetModTile(tileJungleGrass, true, true) //actually place the tile
-			}));
-
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
 			{
 				new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileDirt, true, true)
 			}));
-			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
+			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //stone...
 			{
 				new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone }),
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileStone, true, true)
+			}));			
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //ice...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileIce, true, true)
+			}));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //sand...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sand, TileID.Ebonsand, TileID.Crimsand }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSand, true, true)
+			}));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //hardened sand...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSandHardened, true, true)
+			}));
+			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and sandstone.
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
 			
 			return true;
@@ -103,7 +109,8 @@ namespace AAMod.Worldgeneration
             Mod mod = AAMod.instance; //replace with your own
             bool DEV = true;
             //--- Initial variable creation
-            ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileDirt = TileID.Dirt, tileStone = (ushort)mod.TileType("Torchstone"); //change to types in your mod
+            ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileStone = (ushort)mod.TileType("Torchstone"),
+			tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
 
             int worldSize = GetWorldSize();
             int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
@@ -113,46 +120,60 @@ namespace AAMod.Worldgeneration
             Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
             {
-                TileID.Grass,
-                TileID.Dirt,
-                TileID.Stone,
-                TileID.Sand,
-                TileID.SnowBlock,
-                TileID.IceBlock,
                 TileID.BlueDungeonBrick,
                 TileID.PinkDungeonBrick,
                 TileID.GreenDungeonBrick
             }).Output(dictionary));
 
-            int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
-            int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock];
-            int sandBiomeCount = dictionary[TileID.Sand];
             int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
-
-            if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+            if (dungeonCount > 0) //don't gen if you're in the Dungeon at all
             {
-                if (Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ", Normal: " + normalBiomeCount + ", Ice: " + IceBlockBiomeCount + ", Sand: " + sandBiomeCount + ".");
+                if (Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ".");
                 return false;
             }
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass }), //ensure we only replace the intended tile (in this case, grass)
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
 				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
+           /* WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileDirt, true, true)
-            }));
+            }));*/
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileStone, true, true)
             }));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //ice...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileIce, true, true)
+			}));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //sand...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sand, TileID.Ebonsand, TileID.Crimsand }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSand, true, true)
+			}));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //hardened sand...
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSandHardened, true, true)
+			}));
+			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and sandstone.
+			{
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new BaseMod.SetModTile(tileSandstone, true, true)
+			}));			
 
             return true;
         }

@@ -651,19 +651,14 @@ namespace AAMod
                 WorldGen.KillTile(X, i);
         }
 
-        
-
-
         public override void PostUpdate()
         {
-            
-
             if (downedDB == true)
             {
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    Main.NewText("Stars twinkle in the atmosphere", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                    Main.NewText("Stars twinkle in the atmosphere...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
                     for (int i = 0; i < Main.maxTilesX / 28; ++i) //Repeats 700 times for small world, 1050 times for medium world, and 1400 times for large world.
                     {
                         int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
@@ -682,7 +677,7 @@ namespace AAMod
                 if (DarkMatter == false)
                 {
                     DarkMatter = true;
-                    Main.NewText("Darkness grows in the depths of the world", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
+                    Main.NewText("Darkness grows in the depths of the world...", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(11, 12), (ushort)mod.TileType("DarkmatterOre"));
@@ -695,7 +690,7 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    Main.NewText("The Ancients have Awakened", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
+                    Main.NewText("The Ancients have Awakened!", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
                 }
             }
 
@@ -704,7 +699,7 @@ namespace AAMod
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
+                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -717,7 +712,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The hallow caverns shine with light for a brief moment", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
+                    Main.NewText("The hallow caverns shine with light for a brief moment...", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);
@@ -736,7 +731,7 @@ namespace AAMod
                 if (Dynaskull == false)
                 {
                     Dynaskull = true;
-                    Main.NewText("Bones of the ancient past burst with energy", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    Main.NewText("Bones of the ancient past burst with energy...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);
@@ -755,7 +750,7 @@ namespace AAMod
                 if (Evil == false)
                 {
                     Evil = true;
-                    Main.NewText("Devils in the underworld begin to plot", Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    Main.NewText("Devils in the underworld begin to plot...", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                 }
             }
             if (downedRetriever == true)
@@ -763,7 +758,7 @@ namespace AAMod
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
-                    Main.NewText("The clap of a thunderbolt roars in the caverns", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    Main.NewText("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
                     for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
@@ -774,8 +769,8 @@ namespace AAMod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>() + tileCounts[mod.TileType<Depthice>()]];
-            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>() + tileCounts[mod.TileType<Torchice>()]];
+            mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
+            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>()];
         }
@@ -854,7 +849,7 @@ namespace AAMod
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X, origin.Y - 40, true, true);
+            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
         }
@@ -876,7 +871,7 @@ namespace AAMod
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X, origin.Y - 20, true, true);
+            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
             MireBiome biome = new MireBiome();
             biome.Place(origin, WorldGen.structures);
         }
