@@ -19,12 +19,12 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
             npc.width = 64;
             npc.height = 32;
             npc.friendly = false; // its a mean toad! :(
-            npc.damage = 30;
-            npc.defense = 5;
-            npc.lifeMax = 120;
+            npc.damage = 40;
+            npc.defense = 20;
+            npc.lifeMax = 1500;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 100f;
+            npc.value = 100000f;
             npc.knockBackResist = 0.1f;
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
