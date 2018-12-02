@@ -253,7 +253,7 @@ namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D biteAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamBite");
-            Texture2D shootAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/ToxitoadfireballAttack");
+            Texture2D shootAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamfireballAttack");
             Texture2D Reanimation = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamReanimation");
             Texture2D dedAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamDed");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
