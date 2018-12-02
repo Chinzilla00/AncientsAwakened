@@ -28,6 +28,7 @@ C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\D
 C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
 C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
 C:\Users\Office HP\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
 C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
 C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
 C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\TerrariaHooks.dll
@@ -39,6 +40,7 @@ C:\Users\Tails\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.csprojResolveAssemblyReference.cache
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.dll
 C:\Users\duane\Documents\GitHub\AAMod\obj\Debug\AAMod.pdb
+<<<<<<< HEAD
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.dll
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\AAMod.pdb
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll
@@ -48,3 +50,8 @@ C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.csproj.CopyComplete
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.dll
 C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\obj\Debug\AAMod.pdb
+=======
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\ReLogic.dll
+C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\Terraria.exe
+>>>>>>> 374b2bf7d8c28de9a73fa30a294524a925bab3c7
