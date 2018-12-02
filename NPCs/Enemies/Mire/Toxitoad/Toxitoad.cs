@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
                 tongueTimer++;
                 npc.aiStyle = 0;
                 npc.velocity.X = 0;
-                if (tongueTimer >= 35)
+                if (tongueTimer == 35)
                 {
                     // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
                     if (npc.direction == -1)
