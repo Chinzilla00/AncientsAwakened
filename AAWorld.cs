@@ -12,8 +12,6 @@ using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using BaseMod;
 using AAMod.Worldgeneration;
-using AAMod.Backgrounds;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod
 {
@@ -298,6 +296,7 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
+
         }
 
         private string NumberRand(int size)
@@ -339,6 +338,11 @@ namespace AAMod
             {
                 VoidIslands(progress);
             }));
+			int chaosBiomeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            tasks.Insert(chaosBiomeIndex, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
+            {
+				MireAndInferno(progress);
+            }));			
         }
 
         public void Mush(GenerationProgress progress)
@@ -397,7 +401,7 @@ namespace AAMod
                     }
                 }
             }
-            progress.Set(0.8f);
+            progress.Set(0.85f);
             for (int j = 0; j < posIslands.Count; ++j)
             {
                 Point position = posIslands[j];
@@ -405,8 +409,6 @@ namespace AAMod
                 position.Y -= 11;
                 VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
             }
-            progress.Set(0.9f);
-            AAWorldGen(progress);
             progress.Set(1f);
         }
         public int BlockLining(double x, double y, int repeats, int tileType, bool random, int max, int min = 3)
@@ -446,10 +448,6 @@ namespace AAMod
                 WorldGen.GrowTree(position.X + i, y);
             }
         }
-
-        
-
-        
 
         /*public void ChaosChests(GenerationProgress progress)
         {
@@ -780,7 +778,7 @@ namespace AAMod
             mushTiles = tileCounts[mod.TileType<Mycelium>()];
         }
 
-        private void AAWorldGen(GenerationProgress progress)
+        private void MireAndInferno(GenerationProgress progress)
         {
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
             infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
@@ -837,48 +835,20 @@ namespace AAMod
             MireAbyss();
         }
 
-        
         public void InfernoVolcano()
         {
-            Mod mod = AAMod.instance;
-            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
-            colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
-            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
-            colorToTile[Color.Black] = -1; //don't touch when genning
-
-            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
-            colorToWall[Color.Black] = -1; //don't touch when genning		
-            
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
         }
 
         public void MireAbyss()
         {
-            Mod mod = AAMod.instance;
-            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
-            colorToTile[new Color(255, 128, 0)] = TileID.Mud;
-            colorToTile[new Color(0, 255, 0)] = mod.TileType("MireGrass");
-            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
-            colorToTile[Color.Black] = -1; //don't touch when genning
-
-            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(0, 0, 255)] = mod.WallType("DepthstoneWall");
-            colorToWall[Color.Black] = -1; //don't touch when genning			
-
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
             MireBiome biome = new MireBiome();
-            biome.Place(origin, WorldGen.structures);
+            biome.Place(origin, WorldGen.structures);        
         }
 
 

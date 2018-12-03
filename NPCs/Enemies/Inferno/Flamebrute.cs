@@ -110,8 +110,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D biteAni = mod.GetTexture("NPCs/Enemies/Inferno/Flamebrute");
-            Texture2D tongueAni = mod.GetTexture("NPCs/Enemies/Inferno/Flamebrute_Smash");
+            Texture2D biteAni = mod.GetTexture("NPCs/Enemies/Inferno/Flamebrute_Smash");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (biteAttack == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
             {

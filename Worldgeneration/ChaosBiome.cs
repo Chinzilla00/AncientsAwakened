@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
 using Terraria.GameContent.Generation;
+using BaseMod;
 
 namespace AAMod.Worldgeneration
 { 
@@ -27,23 +28,19 @@ namespace AAMod.Worldgeneration
 			int worldSize = GetWorldSize();
 			int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 			
-			//ok time to check to see if this spot is actually a good place to gen
-			Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
+            colorToTile[new Color(255, 128, 0)] = TileID.Mud;
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("MireGrass");
+            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(0, 0, 255)] = mod.WallType("DepthstoneWall");
+            colorToWall[Color.Black] = -1; //don't touch when genning
+			
+			TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
 			Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
-			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
-			{
-				TileID.BlueDungeonBrick,
-				TileID.PinkDungeonBrick,
-				TileID.GreenDungeonBrick
-			}).Output(dictionary));
-
-			int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
-
-			if (dungeonCount > 0) //don't gen if you're in the Dungeon at all
-			{
-				if(Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ".");
-				return false;
-			}
 
 			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
@@ -87,7 +84,8 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
-			
+			gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+
 			return true;
 		}
 
@@ -110,28 +108,33 @@ namespace AAMod.Worldgeneration
             bool DEV = true;
             //--- Initial variable creation
             ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileStone = (ushort)mod.TileType("Torchstone"),
-			tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
-
+			tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");			
+			
             int worldSize = GetWorldSize();
             int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 
-            //ok time to check to see if this spot is actually a good place to gen
-            Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
+	        Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
+            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
-            {
-                TileID.BlueDungeonBrick,
-                TileID.PinkDungeonBrick,
-                TileID.GreenDungeonBrick
-            }).Output(dictionary));
 
-            int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
-            if (dungeonCount > 0) //don't gen if you're in the Dungeon at all
-            {
-                if (Main.netMode == 0 && DEV) Main.NewText("NOT A GOOD SPOT! Counts - Dungeon: " + dungeonCount + ".");
-                return false;
-            }
-
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+				new Actions.SetLiquid(0, 0)
+			}));
+            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[] //remove all fluids in the volcano...
+			{
+				new Actions.SetLiquid(0, 0)
+			}));				
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
@@ -173,7 +176,8 @@ namespace AAMod.Worldgeneration
 				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileSandstone, true, true)
-			}));			
+			}));	
+            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
 
             return true;
         }

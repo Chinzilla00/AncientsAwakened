@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.hardMode)
+            if (Main.hardMode && spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 return SpawnCondition.OverworldNightMonster.Chance * 0.25f;
             }
@@ -253,7 +253,7 @@ namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D biteAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamBite");
-            Texture2D shootAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamfireballAttack");
+            Texture2D shootAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamFireball");
             Texture2D Reanimation = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamReanimation");
             Texture2D dedAni = mod.GetTexture("NPCs/Enemies/Inferno/Magmalgam/MagmalgamDed");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -271,21 +271,21 @@ namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
             if (fireballAttack == true)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = shootAni.Height / 8;
+                int num214 = shootAni.Height / 4;
                 int y6 = num214 * fireballFrame;
                 Main.spriteBatch.Draw(shootAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, shootAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)shootAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (live == true)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = Reanimation.Height / 8;
+                int num214 = Reanimation.Height / 20;
                 int y6 = num214 * liveFrame;
                 Main.spriteBatch.Draw(Reanimation, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, Reanimation.Width, num214)), drawColor, npc.rotation, new Vector2((float)Reanimation.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (ded == true)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = dedAni.Height / 8;
+                int num214 = dedAni.Height / 12;
                 int y6 = num214 * dedFrame;
                 Main.spriteBatch.Draw(dedAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, dedAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)dedAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }

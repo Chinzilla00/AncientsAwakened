@@ -341,7 +341,7 @@ namespace AAMod
             {
                 if (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)))
                 {
-                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
+                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
                     {
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
                     }
@@ -431,7 +431,7 @@ namespace AAMod
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.GetModPlayer<AAPlayer>(mod).AshCurse)
             {
-                if (!player.GetModPlayer<AAPlayer>(mod).AshRemover)
+                if (!player.GetModPlayer<AAPlayer>(mod).AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
                 {
                     player.AddBuff(mod.BuffType<BurningAsh>(), 5);
                 }
