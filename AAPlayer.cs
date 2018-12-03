@@ -123,6 +123,8 @@ namespace AAMod
         //Colors
         public static Color IncineriteColor = new Color((int)(242 * 0.7f), (int)(107 * 0.7f), 0);
 
+        public static Color ZeroColor = new Color((int)(233 * 0.7f), (int)(53 * 0.7f), (int)(53 * 0.7f));
+
         public override void ResetEffects()
         {
             //Minions
@@ -477,19 +479,18 @@ namespace AAMod
                                 if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
                                 {
                                     int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.AshRain>(), 0f, 0f, 0, default(Color), 1f);
-                                    Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                                     Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
                                     Dust expr_292_cp_0 = Main.dust[num9];
                                     expr_292_cp_0.velocity.Y = expr_292_cp_0.velocity.Y * Main.dust[num9].scale;
                                     if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
                                     {
-                                        Main.dust[num9].velocity.X = Main.windSpeed + Main.rand.Next(-10, 10) * 0.1f;
+                                        Main.dust[num9].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
                                         Dust expr_2EC_cp_0 = Main.dust[num9];
                                         expr_2EC_cp_0.velocity.X = expr_2EC_cp_0.velocity.X + Main.windSpeed * Main.cloudAlpha * 10f;
                                     }
                                     else
                                     {
-                                        Main.dust[num9].velocity.X = (float)Math.Sqrt(Math.Abs(Main.windSpeed)) * Math.Sign(Main.windSpeed) * (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+                                        Main.dust[num9].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
                                         Dust expr_370_cp_0 = Main.dust[num9];
                                         expr_370_cp_0.velocity.Y = expr_370_cp_0.velocity.Y * 0.5f;
                                     }

@@ -26,62 +26,28 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if (projectile.timeLeft > 0)
+            int num103 = Player.FindClosest(projectile.Center, 1, 1);
+            projectile.ai[1] += 1f;
+            if (projectile.ai[1] < 110f && projectile.ai[1] > 30f)
             {
-                projectile.timeLeft--;
+                float scaleFactor2 = projectile.velocity.Length();
+                Vector2 vector11 = Main.player[num103].Center - projectile.Center;
+                vector11.Normalize();
+                vector11 *= scaleFactor2;
+                projectile.velocity = ((projectile.velocity * 24f) + vector11) / 25f;
+                projectile.velocity.Normalize();
+                projectile.velocity *= scaleFactor2;
             }
-            if (projectile.timeLeft == 0)
+            if (projectile.ai[0] < 0f)
             {
-                projectile.Kill();
+                if (projectile.velocity.Length() < 18f)
+                {
+                    projectile.velocity *= 1.02f;
+                }
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 60;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
-
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
-            {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
-
-                int foundTarget = HomeOnTarget();
-                if (foundTarget != -1)
-                {
-                    Player target = Main.player[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
-                }
-            }
-            int play = 0;
-            Player player = Main.player[play];
-            if (projectile.position.X == player.position.X || projectile.position.Y == player.position.Y)
-            {
-                projectile.Kill();
-            }
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
         }
-
-        private int HomeOnTarget()
-        {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                Player target = Main.player[i];
-                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(target.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
-                    )
-                        selectedTarget = i;
-                }
-            }
-            return selectedTarget;
-        }
+        
     }
 }

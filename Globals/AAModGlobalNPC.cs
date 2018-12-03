@@ -529,7 +529,7 @@ namespace AAMod
 
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
-            if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) || 
+            if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) ||
                 NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()) ||
                 NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()) ||
                 NPC.AnyNPCs(mod.NPCType<Broodmother>()) ||
@@ -541,12 +541,11 @@ namespace AAMod
                 NPC.AnyNPCs(mod.NPCType<Nightcrawler>()) ||
                 NPC.AnyNPCs(mod.NPCType<Daybringer>()) ||
                 NPC.AnyNPCs(mod.NPCType<Akuma>()) ||
-                NPC.AnyNPCs(mod.NPCType<AkumaA>()) || 
+                NPC.AnyNPCs(mod.NPCType<AkumaA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Yamata>()) ||
                 NPC.AnyNPCs(mod.NPCType<YamataA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Zero>()) ||
-                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()) ||
-                NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
+                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
             {
                 spawnRate = 0;
                 maxSpawns = 0;

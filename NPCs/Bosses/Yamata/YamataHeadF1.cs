@@ -59,6 +59,12 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
         public int movementVariance = 60; //how far from the center point to move.
 		public Vector2 relativePosition = default(Vector2);
+        private int MouthFrame;
+        private int MouthCounter;
+        private bool fireAttack;
+        private int attackFrame;
+        private int attackCounter;
+        private int attackTimer;
 
         public override void AI()
         {
@@ -91,7 +97,19 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
+            if (fireAttack == true)
+            {
+                attackCounter++;
+                if (attackCounter > 10)
+                {
+                    attackFrame++;
+                    attackCounter = 0;
+                }
+                if (attackFrame >= 3)
+                {
+                    attackFrame = 2;
+                }
+            }
             if (Main.netMode != 1)
             {
                 npc.ai[1]++;
@@ -99,6 +117,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (leftHead) aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {
+                    fireAttack = true;
                     for (int i = 0; i < 5; ++i)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
@@ -109,6 +128,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 else
                 if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
+                    fireAttack = false;
                     npc.ai[1] = 0;
                     npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
                     npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
@@ -140,18 +160,18 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.spriteDirection = -1;
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        /*public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
             if (Body != null)
             {
                 Body.DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", npc, lightColor);
             }
             return true;
-        }
+        }*/
 
         public override void FindFrame(int frameHeight)
         {
-            /*if (attackFrame)
+            if (fireAttack)
             {
                 MouthCounter++;
                 if (MouthCounter > 10)
@@ -167,7 +187,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             {
                 npc.frame.Y = 0 * frameHeight;
-            }*/
+            }
         }
 
         public override void BossHeadRotation(ref float rotation)

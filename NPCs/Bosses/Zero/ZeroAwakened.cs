@@ -79,6 +79,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.buffImmune[k] = true;
             }
+            npc.alpha = 255;
         }
 
         public override void NPCLoot()
@@ -235,6 +236,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+            if (npc.alpha > 0)
+            {
+                npc.alpha -= 7;
+            }
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
             if (timee > 0)
             {
                 timee--;
@@ -382,11 +391,11 @@ namespace AAMod.NPCs.Bosses.Zero
                     float num373 = 8.25f;
                     float num374 = 0.115f;
                     int num375 = 1;
+                    Vector2 vector36 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f)); 
                     if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
                     {
                         num375 = -1;
                     }
-                    Vector2 vector36 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                     float num376 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num375 * 300) - vector36.X;
                     float num377 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 300f - vector36.Y;
                     float num378 = (float)Math.Sqrt((num376 * num376) + (num377 * num377));
@@ -467,7 +476,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             {
                                 float num380 = 9f;
                                 int num381 = npc.damage / 8;
-                                int num382 = mod.ProjectileType<DeathLaser>();
+                                int num382 = mod.ProjectileType<GlitchBomb>();
                                 if (Main.expertMode)
                                 {
                                     num380 = 10.5f;
@@ -680,10 +689,32 @@ namespace AAMod.NPCs.Bosses.Zero
                         }
                         if (npc.localAI[1] > 180f && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                         {
+                            int num429 = 1;
+                            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+                            {
+                                num429 = -1;
+                            }
+                            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+                            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+                            float num433 = 6f;
+                            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                            PlayerPos = num433 / PlayerPos;
+                            PlayerPosX *= PlayerPos;
+                            PlayerPosY *= PlayerPos;
+                            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                            PlayerPosY += npc.velocity.Y * 0.5f;
+                            PlayerPosX += npc.velocity.X * 0.5f;
+                            PlayerDistance.X -= PlayerPosX * 1f;
+                            PlayerDistance.Y -= PlayerPosY * 1f;
                             npc.localAI[1] = 0f;
                             float num394 = 10f;
                             int num395 = npc.damage / 8;
-                            int num396 = mod.ProjectileType<DeathLaser>();
                             if (Main.expertMode)
                             {
                                 num394 = 12.5f;
@@ -695,7 +726,14 @@ namespace AAMod.NPCs.Bosses.Zero
                             num392 *= num393;
                             vector38.X += num391 * 15f;
                             vector38.Y += num392 * 15f;
-                            Projectile.NewProjectile(vector38.X, vector38.Y, num391, num392, num396, num395, 0f, Main.myPlayer, 0f, 0f);
+                            int damage = npc.damage;
+                            for (int i = 0; i < 5; ++i)
+                            {
+                                if (Main.netMode != 1)
+                                {
+                                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("DeathLaser"), (int)(damage * 1.5f), 0f, Main.myPlayer);
+                                }
+                            }
                             return;
                         }
                     }

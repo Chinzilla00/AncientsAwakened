@@ -68,7 +68,7 @@ namespace AAMod
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
                 new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 54, 34);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Zero")));
@@ -83,7 +83,7 @@ namespace AAMod
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
                 new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 54, 34);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 10);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
@@ -127,18 +127,7 @@ namespace AAMod
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
             }
-            if (AchievementLibs != null)
-            {
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Have a Seat", "Crabs... My Mortal Enemy...", "Achievements/Chair", (Func<bool>)(() => AAWorld.Chairlol));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Claws of Catastrophe", "Defeat the rampaging hands of discord, the Grips of Chaos", "Achievements/Grips", (Func<bool>)(() => AAWorld.downedGrips));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Blazing Fury", "Defeat the flaming dragoness, the Broodmother", "Achievements/Brood", (Func<bool>)(() => AAWorld.downedBrood));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Storming Seige", "Defeat any of the robotic replicas known as the Storm Bosses", "Achievements/Storm", (Func<bool>)(() => AAWorld.downedStormAny));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Epitome of Equinox", "Defeat the Equinox worms, the Daybringer and the Nightcrawler", "Achievements/Equinox", (Func<bool>)(() => AAWorld.downedEquinox));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Trial by Fire", "Defeat the draconian sun serpent himself, Akuma", "Achievements/AkumaA", (Func<bool>)(() => AAWorld.downedAkuma));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "True Blazing Fury", "Defeat Akuma's true, radiant Awakened form", "Achievements/AkumaA", (Func<bool>)(() => AAWorld.downedAkumaA));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Destroy the dark doomsday automaton, Zero", "Achievements/Zero", (Func<bool>)(() => AAWorld.downedZero));
-                AchievementLibs.Call("AddAchievementWithoutReward", this, "Doomsday Arrives", "Defeat Zero's true, dark Awakened form", "Achievements/ZeroA", (Func<bool>)(() => AAWorld.downedZeroA));
-            }
+            
         }
 
         public static void PremultiplyTexture(Texture2D texture)

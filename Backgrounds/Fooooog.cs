@@ -16,7 +16,7 @@ namespace AAMod.Backgrounds
             Player player = Main.player[Main.myPlayer];
             if (player.HasBuff(mod.BuffType<Clueless>()) && Main.netMode == 0)
             {
-                ScreenFog.Draw(mod.GetTexture("Backgrounds/fog"), 0.3f, 0.1f);
+                ScreenFog.Draw(mod.GetTexture("Backgrounds/fog"), 0.5f, 0.4f);
             }
         }
     }

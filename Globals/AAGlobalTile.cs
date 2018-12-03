@@ -24,9 +24,17 @@ namespace AAMod
 		{
 			return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
 		}
-		
-		
-		public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
+        public static Color GetZeroColorBrightInvert(Color color) { return GetZeroColor(color, 1f, 0.6f, true); }
+        public static Color GetZeroColorDim(Color color) { return GetZeroColor(color, 0.4f, 1f, false); }
+        public static Color GetZeroColorBright(Color color) { return GetZeroColor(color, 0.6f, 1f, false); }
+        public static Color GetZeroColorPylon(Color color) { return GetZeroColor(color, 0.65f, 1f, true); }
+        public static Color GetZeroColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAPlayer.ZeroColor, color, min, max, clamp);
+        }
+
+
+        public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
 		{
 			Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
 			if (clamp)

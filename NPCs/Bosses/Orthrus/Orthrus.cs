@@ -222,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 string neckTex = ("NPCs/Bosses/Orthrus/OrthrusNeck");
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 10);
                 Vector2 connector = head.Center;
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);

@@ -39,7 +39,7 @@ namespace AAMod.Backgrounds
         public override void Update(GameTime gameTime)
         {
             _fogTimer--;
-            _fogTimer2 -= 3;
+            _fogTimer2 -= 2;
             if (_fogTimer <= 0)
             {
                 _fogTimer = texture.Width;
@@ -56,7 +56,7 @@ namespace AAMod.Backgrounds
             {
                 for (int j = 0; j < dimension.Height; j += texture.Height)
                 {
-                    Main.spriteBatch.Draw(texture, new Rectangle(i - _fogTimer, j, 512, 512), null, Color.White * fogOpacity1, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture, new Rectangle(i - _fogTimer, j, 1920, 1080), null, Color.White * fogOpacity1, 0f, Vector2.Zero, SpriteEffects.None, 0f);
                 }
             }
 
@@ -65,7 +65,7 @@ namespace AAMod.Backgrounds
             {
                 for (int j = 0; j < Main.screenHeight; j += texture.Height)
                 {
-                    Main.spriteBatch.Draw(texture, new Rectangle(i - _fogTimer2, j, 512, 512), null, Color.White * fogOpacity2, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture, new Rectangle(i - _fogTimer2, j, 1920, 1080), null, Color.White * fogOpacity2, 0f, Vector2.Zero, SpriteEffects.None, 0f);
                 }
             }
             Main.spriteBatch.End();

@@ -13,7 +13,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Equinox Worm");
-            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavans
+            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavens
 Not Consumable");
         }
 

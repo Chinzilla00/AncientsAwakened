@@ -34,7 +34,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
-
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -304,18 +307,27 @@ namespace AAMod.NPCs.Bosses.Zero
             return base.PreDraw(spriteBatch, drawColor);
         }
 
+        public Color GetGlowAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Vector2 vector10 = new Vector2((float)(Main.npcTexture[npc.type].Width / 2), (float)(Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2));
-            float num65 = 0f;
-            float num66 = Main.NPCAddHeight(npc.whoAmI);
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            if (glowTex == null)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                glowTex = mod.GetTexture("Glowmasks/VoidStarZ");
             }
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/VoidStar_Glow"), new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - ((float)Main.npcTexture[npc.type].Width * npc.scale / 2f) + (vector10.X * npc.scale), npc.position.Y - Main.screenPosition.Y + (float)npc.height - ((float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type]) + 4f + (vector10.Y * npc.scale) + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
-            base.PostDraw(spriteBatch, drawColor);
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseMod.BaseDrawing.DrawAura(spriteBatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GetGlowAlpha());
         }
 
     }

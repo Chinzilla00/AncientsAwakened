@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noTileCollide = true;
             npc.chaseable = false;
             npc.knockBackResist = 0.0f;
-            animationType = NPCID.PrimeVice;
+            animationType = NPCID.PrimeSaw;
             npc.lavaImmune = true;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
@@ -38,6 +38,10 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.netAlways = true;
             npc.dontTakeDamage = true;
             npc.chaseable = false;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -59,6 +63,20 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             GoreHand();
             return base.PreNPCLoot();
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.velocity.Y == 0.0)
+                npc.spriteDirection = npc.direction;
+            ++npc.frameCounter;
+            if (npc.frameCounter >= 2.0)
+            {
+                npc.frameCounter = 0.0;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y / frameHeight >= 2)
+                    npc.frame.Y = 0;
+            }
         }
 
         public override void AI()
@@ -360,18 +378,27 @@ namespace AAMod.NPCs.Bosses.Zero
             return base.PreDraw(spriteBatch, drawColor);
         }
 
+        public Color GetGlowAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Vector2 vector10 = new Vector2((float)(Main.npcTexture[npc.type].Width / 2), (float)(Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2));
-            float num65 = 0f;
-            float num66 = Main.NPCAddHeight(npc.whoAmI);
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            if (glowTex == null)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                glowTex = mod.GetTexture("Glowmasks/TeslaHandZ");
             }
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/TeslaHand_Glow"), new Vector2(npc.position.X - Main.screenPosition.X + (float)(npc.width / 2) - ((float)Main.npcTexture[npc.type].Width * npc.scale / 2f) + (vector10.X * npc.scale), npc.position.Y - Main.screenPosition.Y + (float)npc.height - ((float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type]) + 4f + (vector10.Y * npc.scale) + num66 + num65), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(200, 200, 200, 0), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
-            base.PostDraw(spriteBatch, drawColor);
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseMod.BaseDrawing.DrawAura(spriteBatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GetGlowAlpha());
         }
     }
 }

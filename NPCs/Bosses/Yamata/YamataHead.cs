@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        /*public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
             if (Body != null && Body.modNPC is Yamata)
             {
@@ -271,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 ((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
             }
             return true;
-        }
+        }*/
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;

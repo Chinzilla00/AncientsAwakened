@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,18 +34,71 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
 		}
-        
+
+        public override void AI()
+        {
+            timer++;
+            float num373 = 8.25f;
+            int num375 = 1;
+            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            {
+                num375 = -1;
+            }
+            Vector2 vector36 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num376 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num375 * 300) - vector36.X;
+            float num377 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 300f - vector36.Y;
+            float num378 = (float)Math.Sqrt((num376 * num376) + (num377 * num377));
+            float num379 = num378;
+            num378 = num373 / num378;
+            num376 *= num378;
+            num377 *= num378;
+            if (Main.netMode != 1)
+            {
+                float num380 = 9f;
+                int num381 = npc.damage / 8;
+                int num382 = mod.ProjectileType<DeathLaser>();
+                if (Main.expertMode)
+                {
+                    num380 = 10.5f;
+                    num381 = npc.damage / 8;
+                }
+                num378 = (float)Math.Sqrt((num376 * num376) + (num377 * num377));
+                num378 = num380 / num378;
+                num376 *= num378;
+                num377 *= num378;
+                num376 += Main.rand.Next(-40, 41) * 0.08f;
+                num377 += Main.rand.Next(-40, 41) * 0.08f;
+                vector36.X += num376 * 15f;
+                vector36.Y += num377 * 15f;
+                if (timer == 180)
+                {
+                    Projectile.NewProjectile(vector36.X, vector36.Y, num376, num377, num382, num381, 0f, Main.myPlayer, 0f, 0f);
+                    timer = 0;
+                }
+            }
+        }
+
+        public Color GetGlowAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            if (glowTex == null)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                glowTex = mod.GetTexture("Glowmasks/SearcherZero_Glow");
             }
-            spriteBatch.Draw(mod.GetTexture("Glowmasks/SearcherZero_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseMod.BaseDrawing.DrawAura(spriteBatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GetGlowAlpha());
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -496,11 +496,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            if (Main.expertMode)
-            {
-                potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedAkumaA = true;
-            }
+            
 
             if (!AAWorld.downedAkumaA && Main.expertMode)
             {
@@ -517,6 +513,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Main.NewText("Nice hacks, kid. Now come back and fight me like a real man in expert mode. Then I’ll give you your prize.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
+            }
+
+            if (Main.expertMode)
+            {
+                potionType = ItemID.SuperHealingPotion;   //boss drops
+                AAWorld.downedAkumaA = true;
             }
         }
 

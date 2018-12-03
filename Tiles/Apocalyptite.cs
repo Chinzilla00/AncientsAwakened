@@ -7,6 +7,8 @@ namespace AAMod.Tiles
 {
     public class Apocalyptite : ModTile
     {
+        public Texture2D glowTex;
+        public bool glow = true;
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -20,16 +22,21 @@ namespace AAMod.Tiles
 			minPick = 225;
         }
 
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            Tile tile = Main.tile[i, j];
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
+            if (!glow) return;
+            Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
+            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
-                zero = Vector2.Zero;
+                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/ApocalyptiteTile_Glow");
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ApocalyptiteTile_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override int SaplingGrowthType(ref int style)
