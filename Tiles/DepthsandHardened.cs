@@ -10,7 +10,6 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlendAll[this.Type] = true;
-            Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = false;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthstone");   //put your CustomBlock name

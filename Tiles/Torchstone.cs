@@ -11,8 +11,6 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("Incinerite")] = true;
             Main.tileMergeDirt[Type] = true;
-            Main.tileBlockLight[Type] = true;  //true for block to emit light
-            Main.tileLighted[Type] = false;
             soundType = 21;
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchstone");   //put your CustomBlock name

@@ -56,10 +56,11 @@ namespace AAMod.Items.Melee
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if (Main.rand.Next(1) == 0)
+            if (Main.rand.NextFloat() < 1f) ;
             {
-                int dustid = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire);
-                Main.dust[dustid].noGravity = true;
+                Dust dust;
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 46, default(Color), 1.381579f)];
+                dust.noGravity = true;
             }
         }
 

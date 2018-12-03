@@ -1,5 +1,7 @@
 
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod
@@ -46,6 +48,34 @@ namespace AAMod
 			}
 			return glowColor;
 		}
-	}
+
+        public static void GenAAOres(bool itemSpawn)
+        {
+            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
+            else
+            {
+                Mod mod = AAMod.instance;
+                float percent = (float)Main.maxTilesX / 4300f;
+                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
+                if (itemSpawn) count = (int)(200f * percent);
+                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                {
+                    int x = Main.maxTilesX;
+                    int y = Main.maxTilesY;
+                    int tilesX = WorldGen.genRand.Next(0, x);
+                    int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
+                    if (Main.tile[tilesX, tilesY].type == TileID.Mud)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
+                    }
+                    if (Main.tile[tilesX, tilesY].type == TileID.Stone)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
+                    }
+                }
+            }
+        }
+    }
 }
 

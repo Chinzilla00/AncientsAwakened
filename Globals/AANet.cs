@@ -11,9 +11,11 @@ namespace AAMod
 {
 	public class AANet
 	{
-		public static bool DEBUG = true; 	
-		
-		public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+		public static bool DEBUG = true;
+
+        public const byte GenOre = 14;
+
+        public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
 		{
 			if(DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "SYNC PLAYER CALLED! NEWPLAYER: " + newPlayer + ". TOWHO: " + toWho + ". FROMWHO:" + fromWho);			
 			if(Main.netMode == 2 && (toWho > -1 || fromWho > -1))
@@ -55,24 +57,38 @@ namespace AAMod
         public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
 			byte msg = bb.ReadByte();		
-			if(DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);				
-			try
-			{
-            if (msg == SyncShock) //Electric Shock master and stats setting
-			{
-				int projID = (int)bb.ReadShort();
-				int masterType = (int)bb.ReadByte();
-				int masterID = (int)bb.ReadShort();
-				int maxTargets = (int)bb.ReadByte();
-				float minRange = bb.ReadFloat();
-				float maxRange = bb.ReadFloat();
-				if (Main.projectile[projID] != null && Main.projectile[projID].active && Main.projectile[projID].modProjectile is AAProjectile)
-				{
-                    ((AAProjectile)Main.projectile[projID].modProjectile).SetMaster(masterType, masterID, maxTargets, minRange, maxRange, false);
-				}
-				if (Main.netMode == 2) SendNetMessage(SyncShock, (short)projID, (byte)masterType, (short)masterID, (byte)maxTargets, minRange, maxRange);
-			}
-			}catch(Exception e){ ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+			if(DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);
+            try
+            {
+                if (msg == SyncShock) //Electric Shock master and stats setting
+                {
+                    int projID = (int)bb.ReadShort();
+                    int masterType = (int)bb.ReadByte();
+                    int masterID = (int)bb.ReadShort();
+                    int maxTargets = (int)bb.ReadByte();
+                    float minRange = bb.ReadFloat();
+                    float maxRange = bb.ReadFloat();
+                    if (Main.projectile[projID] != null && Main.projectile[projID].active && Main.projectile[projID].modProjectile is AAProjectile)
+                    {
+                        ((AAProjectile)Main.projectile[projID].modProjectile).SetMaster(masterType, masterID, maxTargets, minRange, maxRange, false);
+                    }
+                    if (Main.netMode == 2) SendNetMessage(SyncShock, (short)projID, (byte)masterType, (short)masterID, (byte)maxTargets, minRange, maxRange);
+                }
+                else
+                if (msg == GenOre) //generate ore (client-to-server)
+                {
+                    if (Main.netMode == 2)
+                    {
+                        int oreType = (int)bb.ReadByte();
+                        switch (oreType)
+                        {
+                            default: break;
+                            case 0: AAGlobalTile.GenAAOres(true); break;
+                        }
+                    }
+                }
+            }
+            catch (Exception e) { ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
 		}	
 		public const byte SyncShock = 4;
 	}

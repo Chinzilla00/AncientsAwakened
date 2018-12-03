@@ -40,15 +40,18 @@ namespace AAMod.Items.Melee
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-		
-		public override void MeleeEffects(Player player, Rectangle hitbox)
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            Dust dust;
-            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(33, 0, 255), 1.25f);
-			dust.noGravity = true;
+            if (Main.rand.NextFloat() < 1f) ;
+            {
+                Dust dust;
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 46, default(Color), 1.381579f)];
+                dust.noGravity = true;
+            }
         }
-		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             target.AddBuff(BuffID.Poisoned, 400);
         }
