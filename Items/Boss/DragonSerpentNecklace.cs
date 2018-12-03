@@ -2,7 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Broodmother
+namespace AAMod.Items.Boss
 {
     public class DragonSerpentNecklace : ModItem
     {

@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.Items.DevTool
+namespace AAMod.Items.DevTools
 {
 	public class AncientOreGenner : ModItem
 	{

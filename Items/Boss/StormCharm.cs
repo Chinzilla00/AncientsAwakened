@@ -2,7 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Broodmother
+namespace AAMod.Items.Boss
 {
     public class StormCharm : ModItem
     {
@@ -30,7 +30,7 @@ Ignores 5 Enemy defense");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Holocape", 1);
+            recipe.AddIngredient(null, "HoloCape", 1);
             recipe.AddIngredient(null, "StormPendant", 1);
             recipe.AddIngredient(null, "DragonSerpentNecklace", 1);
             recipe.AddTile(TileID.MythrilAnvil);
