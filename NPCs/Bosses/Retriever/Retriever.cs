@@ -345,14 +345,6 @@ namespace AAMod.NPCs.Bosses.Retriever
                         }
                     }
                     npc.ai[1] += 1f;
-                    if (npc.ai[1] >= 3f)
-                    {
-                        Main.PlaySound(SoundID.Item14, npc.position);
-                        npc.life = 0;
-                        npc.HitEffect(0, 10.0);
-                        npc.active = false;
-                        return;
-                    }
                 }
             }
         }

@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragontamer's Cloak");
+            DisplayName.SetDefault("Dragon Serpent Necklace");
             Tooltip.SetDefault(@"10% Increased Damage Resistance
 12% Increased damage
 Ignores 5 Enemy defense");

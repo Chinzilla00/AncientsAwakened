@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss
             DisplayName.SetDefault("EX Soul");
             Tooltip.SetDefault("Essence of ancient, arcane magic");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
             ItemID.Sets.ItemNoGravity[item.type] = true;
 
         }

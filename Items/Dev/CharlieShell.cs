@@ -15,7 +15,7 @@ namespace AAMod.Items.Dev
             Tooltip.SetDefault(
 @"Allows you to dash into enemies, damaging them
 Enemies that hit you take full damage
-'I. Will. Smite. You.
+'I. Will. Smite. You.'
 -Charlie");
         }
 

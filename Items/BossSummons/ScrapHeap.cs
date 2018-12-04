@@ -34,31 +34,29 @@ Can only be used at night");
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-        public override bool CanUseItem(Player player)
-        {
-            if (!Main.dayTime)
-            {
-                return false;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
-            {
-                if (NPC.AnyNPCs(mod.NPCType<Orthrus>()))
-                {
-                    return false;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<Orthrus>()))
-                {
-                    return false;
-                }
-                return true;
-            }
-            return false;
-        }
-
         public override bool UseItem(Player player)
         {
             SpawnBoss(player, "Orthrus", "Orthrus X");
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.dayTime)
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You feel a static shock from using this. Maybe it's trying to send a signal?", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (Main.netMode == 0)
+                {
+                    player.statLife -= 1;
+                }
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("Orthrus")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Orthrus wants to eat that AND you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                return false;
+            }
             return true;
         }
 
@@ -83,6 +81,9 @@ Can only be used at night");
                 }
             }
         }
+
+        public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
 
         public override void AddRecipes()
         {
