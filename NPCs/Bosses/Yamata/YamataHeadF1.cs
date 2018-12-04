@@ -160,28 +160,26 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.spriteDirection = -1;
         }
 
-        /*public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
             if (Body != null)
             {
                 Body.DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", npc, lightColor);
             }
             return true;
-        }*/
+        }
 
         public override void FindFrame(int frameHeight)
         {
             if (fireAttack)
             {
-                MouthCounter++;
-                if (MouthCounter > 10)
+                if (npc.frameCounter < 4)
                 {
-                    MouthFrame++;
-                    MouthCounter = 0;
+                    npc.frame.Y = 1 * frameHeight;
                 }
-                if (MouthFrame >= 3)
+                if (npc.frameCounter < 8)
                 {
-                    MouthFrame = 2;
+                    npc.frame.Y = 2 * frameHeight;
                 }
             }
             else

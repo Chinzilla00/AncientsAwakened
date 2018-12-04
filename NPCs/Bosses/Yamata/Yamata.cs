@@ -87,7 +87,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.lifeMax = 150000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            npc.dontTakeDamage = true;
+            npc.defense = 9999999;
+            npc.dontTakeDamage = false;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -138,7 +139,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void NPCLoot()
         {
-            AAWorld.downedYamata = true;
 
 
             if (!Main.expertMode)
@@ -150,13 +150,18 @@ namespace AAMod.NPCs.Bosses.Yamata
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                 Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
+                if (!AAWorld.downedYamata)
+                {
+                    BaseUtility.Chat("The looming fog finally lifts from the mire.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                }
             }
             if (Main.expertMode)
             {
+                npc.value = 0f;
                 Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
             }
-            npc.value = 0f;
             npc.boss = false;
+            AAWorld.downedYamata = true;
 
         }
 
@@ -607,7 +612,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 legs[1].DrawLeg(sb, npc, dColor);
             }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            // DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
+            DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor);			
             return false;
         }
 
@@ -635,22 +640,22 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    Main.NewText("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
+                    BaseUtility.Chat("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    Main.NewText("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
+                    BaseUtility.Chat("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    Main.NewText("NYAAAAAAAAAAAAAH..! YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
+                    BaseUtility.Chat("NYAAAAAAAAAAAAAH..! YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
                     quarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 5 && tenthHealth == false)
                 {
-                    Main.NewText("I'VE SQUASHED LIZARDS BIGGER THAN YOU! WHY WON'T YOU JUST FLATTEN?!", new Color(45, 46, 70));
+                    BaseUtility.Chat("I'VE SQUASHED LIZARDS BIGGER THAN YOU! WHY WON'T YOU JUST FLATTEN?!", new Color(45, 46, 70));
                     tenthHealth = true;
                 }
 

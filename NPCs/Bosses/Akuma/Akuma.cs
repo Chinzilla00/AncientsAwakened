@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -398,11 +399,15 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.DropLoot(mod.ItemType("CrucibleScale"), 20, 30);
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
-                    int loot = Main.rand.Next(lootTable.Length);
-                    npc.DropLoot(mod.ItemType(lootTable[loot]));
-                    //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                    npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
-                    Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
+                npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
+                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
+                if (!AAWorld.downedAkuma)
+                {
+                    BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                }
             }
             if (Main.expertMode)
             {

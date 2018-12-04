@@ -25,10 +25,8 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void AI()
         {
-
-            
-
-            if (++projectile.frameCounter >= 10)
+            AAWorld.downedZeroA = true;
+            if (++projectile.frameCounter >= 15)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 30)
@@ -41,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (projectile.timeLeft == 913)
             {
                 Main.NewText("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
-                AAWorld.downedZeroA = true;
+                
             }
         }
         public override void Kill(int timeLeft)

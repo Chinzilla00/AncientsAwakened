@@ -104,6 +104,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamataA && Main.expertMode && !cheated)
             {
+                BaseUtility.Chat("The looming fog finally lifts from the mire.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
                 Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY..!", new Color(146, 30, 68));
             }
             if (AAWorld.downedYamataA && Main.expertMode && !cheated)
