@@ -557,8 +557,6 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool[0] = 0f;
-                pool.Add(mod.NPCType("Searcher"), 1f);
-                pool.Add(mod.NPCType("Null"), 1f);
             }
         }
 

@@ -54,21 +54,35 @@ namespace AAMod.Backgrounds
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
-        public float asteroidPercent = 0f;
+        public float asteroidPercent1 = 0f;
+        public float asteroidPercent2 = 0f;
+        public float asteroidPercent3 = 0f;
+        public float Rotation = 0;
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                var Asteroidpos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                asteroidPercent += 0.2f;
-                Asteroidpos.Y += (float)Math.Sin(asteroidPercent);
-                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Echo, planetPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids1, Asteroidpos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids2, Asteroidpos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids3, Asteroidpos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
+                var echoPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos1 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos2 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos3 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                asteroidPercent1 += 0.04f;
+                asteroidPercent2 += 0.05f;
+                asteroidPercent3 += 0.06f;
+                Rotation += .001f;
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1);
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent2);
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent3);
+                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
+                {
+                    spriteBatch.Draw(Echo, echoPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+                }
+                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
         }
 
