@@ -16,7 +16,6 @@ using System.Reflection;
 using AAMod.Items.Materials;
 using AAMod.Items.Armor.Darkmatter;
 using AAMod.Items.Armor.Radium;
-using AAMod.Items.Boss;
 using AAMod.Items.Blocks;
 
 namespace AAMod
@@ -68,7 +67,7 @@ namespace AAMod
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
                 new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 0, 10);
+                yabhb.Call("hbSetMidBarOffset", 60, 10);
                 yabhb.Call("hbSetBossHeadCentre", 54, 34);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Zero")));
@@ -83,7 +82,7 @@ namespace AAMod
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
                 new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 0, 10);
+                yabhb.Call("hbSetMidBarOffset", 60, 10);
                 yabhb.Call("hbSetBossHeadCentre", 54, 34);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 10);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
@@ -200,7 +199,13 @@ namespace AAMod
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
-                VoidSky.Asteroids = GetTexture("Backgrounds/Asteroids");
+                VoidSky.Asteroids1 = GetTexture("Backgrounds/Asteroids1");
+                VoidSky.Asteroids2 = GetTexture("Backgrounds/Asteroids2");
+                VoidSky.Asteroids3 = GetTexture("Backgrounds/Asteroids3");
+                VoidSky.Echo = GetTexture("Backgrounds/Echo");
+                VoidSky.LB = GetTexture("Backgrounds/LB");
+                VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
+                VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
 
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
@@ -948,6 +953,14 @@ namespace AAMod
                 recipe.AddIngredient(ItemID.SoulofLight, 10);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.GravityGlobe, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "MushiumBar", 1);
+                recipe.AddIngredient(ItemID.GlowingMushroom, 5);
+                recipe.AddTile(TileID.Autohammer);
+                recipe.SetResult(ItemID.ShroomiteBar, 1);
                 recipe.AddRecipe();
             }
         }

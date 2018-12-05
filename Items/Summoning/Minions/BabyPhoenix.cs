@@ -20,7 +20,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.netImportant = true;
             projectile.width = 28;
             projectile.height = 28;
-            projectile.aiStyle = 54;
+            projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;
@@ -229,7 +229,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 modPlayer.BabyPhoenix = false;
             }
-            if (modPlayer.enderMinion)
+            if (modPlayer.BabyPhoenix)
             {
                 projectile.timeLeft = 2;
             }

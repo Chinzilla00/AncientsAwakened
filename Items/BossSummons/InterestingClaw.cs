@@ -1,3 +1,5 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,21 +29,6 @@ Only usable at night");
 			item.UseSound = SoundID.Item44;
 			item.consumable = true;
 		}
-
-		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-		public override bool CanUseItem(Player player)
-		{
-            return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("GripOfChaosBlue")) && !NPC.AnyNPCs(mod.NPCType("GripOfChaosRed"));
-        }
-
-		public override bool UseItem(Player player)
-		{
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("GripOfChaosRed"));
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("GripOfChaosBlue"));
-            Main.PlaySound(SoundID.Roar, player.position, 0);
-			return true;
-		}
-
 		public override void AddRecipes()
 		{
             ModRecipe recipe = new ModRecipe(mod);
@@ -50,5 +37,48 @@ Only usable at night");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
-	}
+
+        public override bool UseItem(Player player)
+        {
+            SpawnBoss(player, "GripOfChaosBlue", "GripOfChaosRed");
+            Main.NewText("The Grips of Chaos have awoken", new Color(175, 75, 255));
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.dayTime)
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw just sits there, limp in your hand.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("GripOfChaosBlue")) || NPC.AnyNPCs(mod.NPCType("GripOfChaosRed")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Grips are already here", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                return false;
+            }
+            return false;
+        }
+
+        public void SpawnBoss(Player player, string name1, string name2)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType1 = mod.NPCType(name1);
+                int bossType2 = mod.NPCType(name2);
+                if (NPC.AnyNPCs(bossType1)) { return; } //don't spawn if there's already a boss!
+                if (NPC.AnyNPCs(bossType2)) { return; }
+                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
+                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
+                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID1].netUpdate2 = true;
+                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID2].netUpdate2 = true;
+            }
+        }
+
+        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
+    }
 }

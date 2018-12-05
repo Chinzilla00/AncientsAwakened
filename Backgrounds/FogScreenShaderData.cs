@@ -14,8 +14,8 @@ namespace AAMod.Backgrounds
 {
     class FogScreenShaderData : ScreenShaderData
     {
-        private int _fogTimer = 300;
-        private int _fogTimer2 = 300;
+        private int _fogTimer = 500;
+        private int _fogTimer2 = 500;
         private Vector2 texturePostion = Vector2.Zero;
         private readonly int textureWidth;
         private readonly int textureHeight;

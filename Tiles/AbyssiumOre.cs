@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -14,6 +15,7 @@ namespace AAMod.Tiles
             Main.tileSpelunker[Type] = true;
             Main.tileMerge[Type][mod.TileType("Depthstone")] = true;
             Main.tileBlockLight[Type] = true;
+            Main.tileMerge[TileID.Mud][Type] = true;
             //true for block to emit light
             soundType = 21;
             Main.tileLighted[Type] = true;

@@ -178,6 +178,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
+        public bool saythelinezero = false;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
@@ -190,11 +191,15 @@ namespace AAMod.NPCs.Bosses.Zero
             BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseMod.BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
             BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            if (!saythelinezero)
+            {
+                BaseMod.BaseDrawing.DrawAura(spritebatch, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+                BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, Color.White);
+            }
             return false;
         }
 
         public int MinionTimer = 0;
-
         public override void AI()
         {
             MinionTimer++;
@@ -207,8 +212,29 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
+                if (!saythelinezero)
+                {
+                    saythelinezero = true;
+                    Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
+                if (!Main.expertMode && !AAWorld.downedZero)
+                {
+                    npc.damage = 100;
+                }
+                if (!Main.expertMode && AAWorld.downedZero)
+                {
+                    npc.damage = 110;
+                }
+                if (Main.expertMode && !AAWorld.downedZeroA)
+                {
+                    npc.damage = 110;
+                }
+                if (Main.expertMode && AAWorld.downedZeroA)
+                {
+                    npc.damage = 120;
+                }
             }
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
@@ -248,10 +274,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.ai[1] = 3f;
                 }
-            }
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
-            {
-                npc.defense = 999999999;
             }
             else
             {

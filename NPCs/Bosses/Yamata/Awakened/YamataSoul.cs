@@ -49,16 +49,28 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public Color GetGlowAlpha()
         {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            return new Color(200, 0, 50) * ((float)Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null, glowTex2 = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                glowTex = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataSoul");
+                glowTex2 = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataSoul");
             }
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataSoul"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.Red, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            BaseDrawing.DrawAfterimage(spritebatch, glowTex2, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
+            return false;
         }
     }
 }

@@ -34,9 +34,7 @@ namespace AAMod.Items.Boss.Akuma
             item.rare = 0;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shootSpeed = 14f;
-            
-
+            item.shootSpeed = 7f;
         }
 
 

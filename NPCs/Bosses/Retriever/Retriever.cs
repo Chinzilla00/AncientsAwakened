@@ -29,10 +29,9 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.width = 92;
             npc.height = 54;
             npc.friendly = false;
-            animationType = NPCID.DemonEye;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(0, 10, 50, 0);
             npc.npcSlots = 1f;
-            npc.boss = true;  
+            npc.boss = true;
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -72,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
             if (Main.expertMode)
             {
-                    npc.DropBossBags();
+                npc.DropBossBags();
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofSight, Main.rand.Next(20, 40));
             }
             else
@@ -88,6 +87,28 @@ namespace AAMod.NPCs.Bosses.Retriever
                 }
             }
         }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter < 5)
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+            else if (npc.frameCounter < 10)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else if (npc.frameCounter < 15)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else
+            {
+                npc.frame.Y = 3 * frameHeight;
+            }
+        }
+
 
         public override void BossLoot(ref string name, ref int potionType)
         {

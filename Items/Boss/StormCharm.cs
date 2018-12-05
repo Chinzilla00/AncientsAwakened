@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Storm Pendant");
+            DisplayName.SetDefault("Storm Charm");
             Tooltip.SetDefault(@"20% Increased Damage Resistance
 50% Increased damage
 10% Increased melee speed

@@ -31,12 +31,13 @@ namespace AAMod.Projectiles.Akuma
 		{
             projectile.width = 32;
             projectile.height = 32;
-            projectile.aiStyle = 0;
+            projectile.aiStyle = -1;
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hide = true;
             projectile.sentry = true;
+            projectile.alpha = 255;
         }
 
         
@@ -172,13 +173,12 @@ namespace AAMod.Projectiles.Akuma
             }
         }
 
+        public float Rotation = 0;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture2D13 = Main.projectileTexture[projectile.type];
-            int num214 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type];
-            int y6 = num214 * projectile.frame;
-            Main.spriteBatch.Draw(texture2D13, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, texture2D13.Width, num214)), projectile.GetAlpha(lightColor), projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), projectile.scale, SpriteEffects.None, 0f);
-            return false;
+            Rotation += .0008f;
+            spriteBatch.Draw(Main.projectileTexture[projectile.type], projectile.Center, null, Color.White, Rotation, new Vector2(projectile.width >> 1, projectile.height >> 1), 1f, SpriteEffects.None, 1f);
+            return true;
         }
     }
 }

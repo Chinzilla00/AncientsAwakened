@@ -33,7 +33,7 @@ Blade of Night EX");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("UmbreonSPProjectile");
 			item.shootSpeed = 18f;
-			
+            item.expert = true;
 		}
 
 

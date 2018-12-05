@@ -2,6 +2,9 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using BaseMod;
+using AAMod.NPCs.Bosses.Orthrus;
+using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
@@ -31,18 +34,56 @@ Can only be used at night");
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-        public override bool CanUseItem(Player player)
-        {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            return !NPC.AnyNPCs(mod.NPCType("Orthrus")) && !Main.dayTime;
-        }
-
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Orthrus"));
-            Main.PlaySound(new LegacySoundStyle(2, 35, Terraria.Audio.SoundType.Sound));
+            SpawnBoss(player, "Orthrus", "Orthrus X");
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.dayTime)
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You feel a static shock from using this. Maybe it's trying to send a signal?", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (Main.netMode == 0)
+                {
+                    player.statLife -= 1;
+                }
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("Orthrus")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Orthrus wants to eat that AND you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                return false;
+            }
+            return true;
+        }
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
+                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
+                if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                else
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                    {
+                        NetworkText.FromLiteral(npcName)
+                    }), new Color(175, 75, 255), -1);
+                }
+            }
+        }
+
+        public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
 
         public override void AddRecipes()
         {

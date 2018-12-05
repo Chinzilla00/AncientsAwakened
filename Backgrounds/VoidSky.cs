@@ -13,12 +13,27 @@ namespace AAMod.Backgrounds
 
         private UnifiedRandom random = new UnifiedRandom();
 
+        private struct Bolt
+        {
+            public Vector2 Position;
+
+            public float Depth;
+
+            public int Life;
+
+            public bool IsAlive;
+        }
 
         public static Texture2D PlanetTexture;
-        public static Texture2D Asteroids;
+        public static Texture2D Echo;
+        public static Texture2D Asteroids1;
+        public static Texture2D Asteroids2;
+        public static Texture2D Asteroids3;
         public static Texture2D BGTexture;
-        public Texture2D boltTexture;
-        public Texture2D flashTexture;
+        public static Texture2D LB;
+        public static Texture2D boltTexture;
+        public static Texture2D flashTexture;
+        private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
@@ -26,7 +41,11 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/VoidBH");
-            Asteroids = TextureManager.Load("Backgrounds/Asteroids");
+            Asteroids1 = TextureManager.Load("Backgrounds/Asteroids1");
+            Asteroids2 = TextureManager.Load("Backgrounds/Asteroids2");
+            Asteroids3 = TextureManager.Load("Backgrounds/Asteroids3");
+            Echo = TextureManager.Load("Backgrounds/Echo");
+            LB = TextureManager.Load("Backgrounds/LB");
             boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
             flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
         }
@@ -41,6 +60,38 @@ namespace AAMod.Backgrounds
             {
                 Intensity = Math.Max(0f, Intensity - 0.01f);
             }
+            if (NPC.downedMoonlord)
+            {
+                if (ticksUntilNextBolt <= 0)
+                {
+                    ticksUntilNextBolt = random.Next(1, 5);
+                    int num = 0;
+                    while (bolts[num].IsAlive && num != bolts.Length - 1)
+                    {
+                        num++;
+                    }
+                    bolts[num].IsAlive = true;
+                    bolts[num].Position.X = random.NextFloat() * ((float)Main.maxTilesX * 16f + 4000f) - 2000f;
+                    bolts[num].Position.Y = random.NextFloat() * 500f;
+                    bolts[num].Depth = random.NextFloat() * 8f + 2f;
+                    bolts[num].Life = 30;
+                }
+                ticksUntilNextBolt--;
+                for (int i = 0; i < bolts.Length; i++)
+                {
+                    if (bolts[i].IsAlive)
+                    {
+                        Bolt[] expr168cp0 = bolts;
+                        int expr168cp1 = i;
+                        expr168cp0[expr168cp1].Life = expr168cp0[expr168cp1].Life - 1;
+                        if (bolts[i].Life <= 0)
+                        {
+                            bolts[i].IsAlive = false;
+                        }
+                    }
+                }
+            }
+            
         }
 
         public override Color OnTileColor(Color inColor)
@@ -48,16 +99,60 @@ namespace AAMod.Backgrounds
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
-
+        public float asteroidPercent1 = 0f;
+        public float asteroidPercent2 = 0f;
+        public float asteroidPercent3 = 0f;
+        public float Rotation = 0;
+        public float LBRotation = 0;
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * this.Intensity);
+                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                var Asteroidpos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids, Asteroidpos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(Asteroids.Width >> 1, Asteroids.Height >> 1), 1f, SpriteEffects.None, 1f);
+                var echoPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos1 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos2 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                var Asteroidpos3 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                asteroidPercent1 += 0.04f;
+                asteroidPercent2 += 0.05f;
+                asteroidPercent3 += 0.06f;
+                Rotation += .0008f;
+                LBRotation += .0005f;
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1);
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent2);
+                Asteroidpos1.Y += (float)Math.Sin(asteroidPercent3);
+                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
+                {
+                    spriteBatch.Draw(Echo, echoPos, null, Color.White, 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+                }
+                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
+            }
+            float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
+            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
+            Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
+            for (int i = 0; i < bolts.Length; i++)
+            {
+                if (bolts[i].IsAlive && bolts[i].Depth > minDepth && bolts[i].Depth < maxDepth)
+                {
+                    Vector2 value4 = new Vector2(1f / bolts[i].Depth, 0.9f / bolts[i].Depth);
+                    Vector2 position = (bolts[i].Position - value3) * value4 + value3 - Main.screenPosition;
+                    if (rectangle.Contains((int)position.X, (int)position.Y))
+                    {
+                        Texture2D texture = boltTexture;
+                        int life = bolts[i].Life;
+                        if (life > 26 && life % 2 == 0)
+                        {
+                            texture = flashTexture;
+                        }
+                        float scale2 = (float)life / 30f;
+                        spriteBatch.Draw(texture, position, null, Color.White * scale * scale2 * Intensity, 0f, Vector2.Zero, value4.X * 5f, SpriteEffects.None, 0f);
+                    }
+                }
             }
         }
 
@@ -70,6 +165,12 @@ namespace AAMod.Backgrounds
         {
             Intensity = 0.002f;
             Active = true;
+
+            bolts = new VoidSky.Bolt[500];
+            for (int i = 0; i < bolts.Length; i++)
+            {
+                bolts[i].IsAlive = false;
+            }
         }
 
         public override void Deactivate(params object[] args)

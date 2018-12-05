@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.friendly = false;
             npc.value = Item.buyPrice(2, 0, 0, 0);
             npc.npcSlots = 1f;
-            npc.boss = true;  
+            npc.boss = true;
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -144,11 +144,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (damage > 30)
             {
-                if (Main.rand.Next(0,10) == 0)
+                if (Main.rand.Next(0, 10) == 0)
                 {
                     int Xint = Main.rand.Next(-400, 400);
                     int Yint = Main.rand.Next(-400, 400);
-                    if ((Xint < -50 || Xint > 50) && (Yint < -60 || Yint > 60))
+                    if ((Xint < -100 || Xint > 100) && (Yint < -90 || Yint > 90))
                     {
                         //Main.NewText("CALLED! XINT: " + Xint + ". YINT: " + Yint);
                         Player player = Main.player[npc.target];
@@ -353,13 +353,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
-                
+
                 if (Killed == false)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
-                
+
                 Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
@@ -391,7 +391,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     float num373 = 8.25f;
                     float num374 = 0.115f;
                     int num375 = 1;
-                    Vector2 vector36 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f)); 
+                    Vector2 vector36 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                     if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
                     {
                         num375 = -1;

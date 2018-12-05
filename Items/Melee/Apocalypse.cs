@@ -23,7 +23,7 @@ Horseman's Blade EX");
             item.damage = 200;
             item.useStyle = 1;
             item.autoReuse = true;
-            item.UseSound = SoundID.Item21;
+            item.UseSound = SoundID.Item1;
             item.shootSpeed = 20f;
             item.width = 54;
 			item.height = 54;    

@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.height = 32;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
-            npc.noTileCollide = false;
+            npc.noTileCollide = true;
             npc.boss = false;
             npc.noGravity = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)

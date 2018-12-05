@@ -28,6 +28,7 @@ namespace AAMod
         public bool LungMinion = false;
         public bool DragonMinion = false;
         public bool BabyPhoenix = false;
+        public bool GripMinion = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -135,6 +136,7 @@ namespace AAMod
             BabyPhoenix = false;
             LungMinion = false;
             DragonMinion = false;
+            GripMinion = false;
             //Biome
             //Armor
             valkyrieSet = false;

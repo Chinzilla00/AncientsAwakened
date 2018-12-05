@@ -13,8 +13,8 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("True Deathly Longbow");
-            Tooltip.SetDefault("Replaces Bone Arrows with Reaper Arrows");
-            
+            Tooltip.SetDefault("Replaces Arrows with Reaper Arrows");
+
         }
 
         public override void SetDefaults()
@@ -31,7 +31,7 @@ namespace AAMod.Items.Ranged
             item.value = Item.sellPrice(0, 7, 0, 0);
             item.rare = 8;
 			item.UseSound = SoundID.Item5;
-			item.autoReuse = false;
+			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 10f;
 			item.useAmmo = AmmoID.Arrow;

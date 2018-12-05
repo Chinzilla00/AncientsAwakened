@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Daybringer;
 using AAMod.NPCs.Bosses.Nightcrawler;
+using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
@@ -49,20 +50,6 @@ Not Consumable");
             );
         }
 
-        // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-        public override bool CanUseItem(Player player)
-        {
-            return !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
-        }
-
-        public override bool UseItem(Player player)
-        {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
-            Main.PlaySound(SoundID.Roar, player.position, 0);
-            return true;
-        }
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -73,5 +60,38 @@ Not Consumable");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
+
+        public override bool UseItem(Player player)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType1 = mod.NPCType<Daybringer>();
+                int bossType2 = mod.NPCType<Nightcrawler>();
+                if (NPC.AnyNPCs(bossType1)) { return false; } //don't spawn if there's already a boss!
+                if (NPC.AnyNPCs(bossType2)) { return false; }
+                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
+                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
+                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID1].netUpdate2 = true;
+                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID2].netUpdate2 = true;
+            }
+            Main.NewText("The Equinox Worms have awoken", Color.Gold);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (NPC.AnyNPCs(mod.NPCType("Daybringer")) || NPC.AnyNPCs(mod.NPCType("Nightcrawler")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Equinox Worms are already here", Color.Gold, false);
+                return false;
+            }
+            return true;
+        }
+
+        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
     }
 }

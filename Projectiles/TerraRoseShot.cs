@@ -24,11 +24,10 @@ namespace AAMod.Projectiles
 		{
 			if (Main.rand.NextFloat() < 0.9210526f)
 			{
-				Dust dust;
 				Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 31, 4.736842f, 0f, 0, new Color(84, 255, 0), 1.184211f)];
-                dust.fadeIn = 1.223684f;
-                dust.noGravity = true;
+                int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 107, projectile.velocity.X * 0.2f,
+                projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                Main.dust[dustId].noGravity = true;
 			}
 		}
 

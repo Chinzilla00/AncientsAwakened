@@ -557,8 +557,15 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool[0] = 0f;
-                pool.Add(mod.NPCType("Searcher"), 1f);
-                pool.Add(mod.NPCType("Null"), 1f);
+
+                if (NPC.downedMoonlord)
+                {
+                    pool.Add(mod.NPCType("Searcher"), 1f);
+                    if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
+                    {
+                        pool.Add(mod.NPCType("Null"), 1f);
+                    }
+                }
             }
         }
 

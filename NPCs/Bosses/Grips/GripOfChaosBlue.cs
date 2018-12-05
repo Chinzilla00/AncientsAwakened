@@ -27,7 +27,6 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.width = 66;
             npc.height = 60;
             npc.friendly = false;
-            animationType = NPCID.DemonEye;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(0, 4, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  
@@ -49,6 +48,27 @@ namespace AAMod.NPCs.Bosses.Grips
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MireGripGore2"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MireGripGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MireGripGore4"), 1f);
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter < 5)
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+            else if (npc.frameCounter < 10)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else if (npc.frameCounter < 15)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else
+            {
+                npc.frame.Y = 3 * frameHeight;
             }
         }
 
@@ -103,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Grips
         {
             if (Main.dayTime)
             {
-                npc.position.Y -= 10;  //disappears at night
+                npc.position.Y += 10;  //disappears at night
             }
             Target();
             DespawnHandler();
@@ -127,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 switchMove = true;     //Makes the switch turn on, making the AI change to nothing
                 npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
+                npc.rotation = npc.velocity.X;      // I think this is the right rotation, if not change it tooooo 180 or something
             }
             if (timer >= 900)          //After 15 seconds this happens
             {

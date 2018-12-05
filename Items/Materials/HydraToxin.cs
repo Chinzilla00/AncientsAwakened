@@ -6,8 +6,8 @@ namespace AAMod.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hydra Toxin");
-            Tooltip.SetDefault("The Essance of Chaos found from the Mire");
+            DisplayName.SetDefault("Bogtoxin");
+            Tooltip.SetDefault("Exceedingly errosive venom. Don't touch it for too long");
         }
         public override void SetDefaults()
         {
