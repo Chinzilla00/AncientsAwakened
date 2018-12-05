@@ -137,7 +137,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
                 Main.npc[npcID].netUpdate2 = true;			
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                
+                /*f (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                else
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                    {
+                        NetworkText.FromLiteral(npcName)
+                    }), new Color(175, 75, 255), -1);
+                }*/
             }
         }
 

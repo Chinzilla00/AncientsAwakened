@@ -63,8 +63,20 @@ Not Consumable");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "Daybringer", "Nightcrawler");
-            Main.NewText("The Grips of Chaos have awoken", new Color(Main.DiscoR, 125, Main.DiscoB));
+            if (Main.netMode != 1)
+            {
+                int bossType1 = mod.NPCType<Daybringer>();
+                int bossType2 = mod.NPCType<Nightcrawler>();
+                if (NPC.AnyNPCs(bossType1)) { return false; } //don't spawn if there's already a boss!
+                if (NPC.AnyNPCs(bossType2)) { return false; }
+                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
+                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
+                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID1].netUpdate2 = true;
+                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID2].netUpdate2 = true;
+            }
+            Main.NewText("The Equinox Worms have awoken", Color.Gold);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
@@ -73,27 +85,10 @@ Not Consumable");
         {
             if (NPC.AnyNPCs(mod.NPCType("Daybringer")) || NPC.AnyNPCs(mod.NPCType("Nightcrawler")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Equinox Worms are already here", (byte)Main.DiscoR, 125, (byte)Main.DiscoB, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Equinox Worms are already here", Color.Gold, false);
                 return false;
             }
             return true;
-        }
-
-        public void SpawnBoss(Player player, string name1, string name2)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType1 = mod.NPCType(name1);
-                int bossType2 = mod.NPCType(name2);
-                if (NPC.AnyNPCs(bossType1)) { return; } //don't spawn if there's already a boss!
-                if (NPC.AnyNPCs(bossType2)) { return; }
-                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
-                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
-                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID1].netUpdate2 = true;
-                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID2].netUpdate2 = true;
-            }
         }
 
         public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }

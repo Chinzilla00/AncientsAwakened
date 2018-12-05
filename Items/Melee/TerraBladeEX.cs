@@ -25,12 +25,13 @@ namespace AAMod.Items.Melee
 			item.width = 62;
 			item.height = 74;
 			item.shoot = mod.ProjectileType("TerraShotEX");
-			item.shootSpeed = 25f;
+			item.shootSpeed = 15f;
 			item.knockBack = 7f;
 			item.melee = true;
 			item.value = Item.sellPrice(0, 20, 0, 0);
 			item.autoReuse = true;
 			item.crit = 8;
+            item.expert = true;
 			
 		}
 

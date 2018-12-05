@@ -32,6 +32,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShotP");
             item.shootSpeed = 16f;
+            item.expert = true;
 		}
 
 		public override void AddRecipes()

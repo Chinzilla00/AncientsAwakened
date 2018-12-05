@@ -31,6 +31,7 @@ namespace AAMod.Items.Dev
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
+            item.expert = true;
         }
 
         public override bool AltFunctionUse(Player player)

@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.lifeMax = 22000;
             npc.width = 36;
             npc.height = 32;
+            npc.damage = 40;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = false;
@@ -110,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
                     }
                 }
                 else

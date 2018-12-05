@@ -14,20 +14,19 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grip of Chaos");
-            Main.npcFrameCount[npc.type] = 4;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 4; 
 
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 1600;   //boss life
-            npc.damage = 20;  //boss damage
-            npc.defense = 12;    //boss defense
+            npc.aiStyle = 5;  
+            npc.lifeMax = 1600;  
+            npc.damage = 20;  
+            npc.defense = 12;   
             npc.knockBackResist = 0f;
             npc.width = 66;
             npc.height = 60;
             npc.friendly = false;
-            animationType = NPCID.DemonEye;   //this boss will behavior like the DemonEye
             npc.value = Item.buyPrice(0, 4, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  
@@ -41,6 +40,28 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.netAlways = true;
             bossBag = mod.ItemType("GripBag");
         }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter < 5)
+            {
+                npc.frame.Y = 0 * frameHeight;
+            }
+            else if (npc.frameCounter < 10)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else if (npc.frameCounter < 15)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else
+            {
+                npc.frame.Y = 3 * frameHeight;
+            }
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
@@ -101,6 +122,10 @@ namespace AAMod.NPCs.Bosses.Grips
         private bool switchMove = false;  //Creates a bool for this .cs only
         public override void AI()
         {
+            if (Main.dayTime)
+            {
+                npc.position.Y += 10;  //disappears at night
+            }
             Target();
             DespawnHandler();
             if (switchMove)
@@ -123,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 switchMove = true;     //Makes the switch turn on, making the AI change to nothing
                 npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
+                npc.rotation = npc.velocity.X;      // I think this is the right rotation, if not change it tooooo 180 or something
             }
             if (timer >= 900)          //After 15 seconds this happens
             {

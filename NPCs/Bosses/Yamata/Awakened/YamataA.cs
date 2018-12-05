@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            displayName = "Yamata Awakened; Abyssal Wrath Incarnate";
+            displayName = "Yamata Awakened";
             Main.npcFrameCount[npc.type] = 7;			
         }	
 
@@ -33,10 +33,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 80;
+                    npc.defense = 80;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 100;
+                    npc.defense = 90;
                 }
             }
             if (AAWorld.downedYamataA)
@@ -45,13 +47,14 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (npc.life > npc.lifeMax / 3)
                 {
                     npc.damage = 90;
+                    npc.defense = 80;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
                     npc.damage = 110;
+                    npc.defense = 90;
                 }
             }
-            npc.dontTakeDamage = true;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(20, 0, 0, 0);
@@ -90,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (damage > npc.lifeMax / 2)
             {
                 cheated = true;
-                Main.NewText("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
+                Main.NewText("CHEATER CHEATER PUMPKIN EATER! THAT HURT YOU KNOW!!!", new Color(146, 30, 68));
             }
             return false;
         }
@@ -104,7 +107,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamataA && Main.expertMode && !cheated)
             {
-                BaseUtility.Chat("The looming fog finally lifts from the mire.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
                 Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY..!", new Color(146, 30, 68));
             }
             if (AAWorld.downedYamataA && Main.expertMode && !cheated)
@@ -124,6 +126,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
                 npc.DropBossBags();
                 AAWorld.downedYamataA = true;
+                if (Main.rand.NextFloat() < 0.1f)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                }
             }
         }
 

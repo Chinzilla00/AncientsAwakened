@@ -109,11 +109,11 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 if (Main.netMode != 1)
                 {
                     int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 60, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 60, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];

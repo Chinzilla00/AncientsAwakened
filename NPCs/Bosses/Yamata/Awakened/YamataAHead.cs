@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            DisplayName.SetDefault("Yamata Awakened; Abyssal Wrath Incarnate");
+            DisplayName.SetDefault("Yamata Awakened");
         }
 
         public override void SetDefaults()

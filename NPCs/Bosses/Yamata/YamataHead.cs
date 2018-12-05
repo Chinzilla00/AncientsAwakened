@@ -4,23 +4,22 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using BaseMod;
-
 namespace AAMod.NPCs.Bosses.Yamata
 {
     [AutoloadBossHead]
     public class YamataHead : ModNPC
     {
 		public bool isAwakened = false;
+		
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata; Dread Nightmare");
+            DisplayName.SetDefault("Yamata");
             Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults()
         {
-            npc.life = npc.lifeMax;
+			npc.life = npc.lifeMax = 100;
             if (!Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 130;
@@ -47,7 +46,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = false;
             npc.noGravity = true;
-            npc.boss = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -89,17 +87,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-
+			
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
-            if (!Body.active)
-            {
-                if (npc.timeLeft > 10)
-                {
-                    npc.timeLeft = 10;
-                }
-            }
 
             int num429 = 1;
             if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
@@ -189,10 +180,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-								Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                             }
                         }
-
+                        
                     }
                     if (attackTimer >= 80)
                     {
@@ -242,179 +233,42 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
-            npc.spriteDirection = -1;
+			npc.spriteDirection = -1;
         }
         public override void FindFrame(int frameHeight)
         {
-            if (fireAttack)
+            npc.frameCounter++;
+            if(fireAttack)
             {
-                if (npc.frameCounter < 4)
+                if (npc.frameCounter < 5)
                 {
                     npc.frame.Y = 1 * frameHeight;
                 }
-                if (npc.frameCounter < 8)
+                else if (npc.frameCounter < 10)
                 {
                     npc.frame.Y = 2 * frameHeight;
                 }
             }
             else
             {
-                npc.frame.Y = 0 * frameHeight;
+                npc.frameCounter = 0;
             }
         }
-
-        private bool tenthHealth = false;
-        private bool quarterHealth = false;
-        private bool threeQuarterHealth = false;
-        private bool HalfHealth = false;
-        bool Panic = false;
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (!isAwakened)
-            {
-                int dust1 = mod.DustType<Dusts.YamataDust>();
-                int dust2 = mod.DustType<Dusts.YamataDust>();
-                if (npc.life <= 0)
-                {
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[dust1].velocity *= 0.5f;
-                    Main.dust[dust1].scale *= 1.3f;
-                    Main.dust[dust1].fadeIn = 1f;
-                    Main.dust[dust1].noGravity = false;
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[dust2].velocity *= 0.5f;
-                    Main.dust[dust2].scale *= 1.3f;
-                    Main.dust[dust2].fadeIn = 1f;
-                    Main.dust[dust2].noGravity = true;
-
-                }
-                if (!AAWorld.downedYamata)
-                {
-                    if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-                    {
-                        BaseUtility.Chat("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
-                        threeQuarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                    {
-                        BaseUtility.Chat("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
-                        HalfHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-                    {
-                        BaseUtility.Chat("NYAAAAAAAAAAAAAH..! YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
-                        quarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 5 && tenthHealth == false)
-                    {
-                        BaseUtility.Chat("I'VE SQUASHED LIZARDS BIGGER THAN YOU! WHY WON'T YOU JUST FLATTEN?!", new Color(45, 46, 70));
-                        tenthHealth = true;
-                    }
-
-                }
-                if (AAWorld.downedYamata)
-                {
-                    if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-                    {
-                        Main.NewText("I don't understand why you keep fighting me! I'm superior to you in every single way..!", new Color(45, 46, 70));
-                        threeQuarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                    {
-                        Main.NewText("I'M GETTING FRUSTRATED AGAIN..!", new Color(45, 46, 70));
-                        HalfHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-                    {
-                        Main.NewText("I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!", new Color(45, 46, 70));
-                        quarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 5 && tenthHealth == false)
-                    {
-                        Main.NewText("I'M GONNA GRIND YOU INTO TOOTHPASTE YOU LITTLE WRETCH!!!", new Color(45, 46, 70));
-                        tenthHealth = true;
-                    }
-                }
-            }
-            if (isAwakened)
-            {
-                int dust1 = mod.DustType<Dusts.YamataADust>();
-                int dust2 = mod.DustType<Dusts.YamataADust>();
-                if (npc.life <= 0)
-                {
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[dust1].velocity *= 0.5f;
-                    Main.dust[dust1].scale *= 1.3f;
-                    Main.dust[dust1].fadeIn = 1f;
-                    Main.dust[dust1].noGravity = false;
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[dust2].velocity *= 0.5f;
-                    Main.dust[dust2].scale *= 1.3f;
-                    Main.dust[dust2].fadeIn = 1f;
-                    Main.dust[dust2].noGravity = true;
-
-                }
-                if (!AAWorld.downedYamataA)
-                {
-                    if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-                    {
-                        Main.NewText("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
-                        threeQuarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                    {
-                        Main.NewText("I'VE HAD IT UP TO HERE WITH YOUR SHENANIGANS!!! EAT VENOM YOU LITTLE HELLSPAWN!!!", new Color(146, 30, 68));
-                        HalfHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
-                    {
-                        Main.NewText("STOP IT STOP IT STOP IT!!! I'M NOT GONNA LET YOU WIN!!!", new Color(146, 30, 68));
-                        tenthHealth = true;
-                    }
-                }
-                if (AAWorld.downedYamataA)
-                {
-                    if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-                    {
-                        Main.NewText("You're an annoying little bugger, you know!", new Color(146, 30, 68));
-                        threeQuarterHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                    {
-                        Main.NewText("DIE! WHY WON'T YOU JUST DIE ALREADY?!", new Color(146, 30, 68));
-                        HalfHealth = true;
-                    }
-                    if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
-                    {
-                        Main.NewText("STOP IT!!! I'M NOT GONNA LOSE AGAIN!!!", new Color(146, 30, 68));
-                        tenthHealth = true;
-                    }
-                }
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    Panic = false;
-                }
-                if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<Awakened.YamataAHead>())
-                {
-                    Panic = true;
-                    Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
-                }
-                if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<Awakened.YamataAHead>())
-                {
-                    Panic = true;
-                    Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
-                }
-            }
-            
-        }
+        public static Texture2D glowTex = null, glowTex2 = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+        
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-            if (Body != null && Body.modNPC is Yamata)
-            {
-                string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-                ((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
+			if(Body != null && Body.modNPC is Yamata)
+			{
+				string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
+                if (glowTex == null)
+                {
+                    glowTex = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAHead_Glow");
+                }
+                BaseMod.BaseDrawing.DrawAfterimage(sb, glowTex2, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
             }
             return true;
         }

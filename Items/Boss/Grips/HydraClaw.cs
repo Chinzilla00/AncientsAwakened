@@ -21,13 +21,22 @@ namespace AAMod.Items.Boss.Grips
             projectile.damage = 15;
             projectile.timeLeft *= 5;
             projectile.minionSlots = 1f;
-
+            projectile.aiStyle = 66;
         }
 
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
             player.twinsMinion = false;
+            if (projectile.frameCounter > 4)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 4)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
 
         public void CheckActive()
