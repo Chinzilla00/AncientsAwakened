@@ -72,5 +72,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             BaseDrawing.DrawAfterimage(spritebatch, glowTex2, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
             return false;
         }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType("HydraToxin"), 600);
+        }
     }
 }

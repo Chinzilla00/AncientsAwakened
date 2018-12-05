@@ -829,25 +829,27 @@ namespace AAMod
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 16;
             }
+
             if (dragonFire)
             {
-                player.magicDamage -= 10;
-                player.minionDamage -= 10;
-                player.meleeDamage -= 10;
-                player.thrownDamage -= 10;
-                player.rangedDamage -= 10;
+                player.magicDamage -= 0.8f;
+                player.minionDamage -= 0.8f;
+                player.meleeDamage -= 0.8f;
+                player.thrownDamage -= 0.8f;
+                player.rangedDamage -= 0.8f;
             }
             if (hydraToxin)
             {
-                foreach (Tile tile in Main.tile)
+                if (player.velocity.X < -2f || player.velocity.X > 2f)
                 {
-                    if (tile.collisionType == player.whoAmI)
-                    {
-                        player.velocity.X = (player.velocity.X / 16) * 15;
-                        player.velocity.Y = (player.velocity.Y / 16) * 15;
-                    }
+                    player.velocity.X *= 0.4f;
+                }
+                if (player.velocity.Y < -2f || player.velocity.Y > 2f)
+                {
+                    player.velocity.Y *= 0.4f;
                 }
             }
+
         }
 
         public override void UpdateDead()
