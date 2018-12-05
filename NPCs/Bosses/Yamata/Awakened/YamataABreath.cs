@@ -88,9 +88,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.rotation += 0.3f * (float)projectile.direction;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("Venom"), 600);
+            target.AddBuff(mod.BuffType("HydraToxin"), 600);
         }
     }
 }

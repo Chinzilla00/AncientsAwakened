@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Hydra Toxin");
-			Description.SetDefault("Slower movement per Tile");
+			Description.SetDefault("Harder Movement");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;
