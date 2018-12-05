@@ -80,7 +80,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
             Kill(0);
         }
 
@@ -124,5 +123,14 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             return selectedTarget;
         }
+
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("DragonFire"), 600);
+        }
+
+        
     }
 }

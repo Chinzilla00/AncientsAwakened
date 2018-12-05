@@ -81,7 +81,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.rotation += 0.3f * (float)projectile.direction;
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("DragonFire"), 600);
         }
