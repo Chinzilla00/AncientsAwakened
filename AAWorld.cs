@@ -67,7 +67,8 @@ namespace AAMod
         public static bool downedShenA;
         //Stones
         public static bool RealityDropped;
-        public Point WHERESDAVOID;
+        //Points
+        public static Point WHERESDAVOIDAT;
 
         public string nums = "1234567890";
 
@@ -376,7 +377,7 @@ namespace AAMod
                 Point position = new Point(
                     center.X + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
                     center.Y + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)));
-                WHERESDAVOID = position;
+                WHERESDAVOIDAT = position;
 
                 while (posIslands.Any(x => Vector2.Distance(x.ToVector2(), position.ToVector2()) < 35))
                 {
