@@ -102,21 +102,6 @@ namespace AAMod
                     damage = 2;
                 }
             }
-            if (Dragonfire)
-            {
-                npc.damage -= 10;
-            }
-            if (Hydratoxin)
-            {
-                foreach (Tile tile in Main.tile)
-                {
-                    if (tile.collisionType == npc.whoAmI)
-                    {
-                        npc.velocity.X = (npc.velocity.X / 16) * 15;
-                        npc.velocity.Y = (npc.velocity.Y / 16) * 15;
-                    }
-                }
-            }
 
             if (Moonraze)
             {
@@ -150,8 +135,23 @@ namespace AAMod
                 }
             }
 
+            if (Dragonfire)
+            {
+                npc.damage -= 10;
+            }
+            if (Hydratoxin)
+            {
+                if (npc.velocity.X < -2f || npc.velocity.X > 2f)
+                {
+                    npc.velocity.X *= 0.4f;
+                }
+                if (npc.velocity.Y < -2f || npc.velocity.Y > 2f)
+                {
+                    npc.velocity.Y *= 0.4f;
+                }
+            }
+
         }
-        
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
