@@ -88,6 +88,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
                 
             }
+            AAWorld.downedOrthrus = true ;
         }
 
         public float[] internalAI = new float[4];

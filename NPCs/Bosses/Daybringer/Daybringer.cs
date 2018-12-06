@@ -774,6 +774,11 @@ namespace AAMod.NPCs.Bosses.Daybringer
         public override void NPCLoot()
         {
             int bossAlive = mod.NPCType("DaybringerHead");
+            int Nightcrawler = NPC.CountNPCS(mod.NPCType("NightcrawlerHead"));
+            if (Nightcrawler == 0)
+            {
+                AAWorld.downedEquinox = true;
+            }
             if (NPC.CountNPCS(bossAlive) < 2)
             {
                 if (Main.rand.Next(10) == 0)

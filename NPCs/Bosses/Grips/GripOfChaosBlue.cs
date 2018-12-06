@@ -66,9 +66,13 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 npc.frame.Y = 2 * frameHeight;
             }
-            else
+            else if (npc.frameCounter < 20)
             {
                 npc.frame.Y = 3 * frameHeight;
+            }
+            else
+            {
+                npc.frameCounter = 0;
             }
         }
 
@@ -85,9 +89,10 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GripTrophyBlue"));
             }
-            if (Main.expertMode)
+            if (GripRed == 0)
             {
-                if (GripRed == 0)
+                AAWorld.downedGrips = true;
+                if (Main.expertMode)
                 {
                     npc.DropBossBags();
                 }
@@ -109,8 +114,7 @@ namespace AAMod.NPCs.Bosses.Grips
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.LesserHealingPotion;   //boss drops
-            AAWorld.downedGripBlue = true;
+            potionType = ItemID.LesserHealingPotion;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -118,12 +122,12 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.damage = (int)(npc.damage * 0.8f);  //boss damage increase in expermode
         }
         public int timer;
-        private bool switchMove = false;  //Creates a bool for this .cs only
+        private bool switchMove = false; //Creates a bool for this .cs only
         public override void AI()
         {
             if (Main.dayTime)
             {
-                npc.position.Y += 10;  //disappears at night
+                npc.position.Y -= 10;  //disappears at night
             }
             Target();
             DespawnHandler();
@@ -147,7 +151,7 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 switchMove = true;     //Makes the switch turn on, making the AI change to nothing
                 npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = npc.velocity.X;      // I think this is the right rotation, if not change it tooooo 180 or something
+                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
             }
             if (timer >= 900)          //After 15 seconds this happens
             {

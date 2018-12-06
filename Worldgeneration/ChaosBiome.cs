@@ -124,7 +124,7 @@ namespace AAMod.Worldgeneration
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
-            Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
+            Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{

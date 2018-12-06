@@ -43,9 +43,7 @@ namespace AAMod
         public static bool downedMonarch;
         public static bool downedBrood;
         public static bool downedHydra;
-        public static bool downedGripRed;
-        public static bool downedGripBlue;
-        public static bool downedGrips = downedGripRed && downedGripBlue;
+        public static bool downedGrips;
         public static bool downedRetriever;
         public static bool downedOrthrus;
         public static bool downedRaider;
@@ -53,7 +51,7 @@ namespace AAMod
         public static bool downedStormAll;
         public static bool downedDB;
         public static bool downedNC;
-        public static bool downedEquinox = downedNC && downedDB;
+        public static bool downedEquinox;
         public static bool downedAncient;
         public static bool downedSAncient;
         public static bool downedAkuma;
@@ -77,9 +75,7 @@ namespace AAMod
             //Bosses
             Chairlol = false;
             downedMonarch = false;
-            downedGripRed = false;
-            downedGripBlue = false;
-            downedGrips = downedGripRed && downedGripBlue;
+            downedGrips = false;
             downedRetriever = false;
             downedOrthrus = false;
             downedRaider = false;
@@ -87,7 +83,7 @@ namespace AAMod
             downedStormAll = downedRaider && downedOrthrus && downedRetriever;
             downedDB = false;
             downedNC = false;
-            downedEquinox = downedDB && downedNC;
+            downedEquinox = false;
             if (Main.expertMode == false)
             {
                 downedAncient = downedAkuma || downedYamata || downedZero;
@@ -146,8 +142,6 @@ namespace AAMod
             var downed = new List<string>();
             if (Chairlol) downed.Add("lol");
             if (downedMonarch) downed.Add("Monarch");
-            if (downedGripRed) downed.Add("GripRed");
-            if (downedGripBlue) downed.Add("GripBlue");
             if (downedGrips) downed.Add("Grips");
             if (downedHydra) downed.Add("Hydra");
             if (downedBrood) downed.Add("Brood");
@@ -180,8 +174,8 @@ namespace AAMod
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
-            flags[0] = downedGripRed;
-            flags[1] = downedGripBlue;
+            flags[0] = downedMonarch;
+            flags[1] = downedAncient;
             flags[2] = downedGrips;
             flags[3] = downedBrood;
             flags[4] = downedHydra;
@@ -214,18 +208,16 @@ namespace AAMod
 
 
             BitsByte flags4 = new BitsByte();
-            flags4[0] = downedMonarch;
-            flags4[1] = downedAncient;
-            flags4[2] = downedSAncient;
-            flags4[3] = Chairlol;
+            flags4[0] = downedSAncient;
+            flags4[1] = Chairlol;
             writer.Write(flags4);
         }
 
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
-            downedGripRed = flags[0];
-            downedGripBlue = flags[1];
+            downedMonarch = flags[0];
+            downedAncient = flags[1];
             downedGrips = flags[2];
             downedBrood = flags[3];
             downedHydra = flags[4];
@@ -253,10 +245,8 @@ namespace AAMod
             downedShen = flags3[7];
 
             BitsByte flags4 = reader.ReadByte();
-            downedMonarch = flags4[0];
-            downedAncient = flags4[1];
-            downedSAncient = flags4[2];
-            Chairlol = flags4[3];
+            downedSAncient = flags4[0];
+            Chairlol = flags4[1];
         }
 
         public override void Load(TagCompound tag)
@@ -265,8 +255,6 @@ namespace AAMod
             //bosses
             Chairlol = downed.Contains("lol");
             downedMonarch = downed.Contains("Monarch");
-            downedGripRed = downed.Contains("GripRed");
-            downedGripBlue = downed.Contains("GripBlue");
             downedGrips = downed.Contains("Grips");
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             downedRetriever = downed.Contains("Storm1");
@@ -289,7 +277,6 @@ namespace AAMod
             downedAkumaA = downed.Contains("AkumaA");
             downedYamataA = downed.Contains("YamataA");
             //World Changes
-            downedGrips = downedGripRed && downedGripBlue;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
