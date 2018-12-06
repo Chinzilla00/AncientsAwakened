@@ -18,19 +18,14 @@ namespace AAMod.NPCs.Bosses.Daybringer
         {
             DisplayName.SetDefault("Daybringer");
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+
+        public static Texture2D glowTex = null;
+
+        public override Color? GetAlpha(Color lightColor)
         {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/Daybringer_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
-            }
+            return Color.White;
         }
+
         public override void SetDefaults()
         {
             npc.lifeMax = 130000;
@@ -116,18 +111,9 @@ namespace AAMod.NPCs.Bosses.Daybringer
             }
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/DBBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
-            }
+            return Color.White;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -183,18 +169,10 @@ namespace AAMod.NPCs.Bosses.Daybringer
                 npc.buffImmune[k] = true;
             }
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+
+        public override Color? GetAlpha(Color lightColor)
         {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/DBTail_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
-            }
+            return Color.White;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

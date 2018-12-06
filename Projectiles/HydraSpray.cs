@@ -36,10 +36,7 @@ namespace AAMod.Projectiles
             {
                 projectile.Kill();
             }
-            if (projectile.type == 288)
-            {
-                projectile.ai[0] = 4f;
-            }
+            projectile.ai[0] = 4f;
             if (projectile.ai[0] <= 3f)
             {
                 projectile.ai[0] += 1f;

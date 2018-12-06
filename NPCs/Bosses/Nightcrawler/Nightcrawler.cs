@@ -50,18 +50,9 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             npc.defense = 104;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/Nightcrawler_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
-            }
+            return Color.White;
         }
 
         public override void Init()
@@ -118,18 +109,9 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
                 npc.buffImmune[k] = true;
             }
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/NightcrawlerBody_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), npc.scale, spriteEffects, 0f);
-            }
+            return Color.White;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -186,6 +168,10 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
             }
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {

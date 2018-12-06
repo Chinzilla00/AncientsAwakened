@@ -35,7 +35,7 @@ namespace AAMod.Projectiles
         {
             if (CHAOSCHAOS == false && projectile.alpha > 0)
             {
-                projectile.alpha -= 5;
+                projectile.alpha -= 15;
             }
             if (CHAOSCHAOS == false && projectile.alpha <= 0)
             {

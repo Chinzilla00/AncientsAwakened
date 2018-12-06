@@ -29,13 +29,13 @@ namespace AAMod.Items.Melee   //where is located
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Scythe");
+            DisplayName.SetDefault("Final Chaos");
             Tooltip.SetDefault(@"'I CAN DO ANYTHING'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 2f;
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 7f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(new Color(85, 145, 93), new Color(64, 61, 99), Pie);
             foreach (TooltipLine line2 in list)
