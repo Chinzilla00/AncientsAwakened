@@ -43,7 +43,7 @@ namespace AAMod.Projectiles
                 float Eggroll = Math.Abs(Main.GameUpdateCount) / 2f;
                 float Pie = 1f * (float)Math.Sin(Eggroll);
                 Color color1 = Color.Lerp(new Color(85, 145, 93), new Color(64, 61, 99), Pie);
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, color1, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, color1, 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
             }
@@ -95,10 +95,10 @@ namespace AAMod.Projectiles
             if (!NoScythes)
             {
                 Main.PlaySound(new LegacySoundStyle(2, 71, Terraria.Audio.SoundType.Sound), projectile.position);
-                Projectile.NewProjectile(projectile.Center.X + 200, projectile.Center.Y, -5, 0, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X - 200, projectile.Center.Y, 5, 0, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 250, 0, -5, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 250, 0, 5, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + 250, projectile.Center.Y, -7, 0, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X - 250, projectile.Center.Y, 7, 0, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 250, 0, -7, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 250, 0, 7, mod.ProjectileType("ChaosScytheP"), 250, 1, projectile.owner, 0f, 0f);
             }
         }
 
