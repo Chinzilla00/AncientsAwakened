@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 2000;
+            const float homingMaximumRangeInPixels = 5000;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)

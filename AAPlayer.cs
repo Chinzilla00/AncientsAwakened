@@ -1327,7 +1327,7 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("RadiumCuisses")))
             {
-                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("GItems/Armor/Radium/RadiumCuisses_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Armor/Radium/RadiumCuisses_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
         }); 
 

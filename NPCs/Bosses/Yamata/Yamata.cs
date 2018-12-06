@@ -308,7 +308,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			if(playerTarget != null)
 			{
 				float dist = npc.Distance(playerTarget.Center);
-				if (dist > 1800)
+				if (dist > 1200)
 				{
 					if(!npc.noTileCollide && Main.netMode != 1)
 					{
@@ -341,6 +341,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 AIMovementRunAway();
             }
+            
             //topVisualOffset = new Vector2(Math.Min(8f, Math.Abs(npc.velocity.X) * 2f), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();

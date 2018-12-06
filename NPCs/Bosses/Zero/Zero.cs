@@ -212,11 +212,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
-                if (!saythelinezero)
-                {
-                    saythelinezero = true;
-                    Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
-                }
+                
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
                 if (!Main.expertMode && !AAWorld.downedZero)
@@ -266,6 +262,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].netUpdate = true;
                 Main.npc[index4].ai[3] = 150f;
                 
+            }
+            if (!saythelinezero)
+            {
+                saythelinezero = true;
+                Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {

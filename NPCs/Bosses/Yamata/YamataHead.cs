@@ -93,10 +93,20 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
+            bool SISSY = false;
             int GETDOWNHERE = 0;
             if (player.position.Y <= npc.position.Y - 1200)
             {
-                GETDOWNHERE = 300;
+                if (!SISSY)
+                {
+                    GETDOWNHERE = 300;
+                    SISSY = true;
+                }
+                if (GETDOWNHERE == 0)
+                {
+                    SISSY = false;
+                }
+                
                 GETDOWNHERE--;
                 if (GETDOWNHERE == 299)
                 {
@@ -142,13 +152,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
 
-            if (!player.active || player.dead)
+            if (!player.active || player.dead || !Body.active)
             {
                 npc.TargetClosest(false);
                 player = Main.player[npc.target];
-                if (!player.active || player.dead)
+                if (!player.active || player.dead || !Body.active)
                 {
-                    npc.velocity = new Vector2(0f, 10f);
                     if (npc.timeLeft > 10)
                     {
                         npc.timeLeft = 10;
@@ -268,21 +277,18 @@ namespace AAMod.NPCs.Bosses.Yamata
         public static Texture2D glowTex = null, glowTex2 = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
-        
+
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-			if(Body != null && Body.modNPC is Yamata)
-			{
-				string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-                if (glowTex == null)
-                {
-                    glowTex = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/YamataAHead_Glow");
-                }
-                BaseMod.BaseDrawing.DrawAfterimage(sb, glowTex2, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
+            if (Body != null && Body.modNPC is Yamata)
+            {
+                string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
+                ((Yamata)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
             }
             return true;
         }
+
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
