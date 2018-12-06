@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
 			projectile.ignoreWater = false;          //Does the projectile's speed be influenced by water?
 			projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.WoodenArrowFriendly;           //Act exactly like default Bullet
+			aiType = ProjectileID.WoodenArrowFriendly;           
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

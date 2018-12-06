@@ -13,14 +13,12 @@ namespace AAMod.Items.Currency
 		{
 			DisplayName.SetDefault("Goblin Soul");
 			Tooltip.SetDefault("The soul of a goblin");
-			// ticksperframe, frameCount
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 			ItemID.Sets.AnimatesAsSoul[item.type] = true;
 			ItemID.Sets.ItemIconPulse[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}
-
-        // TODO -- Velocity Y smaller, post NewItem?
+        
         public override void SetDefaults()
 		{
 			Item refItem = new Item();

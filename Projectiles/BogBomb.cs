@@ -40,7 +40,7 @@ namespace AAMod.Projectiles
 			projectile.alpha = 20;              //How much light emit around the projectile
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;        //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.WoodenArrowFriendly;           //Act exactly like default Bullet
+			aiType = ProjectileID.WoodenArrowFriendly;           
             
 		}
 

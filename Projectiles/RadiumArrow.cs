@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
 			projectile.ignoreWater = true;
 			projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.JestersArrow;           //Act exactly like default Bullet
+			aiType = ProjectileID.JestersArrow;           
             
 		}
 	}

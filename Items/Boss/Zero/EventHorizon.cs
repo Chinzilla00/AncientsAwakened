@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using System;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -83,15 +84,18 @@ namespace AAMod.Items.Boss.Zero
             float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f; //0.5
 	    	float ai3X = (Main.rand.NextFloat() - 0.50f) * 0.7853982f; //0.5
             float ai3Y = (Main.rand.NextFloat() - 0.25f) * 0.7853982f; //0.5
-            float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f; //0.5
+            float ai3Z = (Main.rand.NextFloat() - 0.12f) * 0.7853982f;
+            float spread = 45f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
             for (int i = 0; i < 4; i++)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3X);
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Y);
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3Z);
-            }
+                offsetAngle = startAngle + (deltaAngle * i);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
 
+            }
             return false;
         }
 	}
