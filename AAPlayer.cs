@@ -108,6 +108,7 @@ namespace AAMod
         public bool YamataCount = false;
         public bool YamataACount = false;
         public bool Clueless = false;
+        public bool Yanked = false;
         //buffs
 
         //pets
@@ -185,6 +186,7 @@ namespace AAMod
             hydraToxin = false;
             terraBlaze = false;
             Clueless = false;
+            Yanked = false;
             //Buffs
             //Pets
             Broodmini = false;

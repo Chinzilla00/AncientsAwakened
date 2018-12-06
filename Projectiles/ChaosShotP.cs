@@ -140,13 +140,13 @@ namespace AAMod.Projectiles
                     -projectile.velocity.Y * 0.2f, 100, new Color(Main.DiscoR, 0, Main.DiscoB));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("PerfectChaosE"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
         
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("Dragonfire"), 500);
-			target.AddBuff(BuffID.Venom, 500);
+            target.AddBuff(mod.BuffType("Moonraze"), 600);
+            target.AddBuff(BuffID.Daybreak, 600);
         }
     }
 }

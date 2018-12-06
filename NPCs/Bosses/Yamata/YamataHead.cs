@@ -4,6 +4,8 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using BaseMod;
+
 namespace AAMod.NPCs.Bosses.Yamata
 {
     [AutoloadBossHead]
@@ -91,7 +93,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
-
+            int GETDOWNHERE = 0;
+            if (player.position.Y <= npc.position.Y - 1200)
+            {
+                GETDOWNHERE = 300;
+                GETDOWNHERE--;
+                if (GETDOWNHERE == 299)
+                {
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("Yanker"), 20, 0, 0);
+                    BaseUtility.Chat("Oh NO you don't! Get down here!!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                }
+            }
             int num429 = 1;
             if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
             {

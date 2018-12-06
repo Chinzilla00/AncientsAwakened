@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = 240000f;
             npc.knockBackResist = .30f;
             npc.aiStyle = -1;
+            npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()

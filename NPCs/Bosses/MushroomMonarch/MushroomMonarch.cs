@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			if(internalAI[1] == AISTATE_JUMP)//jumper
 			{
 				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
-                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -5f, 6f, -8f);				
+                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);				
 			}else //charger
 			{			
                 BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				

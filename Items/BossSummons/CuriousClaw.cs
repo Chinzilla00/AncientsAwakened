@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using AAMod.NPCs.Bosses.Grips;
 
 namespace AAMod.Items.BossSummons
 {
@@ -40,43 +41,39 @@ Only usable at night");
             recipe.AddRecipe();
         }
 
-        public override bool UseItem(Player player)
-        {
-            SpawnBoss(player, "GripOfChaosBlue", "GripOfChaosRed");
-            Main.NewText("The Grips of Chaos have awoken", new Color(175, 75, 255));
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
-        }
-
         public override bool CanUseItem(Player player)
         {
-            if (Main.dayTime)
+            if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) || NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw just sits there, limp in your hand.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Grips of Chaos are already here!", Color.DarkOrange, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType("GripOfChaosBlue")) || NPC.AnyNPCs(mod.NPCType("GripOfChaosRed")))
+            if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Grips are already here", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw lays limp in your hand. Nasty.", Color.DarkOrange, false);
                 return false;
             }
             return true;
         }
 
-        public void SpawnBoss(Player player, string name1, string name2)
+        public override bool UseItem(Player player)
+        {
+            Main.NewText("The Grips of Chaos have Awoken!", new Color(175, 75, 255));
+            SpawnBoss(player, "GripOfChaosBlue", "GripOfChaosBlue");
+            SpawnBoss(player, "GripOfChaosRed", "GripOfChaosRed");
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+            return true;
+        }
+
+        public void SpawnBoss(Player player, string name, string displayName)
         {
             if (Main.netMode != 1)
             {
-                int bossType1 = mod.NPCType(name1);
-                int bossType2 = mod.NPCType(name2);
-                if (NPC.AnyNPCs(bossType1)) { return; } //don't spawn if there's already a boss!
-                if (NPC.AnyNPCs(bossType2)) { return; }
-                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
-                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
-                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID1].netUpdate2 = true;
-                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID2].netUpdate2 = true;
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
             }
         }
 

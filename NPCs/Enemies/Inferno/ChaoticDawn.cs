@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaotic Dawn");
-            Main.npcFrameCount[npc.type] = 4;
+            //Main.npcFrameCount[npc.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 240000f;
             npc.knockBackResist = .30f;
             npc.aiStyle = -1;
+            npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()
@@ -33,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             BaseAI.AIWeapon(npc, ref npc.ai, 100, 100, 9f, 1f, 1f);
         }
 
-        public override void FindFrame(int frameHeight)
+        /*public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
             if (npc.frameCounter < 3)
@@ -56,7 +58,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             {
                 npc.frameCounter = 0;
             }
-        }
+        }*/
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

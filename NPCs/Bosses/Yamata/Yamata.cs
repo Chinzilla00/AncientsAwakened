@@ -308,7 +308,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			if(playerTarget != null)
 			{
 				float dist = npc.Distance(playerTarget.Center);
-				if (dist > 1000)
+				if (dist > 1800)
 				{
 					if(!npc.noTileCollide && Main.netMode != 1)
 					{

@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss
         {
             DisplayName.SetDefault("Storm Charm");
             Tooltip.SetDefault(@"20% Increased Damage Resistance
-50% Increased damage
+40% Increased damage
 10% Increased melee speed
 Ignores 5 Enemy defense");
         }
@@ -41,11 +41,11 @@ Ignores 5 Enemy defense");
         public override void UpdateEquip(Player player)
         {
             player.endurance *= 1.1f;
-            player.meleeDamage *= 1.12f;
-            player.rangedDamage *= 1.12f;
-            player.magicDamage *= 1.12f;
-            player.minionDamage *= 1.12f;
-            player.thrownDamage *= 1.12f;
+            player.meleeDamage *= 1.40f;
+            player.rangedDamage *= 1.40f;
+            player.magicDamage *= 1.40f;
+            player.minionDamage *= 1.40f;
+            player.thrownDamage *= 1.40f;
             player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
         }
     }

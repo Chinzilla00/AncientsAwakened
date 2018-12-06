@@ -1,21 +1,22 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Daybringer;
+using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Nightcrawler;
+using AAMod.NPCs.Bosses.Daybringer;
+using System.Collections.Generic;
 using BaseMod;
+using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
-    //imported from my tAPI mod because I'm lazy
     public class EquinoxWorm : ModItem
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Equinox Worm");
-            Tooltip.SetDefault(@"Brings forth the serpents of the celestial heavens
-Not Consumable");
+            Tooltip.SetDefault(@"A worm created using celestial materials
+Summons the Equinox Worms");
         }
 
         public override void SetDefaults()
@@ -27,27 +28,22 @@ Not Consumable");
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
+            item.rare = 11;
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+
+        // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
+        public override bool CanUseItem(Player player)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            return !NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
+        }
+
+        public override bool UseItem(Player player)
+        {
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+            return true;
         }
 
         public override void AddRecipes()
@@ -60,38 +56,5 @@ Not Consumable");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
-
-        public override bool UseItem(Player player)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType1 = mod.NPCType<Daybringer>();
-                int bossType2 = mod.NPCType<Nightcrawler>();
-                if (NPC.AnyNPCs(bossType1)) { return false; } //don't spawn if there's already a boss!
-                if (NPC.AnyNPCs(bossType2)) { return false; }
-                int npcID1 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType1, 0);
-                int npcID2 = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType2, 0);
-                Main.npc[npcID1].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID1].netUpdate2 = true;
-                Main.npc[npcID2].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID2].netUpdate2 = true;
-            }
-            Main.NewText("The Equinox Worms have awoken", Color.Gold);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
-        }
-
-        public override bool CanUseItem(Player player)
-        {
-            if (NPC.AnyNPCs(mod.NPCType("Daybringer")) || NPC.AnyNPCs(mod.NPCType("Nightcrawler")))
-            {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Equinox Worms are already here", Color.Gold, false);
-                return false;
-            }
-            return true;
-        }
-
-        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
-        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
     }
 }

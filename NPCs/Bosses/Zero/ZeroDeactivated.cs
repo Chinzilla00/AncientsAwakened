@@ -13,8 +13,7 @@ using Terraria.Graphics;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-	[AutoloadBossHead]
-	public class ZeroDeactivated : ModNPC
+	/*public class ZeroDeactivated : ModNPC
 	{
         public static int ZeroShieldStrength = 0;
         public override void SetStaticDefaults()
@@ -201,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public void PutZeroHerelul(int position, int whoAmI)
         {
             int x = Main.maxTilesX / 6 * (1 + position);
-            var spawnPos = AAWorld.WHERESDAVOIDAT;
+            Point spawnPos = AAWorld.WHERESDAVOIDAT;
 
             Vector2 SpawnHereYaDingus()
             {
@@ -225,5 +224,5 @@ namespace AAMod.NPCs.Bosses.Zero
                 NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
             }
         }
-    }
+    }*/
 }

@@ -104,14 +104,21 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 npc.ai[1]++;
                 int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
-                if (leftHead) aiTimerFire += 30;
+                aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {
                     for (int i = 0; i < 5; ++i)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                        if (leftHead)
+                        {
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                        }
+                        if (npc.type == mod.NPCType<OrthrusHead1>())
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.Center.X * .0001f, PlayerPosY * .0001f, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                        }
                     }
                 }
                 else

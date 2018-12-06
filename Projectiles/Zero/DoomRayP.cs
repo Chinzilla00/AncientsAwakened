@@ -151,6 +151,14 @@ namespace AAMod.Projectiles.Zero
                 {
                     Charge++;
                 }
+                if (Charge > MaxChargeValue)
+                {
+                    player.inventory[player.selectedItem].mana = 0;
+                }
+                else
+                {
+                    player.inventory[player.selectedItem].mana = 10;
+                }
                 int chargeFact = (int)(Charge / 20f);
                 Vector2 dustVelocity = Vector2.UnitX * 18f;
                 dustVelocity = dustVelocity.RotatedBy(projectile.rotation - 1.57f, default(Vector2));

@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 5;
             item.useAnimation = 7;
             item.useTime = 7;
-            item.mana = 30;
+            item.mana = 10;
             item.shootSpeed = 16f;
             item.knockBack = 0f;
             item.width = 122;
