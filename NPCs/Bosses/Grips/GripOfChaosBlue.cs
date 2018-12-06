@@ -1,4 +1,5 @@
 using System;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -19,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Grips
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 5;  //5 is the flying AI
+            npc.aiStyle = -1;  //5 is the flying AI
             npc.lifeMax = 1400;   //boss life
             npc.damage = 25;  //boss damage
             npc.defense = 10;    //boss defense
@@ -107,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Grips
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Abyssium"), Main.rand.Next(15, 44));
                 }
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireInsignia"));
+                    //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireInsignia"));
                 }
             }
         }
@@ -121,79 +122,73 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 0.8f);  //boss damage increase in expermode
         }
-        public int timer;
-        private bool switchMove = false; //Creates a bool for this .cs only
+        public int timer = 0;
+        private int ChargeTimer = 0;
+        private bool ActivePhase = false; //Creates a bool for this .cs only
         public override void AI()
         {
-            if (Main.dayTime)
-            {
-                npc.position.Y -= 10;  //disappears at night
-            }
-            Target();
+            timer++;
+            player = Main.player[npc.target];
             DespawnHandler();
-            if (switchMove)
+            if (timer == 600)
             {
-                Move(new Vector2(240, 0));   //240 is the X axis, so its to the right of the player, -240 will be to the left
+                ActivePhase = true;
             }
-            npc.ai[0]++;
-            Player P = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+            if (timer == 900)
             {
-                npc.TargetClosest(true);
+                ActivePhase = false;
+                timer = 0;
             }
-            npc.netUpdate = true;
-            if (Main.rand.Next(700) == 0) // The lower the value, the higher chance of a grippy boi spawning
+            if (player.Center.X > npc.Center.X) // so it faces the player
             {
-                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("HydraClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
+                npc.spriteDirection = 1;
             }
-            timer++;                //Makes the int start
-            if (timer == 450)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
+            else
             {
-                switchMove = true;     //Makes the switch turn on, making the AI change to nothing
-                npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
+                npc.spriteDirection = -1;
             }
-            if (timer >= 900)          //After 15 seconds this happens
+            if (ActivePhase == true)
             {
-                switchMove = false;     //Turns the switch off so the void Move stuff is disabled
-                npc.aiStyle = 5;        //Reverts back to the original Flying AI Style
-                timer = 0;              //Sets the timer back to 0 to repeat
-            }
-        }
-        private void Move(Vector2 offset)
-        {
-            if (switchMove)             //If the switchMove is on, all of this happens, if its off, all of this doesnt happen
-            {
-                if (Main.expertMode)
+                ChargeTimer++;
+                AAAI.GripAI(npc, ref npc.ai, 0.1f, 0.04f, 4f, 1.5f);
+                if (ChargeTimer == 150 || ChargeTimer == 300 || ChargeTimer == 450)
                 {
-                    speed = 30f; // Increased movement speed in expert mode (The Keeper only thing, change if you wish)
+
                 }
-                else
-                {
-                    speed = 30f; // Sets the max speed of the npc.
-                }
-                Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
-                Vector2 move = moveTo - npc.Center;
-                float magnitude = Magnitude(move);
-                if (magnitude > speed)
-                {
-                    move *= speed / magnitude;
-                }
-                float turnResistance = 35f; // The larger the number the slower the npc will turn.
-                move = ((npc.velocity * turnResistance) + move) / (turnResistance + 1f);
-                magnitude = Magnitude(move);
-                if (magnitude > speed)
-                {
-                    move *= speed / magnitude;
-                }
-                npc.velocity = move;
+            }
+            if (ActivePhase == false)
+            {
+                Move(new Vector2(240, 0));
             }
         }
 
-        private void Target()
+        private void Move(Vector2 offset)
         {
-            player = Main.player[npc.target]; // This will get the player target.
+            if (Main.expertMode)
+            {
+                speed = 30f; // Increased movement speed in expert mode (The Keeper only thing, change if you wish)
+            }
+            else
+            {
+                speed = 20f; // Sets the max speed of the npc.
+            }
+            Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
+            Vector2 move = moveTo - npc.Center;
+            float magnitude = Magnitude(move);
+            if (magnitude > speed)
+            {
+                move *= speed / magnitude;
+            }
+            float turnResistance = 25f; // The larget the number the slower the npc will turn.
+            move = ((npc.velocity * turnResistance) + move) / (turnResistance + 1f);
+            magnitude = Magnitude(move);
+            if (magnitude > speed)
+            {
+                move *= speed / magnitude;
+            }
+            npc.velocity = move;
         }
+
         private void DespawnHandler()
         {
             if (!player.active || player.dead)
@@ -214,18 +209,14 @@ namespace AAMod.NPCs.Bosses.Grips
         }
         private float Magnitude(Vector2 mag)
         {
-            return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));      //No idea, leave this
+            return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));
         }
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))
             {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(180, 250));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+                target.AddBuff(BuffID.Poisoned, Main.rand.Next(180, 250));
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
-            {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
         }
     }
 }

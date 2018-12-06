@@ -101,5 +101,69 @@ namespace AAMod
                 }
             }
         }
+
+        public static void GripAI(NPC npc, ref float[] ai, float moveIntervalX = 0.1f, float moveIntervalY = 0.04f, float velMaxX = 4f, float velMaxY = 1.5f)
+        {
+            //if it should flee when it's day, and it is day, the npc's position is at or above the surface, it will flee.
+            if (Main.dayTime && (double)npc.position.Y <= Main.worldSurface * 16.0)
+            {
+                if (npc.timeLeft > 10) { npc.timeLeft = 10; }
+                npc.directionY = -1;
+                if (npc.velocity.Y > 0f) { npc.direction = 1; }
+                npc.direction = -1;
+                if (npc.velocity.X > 0f) { npc.direction = 1; }
+            }
+            else
+            {
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
+                {
+                    if (npc.timeLeft > 10) { npc.timeLeft = 10; }
+                    npc.directionY = -1;
+                    if (npc.velocity.Y > 0f) { npc.direction = 1; }
+                    npc.direction = -1;
+                    if (npc.velocity.X > 0f) { npc.direction = 1; }
+                }
+            }
+            //controls momentum when going left, and clamps velocity at -velMaxX.
+            if (npc.direction == -1 && npc.velocity.X > -velMaxX)
+            {
+                npc.velocity.X = npc.velocity.X - moveIntervalX;
+                if (npc.velocity.X > 4f) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                else
+                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                if (npc.velocity.X < -4f) { npc.velocity.X = -velMaxX; }
+            }
+            else //controls momentum when going right on the x axis and clamps velocity at velMaxX.
+            if (npc.direction == 1 && npc.velocity.X < velMaxX)
+            {
+                npc.velocity.X = npc.velocity.X + moveIntervalX;
+                if (npc.velocity.X < -velMaxX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                else
+                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+
+                if (npc.velocity.X > velMaxX) { npc.velocity.X = velMaxX; }
+            }
+            //controls momentum when going up on the Y axis and clamps velocity at -velMaxY.
+            if (npc.directionY == -1 && (double)npc.velocity.Y > -velMaxY)
+            {
+                npc.velocity.Y = npc.velocity.Y - moveIntervalY;
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                else
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + 0.03f; }
+
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = -velMaxY; }
+            }
+            else //controls momentum when going down on the Y axis and clamps velocity at velMaxY.
+            if (npc.directionY == 1 && (double)npc.velocity.Y < velMaxY)
+            {
+                npc.velocity.Y = npc.velocity.Y + moveIntervalY;
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                else
+                    if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - 0.03f; }
+
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = velMaxY; }
+            }
+        }
     }
 }
