@@ -65,31 +65,28 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 80;
-                npc.defense = 50;
                 npc.lifeMax = 120000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (!Main.expertMode && AAWorld.downedYamata)
             {
                 npc.damage = 90;
-                npc.defense = 70;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedYamataA)
             {
                 npc.damage = 80;
-                npc.defense = 60;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedYamataA)
             {
                 npc.damage = 100;
-                npc.defense = 80;
                 npc.lifeMax = 150000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
+            npc.defense = 999999;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;

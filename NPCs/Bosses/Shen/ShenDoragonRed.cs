@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    #region
+
     public class ShenDoragonRed : ModNPC
     {
 
@@ -19,8 +19,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 144;
-            npc.width = 84;
+            npc.height = 84;
+            npc.width = 144;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
@@ -67,6 +67,16 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
         }
+
+        private bool FaceRight;
+        private int RightFrame;
+        private int RightCounter;
+        private int RightTimer;
+        private bool FaceLeft;
+        private int LeftFrame;
+        private int LeftCounter;
+        private int LeftTimer;
+
         public override void AI()
         {
             bool expertMode = Main.expertMode;
@@ -80,13 +90,11 @@ namespace AAMod.NPCs.Bosses.Shen
             bool thirdHealth = npc.life <= npc.lifeMax * 0.3;
             bool secondHealth = npc.life <= npc.lifeMax * 0.2;
             bool firstHealth = npc.life <= npc.lifeMax * 0.1;
-            bool facingLeft = false;
-            bool facingRight = true;
             int flareCount = 10;
             bool Charge = npc.ai[3] < 10f;
             float teleportLocation = 0f;
             int teleChoice = Main.rand.Next(2);
-            
+
             int aiChangeRate = expertMode ? 36 : 38;
             float npcVelocity = expertMode ? 0.7f : 0.69f;
             float scaleFactor = expertMode ? 11f : 10.8f;
@@ -297,17 +305,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (npc.ai[2] == num1457 - 30)
                 {
-                    int num1468 = 36;
-                    for (int num1469 = 0; num1469 < num1468; num1469++)
-                    {
-                        Vector2 vector169 = Vector2.Normalize(npc.velocity) * new Vector2(npc.width / 2f, npc.height) * 0.75f * 0.5f;
-                        vector169 = vector169.RotatedBy((num1469 - (num1468 / 2 - 1)) * 6.28318548f / num1468, default(Vector2)) + npc.Center;
-                        Vector2 value16 = vector169 - npc.Center;
-                        int num1470 = Dust.NewDust(vector169 + value16, 0, 0, 244, value16.X * 2f, value16.Y * 2f, 100, default(Color), 1.4f); //changed
-                        Main.dust[num1470].noGravity = true;
-                        Main.dust[num1470].noLight = true;
-                        Main.dust[num1470].velocity = Vector2.Normalize(value16) * 3f;
-                    }
                     Main.PlaySound(29, (int)vectorCenter.X, (int)vectorCenter.Y, 92); //changed
                 }
                 npc.ai[2] += 1f;
@@ -457,11 +454,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector171 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector171 = vector171.RotatedBy((num1474 - (num1473 / 2 - 1)) * 3.1415926535897931 / (float)num1473, default(Vector2)) + vectorCenter;
                     Vector2 value18 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num1475 = Dust.NewDust(vector171 + value18, 0, 0, 244, value18.X * 2f, value18.Y * 2f, 100, default(Color), 1.4f); //changed
-                    Main.dust[num1475].noGravity = true;
-                    Main.dust[num1475].noLight = true;
-                    Main.dust[num1475].velocity /= 4f;
-                    Main.dust[num1475].velocity -= npc.velocity;
+                    
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -536,7 +529,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         int damage = expertMode ? 150 : 164;
                         int randomTime = Main.rand.Next(500, 1001);
                         Vector2 vector173 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        int projectile = Projectile.NewProjectile((int)vector173.X, (int)vector173.Y - 100, Main.rand.Next(-200, 201) * 0.13f, Main.rand.Next(-200, 201) * 0.13f, mod.ProjectileType("FlareBomb"), damage, 0f, Main.myPlayer, 0f, 0f); //changed
+                        int projectile = Projectile.NewProjectile((int)vector173.X, (int)vector173.Y - 100, Main.rand.Next(-200, 201) * 0.13f, Main.rand.Next(-200, 201) * 0.13f, mod.ProjectileType("DiscordianInferno"), damage, 0f, Main.myPlayer, 0f, 0f); //changed
                         Main.projectile[projectile].timeLeft = randomTime;
                     }
                 }
@@ -588,8 +581,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     int randomTime = Main.rand.Next(200, 400);
                     int randomTime2 = Main.rand.Next(100, 300);
                     Vector2 vector174 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + vectorCenter;
-                    int projectile = Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("Flare"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
-                    int projectile2 = Projectile.NewProjectile(vector174.X, vector174.Y, -(float)npc.direction * 2, 8f, mod.ProjectileType("Flare"), 0, 0f, Main.myPlayer, 0f, 0f); //changed
+                    int projectile = Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
+                    int projectile2 = Projectile.NewProjectile(vector174.X, vector174.Y, -(float)npc.direction * 2, 8f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 0f, 0f); //changed
                     Main.projectile[projectile].timeLeft = randomTime;
                     Main.projectile[projectile2].timeLeft = randomTime2;
                 }
@@ -768,11 +761,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector176 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector176 = vector176.RotatedBy((num1480 - (num1479 / 2 - 1)) * 3.1415926535897931 / (float)num1479, default(Vector2)) + vectorCenter;
                     Vector2 value21 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num1481 = Dust.NewDust(vector176 + value21, 0, 0, 244, value21.X * 2f, value21.Y * 2f, 100, default(Color), 1.4f); //changed
-                    Main.dust[num1481].noGravity = true;
-                    Main.dust[num1481].noLight = true;
-                    Main.dust[num1481].velocity /= 4f;
-                    Main.dust[num1481].velocity -= npc.velocity;
+                    
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -806,8 +795,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         int damage = expertMode ? 85 : 90;
                         Vector2 vector173 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        int projectile = Projectile.NewProjectile((int)vector173.X, (int)vector173.Y - 100, Main.rand.Next(-500, 501) * 0.13f, Main.rand.Next(-30, 31) * 0.13f, mod.ProjectileType("FlareDust"), damage, 0f, Main.myPlayer, 0f, 0f); //changed
-                        Main.projectile[projectile].timeLeft = 600;
+                        
                     }
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
@@ -834,7 +822,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (Main.netMode != 1 && npc.ai[2] == num1457 - 30)
                 {
-                    Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("BigFlare"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
+                    Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= num1457)
@@ -1011,11 +999,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector176 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector176 = vector176.RotatedBy((num1480 - (num1479 / 2 - 1)) * 3.1415926535897931 / (float)num1479, default(Vector2)) + vectorCenter;
                     Vector2 value21 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num1481 = Dust.NewDust(vector176 + value21, 0, 0, 244, value21.X * 2f, value21.Y * 2f, 100, default(Color), 1.4f); //changed
-                    Main.dust[num1481].noGravity = true;
-                    Main.dust[num1481].noLight = true;
-                    Main.dust[num1481].velocity /= 4f;
-                    Main.dust[num1481].velocity -= npc.velocity;
+                    
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -1061,10 +1045,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         int damage = expertMode ? 90 : 100;
                         Vector2 vector = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        int projectile1 = Projectile.NewProjectile((int)vector.X, (int)vector.Y - 100, Main.rand.Next(-501, 501) * 0.13f, Main.rand.Next(-31, 31) * 0.13f, mod.ProjectileType("FlareDust"), damage, 0f, Main.myPlayer, 0f, 0f); //changed
-                        Main.projectile[projectile1].timeLeft = 600;
-                        int projectile2 = Projectile.NewProjectile((int)vector.X, (int)vector.Y - 100, Main.rand.Next(-31, 31) * 0.13f, Main.rand.Next(-251, 251) * 0.13f, mod.ProjectileType("FlareDust"), damage, 0f, Main.myPlayer, 0f, 0f); //changed
-                        Main.projectile[projectile2].timeLeft = 420;
+                        
                     }
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
@@ -1091,12 +1072,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (Main.netMode != 1 && npc.ai[2] == num1457 - 30)
                 {
-                    Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("BigFlare"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
+                    Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
                     int randomTime = Main.rand.Next(200, 400);
                     int randomTime2 = Main.rand.Next(100, 300);
                     Vector2 vector174 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + vectorCenter;
-                    int projectile = Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("Flare"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
-                    int projectile2 = Projectile.NewProjectile(vector174.X, vector174.Y, -(float)npc.direction * 2, 8f, mod.ProjectileType("Flare"), 0, 0f, Main.myPlayer, 0f, 0f); //changed
+                    int projectile = Projectile.NewProjectile(vectorCenter.X, vectorCenter.Y, 0f, 0f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
+                    int projectile2 = Projectile.NewProjectile(vector174.X, vector174.Y, -(float)npc.direction * 2, 8f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 0f, 0f); //changed
                     Main.projectile[projectile].timeLeft = randomTime;
                     Main.projectile[projectile2].timeLeft = randomTime2;
                 }
@@ -1261,11 +1242,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector11 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector11 = vector11.RotatedBy((m - (num34 / 2 - 1)) * 3.1415926535897931 / (float)num34, default(Vector2)) + vectorCenter;
                     Vector2 value8 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num35 = Dust.NewDust(vector11 + value8, 0, 0, 244, value8.X * 2f, value8.Y * 2f, 100, default(Color), 1.4f);
-                    Main.dust[num35].noGravity = true;
-                    Main.dust[num35].noLight = true;
-                    Main.dust[num35].velocity /= 4f;
-                    Main.dust[num35].velocity -= npc.velocity;
+                    
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -1483,8 +1460,8 @@ namespace AAMod.NPCs.Bosses.Shen
             Rectangle frame = npc.frame;
             SpriteEffects spriteEffects2 = spriteEffects ^ SpriteEffects.FlipHorizontally;
             float rotation8 = npc.rotation;
-            Microsoft.Xna.Framework.Color color20 = drawColor;
-            Microsoft.Xna.Framework.Color value5 = Microsoft.Xna.Framework.Color.Lerp(color20, Microsoft.Xna.Framework.Color.White, 0.6f);
+            Color color20 = drawColor;
+            Color value5 = Microsoft.Xna.Framework.Color.Lerp(color20, Microsoft.Xna.Framework.Color.White, 0.6f);
             value5.A = 66;
             Vector2 value6 = new Vector2(171f, 44f);
             Vector2 vector18 = new Vector2(230f, 52f);
@@ -1511,8 +1488,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 spinningpoint.X *= -1f;
             }
-            Microsoft.Xna.Framework.Rectangle value8 = texture2D6.Frame(2, 5, num94 / 5, num94 % 5);
-            Vector2 origin3 = new Vector2(444f, 372f);
+            Rectangle value8 = texture2D6.Frame(2, 5, num94 / 5, num94 % 5);
+            Vector2 origin3 = new Vector2(144f, 86f);
             if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
             {
                 origin3.X = (float)value8.Width - origin3.X;
@@ -1524,13 +1501,15 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             num95 = 2f;
             Vector2 value9 = npc.Size / 2f - Main.screenPosition;
-            if (npc.direction == -1)
+            if (npc.ai[3] > 10f && npc.direction == -1)
             {
                 Rectangle FrameRight = Right.Frame(2, 5, num94 / 5, num94 % 5);
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = Right.Height / 9; // 3 is the number of frames in the sprite sheet
+                int y6 = num214 * RightFrame;
                 Main.spriteBatch.Draw(Right, vector17 + spinningpoint.RotatedBy((double)rotation8, default(Vector2)), new Microsoft.Xna.Framework.Rectangle?(value8), color20, rotation8, origin3, 1f, spriteEffects2, 0f);
             }
-            if (npc.direction == 1)
+            if (npc.ai[3] > 10f && npc.direction == 1)
             {
                 Rectangle FrameLeft = Left.Frame(2, 5, num94 / 5, num94 % 5);
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
@@ -1546,8 +1525,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             return false;
         }
-
     }
-    #endregion
     
 }
