@@ -1,10 +1,13 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Backgrounds
 {
-    class MireSurfaceBgStyle : ModSurfaceBgStyle
+    public class MireSurfaceBgStyle : ModSurfaceBgStyle
     {
+		ScreenFog mireBGFog = new ScreenFog(true);
         public override bool ChooseBgStyle()
         {
             return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire;
@@ -45,5 +48,12 @@ namespace AAMod.Backgrounds
         {
             return mod.GetBackgroundSlot("Backgrounds/MireFG1");
         }
+		
+		public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
+		{
+			mireBGFog.Update(mod.GetTexture("Backgrounds/fog"));
+			mireBGFog.Draw(mod.GetTexture("Backgrounds/fog"), true, new Color(120, 120, 200));
+			return true;
+		}
     }
 }

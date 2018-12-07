@@ -264,7 +264,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     npc.frame.Y = 1 * frameHeight;
                 }
-                else if (npc.frameCounter < 10)
+                else
                 {
                     npc.frame.Y = 2 * frameHeight;
                 }

@@ -162,10 +162,10 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/InfernoSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/MireSky"));
                 PremultiplyTexture(GetTexture("Backgrounds/VoidSky"));
-                PremultiplyTexture(GetTexture("Backgrounds/fogless"));
                 PremultiplyTexture(GetTexture("Backgrounds/fog"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaSun"));
                 PremultiplyTexture(GetTexture("Backgrounds/YamataMoon"));
+                PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -219,9 +219,15 @@ namespace AAMod
                 SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
                 YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
 
-                Filters.Scene["AAMod:Fog"] = new Filter(new FogScreenShaderData().UseColor(0.4f, 0, 0).UseOpacity(0.7f), EffectPriority.VeryHigh);
-                SkyManager.Instance["AAMod:Fog"] = new Fog();
-                
+                Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.5f), EffectPriority.VeryHigh);
+                SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
+                ShenSky.Sun = GetTexture("Backgrounds/InfernoSun");
+                ShenSky.Moon = GetTexture("Backgrounds/MireMoon");
+
+                Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.5f), EffectPriority.VeryHigh);
+                SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
+                ShenASky.PlanetTexture = GetTexture("Backgrounds/ShenEclipse");
+
                 UserInterface = new UserInterface();
                 Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
                 Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
