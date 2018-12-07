@@ -705,12 +705,12 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The hallow caverns shine with light for a brief moment...", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
+                    Main.NewText("The caverns shine with light for a brief moment...", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);
                     int tilesY = WorldGen.genRand.Next(0, y);
-                    if (Main.tile[tilesX, tilesY].type == 118)
+                    if (Main.tile[tilesX, tilesY].type == TileID.Pearlstone)
                     {
                         for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                         {

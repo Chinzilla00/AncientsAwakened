@@ -446,6 +446,8 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
             }
         }
+
+        #region recipes
         public override void AddRecipes()
         {
             RecipeFinder finder = new RecipeFinder();
@@ -964,6 +966,7 @@ namespace AAMod
                 recipe.AddRecipe();
             }
         }
+        #endregion
 
         public static Color BuffEffects(Entity codable, Color lightColor, float shadow = 0f, bool effects = true, bool poisoned = false, bool onFire = false, bool onFire2 = false, bool hunter = false, bool noItems = false, bool blind = false, bool bleed = false, bool venom = false, bool midas = false, bool ichor = false, bool onFrostBurn = false, bool burned = false, bool honey = false, bool dripping = false, bool drippingSlime = false, bool loveStruck = false, bool stinky = false)
         {

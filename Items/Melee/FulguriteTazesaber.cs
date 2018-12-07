@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items
+namespace AAMod.Items.Melee
 {
 	public class FulguriteTazesaber : ModItem
 	{

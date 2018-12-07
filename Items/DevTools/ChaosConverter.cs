@@ -5,7 +5,6 @@ using AAMod.Worldgen;
 
 namespace AAMod.Items.DevTools
 {
-    //meant for testing, shows you how to run the generator
     public class ChaosConverter : ModItem
 	{
         public override void SetDefaults()

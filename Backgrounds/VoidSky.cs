@@ -123,7 +123,7 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent2);
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent3);
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                 if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
                 {
                     spriteBatch.Draw(Echo, echoPos, null, Color.White, 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
@@ -132,7 +132,7 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(Asteroids2, Asteroidpos2, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Asteroids3, Asteroidpos3, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
-            float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
+            /*float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
             for (int i = 0; i < bolts.Length; i++)
@@ -153,7 +153,7 @@ namespace AAMod.Backgrounds
                         spriteBatch.Draw(texture, position, null, Color.White * scale * scale2 * Intensity, 0f, Vector2.Zero, value4.X * 5f, SpriteEffects.None, 0f);
                     }
                 }
-            }
+            }*/
         }
 
         public override float GetCloudAlpha()
