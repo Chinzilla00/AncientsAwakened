@@ -24,32 +24,32 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            if (!Main.expertMode && !AAWorld.downedAkuma)
+            if (!Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 170;
                 npc.defense = 200;
                 npc.lifeMax = 1200000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (!Main.expertMode && AAWorld.downedAkuma)
+            if (!Main.expertMode && AAWorld.downedShen)
             {
                 npc.damage = 180;
                 npc.defense = 210;
-                npc.lifeMax = 1400000;
+                npc.lifeMax = 14000000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (Main.expertMode && !AAWorld.downedAkumaA)
+            if (Main.expertMode && !AAWorld.downedShenA)
             {
                 npc.damage = 180;
                 npc.defense = 200;
-                npc.lifeMax = 1300000;
+                npc.lifeMax = 13000000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedAkumaA)
+            if (Main.expertMode && AAWorld.downedShenA)
             {
                 npc.damage = 200;
                 npc.defense = 230;
-                npc.lifeMax = 150000;
+                npc.lifeMax = 1500000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
