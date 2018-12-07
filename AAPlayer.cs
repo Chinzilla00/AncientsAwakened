@@ -97,6 +97,7 @@ namespace AAMod
         public bool Baolei;
         public bool Naitokurosu;
         public bool DragonShell;
+        public bool ammo20percentdown = false;
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -178,6 +179,7 @@ namespace AAMod
             TrueInfinityGauntlet = false;
             Baolei = false;
             Naitokurosu = false;
+            ammo20percentdown = false;
             AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
             //Debuffs
             infinityOverload = false;
@@ -401,7 +403,6 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-            
 
             if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
             {
@@ -845,10 +846,6 @@ namespace AAMod
                 {
                     player.velocity.X *= 0.4f;
                 }
-                if (player.velocity.Y < -2f || player.velocity.Y > 2f)
-                {
-                    player.velocity.Y *= 0.4f;
-                }
             }
 
         }
@@ -948,7 +945,15 @@ namespace AAMod
                 fullBright = true;
             }
         }
-        
+
+        public override bool ConsumeAmmo(Item weapon, Item ammo)
+        {
+            if (ammo20percentdown && Main.rand.Next(5) == 0)
+            {
+                return false;
+            }
+            return base.ConsumeAmmo(weapon, ammo);
+        }
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
