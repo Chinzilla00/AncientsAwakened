@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Accessories
+namespace AAMod.Items.Accessories.Ankh
 {
     [AutoloadEquip(EquipType.Neck)]
     public class AnkhScarf : ModItem

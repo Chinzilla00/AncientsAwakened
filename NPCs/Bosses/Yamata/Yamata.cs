@@ -367,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.rotation = 0f;
         }
 
-        public void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = false, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
+        public void YamataBody(NPC npc, ref float[] ai, bool ignoreWet = true, float moveInterval = 0.2f, float maxSpeedX = 2f, float maxSpeedY = 1.5f, float hoverInterval = 0.04f, float hoverMaxSpeed = 1.5f, int hoverHeight = 3)
         {
             bool flyUpward = false;
             if (npc.justHit) { ai[2] = 0f; }
@@ -817,7 +817,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             float innerLegDefault = 50f + (0.5f * scalar);
             float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the npc walks right
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
-			Vector2 defaultPlacement = default(Vector2);
+			
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
             if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior

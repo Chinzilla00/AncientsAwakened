@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Accessories
+namespace AAMod.Items.Accessories.Ankh
 {
     public class AnkhNecklace : ModItem
 	{
