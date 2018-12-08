@@ -73,13 +73,12 @@ namespace AAMod.NPCs.Bosses.Shen
         private bool Frame1;
         private bool Frame2;
         private bool FaceRight;
-        private int RightFrame;
-        private int RightCounter;
-        private int RightTimer;
         private bool FaceLeft;
-        private int LeftFrame;
-        private int LeftCounter;
-        private int LeftTimer;
+        private int FlyFrame;
+        private int FlyTimer;
+        private int FlyCounter1;
+        private int FlyCounter2;
+        private int Timer;
         private int ChargeFrame;
         private bool Charge;
 
@@ -1326,41 +1325,39 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
         }
-
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter++;
-            if (Frame1 == true)
+            FlyTimer++;
+            if (Frame1)
             {
-                if (npc.frameCounter >= 10)
+                if (FlyTimer > 7)
                 {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += 372;
-                    if (npc.frame.Y > 1488)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                        Frame1 = false;
-                        Frame2 = true;
-                    }
+                    FlyFrame++;
+                    FlyTimer = 0;
+                }
+                if (FlyFrame >= 4)
+                {
+                    Frame1 = false;
+                    Frame2 = true;
+                    npc.frame.Y = 0 * frameHeight; ;
                 }
             }
-            if (Frame2 == true)
+            if (Frame2)
             {
-                if (npc.frameCounter >= 10)
+                if (FlyTimer > 7)
                 {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += 372;
-                    if (npc.frame.Y > 1116)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
+                    FlyFrame++;
+                    FlyTimer = 0;
+                }
+                if (FlyFrame >= 3)
+                {
+                    Frame1 = false;
+                    Frame2 = true;
+                    npc.frame.Y = 0 * frameHeight; ;
                 }
             }
             if (npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f)
             {
-
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
@@ -1380,11 +1377,17 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.spriteDirection == -1)
                 {
-                    spriteBatch.Draw(Right1, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Right1.Height / 5;
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Right1, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right1.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right1.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 }
                 if (npc.spriteDirection == 1)
                 {
-                    spriteBatch.Draw(Left1, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Left1.Height / 5; // 3 is the number of frames in the sprite sheet
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Left1, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Left1.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left1.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 }
             }
             if (Frame1 == false && Frame2 == true) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
@@ -1392,15 +1395,15 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.spriteDirection == -1)
                 {
                     Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                    int num214 = Left2.Height / 4; // 3 is the number of frames in the sprite sheet
-                    int y6 = num214 * RightFrame;
-                    Main.spriteBatch.Draw(Right2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, Right2.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                    int num214 = Right2.Height / 4;
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Right2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right2.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 }
                 if (npc.spriteDirection == 1)
                 {
                     Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                     int num214 = Left2.Height / 4; // 3 is the number of frames in the sprite sheet
-                    int y6 = num214 * LeftFrame;
+                    int y6 = num214 * FlyFrame;
                     Main.spriteBatch.Draw(Left2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, Left2.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 }
             }
