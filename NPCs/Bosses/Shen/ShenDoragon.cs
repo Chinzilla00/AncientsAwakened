@@ -70,8 +70,8 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
 
-        private bool Frame1;
-        private bool Frame2;
+        private bool Frame1 = true;
+        private bool Frame2 = false;
         private bool FaceRight;
         private bool FaceLeft;
         private int FlyFrame;
