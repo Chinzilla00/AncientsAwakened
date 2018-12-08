@@ -1339,7 +1339,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Frame1 = false;
                     Frame2 = true;
-                    npc.frame.Y = 0 * frameHeight; ;
+                    npc.frame.Y = 0 * frameHeight;
                 }
             }
             if (Frame2)
@@ -1353,7 +1353,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Frame1 = false;
                     Frame2 = true;
-                    npc.frame.Y = 0 * frameHeight; ;
+                    npc.frame.Y = 0 * frameHeight;
                 }
             }
             if (npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f)
