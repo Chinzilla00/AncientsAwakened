@@ -63,6 +63,7 @@ namespace AAMod
         public static bool downedZeroA;
         public static bool downedShen;
         public static bool downedShenA;
+        public static bool downedIZ;
         //Stones
         public static bool RealityDropped;
         //Points
@@ -103,6 +104,7 @@ namespace AAMod
             downedZeroA = false;
             downedShen = false;
             downedShenA = false;
+            downedIZ = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -163,6 +165,8 @@ namespace AAMod
             if (downedZero) downed.Add("0");
             if (downedZeroA) downed.Add("0A");
             if (downedShen) downed.Add("Shen");
+            if (downedShenA) downed.Add("ShenA");
+            if (downedIZ) downed.Add("IZ");
             if (downedAkumaA) downed.Add("AkumaA");
             if (downedYamataA) downed.Add("YamataA");
 
@@ -210,6 +214,7 @@ namespace AAMod
             BitsByte flags4 = new BitsByte();
             flags4[0] = downedSAncient;
             flags4[1] = Chairlol;
+            flags4[2] = downedIZ;
             writer.Write(flags4);
         }
 
@@ -247,6 +252,7 @@ namespace AAMod
             BitsByte flags4 = reader.ReadByte();
             downedSAncient = flags4[0];
             Chairlol = flags4[1];
+            downedIZ = flags4[2];
         }
 
         public override void Load(TagCompound tag)
@@ -274,6 +280,8 @@ namespace AAMod
             downedZero = downed.Contains("0");
             downedZeroA = downed.Contains("0A");
             downedShen = downed.Contains("Shen");
+            downedShenA = downed.Contains("ShenA");
+            downedIZ = downed.Contains("IZ");
             downedAkumaA = downed.Contains("AkumaA");
             downedYamataA = downed.Contains("YamataA");
             //World Changes
