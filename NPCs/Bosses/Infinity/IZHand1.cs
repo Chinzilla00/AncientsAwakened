@@ -64,10 +64,20 @@ namespace AAMod.NPCs.Bosses.Infinity
         public bool direction = false;
         public int chargeTime = 30;
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write((short)npc.localAI[0]);
+            writer.Write((short)npc.localAI[1]);
+            writer.Write((short)npc.localAI[2]);
+            writer.Write((short)npc.localAI[3]);
+        }
+
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            npc.localAI[5] = reader.ReadInt16();
-            npc.localAI[6] = reader.ReadInt16();
+            npc.localAI[0] = reader.ReadInt16();
+            npc.localAI[1] = reader.ReadInt16();
+            npc.localAI[2] = reader.ReadInt16();
+            npc.localAI[3] = reader.ReadInt16();
         }
 
         public bool RepairMode = false;

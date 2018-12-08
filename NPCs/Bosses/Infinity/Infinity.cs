@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.Sounds;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
@@ -23,13 +20,11 @@ namespace AAMod.NPCs.Bosses.Infinity
         public NPC Zero6;
         public bool ZerosSpawned = false;
         public Vector2 topVisualOffset = default(Vector2);
-
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infinity Zero; The Purge");
 			Main.npcFrameCount[npc.type] = 2;
 		}
-		
 		public override void SetDefaults()
 		{
 			npc.npcSlots = 18f;
@@ -54,33 +49,48 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.netAlways = true;
 			npc.chaseable = true;
             npc.behindTiles = true;
-			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
+			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/IZ");
 			npc.HitSound = SoundID.NPCHit44;
-			npc.DeathSound = SoundID.NPCDeath46;
+			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar") ;
+            npc.scale *= 1.4f;
 			bossBag = mod.ItemType("IZBag");
 		}
-
+        
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write((short)npc.localAI[5]);
-            writer.Write((short)npc.localAI[6]);
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)npc.localAI[0]);
+                writer.Write((short)npc.localAI[1]);
+                writer.Write((short)npc.localAI[3]);
+                writer.Write((short)npc.localAI[4]);
+            }
         }
 
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                npc.localAI[0] = reader.ReadFloat();
+                npc.localAI[1] = reader.ReadFloat();
+                npc.localAI[2] = reader.ReadFloat();
+                npc.localAI[3] = reader.ReadFloat();
+            }
+        }
         public int roartimer = 0;
-
         public override void AI()
 		{
             int Life = npc.life;
-            npc.localAI[5] = Life;
-            npc.localAI[6] = Life / 2;
+            npc.localAI[0] = Life;
+            npc.localAI[1] = Life / 2;
             int ThreeQuartersHealth = npc.life * (int).75f;
             int HalfHealth = npc.life * (int).5f;
             int QuarterHealth = npc.life * (int).25f;
-            
             bool isRoaring1 = true;
             bool isRoaring2 = true;
             bool isRoaring3 = true;
-
             --roartimer;
             if (npc.life <= ThreeQuartersHealth && isRoaring1)
             {
@@ -96,16 +106,15 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (roartimer == 180)
             {
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), (int)npc.Center.X, (int)npc.Center.Y);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"));
             }
-
+            BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 600f, 60, 1f);
             if (!ZerosSpawned)
             {
                 if (Main.netMode != 1)
                 {
                     int latestNPC = npc.whoAmI;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Zero1 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand1"), 0, npc.whoAmI);
@@ -126,7 +135,6 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 ZerosSpawned = true;
             }
-            BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 600f, 60, 1f);
         }
 
         /*public override void NPCLoot()
@@ -220,10 +228,28 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
+        public Color GetGlowAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+        public bool saythelinezero = false;
+
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             string ZeroTex = ("NPCs/Bosses/Infinity/IZHand");
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
+            }
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha());
             DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero1, dColor);
             DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero2, dColor);
             DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero3, dColor);

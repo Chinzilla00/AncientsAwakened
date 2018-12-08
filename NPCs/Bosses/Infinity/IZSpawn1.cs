@@ -52,17 +52,12 @@ namespace AAMod.NPCs.Bosses.Infinity
         private int Frame4Counter;
         private int Frame5Counter;
         private int Frame6Counter;
-        private int Frame2Timer;
-        private int Frame3Timer;
-        private int Frame4Timer;
-        private int Frame5Timer;
-        private int Frame6Timer;
-        private int HoldTimer = 120;
-        private int HoldTimer2 = 120;
-        private int HoldTimer3 = 120;
-        private int HoldTimer4 = 120;
-        private int HoldTimer5 = 120;
-        private int HoldTimer6 = 120;
+        private int HoldTimer = 5;
+        private int HoldTimer2 = 5;
+        private int HoldTimer3 = 5;
+        private int HoldTimer4 = 5;
+        private int HoldTimer5 = 5;
+        private int HoldTimer6 = 5;
 
         public override void AI()
         {
@@ -132,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame4++;
                     Frame4Counter = 0;
                 }
-                if (Frame2 >= 5)
+                if (Frame4 >= 5)
                 {
                     Frame4 = 4;
                     HoldTimer4--;
