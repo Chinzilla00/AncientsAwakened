@@ -25,6 +25,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
+            npc.scale = 2f;
             if (!Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 170;
@@ -1323,6 +1324,25 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai[3] += 1f;
                     npc.netUpdate = true;
                 }
+            }
+            npc.frameCounter++;
+            if (npc.frameCounter >= 10)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 158; // Change this to the height of a frame of Shen
+                if (npc.frame.Y > 316) // Needs to be the max hieght of all frames except the last one
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
+            }
+            if (player.Center.X > npc.Center.X) // so it faces the player
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
             }
         }
         public override void FindFrame(int frameHeight)
