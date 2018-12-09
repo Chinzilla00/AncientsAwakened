@@ -33,6 +33,7 @@ namespace AAMod
         public bool Hydratoxin = false;
         public bool Moonraze = false;
         public bool Electrified = false;
+        public static int Toad = -1;
 
         public override bool InstancePerEntity
 		{

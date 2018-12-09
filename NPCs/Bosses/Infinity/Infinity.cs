@@ -29,15 +29,14 @@ namespace AAMod.NPCs.Bosses.Infinity
 		{
 			npc.npcSlots = 18f;
 			npc.damage = 0;
-            npc.width = 422;
+            npc.width = 420; 			
             npc.height = 342;
             npc.npcSlots = 100;
             npc.scale = 1f;
 			npc.defense = 180;
-			npc.lifeMax = 2000000;
+			npc.lifeMax = 2500000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
-            aiType = -1;
 			npc.value = Item.buyPrice(30, 0, 0, 0);
 			npc.boss = true;
 			for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -52,8 +51,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.HitSound = SoundID.NPCHit44;
 			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
-            npc.alpha = 255;
-            npc.behindTiles = true;
 			bossBag = mod.ItemType("IZBag");
 		}
 
@@ -81,31 +78,39 @@ namespace AAMod.NPCs.Bosses.Infinity
                 customAI[3] = reader.ReadFloat();				
             }
         }
-        public int roartimer = 0;
+        public int roarTimer = 200;
+		public bool[] roared = new bool[3];
         public override void AI()
 		{
-            if (npc.alpha > 0)
-            {
-                npc.alpha -= 10;
-            }
-            if (npc.alpha < 0)
-            {
-                npc.alpha = 0;
-            }
-            int Life = npc.life;
-            int ThreeQuartersHealth = npc.life * (int).75f;
-            int HalfHealth = npc.life * (int).5f;
-            int QuarterHealth = npc.life * (int).25f;
-            roartimer--;
-            if (roartimer == 180)
-            {
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"));
-            }
-			if(roartimer < 0) roartimer = 0;
-			//uses localAI for actual elemental movement
-		
-			float movementMax = 1.5f;
-
+			if(Main.netMode != 2)
+			{
+				int ThreeQuartersHealth = npc.lifeMax * (int).75f;
+				int HalfHealth = npc.lifeMax * (int).5f;
+				int QuarterHealth = npc.lifeMax * (int).25f;
+				
+				if(roarTimer > -1) roarTimer--;
+				if (npc.life <= ThreeQuartersHealth && !roared[0])
+				{
+					roared[0] = true;
+					roarTimer = 200;
+				}
+				if (npc.life <= HalfHealth && !roared[1])
+				{
+					roared[1] = true;
+					roarTimer = 200;
+				}
+				if (npc.life <= QuarterHealth && !roared[2])
+				{
+					roared[2] = true;
+					roarTimer = 200;
+				}
+				if (roarTimer == 180)
+				{
+					Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
+				}
+			}
+	
+			float movementMax = 1f;
 			if(npc.target > -1)
 			{
 				Player targetPlayer = Main.player[npc.target];
@@ -161,26 +166,20 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = mod.ItemType("GrandHealingPotion");   //boss drops
-            if (!AAWorld.downedIZ)
-            {
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Obliivion>(), 0, 0);
-            }
-            AAWorld.downedIZ = true;
-        }
+        /*public override void NPCLoot()
+		{
+			
+			
+		}*/
 
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter++;
-            if (roartimer > 0)
+            if (roarTimer > -1)
             {
                 npc.frame.Y = 1 * frameHeight;
-            }
-            else
+            } else
             {
-                npc.frameCounter = 0;
+                npc.frame.Y = 0;
             }
         }
 
@@ -214,33 +213,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.8f);
 		}
-
-
-        public bool quarterHealth = false;
-        public bool threeQuarterHealth = false;
-        public bool HalfHealth = false;
-
-        public override void HitEffect(int hitDirection, double damage)
+		
+		public override void HitEffect(int hitDirection, double damage)
 		{
-            if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% effeciency.", new Color(158, 3, 32));
-                roartimer = 200;
-                threeQuarterHealth = true;
-            }
-            if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Redirecting all resources to offencive systems.", new Color(158, 3, 32));
-                roartimer = 200;
-                HalfHealth = true;
-                npc.defense = 175;
-            }
-            if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-            {
-                roartimer = 200;
-                quarterHealth = true;
-            }
-            for (int k = 0; k < 15; k++)
+			for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}
@@ -279,8 +255,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-		public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
+		public static Color infinityGlowRed = new Color(233, 53, 53);
+        public static Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
