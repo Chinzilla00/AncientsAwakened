@@ -29,9 +29,10 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.noGravity = true;
             npc.behindTiles = true;
             npc.aiStyle = 0;
-            npc.scale *= 2.8f;
+            npc.scale *= 1f;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
             npc.scale *= 2;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -54,19 +55,27 @@ namespace AAMod.NPCs.Bosses.Infinity
         private int Frame4Counter;
         private int Frame5Counter;
         private int Frame6Counter;
-        private int HoldTimer = 5;
-        private int HoldTimer2 = 5;
-        private int HoldTimer3 = 5;
-        private int HoldTimer4 = 5;
-        private int HoldTimer5 = 5;
-        private int HoldTimer6 = 5;
-        private int StartTimer = 5;
+        private int HoldTimer = 120;
+        private int HoldTimer2 = 120;
+        private int HoldTimer3 = 120;
+        private int HoldTimer4 = 120;
+        private int HoldTimer5 = 120;
+        private int HoldTimer6 = 120;
+        private int StartTimer = 60;
 
         public override void AI()
         {
-            --StartTimer;
+            if (npc.alpha > 0)
+            {
+                npc.alpha -= 10;
+            }
+            if (npc.alpha < 0)
+            {
+                --StartTimer;
+                npc.alpha = 0;
+            }
             Player player = Main.player[npc.target];
-            if (Spawn1 && StartTimer == 0)
+            if (Spawn1 || npc.frame.Y >= 1470)
             {
                 npc.frameCounter++;
                 if (npc.frameCounter >= 10)
@@ -93,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame2++;
                     Frame2Counter = 0;
                 }
-                if (Frame2 >= 5)
+                if (Frame2 >= 4)
                 {
                     Frame2 = 4;
                     HoldTimer2--;
@@ -112,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame3++;
                     Frame3Counter = 0;
                 }
-                if (Frame3 >= 5)
+                if (Frame3 >= 4)
                 {
                     Frame3 = 4;
                     HoldTimer3--;
@@ -131,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame4++;
                     Frame4Counter = 0;
                 }
-                if (Frame4 >= 5)
+                if (Frame4 >= 4)
                 {
                     Frame4 = 4;
                     HoldTimer4--;
@@ -150,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame5++;
                     Frame5Counter = 0;
                 }
-                if (Frame5 >= 4)
+                if (Frame5 >= 3)
                 {
                     Frame5 = 3;
                     HoldTimer5--;
@@ -169,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Frame6++;
                     Frame6Counter = 0;
                 }
-                if (Frame6 >= 7)
+                if (Frame6 >= 6)
                 {
                     Frame6 = 6;
                     HoldTimer6--;

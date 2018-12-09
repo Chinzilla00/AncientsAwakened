@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinity Overloader");
+            DisplayName.SetDefault("Infinity Beacon");
             Tooltip.SetDefault(@"Calls the Infinity Slayer");
         }
         public override void SetDefaults()
@@ -46,6 +46,7 @@ namespace AAMod.Items.BossSummons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "UnstableSingularity", 15);
             recipe.AddIngredient(null, "ApocalyptitePlate", 20);
+            recipe.AddIngredient(null, "FulguriteBar", 20);
             recipe.AddIngredient(null, "OroborosWood", 10);
             recipe.AddIngredient(null, "ZeroTesseract", 1);
             recipe.AddTile(null, "BinaryReassembler");
@@ -86,12 +87,15 @@ namespace AAMod.Items.BossSummons
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
+            Texture2D texture2 = Main.itemTexture[item.type];
             for (int i = 0; i < 4; i++)
             {
                 //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
                 spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            return false;
+
+            spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            return true;
         }
 
         public override bool UseItem(Player player)
