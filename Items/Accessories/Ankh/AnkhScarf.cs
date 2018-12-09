@@ -10,11 +10,14 @@ namespace AAMod.Items.Accessories.Ankh
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.AnkhShield);
+            item.shieldSlot = -1;
+            AutoDefaults();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.thrownVelocity += 0.085f;
+            player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()
