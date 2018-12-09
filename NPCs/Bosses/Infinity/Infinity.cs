@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (roartimer > 0 && roartimer < 180)
+            if (roartimer > 0)
             {
                 npc.frame.Y = 1 * frameHeight;
             }
