@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Infinity
 {
+    [AutoloadBossHead]
     public class IZHand2 : IZHand1
     {
 		public override string Texture

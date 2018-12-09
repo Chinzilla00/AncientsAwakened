@@ -57,7 +57,7 @@ namespace AAMod.Backgrounds
                 }
                 bolts[num].IsAlive = true;
                 bolts[num].Position.X = random.NextFloat() * ((float)Main.maxTilesX * 16f + 4000f) - 2000f;
-                bolts[num].Position.Y = random.NextFloat() * 300f;
+                bolts[num].Position.Y = random.NextFloat() * 600f;
                 bolts[num].Depth = random.NextFloat() * 8f + 2f;
                 bolts[num].Life = 30;
             }

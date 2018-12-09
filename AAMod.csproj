@@ -863,6 +863,7 @@
     <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand2.cs" />
+    <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -887,6 +888,7 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataA.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataABomb.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataABoom.cs" />
@@ -1887,6 +1889,15 @@
     <Content Include="Gores\ToxitoadGoreEye.png" />
     <Content Include="Gores\ToxitoadGoreFrontLeg.png" />
     <Content Include="Gores\ToxitoadGoreHead.png" />
+    <Content Include="Gores\TruffleToadGore1.png" />
+    <Content Include="Gores\TruffleToadGore2.png" />
+    <Content Include="Gores\TruffleToadGore3.png" />
+    <Content Include="Gores\TruffleToadGore4.png" />
+    <Content Include="Gores\TruffleToadGore5.png" />
+    <Content Include="Gores\TruffleToadGore6.png" />
+    <Content Include="Gores\TruffleToadGore7.png" />
+    <Content Include="Gores\TruffleToadTongueGore1.png" />
+    <Content Include="Gores\TruffleToadTongueGore2.png" />
     <Content Include="Gores\WyrmlingGore1.png" />
     <Content Include="Gores\WyrmlingGore2.png" />
     <Content Include="Gores\WyrmlingGore3.png" />
@@ -2325,7 +2336,7 @@
     <Content Include="Items\Blocks\ZeroBox.png" />
     <Content Include="Items\BossSummons\CalciumSkull.png" />
     <Content Include="Items\BossSummons\ChaosRune.png" />
-    <Content Include="Items\BossSummons\ChaosRune_Glow.png" />
+    <Content Include="Items\BossSummons\ChaosRune_Inactive.png" />
     <Content Include="Items\BossSummons\ChaosSigil.png" />
     <Content Include="Items\BossSummons\CuriousClaw.png" />
     <Content Include="Items\BossSummons\CyberneticBell.png" />
@@ -2338,7 +2349,7 @@
     <Content Include="Items\BossSummons\EquinoxWorm.png" />
     <Content Include="Items\BossSummons\HydraChow.png" />
     <Content Include="Items\BossSummons\InfinityOverloader.png" />
-    <Content Include="Items\BossSummons\InfinityOverloader_Glow.png" />
+    <Content Include="Items\BossSummons\InfinityOverloaderInactive.png" />
     <Content Include="Items\BossSummons\InterestingClaw.png" />
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
@@ -2986,6 +2997,8 @@
     <Content Include="NPCs\Bosses\Hydra\HydraNeck.png" />
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Infinity\IZShadow.png" />
+    <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0Concept.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0_Body.png" />
@@ -3098,6 +3111,9 @@
     <Content Include="NPCs\Bosses\Shen\ShenWingF.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Unused\MrBonesRevenge.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataA.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataABody.png" />
@@ -3481,7 +3497,7 @@
     <Content Include="Tiles\Crates\IceCrate.png" />
     <Content Include="Tiles\Crates\InfernoCrate.png" />
     <Content Include="Tiles\Crates\MireCrate.png" />
-    <Content Include="Tiles\DepthIce.png" />
+    <Content Include="Tiles\Depthice.png" />
     <Content Include="Tiles\DepthsandBall.png" />
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />

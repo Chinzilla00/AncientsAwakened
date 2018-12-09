@@ -184,15 +184,20 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
 
         public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = mod.ItemType("GrandHealingPotion");   //boss drops
+            if (!AAWorld.downedIZ)
+            {
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Oblivion>(), 0, 0);
+            }
+            AAWorld.downedIZ = true;
+        }
+
+        private void ModifyHit(ref int damage)
 		{
-			potionType = ItemID.SuperHealingPotion;
-		}
-		
-		private void ModifyHit(ref int damage)
-		{
-			if (damage > npc.lifeMax / 8)
+			if (damage > npc.lifeMax / 5)
 			{
-				damage = npc.lifeMax / 8;
+				damage = npc.lifeMax / 5;
 			}
 		}
 		
@@ -213,10 +218,31 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.8f);
 		}
-		
-		public override void HitEffect(int hitDirection, double damage)
+
+
+        public bool quarterHealth = false;
+        public bool threeQuarterHealth = false;
+        public bool HalfHealth = false;
+
+
+        public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 15; k++)
+            if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% effeciency.", new Color(158, 3, 32));
+                threeQuarterHealth = true;
+            }
+            if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("Redirecting all resources to offencive systems.", new Color(158, 3, 32));
+                HalfHealth = true;
+                npc.defense = 175;
+            }
+            if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+            {
+                quarterHealth = true;
+            }
+            for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
-    public class Obliivion : ModProjectile
+    public class Oblivion : ModProjectile
     {
         public override void SetStaticDefaults()
         {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using BaseMod;
 using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod.Items.BossSummons
 {
@@ -44,9 +45,15 @@ Summons Shen Doragon's true awakened form");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Blue, Pie);
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
+            if (AAWorld.downedAllAncients)
+            {
+                spriteBatch.Draw
+                (
                 texture,
                 new Vector2
                 (
@@ -54,27 +61,40 @@ Summons Shen Doragon's true awakened form");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                new Color(Main.DiscoR, 0, Main.DiscoB),
+                color1,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
                 SpriteEffects.None,
                 0f
-            );
+                );
+            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
-
-            spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-            for (int i = 0; i < 4; i++)
+            Texture2D texture3 = mod.GetTexture("Items/BossSummons/ChaosRune_Inactive");
+            if (AAWorld.downedAllAncients)
             {
-                //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, new Color(Main.DiscoR, 0, Main.DiscoB), 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                for (int i = 0; i < 4; i++)
+                {
+                    //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                    spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
+
+                }
             }
-            return false;
+            else
+            {
+                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+
+            return true;
         }
 
 

@@ -27,7 +27,6 @@ namespace AAMod.Items.BossSummons
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 500;
-            item.consumable = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -60,7 +59,7 @@ namespace AAMod.Items.BossSummons
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
-            if (!AAWorld.downedZero)
+            if (AAWorld.downedAllAncients)
             {
                 spriteBatch.Draw
                 (
@@ -86,15 +85,25 @@ namespace AAMod.Items.BossSummons
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
-            Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
-            spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-            for (int i = 0; i < 4; i++)
+            Texture2D texture3 = mod.GetTexture("Items/BossSummons/InfinityOverloaderInactive");
+            if (AAWorld.downedAllAncients)
             {
-                //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
-            }
+                for (int i = 0; i < 4; i++)
+                {
+                    //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                    spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
 
+                }
+
+                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            else
+            {
+                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            
             return true;
         }
 
@@ -108,7 +117,7 @@ namespace AAMod.Items.BossSummons
 
 		public override bool CanUseItem(Player player)
 		{
-            if (!AAWorld.downedZero)
+            if (!AAWorld.downedAllAncients)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Overloader lies dormant; Inactive...", new Color(158, 3, 32), false);
                 return false;

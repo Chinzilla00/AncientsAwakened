@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 		public int handType = 0; //0 == left top, 1 == left middle, 2 == left bottom, 3 == right top, 4 == right middle, 5 == right bottom
 		public bool leftHand= true;	
 
-		public static int damageIdle = 0;
-		public static int damageCharging = 100;
+		public static int damageIdle = 100;
+		public static int damageCharging = 200;
 		
         public bool killedbyplayer = true;	
 		
@@ -133,14 +133,18 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             if (npc.life <= 0)
             {
+                if (Main.netMode != 1) BaseUtility.Chat("INITIATING REPAIR M0DE", new Color(158, 3, 32));
                 npc.life = npc.lifeMax;
                 RepairMode = true;
-                RepairTimer = 300;
+                RepairTimer = 450;
             }
         }
 
+
         public override void AI()
 		{
+
+            
             if (RepairMode)
             {
                 RepairTimer--;
@@ -174,8 +178,12 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-			if(Main.netMode != 1)
+            if (Body.HalfHealth)
+            {
+                damageIdle = 200; 
+                damageCharging = 300;
+            }
+            if (Main.netMode != 1)
 			{
 				customAI[0]++;
 				int aiTimerFire = (npc.whoAmI % 3 == 0 ? 250 : npc.whoAmI % 2 == 0 ? 250 : 200); //aiTimerFire is different per head by using whoAmI (which is usually different) 
