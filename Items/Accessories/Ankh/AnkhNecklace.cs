@@ -27,15 +27,5 @@ namespace AAMod.Items.Accessories.Ankh
 Grants immunity to most debuffs
 20% chance not to consume ammo");
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.AnkhCharm);
-            recipe.AddIngredient(ItemID.CrossNecklace);
-            recipe.AddTile(TileID.TinkerersWorkbench);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-    }
+	}
 }
