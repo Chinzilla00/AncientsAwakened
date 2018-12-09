@@ -27,5 +27,15 @@ namespace AAMod.Items.Accessories.Ankh
 Grants immunity to most debuffs
 10% reduced mana usage");
         }
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.AnkhCharm);
+            recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
