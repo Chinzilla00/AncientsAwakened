@@ -4,16 +4,20 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories.Ankh
 {
+    [AutoloadEquip(EquipType.HandsOn)]
     public class AnkhStone : ModItem
 	{
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.AnkhShield);
+            item.shieldSlot = -1;
+            AutoDefaults();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.manaCost -= 0.1f;
+            player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()
