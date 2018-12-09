@@ -227,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
 			if(Body != null)
 			{
-				Body.DrawZero(sb, "NPCs/Bosses/Infinity/ZeroHand", "NPCs/Bosses/Infinity/ZeroHand_Glow", npc, lightColor);
+				Body.DrawZero(sb, "NPCs/Bosses/Infinity/ZeroHand1", "NPCs/Bosses/Infinity/ZeroHand_Glow", npc, lightColor);
 			}
             return true;
         }
