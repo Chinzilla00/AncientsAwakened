@@ -63,6 +63,8 @@ namespace AAMod
         public static bool downedZeroA;
         public static bool downedShen;
         public static bool downedShenA;
+        public static bool downedIZ;
+        public static bool downedAllAncients;
         //Stones
         public static bool RealityDropped;
         //Points
@@ -103,6 +105,8 @@ namespace AAMod
             downedZeroA = false;
             downedShen = false;
             downedShenA = false;
+            downedIZ = false;
+            downedAllAncients = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -163,8 +167,11 @@ namespace AAMod
             if (downedZero) downed.Add("0");
             if (downedZeroA) downed.Add("0A");
             if (downedShen) downed.Add("Shen");
+            if (downedShenA) downed.Add("ShenA");
+            if (downedIZ) downed.Add("IZ");
             if (downedAkumaA) downed.Add("AkumaA");
             if (downedYamataA) downed.Add("YamataA");
+            if (downedAllAncients) downed.Add("DAA");
 
             return new TagCompound {
                 {"downed", downed}
@@ -210,6 +217,8 @@ namespace AAMod
             BitsByte flags4 = new BitsByte();
             flags4[0] = downedSAncient;
             flags4[1] = Chairlol;
+            flags4[2] = downedIZ;
+            flags4[3] = downedAllAncients;
             writer.Write(flags4);
         }
 
@@ -247,6 +256,8 @@ namespace AAMod
             BitsByte flags4 = reader.ReadByte();
             downedSAncient = flags4[0];
             Chairlol = flags4[1];
+            downedIZ = flags4[2];
+            downedAllAncients = flags4[3];
         }
 
         public override void Load(TagCompound tag)
@@ -274,8 +285,11 @@ namespace AAMod
             downedZero = downed.Contains("0");
             downedZeroA = downed.Contains("0A");
             downedShen = downed.Contains("Shen");
+            downedShenA = downed.Contains("ShenA");
+            downedIZ = downed.Contains("IZ");
             downedAkumaA = downed.Contains("AkumaA");
             downedYamataA = downed.Contains("YamataA");
+            downedAllAncients = downed.Contains("DAA");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -756,6 +770,17 @@ namespace AAMod
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
                     }
+                }
+            }
+
+            if ((!Main.expertMode &&(downedAkuma && downedYamata && downedZero)) || (Main.expertMode && (downedAkumaA && downedYamataA && downedZeroA)))
+            {
+                if (downedAllAncients == false)
+                {
+                    downedAllAncients = true;
+                    Main.NewText("Chaos begins to stir in the atmosphere around you", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+                    Main.NewText("You feel as if you are being watched by something...malicious...", new Color(175, 75, 255));
                 }
             }
         }

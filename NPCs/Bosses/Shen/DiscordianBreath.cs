@@ -75,7 +75,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             for (int j = 0; j < 1; j++)
             {
-                Dust dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 31, 0f, 0f, 0, default(Color), 1f);
+                int NUM1 = mod.DustType<Dusts.Discord>();
+                Dust dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f);
                 dust2.fadeIn = 1.5f;
                 dust2.scale = 0.4f;
                 dust2.velocity = projectile.rotation.ToRotationVector2().RotatedBy((double)(Main.rand.NextFloatDirection() * 0.2617994f), default(Vector2)) * (0.5f + (Main.rand.NextFloat() * 2.5f)) * 15f;

@@ -200,9 +200,11 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public int MinionTimer = 0;
+        public int LineStopper = 120;
         public override void AI()
         {
             MinionTimer++;
+            LineStopper--;
             if (MinionTimer == 180 && NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 8)
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<SearcherZero>());
@@ -263,7 +265,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].ai[3] = 150f;
                 
             }
-            if (!saythelinezero)
+            if (!saythelinezero && LineStopper == 0)
             {
                 saythelinezero = true;
                 Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);

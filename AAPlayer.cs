@@ -14,6 +14,7 @@ using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 
 namespace AAMod
@@ -210,20 +211,24 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
+            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
+            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar) && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
-            player.ManageSpecialBiomeVisuals("AAMod:Fog", useFog);
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
+            //bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenDoragonA>());
+            //player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShenA);
+            //player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
         }
 
         public override bool CustomBiomesMatch(Player other)

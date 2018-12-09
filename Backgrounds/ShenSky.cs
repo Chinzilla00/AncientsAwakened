@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
@@ -6,37 +7,34 @@ using Terraria.Graphics.Effects;
 
 namespace AAMod.Backgrounds
 {
-    public class Fogless : CustomSky
+    public class ShenSky : CustomSky
     {
-        public static Texture2D FoglessTexture;
+        
+        public static Texture2D Sun;
+        public static Texture2D Moon;
+        public static Texture2D BGTexture;
         public bool Active;
         public float Intensity;
-        private float FoglessTime = 0f;
 
         public override void OnLoad()
         {
-            FoglessTexture = TextureManager.Load("Backgrounds/fogless");
+            Sun = TextureManager.Load("Backgrounds/InfernoSun");
+            Moon = TextureManager.Load("Backgrounds/MireMoon");
         }
 
         public override void Update(GameTime gameTime)
         {
             if (Active)
             {
-                Intensity = 0.1f;
-                if (FoglessTime < 1f)
-                {
-                    FoglessTime += 0.1f;
-                }
+                Intensity = Math.Min(1f, 0.01f + Intensity);
             }
             else
             {
-                Intensity = 0f;
-                if (FoglessTime > 0f)
-                {
-                    FoglessTime -= 0.1f;
-                }
+                Intensity = Math.Max(0f, Intensity - 0.01f);
             }
         }
+
+        
 
         public override Color OnTileColor(Color inColor)
         {
@@ -48,11 +46,12 @@ namespace AAMod.Backgrounds
         {
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                if (Main.dayTime /*&& ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))*/)
+                if (Main.dayTime)
                 {
-                    Player player = Main.player[Main.myPlayer];
-                    var FoglessPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(FoglessTexture, FoglessPos, null, Color.White * FoglessTime * Intensity, 0f, new Vector2(player.Center.X, player.Center.Y), 1f, SpriteEffects.None, 1f);
+                    var sunPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
+                    var moonPos = new Vector2((Main.screenWidth / 1) * 1, Main.screenHeight / 4);
+                    spriteBatch.Draw(Sun, sunPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(Sun, moonPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
                 }
             }
         }
@@ -64,7 +63,7 @@ namespace AAMod.Backgrounds
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            Intensity = 0.1f;
+            Intensity = 0.002f;
             Active = true;
         }
 
@@ -80,7 +79,7 @@ namespace AAMod.Backgrounds
 
         public override bool IsActive()
         {
-            return Active || Intensity == 0.1f;
+            return Active || Intensity > 0.001f;
         }
     }
 }

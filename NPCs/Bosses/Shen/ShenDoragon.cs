@@ -8,12 +8,13 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Shen
 {
 
-    public class ShenDoragonRed : ModNPC
+    public class ShenDoragon : ModNPC
     {
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shen Doragon; Discordian Doomsayer");
+            Main.npcFrameCount[npc.type] = 5;
         }
 
         public override void SetDefaults()
@@ -24,32 +25,33 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            if (!Main.expertMode && !AAWorld.downedAkuma)
+            npc.scale = 2f;
+            if (!Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 170;
                 npc.defense = 200;
                 npc.lifeMax = 1200000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (!Main.expertMode && AAWorld.downedAkuma)
+            if (!Main.expertMode && AAWorld.downedShen)
             {
                 npc.damage = 180;
                 npc.defense = 210;
-                npc.lifeMax = 1400000;
+                npc.lifeMax = 14000000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (Main.expertMode && !AAWorld.downedAkumaA)
+            if (Main.expertMode && !AAWorld.downedShenA)
             {
                 npc.damage = 180;
                 npc.defense = 200;
-                npc.lifeMax = 1300000;
+                npc.lifeMax = 13000000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedAkumaA)
+            if (Main.expertMode && AAWorld.downedShenA)
             {
                 npc.damage = 200;
                 npc.defense = 230;
-                npc.lifeMax = 150000;
+                npc.lifeMax = 1500000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
@@ -68,14 +70,18 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+
+        private bool Frame1 = true;
+        private bool Frame2 = false;
         private bool FaceRight;
-        private int RightFrame;
-        private int RightCounter;
-        private int RightTimer;
         private bool FaceLeft;
-        private int LeftFrame;
-        private int LeftCounter;
-        private int LeftTimer;
+        private int FlyFrame;
+        private int FlyTimer;
+        private int FlyCounter1;
+        private int FlyCounter2;
+        private int Timer;
+        private int ChargeFrame;
+        private bool Charge;
 
         public override void AI()
         {
@@ -1319,209 +1325,121 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            int FrameHeight = npc.frame.Y;
-            npc.frame.Width = 444;
-            if (npc.ai[0] > 0f && npc.ai[1] == 0f)
+            npc.frameCounter++;
+            if (npc.frameCounter >= 10)
             {
-                npc.spriteDirection = npc.direction;
-                if (FrameHeight < 11 || FrameHeight > 20)
+                npc.frameCounter = 0;
+                npc.frame.Y += 158; // Change this to the height of a frame of Shen
+                if (npc.frame.Y > 316) // Needs to be the max hieght of all frames except the last one
                 {
-                    FrameHeight = 11;
-                    npc.frameCounter = 0.0;
-                }
-                int num17 = 4;
-                if (FrameHeight == 13 || FrameHeight == 19)
-                {
-                    num17 = 8;
-                }
-                if (FrameHeight == 14 || FrameHeight == 18)
-                {
-                    num17 = 2;
-                }
-                if ((npc.frameCounter += 1.0) >= num17 && FrameHeight < 20)
-                {
-                    npc.frameCounter = 0.0;
-                    FrameHeight++;
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
                 }
             }
-            else if (npc.ai[0] > 0f && npc.ai[1] == 2f)
+            if (player.Center.X > npc.Center.X) // so it faces the player
             {
-                npc.spriteDirection = npc.direction;
-                if (FrameHeight < 37 || FrameHeight > 47)
-                {
-                    FrameHeight = 39;
-                    npc.frameCounter = 0.0;
-                }
-                int num18 = 5;
-                if (FrameHeight == 42)
-                {
-                    num18 = 6;
-                }
-                if (FrameHeight == 45)
-                {
-                    num18 = 8;
-                }
-                if (FrameHeight == 46)
-                {
-                    num18 = 4;
-                }
-                if (FrameHeight == 47)
-                {
-                    num18 = 26;
-                }
-                if (FrameHeight == 37 || FrameHeight == 38)
-                {
-                    num18 = 7;
-                }
-                bool flag = true;
-                if (FrameHeight == 46 && npc.velocity.Y != 0f)
-                {
-                    flag = false;
-                }
-                if (FrameHeight == 38)
-                {
-                    flag = false;
-                }
-                if (flag)
-                {
-                    npc.frameCounter += 1.0;
-                }
-                if (npc.frameCounter >= num18)
-                {
-                    if (FrameHeight < 47)
-                    {
-                        npc.frameCounter = 0.0;
-                        FrameHeight++;
-                    }
-                    else
-                    {
-                        FrameHeight = 37;
-                        npc.frameCounter = 0.0;
-                    }
-                }
-            }
-            else if (npc.ai[0] > 0f && npc.ai[1] == 1f)
-            {
-                npc.spriteDirection = npc.direction;
-                if (FrameHeight < 21 || FrameHeight > 38)
-                {
-                    FrameHeight = 21;
-                    npc.frameCounter = 0.0;
-                }
-                int num19 = 5;
-                if ((npc.frameCounter += 1.0) >= num19 && FrameHeight < 38)
-                {
-                    npc.frameCounter = 0.0;
-                    FrameHeight++;
-                }
+                npc.spriteDirection = -1;
             }
             else
             {
-                if (npc.velocity.Y == 0f)
+                npc.spriteDirection = 1;
+            }
+        }
+        public override void FindFrame(int frameHeight)
+        {
+            FlyTimer++;
+            if (Frame1)
+            {
+                if (FlyTimer > 7)
                 {
-                    npc.spriteDirection = npc.direction;
+                    FlyFrame++;
+                    FlyTimer = 0;
                 }
-                if (npc.velocity.Y != 0f)
+                if (FlyFrame >= 4)
                 {
-                    npc.frameCounter = 0.0;
-                    FrameHeight = 43;
-                }
-                else if (npc.velocity.X == 0f)
-                {
-                    npc.frameCounter = 0.0;
-                    FrameHeight = 0;
-                }
-                else
-                {
-                    npc.frameCounter += Math.Abs(npc.velocity.X);
-                    if (npc.frameCounter >= 60.0 || npc.frameCounter < 0.0)
-                    {
-                        npc.frameCounter = 0.0;
-                    }
-                    FrameHeight = 1 + (int)(npc.frameCounter / 6.0);
+                    Frame1 = false;
+                    Frame2 = true;
+                    npc.frame.Y = 0 * frameHeight;
                 }
             }
-            npc.frame.Y = FrameHeight;
+            if (Frame2)
+            {
+                if (FlyTimer > 7)
+                {
+                    FlyFrame++;
+                    FlyTimer = 0;
+                }
+                if (FlyFrame >= 3)
+                {
+                    Frame1 = false;
+                    Frame2 = true;
+                    npc.frame.Y = 0 * frameHeight;
+                }
+            }
+            if (npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y = 0;
+            }
+
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D Right = Main.npcTexture[npc.type];
-            Texture2D Left = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue");
+            Texture2D Right1 = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRed1");
+            Texture2D Right2 = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRed2");
+            Texture2D Left1 = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue1");
+            Texture2D Left2 = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue2");
             Texture2D RightCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRedCharge");
             Texture2D LeftCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueCharge");
-            var spriteEffects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            int num94 = (int)npc.localAI[0] / 4;
-            Vector2 vector17 = npc.Center - Main.screenPosition;
-            Rectangle frame = npc.frame;
-            SpriteEffects spriteEffects2 = spriteEffects ^ SpriteEffects.FlipHorizontally;
-            float rotation8 = npc.rotation;
-            Color color20 = drawColor;
-            Color value5 = Microsoft.Xna.Framework.Color.Lerp(color20, Microsoft.Xna.Framework.Color.White, 0.6f);
-            value5.A = 66;
-            Vector2 value6 = new Vector2(171f, 44f);
-            Vector2 vector18 = new Vector2(230f, 52f);
-            Vector2 vector19 = Vector2.Lerp(value6, vector18, 0.5f) + new Vector2(-50f, 30f);
-            Vector2 spinningpoint = value6 - vector19;
-            Vector2 spinningpoint2 = vector18 - vector19;
-            Texture2D texture2D5 = Main.extraTexture[82];
-            if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (Frame1 == true && Frame2 == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
             {
-                spinningpoint2.X *= -1f;
+                if (npc.spriteDirection == -1)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Right1.Height / 5;
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Right1, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right1.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right1.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
+                if (npc.spriteDirection == 1)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Left1.Height / 5; // 3 is the number of frames in the sprite sheet
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Left1, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Left1.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left1.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
             }
-            Microsoft.Xna.Framework.Rectangle value7 = texture2D5.Frame(2, 5, num94 / 5, num94 % 5);
-            Vector2 origin2 = new Vector2(16f, 176f);
-            if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
+            if (Frame1 == false && Frame2 == true) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
             {
-                origin2.X = (float)value7.Width - origin2.X;
+                if (npc.spriteDirection == -1)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Right2.Height / 4;
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Right2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right2.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
+                if (npc.spriteDirection == 1)
+                {
+                    Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                    int num214 = Left2.Height / 4; // 3 is the number of frames in the sprite sheet
+                    int y6 = num214 * FlyFrame;
+                    Main.spriteBatch.Draw(Left2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, Left2.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                }
             }
-            if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
+            if ((npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == -1)
             {
-                vector19.X = (float)frame.Width - vector19.X;
-            }
-            Texture2D texture2D6 = Main.extraTexture[81];
-            if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
-            {
-                spinningpoint.X *= -1f;
-            }
-            Rectangle value8 = texture2D6.Frame(2, 5, num94 / 5, num94 % 5);
-            Vector2 origin3 = new Vector2(144f, 86f);
-            if (spriteEffects2.HasFlag(SpriteEffects.FlipHorizontally))
-            {
-                origin3.X = (float)value8.Width - origin3.X;
-            }
-            float num95 = Utils.InverseLerp(0f, 30f, npc.localAI[1], true);
-            if (num95 == 1f)
-            {
-                num95 = Utils.InverseLerp(60f, 30f, npc.localAI[1], true);
-            }
-            num95 = 2f;
-            Vector2 value9 = npc.Size / 2f - Main.screenPosition;
-            if (npc.ai[3] > 10f && npc.direction == -1)
-            {
-                Rectangle FrameRight = Right.Frame(2, 5, num94 / 5, num94 % 5);
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = Right.Height / 9; // 3 is the number of frames in the sprite sheet
-                int y6 = num214 * RightFrame;
-                Main.spriteBatch.Draw(Right, vector17 + spinningpoint.RotatedBy((double)rotation8, default(Vector2)), new Microsoft.Xna.Framework.Rectangle?(value8), color20, rotation8, origin3, 1f, spriteEffects2, 0f);
+                int num214 = RightCharge.Height; // 3 is the number of frames in the sprite sheet
+                int y6 = num214 * ChargeFrame;
+                Main.spriteBatch.Draw(RightCharge, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, RightCharge.Width, num214)), drawColor, npc.rotation, new Vector2((float)RightCharge.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
-            if (npc.ai[3] > 10f && npc.direction == 1)
+            if ((npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == 1)
             {
-                Rectangle FrameLeft = Left.Frame(2, 5, num94 / 5, num94 % 5);
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                Main.spriteBatch.Draw(Left, vector17 + spinningpoint.RotatedBy((double)rotation8, default(Vector2)), new Microsoft.Xna.Framework.Rectangle?(value8), color20, rotation8, origin3, 1f, spriteEffects2, 0f);
-            }
-            if (npc.ai[3] < 10f && npc.direction == -1)
-            {
-                Main.spriteBatch.Draw(RightCharge, vector17 + spinningpoint.RotatedBy((double)rotation8, default(Vector2)), new Microsoft.Xna.Framework.Rectangle?(value8), color20, rotation8, origin3, 1f, spriteEffects2, 0f);
-            }
-            if (npc.ai[3] < 10f && npc.direction == 1)
-            {
-                Main.spriteBatch.Draw(LeftCharge, vector17 + spinningpoint.RotatedBy((double)rotation8, default(Vector2)), new Microsoft.Xna.Framework.Rectangle?(value8), color20, rotation8, origin3, 1f, spriteEffects2, 0f);
+                int num214 = LeftCharge.Height; // 3 is the number of frames in the sprite sheet
+                int y6 = num214 * ChargeFrame;
+                Main.spriteBatch.Draw(LeftCharge, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, LeftCharge.Width, num214)), drawColor, npc.rotation, new Vector2((float)LeftCharge.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
         }

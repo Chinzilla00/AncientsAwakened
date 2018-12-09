@@ -102,37 +102,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
-            if (Main.expertMode)
-            {
-                int playerCount = 0;
-                float bossHPScalar = 1f, scalarIncrement = 0.35f;
-                if (Main.netMode != 0)
-                {
-                    for (int i = 0; i < 255; i++)
-                    {
-                        if (Main.player[i].active)
-                        {
-                            playerCount++;
-                        }
-                    }
-                    for (int j = 1; j < playerCount; j++)
-                    {
-                        bossHPScalar += scalarIncrement;
-                        scalarIncrement += (1f - scalarIncrement) / 3f;
-                    }
-                }
-                ScaleExpertStats(playerCount, bossHPScalar);
-            }
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.SuperHealingPotion;
-        }
-
-        public override bool G_CanSpawn(int x, int y, int type, Player player)
-        {
-            return false;
         }
 
         public override void NPCLoot()
