@@ -21,7 +21,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             projectile.friendly = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 24;
         }
         public int OblivionSpeech = 0;
 

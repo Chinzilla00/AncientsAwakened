@@ -39,6 +39,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.width = 206;
             npc.height = 206;
             npc.npcSlots = 0;
+			npc.aiStyle = -1;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;
@@ -57,13 +58,13 @@ namespace AAMod.NPCs.Bosses.Infinity
 		public int handType = 0; //0 == left top, 1 == left middle, 2 == left bottom, 3 == right top, 4 == right middle, 5 == right bottom
 		public bool leftHand= true;	
 
-		public static int damageIdle = 100;
-		public static int damageCharging = 200;
+		public static int damageIdle = 0;
+		public static int damageCharging = 100;
 		
         public bool killedbyplayer = true;	
 		
 
-        public bool ChargeAttack
+        public bool ChargeAttack //actually charging the player
 		{
 			get
 			{
@@ -76,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 				if(npc.ai[1] != oldValue) npc.netUpdate = true;
 			}
 		}
-        public bool Charging
+        public bool Charging //preparing to charge the player
 		{
 			get
 			{
@@ -132,7 +133,6 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("REPAIR M0DE INITIATED", new Color(158, 3, 32));
                 npc.life = npc.lifeMax;
                 RepairMode = true;
                 RepairTimer = 300;
@@ -149,8 +149,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             if (RepairTimer <= 0)
             {
                 RepairMode = false;
-
-                npc.dontTakeDamage = false;
             }
             Vector2 vectorCenter = npc.Center;
             if (Body == null)
@@ -173,13 +171,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 killedbyplayer = false;
                 return;
             }
-
-            if (Body.HalfHealth == true)
-            {
-                damageIdle = 200;
-                damageCharging = 300;
-            }
-            npc.TargetClosest();
+			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
