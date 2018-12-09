@@ -4,6 +4,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
@@ -28,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.noGravity = true;
             npc.behindTiles = true;
             npc.aiStyle = 0;
+            npc.scale *= 2.8f;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
             npc.scale *= 2;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -58,11 +60,13 @@ namespace AAMod.NPCs.Bosses.Infinity
         private int HoldTimer4 = 5;
         private int HoldTimer5 = 5;
         private int HoldTimer6 = 5;
+        private int StartTimer = 5;
 
         public override void AI()
         {
-            Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-            if (Spawn1)
+            --StartTimer;
+            Player player = Main.player[npc.target];
+            if (Spawn1 && StartTimer == 0)
             {
                 npc.frameCounter++;
                 if (npc.frameCounter >= 10)
@@ -160,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             if (Spawn6)
             {
                 Frame6Counter++;
-                if (Frame2Counter > 10)
+                if (Frame6Counter > 10)
                 {
                     Frame6++;
                     Frame6Counter = 0;
@@ -179,6 +183,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void NPCLoot()
         {
+            if (Main.netMode != 1) BaseUtility.Chat("Target Locked. Engaging.", new Color(158, 3, 32));
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), (int)npc.Center.X, (int)npc.Center.Y);
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"));
         }

@@ -48,23 +48,25 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.noTileCollide = true;
 			npc.netAlways = true;
 			npc.chaseable = true;
-            npc.behindTiles = true;
 			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/IZ");
 			npc.HitSound = SoundID.NPCHit44;
-			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar") ;
+			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
+            npc.alpha = 255;
+            npc.behindTiles = true;
 			bossBag = mod.ItemType("IZBag");
 		}
-        
+
+		public float[] customAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((short)npc.localAI[0]);
-                writer.Write((short)npc.localAI[1]);
-                writer.Write((short)npc.localAI[3]);
-                writer.Write((short)npc.localAI[4]);
+                writer.Write((short)customAI[0]);
+                writer.Write((short)customAI[1]);
+                writer.Write((short)customAI[2]);
+                writer.Write((short)customAI[3]);				
             }
         }
 
@@ -72,69 +74,91 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             base.ReceiveExtraAI(reader);
             if (Main.netMode == 1)
-            {
-                npc.localAI[0] = reader.ReadFloat();
-                npc.localAI[1] = reader.ReadFloat();
-                npc.localAI[2] = reader.ReadFloat();
-                npc.localAI[3] = reader.ReadFloat();
+            {				
+                customAI[0] = reader.ReadFloat();
+                customAI[1] = reader.ReadFloat();
+                customAI[2] = reader.ReadFloat();
+                customAI[3] = reader.ReadFloat();				
             }
         }
         public int roartimer = 0;
         public override void AI()
 		{
+            if (npc.alpha > 0)
+            {
+                npc.alpha -= 10;
+            }
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
             int Life = npc.life;
-            npc.localAI[0] = Life;
-            npc.localAI[1] = Life / 2;
             int ThreeQuartersHealth = npc.life * (int).75f;
             int HalfHealth = npc.life * (int).5f;
             int QuarterHealth = npc.life * (int).25f;
-            bool isRoaring1 = true;
-            bool isRoaring2 = true;
-            bool isRoaring3 = true;
-            --roartimer;
-            if (npc.life <= ThreeQuartersHealth && isRoaring1)
-            {
-                roartimer = 200;
-            }
-            if (npc.life <= HalfHealth && isRoaring2)
-            {
-                roartimer = 200;
-            }
-            if (npc.life <= QuarterHealth && isRoaring3)
-            {
-                roartimer = 200;
-            }
+            roartimer--;
             if (roartimer == 180)
             {
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"));
             }
-            BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 600f, 60, 1f);
+			if(roartimer < 0) roartimer = 0;
+			//uses localAI for actual elemental movement
+		
+			float movementMax = 1.5f;
+
+			if(npc.target > -1)
+			{
+				Player targetPlayer = Main.player[npc.target];
+				if(targetPlayer.active && !targetPlayer.dead) //speed changes depending on how far the player is
+				{
+					movementMax = MathHelper.Lerp(1f, 4f, Math.Min(1f, Math.Max(0f, (Vector2.Distance(npc.Center, targetPlayer.Center) / 1000f))));
+				}
+			}
+			//customAI is used here because the original ai and localAI are both used elsewhere. It is synced above.
+            BaseAI.AIElemental(npc, ref customAI, false, 0, false, false, 800f, 600f, 60, movementMax);
             if (!ZerosSpawned)
             {
                 if (Main.netMode != 1)
                 {
                     int latestNPC = npc.whoAmI;
+					int handType = 0;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
+					handType++;
                     Zero1 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
+					handType++;
                     Zero2 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
+					handType++;
                     Zero3 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
+					handType++;
                     Zero4 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
+					handType++;
                     Zero5 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("IZHand2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+					Main.npc[latestNPC].ai[1] = handType;
                     Zero6 = Main.npc[latestNPC];
                 }
                 ZerosSpawned = true;
             }
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;		
         }
 
         /*public override void NPCLoot()
@@ -186,10 +210,33 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.8f);
 		}
-		
-		public override void HitEffect(int hitDirection, double damage)
+
+
+        public bool quarterHealth = false;
+        public bool threeQuarterHealth = false;
+        public bool HalfHealth = false;
+
+        public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 15; k++)
+            if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% effeciency.", new Color(158, 3, 32));
+                roartimer = 200;
+                threeQuarterHealth = true;
+            }
+            if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("Redirecting all resources to offencive systems.", new Color(158, 3, 32));
+                roartimer = 200;
+                HalfHealth = true;
+                npc.defense = 175;
+            }
+            if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+            {
+                roartimer = 200;
+                quarterHealth = true;
+            }
+            for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}
@@ -228,54 +275,76 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-        public Color GetGlowAlpha()
+		public Color infinityGlowRed = new Color(233, 53, 53);
+        public Color GetGlowAlpha(bool aura)
         {
-            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
         public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
+		
+		public Vector2 GetConnectionPoint(int handType)
+		{
+			float offsetX = 0, offsetY = 0;
+			switch(handType)
+			{
+				case 0: offsetX = -62; offsetY = -80; break;
+				case 1: offsetX = -32; offsetY = -44; break;
+				case 2: offsetX = -46; offsetY = -20; break;
+				case 3: offsetX = 62; offsetY = -80; break;
+				case 4: offsetX = 32; offsetY = -44; break;
+				case 5: offsetX = 46; offsetY = -20; break;		
+				default: break;
+			}
+			offsetX *= 2f;
+			offsetY *= 2f;
+			return new Vector2(offsetX, offsetY);
+		}		
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            string ZeroTex = ("NPCs/Bosses/Infinity/IZHand");
+            string ZeroTex = ("NPCs/Bosses/Infinity/IZHand1");
             if (glowTex == null)
             {
                 glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha());
-            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero1, dColor);
+
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
+            BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));
+            //bottom arms
+			DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero6, dColor);
+	        DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero3, dColor);	
+            //middle arms
+	        DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero5, dColor);		
             DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero2, dColor);
-            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero3, dColor);
-            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero4, dColor);
-            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero5, dColor);
-            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero6, dColor);
+			//top arms
+			DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero4, dColor);		
+			DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero1, dColor);			
+
+		
             return false;
         }
 
-        public Vector2[] GetVectorChain(NPC Zero)
+        public void DrawZero(SpriteBatch spriteBatch, string zeroTexture, string glowMaskTexture, NPC Zero, Color drawColor)
         {
-            Vector2 bodyVec = (npc.Center - new Vector2(0f, 50f));
-            float offsetY = 50f;
-            return new Vector2[] { bodyVec, Vector2.Lerp(bodyVec, Zero.Center, 0.25f) - new Vector2(0f, offsetY * 0.5f), Vector2.Lerp(bodyVec, Zero.Center, 0.5f) - new Vector2(0f, offsetY), Vector2.Lerp(bodyVec, Zero.Center, 0.75f) - new Vector2(0f, offsetY * 0.5f), Zero.Center };
-        }
-
-
-        public void DrawZero(SpriteBatch spriteBatch, string ZeroTexture, string glowMaskTexture, NPC Zero, Color drawColor)
-        {
-            if (Zero != null && Zero.active)
+            if (Zero != null && Zero.active && Zero.modNPC != null && Zero.modNPC is IZHand1)
             {
+				IZHand1 handNPC = (IZHand1)Zero.modNPC;
                 string ArmTex = ("NPCs/Bosses/Infinity/IZArm");
                 Texture2D ArmTex2D = mod.GetTexture(ArmTex);
-                Vector2 ArmOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
+				Texture2D zeroTex = mod.GetTexture(zeroTexture);
+                Texture2D glowTex = mod.GetTexture(glowMaskTexture);				
+                Vector2 ArmOrigin = new Vector2(npc.Center.X, npc.Center.Y) + GetConnectionPoint(handNPC.handType);
                 Vector2 connector = Zero.Center;
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { ArmTex2D, ArmTex2D, ArmTex2D }, 0, ArmOrigin, connector, ArmTex2D.Height - 10f, null, 1f, false, null);
+				BaseDrawing.DrawTexture(spriteBatch, zeroTex, 0, Zero, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(Zero), GetGlowAlpha(true)));	
+				BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, Zero, GetGlowAlpha(false));
             }
         }
     }

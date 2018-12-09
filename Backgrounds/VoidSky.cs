@@ -117,7 +117,7 @@ namespace AAMod.Backgrounds
                 asteroidPercent1 += 0.04f;
                 asteroidPercent2 += 0.05f;
                 asteroidPercent3 += 0.06f;
-                Rotation += .0008f;
+                Rotation -= .0008f;
                 LBRotation += .0005f;
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1);
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent2);
@@ -128,9 +128,9 @@ namespace AAMod.Backgrounds
                 {
                     spriteBatch.Draw(Echo, echoPos, null, Color.White, 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
                 }
-                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, Color.White, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, Color.White, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, Color.White, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
             /*float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));

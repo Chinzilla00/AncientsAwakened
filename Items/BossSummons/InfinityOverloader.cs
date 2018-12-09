@@ -80,9 +80,23 @@ namespace AAMod.Items.BossSummons
             }
         }
 
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
+            for (int i = 0; i < 4; i++)
+            {
+                //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            return false;
+        }
+
         public override bool UseItem(Player player)
 		{
-            Main.NewText("...Target Identified.", new Color(175, 75, 255));
+            Main.NewText("...Target Identified.", new Color(158, 3, 32));
             SpawnBoss(player, "IZSpawn1", "Infinity Zero");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
@@ -92,7 +106,7 @@ namespace AAMod.Items.BossSummons
 		{
             if (!AAWorld.downedZero)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Overloader lies dormant; Inactive...", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Overloader lies dormant; Inactive...", new Color(158, 3, 32), false);
                 return false;
             }
 			return true;

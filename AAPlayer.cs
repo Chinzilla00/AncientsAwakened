@@ -15,6 +15,7 @@ using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Shen;
+using AAMod.NPCs.Bosses.Infinity;
 using System.Collections.Generic;
 
 namespace AAMod
@@ -222,7 +223,9 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidUnit;
+            bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
+            player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
+            bool useVoid = (ZoneVoid || VoidUnit) && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);

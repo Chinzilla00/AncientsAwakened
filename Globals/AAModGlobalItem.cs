@@ -35,23 +35,17 @@ namespace AAMod
         {
             if (item.type == ItemID.AnkhShield)
             {
-                foreach (TooltipLine line1 in tooltips)
+                int index = 1;
+                for (int m = 0; m < tooltips.Count; m++)
                 {
-                    if (line1.mod == "Terraria" && line1.text == "Grants immunity to knockback and fire blocks")
+                    TooltipLine line = tooltips[m];
+                    if (line.mod == "Terraria" && line.text == "Grants immunity to most debuffs")
                     {
-                        tooltips.Remove(line1);
+                        index = m;
+                        break;
                     }
                 }
-                foreach (TooltipLine line2 in tooltips)
-                {
-                    if (line2.mod == "Terraria" && line2.text == "Grants immunity to most debuffs")
-                    {
-                        tooltips.Remove(line2);
-                    }
-                }
-                TooltipLine line = new TooltipLine(mod, "AnkhShield", @"Grants immunity to knockback and fire blocks
-Grants immunity to most debuffs
-7% melee speed");
+                tooltips.Insert(index + 1, new TooltipLine(mod, "AnkhShield", "7% melee speed"));
             }
         }
     }

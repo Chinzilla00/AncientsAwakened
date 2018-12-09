@@ -207,6 +207,11 @@ namespace AAMod
                 VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
                 VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
 
+                Filters.Scene["AAMod:IZSky"] = new Filter(new IZSkyData("FilterMiniTower").UseColor(0.4f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
+                SkyManager.Instance["AAMod:IZSky"] = new IZSky();
+                IZSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
+                IZSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
+
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");

@@ -18,7 +18,7 @@ namespace AAMod.Items.Accessories.Ankh
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ankh Stone");
+			DisplayName.SetDefault("Ankh Tablet");
             Tooltip.SetDefault(@"Grants immunity to knockback and fire blocks
 Grants immunity to most debuffs
 +2 max minions");
