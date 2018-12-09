@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.npcSlots = 100;
             npc.scale = 1f;
 			npc.defense = 180;
-			npc.lifeMax = 2500000;
+			npc.lifeMax = 2000000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
             aiType = -1;
@@ -161,11 +161,15 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
-        /*public override void NPCLoot()
-		{
-			
-			
-		}*/
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = mod.ItemType("GrandHealingPotion");   //boss drops
+            if (!AAWorld.downedIZ)
+            {
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Obliivion>(), 0, 0);
+            }
+            AAWorld.downedIZ = true;
+        }
 
         public override void FindFrame(int frameHeight)
         {
