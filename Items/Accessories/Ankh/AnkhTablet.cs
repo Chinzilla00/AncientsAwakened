@@ -27,5 +27,15 @@ namespace AAMod.Items.Accessories.Ankh
 Grants immunity to most debuffs
 +2 max minions");
         }
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.AnkhCharm);
+            recipe.AddIngredient(ItemID.SolarTablet);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

@@ -27,5 +27,22 @@ namespace AAMod.Items.Accessories.Ankh
 Grants immunity to most debuffs
 8.5% throwing velocity");
         }
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.AnkhCharm);
+            recipe.AddIngredient(ItemID.WormScarf);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.AnkhCharm);
+            recipe.AddIngredient(ItemID.BrainOfConfusion);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
