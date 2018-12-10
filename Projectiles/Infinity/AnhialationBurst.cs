@@ -36,8 +36,8 @@ namespace AAMod.Projectiles.Infinity
 
         public override void AI()
         {
-            projectile.alpha -= 20;
-            projectile.scale -= .1f;
+            projectile.alpha -= 5;
+            projectile.scale -= .01f;
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
@@ -53,13 +53,11 @@ namespace AAMod.Projectiles.Infinity
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
-
         }
 
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;
         }
-
     }
 }

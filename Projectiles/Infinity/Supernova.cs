@@ -20,22 +20,20 @@ namespace AAMod.Projectiles.Infinity
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 4;
             projectile.scale *= .2f;
-        }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
+            projectile.velocity.X = 0;
+            projectile.velocity.Y = 0;
+            projectile.alpha = 0;
         }
 
         public override void AI()
         {
-            projectile.alpha += (int)42.5;
+            projectile.alpha += 10;
             projectile.scale += .2f;
             if (++projectile.frameCounter >= 6)
             {
@@ -46,8 +44,8 @@ namespace AAMod.Projectiles.Infinity
 
                 }
             }
-            projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y *= 0.00f;
+            projectile.velocity.X = 0.00f;
+            projectile.velocity.Y = 0.00f;
 
         }
 

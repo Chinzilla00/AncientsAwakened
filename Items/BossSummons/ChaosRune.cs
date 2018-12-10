@@ -86,7 +86,7 @@ Summons Shen Doragon's true awakened form");
 
             }
 
-            return true;
+            return false;
         }
 
 

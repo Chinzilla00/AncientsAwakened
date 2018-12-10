@@ -96,7 +96,7 @@ namespace AAMod.Items.BossSummons
 
             }
 
-            return true;
+            return false;
         }
 
         public override bool UseItem(Player player)

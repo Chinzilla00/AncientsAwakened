@@ -245,7 +245,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public bool quarterHealth = false;
         public bool threeQuarterHealth = false;
         public bool HalfHealth = false;
-        public bool eighthHealth = false;
+        public bool fifthHealth = false;
 
         public override void HitEffect(int hitDirection, double damage)
 		{
@@ -253,6 +253,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% efficiency.", new Color(158, 3, 32));
                 threeQuarterHealth = true;
+                roarTimer = 200;
             }
             if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
             {
@@ -261,19 +262,22 @@ namespace AAMod.NPCs.Bosses.Infinity
                 npc.defense = 175;
                 IZHand1.damageIdle = 150;
                 IZHand1.damageCharging = 250;
+                roarTimer = 200;
             }
             if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("CRITICAL WARNING. Systems have reached 25% efficiency. Failure imminent.", new Color(158, 3, 32));
                 quarterHealth = true;
+                roarTimer = 200;
             }
-            if (npc.life <= npc.lifeMax / 8 && !eighthHealth)
+            if (npc.life <= npc.lifeMax / 5 && !fifthHealth)
             {
-                eighthHealth = true;
+                fifthHealth = true;
                 if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
                 npc.defense = 0;
                 IZHand1.damageIdle = 200;
                 IZHand1.damageCharging = 300;
+                roarTimer = 200;
             }
             if (npc.life <= npc.lifeMax / 8)
             {

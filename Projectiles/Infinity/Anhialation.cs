@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Infinity
 			projectile.alpha = 100;           
 			projectile.light = 0.5f;         
 			projectile.ignoreWater = true;
-			projectile.tileCollide = false;        
+			projectile.tileCollide = true;        
 			projectile.extraUpdates = 1;
             aiType = ProjectileID.Bullet;
             projectile.alpha = 30;           
@@ -43,7 +43,6 @@ namespace AAMod.Projectiles.Infinity
 
         public override void Kill(int timeleft)
         {
-
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AnhialationBurst"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
