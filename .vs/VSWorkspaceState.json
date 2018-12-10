@@ -3,9 +3,8 @@
     "",
     "\\NPCs",
     "\\NPCs\\Bosses",
-    "\\NPCs\\Bosses\\Infinity",
-    "\\Projectiles\\Infinity"
+    "\\NPCs\\Bosses\\Akuma",
+    "\\NPCs\\Bosses\\EmperorFishron"
   ],
-  "SelectedNode": "\\NPCs\\Bosses\\Infinity\\Infinity.cs",
   "PreviewInSolutionExplorer": false
 }
