@@ -148,17 +148,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void AI()
 		{
-            if (Body != null && !Body.npc.active)
-            {
-                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
-                {
-                    npc.life = 0;
-                    npc.checkDead();
-                    npc.netUpdate = true;
-                    killedbyplayer = false;
-                }
-                return;
-            }
             if (RepairMode)
             {
                 RepairTimer--;
@@ -185,11 +174,22 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
             if (!Body.npc.active)
             {
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                    killedbyplayer = false;
+                }
+                return;
+            }
+            if (!Body.npc.active)
+            {
 				if(npc.timeLeft > 10) npc.timeLeft = 10;
                 killedbyplayer = false;
                 return;
             }
-			npc.TargetClosest();
+            npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
             if (Body.HalfHealth)
