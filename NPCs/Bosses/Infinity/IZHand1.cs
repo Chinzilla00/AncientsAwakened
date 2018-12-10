@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}else
 			{
 				npc.localAI[3] = 0;
-				if(!ChargeAttack)
+				if(targetPlayer != null && !ChargeAttack)
 				{
 					npc.velocity = (targetPlayer.Center - npc.Center);
 					npc.velocity = Vector2.Normalize(npc.velocity) * 0.005f;
