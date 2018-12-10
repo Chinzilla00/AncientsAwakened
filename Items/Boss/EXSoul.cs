@@ -7,7 +7,8 @@ namespace AAMod.Items.Boss
 {
     public class EXSoul : ModItem
     {
-        
+        internal static int type;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("EX Soul");

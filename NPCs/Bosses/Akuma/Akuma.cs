@@ -50,14 +50,14 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.expertMode && !AAWorld.downedAkuma)
             {
-                npc.damage = 60;
+                npc.damage = 75;
                 npc.defense = 100;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedAkuma)
             {
-                npc.damage = 70;
+                npc.damage = 80;
                 npc.defense = 130;
                 npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
@@ -401,6 +401,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
+                npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
                 Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
                 if (!AAWorld.downedAkuma)
                 {

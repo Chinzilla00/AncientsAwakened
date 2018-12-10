@@ -38,12 +38,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.lifeMax = 150000;
                 if (npc.life > npc.lifeMax / 3)
                 {
-                    npc.damage = 70;
+                    npc.damage = 85;
                     npc.defense = 130;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
-                    npc.damage = 80;
+                    npc.damage = 95;
                     npc.defense = 150;
                 }
             }
@@ -52,12 +52,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.lifeMax = 160000;
                 if (npc.life > npc.lifeMax / 3)
                 {
-                    npc.damage = 80;
+                    npc.damage = 90;
                     npc.defense = 150;
                 }
                 if (npc.life <= npc.lifeMax / 3)
                 {
-                    npc.damage = 90;
+                    npc.damage = 100;
                     npc.defense = 170;
                 }
             }

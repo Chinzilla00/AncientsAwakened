@@ -11,9 +11,9 @@ namespace AAMod.Items.Boss
         {
             DisplayName.SetDefault("Storm Charm");
             Tooltip.SetDefault(@"20% Increased Damage Resistance
-40% Increased damage
+20% Increased damage
 10% Increased melee speed
-Ignores 5 Enemy defense");
+All attacks deal 20 True damage (damage unaffected by class)");
         }
         public override void SetDefaults()
         {
@@ -32,6 +32,7 @@ Ignores 5 Enemy defense");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HoloCape", 1);
             recipe.AddIngredient(null, "StormPendant", 1);
+            recipe.AddIngredient(null, "StormRiot", 1);
             recipe.AddIngredient(null, "DragonSerpentNecklace", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
@@ -41,12 +42,12 @@ Ignores 5 Enemy defense");
         public override void UpdateEquip(Player player)
         {
             player.endurance *= 1.1f;
-            player.meleeDamage *= 1.40f;
-            player.rangedDamage *= 1.40f;
-            player.magicDamage *= 1.40f;
-            player.minionDamage *= 1.40f;
-            player.thrownDamage *= 1.40f;
-            player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
+            player.meleeDamage *= 1.20f;
+            player.rangedDamage *= 1.20f;
+            player.magicDamage *= 1.20f;
+            player.minionDamage *= 1.20f;
+            player.thrownDamage *= 1.20f;
+            player.GetModPlayer<AAPlayer>(mod).StormClaw = true;
         }
     }
     

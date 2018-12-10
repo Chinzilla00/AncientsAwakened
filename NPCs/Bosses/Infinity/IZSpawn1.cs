@@ -31,7 +31,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.aiStyle = -1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
             npc.scale *= 1.4f;
-            npc.behindTiles = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -40,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         private int Frame = 0;
         private int FrameCounter = 0;
-        private int HoldTimer = 120;
+        private int HoldTimer = 30;
 		public int spawnState = 0;
 
         public override void AI()
@@ -78,21 +77,14 @@ namespace AAMod.NPCs.Bosses.Infinity
 
 		public void SummonInfinity()
 		{
-            Main.NewText("Target locked. Engaging.", new Color(158, 3, 32));
-            //roar is now handled when infinity spawns so his mouth opens
-            if (Main.netMode != 1)
+			//roar is now handled when infinity spawns so his mouth opens
+            if(Main.netMode != 1)
 			{
 				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"));
 				Main.npc[npcID].Center = npc.Center;
 				Main.npc[npcID].netUpdate = true;
 			}
 		}
-
-		public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
-        {
-            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
-        }		
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -108,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			Texture2D infinityTex = mod.GetTexture("NPCs/Bosses/Infinity/IZShadow");		
 			npc.position.Y += 72;			
             BaseDrawing.DrawTexture(spriteBatch, infinityTex, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, darkFrame, Color.Black);	
-            BaseDrawing.DrawTexture(spriteBatch, drawTexture, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, npc.frame, GetGlowAlpha(true));
+            BaseDrawing.DrawTexture(spriteBatch, drawTexture, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, npc.frame, Infinity.GetGlowAlpha(true));
 			npc.position.Y -= 72;
 			return false;
         }

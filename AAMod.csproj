@@ -467,8 +467,10 @@
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
     <Compile Include="Items\Boss\Infinity\InfinityBlade.cs" />
     <Compile Include="Items\Boss\Infinity\IZCache.cs" />
+    <Compile Include="Items\Boss\Infinity\Annhialator.cs" />
     <Compile Include="Items\Boss\Infinity\Sagittarius.cs" />
     <Compile Include="Items\Boss\Infinity\TotalDestruction.cs" />
+    <Compile Include="Items\Boss\Infinity\Nova.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\HeartyTruffle.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\MonarchBag.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\Mushium.cs" />

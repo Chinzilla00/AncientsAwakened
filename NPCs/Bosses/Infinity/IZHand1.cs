@@ -22,21 +22,20 @@ namespace AAMod.NPCs.Bosses.Infinity
             base.SetDefaults();
             if (!Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 70000;
+                npc.lifeMax = 75000;
             }
             if (!Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 80000;
+                npc.lifeMax = 85000;
             }
             if (Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 75000;
+                npc.lifeMax = 90000;
             }
             if (Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 85000;
+                npc.lifeMax = 100000;
             }
-            npc.defense = 200;
             npc.width = 206;
             npc.height = 206;
             npc.npcSlots = 0;
@@ -134,17 +133,11 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("INITIATING REPAIR M0DE", new Color(158, 3, 32));
                 npc.life = npc.lifeMax;
                 RepairMode = true;
-                RepairTimer = 450;
+                RepairTimer = 300;
             }
         }
-
-
-        public bool ImHere = false;
-        public bool Spawned = false;
-        public bool ImComingForYou = false;
 
         public override void AI()
 		{
@@ -183,32 +176,17 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 return;
             }
-            if (Body.npc.active)
-            {
-                if (npc.timeLeft < 10) npc.timeLeft = 10;
-                killedbyplayer = false;
-                return;
-            }
             if (!Body.npc.active)
             {
 				if(npc.timeLeft > 10) npc.timeLeft = 10;
                 killedbyplayer = false;
                 return;
             }
-            npc.TargetClosest();
+			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-            if (Body.HalfHealth)
-            {
-                damageIdle = 200; 
-                damageCharging = 300;
-            }
-            if (Body.eighthHealth)
-            {
-                damageIdle = 400;
-                damageCharging = 600;
-            }
-            if (Main.netMode != 1)
+
+			if(Main.netMode != 1)
 			{
 				customAI[0]++;
 				int aiTimerFire = (npc.whoAmI % 3 == 0 ? 250 : npc.whoAmI % 2 == 0 ? 250 : 200); //aiTimerFire is different per head by using whoAmI (which is usually different) 
@@ -281,7 +259,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			{
 				if(ChargeAttack)
 				{
-					npc.velocity *= 0.7f; //slow WAY the fuck down
+					npc.velocity *= 0.5f; //slow WAY the fuck down
 					if(Main.netMode != 1)
 					{
 						ChargeAttack = false;
@@ -300,39 +278,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 				npc.velocity *= (ChargeAttack ? 18f : 8f);
 			}
 			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-			npc.spriteDirection = -1;
-
-            if (Body != null)
-            {
-                float dist = npc.Distance(Body.npc.Center);
-                if (dist > 1800)
-                {
-                    npc.dontTakeDamage = true;
-                    ImComingForYou = true;
-                    if (ImComingForYou)
-                    {
-                        npc.alpha += 10;
-                    }
-                    if (npc.alpha >= 255 && ImComingForYou)
-                    {
-                        ImComingForYou = false;
-                        ImHere = true;
-                        Vector2 tele = new Vector2(Body.npc.Center.X, Body.npc.Center.Y);
-                        npc.Center = tele;
-                        npc.dontTakeDamage = false;
-                    }
-                    if (ImHere)
-                    {
-                        npc.alpha -= 25;
-                    }
-                    if (npc.alpha <= 0 && ImHere)
-                    {
-                        ImHere = false;
-                        npc.alpha = 0;
-                    }
-                }
-            }
-        }
+			npc.spriteDirection = -1;			
+		}
 		
 		public Vector2 GetVariance(bool random = true)
 		{
