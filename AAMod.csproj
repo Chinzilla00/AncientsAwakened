@@ -465,6 +465,9 @@
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
+    <Compile Include="Items\Boss\Infinity\IZCache.cs" />
+    <Compile Include="Items\Boss\Infinity\Sagittarius.cs" />
+    <Compile Include="Items\Boss\Infinity\TotalDestruction.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\HeartyTruffle.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\MonarchBag.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\Mushium.cs" />
@@ -1035,6 +1038,8 @@
     <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\IndigoSolution.cs" />
     <Compile Include="Projectiles\Infinity\Genocide.cs" />
+    <Compile Include="Projectiles\Infinity\Sagittarius.cs" />
+    <Compile Include="Projectiles\Infinity\TotalDestruction.cs" />
     <Compile Include="Projectiles\Iron_Kunai_Pro.cs" />
     <Compile Include="Projectiles\JungleReaperP.cs" />
     <Compile Include="Projectiles\Lead_Kunai_Pro.cs" />
@@ -2449,6 +2454,7 @@
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
+    <Content Include="Items\Boss\Infinity\IZCache.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
     <Content Include="Items\Boss\Infinity\TotalDestruction.png" />
@@ -3396,6 +3402,7 @@
     <Content Include="Projectiles\InfernoProj.png" />
     <Content Include="Projectiles\Infinity\Genocide.png" />
     <Content Include="Projectiles\Infinity\Sagittarius.png" />
+    <Content Include="Projectiles\Infinity\TotalDestruction.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />
     <Content Include="Projectiles\Lead_Kunai_Pro.png" />
