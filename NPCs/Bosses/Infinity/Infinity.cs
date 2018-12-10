@@ -318,13 +318,13 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-		public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
+		public static Color infinityGlowRed = new Color(233, 53, 53);
+        public static Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
-        public Texture2D glowTex = null;
+        public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
