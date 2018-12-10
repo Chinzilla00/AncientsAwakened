@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         private int Frame = 0;
         private int FrameCounter = 0;
-        private int HoldTimer = 80;
+        private int HoldTimer = 30;
 		public int spawnState = 0;
 
         public override void AI()
@@ -86,6 +86,12 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
+		public Color infinityGlowRed = new Color(233, 53, 53);
+        public Color GetGlowAlpha(bool aura)
+        {
+            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
+        }		
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D SFrame1 = Main.npcTexture[npc.type];
@@ -100,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			Texture2D infinityTex = mod.GetTexture("NPCs/Bosses/Infinity/IZShadow");		
 			npc.position.Y += 72;			
             BaseDrawing.DrawTexture(spriteBatch, infinityTex, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, darkFrame, Color.Black);	
-            BaseDrawing.DrawTexture(spriteBatch, drawTexture, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, npc.frame, Infinity.GetGlowAlpha(true));
+            BaseDrawing.DrawTexture(spriteBatch, drawTexture, 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, 3f, npc.rotation, npc.spriteDirection, 7, npc.frame, GetGlowAlpha(true));
 			npc.position.Y -= 72;
 			return false;
         }

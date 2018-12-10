@@ -80,7 +80,23 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
-        public override void AI()
+		
+		public override void AI()
+		{
+			try
+			{
+				AIInfinity();
+			}catch(Exception e)
+			{ 
+				BaseUtility.Chat("INFINITY CRASHED! FULL STACKTRACE IN LOG. ERROR: " + e.Message);
+				ErrorLogger.Log(e.Message); 
+				ErrorLogger.Log(e.StackTrace); 
+			}
+		}
+		
+		
+		
+        public void AIInfinity()
 		{
 			if(Main.netMode != 2)
 			{
@@ -281,13 +297,13 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-		public static Color infinityGlowRed = new Color(233, 53, 53);
-        public static Color GetGlowAlpha(bool aura)
+		public Color infinityGlowRed = new Color(233, 53, 53);
+        public Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
-        public static Texture2D glowTex = null;
+        public Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
