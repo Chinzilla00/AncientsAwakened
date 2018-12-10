@@ -51,8 +51,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.HitSound = SoundID.NPCHit44;
 			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
-            bossBag = mod.ItemType("IZCache");
-        }
+			bossBag = mod.ItemType("IZBag");
+		}
 
 		public float[] customAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
@@ -166,40 +166,11 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
-        public override void NPCLoot()
+        /*public override void NPCLoot()
 		{
-            if (!AAWorld.downedIZ)
-            {
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Oblivion>(), 0, 0);
-            }
-            AAWorld.downedIZ = true;
-            if (Main.expertMode)
-            {
-                npc.DropBossBags();
-            }
-            else
-            {
-                npc.DropLoot(mod.ItemType("Infinitium"), 25, 35);
-                string[] lootTable =
-                {
-                    "Genocide",
-                    "Nova",
-                    "Sagittarius",
-                    "TotalDestruction",
-                    "Annihilator"
-                    //"RiftShredder",
-                    //"VoidStar",
-                };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
-            }
-        }
-
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            damage = damage * 0.8f;
-            return true;
-        }
+			
+			
+		}*/
 
         public override void FindFrame(int frameHeight)
         {
@@ -214,8 +185,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void BossLoot(ref string name, ref int potionType)
 		{
-			potionType = mod.ItemType("GrandHealingPotion");
-        }
+			potionType = ItemID.SuperHealingPotion;
+		}
 		
 		private void ModifyHit(ref int damage)
 		{
@@ -233,7 +204,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 		
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
 		{
-			return false;
+			cooldownSlot = 1;
+			return true;
 		}
 		
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -241,45 +213,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.8f);
 		}
-
-        public bool quarterHealth = false;
-        public bool threeQuarterHealth = false;
-        public bool HalfHealth = false;
-        public bool eighthHealth = false;
-
-        public override void HitEffect(int hitDirection, double damage)
+		
+		public override void HitEffect(int hitDirection, double damage)
 		{
-            if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% efficiency.", new Color(158, 3, 32));
-                threeQuarterHealth = true;
-            }
-            if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Redirecting resources to offensive systems.", new Color(158, 3, 32));
-                HalfHealth = true;
-                npc.defense = 175;
-                IZHand1.damageIdle = 150;
-                IZHand1.damageCharging = 250;
-            }
-            if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("CRITICAL WARNING. Systems have reached 25% efficiency. Failure imminent.", new Color(158, 3, 32));
-                quarterHealth = true;
-            }
-            if (npc.life <= npc.lifeMax / 8 && !eighthHealth)
-            {
-                eighthHealth = true;
-                if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
-                npc.defense = 0;
-                IZHand1.damageIdle = 200;
-                IZHand1.damageCharging = 300;
-            }
-            if (npc.life <= npc.lifeMax / 8)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
-            }
-            for (int k = 0; k < 15; k++)
+			for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}

@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 		public int handType = 0; //0 == left top, 1 == left middle, 2 == left bottom, 3 == right top, 4 == right middle, 5 == right bottom
 		public bool leftHand= true;	
 
-		public static int damageIdle = 100;
-		public static int damageCharging = 200;
+		public static int damageIdle = 0;
+		public static int damageCharging = 100;
 		
         public bool killedbyplayer = true;	
 		
@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}else
 			{
 				npc.localAI[3] = 0;
-				if(targetPlayer != null && !ChargeAttack)
+				if(!ChargeAttack)
 				{
 					npc.velocity = (targetPlayer.Center - npc.Center);
 					npc.velocity = Vector2.Normalize(npc.velocity) * 0.005f;
