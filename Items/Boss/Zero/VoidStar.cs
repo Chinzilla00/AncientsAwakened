@@ -34,7 +34,6 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.magic = true;
-            item.autoReuse = true;
             item.noUseGraphic = true;
         }
 

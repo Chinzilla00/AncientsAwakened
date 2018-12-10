@@ -465,6 +465,7 @@
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
+    <Compile Include="Items\Boss\Infinity\InfinityBlade.cs" />
     <Compile Include="Items\Boss\Infinity\IZCache.cs" />
     <Compile Include="Items\Boss\Infinity\Sagittarius.cs" />
     <Compile Include="Items\Boss\Infinity\TotalDestruction.cs" />
@@ -1037,9 +1038,13 @@
     <Compile Include="Projectiles\Incineration.cs" />
     <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\IndigoSolution.cs" />
+    <Compile Include="Projectiles\Infinity\Anhialation.cs" />
     <Compile Include="Projectiles\Infinity\Genocide.cs" />
+    <Compile Include="Projectiles\Infinity\NovaBurst.cs" />
     <Compile Include="Projectiles\Infinity\Sagittarius.cs" />
+    <Compile Include="Projectiles\Infinity\AnhialationBurst.cs" />
     <Compile Include="Projectiles\Infinity\TotalDestruction.cs" />
+    <Compile Include="Projectiles\Infinity\Supernova.cs" />
     <Compile Include="Projectiles\Iron_Kunai_Pro.cs" />
     <Compile Include="Projectiles\JungleReaperP.cs" />
     <Compile Include="Projectiles\Lead_Kunai_Pro.cs" />
@@ -1109,7 +1114,7 @@
     <Compile Include="Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Projectiles\Zero\DoomRay.cs" />
-    <Compile Include="Projectiles\Zero\DoomRayP.cs" />
+    <Compile Include="Projectiles\Zero\DoomRayHandle.cs" />
     <Compile Include="Projectiles\Zero\EventHorizon.cs" />
     <Compile Include="Projectiles\Zero\Neutralizer.cs" />
     <Compile Include="Projectiles\Zero\RealityLaser.cs" />
@@ -2454,6 +2459,7 @@
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
+    <Content Include="Items\Boss\Infinity\InfinityBlade.png" />
     <Content Include="Items\Boss\Infinity\IZCache.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
@@ -3400,8 +3406,12 @@
     <Content Include="Projectiles\Incineration.png" />
     <Content Include="Projectiles\IndigoSolution.png" />
     <Content Include="Projectiles\InfernoProj.png" />
+    <Content Include="Projectiles\Infinity\Anhialation.png" />
+    <Content Include="Projectiles\Infinity\AnhialationBurst.png" />
     <Content Include="Projectiles\Infinity\Genocide.png" />
+    <Content Include="Projectiles\Infinity\NovaBurst.png" />
     <Content Include="Projectiles\Infinity\Sagittarius.png" />
+    <Content Include="Projectiles\Infinity\Supernova.png" />
     <Content Include="Projectiles\Infinity\TotalDestruction.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />
@@ -3479,7 +3489,7 @@
     <Content Include="Projectiles\HydraSpray.png" />
     <Content Include="Projectiles\Zero\Antimatter.png" />
     <Content Include="Projectiles\Zero\DoomRay.png" />
-    <Content Include="Projectiles\Zero\DoomRayP.png" />
+    <Content Include="Projectiles\Zero\DoomRayHandle.png" />
     <Content Include="Projectiles\Zero\EventHorizon.png" />
     <Content Include="Projectiles\Zero\Neutralizer.png" />
     <Content Include="Projectiles\Zero\RealityLaser.png" />

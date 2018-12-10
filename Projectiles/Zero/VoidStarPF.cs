@@ -13,7 +13,7 @@ namespace AAMod.Projectiles.Zero
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -36,17 +36,13 @@ namespace AAMod.Projectiles.Zero
             projectile.timeLeft = 300;
             projectile.hide = true;
             projectile.aiStyle = -1;
-            projectile.alpha = 255;
+            projectile.alpha = 100;
             projectile.ignoreWater = true;
 
         }
 
         public override void AI()
         {
-            if (projectile.alpha > 100)
-            {
-                projectile.alpha -= 5;
-            }
             float num472 = projectile.Center.X;
             float num473 = projectile.Center.Y;
             float num474 = 400f;
