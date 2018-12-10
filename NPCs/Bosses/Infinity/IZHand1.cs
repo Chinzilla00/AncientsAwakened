@@ -22,19 +22,19 @@ namespace AAMod.NPCs.Bosses.Infinity
             base.SetDefaults();
             if (!Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 70000;
+                npc.lifeMax = 75000;
             }
             if (!Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 80000;
+                npc.lifeMax = 85000;
             }
             if (Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 75000;
+                npc.lifeMax = 90000;
             }
             if (Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 85000;
+                npc.lifeMax = 100000;
             }
             npc.width = 206;
             npc.height = 206;
