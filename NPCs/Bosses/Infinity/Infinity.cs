@@ -51,8 +51,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.HitSound = SoundID.NPCHit44;
 			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
-			bossBag = mod.ItemType("IZCache");
-            npc.alpha = 255;
+			bossBag = mod.ItemType("IZBag");
 		}
 
 		public float[] customAI = new float[4];
@@ -81,77 +80,9 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
-        public bool ImHere = false;
-        public bool Spawned = false;
-        public bool ImComingForYou = false;
-        public bool teleportRoar = false;
-        
-		public override void AI()
+        public override void AI()
 		{
-			try
-			{
-				AIInfinity();
-			}catch(Exception e)
-			{ 
-				BaseUtility.Chat("INFINITY CRASHED! FULL STACKTRACE IN LOG. ERROR: " + e.Message);
-				ErrorLogger.Log(e.Message); 
-				ErrorLogger.Log(e.StackTrace); 
-			}
-		}
-		
-		
-		
-        public void AIInfinity()
-		{
-            if (npc.alpha > 0 && Spawned == false)
-            {
-                npc.alpha -= 10;
-            }
-            if (npc.alpha < 0 && Spawned == false)
-            {
-                npc.alpha = 0;
-                Spawned = true;
-            }
-            Player player = Main.player[npc.target];
-            if (player != null)
-            {
-                float dist = npc.Distance(player.Center);
-                if (dist > 1200)
-                {
-                    npc.dontTakeDamage = true;
-                    ImComingForYou = true;
-                    if (ImComingForYou)
-                    {
-                        npc.alpha += 10;
-                    }
-                    if (npc.alpha >= 255 && ImComingForYou)
-                    {
-                        ImComingForYou = false;
-                        ImHere = true;
-                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y);
-                        npc.Center = tele;
-                        npc.dontTakeDamage = false;
-                    }
-                    if (ImHere)
-                    {
-                        teleportRoar = true;
-                        npc.alpha -= 25;
-                    }
-                    if (teleportRoar)
-                    {
-                        teleportRoar = false;
-                        Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
-                    }
-                    if (npc.alpha <= 0 && ImHere)
-                    {
-                        ImHere = false;
-                        npc.alpha = 0;
-                    }
-
-
-                }
-            }
-            if (Main.netMode != 2)
+			if(Main.netMode != 2)
 			{
 				int ThreeQuartersHealth = npc.lifeMax * (int).75f;
 				int HalfHealth = npc.lifeMax * (int).5f;
@@ -235,30 +166,11 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
-        public override void NPCLoot()
+        /*public override void NPCLoot()
 		{
-            if (Main.expertMode)
-            {
-                npc.DropBossBags();
-            }
-            else
-            {
-                npc.DropLoot(mod.ItemType("Infinitium"), 25, 35);
-                string[] lootTable =
-                {
-                    "Genocide",
-                    "Nova",
-                    "Sagittarius",
-                    "TotalDestruction",
-                    "Annihilator"
-                    //"RiftShredder",
-                    //"VoidStar",
-                };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
-            }
-            
-        }
+			
+			
+		}*/
 
         public override void FindFrame(int frameHeight)
         {
@@ -271,27 +183,16 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            damage = damage * 0.8f;
-            return true;
-        }
-
         public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = mod.ItemType("GrandHealingPotion");   //boss drops
-            if (!AAWorld.downedIZ)
-            {
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Oblivion>(), 0, 0);
-            }
-            AAWorld.downedIZ = true;
-        }
-
-        private void ModifyHit(ref int damage)
 		{
-			if (damage > npc.lifeMax / 5)
+			potionType = ItemID.SuperHealingPotion;
+		}
+		
+		private void ModifyHit(ref int damage)
+		{
+			if (damage > npc.lifeMax / 8)
 			{
-				damage = npc.lifeMax / 5;
+				damage = npc.lifeMax / 8;
 			}
 		}
 		
@@ -312,43 +213,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.8f);
 		}
-
-
-        public bool quarterHealth = false;
-        public bool threeQuarterHealth = false;
-        public bool HalfHealth = false;
-        public bool eighthHealth = false;
-
-
-        public override void HitEffect(int hitDirection, double damage)
+		
+		public override void HitEffect(int hitDirection, double damage)
 		{
-            if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% efficiency.", new Color(158, 3, 32));
-                threeQuarterHealth = true;
-            }
-            if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Redirecting resources to offensive systems.", new Color(158, 3, 32));
-                HalfHealth = true;
-                npc.defense = 175;
-            }
-            if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("CRITICAL WARNING. Systems have reached 25% efficiency. Failure imminent.", new Color(158, 3, 32));
-                quarterHealth = true;
-            }
-            if (npc.life <= npc.lifeMax / 8 && !eighthHealth)
-            {
-                eighthHealth = true;
-                if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
-                npc.defense = 0;
-            }
-            if (npc.life <= npc.lifeMax / 8)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
-            }
-            for (int k = 0; k < 15; k++)
+			for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}
@@ -387,20 +255,13 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-		public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
+		public static Color infinityGlowRed = new Color(233, 53, 53);
+        public static Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
-        public Color GetGlowAlpha()
-        {
-            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
-        }
-
-        public Texture2D glowTex = null;
-        public Texture2D WingTex = null;
-        public Texture2D WingGlowTex = null;
+        public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
@@ -430,20 +291,9 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
             }
-            if (glowTex == null)
-            {
-                WingTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings");
-            }
-            if (WingGlowTex == null)
-            {
-                WingGlowTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings_Glow");
-            }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
 
-            //BaseDrawing.DrawTexture(sb, WingTex, 0, npc, dColor);
-            //BaseDrawing.DrawAura(sb, WingGlowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            //BaseDrawing.DrawTexture(sb, WingGlowTex, 0, npc, GetGlowAlpha());
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
             BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
             BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));

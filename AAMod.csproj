@@ -465,6 +465,9 @@
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
+    <Compile Include="Items\Boss\Infinity\IZCache.cs" />
+    <Compile Include="Items\Boss\Infinity\Sagittarius.cs" />
+    <Compile Include="Items\Boss\Infinity\TotalDestruction.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\HeartyTruffle.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\MonarchBag.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\Mushium.cs" />
@@ -1035,6 +1038,8 @@
     <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\IndigoSolution.cs" />
     <Compile Include="Projectiles\Infinity\Genocide.cs" />
+    <Compile Include="Projectiles\Infinity\Sagittarius.cs" />
+    <Compile Include="Projectiles\Infinity\TotalDestruction.cs" />
     <Compile Include="Projectiles\Iron_Kunai_Pro.cs" />
     <Compile Include="Projectiles\JungleReaperP.cs" />
     <Compile Include="Projectiles\Lead_Kunai_Pro.cs" />
@@ -1104,7 +1109,7 @@
     <Compile Include="Projectiles\YtriumBoomerangP.cs" />
     <Compile Include="Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Projectiles\Zero\DoomRay.cs" />
-    <Compile Include="Projectiles\Zero\DoomRayP.cs" />
+    <Compile Include="Projectiles\Zero\DoomRayHandle.cs" />
     <Compile Include="Projectiles\Zero\EventHorizon.cs" />
     <Compile Include="Projectiles\Zero\Neutralizer.cs" />
     <Compile Include="Projectiles\Zero\RealityLaser.cs" />
@@ -2449,6 +2454,7 @@
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
+    <Content Include="Items\Boss\Infinity\IZCache.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
     <Content Include="Items\Boss\Infinity\TotalDestruction.png" />
@@ -3020,9 +3026,6 @@
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Infinity\IZShadow.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings_Glow.png" />
-    <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0Concept.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0_Body.png" />
@@ -3034,9 +3037,7 @@
     <Content Include="NPCs\Bosses\Infinity\IZHand1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand2_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn3.png" />
@@ -3396,6 +3397,7 @@
     <Content Include="Projectiles\InfernoProj.png" />
     <Content Include="Projectiles\Infinity\Genocide.png" />
     <Content Include="Projectiles\Infinity\Sagittarius.png" />
+    <Content Include="Projectiles\Infinity\TotalDestruction.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />
     <Content Include="Projectiles\Lead_Kunai_Pro.png" />
@@ -3472,7 +3474,7 @@
     <Content Include="Projectiles\HydraSpray.png" />
     <Content Include="Projectiles\Zero\Antimatter.png" />
     <Content Include="Projectiles\Zero\DoomRay.png" />
-    <Content Include="Projectiles\Zero\DoomRayP.png" />
+    <Content Include="Projectiles\Zero\DoomRayHandle.png" />
     <Content Include="Projectiles\Zero\EventHorizon.png" />
     <Content Include="Projectiles\Zero\Neutralizer.png" />
     <Content Include="Projectiles\Zero\RealityLaser.png" />

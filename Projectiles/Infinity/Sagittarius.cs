@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Enums;
 
-namespace AAMod.Projectiles.Zero
+namespace AAMod.Projectiles.Infinity
 {
     public class Sagittarius : ModProjectile
     {
