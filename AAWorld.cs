@@ -106,7 +106,7 @@ namespace AAMod
             downedShen = false;
             downedShenA = false;
             downedIZ = false;
-            downedAllAncients = false;
+            downedAllAncients = downedAkuma && downedYamata && downedZero;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;

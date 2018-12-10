@@ -2441,6 +2441,11 @@
     <Content Include="Items\Boss\Hydra\HydraHide.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant_Neck.png" />
+    <Content Include="Items\Boss\Infinity\Annihilator.png" />
+    <Content Include="Items\Boss\Infinity\Genocide.png" />
+    <Content Include="Items\Boss\Infinity\Nova.png" />
+    <Content Include="Items\Boss\Infinity\Sagittarius.png" />
+    <Content Include="Items\Boss\Infinity\TotalDestruction.png" />
     <Content Include="Items\Boss\MushroomMonarch\HeartyTruffle.png" />
     <Content Include="Items\Boss\MushroomMonarch\MonarchBag.png" />
     <Content Include="Items\Boss\MushroomMonarch\Mushium.png" />

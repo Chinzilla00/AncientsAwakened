@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void AI()
 		{
-            if (!Body.npc.active)
+            if (Body != null && !Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
                 {
