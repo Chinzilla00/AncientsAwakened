@@ -81,15 +81,11 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
-<<<<<<< HEAD
         public bool ImHere = false;
         public bool Spawned = false;
         public bool ImComingForYou = false;
         public bool teleportRoar = false;
-
-        public override void AI()
-=======
-		
+        
 		public override void AI()
 		{
 			try
@@ -106,7 +102,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 		
 		
         public void AIInfinity()
->>>>>>> 6b1fd47b083f76a618010c873225596f2960704a
 		{
             if (npc.alpha > 0 && Spawned == false)
             {
