@@ -2458,7 +2458,6 @@
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant_Neck.png" />
     <Content Include="Items\Boss\Infinity\Annhialator.png" />
-    <Content Include="Items\Boss\Infinity\Annihilator.png" />
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
@@ -3035,8 +3034,6 @@
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Infinity\IZShadow.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0Concept.png" />
@@ -3049,9 +3046,7 @@
     <Content Include="NPCs\Bosses\Infinity\IZHand1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand2_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn3.png" />
