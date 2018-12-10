@@ -133,7 +133,11 @@ namespace AAMod.Backgrounds
                 {
                     if (!AAWorld.downedIZ)
                     {
+<<<<<<< HEAD
                         spriteBatch.Draw(Echo, echoPos, null, NPCs.Bosses.Infinity.Infinity.GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+=======
+                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+>>>>>>> 6b1fd47b083f76a618010c873225596f2960704a
                     }
                 }
 				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
@@ -166,6 +170,12 @@ namespace AAMod.Backgrounds
             }
         }
 
+		public Color infinityGlowRed = new Color(233, 53, 53);
+        public Color GetGlowAlpha(bool aura)
+        {
+            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
+        }		
+		
         public override float GetCloudAlpha()
         {
             return (1f - Intensity);

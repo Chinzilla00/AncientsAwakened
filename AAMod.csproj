@@ -860,9 +860,9 @@
     <Compile Include="NPCs\Bosses\Hydra\HydraHead3.cs" />
     <Compile Include="NPCs\Bosses\Hydra\HydraBreath.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Infinity.cs" />
-    <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand2.cs" />
+    <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />

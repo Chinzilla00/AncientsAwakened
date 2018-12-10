@@ -148,7 +148,21 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void AI()
 		{
+<<<<<<< HEAD
 
+=======
+            if (!Body.npc.active)
+            {
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                    killedbyplayer = false;
+                }
+                return;
+            }
+>>>>>>> 6b1fd47b083f76a618010c873225596f2960704a
             if (RepairMode)
             {
                 RepairTimer--;
