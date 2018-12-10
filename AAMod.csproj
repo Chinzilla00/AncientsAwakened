@@ -1473,6 +1473,7 @@
     <Content Include="Glowmasks\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Glowmasks\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Glowmasks\AMR_Glow.png" />
+    <Content Include="Glowmasks\Annhialator_Glow.png" />
     <Content Include="Glowmasks\Apocalypse_Glow.png" />
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
     <Content Include="Glowmasks\Apocalyptite_Glow.png" />
@@ -1500,11 +1501,14 @@
     <Content Include="Glowmasks\ChaosAltarNatural_Glow.png" />
     <Content Include="Glowmasks\ChaosAltar_Glow.png" />
     <Content Include="Glowmasks\ChaosCrucible_Glow.png" />
+    <Content Include="Glowmasks\ChaosRune_Glow.png" />
     <Content Include="Glowmasks\ChaosShot_Glow.png" />
+    <Content Include="Glowmasks\ChaosSigil_Glow.png" />
     <Content Include="Glowmasks\ChaosSoul_Glow.png" />
     <Content Include="Glowmasks\Chaos_Glow.png" />
     <Content Include="Glowmasks\Crescent_Glow.png" />
     <Content Include="Glowmasks\CthulhusBlade_Glow.png" />
+    <Content Include="Glowmasks\CuriousClaw_Glow.png" />
     <Content Include="Glowmasks\CyberneticBell_Glow.png" />
     <Content Include="Glowmasks\CyberneticClaw_Glow.png" />
     <Content Include="Glowmasks\DarkEnergy_Glow.png" />
@@ -1570,6 +1574,7 @@
     <Content Include="Glowmasks\DracoHelm_Head_Glow.png" />
     <Content Include="Glowmasks\DracoLeggings_Glow.png" />
     <Content Include="Glowmasks\DracoLeggings_Legs_Glow.png" />
+    <Content Include="Glowmasks\DraconianRune_Glow.png" />
     <Content Include="Glowmasks\DracoPlate_Arms_Glow.png" />
     <Content Include="Glowmasks\DracoPlate_Body_Glow.png" />
     <Content Include="Glowmasks\DracoPlate_Female_Glow.png" />
@@ -1583,7 +1588,9 @@
     <Content Include="Glowmasks\Dragonkite_Glow.png" />
     <Content Include="Glowmasks\DragonSlasher_Glow.png" />
     <Content Include="Glowmasks\DragonsMaw_Glow.png" />
+    <Content Include="Glowmasks\DreadRune_Glow.png" />
     <Content Include="Glowmasks\DreadScale_Glow.png" />
+    <Content Include="Glowmasks\DreadSigil_Glow.png" />
     <Content Include="Glowmasks\DuckstepGunEX_Glow.png" />
     <Content Include="Glowmasks\DuckstepGun_Glow.png" />
     <Content Include="Glowmasks\DynaskullOre_Glow.png" />
@@ -1613,6 +1620,7 @@
     <Content Include="Glowmasks\GalaxyBreastplate_Glow.png" />
     <Content Include="Glowmasks\GalaxyGreaves_Glow.png" />
     <Content Include="Glowmasks\GalaxyHelmet_Glow.png" />
+    <Content Include="Glowmasks\Genocide_Glow.png" />
     <Content Include="Glowmasks\GentlemansLongblade_Glow.png" />
     <Content Include="Glowmasks\GentlemansRapier_Glow.png" />
     <Content Include="Glowmasks\GripMaskRed_Glow.png" />
@@ -1642,9 +1650,12 @@
     <Content Include="Glowmasks\InfernoProj_Glow.png" />
     <Content Include="Glowmasks\InfernoSalamander_Glow.png" />
     <Content Include="Glowmasks\InfernoSalamander_Nom_Glow.png" />
+    <Content Include="Glowmasks\Infinitium_Glow.png" />
+    <Content Include="Glowmasks\InfinityBlade_Glow.png" />
     <Content Include="Glowmasks\InfinityGauntlet_Glow.png" />
     <Content Include="Glowmasks\InfinityGauntlet_HandsOn_Glow.png" />
     <Content Include="Glowmasks\InfinityGauntlet_Wings_Glow.png" />
+    <Content Include="Glowmasks\InfinityOverloader_Glow.png" />
     <Content Include="Glowmasks\IntimidatingMushroom_Glow.png" />
     <Content Include="Glowmasks\JungleReaperP_Glow.png" />
     <Content Include="Glowmasks\Laser_Rifle_Glow.png" />
@@ -1675,6 +1686,7 @@
     <Content Include="Glowmasks\NightcrawlerMask_Glow.png" />
     <Content Include="Glowmasks\NightcrawlerMask_Head_Glow.png" />
     <Content Include="Glowmasks\Nightcrawler_Glow.png" />
+    <Content Include="Glowmasks\Nova_Glow.png" />
     <Content Include="Glowmasks\Null_Glow.png" />
     <Content Include="Glowmasks\OroborosBathtub_Glow.png" />
     <Content Include="Glowmasks\OroborosBed_Glow.png" />
@@ -1737,6 +1749,8 @@
     <Content Include="Glowmasks\Rift_Glow.png" />
     <Content Include="Glowmasks\RoHBox_Glow.png" />
     <Content Include="Glowmasks\SABox_Glow.png" />
+    <Content Include="Glowmasks\Sagittarius_Glow.png" />
+    <Content Include="Glowmasks\ScrapHeap_Glow.png" />
     <Content Include="Glowmasks\ScytheOfDecay_Glow.png" />
     <Content Include="Glowmasks\SearcherZero_Glow.png" />
     <Content Include="Glowmasks\Searcher_Glow.png" />
@@ -1785,6 +1799,7 @@
     <Content Include="Glowmasks\TimeStone_Glow.png" />
     <Content Include="Glowmasks\TopHat_Glow.png" />
     <Content Include="Glowmasks\TorchstoneWall_Glow.png" />
+    <Content Include="Glowmasks\TotalDestruction_Glow.png" />
     <Content Include="Glowmasks\Toxibomb_Glow.png" />
     <Content Include="Glowmasks\Toxiboom_Glow.png" />
     <Content Include="Glowmasks\TrueAbyssalTwilightShot_Glow.png" />
@@ -2458,7 +2473,6 @@
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant_Neck.png" />
     <Content Include="Items\Boss\Infinity\Annhialator.png" />
-    <Content Include="Items\Boss\Infinity\Annihilator.png" />
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
@@ -3035,8 +3049,6 @@
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Infinity\IZShadow.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZWings_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0Concept.png" />
@@ -3049,9 +3061,7 @@
     <Content Include="NPCs\Bosses\Infinity\IZHand1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand1_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZHand2_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Infinity\IZHand_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn1.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn2.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn3.png" />
@@ -3512,6 +3522,7 @@
     <Content Include="Sounds\Music\End.mp3" />
     <Content Include="Sounds\Music\EndIntro.mp3" />
     <Content Include="Sounds\Music\IZ.mp3" />
+    <Content Include="Sounds\Music\LastStand.mp3" />
     <Content Include="Sounds\Music\Monarch.mp3" />
     <Content Include="Sounds\Music\SARoH.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />
