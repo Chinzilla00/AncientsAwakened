@@ -3775,6 +3775,7 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Mounts\" />
+    <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Tiles\Daybreak\" />
     <Folder Include="Tiles\Doomsday\" />

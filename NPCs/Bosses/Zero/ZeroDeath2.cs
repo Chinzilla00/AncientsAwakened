@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void AI()
         {
-            AAWorld.downedZeroA = true;
+            AAWorld.downedZero = true;
             if (++projectile.frameCounter >= 15)
             {
                 projectile.frameCounter = 0;

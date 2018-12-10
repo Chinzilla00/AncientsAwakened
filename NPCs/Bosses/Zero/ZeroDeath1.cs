@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            if (!AAWorld.downedZeroA && Main.expertMode)
+            if (!AAWorld.downedZero && Main.expertMode)
             {
                 Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
             }
