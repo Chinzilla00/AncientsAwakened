@@ -90,7 +90,7 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
                 Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
-            if (!AAWorld.downedZeroA && Main.expertMode)
+            if (!AAWorld.downedZero && Main.expertMode)
             {
                 Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
@@ -98,7 +98,7 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
             {
                 Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (Main.expertMode && AAWorld.downedZeroA)
+            if (Main.expertMode && AAWorld.downedZero)
             {
                 Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
