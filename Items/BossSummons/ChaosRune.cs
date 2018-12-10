@@ -49,7 +49,6 @@ Summons Shen Doragon's true awakened form");
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Blue, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
             if (AAWorld.downedAllAncients)
             {
                 spriteBatch.Draw

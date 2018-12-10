@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Zero
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            projectile.damage = (int)(projectile.damage * 1.2);
+            projectile.damage = (int)(projectile.damage * 2);
         }
 
         public override void AI()

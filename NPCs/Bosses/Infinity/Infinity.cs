@@ -52,6 +52,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
 			bossBag = mod.ItemType("IZBag");
+            npc.alpha = 255;
 		}
 
 		public float[] customAI = new float[4];
@@ -80,9 +81,62 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
+        public bool ImHere = false;
+        public bool Spawned = false;
+        public bool ImComingForYou = false;
+        public bool teleportRoar = false;
+
         public override void AI()
 		{
-			if(Main.netMode != 2)
+            if (npc.alpha > 0 && Spawned == false)
+            {
+                npc.alpha -= 10;
+            }
+            if (npc.alpha < 0 && Spawned == false)
+            {
+                npc.alpha = 0;
+                Spawned = true;
+            }
+            Player player = Main.player[npc.target];
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1200)
+                {
+                    npc.dontTakeDamage = true;
+                    ImComingForYou = true;
+                    if (ImComingForYou)
+                    {
+                        npc.alpha += 10;
+                    }
+                    if (npc.alpha >= 255 && ImComingForYou)
+                    {
+                        ImComingForYou = false;
+                        ImHere = true;
+                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y);
+                        npc.Center = tele;
+                        npc.dontTakeDamage = false;
+                    }
+                    if (ImHere)
+                    {
+                        teleportRoar = true;
+                        npc.alpha -= 25;
+                    }
+                    if (teleportRoar)
+                    {
+                        teleportRoar = false;
+                        Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
+                    }
+                    if (npc.alpha <= 0 && ImHere)
+                    {
+                        ImHere = false;
+                        npc.alpha = 0;
+                    }
+
+
+                }
+            }
+            if (Main.netMode != 2)
 			{
 				int ThreeQuartersHealth = npc.lifeMax * (int).75f;
 				int HalfHealth = npc.lifeMax * (int).5f;
@@ -181,6 +235,12 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 npc.frame.Y = 0;
             }
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            damage = damage * 0.8f;
+            return true;
         }
 
         public override void BossLoot(ref string name, ref int potionType)

@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 npc.lifeMax = 85000;
             }
+            npc.defense = 200;
             npc.width = 206;
             npc.height = 206;
             npc.npcSlots = 0;
@@ -141,10 +142,13 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
 
 
+        public bool ImHere = false;
+        public bool Spawned = false;
+        public bool ImComingForYou = false;
+
         public override void AI()
 		{
 
-            
             if (RepairMode)
             {
                 RepairTimer--;
@@ -256,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			{
 				if(ChargeAttack)
 				{
-					npc.velocity *= 0.5f; //slow WAY the fuck down
+					npc.velocity *= 0.7f; //slow WAY the fuck down
 					if(Main.netMode != 1)
 					{
 						ChargeAttack = false;
@@ -275,8 +279,39 @@ namespace AAMod.NPCs.Bosses.Infinity
 				npc.velocity *= (ChargeAttack ? 18f : 8f);
 			}
 			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-			npc.spriteDirection = -1;			
-		}
+			npc.spriteDirection = -1;
+
+            if (Body != null)
+            {
+                float dist = npc.Distance(Body.npc.Center);
+                if (dist > 1800)
+                {
+                    npc.dontTakeDamage = true;
+                    ImComingForYou = true;
+                    if (ImComingForYou)
+                    {
+                        npc.alpha += 10;
+                    }
+                    if (npc.alpha >= 255 && ImComingForYou)
+                    {
+                        ImComingForYou = false;
+                        ImHere = true;
+                        Vector2 tele = new Vector2(Body.npc.Center.X, Body.npc.Center.Y);
+                        npc.Center = tele;
+                        npc.dontTakeDamage = false;
+                    }
+                    if (ImHere)
+                    {
+                        npc.alpha -= 25;
+                    }
+                    if (npc.alpha <= 0 && ImHere)
+                    {
+                        ImHere = false;
+                        npc.alpha = 0;
+                    }
+                }
+            }
+        }
 		
 		public Vector2 GetVariance(bool random = true)
 		{

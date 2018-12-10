@@ -31,6 +31,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
             player.meleeCrit += 18;
             player.magicCrit += 18;
             player.endurance *= 1.1f;
+            player.statManaMax2 += 100;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
