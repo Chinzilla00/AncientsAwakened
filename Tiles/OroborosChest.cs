@@ -86,24 +86,7 @@ namespace AAMod.Tiles
 		public override void RightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
-            for (int num66 = 0; num66 < 58; num66++)
-            {
-                if (player.inventory[num66].type == mod.ItemType("DoomstopperKey") && player.inventory[num66].stack > 0)
-                {
-                    /* player.inventory[num66].stack--; */
-                    Chest.Unlock(i, j);
-                    Chest.Unlock(i - 1, j - 1);
-                    Chest.Unlock(i, j - 1);
-                    Chest.Unlock(i - 1, j);
-                    /*     if (player.inventory[num66].stack <= 0)
-						 {
-							 player.inventory[num66] = new Item();
-						 } */
-
-                }
-            }
-
-            Tile tile = Main.tile[i, j];
+			Tile tile = Main.tile[i, j];
 			Main.mouseRightRelease = false;
 			int left = i;
 			int top = j;
