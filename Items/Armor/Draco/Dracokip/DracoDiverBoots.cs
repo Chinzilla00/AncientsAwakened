@@ -33,6 +33,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
             player.meleeSpeed += 0.14f;
             player.manaCost *= 0.75f;
             player.endurance *= 1.1f;
+            player.statManaMax2 += 100;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

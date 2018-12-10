@@ -17,6 +17,7 @@ namespace AAMod.Items.Armor.Draco
 14% increased melee speed
 25% decreased mana consumption
 10% increased damage resistance
+100 increased maximum mana
 The blazing fury of the Inferno rests in this armor");
 
 		}
@@ -56,7 +57,8 @@ The blazing fury of the Inferno rests in this armor");
 			player.meleeSpeed += 0.14f;
 			player.manaCost *= 0.75f;
 			player.endurance *= 1.1f;
-		}
+            player.statManaMax2 += 100;
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

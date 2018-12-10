@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
+using BaseMod;
 
 namespace AAMod.Backgrounds
 {
@@ -18,25 +19,20 @@ namespace AAMod.Backgrounds
             public Vector2 Position;
 
             public float Depth;
+			public float Rotation;
 
             public int Life;
 
             public bool IsAlive;
         }
-        
+
         public static Texture2D boltTexture;
         public static Texture2D flashTexture;
         private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
-
-        public override void OnLoad()
-        {
-            boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
-            flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
-        }
-
+		
         public override void Update(GameTime gameTime)
         {
             if (Active)
@@ -49,15 +45,16 @@ namespace AAMod.Backgrounds
             }
             if (ticksUntilNextBolt <= 0)
             {
-                ticksUntilNextBolt = random.Next(1, 5);
+                ticksUntilNextBolt = random.Next(5, 20);
                 int num = 0;
                 while (bolts[num].IsAlive && num != bolts.Length - 1)
                 {
                     num++;
                 }
                 bolts[num].IsAlive = true;
-                bolts[num].Position.X = random.NextFloat() * ((float)Main.maxTilesX * 16f + 4000f) - 2000f;
-                bolts[num].Position.Y = random.NextFloat() * 600f;
+                bolts[num].Position.X = random.NextFloat() * 2000f;
+                bolts[num].Position.Y = random.NextFloat() * 1000f;
+				bolts[num].Rotation = random.NextFloat() * ((float)Math.PI * 2f);
                 bolts[num].Depth = random.NextFloat() * 8f + 2f;
                 bolts[num].Life = 30;
             }
@@ -66,9 +63,7 @@ namespace AAMod.Backgrounds
             {
                 if (bolts[i].IsAlive)
                 {
-                    Bolt[] expr168cp0 = bolts;
-                    int expr168cp1 = i;
-                    expr168cp0[expr168cp1].Life = expr168cp0[expr168cp1].Life - 1;
+                    bolts[i].Life -= 1;
                     if (bolts[i].Life <= 0)
                     {
                         bolts[i].IsAlive = false;
@@ -90,17 +85,16 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                 
             }
-            float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
-            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
             for (int i = 0; i < bolts.Length; i++)
             {
-                if (bolts[i].IsAlive && bolts[i].Depth > minDepth && bolts[i].Depth < maxDepth)
+                if (bolts[i].IsAlive)
                 {
-                    Vector2 value4 = new Vector2(1f / bolts[i].Depth, 0.9f / bolts[i].Depth);
-                    Vector2 position = (bolts[i].Position - value3) * value4 + value3 - Main.screenPosition;
+                    Vector2 position = bolts[i].Position;
+					float scale = MathHelper.Lerp(0.5f, 0.25f, Math.Max(0f, Math.Min(1f, (position.X / 1000f))));
                     if (rectangle.Contains((int)position.X, (int)position.Y))
                     {
+						Vector2 value4 = new Vector2(1f / bolts[i].Depth, 0.9f / bolts[i].Depth);
                         Texture2D texture = boltTexture;
                         int life = bolts[i].Life;
                         if (life > 26 && life % 2 == 0)
@@ -108,7 +102,7 @@ namespace AAMod.Backgrounds
                             texture = flashTexture;
                         }
                         float scale2 = (float)life / 30f;
-                        spriteBatch.Draw(texture, position, null, Color.White * scale * scale2 * Intensity, 0f, Vector2.Zero, value4.X * 5f, SpriteEffects.None, 0f);
+                        spriteBatch.Draw(texture, position, null, Color.White * scale * scale2 * Intensity, bolts[i].Rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
                     }
                 }
             }

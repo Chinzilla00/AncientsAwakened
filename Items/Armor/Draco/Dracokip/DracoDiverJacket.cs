@@ -43,6 +43,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
             player.meleeDamage *= 1.25f;
             player.magicDamage *= 1.25f;
             player.endurance *= 1.1f;
+            player.statManaMax2 += 100;
         }
 
         public override void AddRecipes()

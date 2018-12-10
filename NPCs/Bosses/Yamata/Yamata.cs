@@ -186,7 +186,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				if(Head7 != null && Head7.life > 0) headCount++;
 				if(headCount == 0) //killed all fake heads
 				{
-					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU WELP!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU MAGGOT!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
 				}else
 				if(headCount == 5) //killed one fake head
 				{

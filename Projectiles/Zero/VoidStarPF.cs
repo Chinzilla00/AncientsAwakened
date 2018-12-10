@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = -1;
             projectile.timeLeft = 300;
             projectile.hide = true;
-            projectile.aiStyle = 0;
+            projectile.aiStyle = -1;
             projectile.alpha = 100;
             projectile.ignoreWater = true;
             

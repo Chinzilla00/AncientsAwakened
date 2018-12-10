@@ -3380,6 +3380,7 @@
     <Content Include="Projectiles\Incineration.png" />
     <Content Include="Projectiles\IndigoSolution.png" />
     <Content Include="Projectiles\InfernoProj.png" />
+    <Content Include="Projectiles\Infinity\Sagittarius.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />
     <Content Include="Projectiles\Lead_Kunai_Pro.png" />
