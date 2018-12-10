@@ -6,6 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
+using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod.Backgrounds
 {
@@ -105,8 +106,18 @@ namespace AAMod.Backgrounds
         public float asteroidPercent3 = 0f;
         public float Rotation = 0;
         public float LBRotation = 0;
+        public NPC IZ;
+
+
+        public Color infinityGlowRed = new Color(233, 53, 53);
+        public Color GetGlowAlpha(bool aura)
+        {
+            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
+        }
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
@@ -129,11 +140,11 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
 				float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
                 spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
+                if (AAWorld.downedZero)
                 {
                     if (!AAWorld.downedIZ)
                     {
-                        spriteBatch.Draw(Echo, echoPos, null, NPCs.Bosses.Infinity.Infinity.GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
                     }
                 }
 				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
