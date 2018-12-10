@@ -362,7 +362,14 @@ namespace AAMod.NPCs.Bosses.Infinity
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
+        public Color GetGlowAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
         public Texture2D glowTex = null;
+        public Texture2D WingTex = null;
+        public Texture2D WingGlowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
@@ -392,9 +399,20 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
             }
+            if (glowTex == null)
+            {
+                WingTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings");
+            }
+            if (WingGlowTex == null)
+            {
+                WingGlowTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings_Glow");
+            }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
 
+            BaseDrawing.DrawTexture(sb, WingTex, 0, npc, dColor);
+            BaseDrawing.DrawAura(sb, WingGlowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(sb, WingGlowTex, 0, npc, GetGlowAlpha());
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
             BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
             BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));

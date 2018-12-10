@@ -40,7 +40,7 @@ namespace AAMod.Items.Accessories
             if (item.accessory)
             {
                 player.GetModPlayer<AAPlayer>().AshRemover = true;
-                if (player.GetModPlayer<AAPlayer>().ZoneInferno && !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode)))
+                if (player.GetModPlayer<AAPlayer>().ZoneInferno && !Main.dayTime && !AAWorld.downedAkuma)
                 {
                     if (Main.rand.Next(3600) == 0)
                     {

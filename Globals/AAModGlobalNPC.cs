@@ -562,7 +562,7 @@ namespace AAMod
                 if (NPC.downedMoonlord)
                 {
                     pool.Add(mod.NPCType("Searcher"), 1f);
-                    if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
+                    if (AAWorld.downedZero && !Main.expertMode)
                     {
                         pool.Add(mod.NPCType("Null"), 1f);
                     }

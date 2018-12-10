@@ -25,11 +25,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.lifeMax = 30000;
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.lifeMax = 25000;
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && AAWorld.downedYamata)
             {
                 npc.lifeMax = 35000;
             }
@@ -86,8 +86,18 @@ namespace AAMod.NPCs.Bosses.Yamata
 			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-			if(Main.netMode != 1)
+            if (!Body.npc.active)
+            {
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                    killedbyplayer = false;
+                }
+                return;
+            }
+            if (Main.netMode != 1)
 			{
 				npc.ai[1]++;
 				int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 

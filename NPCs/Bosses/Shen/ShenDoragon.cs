@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            npc.scale = 2f;
+            npc.scale *= 2f;
             if (!Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 170;

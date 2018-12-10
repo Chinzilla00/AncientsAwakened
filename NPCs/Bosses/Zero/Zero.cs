@@ -31,13 +31,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.defense = 80;
                 npc.lifeMax = 95000;
             }
-            if (Main.expertMode && !AAWorld.downedZeroA)
+            if (Main.expertMode && !AAWorld.downedZero)
             {
                 npc.damage = 90;
                 npc.defense = 80;
                 npc.lifeMax = 75000;
             }
-            if (Main.expertMode && AAWorld.downedZeroA)
+            if (Main.expertMode && AAWorld.downedZero)
             {
                 npc.damage = 100;
                 npc.defense = 90;
@@ -225,11 +225,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.damage = 110;
                 }
-                if (Main.expertMode && !AAWorld.downedZeroA)
+                if (Main.expertMode && !AAWorld.downedZero)
                 {
                     npc.damage = 110;
                 }
-                if (Main.expertMode && AAWorld.downedZeroA)
+                if (Main.expertMode && AAWorld.downedZero)
                 {
                     npc.damage = 120;
                 }

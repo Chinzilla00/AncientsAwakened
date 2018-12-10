@@ -80,19 +80,11 @@ Only Usable during the day");
         public override bool UseItem(Player player)
         {
 
-            if (!AAWorld.downedAkuma && !Main.expertMode)
+            if (!AAWorld.downedAkuma)
             {
                 Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
             }
-            if (!AAWorld.downedAkumaA && Main.expertMode)
-            {
-                Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
-            }
-            if (!Main.expertMode && AAWorld.downedAkuma)
-            {
-                Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
-            }
-            if (Main.expertMode && AAWorld.downedAkumaA)
+            if (AAWorld.downedAkuma)
             {
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }

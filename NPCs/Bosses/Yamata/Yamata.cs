@@ -74,13 +74,13 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 80;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 100;
                 npc.lifeMax = 150000;
@@ -111,11 +111,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void NPCLoot()
         {
-            AAWorld.downedYamata = true;
 
 
             if (!Main.expertMode)
             {
+                AAWorld.downedYamata = true;
                 npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
                 string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                 int loot = Main.rand.Next(lootTable.Length);

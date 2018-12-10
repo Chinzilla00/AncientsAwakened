@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			base.SetDefaults();
 			isAwakened = true;
 			
-            if (!AAWorld.downedYamataA)
+            if (!AAWorld.downedYamata)
             {
                 npc.lifeMax = 140000;
                 if (npc.life > npc.lifeMax / 3)
@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     npc.defense = 90;
                 }
             }
-            if (AAWorld.downedYamataA)
+            if (AAWorld.downedYamata)
             {
                 npc.lifeMax = 150000;
                 if (npc.life > npc.lifeMax / 3)
@@ -103,13 +103,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedYamataA = true;
+                AAWorld.downedYamata = true;
             }
-            if (!AAWorld.downedYamataA && Main.expertMode && !cheated)
+            if (!AAWorld.downedYamata && !cheated)
             {
                 Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY..!", new Color(146, 30, 68));
             }
-            if (AAWorld.downedYamataA && Main.expertMode && !cheated)
+            if (AAWorld.downedYamata && !cheated)
             {
                 Main.NewText("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff, See if I care!", new Color(146, 30, 68));
             }
@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 BaseAI.DropItem(npc, mod.ItemType("YamataTrophy"), 1, 1, 15, true);
                 npc.DropBossBags();
-                AAWorld.downedYamataA = true;
+                AAWorld.downedYamata = true;
                 if (Main.rand.NextFloat() < 0.1f)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
@@ -151,7 +151,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Main.dust[dust2].noGravity = true;
 
             }
-            if (!AAWorld.downedYamataA)
+            if (!AAWorld.downedYamata)
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
@@ -169,7 +169,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     tenthHealth = true;
                 }
             }
-            if (AAWorld.downedYamataA)
+            if (AAWorld.downedYamata)
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
@@ -191,12 +191,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
             {
                 Panic = true;
                 Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedYamataA && Main.expertMode && npc.type == mod.NPCType<YamataA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
             {
                 Panic = true;
                 Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));

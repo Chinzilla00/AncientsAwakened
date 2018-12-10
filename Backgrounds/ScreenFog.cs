@@ -28,7 +28,7 @@ namespace AAMod.Backgrounds
 
 			Player player = Main.player[Main.myPlayer];
 			bool inMire = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
-			if(!backgroundFog && (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || (AAWorld.downedYamata && !Main.expertMode) || (AAWorld.downedYamataA && Main.expertMode))) inMire = false;
+			if(!backgroundFog && (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || AAWorld.downedYamata)) inMire = false;
 			
 			fogOffsetX += 1;
 			if(fogOffsetX >= texture.Width) fogOffsetX = 0;

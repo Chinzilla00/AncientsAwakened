@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.height = 144;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-            if (!AAWorld.downedAkumaA)
+            if (!AAWorld.downedAkuma)
             {
                 npc.lifeMax = 150000;
                 if (npc.life > npc.lifeMax / 3)
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.defense = 150;
                 }
             }
-            if (AAWorld.downedAkumaA)
+            if (AAWorld.downedAkuma)
             {
                 npc.lifeMax = 160000;
                 if (npc.life > npc.lifeMax / 3)
@@ -467,12 +467,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Why you little...I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do you? Ya got fire in your spirit; I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -499,13 +499,13 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             
 
-            if (!AAWorld.downedAkumaA && Main.expertMode)
+            if (!AAWorld.downedAkuma && Main.expertMode)
             {
                 Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
 
             }
-            if (AAWorld.downedAkumaA && Main.expertMode)
+            if (AAWorld.downedAkuma && Main.expertMode)
             {
                 Main.NewText("Snuffed out again. You have my respect, kid. Here.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
@@ -519,7 +519,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedAkumaA = true;
+                AAWorld.downedAkuma = true;
             }
         }
 
@@ -678,12 +678,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Why you little...I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do you? Ya got fire in your spirit; I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -837,12 +837,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Why you little...I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do you? Ya got fire in your spirit; I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -994,12 +994,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Panic = false;
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("What?! How have you lasted this long?! Why you little...I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkumaA && Main.expertMode && npc.type == mod.NPCType<AkumaA>())
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
                 Main.NewText("Still got it, do you? Ya got fire in your spirit; I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);

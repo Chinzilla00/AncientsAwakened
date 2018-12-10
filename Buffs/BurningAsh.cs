@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && (!Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode))))
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && !Main.dayTime && !AAWorld.downedAkuma)
             {
                 player.buffTime[buffIndex] = 5;
                 player.lifeRegenTime = 1;

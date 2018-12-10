@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.aiStyle = 0;
-            if (!AAWorld.downedZeroA)
+            if (!AAWorld.downedZero)
             {
                 npc.lifeMax = 100000;
                 if (npc.life > npc.lifeMax / 3)
@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.defense = 90;
                 }
             }
-            if (AAWorld.downedZeroA)
+            if (AAWorld.downedZero)
             {
                 npc.lifeMax = 120000;
                 if (npc.life > npc.lifeMax / 3)
@@ -132,12 +132,12 @@ namespace AAMod.NPCs.Bosses.Zero
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
 
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedZeroA == false && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedZero)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZeroA == true && Main.expertMode)
+            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -157,11 +157,11 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
+            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZero && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (npc.life <= 0 && Main.expertMode && AAWorld.downedZeroA && npc.type == mod.NPCType<ZeroAwakened>())
+            if (npc.life <= 0 && Main.expertMode && AAWorld.downedZero && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
             }

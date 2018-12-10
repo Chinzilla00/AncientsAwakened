@@ -54,19 +54,11 @@ Only Usable at night");
 		{
 			SpawnBoss(player, "Yamata", "Yamata; Dread Nightmare");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            if (!AAWorld.downedYamata && !Main.expertMode)
+            if (!AAWorld.downedYamata)
             {
                 Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
             }
-            if (!AAWorld.downedYamataA && Main.expertMode)
-            {
-                Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
-            }
-            if (!Main.expertMode && AAWorld.downedYamata)
-            {
-                Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
-            }
-            if (Main.expertMode && AAWorld.downedYamata)
+            if (AAWorld.downedYamata)
             {
                 Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
             }

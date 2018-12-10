@@ -8,7 +8,7 @@ namespace AAMod.Dusts
 	{
 		public override void OnSpawn(Dust dust)
 		{
-            if (!Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode)))
+            if (!Main.dayTime && !AAWorld.downedAkuma)
             {
                 dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
                 dust.velocity.X *= 0.3f;
@@ -19,7 +19,7 @@ namespace AAMod.Dusts
 
 		public override bool MidUpdate(Dust dust)
         {
-            if (!Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode)))
+            if (!Main.dayTime && !AAWorld.downedAkuma)
             {
                 AAPlayer.Ashes = 0;
                 if (!dust.noGravity)

@@ -32,12 +32,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.damage = 140;
                 npc.defense = 40;
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 140;
                 npc.defense = 50;
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && AAWorld.downedYamata)
             {
                 npc.damage = 150;
                 npc.defense = 60;
@@ -92,6 +92,17 @@ namespace AAMod.NPCs.Bosses.Yamata
 			
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
+
+            if (!Body.active)
+            {
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                }
+                return;
+            }
 
             bool SISSY = false;
             int GETDOWNHERE = 0;

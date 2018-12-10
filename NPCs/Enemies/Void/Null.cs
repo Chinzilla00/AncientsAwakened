@@ -17,8 +17,8 @@ namespace AAMod.NPCs.Enemies.Void
 		
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.Ghost);
-            animationType = NPCID.Ghost;
+            npc.CloneDefaults(NPCID.Poltergeist);
+            animationType = NPCID.Poltergeist;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.width = 24;

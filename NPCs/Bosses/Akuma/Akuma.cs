@@ -48,14 +48,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
-            if (Main.expertMode && !AAWorld.downedAkumaA)
+            if (Main.expertMode && !AAWorld.downedAkuma)
             {
                 npc.damage = 60;
                 npc.defense = 100;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedAkumaA)
+            if (Main.expertMode && AAWorld.downedAkuma)
             {
                 npc.damage = 70;
                 npc.defense = 130;
@@ -392,11 +392,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void NPCLoot()
 		{
-			AAWorld.downedAkuma = true;
-            
-            
             if (!Main.expertMode)
             {
+                AAWorld.downedAkuma = true;
                 npc.DropLoot(mod.ItemType("CrucibleScale"), 20, 30);
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 int loot = Main.rand.Next(lootTable.Length);

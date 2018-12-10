@@ -182,7 +182,7 @@ namespace AAMod
             Baolei = false;
             Naitokurosu = false;
             ammo20percentdown = false;
-            AshCurse = !Main.dayTime && ((!AAWorld.downedAkuma && !Main.expertMode) || (!AAWorld.downedAkumaA && Main.expertMode));
+            AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -227,7 +227,7 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
             bool useVoid = (ZoneVoid || VoidUnit) && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
-            bool useFog = !FogRemover && (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode))) && ZoneMire;
+            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
             //bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenDoragonA>());
             //player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShenA);
@@ -354,7 +354,7 @@ namespace AAMod
         {
             if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
-                if (Main.dayTime && ((!AAWorld.downedYamata && !Main.expertMode) || (!AAWorld.downedYamataA && Main.expertMode)))
+                if (Main.dayTime && !AAWorld.downedYamata)
                 {
                     if (!player.GetModPlayer<AAPlayer>(mod).FogRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
                     {

@@ -55,20 +55,21 @@ namespace AAMod
         public static bool downedAncient;
         public static bool downedSAncient;
         public static bool downedAkuma;
-        public static bool downedAkumaA;
         public static bool downedYamata;
-        public static bool downedYamataA;
         public static bool zeroUS;
         public static bool downedZero;
-        public static bool downedZeroA;
         public static bool downedShen;
-        public static bool downedShenA;
         public static bool downedIZ;
         public static bool downedAllAncients;
         //Stones
         public static bool RealityDropped;
         //Points
         public static Point WHERESDAVOIDAT;
+        //Boss Checklist
+        public static bool Akuma;
+        public static bool Yamata;
+        public static bool Zero;
+        public static bool Shen;
 
         public string nums = "1234567890";
 
@@ -86,25 +87,13 @@ namespace AAMod
             downedDB = false;
             downedNC = false;
             downedEquinox = false;
-            if (Main.expertMode == false)
-            {
-                downedAncient = downedAkuma || downedYamata || downedZero;
-                downedSAncient = downedShen;
-            }
-            if (Main.expertMode == true)
-            {
-                downedAncient = downedAkumaA || downedYamataA || downedZeroA;
-                downedSAncient = downedShenA;
-            }
+            downedAncient = downedAkuma || downedYamata || downedZero;
+            downedSAncient = downedShen;
             downedAkuma = false;
-            downedAkumaA = false;
             downedYamata = false;
-            downedYamataA = false;
             zeroUS = false;
             downedZero = false;
-            downedZeroA = false;
             downedShen = false;
-            downedShenA = false;
             downedIZ = false;
             downedAllAncients = false;
             //World Changes
@@ -165,12 +154,8 @@ namespace AAMod
             if (downedYamata) downed.Add("Yamata");
             if (zeroUS) downed.Add("0U");
             if (downedZero) downed.Add("0");
-            if (downedZeroA) downed.Add("0A");
             if (downedShen) downed.Add("Shen");
-            if (downedShenA) downed.Add("ShenA");
             if (downedIZ) downed.Add("IZ");
-            if (downedAkumaA) downed.Add("AkumaA");
-            if (downedYamataA) downed.Add("YamataA");
             if (downedAllAncients) downed.Add("DAA");
 
             return new TagCompound {
@@ -203,22 +188,19 @@ namespace AAMod
             writer.Write(flags2);
 
             BitsByte flags3 = new BitsByte();
-            flags3[0] = downedAkumaA;
+            flags3[0] = downedAllAncients;
             flags3[1] = downedYamata;
-            flags3[2] = downedYamataA;
+            flags3[2] = Chairlol;
             flags3[3] = zeroUS;
             flags3[4] = downedZero;
-            flags3[5] = downedZeroA;
+            flags3[5] = downedSAncient;
             flags3[6] = downedShen;
-            flags3[7] = downedShenA;
+            flags3[7] = downedIZ;
             writer.Write(flags3);
 
 
             BitsByte flags4 = new BitsByte();
-            flags4[0] = downedSAncient;
-            flags4[1] = Chairlol;
-            flags4[2] = downedIZ;
-            flags4[3] = downedAllAncients;
+            flags4[0] = downedAllAncients;
             writer.Write(flags4);
         }
 
@@ -245,19 +227,17 @@ namespace AAMod
             downedAkuma = flags2[7];
 
             BitsByte flags3 = reader.ReadByte();
-            downedAkumaA = flags3[1];
-            downedYamata = flags3[2];
-            downedYamataA = flags3[3];
-            zeroUS = flags3[4];
-            downedZero = flags3[5];
-            downedZeroA = flags3[6];
-            downedShen = flags3[7];
+            downedAllAncients = flags3[0];
+            downedYamata = flags3[1];
+            Chairlol = flags3[2];
+            zeroUS = flags3[3];
+            downedZero = flags3[4];
+            downedSAncient = flags3[4];
+            downedShen = flags3[6];
+            downedIZ = flags3[7];
 
             BitsByte flags4 = reader.ReadByte();
-            downedSAncient = flags4[0];
-            Chairlol = flags4[1];
-            downedIZ = flags4[2];
-            downedAllAncients = flags4[3];
+             downedAllAncients = flags4[0];
         }
 
         public override void Load(TagCompound tag)
@@ -283,12 +263,8 @@ namespace AAMod
             downedYamata = downed.Contains("Yamata");
             zeroUS = downed.Contains("0U");
             downedZero = downed.Contains("0");
-            downedZeroA = downed.Contains("0A");
             downedShen = downed.Contains("Shen");
-            downedShenA = downed.Contains("ShenA");
             downedIZ = downed.Contains("IZ");
-            downedAkumaA = downed.Contains("AkumaA");
-            downedYamataA = downed.Contains("YamataA");
             downedAllAncients = downed.Contains("DAA");
             //World Changes
             ChaosOres = downedGrips;
@@ -774,7 +750,7 @@ namespace AAMod
                 }
             }
 
-            if ((!Main.expertMode &&(downedAkuma && downedYamata && downedZero)) || (Main.expertMode && (downedAkumaA && downedYamataA && downedZeroA)))
+            if (downedAkuma && downedYamata && downedZero)
             {
                 if (downedAllAncients == false)
                 {

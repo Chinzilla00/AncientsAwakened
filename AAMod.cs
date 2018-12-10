@@ -99,22 +99,10 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999997f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999997f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("HydraChow") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-
-                if (Main.expertMode)
-                {
-                    bossChecklist.Call("AddBossWithInfo", "Yamata", 16.4f, (Func<bool>)(() => AAWorld.downedYamataA), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
-                    bossChecklist.Call("AddBossWithInfo", "Akuma", 16.4f, (Func<bool>)(() => AAWorld.downedAkumaA), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZeroA), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
-                    bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.998f, (Func<bool>)(() => AAWorld.downedShenA), "Use a [i:" + ItemType("ChaosSigil") + "]");
-                }
-                else
-                {
-                    bossChecklist.Call("AddBossWithInfo", "Yamata", 16.4f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
-                    bossChecklist.Call("AddBossWithInfo", "Akuma", 16.4f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
-                    bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
-                    bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.998f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil") + "]");
-                }
-
+                bossChecklist.Call("AddBossWithInfo", "Yamata", 16.4f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
+                bossChecklist.Call("AddBossWithInfo", "Akuma", 16.4f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
+                bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
+                bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.998f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Infinity Zero", 17.999f, (Func<bool>)(() => AAWorld.downedIZ), "Use a [i:" + ItemType("InfinityOverloader") + "]");
 
 
@@ -1017,17 +1005,12 @@ namespace AAMod
                         case "sancientany": return AAWorld.downedSAncient;
                         case "akuma": return AAWorld.downedAkuma;
                         case "akumaa":
-                        case "akumaawakened": return AAWorld.downedAkumaA;
                         case "yamata": return AAWorld.downedYamata;
                         case "yamataa":
-                        case "yamataawakened": return AAWorld.downedYamataA;
                         case "zero": return AAWorld.downedZero;
                         case "zeroa":
-                        case "zeroawakened": return AAWorld.downedZeroA;
                         case "shen":
                         case "shendoragon": return AAWorld.downedShen;
-                        case "shena":
-                        case "shendoragonawakened": return AAWorld.downedShenA;
                     }
                 };
                 return downed;

@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.aiStyle = -1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
             npc.scale *= 1.4f;
+            npc.behindTiles = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

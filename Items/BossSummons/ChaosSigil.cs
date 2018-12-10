@@ -45,7 +45,7 @@ Summons the unholy chaos emporer");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if ((!Main.expertMode && (!AAWorld.downedAkuma || !AAWorld.downedYamata)) || ((Main.expertMode && (!AAWorld.downedAkumaA || !AAWorld.downedYamataA))))
+            if (AAWorld.downedAllAncients)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Sigil does nothing...it is not active yet.", new Color(176, 39, 157), false);
                 return false;
@@ -74,11 +74,11 @@ Summons the unholy chaos emporer");
         public override bool UseItem(Player player)
         {
 
-            if ((!AAWorld.downedShen && !Main.expertMode) || !AAWorld.downedShenA && Main.expertMode)
+            if (!AAWorld.downedShen)
             {
                 Main.NewText("Big mistake, child...", new Color(176, 39, 157));
             }
-            if ((!Main.expertMode && AAWorld.downedShen) || (Main.expertMode && AAWorld.downedShenA))
+            if (AAWorld.downedShen)
             {
                 Main.NewText("Hmpf...Again..? Alright, let's just get this done and overwith.", new Color(176, 39, 157));
             }
