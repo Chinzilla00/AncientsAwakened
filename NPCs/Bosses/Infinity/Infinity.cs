@@ -354,26 +354,8 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
             }
-<<<<<<< HEAD
-            /*if (WingTex == null)
-            {
-                WingTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings");
-            }
-            if (WingGlowTex == null)
-            {
-                WingGlowTex = mod.GetTexture("NPCs/Bosses/Infinity/IZWings_Glow");
-            }*/
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-
-            /*BaseDrawing.DrawTexture(sb, WingTex, 0, npc, dColor);
-            BaseDrawing.DrawAura(sb, WingGlowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(sb, WingGlowTex, 0, npc, GetGlowAlpha());*/
-=======
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-
->>>>>>> d2cdc061affcd4d8068434d4677c5b56bdeb7ad8
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
             BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
             BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));
