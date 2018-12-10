@@ -304,7 +304,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 		{
             if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% effeciency.", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. Systems have reached 75% efficiency.", new Color(158, 3, 32));
                 threeQuarterHealth = true;
             }
             if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
