@@ -58,7 +58,7 @@ namespace AAMod.Items.BossSummons
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
-            Texture2D texture = mod.GetTexture("Items/BossSummons/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             if (AAWorld.downedAllAncients)
             {
                 spriteBatch.Draw
@@ -88,22 +88,14 @@ namespace AAMod.Items.BossSummons
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
             Texture2D texture3 = mod.GetTexture("Items/BossSummons/InfinityOverloaderInactive");
-            if (AAWorld.downedAllAncients)
+            spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            for (int i = 0; i < 4; i++)
             {
-                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-                for (int i = 0; i < 4; i++)
-                {
-                    //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                    spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
-
-                }
+                //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
 
             }
-            else
-            {
-                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-            }
-            
+
             return true;
         }
 
