@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Glowmasks",
+    "\\NPCs\\Bosses",
+    "\\NPCs\\Bosses\\Akuma"
   ],
-  "SelectedNode": "\\NPCs",
+  "SelectedNode": "\\Glowmasks\\DarkmatterKunai_Glow.png",
   "PreviewInSolutionExplorer": false
 }
