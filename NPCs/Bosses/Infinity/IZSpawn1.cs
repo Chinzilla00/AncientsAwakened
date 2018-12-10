@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         private int Frame = 0;
         private int FrameCounter = 0;
-        private int HoldTimer = 30;
+        private int HoldTimer = 120;
 		public int spawnState = 0;
 
         public override void AI()

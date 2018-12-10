@@ -65,7 +65,6 @@ namespace AAMod.Backgrounds
             {
                 if (ticksUntilNextBolt <= 0)
                 {
-
                     ticksUntilNextBolt = random.Next(5, 20);
                     int num = 0;
                     while (bolts[num].IsAlive && num != bolts.Length - 1)
@@ -119,9 +118,9 @@ namespace AAMod.Backgrounds
                 asteroidPercent1 += 0.002f;
                 asteroidPercent2 += 0.003f;
                 asteroidPercent3 += 0.004f;
-                if (asteroidPercent1 > (float)Math.PI) asteroidPercent1 = 0f;
-                if (asteroidPercent2 > (float)Math.PI) asteroidPercent2 = 0f;
-                if (asteroidPercent3 > (float)Math.PI) asteroidPercent3 = 0f;
+				if(asteroidPercent1 > (float)Math.PI) asteroidPercent1 = 0f;
+				if(asteroidPercent2 > (float)Math.PI) asteroidPercent2 = 0f;
+				if(asteroidPercent3 > (float)Math.PI) asteroidPercent3 = 0f;
                 Rotation -= .0008f;
                 LBRotation += .0005f;
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
@@ -130,15 +129,15 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
 				float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
                 spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                if (AAWorld.downedZero)
+                if ((AAWorld.downedZero && !Main.expertMode) || (AAWorld.downedZeroA && Main.expertMode))
                 {
                     if (!AAWorld.downedIZ)
                     {
-                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(Echo, echoPos, null, NPCs.Bosses.Infinity.Infinity.GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), .6f, SpriteEffects.None, 1f);
                     }
                 }
-                Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
-                astroGlow.A = (byte)(255f * Intensity);
+				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
+				astroGlow.A = (byte)(255f * Intensity);
                 spriteBatch.Draw(Asteroids1, Asteroidpos1, null, astroGlow, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Asteroids2, Asteroidpos2, null, astroGlow, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Asteroids3, Asteroidpos3, null, astroGlow, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
@@ -165,12 +164,6 @@ namespace AAMod.Backgrounds
                     }
                 }
             }
-        }
-
-        public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
-        {
-            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
         public override float GetCloudAlpha()
