@@ -12,7 +12,8 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("A Rare Deformed Chair Leg");
-            Tooltip.SetDefault(@"Behold My True Power!");
+            Tooltip.SetDefault(@"Behold My True Power!
+Deformed Chair Leg EX");
         }
 
 		public override void SetDefaults()

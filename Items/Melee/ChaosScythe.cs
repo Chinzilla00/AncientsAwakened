@@ -30,7 +30,8 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Final Chaos");
-            Tooltip.SetDefault(@"'I CAN DO ANYTHING'");
+            Tooltip.SetDefault(@"'I CAN DO ANYTHING'
+Legendary Weapon");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
