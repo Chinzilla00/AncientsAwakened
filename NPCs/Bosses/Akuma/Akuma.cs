@@ -50,14 +50,14 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.expertMode && !AAWorld.downedAkuma)
             {
-                npc.damage = 60;
+                npc.damage = 75;
                 npc.defense = 100;
                 npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedAkuma)
             {
-                npc.damage = 70;
+                npc.damage = 80;
                 npc.defense = 130;
                 npc.lifeMax = 160000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
