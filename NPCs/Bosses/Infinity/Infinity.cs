@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.HitSound = SoundID.NPCHit44;
 			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar");
             npc.scale *= 1.4f;
-			bossBag = mod.ItemType("IZBag");
+			bossBag = mod.ItemType("IZCache");
             npc.alpha = 255;
 		}
 
@@ -235,11 +235,30 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
-        /*public override void NPCLoot()
+        public override void NPCLoot()
 		{
-			
-			
-		}*/
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                npc.DropLoot(mod.ItemType("Infinitium"), 25, 35);
+                string[] lootTable =
+                {
+                    "Genocide",
+                    "Nova",
+                    "Sagittarius",
+                    "TotalDestruction",
+                    "Annihilator"
+                    //"RiftShredder",
+                    //"VoidStar",
+                };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
+            
+        }
 
         public override void FindFrame(int frameHeight)
         {
@@ -298,6 +317,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public bool quarterHealth = false;
         public bool threeQuarterHealth = false;
         public bool HalfHealth = false;
+        public bool eighthHealth = false;
 
 
         public override void HitEffect(int hitDirection, double damage)
@@ -309,13 +329,24 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Redirecting all resources to offensive systems.", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("Redirecting resources to offensive systems.", new Color(158, 3, 32));
                 HalfHealth = true;
                 npc.defense = 175;
             }
             if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
             {
+                if (Main.netMode != 1) BaseUtility.Chat("CRITICAL WARNING. Systems have reached 25% efficiency. Failure imminent.", new Color(158, 3, 32));
                 quarterHealth = true;
+            }
+            if (npc.life <= npc.lifeMax / 8 && !eighthHealth)
+            {
+                eighthHealth = true;
+                if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
+                npc.defense = 0;
+            }
+            if (npc.life <= npc.lifeMax / 8)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
             }
             for (int k = 0; k < 15; k++)
 			{
@@ -410,9 +441,9 @@ namespace AAMod.NPCs.Bosses.Infinity
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
 
-            BaseDrawing.DrawTexture(sb, WingTex, 0, npc, dColor);
-            BaseDrawing.DrawAura(sb, WingGlowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(sb, WingGlowTex, 0, npc, GetGlowAlpha());
+            //BaseDrawing.DrawTexture(sb, WingTex, 0, npc, dColor);
+            //BaseDrawing.DrawAura(sb, WingGlowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            //BaseDrawing.DrawTexture(sb, WingGlowTex, 0, npc, GetGlowAlpha());
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
             BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
             BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));

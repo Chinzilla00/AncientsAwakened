@@ -28,12 +28,11 @@ namespace AAMod.Items.Materials
             item.height = refItem.height;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 3;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Color.OrangeRed.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.Indigo.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

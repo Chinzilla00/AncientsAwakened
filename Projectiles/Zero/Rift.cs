@@ -77,61 +77,13 @@ namespace AAMod.Projectiles.Zero
                 num485 *= num486;
                 projectile.velocity.X = ((projectile.velocity.X * 20f) + num484) / 21f;
                 projectile.velocity.Y = ((projectile.velocity.Y * 20f) + num485) / 21f;
-                if (projectile.ai[1] == 0f && projectile.type == 44)
-                {
-                    projectile.ai[1] = 1f;
-                    Main.PlaySound(SoundID.Item8, projectile.position);
-                }
-                if (projectile.type != 263 && projectile.type != 274)
-                {
-                    projectile.rotation += projectile.direction * 0.8f;
-                    projectile.ai[0] += 1f;
-                    if (projectile.ai[0] >= 30f)
-                    {
-                        if (projectile.ai[0] < 100f)
-                        {
-                            projectile.velocity *= 1.06f;
-                        }
-                        else
-                        {
-                            projectile.ai[0] = 200f;
-                        }
-                    }
-                    for (int num257 = 0; num257 < 2; num257++)
-                    {
-                        int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, new Color(120, 0, 30), 1f);
-                        Main.dust[num258].noGravity = true;
-                    }
-                    return;
-                }
-                if (projectile.type == 274 && projectile.velocity.X < 0f)
-                {
-                    projectile.spriteDirection = -1;
-                }
-                projectile.rotation += projectile.direction * 0.05f;
-                projectile.rotation += projectile.direction * 0.5f * (projectile.timeLeft / 180f);
-                if (projectile.type == 274)
-                {
-                    projectile.velocity *= 0.96f;
-                    return;
-                }
-                projectile.velocity *= 0.95f;
-                return;
-            }
-            if (projectile.ai[1] == 0f && projectile.type == 44)
-            {
-                projectile.ai[1] = 1f;
-                Main.PlaySound(SoundID.Item8, projectile.position);
-            }
-            if (projectile.type != 263 && projectile.type != 274)
-            {
                 projectile.rotation += projectile.direction * 0.8f;
                 projectile.ai[0] += 1f;
                 if (projectile.ai[0] >= 30f)
                 {
                     if (projectile.ai[0] < 100f)
                     {
-                        projectile.velocity *= 1.06f;
+                        projectile.velocity *= 1.00f;
                     }
                     else
                     {
@@ -145,21 +97,25 @@ namespace AAMod.Projectiles.Zero
                 }
                 return;
             }
-            if (projectile.type == 274 && projectile.velocity.X < 0f)
+            projectile.rotation += projectile.direction * 0.8f;
+            projectile.ai[0] += 1f;
+            if (projectile.ai[0] >= 30f)
             {
-                projectile.spriteDirection = -1;
+                if (projectile.ai[0] < 100f)
+                {
+                    projectile.velocity *= 1.00f;
+                }
+                else
+                {
+                    projectile.ai[0] = 200f;
+                }
             }
-            projectile.rotation += projectile.direction * 0.05f;
-            projectile.rotation += projectile.direction * 0.5f * (projectile.timeLeft / 180f);
-            if (projectile.type == 274)
+            for (int num257 = 0; num257 < 2; num257++)
             {
-                projectile.velocity *= 0.96f;
-                return;
+                int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, new Color(120, 0, 30), 1f);
+                Main.dust[num258].noGravity = true;
             }
-            projectile.velocity *= 0.95f;
-            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.6f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.1f / 255f);
             return;
-            
         }
     }
 }

@@ -23,7 +23,6 @@ namespace AAMod.Projectiles
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            projectile.glowMask = customGlowMask;
             Main.projFrames[projectile.type] = 5;
         }
 
@@ -40,6 +39,7 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
+            projectile.glowMask = customGlowMask;
             
         }
 

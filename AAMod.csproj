@@ -463,6 +463,8 @@
     <Compile Include="Items\Boss\Hydra\HydraHide.cs" />
     <Compile Include="Items\Boss\Hydra\HydraBag.cs" />
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
+    <Compile Include="Items\Boss\Infinity\Genocide.cs" />
+    <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\HeartyTruffle.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\MonarchBag.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\Mushium.cs" />
@@ -983,6 +985,7 @@
     <Compile Include="Projectiles\DeathDaggerHeal.cs" />
     <Compile Include="Projectiles\EFish\Typhoon.cs" />
     <Compile Include="Projectiles\EFish\EFlairon.cs" />
+    <Compile Include="Projectiles\EtheralBeam.cs" />
     <Compile Include="Projectiles\HydraSpray.cs" />
     <Compile Include="Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Projectiles\Apocalypse.cs" />
@@ -1031,6 +1034,7 @@
     <Compile Include="Projectiles\Incineration.cs" />
     <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\IndigoSolution.cs" />
+    <Compile Include="Projectiles\Infinity\Genocide.cs" />
     <Compile Include="Projectiles\Iron_Kunai_Pro.cs" />
     <Compile Include="Projectiles\JungleReaperP.cs" />
     <Compile Include="Projectiles\Lead_Kunai_Pro.cs" />
@@ -2443,6 +2447,8 @@
     <Content Include="Items\Boss\Hydra\HydraPendant_Neck.png" />
     <Content Include="Items\Boss\Infinity\Annihilator.png" />
     <Content Include="Items\Boss\Infinity\Genocide.png" />
+    <Content Include="Items\Boss\Infinity\Infinitium.gif" />
+    <Content Include="Items\Boss\Infinity\Infinitium.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
     <Content Include="Items\Boss\Infinity\TotalDestruction.png" />
@@ -3014,6 +3020,8 @@
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Infinity\IZShadow.png" />
+    <Content Include="NPCs\Bosses\Infinity\IZWings.png" />
+    <Content Include="NPCs\Bosses\Infinity\IZWings_Glow.png" />
     <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity.png" />
     <Content Include="NPCs\Bosses\Infinity\Infinity0Concept.png" />
@@ -3369,6 +3377,7 @@
     <Content Include="Projectiles\EnderSickle.png" />
     <Content Include="Projectiles\Energy_Cell_Pro.png" />
     <Content Include="Projectiles\Etheral.png" />
+    <Content Include="Projectiles\EtheralBeam.png" />
     <Content Include="Projectiles\EtheralEX.png" />
     <Content Include="Projectiles\EtheralLazer.png" />
     <Content Include="Projectiles\Fang_Knife_Pro.png" />
@@ -3385,6 +3394,7 @@
     <Content Include="Projectiles\Incineration.png" />
     <Content Include="Projectiles\IndigoSolution.png" />
     <Content Include="Projectiles\InfernoProj.png" />
+    <Content Include="Projectiles\Infinity\Genocide.png" />
     <Content Include="Projectiles\Infinity\Sagittarius.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />

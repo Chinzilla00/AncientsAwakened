@@ -78,8 +78,9 @@ namespace AAMod.NPCs.Bosses.Infinity
 
 		public void SummonInfinity()
 		{
-			//roar is now handled when infinity spawns so his mouth opens
-            if(Main.netMode != 1)
+            Main.NewText("Target locked. Engaging.", new Color(158, 3, 32));
+            //roar is now handled when infinity spawns so his mouth opens
+            if (Main.netMode != 1)
 			{
 				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"));
 				Main.npc[npcID].Center = npc.Center;

@@ -183,6 +183,12 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 return;
             }
+            if (Body.npc.active)
+            {
+                if (npc.timeLeft < 10) npc.timeLeft = 10;
+                killedbyplayer = false;
+                return;
+            }
             if (!Body.npc.active)
             {
 				if(npc.timeLeft > 10) npc.timeLeft = 10;
@@ -196,6 +202,11 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 damageIdle = 200; 
                 damageCharging = 300;
+            }
+            if (Body.eighthHealth)
+            {
+                damageIdle = 400;
+                damageCharging = 600;
             }
             if (Main.netMode != 1)
 			{

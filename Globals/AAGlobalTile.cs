@@ -19,7 +19,6 @@ namespace AAMod
 		public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }		
 		public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
 		public static Color GetIncineriteColorBright(Color color){ return GetIncineriteColor(color, 0.6f, 1f, false); }
-		public static Color GetIncineriteColorPylon(Color color) { return GetIncineriteColor(color, 0.65f, 1f, true); }
 		public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)
 		{
 			return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
@@ -27,7 +26,6 @@ namespace AAMod
         public static Color GetZeroColorBrightInvert(Color color) { return GetZeroColor(color, 1f, 0.6f, true); }
         public static Color GetZeroColorDim(Color color) { return GetZeroColor(color, 0.4f, 1f, false); }
         public static Color GetZeroColorBright(Color color) { return GetZeroColor(color, 0.6f, 1f, false); }
-        public static Color GetZeroColorPylon(Color color) { return GetZeroColor(color, 0.65f, 1f, true); }
         public static Color GetZeroColor(Color color, float min, float max, bool clamp)
         {
             return GetTimedColor(AAPlayer.ZeroColor, color, min, max, clamp);

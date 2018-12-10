@@ -61,26 +61,28 @@ namespace AAMod.Projectiles
 		{
 			Vector2 origin = start;
 			float r = unit.ToRotation() + rotation;
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Cyan, Color.White, Pie);
 
-			#region Draw laser body
-			for (float i = transDist; i <= Distance; i += step)
+            #region Draw laser body
+            for (float i = transDist; i <= Distance; i += step)
 			{
-				Color c = Color.White;
 				origin = start + i * unit;
 				spriteBatch.Draw(texture, origin - Main.screenPosition,
-					new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
+					new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : color1, r,
 					new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 			}
 			#endregion
 
 			#region Draw laser tail
 			spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
-				new Rectangle(0, 0, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+				new Rectangle(0, 0, 28, 26), color1, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 			#endregion
 
 			#region Draw laser head
 			spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
-				new Rectangle(0, 52, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+				new Rectangle(0, 52, 28, 26), color1, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 			#endregion
 		}
 

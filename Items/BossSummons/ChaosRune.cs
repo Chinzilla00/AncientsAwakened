@@ -74,7 +74,7 @@ Summons Shen Doragon's true awakened form");
         {
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            Color color1 = Color.Lerp(Color.Red, Color.Indigo, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
             Texture2D texture3 = mod.GetTexture("Items/BossSummons/ChaosRune_Inactive");

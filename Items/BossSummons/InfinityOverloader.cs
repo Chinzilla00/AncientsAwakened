@@ -90,6 +90,7 @@ namespace AAMod.Items.BossSummons
             Texture2D texture3 = mod.GetTexture("Items/BossSummons/InfinityOverloaderInactive");
             if (AAWorld.downedAllAncients)
             {
+                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
                 for (int i = 0; i < 4; i++)
                 {
                     //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
@@ -97,7 +98,6 @@ namespace AAMod.Items.BossSummons
 
                 }
 
-                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
             else
             {
@@ -132,7 +132,7 @@ namespace AAMod.Items.BossSummons
 				int bossType = mod.NPCType(name);
 				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
 				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-				Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
+				Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
 				Main.npc[npcID].netUpdate2 = true;
 			}
 		}	
