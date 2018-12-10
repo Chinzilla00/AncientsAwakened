@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.npcSlots = 100;
             npc.scale = 1f;
 			npc.defense = 180;
-			npc.lifeMax = 2500000;
+			npc.lifeMax = 3000000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
 			npc.value = Item.buyPrice(30, 0, 0, 0);

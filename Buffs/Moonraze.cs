@@ -7,6 +7,8 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
+            DisplayName.SetDefault("Moonraze");
+            Description.SetDefault("Incinerated by lunar rays");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoSave[Type] = true;

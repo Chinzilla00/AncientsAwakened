@@ -22,19 +22,19 @@ namespace AAMod.NPCs.Bosses.Infinity
             base.SetDefaults();
             if (!Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 70000;
+                npc.lifeMax = 75000;
             }
             if (!Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 80000;
+                npc.lifeMax = 85000;
             }
             if (Main.expertMode && !AAWorld.downedIZ)
             {
-                npc.lifeMax = 75000;
+                npc.lifeMax = 90000;
             }
             if (Main.expertMode && AAWorld.downedIZ)
             {
-                npc.lifeMax = 85000;
+                npc.lifeMax = 100000;
             }
             npc.width = 206;
             npc.height = 206;
@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 		public int handType = 0; //0 == left top, 1 == left middle, 2 == left bottom, 3 == right top, 4 == right middle, 5 == right bottom
 		public bool leftHand= true;	
 
-		public static int damageIdle = 0;
-		public static int damageCharging = 100;
+		public static int damageIdle = 50;
+		public static int damageCharging = 400;
 		
         public bool killedbyplayer = true;	
 		

@@ -1047,7 +1047,7 @@ namespace AAMod
 
             if (StormClaw == true)
             {
-                player.ApplyDamageToNPC(target, 40, 0, 0, false);
+                player.ApplyDamageToNPC(target, 20, 0, 0, false);
             }
 
             if (trueDemon && proj.minion && Main.rand.Next(2) == 0)
