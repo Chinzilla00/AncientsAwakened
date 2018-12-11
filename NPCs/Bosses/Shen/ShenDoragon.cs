@@ -85,6 +85,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            Main.fastForwardTime = true;
+            Main.dayRate = 20;
             bool expertMode = Main.expertMode;
             float expertDamage = expertMode ? (0.50f * Main.damageMultiplier) : 1f;
             bool ninthHealth = npc.life <= npc.lifeMax * 0.9;
