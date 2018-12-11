@@ -89,13 +89,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-			
+
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 
             if (!Body.active)
             {
-                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                if (Main.netMode != 1) //force a kill to prevent 'ghost heads'
                 {
                     npc.life = 0;
                     npc.checkDead();

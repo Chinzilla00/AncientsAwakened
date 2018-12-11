@@ -3,6 +3,8 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
+
 namespace AAMod.NPCs.Bosses.Yamata
 {
     [AutoloadBossHead]
@@ -64,11 +66,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 			if(Body == null)
 			{
 				NPC npcBody = Main.npc[(int)npc.ai[0]];
-				if(npcBody.type == mod.NPCType("Yamata") || npcBody.type == mod.NPCType("YamataA"))
+				if(npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
 				{
 					Body = (Yamata)npcBody.modNPC;
 				}
-			}
+            }
             if (!Body.npc.active)
             {
 				if(npc.timeLeft > 10) npc.timeLeft = 10;
