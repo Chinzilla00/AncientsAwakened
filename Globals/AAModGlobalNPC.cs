@@ -33,6 +33,7 @@ namespace AAMod
         public bool Hydratoxin = false;
         public bool Moonraze = false;
         public bool Electrified = false;
+        public bool InfinityScorch = false;
         public static int Toad = -1;
 
         public override bool InstancePerEntity
@@ -70,6 +71,20 @@ namespace AAMod
                     npc.lifeRegen = 0;
                 }
                 npc.lifeRegen -= 60;
+                if (damage < 40)
+                {
+                    damage = 40;
+                }
+            }
+
+            if (InfinityScorch)
+            {
+                drain = true;
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 80;
                 if (damage < 40)
                 {
                     damage = 40;
@@ -523,7 +538,24 @@ namespace AAMod
                         Main.dust[dust].scale *= 0.5f;
                     }
                 }
-                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+                Lighting.AddLight(npc.position, 0.1f, 0.7f, 0.2f);
+            }
+
+            if (InfinityScorch)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, mod.DustType<Dusts.VoidDust>(), default(Color), 3.5f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.7f, 0.2f, 0.1f);
             }
 
         }

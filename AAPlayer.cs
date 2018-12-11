@@ -77,6 +77,7 @@ namespace AAMod
         public bool dreadSet;
         public bool zeroSet;
         public bool valkyrieSet;
+        public bool infinitySet;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -112,6 +113,7 @@ namespace AAMod
         public bool YamataACount = false;
         public bool Clueless = false;
         public bool Yanked = false;
+        public bool InfinityScorch = false;
         //buffs
 
         //pets
@@ -162,6 +164,7 @@ namespace AAMod
             darkmatterSetMa = false;
             darkmatterSetSu = false;
             darkmatterSetTh = false;
+            infinitySet = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -191,6 +194,7 @@ namespace AAMod
             terraBlaze = false;
             Clueless = false;
             Yanked = false;
+            InfinityScorch = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -769,6 +773,11 @@ namespace AAMod
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
+            if (infinitySet && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(mod.BuffType<Buffs.InfinityScorch>(), 300);
+            }
+
             if (darkmatterSetMe && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
@@ -824,6 +833,15 @@ namespace AAMod
             {
                 drain = true;
                 player.lifeRegen -= 60;
+            }
+            if (InfinityScorch)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 80;
             }
             if (drain && before > 0)
             {
@@ -952,6 +970,18 @@ namespace AAMod
                 b *= 0.2f;
                 fullBright = true;
             }
+            if (infinityOverload)
+            {
+                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                {
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType<Dusts.VoidDust>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    Main.playerDrawDust.Add(dust);
+                }
+                fullBright = true;
+            }
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
@@ -996,6 +1026,11 @@ namespace AAMod
                 {
                     target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
+            }
+
+            if (infinitySet && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(mod.BuffType<Buffs.InfinityScorch>(), 300);
             }
 
             if (zeroSet && (proj.melee || proj.ranged) && Main.rand.Next(2) == 0)
@@ -1277,7 +1312,10 @@ namespace AAMod
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/ZeroMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
             }
-
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("InfinityVisor")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/InfinityVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -1298,6 +1336,14 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterBreastplate")))
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumPlatemail_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("InfinityPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("InfinityPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
@@ -1320,6 +1366,10 @@ namespace AAMod
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumPlatemail_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("InfinityPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
         }); 
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
@@ -1340,6 +1390,10 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("RadiumCuisses")))
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumCuisses_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGreaves")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
         }); 
 

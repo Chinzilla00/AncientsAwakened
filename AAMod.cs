@@ -45,7 +45,7 @@ namespace AAMod
             instance = this;
         }
 
-        public override void PostSetupContent() 
+        public override void PostSetupContent()
         {
             Mod AchievementLibs = ModLoader.GetMod("AchievementLibs");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
@@ -121,7 +121,7 @@ namespace AAMod
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
             }
-            
+
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -135,7 +135,7 @@ namespace AAMod
             }
             texture.SetData(buffer);
         }
-        
+
         public override void Load()
         {
             Textures = (IDictionary<string, Texture2D>)typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
@@ -162,7 +162,7 @@ namespace AAMod
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
-                if(GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
+                if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch"), ItemType("MonarchBox"), TileType("MonarchBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme"), ItemType("GripsBox"), TileType("GripsBox"));

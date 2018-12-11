@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Draconian Diving Mask");
+            DisplayName.SetDefault("Draconian Diver Mask");
             Tooltip.SetDefault(@"So I heard you like mudkips
 'Great for impersonating Ancients Awakened Devs!'");
 

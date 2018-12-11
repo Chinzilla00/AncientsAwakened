@@ -201,9 +201,8 @@ namespace AAMod.NPCs.Bosses.Infinity
                     "Nova",
                     "Sagittarius",
                     "TotalDestruction",
-                    "Annihilator"
-                    //"RiftShredder",
-                    //"VoidStar",
+                    "Annihilator",
+                    "InfinityBlade"
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
@@ -298,24 +297,20 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
             }
-            for (int k = 0; k < 15; k++)
-			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), hitDirection, -1f, 0, default(Color), 1f);
-			}
 			if (npc.life <= 0)
 			{
-				float randomSpread = (float)(Main.rand.Next(-50, 50) / 100);
-				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore1"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore2"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore3"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore4"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore5"), 1f);
-				npc.position.X = npc.position.X + (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+				float randomSpread = (Main.rand.Next(-50, 50) / 100);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore1"), 1.4f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore2"), 1.4f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore3"), 1.4f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore4"), 1.4f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore5"), 1.4f);
+				npc.position.X = npc.position.X + (npc.width / 2);
+				npc.position.Y = npc.position.Y + (npc.height / 2);
 				npc.width = 400;
 				npc.height = 350;
-				npc.position.X = npc.position.X - (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+				npc.position.X = npc.position.X - npc.width / 2;
+				npc.position.Y = npc.position.Y - npc.height / 2;
 				for (int num621 = 0; num621 < 60; num621++)
 				{
 					int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default(Color), 2f);
@@ -323,7 +318,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 					if (Main.rand.Next(2) == 0)
 					{
 						Main.dust[num622].scale = 0.5f;
-						Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+						Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
 				for (int num623 = 0; num623 < 90; num623++)
@@ -380,7 +375,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            if (fifthHealth == true)
+            if (fifthHealth)
             {
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
                 BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetRedAlpha());
@@ -420,8 +415,16 @@ namespace AAMod.NPCs.Bosses.Infinity
                 Vector2 ArmOrigin = new Vector2(npc.Center.X, npc.Center.Y) + GetConnectionPoint(handNPC.handType);
                 Vector2 connector = Zero.Center;
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { ArmTex2D, ArmTex2D, ArmTex2D }, 0, ArmOrigin, connector, ArmTex2D.Height - 10f, null, 1f, false, null);
-				BaseDrawing.DrawTexture(spriteBatch, zeroTex, 0, Zero, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(Zero), GetGlowAlpha(true)));	
-				BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, Zero, GetGlowAlpha(false));
+				BaseDrawing.DrawTexture(spriteBatch, zeroTex, 0, Zero, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(Zero), GetGlowAlpha(true)));
+                if (fifthHealth)
+                {
+                    BaseDrawing.DrawAura(spriteBatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
+                    BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, Zero, GetRedAlpha());
+                }
+                else
+                {
+                    BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, Zero, GetGlowAlpha(false));
+                }
             }
         }
     }
