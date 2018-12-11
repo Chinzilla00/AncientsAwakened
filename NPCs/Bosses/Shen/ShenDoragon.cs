@@ -1391,14 +1391,14 @@ namespace AAMod.NPCs.Bosses.Shen
             Texture2D RightCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRedCharge");
             Texture2D LeftCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueCharge");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (npc.spriteDirection == 1)
+            if (!(npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == -1)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = Left.Height / 9; // 3 is the number of frames in the sprite sheet
                 int y6 = num214 * FlyFrame;
                 Main.spriteBatch.Draw(Left, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Left.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
-            if (npc.spriteDirection == -1)
+            if (!(npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == 1)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = Right.Height / 9;

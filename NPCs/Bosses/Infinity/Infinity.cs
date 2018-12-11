@@ -109,16 +109,31 @@ namespace AAMod.NPCs.Bosses.Infinity
 					Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
 				}
 			}
-	
-			float movementMax = 1f;
+
+            
+
+            float movementMax = 1.5f;
 			if(npc.target > -1)
 			{
 				Player targetPlayer = Main.player[npc.target];
 				if(targetPlayer.active && !targetPlayer.dead) //speed changes depending on how far the player is
 				{
-					movementMax = MathHelper.Lerp(1f, 4f, Math.Min(1f, Math.Max(0f, (Vector2.Distance(npc.Center, targetPlayer.Center) / 1000f))));
+                    npc.alpha -= 10;
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                    movementMax = MathHelper.Lerp(1f, 4f, Math.Min(1f, Math.Max(0f, (Vector2.Distance(npc.Center, targetPlayer.Center) / 1000f))));
 				}
-			}
+                if (!targetPlayer.active && targetPlayer.dead) //speed changes depending on how far the player is
+                {
+                    npc.alpha += 10;
+                    if (npc.alpha >= 255)
+                    {
+                        npc.active = false;
+                    }
+                }
+            }
 			//customAI is used here because the original ai and localAI are both used elsewhere. It is synced above.
             BaseAI.AIElemental(npc, ref customAI, false, 0, false, false, 800f, 600f, 60, movementMax);
             if (!ZerosSpawned)
@@ -279,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 IZHand1.damageCharging = 300;
                 roarTimer = 200;
             }
-            if (npc.life <= npc.lifeMax / 8)
+            if (npc.life <= npc.lifeMax / 5)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
             }
@@ -290,11 +305,11 @@ namespace AAMod.NPCs.Bosses.Infinity
 			if (npc.life <= 0)
 			{
 				float randomSpread = (float)(Main.rand.Next(-50, 50) / 100);
-				Gore.NewGore(npc.position, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore3"), 1f);
-				Gore.NewGore(npc.position, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore4"), 1f);
-				Gore.NewGore(npc.position, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore5"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore1"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore2"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore3"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore4"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * randomSpread * Main.rand.NextFloat(), mod.GetGoreSlot("Gores/IZGore5"), 1f);
 				npc.position.X = npc.position.X + (float)(npc.width / 2);
 				npc.position.Y = npc.position.Y + (float)(npc.height / 2);
 				npc.width = 400;
@@ -326,6 +341,11 @@ namespace AAMod.NPCs.Bosses.Infinity
         public static Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
+        }
+
+        public Color GetRedAlpha()
+        {
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
         }
 
         public static Texture2D glowTex = null;
@@ -360,9 +380,20 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
-            BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));
+            if (fifthHealth == true)
+            {
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+                BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetRedAlpha());
+                BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetRedAlpha());
+            }
+            else
+            {
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), GetGlowAlpha(true)));
+                BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
+                BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));
+            }
+            
+            
             //bottom arms
 			DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero6, dColor);
 	        DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero3, dColor);	

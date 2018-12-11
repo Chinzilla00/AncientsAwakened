@@ -149,6 +149,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             if (RepairTimer <= 0)
             {
                 RepairMode = false;
+                npc.dontTakeDamage = true;
             }
             Vector2 vectorCenter = npc.Center;
             if (Body == null)
@@ -165,6 +166,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 				customAI[2] = point.Y;
 				npc.netUpdate = true;
 			}
+            if (Body.npc.active && npc.timeLeft < 10)
+            {
+                if ()
+            }
             if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'

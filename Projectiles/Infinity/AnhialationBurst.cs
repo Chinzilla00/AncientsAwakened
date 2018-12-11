@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Infinity
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 1;
+            projectile.localNPCHitCooldown = 4;
             projectile.scale *= 1.3f;
             projectile.alpha = 255;
         }
@@ -37,7 +37,7 @@ namespace AAMod.Projectiles.Infinity
         public override void AI()
         {
             projectile.alpha -= 5;
-            projectile.scale -= .01f;
+            projectile.scale -= .05f;
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
