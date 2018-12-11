@@ -168,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
             if (Body.npc.active && npc.timeLeft < 10)
             {
-                if ()
+                npc.timeLeft = 10;
             }
             if (!Body.npc.active)
             {

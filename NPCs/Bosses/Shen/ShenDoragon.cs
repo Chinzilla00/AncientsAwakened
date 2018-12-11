@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shen Doragon; Discordian Doomsayer");
-            Main.npcFrameCount[npc.type] = 5;
+            Main.npcFrameCount[npc.type] = 9;
         }
 
         public override void SetDefaults()
@@ -1345,41 +1345,59 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.spriteDirection = 1;
             }
         }
+
+        public int ShenFrameHeight = 0;
+
         public override void FindFrame(int frameHeight)
         {
-            FlyTimer++;
-            if (Frame1)
-            {
-                if (FlyTimer > 7)
-                {
-                    FlyFrame++;
-                    FlyTimer = 0;
-                }
-                if (FlyFrame >= 4)
-                {
-                    Frame1 = false;
-                    Frame2 = true;
-                    npc.frame.Y = 0 * frameHeight;
-                }
-            }
-            if (Frame2)
-            {
-                if (FlyTimer > 7)
-                {
-                    FlyFrame++;
-                    FlyTimer = 0;
-                }
-                if (FlyFrame >= 3)
-                {
-                    Frame1 = false;
-                    Frame2 = true;
-                    npc.frame.Y = 0 * frameHeight;
-                }
-            }
+            ShenFrameHeight = frameHeight;
             if (npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f)
             {
-                npc.frameCounter = 0;
-                npc.frame.Y = 0;
+                npc.frame.Y = 2 * frameHeight;
+            }
+            else
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter < 5)
+                {
+                    npc.frame.Y = 0 * frameHeight;
+                }
+                else if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 1 * frameHeight;
+                }
+                else if (npc.frameCounter < 15)
+                {
+                    npc.frame.Y = 2 * frameHeight;
+                }
+                else if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+                else if (npc.frameCounter < 25)
+                {
+                    npc.frame.Y = 4 * frameHeight;
+                }
+                else if (npc.frameCounter < 30)
+                {
+                    npc.frame.Y = 5 * frameHeight;
+                }
+                else if (npc.frameCounter < 35)
+                {
+                    npc.frame.Y = 6 * frameHeight;
+                }
+                else if (npc.frameCounter < 40)
+                {
+                    npc.frame.Y = 7 * frameHeight;
+                }
+                else if (npc.frameCounter < 45)
+                {
+                    npc.frame.Y = 8 * frameHeight;
+                }
+                else
+                {
+                    npc.frameCounter = 0;
+                }
             }
 
         }
@@ -1388,36 +1406,20 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             Texture2D Right = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRed");
             Texture2D Left = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue1");
-            Texture2D RightCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRedCharge");
-            Texture2D LeftCharge = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueCharge");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (!(npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == -1)
+            if (npc.spriteDirection == -1)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = Left.Height / 9; // 3 is the number of frames in the sprite sheet
-                int y6 = num214 * FlyFrame;
+                int y6 = num214 * ShenFrameHeight;
                 Main.spriteBatch.Draw(Left, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Left.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
-            if (!(npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == 1)
+            if (npc.spriteDirection == 1)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = Right.Height / 9;
-                int y6 = num214 * FlyFrame;
+                int y6 = num214 * ShenFrameHeight;
                 Main.spriteBatch.Draw(Right, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            }
-            if ((npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == -1)
-            {
-                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = RightCharge.Height; // 3 is the number of frames in the sprite sheet
-                int y6 = num214 * ChargeFrame;
-                Main.spriteBatch.Draw(RightCharge, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, RightCharge.Width, num214)), drawColor, npc.rotation, new Vector2((float)RightCharge.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            }
-            if ((npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f) && npc.spriteDirection == 1)
-            {
-                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = LeftCharge.Height; // 3 is the number of frames in the sprite sheet
-                int y6 = num214 * ChargeFrame;
-                Main.spriteBatch.Draw(LeftCharge, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, LeftCharge.Width, num214)), drawColor, npc.rotation, new Vector2((float)LeftCharge.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
         }
