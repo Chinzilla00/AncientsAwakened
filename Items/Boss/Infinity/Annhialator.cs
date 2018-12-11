@@ -22,8 +22,8 @@ namespace AAMod.Items.Boss.Infinity
 			item.ranged = true;
 			item.width = 34;
 			item.height = 58;
-			item.useTime = 13;
-			item.useAnimation = 13;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 0;

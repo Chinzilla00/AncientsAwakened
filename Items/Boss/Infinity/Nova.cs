@@ -33,7 +33,8 @@ namespace AAMod.Items.Boss.Infinity
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.magic = true;
-            item.noUseGraphic = true;
+            item.noUseGraphic = false;
+            item.autoReuse = true;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
