@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (OblivionSpeech >= 820)
             {
-                projectile.alpha += 5;
+                projectile.alpha -= 5;
             }
             if (projectile.alpha >= 255)
             {
