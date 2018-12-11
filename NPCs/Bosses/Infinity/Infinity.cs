@@ -291,7 +291,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
                 npc.defense = 0;
                 IZHand1.damageIdle = 200;
-                IZHand1.damageCharging = 300;
+                IZHand1.damageCharging = 500;
                 roarTimer = 200;
             }
             if (npc.life <= npc.lifeMax / 5)
