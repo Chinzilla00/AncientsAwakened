@@ -149,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             if (RepairTimer <= 0)
             {
                 RepairMode = false;
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
             }
             Vector2 vectorCenter = npc.Center;
             if (Body == null)
