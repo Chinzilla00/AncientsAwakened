@@ -44,7 +44,7 @@ namespace AAMod.Projectiles.Infinity
 
                 }
             }
-            projectile.velocity.X += 0.2f;
+            projectile.velocity.X -= 0.2f;
             projectile.velocity.Y = 0.00f;
 
         }
