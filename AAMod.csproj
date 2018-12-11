@@ -101,6 +101,7 @@
     <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="Buffs\Electrified.cs" />
     <Compile Include="Buffs\GripMinion.cs" />
+    <Compile Include="Buffs\InfinityScorch.cs" />
     <Compile Include="Buffs\RoyalKitten.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
@@ -265,6 +266,9 @@
     <Compile Include="Items\Armor\Imp\ImpBoots.cs" />
     <Compile Include="Items\Armor\Imp\ImpGarb.cs" />
     <Compile Include="Items\Armor\Imp\ImpHood.cs" />
+    <Compile Include="Items\Armor\Infinity\InfinityGreaves.cs" />
+    <Compile Include="Items\Armor\Infinity\InfinityPlate.cs" />
+    <Compile Include="Items\Armor\Infinity\InfinityVisor.cs" />
     <Compile Include="Items\Armor\Kindled\KindledDou.cs" />
     <Compile Include="Items\Armor\Kindled\KindledKabuto.cs" />
     <Compile Include="Items\Armor\Kindled\KindledSuneate.cs" />
@@ -1386,6 +1390,7 @@
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\InfinityOverload.png" />
+    <Content Include="Buffs\InfinityScorch.png" />
     <Content Include="Buffs\LungMinion.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Moonraze.png" />
@@ -2158,6 +2163,14 @@
     <Content Include="Items\Armor\Imp\ImpGarb_Female.png" />
     <Content Include="Items\Armor\Imp\ImpHood.png" />
     <Content Include="Items\Armor\Imp\ImpHood_Head.png" />
+    <Content Include="Items\Armor\Infinity\InfinityGreaves.png" />
+    <Content Include="Items\Armor\Infinity\InfinityGreaves_Legs.png" />
+    <Content Include="Items\Armor\Infinity\InfinityPlate.png" />
+    <Content Include="Items\Armor\Infinity\InfinityPlate_Arms.png" />
+    <Content Include="Items\Armor\Infinity\InfinityPlate_Body.png" />
+    <Content Include="Items\Armor\Infinity\InfinityPlate_Female.png" />
+    <Content Include="Items\Armor\Infinity\InfinityVisor.png" />
+    <Content Include="Items\Armor\Infinity\InfinityVisor_Head.png" />
     <Content Include="Items\Armor\Kindled\KindledDou.png" />
     <Content Include="Items\Armor\Kindled\KindledDou_Arms.png" />
     <Content Include="Items\Armor\Kindled\KindledDou_Body.png" />
@@ -2166,6 +2179,7 @@
     <Content Include="Items\Armor\Kindled\KindledKabuto_Head.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate_Legs.png" />
+    <Content Include="Items\Armor\Madness\Madness.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanBoots.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanBoots_Legs.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanChestplate.png" />

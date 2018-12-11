@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Draconian Diving Jacket");
+            DisplayName.SetDefault("Draconian Diver Jacket");
             Tooltip.SetDefault(@"25% increased melee and magic damage
 10% increased damage resistance");
         }
