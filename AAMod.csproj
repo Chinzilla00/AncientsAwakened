@@ -244,6 +244,9 @@
     <Compile Include="Items\Armor\Dread\DreadBoots.cs" />
     <Compile Include="Items\Armor\Dread\DreadHelm.cs" />
     <Compile Include="Items\Armor\Dread\DreadPlate.cs" />
+    <Compile Include="Items\Armor\DyingStar\NovaBreastplate.cs" />
+    <Compile Include="Items\Armor\DyingStar\NovaGreaves.cs" />
+    <Compile Include="Items\Armor\DyingStar\NovaHelmet.cs" />
     <Compile Include="Items\Armor\Dynaskull\Dynaskull.cs" />
     <Compile Include="Items\Armor\Dynaskull\DynaskullGreaves.cs" />
     <Compile Include="Items\Armor\Dynaskull\DynaskullRibguard.cs" />
@@ -2099,6 +2102,14 @@
     <Content Include="Items\Armor\Dread\DreadPlate_Arms.png" />
     <Content Include="Items\Armor\Dread\DreadPlate_Body.png" />
     <Content Include="Items\Armor\Dread\DreadPlate_Female.png" />
+    <Content Include="Items\Armor\DyingStar\NovaBreastplate.png" />
+    <Content Include="Items\Armor\DyingStar\NovaBreastplate_Arms.png" />
+    <Content Include="Items\Armor\DyingStar\NovaBreastplate_Body.png" />
+    <Content Include="Items\Armor\DyingStar\NovaBreastplate_FemaleBody.png" />
+    <Content Include="Items\Armor\DyingStar\NovaGreaves.png" />
+    <Content Include="Items\Armor\DyingStar\NovaGreaves_Legs.png" />
+    <Content Include="Items\Armor\DyingStar\NovaHelmet.png" />
+    <Content Include="Items\Armor\DyingStar\NovaHelmet_Head.png" />
     <Content Include="Items\Armor\Dynaskull\Dynaskull.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves.png" />
     <Content Include="Items\Armor\Dynaskull\DynaskullGreaves_Legs.png" />
@@ -2147,14 +2158,6 @@
     <Content Include="Items\Armor\Imp\ImpGarb_Female.png" />
     <Content Include="Items\Armor\Imp\ImpHood.png" />
     <Content Include="Items\Armor\Imp\ImpHood_Head.png" />
-    <Content Include="Items\Armor\Infinity\InfinityGreaves.png" />
-    <Content Include="Items\Armor\Infinity\InfinityGreaves_Legs.png" />
-    <Content Include="Items\Armor\Infinity\InfinityPlate.png" />
-    <Content Include="Items\Armor\Infinity\InfinityPlate_Arms.png" />
-    <Content Include="Items\Armor\Infinity\InfinityPlate_Body.png" />
-    <Content Include="Items\Armor\Infinity\InfinityPlate_Female.png" />
-    <Content Include="Items\Armor\Infinity\InfinityVisor.png" />
-    <Content Include="Items\Armor\Infinity\InfinityVisor_Head.png" />
     <Content Include="Items\Armor\Kindled\KindledDou.png" />
     <Content Include="Items\Armor\Kindled\KindledDou_Arms.png" />
     <Content Include="Items\Armor\Kindled\KindledDou_Body.png" />
@@ -2163,7 +2166,6 @@
     <Content Include="Items\Armor\Kindled\KindledKabuto_Head.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate_Legs.png" />
-    <Content Include="Items\Armor\Madness\Madness.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanBoots.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanBoots_Legs.png" />
     <Content Include="Items\Armor\MadTitan\MadTitanChestplate.png" />
