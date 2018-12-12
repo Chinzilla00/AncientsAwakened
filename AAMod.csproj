@@ -3084,6 +3084,7 @@
     <Content Include="NPCs\Bosses\Infinity\IZSpawn5.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn6.png" />
     <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
+    <Content Include="NPCs\Bosses\Infinity\Scanner.png" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.gif" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.png" />
     <Content Include="NPCs\Bosses\Lucifer\Lucifer.png" />

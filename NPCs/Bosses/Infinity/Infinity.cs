@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			if(npc.target > -1)
 			{
 				Player targetPlayer = Main.player[npc.target];
-				if(targetPlayer.active && !targetPlayer.dead) //speed changes depending on how far the player is
+				if(!targetPlayer.dead) //speed changes depending on how far the player is
 				{
                     npc.alpha -= 10;
                     if (npc.alpha <= 0)
@@ -124,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     }
                     movementMax = MathHelper.Lerp(1f, 4f, Math.Min(1f, Math.Max(0f, (Vector2.Distance(npc.Center, targetPlayer.Center) / 1000f))));
 				}
-                if (!targetPlayer.active && targetPlayer.dead) //speed changes depending on how far the player is
+                if (targetPlayer.dead) //speed changes depending on how far the player is
                 {
                     npc.alpha += 10;
                     if (npc.alpha >= 255)
