@@ -482,7 +482,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 num377 += Main.rand.Next(-40, 41) * 0.08f;
                                 vector36.X += num376 * 15f;
                                 vector36.Y += num377 * 15f;
-                                Projectile.NewProjectile(vector36.X, vector36.Y, num376, num377, num382, num381, 0f, Main.myPlayer, 0f, 0f);
+                                Projectile.NewProjectile(vector36.X, vector36.Y, num376, num377, num382, npc.damage, 0f, Main.myPlayer, 0f, 0f);
                             }
                         }
                     }

@@ -25,11 +25,12 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.melee = true;
             projectile.extraUpdates = 2;
             projectile.aiStyle = 0;
+            projectile.scale *= 2;
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.White;
+            return Color.Red;
         }
 
         public override void AI()
@@ -47,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 20;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.npcFrameCount[npc.type] = 3; 
+            Main.npcFrameCount[npc.type] = 2; 
         }
 
         public override void SetDefaults()
@@ -200,6 +200,39 @@ namespace AAMod.NPCs.Bosses.Zero
             return false;
         }
 
+        public bool ChargeAttack //actually charging the player
+        {
+            get
+            {
+                return npc.ai[1] == 1;
+            }
+            set
+            {
+                float oldValue = npc.ai[1];
+                npc.ai[1] = (value ? 1f : 0f);
+                if (npc.ai[1] != oldValue) npc.netUpdate = true;
+            }
+        }
+        public bool Charging //preparing to charge the player
+        {
+            get
+            {
+                return npc.ai[1] == 1.5f;
+            }
+            set
+            {
+                float oldValue = npc.ai[1];
+                npc.ai[1] = (value ? 1.5f : 0f);
+                if (npc.ai[1] != oldValue) npc.netUpdate = true;
+            }
+        }
+        public int chargeTimer = 0;
+        public int movementtimer = 0;
+        public bool direction = false;
+        public int chargeTime = 100;
+
+
+
         public int MinionTimer = 0;
         public int LineStopper = 180;
         public override void AI()
@@ -212,29 +245,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
                 MinionTimer = 0;
             }
-
-            if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
-            {
-                
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
-                if (!Main.expertMode && !AAWorld.downedZero)
-                {
-                    npc.damage = 100;
-                }
-                if (!Main.expertMode && AAWorld.downedZero)
-                {
-                    npc.damage = 110;
-                }
-                if (Main.expertMode && !AAWorld.downedZero)
-                {
-                    npc.damage = 110;
-                }
-                if (Main.expertMode && AAWorld.downedZero)
-                {
-                    npc.damage = 120;
-                }
-            }
+            
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
             bool expert = Main.expertMode;
@@ -266,7 +277,31 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].ai[3] = 150f;
                 
             }
-            if (!saythelinezero && LineStopper == 0)
+
+            if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
+            {
+                saythelinezero = true;
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+                if (!Main.expertMode && !AAWorld.downedZero)
+                {
+                    npc.damage = 100;
+                }
+                if (!Main.expertMode && AAWorld.downedZero)
+                {
+                    npc.damage = 110;
+                }
+                if (Main.expertMode && !AAWorld.downedZero)
+                {
+                    npc.damage = 110;
+                }
+                if (Main.expertMode && AAWorld.downedZero)
+                {
+                    npc.damage = 120;
+                }
+            }
+
+            if (saythelinezero && LineStopper == 0)
             {
                 saythelinezero = true;
                 Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -370,30 +405,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.velocity.Y = num442 * num443;
                     return;
                 }
-                if (npc.ai[1] == 2f)
-                {
-                    npc.damage = 1000;
-                    npc.defense = 9999;
-                    npc.rotation += (float)npc.direction * 0.7f;
-                    Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
-                    float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
-                    float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
-                    float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
-                    float num447 = 10f;
-                    num447 += num446 / 100f;
-                    if (num447 < 8f)
-                    {
-                        num447 = 8f;
-                    }
-                    if (num447 > 32f)
-                    {
-                        num447 = 32f;
-                    }
-                    num446 = num447 / num446;
-                    npc.velocity.X = num444 * num446;
-                    npc.velocity.Y = num445 * num446;
-                    return;
-                }
                 if (npc.ai[1] == 3f)
                 {
                     npc.velocity.Y = npc.velocity.Y + 0.1f;
@@ -408,6 +419,19 @@ namespace AAMod.NPCs.Bosses.Zero
                         return;
                     }
                 }
+            }
+        }
+        public override void FindFrame(int frameHeight)
+        {
+            //npc.frameCounter++;
+            if (ChargeAttack || Charging)
+            {
+                npc.frame.Y = 1 * frameHeight;
+            }
+            else
+            {
+                npc.frame.Y = 0;
+                //npc.frameCounter = 0;
             }
         }
     }

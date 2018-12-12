@@ -367,7 +367,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            string ZeroTex = ("NPCs/Bosses/Infinity/IZHand1");
             if (glowTex == null)
             {
                 glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Infinity_Glow");
@@ -386,10 +385,12 @@ namespace AAMod.NPCs.Bosses.Infinity
                 BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
                 BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha(false));
             }
-            
-            
+
+
+            string ZeroTex = ("NPCs/Bosses/Infinity/IZHand1");
+
             //bottom arms
-			DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero6, dColor);
+            DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero6, dColor);
 	        DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero3, dColor);	
             //middle arms
 	        DrawZero(sb, ZeroTex, ZeroTex + "_Glow", Zero5, dColor);		
