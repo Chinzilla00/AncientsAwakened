@@ -21,6 +21,8 @@ namespace AAMod.NPCs.Bosses.Shen
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
             npc.life = 1;
             npc.dontTakeDamage = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
         }
         public int timer;
         public override void AI()

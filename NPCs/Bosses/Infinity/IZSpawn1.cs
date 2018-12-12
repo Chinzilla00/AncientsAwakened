@@ -114,6 +114,5 @@ namespace AAMod.NPCs.Bosses.Infinity
 			npc.position.Y -= 72;
 			return false;
         }
-
     }
 }
