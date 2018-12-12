@@ -135,7 +135,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 npc.life = npc.lifeMax;
                 RepairMode = true;
-                RepairTimer = 300;
+                RepairTimer = 400;
             }
         }
 
