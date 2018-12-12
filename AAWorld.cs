@@ -698,12 +698,9 @@ namespace AAMod
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);
                     int tilesY = WorldGen.genRand.Next(0, y);
-                    if (Main.tile[tilesX, tilesY].type == TileID.Pearlstone)
+                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
-                        for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                        {
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOre"));
-                        }
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOre"));
                     }
                 }
             }

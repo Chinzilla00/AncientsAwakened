@@ -47,7 +47,7 @@ Summons Shen Doragon's true awakened form");
         {
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.Red, Color.Blue, Pie);
+            Color color1 = Color.Lerp(Color.OrangeRed, Color.Indigo, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             spriteBatch.Draw
                 (
@@ -100,11 +100,11 @@ Summons Shen Doragon's true awakened form");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
                 return false;
             }
-            /*if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
+            if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
                 return false;
-            }*/
+            }
             for (int m = 0; m < Main.maxProjectiles; m++)
             {
                 Projectile p = Main.projectile[m];

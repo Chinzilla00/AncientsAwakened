@@ -50,11 +50,11 @@ Summons the unholy chaos emporer");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
                 return false;
             }
-            /*if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
+            if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
                 return false;
-            }*/
+            }
             for (int m = 0; m < Main.maxProjectiles; m++)
             {
                 Projectile p = Main.projectile[m];

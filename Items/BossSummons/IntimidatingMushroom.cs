@@ -93,5 +93,14 @@ Can only be used during the day");
 
         public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
         public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Mushroom, 15);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
     }
 }

@@ -900,6 +900,7 @@
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
@@ -3158,7 +3159,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA2.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenACharge_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue.png" />

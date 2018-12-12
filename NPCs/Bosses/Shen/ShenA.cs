@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -8,12 +9,12 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Shen
 {
 
-    public class ShenDoragon : ModNPC
+    public class ShenA : ModNPC
     {
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shen Doragon; Discordian Doomsayer");
+            DisplayName.SetDefault("Shen Doragon Awakened; Unyieldng Chaos Incarnate");
             Main.npcFrameCount[npc.type] = 5;
         }
 
@@ -25,33 +26,19 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            if (!Main.expertMode && !AAWorld.downedShen)
-            {
-                npc.damage = 170;
-                npc.defense = 200;
-                npc.lifeMax = 1200000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (!Main.expertMode && AAWorld.downedShen)
-            {
-                npc.damage = 180;
-                npc.defense = 210;
-                npc.lifeMax = 1400000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (Main.expertMode && !AAWorld.downedShen)
-            {
-                npc.damage = 180;
-                npc.defense = 200;
-                npc.lifeMax = 1300000;
-                npc.value = Item.buyPrice(0, 0, 0, 0);
-            }
-            if (Main.expertMode && AAWorld.downedShen)
+            if (!AAWorld.downedShen)
             {
                 npc.damage = 200;
+                npc.defense = 200;
+                npc.lifeMax = 1400000;
+                npc.value = Item.buyPrice(30, 0, 0, 0);
+            }
+            if (AAWorld.downedShen)
+            {
+                npc.damage = 230;
                 npc.defense = 230;
-                npc.lifeMax = 1500000;
-                npc.value = Item.buyPrice(0, 0, 0, 0);
+                npc.lifeMax = 1600000;
+                npc.value = Item.buyPrice(40, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -461,7 +448,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector171 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector171 = vector171.RotatedBy((num1474 - (num1473 / 2 - 1)) * 3.1415926535897931 / (float)num1473, default(Vector2)) + vectorCenter;
                     Vector2 value18 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    
+
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -768,7 +755,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector176 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector176 = vector176.RotatedBy((num1480 - (num1479 / 2 - 1)) * 3.1415926535897931 / (float)num1479, default(Vector2)) + vectorCenter;
                     Vector2 value21 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    
+
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -802,7 +789,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         int damage = expertMode ? 85 : 90;
                         Vector2 vector173 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        
+
                     }
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
@@ -1006,7 +993,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector176 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector176 = vector176.RotatedBy((num1480 - (num1479 / 2 - 1)) * 3.1415926535897931 / (float)num1479, default(Vector2)) + vectorCenter;
                     Vector2 value21 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    
+
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -1052,7 +1039,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         int damage = expertMode ? 90 : 100;
                         Vector2 vector = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        
+
                     }
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
@@ -1249,7 +1236,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector11 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector11 = vector11.RotatedBy((m - (num34 / 2 - 1)) * 3.1415926535897931 / (float)num34, default(Vector2)) + vectorCenter;
                     Vector2 value8 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    
+
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -1377,19 +1364,29 @@ namespace AAMod.NPCs.Bosses.Shen
 
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        public static Texture2D glowTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public Color GetGlowAlpha()
         {
-            Texture2D Right = Main.npcTexture[npc.type];
-            Texture2D Left = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue");
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (npc.spriteDirection == -1)
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.OrangeRed, Color.Indigo, Pie);
+            return color1;
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            if (glowTex == null)
             {
-                spriteBatch.Draw(Right, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                glowTex = mod.GetTexture("NPCs/Bosses/Shen/ShenA_Glow");
             }
-            if (npc.spriteDirection == 1)
-            {
-                spriteBatch.Draw(Left, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            }
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha());
+            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, GetGlowAlpha());
             return false;
         }
     }

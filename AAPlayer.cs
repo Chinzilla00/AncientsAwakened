@@ -216,26 +216,26 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
-            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen;
-            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar) && !useShen;
-            player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
-            player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
-            player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
+            bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShenA);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
             bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
             player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
-            bool useVoid = (ZoneVoid || VoidUnit) && !useIZ;
+            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
+            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen && !useShenA && !useIZ;
+            player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
+            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar) && !useShen && !useShenA && !useIZ;
+            player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useIZ;
+            player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useIZ;
+            player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
+            bool useVoid = (ZoneVoid || VoidUnit) && !useIZ && !useShenA && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
-            //bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenDoragonA>());
-            //player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShenA);
-            //player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
         }
 
         public override bool CustomBiomesMatch(Player other)
