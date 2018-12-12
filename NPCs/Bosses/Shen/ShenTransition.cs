@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 100;
             npc.friendly = false;
             npc.alpha = 255;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
             npc.life = 1;
             npc.dontTakeDamage = true;
         }
@@ -25,6 +26,10 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             timer++;
+            if (npc.timeLeft <= 10)
+            {
+                npc.timeLeft = 10;
+            }
             if (timer < 1100)
             {
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -82,14 +87,15 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             if (npc.alpha <= 0)
             {
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
                 BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         public override void NPCLoot()

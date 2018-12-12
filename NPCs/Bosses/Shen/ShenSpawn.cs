@@ -25,9 +25,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public int Speechtimer = 0;
 
-
         public override void AI()
         {
+            if (npc.timeLeft <= 10)
+            {
+                npc.timeLeft = 10;
+            }
             Speechtimer++;
             if (Speechtimer > 780)
             {
@@ -221,7 +224,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void SummonShen()
         {
-            //roar is now handled when infinity spawns so his mouth opens
             if (Main.netMode != 1)
             {
                 int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenDoragon"));
@@ -243,13 +245,14 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             if (npc.alpha <= 0)
             {
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
                 BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }
