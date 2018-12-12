@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Chaos Sigil");
             Tooltip.SetDefault(@"A cursed tablet filled with unstable magic
-Summons the unholy chaos emporer");
+Summons the chaos emperor");
         }
 
         public override void SetDefaults()
@@ -45,14 +45,18 @@ Summons the unholy chaos emporer");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
+            if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()))
+            {
+                return false;
+            }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             for (int m = 0; m < Main.maxProjectiles; m++)
@@ -69,16 +73,23 @@ Summons the unholy chaos emporer");
         public override bool UseItem(Player player)
         {
 
-            if (!AAWorld.downedShen)
+            if (!AAWorld.ShenSummoned)
             {
-                Main.NewText("Big mistake, child...", new Color(176, 39, 157));
+                SpawnBoss2(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
             }
-            if (AAWorld.downedShen)
+            if (!AAWorld.downedShen && AAWorld.ShenSummoned)
             {
-                Main.NewText("Hmpf...Again..? Alright, let's just get this done and overwith.", new Color(176, 39, 157));
+                Main.NewText("Big mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+            }
+            if (AAWorld.downedShen && AAWorld.ShenSummoned)
+            {
+                Main.NewText("Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
             }
 
-            SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
@@ -95,6 +106,18 @@ Summons the unholy chaos emporer");
             }
         }
 
+        public void SpawnBoss2(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -102,7 +125,7 @@ Summons the unholy chaos emporer");
             recipe.AddIngredient(null, "DreadSigil", 1);
             recipe.AddIngredient(null, "DreadScale", 10);
             recipe.AddIngredient(null, "CrucibleScale", 10);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

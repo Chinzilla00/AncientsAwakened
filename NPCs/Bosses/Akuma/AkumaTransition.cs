@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Dust dust2;
                 Dust dust3;
                 Dust dust4;
-                Vector2 position = projectile.position;
+                Vector2 position = projectile.Center;
                 dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Dust dust2;
                 Dust dust3;
                 Dust dust4;
-                Vector2 position = projectile.position;
+                Vector2 position = projectile.Center;
                 dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
                 dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
                 dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Dust dust4;
             Dust dust5;
             Dust dust6;
-            Vector2 position = projectile.position;
+            Vector2 position = projectile.Center;
             dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
             dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
             dust3 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             AAMod.AkumaMusic = false;
 
-            NPC.NewNPC((int)projectile.position.X, (int)projectile.position.Y, mod.NPCType<AkumaA>());
+            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType<AkumaA>());
         }
         
     }

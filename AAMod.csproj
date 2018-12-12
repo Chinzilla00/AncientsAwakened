@@ -900,9 +900,11 @@
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenSpawn.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenTransition.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataA.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataABomb.cs" />
@@ -3168,11 +3170,14 @@
     <Content Include="NPCs\Bosses\Shen\ShenDoragonMaiin.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonRedCharge.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonSheet.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRedWingB.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRedWingF.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenWingB.png" />
     <Content Include="NPCs\Bosses\Shen\ShenWingF.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />

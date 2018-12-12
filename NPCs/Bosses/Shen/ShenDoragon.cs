@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -29,28 +30,28 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.damage = 170;
                 npc.defense = 200;
-                npc.lifeMax = 1200000;
+                npc.lifeMax = 700000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (!Main.expertMode && AAWorld.downedShen)
             {
                 npc.damage = 180;
                 npc.defense = 210;
-                npc.lifeMax = 1400000;
+                npc.lifeMax = 800000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 180;
                 npc.defense = 200;
-                npc.lifeMax = 1300000;
+                npc.lifeMax = 800000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedShen)
             {
                 npc.damage = 200;
                 npc.defense = 230;
-                npc.lifeMax = 1500000;
+                npc.lifeMax = 900000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
@@ -1330,8 +1331,8 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 158; // Change this to the height of a frame of Shen
-                if (npc.frame.Y > 158 * 8) // Needs to be the max hieght of all frames except the last one
+                npc.frame.Y += 364;
+                if (npc.frame.Y > (364 * 4))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
@@ -1346,6 +1347,61 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.spriteDirection = 1;
             }
         }
+        
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                npc.position.X = npc.position.X + (npc.width / 2);
+                npc.position.Y = npc.position.Y + (npc.height / 2);
+                npc.width = 400;
+                npc.height = 350;
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
+                for (int num621 = 0; num621 < 60; num621++)
+                {
+                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num622].velocity *= 3f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.dust[num622].scale = 0.5f;
+                        Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
+                }
+                for (int num623 = 0; num623 < 90; num623++)
+                {
+                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 3f);
+                    Main.dust[num624].noGravity = true;
+                    Main.dust[num624].velocity *= 5f;
+                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num624].velocity *= 2f;
+                }
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            /*if (!Main.expertMode)
+            {
+                AAWorld.downedYamata = true;
+                npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
+                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
+                npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
+                npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
+                Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
+            }*/
+            if (Main.expertMode)
+            {
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ShenTransition"), 0, 0);
+            }
+            npc.value = 0f;
+            npc.boss = false;
+
+        }
+
 
         public override void FindFrame(int frameHeight)
         {

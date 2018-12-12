@@ -48,7 +48,7 @@ namespace AAMod.Items.BossSummons
             recipe.AddIngredient(null, "FulguriteBar", 20);
             recipe.AddIngredient(null, "OroborosWood", 10);
             recipe.AddIngredient(null, "ZeroTesseract", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

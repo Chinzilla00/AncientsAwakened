@@ -62,6 +62,7 @@ namespace AAMod
         public static bool downedIZ;
         public static bool downedAllAncients;
         public static int downedIZnumber;
+        public static bool ShenSummoned;
         //Stones
         public static bool RealityDropped;
         //Points
@@ -92,6 +93,7 @@ namespace AAMod
             downedIZ = false;
             downedAllAncients = false;
             downedIZnumber = 0;
+            ShenSummoned = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -154,6 +156,7 @@ namespace AAMod
             if (downedShen) downed.Add("Shen");
             if (downedIZ) downed.Add("IZ");
             if (downedAllAncients) downed.Add("DAA");
+            if (ShenSummoned) downed.Add("ShenS");
 
             return new TagCompound {
                 {"downed", downed}
@@ -198,6 +201,7 @@ namespace AAMod
 
             BitsByte flags4 = new BitsByte();
             flags4[0] = Ancients;
+            flags4[1] = ShenSummoned;
             writer.Write(flags4);
         }
 
@@ -235,6 +239,7 @@ namespace AAMod
 
             BitsByte flags4 = reader.ReadByte();
             Ancients = flags4[0];
+            ShenSummoned = flags4[1];
         }
 
         public override void Load(TagCompound tag)
@@ -264,6 +269,7 @@ namespace AAMod
             downedIZ = downed.Contains("IZ");
             downedAllAncients = downed.Contains("DAA");
             Ancients = downed.Contains("AA");
+            ShenSummoned = downed.Contains("ShenS");
             //World Changes
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;

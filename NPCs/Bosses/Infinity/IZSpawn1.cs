@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         private int Frame = 0;
         private int FrameCounter = 0;
-        private int HoldTimer = 120;
+        private int HoldTimer = 90;
 		public int spawnState = 0;
         public int StartTimer = 200;
 

@@ -90,19 +90,18 @@ Summons Shen Doragon's true awakened form");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if (AAWorld.downedAllAncients)
+            if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Sigil does nothing...it is not active yet.", new Color(176, 39, 157), false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             for (int m = 0; m < Main.maxProjectiles; m++)
@@ -118,10 +117,10 @@ Summons Shen Doragon's true awakened form");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("Time to face true, uniyielding chaos, child...", new Color(176, 39, 157));
+            Main.NewText("Time to face true, uniyielding chaos, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-            //SpawnBoss(player, "ShenA", "Shen Doragon Awakened; Chaos Lord");
-            //Main.PlaySound(SoundID.Roar, player.position, 0);
+            SpawnBoss(player, "ShenA", "Shen Doragon Awakened; Chaos Lord");
+            Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
 
@@ -143,7 +142,7 @@ Summons Shen Doragon's true awakened form");
             recipe.AddIngredient(null, "DraconianRune", 1);
             recipe.AddIngredient(null, "DreadRune", 1);
             recipe.AddIngredient(null, "ChaosSigil", 10);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

@@ -1317,8 +1317,8 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 158; // Change this to the height of a frame of Shen
-                if (npc.frame.Y > 158 * 8) // Needs to be the max hieght of all frames except the last one
+                npc.frame.Y += 364;
+                if (npc.frame.Y > (364 * 4))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
@@ -1334,34 +1334,100 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter++;
-            if (npc.frameCounter < 10)
-            {
-                npc.frame.Y = 0 * frameHeight;
-            }
-            else if (npc.frameCounter < 20)
-            {
-                npc.frame.Y = 1 * frameHeight;
-            }
-            else if (npc.frameCounter < 30)
-            {
-                npc.frame.Y = 2 * frameHeight;
-            }
-            else if (npc.frameCounter < 40)
-            {
-                npc.frame.Y = 3 * frameHeight;
-            }
-            else if (npc.frameCounter < 50)
-            {
-                npc.frame.Y = 4 * frameHeight;
-            }
-            else
-            {
-                npc.frameCounter = 0;
-            }
+        public bool Health9 = false;
+        public bool Health8 = false;
+        public bool Health7 = false;
+        public bool Health6 = false;
+        public bool Health5 = false;
+        public bool Health4 = false;
+        public bool Health3 = false;
+        public bool Health2 = false;
+        public bool Health1 = false;
+        public bool HealthOneHalf = false;
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= npc.lifeMax * 0.9f && !Health9)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("Face it, child..! You’ll never defeat the living embodiment of disarray itself..!", new Color(158, 3, 32));
+                Health9 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.8f && !Health8)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing…", new Color(158, 3, 32));
+                Health8 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.7f && !Health7)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", new Color(158, 3, 32));
+                Health7 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.6f && !Health6)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", new Color(158, 3, 32));
+                Health6 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.5f && !Health5)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know..!", new Color(158, 3, 32));
+                Health5 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.4f && !Health4)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!", new Color(158, 3, 32));
+                Health4 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.3f && !Health3)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU-- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", new Color(158, 3, 32));
+                Health3 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.2f && !Health2)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", new Color(158, 3, 32));
+                Health2 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.1f && !Health1)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", new Color(158, 3, 32));
+                Health1 = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.05f && !Health1)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON! BRINGER OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE! PREPARE FOR YOUR DEMISE!", new Color(158, 3, 32));
+                HealthOneHalf = true;
+            }
+            if (Health3)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
+            }
+            if (npc.life <= 0)
+            {
+                npc.position.X = npc.position.X + (npc.width / 2);
+                npc.position.Y = npc.position.Y + (npc.height / 2);
+                npc.width = 400;
+                npc.height = 350;
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
+                for (int num621 = 0; num621 < 60; num621++)
+                {
+                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num622].velocity *= 3f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.dust[num622].scale = 0.5f;
+                        Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
+                }
+                for (int num623 = 0; num623 < 90; num623++)
+                {
+                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 3f);
+                    Main.dust[num624].noGravity = true;
+                    Main.dust[num624].velocity *= 5f;
+                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num624].velocity *= 2f;
+                }
+            }
         }
 
         public static Texture2D glowTex = null;
