@@ -45,11 +45,6 @@ Summons the unholy chaos emporer");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if (AAWorld.downedAllAncients)
-            {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Sigil does nothing...it is not active yet.", new Color(176, 39, 157), false);
-                return false;
-            }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", new Color(176, 39, 157), false);

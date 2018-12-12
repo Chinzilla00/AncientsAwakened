@@ -184,7 +184,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 		{
             if (!AAWorld.downedIZ)
             {
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType<Oblivion>(), 0, 0);
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Oblivion>(), 0, 0);
             }
             AAWorld.downedIZ = true;
             if (Main.expertMode)

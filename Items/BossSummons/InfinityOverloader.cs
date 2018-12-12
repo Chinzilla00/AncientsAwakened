@@ -59,9 +59,7 @@ namespace AAMod.Items.BossSummons
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            if (AAWorld.downedAllAncients)
-            {
-                spriteBatch.Draw
+            spriteBatch.Draw
                 (
                 texture,
                 new Vector2
@@ -77,7 +75,6 @@ namespace AAMod.Items.BossSummons
                 SpriteEffects.None,
                 0f
                 );
-            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -109,11 +106,6 @@ namespace AAMod.Items.BossSummons
 
 		public override bool CanUseItem(Player player)
 		{
-            if (!AAWorld.downedAllAncients)
-            {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Overloader lies dormant; Inactive...", new Color(158, 3, 32), false);
-                return false;
-            }
             if (NPC.AnyNPCs(mod.NPCType("Infinity")) || NPC.AnyNPCs(mod.NPCType("IZSpawn1")))
             {
                 return false;

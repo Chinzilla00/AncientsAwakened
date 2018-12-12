@@ -65,7 +65,7 @@ namespace AAMod.Items.Boss.Yamata
                         player.QuickSpawnItem(mod.ItemType("HalHat"));
                         player.QuickSpawnItem(mod.ItemType("HalTux"));
                         player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                        player.QuickSpawnItem(mod.ItemType("HallamDevWeapon"));
+                        player.QuickSpawnItem(mod.ItemType("Prismeow"));
                     }
                     else if (choice == 1)
                     {
@@ -131,6 +131,9 @@ namespace AAMod.Items.Boss.Yamata
                     }
                     if (choice == 13)
                     {
+                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                         player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
                     }
 

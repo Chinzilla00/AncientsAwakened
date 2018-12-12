@@ -42,7 +42,7 @@ namespace AAMod.Items.Melee
 			recipe.AddIngredient(mod, "Masamune", 1);
             recipe.AddIngredient(mod, "Chaos", 1);
             recipe.AddIngredient(mod, "EXSoul", 1);
-            recipe.AddTile(null, "ChaosCrucible");
+            recipe.AddTile(null, "BinaryReassembler");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

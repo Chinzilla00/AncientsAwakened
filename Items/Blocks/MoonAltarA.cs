@@ -31,7 +31,7 @@ namespace AAMod.Items.Blocks
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DreadScale", 15);
-			recipe.AddTile(null, "ChaosCrucible");
+			recipe.AddTile(null, "BinaryReassembler");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

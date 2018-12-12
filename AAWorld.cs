@@ -61,15 +61,11 @@ namespace AAMod
         public static bool downedShen;
         public static bool downedIZ;
         public static bool downedAllAncients;
+        public static int downedIZnumber;
         //Stones
         public static bool RealityDropped;
         //Points
         public static Point WHERESDAVOIDAT;
-        //Boss Checklist
-        public static bool Akuma;
-        public static bool Yamata;
-        public static bool Zero;
-        public static bool Shen;
 
         public string nums = "1234567890";
 
@@ -82,20 +78,20 @@ namespace AAMod
             downedRetriever = false;
             downedOrthrus = false;
             downedRaider = false;
-            downedStormAny = downedRaider || downedOrthrus || downedRetriever;
-            downedStormAll = downedRaider && downedOrthrus && downedRetriever;
+            downedStormAny = false;
+            downedStormAll = false;
             downedDB = false;
             downedNC = false;
             downedEquinox = false;
-            downedAncient = downedAkuma || downedYamata || downedZero;
-            downedSAncient = downedShen;
+            downedSAncient = false;
             downedAkuma = false;
             downedYamata = false;
             zeroUS = false;
             downedZero = false;
             downedShen = false;
             downedIZ = false;
-            downedAllAncients = downedAkuma && downedYamata && downedZero;
+            downedAllAncients = false;
+            downedIZnumber = 0;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -148,6 +144,7 @@ namespace AAMod
             if (downedNC) downed.Add("NC");
             if (downedDB) downed.Add("DB");
             if (downedEquinox) downed.Add("Equinox");
+            if (Ancients) downed.Add("AA");
             if (downedAncient) downed.Add("A");
             if (downedSAncient) downed.Add("SA");
             if (downedAkuma) downed.Add("Akuma");
@@ -200,7 +197,7 @@ namespace AAMod
 
 
             BitsByte flags4 = new BitsByte();
-            flags4[0] = downedAllAncients;
+            flags4[0] = Ancients;
             writer.Write(flags4);
         }
 
@@ -237,7 +234,7 @@ namespace AAMod
             downedIZ = flags3[7];
 
             BitsByte flags4 = reader.ReadByte();
-             downedAllAncients = flags4[0];
+            Ancients = flags4[0];
         }
 
         public override void Load(TagCompound tag)
@@ -266,8 +263,8 @@ namespace AAMod
             downedShen = downed.Contains("Shen");
             downedIZ = downed.Contains("IZ");
             downedAllAncients = downed.Contains("DAA");
+            Ancients = downed.Contains("AA");
             //World Changes
-            ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
             HallowedOre = NPC.downedMechBossAny;
@@ -739,6 +736,7 @@ namespace AAMod
             }
             if (downedRetriever || downedOrthrus || downedRaider)
             {
+                downedStormAny = true;
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
@@ -748,6 +746,21 @@ namespace AAMod
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
                     }
                 }
+            }
+
+            if (downedRetriever & downedOrthrus & downedRaider)
+            {
+                downedStormAll = true;
+            }
+
+            if (downedAkuma || downedYamata || downedZero)
+            {
+                downedAncient = true;
+            }
+
+            if (downedShen || downedIZ)
+            {
+                downedSAncient = true;
             }
 
             if (downedAkuma && downedYamata && downedZero)

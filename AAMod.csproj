@@ -332,6 +332,7 @@
     <Compile Include="Items\Blocks\Boss6Box.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
+    <Compile Include="Items\Blocks\AncientForge.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
     <Compile Include="Items\Blocks\DarkmatterOre.cs" />
@@ -554,6 +555,7 @@
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
     <Compile Include="Items\Dev\GroxNote.cs" />
     <Compile Include="Items\Dev\HallamDevWeapon.cs" />
+    <Compile Include="Items\Dev\Prismeow.cs" />
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\Sax.cs" />
     <Compile Include="Items\Dev\SkrallStaff.cs" />
@@ -1146,6 +1148,7 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
+    <Compile Include="Tiles\AncientForge.cs" />
     <Compile Include="Tiles\Crates\DesertCrate.cs" />
     <Compile Include="Tiles\Crates\HellCrate.cs" />
     <Compile Include="Tiles\Crates\IceCrate.cs" />
@@ -2317,6 +2320,7 @@
     <Content Include="Items\Blocks\Abyssium.png" />
     <Content Include="Items\Blocks\AkumaABox.png" />
     <Content Include="Items\Blocks\AkumaBox.png" />
+    <Content Include="Items\Blocks\AncientForge.png" />
     <Content Include="Items\Blocks\Apocalyptite.png" />
     <Content Include="Items\Blocks\BinaryReassembler.png" />
     <Content Include="Items\Blocks\Bogwood.png" />
@@ -2591,6 +2595,7 @@
     <Content Include="Items\Dev\GentlemansRapier.png" />
     <Content Include="Items\Dev\GroxNote.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
+    <Content Include="Items\Dev\Prismeow.png" />
     <Content Include="Items\Dev\Sax.png" />
     <Content Include="Items\Dev\SkrallStaff.png" />
     <Content Include="Items\Dev\TimeTeller.png" />
@@ -3150,24 +3155,17 @@
     <Content Include="NPCs\Bosses\Shen\DoragonWings.png" />
     <Content Include="NPCs\Bosses\Shen\DoragonWingsB.png" />
     <Content Include="NPCs\Bosses\Shen\DoragonWingsF.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenA %281%29.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA2.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenACharge.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenACharge_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenBlueWingB.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenBlueWingF.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragon %281%29.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue2.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlueCharge.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonMaiin.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonRed.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonRed1.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonRed2.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonRedCharge.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonSheet.png" />
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
@@ -3570,6 +3568,8 @@
     <Content Include="Tiles\AbyssiumOre.png" />
     <Content Include="Tiles\AkumaABox.png" />
     <Content Include="Tiles\AkumaBox.png" />
+    <Content Include="Tiles\AncientForge.png" />
+    <Content Include="Tiles\AncientForge_Glow.png" />
     <Content Include="Tiles\BogPalmTree.png" />
     <Content Include="Tiles\BogPalmTreetops.png" />
     <Content Include="Tiles\Bogtus.png" />

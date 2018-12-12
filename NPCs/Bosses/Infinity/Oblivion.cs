@@ -5,23 +5,20 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
-    public class Oblivion : ModProjectile
+    public class Oblivion : ModNPC
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Oblivion");
-            Main.projFrames[projectile.type] = 24;
+            Main.npcFrameCount[npc.type] = 16;
         }
         public override void SetDefaults()
         {
-            projectile.width = 1;
-            projectile.height = 1;
-            projectile.penetrate = -1;
-            projectile.hostile = false;
-            projectile.friendly = false;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
+            npc.width = 1;
+            npc.height = 1;
+            npc.friendly = false;
         }
+
         public int OblivionSpeech = 0;
 
 
@@ -31,20 +28,10 @@ namespace AAMod.NPCs.Bosses.Infinity
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
 
-            projectile.frameCounter++;
-            if (projectile.frameCounter > 5)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 23)
-                {
-                    projectile.frame = 0;
-                }
-            }
 
-            projectile.velocity.X = 0;
+            npc.velocity.X = 0;
 
-            projectile.velocity.Y = 0;
+            npc.velocity.Y = 0;
 
             Player player = Main.player[Main.myPlayer];
             OblivionSpeech++;
@@ -78,12 +65,153 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (OblivionSpeech >= 820)
             {
-                projectile.alpha += 5;
+                npc.alpha += 5;
             }
-            if (projectile.alpha >= 255)
+            if (npc.alpha >= 255)
             {
-                projectile.Kill();
+                npc.life = 0;
             }
         }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter < 5)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 12 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 0 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 10)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 12 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 1 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 15)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 13 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 2 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 20)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 13 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 25)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 14 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 4 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 30)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 14 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 5 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 15 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 6 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 15 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 7 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 14 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 8 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 14 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 9 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 13 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 10 * frameHeight;
+                }
+            }
+            else if (npc.frameCounter < 35)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    npc.frame.Y = 13 * frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 11 * frameHeight;
+                }
+            }
+            else
+            {
+                npc.frameCounter = 0;
+            }
+        }	
     }
 }

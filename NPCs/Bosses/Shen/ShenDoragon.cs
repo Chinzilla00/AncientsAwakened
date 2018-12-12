@@ -14,14 +14,14 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shen Doragon; Discordian Doomsayer");
-            Main.npcFrameCount[npc.type] = 9;
+            Main.npcFrameCount[npc.type] = 5;
         }
 
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 84;
-            npc.width = 144;
+            npc.height = 372;
+            npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
@@ -37,14 +37,14 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.damage = 180;
                 npc.defense = 210;
-                npc.lifeMax = 14000000;
+                npc.lifeMax = 1400000;
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             if (Main.expertMode && !AAWorld.downedShen)
             {
                 npc.damage = 180;
                 npc.defense = 200;
-                npc.lifeMax = 13000000;
+                npc.lifeMax = 1300000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             if (Main.expertMode && AAWorld.downedShen)
@@ -1348,11 +1348,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public int ShenFrameHeight = 0;
-
         public override void FindFrame(int frameHeight)
         {
-            ShenFrameHeight = frameHeight;
             if (npc.ai[0] == 1f || npc.ai[0] == 6f || npc.ai[0] == 11f)
             {
                 npc.frame.Y = 2 * frameHeight;
@@ -1380,22 +1377,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.frame.Y = 4 * frameHeight;
                 }
-                else if (npc.frameCounter < 30)
-                {
-                    npc.frame.Y = 5 * frameHeight;
-                }
-                else if (npc.frameCounter < 35)
-                {
-                    npc.frame.Y = 6 * frameHeight;
-                }
-                else if (npc.frameCounter < 40)
-                {
-                    npc.frame.Y = 7 * frameHeight;
-                }
-                else if (npc.frameCounter < 45)
-                {
-                    npc.frame.Y = 8 * frameHeight;
-                }
                 else
                 {
                     npc.frameCounter = 0;
@@ -1406,22 +1387,16 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D Right = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonRed");
-            Texture2D Left = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue1");
+            Texture2D Right = Main.npcTexture[npc.type];
+            Texture2D Left = mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (npc.spriteDirection == -1)
             {
-                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = Left.Height / 9; // 3 is the number of frames in the sprite sheet
-                int y6 = num214 * ShenFrameHeight;
-                Main.spriteBatch.Draw(Left, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Left.Width, num214)), drawColor, npc.rotation, new Vector2((float)Left.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(Right, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (npc.spriteDirection == 1)
             {
-                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = Right.Height / 9;
-                int y6 = num214 * ShenFrameHeight;
-                Main.spriteBatch.Draw(Right, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, Right.Width, num214)), drawColor, npc.rotation, new Vector2((float)Right.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(Right, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
         }

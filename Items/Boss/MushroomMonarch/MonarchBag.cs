@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
-                int choice = Main.rand.Next(6);
+                int choice = Main.rand.Next(10);
                 {
                     if (choice == 0)
                     {
@@ -71,7 +71,12 @@ namespace AAMod.Items.Boss.MushroomMonarch
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
                     }
-                    
+                    if (choice == 6)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Mushium"), Main.rand.Next(30, 40));

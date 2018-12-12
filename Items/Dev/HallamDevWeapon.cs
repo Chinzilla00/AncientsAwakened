@@ -12,11 +12,10 @@ namespace AAMod.Items.Dev
         
         public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Prismeow");
+            DisplayName.SetDefault("Prismeow Spectrum");
             Tooltip.SetDefault(@"Summons a Legendary Rainbow Cat at cursor point
 Shoots Rainbow Bolts that move in the direction of your cursor
-'Godly'
--Hallam");
+Prismeow EX");
             Item.staff[item.type] = true;
         }
 
@@ -39,6 +38,7 @@ Shoots Rainbow Bolts that move in the direction of your cursor
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("RainbowCatPro");
 			item.shootSpeed = 0f;
+            item.expert = true;
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -66,14 +66,16 @@ Shoots Rainbow Bolts that move in the direction of your cursor
             position = Main.MouseWorld;
             return true;
         }
-        public override void ModifyTooltips(List<TooltipLine> list)
+        
+
+        public override void AddRecipes()
         {
-            foreach (TooltipLine line2 in list)
             {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(255, 8, 251);
-                }
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "Prismeow");
+                recipe.AddIngredient(null, "EXSoul");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
             }
         }
     }

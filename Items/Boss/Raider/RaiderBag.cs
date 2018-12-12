@@ -61,7 +61,7 @@ namespace AAMod.Items.Boss.Raider
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
-                int choice = Main.rand.Next(6);
+                int choice = Main.rand.Next(10);
                 {
                     if (choice == 0)
                     {
@@ -98,6 +98,12 @@ namespace AAMod.Items.Boss.Raider
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
                         player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                    }
+                    if (choice == 6)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                     }
                 }
             }

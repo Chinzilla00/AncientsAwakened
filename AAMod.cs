@@ -17,6 +17,7 @@ using AAMod.Items.Materials;
 using AAMod.Items.Armor.Darkmatter;
 using AAMod.Items.Armor.Radium;
 using AAMod.Items.Blocks;
+using AAMod;
 
 namespace AAMod
 {
@@ -361,6 +362,13 @@ namespace AAMod
                 ItemType<AbyssiumBar>(),
             });
             RecipeGroup.RegisterGroup("AAMod:EvilorChaosBar", group13);
+
+            RecipeGroup group14 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Ancient Crafting Station", new int[]
+            {
+                ItemType<BinaryReassembler>(),
+                ItemType<ChaosCrucible>()
+            });
+            RecipeGroup.RegisterGroup("AAMod:ACS", group14);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
