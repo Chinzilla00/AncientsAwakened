@@ -114,7 +114,11 @@ namespace AAMod.Items.BossSummons
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Overloader lies dormant; Inactive...", new Color(158, 3, 32), false);
                 return false;
             }
-			return true;
+            if (NPC.AnyNPCs(mod.NPCType("Infinity")) || NPC.AnyNPCs(mod.NPCType("IZSpawn1")))
+            {
+                return false;
+            }
+            return true;
 		}
 
 		public void SpawnBoss(Player player, string name, string displayName)

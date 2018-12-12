@@ -47,7 +47,7 @@ namespace AAMod.Items.Dev
                 item.useStyle = 1;
                 item.thrown = true;
                 item.melee = false;
-                item.shoot = mod.ProjectileType("TitanAxe");
+                item.shoot = mod.ProjectileType("TitanAxeEX");
             }
             else
             {

@@ -737,7 +737,7 @@ namespace AAMod
                     Main.NewText("Devils in the underworld begin to plot...", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                 }
             }
-            if (downedRetriever == true)
+            if (downedRetriever || downedOrthrus || downedRaider)
             {
                 if (FulguriteOre == false)
                 {

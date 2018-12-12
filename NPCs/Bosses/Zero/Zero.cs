@@ -201,7 +201,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public int MinionTimer = 0;
-        public int LineStopper = 120;
+        public int LineStopper = 180;
         public override void AI()
         {
             MinionTimer++;

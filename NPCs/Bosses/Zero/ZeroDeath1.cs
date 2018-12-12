@@ -20,17 +20,29 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.friendly = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 24;
         }
+        public bool linesaid = false;
         public override void AI()
         {
-            AAMod.Slayer = true;
-            if (++projectile.frameCounter >= 10)
+            if (Main.expertMode && !AAWorld.downedZero && !linesaid)
+            {
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+                linesaid = true;
+            }
+            if (Main.expertMode && AAWorld.downedZero && !linesaid)
+            {
+                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+            if (!AAWorld.downedIZ)
+            {
+                AAMod.Slayer = true;
+            }
+            if (++projectile.frameCounter >= 12)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 8)
                 {
-                   projectile.frame = 7;
+                    projectile.Kill();
                    
                 }
             }

@@ -157,14 +157,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            if (npc.life <= 0 && Main.expertMode && !AAWorld.downedZero && npc.type == mod.NPCType<ZeroAwakened>())
-            {
-                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
-            }
-            if (npc.life <= 0 && Main.expertMode && AAWorld.downedZero && npc.type == mod.NPCType<ZeroAwakened>())
-            {
-                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
-            }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
                 Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);

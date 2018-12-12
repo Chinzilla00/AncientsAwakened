@@ -31,48 +31,58 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.aiStyle = -1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/IZ");
             npc.scale *= 1.4f;
+            npc.behindTiles = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+            npc.alpha = 255;
         }
 
         private int Frame = 0;
         private int FrameCounter = 0;
         private int HoldTimer = 120;
 		public int spawnState = 0;
+        public int StartTimer = 200;
 
         public override void AI()
         {
-			int endFrame = (spawnState == 0 ? 7 : spawnState == 1 ? 4 : spawnState == 2 ? 4 : spawnState == 3 ? 4 : spawnState == 4 ? 3 : 6);
-			if (Frame >= endFrame)
-			{
-				Frame = endFrame;
-				HoldTimer--;
-				if (HoldTimer == 0)
-				{
-					Frame = 0;
-					FrameCounter = 0;
-					HoldTimer = (spawnState >= 3 ? 50 : 60);
-					spawnState++;
-					if(spawnState >= 5 && Main.netMode != 1)
-					{
-						SummonInfinity();	
+            StartTimer--;
+            if (StartTimer <= 0)
+            {
+                npc.alpha = 0;
+                int endFrame = (spawnState == 0 ? 7 : spawnState == 1 ? 4 : spawnState == 2 ? 4 : spawnState == 3 ? 4 : spawnState == 4 ? 3 : 6);
+                if (Frame >= endFrame)
+                {
+                    Frame = endFrame;
+                    HoldTimer--;
+                    if (HoldTimer == 0)
+                    {
+                        Frame = 0;
+                        FrameCounter = 0;
+                        HoldTimer = (spawnState >= 3 ? 50 : 60);
+                        spawnState++;
+                        if (spawnState >= 5 && Main.netMode != 1)
+                        {
+                            SummonInfinity();
 
-						npc.life = 0;
-						npc.checkDead();
-						npc.netUpdate = true;
-					}
-				}
-			}else
-			{
-				FrameCounter++;
-				if (FrameCounter > 10)
-				{
-					Frame++;
-					FrameCounter = 0;
-				}
-			}
+                            npc.life = 0;
+                            npc.checkDead();
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+                else
+                {
+                    FrameCounter++;
+                    if (FrameCounter > 10)
+                    {
+                        Frame++;
+                        FrameCounter = 0;
+                    }
+                }
+            }
+			
         }
 
 		public void SummonInfinity()

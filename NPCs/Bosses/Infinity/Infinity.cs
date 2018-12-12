@@ -109,7 +109,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 					Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
 				}
 			}
-
             
 
             float movementMax = 1.5f;
