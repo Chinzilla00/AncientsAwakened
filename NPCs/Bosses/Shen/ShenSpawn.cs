@@ -11,15 +11,16 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("");
+            DisplayName.SetDefault("Discord");
         }
         public override void SetDefaults()
         {
             npc.width = 100;
             npc.height = 100;
-            npc.friendly = false;
-            npc.noGravity = true;
             npc.alpha = 255;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
+            npc.life = 1;
+            npc.dontTakeDamage = true;
         }
 
         public int Speechtimer = 0;
@@ -45,7 +46,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
             
-
             if (Speechtimer == 60)
             {
                 Main.NewText("Surprised to see us again, Kid?", new Color(180, 41, 32));
@@ -171,14 +171,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
                     Dust dust1;
-                    Dust dust2;
                     Vector2 position1 = npc.Center;
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
+                    dust1.scale *= 1.3f;
+                    dust1.velocity.Y -= 6;
                 }
             }
 

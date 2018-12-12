@@ -217,11 +217,12 @@ namespace AAMod
         public override void UpdateBiomeVisuals()
         {
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShenA);
+            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
             bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
             player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
             bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
             bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
@@ -235,7 +236,6 @@ namespace AAMod
             bool useVoid = (ZoneVoid || VoidUnit) && !useIZ && !useShenA && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
         }
 
         public override bool CustomBiomesMatch(Player other)

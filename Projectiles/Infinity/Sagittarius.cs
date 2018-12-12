@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Infinity
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 4;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()

@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noTileCollide = true;
             npc.behindTiles = true;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");
             musicPriority = MusicPriority.BossHigh;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -89,8 +89,8 @@ namespace AAMod.NPCs.Bosses.Shen
             float teleportLocation = 0f;
             int teleChoice = Main.rand.Next(2);
 
-            int aiChangeRate = expertMode ? 36 : 38;
-            float npcVelocity = expertMode ? 0.7f : 0.69f;
+            int aiChangeRate = expertMode ? 50 : 60;
+            float npcVelocity = expertMode ? 0.5f : 0.4f;
             float scaleFactor = expertMode ? 11f : 10.8f;
             float playerRunAcceleration = Main.player[npc.target].velocity.Y == 0f ? Math.Abs(Main.player[npc.target].moveSpeed * 0.5f) : (Main.player[npc.target].runAcceleration * 1f);
             if (playerRunAcceleration <= 1f)
@@ -1349,52 +1349,52 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (npc.life <= npc.lifeMax * 0.9f && !Health9)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Face it, child..! You’ll never defeat the living embodiment of disarray itself..!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("Face it, child..! You’ll never defeat the living embodiment of disarray itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health9 = true;
             }
             if (npc.life <= npc.lifeMax * 0.8f && !Health8)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing…", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health8 = true;
             }
             if (npc.life <= npc.lifeMax * 0.7f && !Health7)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health7 = true;
             }
             if (npc.life <= npc.lifeMax * 0.6f && !Health6)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health6 = true;
             }
             if (npc.life <= npc.lifeMax * 0.5f && !Health5)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know..!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health5 = true;
             }
             if (npc.life <= npc.lifeMax * 0.4f && !Health4)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health4 = true;
             }
             if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU-- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU-- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health3 = true;
             }
             if (npc.life <= npc.lifeMax * 0.2f && !Health2)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health2 = true;
             }
             if (npc.life <= npc.lifeMax * 0.1f && !Health1)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health1 = true;
             }
             if (npc.life <= npc.lifeMax * 0.05f && !Health1)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON! BRINGER OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE! PREPARE FOR YOUR DEMISE!", new Color(158, 3, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON! BRINGER OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE! PREPARE FOR YOUR DEMISE!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 HealthOneHalf = true;
             }
             if (Health3)

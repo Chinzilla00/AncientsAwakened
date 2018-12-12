@@ -13,7 +13,7 @@ namespace AAMod.Projectiles.Infinity
             projectile.width = 10;
             projectile.height = 18;
             projectile.friendly = true;
-            projectile.penetrate = 2;                       //this is the projectile penetration           //this is projectile frames
+            projectile.penetrate = 1;                       //this is the projectile penetration           //this is projectile frames
             projectile.hostile = false;
             projectile.magic = true;                        //this make the projectile do magic damage
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls

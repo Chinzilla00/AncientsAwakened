@@ -1381,55 +1381,24 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
-            /*if (!Main.expertMode)
+            if (!Main.expertMode)
             {
-                AAWorld.downedYamata = true;
-                npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
+                AAWorld.downedShen = true;
+                //npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
+                //string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
+                //int loot = Main.rand.Next(lootTable.Length);
+                //npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
-                npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
-                Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
-            }*/
+                //npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
+                npc.DropLoot(Items.Boss.EXSoul.type);
+                Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            }
             if (Main.expertMode)
             {
                 Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ShenTransition"), 0, 0);
             }
             npc.value = 0f;
             npc.boss = false;
-
-        }
-
-
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter++;
-            if (npc.frameCounter < 10)
-            {
-                npc.frame.Y = 0 * frameHeight;
-            }
-            else if (npc.frameCounter < 20)
-            {
-                npc.frame.Y = 1 * frameHeight;
-            }
-            else if (npc.frameCounter < 30)
-            {
-                npc.frame.Y = 2 * frameHeight;
-            }
-            else if (npc.frameCounter < 40)
-            {
-                npc.frame.Y = 3 * frameHeight;
-            }
-            else if (npc.frameCounter < 50)
-            {
-                npc.frame.Y = 4 * frameHeight;
-            }
-            else
-            {
-                npc.frameCounter = 0;
-            }
 
         }
 

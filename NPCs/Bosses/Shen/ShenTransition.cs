@@ -1,4 +1,3 @@
-
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    public class ShenTransition : ModProjectile
+    public class ShenTransition : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -15,10 +14,12 @@ namespace AAMod.NPCs.Bosses.Shen
         }
         public override void SetDefaults()
         {
-            projectile.width = 100;
-            projectile.height = 100;
-            projectile.friendly = false;
-            projectile.alpha = 255;
+            npc.width = 100;
+            npc.height = 100;
+            npc.friendly = false;
+            npc.alpha = 255;
+            npc.life = 1;
+            npc.dontTakeDamage = true;
         }
         public int timer;
         public override void AI()
@@ -29,14 +30,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
                     Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = projectile.Center;
+                    Vector2 position1 = npc.Center;
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
+                    dust1.scale *= 1.3f;
+                    dust1.velocity.Y -= 6;
                 }
             }
             if (timer == 375)    
@@ -58,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (timer >= 1100)
             {
-                projectile.alpha--;
+                npc.alpha--;
             }
 
             if (timer == 1300)
@@ -67,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (timer == 1455)
             {
-                projectile.Kill();               
+                npc.life = 0;               
             }
         }
 
@@ -84,22 +82,23 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile, dColor);
-            if (projectile.alpha <= 0)
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+            if (npc.alpha <= 0)
             {
-                BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile, auraPercent, 1f, 0f, 0f, GetColorAlpha());
-                BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile, GetColorAlpha());
+                BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
             }
+
             return false;
         }
 
-        public override void Kill(int timeleft)
+        public override void NPCLoot()
         {
             for (int LOOP = 0; LOOP < 8; LOOP++)
             {
                 Dust dust1;
                 Dust dust2;
-                Vector2 position1 = projectile.Center;
+                Vector2 position1 = npc.Center;
                 dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
                 dust1.noGravity = false;
                 dust2 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
@@ -108,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            SpawnBoss(projectile.Center, "ShenA", "ShenA");
+            SpawnBoss(npc.Center, "ShenA", "ShenA");
             Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
         }
@@ -123,7 +122,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
                 Main.npc[npcID].netUpdate2 = true;			
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                
             }
         }
 

@@ -45,10 +45,7 @@ Summons the chaos emperor");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()))
-            {
-                return false;
-            }
+            
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
@@ -72,10 +69,10 @@ Summons the chaos emperor");
 
         public override bool UseItem(Player player)
         {
-
+            
             if (!AAWorld.ShenSummoned)
             {
-                SpawnBoss2(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
+                SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
             }
             if (!AAWorld.downedShen && AAWorld.ShenSummoned)
             {

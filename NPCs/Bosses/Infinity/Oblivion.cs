@@ -17,6 +17,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.width = 1;
             npc.height = 1;
             npc.friendly = false;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/IZDeath");
         }
 
         public int OblivionSpeech = 0;

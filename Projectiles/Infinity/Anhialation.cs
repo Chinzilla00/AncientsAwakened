@@ -29,7 +29,7 @@ namespace AAMod.Projectiles.Infinity
 			projectile.friendly = true;  
 			projectile.hostile = false;       
 			projectile.ranged = true;
-			projectile.penetrate = 2;
+			projectile.penetrate = 1;
             projectile.timeLeft = 600;
 			projectile.alpha = 100;           
 			projectile.light = 0.5f;         
