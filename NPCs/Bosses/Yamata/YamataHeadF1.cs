@@ -3,6 +3,8 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
+
 namespace AAMod.NPCs.Bosses.Yamata
 {
     [AutoloadBossHead]
@@ -10,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Yamata
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata; Dread Nightmare");
+            DisplayName.SetDefault("Yamata");
             Main.npcFrameCount[npc.type] = 3;
         }
 
@@ -25,11 +27,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.lifeMax = 30000;
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.lifeMax = 25000;
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && AAWorld.downedYamata)
             {
                 npc.lifeMax = 35000;
             }
@@ -50,32 +52,28 @@ namespace AAMod.NPCs.Bosses.Yamata
             return 0f;
         }
 
-        public Yamata Body = null;
-        public bool killedbyplayer = true;
-        public bool leftHead = false;
-        public int damage = 0;
+		public Yamata Body = null;
+        public bool killedbyplayer = true;	
+		public bool leftHead = false;
+		public int damage = 0;
+        public bool fireAttack = false;
+		public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
+		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
+		public int movementVariance = 60; //how far from the center point to move.
 
-        public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 60; //how far from the center point to move.
-		public Vector2 relativePosition = default(Vector2);
-
-        public override void AI()
-        {
-            if (Body == null)
-            {
-                NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType("Yamata") || npcBody.type == mod.NPCType("YamataA"))
-                {
-                    Body = (Yamata)npcBody.modNPC;
-                }
+		public override void AI()
+		{
+			if(Body == null)
+			{
+				NPC npcBody = Main.npc[(int)npc.ai[0]];
+				if(npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
+				{
+					Body = (Yamata)npcBody.modNPC;
+				}
             }
-            if (Body == null || !Body.npc.active)
+            if (!Body.npc.active)
             {
-                if (npc.timeLeft > 10)
-                {
-                    npc.timeLeft = 10;
-                }
+				if(npc.timeLeft > 10) npc.timeLeft = 10;
                 killedbyplayer = false;
                 return;
             }
@@ -83,99 +81,99 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 damage = npc.damage / 4;
                 //attackDelay = 180;
-            }
-            else
+            }else
             {
                 damage = npc.damage / 2;
             }
-            npc.TargetClosest();
-            Player targetPlayer = Main.player[npc.target];
-            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-            if (Main.netMode != 1)
+			npc.TargetClosest();
+			Player targetPlayer = Main.player[npc.target];
+			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+            if (!Body.npc.active)
             {
-                npc.ai[1]++;
-                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
-                if (leftHead) aiTimerFire += 30;
-                if (targetPlayer != null && npc.ai[1] == aiTimerFire)
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
                 {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                    killedbyplayer = false;
+                }
+                return;
+            }
+            if (Main.netMode != 1)
+			{
+				npc.ai[1]++;
+				int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+				if(leftHead) aiTimerFire += 30;
+				if(targetPlayer != null && npc.ai[1] == aiTimerFire)
+				{
+                    fireAttack = true;
                     for (int i = 0; i < 5; ++i)
                     {
-                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
-                        dir *= 5f;
+						Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+						dir *= 5f;
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-                    }
-                }
-                else
-                if (npc.ai[1] >= 200) //pick random spot to move head to
-                {
-                    npc.ai[1] = 0;
-                    npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
-                    npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
-                    npc.netUpdate = true;
-                }
-            }
-            npc.rotation = 1.57f;
-            Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-            if (Vector2.Distance(nextTarget, npc.Center) < 40f)
-            {
-                npc.velocity *= 0.9f;
-                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
-            }
-            else
-            {
-                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
-            }
-			if(Body.chasePlayer) //player trying to outrun it, force heads to keep up with body
+                    }	
+				}else
+				if(npc.ai[1] >= 200) //pick random spot to move head to
+				{
+                    fireAttack = false;
+					npc.ai[1] = 0;
+					npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
+					npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
+					npc.netUpdate = true;
+				}
+			}
+			npc.rotation = 1.57f;
+			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+			if(Vector2.Distance(nextTarget, npc.Center) < 40f)
 			{
-				relativePosition += npc.velocity;
-				npc.Center = Body.npc.Center + relativePosition;				
+				npc.velocity *= 0.9f;
+				if(Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+				if(Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
 			}else
 			{
-				npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-				npc.position += Body.npc.velocity;
+				npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+				npc.velocity *= 5f;
 			}
-            npc.spriteDirection = -1;
-        }
+			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
+			npc.spriteDirection = -1;			
+		}
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
+		public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-            if (Body != null)
-            {
-                Body.DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", npc, lightColor);
-            }
+			if(Body != null)
+			{
+				Body.DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "NPCs/Bosses/Yamata/YamataHeadF1_Glow", npc, lightColor);
+			}
             return true;
         }
 
         public override void FindFrame(int frameHeight)
         {
-            /*if (attackFrame)
+            npc.frameCounter++;
+            if (fireAttack)
             {
-                MouthCounter++;
-                if (MouthCounter > 10)
+                if (npc.frameCounter < 5)
                 {
-                    MouthFrame++;
-                    MouthCounter = 0;
+                    npc.frame.Y = 1 * frameHeight;
                 }
-                if (MouthFrame >= 3)
+                else if (npc.frameCounter < 10)
                 {
-                    MouthFrame = 2;
+                    npc.frame.Y = 2 * frameHeight;
                 }
             }
             else
             {
-                npc.frame.Y = 0 * frameHeight;
-            }*/
+                npc.frameCounter = 0;
+            }
         }
 
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
         }
-
-        public override bool PreNPCLoot()
+        
+		public override bool PreNPCLoot()
         {
             return false;
         }
