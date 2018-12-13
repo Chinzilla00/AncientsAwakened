@@ -25,11 +25,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.lifeMax = 30000;
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.lifeMax = 25000;
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && AAWorld.downedYamata)
             {
                 npc.lifeMax = 35000;
             }

@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
+            npc.timeLeft = 10;
         }
         public int timer;
         public override void AI()
