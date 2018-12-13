@@ -19,11 +19,15 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.friendly = false;
             npc.alpha = 255;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
-            npc.life = 1;
+            npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
         public int timer;
         public override void AI()
@@ -64,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (timer >= 1100)
             {
-                npc.alpha--;
+                npc.alpha -= 5;
             }
 
             if (timer == 1300)
@@ -73,7 +77,21 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (timer == 1455)
             {
+                SummonShen();
+                npc.active = false;
                 npc.life = 0;               
+            }
+        }
+
+        public void SummonShen()
+        {
+            Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            if (Main.netMode != 1)
+            {
+                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenA"));
+                Main.npc[npcID].Center = npc.Center;
+                Main.npc[npcID].netUpdate = true;
             }
         }
 
@@ -99,26 +117,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
 
             return true;
-        }
-
-        public override void NPCLoot()
-        {
-            for (int LOOP = 0; LOOP < 8; LOOP++)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position1 = npc.Center;
-                dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = false;
-                dust2 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                dust2.noGravity = true;
-                dust2.scale *= 1.3f;
-                dust2.velocity.Y -= 6;
-            }
-
-            SpawnBoss(npc.Center, "ShenA", "ShenA");
-            Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
         }
 
         public void SpawnBoss(Vector2 center, string name, string displayName)

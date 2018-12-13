@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 372;
+            npc.height = 364;
             npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
@@ -70,19 +70,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-
-        private bool Frame1 = true;
-        private bool Frame2 = false;
-        private bool FaceRight;
-        private bool FaceLeft;
-        private int FlyFrame;
-        private int FlyTimer;
-        private int FlyCounter1;
-        private int FlyCounter2;
-        private int Timer;
-        private int ChargeFrame;
-        private bool Charge;
-
         public override void AI()
         {
             Main.fastForwardTime = true;
@@ -100,19 +87,17 @@ namespace AAMod.NPCs.Bosses.Shen
             bool firstHealth = npc.life <= npc.lifeMax * 0.1;
             int flareCount = 10;
             bool Charge = npc.ai[3] < 10f;
-            float teleportLocation = 0f;
-            int teleChoice = Main.rand.Next(2);
 
-            int aiChangeRate = expertMode ? 36 : 38;
-            float npcVelocity = expertMode ? 0.7f : 0.69f;
-            float scaleFactor = expertMode ? 11f : 10.8f;
+            int aiChangeRate = 40;
+            float npcVelocity = .5f;
+            float scaleFactor = 8;
             float playerRunAcceleration = Main.player[npc.target].velocity.Y == 0f ? Math.Abs(Main.player[npc.target].moveSpeed * 0.5f) : (Main.player[npc.target].runAcceleration * 1f);
             if (playerRunAcceleration <= 1f)
             {
                 playerRunAcceleration = 1f;
             }
-            int chargeTime = expertMode ? 26 : 27;
-            float chargeSpeed = playerRunAcceleration * (expertMode ? 27f : 26.5f);
+            int chargeTime = 35;
+            float chargeSpeed = playerRunAcceleration * 10;
             int num1454 = 80;
             int num1455 = 4;
             float num1456 = 0.3f;
@@ -120,7 +105,6 @@ namespace AAMod.NPCs.Bosses.Shen
             int num1457 = 90;
             int num1458 = 180;
             int num1459 = 180;
-            int num1460 = 30;
             int num1461 = 120;
             int num1462 = 4;
             float scaleFactor13 = 20f;
@@ -284,7 +268,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.ai[0] == -1f) //initial spawn effects
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 int num1467 = Math.Sign(player.Center.X - vectorCenter.X);
@@ -606,7 +590,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 4f) //enter phase 2
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -784,7 +768,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 7f) //Flare summon
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] == 0f)
                 {
@@ -793,18 +777,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.ai[2] % num1462 == 0f)
                 {
                     Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60); //changed
-                    if (Main.netMode != 1)
-                    {
-                        if (NPC.CountNPCS(mod.NPCType("DetonatingFlare2")) < flareCount)
-                        {
-                            Vector2 vector6 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                            int detFlare = NPC.NewNPC((int)vector6.X, (int)vector6.Y - 100, mod.NPCType("DetonatingFlare2"), 0, 0f, 0f, 0f, 0f, 255);
-                            Main.npc[detFlare].localAI[3] = Main.rand.Next(3, 9);
-                        }
-                        int damage = expertMode ? 85 : 90;
-                        Vector2 vector173 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        
-                    }
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
                 npc.rotation -= num1463 * npc.direction;
@@ -844,7 +816,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 9f) //start phase 3
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -1020,9 +992,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     return;
                 }
             }
-            else if (npc.ai[0] == 12f) //flare circle of doom
+            else if (npc.ai[0] == 12f)
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] == 0f)
                 {
@@ -1031,30 +1003,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.ai[2] % num1462 == 0f)
                 {
                     Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60); //changed
-                    if (Main.netMode != 1)
-                    {
-                        if (NPC.CountNPCS(mod.NPCType("DetonatingFlare2")) < flareCount && NPC.CountNPCS(mod.NPCType("DetonatingFlare")) < flareCount)
-                        {
-                            int randomSpawn = Main.rand.Next(2);
-                            if (randomSpawn == 0)
-                            {
-                                randomSpawn = mod.NPCType("DetonatingFlare");
-                            }
-                            else
-                            {
-                                randomSpawn = mod.NPCType("DetonatingFlare2");
-                            }
-                            Vector2 vector6 = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                            float speedX = Main.rand.Next(10, 16);
-                            int detFlare = NPC.NewNPC((int)vector6.X, (int)vector6.Y - 100, randomSpawn, 0, 0f, 0f, 0f, 0f, 255);
-                            Main.npc[detFlare].localAI[1] = Main.rand.Next(5, 11);
-                            Main.npc[detFlare].localAI[2] = speedX / 100;
-                            Main.npc[detFlare].localAI[3] = Main.rand.Next(3, 11);
-                        }
-                        int damage = expertMode ? 90 : 100;
-                        Vector2 vector = Vector2.Normalize(player.Center - vectorCenter) * (npc.width + 20) / 2f + vectorCenter;
-                        
-                    }
+                    
                 }
                 npc.velocity = npc.velocity.RotatedBy(-(double)num1463 * (float)npc.direction, default(Vector2));
                 npc.rotation -= num1463 * npc.direction;
@@ -1070,7 +1019,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 13f) //dual tornado blast
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -1101,7 +1050,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 14f) //phase 4 would be ai 9
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] < num1459 - 90)
                 {
@@ -1148,93 +1097,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     return;
                 }
             }
-            else if (npc.ai[0] == 15f && !player.dead) //teleport above or below player would be ai 10
-            {
-                npc.dontTakeDamage = false;
-                npc.chaseable = false;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 25;
-                    if (npc.alpha > 255)
-                    {
-                        npc.alpha = 255;
-                    }
-                }
-                if (npc.ai[1] == 0f)
-                {
-                    npc.ai[1] = 360 * Math.Sign((vectorCenter - player.Center).X);
-                }
-                Vector2 value7 = player.Center + new Vector2(npc.ai[1], teleportLocation) - vectorCenter; //teleport distance
-                Vector2 desiredVelocity = Vector2.Normalize(value7 - npc.velocity) * scaleFactor;
-                npc.SimpleFlyMovement(desiredVelocity, npcVelocity);
-                int num32 = Math.Sign(player.Center.X - vectorCenter.X);
-                if (num32 != 0)
-                {
-                    if (npc.ai[2] == 0f && num32 != npc.direction)
-                    {
-                        npc.rotation = 3.14159274f;
-                    }
-                    npc.direction = num32;
-                    if (num32 != 0)
-                    {
-                        npc.direction = num32;
-                        npc.rotation = 0f;
-                        npc.spriteDirection = -npc.direction; //end issue
-                    }
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= aiChangeRate)
-                {
-                    int num33 = 0;
-                    switch ((int)npc.ai[3])
-                    {
-                        case 0:
-                        case 2:
-                        case 3:
-                        case 5:
-                        case 6:
-                        case 7:
-                            num33 = 1;
-                            break;
-                        case 1:
-                        case 4:
-                        case 8:
-                            num33 = 2;
-                            break;
-                    }
-                    if (num33 == 1)
-                    {
-                        npc.ai[0] = 16f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                        npc.velocity = Vector2.Normalize(player.Center - vectorCenter) * chargeSpeed;
-                        npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
-                        if (num32 != 0)
-                        {
-                            npc.direction = num32; //perhaps an issue lies here
-                            if (npc.spriteDirection == 1)
-                            {
-                                npc.rotation += 3.14159274f;
-                            }
-                            npc.spriteDirection = -npc.direction; //end issue
-                        }
-                    }
-                    else if (num33 == 2)
-                    {
-                        npc.ai[0] = 17f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                    }
-                    else if (num33 == 3)
-                    {
-                        npc.ai[0] = 18f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                    }
-                    npc.netUpdate = true;
-                    return;
-                }
-            }
             else if (npc.ai[0] == 16f) //charge npc would be ai 11
             {
                 npc.dontTakeDamage = false;
@@ -1259,50 +1121,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
                     npc.ai[3] += 1f;
-                    npc.netUpdate = true;
-                    return;
-                }
-            }
-            else if (npc.ai[0] == 17f) //teleport npc would be ai 12
-            {
-                npc.dontTakeDamage = true;
-                npc.chaseable = false;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 17;
-                    if (npc.alpha > 255)
-                    {
-                        npc.alpha = 255;
-                    }
-                }
-                npc.velocity *= 0.98f;
-                npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == num1460 / 2)
-                {
-                    Main.PlaySound(29, (int)vectorCenter.X, (int)vectorCenter.Y, 92, 1f, 0f);
-                }
-                if (Main.netMode != 1 && npc.ai[2] == num1460 / 2)
-                {
-                    if (npc.ai[1] == 0f)
-                    {
-                        npc.ai[1] = 300 * Math.Sign((vectorCenter - player.Center).X);
-                    }
-                    Vector2 center = player.Center + new Vector2(-npc.ai[1], teleportLocation); //teleport distance
-                    vectorCenter = (npc.Center = center);
-                    int num36 = Math.Sign(player.Center.X - vectorCenter.X);
-                    npc.rotation -= num1463 * npc.direction;
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= num1460)
-                {
-                    npc.ai[0] = 15f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] += 1f;
-                    if (npc.ai[3] >= 9f)
-                    {
-                        npc.ai[3] = 0f;
-                    }
                     npc.netUpdate = true;
                     return;
                 }

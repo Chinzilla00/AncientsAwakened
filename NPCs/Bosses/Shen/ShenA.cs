@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 372;
+            npc.height = 364;
             npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
@@ -55,19 +55,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
         }
-
-
-        private bool Frame1 = true;
-        private bool Frame2 = false;
-        private bool FaceRight;
-        private bool FaceLeft;
-        private int FlyFrame;
-        private int FlyTimer;
-        private int FlyCounter1;
-        private int FlyCounter2;
-        private int Timer;
-        private int ChargeFrame;
-        private bool Charge;
 
         public override void AI()
         {
@@ -270,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.ai[0] == -1f) //initial spawn effects
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 int num1467 = Math.Sign(player.Center.X - vectorCenter.X);
@@ -592,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 4f) //enter phase 2
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -770,7 +757,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 7f) //Flare summon
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] == 0f)
                 {
@@ -830,7 +817,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 9f) //start phase 3
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -1008,7 +995,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 12f) //flare circle of doom
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] == 0f)
                 {
@@ -1056,7 +1043,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 13f) //dual tornado blast
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
@@ -1087,7 +1074,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 14f) //phase 4 would be ai 9
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.ai[2] < num1459 - 90)
                 {
@@ -1251,7 +1238,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 17f) //teleport npc would be ai 12
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.chaseable = false;
                 if (npc.alpha < 255)
                 {
