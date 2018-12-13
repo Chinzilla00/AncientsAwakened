@@ -3157,6 +3157,7 @@
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonSheet.png" />

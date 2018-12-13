@@ -19,10 +19,15 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 100;
             npc.alpha = 255;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
-            npc.life = 1;
+            npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
+            npc.timeLeft = 10;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public int Speechtimer = 0;
@@ -34,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.timeLeft = 10;
             }
             Speechtimer++;
-            if (Speechtimer > 780)
+            if (Speechtimer < 780)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -201,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (Speechtimer >= 1410)
             {
-                npc.alpha--;
+                npc.alpha -= 5;
             }
 
             if (Speechtimer == 1500)

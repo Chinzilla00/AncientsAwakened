@@ -29,12 +29,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.damage = 140;
                 npc.defense = 40;
             }
-            if (Main.expertMode && !AAWorld.downedYamataA)
+            if (Main.expertMode && !AAWorld.downedYamata)
             {
                 npc.damage = 140;
                 npc.defense = 50;
             }
-            if (Main.expertMode && AAWorld.downedYamataA)
+            if (Main.expertMode && AAWorld.downedYamata)
             {
                 npc.damage = 150;
                 npc.defense = 60;
