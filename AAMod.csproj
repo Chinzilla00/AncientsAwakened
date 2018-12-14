@@ -470,6 +470,7 @@
     <Compile Include="Items\Boss\Hydra\HydraHide.cs" />
     <Compile Include="Items\Boss\Hydra\HydraBag.cs" />
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
+    <Compile Include="Items\Boss\Infinity\Sticker.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
     <Compile Include="Items\Boss\Infinity\InfinityBlade.cs" />
@@ -492,6 +493,7 @@
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
+    <Compile Include="Items\Boss\Shen\ChaosScale.cs" />
     <Compile Include="Items\Boss\Shen\Duality.cs" />
     <Compile Include="Items\Boss\Shen\ShenCache.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
@@ -587,6 +589,7 @@
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\BookOfSacrifice.cs" />
+    <Compile Include="Items\Materials\Discordium.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\DarkMatter.cs" />
     <Compile Include="Items\Materials\DaybreakIncinerite.cs" />
@@ -1163,6 +1166,7 @@
     <Compile Include="Tiles\Crates\MireCrate.cs" />
     <Compile Include="Tiles\DragonEgg.cs" />
     <Compile Include="Tiles\HydraPod.cs" />
+    <Compile Include="Tiles\Sticker.cs" />
     <Compile Include="Tiles\Razetus.cs" />
     <Compile Include="Tiles\Depthice.cs" />
     <Compile Include="Tiles\DepthsandHardened.cs" />
@@ -1518,6 +1522,7 @@
     <Content Include="Glowmasks\ChaosAltar_Glow.png" />
     <Content Include="Glowmasks\ChaosCrucible_Glow.png" />
     <Content Include="Glowmasks\ChaosRune_Glow.png" />
+    <Content Include="Glowmasks\ChaosScale_Glow.png" />
     <Content Include="Glowmasks\ChaosShot_Glow.png" />
     <Content Include="Glowmasks\ChaosSigil_Glow.png" />
     <Content Include="Glowmasks\ChaosSlayer_Glow.png" />
@@ -2518,6 +2523,7 @@
     <Content Include="Items\Boss\Infinity\IZCache.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
+    <Content Include="Items\Boss\Infinity\Sticker.png" />
     <Content Include="Items\Boss\Infinity\TotalDestruction.png" />
     <Content Include="Items\Boss\MushroomMonarch\HeartyTruffle.png" />
     <Content Include="Items\Boss\MushroomMonarch\MonarchBag.png" />
@@ -2537,6 +2543,7 @@
     <Content Include="Items\Boss\Retriever\StormClaw_HandsOn.png" />
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
+    <Content Include="Items\Boss\Shen\ChaosScale.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayer.png" />
     <Content Include="Items\Boss\Shen\ChaosSoul.png" />
     <Content Include="Items\Boss\Shen\Duality.png" />
@@ -2661,6 +2668,7 @@
     <Content Include="Items\Materials\DaybreakIncinerite.png" />
     <Content Include="Items\Materials\DeepAbyssium.png" />
     <Content Include="Items\Materials\DevilSilk.png" />
+    <Content Include="Items\Materials\Discordium.png" />
     <Content Include="Items\Materials\DragonClaw.png" />
     <Content Include="Items\Materials\DragonFire.png" />
     <Content Include="Items\Materials\Dragonfruit.png" />

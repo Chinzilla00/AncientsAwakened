@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Infinity
@@ -37,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.velocity.Y = 0;
             Player player = Main.player[Main.myPlayer];
             OblivionSpeech++;
-            if (AAPlayer.ZeroKills == 0)
+            if (AAPlayer.ZeroKills == 1)
             {
                 if (OblivionSpeech == 180)
                 {
@@ -55,17 +56,36 @@ namespace AAMod.NPCs.Bosses.Infinity
                 {
                     Main.NewText("I applaud you, terrarian.", color1);
                 }
-                if (OblivionSpeech == 900)
+                if (player.difficulty == 2)
                 {
-                    Main.NewText("Although...next time we meet...when you're stronger...", color1);
+                    if (OblivionSpeech == 900)
+                    {
+                        Main.NewText("I'm also impressed you made it this far in hardcore mode.", color1);
+                    }
+                    if (OblivionSpeech == 1080)
+                    {
+                        Main.NewText("Good job. Here, have a sticker.", color1);
+                        Item.NewItem(npc.Center, mod.ItemType("Sticker"));
+                    }
+                    if (OblivionSpeech == 1260)
+                    {
+                        Main.NewText("Now, I bid you adieu...", color1);
+                    }
                 }
-                if (OblivionSpeech == 1080)
+                else
                 {
-                    Main.NewText("..." + player.name + "...", color1);
-                }
-                if (OblivionSpeech == 1260)
-                {
-                    Main.NewText("I won't be so forgiving.", color1);
+                    if (OblivionSpeech == 900)
+                    {
+                        Main.NewText("Although...next time we meet...when you're stronger...", color1);
+                    }
+                    if (OblivionSpeech == 1080)
+                    {
+                        Main.NewText("..." + player.name + "...", color1);
+                    }
+                    if (OblivionSpeech == 1260)
+                    {
+                        Main.NewText("I won't be so forgiving.", color1);
+                    }
                 }
                 if (OblivionSpeech >= 1420)
                 {
@@ -169,8 +189,43 @@ namespace AAMod.NPCs.Bosses.Infinity
                     npc.alpha += 5;
                 }
             }
+            if (AAPlayer.ZeroKills == 10)
+            {
+                if (player.difficulty == 2)
+                {
+                    player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was destroyed by Oblivion"), player.statLifeMax + 10, 0, false);
+                    if (OblivionSpeech == 180)
+                    {
+                        Main.NewText("That's what you get for bothering me 10 TIMES.", color1);
+                    }
+                    if (OblivionSpeech == 360)
+                    {
+                        Main.NewText("...but I doubt you'll go away.", color1);
+                    }
+                }
+                else
+                {
+                    if (OblivionSpeech == 180)
+                    {
+                        Main.NewText("I would kill you to teach you a lesson...", color1);
+                    }
+                    if (OblivionSpeech == 360)
+                    {
+                        Main.NewText("...but you're in hardcore mode, and I'm not that much of an asshole.", color1);
+                    }
+                }
+                if (OblivionSpeech == 540)
+                {
+                    Main.NewText("Oh well.", color1);
+                }
 
-            if (AAPlayer.ZeroKills >= 5)
+                if (OblivionSpeech >= 540)
+                {
+                    npc.alpha += 5;
+                }
+            }
+
+            else
             {
                 if (OblivionSpeech == 180)
                 {
