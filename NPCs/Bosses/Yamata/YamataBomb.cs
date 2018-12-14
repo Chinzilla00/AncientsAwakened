@@ -38,7 +38,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.alpha = 60;
             projectile.timeLeft = 300;
             projectile.glowMask = customGlowMask;
-			projectile.aiStyle = -1;
         }
 
         public override void AI()
@@ -93,6 +92,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
+            target.AddBuff(mod.BuffType("HydraToxin"), 600);
             Kill(0);
         }
 
@@ -134,14 +134,5 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             return selectedTarget;
         }
-
-
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("Venom"), 600);
-        }
-
-        
     }
 }
