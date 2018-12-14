@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Infinity
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Loot Cache");
+            DisplayName.SetDefault("Treasure Cache");
 			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
 

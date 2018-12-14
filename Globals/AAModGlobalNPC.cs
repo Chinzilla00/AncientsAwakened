@@ -34,6 +34,7 @@ namespace AAMod
         public bool Moonraze = false;
         public bool Electrified = false;
         public bool InfinityScorch = false;
+        public bool DiscordInferno = false;
         public static int Toad = -1;
 
         public override bool InstancePerEntity
@@ -48,6 +49,12 @@ namespace AAMod
             infinityOverload = false;
             terraBlaze = false;
             TimeFrozen = false;
+            Dragonfire = false;
+            Hydratoxin = false;
+            Moonraze = false;
+            Electrified = false;
+            InfinityScorch = false;
+            DiscordInferno = false;
         }
 
 		public override void SetDefaults(NPC npc)
@@ -151,6 +158,20 @@ namespace AAMod
                 }
             }
 
+            if (DiscordInferno)
+            {
+                npc.lifeRegen -= 52;
+                npc.damage -= 10;
+                if (npc.velocity.X < -2f || npc.velocity.X > 2f)
+                {
+                    npc.velocity.X *= 0.8f;
+                }
+                if (npc.velocity.Y < -2f || npc.velocity.Y > 2f)
+                {
+                    npc.velocity.Y *= 0.8f;
+                }
+            }
+
             if (Dragonfire)
             {
                 npc.damage -= 10;
@@ -159,11 +180,11 @@ namespace AAMod
             {
                 if (npc.velocity.X < -2f || npc.velocity.X > 2f)
                 {
-                    npc.velocity.X *= 0.4f;
+                    npc.velocity.X *= 0.8f;
                 }
                 if (npc.velocity.Y < -2f || npc.velocity.Y > 2f)
                 {
-                    npc.velocity.Y *= 0.4f;
+                    npc.velocity.Y *= 0.8f;
                 }
             }
 
@@ -524,6 +545,17 @@ namespace AAMod
                 }
             }
 
+            if (DiscordInferno)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0, default(Color), 1f);
+                    Main.dust[num4].alpha = 100;
+                    Main.dust[num4].velocity *= 1.4f;
+                    Main.dust[num4].scale += Main.rand.NextFloat();
+                }
+            }
+
             if (terraBlaze)
             {
                 if (Main.rand.Next(4) < 3)
@@ -700,12 +732,12 @@ namespace AAMod
                     return false;
                 }
             }
-            Vector2 voidcenter = new Vector2((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, 120);
+            Player targetPlayer = Main.player[npc.target];
             try
             {
                 if (npc.type == NPCID.Harpy || npc.type == NPCID.WyvernHead || npc.type == NPCID.MartianProbe)
                 {
-                    if (npc.timeLeft > 10 && Vector2.Distance(npc.Center, voidcenter) < 1000f)
+                    if (npc.timeLeft > 10 && targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneVoid == true)
                     {
                         npc.timeLeft = 10;
                     }

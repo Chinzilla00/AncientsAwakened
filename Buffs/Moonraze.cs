@@ -15,10 +15,9 @@ namespace AAMod.Buffs
 			longerExpertDebuff = true;
 		}
 
-		/*public override void Update(NPC npc, ref int buffIndex)
+		public override void Update(NPC npc, ref int buffIndex)
 		{
 			npc.GetGlobalNPC<AAModGlobalNPC>(mod).Moonraze = true;
-            npc.defense -= 25;
-		}*/
+		}
 	}
 }

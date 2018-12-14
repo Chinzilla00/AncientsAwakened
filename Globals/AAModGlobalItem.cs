@@ -1,3 +1,6 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -11,15 +14,14 @@ namespace AAMod
         {
             if (item.type == ItemID.SoulofNight)
             {
-                /*item.color = Color.White;
                 if (WorldGen.crimson)
                 {
-                    item.color = Color.DarkRed;
+                    item.color = Color.Firebrick;
                 }
                 else
                 {
                     item.color = Color.Violet;
-                }*/
+                }
             }
         }
 

@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 364;
+            npc.height = 52;
             npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
@@ -1137,7 +1137,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.ai[1] = 360 * Math.Sign((vectorCenter - player.Center).X);
                 }
-                Vector2 value7 = player.Center + new Vector2(npc.ai[1], teleportLocation) - vectorCenter; //teleport distance
+                Vector2 value7 = player.Center + new Vector2(npc.ai[1], 0) - vectorCenter; //teleport distance
                 Vector2 desiredVelocity = Vector2.Normalize(value7 - npc.velocity) * scaleFactor;
                 npc.SimpleFlyMovement(desiredVelocity, npcVelocity);
                 int num32 = Math.Sign(player.Center.X - vectorCenter.X);
@@ -1260,7 +1260,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[1] = 300 * Math.Sign((vectorCenter - player.Center).X);
                     }
-                    Vector2 center = player.Center + new Vector2(-npc.ai[1], teleportLocation); //teleport distance
+                    Vector2 center = player.Center + new Vector2(-npc.ai[1], 0); //teleport distance
                     vectorCenter = (npc.Center = center);
                     int num36 = Math.Sign(player.Center.X - vectorCenter.X);
                     npc.rotation -= num1463 * npc.direction;
@@ -1421,14 +1421,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public float auraPercent = 0f;
         public bool auraDirection = true;
 
-        public Color GetGlowAlpha()
-        {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
-            float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.OrangeRed, Color.Indigo, Pie);
-            return color1;
-        }
-
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             if (glowTex == null)
@@ -1438,8 +1430,8 @@ namespace AAMod.NPCs.Bosses.Shen
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, GetGlowAlpha());
-            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen2);
+            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Shen2);
             return false;
         }
     }

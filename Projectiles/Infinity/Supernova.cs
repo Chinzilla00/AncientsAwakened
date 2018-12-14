@@ -20,7 +20,7 @@ namespace AAMod.Projectiles.Infinity
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
