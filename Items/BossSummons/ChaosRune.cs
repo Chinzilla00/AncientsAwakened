@@ -45,9 +45,7 @@ Summons Shen Doragon's true awakened form");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 5f;
-            float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.OrangeRed, Color.Indigo, Pie);
+            
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             spriteBatch.Draw
                 (
@@ -58,7 +56,7 @@ Summons Shen Doragon's true awakened form");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                color1,
+                AAColor.Shen2,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
@@ -69,9 +67,6 @@ Summons Shen Doragon's true awakened form");
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
-            float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.Red, Color.Indigo, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
             Texture2D texture3 = mod.GetTexture("Items/BossSummons/ChaosRune_Inactive");
@@ -79,7 +74,7 @@ Summons Shen Doragon's true awakened form");
             for (int i = 0; i < 4; i++)
             {
                 //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, color1, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, AAColor.Shen2, 0, origin, scale, SpriteEffects.None, 0f);
 
             }
 

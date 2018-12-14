@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
 
                     line2.overrideColor = new Color(100, 0, 10);
 
-                    line2.overrideColor = new Color(120, 0, 30);
+                    line2.overrideColor = AAColor.Zero;
 //
                 }
             }

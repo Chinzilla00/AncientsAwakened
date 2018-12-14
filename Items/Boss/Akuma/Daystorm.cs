@@ -68,7 +68,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(180, 41, 32);
+                    line2.overrideColor = AAColor.Akuma;
                 }
             }
         }

@@ -132,6 +132,9 @@ namespace AAMod
 
         public static Color ZeroColor = new Color((int)(233 * 0.7f), (int)(53 * 0.7f), (int)(53 * 0.7f));
 
+        //IZ Death count
+        public static int ZeroKills = 0;
+
         public override void ResetEffects()
         {
             //Minions

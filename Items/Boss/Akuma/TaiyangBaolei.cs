@@ -32,8 +32,6 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             item.expert = true;
             item.accessory = true;
             item.defense = 8;
-            
-            
         }
 
 
@@ -56,17 +54,6 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(0, 255, 248);
-                }
-            }
         }
         
 

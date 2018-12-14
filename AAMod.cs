@@ -33,6 +33,7 @@ namespace AAMod
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
+        internal bool CalamityLoaded;
 
         public AAMod()
         {
@@ -234,10 +235,15 @@ namespace AAMod
                 Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
                 Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
-                if (WorldGen.crimson == true)
-                {
-                    //Main.itemTexture[521] = GetTexture("Resprites/SoulOfNight");
-                }
+                Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
+            }
+            try
+            {
+                CalamityLoaded = ModLoader.GetMod("CalamityMod") != null;
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
             }
         }
 

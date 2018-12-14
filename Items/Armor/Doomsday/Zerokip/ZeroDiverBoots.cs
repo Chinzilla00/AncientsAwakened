@@ -44,7 +44,7 @@ namespace AAMod.Items.Armor.Doomsday.Zerokip
                 {
                    
 
-                    line2.overrideColor = new Color(120, 0, 30);
+                    line2.overrideColor = AAColor.Zero;
                 }
             }
         }

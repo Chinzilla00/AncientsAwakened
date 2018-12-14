@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(180, 41, 32);
+                    line2.overrideColor = AAColor.Akuma;
                 }
             }
         }
@@ -54,8 +54,6 @@ namespace AAMod.Items.Boss.Akuma
         private int PickPower = 0;
         private int AxePower = 0;
         private int HammerPower = 0;
-
-
 
         public override bool CanUseItem(Player player)
         {

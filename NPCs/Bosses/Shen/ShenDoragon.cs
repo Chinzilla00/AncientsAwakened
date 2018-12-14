@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 364;
+            npc.height = 52;
             npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
@@ -1097,6 +1097,93 @@ namespace AAMod.NPCs.Bosses.Shen
                     return;
                 }
             }
+            else if (npc.ai[0] == 15f && !player.dead) //teleport above or below player would be ai 10
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = false;
+                if (npc.alpha < 255)
+                {
+                    npc.alpha += 25;
+                    if (npc.alpha > 255)
+                    {
+                        npc.alpha = 255;
+                    }
+                }
+                if (npc.ai[1] == 0f)
+                {
+                    npc.ai[1] = 360 * Math.Sign((vectorCenter - player.Center).X);
+                }
+                Vector2 value7 = player.Center + new Vector2(npc.ai[1], 0) - vectorCenter; //teleport distance
+                Vector2 desiredVelocity = Vector2.Normalize(value7 - npc.velocity) * scaleFactor;
+                npc.SimpleFlyMovement(desiredVelocity, npcVelocity);
+                int num32 = Math.Sign(player.Center.X - vectorCenter.X);
+                if (num32 != 0)
+                {
+                    if (npc.ai[2] == 0f && num32 != npc.direction)
+                    {
+                        npc.rotation = 3.14159274f;
+                    }
+                    npc.direction = num32;
+                    if (num32 != 0)
+                    {
+                        npc.direction = num32;
+                        npc.rotation = 0f;
+                        npc.spriteDirection = -npc.direction; //end issue
+                    }
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= aiChangeRate)
+                {
+                    int num33 = 0;
+                    switch ((int)npc.ai[3])
+                    {
+                        case 0:
+                        case 2:
+                        case 3:
+                        case 5:
+                        case 6:
+                        case 7:
+                            num33 = 1;
+                            break;
+                        case 1:
+                        case 4:
+                        case 8:
+                            num33 = 2;
+                            break;
+                    }
+                    if (num33 == 1)
+                    {
+                        npc.ai[0] = 16f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.velocity = Vector2.Normalize(player.Center - vectorCenter) * chargeSpeed;
+                        npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
+                        if (num32 != 0)
+                        {
+                            npc.direction = num32; //perhaps an issue lies here
+                            if (npc.spriteDirection == 1)
+                            {
+                                npc.rotation += 3.14159274f;
+                            }
+                            npc.spriteDirection = -npc.direction; //end issue
+                        }
+                    }
+                    else if (num33 == 2)
+                    {
+                        npc.ai[0] = 17f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                    }
+                    else if (num33 == 3)
+                    {
+                        npc.ai[0] = 18f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                    }
+                    npc.netUpdate = true;
+                    return;
+                }
+            }
             else if (npc.ai[0] == 16f) //charge npc would be ai 11
             {
                 npc.dontTakeDamage = false;
@@ -1112,7 +1199,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Vector2 vector11 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
                     vector11 = vector11.RotatedBy((m - (num34 / 2 - 1)) * 3.1415926535897931 / (float)num34, default(Vector2)) + vectorCenter;
                     Vector2 value8 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    
+
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= chargeTime)
@@ -1121,6 +1208,50 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
                     npc.ai[3] += 1f;
+                    npc.netUpdate = true;
+                    return;
+                }
+            }
+            else if (npc.ai[0] == 17f) //teleport npc would be ai 12
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = false;
+                if (npc.alpha < 255)
+                {
+                    npc.alpha += 17;
+                    if (npc.alpha > 255)
+                    {
+                        npc.alpha = 255;
+                    }
+                }
+                npc.velocity *= 0.98f;
+                npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
+                if (npc.ai[2] == 15)
+                {
+                    Main.PlaySound(29, (int)vectorCenter.X, (int)vectorCenter.Y, 92, 1f, 0f);
+                }
+                if (Main.netMode != 1 && npc.ai[2] == 15)
+                {
+                    if (npc.ai[1] == 0f)
+                    {
+                        npc.ai[1] = 300 * Math.Sign((vectorCenter - player.Center).X);
+                    }
+                    Vector2 center = player.Center + new Vector2(-npc.ai[1], 0); //teleport distance
+                    vectorCenter = (npc.Center = center);
+                    int num36 = Math.Sign(player.Center.X - vectorCenter.X);
+                    npc.rotation -= num1463 * npc.direction;
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 30)
+                {
+                    npc.ai[0] = 15f;
+                    npc.ai[1] = 0f;
+                    npc.ai[2] = 0f;
+                    npc.ai[3] += 1f;
+                    if (npc.ai[3] >= 9f)
+                    {
+                        npc.ai[3] = 0f;
+                    }
                     npc.netUpdate = true;
                     return;
                 }
@@ -1213,7 +1344,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (Main.expertMode)
             {
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ShenTransition"), 0, 0);
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
             }
             npc.value = 0f;
             npc.boss = false;

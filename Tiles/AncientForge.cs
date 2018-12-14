@@ -56,12 +56,16 @@ namespace AAMod.Tiles
                 TileID.Autohammer,
                 TileID.ImbuingStation
             };
-            animationFrameHeight = 54;
+            animationFrameHeight = 38;
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            frame = Main.tileFrame[TileID.AlchemyTable];
+            if (++frameCounter >= 5)
+            {
+                frameCounter = 0;
+                if (++frame >= 10) frame = 0;
+            }
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

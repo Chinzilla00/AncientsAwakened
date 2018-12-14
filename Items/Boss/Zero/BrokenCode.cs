@@ -70,21 +70,6 @@ You don't look so good
             );
         }
 
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
-            float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.DarkRed, Color.Black, Pie);
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = color1;
-                }
-            }
-        }
-
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
 
         public override void UpdateAccessory(Player player, bool hideVisual)

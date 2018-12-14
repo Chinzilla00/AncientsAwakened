@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,6 +33,17 @@ namespace AAMod.Items.Boss.Yamata
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Yamata;
+                }
+            }
         }
 
         public override bool CanUseItem(Player player)

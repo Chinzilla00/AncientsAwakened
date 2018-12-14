@@ -2,6 +2,7 @@
 using Terraria.DataStructures;
 using Terraria.ID;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Boss
 {
@@ -32,6 +33,17 @@ namespace AAMod.Items.Boss
             item.expert = true;
             
         }
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            return base.PreDrawInInventory(spriteBatch, position, frame, Main.DiscoColor, itemColor, origin, scale);
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            return base.PreDrawInWorld(spriteBatch, Main.DiscoColor, Main.DiscoColor, ref rotation, ref scale, whoAmI);
+        }
+
 
         public override void PostUpdate()
         {

@@ -182,10 +182,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void NPCLoot()
 		{
-            if (!AAWorld.downedIZ)
-            {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Oblivion>(), 0, 0);
-            }
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Oblivion>(), 0, 0);
+            AAPlayer.ZeroKills += 1;
             AAWorld.downedIZ = true;
             if (Main.expertMode)
             {

@@ -29,7 +29,6 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
-            
         }
 
 
@@ -53,18 +52,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
                 0f
             );
         }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(146, 30, 68);
-                }
-            }
-        }
-
+        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.blackBelt = true;

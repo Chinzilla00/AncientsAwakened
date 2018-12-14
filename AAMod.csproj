@@ -99,6 +99,7 @@
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\YamataSky.cs" />
     <Compile Include="Backgrounds\YamataSkyData.cs" />
+    <Compile Include="Buffs\DiscordInferno.cs" />
     <Compile Include="Buffs\Electrified.cs" />
     <Compile Include="Buffs\GripMinion.cs" />
     <Compile Include="Buffs\InfinityScorch.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Dusts\YtriumDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Globals\AAAI.cs" />
+    <Compile Include="Globals\AAColor.cs" />
     <Compile Include="Globals\AAGlobalTile.cs" />
     <Compile Include="Globals\AAModGlobalItem.cs" />
     <Compile Include="Globals\AAModGlobalNPC.cs" />
@@ -490,6 +492,8 @@
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
+    <Compile Include="Items\Boss\Shen\Duality.cs" />
+    <Compile Include="Items\Boss\Shen\ShenCache.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssalYari.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssArrow.cs" />
@@ -1484,6 +1488,7 @@
     <Content Include="Glowmasks\AmphibiousProjectileEXS_Glow.png" />
     <Content Include="Glowmasks\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Glowmasks\AMR_Glow.png" />
+    <Content Include="Glowmasks\AncientForge_Glow.png" />
     <Content Include="Glowmasks\Annhialator_Glow.png" />
     <Content Include="Glowmasks\Apocalypse_Glow.png" />
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
@@ -1515,6 +1520,7 @@
     <Content Include="Glowmasks\ChaosRune_Glow.png" />
     <Content Include="Glowmasks\ChaosShot_Glow.png" />
     <Content Include="Glowmasks\ChaosSigil_Glow.png" />
+    <Content Include="Glowmasks\ChaosSlayer_Glow.png" />
     <Content Include="Glowmasks\ChaosSoul_Glow.png" />
     <Content Include="Glowmasks\Chaos_Glow.png" />
     <Content Include="Glowmasks\Crescent_Glow.png" />
@@ -1602,6 +1608,7 @@
     <Content Include="Glowmasks\DreadRune_Glow.png" />
     <Content Include="Glowmasks\DreadScale_Glow.png" />
     <Content Include="Glowmasks\DreadSigil_Glow.png" />
+    <Content Include="Glowmasks\Duality_Glow.png" />
     <Content Include="Glowmasks\DuckstepGunEX_Glow.png" />
     <Content Include="Glowmasks\DuckstepGun_Glow.png" />
     <Content Include="Glowmasks\DynaskullOre_Glow.png" />
@@ -1666,7 +1673,15 @@
     <Content Include="Glowmasks\InfinityGauntlet_Glow.png" />
     <Content Include="Glowmasks\InfinityGauntlet_HandsOn_Glow.png" />
     <Content Include="Glowmasks\InfinityGauntlet_Wings_Glow.png" />
+    <Content Include="Glowmasks\InfinityGreaves_Glow.png" />
+    <Content Include="Glowmasks\InfinityGreaves_Legs_Glow.png" />
     <Content Include="Glowmasks\InfinityOverloader_Glow.png" />
+    <Content Include="Glowmasks\InfinityPlate_Arms_Glow.png" />
+    <Content Include="Glowmasks\InfinityPlate_Body_Glow.png" />
+    <Content Include="Glowmasks\InfinityPlate_Female_Glow.png" />
+    <Content Include="Glowmasks\InfinityPlate_Glow.png" />
+    <Content Include="Glowmasks\InfinityVisor_Glow.png" />
+    <Content Include="Glowmasks\InfinityVisor_Head_Glow.png" />
     <Content Include="Glowmasks\IntimidatingMushroom_Glow.png" />
     <Content Include="Glowmasks\IZCache_Glow.png" />
     <Content Include="Glowmasks\JungleReaperP_Glow.png" />
@@ -1770,6 +1785,7 @@
     <Content Include="Glowmasks\Sevenshot_Glow.png" />
     <Content Include="Glowmasks\ShenABox_Glow.png" />
     <Content Include="Glowmasks\ShenBox_Glow.png" />
+    <Content Include="Glowmasks\ShenCache_Glow.png" />
     <Content Include="Glowmasks\Solar_Glow.png" />
     <Content Include="Glowmasks\SoulStone_Face_Glow.png" />
     <Content Include="Glowmasks\SoulStone_Glow.png" />
@@ -2521,7 +2537,11 @@
     <Content Include="Items\Boss\Retriever\StormClaw_HandsOn.png" />
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
+    <Content Include="Items\Boss\Shen\ChaosSlayer.png" />
     <Content Include="Items\Boss\Shen\ChaosSoul.png" />
+    <Content Include="Items\Boss\Shen\Duality.png" />
+    <Content Include="Items\Boss\Shen\MeteorStrike.png" />
+    <Content Include="Items\Boss\Shen\ShenCache.png" />
     <Content Include="Items\Boss\StormCharm.png" />
     <Content Include="Items\Boss\Toad\ToadBag.png" />
     <Content Include="Items\Boss\Yamata\AbyssalYari.png" />
