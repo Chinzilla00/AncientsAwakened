@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                         }
                         if (AAMod.thoriumLoaded && Main.rand.Next(7) == 1)
                         {
-                            Main.NewText("You know Ragnorok is a thing right? World-ending trio? They should be fun to fight. Now go away.", color1);
+                            Main.NewText("You know Ragnarok is a thing right? World-ending trio? They should be fun to fight. Now go away.", color1);
                         }
                         if (AAMod.spiritLoaded && Main.rand.Next(7) == 2)
                         {

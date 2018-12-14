@@ -33,7 +33,18 @@ namespace AAMod
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
-        internal bool CalamityLoaded;
+
+
+        #region mod loaded bools
+        public static bool fargoLoaded = false;
+        public static bool calamityLoaded = false;
+        public static bool grealmLoaded = false;
+        public static bool sacredToolsLoaded = false;
+        public static bool spiritLoaded = false;
+        public static bool thoriumLoaded = false;
+        public static bool tremorLoaded = false;
+        public static bool redemptionLoaded = false;
+        #endregion
 
         public AAMod()
         {
@@ -52,6 +63,22 @@ namespace AAMod
             Mod AchievementLibs = ModLoader.GetMod("AchievementLibs");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             Mod yabhb = ModLoader.GetMod("FKBossHealthBar");
+            Mod Calamity = ModLoader.GetMod("CalamityMod");
+            Mod Thorium = ModLoader.GetMod("ThoriumMod");
+            Mod Spirit = ModLoader.GetMod("SpiritMod");
+            Mod Fargos = ModLoader.GetMod("Fargowiltas");
+            Mod GRealm = ModLoader.GetMod("GRealm");
+            Mod SacredTools = ModLoader.GetMod("SacredTools");
+            Mod Tremor = ModLoader.GetMod("Tremor");
+            Mod Redemption = ModLoader.GetMod("Redemption");
+            if (Calamity != null) calamityLoaded = true;
+            if (Thorium != null) thoriumLoaded = true;
+            if (Spirit != null) spiritLoaded = true;
+            if (Fargos != null) fargoLoaded = true;
+            if (GRealm != null) grealmLoaded = true;
+            if (SacredTools != null) sacredToolsLoaded = true;
+            if (Tremor != null) tremorLoaded = true;
+            if (Redemption != null) redemptionLoaded = true;
             if (yabhb != null)
             {
                 Call("RegisterHealthBarMini", instance.NPCType("YamataHeadF1"));
@@ -236,14 +263,6 @@ namespace AAMod
                 Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
-            }
-            try
-            {
-                CalamityLoaded = ModLoader.GetMod("CalamityMod") != null;
-            }
-            catch (Exception e)
-            {
-                ErrorLogger.Log("AAMod PostSetupContent Error: " + e.StackTrace + e.Message);
             }
         }
 
