@@ -214,7 +214,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                         }
                         if (AAMod.spiritLoaded && Main.rand.Next(7) == 2)
                         {
-                            Main.NewText("Why don't you go frolic in the spirit biome. I'm sure one of the creatures there would love a bog ol' hug.", color1);
+                            Main.NewText("Why don't you go frolic in the spirit biome. I'm sure one of the creatures there would love a big ol' hug.", color1);
                         }
                         if (AAMod.fargoLoaded && Main.rand.Next(7) == 3)
                         {
