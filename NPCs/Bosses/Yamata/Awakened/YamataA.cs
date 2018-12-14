@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamata && !cheated)
             {
-                Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY..!", new Color(146, 30, 68));
+                Main.NewText("NO…! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT AND GO AWAY!", new Color(146, 30, 68));
             }
             if (AAWorld.downedYamata && !cheated)
             {

@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Infinity
 {
-    public class Annhialator : ModItem
+    public class Annihilator : ModItem
 	{
         
         public override void SetStaticDefaults()

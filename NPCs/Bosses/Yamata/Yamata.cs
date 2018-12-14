@@ -192,7 +192,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				if(Head7 != null && Head7.life > 0) headCount++;
 				if(headCount == 0) //killed all fake heads
 				{
-					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! IM GONNA STOMP YOU MAGGOT!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! I'M GONNA STOMP YOU MAGGOT!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
 				}else
 				if(headCount == 5) //killed one fake head
 				{
@@ -279,7 +279,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				int newMusic = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
 				if(music != newMusic)
 				{
-					BaseUtility.Chat("YOU THINK IM DONE YET?! I DONT THINK SO!!!!", new Color(146, 30, 68));
+					BaseUtility.Chat("YOU THINK I'M DONE YET?! I DON'T THINK SO!!!!", new Color(146, 30, 68));
 				}
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
@@ -628,12 +628,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    Main.NewText("I don't understand why you keep fighting me! I'm superior to you in every single way..!", new Color(45, 46, 70));
+                    Main.NewText("I don't understand why you keep fighting me! I'm superior to you in every single way!", new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    Main.NewText("I'M GETTING FRUSTRATED AGAIN..!", new Color(45, 46, 70));
+                    Main.NewText("I'M GETTING FRUSTRATED AGAIN!", new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
