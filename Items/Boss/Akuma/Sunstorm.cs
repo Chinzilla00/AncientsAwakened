@@ -7,7 +7,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
+namespace AAMod.Items.Boss.Akuma
 {
     public class SunStorm : ModItem
   {
@@ -72,8 +72,6 @@ namespace AAMod.Items.Boss.Akuma      //We need this to basically indicate the f
             }
         }
 
-
-        //--------------------------------------------------Shotgun style: Multiple Projectiles, Random spread ---------------------------------------------------------
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float num72 = item.shootSpeed;

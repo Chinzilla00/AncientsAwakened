@@ -305,6 +305,12 @@ namespace AAMod
                 }
             }
 
+            if (BrokenCode)
+            {
+                player.AddBuff(BuffID.Panic, 180);
+                player.immuneTime = player.longInvince ? 180 : 120;
+            }
+
             if (npc.type == NPCID.GoblinArcher
                         || npc.type == NPCID.GoblinPeon
                         || npc.type == NPCID.GoblinScout

@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust1.scale *= 1.3f;
                     dust1.velocity.Y -= 6;

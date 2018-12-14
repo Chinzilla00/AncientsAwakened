@@ -435,15 +435,18 @@ namespace AAMod
             Rectangle hitbox = npc.Hitbox;
             if (Electrified)
             {
-                Lighting.AddLight((int)npc.Center.X / 16, (int)npc.Center.Y / 16, 0.3f, 0.8f, 1.1f);
-                int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Electric, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3f);
-                Main.dust[dust].noGravity = true;
-                Main.dust[dust].velocity *= 1.8f;
-                Main.dust[dust].velocity.Y -= 0.5f;
-                if (Main.rand.Next(4) == 0)
+                if (Main.rand.Next(4) < 3)
                 {
-                    Main.dust[dust].noGravity = false;
-                    Main.dust[dust].scale *= 0.5f;
+                    Lighting.AddLight((int)npc.Center.X / 16, (int)npc.Center.Y / 16, 0.3f, 0.8f, 1.1f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Electric, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
                 }
             }
             if (infinityOverload)

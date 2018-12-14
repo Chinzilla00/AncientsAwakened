@@ -26,40 +26,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-			
-            if (!AAWorld.downedYamata)
+            npc.lifeMax = 140000;
+            if (npc.life > npc.lifeMax / 3)
             {
-                npc.lifeMax = 140000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 80;
-                    npc.defense = 80;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 100;
-                    npc.defense = 90;
-                }
+                npc.damage = 80;
+                npc.defense = 80;
             }
-            if (AAWorld.downedYamata)
+            if (npc.life <= npc.lifeMax / 3)
             {
-                npc.lifeMax = 150000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 90;
-                    npc.defense = 80;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 110;
-                    npc.defense = 90;
-                }
+                npc.damage = 100;
+                npc.defense = 90;
             }
-            if (Main.expertMode)
-            {
-                npc.value = Item.buyPrice(20, 0, 0, 0);
-            }
-			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
+            npc.value = Item.buyPrice(20, 0, 0, 0);
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             if (Main.expertMode)
             {
@@ -86,6 +65,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 npc.buffImmune[k] = true;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = npc.lifeMax;
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)

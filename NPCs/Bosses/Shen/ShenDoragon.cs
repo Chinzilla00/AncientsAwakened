@@ -26,33 +26,16 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            if (!Main.expertMode && !AAWorld.downedShen)
+            npc.damage = 180;
+            npc.defense = 210;
+            npc.lifeMax = 800000;
+            if (Main.expertMode)
             {
-                npc.damage = 170;
-                npc.defense = 200;
-                npc.lifeMax = 700000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (!Main.expertMode && AAWorld.downedShen)
-            {
-                npc.damage = 180;
-                npc.defense = 210;
-                npc.lifeMax = 800000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (Main.expertMode && !AAWorld.downedShen)
-            {
-                npc.damage = 180;
-                npc.defense = 200;
-                npc.lifeMax = 800000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedShen)
+            else
             {
-                npc.damage = 200;
-                npc.defense = 230;
-                npc.lifeMax = 900000;
-                npc.value = Item.buyPrice(0, 0, 0, 0);
+                npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -61,6 +44,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.behindTiles = true;
+            npc.alpha = 255;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
             musicPriority = MusicPriority.BossHigh;
@@ -70,8 +54,26 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.defense * 1.2f);
+            npc.damage = (int)(npc.damage * 1.2f);
+        }
+
+        public bool spawnalpha = false;
+
         public override void AI()
         {
+            if (npc.alpha > 0 && spawnalpha == false)
+            {
+                npc.alpha -= 5;
+            }
+            if (npc.alpha <= 0)
+            {
+                npc.alpha = 0;
+                spawnalpha = true;
+            }
             Main.fastForwardTime = true;
             Main.dayRate = 20;
             bool expertMode = Main.expertMode;

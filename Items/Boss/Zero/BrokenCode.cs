@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Zero
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
 Removes The Void's Gravity Effect
-While cooldown is occurring, your speed is increased and your invincible for half the time
+While cooldown is occurring, your speed is increased, but you lose invincibility frames
 You don't look so good
 01001111
 01100010

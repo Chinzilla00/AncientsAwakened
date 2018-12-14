@@ -56,27 +56,27 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
             
-            if (Speechtimer == 60)
+            if (Speechtimer == 180)
             {
                 Main.NewText("Surprised to see us again, Kid?", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 240)
+            if (Speechtimer == 360)
             {
                 Main.NewText("NYEHEHEHEHEH..! Yes..! Must be shocking to see us here..! But this time, we have a little tricksie up our sleeves..!", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 420)
+            if (Speechtimer == 540)
             {
                 Main.NewText("That Sigil you just used gave us back our full power, which will let us reach our true, powerful form..!", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 600)
+            if (Speechtimer == 720)
             {
                 Main.NewText("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh…", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 780)
+            if (Speechtimer == 900)
             {
                 Main.NewText("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
                 Main.NewText("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 785)
+            if (Speechtimer == 930)
             {
                 Dust dust1;
                 Dust dust2;
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 790)
+            if (Speechtimer == 960)
             {
                 Dust dust1;
                 Dust dust2;
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 795)
+            if (Speechtimer == 990)
             {
                 Dust dust1;
                 Dust dust2;
@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 800)
+            if (Speechtimer == 1010)
             {
                 Dust dust1;
                 Dust dust2;
@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 805)
+            if (Speechtimer == 1040)
             {
                 Dust dust1;
                 Dust dust2;
@@ -162,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer == 810)
+            if (Speechtimer == 1070)
             {
                 Dust dust1;
                 Dust dust2;
@@ -176,30 +176,30 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer > 815 && Speechtimer < 1410)
+            if (Speechtimer > 1100 && Speechtimer < 1640)
             {
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
                     Dust dust1;
                     Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust1.scale *= 1.3f;
                     dust1.velocity.Y -= 6;
                 }
             }
 
-            if (Speechtimer == 960)
+            if (Speechtimer == 1280)
             {
                 Main.NewText("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer == 1140)
+            if (Speechtimer == 1460)
             {
                 Main.NewText("You messed up big time, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer == 1320)
+            if (Speechtimer == 1640)
             {
                 Main.NewText("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
@@ -209,19 +209,19 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha -= 5;
             }
 
-            if (Speechtimer == 1500)
+            if (Speechtimer == 1640)
             {
                 Main.NewText("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (Speechtimer == 1600)
+            if (Speechtimer == 1820)
             {
                 Main.NewText("And you, my child, will face the wrath and fury of chaos itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (Speechtimer == 1680)
+            if (Speechtimer == 2000)
             {
                 Main.NewText("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
@@ -256,7 +256,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
                 BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
-                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha(), true);
                 return false;
             }
             return true;

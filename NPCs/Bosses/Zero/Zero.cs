@@ -19,35 +19,15 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            if (!Main.expertMode && !AAWorld.downedZero)
-            {
-                npc.damage = 80;
-                npc.defense = 70;
-                npc.lifeMax = 75000;
-            }
-            if (!Main.expertMode && AAWorld.downedZero)
-            {
-                npc.damage = 90;
-                npc.defense = 80;
-                npc.lifeMax = 95000;
-            }
-            if (Main.expertMode && !AAWorld.downedZero)
-            {
-                npc.damage = 90;
-                npc.defense = 80;
-                npc.lifeMax = 75000;
-            }
-            if (Main.expertMode && AAWorld.downedZero)
-            {
-                npc.damage = 100;
-                npc.defense = 90;
-                npc.lifeMax = 95000;
-            }
+
+            npc.damage = 100;
+            npc.defense = 90;
+            npc.lifeMax = 95000;
             if (Main.expertMode)
             {
                 npc.value = 0;
             }
-            if (!Main.expertMode)
+            else
             {
                 npc.value = 120000f;
             }

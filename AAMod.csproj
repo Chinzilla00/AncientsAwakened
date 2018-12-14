@@ -129,6 +129,8 @@
     <Compile Include="CustomCurrency.cs" />
     <Compile Include="Dusts\AbyssDust.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
+    <Compile Include="Dusts\AkumaDustLight.cs" />
+    <Compile Include="Dusts\DiscordLight.cs" />
     <Compile Include="Dusts\SpaceDust.cs" />
     <Compile Include="Dusts\PowerDust.cs" />
     <Compile Include="Dusts\RealityDust.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Dusts\YamataADust.cs" />
     <Compile Include="Dusts\FulguriteDust.cs" />
     <Compile Include="Dusts\YamataDust.cs" />
+    <Compile Include="Dusts\YamataDustLight.cs" />
     <Compile Include="Dusts\YtriumDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
     <Compile Include="Globals\AAAI.cs" />
@@ -492,6 +495,7 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Shen\ChaosSlayer.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Shen\ChaosScale.cs" />
     <Compile Include="Items\Boss\Shen\Duality.cs" />
@@ -1072,6 +1076,9 @@
     <Compile Include="Projectiles\Magma.cs" />
     <Compile Include="Projectiles\ManaShot.cs" />
     <Compile Include="Projectiles\PerfectChaosE.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlue.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSwordRed.cs" />
     <Compile Include="Projectiles\TitanAxeEX.cs" />
     <Compile Include="Projectiles\TitanEX.cs" />
     <Compile Include="Projectiles\MLP.cs" />
@@ -1426,6 +1433,7 @@
     <Content Include="Dusts\AcidDust.png" />
     <Content Include="Dusts\AkumaADust.png" />
     <Content Include="Dusts\AkumaDust.png" />
+    <Content Include="Dusts\AkumaDustLight.png" />
     <Content Include="Dusts\AshRain.png" />
     <Content Include="Dusts\BinaryDust.png" />
     <Content Include="Dusts\BogleafDust.png" />
@@ -1434,6 +1442,7 @@
     <Content Include="Dusts\DarkmatterDust.png" />
     <Content Include="Dusts\DaybreakIncineriteDust.png" />
     <Content Include="Dusts\DeepAbyssiumDust.png" />
+    <Content Include="Dusts\DiscordLight.png" />
     <Content Include="Dusts\Discord.png" />
     <Content Include="Dusts\DoomDust.png" />
     <Content Include="Dusts\DragonflameDust.png" />
@@ -1471,6 +1480,7 @@
     <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\YamataADust.png" />
     <Content Include="Dusts\YamataDust.png" />
+    <Content Include="Dusts\YamataDustLight.png" />
     <Content Include="Dusts\YtriumDust.png" />
     <Content Include="Dusts\ZeroDust.png" />
     <Content Include="Glowmasks\AbyssalYariP_Glow.png" />
@@ -3485,6 +3495,9 @@
     <Content Include="Projectiles\RainbowCatPro.png" />
     <Content Include="Projectiles\ReaperArrow.png" />
     <Content Include="Projectiles\Ryugen.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSword.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSwordBlue.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSwordRed.png" />
     <Content Include="Projectiles\Shen\ShenFire.png" />
     <Content Include="Projectiles\SpookerangP.png" />
     <Content Include="Projectiles\SpookyKnife.png" />

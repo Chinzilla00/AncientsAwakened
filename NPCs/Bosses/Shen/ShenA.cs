@@ -26,20 +26,10 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            if (!AAWorld.downedShen)
-            {
-                npc.damage = 200;
-                npc.defense = 200;
-                npc.lifeMax = 1400000;
-                npc.value = Item.buyPrice(30, 0, 0, 0);
-            }
-            if (AAWorld.downedShen)
-            {
-                npc.damage = 230;
-                npc.defense = 230;
-                npc.lifeMax = 1600000;
-                npc.value = Item.buyPrice(40, 0, 0, 0);
-            }
+            npc.damage = 230;
+            npc.defense = 230;
+            npc.lifeMax = 1600000;
+            npc.value = Item.buyPrice(40, 0, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;
             npc.aiStyle = -1;
@@ -47,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.behindTiles = true;
+            npc.alpha = 255;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");
             musicPriority = MusicPriority.BossHigh;
@@ -56,10 +47,24 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax);
+        }
+
+        public bool spawnalpha = false;
+
         public override void AI()
         {
-            Main.fastForwardTime = true;
-            Main.dayRate = 20;
+            if (npc.alpha > 0 && spawnalpha == false)
+            {
+                npc.alpha -= 5;
+            }
+            if (npc.alpha <= 0)
+            {
+                npc.alpha = 0;
+                spawnalpha = true;
+            }
             bool expertMode = Main.expertMode;
             float expertDamage = expertMode ? (0.50f * Main.damageMultiplier) : 1f;
             bool ninthHealth = npc.life <= npc.lifeMax * 0.9;

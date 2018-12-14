@@ -20,22 +20,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public override void SetDefaults()
         {
             base.SetDefaults();
-            if (!Main.expertMode && !AAWorld.downedIZ)
-            {
-                npc.lifeMax = 75000;
-            }
-            if (!Main.expertMode && AAWorld.downedIZ)
-            {
-                npc.lifeMax = 85000;
-            }
-            if (Main.expertMode && !AAWorld.downedIZ)
-            {
-                npc.lifeMax = 90000;
-            }
-            if (Main.expertMode && AAWorld.downedIZ)
-            {
-                npc.lifeMax = 100000;
-            }
+            npc.lifeMax = 90000;
             npc.width = 206;
             npc.height = 206;
             npc.npcSlots = 0;

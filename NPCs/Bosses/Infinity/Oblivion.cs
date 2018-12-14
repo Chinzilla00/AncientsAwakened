@@ -225,7 +225,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
             }
 
-            else
+            if (AAPlayer.ZeroKills >= 5)
             {
                 if (OblivionSpeech == 180)
                 {

@@ -26,7 +26,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         }
 
-		public override void SetDefaults()
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.defense * 1.2f);
+        }
+
+        public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
 			npc.height = 144;
@@ -34,33 +40,16 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            if (!Main.expertMode && !AAWorld.downedAkuma)
+            npc.damage = 80;
+            npc.defense = 130;
+            npc.lifeMax = 170000;
+            if (Main.expertMode)
             {
-                npc.damage = 50;
-                npc.defense = 100;
-                npc.lifeMax = 140000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (!Main.expertMode && AAWorld.downedAkuma)
-            {
-                npc.damage = 60;
-                npc.defense = 120;
-                npc.lifeMax = 160000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (Main.expertMode && !AAWorld.downedAkuma)
-            {
-                npc.damage = 75;
-                npc.defense = 100;
-                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedAkuma)
+            else
             {
-                npc.damage = 80;
-                npc.defense = 130;
-                npc.lifeMax = 160000;
-                npc.value = Item.buyPrice(0, 0, 0, 0);
+                npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             npc.knockBackResist = 0f;
             npc.boss = true;

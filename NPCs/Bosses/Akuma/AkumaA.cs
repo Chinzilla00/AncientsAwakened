@@ -33,38 +33,18 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.height = 144;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-            if (!AAWorld.downedAkuma)
+            npc.lifeMax = 150000;
+            if (npc.life > npc.lifeMax / 3)
             {
-                npc.lifeMax = 150000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 85;
-                    npc.defense = 130;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 95;
-                    npc.defense = 150;
-                }
+                npc.damage = 85;
+                npc.defense = 130;
             }
-            if (AAWorld.downedAkuma)
+            if (npc.life <= npc.lifeMax / 3)
             {
-                npc.lifeMax = 160000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 90;
-                    npc.defense = 150;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 100;
-                    npc.defense = 170;
-                }
+                npc.damage = 95;
+                npc.defense = 150;
             }
-            if (Main.expertMode)
-            {
-                npc.value = Item.buyPrice(20, 0, 0, 0);
-            }
+            npc.value = Item.buyPrice(20, 0, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;
             npc.aiStyle = -1;
@@ -83,6 +63,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = npc.lifeMax;
+        }
+
         private bool fireAttack;
         private int attackFrame;
         private int attackCounter;

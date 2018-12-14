@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.npcSlots = 100;
             npc.scale = 1f;
 			npc.defense = 180;
-			npc.lifeMax = 3000000;
+			npc.lifeMax = 2000000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
 			npc.value = Item.buyPrice(30, 0, 0, 0);
@@ -54,7 +54,13 @@ namespace AAMod.NPCs.Bosses.Infinity
             bossBag = mod.ItemType("IZCache");
         }
 
-		public float[] customAI = new float[4];
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 1.1f); 
+        }
+
+        public float[] customAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -247,11 +253,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 			return false;
 		}
 		
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-			npc.damage = (int)(npc.damage * 0.8f);
-		}
 
         public bool quarterHealth = false;
         public bool threeQuarterHealth = false;
@@ -403,7 +404,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public void DrawZero(SpriteBatch spriteBatch, string zeroTexture, string glowMaskTexture, NPC Zero, Color drawColor)
         {
-            if (Zero != null && Zero.active && Zero.modNPC != null && Zero.modNPC is IZHand1)
+            if (Zero != null && Zero.active && Zero.modNPC != null && (Zero.modNPC is IZHand1 || Zero.modNPC is IZHand2))
             {
 				IZHand1 handNPC = (IZHand1)Zero.modNPC;
                 string ArmTex = ("NPCs/Bosses/Infinity/IZArm");
@@ -416,7 +417,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 				BaseDrawing.DrawTexture(spriteBatch, zeroTex, 0, Zero, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(Zero), GetGlowAlpha(true)));
                 if (fifthHealth)
                 {
-                    BaseDrawing.DrawAura(spriteBatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
+                    BaseDrawing.DrawAura(spriteBatch, glowTex, 0, Zero, auraPercent, 1f, 0f, 0f, GetGlowAlpha(true));
                     BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, Zero, GetRedAlpha());
                 }
                 else

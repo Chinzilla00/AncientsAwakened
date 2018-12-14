@@ -31,39 +31,22 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 0;
-            if (!AAWorld.downedZero)
+            npc.lifeMax = 120000;
+            if (npc.life > npc.lifeMax / 3)
             {
-                npc.lifeMax = 100000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 100;
-                    npc.defense = 60;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 120;
-                    npc.defense = 90;
-                }
+                npc.damage = 120;
+                npc.defense = 80;
             }
-            if (AAWorld.downedZero)
+            if (npc.life <= npc.lifeMax / 3)
             {
-                npc.lifeMax = 120000;
-                if (npc.life > npc.lifeMax / 3)
-                {
-                    npc.damage = 120;
-                    npc.defense = 80;
-                }
-                if (npc.life <= npc.lifeMax / 3)
-                {
-                    npc.damage = 140;
-                    npc.defense = 110;
-                }
+                npc.damage = 140;
+                npc.defense = 110;
             }
             npc.knockBackResist = 0f;
             npc.width = 178;
             npc.height = 174;
             npc.friendly = false;
+            npc.aiStyle = 0;
             npc.value = Item.buyPrice(2, 0, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;

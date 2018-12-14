@@ -62,29 +62,15 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.width = 80;
             npc.height = 90;
             npc.aiStyle = -1;
-            if (!Main.expertMode && !AAWorld.downedYamata)
+            npc.damage = 90;
+            npc.lifeMax = 140000;
+            if (Main.expertMode)
             {
-                npc.damage = 80;
-                npc.lifeMax = 120000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (!Main.expertMode && AAWorld.downedYamata)
-            {
-                npc.damage = 90;
-                npc.lifeMax = 140000;
-                npc.value = Item.buyPrice(0, 55, 0, 0);
-            }
-            if (Main.expertMode && !AAWorld.downedYamata)
-            {
-                npc.damage = 80;
-                npc.lifeMax = 140000;
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
-            if (Main.expertMode && AAWorld.downedYamata)
+            else
             {
-                npc.damage = 100;
-                npc.lifeMax = 150000;
-                npc.value = Item.buyPrice(0, 0, 0, 0);
+                npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             npc.defense = 999999999;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
@@ -123,6 +109,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 ScaleExpertStats(playerCount, bossHPScalar);
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.damage * 1.2f);
         }
 
         public override void BossLoot(ref string name, ref int potionType)
