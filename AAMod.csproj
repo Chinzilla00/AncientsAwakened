@@ -326,6 +326,7 @@
     <Compile Include="Items\Armor\Valkyrie\ValkyrieHelm.cs" />
     <Compile Include="Items\Blocks\Abyssium.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
+    <Compile Include="Items\Blocks\IZBox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
     <Compile Include="Items\Blocks\Apocalyptite.cs" />
     <Compile Include="Items\Blocks\BinaryReassembler.cs" />
@@ -470,6 +471,7 @@
     <Compile Include="Items\Boss\Hydra\HydraHide.cs" />
     <Compile Include="Items\Boss\Hydra\HydraBag.cs" />
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
+    <Compile Include="Items\Boss\Infinity\IZTrophy.cs" />
     <Compile Include="Items\Boss\Infinity\Sticker.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
@@ -1170,6 +1172,7 @@
     <Compile Include="Tiles\Crates\MireCrate.cs" />
     <Compile Include="Tiles\DragonEgg.cs" />
     <Compile Include="Tiles\HydraPod.cs" />
+    <Compile Include="Tiles\IZBox.cs" />
     <Compile Include="Tiles\Sticker.cs" />
     <Compile Include="Tiles\Razetus.cs" />
     <Compile Include="Tiles\Depthice.cs" />
@@ -1324,6 +1327,7 @@
     <Content Include="Achievements\EquinoxNot.png" />
     <Content Include="Achievements\Grips.png" />
     <Content Include="Achievements\GripsNot.png" />
+    <Content Include="Achievements\IZA.png" />
     <Content Include="Achievements\Storm.png" />
     <Content Include="Achievements\StormNot.png" />
     <Content Include="Achievements\Zero.png" />
@@ -1500,7 +1504,7 @@
     <Content Include="Glowmasks\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Glowmasks\AMR_Glow.png" />
     <Content Include="Glowmasks\AncientForge_Glow.png" />
-    <Content Include="Glowmasks\Annhialator_Glow.png" />
+    <Content Include="Glowmasks\Annihilator_Glow.png" />
     <Content Include="Glowmasks\Apocalypse_Glow.png" />
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
     <Content Include="Glowmasks\Apocalyptite_Glow.png" />
@@ -2381,6 +2385,7 @@
     <Content Include="Items\Blocks\InfernoChest.png" />
     <Content Include="Items\Blocks\InfernoGrassBlock.png" />
     <Content Include="Items\Blocks\InfernoUBox.png" />
+    <Content Include="Items\Blocks\IZBox.png" />
     <Content Include="Items\Blocks\MireAltar.png" />
     <Content Include="Items\Blocks\MireBox.png" />
     <Content Include="Items\Blocks\MireChest.png" />
@@ -2411,6 +2416,7 @@
     <Content Include="Items\Blocks\SunAltar.png" />
     <Content Include="Items\Blocks\SunAltarA.png" />
     <Content Include="Items\Blocks\TechneciumOre.png" />
+    <Content Include="Items\Blocks\Templates\Item_2699.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
     <Content Include="Items\Blocks\Torchice.png" />
     <Content Include="Items\Blocks\Torchsand.png" />
@@ -2520,6 +2526,7 @@
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
     <Content Include="Items\Boss\Infinity\InfinityBlade.png" />
     <Content Include="Items\Boss\Infinity\IZCache.png" />
+    <Content Include="Items\Boss\Infinity\IZTrophy.png" />
     <Content Include="Items\Boss\Infinity\Nova.png" />
     <Content Include="Items\Boss\Infinity\Sagittarius.png" />
     <Content Include="Items\Boss\Infinity\Sticker.png" />
@@ -3607,6 +3614,7 @@
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
     <Content Include="Tiles\FulguriumPlating.png" />
+    <Content Include="Tiles\IZBox.png" />
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MushroomBlocks.png" />
@@ -3743,6 +3751,7 @@
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
     <Content Include="Tiles\TechneciumOre.png" />
+    <Content Include="Tiles\Templates\Tiles_334.png" />
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />

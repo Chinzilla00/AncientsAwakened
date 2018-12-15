@@ -457,11 +457,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 projectile.damage *= (int).2;
             }
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.8f);
-        }
     }
 
     public class AkumaArms : Akuma
