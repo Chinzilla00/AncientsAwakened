@@ -404,15 +404,15 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void FindFrame(int frameHeight)
         {
             //npc.frameCounter++;
-            if (ChargeAttack || Charging)
-            {
+            //if (ChargeAttack || Charging)
+            //{
                 npc.frame.Y = 1 * frameHeight;
-            }
-            else
-            {
-                npc.frame.Y = 0;
+            //}
+            //else
+            //{
+                //npc.frame.Y = 0;
                 //npc.frameCounter = 0;
-            }
+            //}
         }
     }
 }
