@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Boss.Akuma
+namespace AAMod.Items.Boss.Infinity
 {
     public class IZTrophy : ModItem
 	{
