@@ -23,9 +23,9 @@ namespace AAMod.Items.Boss.Akuma
             item.autoReuse = true;
             item.mana = 13;
             item.useStyle = 5;
-            item.damage = 130;
+            item.damage = 115;
             item.useAnimation = 17;
-            item.useTime = 17;
+            item.useTime = 10;
             item.width = 40;
             item.height = 40;
             item.shoot = mod.ProjectileType("Sunstorm");
