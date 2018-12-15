@@ -180,7 +180,7 @@ namespace AAMod.NPCs.Bosses.Zero
             return false;
         }
 
-        public bool ChargeAttack //actually charging the player
+        /*public bool ChargeAttack //actually charging the player
         {
             get
             {
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = (value ? 1.5f : 0f);
                 if (npc.ai[1] != oldValue) npc.netUpdate = true;
             }
-        }
+        }*/
         public int chargeTimer = 0;
         public int movementtimer = 0;
         public bool direction = false;
