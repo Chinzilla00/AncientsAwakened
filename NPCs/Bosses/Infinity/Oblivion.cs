@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public int OblivionSpeech = 0;
 
+
         public override void AI()
         {
             Color color1 = Color.DarkRed;
@@ -190,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (AAPlayer.ZeroKills == 10)
             {
-                if (player.difficulty != 2)
+                if (player.difficulty == 2)
                 {
                     player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was destroyed by Oblivion"), player.statLifeMax + 10, 0, false);
                     if (OblivionSpeech == 180)
@@ -224,7 +225,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
             }
 
-            else if (AAPlayer.ZeroKills >= 5)
+            if (AAPlayer.ZeroKills >= 5)
             {
                 if (OblivionSpeech == 180)
                 {
@@ -232,73 +233,67 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 if (OblivionSpeech == 300)
                 {
-                    int rand = Main.rand.Next(7);
-                    if (rand == 0)
+                    if (Main.rand.Next(6) == 0)
                     {
                         Main.NewText("Go outside and kick a ball or something.", color1);
                     }
-                    else if (rand == 1)
+                    if (Main.rand.Next(6) == 1)
                     {
                         Main.NewText("Isn't there some schoolwork you have to do or an application you need to fill out or something?", color1);
                     }
-                    else if (rand == 2)
+                    if (Main.rand.Next(6) == 2)
                     {
                         Main.NewText("Don't you have other games on Steam you could be playing right now?", color1);
                     }
-                    else if (rand == 3)
+                    if (Main.rand.Next(6) == 3)
                     {
                         Main.NewText("Now leave me alone, I have better things to do.", color1);
                     }
-                    else if (rand == 4)
+                    if (Main.rand.Next(6) == 4)
                     {
                         Main.NewText("Fighting you gets really boring you know. You use the same tactics every time.", color1);
                     }
-                    else if (rand == 5)
+                    if (Main.rand.Next(6) == 5)
                     {
                         Main.NewText("Whatever, I'll be seeing you soon...again...assuming you're still a persistent wretch.", color1);
                     }
-                    else if (rand == 6)
+                    if (Main.rand.Next(6) == 6)
                     {
-                        ModCheck:
-                        if (AAMod.calamityLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.calamityLoaded && Main.rand.Next(7) == 0)
                         {
-                            Main.NewText("Go fight Supreme Calamitas or something. I'm sure she'll occupy your time.", color1);
+                            Main.NewText("Go fight Supreme Calamitas or something. I'm sure she'll occupy your time", color1);
                         }
-                        else if (AAMod.thoriumLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.thoriumLoaded && Main.rand.Next(7) == 1)
                         {
                             Main.NewText("You know Ragnarok is a thing right? World-ending trio? They should be fun to fight. Now go away.", color1);
                         }
-                        else if (AAMod.spiritLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.spiritLoaded && Main.rand.Next(7) == 2)
                         {
                             Main.NewText("Why don't you go frolic in the spirit biome. I'm sure one of the creatures there would love a big ol' hug.", color1);
                         }
-                        else if (AAMod.fargoLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.fargoLoaded && Main.rand.Next(7) == 3)
                         {
                             Main.NewText("Hey, why not go bug the mutant. If you like killing bosses so much, he should be able to fix you right up.", color1);
                         }
-                        else if (AAMod.redemptionLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.redemptionLoaded && Main.rand.Next(7) == 4)
                         {
                             Main.NewText("If you have such a hardon for killing robots, the Vlitch are a thing, you know.", color1);
                         }
-                        else if (AAMod.tremorLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.tremorLoaded && Main.rand.Next(7) == 5)
                         {
                             Main.NewText("Wait you're playing tremor? HAHAHAHAHAHAH!", color1);
                         }
-                        else if (AAMod.sacredToolsLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.sacredToolsLoaded && Main.rand.Next(7) == 6)
                         {
                             Main.NewText("Go bug the lunarians or something. I'm sure they'll be more fun to fight than I am.", color1);
                         }
-                        else if (AAMod.grealmLoaded && Main.rand.Next(MajorModCount()) == 0)
+                        if (AAMod.grealmLoaded && Main.rand.Next(7) == 7)
                         {
                             Main.NewText("Why don't you go fight the Horde for the 50th god damn time. Maybe they have new drops or something since you last checked.", color1);
                         }
-                        else if (MajorModCount() == 0)
-                        {
-                            Main.NewText("Go install another mod or something. There are plenty on the mod browser to choose from.", color1);
-                        }
                         else
                         {
-                            goto ModCheck;
+                            Main.NewText("Go install another mod or something. There are plenty on the mod browser to choose from.", color1);
                         }
                     }
                 }
@@ -311,46 +306,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 npc.active = false;
             }
-        }
-
-        public int MajorModCount()
-        {
-            int ModCount = 0;
-
-            if (AAMod.calamityLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.thoriumLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.spiritLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.fargoLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.redemptionLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.tremorLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.sacredToolsLoaded)
-            {
-                ModCount++;
-            }
-            if (AAMod.grealmLoaded)
-            {
-                ModCount++;
-            }
-
-            return ModCount;
         }
 
         public override void FindFrame(int frameHeight)

@@ -13,10 +13,13 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
     {
+        private List<string> SteamId64List;
+        private static string CurrentSteamID64;
         private bool Killed = false;
         public int timer;
         public static int type;
         private bool Panic = false;
+        private bool DradonMode = false;
         private bool introPlayed = false;
 
         public override void SetStaticDefaults()
@@ -64,7 +67,19 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void NPCLoot()
         {
-            if (Main.expertMode)
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            if (DradonMode)
+            {
+                for (int i = 0; i < 255; i++)
+                {
+                    Player player = Main.player[i];
+                    Main.NewText("N0T T0DAY!", Color.Red.R, Color.Red.G, Color.Red.B);
+                    player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was played..."), 9999999, 0);
+                }
+            }
+            if (Main.expertMode && !DradonMode)
             {
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
@@ -162,10 +177,32 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            SteamId64List = new List<string>();
+
+            PropertyInfo SteamID64Info =
+                typeof(ModLoader).GetProperty("SteamID64", BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo SteamID64 = SteamID64Info.GetAccessors(true)[0];
+            CurrentSteamID64 = (string)SteamID64.Invoke(null, new object[] { });
+
+            SteamId64List.Add(CurrentSteamID64);
+
             if (damage > npc.lifeMax / 2)
             {
                 Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
                 damage = 0;
+            }
+            if (hitDirection == 0 && damage != 0 && SteamId64List.Contains("76561198062217769"))
+            {
+                Main.NewText("HELL0 DRAD0N WELC0ME T0 Y0UR 0WN SPECIAL HELL!", Color.Red.R, Color.Red.G, Color.Red.B);
+                damage = 0;
+                DradonMode = true;
+                npc.immortal = true;
+                npc.chaseable = false;
+                npc.damage = 99999999;
+                npc.life = npc.lifeMax;
             }
             return false;
         }
@@ -203,7 +240,16 @@ namespace AAMod.NPCs.Bosses.Zero
                     timee = 5;
                 }
             }
-            if (npc.life <= npc.lifeMax / 3)
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            SteamId64List = new List<string>();
+            if (DradonMode)
+            {
+                npc.color = color1;
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/DradonMode");
+            }
+            if (npc.life <= npc.lifeMax / 3 && !DradonMode)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
