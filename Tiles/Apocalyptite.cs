@@ -14,7 +14,6 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("Doomstone")] = true;
             Main.tileMergeDirt[Type] = false;
-            //true for block to emit light
             soundType = 21;
             drop = mod.ItemType("Apocalyptite");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");

@@ -67,7 +67,7 @@ namespace AAMod.Items.Blocks
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
-            //recipe.AddIngredient(null, "CrucibleScale", 5);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
