@@ -103,6 +103,7 @@
     <Compile Include="Buffs\Electrified.cs" />
     <Compile Include="Buffs\GripMinion.cs" />
     <Compile Include="Buffs\InfinityScorch.cs" />
+    <Compile Include="Buffs\Pepsi.cs" />
     <Compile Include="Buffs\RoyalKitten.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
@@ -471,13 +472,13 @@
     <Compile Include="Items\Boss\Hydra\HydraHide.cs" />
     <Compile Include="Items\Boss\Hydra\HydraBag.cs" />
     <Compile Include="Items\Boss\Hydra\HydraPendant.cs" />
+    <Compile Include="Items\Boss\Infinity\Annihilator.cs" />
     <Compile Include="Items\Boss\Infinity\IZTrophy.cs" />
     <Compile Include="Items\Boss\Infinity\Sticker.cs" />
     <Compile Include="Items\Boss\Infinity\Genocide.cs" />
     <Compile Include="Items\Boss\Infinity\Infinitium.cs" />
     <Compile Include="Items\Boss\Infinity\InfinityBlade.cs" />
     <Compile Include="Items\Boss\Infinity\IZCache.cs" />
-    <Compile Include="Items\Boss\Infinity\Annhialator.cs" />
     <Compile Include="Items\Boss\Infinity\Sagittarius.cs" />
     <Compile Include="Items\Boss\Infinity\TotalDestruction.cs" />
     <Compile Include="Items\Boss\Infinity\Nova.cs" />
@@ -858,6 +859,7 @@
     <Compile Include="Items\Vanity\Mask\RetrieverMask.cs" />
     <Compile Include="Items\Vanity\Mask\ZeroMask.cs" />
     <Compile Include="Items\Vanity\N1\N1.cs" />
+    <Compile Include="Items\Vanity\Pepsi\PepsimanCan.cs" />
     <Compile Include="Items\Vanity\Tied\TiedHat.cs" />
     <Compile Include="Items\Vanity\Tied\TiedTrousers.cs" />
     <Compile Include="Items\Vanity\Tied\TiedTux.cs" />
@@ -1278,6 +1280,7 @@
     <Compile Include="Tiles\Trophy\BroodTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripBlueTrophy.cs" />
     <Compile Include="Tiles\Trophy\GripRedTrophy.cs" />
+    <Compile Include="Tiles\Trophy\IZTrophy.cs" />
     <Compile Include="Tiles\Trophy\RaiderTrophy.cs" />
     <Compile Include="Tiles\Trophy\RetrieverTrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataTrophy.cs" />
@@ -1586,6 +1589,7 @@
     <Content Include="Glowmasks\DecayScythe_Glow.png" />
     <Content Include="Glowmasks\DemonGauntlet_Glow.png" />
     <Content Include="Glowmasks\DemonStaff_Glow.png" />
+    <Content Include="Glowmasks\Discordium_Glow.png" />
     <Content Include="Glowmasks\DMC_Glow.png" />
     <Content Include="Glowmasks\DMK_Glow.png" />
     <Content Include="Glowmasks\DoomRay_Glow.png" />
@@ -1699,7 +1703,10 @@
     <Content Include="Glowmasks\InfinityVisor_Glow.png" />
     <Content Include="Glowmasks\InfinityVisor_Head_Glow.png" />
     <Content Include="Glowmasks\IntimidatingMushroom_Glow.png" />
+    <Content Include="Glowmasks\IZBox_Glow.png" />
+    <Content Include="Glowmasks\IZBox_Glow1.png" />
     <Content Include="Glowmasks\IZCache_Glow.png" />
+    <Content Include="Glowmasks\IZTrophy_Glow.png" />
     <Content Include="Glowmasks\JungleReaperP_Glow.png" />
     <Content Include="Glowmasks\Laser_Rifle_Glow.png" />
     <Content Include="Glowmasks\Lolkat_Glow.png" />
@@ -1850,7 +1857,7 @@
     <Content Include="Glowmasks\TrueBlazingDawnShot_Glow.png" />
     <Content Include="Glowmasks\TrueBlazingDawn_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortswordEX_Glow.png" />
-    <Content Include="Glowmasks\TrueCopperShortsword_glow.png" />
+    <Content Include="Glowmasks\TrueCopperShortsword_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShot_Glow.png" />
     <Content Include="Glowmasks\TrueDeathlyLongbow_Glow.png" />
     <Content Include="Glowmasks\TrueFleshClaymoreShot_Glow.png" />
@@ -2520,7 +2527,7 @@
     <Content Include="Items\Boss\Hydra\HydraHide.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant.png" />
     <Content Include="Items\Boss\Hydra\HydraPendant_Neck.png" />
-    <Content Include="Items\Boss\Infinity\Annhialator.png" />
+    <Content Include="Items\Boss\Infinity\Annihilator.png" />
     <Content Include="Items\Boss\Infinity\Genocide.png" />
     <Content Include="Items\Boss\Infinity\Infinitium.gif" />
     <Content Include="Items\Boss\Infinity\Infinitium.png" />
@@ -3034,6 +3041,12 @@
     <Content Include="Items\Vanity\N1\N1_Body.png" />
     <Content Include="Items\Vanity\N1\N1_Female.png" />
     <Content Include="Items\Vanity\N1\N1_Legs.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsiCan.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsimanBody.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsimanBody_Arms.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsimanCan.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsimanHead.png" />
+    <Content Include="Items\Vanity\Pepsi\PepsimanLegs.png" />
     <Content Include="Items\Vanity\Tied\TiedHat.png" />
     <Content Include="Items\Vanity\Tied\TiedHat_Head.png" />
     <Content Include="Items\Vanity\Tied\TiedTrousers.png" />
@@ -3613,6 +3626,8 @@
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
+    <Content Include="Tiles\DiscordiumBrick.png" />
+    <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\FulguriumPlating.png" />
     <Content Include="Tiles\IZBox.png" />
     <Content Include="Tiles\MonarchBox.png" />
@@ -3763,6 +3778,7 @@
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
     <Content Include="Tiles\Trophy\GripRedTrophy.png" />
+    <Content Include="Tiles\Trophy\IZTrophy.png" />
     <Content Include="Tiles\Trophy\RaiderTrophy.png" />
     <Content Include="Tiles\Trophy\RetrieverTrophy.png" />
     <Content Include="Tiles\Trophy\YamataTrophy.png" />

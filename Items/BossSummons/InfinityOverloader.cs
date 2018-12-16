@@ -84,7 +84,6 @@ namespace AAMod.Items.BossSummons
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
-            Texture2D texture3 = mod.GetTexture("Items/BossSummons/InfinityOverloaderInactive");
             spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             for (int i = 0; i < 4; i++)
             {
