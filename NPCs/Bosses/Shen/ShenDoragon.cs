@@ -366,11 +366,11 @@ namespace AAMod.NPCs.Bosses.Shen
 			if(Charging)
 			{
 				npc.frameCounter = 0;
-				wingFrame.Y = 0;
+				wingFrame.Y = wingFrameY * 1;
 			}else
 			{
 				npc.frameCounter++;
-				if (npc.frameCounter >= 5)
+				if (npc.frameCounter >= 3)
 				{
 					npc.frameCounter = 0;
 					wingFrame.Y += wingFrameY;
@@ -445,10 +445,10 @@ namespace AAMod.NPCs.Bosses.Shen
             if (!Main.expertMode)
             {
                 AAWorld.downedShen = true;
-                //npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                //string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
-                //int loot = Main.rand.Next(lootTable.Length);
-                //npc.DropLoot(mod.ItemType(lootTable[loot]));
+                npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
+                string[] lootTable = { "ChaosSlayer" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 //npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                 npc.DropLoot(Items.Boss.EXSoul.type);
