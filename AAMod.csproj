@@ -103,6 +103,7 @@
     <Compile Include="Buffs\Electrified.cs" />
     <Compile Include="Buffs\GripMinion.cs" />
     <Compile Include="Buffs\InfinityScorch.cs" />
+    <Compile Include="Buffs\LockedOn.cs" />
     <Compile Include="Buffs\Pepsi.cs" />
     <Compile Include="Buffs\RoyalKitten.cs" />
     <Compile Include="Buffs\Broodmini.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\AkumaDustLight.cs" />
     <Compile Include="Dusts\DiscordLight.cs" />
+    <Compile Include="Dusts\PepsiDust.cs" />
     <Compile Include="Dusts\SpaceDust.cs" />
     <Compile Include="Dusts\PowerDust.cs" />
     <Compile Include="Dusts\RealityDust.cs" />
@@ -859,6 +861,7 @@
     <Compile Include="Items\Vanity\Mask\RetrieverMask.cs" />
     <Compile Include="Items\Vanity\Mask\ZeroMask.cs" />
     <Compile Include="Items\Vanity\N1\N1.cs" />
+    <Compile Include="Items\Vanity\Pepsi\PepsiCan.cs" />
     <Compile Include="Items\Vanity\Pepsi\PepsimanCan.cs" />
     <Compile Include="Items\Vanity\Tied\TiedHat.cs" />
     <Compile Include="Items\Vanity\Tied\TiedTrousers.cs" />
@@ -1010,6 +1013,7 @@
     <Compile Include="Projectiles\Darkray.cs" />
     <Compile Include="Projectiles\DeathDagger.cs" />
     <Compile Include="Projectiles\DeathDaggerHeal.cs" />
+    <Compile Include="Projectiles\PepsiCan.cs" />
     <Compile Include="Projectiles\EFish\Typhoon.cs" />
     <Compile Include="Projectiles\EFish\EFlairon.cs" />
     <Compile Include="Projectiles\EtheralBeam.cs" />
@@ -1469,6 +1473,7 @@
     <Content Include="Dusts\MireBubbleDust.png" />
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
+    <Content Include="Dusts\PepsiDust.png" />
     <Content Include="Dusts\PowerDust.png" />
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RadiumDust.png" />
@@ -2904,6 +2909,7 @@
     <Content Include="Items\Throwing\Lead_Kunai.png" />
     <Content Include="Items\Throwing\LeechJavelin.png" />
     <Content Include="Items\Throwing\LunaticJavelin.png" />
+    <Content Include="Items\Throwing\MadnessKnife.png" />
     <Content Include="Items\Throwing\MurkyGel.png" />
     <Content Include="Items\Throwing\Nightmare_Hammer.png" />
     <Content Include="Items\Throwing\Paladins_Knife.png" />
@@ -3057,6 +3063,7 @@
     <Content Include="Items\Vanity\Tied\TiedTux_Female.png" />
     <Content Include="Items\Walls\DoomsdayWall.png" />
     <Content Include="Items\Walls\DoomstoneBrickWall.png" />
+    <Content Include="lib\BaseMod.dll" />
     <Content Include="lib\TerrariaHooks.dll" />
     <Content Include="Map\InfernoMap.png" />
     <Content Include="Map\MireMap.png" />
@@ -3203,11 +3210,16 @@
     <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenABreath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonBlueWings.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue_Breath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonSheet.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragon_Breath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
@@ -3496,6 +3508,7 @@
     <Content Include="Projectiles\OrangeSolution.png" />
     <Content Include="Projectiles\OrderSolution.png" />
     <Content Include="Projectiles\Paladins_Knife_Pro.png" />
+    <Content Include="Projectiles\PepsiCan.png" />
     <Content Include="Projectiles\PerfectChaosE.png" />
     <Content Include="Projectiles\Petal_Kunai_Pro.png" />
     <Content Include="Projectiles\Platinum_Kunai_Pro.png" />

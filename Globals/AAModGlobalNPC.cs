@@ -639,7 +639,12 @@ namespace AAMod
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
-		}
+            if (type == NPCID.Clothier)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Vanity.Pepsi.PepsimanCan>());
+                nextSlot++;
+            }
+        }
 
         public override bool PreAI(NPC npc)
         {

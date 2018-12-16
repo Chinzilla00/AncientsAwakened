@@ -43,7 +43,7 @@ namespace AAMod.Items.Vanity.Pepsi
 				p.PepsiHideVanity = true;
 			}
 		}
-	}
+    }
 
 	public class PepsimanHead : EquipTexture
 	{
