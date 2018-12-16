@@ -180,7 +180,7 @@ namespace AAMod.NPCs.Bosses.Zero
             return false;
         }
 
-        /*public bool ChargeAttack //actually charging the player
+        public bool ChargeAttack //actually charging the player
         {
             get
             {
@@ -205,14 +205,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = (value ? 1.5f : 0f);
                 if (npc.ai[1] != oldValue) npc.netUpdate = true;
             }
-        }*/
+        }
+
         public int chargeTimer = 0;
         public int movementtimer = 0;
         public bool direction = false;
         public int chargeTime = 100;
-
-
-
+        
         public int MinionTimer = 0;
         public int LineStopper = 180;
         public override void AI()
@@ -363,27 +362,22 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (npc.ai[1] == 1f)
                 {
-                    npc.defense *= 2;
-                    npc.damage *= 2;
-                    npc.ai[2] += 1f;
-                    if (npc.ai[2] == 2f)
+                    if (npc.ai[1] == 1f)
                     {
-                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
+                        npc.defense *= 2;
+                        npc.damage *= 2;
+                        npc.ai[2] += 1f;
+                        if (npc.ai[2] >= chargeTime)
+                        {
+                            npc.ai[1] = 0f;
+                            npc.ai[2] = 0f;
+                            npc.netUpdate = true;
+                            return;
+                        }
+
+                        npc.rotation = BaseMod.BaseUtility.RotationTo(npc.Center, (npc.Center + npc.velocity));
+                        return;
                     }
-                    if (npc.ai[2] >= 400f)
-                    {
-                        npc.ai[2] = 0f;
-                        npc.ai[1] = 0f;
-                    }
-                    npc.rotation += (float)npc.direction * 0.7f;
-                    Vector2 vector44 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
-                    float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;
-                    float num442 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector44.Y;
-                    float num443 = (float)Math.Sqrt((double)((num441 * num441) + (num442 * num442)));
-                    num443 = 2f / num443;
-                    npc.velocity.X = num441 * num443;
-                    npc.velocity.Y = num442 * num443;
-                    return;
                 }
                 if (npc.ai[1] == 3f)
                 {
@@ -404,15 +398,15 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void FindFrame(int frameHeight)
         {
             //npc.frameCounter++;
-            //if (ChargeAttack || Charging)
-            //{
+            if (ChargeAttack || Charging)
+            {
                 npc.frame.Y = 1 * frameHeight;
-            //}
-            //else
-            //{
-                //npc.frame.Y = 0;
-                //npc.frameCounter = 0;
-            //}
+            }
+            else
+            {
+                npc.frame.Y = 0;
+                npc.frameCounter = 0;
+            }
         }
     }
 }
