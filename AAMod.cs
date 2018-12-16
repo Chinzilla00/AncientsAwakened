@@ -44,6 +44,8 @@ namespace AAMod
         public static bool thoriumLoaded = false;
         public static bool tremorLoaded = false;
         public static bool redemptionLoaded = false;
+        public static bool cheatsheetLoaded = false;
+        public static bool herosLoaded = false;
         #endregion
 
         public AAMod()
@@ -71,6 +73,8 @@ namespace AAMod
             Mod SacredTools = ModLoader.GetMod("SacredTools");
             Mod Tremor = ModLoader.GetMod("Tremor");
             Mod Redemption = ModLoader.GetMod("Redemption");
+            Mod CheatSheet = ModLoader.GetMod("CheatSheet");
+            Mod HEROsMod = ModLoader.GetMod("HEROsMod");
             if (Calamity != null) calamityLoaded = true;
             if (Thorium != null) thoriumLoaded = true;
             if (Spirit != null) spiritLoaded = true;
@@ -79,6 +83,8 @@ namespace AAMod
             if (SacredTools != null) sacredToolsLoaded = true;
             if (Tremor != null) tremorLoaded = true;
             if (Redemption != null) redemptionLoaded = true;
+            if (CheatSheet != null) cheatsheetLoaded = true;
+            if (HEROsMod != null) herosLoaded = true;
             if (yabhb != null)
             {
                 Call("RegisterHealthBarMini", instance.NPCType("YamataHeadF1"));
