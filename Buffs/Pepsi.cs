@@ -19,12 +19,11 @@ namespace AAMod.Buffs
 		{
 			AAPlayer p = player.GetModPlayer<AAPlayer>();
             
-			if (player.townNPCs >= 1 && p.PepsiPrevious)
+			if (p.PepsiAccessoryPrevious)
 			{
-				p.PepsiPower = true;
-				player.jumpSpeedBoost += 4.8f;
+                p.PepsiPower = true;
                 player.moveSpeed *= 1.4f;
-			}
+            }
 			else
 			{
 				player.DelBuff(buffIndex);

@@ -256,7 +256,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
                 BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
-                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha(), true);
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
                 return false;
             }
             return true;

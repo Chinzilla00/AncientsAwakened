@@ -103,7 +103,7 @@ namespace AAMod.Items.BossSummons
                 Player player2 = Main.player[i];
                 if (player2 != null && player2.active && !player2.dead)
                 {
-                    player2.AddBuff(mod.BuffType<LockedOn>(), 60);
+                    player2.AddBuff(mod.BuffType<Buffs.LockedOn>(), 60);
                 }
             }
             SpawnBoss(player, "IZSpawn1", "Infinity Zero");

@@ -103,11 +103,11 @@ namespace AAMod
         public bool ammo20percentdown = false;
 
 
-        public bool blockyAccessoryPrevious;
-        public bool blockyAccessory;
-        public bool blockyHideVanity;
-        public bool blockyForceVanity;
-        public bool blockyPower;
+        public bool PepsiAccessoryPrevious;
+        public bool PepsiAccessory;
+        public bool PepsiHideVanity;
+        public bool PepsiForceVanity;
+        public bool PepsiPower;
         public bool nullified = false;
         //debuffs
         public bool infinityOverload = false;
@@ -199,8 +199,8 @@ namespace AAMod
             ammo20percentdown = false;
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
 
-            blockyAccessoryPrevious = blockyAccessory;
-            blockyAccessory = blockyHideVanity = blockyForceVanity = blockyPower = false;
+            PepsiAccessoryPrevious = PepsiAccessory;
+            PepsiAccessory = PepsiHideVanity = PepsiForceVanity = PepsiPower = false;
             nullified = false;
             //Debuffs
             infinityOverload = false;
@@ -230,16 +230,16 @@ namespace AAMod
                 Item item = player.armor[n];
                 if (item.type == mod.ItemType<Items.Vanity.Pepsi.PepsimanCan>())
                 {
-                    blockyHideVanity = false;
-                    blockyForceVanity = true;
+                    PepsiHideVanity = false;
+                    PepsiForceVanity = true;
                 }
             }
         }
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
-            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
-            if (player.townNPCs >= 1 && blockyAccessory)
+            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set PepsiAccessory
+            if (player.townNPCs >= 1 && PepsiAccessory)
             {
                 player.AddBuff(mod.BuffType<Buffs.Pepsi>(), 60, true);
             }
@@ -247,7 +247,7 @@ namespace AAMod
 
         public override void FrameEffects()
         {
-            if ((blockyPower || blockyForceVanity) && !blockyHideVanity)
+            if ((PepsiPower || PepsiForceVanity) && !PepsiHideVanity)
             {
                 player.legs = mod.GetEquipSlot("PepsimanLegs", EquipType.Legs);
                 player.body = mod.GetEquipSlot("PepsimanBody", EquipType.Body);
