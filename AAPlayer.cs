@@ -78,11 +78,6 @@ namespace AAMod
         public bool zeroSet;
         public bool valkyrieSet;
         public bool infinitySet;
-        public bool PepsiPrevious;
-        public bool PepsiAccessory;
-        public bool PepsiHideVanity;
-        public bool PepsiForceVanity;
-        public bool PepsiPower;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -119,7 +114,7 @@ namespace AAMod
         public bool Clueless = false;
         public bool Yanked = false;
         public bool InfinityScorch = false;
-        public bool nullified = false;
+        public bool LockedOn = false;
         //buffs
 
         //pets
@@ -174,9 +169,6 @@ namespace AAMod
             darkmatterSetSu = false;
             darkmatterSetTh = false;
             infinitySet = false;
-            
-            PepsiPrevious = PepsiAccessory;
-            PepsiAccessory = PepsiHideVanity = PepsiForceVanity = PepsiPower = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -198,7 +190,6 @@ namespace AAMod
             Naitokurosu = false;
             ammo20percentdown = false;
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
-            nullified = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -208,6 +199,7 @@ namespace AAMod
             Clueless = false;
             Yanked = false;
             InfinityScorch = false;
+            LockedOn = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -217,60 +209,6 @@ namespace AAMod
             RoyalKitten = false;
             //EnemyChecks
             IsGoblin = false;
-        }
-
-        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
-        {
-            if (PepsiAccessory)
-            {
-                player.AddBuff(mod.BuffType<Buffs.Pepsi>(), 60, true);
-            }
-        }
-
-        public override void UpdateVanityAccessories()
-        {
-            for (int n = 13; n < 18 + player.extraAccessorySlots; n++)
-            {
-                Item item = player.armor[n];
-                if (item.type == mod.ItemType<Items.Vanity.Pepsi.PepsimanCan>())
-                {
-                    PepsiHideVanity = false;
-                    PepsiForceVanity = true;
-                }
-            }
-        }
-
-        public override void FrameEffects()
-        {
-            if ((PepsiPower || PepsiForceVanity) && !PepsiHideVanity)
-            {
-                player.legs = mod.GetEquipSlot("PepsimanLegs", EquipType.Legs);
-                player.body = mod.GetEquipSlot("PepsimanBody", EquipType.Body);
-                player.head = mod.GetEquipSlot("PepsiHead", EquipType.Head);
-            }
-            if (nullified)
-            {
-                Nullify();
-            }
-        }
-
-        private void Nullify()
-        {
-            player.ResetEffects();
-            player.head = -1;
-            player.body = -1;
-            player.legs = -1;
-            player.handon = -1;
-            player.handoff = -1;
-            player.back = -1;
-            player.front = -1;
-            player.shoe = -1;
-            player.waist = -1;
-            player.shield = -1;
-            player.neck = -1;
-            player.face = -1;
-            player.balloon = -1;
-            nullified = true;
         }
 
         public override void UpdateBiomes()
@@ -897,10 +835,37 @@ namespace AAMod
             }
         }
 
+        public void RespawnIZ(Player player)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType("IZSpawn1");
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 1f);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
+
+        public int IZHoldTimer = 180;
+
         public override void UpdateBadLifeRegen()
         {
             int before = player.lifeRegen;
             bool drain = false;
+
+            if (LockedOn && !NPC.AnyNPCs(mod.NPCType("Infinity")) && !NPC.AnyNPCs(mod.NPCType("IZSpawn1")))
+            {
+                if (IZHoldTimer > 0)
+                {
+                    IZHoldTimer--;
+                }
+                if (IZHoldTimer == 0)
+                {
+                    RespawnIZ(player);
+                    IZHoldTimer = 180;
+                }
+            }
 
             if (infinityOverload)
             {
