@@ -114,6 +114,7 @@ namespace AAMod
         public bool Clueless = false;
         public bool Yanked = false;
         public bool InfinityScorch = false;
+        public bool LockedOn = false;
         //buffs
 
         //pets
@@ -198,6 +199,7 @@ namespace AAMod
             Clueless = false;
             Yanked = false;
             InfinityScorch = false;
+            LockedOn = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -833,10 +835,37 @@ namespace AAMod
             }
         }
 
+        public void RespawnIZ(Player player)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType("IZSpawn1");
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 1f);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
+
+        public int IZHoldTimer = 180;
+
         public override void UpdateBadLifeRegen()
         {
             int before = player.lifeRegen;
             bool drain = false;
+
+            if (LockedOn && !NPC.AnyNPCs(mod.NPCType("Infinity")) && !NPC.AnyNPCs(mod.NPCType("IZSpawn1")))
+            {
+                if (IZHoldTimer > 0)
+                {
+                    IZHoldTimer--;
+                }
+                if (IZHoldTimer == 0)
+                {
+                    RespawnIZ(player);
+                    IZHoldTimer = 180;
+                }
+            }
 
             if (infinityOverload)
             {

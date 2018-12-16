@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using AAMod.Buffs;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
@@ -19,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public NPC Zero5;
         public NPC Zero6;
         public bool ZerosSpawned = false;
+        public bool Reseting = false;
         public Vector2 topVisualOffset = default(Vector2);
         public override void SetStaticDefaults()
 		{
@@ -86,8 +88,14 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
+        private bool Scanning = false;
+        private int testime = 60;
         public override void AI()
 		{
+            if (testime > 0)
+            {
+                testime--;
+            }
 			if(Main.netMode != 2)
 			{
 				int ThreeQuartersHealth = npc.lifeMax * (int).75f;
@@ -123,6 +131,15 @@ namespace AAMod.NPCs.Bosses.Infinity
 				Player targetPlayer = Main.player[npc.target];
 				if(!targetPlayer.dead) //speed changes depending on how far the player is
 				{
+                    /*if (targetPlayer.Center.Y <= npc.Top.Y - 400f && !Scanning)
+                    {
+                        Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<Scanner>(), 0, 0f, targetPlayer.whoAmI, npc.whoAmI);
+                        Scanning = true;
+                    }
+                    else
+                    {
+                        Scanning = false;
+                    }*/
                     npc.alpha -= 10;
                     if (npc.alpha <= 0)
                     {
@@ -179,6 +196,15 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 ZerosSpawned = true;
             }
+            if (testime == 0 && (Zero1 == null || Zero2 == null || Zero3 == null || Zero4 == null || Zero5 == null || Zero6 == null || !Zero1.active || !Zero2.active || !Zero3.active || !Zero4.active || !Zero5.active || !Zero6.active))
+            {
+                Reseting = true;
+                testime = 60;
+            }
+            if ((Zero1 == null || !Zero1.active) && (Zero2 == null || !Zero2.active) && (Zero3 == null || !Zero3.active) && (Zero4 == null || !Zero4.active) && (Zero5 == null || !Zero5.active) && (Zero6 == null || !Zero6.active))
+            {
+                ZerosSpawned = false;
+            }
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];
@@ -209,6 +235,14 @@ namespace AAMod.NPCs.Bosses.Infinity
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
+            for (int i = 0; i < Main.player.Length; i++)
+            {
+                Player player2 = Main.player[i];
+                if (player2 != null && player2.active && !player2.dead)
+                {
+                    player2.ClearBuff(mod.BuffType<LockedOn>());
+                }
             }
         }
 

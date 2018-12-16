@@ -47,6 +47,12 @@ namespace AAMod.NPCs.Bosses.Infinity
 
         public override void AI()
         {
+            if (npc.ai[0] == 1f)
+            {
+                HoldTimer = 60;
+                StartTimer = 100;
+                npc.ai[0] = 2f;
+            }
             StartTimer--;
             if (StartTimer <= 0)
             {
@@ -61,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                     {
                         Frame = 0;
                         FrameCounter = 0;
-                        HoldTimer = (spawnState >= 3 ? 50 : 60);
+                        HoldTimer = npc.ai[0] == 2f ? (spawnState >= 3 ? 30 : 40) : (spawnState >= 3 ? 50 : 60);
                         spawnState++;
                         if (spawnState >= 5 && Main.netMode != 1)
                         {

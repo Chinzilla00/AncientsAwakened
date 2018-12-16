@@ -136,6 +136,18 @@ namespace AAMod.NPCs.Bosses.Infinity
                 RepairMode = false;
                 npc.dontTakeDamage = false;
             }
+            if (Body != null && Body.Reseting)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                    killedbyplayer = false;
+                    Body.Reseting = false;
+                }
+                return;
+            }
             Vector2 vectorCenter = npc.Center;
             if (Body == null)
 			{
