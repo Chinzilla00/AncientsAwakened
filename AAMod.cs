@@ -197,6 +197,11 @@ namespace AAMod
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
+
+                AddEquipTexture(new Items.Vanity.Pepsi.PepsimanHead(), null, EquipType.Head, "PepsimanHead", "AAMod/Items/Vanity/Pepsi/PepsimanHead");
+                AddEquipTexture(new Items.Vanity.Pepsi.PepsimanBody(), null, EquipType.Body, "PepsimanBody", "AAMod/Items/Vanity/Pepsi/PepsimanBody", "AAMod/Items/Vanity/Pepsi/PepsimanBody_Arms");
+                AddEquipTexture(new Items.Vanity.Pepsi.PepsimanLegs(), null, EquipType.Legs, "PepsimanLegs", "AAMod/Items/Vanity/Pepsi/PepsimanLegs");
+
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch"), ItemType("MonarchBox"), TileType("MonarchBox"));
