@@ -13,7 +13,6 @@ namespace AAMod.Items.Vanity.Pepsi
             item.width = 10;
             item.height = 10;
 			item.useTime = 19;
-            item.maxStack = 999;
 			item.useAnimation = 17;
             item.noUseGraphic = true;
             item.useStyle = 1;
@@ -35,7 +34,8 @@ namespace AAMod.Items.Vanity.Pepsi
         {
             ModRecipe recipe = new ModRecipe(mod);
 		    recipe.AddRecipeGroup("AAMod:Iron", 5);
-		    recipe.AddTile(TileID.Bottles);
+            recipe.AddIngredient(ItemID.BottledWater, 1);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
 		}
