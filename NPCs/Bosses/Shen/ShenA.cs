@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-
+    [AutoloadBossHead]
     public class ShenA : ModNPC
     {
 

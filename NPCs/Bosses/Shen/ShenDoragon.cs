@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-
+    [AutoloadBossHead]
     public class ShenDoragon : ModNPC
     {
         public float[] customAI = new float[4];
