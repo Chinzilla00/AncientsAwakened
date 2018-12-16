@@ -101,6 +101,14 @@ namespace AAMod
         public bool Naitokurosu;
         public bool DragonShell;
         public bool ammo20percentdown = false;
+
+
+        public bool blockyAccessoryPrevious;
+        public bool blockyAccessory;
+        public bool blockyHideVanity;
+        public bool blockyForceVanity;
+        public bool blockyPower;
+        public bool nullified = false;
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -190,6 +198,10 @@ namespace AAMod
             Naitokurosu = false;
             ammo20percentdown = false;
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
+
+            blockyAccessoryPrevious = blockyAccessory;
+            blockyAccessory = blockyHideVanity = blockyForceVanity = blockyPower = false;
+            nullified = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -209,6 +221,77 @@ namespace AAMod
             RoyalKitten = false;
             //EnemyChecks
             IsGoblin = false;
+        }
+
+        public override void UpdateVanityAccessories()
+        {
+            for (int n = 13; n < 18 + player.extraAccessorySlots; n++)
+            {
+                Item item = player.armor[n];
+                if (item.type == mod.ItemType<Items.Vanity.Pepsi.PepsimanCan>())
+                {
+                    blockyHideVanity = false;
+                    blockyForceVanity = true;
+                }
+            }
+        }
+
+        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
+        {
+            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
+            if (player.townNPCs >= 1 && blockyAccessory)
+            {
+                player.AddBuff(mod.BuffType<Buffs.Pepsi>(), 60, true);
+            }
+        }
+
+        public override void FrameEffects()
+        {
+            if ((blockyPower || blockyForceVanity) && !blockyHideVanity)
+            {
+                player.legs = mod.GetEquipSlot("PepsimanLegs", EquipType.Legs);
+                player.body = mod.GetEquipSlot("PepsimanBody", EquipType.Body);
+                player.head = mod.GetEquipSlot("PepsimanHead", EquipType.Head);
+            }
+            if (nullified)
+            {
+                Nullify();
+            }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (nullified)
+            {
+                Nullify();
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (nullified)
+            {
+                Nullify();
+            }
+        }
+
+        private void Nullify()
+        {
+            player.ResetEffects();
+            player.head = -1;
+            player.body = -1;
+            player.legs = -1;
+            player.handon = -1;
+            player.handoff = -1;
+            player.back = -1;
+            player.front = -1;
+            player.shoe = -1;
+            player.waist = -1;
+            player.shield = -1;
+            player.neck = -1;
+            player.face = -1;
+            player.balloon = -1;
+            nullified = true;
         }
 
         public override void UpdateBiomes()
