@@ -8,7 +8,6 @@ using BaseMod;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using AAMod.Buffs;
 
 namespace AAMod.Items.BossSummons
 {
@@ -99,14 +98,6 @@ namespace AAMod.Items.BossSummons
         public override bool UseItem(Player player)
 		{
             Main.NewText("...Target Identified.", new Color(158, 3, 32));
-            for (int i = 0; i < Main.player.Length; i++)
-            {
-                Player player2 = Main.player[i];
-                if (player2 != null && player2.active && !player2.dead)
-                {
-                    player2.AddBuff(mod.BuffType<LockedOn>(), 60);
-                }
-            }
             SpawnBoss(player, "IZSpawn1", "Infinity Zero");
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
@@ -127,7 +118,7 @@ namespace AAMod.Items.BossSummons
 			{
 				int bossType = mod.NPCType(name);
 				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
-				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 0f);
+				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
 				Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
 				Main.npc[npcID].netUpdate2 = true;
 			}
