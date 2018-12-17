@@ -191,6 +191,8 @@
     <Compile Include="Globals\AAModGlobalItem.cs" />
     <Compile Include="Globals\AAModGlobalNPC.cs" />
     <Compile Include="Globals\AANet.cs" />
+    <Compile Include="Globals\DustHandler.cs" />
+    <Compile Include="Globals\Omnidust.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhNecklace.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhScarf.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhStone.cs" />
@@ -850,6 +852,10 @@
     <Compile Include="Items\Vanity\Glitched\GlitchesBreastplate.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesGreaves.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesHat.cs" />
+    <Compile Include="Items\Vanity\Grox\AncientGroviteCofferplate.cs" />
+    <Compile Include="Items\Vanity\Grox\AncientGroviteCowl.cs" />
+    <Compile Include="Items\Vanity\Grox\AncientGroviteLegguards.cs" />
+    <Compile Include="Items\Vanity\Grox\AncientGroviteWings.cs" />
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
@@ -1455,6 +1461,10 @@
     <Content Include="Dusts\Discord.png" />
     <Content Include="Dusts\DoomDust.png" />
     <Content Include="Dusts\DragonflameDust.png" />
+    <Content Include="Dusts\dust_Rainbow.png" />
+    <Content Include="Dusts\dust_Rainbow2.png" />
+    <Content Include="Dusts\dust_Rainbow3.png" />
+    <Content Include="Dusts\dust_Rainbow4.png" />
     <Content Include="Dusts\EverleafDust.png" />
     <Content Include="Dusts\FlowerDust.png" />
     <Content Include="Dusts\FulguriteDust.png" />
@@ -3021,6 +3031,16 @@
     <Content Include="Items\Vanity\Glitched\GlitchesGreaves_Legs.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesHat.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesHat_Head.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_Arms.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_Body.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_FemaleBody.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCowl.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteCowl_Head.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteLegguards.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteLegguards_Legs.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteWings.png" />
+    <Content Include="Items\Vanity\Grox\AncientGroviteWings_Wings.png" />
     <Content Include="Items\Vanity\Hallam\HalHat.png" />
     <Content Include="Items\Vanity\Hallam\HalHat_Head.png" />
     <Content Include="Items\Vanity\Hallam\HalTrousers.png" />
@@ -3632,6 +3652,8 @@
     <Content Include="Tiles\BogPalmTree.png" />
     <Content Include="Tiles\BogPalmTreetops.png" />
     <Content Include="Tiles\Bogtus.png" />
+    <Content Include="Tiles\Cache\IZCache.png" />
+    <Content Include="Tiles\Cache\ShenCache.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />
     <Content Include="Tiles\Crates\Hellcrate.png" />
     <Content Include="Tiles\Crates\IceCrate.png" />

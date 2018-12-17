@@ -34,14 +34,9 @@ namespace AAMod.Items.Boss
             
         }
 
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        public override Color? GetAlpha(Color lightColor)
         {
-            return base.PreDrawInInventory(spriteBatch, position, frame, Main.DiscoColor, itemColor, origin, scale);
-        }
-
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
-        {
-            return base.PreDrawInWorld(spriteBatch, Main.DiscoColor, Main.DiscoColor, ref rotation, ref scale, whoAmI);
+            return Main.DiscoColor; //GConstants.COLOR_RARITYN1;
         }
 
 

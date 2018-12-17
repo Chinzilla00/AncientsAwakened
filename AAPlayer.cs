@@ -141,6 +141,9 @@ namespace AAMod
 
         public static Color ZeroColor = new Color((int)(233 * 0.7f), (int)(53 * 0.7f), (int)(53 * 0.7f));
 
+        public static Color groviteColor = new Color(138, (int)(39 * 0.7f), (int)(196 * 0.7f));
+        public static bool[] groviteGlow = new bool[255];
+
         //IZ Death count
         public static int ZeroKills = 0;
 
@@ -509,7 +512,7 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-
+            groviteGlow[player.whoAmI] = false;
             if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
@@ -1273,6 +1276,34 @@ namespace AAMod
             return HasAndCanDraw(player, type, ref dummy, ref dum);
         }
 
+        public static void DrawFlickerTexture(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default(Vector2), Vector2 framePos = default(Vector2))
+        {
+            if (drawPlayer == null || !drawPlayer.active || drawPlayer.dead) { return; }
+            for (int j = 0; j < 7; j++)
+            {
+                Color color = new Color(110 - j * 10, 110 - j * 10, 110 - j * 10, 110 - j * 10);
+                Vector2 vector = new Vector2((float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5));
+                vector *= 0.4f;
+                if (drawType == 2)
+                {
+                    BaseMod.BaseDrawing.DrawPlayerTexture(sb, tex, shader, drawPlayer, edi.position, 1, -6f + vector.X, (drawPlayer.wings > 0 ? 0f : BaseMod.BaseDrawing.GetYOffset(drawPlayer)) + vector.Y, color, frame);
+                }
+                else
+                {
+                    bool wings = drawType == 1;
+                    if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2((float)(Main.wingsTexture[drawPlayer.wings].Width / 2), (float)(Main.wingsTexture[drawPlayer.wings].Height / 8)); }
+                    Vector2 pos = (wings ? new Vector2((float)((int)(edi.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) - (float)(9 * drawPlayer.direction))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + 2f * drawPlayer.gravDir))) : new Vector2((float)((int)(edi.position.X - Main.screenPosition.X - (float)(frame.Width / 2) + (float)(drawPlayer.width / 2))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)drawPlayer.height - (float)frame.Height + 4f))));
+                    if (sb is List<DrawData>)
+                    {
+                        DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
+                        dd.shader = shader;
+                        ((List<DrawData>)sb).Add(dd);
+                    }
+                    else if (sb is SpriteBatch) ((SpriteBatch)sb).Draw(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
+                }
+            }
+        }
+
         public static bool HasAndCanDraw(Player player, int type, ref bool social, ref int slot)
         {
             if (player.wereWolf || player.merman) { return false; }
@@ -1325,6 +1356,14 @@ namespace AAMod
             BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterArm, PlayerLayer.Arms, false);
             BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterLegs, PlayerLayer.Legs, false);
             BaseMod.BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, true);
+            if (!player.merman && !player.wereWolf && groviteGlow[player.whoAmI])
+            {
+                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteHead, PlayerLayer.Head, false);
+                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteBody, PlayerLayer.Body, false);
+                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
+                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
+                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
+            }
         }
 
         public override void ModifyDrawHeadLayers(List<PlayerHeadLayer> list)
@@ -1560,6 +1599,59 @@ namespace AAMod
                 if (dye == -1) dye = 0;
                 DrawWingGlow(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/DraconianWings_Wings_Glow"), dye, drawPlayer);
                 
+            }
+        });
+        public PlayerLayer glGroviteHead = new PlayerLayer("AAMod", "glGroviteHead", PlayerLayer.Head, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AncientGroviteCowl")))
+            {
+                Texture2D tex = mod.GetTexture("Glowmasks/AncientGroviteCowl_Head_Glow");
+                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.headArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.headRotation, drawPlayer.headPosition, edi.headOrigin);
+            }
+        });
+        public PlayerLayer glGroviteBody = new PlayerLayer("AAMod", "glGroviteBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AncientGroviteCofferplate")))
+            {
+                Texture2D tex = mod.GetTexture("Glowmasks/AncientGroviteCofferplate_Body_Glow");
+                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
+            }
+        });
+        public PlayerLayer glGroviteLegs = new PlayerLayer("AAMod", "glGroviteLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            if (edi.shadow == 0 && (!drawPlayer.mount.Active || drawPlayer.mount.Type != 6) && HasAndCanDraw(drawPlayer, mod.ItemType("AncientGroviteLegguards")))
+            {
+                Texture2D tex = mod.GetTexture("Glowmasks/AncientGroviteLegguards_Legs_Glow");
+                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.legArmorShader, drawPlayer, drawPlayer.legFrame, drawPlayer.legRotation, drawPlayer.legPosition, edi.legOrigin);
+            }
+        });
+        public PlayerLayer glGroviteArm = new PlayerLayer("AAMod", "glGroviteArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AncientGroviteCofferplate")))
+            {
+                Texture2D tex = mod.GetTexture("Glowmasks/AncientGroviteCofferplate_Arm_Glow");
+                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
+            }
+        });
+        public PlayerLayer glGroviteWings = new PlayerLayer("AAMod", "glGroviteWings", PlayerLayer.Wings, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            int accSlot = 0;
+            bool social = false;
+            if (edi.shadow == 0 && !drawPlayer.mount.Active && HasAndCanDraw(drawPlayer, mod.ItemType("TrueGroviteWings"), ref social, ref accSlot))
+            {
+                int dye = BaseMod.BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
+                if (dye == -1) dye = 0;
+                DrawFlickerTexture(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/AncientGroviteWings_Glow"), dye, drawPlayer);
             }
         });
     }
