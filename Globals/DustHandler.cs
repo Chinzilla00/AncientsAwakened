@@ -120,7 +120,7 @@ namespace AAMod
                 Main.dust[dustID] = dust;
                 return dustID;
             }
-            catch (Exception e) { BaseMod.BaseUtility.Chat("DUST SPAWN ERROR: " + e.Message, Color.Red, true); ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+            catch (Exception e) { BaseUtility.Chat("DUST SPAWN ERROR: " + e.Message, Color.Red, true); ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
             return 0;
         }
 
