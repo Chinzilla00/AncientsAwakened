@@ -33,7 +33,7 @@ namespace AAMod
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
-        public static string BLANK_TEX = "AAMod/Globakls/BlankTex";
+        public static string BLANK_TEX = "AAMod/BlankTex";
 
         #region mod loaded bools
         public static bool fargoLoaded = false;
