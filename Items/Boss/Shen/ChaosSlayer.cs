@@ -24,10 +24,10 @@ namespace AAMod.Items.Boss.Shen
             item.height = 85;
             item.value = 3000000;
             item.useStyle = 1;
-            item.useAnimation = 30;
-            item.useTime = 30;
+            item.useAnimation = 25;
+            item.useTime = 25;
             item.UseSound = SoundID.Item103;
-            item.damage = 250;
+            item.damage = 400;
             item.knockBack = 12;
             item.melee = true;
             item.autoReuse = true;
