@@ -9,7 +9,7 @@ using Terraria.Enums;
 
 namespace AAMod.Tiles
 {
-	public class ExampleHerb : ModTile
+	public class DragonRose : ModTile
 	{
 		public override void SetDefaults()
 		{
