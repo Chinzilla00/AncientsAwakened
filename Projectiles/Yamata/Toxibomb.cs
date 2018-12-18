@@ -9,7 +9,6 @@ namespace AAMod.Projectiles.Yamata
 	{
         public override void SetStaticDefaults()
         {
-            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
             Main.projFrames[projectile.type] = 4;     //The recording mode
 		}
