@@ -6,11 +6,9 @@ namespace AAMod.NPCs.Bosses.Shen
 {
     public class DiscordianBreath : ModProjectile
     {
-    	
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Discordian Breath");
-
             Main.projFrames[projectile.type] = 6;
         }
     	

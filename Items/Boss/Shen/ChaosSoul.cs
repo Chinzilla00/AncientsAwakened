@@ -32,7 +32,6 @@ namespace AAMod.Items.Boss.Shen
             item.value = 1000000;
             item.rare = 11;
             item.expert = true;
-            
             item.alpha = 25;
         }
 

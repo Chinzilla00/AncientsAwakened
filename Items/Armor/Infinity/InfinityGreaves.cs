@@ -13,11 +13,10 @@ namespace AAMod.Items.Armor.Infinity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infinity Slayer Greaves");
-			Tooltip.SetDefault(@"30% increased damage
-60% increased movement speed
+			Tooltip.SetDefault(@"35% increased ranged damage & critical strike chance
+12% increased damage resistance
 25% decreased ammo consumption
-+3 minion slots
-14% increased damage resistance
+50% increased movement speed
 Infinite power and malice flows through this armor");
 		}
 
@@ -25,21 +24,16 @@ Infinite power and malice flows through this armor");
 		{
 			item.width = 22;
 			item.height = 16;
-			item.value = 3000000;
-			item.defense = 29;
+            item.value = Item.sellPrice(3, 0, 0, 0);
+            item.defense = 29;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-            player.rangedDamage *= 1.3f;
-            player.thrownDamage *= 1.3f;
-            player.minionDamage *= 1.3f;
-            player.meleeDamage *= 1.3f;
-            player.magicDamage *= 1.3f;
+            player.rangedDamage *= 1.35f;
             player.moveSpeed *= 1.6f;
 			player.ammoCost75 = true;
-			player.endurance *= 1.14f;
-            player.maxMinions += 3;
+			player.endurance *= 1.12f;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -58,7 +52,7 @@ Infinite power and malice flows through this armor");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomsdayLeggings", 1);
             recipe.AddIngredient(null, "Infinitium", 14);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

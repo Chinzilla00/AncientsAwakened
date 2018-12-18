@@ -13,8 +13,8 @@ namespace AAMod.Items.Boss.Infinity
         public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinitium");
-            Tooltip.SetDefault("Pure malice");
+            DisplayName.SetDefault("Infinite");
+            Tooltip.SetDefault("Pure, unpredictable malice");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 10));
             if (Main.netMode != 2)

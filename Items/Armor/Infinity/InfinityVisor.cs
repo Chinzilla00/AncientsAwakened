@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace AAMod.Items.Armor.Infinity
 {
     [AutoloadEquip(EquipType.Head)]
@@ -14,10 +13,9 @@ namespace AAMod.Items.Armor.Infinity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infinity Slayer Visor");
-			Tooltip.SetDefault(@"30% increased damage
-30% increased critical chance
-15% increased damage resistance
-190 Increased maximum mana
+			Tooltip.SetDefault(@"35% increased ranged damage and critical strike chance
+12% increased damage resistance
+25% decreased ammo consumption
 Infinite power and malice flows through this armor");
 
 		}
@@ -26,24 +24,16 @@ Infinite power and malice flows through this armor");
 		{
 			item.width = 24;
 			item.height = 22;
-			item.value = 10000000;
-			item.defense = 40;
+            item.value = Item.sellPrice(3, 0, 0, 0);
+            item.defense = 40;
 		}
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.rangedDamage *= 1.3f;
-            player.thrownDamage *= 1.3f;
-            player.minionDamage *= 1.3f;
-            player.meleeDamage *= 1.3f;
-            player.magicDamage *= 1.3f;
-            player.rangedCrit += 22;
-			player.thrownCrit += 22;
-            player.meleeCrit += 22;
-            player.magicCrit += 22;
-            player.endurance *= 1.15f;
-            player.statManaMax2 += 190;
-		}
+            player.rangedDamage *= 1.35f;
+            player.endurance *= 1.12f;
+            player.ammoCost75 = true;
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -67,7 +57,6 @@ Infinite power and malice flows through this armor");
 			player.setBonus = @"'Infinite power enrages you'
 You can see all life around you
 You can see all potential threats around you
-Your ranged and thrown attacks inflict Moonraze on your target
 Your attacks scorch your enemies with the fires of infinity";
             
             player.AddBuff(BuffID.Hunter, 2);

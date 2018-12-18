@@ -15,7 +15,12 @@ namespace AAMod.Projectiles.Yamata
 
             Main.projFrames[projectile.type] = 0;
         }
-    	
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 30;

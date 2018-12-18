@@ -23,6 +23,8 @@ namespace AAMod.Items.Vanity.Pepsi
 			item.shoot = mod.ProjectileType ("PepsiCan");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.consumable = true;
+            item.maxStack = 999;
 		}
 
         public override void SetStaticDefaults()
@@ -36,7 +38,7 @@ namespace AAMod.Items.Vanity.Pepsi
 		    recipe.AddRecipeGroup("AAMod:Iron", 5);
             recipe.AddIngredient(ItemID.BottledWater, 1);
             recipe.AddTile(TileID.Bottles);
-            recipe.SetResult(this);
+            recipe.SetResult(this, 20);
             recipe.AddRecipe();
 		}
     }

@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public Vector2 topVisualOffset = default(Vector2);
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infinity Zero; The Purge");
+			DisplayName.SetDefault("Infinity Zero; Mechanical Malice");
 			Main.npcFrameCount[npc.type] = 2;
 		}
 		public override void SetDefaults()

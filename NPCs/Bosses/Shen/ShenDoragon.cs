@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    [AutoloadBossHead]
+
     public class ShenDoragon : ModNPC
     {
         public float[] customAI = new float[4];
@@ -84,12 +84,13 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
+			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
         public bool spawnalpha = false;
 		public bool isAwakened = false;
-		public float normalSpeed = 10f;
-		public float _chargeSpeed = 18f; //you can change this to change the max charge speed outside of people running away
+		public float normalSpeed = 15f;
+		public float _chargeSpeed = 30f; //you can change this to change the max charge speed outside of people running away
 		public float chargeSpeed 
 		{
 			get
@@ -107,26 +108,57 @@ namespace AAMod.NPCs.Bosses.Shen
 				_chargeSpeed = value;
 			}
 		}
+		public bool ChargePrep
+		{
+			get
+			{
+				return npc.ai[0] == 0.5f || customAI[3] == 0.5f;
+			}
+		}
+		public bool Charging
+		{
+			get
+			{
+				return npc.ai[0] == 1;
+			}
+		}		
 		public int spawnTimerMax = 100; //time to sit when you spawn
         public int discordianInfernoTimerMax = 80; //shoot fireballs timer
         public int discordianInfernoPercent = 5; //the % amount to shoot fireballs
+		public bool LookAtPlayer
+		{
+			get
+			{
+				return ChargePrep || npc.ai[0] == 2;
+			}
+		}
         public int discordianBreathTimerMax = 90; //shoot breath timer
 		public int aiChangeRate = 100; //the rate to jump to another ai. (in truth this is ai[2], this is what it is checked against by default.)
 		public int aiTooLongCheck = 60; //if he takes too long to change ai states this forces it to happen soon. smaller value == faster change.
 		
-		public int damageDiscordianInferno = 120;
+		public int damageDiscordianInferno = 120; //how much damage the inferno fire does.
 		
 		//clientside stuff
-		public Rectangle wingFrame = new Rectangle(0, 0, 444, 364);
-		public int wingFrameY = 364;
-		public int frameY = 130;
+		public Rectangle wingFrame = new Rectangle(0, 0, 444, 364); //the wing frame.
+		public int wingFrameY = 364; //the frame height for the wings.
+		public int frameY = 364; //the frame height for the body.
+		public int roarTimer = 0; //if this is > 0, then use the roaring frame.
+		public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
+		public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
+		{
+			get
+			{
+				return roarTimer > 0;
+			}
+		}
 
         public override void AI()
         {
+			#region preamble stuff
 			if(isAwakened) //set awakened stats
 			{
-				normalSpeed = 12f;
-				chargeSpeed = 20f;
+				normalSpeed = 17f;
+				chargeSpeed = 32f;
 				discordianInfernoPercent = 4;
 				aiTooLongCheck = 50;
 			}
@@ -139,10 +171,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha = 0;
                 spawnalpha = true;
             }
+			if(Roaring) roarTimer--;			
 			
             Main.fastForwardTime = true;
             Main.dayRate = 20;
-
+			#endregion
+			
             Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
@@ -197,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (npc.ai[2] == discordianBreathTimerMax - 30)
                 {
-                    Main.PlaySound(29, (int)npc.Center.X, (int)npc.Center.Y, 92);
+					Roar(roarTimerMax, false);
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= spawnTimerMax)
@@ -209,62 +243,85 @@ namespace AAMod.NPCs.Bosses.Shen
                     return;
                 }
             }
-            else if (npc.ai[0] == 0f && !player.dead)
+            else if (npc.ai[0] == 0f && !player.dead) //move to default point / pick new AI
             {
                 npc.chaseable = true;
-                if (npc.ai[1] == 0f)
-                {
-                    npc.ai[1] = 400 * Math.Sign((npc.Center - player.Center).X);
-                }
-				Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -300f);
-				MoveToPoint(playerPoint);
-				
+				bool playerPointInRange = false;
+				if(customAI[3] != 0.5f) //be sure we aren't waiting on a prep state!
+				{
+					if (npc.ai[1] == 0f)
+					{
+						npc.ai[1] = 400 * Math.Sign((npc.Center - player.Center).X);
+						npc.netUpdate = true;
+					}					
+					Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -300f);
+					MoveToPoint(playerPoint);
+					playerPointInRange = (playerPoint - npc.Center).Length() < 100f;
+				}
 				npc.ai[2] += 1f;
-				if((playerPoint - npc.Center).Length() < 100f && npc.ai[2] < (aiChangeRate - aiTooLongCheck))
+				if(playerPointInRange && npc.ai[2] < (aiChangeRate - aiTooLongCheck))
 				{
 					npc.ai[2] = aiChangeRate - aiTooLongCheck;
 				}
                 if (npc.ai[2] >= aiChangeRate)
                 {
-                    int aiChoice = 0;
-                    switch ((int)npc.ai[3]) //switch for attack modes
-                    {
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
-                        case 6:
-                            aiChoice = 1;
-                            break;
-                        case 7:
-                            npc.ai[3] = 1f;
-                            aiChoice = 2;
-                            break;
-                        case 8:
-                            npc.ai[3] = 0f;
-                            aiChoice = 3;
-                            break;
-                    }
-                    if (aiChoice == 1)
-                    {
-                        npc.ai[0] = 1f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
+                    float aiChoice = 0;
+					if(customAI[3] == 0.5f) //prep goes directly into charge
+					{
+						aiChoice = 1f;
+					}else
+					{
+						switch ((int)npc.ai[3]) //switch for attack modes
+						{
+							case 0:
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							case 5:
+							case 6:
+								aiChoice = 0.5f;
+								break;
+							case 7:
+								npc.ai[3] = 1f;
+								aiChoice = 2f;
+								break;
+							case 8:
+								npc.ai[3] = 0f;
+								aiChoice = 3f;
+								break;
+						}
+					}
+                    npc.ai[0] = aiChoice;
+                    npc.ai[1] = 0f;
+					npc.ai[2] = 0f;
+					customAI[3] = 0f;
+					if(aiChoice == 1f)
+					{
 						Vector2 vel = player.Center - npc.Center;
 						vel = Vector2.Normalize(vel) * 500f;
 						customAI[0] = player.Center.X + vel.X;
-						customAI[1] = player.Center.Y + vel.Y;
-                    }else
-                    {
-                        npc.ai[0] = aiChoice;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                    }
+						customAI[1] = player.Center.Y + vel.Y;	
+					}
                     npc.netUpdate = true;
                 }
             }
+			else if(npc.ai[0] == 0.5f) //charge attack prep
+			{
+				npc.chaseable = true;
+				float chargePrepSpot = 550;
+                if (npc.ai[1] == 0f)
+                {
+                    npc.ai[1] = chargePrepSpot * Math.Sign((npc.Center - player.Center).X);
+					npc.netUpdate = true;
+                }
+				Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -chargePrepSpot);
+				MoveToPoint(playerPoint);
+				if(Main.netMode != 1 && (playerPoint - npc.Center).Length() < 100f)
+				{
+					SwitchToAI(0f, 0f, aiChangeRate - 15, npc.ai[3]);
+                }
+			}
             else if (npc.ai[0] == 1f) //charge attack
             {
                 npc.dontTakeDamage = false;
@@ -273,104 +330,153 @@ namespace AAMod.NPCs.Bosses.Shen
 				MoveToPoint(point);
 				if(Main.netMode != 1 && (point - npc.Center).Length() < 100f)
 				{
-                    npc.ai[0] = 0f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 40f; //head start to rapidly charge
-                    npc.ai[3] += 2f;
-                    npc.netUpdate = true;
+					SwitchToAI(0f, 0f, 40f, npc.ai[3] + 2f);
                 }
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-				npc.velocity *= 0.8f;
+				Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
+				MoveToPoint(playerPoint);
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
-                if (npc.ai[1] == 0f)
-                {
-                    npc.ai[1] = 400 * Math.Sign((npc.Center - player.Center).X);
-                }
                 if (npc.ai[2] == 0f)
                 {
-                    Main.PlaySound(29, (int)npc.Center.X, (int)npc.Center.Y, 92);
+					Roar(roarTimerMax, false);
                 }
                 if (npc.ai[2] % discordianInfernoPercent == 0f)
                 {
-                    Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
+					Roar(8, true);
                     if (Main.netMode != 1)
                     {
-                        Vector2 infernoPos = npc.Center + new Vector2(200f * npc.direction, 60f);
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 100, 0f, 0f, mod.ProjectileType("DiscordianInferno"), damageDiscordianInferno, 0f, Main.myPlayer, 0f, 0f);
-						Main.projectile[projectile].velocity = new Vector2(npc.direction * MathHelper.Lerp(1f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-7f, 7f, (float)Main.rand.NextDouble()));
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == 1 ? 65f : -45f));
+						Vector2 vel = new Vector2(MathHelper.Lerp(3f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-3f, 3f, (float)Main.rand.NextDouble()));
+		
+						if(player.active && !player.dead)
+						{
+							float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+							infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+							vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+							vel *= (chargeSpeed / _chargeSpeed); //to compensate for players running away
+							vel += npc.velocity; //ditto as above
+							infernoPos += npc.Center;
+							infernoPos.Y -= 60;
+						}
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), damageDiscordianInferno, 0f, Main.myPlayer, 0f, 0f);
+						Main.projectile[projectile].velocity = vel;
+						Main.projectile[projectile].netUpdate = true;
                     }
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianInfernoTimerMax)
                 {
-                    npc.ai[0] = 0f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = -40f; //take longer before swapping to another AI
-                    npc.netUpdate = true;
+					SwitchToAI(0f, 0f, -40f, 0f);
                 }
             }
-            else if (npc.ai[0] == 3f) //Fire discordian breath (NOTE: BREATH SEEMS TO BE BROKEN)
+            else if (npc.ai[0] == 3f) //Fire firebomb (NOTE: BREATH SEEMS TO BE BROKEN)
             {
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
                 if (npc.ai[2] == discordianBreathTimerMax - 30)
                 {
-                    Main.PlaySound(29, (int)npc.Center.X, (int)npc.Center.Y, 92);
+					Roar(roarTimerMax, false);
 					if (Main.netMode != 1)
 					{
-						Vector2 secondPosition = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + npc.Center;
-						int projectile = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 1f, npc.target + 1); //changed
-						int projectile2 = Projectile.NewProjectile(secondPosition.X, secondPosition.Y, (float)npc.direction * 2, 8f, mod.ProjectileType("DiscordianBreath"), 0, 0f, Main.myPlayer, 0f, 0f); //changed
-					}		
+						for(int m = 0; m < 3; m++)
+						{
+							Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+							Vector2 vel = new Vector2(MathHelper.Lerp(6f, 9f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+		
+							if(player.active && !player.dead)
+							{
+								float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+								infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+								vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+								vel *= (chargeSpeed / _chargeSpeed); //to compensate for players running away
+								vel += npc.velocity; //ditto as above
+								infernoPos += npc.Center;
+								infernoPos.Y -= 50;								
+							}
+							int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("ShenFirebomb"), damageDiscordianInferno, 0f, Main.myPlayer, 0f, 0f);
+							Main.projectile[projectile].velocity = vel;
+							Main.projectile[projectile].netUpdate = true;
+						}
+					}
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianBreathTimerMax)
                 {
-                    npc.ai[0] = 0f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.netUpdate = true;
-                    return;
-                }
+                    SwitchToAI(0f, 0f, 0f, 1f);
+				}
             }
 			HandleFrames(player);
-			HandleRotations();			
+			HandleRotations(player);			
         }
 		
-		public bool Charging
+		public void SwitchToAI(float ai0, float ai1, float ai2, float ai3)
 		{
-			get
+			customAI[3] = npc.ai[0]; //last AI
+			npc.ai[0] = ai0; //handles AI state (charging, prep, fire, etc.)
+			npc.ai[1] = ai1; //handles X movement for some AI states
+			npc.ai[2] = ai2; //handles timers for the AI state
+			npc.ai[3] = ai3; //handles the next AI choice
+			npc.netUpdate = true;
+		}
+
+		public void Roar(int timer, bool fireSound)
+		{
+			roarTimer = timer;
+			if (fireSound)
 			{
-				return npc.ai[0] == 1;
+				Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
+			}else
+			{
+				Main.PlaySound(29, (int)npc.Center.X, (int)npc.Center.Y, 92);			
 			}
 		}
-		
+
 		public void MoveToPoint(Vector2 point)
 		{
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
-			if(dist.Length() < chargeSpeed)
+			float length = dist.Length();
+			if(length < chargeSpeed)
 			{
 				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / chargeSpeed);
 			}
 			npc.velocity = Vector2.Normalize(point - npc.Center);
-			npc.velocity *= (Charging ? chargeSpeed : normalSpeed) * velMultiplier;		
+			npc.velocity *= (Charging ? chargeSpeed : normalSpeed) * velMultiplier;	
+			if(!Charging)
+			{
+				if(length < 200f)
+				{
+					npc.velocity *= 0.9f;
+				}
+				if(length < 150f)
+				{
+					npc.velocity *= 0.9f;
+				}
+				if(length < 100f)
+				{
+					npc.velocity *= 0.8f;
+				}				
+				if(length < 50f)
+				{
+					npc.velocity *= 0.8f;
+				}				
+			}			
 		}
-	
+
 		public void HandleFrames(Player player)
 		{
-			npc.frame = new Rectangle(0, 0, 444, 130);
+			npc.frame = new Rectangle(0, (Roaring ? frameY : 0), 444, frameY);
 			if(Charging)
 			{
 				npc.frameCounter = 0;
-				wingFrame.Y = wingFrameY * 1;
+				wingFrame.Y = wingFrameY;
 			}else
 			{
 				npc.frameCounter++;
-				if (npc.frameCounter >= 3)
+				if (npc.frameCounter >= 5)
 				{
 					npc.frameCounter = 0;
 					wingFrame.Y += wingFrameY;
@@ -384,14 +490,19 @@ namespace AAMod.NPCs.Bosses.Shen
 			npc.direction = (npc.Center.X < player.Center.X ? 1 : -1);
 		}
 
-		public void HandleRotations()
+		public void HandleRotations(Player player)
 		{
+			if(LookAtPlayer)
+			{
+				Vector2 diff = player.Center - npc.Center;
+				BaseAI.LookAt(npc.Center - diff, npc, 3, 0f, 0.12f, false);			
+			}else
 			if(Charging)
 			{
 				BaseAI.LookAt(npc.Center - npc.velocity, npc, 0, 0f, 0f, false);			
 			}else
 			{
-				BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 3, 0f, 0.12f, false);
+				BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 3, 0f, 0.05f, false);
 			}
 		}
     
@@ -399,67 +510,83 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (npc.life <= 0)
             {
-                for (int num621 = 0; num621 < 60; num621++)
+                for (int m = 0; m < 60; m++)
                 {
-                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num622].velocity *= 3f;
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[dustID].velocity *= 3f;
                     if (Main.rand.Next(2) == 0)
                     {
-                        Main.dust[num622].scale = 0.5f;
-                        Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                        Main.dust[dustID].scale = 0.5f;
+                        Main.dust[dustID].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
                 }
-                for (int num623 = 0; num623 < 90; num623++)
+                for (int m = 0; m < 90; m++)
                 {
-                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 3f);
-                    Main.dust[num624].noGravity = true;
-                    Main.dust[num624].velocity *= 5f;
-                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num624].velocity *= 2f;
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 3f);
+                    Main.dust[dustID].noGravity = true;
+                    Main.dust[dustID].velocity *= 5f;
+                    dustID = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[dustID].velocity *= 2f;
                 }
             }else
 			{
-                for (int num621 = 0; num621 < 5; num621++)
+                for (int m = 0; m < 12; m++)
                 {
-                    int num622 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num622].velocity *= 3f;
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
+                    Main.dust[dustID].velocity *= 3f;
                     if (Main.rand.Next(2) == 0)
                     {
-                        Main.dust[num622].scale = 0.5f;
-                        Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                        Main.dust[dustID].scale = 0.5f;
+                        Main.dust[dustID].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
-                }				
-                for (int num623 = 0; num623 < 3; num623++)
+                }
+                for (int m = 0; m < 5; m++)
                 {
-                    int num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 3f);
-                    Main.dust[num624].noGravity = true;
-                    Main.dust[num624].velocity *= 5f;
-                    num624 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num624].velocity *= 2f;
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[dustID].noGravity = true;
+                    Main.dust[dustID].velocity *= 5f;
+                    dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 1.5f);
+                    Main.dust[dustID].velocity *= 2f;
                 }				
 			}
         }
 
         public override void NPCLoot()
         {
-            if (!Main.expertMode)
-            {
-                AAWorld.downedShen = true;
-                npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
-                string[] lootTable = { "ChaosSlayer" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
-                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                //npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
-                npc.DropLoot(Items.Boss.EXSoul.type);
-                Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (Main.expertMode)
-            {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
-            }
-            npc.value = 0f;
-            npc.boss = false;
+			if(isAwakened)
+			{
+				if (Main.expertMode)
+				{
+					BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
+					
+					npc.DropBossBags();
+					AAWorld.downedYamata = true;
+					if (Main.rand.NextFloat() < 0.1f)
+					{
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+					}
+				}
+			}else
+			{
+				if (!Main.expertMode)
+				{
+					AAWorld.downedShen = true;
+					//npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
+					//string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
+					//int loot = Main.rand.Next(lootTable.Length);
+					//npc.DropLoot(mod.ItemType(lootTable[loot]));
+					//npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
+					//npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
+					npc.DropLoot(Items.Boss.EXSoul.type);
+					Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+				}
+				if (Main.expertMode)
+				{
+					NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
+				}
+				npc.value = 0f;
+				npc.boss = false;
+			}
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
@@ -468,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			Texture2D currentWingTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueWings") : mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonWings"));
 
 			//offset
-			npc.position.Y += 40f;
+			npc.position.Y += 130f;
 
 			//draw body/charge afterimage
 			if(Charging)
@@ -477,11 +604,13 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
 			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 			//draw wings
-			float wingOffset = (wingFrameY * 0.5f) - frameY + 44;			
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0f, npc.gfxOffY + wingOffset), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+			//float wingOffset = (wingFrameY * 0.5f) - frameY + 44;
+			//Vector2 origin = new Vector2((float)(wingFrame.Width / 2), (float)(wingFrameY / 5 / 2));
+
+			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor); //, false, origin);
 
 			//deoffset
-			npc.position.Y -= 40f;
+			npc.position.Y -= 130f; // offsetVec;
 
             return false;
         }

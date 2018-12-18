@@ -45,15 +45,15 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
 				for(int m = 0; m < 3; m++)
 				{
-					int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.White, 1.6f);
-					Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
-					Main.dust[dustID2].noLight = false;
-					Main.dust[dustID2].noGravity = true;
+					int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.White, 1.6f);
+					Main.dust[dustID].velocity = -projectile.velocity * 0.5f;
+					Main.dust[dustID].noLight = false;
+					Main.dust[dustID].noGravity = true;
 				}
-				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Purple, 2f);
-				Main.dust[dustID].velocity = -projectile.velocity * 0.5f;
-				Main.dust[dustID].noLight = false;
-				Main.dust[dustID].noGravity = true;
+				int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Purple, 2f);
+				Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
+				Main.dust[dustID2].noLight = false;
+				Main.dust[dustID2].noGravity = true;
 			}
         }
         public override void Kill(int timeLeft)

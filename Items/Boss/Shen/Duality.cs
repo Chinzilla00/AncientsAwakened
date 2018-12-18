@@ -108,5 +108,16 @@ While in the Mire, your speed is increased by 50%");
                 }
             }
         }
+
+        public override void AddRecipes()  //How to craft this sword
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "TaiyangBaolei", 1);
+            recipe.AddIngredient(null, "Naitokurosu", 1);
+            recipe.AddIngredient(null, "ChaosSoul", 1);
+            recipe.AddTile(null, "AncientForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

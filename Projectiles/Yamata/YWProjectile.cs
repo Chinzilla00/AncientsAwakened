@@ -13,7 +13,12 @@ namespace AAMod.Projectiles.Yamata
 			DisplayName.SetDefault("Hydra Soul");
             Main.projFrames[projectile.type] = 4;
         }
-    	
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 30;

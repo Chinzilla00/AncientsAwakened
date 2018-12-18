@@ -77,6 +77,17 @@ namespace AAMod.Items.Boss.Shen
 				Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX * 1f, speedY * 1f, (m == 0 ? mod.ProjectileType("ChaosSlayerSwordRed") : mod.ProjectileType("ChaosSlayerSwordBlue")), damage, knockback, player.whoAmI);
 			}
 			return false;
-		}		
-	}
+		}
+
+        public override void AddRecipes()  //How to craft this sword
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ReignOfFire", 1);
+            recipe.AddIngredient(null, "Hydraslayer", 1);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddTile(null, "AncientForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

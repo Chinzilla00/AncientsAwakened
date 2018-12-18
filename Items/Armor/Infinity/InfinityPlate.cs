@@ -12,11 +12,10 @@ namespace AAMod.Items.Armor.Infinity
 	{
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
 			DisplayName.SetDefault("Infinity Slayer Armor");
-			Tooltip.SetDefault(@"30% increased damage
-15% increased damage resistance
-30% increased melee speed
+            Tooltip.SetDefault(@"35% increased ranged damage and critical strike chance
+12% increased damage resistance
+25% decreased ammo consumption
 Infinite power and malice flows through this armor");
 		}
 
@@ -24,19 +23,15 @@ Infinite power and malice flows through this armor");
 		{
 			item.width = 30;
 			item.height = 20;
-			item.value = 3000000;
-			item.defense = 52;
+            item.value = Item.sellPrice(3, 0, 0, 0);
+            item.defense = 52;
 		}
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.3f;
-            player.thrownDamage *= 1.3f;
-            player.minionDamage *= 1.3f;
-            player.meleeDamage *= 1.3f;
-            player.magicDamage *= 1.3f;
-            player.endurance *= 1.15f;
-            player.meleeSpeed *= 1.15f;
+            player.rangedDamage *= 1.35f;
+            player.endurance *= 1.12f;
+            player.ammoCost75 = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

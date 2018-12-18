@@ -22,19 +22,14 @@ namespace AAMod.Projectiles.Yamata
             projectile.melee = true;
             projectile.noEnchantments = true;
         }
-		
-		public override void AI()
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
+        public override void AI()
 		{
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(45, 46, 70), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, new Color(45, 46, 70), 1f)];
-                dust1.noGravity = true;
-                dust2.noGravity = true;
-            }
             if (projectile.ai[0] == 0f)
             {
                 projectile.rotation += projectile.velocity.X * 0.1f;

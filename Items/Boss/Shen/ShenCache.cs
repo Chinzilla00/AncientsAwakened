@@ -138,11 +138,12 @@ namespace AAMod.Items.Boss.Shen
                     }
                 }
             }
-            player.QuickSpawnItem(mod.ItemType("Discordium"), Main.rand.Next(30, 40));
+            player.QuickSpawnItem(mod.ItemType("ChaosScale"), Main.rand.Next(30, 40));
+            player.QuickSpawnItem(mod.ItemType("ChaosSoul"));
             player.QuickSpawnItem(mod.ItemType("EXSoul"));
             string[] lootTable = 
             {
-                
+                "ChaosSlayer", "MeteorStrike"
             };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

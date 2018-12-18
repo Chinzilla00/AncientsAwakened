@@ -6,11 +6,6 @@ namespace AAMod.Dusts
 {
     public class PepsiDust : ModDust
 	{
-        public override void OnSpawn(Dust dust)
-        {
-            dust.scale *= 1.3f;
-        }
-
         public override bool MidUpdate(Dust dust)
         {
             dust.rotation += dust.velocity.X / 3f;

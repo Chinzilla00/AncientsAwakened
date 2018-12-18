@@ -301,6 +301,9 @@
     <Compile Include="Items\Armor\Paladin\Paladin_Boots.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Chestplate.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Helmet.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
     <Compile Include="Items\Armor\Plantera\BeastBody.cs" />
     <Compile Include="Items\Armor\Plantera\BeastHelmet.cs" />
     <Compile Include="Items\Armor\Plantera\BeastLegs.cs" />
@@ -503,6 +506,7 @@
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Shen\ChaosScale.cs" />
     <Compile Include="Items\Boss\Shen\Duality.cs" />
+    <Compile Include="Items\Boss\Shen\MeteorStrike.cs" />
     <Compile Include="Items\Boss\Shen\ShenCache.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssalYari.cs" />
@@ -1091,6 +1095,9 @@
     <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlue.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordRed.cs" />
+    <Compile Include="Projectiles\Shen\Meteor.cs" />
+    <Compile Include="Projectiles\Shen\MeteorBoom.cs" />
+    <Compile Include="Projectiles\Shen\MeteorStrike.cs" />
     <Compile Include="Projectiles\TitanAxeEX.cs" />
     <Compile Include="Projectiles\TitanEX.cs" />
     <Compile Include="Projectiles\MLP.cs" />
@@ -1184,6 +1191,7 @@
     <Compile Include="Tiles\Crates\InfernoCrate.cs" />
     <Compile Include="Tiles\Crates\MireCrate.cs" />
     <Compile Include="Tiles\DragonEgg.cs" />
+    <Compile Include="Tiles\DragonRose.cs" />
     <Compile Include="Tiles\HydraPod.cs" />
     <Compile Include="Tiles\IZBox.cs" />
     <Compile Include="Tiles\Sticker.cs" />
@@ -1409,6 +1417,7 @@
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
+    <Content Include="BlankTex.png" />
     <Content Include="Buffs\BabyPhoenix.png" />
     <Content Include="Buffs\Broodmini.png" />
     <Content Include="Buffs\BurningAsh.png" />
@@ -1523,6 +1532,12 @@
     <Content Include="Glowmasks\AmphibiousProjectileEX_Glow.png" />
     <Content Include="Glowmasks\AMR_Glow.png" />
     <Content Include="Glowmasks\AncientForge_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteCofferplate_Arms_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteCofferplate_Body_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteCofferplate_Female_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteCowl_Head_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteLegguards_Legs_Glow.png" />
+    <Content Include="Glowmasks\AncientGroviteWings_Wings_Glow.png" />
     <Content Include="Glowmasks\Annihilator_Glow.png" />
     <Content Include="Glowmasks\Apocalypse_Glow.png" />
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
@@ -1559,6 +1574,7 @@
     <Content Include="Glowmasks\ChaosSoul_Glow.png" />
     <Content Include="Glowmasks\Chaos_Glow.png" />
     <Content Include="Glowmasks\Crescent_Glow.png" />
+    <Content Include="Glowmasks\Crescent_GlowP.png" />
     <Content Include="Glowmasks\CthulhusBlade_Glow.png" />
     <Content Include="Glowmasks\CuriousClaw_Glow.png" />
     <Content Include="Glowmasks\CyberneticBell_Glow.png" />
@@ -1605,6 +1621,9 @@
     <Content Include="Glowmasks\DecayScythe_Glow.png" />
     <Content Include="Glowmasks\DemonGauntlet_Glow.png" />
     <Content Include="Glowmasks\DemonStaff_Glow.png" />
+    <Content Include="Glowmasks\DiscordiumBrick_Glow.png" />
+    <Content Include="Glowmasks\DiscordiumOre_Glow.png" />
+    <Content Include="Glowmasks\DiscordiumOre_Glow1.png" />
     <Content Include="Glowmasks\Discordium_Glow.png" />
     <Content Include="Glowmasks\DMC_Glow.png" />
     <Content Include="Glowmasks\DMK_Glow.png" />
@@ -1724,6 +1743,7 @@
     <Content Include="Glowmasks\IZCache_Glow.png" />
     <Content Include="Glowmasks\IZTrophy_Glow.png" />
     <Content Include="Glowmasks\JungleReaperP_Glow.png" />
+    <Content Include="Glowmasks\Lantern_Glow.png" />
     <Content Include="Glowmasks\Laser_Rifle_Glow.png" />
     <Content Include="Glowmasks\Lolkat_Glow.png" />
     <Content Include="Glowmasks\LuminiteOre_Glow.png" />
@@ -1764,6 +1784,13 @@
     <Content Include="Glowmasks\OroborosDoorShut_Glow.png" />
     <Content Include="Glowmasks\OroborosLamp_Glow.png" />
     <Content Include="Glowmasks\PaladinsSmeltery_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosGreaves_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosGreaves_Legs_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosKabuto_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosKabuto_Head_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosPlate_Arms_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosPlate_Body_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosPlate_Female_Glow.png" />
     <Content Include="Glowmasks\PerfectChaos_Glow.png" />
     <Content Include="Glowmasks\PiranhaUnit_Glow.png" />
     <Content Include="Glowmasks\Piranha_Glow.png" />
@@ -1903,6 +1930,7 @@
     <Content Include="Glowmasks\YamataHeadF1_Glow.png" />
     <Content Include="Glowmasks\YamataHeadF2_Glow.png" />
     <Content Include="Glowmasks\YamataHead_Glow.png" />
+    <Content Include="Glowmasks\YamataTerratool_Axe_Glow.png" />
     <Content Include="Glowmasks\YamataTerratool_Glow.png" />
     <Content Include="Glowmasks\Zero2Box_Glow.png" />
     <Content Include="Glowmasks\ZeroArrow_Glow.png" />
@@ -2294,6 +2322,14 @@
     <Content Include="Items\Armor\Paladin\Paladin_Crown_Head.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves_Legs.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Arms.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Body.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Female.png" />
     <Content Include="Items\Armor\Plantera\BeastBody.png" />
     <Content Include="Items\Armor\Plantera\BeastBody_Arms.png" />
     <Content Include="Items\Armor\Plantera\BeastBody_Body.png" />
@@ -2469,7 +2505,6 @@
     <Content Include="Items\BossSummons\EquinoxWorm.png" />
     <Content Include="Items\BossSummons\HydraChow.png" />
     <Content Include="Items\BossSummons\InfinityOverloader.png" />
-    <Content Include="Items\BossSummons\InfinityOverloaderInactive.png" />
     <Content Include="Items\BossSummons\InterestingClaw.png" />
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
@@ -2574,6 +2609,7 @@
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Shen\ChaosScale.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayer.png" />
+    <Content Include="Items\Boss\Shen\ChaosSlayerEX.png" />
     <Content Include="Items\Boss\Shen\ChaosSoul.png" />
     <Content Include="Items\Boss\Shen\Duality.png" />
     <Content Include="Items\Boss\Shen\MeteorStrike.png" />
@@ -2678,6 +2714,7 @@
     <Content Include="Items\Magic\GelWand.png" />
     <Content Include="Items\Magic\GildedStaff.png" />
     <Content Include="Items\Magic\Gong.png" />
+    <Content Include="Items\Magic\MadnessStaff.png" />
     <Content Include="Items\Magic\MagicFlower.png" />
     <Content Include="Items\Magic\ManaRose.png" />
     <Content Include="Items\Magic\RazorLeaf.png" />
@@ -3543,6 +3580,11 @@
     <Content Include="Projectiles\Shen\ChaosSlayerSword.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlue.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordRed.png" />
+    <Content Include="Projectiles\Shen\DiscordBeam.png" />
+    <Content Include="Projectiles\Shen\DiscordianNova.png" />
+    <Content Include="Projectiles\Shen\Meteor.png" />
+    <Content Include="Projectiles\Shen\MeteorBoom.png" />
+    <Content Include="Projectiles\Shen\MeteorStrike.png" />
     <Content Include="Projectiles\Shen\ShenFire.png" />
     <Content Include="Projectiles\SpookerangP.png" />
     <Content Include="Projectiles\SpookyKnife.png" />
@@ -3666,6 +3708,7 @@
     <Content Include="Tiles\Depthsand.png" />
     <Content Include="Tiles\DiscordiumBrick.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
+    <Content Include="Tiles\DragonRose.png" />
     <Content Include="Tiles\FulguriumPlating.png" />
     <Content Include="Tiles\IZBox.png" />
     <Content Include="Tiles\MonarchBox.png" />

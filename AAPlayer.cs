@@ -78,6 +78,7 @@ namespace AAMod
         public bool zeroSet;
         public bool valkyrieSet;
         public bool infinitySet;
+        public bool perfectChaos;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -180,6 +181,7 @@ namespace AAMod
             darkmatterSetSu = false;
             darkmatterSetTh = false;
             infinitySet = false;
+            perfectChaos = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -244,7 +246,7 @@ namespace AAMod
             // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set PepsiAccessory
             if (player.townNPCs >= 1 && PepsiAccessory)
             {
-                player.AddBuff(mod.BuffType<Buffs.Pepsi>(), 60, true);
+                player.AddBuff(mod.BuffType<Pepsi>(), 60, true);
             }
         }
 
@@ -643,73 +645,6 @@ namespace AAMod
                 knockback += 5f;
             }
         }
-        
-
-
-        public void YamataSnag()
-        {
-            if (yamata >= 0 && Main.npc[yamata].active)
-            {
-                float num = Main.npc[yamata].position.X + 40f;
-                if (Main.npc[yamata].direction > 0)
-                {
-                    num -= 96f;
-                }
-                if (player.position.X + player.width > num && player.position.X < num + 140f && player.gross)
-                {
-                    player.noKnockback = false;
-                    player.Hurt(PlayerDeathReason.LegacyDefault(), 50, Main.npc[yamata].direction, false, false, false, -1);
-                }
-                if (!player.gross && player.position.Y > (float)((Main.maxTilesY - 250) * 16) && player.position.X > num - 1920f && player.position.X < num + 1920f)
-                {
-                    player.AddBuff(37, 10, true);
-                    Main.PlaySound(4, (int)Main.npc[yamata].position.X, (int)Main.npc[yamata].position.Y, 10, 1f, 0f);
-                }
-                if (player.gross)
-                {
-                    if (player.position.Y < (float)((Main.maxTilesY - 200) * 16))
-                    {
-                        player.AddBuff(38, 10, true);
-                    }
-                    if (Main.npc[yamata].direction < 0)
-                    {
-                        if (player.position.X + (float)(player.width / 2) > Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) + 40f)
-                        {
-                            player.AddBuff(38, 10, true);
-                        }
-                    }
-                    else if (player.position.X + (float)(player.width / 2) < Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) - 40f)
-                    {
-                        player.AddBuff(38, 10, true);
-                    }
-                }
-                if (Snagged)
-                {
-                    player.controlHook = false;
-                    player.controlUseItem = false;
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].aiStyle == 7)
-                        {
-                            Main.projectile[i].Kill();
-                        }
-                    }
-                    Vector2 center = player.Center;
-                    float num2 = Main.npc[yamata].position.X + (float)(Main.npc[yamata].width / 2) - center.X;
-                    float num3 = Main.npc[yamata].position.Y + (float)(Main.npc[yamata].height / 2) - center.Y;
-                    float num4 = (float)Math.Sqrt((double)(num2 * num2 + num3 * num3));
-                    if (num4 > 3000f)
-                    {
-                        player.KillMe(PlayerDeathReason.ByOther(11), 1000.0, 0, false);
-                        return;
-                    }
-                    if (Main.npc[yamata].position.X < 608f || Main.npc[yamata].position.X > (float)((Main.maxTilesX - 38) * 16))
-                    {
-                        player.KillMe(PlayerDeathReason.ByOther(12), 1000.0, 0, false);
-                    }
-                }
-            }
-        }
 
         public void DrawItem(int i)
         {
@@ -868,6 +803,11 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
+            }
+
+            if (perfectChaos && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
             if (infinitySet && Main.rand.Next(2) == 0)
@@ -1152,9 +1092,14 @@ namespace AAMod
                 }
             }
 
-            if (infinitySet && Main.rand.Next(2) == 0)
+            if (perfectChaos && proj.melee && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(mod.BuffType<Buffs.InfinityScorch>(), 300);
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+            }
+
+            if (infinitySet && proj.ranged && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(mod.BuffType<InfinityScorch>(), 300);
             }
 
             if (zeroSet && (proj.melee || proj.ranged) && Main.rand.Next(2) == 0)
@@ -1476,6 +1421,10 @@ namespace AAMod
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/InfinityVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosKabuto")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/PerfectChaosKabuto_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -1505,6 +1454,14 @@ namespace AAMod
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
@@ -1530,6 +1487,10 @@ namespace AAMod
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+            }
         }); 
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
@@ -1554,6 +1515,10 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGreaves")))
             {
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
+            {
+                BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
             }
         }); 
 

@@ -1017,6 +1017,44 @@ namespace AAMod
                 recipe.SetResult(ItemID.ShroomiteBar, 1);
                 recipe.AddRecipe();
             }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Deathweed, 1);
+                recipe.AddIngredient(null, "DragonClaw", 3);
+                recipe.AddIngredient(null, "DragonScale", 1);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.RagePotion, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Deathweed, 1);
+                recipe.AddIngredient(null, "HydraClaw", 3);
+                recipe.AddIngredient(null, "MirePod", 1);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WrathPotion, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Waterleaf, 1);
+                recipe.AddIngredient(null, "MirePod", 2);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WaterWalkingPotion, 1);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Waterleaf, 1);
+                recipe.AddIngredient(null, "DragonScale", 2);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ObsidianSkinPotion, 1);
+                recipe.AddRecipe();
+            }
         }
         #endregion
 
