@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.PerfectChaos
 15% increased damage resistance
 15% increased melee speed
 45% increased movement speed
-The power of discortian rage radiates from this armor");
+The power of discordian rage radiates from this armor");
         }
 
 		public override void SetDefaults()

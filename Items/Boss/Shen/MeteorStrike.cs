@@ -28,7 +28,7 @@ Inflicts Discordian Inferno");
         {
             item.shoot = mod.ProjectileType("Meteor");
             item.damage = 300;            //Sword damage
-            item.melee = true;            //if it's melee
+            item.magic = true;            //if it's magic
             item.width = 32;              //Sword width
             item.height = 36;             //Sword height
             item.useTime = 16;          //how fast 
@@ -36,6 +36,7 @@ Inflicts Discordian Inferno");
             item.useStyle = 5;      //Style is how this item is used, 1 is the style of the sword
             item.knockBack = .5f;      //Sword knockback
             item.value = Item.buyPrice(1, 0, 0, 0);
+            item.mana = 10;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
