@@ -6,10 +6,10 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.Items.Armor.Dragon
+namespace AAMod.Items.Armor.PerfectChaos
 {
 	[AutoloadEquip(EquipType.Body)]
-	public class Dragon_Breastplate : ModItem
+	public class PerfectChaosPlate : ModItem
 	{
         public override void SetStaticDefaults()
         {
