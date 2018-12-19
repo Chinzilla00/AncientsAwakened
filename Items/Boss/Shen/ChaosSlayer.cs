@@ -27,11 +27,7 @@ namespace AAMod.Items.Boss.Shen
             item.useAnimation = 25;
             item.useTime = 25;
             item.UseSound = SoundID.Item103;
-<<<<<<< HEAD
-            item.damage = 300;
-=======
             item.damage = 400;
->>>>>>> fa41b507b5fcb2a35b8d406390696906a7067d27
             item.knockBack = 12;
             item.melee = true;
             item.autoReuse = true;
