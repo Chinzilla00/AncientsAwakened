@@ -25,8 +25,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 writer.Write((float)internalAI[0]);
                 writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
             }
         }
 
@@ -37,15 +35,13 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
             }
         }
 
         public override void SetStaticDefaults()
         {
             displayName = "Orthrus X";
-            Main.npcFrameCount[npc.type] = 15;
+            Main.npcFrameCount[npc.type] = 12;
         }
 
         public override void SetDefaults()
@@ -68,6 +64,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
             bossBag = mod.ItemType("OrthrusBag");
+            npc.noTileCollide = false;
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -90,65 +87,146 @@ namespace AAMod.NPCs.Bosses.Orthrus
             }
             AAWorld.downedOrthrus = true ;
         }
-
-        public float[] internalAI = new float[4];
+        
         public int playerTooFarDist = 800;
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
         public Player playerTarget = null;
+        public static int AISTATE_TURRET = 0, AISTATE_FLY = 1, AISTATE_DROP = 2, AISTATE_RISE = 3;
+        public float[] internalAI = new float[4];
 
         //clientside stuff
         public Vector2 bottomVisualOffset = default(Vector2);
         public Vector2 topVisualOffset = default(Vector2);
-		
 
         public override void AI()
         {
+            
 
-            if (!HeadsSpawned)
+            if (internalAI[1] == AISTATE_TURRET)
             {
-                if (Main.netMode != 1)
+                if (!HeadsSpawned)
                 {
-                    int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 60, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
-                    Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 60, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
-                    Head2 = Main.npc[latestNPC];
+                    if (Main.netMode != 1)
+                    {
+                        int latestNPC = npc.whoAmI;
+                        latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+                        Main.npc[latestNPC].realLife = npc.whoAmI;
+                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                        Head1 = Main.npc[latestNPC];
+                        latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+                        Main.npc[latestNPC].realLife = npc.whoAmI;
+                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                        Head2 = Main.npc[latestNPC];
+                    }
+                    HeadsSpawned = true;
                 }
-                HeadsSpawned = true;
+                npc.noTileCollide = true;
+                npc.noGravity = true;
+                if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
+                {
+                    
+                }
+                else
+                {
+                    internalAI[1] = AISTATE_RISE;
+                }
             }
-			
-            prevHalfHPLeft = halfHPLeft;
-            prevFourthHPLeft = fourthHPLeft;
-            halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
-            fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
-            
-            for (int m = npc.oldPos.Length - 1; m > 0; m--)
-            {
-                npc.oldPos[m] = npc.oldPos[m - 1];
-            }
-            npc.oldPos[0] = npc.position;
 
-            bool foundTarget = TargetClosest();
-            if (foundTarget)
+            if (internalAI[1] == AISTATE_FLY)
             {
-                int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
-                npc.timeLeft = 300;
-                float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
-                if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
-                if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
-                if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
-                AIMovementNormal();
-            }else
-            {
-                AIMovementRunAway();
+
+                HeadsSpawned = false;
+                npc.noTileCollide = true;
+                npc.noGravity = true;
+                if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f  || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
+                {
+                    BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 100f, 60, 1.5f);
+                }
+                else
+                {
+                    internalAI[1] = AISTATE_DROP;
+                }
             }
-            bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
-            
+
+            npc.frameCounter++;
+
+            if (internalAI[1] == AISTATE_TURRET) //Standing
+            {
+                if (npc.frameCounter >= 5)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += 102;
+                    if (npc.frame.Y > (102 * 3))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
+                }
+            }
+            if (internalAI[1] == AISTATE_FLY) //Following
+            {
+                if (npc.frameCounter >= 5)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += 102;
+                    if (npc.frame.Y > (102 * 7) || npc.frame.Y < (102 * 3))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 102 * 4;
+                    }
+                }
+                npc.noGravity = true;
+            }
+            if (internalAI[1] == AISTATE_RISE) //Rising
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter < 5)
+                {
+                    npc.frame.Y = 102 * 11;
+                }
+                if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 102 * 10;
+                }
+                if (npc.frameCounter < 15)
+                {
+                    npc.frame.Y = 102 * 9;
+                }
+                if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 102 * 8;
+                }
+                if (npc.frameCounter < 25)
+                {
+                    internalAI[1] = AISTATE_FLY;
+                }
+            }
+            if (internalAI[1] == AISTATE_DROP) //Dropping
+            {
+                npc.noGravity = false;
+                if (npc.frameCounter < 5)
+                {
+                    npc.frame.Y = 102 * 8;
+                }
+                if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 102 * 9;
+                }
+                if (npc.frameCounter < 15)
+                {
+                    npc.frame.Y = 102 * 10;
+                }
+                if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 102 * 11;
+                }
+                if (npc.frameCounter < 25)
+                {
+                    internalAI[1] = AISTATE_TURRET;
+                }
+            }
+
         }
 
         public void AIMovementRunAway()

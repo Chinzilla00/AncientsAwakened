@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             npc.noTileCollide = true;
             npc.height = 50;
-            npc.width = 444;
+            npc.width = 250;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
@@ -89,23 +89,25 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public bool spawnalpha = false;
 		public bool isAwakened = false;
-		public float normalSpeed = 15f;
-		public float _chargeSpeed = 30f; //you can change this to change the max charge speed outside of people running away
-		public float chargeSpeed 
+		public float _normalSpeed = 15f; //base for normal movement
+		public float _chargeSpeed = 40f; //base for charge movement
+		public float moveSpeed
 		{
 			get
 			{
+				float playerRunAcceleration = 1f;
 				if(Main.player[npc.target].active && !Main.player[npc.target].dead) //if you have a target, speed up to keep up
 				{
-					float playerRunAcceleration = Main.player[npc.target].velocity.Y == 0f ? Math.Abs(Main.player[npc.target].moveSpeed * 0.8f) : (Main.player[npc.target].runAcceleration * 1.2f);
+					playerRunAcceleration = Math.Max(Math.Abs(Main.player[npc.target].moveSpeed), Main.player[npc.target].runAcceleration);
 					if (playerRunAcceleration <= 1f) playerRunAcceleration = 1f;
-					return playerRunAcceleration * _chargeSpeed;
 				}
-				return _chargeSpeed;
-			}
-			set
-			{
-				_chargeSpeed = value;
+				if(Charging)
+				{
+					return _chargeSpeed * playerRunAcceleration;
+				}else
+				{
+					return _normalSpeed * playerRunAcceleration;
+				}
 			}
 		}
 		public bool ChargePrep
@@ -121,22 +123,29 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
 				return npc.ai[0] == 1;
 			}
-		}		
-		public int spawnTimerMax = 100; //time to sit when you spawn
-        public int discordianInfernoTimerMax = 80; //shoot fireballs timer
-        public int discordianInfernoPercent = 5; //the % amount to shoot fireballs
-		public bool LookAtPlayer
+		}
+		public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
 		{
 			get
 			{
-				return ChargePrep || npc.ai[0] == 2;
+				Player player = Main.player[npc.target];
+				if(player == null || !player.active || player.dead) return false;
+
+				if(ChargePrep) return true; //always snap when prepping a charge to prevent a stall
+				
+				return false;
 			}
 		}
-        public int discordianBreathTimerMax = 90; //shoot breath timer
+		public int spawnTimerMax = 100; //time to sit when you spawn
+        public int discordianInfernoTimerMax = 105; //shoot fireballs timer
+        public int discordianInfernoPercent = 10; //the % amount to shoot fireballs
+        public int discordianFirebombTimerMax = 105; //shoot firebombs timer
+		public int discordianFirebombPercent = 30; //the % amount to shoot firebombs
 		public int aiChangeRate = 100; //the rate to jump to another ai. (in truth this is ai[2], this is what it is checked against by default.)
 		public int aiTooLongCheck = 60; //if he takes too long to change ai states this forces it to happen soon. smaller value == faster change.
 		
 		public int damageDiscordianInferno = 120; //how much damage the inferno fire does.
+		public int damageDiscordianFirebomb = 140; //how much damage the firebomb does.
 		
 		//clientside stuff
 		public Rectangle wingFrame = new Rectangle(0, 0, 444, 364); //the wing frame.
@@ -151,15 +160,26 @@ namespace AAMod.NPCs.Bosses.Shen
 				return roarTimer > 0;
 			}
 		}
+		public bool LookAtPlayer
+		{
+			get
+			{
+				return ChargePrep || npc.ai[0] == 2;
+			}
+		}		
+
+		public int chargeWidth = 50;
+		public int normalWidth = 250;
 
         public override void AI()
         {
 			#region preamble stuff
 			if(isAwakened) //set awakened stats
 			{
-				normalSpeed = 17f;
-				chargeSpeed = 32f;
-				discordianInfernoPercent = 4;
+				_normalSpeed = 20f;
+				_chargeSpeed = 50f;
+				discordianInfernoPercent = 5;
+				discordianFirebombPercent = 20;
 				aiTooLongCheck = 50;
 			}
             if (npc.alpha > 0 && !spawnalpha)
@@ -171,10 +191,28 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha = 0;
                 spawnalpha = true;
             }
-			if(Roaring) roarTimer--;			
+			if(Roaring) roarTimer--;	
+
+			if(Charging)
+			{
+				if(npc.width != chargeWidth)
+				{
+					Vector2 center = npc.Center;
+					npc.width = chargeWidth;
+					npc.Center = center;
+					npc.netUpdate = true;
+				}
+			}else
+			if(npc.width != normalWidth)
+			{
+				Vector2 center = npc.Center;
+				npc.width = normalWidth;
+				npc.Center = center;
+				npc.netUpdate = true;
+			}
 			
-            Main.fastForwardTime = true;
-            Main.dayRate = 20;
+            //Main.fastForwardTime = true;
+            //Main.dayRate = 20;
 			#endregion
 			
             Player player = Main.player[npc.target];
@@ -229,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.velocity.Y = -2f;
                 }
-                if (npc.ai[2] == discordianBreathTimerMax - 30)
+                if (npc.ai[2] == discordianFirebombTimerMax - 30)
                 {
 					Roar(roarTimerMax, false);
                 }
@@ -298,6 +336,7 @@ namespace AAMod.NPCs.Bosses.Shen
 					customAI[3] = 0f;
 					if(aiChoice == 1f)
 					{
+
 						Vector2 vel = player.Center - npc.Center;
 						vel = Vector2.Normalize(vel) * 500f;
 						customAI[0] = player.Center.X + vel.X;
@@ -326,8 +365,14 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
-				Vector2 point = new Vector2(customAI[0], customAI[1]);
+				if (npc.ai[1] == 0f)
+				{
+					npc.ai[1] = 500 * -Math.Sign((npc.Center - player.Center).X);
+					npc.netUpdate = true;
+				}
+				Vector2 point = player.Center + new Vector2(npc.ai[1], 500f);				
 				MoveToPoint(point);
+				
 				if(Main.netMode != 1 && (point - npc.Center).Length() < 100f)
 				{
 					SwitchToAI(0f, 0f, 40f, npc.ai[3] + 2f);
@@ -349,19 +394,22 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == 1 ? 65f : -45f));
-						Vector2 vel = new Vector2(MathHelper.Lerp(3f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-3f, 3f, (float)Main.rand.NextDouble()));
+						Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
 		
 						if(player.active && !player.dead)
 						{
 							float rot = BaseUtility.RotationTo(npc.Center, player.Center);
 							infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
 							vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-							vel *= (chargeSpeed / _chargeSpeed); //to compensate for players running away
-							vel += npc.velocity; //ditto as above
+							vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+							int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+							if((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+							vel.Y += npc.velocity.Y;
 							infernoPos += npc.Center;
 							infernoPos.Y -= 60;
 						}
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), damageDiscordianInferno, 0f, Main.myPlayer, 0f, 0f);
+						//REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), damageDiscordianInferno / 2, 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[projectile].velocity = vel;
 						Main.projectile[projectile].netUpdate = true;
                     }
@@ -372,44 +420,52 @@ namespace AAMod.NPCs.Bosses.Shen
 					SwitchToAI(0f, 0f, -40f, 0f);
                 }
             }
-            else if (npc.ai[0] == 3f) //Fire firebomb (NOTE: BREATH SEEMS TO BE BROKEN)
+            else if (npc.ai[0] == 3f) //Fire firebombs
             {
-                npc.velocity *= 0.98f;
-                npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == discordianBreathTimerMax - 30)
+				Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
+				MoveToPoint(playerPoint);
+                if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
-					Roar(roarTimerMax, false);
+					Roar(roarTimerMax, true);
 					if (Main.netMode != 1)
 					{
 						for(int m = 0; m < 3; m++)
 						{
 							Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-							Vector2 vel = new Vector2(MathHelper.Lerp(6f, 9f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+							Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 		
 							if(player.active && !player.dead)
 							{
 								float rot = BaseUtility.RotationTo(npc.Center, player.Center);
 								infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
 								vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-								vel *= (chargeSpeed / _chargeSpeed); //to compensate for players running away
-								vel += npc.velocity; //ditto as above
+								vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+								int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+								if((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+								vel.Y += npc.velocity.Y;								
 								infernoPos += npc.Center;
 								infernoPos.Y -= 50;								
 							}
-							int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("ShenFirebomb"), damageDiscordianInferno, 0f, Main.myPlayer, 0f, 0f);
+							//REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
+							int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("ShenFirebomb"), damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
 							Main.projectile[projectile].velocity = vel;
 							Main.projectile[projectile].netUpdate = true;
 						}
 					}
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= discordianBreathTimerMax)
+                if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
                     SwitchToAI(0f, 0f, 0f, 1f);
 				}
             }
+			
+			if(SnapToPlayer)
+			{
+				npc.position += (player.position - player.oldPosition);
+			}
 			HandleFrames(player);
-			HandleRotations(player);			
+			HandleRotations(player);		
         }
 		
 		public void SwitchToAI(float ai0, float ai1, float ai2, float ai3)
@@ -439,12 +495,13 @@ namespace AAMod.NPCs.Bosses.Shen
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
 			float length = dist.Length();
-			if(length < chargeSpeed)
+			if(length < moveSpeed)
 			{
-				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / chargeSpeed);
+				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / moveSpeed);
 			}
 			npc.velocity = Vector2.Normalize(point - npc.Center);
-			npc.velocity *= (Charging ? chargeSpeed : normalSpeed) * velMultiplier;	
+			npc.velocity *= moveSpeed;
+			npc.velocity *= velMultiplier;	
 			if(!Charging)
 			{
 				if(length < 200f)
@@ -532,7 +589,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
                 for (int m = 0; m < 12; m++)
                 {
-                    int dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
                     Main.dust[dustID].velocity *= 3f;
                     if (Main.rand.Next(2) == 0)
                     {
@@ -540,12 +597,12 @@ namespace AAMod.NPCs.Bosses.Shen
                         Main.dust[dustID].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
                 }
-                for (int m = 0; m < 5; m++)
+                for (int m = 0; m < 12; m++)
                 {
-                    int dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[dustID].noGravity = true;
+                    int dustID = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1f);
+                    //Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity *= 5f;
-                    dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width - 40, npc.height - 10, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 1.5f);
+                    dustID = Dust.NewDust(new Vector2(npc.position.X + 20, npc.position.Y + 5), npc.width, npc.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 0.6f);
                     Main.dust[dustID].velocity *= 2f;
                 }				
 			}
@@ -604,14 +661,11 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
 			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 			//draw wings
-			//float wingOffset = (wingFrameY * 0.5f) - frameY + 44;
-			//Vector2 origin = new Vector2((float)(wingFrame.Width / 2), (float)(wingFrameY / 5 / 2));
-
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor); //, false, origin);
-
+			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+			
 			//deoffset
 			npc.position.Y -= 130f; // offsetVec;
-
+			//BaseDrawing.DrawHitbox(sb, npc.Hitbox, Color.Red); //ENABLE THIS TO SEE HITBOX
             return false;
         }
     }

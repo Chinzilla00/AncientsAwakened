@@ -191,8 +191,6 @@
     <Compile Include="Globals\AAModGlobalItem.cs" />
     <Compile Include="Globals\AAModGlobalNPC.cs" />
     <Compile Include="Globals\AANet.cs" />
-    <Compile Include="Globals\DustHandler.cs" />
-    <Compile Include="Globals\Omnidust.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhNecklace.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhScarf.cs" />
     <Compile Include="Items\Accessories\Ankh\AnkhStone.cs" />
@@ -502,6 +500,7 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Shen\ChaosSlayerEX.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSlayer.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
     <Compile Include="Items\Boss\Shen\ChaosScale.cs" />
@@ -856,10 +855,6 @@
     <Compile Include="Items\Vanity\Glitched\GlitchesBreastplate.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesGreaves.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesHat.cs" />
-    <Compile Include="Items\Vanity\Grox\AncientGroviteCofferplate.cs" />
-    <Compile Include="Items\Vanity\Grox\AncientGroviteCowl.cs" />
-    <Compile Include="Items\Vanity\Grox\AncientGroviteLegguards.cs" />
-    <Compile Include="Items\Vanity\Grox\AncientGroviteWings.cs" />
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
@@ -903,6 +898,7 @@
     <Compile Include="NPCs\Bosses\Infinity\IZHand2.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
+    <Compile Include="NPCs\Bosses\Infinity\Scanner.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -913,7 +909,6 @@
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusBreath.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead1.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead2.cs" />
-    <Compile Include="NPCs\Bosses\Orthrus\OrthrusShock.cs" />
     <Compile Include="Globals\AAProjectile.cs" />
     <Compile Include="NPCs\Bosses\Pantheon\Mercury.cs" />
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
@@ -964,6 +959,7 @@
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath1.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeath2.cs" />
     <Compile Include="NPCs\Critters\ShroomGrub.cs" />
+    <Compile Include="NPCs\Enemies\Corruption\FeralMonster.cs" />
     <Compile Include="NPCs\Enemies\Inferno\ChaoticDawn.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Flamebrute.cs" />
     <Compile Include="NPCs\Enemies\Inferno\InfernalSlime.cs" />
@@ -1094,9 +1090,14 @@
     <Compile Include="Projectiles\PerfectChaosE.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlue.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlueEX.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSwordEX.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordRed.cs" />
+    <Compile Include="Projectiles\Shen\ChaosSlayerSwordRedEX.cs" />
     <Compile Include="Projectiles\Shen\Meteor.cs" />
     <Compile Include="Projectiles\Shen\MeteorBoom.cs" />
+    <Compile Include="Projectiles\Shen\MeteorBoomBlue.cs" />
+    <Compile Include="Projectiles\Shen\MeteorBoomRed.cs" />
     <Compile Include="Projectiles\Shen\MeteorStrike.cs" />
     <Compile Include="Projectiles\TitanAxeEX.cs" />
     <Compile Include="Projectiles\TitanEX.cs" />
@@ -2678,6 +2679,7 @@
     <Content Include="Items\Dev\ChinStaffEX.png" />
     <Content Include="Items\Dev\Chronos.png" />
     <Content Include="Items\Dev\CrabGuardian.png" />
+    <Content Include="Items\Dev\DeltaBlade.png" />
     <Content Include="Items\Dev\DragonShell.png" />
     <Content Include="Items\Dev\DragonShell_Shield.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
@@ -3068,16 +3070,6 @@
     <Content Include="Items\Vanity\Glitched\GlitchesGreaves_Legs.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesHat.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesHat_Head.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_Arms.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_Body.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCofferplate_FemaleBody.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCowl.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteCowl_Head.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteLegguards.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteLegguards_Legs.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteWings.png" />
-    <Content Include="Items\Vanity\Grox\AncientGroviteWings_Wings.png" />
     <Content Include="Items\Vanity\Hallam\HalHat.png" />
     <Content Include="Items\Vanity\Hallam\HalHat_Head.png" />
     <Content Include="Items\Vanity\Hallam\HalTrousers.png" />
@@ -3232,8 +3224,6 @@
     <Content Include="NPCs\Bosses\Orthrus\OrthrusHead2_Glow.png" />
     <Content Include="NPCs\Bosses\Orthrus\OrthrusHead2_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Orthrus\OrthrusNeck.png" />
-    <Content Include="NPCs\Bosses\Orthrus\OrthrusShock.png" />
-    <Content Include="NPCs\Bosses\Orthrus\OrthrusTail.png" />
     <Content Include="NPCs\Bosses\Orthrus\Orthrus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Orthrus\Shocking.png" />
     <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
@@ -3369,6 +3359,7 @@
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
     <Content Include="NPCs\Critters\ShroomGrub.png" />
     <Content Include="NPCs\Critters\ShroomGrub_Dig.png" />
+    <Content Include="NPCs\Enemies\Corruption\FeralMonster.png" />
     <Content Include="NPCs\Enemies\Inferno\BlazePhoenix.png" />
     <Content Include="NPCs\Enemies\Inferno\ChaoticDawn.png" />
     <Content Include="NPCs\Enemies\Inferno\Dragron.png" />
@@ -3414,6 +3405,7 @@
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
     <Content Include="NPCs\Enemies\Other\ElderDragon.png" />
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
+    <Content Include="NPCs\Enemies\Other\MadnessBat.png" />
     <Content Include="NPCs\Enemies\Other\Steve.png" />
     <Content Include="NPCs\Enemies\Void\1Searcher.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
@@ -3441,6 +3433,7 @@
     <Content Include="Palletes\Cthulhu.png" />
     <Content Include="Palletes\Dev pallets.png" />
     <Content Include="Palletes\Forsaken.png" />
+    <Content Include="Palletes\Grips_Palette.png" />
     <Content Include="Palletes\Incinerite.png" />
     <Content Include="Palletes\Jevil.png" />
     <Content Include="Palletes\MegaPallet 2.png" />
@@ -3579,11 +3572,16 @@
     <Content Include="Projectiles\Ryugen.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSword.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlue.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSwordBlueEX.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSwordEX.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordRed.png" />
+    <Content Include="Projectiles\Shen\ChaosSlayerSwordRedEX.png" />
     <Content Include="Projectiles\Shen\DiscordBeam.png" />
     <Content Include="Projectiles\Shen\DiscordianNova.png" />
     <Content Include="Projectiles\Shen\Meteor.png" />
     <Content Include="Projectiles\Shen\MeteorBoom.png" />
+    <Content Include="Projectiles\Shen\MeteorBoomBlue.png" />
+    <Content Include="Projectiles\Shen\MeteorBoomRed.png" />
     <Content Include="Projectiles\Shen\MeteorStrike.png" />
     <Content Include="Projectiles\Shen\ShenFire.png" />
     <Content Include="Projectiles\SpookerangP.png" />
@@ -3710,6 +3708,7 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DragonRose.png" />
     <Content Include="Tiles\FulguriumPlating.png" />
+    <Content Include="Tiles\Hydrablossom.png" />
     <Content Include="Tiles\IZBox.png" />
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MoonAltarA.png" />
@@ -3950,7 +3949,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Mounts\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Tiles\Daybreak\" />
@@ -3968,6 +3966,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

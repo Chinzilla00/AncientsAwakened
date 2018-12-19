@@ -96,30 +96,32 @@ namespace AAMod.NPCs.Bosses.Shen
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
             }			
         }
-	
+
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
 			Texture2D currentTex = Main.npcTexture[npc.type];
 			Texture2D currentWingTex = mod.GetTexture("NPCs/Bosses/Shen/ShenAWings");
             Texture2D glowTex = mod.GetTexture("NPCs/Bosses/Shen/ShenA_Glow");
 
-            //offset
-            npc.position.Y += 40f;
+			//offset
+			npc.position.Y += 130f;
 
 			//draw body/charge afterimage
 			if(Charging)
 			{
-				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 4, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));	
+				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));	
 			}
 			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen3);
-			BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Shen3);
-            //draw wings
-            float wingOffset = (wingFrameY * 0.5f) - frameY + 44;			
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0f, npc.gfxOffY + wingOffset), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+			
+			//draw glow/glow afterimage
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen2);
+			BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Shen2);	
+			
+			//draw wings
+			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
 
 			//deoffset
-			npc.position.Y -= 40f;
+			npc.position.Y -= 130f; // offsetVec;			
 
             return false;
         }		

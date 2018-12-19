@@ -55,3 +55,4 @@ C:\Users\duane\Documents\GitHub\AncientsAwakened\bin\Debug\AAMod.dll
 C:\Users\duane\Documents\GitHub\AncientsAwakened\bin\Debug\AAMod.pdb
 C:\Users\duane\Documents\GitHub\AncientsAwakened\bin\Debug\TerrariaHooks.dll
 C:\Users\Mitch\OneDrive\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll
+C:\Users\Alpha\Documents\My Games\Terraria\ModLoader\Mod Sources\AAMod\bin\Debug\BaseMod.dll

@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Shen
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blade of Mirenic Chaos");
+			DisplayName.SetDefault("Blade of Fury");
 		}
 
         public override void SetDefaults()

@@ -44,6 +44,9 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public int distFromBodyY = 70; //how far from the body to centeralize the movement points. (Y coord)
         public int movementVariance = 60; //how far from the center point to move.
 
+        public int SHLOOPX = 34; //how far from the body to centeralize the movement points. (X coord)
+        public int SHLOOPY = 60;
+
         public override void AI()
         {
             
@@ -74,77 +77,108 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 damage = npc.damage / 2;
             }
             int num429 = 1;
-            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            if (Body.internalAI[1] == 0)
             {
-                num429 = -1;
-            }
-            npc.TargetClosest();
-            Player targetPlayer = Main.player[npc.target];
-            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
-            float num433 = 6f;
-            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-            PlayerPos = num433 / PlayerPos;
-            PlayerPosX *= PlayerPos;
-            PlayerPosY *= PlayerPos;
-            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosY += npc.velocity.Y * 0.5f;
-            PlayerPosX += npc.velocity.X * 0.5f;
-            PlayerDistance.X -= PlayerPosX * 1f;
-            PlayerDistance.Y -= PlayerPosY * 1f;
-            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-            if (Main.netMode != 1)
-            {
-                npc.ai[1]++;
-                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
-                aiTimerFire += 30;
-                if (targetPlayer != null && npc.ai[1] == aiTimerFire)
+                if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
                 {
-                    for (int i = 0; i < 5; ++i)
+                    num429 = -1;
+                }
+                npc.TargetClosest();
+                Player targetPlayer = Main.player[npc.target];
+                Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+                float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+                float num433 = 6f;
+                PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                PlayerPos = num433 / PlayerPos;
+                PlayerPosX *= PlayerPos;
+                PlayerPosY *= PlayerPos;
+                PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                PlayerPosY += npc.velocity.Y * 0.5f;
+                PlayerPosX += npc.velocity.X * 0.5f;
+                PlayerDistance.X -= PlayerPosX * 1f;
+                PlayerDistance.Y -= PlayerPosY * 1f;
+                if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+
+                if (Main.netMode != 1)
+                {
+                    npc.ai[1]++;
+                    int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                    aiTimerFire += 30;
+                    if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                     {
-                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
-                        dir *= 5f;
-                        if (leftHead)
+                        for (int i = 0; i < 5; ++i)
                         {
-                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
-                        }
-                        if (npc.type == mod.NPCType<OrthrusHead1>())
-                        {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.Center.X * .0001f, PlayerPosY * .0001f, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                            Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                            dir *= 5f;
+                            if (leftHead)
+                            {
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 5, PlayerPosY * 5, mod.ProjectileType("OrthrusBreath"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                            }
+                            if (npc.type == mod.NPCType<OrthrusHead1>())
+                            {
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.Center.X * .0001f, PlayerPosY * .0001f, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                            }
                         }
                     }
+                    else
+                    if (npc.ai[1] >= 200) //pick random spot to move head to
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
+                        npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
+                        npc.netUpdate = true;
+                    }
+                }
+                npc.rotation = 1.57f;
+                Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+                if (Vector2.Distance(nextTarget, npc.Center) < 40f)
+                {
+                    npc.velocity *= 0.9f;
+                    if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                    if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
                 }
                 else
-                if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
-                    npc.ai[1] = 0;
-                    npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
-                    npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
-                    npc.netUpdate = true;
+                    npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+                    npc.velocity *= 5f;
                 }
+                npc.position += (Body.npc.oldPos[0] - Body.npc.position);
+                npc.spriteDirection = -1;
             }
-            npc.rotation = 1.57f;
-            Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-            if (Vector2.Distance(nextTarget, npc.Center) < 40f)
+
+            Vector2 SHLOOP = Body.npc.Center + new Vector2(leftHead ? -SHLOOPX : SHLOOPX, SHLOOPY);
+            if (Body.internalAI[1] == Orthrus.AISTATE_RISE)
             {
-                npc.velocity *= 0.9f;
-                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+                MoveToPoint(SHLOOP);
             }
-            else
+
+            if (Body.internalAI[1] == Orthrus.AISTATE_FLY)
             {
-                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
+                npc.active = false;
             }
-            npc.position += (Body.npc.oldPos[0] - Body.npc.position);
-            npc.spriteDirection = -1;
+
+        }
+
+        public float moveSpeed = 16f; 
+        public void MoveToPoint(Vector2 point)
+        {
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = dist.Length();
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / moveSpeed);
+            }
+            npc.velocity = Vector2.Normalize(point - npc.Center);
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+            
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

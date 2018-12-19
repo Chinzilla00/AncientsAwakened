@@ -20,6 +20,7 @@ using AAMod.NPCs.Bosses.Shen;
 
 using System;
 using BaseMod;
+using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod
 {
@@ -612,8 +613,11 @@ namespace AAMod
                 NPC.AnyNPCs(mod.NPCType<AkumaA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Yamata>()) ||
                 NPC.AnyNPCs(mod.NPCType<YamataA>()) ||
+                NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) ||
+                NPC.AnyNPCs(mod.NPCType<ShenA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Zero>()) ||
-                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
+                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>())||
+                NPC.AnyNPCs(mod.NPCType<Infinity>()))
             {
                 spawnRate = 0;
                 maxSpawns = 0;
