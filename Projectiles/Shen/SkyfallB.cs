@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Shen
 {
-    public class SkyfallBlue : ModProjectile
+    public class SkyfallB : ModProjectile
     {
         public override void SetStaticDefaults()
         {
