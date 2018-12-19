@@ -24,7 +24,7 @@ namespace AAMod.Items.Materials
                 Main.glowMaskTexture = glowMasks;
             }
             DisplayName.SetDefault("Discordium");
-            Tooltip.SetDefault("Both chaoses melded into 1 singular powerful bar");
+            Tooltip.SetDefault("The World Chaoses melded together into a single, powerful bar");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 9));
         }
 
@@ -53,7 +53,7 @@ namespace AAMod.Items.Materials
         public override void AddRecipes()
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DaybreakIncinerite", 2);
+            recipe.AddIngredient(null, "DaybreakIncinerite", 1);
             recipe.AddIngredient(null, "EventideAbyssium", 1);              //example of how to craft with a modded item
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);

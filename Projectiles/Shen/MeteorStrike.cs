@@ -15,8 +15,8 @@ namespace AAMod.Projectiles.Shen
 
         public override void SetDefaults()
         {
-            projectile.width = 98;
-            projectile.height = 98;
+            projectile.width = 176;
+            projectile.height = 144;
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 7)

@@ -13,11 +13,11 @@ namespace AAMod.Items.Armor.PerfectChaos
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Choas Slayer Kabuto");
+            DisplayName.SetDefault("Chaos Slayer Kabuto");
             Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
 15% increased damage resistance
 15% increased melee speed
-The power of discortian rage radiates from this armor");
+The power of discordian rage radiates from this armor");
         }
 
         public override void SetDefaults()

@@ -50,7 +50,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
 	    {
 	        ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(null, "TrueDeathlyLongbow", 7);
+	        recipe.AddIngredient(null, "TrueDeathlyLongbow");
             recipe.AddIngredient(ItemID.HallowedRepeater);
 	        recipe.AddTile(TileID.MythrilAnvil);
 	        recipe.SetResult(this);

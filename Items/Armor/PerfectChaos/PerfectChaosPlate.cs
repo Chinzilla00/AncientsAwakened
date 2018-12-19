@@ -15,10 +15,10 @@ namespace AAMod.Items.Armor.PerfectChaos
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Chaos Slayer Plate");
-            Tooltip.SetDefault(@"30 % increased Melee damage & critical strike chance
-15 % increased damage resistance
-15 % increased melee speed
-The power of discortian rage radiates from this armor");
+            Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
+15% increased damage resistance
+15% increased melee speed
+The power of discordian rage radiates from this armor");
         }
 
 

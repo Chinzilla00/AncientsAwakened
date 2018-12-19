@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Shen
@@ -50,7 +50,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DiscordInferno"), 600);
+            target.AddBuff(BuffID.Daybreak, 600);
         }
 
         public override void Kill(int timeLeft)

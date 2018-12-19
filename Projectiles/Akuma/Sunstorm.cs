@@ -122,6 +122,13 @@ namespace AAMod.Projectiles.Akuma
             }
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.ai[0] = 0f;
+            projectile.ai[1] = -1f;
+            projectile.netUpdate = true;
+        }
+
         public override void Kill(int timeLeft)
         {
             bool flag = WorldGen.SolidTile(Framing.GetTileSafely((int)projectile.position.X / 16, (int)projectile.position.Y / 16));
