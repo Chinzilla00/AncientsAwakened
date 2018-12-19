@@ -16,7 +16,7 @@ namespace AAMod
 			glowTick++; if (glowTick >= glowMax) glowTick = 0;
 		}
 
-		public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }		
+        public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }		
 		public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
 		public static Color GetIncineriteColorBright(Color color){ return GetIncineriteColor(color, 0.6f, 1f, false); }
 		public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)

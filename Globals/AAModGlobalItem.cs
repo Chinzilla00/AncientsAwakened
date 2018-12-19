@@ -23,6 +23,10 @@ namespace AAMod
                     item.color = Color.Violet;
                 }
             }
+            if (item.type == ItemID.LunarOre)
+            {
+                item.createTile = mod.TileType("LuminiteOre");
+            }
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)

@@ -99,7 +99,7 @@ Your attacks raze your oponents with the flames of Chaos";
         {
             player.meleeDamage *= 1.3f;
             player.endurance *= 1.15f;
-            player.meleeSpeed *= 1.45f;
+            player.meleeSpeed *= 1.15f;
         }
 
         public override void AddRecipes()
