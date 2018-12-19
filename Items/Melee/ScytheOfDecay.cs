@@ -32,7 +32,8 @@ Inflicts Ichor and Cursed Inferno");
             item.useStyle = 100;    //The way your Weapon will be used, 1 is the regular sword swing for example
             item.knockBack = 2f;    //The knockback stat of your Weapon.
             item.value = Item.buyPrice(1, 0, 0, 0); // How much the item is worth, in copper coins, when you sell it to a merchant. It costs 1/5th of this to buy it back from them. An easy way to remember the value is platinum, gold, silver, copper or PPGGSSCC (so this item price is 10gold)
-            item.rare = 9;   //The color the title of your Weapon when hovering over it ingame                    
+            item.rare = 9;   //The color the title of your Weapon when hovering over it ingame   
+            item.expert = true;
             item.shoot = mod.ProjectileType("DecayScythe");  //This defines what type of projectile this weapon will shoot  
             item.noUseGraphic = true; // this defines if it does not use graphic
         }
