@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Shen   //where is located
         {
 
             DisplayName.SetDefault("Meteor Strike");
-            Tooltip.SetDefault(@"Rains a storm of meteors upon your foes
+            Tooltip.SetDefault(@"Fires a barrage of meteors at your foes
 Hitting enemies causes a smaller, but more damaging explosion
 Hitting a tile causes a larger, but less damaging projectile
 Inflicts Discordian Inferno");

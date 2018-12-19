@@ -235,6 +235,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                npc.DropLoot(Items.Boss.EXSoul.type);
             }
             for (int i = 0; i < Main.player.Length; i++)
             {
