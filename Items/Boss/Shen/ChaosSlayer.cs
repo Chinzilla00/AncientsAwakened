@@ -85,6 +85,7 @@ namespace AAMod.Items.Boss.Shen
             recipe.AddIngredient(null, "ReignOfFire", 1);
             recipe.AddIngredient(null, "Hydraslayer", 1);
             recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddIngredient(null, "Discordium", 5);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
