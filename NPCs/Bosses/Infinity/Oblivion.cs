@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 if (OblivionSpeech == 720)
                 {
-                    Main.NewText("I applaud you, terrarian.", color1);
+                    Main.NewText("I applaud you, Terrarian.", color1);
                 }
                 if (player.difficulty == 2)
                 {
@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (OblivionSpeech == 180)
                 {
-                    Main.NewText("Hmpf…", color1);
+                    Main.NewText("Hmpf...", color1);
                 }
                 if (OblivionSpeech == 360)
                 {
@@ -161,7 +161,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 if (OblivionSpeech == 540)
                 {
-                    Main.NewText("You know, I’m not the agressor here", color1);
+                    Main.NewText("You know, I’m not the aggressor here", color1);
                 }
                 if (OblivionSpeech == 720)
                 {
@@ -181,7 +181,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 if (OblivionSpeech == 1440)
                 {
-                    Main.NewText("Whatever, just take your boss drop and go.", color1);
+                    Main.NewText("Whatever, just take your boss drops and go.", color1);
                 }
                 if (OblivionSpeech >= 1440)
                 {
@@ -282,15 +282,15 @@ namespace AAMod.NPCs.Bosses.Infinity
                         }
                         else if (AAMod.tremorLoaded && Main.rand.Next(MajorModCount()) == 0)
                         {
-                            Main.NewText("Wait you're playing tremor? HAHAHAHAHAHAH!", color1);
+                            Main.NewText("Wait you're playing Tremor? HAHAHAHAHAHAH!", color1);
                         }
                         else if (AAMod.sacredToolsLoaded && Main.rand.Next(MajorModCount()) == 0)
                         {
-                            Main.NewText("Go bug the lunarians or something. I'm sure they'll be more fun to fight than I am.", color1);
+                            Main.NewText("Go bug the Lunarians or something. I'm sure they'll be more fun to fight than I am.", color1);
                         }
                         else if (AAMod.grealmLoaded && Main.rand.Next(MajorModCount()) == 0)
                         {
-                            Main.NewText("Why don't you go fight the Horde for the 50th god damn time. Maybe they have new drops or something since you last checked.", color1);
+                            Main.NewText("Why don't you go fight the Horde for the 50th goddamn time. Maybe they have new drops or something since you last checked.", color1);
                         }
                         else if (MajorModCount() == 0)
                         {

@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Shen   //where is located
         {
 
             DisplayName.SetDefault("Meteor Strike");
-            Tooltip.SetDefault(@"Rains a storm of meteors upon your foes
+            Tooltip.SetDefault(@"Fires a barrage of meteors at your foes
 Hitting enemies causes a smaller, but more damaging explosion
 Hitting a tile causes a larger, but less damaging projectile
 Inflicts Discordian Inferno");
@@ -110,6 +110,7 @@ Inflicts Discordian Inferno");
             recipe.AddIngredient(null, "SunStorm", 1);
             recipe.AddIngredient(null, "Toxibomb", 1);
             recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddIngredient(null, "Discordium", 5);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -44,12 +44,12 @@ namespace AAMod.NPCs.Bosses.Shen
             base.HitEffect(hitDirection, damage);			
             if (npc.life <= npc.lifeMax * 0.9f && !Health9)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Face it, child..! You’ll never defeat the living embodiment of disarray itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("Face it, child! You’ll never defeat the living embodiment of disarray itself!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health9 = true;
             }
             if (npc.life <= npc.lifeMax * 0.8f && !Health8)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health8 = true;
             }
             if (npc.life <= npc.lifeMax * 0.7f && !Health7)
@@ -64,17 +64,17 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.life <= npc.lifeMax * 0.5f && !Health5)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health5 = true;
             }
             if (npc.life <= npc.lifeMax * 0.4f && !Health4)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health4 = true;
             }
             if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU-- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health3 = true;
             }
             if (npc.life <= npc.lifeMax * 0.2f && !Health2)

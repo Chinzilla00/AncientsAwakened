@@ -31,6 +31,7 @@ Chaos Slayer EX");
             item.damage = 380;
             item.knockBack = 12;
             item.melee = true;
+            item.expert = true;
             item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosSlayerSwordEX");
 			item.shootSpeed = 7;

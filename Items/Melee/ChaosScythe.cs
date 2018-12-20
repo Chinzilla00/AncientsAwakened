@@ -21,6 +21,7 @@ namespace AAMod.Items.Melee   //where is located
             item.value = 10;
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = false;
+            item.expert = true;
             item.useAnimation = 25;
             item.useTime = 28;
             item.shootSpeed = 5;

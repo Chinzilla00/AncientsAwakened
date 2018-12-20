@@ -235,6 +235,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                npc.DropLoot(Items.Boss.EXSoul.type);
             }
             for (int i = 0; i < Main.player.Length; i++)
             {
@@ -306,8 +307,8 @@ namespace AAMod.NPCs.Bosses.Infinity
                 if (Main.netMode != 1) BaseUtility.Chat("Redirecting resources to offensive systems.", new Color(158, 3, 32));
                 HalfHealth = true;
                 npc.defense = 175;
-                IZHand1.damageIdle = 150;
-                IZHand1.damageCharging = 250;
+                IZHand1.damageIdle = 250;
+                IZHand1.damageCharging = 350;
                 roarTimer = 200;
             }
             if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
@@ -321,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 fifthHealth = true;
                 if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
                 npc.defense = 0;
-                IZHand1.damageIdle = 200;
+                IZHand1.damageIdle = 250;
                 IZHand1.damageCharging = 500;
                 roarTimer = 200;
             }

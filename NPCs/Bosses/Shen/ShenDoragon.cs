@@ -634,7 +634,6 @@ namespace AAMod.NPCs.Bosses.Shen
 					npc.DropLoot(mod.ItemType(lootTable[loot]));
 					//npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
 					//npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
-					npc.DropLoot(Items.Boss.EXSoul.type);
 					Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 				}
 				if (Main.expertMode)
