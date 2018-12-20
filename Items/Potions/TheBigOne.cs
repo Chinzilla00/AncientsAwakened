@@ -10,6 +10,7 @@ namespace AAMod.Items.Potions
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Big One");
+            Tooltip.SetDefault("Heals a LOT");
 		}
 		
 		public override void SetDefaults()
@@ -47,7 +48,7 @@ namespace AAMod.Items.Potions
             recipe.AddIngredient(null, "GrandManaPotion");
             recipe.AddRecipeGroup("AAMod:SuperAncientMaterials");
             recipe.AddTile(null, "BinaryReassembler");
-			recipe.SetResult(this);
+			recipe.SetResult(this, 5);
 			recipe.AddRecipe();
 		}
 	}
