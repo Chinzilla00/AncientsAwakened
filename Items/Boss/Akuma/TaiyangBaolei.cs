@@ -31,8 +31,8 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D texture = Main.itemTexture[item.type];
-            Texture2D textureGlow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei");
+            Texture2D textureGlow = mod.GetTexture("Glowmasks/TaiyangBaolei_Glow");
             Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei1");
             Texture2D texture3 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
             Texture2D texture3Glow = mod.GetTexture("Glowmasks/TaiyangBaoleiA_Glow");
@@ -130,11 +130,9 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D texture = Main.itemTexture[item.type];
-            Texture2D textureGlow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei");
             Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei1");
             Texture2D texture3 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
-            Texture2D texture3Glow = mod.GetTexture("Glowmasks/TaiyangBaoleiA_Glow");
             if (!Main.dayTime)
             {
                 spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
@@ -142,12 +140,10 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
             {
                 spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-                spriteBatch.Draw(textureGlow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
             }
             if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
             {
                 spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-                spriteBatch.Draw(texture3Glow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
             }
             return false;
         }

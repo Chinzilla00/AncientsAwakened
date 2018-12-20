@@ -250,6 +250,10 @@ namespace AAMod.NPCs.Bosses.Infinity
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage = damage * 0.8f;
+            if (damage >= 1000)
+            {
+                damage = 1000;
+            }
             return true;
         }
 

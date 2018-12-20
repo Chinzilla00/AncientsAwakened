@@ -436,6 +436,7 @@
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
+    <Compile Include="Items\Boss\Akuma\YOTD.cs" />
     <Compile Include="Items\Boss\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
@@ -2557,12 +2558,10 @@
     <Content Include="Items\Boss\Akuma\SunStorm.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei1.png" />
-    <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2.png" />
+    <Content Include="Items\Boss\Akuma\TaiyangBaolei1_Shield.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaoleiA2_Shield.png" />
-    <Content Include="Items\Boss\Akuma\TaiyangBaoleia_Shield.png" />
     <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield.png" />
-    <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield1.png" />
-    <Content Include="Items\Boss\Akuma\TaiyangBaolei_ShieldA2.png" />
+    <Content Include="Items\Boss\Akuma\YOTD.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
     <Content Include="Items\Boss\Broodmother\BroodScale.png" />

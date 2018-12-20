@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.lifeMax = npc.lifeMax;
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
 			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
@@ -210,11 +210,25 @@ namespace AAMod.NPCs.Bosses.Shen
 				npc.Center = center;
 				npc.netUpdate = true;
 			}
-			
+
             //Main.fastForwardTime = true;
             //Main.dayRate = 20;
-			#endregion
-			
+            #endregion
+
+            int ChargePos = Main.rand.Next(3);
+            switch (ChargePos) //switch for attack modes
+            {
+                case 0:
+                    ChargePos = 550;
+                    break;
+                case 1:
+                    ChargePos = -550;
+                    break;
+                default:
+                    ChargePos = 75;
+                    break;
+            }
+
             Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
@@ -292,7 +306,7 @@ namespace AAMod.NPCs.Bosses.Shen
 						npc.ai[1] = 400 * Math.Sign((npc.Center - player.Center).X);
 						npc.netUpdate = true;
 					}					
-					Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -300f);
+					Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], 0f);
 					MoveToPoint(playerPoint);
 					playerPointInRange = (playerPoint - npc.Center).Length() < 100f;
 				}
@@ -352,7 +366,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai[1] = chargePrepSpot * Math.Sign((npc.Center - player.Center).X);
 					npc.netUpdate = true;
                 }
-				Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -75);
+                
+                Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -ChargePos);
 				MoveToPoint(playerPoint);
 				if(Main.netMode != 1 && (playerPoint - npc.Center).Length() < 100f)
 				{
@@ -368,7 +383,20 @@ namespace AAMod.NPCs.Bosses.Shen
 					npc.ai[1] = 500 * -Math.Sign((npc.Center - player.Center).X);
 					npc.netUpdate = true;
 				}
-				Vector2 point = player.Center + new Vector2(npc.ai[1], 0f);				
+                float ChargeTo = 0;
+                if (ChargePos == 550)
+                {
+                    ChargeTo = 500;
+                }
+                if (ChargePos == -550)
+                {
+                    ChargeTo = -500;
+                }
+                if (ChargePos == 75)
+                {
+                    ChargeTo = 0;
+                }
+				Vector2 point = player.Center + new Vector2(npc.ai[1], ChargeTo);				
 				MoveToPoint(point);
 				
 				if(Main.netMode != 1 && (point - npc.Center).Length() < 100f)

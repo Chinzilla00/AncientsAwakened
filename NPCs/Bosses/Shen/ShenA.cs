@@ -28,6 +28,14 @@ namespace AAMod.NPCs.Bosses.Shen
 			isAwakened = true;
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = npc.lifeMax;
+            npc.defense = (int)(npc.defense * 1.2f);
+            npc.damage = (int)(npc.damage * 1.2f);
+            damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
+        }
+
         public bool Health9 = false;
         public bool Health8 = false;
         public bool Health7 = false;
