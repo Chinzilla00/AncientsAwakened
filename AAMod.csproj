@@ -1192,6 +1192,7 @@
     <Compile Include="Tiles\AACrate.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
+    <Compile Include="Tiles\ACS.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\AncientForge.cs" />
@@ -1690,6 +1691,7 @@
     <Content Include="Glowmasks\Etheral_Glow.png" />
     <Content Include="Glowmasks\EventHorizon_Glow.png" />
     <Content Include="Glowmasks\EXSoul_Glow.png" />
+    <Content Include="Glowmasks\FallingTwilight_Glow.png" />
     <Content Include="Glowmasks\FireProjHostile_Glow.png" />
     <Content Include="Glowmasks\Flairdra_Glow.png" />
     <Content Include="Glowmasks\Flamebrute_Glow.png" />
@@ -1764,6 +1766,8 @@
     <Content Include="Glowmasks\LungTail_Glow.png" />
     <Content Include="Glowmasks\ManaLantern_Glow.png" />
     <Content Include="Glowmasks\ManaShot_Glow.png" />
+    <Content Include="Glowmasks\Masamune_Glow.png" />
+    <Content Include="Glowmasks\MeteorStrike_Glow.png" />
     <Content Include="Glowmasks\MidnightWrath_Glow.png" />
     <Content Include="Glowmasks\MindStone_Face_Glow.png" />
     <Content Include="Glowmasks\MindStone_Glow.png" />
@@ -1772,6 +1776,7 @@
     <Content Include="Glowmasks\MonarchBox_Glow.png" />
     <Content Include="Glowmasks\MoonAltarA_Glow.png" />
     <Content Include="Glowmasks\MoonAltar_Glow.png" />
+    <Content Include="Glowmasks\MoonStaff_Glow.png" />
     <Content Include="Glowmasks\MorningGlory_Glow.png" />
     <Content Include="Glowmasks\MorningStar_Glow.png" />
     <Content Include="Glowmasks\Mosster_Glow.png" />
@@ -1862,6 +1867,7 @@
     <Content Include="Glowmasks\ShenABox_Glow.png" />
     <Content Include="Glowmasks\ShenBox_Glow.png" />
     <Content Include="Glowmasks\ShenCache_Glow.png" />
+    <Content Include="Glowmasks\Skyfall_Glow.png" />
     <Content Include="Glowmasks\Solar_Glow.png" />
     <Content Include="Glowmasks\SoulStone_Face_Glow.png" />
     <Content Include="Glowmasks\SoulStone_Glow.png" />
@@ -2441,6 +2447,8 @@
     <Content Include="Items\Blocks\DepthsandHardened.png" />
     <Content Include="Items\Blocks\Depthsandstone.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
+    <Content Include="Items\Blocks\DiscordiumBrick.png" />
+    <Content Include="Items\Blocks\DiscordiumOre.png" />
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
     <Content Include="Items\Blocks\Doomstone.png" />
     <Content Include="Items\Blocks\DoomstoneBrick.png" />
@@ -3710,6 +3718,7 @@
     <Content Include="Tiles\AACrate.png" />
     <Content Include="Tiles\AbyssiumBar.png" />
     <Content Include="Tiles\AbyssiumOre.png" />
+    <Content Include="Tiles\ACS.png" />
     <Content Include="Tiles\AkumaABox.png" />
     <Content Include="Tiles\AkumaBox.png" />
     <Content Include="Tiles\AncientForge.png" />

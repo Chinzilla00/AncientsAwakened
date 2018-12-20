@@ -51,7 +51,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DracoPlate", 1);
             recipe.AddIngredient(null, "FishDiverJacket", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

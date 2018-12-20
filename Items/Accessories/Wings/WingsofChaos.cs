@@ -50,7 +50,7 @@ namespace AAMod.Items.Accessories.Wings
             recipe.AddIngredient(null, "IncineriteBar", 30);
             recipe.AddIngredient(null, "CrucibleScale", 10);
             recipe.AddIngredient(null, "DreadScale", 10);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

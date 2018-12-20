@@ -77,7 +77,7 @@ Inflicts Daybroken");
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(ItemID.Flairon, 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

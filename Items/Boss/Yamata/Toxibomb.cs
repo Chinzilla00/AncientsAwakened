@@ -74,7 +74,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             recipe.AddIngredient(null, "EventideAbyssium", 5);
             recipe.AddIngredient(null, "DreadScale", 5);
             recipe.AddIngredient(null, "BogBomb", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

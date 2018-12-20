@@ -46,6 +46,7 @@ namespace AAMod.Tiles
                 mod.TileType("HallowedAnvil"),
                 mod.TileType("HallowedForge"),
                 mod.TileType("QuantumFusionAccelerator"),
+                mod.TileType("ACS"),
                 TileID.MythrilAnvil,
                 TileID.Anvils,
                 TileID.CrystalBall,

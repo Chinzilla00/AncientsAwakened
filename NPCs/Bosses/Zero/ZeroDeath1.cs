@@ -24,20 +24,21 @@ namespace AAMod.NPCs.Bosses.Zero
         public bool linesaid = false;
         public override void AI()
         {
-            if (Main.expertMode && !AAWorld.downedZero && !linesaid)
+            if (Main.expertMode && !AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
             {
                 Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
-            if (Main.expertMode && AAWorld.downedZero && !linesaid)
+            if (Main.expertMode && AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
             {
                 Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
+                linesaid = true;
             }
             if (!AAWorld.downedIZ)
             {
                 AAMod.Slayer = true;
             }
-            if (++projectile.frameCounter >= 12)
+            if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 8)
@@ -52,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void Kill(int timeLeft)
         {
-            if (!AAWorld.downedZero && Main.expertMode)
+            if (!AAWorld.downedZero && Main.expertMode && !AAWorld.downedIZ)
             {
                 Main.NewText("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
             }

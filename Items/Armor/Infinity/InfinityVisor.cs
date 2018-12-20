@@ -69,7 +69,7 @@ Your attacks scorch your enemies with the fires of infinity";
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomsdayHelmet", 1);
             recipe.AddIngredient(null, "Infinitium", 12);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

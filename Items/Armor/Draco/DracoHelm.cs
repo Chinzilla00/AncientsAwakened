@@ -94,7 +94,7 @@ Your Melee and Magic attacks inflict Daybreak on your target";
             recipe.AddIngredient(null, "DaybreakIncinerite", 15);
             recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(null, "KindledKabuto", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

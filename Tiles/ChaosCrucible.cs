@@ -43,6 +43,7 @@ namespace AAMod.Tiles
                 mod.TileType("HallowedAnvil"),
                 mod.TileType("HallowedForge"),
                 mod.TileType("QuantumFusionAccelerator"),
+                mod.TileType("ACS"),
                 TileID.MythrilAnvil,
                 TileID.Anvils,
                 TileID.CrystalBall,
@@ -52,7 +53,6 @@ namespace AAMod.Tiles
                 TileID.AdamantiteForge,
                 TileID.Autohammer,
                 TileID.ImbuingStation,
-                mod.TileType("BinaryReassembler")
             };
             animationFrameHeight = 54;
         }

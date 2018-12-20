@@ -54,7 +54,7 @@ namespace AAMod.Items.Armor.Doomsday.Zerokip
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomsdayLeggings", 1);
             recipe.AddIngredient(null, "FishDiverBoots", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

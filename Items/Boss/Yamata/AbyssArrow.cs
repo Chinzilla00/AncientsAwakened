@@ -72,7 +72,7 @@ Non-consumable");
             recipe.AddIngredient(null, "EventideAbyssium", 1);
             recipe.AddIngredient(null, "DreadScale", 1);
             recipe.AddIngredient(ItemID.MoonlordArrow, 999);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

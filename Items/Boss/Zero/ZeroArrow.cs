@@ -71,7 +71,7 @@ Non-consumable");
 			recipe.AddIngredient(ItemID.MoonlordArrow, 999);
             recipe.AddIngredient(null, "ApocalyptitePlate", 1);
             recipe.AddIngredient(null, "UnstableSingularity", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
 			recipe.SetResult(this, 1);
 			recipe.AddRecipe();
 		}

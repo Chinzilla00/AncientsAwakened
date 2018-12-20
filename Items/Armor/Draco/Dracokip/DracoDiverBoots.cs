@@ -52,7 +52,7 @@ namespace AAMod.Items.Armor.Draco.Dracokip
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DracoLeggings", 1);
             recipe.AddIngredient(null, "FishDiverBoots", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

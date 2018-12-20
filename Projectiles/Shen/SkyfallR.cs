@@ -82,7 +82,7 @@ namespace AAMod.Projectiles.Shen
                     -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            if (EnemyHit)
+            if (TileHit)
             {
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("MeteorStrikeRed"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }

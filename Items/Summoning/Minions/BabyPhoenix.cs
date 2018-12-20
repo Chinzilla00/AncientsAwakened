@@ -25,6 +25,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;
+            projectile.tileCollide = false;
         }
         
 

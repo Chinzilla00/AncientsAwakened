@@ -73,7 +73,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "OroborosWood", 20);
             recipe.AddIngredient(null, "ApocalyptitePlate", 5);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Shen
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 6;
+            projectile.localNPCHitCooldown = 8;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 10)
+            if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 5)

@@ -67,7 +67,7 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "Doomstone", 3);
-                recipe.AddTile(null, "BinaryReassembler");
+                recipe.AddTile(null, "ACS");
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

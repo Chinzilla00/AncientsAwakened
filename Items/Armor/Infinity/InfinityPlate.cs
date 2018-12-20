@@ -52,7 +52,7 @@ Infinite power and malice flows through this armor");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomsdayChestplate", 1);
             recipe.AddIngredient(null, "Infinitium", 15);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -131,7 +131,7 @@ namespace AAMod.Items.Boss.Shen
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Shen;
                 }
             }
         }
@@ -139,10 +139,11 @@ namespace AAMod.Items.Boss.Shen
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DaybreakIncinerite", 5);
-            recipe.AddIngredient(null, "CrucibleScale", 5);
-            recipe.AddIngredient(ItemID.DaedalusStormbow);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddIngredient(null, "MorningGlory", 1);
+            recipe.AddIngredient(null, "FallingTwilight", 1);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddIngredient(null, "Discordium", 5);
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

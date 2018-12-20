@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
+    [AutoloadBossHead]
     public class ShenA : ShenDoragon
     {
         public override void SetStaticDefaults()
@@ -114,8 +115,8 @@ namespace AAMod.NPCs.Bosses.Shen
 			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 			
 			//draw glow/glow afterimage
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen2);
-			BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Shen2);	
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen3);
+			BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Shen3);	
 			
 			//draw wings
 			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);

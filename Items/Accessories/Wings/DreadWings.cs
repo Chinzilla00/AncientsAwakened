@@ -46,7 +46,7 @@ namespace AAMod.Items.Accessories.Wings
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "EventideAbyssium", 15);
             recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

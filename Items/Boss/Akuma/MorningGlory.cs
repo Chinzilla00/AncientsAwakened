@@ -78,7 +78,7 @@ namespace AAMod.Items.Boss.Akuma
             recipe.AddIngredient(ItemID.DayBreak);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

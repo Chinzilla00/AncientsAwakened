@@ -31,7 +31,7 @@ namespace AAMod.Items.Blocks
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DaybreakIncinerite", 15);
-			recipe.AddTile(null, "BinaryReassembler");
+			recipe.AddTile(null, "ACS");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -22,8 +22,8 @@ namespace AAMod.Projectiles.Shen
 
         public override void SetDefaults()
         {
-            projectile.width = 62;
-            projectile.height = 92;
+            projectile.width = 10;
+            projectile.height = 10;
             projectile.friendly = true;
             projectile.tileCollide = false;
             projectile.melee = true;

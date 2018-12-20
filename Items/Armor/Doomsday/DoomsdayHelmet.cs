@@ -96,7 +96,7 @@ Your ranged and melee attacks are strong enough to weaken your enemies defense f
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 15);
             recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

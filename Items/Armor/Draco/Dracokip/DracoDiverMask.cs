@@ -68,7 +68,7 @@ Your Melee and Magic attacks inflict Daybreak on your target";
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DracoHelm", 1);
             recipe.AddIngredient(null, "FishDiverMask", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

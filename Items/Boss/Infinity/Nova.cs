@@ -74,7 +74,7 @@ namespace AAMod.Items.Boss.Infinity
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "VoidStar", 1);
             recipe.AddIngredient(null, "Infinitium", 12);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

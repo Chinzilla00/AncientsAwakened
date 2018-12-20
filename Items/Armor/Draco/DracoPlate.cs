@@ -74,7 +74,7 @@ The blazing fury of the Inferno rests in this armor");
 			recipe.AddIngredient(null, "DaybreakIncinerite", 20);
 			recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(null, "KindledDou", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

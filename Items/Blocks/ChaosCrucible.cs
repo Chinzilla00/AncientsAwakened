@@ -74,7 +74,7 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "QuantumFusionAccelerator", 1);
-                recipe.AddIngredient(null, "TruePaladinsSmeltery", 1);
+                recipe.AddRecipeGroup("AAMod:AstralStations", 1);
                 recipe.AddIngredient(null, "DeepAbyssium", 5);
                 recipe.AddIngredient(null, "RadiantIncinerite", 5);
                 recipe.SetResult(this);

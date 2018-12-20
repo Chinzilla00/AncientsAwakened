@@ -99,7 +99,7 @@ namespace AAMod.Items.BossSummons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 10);
             recipe.AddIngredient(null, "UnstableSingularity", 10);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
             }

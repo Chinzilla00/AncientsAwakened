@@ -70,7 +70,7 @@ Non-consumable");
 			recipe.AddIngredient(ItemID.MoonlordArrow, 999);
             recipe.AddIngredient(null, "DaybreakIncinerite", 1);
             recipe.AddIngredient(null, "CrucibleScale", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
 			recipe.SetResult(this, 1);
 			recipe.AddRecipe();
 		}

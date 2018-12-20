@@ -73,7 +73,7 @@ Your ranged and thrown attacks inflict Moonraze on your target";
             recipe.AddIngredient(null, "EventideAbyssium", 15);
             recipe.AddIngredient(null, "DreadScale", 5);
             recipe.AddIngredient(null, "DepthFukumen", 1);
-            recipe.AddTile(null, "BinaryReassembler");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
