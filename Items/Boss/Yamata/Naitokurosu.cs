@@ -9,10 +9,6 @@ namespace AAMod.Items.Boss.Yamata
     [AutoloadEquip(EquipType.Neck)]
     public class Naitokurosu : ModItem
     {
-
-        
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Naitokurosu");
@@ -32,27 +28,129 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
         }
 
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
+            Texture2D texture = Main.itemTexture[item.type];
+            Texture2D textureGlow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture2 = mod.GetTexture("Items/Boss/Yamata/Naitokurosu1");
+            Texture2D texture3 = mod.GetTexture("Items/Boss/Yamata/NaitokurosuA");
+            Texture2D texture3Glow = mod.GetTexture("Glowmasks/NaitokurosuA_Glow");
+            if (Main.dayTime)
+            {
+                spriteBatch.Draw
                 (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+                    texture2,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+            {
+                spriteBatch.Draw
+                (
+                    texture,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+                spriteBatch.Draw
+                (
+                    textureGlow,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            {
+                spriteBatch.Draw
+                (
+                    texture3,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+                spriteBatch.Draw
+                (
+                    texture3Glow,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+            return false;
         }
-        
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = Main.itemTexture[item.type];
+            Texture2D textureGlow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture2 = mod.GetTexture("Items/Boss/Yamata/Naitokurosu1");
+            Texture2D texture3 = mod.GetTexture("Items/Boss/Yamata/NaitokurosuA");
+            Texture2D texture3Glow = mod.GetTexture("Glowmasks/NaitokurosuA_Glow");
+            if (Main.dayTime)
+            {
+                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+            {
+                spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(textureGlow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            {
+                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture3Glow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            return false;
+        }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.blackBelt = true;

@@ -1083,20 +1083,19 @@ namespace AAMod
                         case "stormany": return AAWorld.downedStormAny;
                         case "stormall": return AAWorld.downedStormAll;
                         case "daybringer": return AAWorld.downedDB;
-                        case "Nnightcrawler": return AAWorld.downedNC;
+                        case "Nightcrawler": return AAWorld.downedNC;
                         case "equinox": return AAWorld.downedEquinox;
                         case "ancient":
                         case "ancientany": return AAWorld.downedAncient;
                         case "sancient":
                         case "sancientany": return AAWorld.downedSAncient;
                         case "akuma": return AAWorld.downedAkuma;
-                        case "akumaa":
                         case "yamata": return AAWorld.downedYamata;
-                        case "yamataa":
                         case "zero": return AAWorld.downedZero;
-                        case "zeroa":
                         case "shen":
                         case "shendoragon": return AAWorld.downedShen;
+                        case "iz":
+                        case "infinityzero": return AAWorld.downedIZ;
                     }
                 };
                 return downed;
