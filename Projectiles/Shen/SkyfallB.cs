@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Shen
             projectile.magic = true;
             projectile.tileCollide = false;
             projectile.extraUpdates = 5;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
             projectile.usesLocalNPCImmunity = true;
             projectile.alpha = 255;
         }

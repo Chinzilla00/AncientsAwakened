@@ -148,9 +148,9 @@ namespace AAMod.NPCs.Bosses.Shen
 		public int damageDiscordianFirebomb = 140; //how much damage the firebomb does.
 		
 		//clientside stuff
-		public Rectangle wingFrame = new Rectangle(0, 0, 444, 364); //the wing frame.
-		public int wingFrameY = 364; //the frame height for the wings.
-		public int frameY = 364; //the frame height for the body.
+		public Rectangle wingFrame = new Rectangle(0, 0, 444, 400); //the wing frame.
+		public int wingFrameY = 400; //the frame height for the wings.
+		public int frameY = 400; //the frame height for the body.
 		public int roarTimer = 0; //if this is > 0, then use the roaring frame.
 		public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
 		public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
@@ -316,18 +316,16 @@ namespace AAMod.NPCs.Bosses.Shen
 							case 2:
 							case 3:
 							case 4:
-							case 5:
-							case 6:
-								aiChoice = 0.5f;
-								break;
-							case 7:
-								npc.ai[3] = 1f;
-								aiChoice = 2f;
-								break;
-							case 8:
-								npc.ai[3] = 0f;
-								aiChoice = 3f;
-								break;
+                                aiChoice = 0.5f;
+                                break;
+                            case 5:
+                                npc.ai[3] = 1f;
+                                aiChoice = 2f;
+                                break;
+                            case 6:
+                                npc.ai[3] = 0f;
+                                aiChoice = 3f;
+                                break;
 						}
 					}
                     npc.ai[0] = aiChoice;
@@ -354,7 +352,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai[1] = chargePrepSpot * Math.Sign((npc.Center - player.Center).X);
 					npc.netUpdate = true;
                 }
-				Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -chargePrepSpot);
+				Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -75);
 				MoveToPoint(playerPoint);
 				if(Main.netMode != 1 && (playerPoint - npc.Center).Length() < 100f)
 				{
@@ -370,7 +368,7 @@ namespace AAMod.NPCs.Bosses.Shen
 					npc.ai[1] = 500 * -Math.Sign((npc.Center - player.Center).X);
 					npc.netUpdate = true;
 				}
-				Vector2 point = player.Center + new Vector2(npc.ai[1], 500f);				
+				Vector2 point = player.Center + new Vector2(npc.ai[1], 0f);				
 				MoveToPoint(point);
 				
 				if(Main.netMode != 1 && (point - npc.Center).Length() < 100f)

@@ -16,7 +16,7 @@ namespace AAMod.Projectiles.Shen
         public override void SetDefaults()
         {
             projectile.width = 176;
-            projectile.height = 144;
+            projectile.height = 164;
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
