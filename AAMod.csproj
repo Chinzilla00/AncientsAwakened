@@ -1027,6 +1027,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Projectiles\Akuma\Daycrusher.cs" />
     <Compile Include="Projectiles\Akuma\Dayser.cs" />
@@ -1237,10 +1240,16 @@
     <Compile Include="Tiles\Crates\IceCrate.cs" />
     <Compile Include="Tiles\Crates\InfernoCrate.cs" />
     <Compile Include="Tiles\Crates\MireCrate.cs" />
+    <Compile Include="Tiles\DiscordiumOre.cs" />
     <Compile Include="Tiles\DragonEgg.cs" />
     <Compile Include="Tiles\DragonRose.cs" />
     <Compile Include="Tiles\HydraPod.cs" />
     <Compile Include="Tiles\IZBox.cs" />
+    <Compile Include="Tiles\ManaLantern.cs" />
+    <Compile Include="Tiles\OroborosChestC1.cs" />
+    <Compile Include="Tiles\OroborosChestC2.cs" />
+    <Compile Include="Tiles\OroborosChestC3.cs" />
+    <Compile Include="Tiles\OroborosChestC4.cs" />
     <Compile Include="Tiles\Sticker.cs" />
     <Compile Include="Tiles\Razetus.cs" />
     <Compile Include="Tiles\Depthice.cs" />
@@ -1453,8 +1462,11 @@
     <Content Include="Backgrounds\VoidBolt.png" />
     <Content Include="Backgrounds\VoidFlash.png" />
     <Content Include="Backgrounds\VoidFog.png" />
+    <Content Include="Backgrounds\VoidIslands.png" />
     <Content Include="Backgrounds\VoidPlanet.png" />
     <Content Include="Backgrounds\VoidSky.png" />
+    <Content Include="Backgrounds\VoidSurface.png" />
+    <Content Include="Backgrounds\VoidUG.png" />
     <Content Include="Backgrounds\YamataMoon.png" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
@@ -1835,7 +1847,10 @@
     <Content Include="Glowmasks\MorningGlory_Glow.png" />
     <Content Include="Glowmasks\MorningStar_Glow.png" />
     <Content Include="Glowmasks\Mosster_Glow.png" />
+    <Content Include="Glowmasks\NaitokurosuA_Glow.png" />
+    <Content Include="Glowmasks\NaitokurosuA_Neck_Glow.png" />
     <Content Include="Glowmasks\Naitokurosu_Glow.png" />
+    <Content Include="Glowmasks\Naitokurosu_Neck_Glow.png" />
     <Content Include="Glowmasks\NCBag_Glow.png" />
     <Content Include="Glowmasks\Neutralizer_Glow.png" />
     <Content Include="Glowmasks\NightcrawlerBody_Glow.png" />
@@ -1943,8 +1958,10 @@
     <Content Include="Glowmasks\SunSpear_Glow.png" />
     <Content Include="Glowmasks\SunStaff_Glow.png" />
     <Content Include="Glowmasks\SunStorm_Glow.png" />
-    <Content Include="Glowmasks\TaiyangBaoleiA2_Glow.png" />
+    <Content Include="Glowmasks\TaiyangBaoleiA_Glow.png" />
+    <Content Include="Glowmasks\TaiyangBaoleiA_Shield_Glow.png" />
     <Content Include="Glowmasks\TaiyangBaolei_Glow.png" />
+    <Content Include="Glowmasks\TaiyangBaolei_Shield_Glow.png" />
     <Content Include="Glowmasks\Taserblast_Glow.png" />
     <Content Include="Glowmasks\TaserZ.png" />
     <Content Include="Glowmasks\Taser_Glow.png" />
@@ -1979,6 +1996,7 @@
     <Content Include="Glowmasks\TrueDeathlyLongbow_Glow.png" />
     <Content Include="Glowmasks\TrueFleshClaymoreShot_Glow.png" />
     <Content Include="Glowmasks\TrueFleshrendClaymore_glow.png" />
+    <Content Include="Glowmasks\TrueHallowedPrism_Glow.png" />
     <Content Include="Glowmasks\TrueManaRose_Glow.png" />
     <Content Include="Glowmasks\TrueOblivion_Glow.png" />
     <Content Include="Glowmasks\TruePaladinsSmeltery_Glow.png" />
@@ -1986,6 +2004,8 @@
     <Content Include="Glowmasks\UmbreonSPProjectile_Glow.png" />
     <Content Include="Glowmasks\UmbreonSP_Glow.png" />
     <Content Include="Glowmasks\UnstableSingularity_Glow.png" />
+    <Content Include="Glowmasks\UraniumOre_Glow.png" />
+    <Content Include="Glowmasks\Uranium_Glow.png" />
     <Content Include="Glowmasks\ValkyrieHelm_Head_Glow.png" />
     <Content Include="Glowmasks\VoidBox_Glow.png" />
     <Content Include="Glowmasks\VoidStarPF_Glow.png" />
@@ -2569,6 +2589,7 @@
     <Content Include="Items\Blocks\Torchsandstone.png" />
     <Content Include="Items\Blocks\Torchstone.png" />
     <Content Include="Items\Blocks\TruePaladinsSmeltery.png" />
+    <Content Include="Items\Blocks\Uranium.png" />
     <Content Include="Items\Blocks\VoidBox.png" />
     <Content Include="Items\Blocks\VoidUnit.png" />
     <Content Include="Items\Blocks\YamataABox.png" />
@@ -3469,6 +3490,7 @@
     <Content Include="NPCs\Enemies\Corruption\FeralMonster.png" />
     <Content Include="NPCs\Enemies\Inferno\BlazePhoenix.png" />
     <Content Include="NPCs\Enemies\Inferno\ChaoticDawn.png" />
+    <Content Include="NPCs\Enemies\Inferno\DragonDiver.png" />
     <Content Include="NPCs\Enemies\Inferno\Dragron.png" />
     <Content Include="NPCs\Enemies\Inferno\Flamebrute.png" />
     <Content Include="NPCs\Enemies\Inferno\Flamebrute_Smash.png" />
@@ -3518,6 +3540,7 @@
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
+    <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\Huo.png" />
     <Content Include="NPCs\Minibosses\Shin%27en.png" />
     <Content Include="NPCs\TownNPCs\GoblinSlayer.png" />
@@ -3822,8 +3845,8 @@
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
-    <Content Include="Tiles\DiscordiumBrick.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
+    <Content Include="Tiles\Doomgrass.png" />
     <Content Include="Tiles\DragonRose.png" />
     <Content Include="Tiles\FulguriumPlating.png" />
     <Content Include="Tiles\Hydrablossom.png" />
@@ -3831,6 +3854,10 @@
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MushroomBlocks.png" />
+    <Content Include="Tiles\OroborosChestC1.png" />
+    <Content Include="Tiles\OroborosChestC2.png" />
+    <Content Include="Tiles\OroborosChestC3.png" />
+    <Content Include="Tiles\OroborosChestC4.png" />
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ShenABox.png" />
@@ -3988,6 +4015,7 @@
     <Content Include="Tiles\Trophy\ZeroATrophy.png" />
     <Content Include="Tiles\Trophy\ZeroTrophy.png" />
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
+    <Content Include="Tiles\UraniumOre.png" />
     <Content Include="Tiles\VoidBox.png" />
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\YamataABox.png" />
@@ -4036,6 +4064,7 @@
     <Content Include="Water\VoidWaterSplash.png" />
     <Content Include="Water\VoidWaterStyle.png" />
     <Content Include="Water\VoidWaterStyle_Block.png" />
+    <Content Include="Worldgeneration\InfinitePattern.png" />
     <Content Include="Worldgeneration\Lake.png" />
     <Content Include="Worldgeneration\LakeWalls.png" />
     <Content Include="Worldgeneration\LakeWater.png" />
@@ -4048,7 +4077,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include=".vs\AAMod\DesignTimeBuild\.dtbcache" />
     <None Include=".vs\AAMod\v15\.suo" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
@@ -4062,13 +4090,13 @@
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
     <None Include="obj\Debug\AssemblyReference.cache" />
-    <None Include="obj\Debug\build.force" />
     <None Include="obj\Debug\CoreCompileInputs.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <None Include="obj\Release\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Release\AAMod.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
