@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DemonEater");
-            item.buffType = mod.BuffType<Buffs.EaterMinion>();
             item.damage = 13;
             item.width = 32;
             item.height = 32;

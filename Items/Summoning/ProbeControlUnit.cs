@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 5;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ProbeMinion");
-            item.buffType = mod.BuffType<Buffs.ProbeMinion>();
             item.damage = 17;
             item.width = 20;
             item.height = 24;

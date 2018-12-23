@@ -30,6 +30,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
+            projectile.tileCollide = false;
         }
 
         public int FrameTimer = 0;

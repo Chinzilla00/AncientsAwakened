@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("BabyPhoenix");
-            item.buffType = mod.BuffType<Buffs.BabyPhoenix>();
             item.damage = 12;
             item.width = 42;
             item.height = 44;
