@@ -92,18 +92,6 @@ namespace AAMod.NPCs.Bosses.Infinity
         private int testime = 60;
         public override void AI()
 		{
-            if (npc.ai[0] == 1f)
-            {
-                for (int i = 0; i < Main.player.Length; i++)
-                {
-                    Player player2 = Main.player[i];
-                    if (player2 != null && player2.active && !player2.dead && player2.HasBuff(mod.BuffType<LockedOn>()))
-                    {
-                        npc.life = player2.GetModPlayer<AAPlayer>(mod).GetIZHealth;
-                    }
-                }
-                npc.ai[0] = 0;
-            }
             if (testime > 0)
             {
                 testime--;

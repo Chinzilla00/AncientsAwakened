@@ -98,8 +98,16 @@ namespace AAMod.NPCs.Bosses.Infinity
 			//roar is now handled when infinity spawns so his mouth opens
              if(Main.netMode != 1)
 			{
-				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"), 0, npc.ai[0] == 2f ? 1f : 0);
-				Main.npc[npcID].Center = npc.Center;
+				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"));
+                for (int i = 0; i < Main.player.Length; i++)
+                {
+                    Player player2 = Main.player[i];
+                    if (player2 != null && player2.active && !player2.dead && player2.HasBuff(mod.BuffType<LockedOn>()))
+                    {
+                        Main.npc[npcID].life = player2.GetModPlayer<AAPlayer>(mod).GetIZHealth;
+                    }
+                }
+                Main.npc[npcID].Center = npc.Center;
 				Main.npc[npcID].netUpdate = true;
 			}
 		}

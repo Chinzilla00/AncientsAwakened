@@ -444,8 +444,8 @@
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
-    <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Akuma\YOTD.cs" />
+    <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Akuma\Dawnstrike.cs" />
     <Compile Include="Items\Boss\Akuma\DaybreakArrow.cs" />
     <Compile Include="Items\Boss\Akuma\Daycrusher.cs" />
@@ -460,7 +460,6 @@
     <Compile Include="Items\Boss\Akuma\SunStaff.cs" />
     <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
     <Compile Include="Items\Boss\Akuma\TaiyangBaolei.cs" />
-    <Compile Include="Items\Boss\Akuma\YOTD.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
@@ -1223,7 +1222,6 @@
     <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
-    <Compile Include="Tiles\AACrate.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\ACS.cs" />
@@ -3792,7 +3790,6 @@
     <Content Include="Sounds\Sounds\ZeroDeath.wav" />
     <Content Include="Sounds\Sounds\Zerohit.wav" />
     <Content Include="Sounds\Sounds\Zerohit2.wav" />
-    <Content Include="Tiles\AACrate.png" />
     <Content Include="Tiles\AbyssiumBar.png" />
     <Content Include="Tiles\AbyssiumOre.png" />
     <Content Include="Tiles\ACS.png" />
