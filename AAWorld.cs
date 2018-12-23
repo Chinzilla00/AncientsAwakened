@@ -592,6 +592,8 @@ namespace AAMod
             }
         }*/
 
+        
+
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
         {
             int wallID = (ushort)mod.WallType("DoomstoneBrickWall");
@@ -636,6 +638,31 @@ namespace AAMod
             //Side holes
             for (int i = Y + sizeY - 4; i > Y + sizeY; --i)
                 WorldGen.KillTile(X, i);
+        }
+
+        public override void PostWorldGen()
+        {
+            int[] itemsToPlaceInDungeonChests = new int[] { mod.ItemType("SkullStaff") };
+            int itemsToPlaceInDungeonChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36)
+                {
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                        {
+                            if (chest.item[inventoryIndex].type == 0)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(itemsToPlaceInDungeonChests[itemsToPlaceInDungeonChestsChoice]);
+                                itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public override void PostUpdate()

@@ -600,6 +600,7 @@
     <Compile Include="Items\Magic\FireburstTome.cs" />
     <Compile Include="Items\Magic\GelWand.cs" />
     <Compile Include="Items\Magic\Gong.cs" />
+    <Compile Include="Items\Magic\DoomStaff.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
     <Compile Include="Items\Magic\ManaRose.cs" />
     <Compile Include="Items\Magic\RazorLeaf.cs" />
@@ -1049,6 +1050,8 @@
     <Compile Include="Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileS.cs" />
+    <Compile Include="Projectiles\DoomBoom.cs" />
+    <Compile Include="Projectiles\DoomProj.cs" />
     <Compile Include="Projectiles\ChaosScytheP.cs" />
     <Compile Include="Projectiles\ChaosScythe.cs" />
     <Compile Include="Projectiles\ChaosShotP.cs" />
@@ -1689,6 +1692,7 @@
     <Content Include="Glowmasks\Discordium_Glow.png" />
     <Content Include="Glowmasks\DMC_Glow.png" />
     <Content Include="Glowmasks\DMK_Glow.png" />
+    <Content Include="Glowmasks\DoomProj_Glow.png" />
     <Content Include="Glowmasks\DoomRay_Glow.png" />
     <Content Include="Glowmasks\DoomsdayChestplate_Arms_Glow.png" />
     <Content Include="Glowmasks\DoomsdayChestplate_Body_Glow.png" />
@@ -3043,7 +3047,6 @@
     <Content Include="Items\Summoning\Minions\TDevilShot.png" />
     <Content Include="Items\Summoning\Minions\TerraDemon.png" />
     <Content Include="Items\Summoning\Minions\TrueHallowedPrism.png" />
-    <Content Include="Items\Summoning\Minions\TrueHallowedPrism_Glow.png" />
     <Content Include="Items\Summoning\Minions\TruePrismshot.png" />
     <Content Include="Items\Summoning\ProbeControlUnit.png" />
     <Content Include="Items\Summoning\SkullStaff.png" />
@@ -3614,6 +3617,8 @@
     <Content Include="Projectiles\DMC.png" />
     <Content Include="Projectiles\DMChainsaw.png" />
     <Content Include="Projectiles\DMK.png" />
+    <Content Include="Projectiles\DoomBoom.png" />
+    <Content Include="Projectiles\DoomProj.png" />
     <Content Include="Projectiles\DragonArrow.png" />
     <Content Include="Projectiles\DragonBreathP.png" />
     <Content Include="Projectiles\DragonP.png" />
@@ -3761,6 +3766,8 @@
     <Content Include="Resprites\DeathSickle.png" />
     <Content Include="Resprites\LifeFruit.png" />
     <Content Include="Resprites\Luminite.png" />
+    <Content Include="Resprites\Mana.png" />
+    <Content Include="Resprites\ManaGreen.png" />
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />

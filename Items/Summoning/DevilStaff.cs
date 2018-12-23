@@ -17,9 +17,7 @@ namespace AAMod.Items.Summoning
         public override void SetDefaults()
         {
             item.useStyle = 1;
-            item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DevilMinion");
-            item.buffType = mod.BuffType("DevilMinion");
             item.damage = 90;
             item.width = 52;
             item.height = 52;
@@ -65,7 +63,7 @@ namespace AAMod.Items.Summoning
             num79 = 0f;
             vector2.X = (float)Main.mouseX + Main.screenPosition.X;
             vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, item.shoot, num73, num74, i, 0f, 0f);
+            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("DevilMinion"), num73, num74, i, 0f, 0f);
             return false;
         }
 

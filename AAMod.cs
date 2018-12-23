@@ -275,6 +275,7 @@ namespace AAMod
                 Main.itemTexture[1327] = GetTexture("Resprites/DeathSickle");
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
+                Main.itemTexture[5] = GetTexture("Resprites/Mushroom");
             }
         }
 

@@ -3,11 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class BabyPhoenix : Minion2
-	{
+    public class BabyPhoenix : ModProjectile
+    {
         
         public override void SetStaticDefaults()
         {
@@ -51,6 +52,22 @@ namespace AAMod.Items.Summoning.Minions
                     {
                         projectile.velocity.Y = projectile.velocity.Y + 0.05f;
                     }
+                }
+            }
+
+            bool flag64 = projectile.type == mod.ProjectileType("BabyPhoenix");
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            player.AddBuff(mod.BuffType("BabyPhoenix"), 3600);
+            if (flag64)
+            {
+                if (player.dead)
+                {
+                    modPlayer.BabyPhoenix = false;
+                }
+                if (modPlayer.BabyPhoenix)
+                {
+                    projectile.timeLeft = 2;
                 }
             }
             float num528 = projectile.position.X;
@@ -219,20 +236,6 @@ namespace AAMod.Items.Summoning.Minions
                     projectile.spriteDirection = -projectile.direction;
                     return;
                 }
-            }
-        }
-
-        public override void CheckActive()
-        {
-            Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
-            if (player.dead)
-            {
-                modPlayer.BabyPhoenix = false;
-            }
-            if (modPlayer.BabyPhoenix)
-            {
-                projectile.timeLeft = 2;
             }
         }
 

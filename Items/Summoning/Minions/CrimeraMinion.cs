@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class CrimeraMinion : Minion2
+    public class CrimeraMinion : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -31,9 +31,22 @@ namespace AAMod.Items.Summoning.Minions
         }
         public override void AI()
         {
-            CheckActive();
-
+            bool flag64 = projectile.type == mod.ProjectileType("CrimeraMinion");
             Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            player.AddBuff(mod.BuffType("CrimeraMinion"), 3600);
+            if (flag64)
+            {
+                if (player.dead)
+                {
+                    modPlayer.CrimeraMinion = false;
+                }
+                if (modPlayer.CrimeraMinion)
+                {
+                    projectile.timeLeft = 2;
+                }
+            }
+            
             float num633 = 700f;
             float num634 = 800f;
             float num635 = 1200f;
@@ -224,20 +237,6 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     projectile.frame = 0;
                 }
-            }
-        }
-
-        public override void CheckActive()
-        {
-            Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
-            if (player.dead)
-            {
-                modPlayer.CrimeraMinion = false;
-            }
-            if (modPlayer.CrimeraMinion)
-            {
-                projectile.timeLeft = 2;
             }
         }
     }

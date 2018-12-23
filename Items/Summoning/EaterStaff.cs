@@ -19,7 +19,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DemonEater");
-            item.buffType = mod.BuffType("EaterMinion");
             item.damage = 13;
             item.width = 32;
             item.height = 32;
@@ -65,7 +64,7 @@ namespace AAMod.Items.Summoning
             num79 = 0f;
             vector2.X = (float)Main.mouseX + Main.screenPosition.X;
             vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, item.shoot, num73, num74, i, 0f, 0f);
+            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("DemonEater"), num73, num74, i, 0f, 0f);
             return false;
         }
 

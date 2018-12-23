@@ -20,7 +20,7 @@ namespace AAMod.Buffs
 			{
 				modPlayer.BabyPhoenix = true;
 			}
-			if (!modPlayer.ChairMinion)
+			if (!modPlayer.BabyPhoenix)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;
