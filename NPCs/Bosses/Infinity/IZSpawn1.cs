@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
+using AAMod.Buffs;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
@@ -95,9 +96,9 @@ namespace AAMod.NPCs.Bosses.Infinity
 		public void SummonInfinity()
 		{
 			//roar is now handled when infinity spawns so his mouth opens
-            if(Main.netMode != 1)
+             if(Main.netMode != 1)
 			{
-				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"));
+				int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Infinity"), 0, npc.ai[0] == 2f ? 1f : 0);
 				Main.npc[npcID].Center = npc.Center;
 				Main.npc[npcID].netUpdate = true;
 			}

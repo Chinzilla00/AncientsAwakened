@@ -874,13 +874,15 @@ namespace AAMod
         }
 
         public int IZHoldTimer = 180;
+        public bool InfZ = false;
+        public int GetIZHealth = 2000000;
 
         public override void UpdateBadLifeRegen()
         {
             int before = player.lifeRegen;
             bool drain = false;
 
-            if (LockedOn && !NPC.AnyNPCs(mod.NPCType("Infinity")) && !NPC.AnyNPCs(mod.NPCType("IZSpawn1")))
+            if (LockedOn && !NPC.AnyNPCs(mod.NPCType("Infinity")) && !NPC.AnyNPCs(mod.NPCType("IZSpawn1")) && InfZ)
             {
                 if (IZHoldTimer > 0)
                 {
@@ -937,7 +939,6 @@ namespace AAMod
                     player.velocity.X *= 0.4f;
                 }
             }
-
         }
 
         public override void UpdateDead()
