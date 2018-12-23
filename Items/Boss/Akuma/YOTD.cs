@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Akuma
 {
     public class YOTD : ModItem
     {
-        
+
 
         public override void SetStaticDefaults()
         {
