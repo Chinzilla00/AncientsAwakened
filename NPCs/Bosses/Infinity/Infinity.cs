@@ -88,10 +88,10 @@ namespace AAMod.NPCs.Bosses.Infinity
         }
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
-        private bool Scanning = false;
         private int testime = 60;
         public override void AI()
 		{
+            npc.timeLeft = 200;
             if (testime > 0)
             {
                 testime--;
@@ -123,7 +123,34 @@ namespace AAMod.NPCs.Bosses.Infinity
 					Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
 				}
 			}
-            
+
+            Player player = Main.player[npc.target];
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 1200) //trigger teleporting stuff
+                {
+                    npc.dontTakeDamage = true;
+                    npc.alpha += 10;
+                    if (npc.alpha >= 255) //teleport, you're invisible!
+                    {
+                        npc.alpha = 254; //don't let it hit 255 or it will despawn!
+                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y);
+                        npc.Center = tele;
+                        npc.dontTakeDamage = false;
+                        Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/IZRoar"), npc.Center);
+                    }
+                }
+                else //you're close to the player, so make sure you're visible!
+                {
+                    npc.dontTakeDamage = false; //to prevent you from being indestructible if the teleport is interrupted
+                    npc.alpha -= 25;
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+            }
 
             float movementMax = 1.5f;
 			if(npc.target > -1)
@@ -131,15 +158,6 @@ namespace AAMod.NPCs.Bosses.Infinity
 				Player targetPlayer = Main.player[npc.target];
 				if(!targetPlayer.dead) //speed changes depending on how far the player is
 				{
-                    /*if (targetPlayer.Center.Y <= npc.Top.Y - 400f && !Scanning)
-                    {
-                        Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<Scanner>(), 0, 0f, targetPlayer.whoAmI, npc.whoAmI);
-                        Scanning = true;
-                    }
-                    else
-                    {
-                        Scanning = false;
-                    }*/
                     npc.alpha -= 10;
                     if (npc.alpha <= 0)
                     {
