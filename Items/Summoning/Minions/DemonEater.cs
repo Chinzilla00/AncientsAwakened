@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class DemonEater : ModProjectile
+    public class DemonEater : Minion2
     {
     	public override void SetStaticDefaults()
 		{
@@ -36,25 +36,12 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void AI()
         {
-        	float num633 = 700f;
+            CheckActive();
+            float num633 = 700f;
 			float num634 = 800f;
 			float num635 = 1200f;
 			float num636 = 150f;
-			bool flag64 = projectile.type == mod.ProjectileType("EaterMinion");
 			Player player = Main.player[projectile.owner];
-			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			player.AddBuff(mod.BuffType("EaterMinion"), 3600);
-			if (flag64)
-			{
-				if (player.dead)
-				{
-					modPlayer.SkullMinion = false;
-				}
-				if (modPlayer.SkullMinion)
-				{
-					projectile.timeLeft = 2;
-				}
-			}
 			float num637 = 0.05f;
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
@@ -225,6 +212,20 @@ namespace AAMod.Items.Summoning.Minions
 					}
 				}
 			}
+        }
+
+        public override void CheckActive()
+        {
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
+            if (player.dead)
+            {
+                modPlayer.EaterMinion = false;
+            }
+            if (modPlayer.EaterMinion)
+            {
+                projectile.timeLeft = 2;
+            }
         }
     }
 }

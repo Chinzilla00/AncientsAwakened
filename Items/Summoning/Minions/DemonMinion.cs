@@ -118,7 +118,6 @@ namespace AAMod.Items.Summoning.Minions
                 num16 = 1000;
             }
             
-            Player player = Main.player[projectile.owner];
             float num17 = Vector2.Distance(player.Center, projectile.Center);
             if (num17 > num16)
             {

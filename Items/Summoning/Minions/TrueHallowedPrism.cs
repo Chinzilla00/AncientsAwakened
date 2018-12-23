@@ -8,9 +8,20 @@ namespace AAMod.Items.Summoning.Minions
 {
     public class TrueHallowedPrism : Minion2
 	{
-        
+        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
             DisplayName.SetDefault("True Hallowed Prism");
             Main.projFrames[projectile.type] = 5;
 
@@ -29,11 +40,14 @@ namespace AAMod.Items.Summoning.Minions
             projectile.minionSlots = 1f;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
+            projectile.glowMask = customGlowMask;
         }
         
 
         public override void AI()
         {
+            CheckActive();
+            Player player = Main.player[projectile.owner];
             if (projectile.ai[0] == 2f)
             {
                 projectile.ai[1] -= 1f;
@@ -145,7 +159,6 @@ namespace AAMod.Items.Summoning.Minions
             {
                 num16 = 1200;
             }
-            Player player = Main.player[projectile.owner];
             float num17 = Vector2.Distance(player.Center, projectile.Center);
             if (num17 > (float)num16)
             {
@@ -320,44 +333,15 @@ namespace AAMod.Items.Summoning.Minions
             }
         }
 
-        public Color GetGlowAlpha()
-        {
-            return Main.DiscoColor * (Main.mouseTextColor / 255f);
-        }
-
-        public static Texture2D glowTex = null;
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
-        public bool saythelinezero = false;
-
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
-        {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Items/Summoning/Minions/TrueHallowedPrism_Glow");
-            }
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[projectile.type], 0, projectile, dColor);
-            BaseMod.BaseDrawing.DrawAura(spritebatch, glowTex, 0, projectile, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, GetGlowAlpha());
-            if (!saythelinezero)
-            {
-                BaseMod.BaseDrawing.DrawAura(spritebatch, Main.npcTexture[projectile.type], 0, projectile, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-                BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[projectile.type], 0, projectile, Color.White);
-            }
-            return false;
-        }
-
         public override void CheckActive()
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
             if (player.dead)
             {
-                modPlayer.HallowedPrism = false;
+                modPlayer.TrueHallowedPrism = false;
             }
-            if (modPlayer.BabyPhoenix)
+            if (modPlayer.TrueHallowedPrism)
             {
                 projectile.timeLeft = 2;
             }

@@ -222,6 +222,7 @@
     <Compile Include="Items\Accessories\SoulStone.cs" />
     <Compile Include="Items\Accessories\SpaceStone.cs" />
     <Compile Include="Items\Accessories\TimeStone.cs" />
+    <Compile Include="Items\Accessories\Wings\AquamancerWings.cs" />
     <Compile Include="Items\Accessories\Wings\DarkmatterJetpack.cs" />
     <Compile Include="Items\Accessories\Wings\DraconianWings.cs" />
     <Compile Include="Items\Accessories\Wings\Dragon_Wings.cs" />
@@ -873,10 +874,10 @@
     <Compile Include="Items\Usable\MireKey.cs" />
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
-    <Compile Include="Items\Vanity\Alphakip\AquamancerWings.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Alphakip\KipronWings.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverMask.cs" />
@@ -2167,6 +2168,8 @@
     <Content Include="Items\Accessories\SpaceStone_Face.png" />
     <Content Include="Items\Accessories\TimeStone.png" />
     <Content Include="Items\Accessories\TimeStone_Face.png" />
+    <Content Include="Items\Accessories\Wings\AquamancerWings.png" />
+    <Content Include="Items\Accessories\Wings\AquamancerWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\DarkmatterJetpack.png" />
     <Content Include="Items\Accessories\Wings\DarkmatterJetpack_Wings.png" />
     <Content Include="Items\Accessories\Wings\DraconianWings.png" />
@@ -3123,8 +3126,6 @@
     <Content Include="Items\Usable\OrderSolution.png" />
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
-    <Content Include="Items\Vanity\Alphakip\AquamancerWings.png" />
-    <Content Include="Items\Vanity\Alphakip\AquamancerWings_Wings.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
@@ -3133,6 +3134,8 @@
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket_Female.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverMask_Head.png" />
+    <Content Include="Items\Vanity\Alphakip\KipronWings.png" />
+    <Content Include="Items\Vanity\Alphakip\KipronWings_Wings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverJacket.png" />

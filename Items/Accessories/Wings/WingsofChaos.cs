@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories.Wings
@@ -24,7 +25,7 @@ namespace AAMod.Items.Accessories.Wings
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.wingTimeMax = 600;
+			player.wingTimeMax = 700;
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
@@ -46,11 +47,11 @@ namespace AAMod.Items.Accessories.Wings
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "AbyssiumBar", 30);
-            recipe.AddIngredient(null, "IncineriteBar", 30);
-            recipe.AddIngredient(null, "CrucibleScale", 10);
-            recipe.AddIngredient(null, "DreadScale", 10);
-            recipe.AddTile(null, "ACS");
+            recipe.AddIngredient(null, "SoulOfSpite", 6);
+            recipe.AddIngredient(null, "SoulOfSmite", 6);
+            recipe.AddIngredient(null, "Discordium", 15);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

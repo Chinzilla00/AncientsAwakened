@@ -70,7 +70,7 @@ namespace AAMod.Items.Boss.Equinox
                         player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                        player.QuickSpawnItem(mod.ItemType("AquamancerWings"));
+                        player.QuickSpawnItem(mod.ItemType("KipronWings"));
                         player.QuickSpawnItem(mod.ItemType("AmphibianLongsword"));
                     }
                     else if (choice == 2)

@@ -71,7 +71,7 @@ namespace AAMod.Items.Boss.Retriever
                         player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                        player.QuickSpawnItem(mod.ItemType("AquamancerWings"));
+                        player.QuickSpawnItem(mod.ItemType("KipronWings"));
                     }
                     else if (choice == 2)
                     {

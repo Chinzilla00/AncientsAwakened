@@ -31,6 +31,18 @@ namespace AAMod
             return GetTimedColor(AAPlayer.ZeroColor, color, min, max, clamp);
         }
 
+        public override bool Drop(int i, int j, int type)
+        {
+            if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass
+            {
+                return false;
+            }
+            if (type == TileID.Mud && TileID.Sets.BreakableWhenPlacing[TileID.Mud]) //placing grass
+            {
+                return false;
+            }
+            return base.Drop(i, j, type);
+        }
 
         public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
 		{

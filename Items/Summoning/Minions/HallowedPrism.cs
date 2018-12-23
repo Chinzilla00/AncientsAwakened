@@ -34,6 +34,8 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void AI()
         {
+            CheckActive();
+            Player player = Main.player[projectile.owner];
             if (projectile.ai[0] == 2f)
             {
                 projectile.ai[1] -= 1f;
@@ -145,7 +147,6 @@ namespace AAMod.Items.Summoning.Minions
             {
                 num16 = 1200;
             }
-            Player player = Main.player[projectile.owner];
             float num17 = Vector2.Distance(player.Center, projectile.Center);
             if (num17 > (float)num16)
             {
@@ -328,7 +329,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 modPlayer.HallowedPrism = false;
             }
-            if (modPlayer.BabyPhoenix)
+            if (modPlayer.HallowedPrism)
             {
                 projectile.timeLeft = 2;
             }

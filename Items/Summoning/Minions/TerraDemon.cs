@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class TerraDemon : ModProjectile
+    public class TerraDemon : Minion2
     {
     	public override void SetStaticDefaults()
 		{
@@ -37,8 +37,10 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void AI()
         {
+            CheckActive();
             float num8 = 0.05f;
             float num9 = (float)projectile.width;
+            Player player = Main.player[projectile.owner];
             for (int j = 0; j < 1000; j++)
             {
                 if (j != projectile.whoAmI && Main.projectile[j].active && Main.projectile[j].owner == projectile.owner && Main.projectile[j].type == projectile.type && Math.Abs(projectile.position.X - Main.projectile[j].position.X) + Math.Abs(projectile.position.Y - Main.projectile[j].position.Y) < num9)
@@ -103,7 +105,6 @@ namespace AAMod.Items.Summoning.Minions
                 num16 = 1000;
             }
             
-            Player player = Main.player[projectile.owner];
             float num17 = Vector2.Distance(player.Center, projectile.Center);
             if (num17 > num16)
             {
@@ -289,6 +290,19 @@ namespace AAMod.Items.Summoning.Minions
                         }
                     }
                 }
+            }
+        }
+        public override void CheckActive()
+        {
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
+            if (player.dead)
+            {
+                modPlayer.TerraMinion = false;
+            }
+            if (modPlayer.TerraMinion)
+            {
+                projectile.timeLeft = 2;
             }
         }
     }
