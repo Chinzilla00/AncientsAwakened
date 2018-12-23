@@ -657,6 +657,11 @@ namespace AAMod
                             {
                                 chest.item[inventoryIndex].SetDefaults(itemsToPlaceInDungeonChests[itemsToPlaceInDungeonChestsChoice]);
                                 itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
+                           break;
+                        }
+                    }
+                }
+            }
                                
             int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("ITEM 1") };
             int itemsToPlaceInVoidChestsChoice1 = 0;
