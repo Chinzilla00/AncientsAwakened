@@ -36,7 +36,8 @@ namespace AAMod.Items.Summoning.Minions
 			ProjectileID.Sets.LightPet[projectile.type] = true;
 			Main.projPet[projectile.type] = true;
 			projectile.magic = true;
-			projectile.aiStyle = 66;
+            projectile.tileCollide = false;
+            projectile.aiStyle = 66;
 			aiType = 387;
 			projectile.damage = 36;
 		}

@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DevilMinion");
-            item.buffType = mod.BuffType<Buffs.DevilMinion>();
             item.damage = 90;
             item.width = 52;
             item.height = 52;

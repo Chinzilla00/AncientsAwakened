@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TrueHallowedPrism");
-            item.buffType = mod.BuffType<Buffs.TrueHallowedPrism>();
             item.damage = 75;
             item.width = 64;
             item.height = 64;

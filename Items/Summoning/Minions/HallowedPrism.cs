@@ -28,6 +28,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.friendly = true;
             projectile.minionSlots = 1f;
             projectile.ignoreWater = true;
+            projectile.tileCollide = false;
         }
         
 

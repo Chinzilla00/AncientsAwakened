@@ -24,6 +24,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
+            projectile.tileCollide = false;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

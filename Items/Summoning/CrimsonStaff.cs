@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("CrimeraMinion");
-            item.buffType = mod.BuffType<Buffs.CrimeraMinion>();
             item.damage = 15;
             item.width = 46;
             item.height = 46;

@@ -30,6 +30,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
+            projectile.tileCollide = false;
         }
 
         public int FrameTimer = 0;
@@ -38,6 +39,21 @@ namespace AAMod.Items.Summoning.Minions
         {
             float num8 = 0.05f;
             float num9 = (float)projectile.width;
+            bool flag64 = projectile.type == mod.ProjectileType("DemonMinion");
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            player.AddBuff(mod.BuffType("DemonMinion"), 3600);
+            if (flag64)
+            {
+                if (player.dead)
+                {
+                    modPlayer.DemonMinion = false;
+                }
+                if (modPlayer.DemonMinion)
+                {
+                    projectile.timeLeft = 2;
+                }
+            }
             for (int j = 0; j < 1000; j++)
             {
                 if (j != projectile.whoAmI && Main.projectile[j].active && Main.projectile[j].owner == projectile.owner && Main.projectile[j].type == projectile.type && Math.Abs(projectile.position.X - Main.projectile[j].position.X) + Math.Abs(projectile.position.Y - Main.projectile[j].position.Y) < num9)

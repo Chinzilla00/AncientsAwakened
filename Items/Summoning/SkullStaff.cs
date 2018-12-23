@@ -18,7 +18,6 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("SkullMinion");
-            item.buffType = mod.BuffType<Buffs.SkullMinion>();
             item.damage = 19;
             item.width = 44;
             item.height = 44;

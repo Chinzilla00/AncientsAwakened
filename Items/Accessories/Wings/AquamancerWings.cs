@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Alphakip
+namespace AAMod.Items.Accessories.Wings
 {
 
     [AutoloadEquip(EquipType.Wings)]
@@ -11,8 +11,7 @@ namespace AAMod.Items.Vanity.Alphakip
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Alphakip's Aquamancer Wings");
-            Tooltip.SetDefault("'Great for impersonating Ancients Awakened Devs!'");
+            DisplayName.SetDefault("Aquamancer Wings");
 		}
 
 		public override void SetDefaults()
@@ -20,23 +19,10 @@ namespace AAMod.Items.Vanity.Alphakip
 			item.width = 42;
 			item.height = 42;
 			item.value = 500000;
-			item.rare = 11;
+			item.rare = 6;
 			item.accessory = true;
             item.alpha = 100;
 		}
-
-        
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(39, 115, 189);
-                }
-            }
-        }
         
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
@@ -58,5 +44,15 @@ namespace AAMod.Items.Vanity.Alphakip
 			speed = 10f;
 			acceleration *= 2.5f;
 		}
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(null, "SoulOfSpite", 15);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
