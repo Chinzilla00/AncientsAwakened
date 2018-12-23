@@ -161,6 +161,12 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.aiStyle = 5;        //Reverts back to the original Flying AI Style
                 timer = 0;              //Sets the timer back to 0 to repeat
             }
+            if (switchMove)
+            {
+                float num4 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
+                float num5 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
+                npc.rotation = (float)Math.Atan2((double)num5, (double)num4) - 1.57f;
+            }
         }
         private void Move(Vector2 offset)
         {

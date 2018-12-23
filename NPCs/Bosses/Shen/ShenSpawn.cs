@@ -242,6 +242,14 @@ namespace AAMod.NPCs.Bosses.Shen
             if (Speechtimer == 2000)
             {
                 Main.NewText("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                for (int i = 0; i < Main.player.Length; i++)
+                {
+                    Player player2 = Main.player[i];
+                    if (player2 != null && player2.active && !player2.dead)
+                    {
+                        player2.AddBuff(mod.BuffType<Buffs.LockedOn>(), 60);
+                    }
+                }
                 SummonShen();
                 npc.active = false;
             }

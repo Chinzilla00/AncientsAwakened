@@ -460,6 +460,7 @@
     <Compile Include="Items\Boss\Akuma\SunStaff.cs" />
     <Compile Include="Items\Boss\Akuma\SunStorm.cs" />
     <Compile Include="Items\Boss\Akuma\TaiyangBaolei.cs" />
+    <Compile Include="Items\Boss\Akuma\YOTD.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodBag.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodmotherTrophy.cs" />
     <Compile Include="Items\Boss\Broodmother\BroodScale.cs" />
@@ -933,7 +934,6 @@
     <Compile Include="NPCs\Bosses\Infinity\IZHand2.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
-    <Compile Include="NPCs\Bosses\Infinity\Scanner.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -1456,12 +1456,14 @@
     <Content Include="Backgrounds\YamataMoon.png" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
+    <Content Include="bin\Debug\BaseMod.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Game.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Graphics.dll" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
     <Content Include="bin\Debug\ReLogic.dll" />
     <Content Include="bin\Debug\Terraria.exe" />
+    <Content Include="bin\Debug\TerrariaHooks.dll" />
     <Content Include="BlankTex.png" />
     <Content Include="Buffs\BabyPhoenix.png" />
     <Content Include="Buffs\Broodmini.png" />
@@ -1527,6 +1529,9 @@
     <Content Include="Dusts\Discord.png" />
     <Content Include="Dusts\DoomDust.png" />
     <Content Include="Dusts\DragonflameDust.png" />
+    <Content Include="Dusts\dust_Grovite.png" />
+    <Content Include="Dusts\dust_Grovite2.png" />
+    <Content Include="Dusts\dust_Grovite3.png" />
     <Content Include="Dusts\dust_Rainbow.png" />
     <Content Include="Dusts\dust_Rainbow2.png" />
     <Content Include="Dusts\dust_Rainbow3.png" />
@@ -1548,6 +1553,7 @@
     <Content Include="Dusts\MagicDust.png" />
     <Content Include="Dusts\MindDust.png" />
     <Content Include="Dusts\MireBubbleDust.png" />
+    <Content Include="Dusts\OmegaDust.png" />
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
     <Content Include="Dusts\PepsiDust.png" />
@@ -1852,6 +1858,7 @@
     <Content Include="Glowmasks\PerfectChaosPlate_Arms_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosPlate_Body_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosPlate_Female_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosPlate_Glow.png" />
     <Content Include="Glowmasks\PerfectChaos_Glow.png" />
     <Content Include="Glowmasks\PiranhaUnit_Glow.png" />
     <Content Include="Glowmasks\Piranha_Glow.png" />
@@ -1933,6 +1940,7 @@
     <Content Include="Glowmasks\SunSpear_Glow.png" />
     <Content Include="Glowmasks\SunStaff_Glow.png" />
     <Content Include="Glowmasks\SunStorm_Glow.png" />
+    <Content Include="Glowmasks\TaiyangBaoleiA2_Glow.png" />
     <Content Include="Glowmasks\TaiyangBaolei_Glow.png" />
     <Content Include="Glowmasks\Taserblast_Glow.png" />
     <Content Include="Glowmasks\TaserZ.png" />
@@ -1951,6 +1959,7 @@
     <Content Include="Glowmasks\TFGWP_Glow.png" />
     <Content Include="Glowmasks\TheReaper_Glow.png" />
     <Content Include="Glowmasks\TheVulcano_Glow.png" />
+    <Content Include="Glowmasks\ThrowingCrescent_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Face_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Glow.png" />
     <Content Include="Glowmasks\TopHat_Glow.png" />
@@ -1997,6 +2006,7 @@
     <Content Include="Glowmasks\YamataTerratool_Hammer_Glow.png" />
     <Content Include="Glowmasks\Zero2Box_Glow.png" />
     <Content Include="Glowmasks\ZeroArrow_Glow.png" />
+    <Content Include="Glowmasks\ZeroATrophy_Glow.png" />
     <Content Include="Glowmasks\ZeroAwakened_Glow.png" />
     <Content Include="Glowmasks\ZeroBag_Glow.png" />
     <Content Include="Glowmasks\ZeroBox_Glow.png" />
@@ -2762,6 +2772,7 @@
     <Content Include="Items\Dev\GentlemansRapier.png" />
     <Content Include="Items\Dev\GroxNote.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
+    <Content Include="Items\Dev\OmegaBlade.png" />
     <Content Include="Items\Dev\Prismeow.png" />
     <Content Include="Items\Dev\Sax.png" />
     <Content Include="Items\Dev\SkrallStaff.png" />
@@ -2810,6 +2821,7 @@
     <Content Include="Items\Materials\DragonClaw.png" />
     <Content Include="Items\Materials\DragonFire.png" />
     <Content Include="Items\Materials\Dragonfruit.png" />
+    <Content Include="Items\Materials\DragonRose.png" />
     <Content Include="Items\Materials\DragonScale.png" />
     <Content Include="Items\Materials\DragonSpirit.png" />
     <Content Include="Items\Materials\Dragon_Scale.png" />
@@ -2817,10 +2829,12 @@
     <Content Include="Items\Materials\Everleaf.png" />
     <Content Include="Items\Materials\FulguriteBar.png" />
     <Content Include="Items\Materials\hmm.png" />
+    <Content Include="Items\Materials\Hydrablossom.png" />
     <Content Include="Items\Materials\HydraClaw.png" />
     <Content Include="Items\Materials\HydraToxin.png" />
     <Content Include="Items\Materials\IncineriteBar.png" />
     <Content Include="Items\Materials\Jaw.png" />
+    <Content Include="Items\Materials\MadnessFragment.png" />
     <Content Include="Items\Materials\MirePod.png" />
     <Content Include="Items\Materials\Nightmare_Bar.png" />
     <Content Include="Items\Materials\Nightmare_Ore.png" />
@@ -2906,6 +2920,7 @@
     <Content Include="Items\Melee\JungleReaper.png" />
     <Content Include="Items\Melee\LeafBlade.png" />
     <Content Include="Items\Melee\Lolkat.png" />
+    <Content Include="Items\Melee\MadnessSword.png" />
     <Content Include="Items\Melee\MagicSword.png" />
     <Content Include="Items\Melee\MeteorGreatsword.png" />
     <Content Include="Items\Melee\MoltenLance.png" />
@@ -3072,6 +3087,8 @@
     <Content Include="Items\Tools\Hellfisher.png" />
     <Content Include="Items\Tools\Hellfisher_Bob.png" />
     <Content Include="Items\Tools\HydraTuneller.png" />
+    <Content Include="Items\Tools\MadnessAxe.png" />
+    <Content Include="Items\Tools\MadnessPick.png" />
     <Content Include="Items\Tools\OceanAxe.png" />
     <Content Include="Items\Tools\OceanPick.png" />
     <Content Include="Items\Tools\RadiumHammaxe.png" />
@@ -3286,7 +3303,6 @@
     <Content Include="NPCs\Bosses\Infinity\IZSpawn5.png" />
     <Content Include="NPCs\Bosses\Infinity\IZSpawn6.png" />
     <Content Include="NPCs\Bosses\Infinity\Oblivion.png" />
-    <Content Include="NPCs\Bosses\Infinity\Scanner.png" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.gif" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.png" />
     <Content Include="NPCs\Bosses\Lucifer\Lucifer.png" />
@@ -3526,6 +3542,7 @@
     <Content Include="Palletes\MegaPallet 2.png" />
     <Content Include="Palletes\MegaPallet.png" />
     <Content Include="Palletes\Mire Enemy.png" />
+    <Content Include="Palletes\Mushroom_Pallets.png" />
     <Content Include="Palletes\Pantheon.png" />
     <Content Include="Palletes\PantheonGigapallet.png" />
     <Content Include="Palletes\Schemes.png" />
@@ -3746,13 +3763,10 @@
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />
-    <Content Include="Sounds\Music\DradonMode.mp3" />
-    <Content Include="Sounds\Music\End.mp3" />
-    <Content Include="Sounds\Music\EndIntro.mp3" />
     <Content Include="Sounds\Music\IZ.mp3" />
+    <Content Include="Sounds\Music\IZDeath.mp3" />
     <Content Include="Sounds\Music\LastStand.mp3" />
     <Content Include="Sounds\Music\Monarch.mp3" />
-    <Content Include="Sounds\Music\SARoH.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />
     <Content Include="Sounds\Music\ShenA.mp3" />
     <Content Include="Sounds\Music\Boss6.mp3" />
@@ -3765,6 +3779,7 @@
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
     <Content Include="Sounds\Music\RayOfHope.mp3" />
+    <Content Include="Sounds\Music\ShenIntro.mp3" />
     <Content Include="Sounds\Music\Void.mp3" />
     <Content Include="Sounds\Music\WeAreNumberOne.mp3" />
     <Content Include="Sounds\Music\Yamata.mp3" />
@@ -3939,6 +3954,7 @@
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
+    <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
     <Content Include="Tiles\TechneciumOre.png" />
@@ -3950,6 +3966,7 @@
     <Content Include="Tiles\TorchsandHardened.png" />
     <Content Include="Tiles\Torchsandstone.png" />
     <Content Include="Tiles\Torchstone.png" />
+    <Content Include="Tiles\Trophy\AkumaATrophy.png" />
     <Content Include="Tiles\Trophy\AkumaTrophy.png" />
     <Content Include="Tiles\Trophy\BroodTrophy.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
@@ -3957,7 +3974,11 @@
     <Content Include="Tiles\Trophy\IZTrophy.png" />
     <Content Include="Tiles\Trophy\RaiderTrophy.png" />
     <Content Include="Tiles\Trophy\RetrieverTrophy.png" />
+    <Content Include="Tiles\Trophy\ShenTrophy.png" />
+    <Content Include="Tiles\Trophy\ShenTrophyRed.png" />
+    <Content Include="Tiles\Trophy\YamataATrophy.png" />
     <Content Include="Tiles\Trophy\YamataTrophy.png" />
+    <Content Include="Tiles\Trophy\ZeroATrophy.png" />
     <Content Include="Tiles\Trophy\ZeroTrophy.png" />
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
     <Content Include="Tiles\VoidBox.png" />
@@ -4026,13 +4047,16 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include=".vs\config\applicationhost.config" />
     <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
     <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
-    <None Include="obj\Debug\AAMod.csprojResolveAssemblyReference.cache" />
     <None Include="obj\Debug\AssemblyReference.cache" />
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\CoreCompileInputs.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
@@ -4062,6 +4086,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"</PostBuildEvent>
+    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -92,6 +92,18 @@ namespace AAMod.NPCs.Bosses.Infinity
         private int testime = 60;
         public override void AI()
 		{
+            if (npc.ai[0] == 1f)
+            {
+                for (int i = 0; i < Main.player.Length; i++)
+                {
+                    Player player2 = Main.player[i];
+                    if (player2 != null && player2.active && !player2.dead && player2.HasBuff(mod.BuffType<LockedOn>()))
+                    {
+                        npc.life = player2.GetModPlayer<AAPlayer>(mod).GetIZHealth;
+                    }
+                }
+                npc.ai[0] = 0;
+            }
             if (testime > 0)
             {
                 testime--;
@@ -212,8 +224,11 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.oldPos[0] = npc.position;		
         }
 
+        public bool Dead = false;
+
         public override void NPCLoot()
 		{
+            Dead = true;
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Oblivion>(), 0, 0);
             AAPlayer.ZeroKills += 1;
             AAWorld.downedIZ = true;
@@ -236,14 +251,6 @@ namespace AAMod.NPCs.Bosses.Infinity
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(Items.Boss.EXSoul.type);
-            }
-            for (int i = 0; i < Main.player.Length; i++)
-            {
-                Player player2 = Main.player[i];
-                if (player2 != null && player2.active && !player2.dead)
-                {
-                    player2.ClearBuff(mod.BuffType<LockedOn>());
-                }
             }
         }
 
@@ -326,7 +333,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 fifthHealth = true;
                 if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
                 npc.defense = 0;
-                IZHand1.damageIdle = 250;
+                IZHand1.damageIdle = 350;
                 IZHand1.damageCharging = 500;
                 roarTimer = 200;
             }
