@@ -73,6 +73,7 @@ Summons the chaos emperor");
             if (!AAWorld.ShenSummoned)
             {
                 SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
+                AAWorld.ShenSummoned = true;
             }
             if (!AAWorld.downedShen && AAWorld.ShenSummoned)
             {

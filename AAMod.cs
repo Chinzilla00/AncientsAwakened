@@ -407,6 +407,13 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:ACS", group14);
 
+            RecipeGroup group15 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Evil Summon Staff", new int[]
+            {
+                ItemType<Items.Summoning.EaterStaff>(),
+                ItemType<Items.Summoning.CrimsonStaff>()
+            });
+            RecipeGroup.RegisterGroup("AAMod:EvilStaff", group15);
+
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
                 int index = RecipeGroup.recipeGroupIDs["Wood"];

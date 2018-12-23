@@ -18,6 +18,9 @@ using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Infinity;
 using System.Collections.Generic;
 using BaseMod;
+using Terraria.ModLoader.IO;
+using ReLogic.Graphics;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -32,6 +35,15 @@ namespace AAMod
         public bool DragonMinion = false;
         public bool BabyPhoenix = false;
         public bool GripMinion = false;
+        public bool ProbeMinion = false;
+        public bool SkullMinion = false;
+        public bool EaterMinion = false;
+        public bool CrimeraMinion = false;
+        public bool DemonMinion = false;
+        public bool DevilMinion = false;
+        public bool TerraMinion = false;
+        public bool HallowedPrism = false;
+        public bool TrueHallowedPrism = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -149,6 +161,12 @@ namespace AAMod
         //IZ Death count
         public static int ZeroKills = 0;
 
+        //Stat Boosts
+        public int ManaLantern = 0;
+        private static int UIDisplay_ManaPerStar = 10;
+        private static int UI_ScreenAnchorX = Main.screenWidth - 800;
+        public static SpriteFont fontMouseText;
+
         public override void ResetEffects()
         {
             //Minions
@@ -160,6 +178,15 @@ namespace AAMod
             LungMinion = false;
             DragonMinion = false;
             GripMinion = false;
+            ProbeMinion = false;
+            SkullMinion = false;
+            EaterMinion = false;
+            CrimeraMinion = false;
+            DemonMinion = false;
+            DevilMinion = false;
+            HallowedPrism = false;
+            TrueHallowedPrism = false;
+            TerraMinion = false;
             //Biome
             //Armor
             valkyrieSet = false;
@@ -227,6 +254,36 @@ namespace AAMod
             RoyalKitten = false;
             //EnemyChecks
             IsGoblin = false;
+            
+        }
+
+        public override void Initialize()
+        {
+            ManaLantern = 0;
+        }
+
+        public override TagCompound Save()
+        {
+            return new TagCompound
+            {
+                {
+                    "ManaLantern", ManaLantern
+                }
+            };
+        }
+
+
+        public override void Load(TagCompound tag)
+        {
+            int ManaLantern = tag.GetInt("ManaLantern");
+            if (tag.ContainsKey("ManaLantern"))
+            {
+                ManaLantern = tag.GetInt("ManaLantern");
+            }
+            else
+            {
+                ManaLantern = 0;
+            }
         }
 
         public override void UpdateVanityAccessories()
@@ -241,6 +298,77 @@ namespace AAMod
                 }
             }
         }
+
+        /*public override void PostUpdateMiscEffects()
+        {
+            player.statManaMax2 += (ManaLantern * 10);
+
+            if (Main.netMode != 2 && player.whoAmI == Main.myPlayer)
+            {
+                Texture2D manaGreen = mod.GetTexture("Resprites/ManaGreen");
+                Texture2D mana= mod.GetTexture("Resprites/Mana");
+                int ManaBoost = ManaLantern;
+
+                if (ManaBoost == 1)
+                {
+                    Main.manaTexture = manaGreen;
+                }
+                else
+                {
+                    Main.manaTexture = mana;
+                }
+            }
+        }
+
+        private static void DrawInterface_Resources_Mana()
+        {
+            UIDisplay_ManaPerStar = 10;
+            if (Main.player[Main.myPlayer].statManaMax2 > 0)
+            {
+                int arg_30_0 = Main.player[Main.myPlayer].statManaMax2 / 20;
+                Main.spriteBatch.DrawString(fontMouseText, Language.GetText(), new Vector2((float)(750 + UI_ScreenAnchorX), 6f), new Color((int)Main.mouseTextColor, (int)Main.mouseTextColor, (int)Main.mouseTextColor, (int)Main.mouseTextColor), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+                for (int i = 1; i < Main.player[Main.myPlayer].statManaMax2 / UIDisplay_ManaPerStar + 1; i++)
+                {
+                    bool flag = false;
+                    float num = 1f;
+                    int num2;
+                    if (Main.player[Main.myPlayer].statMana >= i * UIDisplay_ManaPerStar)
+                    {
+                        num2 = 255;
+                        if (Main.player[Main.myPlayer].statMana == i * UIDisplay_ManaPerStar)
+                        {
+                            flag = true;
+                        }
+                    }
+                    else
+                    {
+                        float num3 = (float)(Main.player[Main.myPlayer].statMana - (i - 1) * UIDisplay_ManaPerStar) / (float)UIDisplay_ManaPerStar;
+                        num2 = (int)(30f + 225f * num3);
+                        if (num2 < 30)
+                        {
+                            num2 = 30;
+                        }
+                        num = num3 / 4f + 0.75f;
+                        if ((double)num < 0.75)
+                        {
+                            num = 0.75f;
+                        }
+                        if (num3 > 0f)
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        num += Main.cursorScale - 1f;
+                    }
+                    int a = (int)((double)((float)num2) * 0.9);
+                    Main.spriteBatch.Draw(Main.manaTexture, new Vector2((float)(775 + UI_ScreenAnchorX), (float)(30 + Main.manaTexture.Height / 2) + ((float)Main.manaTexture.Height - (float)Main.manaTexture.Height * num) / 2f + (float)(28 * (i - 1))), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.manaTexture.Width, Main.manaTexture.Height)), new Microsoft.Xna.Framework.Color(num2, num2, num2, a), 0f, new Vector2((float)(Main.manaTexture.Width / 2), (float)(Main.manaTexture.Height / 2)), num, SpriteEffects.None, 0f);
+                }
+            }
+        }*/
+
+
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
@@ -1519,7 +1647,7 @@ namespace AAMod
             {
                 if (drawPlayer.direction == -1)
                 {
-                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosKabutoBlue_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
                 }
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
             }
@@ -1552,7 +1680,7 @@ namespace AAMod
             {
                 if (drawPlayer.direction == -1)
                 {
-                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosGreavesBlue_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosGreavesBlue_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.legFrame);
                 }
                 BaseMod.BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.legFrame);
             }

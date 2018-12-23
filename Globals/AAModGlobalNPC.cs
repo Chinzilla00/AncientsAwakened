@@ -381,7 +381,13 @@ namespace AAMod
                     Item.NewItem(npc.getRect(), mod.ItemType("Energy_Conduit"));
                 }
             }
-            //Wall Of Flesh
+            if (npc.type == NPCID.CursedSkull)
+            {
+                if (Main.rand.NextFloat() < .12f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("SkullStaff"));
+                }
+            }
             if (npc.type == NPCID.Vulture)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("vulture_feather"), Main.rand.Next(1, 3));
@@ -393,6 +399,14 @@ namespace AAMod
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("Bloody_Mary"));
                 }
+            }
+            if (npc.type == NPCID.QueenBee)
+            {
+                if (Main.rand.NextFloat() < .01f)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("BugSwatter"));
+                }
+                Item.NewItem(npc.getRect(), mod.ItemType("Stinger"), Main.rand.Next(14, 20));
             }
             if ((npc.type == NPCID.GoblinArcher
                 || npc.type == NPCID.GoblinPeon

@@ -20,7 +20,6 @@ Requires 2 minion slots");
         {
             item.useStyle = 1;
             item.shootSpeed = 14f;
-            item.shoot = mod.ProjectileType("ClawBatonSpin");
             item.damage = 12;
             item.width = 42;
             item.height = 44;
@@ -44,8 +43,6 @@ Requires 2 minion slots");
             Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
 
             if (player.maxMinions - slotsUsed < 1) return true;
-            int Claw1 = mod.ProjectileType<DragonClaw>();
-            int Claw2 = mod.ProjectileType<HydraClaw>();
             int num76 = item.damage;
             float num77 = item.knockBack;
             int num154 = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
@@ -54,8 +51,21 @@ Requires 2 minion slots");
             {
                 num155 = (int)(Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY) / 16;
             }
-            Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, Claw1, num76, num77, i, 0f, 0f);
-            Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, Claw2, num76, num77, i, 0f, 0f);
+
+            int Claw = Main.rand.Next(2);
+
+            switch (Claw)
+            {
+                case 0:
+                    Claw = mod.ProjectileType<DragonClaw>();
+                    break;
+
+                default:
+                    Claw = mod.ProjectileType<HydraClaw>();
+                    break;
+            }
+
+            Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, Claw, num76, num77, i, 0f, 0f);
             
 
             return true;

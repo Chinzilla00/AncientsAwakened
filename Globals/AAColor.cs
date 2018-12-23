@@ -25,7 +25,7 @@ namespace AAMod
 		{
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 86), new Color(38, 36, 55),  new Color(53, 57, 86));
+				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75),  new Color(53, 57, 126));
 			}
 		}
 		public static Color Zero //Zero
@@ -46,7 +46,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Akuma, Yamata, Akuma);
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Indigo, Color.OrangeRed);
             }
         }
         public static Color Shen3
@@ -60,7 +60,7 @@ namespace AAMod
 		{
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(169, 34, 53), new Color(146, 37, 30), new Color(169, 34, 53));
+				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(169, 34, 73), new Color(146, 37, 50), new Color(169, 34, 73));
 			}
 		}
 		public static Color Oblivion //Oblivion
@@ -74,7 +74,15 @@ namespace AAMod
             }
 		}
 
-		public static Color COLOR_WHITEFADE1
+        public static Color Hallow
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Cyan, Color.Pink, Color.Cyan);
+            }
+        }
+
+        public static Color COLOR_WHITEFADE1
 		{
 			get
 			{

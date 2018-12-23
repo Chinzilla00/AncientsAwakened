@@ -66,7 +66,7 @@ namespace AAMod.Items.Boss.Akuma
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num81 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
             float num82 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
-            for (int num211 = 0; num211 < 4; num211++)
+            for (int num211 = 0; num211 < 2; num211++)
             {
                 float num212 = num81;
                 float num213 = num82;

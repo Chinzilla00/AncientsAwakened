@@ -83,6 +83,10 @@ namespace AAMod.Items.Boss.Grips
                     }
                 }
             }
+            if (Main.rand.Next(3) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("ClawBaton"));
+            }
             player.QuickSpawnItem(mod.ItemType("Abyssium"), Main.rand.Next(25, 56));
             player.QuickSpawnItem(mod.ItemType("Incinerite"), Main.rand.Next(25, 56));
             player.QuickSpawnItem(mod.ItemType("ClawOfChaos"));

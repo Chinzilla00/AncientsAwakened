@@ -92,6 +92,11 @@ namespace AAMod.NPCs.Bosses.Grips
             }
             if (GripRed == 0)
             {
+                if (Main.rand.Next(4) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ClawBaton"));
+                }
+
                 AAWorld.downedGrips = true;
                 if (Main.expertMode)
                 {
@@ -104,12 +109,8 @@ namespace AAMod.NPCs.Bosses.Grips
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GripMaskBlue"));
                 }
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Abyssium"), Main.rand.Next(15, 44));
-                }
-                {
-                    //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireInsignia"));
-                }
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Abyssium"), Main.rand.Next(30, 44));
+                
             }
         }
 

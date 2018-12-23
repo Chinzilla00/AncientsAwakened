@@ -9,6 +9,6 @@ namespace AAMod.Items.Summoning.Minions
 			CheckActive();
 		}
 
-		public abstract void CheckActive();
-	}
+        public abstract void CheckActive();
+    }
 }
