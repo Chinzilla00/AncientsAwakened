@@ -24,6 +24,7 @@ namespace AAMod
         public static int infernoTiles = 0;
         public static int voidTiles = 0;
         public static int mushTiles = 0;
+        public static int terraTiles = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -35,6 +36,7 @@ namespace AAMod
         private int infernoSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
+        private Vector2 TerraPos = new Vector2(0, 0);
         //Messages
         public static bool Evil;
         //Boss Bools
@@ -325,7 +327,11 @@ namespace AAMod
             tasks.Insert(chaosBiomeIndex, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
-            }));			
+            }));
+            tasks.Insert(chaosBiomeIndex + 2, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
+            {
+                Terrarium(progress);
+            }));
         }
 
         public void Mush(GenerationProgress progress)
@@ -903,6 +909,7 @@ namespace AAMod
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>()];
+            terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -962,6 +969,12 @@ namespace AAMod
             MireAbyss();
         }
 
+        private void Terrarium(GenerationProgress progress)
+        {
+            progress.Message = "Constructing the Terrarium";
+            TerraSphere();
+        }
+
         public void InfernoVolcano()
         {
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
@@ -976,6 +989,14 @@ namespace AAMod
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             MireBiome biome = new MireBiome();
             biome.Place(origin, WorldGen.structures);        
+        }
+
+        public void TerraSphere()
+        {
+            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.55f)); ;
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            TerrariumSphere biome = new TerrariumSphere();
+            biome.Place(origin, WorldGen.structures);
         }
 
 

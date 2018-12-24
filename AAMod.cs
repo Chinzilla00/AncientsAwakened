@@ -126,7 +126,7 @@ namespace AAMod
             }
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0.0000000000000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("IntimidatingMushroom") + "] during the day");
+                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0.0000000000000000001f, (Func<bool>)(() => AAWorld.downedMonarch), "Use a [i:" + ItemType("IntimidatingMushroom") + "] during the day");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 4.00000000001f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
@@ -227,6 +227,7 @@ namespace AAMod
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/IZ"), ItemType("IZBox"), TileType("IZBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope"), ItemType("RoHBox"), TileType("RoHBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 }
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
@@ -481,6 +482,12 @@ namespace AAMod
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
                 }
+            }
+            if (Ancients.Terrarium)
+            {
+
+                priority = MusicPriority.BiomeHigh;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium");
             }
             if (Ancients.ZoneMush)
             {

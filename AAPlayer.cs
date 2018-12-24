@@ -56,6 +56,7 @@ namespace AAMod
         public bool MoonAltar = false;
         public bool AkumaAltar = false;
         public bool YamataAltar = false;
+        public bool Terrarium = false;
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
@@ -433,6 +434,7 @@ namespace AAMod
             ZoneMire = (AAWorld.mireTiles > 100) || NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>());
             ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<Akuma>()) || NPC.AnyNPCs(mod.NPCType<AkumaA>()));
             ZoneMush = (AAWorld.mushTiles > 100);
+            Terrarium = (AAWorld.terraTiles > 1);
             ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
         }
 
@@ -463,7 +465,7 @@ namespace AAMod
         public override bool CustomBiomesMatch(Player other)
         {
             AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
-            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid && ZoneMush == modOther.ZoneMush);
+            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid && ZoneMush == modOther.ZoneMush && Terrarium == modOther.Terrarium);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -473,6 +475,7 @@ namespace AAMod
             modOther.ZoneMire = ZoneMire;
             modOther.ZoneVoid = ZoneVoid;
             modOther.ZoneMush = ZoneMush;
+            modOther.Terrarium = Terrarium;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -486,6 +489,8 @@ namespace AAMod
                 flags |= 3;
             if (ZoneMush)
                 flags |= 4;
+            if (Terrarium)
+                flags |= 5;
             writer.Write(flags);
         }
 
@@ -496,6 +501,7 @@ namespace AAMod
             ZoneMire = ((flags & 2) == 2);
             ZoneVoid = ((flags & 3) == 3);
             ZoneMush = ((flags & 4) == 4);
+            Terrarium = ((flags & 5) == 5);
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
@@ -593,6 +599,11 @@ namespace AAMod
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
                     }
                 }
+            }
+            if (player.GetModPlayer<AAPlayer>().Terrarium)
+            {
+                player.AddBuff(mod.BuffType<Terrarium>(), 2);
+                player.AddBuff(BuffID.DryadsWard, 2);
             }
             if (Main.rand.Next(3600) == 0)
             {

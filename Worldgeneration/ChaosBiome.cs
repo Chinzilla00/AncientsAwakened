@@ -108,12 +108,12 @@ namespace AAMod.Worldgeneration
             bool DEV = true;
             //--- Initial variable creation
             ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileStone = (ushort)mod.TileType("Torchstone"),
-			tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");			
-			
+            tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
+
             int worldSize = GetWorldSize();
             int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 
-	        Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
@@ -128,25 +128,25 @@ namespace AAMod.Worldgeneration
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-				new Actions.SetLiquid(0, 0)
-			}));
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new Actions.SetLiquid(0, 0)
+            }));
             WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[] //remove all fluids in the volcano...
 			{
-				new Actions.SetLiquid(0, 0)
-			}));				
+                new Actions.SetLiquid(0, 0)
+            }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
 				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-           /* WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
-			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
-                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileDirt, true, true)
-            }));*/
+            /* WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
+             {
+                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
+                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                 new BaseMod.SetModTile(tileDirt, true, true)
+             }));*/
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone }),
@@ -155,39 +155,76 @@ namespace AAMod.Worldgeneration
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //ice...
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-				new BaseMod.SetModTile(tileIce, true, true)
-			}));
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new BaseMod.SetModTile(tileIce, true, true)
+            }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //sand...
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sand, TileID.Ebonsand, TileID.Crimsand }),
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-				new BaseMod.SetModTile(tileSand, true, true)
-			}));
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Sand, TileID.Ebonsand, TileID.Crimsand }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new BaseMod.SetModTile(tileSand, true, true)
+            }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //hardened sand...
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand }),
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-				new BaseMod.SetModTile(tileSandHardened, true, true)
-			}));
-			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and sandstone.
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new BaseMod.SetModTile(tileSandHardened, true, true)
+            }));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and sandstone.
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-				new BaseMod.SetModTile(tileSandstone, true, true)
-			}));	
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new BaseMod.SetModTile(tileSandstone, true, true)
+            }));
             gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
 
             return true;
         }
-
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
             else if (Main.maxTilesX == 6300) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
+        }
+    }
+
+    public class TerrariumSphere : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+            int biomeRadius = 100;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("TerraCrystal");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("TerraWood");
+            colorToTile[new Color(255, 255, 0)] = mod.TileType("TerraLeaves");
+            colorToTile[new Color(0, 0, 255)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
+            Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
+
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+            {
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new Actions.SetLiquid(0, 0)
+            }));
+            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[] //remove all fluids in the volcano...
+            {
+                new Actions.SetLiquid(0, 0)
+            }));
+            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
+
+            return true;
         }
     }
 

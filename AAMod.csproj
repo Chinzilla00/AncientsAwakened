@@ -78,6 +78,7 @@
     <Compile Include="Backgrounds\InfernoSky.cs" />
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\TerrariumBG.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
     <Compile Include="Backgrounds\IZSky.cs" />
     <Compile Include="Backgrounds\IZSkyData.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\YamataSky.cs" />
     <Compile Include="Backgrounds\YamataSkyData.cs" />
+    <Compile Include="Buffs\Terrarium.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
     <Compile Include="Buffs\DemonMinion.cs" />
     <Compile Include="Buffs\DevilMinion.cs" />
@@ -342,6 +344,7 @@
     <Compile Include="Items\Armor\Valkyrie\ValkyrieHelm.cs" />
     <Compile Include="Items\Blocks\Abyssium.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
+    <Compile Include="Items\Blocks\TerrariumBox.cs" />
     <Compile Include="Items\Blocks\IZBox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
     <Compile Include="Items\Blocks\Apocalyptite.cs" />
@@ -1230,6 +1233,10 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\TerrariumBox.cs" />
+    <Compile Include="Tiles\TerraWood.cs" />
+    <Compile Include="Tiles\TerraLeaves.cs" />
+    <Compile Include="Tiles\TerraCrystal.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\ACS.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
@@ -1456,6 +1463,7 @@
     <Content Include="Backgrounds\MushroomUG3.png" />
     <Content Include="Backgrounds\MushroomUG4.png" />
     <Content Include="Backgrounds\ShenEclipse.png" />
+    <Content Include="Backgrounds\TerrariumBG.png" />
     <Content Include="Backgrounds\VoidBG.png" />
     <Content Include="Backgrounds\VoidBH.png" />
     <Content Include="Backgrounds\VoidBH1.png" />
@@ -1515,6 +1523,7 @@
     <Content Include="Buffs\Snagged2.png" />
     <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\TerraDemon.png" />
+    <Content Include="Buffs\Terrarium.png" />
     <Content Include="Buffs\TimeFrozen.png" />
     <Content Include="Buffs\TrueHallowedPrism.png" />
     <Content Include="Buffs\UnstableSoul.png" />
@@ -1969,10 +1978,12 @@
     <Content Include="Glowmasks\TerraBallista_Glow.png" />
     <Content Include="Glowmasks\TerraBladeEX_Glow.png" />
     <Content Include="Glowmasks\TerraCore_Glow.png" />
+    <Content Include="Glowmasks\TerraCrystal_Glow.png" />
     <Content Include="Glowmasks\TerraRoseShot_Glow.png" />
     <Content Include="Glowmasks\TerraRose_Glow.png" />
     <Content Include="Glowmasks\TerraShotEX_Glow.png" />
     <Content Include="Glowmasks\Terratool_Glow.png" />
+    <Content Include="Glowmasks\TerraWood_Glowmask.png" />
     <Content Include="Glowmasks\TeslaHandZ.png" />
     <Content Include="Glowmasks\TeslaHand_Glow.png" />
     <Content Include="Glowmasks\Teslashock_Glow.png" />
@@ -3860,9 +3871,13 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MushroomBlocks.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
+    <Content Include="Tiles\OroborosChestC1_Highlight.png" />
     <Content Include="Tiles\OroborosChestC2.png" />
+    <Content Include="Tiles\OroborosChestC2_Highlight.png" />
     <Content Include="Tiles\OroborosChestC3.png" />
+    <Content Include="Tiles\OroborosChestC3_Highlight.png" />
     <Content Include="Tiles\OroborosChestC4.png" />
+    <Content Include="Tiles\OroborosChestC4_Highlight.png" />
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ShenABox.png" />
@@ -3999,6 +4014,10 @@
     <Content Include="Tiles\TechneciumOre.png" />
     <Content Include="Tiles\Templates\Tiles_334.png" />
     <Content Include="Tiles\TerraCore.png" />
+    <Content Include="Tiles\TerraCrystal.png" />
+    <Content Include="Tiles\TerraLeaves.png" />
+    <Content Include="Tiles\TerrariumBox.png" />
+    <Content Include="Tiles\TerraWood.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />
     <Content Include="Tiles\TorchsandBall.png" />
@@ -4075,6 +4094,7 @@
     <Content Include="Worldgeneration\LakeWater.png" />
     <Content Include="Worldgeneration\SurfaceRef.png" />
     <Content Include="Worldgeneration\SurfaceRef1.png" />
+    <Content Include="Worldgeneration\Terrarium.png" />
     <Content Include="Worldgeneration\Throne.png" />
     <Content Include="Worldgeneration\Volcano.png" />
     <Content Include="Worldgeneration\VolcanoLava.png" />
