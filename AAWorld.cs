@@ -598,7 +598,7 @@ namespace AAMod
             }
         }*/
 
-        public int ChestNumber = 0;
+        
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
         {
@@ -639,23 +639,7 @@ namespace AAMod
             WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("Doomstone"));
             if (chestType == 1)
             {
-                if (ChestNumber == 0)
-                {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
-                }
-                else if (ChestNumber == 1)
-                {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC2"), true);
-                }
-                else if (ChestNumber == 2)
-                {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC3"), true);
-                }
-                else
-                {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
-                }
-                ChestNumber += 1;
+                WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChest"), true);
             }
             //Side holes
             for (int i = Y + sizeY - 4; i > Y + sizeY; --i)
@@ -664,28 +648,7 @@ namespace AAMod
 
         public override void PostWorldGen()
         {
-            int[] itemsToPlaceInDungeonChests = new int[] { mod.ItemType("SkullStaff") };
-            int itemsToPlaceInDungeonChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36)
-                {
-                    if (Main.rand.Next(3) == 0)
-                    {
-                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                        {
-                            if (chest.item[inventoryIndex].type == 0)
-                            {
-                                chest.item[inventoryIndex].SetDefaults(itemsToPlaceInDungeonChests[itemsToPlaceInDungeonChestsChoice]);
-                                itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("Voidsaber") };
+            int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("ITEM 1") };
             int itemsToPlaceInVoidChestsChoice1 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -704,7 +667,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests2 = new int[] { mod.ItemType("DoomStaff") };
+            int[] itemsToPlaceInVoidChests2 = new int[] { mod.ItemType("ITEM 2") };
             int itemsToPlaceInVoidChestsChoice2 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -723,7 +686,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests3 = new int[] { mod.ItemType("DoomGun") };
+            int[] itemsToPlaceInVoidChests3 = new int[] { mod.ItemType("ITEM 3") };
             int itemsToPlaceInVoidChestsChoice3 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -742,7 +705,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests4 = new int[] { mod.ItemType("ProbeControlUnit") };
+            int[] itemsToPlaceInVoidChests4 = new int[] { mod.ItemType("ITEM 4") };
             int itemsToPlaceInVoidChestsChoice4 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
