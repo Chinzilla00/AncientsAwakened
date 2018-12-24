@@ -51,11 +51,13 @@ Shen Doragon: " + ShenHP;
             player.buffTime[buffIndex] = 60;
             player.GetModPlayer<AAPlayer>(mod).LockedOn = true;
 
-            if (IZ && mod.GetNPC<Infinity>().Dead)
+            if (IZ && Inf != null && Inf.Dead)
             {
             	IZ = false;
             	player.GetModPlayer<AAPlayer>(mod).InfZ = false;     		
             	player.GetModPlayer<AAPlayer>(mod).GetIZHealth = 2000000;
+                player.ClearBuff(Type);
+                buffIndex--;
             }
             if (NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>()) || IZ)
             {
@@ -95,7 +97,7 @@ Shen Doragon: " + ShenHP;
                 ShenHP = ShenA.npc.life;
             }
 
-            if (!IZ && !NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !NPC.AnyNPCs(mod.NPCType<ShenA>()))
+            if (!NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
             	player.ClearBuff(Type);
             	buffIndex--;
