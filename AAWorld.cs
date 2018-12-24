@@ -642,25 +642,6 @@ namespace AAMod
 
         public override void PostWorldGen()
         {
-<<<<<<< HEAD
-            int[] itemsToPlaceInDungeonChests = new int[] { mod.ItemType("SkullStaff") };
-            int itemsToPlaceInDungeonChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36)
-                {
-                    if (Main.rand.Next(3) == 0)
-                    {
-                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                        {
-                            if (chest.item[inventoryIndex].type == 0)
-                            {
-                                chest.item[inventoryIndex].SetDefaults(itemsToPlaceInDungeonChests[itemsToPlaceInDungeonChestsChoice]);
-                                itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
-                                break;
-                            }
-=======
             int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("ITEM 1") };
             int itemsToPlaceInVoidChestsChoice1 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
@@ -733,7 +714,6 @@ namespace AAMod
                             chest.item[0].SetDefaults(itemsToPlaceInVoidChests4[itemsToPlaceInVoidChestsChoice4]);
                             //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
                             break;
->>>>>>> ebd5bd8790783a48fb646c682e364307c462040e
                         }
                     }
                 }

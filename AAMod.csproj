@@ -3858,6 +3858,10 @@
     <Content Include="Tiles\OroborosChestC2.png" />
     <Content Include="Tiles\OroborosChestC3.png" />
     <Content Include="Tiles\OroborosChestC4.png" />
+    <Content Include="Tiles\OroborosChestC2_Highlight.png" />
+    <Content Include="Tiles\OroborosChestC3_Highlight.png" />
+    <Content Include="Tiles\OroborosChestC4_Highlight.png" />
+    <Content Include="Tiles\OroborosChestC1_Highlight.png" />
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ShenABox.png" />
