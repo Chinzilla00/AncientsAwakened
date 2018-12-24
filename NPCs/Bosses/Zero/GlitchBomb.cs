@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,7 +10,10 @@ namespace AAMod.NPCs.Bosses.Zero
 {
     public class GlitchBomb : ModProjectile
     {
-        public int noTileHitCounter = 120;
+        public float maxDistToAttack = 350f;
+        public int target = -1;
+        public float maxSpeed = 12f;
+        public int targetTick = 8;
 
         public override void SetStaticDefaults()
         {
@@ -18,12 +22,13 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            projectile.width = 5;
-            projectile.height = 5;
-            projectile.friendly = true;
-            projectile.tileCollide = false;
+            projectile.width = 20;
+            projectile.height = 20;
+            projectile.hostile = true;
             projectile.melee = true;
-            projectile.extraUpdates = 2;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 240;
+            projectile.tileCollide = false;
             projectile.aiStyle = 0;
             projectile.scale *= 2;
         }
@@ -35,77 +40,41 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
+            int num103 = Player.FindClosest(projectile.Center, 1, 1);
+            projectile.ai[1] += 1f;
+            if (projectile.ai[1] < 110f && projectile.ai[1] > 30f)
             {
-                projectile.tileCollide = true;
+                float scaleFactor2 = projectile.velocity.Length();
+                Vector2 vector11 = Main.player[num103].Center - projectile.Center;
+                vector11.Normalize();
+                vector11 *= scaleFactor2;
+                projectile.velocity = ((projectile.velocity * 24f) + vector11) / 25f;
+                projectile.velocity.Normalize();
+                projectile.velocity *= scaleFactor2;
             }
-            if ((double)projectile.position.Y < Main.worldSurface * 16.0)
+            if (projectile.ai[0] < 0f)
             {
-                projectile.tileCollide = true;
+                if (projectile.velocity.Length() < 18f)
+                {
+                    projectile.velocity *= 1.02f;
+                }
             }
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
-            Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 5;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
-
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
-            {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
-
-                int foundTarget = HomeOnTarget();
-                if (foundTarget != -1)
-                {
-                    Player target = Main.player[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
-                }
-            }
-            int play = 0;
-            Player player = Main.player[play];
-            if (projectile.position.X == player.position.X || projectile.position.Y == player.position.Y)
-            {
-                projectile.Kill();
-            }
-        }
-
-        private int HomeOnTarget()
-        {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                Player target = Main.player[i];
-                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(target.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
-                    )
-                        selectedTarget = i;
-                }
-            }
-            return selectedTarget;
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
         }
 
         public override void Kill(int timeLeft)
         {
-            for(int num468 = 0; num468 < 20; num468++)
+            if (Main.netMode != 2)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, mod.DustType<Dusts.ZeroDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.ZeroDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
-                Main.dust[num469].velocity *= 2f;
+                for (int m = 0; m < 6; m++)
+                {
+                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                    Main.dust[dustID].noGravity = true;
+                    Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                }
+                Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens

@@ -22,7 +22,6 @@ namespace AAMod.Items.Summoning.Minions
             projectile.minion = true;
             projectile.penetrate = 3;
             projectile.light = 0.5f;
-            projectile.alpha = 255;
             projectile.friendly = true;
         }
 

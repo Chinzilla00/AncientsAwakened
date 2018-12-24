@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using System.Reflection;
 using Terraria.DataStructures;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -296,6 +297,8 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.timeLeft = 200;
                     return;
                 }
+
+                if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
             }
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -623,6 +626,16 @@ namespace AAMod.NPCs.Bosses.Zero
                             {
                                 num429 = -1;
                             }
+                            int Proj = Main.rand.Next(2);
+                            switch (Proj) //switch for attack modes
+                            {
+                                case 0:
+                                    Proj = mod.ProjectileType<DeathLaser>();
+                                    break;
+                                default:
+                                    Proj = mod.ProjectileType<GlitchBomb>();
+                                    break;
+                            }
                             Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                             float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
                             float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
@@ -660,7 +673,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             {
                                 if (Main.netMode != 1)
                                 {
-                                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("DeathLaser"), (int)(damage * 1.5f), 0f, Main.myPlayer);
+                                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, Proj, (int)(damage * 1.5f), 0f, Main.myPlayer);
                                 }
                             }
                             return;

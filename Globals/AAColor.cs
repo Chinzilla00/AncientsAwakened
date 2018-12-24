@@ -82,6 +82,14 @@ namespace AAMod
             }
         }
 
+        public static Color TerraGlow
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Yellow, Color.YellowGreen, Color.Yellow);
+            }
+        }
+
         public static Color COLOR_WHITEFADE1
 		{
 			get
