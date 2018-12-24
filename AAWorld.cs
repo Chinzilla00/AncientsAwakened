@@ -592,7 +592,7 @@ namespace AAMod
             }
         }*/
 
-        
+        public int ChestNumber = 0;
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
         {
@@ -633,7 +633,23 @@ namespace AAMod
             WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("Doomstone"));
             if (chestType == 1)
             {
-                WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChest"), true);
+                if (ChestNumber == 0)
+                {
+                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
+                }
+                else if (ChestNumber == 1)
+                {
+                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC2"), true);
+                }
+                else if (ChestNumber == 2)
+                {
+                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC3"), true);
+                }
+                else
+                {
+                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
+                }
+                ChestNumber += 1;
             }
             //Side holes
             for (int i = Y + sizeY - 4; i > Y + sizeY; --i)

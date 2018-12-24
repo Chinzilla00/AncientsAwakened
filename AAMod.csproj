@@ -2737,6 +2737,10 @@
     <Content Include="Items\Boss\Yamata\MidnightWrath.png" />
     <Content Include="Items\Boss\Yamata\MoonStaff.png" />
     <Content Include="Items\Boss\Yamata\Naitokurosu.png" />
+    <Content Include="Items\Boss\Yamata\Naitokurosu1.png" />
+    <Content Include="Items\Boss\Yamata\Naitokurosu1_Neck.png" />
+    <Content Include="Items\Boss\Yamata\NaitokurosuA.png" />
+    <Content Include="Items\Boss\Yamata\NaitokurosuA_Neck.png" />
     <Content Include="Items\Boss\Yamata\Naitokurosu_Neck.png" />
     <Content Include="Items\Boss\Yamata\Sevenshot.png" />
     <Content Include="Items\Boss\Yamata\ThrowingCrescent.png" />
@@ -3791,6 +3795,7 @@
     <Content Include="Resprites\Luminite.png" />
     <Content Include="Resprites\Mana.png" />
     <Content Include="Resprites\ManaGreen.png" />
+    <Content Include="Resprites\Mushroom.png" />
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />

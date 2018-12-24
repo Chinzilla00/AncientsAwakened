@@ -3,19 +3,18 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Tools
 {
     public class Terratool : ModItem
     {
-        
-
         public override void SetDefaults()
         {
-            
             item.melee = true;
             item.width = 54;
             item.height = 60;
+			item.useStyle = 1;
             item.useTime = 5;
             item.useAnimation = 20;
             item.tileBoost += 20;
@@ -34,59 +33,38 @@ namespace AAMod.Items.Tools
             DisplayName.SetDefault("Terratool");
             Tooltip.SetDefault("Right Click to change tool types");
         }
-
-
-
+		
         public override bool AltFunctionUse(Player player)
         {
             return true;
         }
 
-        private int Tooltype = 0;
-        private int PickPower = 0;
-        private int AxePower = 0;
-        private int HammerPower = 0;
-
-
+        private int toolType = 0;
 
         public override bool CanUseItem(Player player)
         {
-            if (Tooltype == 0)
-            { PickPower = 250; }
-            else
-            { PickPower = 0; }
-
-            if (Tooltype == 1)
-            { AxePower = 250; }
-            else
-            { AxePower = 0; }
-
-            if (Tooltype == 2)
-            { HammerPower = 250; }
-            else
-            { HammerPower = 0; }
-
-            if (Tooltype > 2)
-            { Tooltype = 0; }
-
             if (player.altFunctionUse == 2)
             {
                 item.useStyle = 2;
                 item.noMelee = true;
                 item.noUseGraphic = true;
-                item.pick = 0;
-                item.axe = 0;
-                item.hammer = 0;
-                Tooltype += 1;
-            }
-            else
+				item.pick = 0;
+				item.axe = 0;
+				item.hammer = 0;
+                toolType++;
+				if(toolType > 2) toolType = 0;
+				switch(toolType)
+				{
+					default: break;
+					case 0: item.pick = 250; break;
+					case 1: item.axe = 250; break;
+					case 2: item.hammer = 250; break;
+				}			
+            }else
             {
                 item.useStyle = 1;
                 item.noMelee = false;
                 item.noUseGraphic = false;
-                item.pick = PickPower;
-                item.axe = AxePower;
-                item.hammer = HammerPower;
             }
             return base.CanUseItem(player);
         }
@@ -95,17 +73,17 @@ namespace AAMod.Items.Tools
             Texture2D Pick = mod.GetTexture("Items/Tools/Terratool");
             Texture2D Axe = mod.GetTexture("Items/Tools/Terratool_Axe");
             Texture2D Ham = mod.GetTexture("Items/Tools/Terratool_Hammer");
-            if (Tooltype == 0)
+            if (toolType == 0)
             {
                 Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - Pick.Height * 0.5f + 2f);
                 spriteBatch.Draw(Pick, position, null, lightColor, rotation, Pick.Size() * 0.5f, scale, SpriteEffects.None, 0f);
             }
-            if (Tooltype == 1)
+            if (toolType == 1)
             {
                 Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - Axe.Height * 0.5f + 2f);
                 spriteBatch.Draw(Axe, position, null, lightColor, rotation, Axe.Size() * 0.5f, scale, SpriteEffects.None, 0f);
             }
-            if (Tooltype == 2)
+            if (toolType == 2)
             {
                 Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - Ham.Height * 0.5f + 2f);
                 spriteBatch.Draw(Ham, position, null, lightColor, rotation, Ham.Size() * 0.5f, scale, SpriteEffects.None, 0f);
@@ -121,15 +99,15 @@ namespace AAMod.Items.Tools
             Texture2D Pick = mod.GetTexture("Items/Tools/Terratool");
             Texture2D Axe = mod.GetTexture("Items/Tools/Terratool_Axe");
             Texture2D Ham = mod.GetTexture("Items/Tools/Terratool_Hammer");
-            if (Tooltype == 0)
+            if (toolType == 0)
             {
                 spriteBatch.Draw(Pick, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (Tooltype == 1)
+            if (toolType == 1)
             {
                 spriteBatch.Draw(Axe, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (Tooltype == 2)
+            if (toolType == 2)
             {
                 spriteBatch.Draw(Ham, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
