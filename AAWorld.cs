@@ -642,7 +642,6 @@ namespace AAMod
 
         public override void PostWorldGen()
         {
-<<<<<<< HEAD
             int[] itemsToPlaceInDungeonChests = new int[] { mod.ItemType("SkullStaff") };
             int itemsToPlaceInDungeonChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
@@ -660,8 +659,11 @@ namespace AAMod
                                 itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
                                 break;
                             }
-=======
-            int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("ITEM 1") };
+                        }
+                    }
+                }
+            }
+            int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("Voidsaber") };
             int itemsToPlaceInVoidChestsChoice1 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -680,7 +682,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests2 = new int[] { mod.ItemType("ITEM 2") };
+            int[] itemsToPlaceInVoidChests2 = new int[] { mod.ItemType("DoomStaff") };
             int itemsToPlaceInVoidChestsChoice2 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -699,7 +701,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests3 = new int[] { mod.ItemType("ITEM 3") };
+            int[] itemsToPlaceInVoidChests3 = new int[] { mod.ItemType("DoomGun") };
             int itemsToPlaceInVoidChestsChoice3 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -718,7 +720,7 @@ namespace AAMod
                     }
                 }
             }
-            int[] itemsToPlaceInVoidChests4 = new int[] { mod.ItemType("ITEM 4") };
+            int[] itemsToPlaceInVoidChests4 = new int[] { mod.ItemType("ProbeControlUnit") };
             int itemsToPlaceInVoidChestsChoice4 = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -733,7 +735,6 @@ namespace AAMod
                             chest.item[0].SetDefaults(itemsToPlaceInVoidChests4[itemsToPlaceInVoidChestsChoice4]);
                             //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
                             break;
->>>>>>> ebd5bd8790783a48fb646c682e364307c462040e
                         }
                     }
                 }
