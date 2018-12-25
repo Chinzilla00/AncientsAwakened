@@ -13,25 +13,25 @@ namespace AAMod.Items.Boss.Yamata
         {
             DisplayName.SetDefault("Darksprayer");
             Tooltip.SetDefault(@"'Spouts of dark, leaves it's mark'
-			Inflicts Moonrazed");           
+Inflicts Moonrazed");           
         }
 
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("Moonblow");
             item.damage = 200;
-            item.magic = true;
-			item.mana = 10;
+            item.ranged = true;
             item.width = 44;
             item.height = 34;
-            item.useTime = 12;
-            item.useAnimation = 12;     
+            item.useTime = 20;
+            item.useAnimation = 20;     
             item.useStyle = 5;
+            item.useAmmo = AmmoID.Rocket;
             item.knockBack = 8f;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item38;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
-            item.shootSpeed = 12f;
+            item.shootSpeed = 20f;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -76,7 +76,7 @@ namespace AAMod.Items.Boss.Yamata
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "EventideAbyssium", 5);
             recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddIngredient(ItemID.TheHorsemansBlade);
+            recipe.AddIngredient(ItemID.JackOLanternLauncher);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();

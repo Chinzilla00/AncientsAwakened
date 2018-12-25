@@ -59,8 +59,10 @@ namespace AAMod.Items.Boss.Yamata
         public override void AddRecipes()
         {
                 ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddIngredient(null, "DeepAbyssium", 12);
-				recipe.AddTile(TileID.MythrilAnvil);
+				recipe.AddIngredient(null, "EventideAbyssium", 5);
+                recipe.AddIngredient(null, "DreadScale", 5);
+                recipe.AddIngredient(ItemID.LightDisc, 5);
+				recipe.AddTile(TileID.LunarCraftingStation);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
 		}

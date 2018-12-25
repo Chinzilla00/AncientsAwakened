@@ -78,7 +78,7 @@ namespace AAMod.Items.Boss.Akuma
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
-            recipe.AddIngredient(null, "TheVulcano");
+            recipe.AddIngredient(ItemID.LaserMachinegun);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();

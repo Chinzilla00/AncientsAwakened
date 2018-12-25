@@ -139,7 +139,7 @@ namespace AAMod.Items.Boss.Shen
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "MorningGlory", 1);
+            recipe.AddIngredient(null, "RadiantDawn", 1);
             recipe.AddIngredient(null, "FallingTwilight", 1);
             recipe.AddIngredient(null, "ChaosScale", 5);
             recipe.AddIngredient(null, "Discordium", 5);
