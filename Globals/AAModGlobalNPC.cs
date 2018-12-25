@@ -659,9 +659,9 @@ namespace AAMod
                 pool[0] = 0f;
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), 1f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), 1f);
-                    pool.Add(mod.NPCType("TerraWizard"), 1f);
+                    pool.Add(mod.NPCType("Bladon"), .7f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), .7f);
+                    pool.Add(mod.NPCType("TerraWizard"), .7f);
                 }
             }
         }

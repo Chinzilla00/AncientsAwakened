@@ -190,28 +190,27 @@ namespace AAMod.Worldgeneration
         }
     }
 
-    public class TerrariumSphere : MicroBiome
+    public class TerrariumDelete : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
 
             Mod mod = AAMod.instance;
-            int biomeRadius = 100;
+            int worldSize = GetWorldSize();
+            int biomeRadius = worldSize == 3 ? 400 : worldSize == 2 ? 300 : 200;
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(0, 255, 0)] = mod.TileType("TerraCrystal");
-            colorToTile[new Color(255, 0, 255)] = mod.TileType("TerraWood");
-            colorToTile[new Color(255, 255, 0)] = mod.TileType("TerraLeaves");
-            colorToTile[new Color(0, 0, 255)] = -2; //turn into air
-            colorToTile[Color.Black] = -1; //don't touch when genning		
+            colorToTile[new Color(0, 255, 0)] = -2;
+            colorToTile[Color.Black] = -1; //don't touch when genning				
 
-            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(0, 255, 0)] = -2;
-            colorToWall[Color.Black] = -1; //don't touch when genning				
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Terrarium"), colorToTile, mod.GetTexture("Worldgeneration/TerrariumWalls"), colorToWall);
-            Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
+            Texture2D TerraSmall = mod.GetTexture("Worldgeneration/TerrariumDelete");
+            Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMedDelete");
+            Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLargeDelete");
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile, worldSize == 3 ? WallLarge : worldSize == 2 ? WallMed : WallSmall, colorToWall);
+            Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
             {
@@ -225,6 +224,68 @@ namespace AAMod.Worldgeneration
             gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
 
             return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
+        }
+    }
+
+    public class TerrariumSphere : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+            int worldSize = GetWorldSize();
+            int biomeRadius = worldSize == 3 ? 400 : worldSize == 2 ? 300 : 200;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("TerraCrystal");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("TerraWood");
+            colorToTile[new Color(255, 255, 0)] = mod.TileType("TerraLeaves");
+            colorToTile[new Color(0, 0, 255)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(0, 255, 0)] = -2;
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+            
+
+            Texture2D TerraSmall = mod.GetTexture("Worldgeneration/Terrarium");
+            Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMed");
+            Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLarge");
+
+            Texture2D WallSmall = mod.GetTexture("Worldgeneration/TerrariumWalls");
+            Texture2D WallMed = mod.GetTexture("Worldgeneration/TerrariumMedWalls");
+            Texture2D WallLarge = mod.GetTexture("Worldgeneration/TerrariumLargeWalls");
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile, worldSize == 3 ? WallLarge : worldSize == 2 ? WallMed : WallSmall, colorToWall);
+            Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
+
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+            {
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new Actions.SetLiquid(0, 0)
+            }));
+            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[] //remove all fluids in the volcano...
+            {
+                new Actions.SetLiquid(0, 0)
+            }));
+            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
+
+            return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
         }
     }
 

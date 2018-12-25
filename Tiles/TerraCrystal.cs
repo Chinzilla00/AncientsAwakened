@@ -8,6 +8,8 @@ namespace AAMod.Tiles
 {
     public class TerraCrystal : ModTile
     {
+
+        public bool glow = true;
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -39,14 +41,14 @@ namespace AAMod.Tiles
             }
             int height = tile.frameY == 36 ? 18 : 16;
 
-            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Glowmasks/TerraCrystal_Glow"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
+            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/TerraCrystal"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
         }
 
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
+        public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            r = 0;
-            g = 0.10f;
-            b = 0f;
+            if (!glow) return;
+            Color color = BaseMod.BaseUtility.ColorMult(Color.LimeGreen, 0.7f);
+            r = ((float)color.R / 255f); g = ((float)color.G / 255f); b = ((float)color.B / 255f);
         }
     }
 }

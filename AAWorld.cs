@@ -956,7 +956,7 @@ namespace AAMod
 
         public void TerraSphere()
         {
-            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.55f)); ;
+            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.5f)); ;
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumSphere biome = new TerrariumSphere();
             biome.Place(origin, WorldGen.structures);

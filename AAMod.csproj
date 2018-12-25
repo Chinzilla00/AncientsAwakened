@@ -1022,6 +1022,8 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\MagicBlast.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\TerraWizard.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\TerrariumArrow.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\TerraDeadshot.cs" />
@@ -3373,7 +3375,10 @@
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch0.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchFly.gif" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchHop.gif" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchJump.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarchWalkNew.gif" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\Moonray.png" />
     <Content Include="NPCs\Bosses\Nightcrawler\MoonrayScatter.png" />
@@ -3579,7 +3584,7 @@
     <Content Include="NPCs\Enemies\Terrarium\TerraDeadshot.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerrariumArrow.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerraWizard.png" />
-    <Content Include="NPCs\Enemies\Terrarium\TerraWizardMagicBlast.png" />
+    <Content Include="NPCs\Enemies\Terrarium\MagicBlast.png" />
     <Content Include="NPCs\Enemies\Void\1Searcher.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
@@ -4124,6 +4129,11 @@
     <Content Include="Worldgeneration\SurfaceRef.png" />
     <Content Include="Worldgeneration\SurfaceRef1.png" />
     <Content Include="Worldgeneration\Terrarium.png" />
+    <Content Include="Worldgeneration\TerrariumLarge.png" />
+    <Content Include="Worldgeneration\TerrariumLargeWalls.png" />
+    <Content Include="Worldgeneration\TerrariumMed.png" />
+    <Content Include="Worldgeneration\TerrariumMedWalls.png" />
+    <Content Include="Worldgeneration\TerrariumWalls.png" />
     <Content Include="Worldgeneration\Throne.png" />
     <Content Include="Worldgeneration\Volcano.png" />
     <Content Include="Worldgeneration\VolcanoLava.png" />
