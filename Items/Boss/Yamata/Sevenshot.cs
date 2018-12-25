@@ -79,6 +79,7 @@ namespace AAMod.Items.Boss.Yamata
 	        ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "EventideAbyssium", 5);
 	        recipe.AddIngredient(null, "DreadScale", 5);
+            recipe.AddIngredient(null, "HydraTrishot");
             recipe.AddIngredient(ItemID.OnyxBlaster);
             recipe.AddTile(TileID.LunarCraftingStation);
 	        recipe.SetResult(this);

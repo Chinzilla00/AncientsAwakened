@@ -20,12 +20,12 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetDefaults()
         {
 
-            item.damage = 220;
+            item.damage = 100;
             item.noMelee = true;
             item.ranged = true;
             item.width = 64;
             item.height = 46;
-            item.useTime = 8;
+            item.useTime = 2;
             item.useAnimation = 15;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("Dawnstrike");
@@ -86,6 +86,7 @@ namespace AAMod.Items.Boss.Akuma
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "CrucibleScale", 5);
             recipe.AddIngredient(null, "TheVulcano");
+            recipe.AddIngredient(ItemID.Flamethrower);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
