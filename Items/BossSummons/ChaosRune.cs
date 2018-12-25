@@ -69,7 +69,6 @@ Summons Shen Doragon's true awakened form");
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
-            Texture2D texture3 = mod.GetTexture("Items/BossSummons/ChaosRune_Inactive");
             spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             for (int i = 0; i < 4; i++)
             {
@@ -121,7 +120,7 @@ Summons Shen Doragon's true awakened form");
                     player2.AddBuff(mod.BuffType<Buffs.LockedOn>(), 60);
                 }
             }
-            SpawnBoss(player, "ShenA", "Shen Doragon Awakened; Chaos Lord");
+            SpawnBoss(player, "ShenA", "Shen Doragon Awakened; Unyielding Chaos Incarnate");
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

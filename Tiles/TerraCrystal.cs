@@ -12,7 +12,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
-            //true for block to emit light
+            Main.tileMerge[Type][mod.TileType("TerraWood")] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
             dustType = 107;
@@ -20,6 +20,11 @@ namespace AAMod.Tiles
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return false;
+        }
+
+        public override bool CanExplode(int i, int j)
         {
             return false;
         }
@@ -33,8 +38,8 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/TerraCrystal"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/TerraCrystal_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.TerraGlow, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+
+            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Glowmasks/TerraCrystal_Glow"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors

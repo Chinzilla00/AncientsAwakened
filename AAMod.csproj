@@ -616,6 +616,7 @@
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\BookOfSacrifice.cs" />
+    <Compile Include="Items\Materials\Crystal.cs" />
     <Compile Include="Items\Materials\Discordium.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\DarkMatter.cs" />
@@ -1021,6 +1022,9 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Bladon.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\TerrariumArrow.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\TerraDeadshot.cs" />
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
@@ -2126,6 +2130,21 @@
     <Content Include="Gores\NewtGoreTail.png" />
     <Content Include="Gores\SearcherGore1.png" />
     <Content Include="Gores\SearcherGore2.png" />
+    <Content Include="Gores\TerraDeadshotGore1.png" />
+    <Content Include="Gores\TerraDeadshotGore2.png" />
+    <Content Include="Gores\TerraDeadshotGore3.png" />
+    <Content Include="Gores\TerraDeadshotGore4.png" />
+    <Content Include="Gores\TerraDeadshotGore5.png" />
+    <Content Include="Gores\TerraKnightGore1.png" />
+    <Content Include="Gores\TerraKnightGore2.png" />
+    <Content Include="Gores\TerraKnightGore3.png" />
+    <Content Include="Gores\TerraKnightGore4.png" />
+    <Content Include="Gores\TerraKnightGore5.png" />
+    <Content Include="Gores\TerraWizardGore1.png" />
+    <Content Include="Gores\TerraWizardGore2.png" />
+    <Content Include="Gores\TerraWizardGore3.png" />
+    <Content Include="Gores\TerraWizardGore4.png" />
+    <Content Include="Gores\TerraWizardGore5.png" />
     <Content Include="Gores\ToxitoadGoreBackLeg.png" />
     <Content Include="Gores\ToxitoadGoreBody.png" />
     <Content Include="Gores\ToxitoadGoreCoinChain.png" />
@@ -2594,6 +2613,7 @@
     <Content Include="Items\Blocks\TechneciumOre.png" />
     <Content Include="Items\Blocks\Templates\Item_2699.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
+    <Content Include="Items\Blocks\TerrariumBox.png" />
     <Content Include="Items\Blocks\Torchice.png" />
     <Content Include="Items\Blocks\Torchsand.png" />
     <Content Include="Items\Blocks\TorchsandHardened.png" />
@@ -2852,6 +2872,7 @@
     <Content Include="Items\Materials\AbyssiumBar.png" />
     <Content Include="Items\Materials\ApocalyptitePlate.png" />
     <Content Include="Items\Materials\BookOfSacrifice.png" />
+    <Content Include="Items\Materials\Crystal.png" />
     <Content Include="Items\Materials\DarkEnergy.png" />
     <Content Include="Items\Materials\DarkMatter.png" />
     <Content Include="Items\Materials\Darkshroom.png" />
@@ -2889,6 +2910,7 @@
     <Content Include="Items\Materials\StarcloudBar.png" />
     <Content Include="Items\Materials\Stardust.png" />
     <Content Include="Items\Materials\TechneciumBar.png" />
+    <Content Include="Items\Materials\TerraCrystal.png" />
     <Content Include="Items\Materials\vulture_feather.png" />
     <Content Include="Items\Materials\YtriumBar.png" />
     <Content Include="Items\Melee\AbyssalTwilight.png" />
@@ -2897,6 +2919,7 @@
     <Content Include="Items\Melee\Apocalypse.png" />
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BaneOfTheBunny.png" />
+    <Content Include="Items\Melee\BladeOfEvil.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
     <Content Include="Items\Melee\Bloody_Mary.png" />
     <Content Include="Items\Melee\BreakingDawn.png" />
@@ -3551,6 +3574,12 @@
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
     <Content Include="NPCs\Enemies\Other\MadnessBat.png" />
     <Content Include="NPCs\Enemies\Other\Steve.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Bladon.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Bladon_Glow.png" />
+    <Content Include="NPCs\Enemies\Terrarium\TerraDeadshot.png" />
+    <Content Include="NPCs\Enemies\Terrarium\TerrariumArrow.png" />
+    <Content Include="NPCs\Enemies\Terrarium\TerraWizard.png" />
+    <Content Include="NPCs\Enemies\Terrarium\TerraWizardMagicBlast.png" />
     <Content Include="NPCs\Enemies\Void\1Searcher.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />

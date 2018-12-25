@@ -61,6 +61,7 @@ Projectiles go through walls");
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "TrueManaRose", 1);
             recipe.AddIngredient(ItemID.RainbowRod, 1);
+            recipe.AddIngredient(mod, "TerraCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

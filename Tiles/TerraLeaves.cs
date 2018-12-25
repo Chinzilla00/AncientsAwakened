@@ -12,7 +12,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
-            Main.tileSolidTop[Type] = false;
+            Main.tileSolid[Type] = false;
             Main.tileMerge[Type][mod.TileType("TerraWood")] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
@@ -21,6 +21,11 @@ namespace AAMod.Tiles
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return false;
+        }
+
+        public override bool CanExplode(int i, int j)
         {
             return false;
         }
@@ -39,9 +44,9 @@ namespace AAMod.Tiles
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
-            r = Main.DiscoR;
-            g = Main.DiscoG;
-            b = Main.DiscoB;
+            r = Main.DiscoR * .001f;
+            g = Main.DiscoG * .001f;
+            b = Main.DiscoB * .001f;
         }
     }
 }

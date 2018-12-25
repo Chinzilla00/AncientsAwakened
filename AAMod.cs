@@ -1129,6 +1129,7 @@ namespace AAMod
                         case "inferno": return aap.ZoneInferno;
                         case "void": return aap.ZoneVoid;
                         case "mush": return aap.ZoneMush;
+                        case "terrarium": return aap.Terrarium;
                     }
                 };
                 return inZone;

@@ -653,6 +653,17 @@ namespace AAMod
                     }
                 }
             }
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            {
+                pool[0] = 0f;
+                if (NPC.downedPlantBoss)
+                {
+                    pool.Add(mod.NPCType("Bladon"), 1f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), 1f);
+                    pool.Add(mod.NPCType("TerraWizard"), 1f);
+                }
+            }
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)

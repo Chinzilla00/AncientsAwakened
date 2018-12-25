@@ -7,7 +7,7 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Terra Protection");
+			DisplayName.SetDefault("Terra's Guidance");
 			Description.SetDefault("Fall damage is negated");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
@@ -16,6 +16,7 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
             player.noFallDmg = true;
+            player.nightVision = true;
 		}
 	}
 }

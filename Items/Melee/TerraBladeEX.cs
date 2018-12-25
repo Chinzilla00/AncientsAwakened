@@ -66,6 +66,7 @@ namespace AAMod.Items.Melee
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.TerraBlade);
             recipe.AddIngredient(null, "EXSoul");
+            recipe.AddIngredient(mod, "TerraCrystal", 1);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

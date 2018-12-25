@@ -111,7 +111,7 @@ namespace AAMod.Worldgeneration
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
 
             int worldSize = GetWorldSize();
-            int biomeRadius = (worldSize == 3 ? 180 : worldSize == 2 ? 150 : 120), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 180 : 150), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
@@ -204,13 +204,13 @@ namespace AAMod.Worldgeneration
             colorToTile[new Color(255, 0, 255)] = mod.TileType("TerraWood");
             colorToTile[new Color(255, 255, 0)] = mod.TileType("TerraLeaves");
             colorToTile[new Color(0, 0, 255)] = -2; //turn into air
-            colorToTile[Color.Black] = -1; //don't touch when genning
+            colorToTile[Color.Black] = -1; //don't touch when genning		
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
+            colorToWall[new Color(0, 255, 0)] = -2;
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Terrarium"), colorToTile, mod.GetTexture("Worldgeneration/TerrariumWalls"), colorToWall);
             Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...

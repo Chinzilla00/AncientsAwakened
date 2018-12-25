@@ -31,6 +31,14 @@ namespace AAMod
             return GetTimedColor(AAPlayer.ZeroColor, color, min, max, clamp);
         }
 
+        public static Color GetTerraColorBrightInvert(Color color) { return GetTerraColor(color, 1f, 0.6f, true); }
+        public static Color GetTerraColorDim(Color color) { return GetTerraColor(color, 0.4f, 1f, false); }
+        public static Color GetTerraColorBright(Color color) { return GetTerraColor(color, 0.6f, 1f, false); }
+        public static Color GetTerraColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.Lime, color, min, max, clamp);
+        }
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

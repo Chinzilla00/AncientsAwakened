@@ -37,6 +37,7 @@ namespace AAMod.Items.Melee
 			recipe.AddIngredient(mod, "TrueBlazingDawn", 1);
 			recipe.AddIngredient(mod, "TrueAbyssalTwilight", 1);
             recipe.AddIngredient(mod, "Discord", 1);
+            recipe.AddIngredient(mod, "ChaosCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

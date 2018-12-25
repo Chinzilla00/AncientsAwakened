@@ -57,12 +57,24 @@ Despite the name, it's not actually made of flesh");
 
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "FleshrendClaymore", 1);
-			recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "FleshrendClaymore", 1);
+                recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "FleshrendClaymore", 1);
+                recipe.AddIngredient(null, "DungeonCrystal", 1);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+
+			
 		}
 
 

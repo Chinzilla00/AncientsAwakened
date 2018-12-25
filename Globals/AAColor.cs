@@ -74,6 +74,102 @@ namespace AAMod
             }
 		}
 
+        public static Color Snow
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.LightSeaGreen, Color.SeaGreen, Color.LightSeaGreen);
+            }
+        }
+
+        public static Color Desert
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Goldenrod, Color.DarkGoldenrod, Color.Goldenrod);
+            }
+        }
+
+        public static Color Ocean
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Cyan, Color.DarkCyan, Color.Cyan);
+            }
+        }
+
+        public static Color Hell
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Orange, Color.DarkOrange, Color.Orange);
+            }
+        }
+
+        public static Color Inferno
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.DarkOrange, Color.OrangeRed);
+            }
+        }
+
+        public static Color Mire
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Indigo, Color.DarkBlue, Color.Indigo);
+            }
+        }
+
+        public static Color Dungeon
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkBlue, Color.Navy, Color.DarkBlue);
+            }
+        }
+
+        public static Color Corruption
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Violet, Color.DarkViolet, Color.Violet);
+            }
+        }
+
+        public static Color Crimson
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Red, Color.DarkRed, Color.Red);
+            }
+        }
+
+        public static Color Jungle
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Green, Color.DarkGreen, Color.Green);
+            }
+        }
+
+        public static Color Sky
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.CornflowerBlue, Color.CadetBlue, Color.CornflowerBlue);
+            }
+        }
+
+        public static Color Cavern
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.SaddleBrown, Color.Brown, Color.SaddleBrown);
+            }
+        }
+
         public static Color Hallow
         {
             get

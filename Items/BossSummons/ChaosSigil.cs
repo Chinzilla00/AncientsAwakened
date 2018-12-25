@@ -69,23 +69,16 @@ Summons the chaos emperor");
 
         public override bool UseItem(Player player)
         {
-            
+            if (AAWorld.ShenSummoned)
+            {
+                Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+            }
             if (!AAWorld.ShenSummoned)
             {
                 SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
                 AAWorld.ShenSummoned = true;
-            }
-            if (!AAWorld.downedShen && AAWorld.ShenSummoned)
-            {
-                Main.NewText("Big mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-
-                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
-            }
-            if (AAWorld.downedShen && AAWorld.ShenSummoned)
-            {
-                Main.NewText("Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-
-                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
             }
 
             Main.PlaySound(SoundID.Roar, player.position, 0);

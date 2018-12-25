@@ -12,8 +12,9 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
-            Main.tileSolidTop[Type] = false;
-            //true for block to emit light
+            Main.tileSolid[Type] = false;
+            Main.tileMerge[Type][mod.TileType("TerraLeaves")] = true;
+            Main.tileMerge[Type][mod.TileType("TerraCrystal")] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
             dustType = 107;
@@ -21,6 +22,11 @@ namespace AAMod.Tiles
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return false;
+        }
+
+        public override bool CanExplode(int i, int j)
         {
             return false;
         }
@@ -34,7 +40,6 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/TerraWood"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/TerraWood_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.DiscoColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 

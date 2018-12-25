@@ -62,7 +62,7 @@ namespace AAMod.Items.Magic
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ManaRose", 1);
             recipe.AddIngredient(null, "PlanteraPetal", 10);
-            recipe.AddIngredient(ItemID.JungleSpores, 20);
+            recipe.AddIngredient(mod, "JungleCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
