@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Yamata
             DisplayName.SetDefault("Naitokurosu");
             Tooltip.SetDefault(@"Grants you the abilities of a true master ninja
 Allows you to do a speedy dash
-At night, you move twice as fast and your attacks inflict venom on your targes
+At night, you move twice as fast and your attacks inflict venom on your targets
 From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwing attacks inflict Moonraze");
         }
 
