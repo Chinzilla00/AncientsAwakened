@@ -76,7 +76,7 @@ Inflicts Moonrazed");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "EventideAbyssium", 5);
             recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddIngredient(ItemID.JackOLanternLauncher);
+            recipe.AddIngredient(ItemID.SnowmanCannon);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
