@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.aiStyle = -1;
             npc.damage = 80;
             npc.defense = 30;
-            npc.lifeMax = 500;
+            npc.lifeMax = 700;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0.4f;

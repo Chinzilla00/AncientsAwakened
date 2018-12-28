@@ -209,7 +209,7 @@ namespace AAMod.Worldgeneration
             Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMedDelete");
             Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLargeDelete");
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile, worldSize == 3 ? WallLarge : worldSize == 2 ? WallMed : WallSmall, colorToWall);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile);
             Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...

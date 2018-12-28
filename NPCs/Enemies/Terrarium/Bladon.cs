@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax = 600;
+            npc.lifeMax = 900;
             npc.defense = 40;
             npc.damage = 90;
             npc.width = 22;

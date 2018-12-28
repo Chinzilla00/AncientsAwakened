@@ -1022,7 +1022,10 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Minion4Head.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Minion2.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\MagicBlast.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\TerraWarlock.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\TerraWizard.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\TerrariumArrow.cs" />
@@ -3501,6 +3504,7 @@
     <Content Include="NPCs\Bosses\Zero\DarkShock.png" />
     <Content Include="NPCs\Bosses\Zero\DeathLaser.png" />
     <Content Include="NPCs\Bosses\Zero\GlitchBomb.png" />
+    <Content Include="NPCs\Bosses\Zero\GlitchBoom.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
@@ -3581,8 +3585,15 @@
     <Content Include="NPCs\Enemies\Other\Steve.png" />
     <Content Include="NPCs\Enemies\Terrarium\Bladon.png" />
     <Content Include="NPCs\Enemies\Terrarium\Bladon_Glow.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion1.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion2.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion3.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion4Body.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion4Head.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Minion4Tail.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerraDeadshot.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerrariumArrow.png" />
+    <Content Include="NPCs\Enemies\Terrarium\TerraWarlock.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerraWizard.png" />
     <Content Include="NPCs\Enemies\Terrarium\MagicBlast.png" />
     <Content Include="NPCs\Enemies\Void\1Searcher.png" />
@@ -4129,9 +4140,12 @@
     <Content Include="Worldgeneration\SurfaceRef.png" />
     <Content Include="Worldgeneration\SurfaceRef1.png" />
     <Content Include="Worldgeneration\Terrarium.png" />
+    <Content Include="Worldgeneration\TerrariumDelete.png" />
     <Content Include="Worldgeneration\TerrariumLarge.png" />
+    <Content Include="Worldgeneration\TerrariumLargeDelete.png" />
     <Content Include="Worldgeneration\TerrariumLargeWalls.png" />
     <Content Include="Worldgeneration\TerrariumMed.png" />
+    <Content Include="Worldgeneration\TerrariumMedDelete.png" />
     <Content Include="Worldgeneration\TerrariumMedWalls.png" />
     <Content Include="Worldgeneration\TerrariumWalls.png" />
     <Content Include="Worldgeneration\Throne.png" />

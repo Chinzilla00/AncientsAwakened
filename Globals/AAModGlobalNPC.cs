@@ -642,8 +642,7 @@ namespace AAMod
         {
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                pool[0] = 0f;
-
+                pool.Clear();
                 if (NPC.downedMoonlord)
                 {
                     pool.Add(mod.NPCType("Searcher"), 1f);
@@ -656,7 +655,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                pool[0] = 0f;
+                pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType("Bladon"), .7f);

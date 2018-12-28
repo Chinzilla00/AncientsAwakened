@@ -958,7 +958,9 @@ namespace AAMod
         {
             Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.5f)); ;
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            TerrariumDelete delete = new TerrariumDelete();
             TerrariumSphere biome = new TerrariumSphere();
+            delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
         }
 
