@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.defense = 230;
             npc.lifeMax = 1600000;
             npc.value = Item.buyPrice(40, 0, 0, 0);
+            bossBag = mod.ItemType("ShenCache");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");
 			isAwakened = true;
         }
