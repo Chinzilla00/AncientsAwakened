@@ -71,7 +71,7 @@ namespace AAMod.Items.Summoning
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 12);
+            recipe.AddIngredient(ItemID.DemoniteBar, 12);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

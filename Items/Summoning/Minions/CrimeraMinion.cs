@@ -87,7 +87,7 @@ namespace AAMod.Items.Summoning.Minions
                     projectile.frame++;
                     projectile.frameCounter = 0;
                 }
-                if (projectile.frame > 2)
+                if (projectile.frame > 1)
                 {
                     projectile.frame = 0;
                 }
