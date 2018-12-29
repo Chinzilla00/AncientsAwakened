@@ -142,6 +142,10 @@
     <Compile Include="CustomCurrency.cs" />
     <Compile Include="Dusts\AbyssDust.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
+    <Compile Include="Dusts\TMagicDust.cs" />
+    <Compile Include="Dusts\RangedDust.cs" />
+    <Compile Include="Dusts\SummonDust.cs" />
+    <Compile Include="Dusts\MeleeDust.cs" />
     <Compile Include="Dusts\AkumaDustLight.cs" />
     <Compile Include="Dusts\DiscordLight.cs" />
     <Compile Include="Dusts\PepsiDust.cs" />
@@ -1022,7 +1026,10 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
-    <Compile Include="NPCs\Enemies\Terrarium\Minion4Head.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\SummonBlast.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Minion3.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Minion1.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Minion4.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Minion2.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\MagicBlast.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\TerraWarlock.cs" />
@@ -1583,6 +1590,7 @@
     <Content Include="Dusts\InfinityOverloadR.png" />
     <Content Include="Dusts\InfinityOverloadY.png" />
     <Content Include="Dusts\MagicDust.png" />
+    <Content Include="Dusts\MeleeDust.png" />
     <Content Include="Dusts\MindDust.png" />
     <Content Include="Dusts\MireBubbleDust.png" />
     <Content Include="Dusts\OmegaDust.png" />
@@ -3584,13 +3592,13 @@
     <Content Include="NPCs\Enemies\Other\MadnessBat.png" />
     <Content Include="NPCs\Enemies\Other\Steve.png" />
     <Content Include="NPCs\Enemies\Terrarium\Bladon.png" />
-    <Content Include="NPCs\Enemies\Terrarium\Bladon_Glow.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion1.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion2.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion3.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion4Body.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion4Head.png" />
     <Content Include="NPCs\Enemies\Terrarium\Minion4Tail.png" />
+    <Content Include="NPCs\Enemies\Terrarium\SummonBlast.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerraDeadshot.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerrariumArrow.png" />
     <Content Include="NPCs\Enemies\Terrarium\TerraWarlock.png" />

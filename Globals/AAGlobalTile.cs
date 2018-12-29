@@ -36,7 +36,7 @@ namespace AAMod
         public static Color GetTerraColorBright(Color color) { return GetTerraColor(color, 0.6f, 1f, false); }
         public static Color GetTerraColor(Color color, float min, float max, bool clamp)
         {
-            return GetTimedColor(Color.Lime, color, min, max, clamp);
+            return GetTimedColor(Color.White, color, min, max, clamp);
         }
 
         public override bool Drop(int i, int j, int type)

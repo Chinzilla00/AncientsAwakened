@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Accessories.Wings
+namespace AAMod.Items.Boss.EFish
 {
 
     [AutoloadEquip(EquipType.Wings)]

@@ -14,7 +14,6 @@ using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Terrarium
 {
-    [AutoloadBossHead]
     public class TerraWarlock : ModNPC
     {
 		public override void SendExtraAI(BinaryWriter writer)
@@ -150,25 +149,41 @@ namespace AAMod.NPCs.Enemies.Terrarium
             }
         }
 
-        public override void BossLoot(ref string name, ref int potionType)
-        {   //boss drops
-            AAWorld.downedMonarch = true;
-            Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y - 2), new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
-            if (Main.expertMode == true)
-            {
-                npc.DropBossBags();
-            }
-            else
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
             {
 
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Mushium"), Main.rand.Next(25, 35));
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 44;
+                npc.height = 78;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.SummonDust>();
+                int dust2 = mod.DustType<Dusts.SummonDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
             }
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+
+        public override void NPCLoot()
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 300);
         }
     }
 }

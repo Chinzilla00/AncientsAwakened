@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Oblivion");
-            Main.npcFrameCount[npc.type] = 16;
+            Main.npcFrameCount[npc.type] = 14;
         }
         public override void SetDefaults()
         {
@@ -360,7 +360,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 12 * frameHeight;
+                    npc.frame.Y = 7 * frameHeight;
                 }
                 else
                 {
@@ -371,7 +371,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 12 * frameHeight;
+                    npc.frame.Y = 8 * frameHeight;
                 }
                 else
                 {
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 13 * frameHeight;
+                    npc.frame.Y = 9 * frameHeight;
                 }
                 else
                 {
@@ -393,7 +393,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 13 * frameHeight;
+                    npc.frame.Y = 10 * frameHeight;
                 }
                 else
                 {
@@ -404,7 +404,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 14 * frameHeight;
+                    npc.frame.Y = 11 * frameHeight;
                 }
                 else
                 {
@@ -415,7 +415,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 14 * frameHeight;
+                    npc.frame.Y = 12 * frameHeight;
                 }
                 else
                 {
@@ -426,66 +426,11 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.rand.Next(9) == 0)
                 {
-                    npc.frame.Y = 15 * frameHeight;
+                    npc.frame.Y = 13 * frameHeight;
                 }
                 else
                 {
                     npc.frame.Y = 6 * frameHeight;
-                }
-            }
-            else if (npc.frameCounter < 35)
-            {
-                if (Main.rand.Next(9) == 0)
-                {
-                    npc.frame.Y = 15 * frameHeight;
-                }
-                else
-                {
-                    npc.frame.Y = 7 * frameHeight;
-                }
-            }
-            else if (npc.frameCounter < 35)
-            {
-                if (Main.rand.Next(9) == 0)
-                {
-                    npc.frame.Y = 14 * frameHeight;
-                }
-                else
-                {
-                    npc.frame.Y = 8 * frameHeight;
-                }
-            }
-            else if (npc.frameCounter < 35)
-            {
-                if (Main.rand.Next(9) == 0)
-                {
-                    npc.frame.Y = 14 * frameHeight;
-                }
-                else
-                {
-                    npc.frame.Y = 9 * frameHeight;
-                }
-            }
-            else if (npc.frameCounter < 35)
-            {
-                if (Main.rand.Next(9) == 0)
-                {
-                    npc.frame.Y = 13 * frameHeight;
-                }
-                else
-                {
-                    npc.frame.Y = 10 * frameHeight;
-                }
-            }
-            else if (npc.frameCounter < 35)
-            {
-                if (Main.rand.Next(9) == 0)
-                {
-                    npc.frame.Y = 13 * frameHeight;
-                }
-                else
-                {
-                    npc.frame.Y = 11 * frameHeight;
                 }
             }
             else

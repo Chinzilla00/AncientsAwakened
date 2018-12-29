@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
+            npc.noGravity = true;
         }
         
 
@@ -49,14 +50,10 @@ namespace AAMod.NPCs.Enemies.Terrarium
                     for (int num86 = 0; num86 < 4; num86++)
                     {
                         Vector2 vector15 = vector14 + Utils.RandomVector2(Main.rand, -0.8f, 0.8f);
-                        Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X, vector15.Y, mod.ProjectileType<TerrariumArrow>(), num85, 1f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X, vector15.Y, mod.ProjectileType<MagicBlast>(), num85, 1f, Main.myPlayer, 0f, 0f);
                     }
                 }
             }
-        }
-
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
-        {
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
@@ -68,7 +65,32 @@ namespace AAMod.NPCs.Enemies.Terrarium
                     npc.frame.Y = 0;
                 }
             }
-            return true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 44;
+                npc.height = 78;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.TMagicDust>();
+                int dust2 = mod.DustType<Dusts.TMagicDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+            }
         }
 
         public override void NPCLoot()
