@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Enemies.Corruption
 		public override void SetDefaults()
 		{
             npc.CloneDefaults(NPCID.FaceMonster);
+            animationType = NPCID.FaceMonster;
         }
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
