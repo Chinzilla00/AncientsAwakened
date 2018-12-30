@@ -1,8 +1,7 @@
-
 using Microsoft.Xna.Framework;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
+using System;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips
@@ -11,73 +10,74 @@ namespace AAMod.Items.Boss.Grips
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Claw Baton");
-            Tooltip.SetDefault(@"Summons 2 chaos claws to fight for you
-Requires 2 minion slots");
+            DisplayName.SetDefault("ClawBaton");
+            Tooltip.SetDefault(@"Summons a chaos claw to fight with you");
         }
 
         public override void SetDefaults()
         {
             item.useStyle = 1;
             item.shootSpeed = 14f;
-            item.damage = 12;
-            item.width = 42;
-            item.height = 44;
+            item.shoot = mod.ProjectileType("HydraClaw");
+            item.damage = 35;
+            item.width = 52;
+            item.height = 52;
             item.UseSound = SoundID.Item44;
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 0, 27, 0);
-            item.knockBack = 7.5f;
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.knockBack = 5f;
+            item.rare = 3;
             item.summon = true;
             item.mana = 5;
-            item.autoReuse = true;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            int shootMe = Main.rand.Next(2);
+            {
+                switch (shootMe)
+                {
+                    case 0:
+                        shootMe = mod.ProjectileType("HydraClaw");
+                        break;
+                    default:
+                        shootMe = mod.ProjectileType("DragonClaw");
+                        break;
+                }
+            }
             int i = Main.myPlayer;
-            float slotsUsed = 0;
-
-            Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
-
-            if (player.maxMinions - slotsUsed < 1) return true;
-            int num76 = item.damage;
-            float num77 = item.knockBack;
-            int num154 = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
-            int num155 = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
+            float num72 = item.shootSpeed;
+            int num73 = damage;
+            float num74 = knockBack;
+            num74 = player.GetWeaponKnockback(item, num74);
+            player.itemTime = item.useTime;
+            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+            float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+            float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
             if (player.gravDir == -1f)
             {
-                num155 = (int)(Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY) / 16;
+                num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
             }
-
-            int Claw = Main.rand.Next(2);
-
-            switch (Claw)
+            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+            float num81 = num80;
+            if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
             {
-                case 0:
-                    Claw = mod.ProjectileType<DragonClaw>();
-                    break;
-
-                default:
-                    Claw = mod.ProjectileType<HydraClaw>();
-                    break;
+                num78 = (float)player.direction;
+                num79 = 0f;
+                num80 = num72;
             }
-
-            Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, Claw, num76, num77, i, 0f, 0f);
-            
-
-            return true;
-        }
-
-        public override void AddRecipes()  //How to craft this sword
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "IncineriteBar", 10);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            else
+            {
+                num80 = num72 / num80;
+            }
+            num78 = 0f;
+            num79 = 0f;
+            vector2.X = (float)Main.mouseX + Main.screenPosition.X;
+            vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, shootMe, num73, num74, i, 0f, 0f);
+            return false;
         }
     }
 }

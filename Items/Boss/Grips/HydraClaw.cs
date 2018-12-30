@@ -1,3 +1,4 @@
+using AAMod.Items.Summoning.Minions;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -28,16 +29,12 @@ namespace AAMod.Items.Boss.Grips
             projectile.friendly = true;
             projectile.ignoreWater = true;
         }
-
         public override void AI()
         {
-            float num633 = 700f;
-            float num634 = 800f;
-            float num635 = 1200f;
-            float num636 = 150f;
             bool flag64 = projectile.type == mod.ProjectileType("HydraClaw");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            player.AddBuff(mod.BuffType("GripMinion"), 3600);
             if (flag64)
             {
                 if (player.dead)
@@ -49,6 +46,11 @@ namespace AAMod.Items.Boss.Grips
                     projectile.timeLeft = 2;
                 }
             }
+            
+            float num633 = 700f;
+            float num634 = 800f;
+            float num635 = 1200f;
+            float num636 = 150f;
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
@@ -79,16 +81,7 @@ namespace AAMod.Items.Boss.Grips
                 projectile.ai[1] += 1f;
                 projectile.extraUpdates = 1;
                 projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-                projectile.frameCounter++;
-                if (projectile.frameCounter > 1)
-                {
-                    projectile.frame++;
-                    projectile.frameCounter = 0;
-                }
-                if (projectile.frame > 2)
-                {
-                    projectile.frame = 0;
-                }
+                
                 if (projectile.ai[1] > 40f)
                 {
                     projectile.ai[1] = 1f;
@@ -227,7 +220,7 @@ namespace AAMod.Items.Boss.Grips
                     }
                 }
             }
-            if (projectile.frameCounter > 4)
+            if (projectile.frameCounter > 10)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
@@ -237,25 +230,5 @@ namespace AAMod.Items.Boss.Grips
                 }
             }
         }
-
-        public void CheckActive()
-        {
-            Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
-            if (player.dead)
-            {
-                modPlayer.GripMinion = false;
-            }
-            if (modPlayer.GripMinion)
-            {
-                projectile.timeLeft = 2;
-            }
-        }
-
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            target.AddBuff(BuffID.OnFire, 100);
-        }
     }
-
 }

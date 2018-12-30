@@ -8,6 +8,8 @@ namespace AAMod.Tiles
 {
     public class TerraWood : ModTile
     {
+
+        public bool glow = true; 
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -40,14 +42,14 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/TerraWood_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.DiscoColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/TerraWood"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
         }
 
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
+        public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            r = 0.05f;
-            g = 0.10f;
-            b = 0f;
+            if (!glow) return;
+            Color color = BaseMod.BaseUtility.ColorMult(Color.LimeGreen, 1.4f);
+            r = ((float)color.R / 255f); g = ((float)color.G / 255f); b = ((float)color.B / 255f);
         }
     }
 }

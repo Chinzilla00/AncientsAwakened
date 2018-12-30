@@ -20,7 +20,7 @@ namespace AAMod.Buffs
             {
 				modPlayer.GripMinion = true;
 			}
-			if (!modPlayer.ChairMinion)
+			if (!modPlayer.GripMinion)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;

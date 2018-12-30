@@ -565,11 +565,11 @@ namespace AAMod
 
             if (DiscordInferno)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0, default(Color), 1f);
                     Main.dust[num4].alpha = 100;
-                    Main.dust[num4].velocity *= 1.4f;
+                    Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
                 }
             }
@@ -645,10 +645,10 @@ namespace AAMod
                 pool.Clear();
                 if (NPC.downedMoonlord)
                 {
-                    pool.Add(mod.NPCType("Searcher"), 1f);
+                    pool.Add(mod.NPCType("Searcher"), .5f);
                     if (AAWorld.downedZero && !Main.expertMode)
                     {
-                        pool.Add(mod.NPCType("Null"), 1f);
+                        pool.Add(mod.NPCType("Null"), .5f);
                     }
                 }
             }
@@ -658,9 +658,10 @@ namespace AAMod
                 pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .7f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .7f);
-                    pool.Add(mod.NPCType("TerraWizard"), .7f);
+                    pool.Add(mod.NPCType("Bladon"), .4f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), .4f);
+                    pool.Add(mod.NPCType("TerraWizard"), .4f);
+                    pool.Add(mod.NPCType("TerraWarlock"), .4f);
                 }
             }
         }

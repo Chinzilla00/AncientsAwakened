@@ -1187,6 +1187,16 @@ namespace AAMod
                 }
                 fullBright = true;
             }
+            if (discordInferno)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0, default(Color), 1f);
+                    Main.dust[num4].alpha = 100;
+                    Main.dust[num4].noGravity = true;
+                    Main.dust[num4].scale += Main.rand.NextFloat();
+                }
+            }
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)

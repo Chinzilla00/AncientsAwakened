@@ -30,7 +30,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D texture = Main.itemTexture[item.type];
+            Texture2D texture = mod.GetTexture("Items/Boss/Yamata/Naitokurosu");
             Texture2D textureGlow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = mod.GetTexture("Items/Boss/Yamata/Naitokurosu1");
             Texture2D texture3 = mod.GetTexture("Items/Boss/Yamata/NaitokurosuA");

@@ -96,15 +96,6 @@ namespace AAMod.NPCs.Enemies.Terrarium
                     return;
                 }
             }
-            bool flag4 = false;
-            if (npc.velocity.X == 0f)
-            {
-                flag4 = true;
-            }
-            if (npc.justHit)
-            {
-                flag4 = false;
-            }
             int num36 = 60;
 
             bool flag5 = false;

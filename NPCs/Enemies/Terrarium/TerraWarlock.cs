@@ -62,23 +62,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 		
         public override void AI()
         {
-            SummonThis = Main.rand.Next(4);
-
-            switch (SummonThis)
-            {
-                case 0:
-                    SummonThis = mod.NPCType("Minion1");
-                    break;
-                case 1:
-                    SummonThis = mod.NPCType("Minion2");
-                    break;
-                case 2:
-                    SummonThis = mod.NPCType("Minion3");
-                    break;
-                default:
-                    SummonThis = mod.NPCType("Minion4");
-                    break;
-            }
+            
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             npc.frameCounter++;
             if (internalAI[1] != AISTATE_SUMMON) //walk or charge
@@ -104,20 +88,37 @@ namespace AAMod.NPCs.Enemies.Terrarium
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y += 60;
-                    if (npc.frame.Y > (60 * 14) || npc.frame.Y < (60 * 8))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = (60 * 8);
-                    }
                     if (npc.frame.Y > (60 * 14))
                     {
 
                         Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                         if (Main.expertMode)
                         {
+                            SummonThis = Main.rand.Next(4);
+
+                            switch (SummonThis)
+                            {
+                                case 0:
+                                    SummonThis = mod.NPCType("Minion1");
+                                    break;
+                                case 1:
+                                    SummonThis = mod.NPCType("Minion2");
+                                    break;
+                                case 2:
+                                    SummonThis = mod.NPCType("Minion3");
+                                    break;
+                                default:
+                                    SummonThis = mod.NPCType("Minion4");
+                                    break;
+                            }
                             NPC.NewNPC((int)spawnAt.X - 10, (int)spawnAt.Y - 10, SummonThis);
                         }
                         internalAI[1] = AISTATE_WALK;
+                    }
+                    if (npc.frame.Y > (60 * 14) || npc.frame.Y < (60 * 8))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = (60 * 8);
                     }
                 }
             }
@@ -145,7 +146,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 			}
             else
 			{
-                
+                npc.velocity.X = 0;
             }
         }
 
