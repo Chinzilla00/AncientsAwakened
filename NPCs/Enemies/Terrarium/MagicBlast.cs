@@ -20,7 +20,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.friendly = true;
+            projectile.friendly = false;
+            projectile.hostile = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;

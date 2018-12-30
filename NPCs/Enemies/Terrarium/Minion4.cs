@@ -25,13 +25,14 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.lifeMax = 350;
             npc.defense = 20;
             npc.damage = 50;
-            npc.width = 26;
-            npc.height = 20;
+            npc.width = 20;
+            npc.height = 18;
             npc.aiStyle = -1;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0f;
             npc.alpha = 255;
+            npc.noGravity = true;
         }
         public override bool PreAI()
         {
@@ -268,7 +269,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            DisplayName.SetDefault("Terra Weaver");
         }
 
         public override void SetDefaults()
@@ -407,7 +408,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            DisplayName.SetDefault("Terra Weaver");
         }
 
         public override void SetDefaults()
