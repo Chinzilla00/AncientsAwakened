@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Knight");
+			DisplayName.SetDefault("Terra Wizard");
 			Main.npcFrameCount[npc.type] = 6;
 		}
 
@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void AI()
         {
-            BaseAI.AISpaceOctopus(npc, ref npc.ai, default(Vector2), 0.15f, 6f, 250f, 70f, FireMagic);
+            BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.15f, 6f, 250f, 70f, FireMagic);
 
 
             npc.frameCounter++;
@@ -82,7 +82,10 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            if (Main.rand.NextFloat() < 0.5f)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
     {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.MoonlordArrow);
+            projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
             projectile.hostile = true;
             projectile.friendly = false;
         }

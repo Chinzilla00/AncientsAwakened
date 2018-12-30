@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -437,6 +439,32 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 npc.frameCounter = 0;
             }
-        }	
+        }
+
+        public static Texture2D glowTex = null;
+        public static Texture2D glitchTex = null;
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("NPCs/Bosses/Infinity/Oblivion_Glow");
+            }
+            if (glitchTex == null)
+            {
+                glitchTex = mod.GetTexture("NPCs/Bosses/Infinity/OblivionGlitch");
+            }
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, BaseUtility.ColorClamp(BaseDrawing.GetNPCColor(npc, npc.Center + new Vector2(0, -30), true, 0f), dColor));
+            BaseDrawing.DrawAura(sb, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, Color.White);
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, Color.White);
+            BaseDrawing.DrawAura(sb, glitchTex, 0, npc, auraPercent, 1f, 0f, 0f, AAColor.Oblivion);
+            BaseDrawing.DrawTexture(sb, glitchTex, 0, npc, AAColor.Oblivion);
+
+            return false;
+        }
     }
 }

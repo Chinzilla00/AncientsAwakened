@@ -135,7 +135,14 @@ namespace AAMod.NPCs.Enemies.Terrarium
 				if (internalAI[0] >= 300)
 				{
 					internalAI[0] = 0;
-					internalAI[1] = Main.rand.Next(2);
+                    if (internalAI[1] == AISTATE_SUMMON)
+                    {
+                        internalAI[1] = AISTATE_WALK;
+                    }
+                    if (internalAI[1] == AISTATE_WALK)
+                    {
+                        internalAI[1] = AISTATE_SUMMON;
+                    }
 					npc.ai = new float[4];
 					npc.netUpdate = true;
 				}
@@ -179,7 +186,10 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            if (Main.rand.NextFloat() < 0.5f)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

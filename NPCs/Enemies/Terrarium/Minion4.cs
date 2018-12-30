@@ -33,11 +33,14 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.knockBackResist = 0f;
             npc.alpha = 255;
             npc.noGravity = true;
+            npc.noTileCollide = true;
         }
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
+
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -415,8 +418,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
         {
             base.SetDefaults();
 
-            npc.width = 78;
-            npc.height = 96;
+            npc.width = 20;
+            npc.height = 18;
             npc.dontCountMe = true;
 
             npc.alpha = 255;

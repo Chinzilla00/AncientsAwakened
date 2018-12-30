@@ -17,17 +17,19 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.GiantCursedSkull);
             npc.lifeMax =  350;
             npc.defense = 20;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
+            npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public override void AI()
         {
+            BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.20f, 6f, 125f, 60f, FireMagic);
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -42,6 +44,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
             {
                 npc.alpha = 0;
             }
+        }
+
+        public void FireMagic(NPC npc, Vector2 velocity)
+        {
+            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjType("SummonBlast"), (Main.expertMode ? 50 : 60), 0f, Main.myPlayer, 0f, (float)npc.whoAmI);
         }
 
         public override void HitEffect(int hitDirection, double damage)
