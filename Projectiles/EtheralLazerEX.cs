@@ -9,12 +9,12 @@ namespace AAMod.Projectiles
 {
     // The following laser shows a channeled ability, after charging up the laser will be fired
     // Using custom drawing, dust effects, and custom collision checks for tiles
-    public class EtheralLazer : ModProjectile
+    public class EtheralLazerEX : ModProjectile
 	{
 		// The maximum charge value
 		private const float MaxChargeValue = 50f;
 		//The distance charge particle from the player center
-		private const float MoveDistance = 65f;
+		private const float MoveDistance = 115f;
 
 		// The actual distance is stored in the ai0 field
 		// By making a property to handle this it makes our life easier, and the accessibility more readable

@@ -33,7 +33,7 @@ namespace AAMod.Items.Dev
 	        item.knockBack = 0f;
 	        item.value = Item.sellPrice(1, 0, 0, 0); ;
             item.channel = true;
-            item.shoot = mod.ProjectileType("EtheralLazer");
+            item.shoot = mod.ProjectileType("EtheralLazerEX");
             item.shootSpeed = 30f;
             
             item.expert = true;
