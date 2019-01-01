@@ -364,8 +364,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     if (npc.ai[1] == 1f)
                     {
-                        npc.defense *= 2;
-                        npc.damage *= 2;
                         npc.ai[2] += 1f;
                         if (npc.ai[2] >= chargeTime)
                         {
@@ -374,7 +372,6 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.netUpdate = true;
                             return;
                         }
-
                         npc.rotation = BaseMod.BaseUtility.RotationTo(npc.Center, (npc.Center + npc.velocity));
                         return;
                     }

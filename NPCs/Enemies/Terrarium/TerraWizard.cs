@@ -29,10 +29,20 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.knockBackResist = 0.4f;
             npc.noGravity = true;
         }
-        
+
+        public float[] shootAI = new float[4];
 
         public override void AI()
         {
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = -1;
+
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
             npc.noGravity = true;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
@@ -53,7 +63,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
-            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjType("MagicBlast"), (Main.expertMode ? 40 : 70), 0f, Main.myPlayer, 0f, (float)npc.whoAmI);
+            Player player = Main.player[npc.target];
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("MagicBlast"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
         }
 
         public override void HitEffect(int hitDirection, double damage)
