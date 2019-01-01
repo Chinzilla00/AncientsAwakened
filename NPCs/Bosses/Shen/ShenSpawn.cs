@@ -214,7 +214,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (Speechtimer == 1460)
             {
-                Main.NewText("You messed up big time, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (Speechtimer == 1640)

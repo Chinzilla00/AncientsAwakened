@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
-            npc.noTileCollide = true;
         }
 
         public override void AI()

@@ -375,9 +375,9 @@ namespace AAMod.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Inferno Prism");
-            Tooltip.SetDefault("Imbued with the blazing fury of the razed firelands");
+            Tooltip.SetDefault("Imbued with the blazing fury of the fire-ravaged mountains");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -390,13 +390,6 @@ namespace AAMod.Items.Materials
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
-        }
-
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("AAMod/Items/Materials/Crystal");
-            Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - texture.Height * 0.5f + 2f);
-            spriteBatch.Draw(texture, position, null, AAColor.Inferno, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
 
         public override Color? GetAlpha(Color lightColor)

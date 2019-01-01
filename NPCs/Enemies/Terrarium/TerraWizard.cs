@@ -33,9 +33,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public override void AI()
         {
+            npc.noGravity = true;
+            npc.TargetClosest(true);
+            Player player = Main.player[npc.target];
             BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.15f, 6f, 250f, 70f, FireMagic);
-
-
+            
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
@@ -58,7 +60,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
         {
             if (npc.life <= 0)
             {
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore5"), 1f);
                 npc.position.X = npc.position.X + (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
                 npc.width = 44;

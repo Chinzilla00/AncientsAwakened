@@ -17,11 +17,28 @@ namespace AAMod.NPCs.Enemies.Corruption
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.FaceMonster);
+            npc.width = 18;
+            npc.height = 44;
+            npc.aiStyle = -1;
+            npc.damage = 30;
+            npc.defense = 8;
+            npc.lifeMax = 60;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath2;
+            npc.knockBackResist = 0.4f;
+            npc.value = 200f;
+            npc.buffImmune[20] = true;
+            npc.buffImmune[31] = false;
             animationType = NPCID.FaceMonster;
         }
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override void AI()
+        {
+            AAAI.CorruptFighterAI(npc, ref npc.ai, true, -1, 0.07f, 1f, 3, 4, 120, true, 10, 60, false, null, false);
+        }
+
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
             return SpawnCondition.Corruption.Chance * .8f;
         }
