@@ -27,6 +27,9 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.noTileCollide = true;
         }
 
+
+        public float[] shootAI = new float[4];
+
         public override void AI()
         {
             BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.20f, 6f, 125f, 60f, FireMagic);
@@ -48,7 +51,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
-            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjType("SummonBlast"), (Main.expertMode ? 50 : 60), 0f, Main.myPlayer, 0f, (float)npc.whoAmI);
+            Player player = Main.player[npc.target];
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("SummonBlast"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
         }
 
         public override void HitEffect(int hitDirection, double damage)

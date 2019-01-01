@@ -36,7 +36,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             for (int num110 = 0; num110 < 1; num110++)
             {
-                int num111 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 66, 0f, 0f, 100, AAColor.Hallow, 2.5f);
+                int num111 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 66, 0f, 0f, 100, AAColor.Hallow, 1f);
                 Main.dust[num111].velocity *= 0.1f;
                 Main.dust[num111].velocity += projectile.velocity * 0.2f;
                 Main.dust[num111].position.X = projectile.position.X + (float)(projectile.width / 2) + 4f + (float)Main.rand.Next(-2, 3);

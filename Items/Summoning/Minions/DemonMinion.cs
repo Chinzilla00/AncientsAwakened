@@ -17,7 +17,7 @@ namespace AAMod.Items.Summoning.Minions
         protected float chaseAccel = 4f;
         protected float inertia = 5f;
         protected float shootCool = 90f;
-        protected float shootSpeed = 1;
+        protected float shootSpeed = 4;
         protected int shoot;
 
         public override void SetStaticDefaults()
