@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
         public override void SetDefaults()
         {
             npc.lifeMax = 130000;
-            npc.defense = 100;
+            npc.damage = 200;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 46;

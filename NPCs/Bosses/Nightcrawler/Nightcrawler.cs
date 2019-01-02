@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Nightcrawler
         public override void SetDefaults()
         {
             npc.lifeMax = 130000;
-            npc.damage = 70;
+            npc.damage = 200;
             npc.defense = 100;
             npc.knockBackResist = 0f;
             npc.width = 66;
