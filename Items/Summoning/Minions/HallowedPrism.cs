@@ -17,7 +17,7 @@ namespace AAMod.Items.Summoning.Minions
         protected float chaseAccel = 4f;
         protected float inertia = 5f;
         protected float shootCool = 90f;
-        protected float shootSpeed = 4.5f;
+        protected float shootSpeed = 3f;
         protected int shoot;
 
         public override void SetStaticDefaults()
@@ -243,14 +243,14 @@ namespace AAMod.Items.Summoning.Minions
                 }
             }
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 16)
+            if (projectile.frameCounter > 10)
             {
+                projectile.frame++;
                 projectile.frameCounter = 0;
             }
-            projectile.frame = projectile.frameCounter / 4;
-            if (projectile.ai[1] > 0f && projectile.ai[1] < 16f)
+            if (projectile.frame > 4)
             {
-                projectile.frame += 4;
+                projectile.frame = 0;
             }
         }
     }
