@@ -114,6 +114,12 @@ Your attacks raze your oponents with the flames of Chaos";
             recipe.AddRecipe();
         }
 
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D Glow = mod.GetTexture("Glowmasks/PerfectChaosKabuto_Glow");
+            spriteBatch.Draw(Glow, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");

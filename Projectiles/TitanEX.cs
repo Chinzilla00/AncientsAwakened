@@ -78,7 +78,7 @@ namespace AAMod.Projectiles
                 }
             }
             Vector2 vector14 = projectile.Center + projectile.velocity * 3f;
-            Lighting.AddLight(vector14, Main.DiscoR, 0.8f, Main.DiscoB);
+            Lighting.AddLight(vector14, Main.DiscoR * .3f, 0, Main.DiscoB * .3f);
             if (Main.rand.Next(3) == 0)
             {
                 int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, new Color(Main.DiscoR, 0, Main.DiscoB), 2f);

@@ -61,26 +61,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 int num310 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 4f), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default(Color), 0.6f);
                 Main.dust[num310].velocity *= -0.25f;
-                if (projectile.localAI[0] == 0f)
-                {
-                    projectile.scale -= 0.02f;
-                    projectile.alpha += 30;
-                    if (projectile.alpha >= 250)
-                    {
-                        projectile.alpha = 255;
-                        projectile.localAI[0] = 1f;
-                    }
-                }
-                else if (projectile.localAI[0] == 1f)
-                {
-                    projectile.scale += 0.02f;
-                    projectile.alpha -= 30;
-                    if (projectile.alpha <= 0)
-                    {
-                        projectile.alpha = 0;
-                        projectile.localAI[0] = 0f;
-                    }
-                }
+                
             }
             if (projectile.ai[1] == 0f)
             {

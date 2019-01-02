@@ -1589,11 +1589,11 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosKabuto")))
             {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/PerfectChaosKabuto_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
                 if (drawPlayer.direction == -1)
                 {
                     BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosKabutoBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.headFrame, scale);
                 }
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/PerfectChaosKabuto_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.headFrame, scale);
             }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)

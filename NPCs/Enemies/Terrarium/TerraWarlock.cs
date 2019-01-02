@@ -161,7 +161,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
         {
             if (npc.life <= 0)
             {
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWarlockGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWarlockGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWarlockGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWarlockGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWarlockGore5"), 1f);
                 npc.position.X = npc.position.X + (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
                 npc.width = 44;

@@ -17,23 +17,11 @@ namespace AAMod.Items.Summoning.Minions
         protected float chaseAccel = 4f;
         protected float inertia = 5f;
         protected float shootCool = 90f;
-        protected float shootSpeed = 2;
+        protected float shootSpeed = 4;
         protected int shoot;
-
-        public short customGlowMask = 0;
+        
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("True Hallowed Prism");
             Main.projFrames[projectile.type] = 5;
 
@@ -52,9 +40,14 @@ namespace AAMod.Items.Summoning.Minions
             projectile.minionSlots = 1f;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.glowMask = customGlowMask;
         }
-        
+
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Main.DiscoColor;
+        }
+
 
         public override void AI()
         {
@@ -256,14 +249,14 @@ namespace AAMod.Items.Summoning.Minions
                 }
             }
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 16)
+            if (projectile.frameCounter > 10)
             {
+                projectile.frame++;
                 projectile.frameCounter = 0;
             }
-            projectile.frame = projectile.frameCounter / 4;
-            if (projectile.ai[1] > 0f && projectile.ai[1] < 16f)
+            if (projectile.frame > 4)
             {
-                projectile.frame += 4;
+                projectile.frame = 0;
             }
         }
     }

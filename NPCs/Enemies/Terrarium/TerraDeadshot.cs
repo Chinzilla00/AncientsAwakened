@@ -214,7 +214,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
                     for (int num86 = 0; num86 < 4; num86++)
                     {
                         Vector2 vector15 = vector14 + Utils.RandomVector2(Main.rand, -0.8f, 0.8f);
-                        Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X, vector15.Y, mod.ProjectileType<TerrariumArrow>(), num85, 1f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X - 5, vector15.Y - 5, mod.ProjectileType<TerrariumArrow>(), num85, 1f, Main.myPlayer, 0f, 0f);
                     }
                 }
             }
@@ -435,7 +435,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
         {
             if (npc.life <= 0)
             {
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraDeadshotGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraDeadshotGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraDeadshotGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraDeadshotGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraDeadshotGore5"), 1f);
                 npc.position.X = npc.position.X + (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
                 npc.width = 44;

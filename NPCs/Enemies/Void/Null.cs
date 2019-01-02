@@ -23,7 +23,6 @@ namespace AAMod.NPCs.Enemies.Void
             npc.noTileCollide = true;
             npc.width = 24;
             npc.height = 40;
-            npc.aiStyle = 36;
             npc.damage = 50;
             npc.defense = 9999999;
             npc.lifeMax = 100;

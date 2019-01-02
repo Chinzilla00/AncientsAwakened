@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee
     {
         public override void SetStaticDefaults()
 		{
-		DisplayName.SetDefault("Aqua Lance");
+		DisplayName.SetDefault("Sun Halberd");
 		Tooltip.SetDefault("");
 		}
         public override void SetDefaults()

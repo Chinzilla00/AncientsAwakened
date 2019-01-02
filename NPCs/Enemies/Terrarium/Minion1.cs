@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
             npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()

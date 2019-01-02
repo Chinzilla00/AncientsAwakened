@@ -82,7 +82,7 @@ namespace AAMod.Items.Summoning.Minions
                 projectile.extraUpdates = 1;
                 projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
                 projectile.frameCounter++;
-                if (projectile.frameCounter > 1)
+                if (projectile.frameCounter > 5)
                 {
                     projectile.frame++;
                     projectile.frameCounter = 0;

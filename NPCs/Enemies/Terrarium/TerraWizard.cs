@@ -29,13 +29,25 @@ namespace AAMod.NPCs.Enemies.Terrarium
             npc.knockBackResist = 0.4f;
             npc.noGravity = true;
         }
-        
+
+        public float[] shootAI = new float[4];
 
         public override void AI()
         {
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = -1;
+
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+            npc.noGravity = true;
+            npc.TargetClosest(true);
+            Player player = Main.player[npc.target];
             BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.15f, 6f, 250f, 70f, FireMagic);
-
-
+            
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
@@ -51,14 +63,19 @@ namespace AAMod.NPCs.Enemies.Terrarium
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
-            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjType("MagicBlast"), (Main.expertMode ? 40 : 70), 0f, Main.myPlayer, 0f, (float)npc.whoAmI);
+            Player player = Main.player[npc.target];
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("MagicBlast"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
             {
-
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraWizardGore5"), 1f);
                 npc.position.X = npc.position.X + (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
                 npc.width = 44;

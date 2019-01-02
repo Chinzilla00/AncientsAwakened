@@ -10,8 +10,7 @@ namespace AAmod.Items.Dev
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Etheral");
-			Tooltip.SetDefault(@"'Shoots soul-juice or something...I think.'
--TheRedstoneBro");
+			Tooltip.SetDefault(" \"If in the wrong hands, it can cause devastating damage, so don't give it to me\" \n-TheRedstoneBro");
 		}
 
 
@@ -41,7 +40,7 @@ namespace AAmod.Items.Dev
 			item.magic = true;
 			item.channel = true;
 			item.noMelee = true;
-			item.shoot = mod.ProjectileType("PhantomArcHandle");
+			item.shoot = mod.ProjectileType("EtheralLazer");
 			item.shootSpeed = 26f;
 		}
 	}
