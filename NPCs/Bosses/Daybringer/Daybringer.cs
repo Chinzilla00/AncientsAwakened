@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Daybringer
         {
             npc.lifeMax = 130000;
             npc.damage = 200;
-            npc.defense = 70;
+            npc.defense = 100;
             npc.knockBackResist = 0f;
             npc.width = 46;
             npc.height = 68;
