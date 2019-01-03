@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Infinity
+namespace AAMod.NPCs.Bosses.Infinity
 {
     public class InfinityStorm : ModProjectile
 	{

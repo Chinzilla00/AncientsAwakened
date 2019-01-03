@@ -1,29 +1,13 @@
 using System;
-using System.Reflection;
-using System.IO;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Threading;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ObjectData;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Utilities;
-using Terraria.Map;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
-using Terraria.UI;
-using Terraria.GameContent.UI;
 
 namespace AAMod.Worldgen
 {
-	class ConversionHandler
+    class ConversionHandler
 	{		
 		public static int CONVERTID_MIRE = 0;
 		public static int CONVERTID_INFERNO = 1;
@@ -83,7 +67,7 @@ namespace AAMod.Worldgen
                     wallSandHard = mod.WallType("DepthsandHardenedWall");
                     tileSandstone = mod.TileType("Depthsandstone");
 					wallSandstone = mod.WallType("DepthsandstoneWall");	
-					tileIce = mod.TileType("MireIce");
+					tileIce = mod.TileType("Depthice");
 					//tileThorn = mod.TileType("MireThorn");			
 					break;
 				}

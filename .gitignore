@@ -7,3 +7,15 @@ AAMod.csproj
 AAMod.csproj.user 
 AAMod.sln 
 AAMod.csproj.user
+.vs/AncientsAwakened/DesignTimeBuild/.dtbcache
+.vs/AncientsAwakened/v15/.suo
+*.lock
+*.ide-shm
+*.ide-wal
+*.user
+*.sln
+*.dll
+*.pdb
+*.CopyComplete
+*.cache
+*.txt

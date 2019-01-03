@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata
 {
-    public class Toxibomb : ModProjectile
+    public class InfinitySphere : ModProjectile
 	{
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 4;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
 		}
 
         public override Color? GetAlpha(Color lightColor)
