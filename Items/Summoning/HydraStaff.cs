@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -51,13 +53,13 @@ namespace AAMod.Items.Summoning
             return false;
         }
 
-        /*public override void AddRecipes()  //How to craft this sword
+        public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "AbyssiumBar", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }*/
+        }
     }
 }
