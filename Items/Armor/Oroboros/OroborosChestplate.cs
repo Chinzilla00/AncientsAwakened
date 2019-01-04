@@ -17,7 +17,7 @@ namespace AAMod.Items.Armor.Oroboros
             item.width = 30;
             item.height = 20;
             item.value = 2000;
-            item.rare = 2;
+            item.rare = 3;
             item.defense = 4;
         }
 

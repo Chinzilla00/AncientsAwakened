@@ -17,7 +17,6 @@ namespace AAMod.NPCs.Enemies.Void
 		
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.Poltergeist);
             animationType = NPCID.Poltergeist;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -31,6 +30,7 @@ namespace AAMod.NPCs.Enemies.Void
             npc.alpha = 70;
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;
+            npc.aiStyle = -1;
         }
 
         public override void AI()
