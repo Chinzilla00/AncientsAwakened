@@ -40,8 +40,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            npc.damage = 80;
-            npc.defense = 130;
+            npc.damage = 100;
+            npc.defense = 150;
             npc.lifeMax = 170000;
             if (Main.expertMode)
             {
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
         private bool fireAttack;
         private int attackFrame;
-        private int attackCounter;
+        private int attackCounter; 
         private int attackTimer;
         public override bool PreAI()
         {
@@ -135,7 +135,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90, default(Color), 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].velocity.Y -= 1f;
                     }

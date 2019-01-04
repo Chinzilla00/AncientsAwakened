@@ -36,13 +36,13 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.lifeMax = 150000;
             if (npc.life > npc.lifeMax / 3)
             {
-                npc.damage = 85;
-                npc.defense = 130;
+                npc.damage = 125;
+                npc.defense = 125;
             }
             if (npc.life <= npc.lifeMax / 3)
             {
-                npc.damage = 95;
-                npc.defense = 150;
+                npc.damage = 150;
+                npc.defense = 100;
             }
             npc.value = Item.buyPrice(20, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         if (weakness == false)
                         {
                             weakness = true;
-                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                            Main.NewText("CAUGH! WATER! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                         }
                     }
                     if (attackTimer >= 80)
@@ -174,14 +174,14 @@ namespace AAMod.NPCs.Bosses.Akuma
                     {
                         for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                         {
-                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), npc.damage, 0f, 100, default(Color), 2f);
+                            int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), npc.damage, 0f, 75, default(Color), 2f);
                             Main.dust[num935].noGravity = true;
                             Main.dust[num935].velocity.Y -= 1f;
                         }
                         if (weakness == false)
                         {
                             weakness = true;
-                            Main.NewText("CAUGH..! WATER..! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                            Main.NewText("CAUGH! WATER! I HATE WATER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                         }
                     }
                     if (attackTimer >= 80)
@@ -456,12 +456,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("What?! How have you lasted this long?! Why you little...I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("What?! How have you lasted this long?! Why you little... I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
             if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedAkuma && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
-                Main.NewText("Still got it, do you? Ya got fire in your spirit; I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("Still got it, do you? Ya got fire in your spirit! I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
         }
 
@@ -487,7 +487,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (!AAWorld.downedAkuma && Main.expertMode)
             {
-                Main.NewText("Gah..! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                Main.NewText("Gah! How could this happen?! Even in my full form?! Fine, take your reward. You earned it.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
 
             }
