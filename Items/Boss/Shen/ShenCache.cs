@@ -135,6 +135,9 @@ namespace AAMod.Items.Boss.Shen
                     if (choice == 14)
                     {
                         player.QuickSpawnItem(mod.ItemType("Etheral"));
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
                     }
                 }
             }

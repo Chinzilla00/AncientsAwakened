@@ -39,6 +39,14 @@ namespace AAMod
             return GetTimedColor(Color.White, color, min, max, clamp);
         }
 
+        public static Color GetstormColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
+        public static Color GetstormColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
+        public static Color GetstormColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetstormColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.Violet, color, min, max, clamp);
+        }
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

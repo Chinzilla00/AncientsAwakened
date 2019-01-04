@@ -289,6 +289,35 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class Parthenan : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingS");
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("FulguriteBrickS");
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("StormCloud");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("FulgurGlassS");
+            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingWallS");
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
+            Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
+            
+            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
+
+            return true;
+        }
+    }
+
     public class RadialDitherTopMiddle2 : GenAction
 	{
 		private int _width, _height;

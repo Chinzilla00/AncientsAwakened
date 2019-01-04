@@ -107,15 +107,21 @@ namespace AAMod.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == 53)
+                        else if (type == 53 || type == 112 || type == 234 || type == 116)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Torchsand");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == 53)
+                        else if (type == 396 || type == 400 || type == 401 || type == 403)
                         {
-                            Main.tile[k, l].type = (ushort)mod.TileType("Torchsand");
+                            Main.tile[k, l].type = (ushort)mod.TileType("Torchsandstone");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (type == 397 || type == 398 || type == 399 || type == 402)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("TorchsandHardened");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }

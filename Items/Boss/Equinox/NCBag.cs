@@ -139,12 +139,9 @@ namespace AAMod.Items.Boss.Equinox
                     if (choice == 14)
                     {
                         player.QuickSpawnItem(mod.ItemType("Etheral"));
-                    }
-                    if (choice == 15)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
                     }
                 }
             }

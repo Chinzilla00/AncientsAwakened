@@ -81,6 +81,12 @@ namespace AAMod.Items.Boss.Grips
                         player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                         player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                     }
+                    if (choice == 7)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    }
                 }
             }
             if (Main.rand.Next(3) == 0)

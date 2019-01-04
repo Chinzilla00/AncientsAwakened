@@ -81,90 +81,50 @@ namespace AAMod.Projectiles
             {
                 for (int l = j - size; l <= j + size; l++)
                 {
-                    if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt((size * size) + (size * size)))
+                    if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
                     {
-                        int type = Main.tile[k, l].type;
-                        int wall = Main.tile[k, l].wall;
+                        int type = (int)Main.tile[k, l].type;
+                        int wall = (int)Main.tile[k, l].wall;
                         if (wall != 0)
-                        if (wall == 15)
                         {
-                            Main.tile[k, l].wall = (ushort)mod.WallType("DepthstoneWall");
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
+                            if (wall != 87 || wall != 94 || wall != 95 || wall != 96 || wall != 97 || wall != 98 || wall != 99 || wall != 100 || wall != 101 || wall != 102 || wall != 103 || wall != 104 || wall != 105 || wall != 62)
+                            {
+                                Main.tile[k, l].wall = (ushort)mod.WallType("DepthstoneWall");
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
                         }
-
-                        if (wall == 63)
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType("MireGrassWall");
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        if (wall == 64)
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType("MireJungleWall");
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        if (wall == WallID.Sandstone || wall == WallID.CrimsonSandstone || wall == WallID.CorruptSandstone || wall == WallID.HallowSandstone)
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType("DepthsandstoneWall");
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        if (wall == WallID.HardenedSand || wall == WallID.CrimsonHardenedSand || wall == WallID.CorruptHardenedSand || wall == WallID.HallowHardenedSand)
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType("DepthsandHardenedWall");
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-
-                        if (type == 1)
+                        if (TileID.Sets.Conversion.Stone[type] || type == 179 || type == 180 || type == 181 || type == 182 || type == 183)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Depthstone");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == 60)
+                        else if (type == 60 || type == 70)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("MireGrass");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-
-                        else if (type == 383)
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType("LivingBogwood");
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-
-                        else if (type == 384)
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType("LivingBogwoodLeaves");
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-
-
-                        else if (type == TileID.Sand || type == TileID.Crimsand || type == TileID.Ebonsand || type == TileID.Pearlsand)
+                        else if (type == 53 || type == 112 || type == 234 || type == 116)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Depthsand");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == TileID.HardenedSand || type == TileID.CrimsonHardenedSand || type == TileID.CorruptHardenedSand || type == TileID.HallowHardenedSand)
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType("DepthsandHardened");
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == TileID.Sandstone || type == TileID.CrimsonSandstone || type == TileID.CorruptSandstone || type == TileID.HallowSandstone)
+                        else if (type == 396 || type == 400 || type == 401 || type == 403)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Depthsandstone");
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == TileID.IceBlock || type == TileID.FleshIce || type == TileID.CorruptIce || type == TileID.HallowedIce)
+                        else if (type == 397 || type == 398 || type == 399 || type == 402)
+                        {
+                            Main.tile[k, l].type = (ushort)mod.TileType("DepthsandHardened");
+                            WorldGen.SquareTileFrame(k, l, true);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (type == 161 || type == 200 || type == 163 || type == 164)
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType("Depthice");
                             WorldGen.SquareTileFrame(k, l, true);

@@ -137,6 +137,9 @@ namespace AAMod.Items.Boss.Akuma
                     }
                     if (choice == 14)
                     {
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
                         player.QuickSpawnItem(mod.ItemType("Etheral"));
                     }
                 }

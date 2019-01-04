@@ -234,6 +234,9 @@ namespace AAMod
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
 
+                Filters.Scene["AAMod:StormSky"] = new Filter(new StormSkyData("FilterMiniTower").UseColor(0.4f, 0f, 0.6f).UseOpacity(0.3f), EffectPriority.High);
+                SkyManager.Instance["AAMod:StormSky"] = new StormSky();
+
                 Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
                 VoidSky.PlanetTexture = GetTexture("Backgrounds/VoidBH");
@@ -507,7 +510,7 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
                 }
             }
-            if (Ancients.ZoneVoid)
+            if (Ancients.ZoneVoid || Ancients.ZoneStorm)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");

@@ -80,6 +80,12 @@ namespace AAMod.Items.Boss.Orthrus
                         player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                         player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                     }
+                    if (choice == 7)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("FulguriteBar"), Main.rand.Next(40, 76));

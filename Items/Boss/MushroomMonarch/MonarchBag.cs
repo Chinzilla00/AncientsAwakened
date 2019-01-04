@@ -77,6 +77,12 @@ namespace AAMod.Items.Boss.MushroomMonarch
                         player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                         player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                     }
+                    if (choice == 7)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Mushium"), Main.rand.Next(30, 40));

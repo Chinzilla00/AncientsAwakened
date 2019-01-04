@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Enemies.Void
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;
             npc.aiStyle = -1;
+            npc.noGravity = true;
         }
 
         public override void AI()

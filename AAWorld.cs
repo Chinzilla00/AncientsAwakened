@@ -25,6 +25,7 @@ namespace AAMod
         public static int voidTiles = 0;
         public static int mushTiles = 0;
         public static int terraTiles = 0;
+        public static int stormTiles = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -296,7 +297,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Corruption"));
-            int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if (shiniesIndex == -1)
             {
                 tasks.Insert(shiniesIndex + 3, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
@@ -319,18 +320,22 @@ namespace AAMod
                     }
                 }));
             }
-            tasks.Insert(shiniesIndex2 + 1, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
-            {
-                VoidIslands(progress);
-            }));
-			int chaosBiomeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int chaosBiomeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             tasks.Insert(chaosBiomeIndex, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
             }));
-            tasks.Insert(chaosBiomeIndex + 2, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 2, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
-                //Terrarium(progress);
+                Terrarium(progress);
+            }));
+            tasks.Insert(shiniesIndex2 + 1, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
+            {
+                VoidIslands(progress);
+            }));
+            tasks.Insert(shiniesIndex2 + 2, new PassLegacy("Parthenan", delegate (GenerationProgress progress)
+            {
+                ParthenanIsland(progress);
             }));
         }
 
@@ -909,6 +914,7 @@ namespace AAMod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
+            stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
@@ -979,6 +985,12 @@ namespace AAMod
             TerraSphere();
         }
 
+        private void ParthenanIsland(GenerationProgress progress)
+        {
+            progress.Message = "Storming the Parthenan";
+            Parthenan();
+        }
+
         public void InfernoVolcano()
         {
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
@@ -1003,6 +1015,15 @@ namespace AAMod
             TerrariumSphere biome = new TerrariumSphere();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
+        }
+
+        public void Parthenan()
+        {
+            int ParthenanHeight = 0;
+            ParthenanHeight = 120;
+            Point center = new Point((Main.maxTilesX / 15) + (Main.maxTilesX / 15 / 2), center.Y = ParthenanHeight);
+            Parthenan biome = new Parthenan();
+            biome.Place(center, WorldGen.structures);
         }
 
 

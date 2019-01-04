@@ -104,6 +104,12 @@ namespace AAMod.Items.Boss.Hydra
                         player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                         player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                     }
+                    if (choice == 7)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    }
                 }
             }
             player.QuickSpawnItem(mod.ItemType("Abyssium"), Main.rand.Next(75, 125));
