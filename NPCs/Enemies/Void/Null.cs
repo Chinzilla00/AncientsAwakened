@@ -17,9 +17,10 @@ namespace AAMod.NPCs.Enemies.Void
 		
 		public override void SetDefaults()
 		{
-            animationType = NPCID.Poltergeist;
+            npc.CloneDefaults(NPCID.Poltergeist);
             npc.noGravity = true;
             npc.noTileCollide = true;
+			npc.aiStyle = -1;
             npc.width = 24;
             npc.height = 40;
             npc.damage = 50;
@@ -30,8 +31,23 @@ namespace AAMod.NPCs.Enemies.Void
             npc.alpha = 70;
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;
-            npc.aiStyle = -1;
         }
+
+		public int frameCount = 0;
+		public int frameCounter = 0;
+		public override void PostAI()
+		{
+			frameCounter++;
+			if(frameCounter > 5)
+			{
+				frameCounter = 0;				
+				frameCount++;
+				if(frameCount > 3) frameCount = 0;
+			}
+			npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
+			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.rotation = npc.velocity.X * 0.25f;
+		}
 
         public override void AI()
         {
@@ -96,9 +112,9 @@ namespace AAMod.NPCs.Enemies.Void
             }
             int num283 = (int)((npc.position.X + (float)(npc.width / 2)) / 16f) + npc.direction * 2;
             int num284 = (int)((npc.position.Y + (float)npc.height) / 16f);
-            bool flag23 = true;
+            bool flag23 = false;
             int num285 = 3;
-            for (int num308 = num284; num308 < num284 + num285; num308++)
+            /*for (int num308 = num284; num308 < num284 + num285; num308++)
             {
                 if (Main.tile[num283, num308] == null)
                 {
@@ -126,12 +142,13 @@ namespace AAMod.NPCs.Enemies.Void
                     }
                 }
                 npc.directionY = (!flag25).ToDirectionInt();
-            }
+            }*/
+			npc.directionY = (Main.player[npc.target].Center.Y < npc.Center.Y ? -1 : 1);
             
-            if (flag19)
-            {
-                flag23 = true;
-            }
+            //if (flag19)
+            //{
+            //    flag23 = true;
+            //}
             if (flag23)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.1f;
@@ -146,6 +163,10 @@ namespace AAMod.NPCs.Enemies.Void
                 {
                     npc.velocity.Y = npc.velocity.Y - 0.1f;
                 }
+                if (npc.directionY > 0 && npc.velocity.Y < 0f)
+                {
+                    npc.velocity.Y = npc.velocity.Y + 0.1f;
+                }				
                 if (npc.velocity.Y < -4f)
                 {
                     npc.velocity.Y = -4f;
