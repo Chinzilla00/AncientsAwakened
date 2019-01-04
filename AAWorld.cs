@@ -1021,7 +1021,7 @@ namespace AAMod
         {
             int ParthenanHeight = 0;
             ParthenanHeight = 120;
-            Point center = new Point((Main.maxTilesX / 15) + (Main.maxTilesX / 15 / 2), center.Y = ParthenanHeight);
+            Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
             Parthenan biome = new Parthenan();
             biome.Place(center, WorldGen.structures);
         }
