@@ -31,11 +31,7 @@ namespace AAMod.NPCs.Enemies.Void
             npc.alpha = 70;
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;
-<<<<<<< HEAD
-            npc.aiStyle = -1;
             npc.noGravity = true;
-=======
->>>>>>> 9e509e6ae95dc74aaf14ff69a1762d0cd84a11c0
         }
 
 		public int frameCount = 0;
