@@ -6,25 +6,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Zero
 {
-    class VoidStarPF : ModProjectile
+    public class VoidStarPF : ModProjectile
     {
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
-        {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-        }
-
         public override void SetDefaults()
         {
             projectile.width = 60;
@@ -34,11 +17,13 @@ namespace AAMod.Projectiles.Zero
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.timeLeft = 300;
-            projectile.hide = true;
             projectile.aiStyle = -1;
-            projectile.alpha = 100;
             projectile.ignoreWater = true;
+        }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(220, 220, 220, 220);
         }
 
         public override void AI()
@@ -95,7 +80,7 @@ namespace AAMod.Projectiles.Zero
                 }
                 return;
             }
-            projectile.rotation += projectile.direction * 0.8f;
+            projectile.rotation += 0.3f;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 30f)
             {
@@ -113,7 +98,6 @@ namespace AAMod.Projectiles.Zero
                 int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, new Color(120, 0, 30), 1f);
                 Main.dust[num258].noGravity = true;
             }
-            return;
         }
     }
 }
