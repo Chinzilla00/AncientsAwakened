@@ -407,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             if (Main.netMode != 1)
                             {
                                 float num380 = 9f;
-                                int num381 = npc.damage / 8;
+                                int num381 = npc.damage / 4;
                                 int num382 = mod.ProjectileType<GlitchBomb>();
                                 if (Main.expertMode)
                                 {
@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 num377 += Main.rand.Next(-40, 41) * 0.08f;
                                 vector36.X += num376 * 15f;
                                 vector36.Y += num377 * 15f;
-                                Projectile.NewProjectile(vector36.X, vector36.Y, num376, num377, num382, npc.damage, 0f, Main.myPlayer, 0f, 0f);
+                                Projectile.NewProjectile(vector36.X, vector36.Y, num376, num377, num382, num381, 0f, Main.myPlayer, 0f, 0f);
                             }
                         }
                     }
