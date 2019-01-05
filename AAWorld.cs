@@ -34,6 +34,8 @@ namespace AAMod
         public static bool Dynaskull;
         public static bool ChaosOres;
         public static bool RadiumOre;
+        public static bool ChaosAltarsSmashed;
+        public static bool HardmodeOre;
         private int infernoSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
