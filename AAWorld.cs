@@ -1109,6 +1109,7 @@ namespace AAMod
             int Ore1 = mod.TileType<YtriumOre>();
             int Ore2 = mod.TileType<UraniumOre>();
             int Ore3 = mod.TileType<TechneciumOre>();
+            Player player = Main.player[Main.myPlayer];
             int num = 0;
             int num2 = ChaosAltarsSmashed / 3 + 1;
             float num3 = (float)(Main.maxTilesX / 4200);
@@ -1169,10 +1170,22 @@ namespace AAMod
                 int num14 = Main.rand.Next(2) + 1;
                 for (int k = 0; k < num14; k++)
                 {
-                    NPC.SpawnOnPlayer((int)Player.FindClosest(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16), mod.NPCType<ChaosDragon>());
+                    Spawn(player, mod, "ChaosDragon");
                 }
             }
             ChaosAltarsSmashed++;
+        }
+
+        public static void Spawn(Player player, Mod mod, string name)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
         }
     }
     

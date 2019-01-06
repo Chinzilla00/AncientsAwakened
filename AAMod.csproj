@@ -603,6 +603,7 @@
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
+    <Compile Include="Items\Hooks\DragonsGrip.cs" />
     <Compile Include="Items\Magic\BogBomb.cs" />
     <Compile Include="Items\Magic\CrystalTome.cs" />
     <Compile Include="Items\Magic\DoomStaff.cs" />
@@ -613,6 +614,7 @@
     <Compile Include="Items\Magic\GelWand.cs" />
     <Compile Include="Items\Magic\Gong.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
+    <Compile Include="Items\Magic\BlazePike.cs" />
     <Compile Include="Items\Magic\ManaRose.cs" />
     <Compile Include="Items\Magic\RazorLeaf.cs" />
     <Compile Include="Items\Magic\SkyBook.cs" />
@@ -1055,6 +1057,7 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Projectiles\Akuma\Daycrusher.cs" />
@@ -2914,8 +2917,8 @@
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
+    <Content Include="Items\Hooks\DragonsGripP.png" />
     <Content Include="Items\Hooks\DragonsGrip_Chain.png" />
-    <Content Include="Items\Hooks\DragonsGrip_Hook.png" />
     <Content Include="Items\Magic\AncientArcanum.png" />
     <Content Include="Items\Magic\AtlanteanTrident.png" />
     <Content Include="Items\Magic\BlazePike.png" />
@@ -2936,6 +2939,7 @@
     <Content Include="Items\Magic\OceanTrident.png" />
     <Content Include="Items\Magic\RazorLeaf.png" />
     <Content Include="Items\Magic\SkyBook.png" />
+    <Content Include="Items\Magic\SludgeShot.png" />
     <Content Include="Items\Magic\StarWand.png" />
     <Content Include="Items\Magic\TerraRose.png" />
     <Content Include="Items\Magic\TrueGong.png" />
@@ -3725,6 +3729,7 @@
     <Content Include="Palletes\Yamata &amp; Akuma.png" />
     <Content Include="Palletes\Yamata.png" />
     <Content Include="Placeholder.png" />
+    <Content Include="Projectiles\AcidBall.png" />
     <Content Include="Projectiles\Akuma\Dawnstrike.png" />
     <Content Include="Projectiles\Akuma\DaybreakArrow.png" />
     <Content Include="Projectiles\Akuma\Daycrusher.png" />

@@ -26,7 +26,7 @@ namespace AAMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Abyss Altar");
             dustType = mod.DustType("AbyssiumDust");
-            AddMapEntry(new Color(120, 0, 160), name);
+            AddMapEntry(new Color(0, 0 ,100), name);
             adjTiles = new int[] { TileID.DemonAltar };
         }
 
