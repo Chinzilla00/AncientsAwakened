@@ -1034,6 +1034,7 @@
     <Compile Include="NPCs\Enemies\Other\DragonClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ElderDragon.cs" />
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
+    <Compile Include="NPCs\Enemies\Other\ChaosDragon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\MagicBlast.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Minion1.cs" />
@@ -1247,6 +1248,7 @@
     <Compile Include="Projectiles\Zero\ZeroStarP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sounds\Sounds\Glitch.cs" />
+    <Compile Include="Sounds\Sounds\IZRoar.cs" />
     <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
@@ -1256,6 +1258,9 @@
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\AncientForge.cs" />
+    <Compile Include="Tiles\Uranium.cs" />
+    <Compile Include="Tiles\ChaosAltar2.cs" />
+    <Compile Include="Tiles\ChaosAltar1.cs" />
     <Compile Include="Tiles\DiscordiumOre.cs" />
     <Compile Include="Tiles\DragonEgg.cs" />
     <Compile Include="Tiles\DragonRose.cs" />
@@ -3660,6 +3665,7 @@
     <Content Include="NPCs\Enemies\Mire\Toxitoad\ToxitoadWalk.png" />
     <Content Include="NPCs\Enemies\Mire\Toxitoad\Toxitongue.png" />
     <Content Include="NPCs\Enemies\Mire\Toxitoad\Toxitongue_Chain.png" />
+    <Content Include="NPCs\Enemies\Other\ChaosDragon.png" />
     <Content Include="NPCs\Enemies\Other\CyberClaw.png" />
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
     <Content Include="NPCs\Enemies\Other\ElderDragon.png" />
@@ -3961,6 +3967,7 @@
     <Content Include="Sounds\Music\Zero.mp3" />
     <Content Include="Sounds\Music\Zero2.mp3" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
+    <Content Include="Sounds\Sounds\IZRoar.mp3" />
     <Content Include="Sounds\Sounds\ZeroDeath.wav" />
     <Content Include="Sounds\Sounds\Zerohit.wav" />
     <Content Include="Sounds\Sounds\Zerohit2.wav" />
@@ -3976,6 +3983,8 @@
     <Content Include="Tiles\Bogtus.png" />
     <Content Include="Tiles\Cache\IZCache.png" />
     <Content Include="Tiles\Cache\ShenCache.png" />
+    <Content Include="Tiles\ChaosAltar1.png" />
+    <Content Include="Tiles\ChaosAltar2.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />
     <Content Include="Tiles\Crates\HellCrate.png" />
     <Content Include="Tiles\Crates\IceCrate.png" />
@@ -4032,7 +4041,6 @@
     <Content Include="Tiles\Boss6Box.png" />
     <Content Include="Tiles\BroodBox.png" />
     <Content Include="Tiles\ChaosAltar.png" />
-    <Content Include="Tiles\ChaosAltarNatural.png" />
     <Content Include="Tiles\ChaosCrucible.png" />
     <Content Include="Tiles\CitrinePlaced.png" />
     <Content Include="Tiles\CitrineTile.png" />

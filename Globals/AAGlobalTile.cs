@@ -39,6 +39,14 @@ namespace AAMod
             return GetTimedColor(Color.White, color, min, max, clamp);
         }
 
+        public static Color GetUraniumColorBrightInvert(Color color) { return GetUraniumColor(color, 1f, 0.6f, true); }
+        public static Color GetUraniumColorDim(Color color) { return GetUraniumColor(color, 0.4f, 1f, false); }
+        public static Color GetUraniumColorBright(Color color) { return GetUraniumColor(color, 0.6f, 1f, false); }
+        public static Color GetUraniumColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.DarkSeaGreen, color, min, max, clamp);
+        }
+
         public static Color GetstormColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
         public static Color GetstormColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
         public static Color GetstormColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }

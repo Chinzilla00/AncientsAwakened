@@ -86,8 +86,27 @@ namespace AAMod.Worldgeneration
 			}));
 			gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
 
-			return true;
+            for (int num = 0; num < Main.maxTilesX / 390; num++)
+            {
+                int xAxis = WorldGen.genRand.Next(0, biomeRadius);
+                int yAxis = WorldGen.genRand.Next(0, biomeRadius);
+                for (int AltarX = xAxis - 45; AltarX < xAxis + 45; AltarX++)
+                {
+                    for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
+                    {
+                        Tile tile = Main.tile[AltarX, AltarY];
+                        if (Main.rand.Next(15) == 0)
+                        {
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<Tiles.ChaosAltar1>());
+                        }
+                    }
+                }
+            }
+
+            return true;
 		}
+
+
 
         public static int GetWorldSize()
         {
@@ -178,6 +197,23 @@ namespace AAMod.Worldgeneration
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
             gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+
+            for (int num = 0; num < Main.maxTilesX / 390; num++)
+            {
+                int xAxis = WorldGen.genRand.Next(0, biomeRadius);
+                int yAxis = WorldGen.genRand.Next(0, biomeRadius);
+                for (int AltarX = xAxis - 45; AltarX < xAxis + 45; AltarX++)
+                {
+                    for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
+                    {
+                        Tile tile = Main.tile[AltarX, AltarY];
+                        if (Main.rand.Next(15) == 0)
+                        {
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<Tiles.ChaosAltar2>());
+                        }
+                    }
+                }
+            }
 
             return true;
         }

@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 96;
-                if (npc.frame.Y > (96 * 4))
+                if (npc.frame.Y > (96 * 3))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
