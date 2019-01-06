@@ -88,8 +88,8 @@ namespace AAMod.Worldgeneration
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
-                int xAxis = WorldGen.genRand.Next(0, biomeRadius);
-                int yAxis = WorldGen.genRand.Next(0, biomeRadius);
+                int xAxis = origin.X + WorldGen.genRand.Next(0, biomeRadius);
+                int yAxis = origin.Y + WorldGen.genRand.Next(0, biomeRadius);
                 for (int AltarX = xAxis - 45; AltarX < xAxis + 45; AltarX++)
                 {
                     for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
@@ -200,8 +200,8 @@ namespace AAMod.Worldgeneration
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
-                int xAxis = WorldGen.genRand.Next(0, biomeRadius);
-                int yAxis = WorldGen.genRand.Next(0, biomeRadius);
+                int xAxis = origin.X + WorldGen.genRand.Next(0, biomeRadius);
+                int yAxis = origin.Y + WorldGen.genRand.Next(0, biomeRadius);
                 for (int AltarX = xAxis - 45; AltarX < xAxis + 45; AltarX++)
                 {
                     for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
