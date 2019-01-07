@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Retriever
         {
             DisplayName.SetDefault("Storm Claw");
             Tooltip.SetDefault(
-@"For every hit you land on an enemy, 40 true damage (damage unassigned to any class) is dealt
+@"For every hit you land on an enemy, 20 true damage (damage unassigned to any class) is dealt
 Your non-autoswinging weapons are lightning fast");
         }
 
