@@ -12,6 +12,7 @@ using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using BaseMod;
 using AAMod.Worldgeneration;
+using AAMod.NPCs.Enemies.Other;
 
 namespace AAMod
 {
@@ -34,6 +35,9 @@ namespace AAMod
         public static bool Dynaskull;
         public static bool ChaosOres;
         public static bool RadiumOre;
+        public static bool AltarSmashed;
+        public static int ChaosAltarsSmashed;
+        public static int OreCount;
         private int infernoSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
@@ -337,6 +341,11 @@ namespace AAMod
             {
                 ParthenanIsland(progress);
             }));
+
+            tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Altars", delegate (GenerationProgress progress)
+            {
+                Altars(progress);
+            }));
         }
 
         public void Mush(GenerationProgress progress)
@@ -441,6 +450,58 @@ namespace AAMod
                 int y = Raycast(position.X + i, position.Y - 5);
                 WorldGen.PlaceObject(position.X + i, y, mod.TileType("OroborosTree"));
                 WorldGen.GrowTree(position.X + i, y);
+            }
+        }
+
+        private void Altars (GenerationProgress progress)
+        {
+            progress.Message = "Placing Chaos Altars";
+            for (int num = 0; num < Main.maxTilesX / 390; num++)
+            {
+                int xAxis = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
+                int yAxis = WorldGen.genRand.Next((int)WorldGen.rockLayer + 150, Main.maxTilesY - 250);
+                for (int AltarX = xAxis - 45; AltarX < xAxis + 45; AltarX++)
+                {
+                    for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
+                    {
+                        Tile tile = Main.tile[AltarX, AltarY];
+                        int Altar = Main.rand.Next(2);
+
+                        switch (Altar)
+                        {
+                            case 0:
+                                Altar = mod.TileType<Tiles.ChaosAltar1>();
+                                break;
+                            default:
+                                Altar = mod.TileType<Tiles.ChaosAltar2>();
+                                break;
+                        }
+                        if (Main.rand.Next(15) == 0)
+                        {
+                            if ((tile.type == mod.TileType<Torchstone>() ||
+                                tile.type == mod.TileType<Torchsand>() ||
+                                tile.type == mod.TileType<Torchice>() ||
+                                tile.type == mod.TileType<Torchsandstone>() ||
+                                tile.type == mod.TileType<Torchsand>() ||
+                                tile.type == mod.TileType<InfernoGrass>())  
+                                && Altar == mod.TileType<ChaosAltar1>())
+                            {
+                                Altar = mod.TileType<ChaosAltar2>();
+                            }
+                            if ((tile.type == mod.TileType<Depthstone>() || 
+                                tile.type == mod.TileType<Depthsand>() || 
+                                tile.type == mod.TileType<Depthice>() ||
+                                tile.type == mod.TileType<Depthsandstone>() ||
+                                tile.type == mod.TileType<Depthsand>() ||
+                                tile.type == mod.TileType<MireGrass>()) 
+                                && Altar == mod.TileType<ChaosAltar2>())
+                            {
+                                Altar = mod.TileType<ChaosAltar1>();
+                            }
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, Altar);
+                        }
+                    }
+                }
             }
         }
 
@@ -769,6 +830,8 @@ namespace AAMod
             }
         }
 
+        
+
         public override void PostUpdate()
         {
             if (downedDB == true)
@@ -1021,7 +1084,7 @@ namespace AAMod
         {
             int ParthenanHeight = 0;
             ParthenanHeight = 120;
-            Point center = new Point((Main.maxTilesX / 15) + (Main.maxTilesX / 15 / 2), center.Y = ParthenanHeight);
+            Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
             Parthenan biome = new Parthenan();
             biome.Place(center, WorldGen.structures);
         }
@@ -1036,5 +1099,94 @@ namespace AAMod
             modPlayer.AkumaAltar = false;
             modPlayer.YamataAltar = false;
         }
+
+        public static void SmashAltar(Mod mod, int i, int j)
+        {
+            if (Main.netMode == 1 || !Main.hardMode || WorldGen.noTileActions || WorldGen.gen)
+            {
+                return;
+            }
+            int Ore1 = mod.TileType<YtriumOre>();
+            int Ore2 = mod.TileType<UraniumOre>();
+            int Ore3 = mod.TileType<TechneciumOre>();
+            Player player = Main.player[Main.myPlayer];
+            int num = 0;
+            int num2 = ChaosAltarsSmashed / 3 + 1;
+            float num3 = (float)(Main.maxTilesX / 4200);
+            int num4 = 0;
+            num3 = ((num3 * 310f - (float)(85 * num)) * 0.85f) / num2;
+            if (OreCount >= 3)
+            {
+                OreCount = 0;
+            }
+            if (OreCount == 0)
+            {
+                if (Main.netMode == 0)
+                {
+                    BaseUtility.Chat("Your world bursts with Ytrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                }
+                num = Ore1;
+                num3 *= 1.05f;
+                num4 = 4;
+            }
+            else if (OreCount == 1)
+            {
+                if (Main.netMode == 0)
+                {
+                    BaseUtility.Chat("Your world bursts with Uranium!", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
+                }
+                num = Ore2;
+                num3 *= 1.05f;
+                num4 = 3;
+            }
+            else
+            {
+                if (Main.netMode == 0)
+                {
+                    BaseUtility.Chat("Your world bursts with Technecium!", Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
+                }
+                num = Ore3;
+                num4 = 2;
+            }
+            int num8 = 0;
+            while ((float)num8 < num3)
+            {
+                int i2 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+                double num9 = Main.worldSurface;
+                if (num == Ore2)
+                {
+                    num9 = Main.rockLayer;
+                }
+                if (num == Ore3)
+                {
+                    num9 = (Main.rockLayer + Main.rockLayer + (double)Main.maxTilesY) / 3.0;
+                }
+                int j2 = WorldGen.genRand.Next((int)num9, Main.maxTilesY - 150);
+                WorldGen.OreRunner(i2, j2, (double)WorldGen.genRand.Next(5, 9 + num4), WorldGen.genRand.Next(5, 9 + num4), (ushort)num);
+                num8++;
+            }
+            if (Main.netMode != 1)
+            {
+                int num14 = Main.rand.Next(2) + 1;
+                for (int k = 0; k < num14; k++)
+                {
+                    Spawn(player, mod, "ChaosDragon");
+                }
+            }
+            ChaosAltarsSmashed++;
+        }
+
+        public static void Spawn(Player player, Mod mod, string name)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
     }
+    
 }

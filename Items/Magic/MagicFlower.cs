@@ -10,7 +10,6 @@ namespace AAMod.Items.Magic
 		{
             DisplayName.SetDefault("Magic Flower");
             Tooltip.SetDefault("Pretty");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
@@ -22,7 +21,7 @@ namespace AAMod.Items.Magic
 			item.height = 32;
 			item.useTime = 25;
 			item.useAnimation = 25;
-			item.useStyle = 5;
+			item.useStyle = 1;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
 			item.value = 1000;

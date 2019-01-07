@@ -454,7 +454,8 @@ namespace AAMod
             bool useVoid = (ZoneVoid || VoidUnit);
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
-            bool useClouds = ZoneStorm;
+            bool useStorm = ZoneStorm;
+            player.ManageSpecialBiomeVisuals("AAMod:StormSky", useStorm);
         }
 
         public override bool CustomBiomesMatch(Player other)

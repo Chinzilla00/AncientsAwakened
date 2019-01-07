@@ -26,7 +26,7 @@ namespace AAMod.Backgrounds
             public bool IsAlive;
         }
 
-        ScreenFog StormBGFog = new ScreenFog(true);
+        StormClouds StormBGFog = new StormClouds(true);
         public static Texture2D boltTexture;
         public static Texture2D flashTexture;
         private Bolt[] bolts;
@@ -129,7 +129,7 @@ namespace AAMod.Backgrounds
             Intensity = 0.002f;
             Active = true;
 
-            bolts = new StormSky.Bolt[500];
+            bolts = new Bolt[500];
             for (int i = 0; i < bolts.Length; i++)
             {
                 bolts[i].IsAlive = false;
