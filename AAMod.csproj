@@ -148,6 +148,8 @@
     <Compile Include="Dusts\AbyssDust.cs" />
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\AcidDust.cs" />
+    <Compile Include="Dusts\IceDust.cs" />
+    <Compile Include="Dusts\SnowDustLight.cs" />
     <Compile Include="Dusts\SnowDust.cs" />
     <Compile Include="Dusts\AkumaADust.cs" />
     <Compile Include="Dusts\AkumaDust.cs" />
@@ -367,7 +369,6 @@
     <Compile Include="Items\Blocks\BinaryReassembler.cs" />
     <Compile Include="Items\Blocks\Bogwood.cs" />
     <Compile Include="Items\Blocks\BogwoodChest.cs" />
-    <Compile Include="Items\Blocks\Boss6Box.cs" />
     <Compile Include="Items\Blocks\BroodBox.cs" />
     <Compile Include="Items\Blocks\ChaosCrucible.cs" />
     <Compile Include="Items\Blocks\CorruptAltar.cs" />
@@ -424,6 +425,7 @@
     <Compile Include="Items\Blocks\ScorchedShingles.cs" />
     <Compile Include="Items\Blocks\ShenABox.cs" />
     <Compile Include="Items\Blocks\ShenBox.cs" />
+    <Compile Include="Items\Blocks\SiegeBox.cs" />
     <Compile Include="Items\Blocks\Soul_Forge.cs" />
     <Compile Include="Items\Blocks\SunAltar.cs" />
     <Compile Include="Items\Blocks\SunAltarA.cs" />
@@ -528,6 +530,8 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Serpent\Icepick.cs" />
+    <Compile Include="Items\Boss\Serpent\SickleShot.cs" />
     <Compile Include="Items\Boss\Shen\ChaosScale.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSlayer.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSlayerEX.cs" />
@@ -952,6 +956,8 @@
     <Compile Include="NPCs\Bosses\Daybringer\Daybringer.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\Sunbeam.cs" />
     <Compile Include="NPCs\Bosses\Daybringer\SunbeamScatter.cs" />
+    <Compile Include="NPCs\Bosses\Djinn\Djinnado.cs" />
+    <Compile Include="NPCs\Bosses\Djinn\Djinn.cs" />
     <Compile Include="NPCs\Bosses\EmperorFishron\EmperorFishron.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
@@ -1105,6 +1111,7 @@
     <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\DoomBoom.cs" />
     <Compile Include="Projectiles\DoomProj.cs" />
+    <Compile Include="Projectiles\IceArrow.cs" />
     <Compile Include="Projectiles\EFish\EFlairon.cs" />
     <Compile Include="Projectiles\EFish\Typhoon.cs" />
     <Compile Include="Projectiles\EtheralBeam.cs" />
@@ -1190,6 +1197,8 @@
     <Compile Include="Projectiles\RainbowCatPro.cs" />
     <Compile Include="Projectiles\ReaperArrow.cs" />
     <Compile Include="Projectiles\Ryugen.cs" />
+    <Compile Include="Projectiles\Sandnado.cs" />
+    <Compile Include="Projectiles\SerpentSpike.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlue.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordBlueEX.cs" />
@@ -1211,6 +1220,7 @@
     <Compile Include="Projectiles\Shen\SkyfallR.cs" />
     <Compile Include="Projectiles\SpookerangP.cs" />
     <Compile Include="Projectiles\Squirt.cs" />
+    <Compile Include="Projectiles\Sting.cs" />
     <Compile Include="Projectiles\StormJavelin.cs" />
     <Compile Include="Projectiles\SunLance.cs" />
     <Compile Include="Projectiles\Taserblast.cs" />
@@ -1624,6 +1634,7 @@
     <Content Include="Dusts\Glass.png" />
     <Content Include="Dusts\HydraDust.png" />
     <Content Include="Dusts\HydratoxinDust.png" />
+    <Content Include="Dusts\IceDust.png" />
     <Content Include="Dusts\IncineriteDust.png" />
     <Content Include="Dusts\IndigoSolution.png" />
     <Content Include="Dusts\InfinityOverloadB.png" />
@@ -1648,6 +1659,7 @@
     <Content Include="Dusts\RazewoodDust.png" />
     <Content Include="Dusts\RealityDust.png" />
     <Content Include="Dusts\RedDust.png" />
+    <Content Include="Dusts\SnowDustLight.png" />
     <Content Include="Dusts\SnowDust.png" />
     <Content Include="Dusts\SoulDust.png" />
     <Content Include="Dusts\SpaceDust.png" />
@@ -1699,7 +1711,6 @@
     <Content Include="Glowmasks\BlazingDawn_glow.png" />
     <Content Include="Glowmasks\BogBomb_Glow.png" />
     <Content Include="Glowmasks\Bonesaw_Glow.png" />
-    <Content Include="Glowmasks\Boss6Box_Glow.png" />
     <Content Include="Glowmasks\BrokenCode_Glow.png" />
     <Content Include="Glowmasks\BroodBag_Glow.png" />
     <Content Include="Glowmasks\BroodBox_Glow.png" />
@@ -1923,6 +1934,7 @@
     <Content Include="Glowmasks\MorningGlory_Glow.png" />
     <Content Include="Glowmasks\MorningStar_Glow.png" />
     <Content Include="Glowmasks\Mosster_Glow.png" />
+    <Content Include="Glowmasks\Mudkip_Glow.png" />
     <Content Include="Glowmasks\NaitokurosuA_Glow.png" />
     <Content Include="Glowmasks\NaitokurosuA_Neck_Glow.png" />
     <Content Include="Glowmasks\Naitokurosu_Glow.png" />
@@ -2014,6 +2026,7 @@
     <Content Include="Glowmasks\ShenABox_Glow.png" />
     <Content Include="Glowmasks\ShenBox_Glow.png" />
     <Content Include="Glowmasks\ShenCache_Glow.png" />
+    <Content Include="Glowmasks\SiegeBox_Glow.png" />
     <Content Include="Glowmasks\Skyfall_Glow.png" />
     <Content Include="Glowmasks\Solar_Glow.png" />
     <Content Include="Glowmasks\SoulStone_Face_Glow.png" />
@@ -2634,7 +2647,6 @@
     <Content Include="Items\Blocks\BinaryReassembler.png" />
     <Content Include="Items\Blocks\Bogwood.png" />
     <Content Include="Items\Blocks\BogwoodChest.png" />
-    <Content Include="Items\Blocks\Boss6Box.png" />
     <Content Include="Items\Blocks\BroodBox.png" />
     <Content Include="Items\Blocks\BunnyBongo.png" />
     <Content Include="Items\Blocks\ChaosCrucible.png" />
@@ -2653,7 +2665,6 @@
     <Content Include="Items\Blocks\Doomstone.png" />
     <Content Include="Items\Blocks\DoomstoneBrick.png" />
     <Content Include="Items\Blocks\DynaskullOre.png" />
-    <Content Include="Items\Blocks\DynaskullOre_Glow.png" />
     <Content Include="Items\Blocks\Equibox.png" />
     <Content Include="Items\Blocks\FestiveWood.png" />
     <Content Include="Items\Blocks\FulguriteBlock.png" />
@@ -2663,13 +2674,10 @@
     <Content Include="Items\Blocks\HallowedForge.png" />
     <Content Include="Items\Blocks\HallowedOre.png" />
     <Content Include="Items\Blocks\HaphestusForge.png" />
-    <Content Include="Items\Blocks\HaphestusForge_Glow.png" />
     <Content Include="Items\Blocks\HellstoneAnvil.png" />
     <Content Include="Items\Blocks\HydraBox.png" />
     <Content Include="Items\Blocks\Incinerite.png" />
-    <Content Include="Items\Blocks\Incinerite_Glow.png" />
     <Content Include="Items\Blocks\InfernoAltar.png" />
-    <Content Include="Items\Blocks\InfernoAltar_Glow.png" />
     <Content Include="Items\Blocks\InfernoBox.png" />
     <Content Include="Items\Blocks\InfernoChest.png" />
     <Content Include="Items\Blocks\InfernoGrassBlock.png" />
@@ -2701,6 +2709,7 @@
     <Content Include="Items\Blocks\ScorchedShingles.png" />
     <Content Include="Items\Blocks\ShenABox.png" />
     <Content Include="Items\Blocks\ShenBox.png" />
+    <Content Include="Items\Blocks\SiegeBox.png" />
     <Content Include="Items\Blocks\Soul_Forge.png" />
     <Content Include="Items\Blocks\SunAltar.png" />
     <Content Include="Items\Blocks\SunAltarA.png" />
@@ -2721,9 +2730,7 @@
     <Content Include="Items\Blocks\YamataBox.png" />
     <Content Include="Items\Blocks\YtriumOre.png" />
     <Content Include="Items\Blocks\Zero2Box.png" />
-    <Content Include="Items\Blocks\Zero2Box_Glow.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
-    <Content Include="Items\Blocks\ZeroBox_Glow.png" />
     <Content Include="Items\BossSummons\CalciumSkull.png" />
     <Content Include="Items\BossSummons\ChaosRune.png" />
     <Content Include="Items\BossSummons\ChaosRune_Inactive.png" />
@@ -2854,7 +2861,8 @@
     <Content Include="Items\Boss\Retriever\StormRiot.png" />
     <Content Include="Items\Boss\Retriever\StormRiot_Shield.png" />
     <Content Include="Items\Boss\Serpent\Icepick.png" />
-    <Content Include="Items\Boss\Serpent\NorthPolarm.png" />
+    <Content Include="Items\Boss\Serpent\SerpentBag.png" />
+    <Content Include="Items\Boss\Serpent\SerpentSpike.png" />
     <Content Include="Items\Boss\Serpent\SerpentStaff.png" />
     <Content Include="Items\Boss\Serpent\SerpentSting.png" />
     <Content Include="Items\Boss\Serpent\Sickle.png" />
@@ -3485,6 +3493,7 @@
     <Content Include="NPCs\Bosses\Daybringer\Sunbeam.png" />
     <Content Include="NPCs\Bosses\Daybringer\SunbeamScatter.png" />
     <Content Include="NPCs\Bosses\Decay\Decay.png" />
+    <Content Include="NPCs\Bosses\Djinn\Djinn.png" />
     <Content Include="NPCs\Bosses\EmperorFishron\EmperorFishron.png" />
     <Content Include="NPCs\Bosses\Greed\Greed.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
@@ -3895,6 +3904,7 @@
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraSpear.png" />
     <Content Include="Projectiles\HydraTuneller.png" />
+    <Content Include="Projectiles\IceArrow.png" />
     <Content Include="Projectiles\IceChunk.png" />
     <Content Include="Projectiles\IllumantBall.png" />
     <Content Include="Projectiles\IllumantBall_Chain.png" />
@@ -3937,6 +3947,9 @@
     <Content Include="Projectiles\RainbowCatPro.png" />
     <Content Include="Projectiles\ReaperArrow.png" />
     <Content Include="Projectiles\Ryugen.png" />
+    <Content Include="Projectiles\Sandnado.png" />
+    <Content Include="Projectiles\Sandstorm.png" />
+    <Content Include="Projectiles\SerpentSpike.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSword.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlue.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlueEX.png" />
@@ -3960,6 +3973,7 @@
     <Content Include="Projectiles\SpookerangP.png" />
     <Content Include="Projectiles\SpookyKnife.png" />
     <Content Include="Projectiles\Squirt.png" />
+    <Content Include="Projectiles\Sting.png" />
     <Content Include="Projectiles\StormJavelin.png" />
     <Content Include="Projectiles\SunLance.png" />
     <Content Include="Projectiles\Taserblast.png" />

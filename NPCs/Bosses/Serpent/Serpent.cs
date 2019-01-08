@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.width = 32;
             npc.height = 76;
             npc.defense = 20;
-            npc.lifeMax = 8000;
+            npc.lifeMax = 4500;
             npc.aiStyle = 6;
             aiType = -1;
             animationType = 10;

@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
             item.rare = 2;
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
-            item.shootSpeed = 31f;
+            item.shootSpeed = 12f;
 
         }
 

@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.noTileCollide = true;
             npc.chaseable = true;
             npc.damage = 70;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
             npc.defense = 30;
             npc.lavaImmune = true;
             npc.boss = true;

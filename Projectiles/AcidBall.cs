@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class AdicBall : ModProjectile
+    public class AcidBall : ModProjectile
 	{
         public override void SetStaticDefaults()
         {
