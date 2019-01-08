@@ -261,7 +261,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 			{
 				if(ChargeAttack)
 				{
-					npc.velocity *= 0.5f; //slow WAY the fuck down
+					npc.velocity *= 1.5f; //slow WAY the fuck down (testing to see if speedy)
 					if(Main.netMode != 1)
 					{
 						ChargeAttack = false;
@@ -280,7 +280,7 @@ namespace AAMod.NPCs.Bosses.Infinity
 				npc.velocity *= (ChargeAttack ? 18f : 8f);
 			}
 			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-			npc.spriteDirection = -1;			
+			//npc.spriteDirection = -1; commented out temporarily			
 		}
 		
 		public Vector2 GetVariance(bool random = true)

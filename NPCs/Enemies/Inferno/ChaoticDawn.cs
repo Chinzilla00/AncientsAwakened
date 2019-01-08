@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             
                 if (Main.rand.NextFloat() < 0.1f)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AbyssalTwilight"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlazingDawn"));
                 }
         }
 	}
