@@ -98,6 +98,7 @@ Your attacks raze your oponents with the flames of Chaos";
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage *= 1.3f;
+            player.meleeCrit += 30;
             player.endurance *= 1.15f;
             player.meleeSpeed *= 1.15f;
         }

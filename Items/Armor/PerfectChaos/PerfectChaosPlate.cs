@@ -35,6 +35,7 @@ The power of discordian rage radiates from this armor");
 		{
 
             player.meleeDamage *= 1.3f;
+            player.meleeCrit += 30;
             player.endurance *= 1.15f;
             player.meleeSpeed *= 1.15f;
         }

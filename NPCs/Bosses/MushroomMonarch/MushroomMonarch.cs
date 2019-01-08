@@ -75,7 +75,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.frameCounter++;
             if (internalAI[1] != AISTATE_JUMP) //walk or charge
             {
-                npc.frameCounter++;
 				if (npc.frameCounter >= 10)
 				{
 					npc.frameCounter = 0;

@@ -51,7 +51,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Everleaf", 6);
-			recipe.AddIngredient(null, "BookOfSacrifice", 1);
+			recipe.AddIngredient(ItemID.Book);
             recipe.AddTile(TileID.Bookcases);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();

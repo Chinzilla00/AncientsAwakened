@@ -48,9 +48,11 @@ namespace AAMod
         public static bool Chairlol;
         public static bool Ancients;
         public static bool downedMonarch;
+        public static bool downedGrips;
         public static bool downedBrood;
         public static bool downedHydra;
-        public static bool downedGrips;
+        public static bool downedSerpent;
+        public static bool downedDjinn;
         public static bool downedRetriever;
         public static bool downedOrthrus;
         public static bool downedRaider;
@@ -913,6 +915,8 @@ namespace AAMod
                 {
                     Dynaskull = true;
                     Main.NewText("Bones of the ancient past burst with energy...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    Main.NewText("The desert winds stir", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B);
+                    Main.NewText("The winter hills rumble", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     int tilesX = WorldGen.genRand.Next(0, x);

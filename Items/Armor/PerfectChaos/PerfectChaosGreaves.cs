@@ -33,8 +33,10 @@ The power of discordian rage radiates from this armor");
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage *= 1.3f;
+            player.meleeCrit += 30;
             player.endurance *= 1.15f;
             player.meleeSpeed *= 1.15f;
+            player.moveSpeed *= 1.45f;
         }
 
         public override void AddRecipes()

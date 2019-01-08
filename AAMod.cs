@@ -510,10 +510,15 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
                 }
             }
-            if (Ancients.ZoneVoid || Ancients.ZoneStorm)
+            if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
+            }
+            if (Ancients.ZoneStorm)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Maelstrom");
             }
         }
 

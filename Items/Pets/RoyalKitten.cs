@@ -8,7 +8,7 @@ namespace AAMod.Items.Pets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("RoyalKitten"); // Automatic from .lang files
+            DisplayName.SetDefault("Royal Kitten"); // Automatic from .lang files
             Main.projFrames[projectile.type] = 11;
             Main.projPet[projectile.type] = true;
         }

@@ -92,6 +92,7 @@ namespace AAMod
         public bool valkyrieSet;
         public bool infinitySet;
         public bool perfectChaos;
+        public bool Alpha;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -145,6 +146,8 @@ namespace AAMod
         public bool MiniProbe = false;
         public bool Sharkron = false;
         public bool RoyalKitten = false;
+        public bool Mudkip = false;
+        public bool MudkipS = false;
 
         //NPCcount
 
@@ -210,6 +213,7 @@ namespace AAMod
             darkmatterSetTh = false;
             infinitySet = false;
             perfectChaos = false;
+            Alpha = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -252,6 +256,8 @@ namespace AAMod
             MiniProbe = false;
             Sharkron = false;
             RoyalKitten = false;
+            Mudkip = false;
+            MudkipS = false;
             //EnemyChecks
             IsGoblin = false;
             
@@ -659,7 +665,7 @@ namespace AAMod
         public override void PreUpdate()
         {
             groviteGlow[player.whoAmI] = false;
-            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet && !InfinityGauntlet && !TrueInfinityGauntlet))
+            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet || !InfinityGauntlet || !TrueInfinityGauntlet))
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
             }
@@ -892,7 +898,7 @@ namespace AAMod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (InfinityGauntlet || TrueInfinityGauntlet)
+            if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
             {
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
@@ -900,7 +906,7 @@ namespace AAMod
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
 
-                        Main.NewText("Perfectly Balanced, as all things should be");
+                        Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
                         if (death || TrueInfinityGauntlet)
                         {
                             player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
@@ -1002,6 +1008,11 @@ namespace AAMod
             if (dracoSet && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Daybreak, 600);
+            }
+
+            if (Alpha && Main.rand.Next(2) == 0 && !target.boss)
+            {
+                target.AddBuff(BuffID.Wet, 600);
             }
         }
 
@@ -1337,6 +1348,11 @@ namespace AAMod
             if (darkmatterSetTh && proj.thrown && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
+            }
+
+            if (Alpha && proj.thrown && Main.rand.Next(2) == 0 && !target.boss)
+            {
+                target.AddBuff(BuffID.Wet, 500);
             }
 
             if (demonGauntlet && proj.melee && Main.rand.Next(2) == 0)

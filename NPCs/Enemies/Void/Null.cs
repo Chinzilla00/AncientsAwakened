@@ -38,13 +38,7 @@ namespace AAMod.NPCs.Enemies.Void
 		public int frameCounter = 0;
 		public override void PostAI()
 		{
-			frameCounter++;
-			if(frameCounter > 5)
-			{
-				frameCounter = 0;				
-				frameCount++;
-				if(frameCount > 3) frameCount = 0;
-			}
+			
 			npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
 			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
 			npc.rotation = npc.velocity.X * 0.25f;
@@ -52,7 +46,6 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override void AI()
         {
-            bool flag19 = false;
             if (npc.justHit)
             {
                 npc.ai[2] = 0f;
@@ -78,10 +71,6 @@ namespace AAMod.NPCs.Enemies.Void
                 if (flag21 && flag22)
                 {
                     npc.ai[2] += 1f;
-                    if (npc.ai[2] >= 30f && num282 == 16)
-                    {
-                        flag19 = true;
-                    }
                     if (npc.ai[2] >= 60f)
                     {
                         npc.ai[2] = -200f;
