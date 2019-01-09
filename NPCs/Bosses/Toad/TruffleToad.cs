@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -14,7 +14,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
-    /*[AutoloadBossHead]
+    [AutoloadBossHead]
     public class TruffleToad : ModNPC
     {
 		public override void SendExtraAI(BinaryWriter writer)
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Toad
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
             npc.netAlways = true;
             bossBag = mod.ItemType("ToadBag");
-
+            npc.alpha = 255;
         }
       
 		public static int AISTATE_JUMP = 0, AISTATE_NOM = 1;
@@ -71,103 +71,170 @@ namespace AAMod.NPCs.Bosses.Toad
         public int NOM = 0;
         public bool tonguespawned = false;
         public bool TongueAttack = false;
-		
+        
+        private int tongueTimer;
+
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
-            if (tonguespawned == false && Main.netMode != 1)
+            npc.frameCounter++;
+            if (!player.dead)
             {
-                tonguespawned = true;
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("TruffleToadTongue"), 0, 0f, 0f, 0f, 0f, 255);
+                npc.alpha -= 3;
             }
-                npc.frameCounter++;
-            if (internalAI[1] != AISTATE_NOM) //Mad Hops
+            else
             {
-                if (npc.velocity.Y == 0)
+                npc.alpha += 3;
+                if (npc.alpha >= 255)
                 {
-                    npc.frame.Y = 0;
+                    npc.active = false;
                 }
-                else
+            }
+            if (npc.alpha > 0)
+            {
+                if (internalAI[1] != AISTATE_NOM) //Mad Hops
                 {
-                    if (npc.velocity.Y < 0)
+                    if (npc.velocity.Y == 0)
                     {
-                        if (npc.frameCounter >= 10)
-                        {
-                            npc.frameCounter = 0;
-                            npc.frame.Y += 72;
-                            if (npc.frame.Y > (72 * 3))
-                            {
-                                npc.frameCounter = 0;
-                                npc.frame.Y = 72 * 3;
-                            }
-                        }
+                        npc.frame.Y = 0;
                     }
                     else
-                    if (npc.velocity.Y > 0)
                     {
-                        npc.frame.Y = 72 * 4;
+                        if (npc.velocity.Y < 0)
+                        {
+                            if (npc.frameCounter >= 10)
+                            {
+                                npc.frameCounter = 0;
+                                npc.frame.Y += 72;
+                                if (npc.frame.Y > (72 * 3))
+                                {
+                                    npc.frameCounter = 0;
+                                    npc.frame.Y = 72 * 3;
+                                }
+                            }
+                        }
+                        else
+                        if (npc.velocity.Y > 0)
+                        {
+                            npc.frame.Y = 72 * 0;
+                        }
                     }
                 }
-            }else //Eat Pant
-            {
-                NOM++;
-                if (npc.frameCounter < 5)
+                else //Eat Pant
                 {
-                    npc.frame.Y = 5 * 72;
+                    NOM++;
+                    if (npc.frameCounter < 5)
+                    {
+                        npc.frame.Y = 5 * 72;
+                    }
+                    else if (npc.frameCounter < 10)
+                    {
+                        npc.frame.Y = 6 * 72;
+                    }
+                    else if (npc.frameCounter < 15)
+                    {
+                        npc.frame.Y = 7 * 72;
+                    }
+                    else if (npc.frameCounter < 20)
+                    {
+                        npc.frame.Y = 8 * 72;
+                    }
+                    else if (npc.frameCounter < 25)
+                    {
+                        npc.frame.Y = 9 * 72;
+                    }
+                    else if (npc.frameCounter < 30)
+                    {
+                        npc.frame.Y = 10 * 72;
+                    }
+                    else if (npc.frameCounter < 35 && npc.frameCounter > 65)
+                    {
+                        npc.frame.Y = 11 * 72;
+                        npc.velocity.X = 0;
+                        if (npc.frameCounter < 35 && npc.frameCounter > 65)
+                        {
+                            // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
+                            if (npc.direction == -1)
+                            {
+                                //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
+                                Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
+                            }
+                            else
+                            {
+                                //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
+                                Projectile.NewProjectile((new Vector2(npc.position.X + 57f, npc.position.Y + 18f)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
+                            }
+                        }
+                        if (tongueTimer >= 100)
+                        {
+                            tongueTimer = 0;
+                        }
+                    }
+                    else if (npc.frameCounter < 65)
+                    {
+                        tongueTimer = 0;
+                        npc.frame.Y = 10 * 72;
+                    }
+                    else if (npc.frameCounter < 68)
+                    {
+                        npc.frame.Y = 9 * 72;
+                    }
+                    else if (npc.frameCounter < 71)
+                    {
+                        npc.frame.Y = 8 * 72;
+                    }
+                    else if (npc.frameCounter < 74)
+                    {
+                        npc.frame.Y = 8 * 72;
+                    }
+                    else if (npc.frameCounter < 77)
+                    {
+                        npc.frame.Y = 7 * 72;
+                    }
+                    else if (npc.frameCounter < 80)
+                    {
+                        npc.frame.Y = 6 * 72;
+                    }
+                    else
+                    {
+                        npc.frame.Y = 5 * 72;
+                        internalAI[1] = AISTATE_JUMP;
+                    }
                 }
-                else if (npc.frameCounter < 10)
+                if (player.Center.X > npc.Center.X)
                 {
-                    npc.frame.Y = 6 * 72;
-                }
-                else if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 7 * 72;
-                }
-                else if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 8 * 72;
-                }
-                else if (npc.frameCounter < 25)
-                {
-                    npc.frame.Y = 9 * 72;
-                }
-                else if (npc.frameCounter < 30)
-                {
-                    npc.frame.Y = 10 * 72;
+                    npc.spriteDirection = -1;
                 }
                 else
                 {
-                    npc.frame.Y = 11 * 72;
+                    npc.spriteDirection = 1;
+                }
+                if (Main.netMode != 1)
+                {
+                    internalAI[0]++;
+                    if (internalAI[0] >= 180)
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = Main.rand.Next(2);
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
+                }
+                if (internalAI[1] == AISTATE_JUMP)//jumper
+                {
+                    if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                    BaseAI.AISlime(npc, ref npc.ai, false, 100, 6f, -8f, 6f, -10f);
+                }
+                else //Tongue
+                {
+
                 }
             }
-            if (player.Center.X > npc.Center.X) 
+            else
             {
-                npc.spriteDirection = -1;
-            }else
-            {
-                npc.spriteDirection = 1;
+                npc.frame.Y = 72 * 0;
             }
-			if(Main.netMode != 1)
-			{
-				internalAI[0]++;
-				if (internalAI[0] >= 180)
-				{
-					internalAI[0] = 0;
-					internalAI[1] = Main.rand.Next(3);
-					npc.ai = new float[4];
-					npc.netUpdate = true;
-				}
-			}
-			if(internalAI[1] == AISTATE_JUMP)//jumper
-			{
-                TongueAttack = false;
-				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
-                BaseAI.AISlime(npc, ref npc.ai, true, 60, 6f, -8f, 6f, -10f);				
-			}else //Tongue
-			{			
-                
-			}
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -190,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.lifeMax = (int)(npc.lifeMax * 1.1f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
         }
-    }*/
+    }
 }
 
 

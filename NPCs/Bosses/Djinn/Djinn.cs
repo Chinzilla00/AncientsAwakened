@@ -5,14 +5,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.EmperorFishron
+namespace AAMod.NPCs.Bosses.Djinn
 {
     public class Djinn : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Djinn");
-			Main.npcFrameCount[npc.type] = 6;
+			Main.npcFrameCount[npc.type] = 11;
 		}
 
 		public override void SetDefaults()
@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.aiStyle = -1;
             npc.damage = 30;
             npc.defense = 25;
-            npc.lifeMax = 4500;
+            npc.lifeMax = 6000;
             npc.HitSound = SoundID.NPCHit23;
             npc.DeathSound = SoundID.NPCDeath39;
             npc.knockBackResist = 0f;
@@ -31,8 +31,52 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.buffImmune[44] = true;
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.defense * 1.2f);
+        }
+        public bool ChargeAttack //actually charging the player
+        {
+            get
+            {
+                return npc.ai[1] == 1;
+            }
+            set
+            {
+                float oldValue = npc.ai[1];
+                npc.ai[1] = (value ? 1f : 0f);
+                if (npc.ai[1] != oldValue) npc.netUpdate = true;
+            }
+        }
+        public bool Charging //preparing to charge the player
+        {
+            get
+            {
+                return npc.ai[1] == 1.5f;
+            }
+            set
+            {
+                float oldValue = npc.ai[1];
+                npc.ai[1] = (value ? 1.5f : 0f);
+                if (npc.ai[1] != oldValue) npc.netUpdate = true;
+            }
+        }
+
+        private int punchtimer = 0;
+        public int chargeTimer = 0;
+        public int distFromBodyX = 200;
+        public int distFromBodyY = 150;
+        public int movementVariance = 60;
+        public int movementtimer = 0;
+        public bool direction = false;
+        public int chargeTime = 100;
+        public static int damageIdle = 30;
+        public static int damageCharging = 100;
+
         public override void AI()
         {
+            punchtimer++;
             bool flag111 = false;
             bool flag112 = false;
             bool flag113 = true;
@@ -52,44 +96,82 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             bool flag116 = false;
             float scaleFactor26 = 0.96f;
             bool flag117 = true;
-            if (npc.type == 541)
+            Player player = Main.player[npc.target];
+
+            if (player.ZoneDesert && !player.dead)
             {
-                flag115 = false;
-                npc.rotation = npc.velocity.X * 0.04f;
-                npc.spriteDirection = ((npc.direction > 0) ? 1 : -1);
-                num1456 = 3;
-                num1459 = -0.1f;
-                num1457 = 0.1f;
-                float num1465 = (float)npc.life / (float)npc.lifeMax;
-                num1461 += (1f - num1465) * 2f;
-                num1462 += (1f - num1465) * 0.02f;
-                if (num1465 < 0.5f)
+                player.sandStorm = true;
+            }
+
+            if (!player.ZoneDesert || player.dead || !Main.dayTime)
+            {
+                npc.alpha -= 5;
+            }
+            else
+            {
+
+                player.sandStorm = false;
+                npc.alpha += 5;
+            }
+
+            if (npc.alpha <= 255)
+            {
+                npc.active = false;
+            }
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+
+            flag115 = false;
+            npc.rotation = npc.velocity.X * 0.04f;
+            npc.spriteDirection = ((npc.direction > 0) ? 1 : -1);
+            num1456 = 3;
+            num1459 = -0.1f;
+            num1457 = 0.1f;
+            float num1465 = (float)npc.life / (float)npc.lifeMax;
+            num1461 += (1f - num1465) * 2f;
+            num1462 += (1f - num1465) * 0.02f;
+            Vector2 vector222 = npc.BottomLeft + new Vector2(0f, -12f);
+            Vector2 bottomRight = npc.BottomRight;
+            Vector2 value75 = new Vector2((float)(-(float)npc.spriteDirection * 10), -4f);
+            Color color = new Color(222, 108, 48) * 0.7f;
+            float num1466 = -0.3f + MathHelper.Max(npc.velocity.Y * 2f, 0f);
+            for (int num1467 = 0; num1467 < 2; num1467++)
+            {
+                if (Main.rand.Next(2) != 0)
                 {
-                    npc.knockBackResist = 0f;
-                }
-                Vector2 vector222 = npc.BottomLeft + new Vector2(0f, -12f);
-                Vector2 bottomRight = npc.BottomRight;
-                Vector2 value75 = new Vector2((float)(-(float)npc.spriteDirection * 10), -4f);
-                Color color = new Color(222, 108, 48) * 0.7f;
-                float num1466 = -0.3f + MathHelper.Max(npc.velocity.Y * 2f, 0f);
-                for (int num1467 = 0; num1467 < 2; num1467++)
-                {
-                    if (Main.rand.Next(2) != 0)
+                    Dust dust19 = Main.dust[Dust.NewDust(npc.Bottom, 0, 0, 268, 0f, 0f, 0, default(Color), 1f)];
+                    dust19.position = new Vector2(MathHelper.Lerp(vector222.X, bottomRight.X, Main.rand.NextFloat()), MathHelper.Lerp(vector222.Y, bottomRight.Y, Main.rand.NextFloat())) + value75;
+                    if (num1467 == 1)
                     {
-                        Dust dust19 = Main.dust[Dust.NewDust(npc.Bottom, 0, 0, 268, 0f, 0f, 0, default(Color), 1f)];
-                        dust19.position = new Vector2(MathHelper.Lerp(vector222.X, bottomRight.X, Main.rand.NextFloat()), MathHelper.Lerp(vector222.Y, bottomRight.Y, Main.rand.NextFloat())) + value75;
-                        if (num1467 == 1)
-                        {
-                            dust19.position = npc.Bottom + Utils.RandomVector2(Main.rand, -6f, 6f);
-                        }
-                        dust19.color = color;
-                        dust19.scale = 0.8f;
-                        Dust expr_45B4B_cp_0 = dust19;
-                        expr_45B4B_cp_0.velocity.Y = expr_45B4B_cp_0.velocity.Y + num1466;
-                        Dust expr_45B64_cp_0 = dust19;
-                        expr_45B64_cp_0.velocity.X = expr_45B64_cp_0.velocity.X + (float)npc.spriteDirection * 0.2f;
+                        dust19.position = npc.Bottom + Utils.RandomVector2(Main.rand, -6f, 6f);
                     }
+                    dust19.color = color;
+                    dust19.scale = 0.8f;
+                    Dust expr_45B4B_cp_0 = dust19;
+                    expr_45B4B_cp_0.velocity.Y = expr_45B4B_cp_0.velocity.Y + num1466;
+                    Dust expr_45B64_cp_0 = dust19;
+                    expr_45B64_cp_0.velocity.X = expr_45B64_cp_0.velocity.X + (float)npc.spriteDirection * 0.2f;
                 }
+            }
+            if (player != null && punchtimer >= 420)
+            {
+                Charging = true;
+                chargeTimer += 1;
+                if (chargeTimer >= chargeTime) //actually charge player
+                {
+                    ChargeAttack = true;
+                    Vector2 diff = player.Center - npc.Center;
+                    npc.damage = damageCharging;
+                    punchtimer = 0;
+                    npc.velocity.X = diff.X;
+                    npc.velocity.Y = diff.Y;
+                    chargeTimer = 0;
+                }
+            }
+            else
+            {
                 npc.localAI[2] = 0f;
                 if (npc.ai[0] < 0f)
                 {
@@ -196,61 +278,61 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     npc.netUpdate = true;
                     flag116 = true;
                 }
-            }
-            if (npc.justHit)
-            {
-                npc.localAI[2] = 0f;
-            }
-            if (!flag112)
-            {
-                if (npc.localAI[2] >= 0f)
+                if (npc.justHit)
                 {
-                    float num1477 = 16f;
-                    bool flag119 = false;
-                    bool flag120 = false;
-                    if (npc.position.X > npc.localAI[0] - num1477 && npc.position.X < npc.localAI[0] + num1477)
+                    npc.localAI[2] = 0f;
+                }
+                if (!flag112)
+                {
+                    if (npc.localAI[2] >= 0f)
                     {
-                        flag119 = true;
-                    }
-                    else if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0))
-                    {
-                        flag119 = true;
-                        num1477 += 24f;
-                    }
-                    if (npc.position.Y > npc.localAI[1] - num1477 && npc.position.Y < npc.localAI[1] + num1477)
-                    {
-                        flag120 = true;
-                    }
-                    if (flag119 && flag120)
-                    {
-                        npc.localAI[2] += 1f;
-                        if (npc.localAI[2] >= 30f && num1477 == 16f)
+                        float num1477 = 16f;
+                        bool flag119 = false;
+                        bool flag120 = false;
+                        if (npc.position.X > npc.localAI[0] - num1477 && npc.position.X < npc.localAI[0] + num1477)
                         {
-                            flag111 = true;
+                            flag119 = true;
                         }
-                        if (npc.localAI[2] >= 60f)
+                        else if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0))
                         {
-                            npc.localAI[2] = -180f;
-                            npc.direction *= -1;
-                            npc.velocity.X = npc.velocity.X * -1f;
-                            npc.collideX = false;
+                            flag119 = true;
+                            num1477 += 24f;
+                        }
+                        if (npc.position.Y > npc.localAI[1] - num1477 && npc.position.Y < npc.localAI[1] + num1477)
+                        {
+                            flag120 = true;
+                        }
+                        if (flag119 && flag120)
+                        {
+                            npc.localAI[2] += 1f;
+                            if (npc.localAI[2] >= 30f && num1477 == 16f)
+                            {
+                                flag111 = true;
+                            }
+                            if (npc.localAI[2] >= 60f)
+                            {
+                                npc.localAI[2] = -180f;
+                                npc.direction *= -1;
+                                npc.velocity.X = npc.velocity.X * -1f;
+                                npc.collideX = false;
+                            }
+                        }
+                        else
+                        {
+                            npc.localAI[0] = npc.position.X;
+                            npc.localAI[1] = npc.position.Y;
+                            npc.localAI[2] = 0f;
+                        }
+                        if (flag117)
+                        {
+                            npc.TargetClosest(true);
                         }
                     }
                     else
                     {
-                        npc.localAI[0] = npc.position.X;
-                        npc.localAI[1] = npc.position.Y;
-                        npc.localAI[2] = 0f;
+                        npc.localAI[2] += 1f;
+                        npc.direction = ((Main.player[npc.target].Center.X > npc.Center.X) ? 1 : -1);
                     }
-                    if (flag117)
-                    {
-                        npc.TargetClosest(true);
-                    }
-                }
-                else
-                {
-                    npc.localAI[2] += 1f;
-                    npc.direction = ((Main.player[npc.target].Center.X > npc.Center.X) ? 1 : -1);
                 }
             }
             int num1478 = (int)((npc.position.X + (float)(npc.width / 2)) / 16f) + npc.direction * 2;
@@ -423,25 +505,114 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             }
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 42;
+                npc.height = 66;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.SandDust>();
+                int dust2 = mod.DustType<Dusts.SandDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity.X *= 0f;
+                Main.dust[dust1].scale *= 1.5f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity.X *= 0f;
+                Main.dust[dust2].scale *= 1.5f;
+                Main.dust[dust2].noGravity = false;
+            }
+        }
+
         public override void NPCLoot()
         {
+            if (!Main.expertMode)
+            {
+                AAWorld.downedAkuma = true;
+                npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
+                string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
+                int loot = Main.rand.Next(lootTable.Length);
+                if (Main.rand.Next(9) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("Sandagger"), 90, 120);
+                }
+                else
+                {
+                    npc.DropLoot(mod.ItemType(lootTable[loot]));
+                }
+            }
             if (Main.expertMode)
             {
-                npc.DropLoot(ItemID.ShrimpyTruffle);
+                npc.DropBossBags();
             }
-            string[] lootTable =
-            {
-                "UltibladeTyphoon",
-                "EFishWings",
-                "EFlairon",
-                "SoapBlaster"
-            };
-            int loot = Main.rand.Next(lootTable.Length);
-            npc.DropLoot(mod.ItemType(lootTable[loot]));
+            npc.value = 0f;
+            npc.boss = false;
+        }
 
-            if (Main.rand.NextFloat() < 0.1f)
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (punchtimer < 420)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                if (npc.frameCounter < 5)
+                {
+                    npc.frame.Y = 0 * frameHeight;
+                }
+                else if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 1 * frameHeight;
+                }
+                else if (npc.frameCounter < 15)
+                {
+                    npc.frame.Y = 2 * frameHeight;
+                }
+                else if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+                else if (npc.frameCounter < 25)
+                {
+                    npc.frame.Y = 4 * frameHeight;
+                }
+                else if (npc.frameCounter < 30)
+                {
+                    npc.frame.Y = 5 * frameHeight;
+                }
+                else if (npc.frameCounter > 30)
+                {
+                    npc.frameCounter = 0;
+                }
+            }
+            else if (Charging)
+            {
+                if (npc.frameCounter < 5)
+                {
+                    npc.frame.Y = 6 * frameHeight;
+                }
+                else if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 7 * frameHeight;
+                }
+                else if (npc.frameCounter < 15)
+                {
+                    npc.frame.Y = 8 * frameHeight;
+                }
+                else if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 9 * frameHeight;
+                }
+                else if (npc.frameCounter > 20)
+                {
+                    npc.frameCounter = 0;
+                }
+            }
+            else if (ChargeAttack)
+            {
+                npc.frame.Y = 10 * frameHeight;
             }
         }
 

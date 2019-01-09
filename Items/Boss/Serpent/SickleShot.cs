@@ -25,10 +25,10 @@ namespace AAMod.Items.Boss.Serpent
             item.useTime = 28;
             item.useAnimation = 28;
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType<Projectiles.IceArrow>();
+            item.shoot = mod.ProjectileType<Projectiles.Serpent.IceArrow>();
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
-            item.value = 2000;
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;

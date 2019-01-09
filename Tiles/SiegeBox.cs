@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles
 {
-    class Boss6Box : ModTile
+    class SiegeBox : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -10,12 +10,11 @@ namespace AAMod.NPCs.Bosses.Djinn
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bog Bomb");
+            DisplayName.SetDefault("Djinnado");
 		}
 
 		public override void SetDefaults()
-		{
-            projectile.name = "Ancient Storm";
+		{;
             projectile.width = 10;
             projectile.height = 10;
             projectile.aiStyle = 127;

@@ -42,6 +42,8 @@ namespace AAMod
         public bool TerraMinion = false;
         public bool HallowedPrism = false;
         public bool TrueHallowedPrism = false;
+        public bool SnakeMinion = false;
+        public bool dustDevil = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -138,6 +140,7 @@ namespace AAMod
         public bool Yanked = false;
         public bool InfinityScorch = false;
         public bool LockedOn = false;
+        public bool shroomed = false;
         //buffs
 
         //pets
@@ -190,6 +193,8 @@ namespace AAMod
             HallowedPrism = false;
             TrueHallowedPrism = false;
             TerraMinion = false;
+            SnakeMinion = false;
+            dustDevil = false;
             //Biome
             //Armor
             valkyrieSet = false;
@@ -249,6 +254,7 @@ namespace AAMod
             Yanked = false;
             InfinityScorch = false;
             LockedOn = false;
+            shroomed = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -1211,6 +1217,17 @@ namespace AAMod
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
                 }
+            }
+            if (shroomed)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0, default(Color), 1f);
+                    Main.dust[num4].alpha = 100;
+                    Main.dust[num4].noGravity = true;
+                    Main.dust[num4].scale += Main.rand.NextFloat();
+                }
+                Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0f, 0f, 0.45f);
             }
         }
 

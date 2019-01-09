@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Serpent
     public class Serpent : ModNPC
 	{
         public bool flies = false;
-        public float speed = 17f;
+        public float speed = 30f;
         public float turnSpeed = 0.25f;
         bool TailSpawned = false;
 
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.width = 32;
             npc.height = 76;
             npc.defense = 20;
-            npc.lifeMax = 4500;
+            npc.lifeMax = 6000;
             npc.aiStyle = 6;
             aiType = -1;
             animationType = 10;
@@ -124,19 +124,11 @@ namespace AAMod.NPCs.Bosses.Serpent
                             PlayerPosX += npc.velocity.X * 0.5f;
                             PlayerDistance.X -= PlayerPosX * 1f;
                             PlayerDistance.Y -= PlayerPosY * 1f;
-                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaBreath"), npc.damage, 0, Main.myPlayer);
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage, 0, Main.myPlayer);
                         }
                     }
                 }
-                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && npc.HasBuff(103))
-                {
-                    for (int spawnDust = 0; spawnDust < 2; spawnDust++)
-                    {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90, default(Color), 2f);
-                        Main.dust[num935].noGravity = true;
-                        Main.dust[num935].velocity.Y -= 1f;
-                    }
-                }
+                
                 if (attackTimer >= 80)
                 {
                     fireAttack = false;
@@ -513,21 +505,21 @@ namespace AAMod.NPCs.Bosses.Serpent
             if (!Main.expertMode)
             {
                 AAWorld.downedAkuma = true;
-                npc.DropLoot(mod.ItemType("CrucibleScale"), 20, 30);
-                string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
+                npc.DropLoot(mod.ItemType("SnowMana"), 10, 15);
+                string[] lootTable = { "BlizardBuster", "SerpentSpike", "Icepick", "SerpentSting", "Sickle", "SickleShot", "SnakeStaff", "SubzeroSlasher" };
                 int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
-                //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
-                npc.DropLoot(Items.Boss.Akuma.AkumaTrophy.type, 1f / 10);
-                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
-                if (!AAWorld.downedAkuma)
+                if (Main.rand.Next(9) == 0)
                 {
-                    BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                    npc.DropLoot(mod.ItemType("SnowflakeShuriken"), 90, 120); 
+                }
+                else
+                {
+                    npc.DropLoot(mod.ItemType(lootTable[loot]));
                 }
             }
             if (Main.expertMode)
             {
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
+                npc.DropBossBags();
             }
             npc.value = 0f;
             npc.boss = false;

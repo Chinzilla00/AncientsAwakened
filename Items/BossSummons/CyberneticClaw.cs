@@ -14,7 +14,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Cybernetic Claw");
             Tooltip.SetDefault(@"Summons the Retriever
-Only BossSummons at night");
+Only useable at night");
 		}
 
 		public override void SetDefaults()

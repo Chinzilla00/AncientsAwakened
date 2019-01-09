@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
             projectile.width = 10;
             projectile.height = 10;
             projectile.friendly = false;
-            projectile.hostile = false;
+            projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
@@ -70,10 +70,11 @@ namespace AAMod.NPCs.Enemies.Terrarium
             }
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 600);
         }
+        
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
         {

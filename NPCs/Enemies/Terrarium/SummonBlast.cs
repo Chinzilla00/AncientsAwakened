@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Terrarium
     	
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("SummonBlast");
+			DisplayName.SetDefault("Summon Blast");
             Main.projFrames[projectile.type] = 4;
 		}
     	
@@ -68,8 +68,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
                 Main.dust[num469].velocity *= 2f;
             }
         }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 600);
         }

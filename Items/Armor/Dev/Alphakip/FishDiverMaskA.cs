@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Vanity.Alphakip
+namespace AAMod.Items.Armor.Dev.Alphakip
 {
     [AutoloadEquip(EquipType.Head)]
 	public class FishDiverMaskA : ModItem

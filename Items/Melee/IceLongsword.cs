@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 17;          
+            item.damage = 26;          
             item.melee = true;            
             item.width = 62;             
             item.height = 64;             
@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee   //where is located
             item.useStyle = 1;        
             item.knockBack = 2;     
             item.value = 8000;        
-            item.rare = 2;
+            item.rare = 3;
             item.UseSound = SoundID.Item1;      
             item.autoReuse = true;   
             item.useTurn = false;
@@ -37,6 +37,7 @@ namespace AAMod.Items.Melee   //where is located
             recipe.AddIngredient(ItemID.IceBlade, 1);  
 			recipe.AddIngredient(ItemID.IceBlock, 50);
 			recipe.AddIngredient(ItemID.SnowBlock, 100);
+            recipe.AddIngredient(null, "SnowMana", 3);
             recipe.AddTile(TileID.Anvils); 
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -1078,7 +1078,16 @@ namespace AAMod
                 recipe.SetResult(ItemID.ObsidianSkinPotion, 1);
                 recipe.AddRecipe();
             }
-        }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IceBlock, 30);
+                recipe.AddIngredient(ItemID.Diamond, 1);
+                recipe.AddIngredient(ItemID.Sapphire, 1);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.IceBlade);
+                recipe.AddRecipe();
+            }
+    }
         #endregion
 
         //Stuff 4 Grox

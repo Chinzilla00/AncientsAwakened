@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExampleMod.Items
+namespace AAMod.Items.Hooks
 {
 	class DragonsGrip : ModItem
 	{

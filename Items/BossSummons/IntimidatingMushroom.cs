@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using AAMod.NPCs.Bosses.MushroomMonarch;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Localization;
@@ -43,6 +44,11 @@ Can only be used during the day");
             if (!Main.dayTime)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom just glares at you and gives you chills just looking at it.", new Color(216, 110, 40), false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom Monarch keeps trying to stomp you", new Color(216, 110, 40), false);
                 return false;
             }
             return true;

@@ -1,41 +1,57 @@
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee
+namespace AAmod.Items.Melee
 {
     public class DesertScimitar : ModItem
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Desert Scimitar");
-			Tooltip.SetDefault("Eat sand");
-		}
-		public override void SetDefaults()
-		{
-			item.damage = 10;
-			item.melee = true;
-			item.width = 30;
-			item.height = 35;
-			item.useTime = 22;
-			item.useAnimation = 22;
-			item.useStyle = 1;
-			item.knockBack =2;
-			item.value = 3000;
-			item.rare = 1;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Desert Scimitar");
+        }
+        public override void SetDefaults()
+        {
+            item.damage = 25;
+            item.melee = true;
+            item.width = 38;
+            item.height = 38;
+            item.useTime = 14;
+            item.useAnimation = 14;
+            item.useStyle = 1;
+            item.knockBack = 4;
+            item.value = Item.buyPrice(0, 0, 0, 52);
+            item.rare = 5;
+            item.UseSound = SoundID.Item1;
+            item.autoReuse = true;
+            item.shoot = mod.ProjectileType("SandPro");
+            item.shootSpeed = 12f;
+        }
 
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Sandstone, 30);
-			recipe.AddIngredient(ItemID.Ruby, 1);
-			recipe.AddIngredient(ItemID.Sapphire, 1);
-			recipe.AddIngredient(ItemID.Topaz, 1);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	}
+        public override void AddRecipes() //the Recipe of the item
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "SandScimitar");
+            recipe.AddIngredient(ItemID.Sandstone, 50);
+            recipe.AddIngredient(ItemID.SandBlock, 100);
+            recipe.AddIngredient(null, "SnowMana", 3);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
+                                                                                                                // If you want to randomize the speed to stagger the projectiles
+                float scale = 1f - (Main.rand.NextFloat() * .3f);
+                perturbedSpeed = perturbedSpeed * scale; 
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
+        }
+    }
 }
