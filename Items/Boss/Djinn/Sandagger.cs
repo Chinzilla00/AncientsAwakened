@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class DarkmatterKunai : ModItem
+    public class Sandagger : ModItem
 	{
 		public override void SetDefaults()
 		{
