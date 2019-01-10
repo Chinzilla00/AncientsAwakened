@@ -98,7 +98,7 @@ namespace AAMod.Projectiles.Serpent
                 projectile.netUpdate = true;
             }
 
-            int byUUID = Projectile.GetByUUID(projectile.owner, (int) projectile.ai[0]);
+            int byUUID = Projectile.GetByUUID(projectile.owner, (int)projectile.ai[0]);
             if (byUUID >= 0 && Main.projectile[byUUID].active)
             {
                 flag67 = true;
@@ -141,7 +141,7 @@ namespace AAMod.Projectiles.Serpent
             projectile.rotation = vector134.ToRotation() + 1.57079637f;
             projectile.position = projectile.Center;
             projectile.scale = scaleFactor17;
-            projectile.width = projectile.height = (int) (num1038 * projectile.scale);
+            projectile.width = projectile.height = (int)(num1038 * projectile.scale);
             projectile.Center = projectile.position;
             if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * scaleFactor16 * scaleFactor17;
             projectile.spriteDirection = vector134.X > 0f ? 1 : -1;

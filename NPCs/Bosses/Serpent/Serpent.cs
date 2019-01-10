@@ -504,7 +504,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 		{
             if (!Main.expertMode)
             {
-                AAWorld.downedAkuma = true;
+                AAWorld.downedSerpent = true;
                 npc.DropLoot(mod.ItemType("SnowMana"), 10, 15);
                 string[] lootTable = { "BlizardBuster", "SerpentSpike", "Icepick", "SerpentSting", "Sickle", "SickleShot", "SnakeStaff", "SubzeroSlasher" };
                 int loot = Main.rand.Next(lootTable.Length);

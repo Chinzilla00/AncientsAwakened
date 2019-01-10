@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Djinn
             item.magic = true;            
             item.width = 24;
             item.height = 28;
-            item.useTime = 18;
+            item.useTime = 13;
             item.useAnimation = 18;
             item.useStyle = 5;    
             item.noMelee = true;

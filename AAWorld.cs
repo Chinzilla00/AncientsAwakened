@@ -72,6 +72,7 @@ namespace AAMod
         public static bool downedAllAncients;
         public static int downedIZnumber;
         public static bool ShenSummoned;
+        public static bool downedToad;
         //Stones
         public static bool RealityDropped;
         //Points
@@ -103,6 +104,7 @@ namespace AAMod
             downedAllAncients = false;
             downedIZnumber = 0;
             ShenSummoned = false;
+            downedToad = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -166,6 +168,9 @@ namespace AAMod
             if (downedIZ) downed.Add("IZ");
             if (downedAllAncients) downed.Add("DAA");
             if (ShenSummoned) downed.Add("ShenS");
+            if (downedSerpent) downed.Add("Serpent");
+            if (downedDjinn) downed.Add("Djinn");
+            if (downedToad) downed.Add("Toad");
 
             return new TagCompound {
                 {"downed", downed}
@@ -211,6 +216,9 @@ namespace AAMod
             BitsByte flags4 = new BitsByte();
             flags4[0] = Ancients;
             flags4[1] = ShenSummoned;
+            flags4[0] = downedSerpent;
+            flags4[0] = downedDjinn;
+            flags4[1] = downedToad;
             writer.Write(flags4);
         }
 
@@ -249,6 +257,9 @@ namespace AAMod
             BitsByte flags4 = reader.ReadByte();
             Ancients = flags4[0];
             ShenSummoned = flags4[1];
+            downedSerpent = flags4[2];
+            downedDjinn = flags4[3];
+            downedToad = flags4[4];
         }
 
         public override void Load(TagCompound tag)
@@ -279,6 +290,9 @@ namespace AAMod
             downedAllAncients = downed.Contains("DAA");
             Ancients = downed.Contains("AA");
             ShenSummoned = downed.Contains("ShenS");
+            downedSerpent = downed.Contains("Serpent");
+            downedDjinn = downed.Contains("Djinn");
+            downedToad = downed.Contains("Toad");
             //World Changes
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;

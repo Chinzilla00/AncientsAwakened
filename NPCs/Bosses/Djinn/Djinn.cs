@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -100,7 +101,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (player.ZoneDesert && !player.dead)
             {
-                player.sandStorm = true;
+                StartSandstorm();
             }
 
             if (!player.ZoneDesert || player.dead || !Main.dayTime)
@@ -109,8 +110,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             else
             {
-
-                player.sandStorm = false;
+                Sandstorm.TimeLeft = 0;
                 npc.alpha += 5;
             }
 
@@ -532,7 +532,8 @@ namespace AAMod.NPCs.Bosses.Djinn
         {
             if (!Main.expertMode)
             {
-                AAWorld.downedAkuma = true;
+                AAWorld.downedDjinn = true;
+                Sandstorm.TimeLeft = 0;
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
                 string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
                 int loot = Main.rand.Next(lootTable.Length);
@@ -616,5 +617,34 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
         }
 
+        private static void StartSandstorm()
+        {
+            Sandstorm.Happening = true;
+            Sandstorm.TimeLeft = (int)(3600f * (8f + Main.rand.NextFloat() * 16f));
+            ChangeSeverityIntentions();
+        }
+
+        private static void ChangeSeverityIntentions()
+        {
+            if (Sandstorm.Happening)
+            {
+                Sandstorm.IntendedSeverity = 0.4f + Main.rand.NextFloat();
+            }
+            else if (Main.rand.Next(3) == 0)
+            {
+                Sandstorm.IntendedSeverity = 0f;
+            }
+            else
+            {
+                Sandstorm.IntendedSeverity = Main.rand.NextFloat() * 0.3f;
+            }
+            if (Main.netMode != 1)
+            {
+                NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+            }
+        }
+
     }
+
+    
 }

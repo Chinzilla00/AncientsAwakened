@@ -21,20 +21,19 @@ namespace AAMod.Items.Boss.Serpent
 			item.ranged = true;
 			item.width = 52;
 			item.height = 24;
-			item.useAnimation = 3;
+			item.useAnimation = 18;
 			item.useTime = 18;
-			item.useStyle = 18;
+			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 2;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
 			item.UseSound = SoundID.Item40;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType<Projectiles.Serpent.Sting>();
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
-			
-			item.crit = 3;
+            item.shoot = mod.ProjectileType<Projectiles.Serpent.Sting>();
+            item.crit = 3;
 		}
 
 		public override Vector2? HoldoutOffset()

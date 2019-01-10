@@ -46,7 +46,7 @@ namespace AAMod.Items.Boss.Djinn
                     Shoot = mod.ProjectileType<Projectiles.Djinn.DesertBolt1>();
                     break;
                 default:
-                    Shoot = mod.ProjectileType<Projectiles.Djinn.DesertBolt1>();
+                    Shoot = mod.ProjectileType<Projectiles.Djinn.DesertBolt2>();
                     break;
             }
             float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

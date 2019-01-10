@@ -239,16 +239,13 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
-            AAWorld.downedMonarch = true;
-            Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y - 2), new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+            AAWorld.downedToad = true;
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();
             }
             else
             {
-
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Mushium"), Main.rand.Next(25, 35));
             }
         }
 

@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Djinn
 			item.useTime = 26;
             item.useAnimation = 26;
             item.shoot = mod.ProjectileType("DesertGust");
-            item.shootSpeed = 14f;
+            item.shootSpeed = 5f;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = Item.buyPrice(1, 0, 0, 0);
