@@ -97,7 +97,7 @@ namespace AAMod
             downedSAncient = false;
             downedAkuma = false;
             downedYamata = false;
-            zeroUS = false;
+            zeroUS = true;
             downedZero = false;
             downedShen = false;
             downedIZ = false;

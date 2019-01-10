@@ -13,7 +13,7 @@ using Terraria.Graphics;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-	/*public class ZeroDeactivated : ModNPC
+	public class ZeroDeactivated : ModNPC
 	{
         public static int ZeroShieldStrength = 0;
         public override void SetStaticDefaults()
@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.npcSlots = 0;
 			npc.noTileCollide = true;
 			npc.alpha = 0;
+            npc.immortal = true;
 			NPCID.Sets.MustAlwaysDraw[npc.type] = true;
 		}
 
@@ -42,7 +43,12 @@ namespace AAMod.NPCs.Bosses.Zero
         
 		public override void AI()
 		{
-            npc.timeLeft = 0;
+            if (AAWorld.zeroUS == false)
+            {
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Zero"));
+                npc.active = false;
+            }
+            npc.timeLeft = 1;
             if (npc.ai[2] == 1f)
             {
                 npc.velocity = Vector2.UnitY * npc.velocity.Length();
@@ -80,7 +86,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     num89 = 1f - npc.ai[3] / 30f;
                 }
-                Filters.Scene["Tremor:Zero"].GetShader().UseIntensity(1f + num89).UseProgress(0f);
                 DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), Color.White * (num88 * 0.8f + 0.2f), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num89 * 0.05f), SpriteEffects.None, 0);
                 GameShaders.Misc["ForceField"].UseColor(new Vector3(1f + num89 * 0.5f));
                 GameShaders.Misc["ForceField"].Apply(drawData);
@@ -105,7 +110,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.spriteBatch.Begin();
                 return;
             }
-            Filters.Scene["Tremor:Zero"].GetShader().UseIntensity(0f).UseProgress(0f);
         }
     }
 
@@ -224,5 +228,5 @@ namespace AAMod.NPCs.Bosses.Zero
                 NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
             }
         }
-    }*/
+    }
 }

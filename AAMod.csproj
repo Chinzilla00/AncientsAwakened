@@ -4107,7 +4107,6 @@
     <Content Include="Projectiles\TitanAxeEX.png" />
     <Content Include="Projectiles\TitanEX.png" />
     <Content Include="Projectiles\Toad\Mushboom.png" />
-    <Content Include="Projectiles\Toad\ToadBoom.png" />
     <Content Include="Projectiles\Toad\ToadCloud.png" />
     <Content Include="Projectiles\Toad\ToadRock.png" />
     <Content Include="Projectiles\Toad\TTTongue.png" />
