@@ -1,23 +1,17 @@
-Ancients Awakened is a passion project created by Alphakip, with the help of many in the terraria community. It adds 2 new biomes, 6 bosses, new structures, and a boatload of new items.
+Ancients Awakened is a passion project created by Alphakip with the help of many in the Terraria community. It adds 5 new biomes, 16 bosses, several new structures, and a boatload of new items spread throughout the game.
 
-Thanks to these amazing people for all their help with the mod.
+Thanks to all these amazing people for all their help with the mod!
 
-Coders;
 
+Coders:
 -Hallam, God of Rainbows (Mod of Redemption/Coder)
--Turqoise (Varia)
 -Chinzilla
 -StealYourFace
--RunicGlympse (Revolt)
+-Tails the Fox92
 
-Spriters;
-
--Toxin (Retired)
+Spriters:
 -Welox
--Moonlit Wyvern 
--Ender 
--JaceDaDorito 
--Kyuu 
+-KyuuSW
 -Schmizz 
 -TheRedstoneBro
 -Glitched Pixel
@@ -25,39 +19,51 @@ Spriters;
 -Tied
 -Cooper
 -SpectralAves
--Niorin
+-Darkpuppey
+-Beg
 
-Composers;
-
+Composers:
 -SpectralAves
 -Karamitasu
 -Charlie Debnam
--Saucecoie
--Turquoise
+-OmegaFerretMusic
+-LordCakeSpy
 
-Testers;
-
--Atlantean/Dot/Org
+Testers:
 -Dradonhunter11
--ZipZopZoop
 -JerryHNK
 -Flurr
 -Fargowilta
+-GamingWithZack
+-WordOfTheDayIsYay
+-Fazergamer
 
-Artists;
-
+Artists:
 -Runefield
 -Non
 -MechanicPluto
+-Ezalos
 
-Development;
+Development:
 -TheDoctorDallin
 -Eliza Miles
 
-Development Assistance;
+Development Assistance:
 -Grox The Great
 -Fargowilta
 -PrehistoricBanana
--GabeHasWon
--Atlantean/Dot/Org
 -Dradonhunter11
+-ZipZopZoop
+-Omega-Z
+
+Retired:
+-JaceDaDorito
+-Saucecoie
+-RunicGlympse 
+-Atlantean/Dot/Org
+-MoonlitWyvern
+-Toxin
+-Ender
+-Turquoise
+-GabeHasWon
+-PrehistoricBanana

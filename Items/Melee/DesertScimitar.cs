@@ -36,7 +36,7 @@ namespace AAmod.Items.Melee
             recipe.AddIngredient(null, "SandScimitar");
             recipe.AddIngredient(ItemID.Sandstone, 50);
             recipe.AddIngredient(ItemID.SandBlock, 100);
-            recipe.AddIngredient(null, "SnowMana", 3);
+            recipe.AddIngredient(null, "DesertMana", 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
