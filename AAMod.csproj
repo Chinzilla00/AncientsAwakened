@@ -3662,6 +3662,7 @@
     <Content Include="NPCs\Bosses\Raider\Raidmini.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Serpent\SnowBreath.png" />
     <Content Include="NPCs\Bosses\Serpent\Serpent.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentBody.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentTail.png" />

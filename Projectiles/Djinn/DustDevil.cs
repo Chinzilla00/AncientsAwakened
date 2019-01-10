@@ -10,7 +10,7 @@ using Terraria.Graphics.Shaders;
 using AAMod;
 using BaseMod;
 
-namespace GRealm.Projectiles.Summon
+namespace AAMod.Projectiles.Djinn
 {
 	public class DustDevil : AAProjectile
 	{
