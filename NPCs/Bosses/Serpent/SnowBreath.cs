@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Akuma
+namespace AAMod.NPCs.Bosses.Serpent
 {
     internal class SnowBreath : ModProjectile
     {
