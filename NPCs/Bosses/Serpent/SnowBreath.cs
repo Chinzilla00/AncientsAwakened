@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = mod.DustType<Dusts.AkumaDust>();
+                int num297 = mod.DustType<Dusts.SnowDust>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 3; num298++)

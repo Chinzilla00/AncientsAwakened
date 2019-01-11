@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void AI()
         {
-            int FrameHeight = 76;
+            int FrameHeight = 88;
             if (Main.rand.Next(10) == 0 && tongue == false)
             {
                 tongue = true;
