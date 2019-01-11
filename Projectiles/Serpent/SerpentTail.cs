@@ -61,7 +61,7 @@ namespace AAMod.Projectiles.Serpent
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
-            if ((int) Main.time % 120 == 0) projectile.netUpdate = true;
+            if ((int)Main.time % 120 == 0) projectile.netUpdate = true;
             if (!player.active)
             {
                 projectile.active = false;
@@ -73,10 +73,11 @@ namespace AAMod.Projectiles.Serpent
             if (player.dead) modPlayer.SnakeMinion = false;
             if (modPlayer.SnakeMinion) projectile.timeLeft = 2;
             num1038 = 30;
-            
-            if (Main.rand.Next(30) == 0)
+
+            //D U S T
+            /*if (Main.rand.Next(30) == 0)
             {
-                int num1039 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default(Color), 2f);
+                int num1039 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 0, default(Color), 2f);
                 Main.dust[num1039].noGravity = true;
                 Main.dust[num1039].fadeIn = 2f;
                 Point point4 = Main.dust[num1039].position.ToTileCoordinates();
@@ -84,7 +85,7 @@ namespace AAMod.Projectiles.Serpent
                 {
                     Main.dust[num1039].noLight = true;
                 }
-            }
+            }*/
 
             bool flag67 = false;
             Vector2 value67 = Vector2.Zero;
@@ -123,7 +124,7 @@ namespace AAMod.Projectiles.Serpent
             if (projectile.alpha > 0)
                 for (int num1054 = 0; num1054 < 2; num1054++)
                 {
-                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0f, 0f, 100, default(Color), 2f);
+                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100, default(Color), 2f);
                     Main.dust[num1055].noGravity = true;
                     Main.dust[num1055].noLight = true;
                 }

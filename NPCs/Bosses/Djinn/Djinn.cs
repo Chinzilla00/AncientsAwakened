@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.alpha += 5;
             }
 
-            if (npc.alpha <= 255)
+            if (npc.alpha >= 255)
             {
                 npc.active = false;
             }
