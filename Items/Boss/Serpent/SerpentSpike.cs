@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Serpent
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Abyssal Yari");
+            DisplayName.SetDefault("Serpent Spike");
         }
 
         public override void SetDefaults()

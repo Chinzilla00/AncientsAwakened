@@ -104,7 +104,7 @@ Only usable during the day");
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DesertMana", 3);
                 recipe.AddIngredient(ItemID.IceBlock, 30);
-                recipe.AddTile(TileID.IceMachine);
+                recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this, 1);
                 recipe.AddRecipe();
             }

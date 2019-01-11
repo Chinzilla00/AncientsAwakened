@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    public class YamataSoul : ModNPC
+    public class BlazePhoenix : ModNPC
     {
         public override void SetStaticDefaults()
         {

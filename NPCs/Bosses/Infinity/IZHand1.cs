@@ -124,8 +124,51 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
         }
 
+        private int ZeroShot = 0;
+        
         public override void AI()
 		{
+
+            int num429 = 1;
+            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            {
+                num429 = -1;
+            }
+            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+            float num433 = 6f;
+            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            PlayerPos = num433 / PlayerPos;
+            PlayerPosX *= PlayerPos;
+            PlayerPosY *= PlayerPos;
+            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosY += npc.velocity.Y * 0.5f;
+            PlayerPosX += npc.velocity.X * 0.5f;
+            PlayerDistance.X -= PlayerPosX * 1f;
+            PlayerDistance.Y -= PlayerPosY * 1f;
+
+            ZeroShot++;
+            
+            int aiTimerShoot = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+            if (leftHand) aiTimerShoot += 30;
+            if (ZeroShot >= aiTimerShoot)
+            {
+                ZeroShot = 0;
+                if (!ChargeAttack || !RepairMode)
+                {
+                    float rotation = MathHelper.ToRadians(20);
+                    for (int i = 0; i < 3 + 1; i++)
+                    {
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("IZShot"), 140, 0, Main.myPlayer);
+                    }
+                }
+            }
+
             if (RepairMode)
             {
                 RepairTimer--;

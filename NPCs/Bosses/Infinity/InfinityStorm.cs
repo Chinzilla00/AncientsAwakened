@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -130,6 +131,44 @@ namespace AAMod.NPCs.Bosses.Infinity
                 }
                 return;
             }
+        }
+        public static int frameWidth = 100, frameHeight = 100;
+        public int frameTimer = 0;
+        public int frameCount = 3;
+        public bool invertFrame = false;
+        public Rectangle frame;
+        public static Texture2D tex = null;
+        public static Texture2D glowTex = null;
+        public bool checkedMinPos = false;
+
+        public override void PostAI()
+        {
+            projectile.rotation = projectile.velocity.X * 0.1f;
+            frameTimer--;
+            if (frameTimer <= 0)
+            {
+                frameTimer = 2;
+                if (invertFrame) { frameCount--; if (frameCount < 0) { frameCount = 1; invertFrame = false; } }
+                else
+                { frameCount++; if (frameCount > 2) { frameCount = 1; invertFrame = true; } }
+            }
+            frame = BaseMod.BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            if (tex == null)
+            {
+                tex = Main.projectileTexture[projectile.type];
+                glowTex =  mod.GetTexture("NPCs/Bosses/Infinity/InfinityStorm_Glow");
+            }
+            Color lightColor = BaseMod.BaseDrawing.GetLightColor(projectile.Center);
+            for (int m = projectile.oldPos.Length - 1; m > 0; m--) { projectile.oldPos[m] = projectile.oldPos[m - 1]; }
+            projectile.oldPos[0] = projectile.position;
+            BaseMod.BaseDrawing.DrawTexture(sb, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 3, frame, lightColor);
+            BaseMod.BaseDrawing.DrawTexture(sb, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 3, frame, AAColor.Oblivion);
+            
+            return false;
         }
     }
 }

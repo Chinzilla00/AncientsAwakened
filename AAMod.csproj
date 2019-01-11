@@ -578,6 +578,7 @@
     <Compile Include="Items\Boss\Shen\ShenCache.cs" />
     <Compile Include="Items\Boss\Shen\Skyfall.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
+    <Compile Include="Items\Boss\Toad\AncientShroomite.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssalYari.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssArrow.cs" />
     <Compile Include="Items\Boss\Yamata\Crescent.cs" />
@@ -1009,6 +1010,7 @@
     <Compile Include="NPCs\Bosses\Infinity\InfinityStorm.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZHand2.cs" />
+    <Compile Include="NPCs\Bosses\Infinity\IZShot.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
@@ -1079,6 +1081,7 @@
     <Compile Include="NPCs\Enemies\Desert\DjinnMagic1.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnMagic2.cs" />
     <Compile Include="NPCs\Enemies\Desert\MiniDjinn.cs" />
+    <Compile Include="NPCs\Enemies\Hallow\FatPixie.cs" />
     <Compile Include="NPCs\Enemies\Inferno\BlazePhoenix.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Flamespitter.cs" />
     <Compile Include="NPCs\Enemies\Inferno\ChaoticDawn.cs" />
@@ -1353,6 +1356,8 @@
     <Compile Include="Tiles\AkumaABox.cs" />
     <Compile Include="Tiles\AkumaBox.cs" />
     <Compile Include="Tiles\AncientForge.cs" />
+    <Compile Include="Tiles\DaybreakIncineriteOre.cs" />
+    <Compile Include="Tiles\EventideAbyssiumOre.cs" />
     <Compile Include="Tiles\Trophy\IZTrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataTrophy.cs" />
     <Compile Include="Tiles\Uranium.cs" />
@@ -3842,7 +3847,6 @@
     <Content Include="NPCs\Enemies\Inferno\DragonDiver.png" />
     <Content Include="NPCs\Enemies\Inferno\Dragron.png" />
     <Content Include="NPCs\Enemies\Inferno\Flamebrute.png" />
-    <Content Include="NPCs\Enemies\Inferno\Flamebrute_Smash.png" />
     <Content Include="NPCs\Enemies\Inferno\Flamespitter.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernalSlime.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoMimic.png" />
@@ -4206,8 +4210,10 @@
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />
-    <Content Include="Sounds\Music\DradonMode.mp3" />
-    <Content Include="Sounds\Music\End.mp3" />
+    <Content Include="Sounds\Music\IZ.mp3" />
+    <Content Include="Sounds\Music\IZDeath.mp3" />
+    <Content Include="Sounds\Music\LastStand.mp3" />
+    <Content Include="Sounds\Music\Maelstrom.mp3" />
     <Content Include="Sounds\Music\Monarch.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />
     <Content Include="Sounds\Music\ShenA.mp3" />
@@ -4221,11 +4227,17 @@
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
     <Content Include="Sounds\Music\RayOfHope.mp3" />
+    <Content Include="Sounds\Music\ShenIntro.mp3" />
+    <Content Include="Sounds\Music\Siege.mp3" />
+    <Content Include="Sounds\Music\Terrarium.mp3" />
+    <Content Include="Sounds\Music\TODE.mp3" />
     <Content Include="Sounds\Music\Void.mp3" />
     <Content Include="Sounds\Music\WeAreNumberOne.mp3" />
     <Content Include="Sounds\Music\Yamata.mp3" />
+    <Content Include="Sounds\Music\Yamata2.mp3" />
     <Content Include="Sounds\Music\Zero.mp3" />
     <Content Include="Sounds\Music\Zero2.mp3" />
+    <Content Include="Sounds\Music\ZeroDeath.mp3" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
     <Content Include="Sounds\Sounds\IZRoar.mp3" />
     <Content Include="Sounds\Sounds\ZeroDeath.wav" />
@@ -4250,6 +4262,7 @@
     <Content Include="Tiles\Crates\IceCrate.png" />
     <Content Include="Tiles\Crates\InfernoCrate.png" />
     <Content Include="Tiles\Crates\MireCrate.png" />
+    <Content Include="Tiles\DaybreakIncineriteOre.png" />
     <Content Include="Tiles\DepthIce.png" />
     <Content Include="Tiles\DepthsandBall.png" />
     <Content Include="Tiles\DepthsandHardened.png" />
@@ -4258,6 +4271,7 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\Doomgrass.png" />
     <Content Include="Tiles\DragonRose.png" />
+    <Content Include="Tiles\EventideAbyssiumOre.png" />
     <Content Include="Tiles\FulgurGlass.png" />
     <Content Include="Tiles\FulgurGlassS.png" />
     <Content Include="Tiles\FulguriteBrick.png" />

@@ -108,7 +108,14 @@ namespace AAMod.Projectiles.Akuma
             {
                 Player player = Main.player[projectile.owner];
                 Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
-
+                if (player.direction == 1)
+                {
+                    projectile.direction = 1;
+                }
+                else
+                {
+                    projectile.direction = -1;
+                }
                 bool flag2 = player.channel && player.CheckMana(player.inventory[player.selectedItem].mana, true, false) && !player.noItems && !player.CCed;
                 if (flag2)
                 {

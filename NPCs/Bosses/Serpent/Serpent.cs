@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath1;
             npc.netAlways = true;
             bossBag = mod.ItemType("SerpentBag");
-            music = MusicID.Boss1;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
             npc.scale = 1.15f;
         }
         private bool fireAttack;
