@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.value = (float)Item.buyPrice(0, 8, 0, 0);
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -155,184 +156,166 @@ namespace AAMod.NPCs.Bosses.Djinn
                     expr_45B64_cp_0.velocity.X = expr_45B64_cp_0.velocity.X + (float)npc.spriteDirection * 0.2f;
                 }
             }
-            if (player != null && punchtimer >= 420)
+            npc.localAI[2] = 0f;
+            if (npc.ai[0] < 0f)
             {
-                Charging = true;
-                chargeTimer += 1;
-                if (chargeTimer >= chargeTime) //actually charge player
-                {
-                    ChargeAttack = true;
-                    Vector2 diff = player.Center - npc.Center;
-                    npc.damage = damageCharging;
-                    punchtimer = 0;
-                    npc.velocity.X = diff.X;
-                    npc.velocity.Y = diff.Y;
-                    chargeTimer = 0;
-                }
+                npc.ai[0] = MathHelper.Min(npc.ai[0] + 1f, 0f);
             }
-            else
+            if (npc.ai[0] > 0f)
+            {
+                flag117 = false;
+                flag116 = true;
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 135f)
+                {
+                    npc.ai[0] = -300f;
+                    npc.netUpdate = true;
+                }
+                Vector2 vector = npc.Center;
+                vector = Vector2.UnitX * (float)npc.direction * 200f;
+                Vector2 vector223 = npc.Center + Vector2.UnitX * (float)npc.direction * 50f - Vector2.UnitY * 6f;
+                if (npc.ai[0] == 54f && Main.netMode != 1)
+                {
+                    List<Point> list4 = new List<Point>();
+                    Vector2 vec5 = Main.player[npc.target].Center + new Vector2(Main.player[npc.target].velocity.X * 30f, 0f);
+                    Point point14 = vec5.ToTileCoordinates();
+                    int num1468 = 0;
+                    while (num1468 < 1000 && list4.Count < 3)
+                    {
+                        bool flag118 = false;
+                        int num1469 = Main.rand.Next(point14.X - 30, point14.X + 30 + 1);
+                        foreach (Point current in list4)
+                        {
+                            if (Math.Abs(current.X - num1469) < 10)
+                            {
+                                flag118 = true;
+                                break;
+                            }
+                        }
+                        if (!flag118)
+                        {
+                            int startY = point14.Y - 20;
+                            int num1470;
+                            int num1471;
+                            Collision.ExpandVertically(num1469, startY, out num1470, out num1471, 1, 51);
+                            if (StrayMethods.CanSpawnSandstormHostile(new Vector2((float)num1469, (float)(num1471 - 15)) * 16f, 15, 15))
+                            {
+                                list4.Add(new Point(num1469, num1471 - 15));
+                            }
+                        }
+                        num1468++;
+                    }
+                    foreach (Point current2 in list4)
+                    {
+                        Projectile.NewProjectile((float)(current2.X * 16), (float)(current2.Y * 16), 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
+                    }
+                }
+                new Vector2(0.9f, 2f);
+                if (npc.ai[0] < 114f && npc.ai[0] > 0f)
+                {
+                    List<Vector2> list5 = new List<Vector2>();
+                    for (int num1472 = 0; num1472 < 1000; num1472++)
+                    {
+                        Projectile projectile9 = Main.projectile[num1472];
+                        if (projectile9.active && projectile9.type == 658)
+                        {
+                            list5.Add(projectile9.Center);
+                        }
+                    }
+                    Vector2 value76 = new Vector2(0f, 1500f);
+                    float num1473 = (npc.ai[0] - 54f) / 30f;
+                    if (num1473 < 0.95f && num1473 >= 0f)
+                    {
+                        foreach (Vector2 current3 in list5)
+                        {
+                            Vector2 value77 = Vector2.CatmullRom(vector223 + value76, vector223, current3, current3 + value76, num1473);
+                            Vector2 value78 = Vector2.CatmullRom(vector223 + value76, vector223, current3, current3 + value76, num1473 + 0.05f);
+                            float num1474 = num1473;
+                            if (num1474 > 0.5f)
+                            {
+                                num1474 = 1f - num1474;
+                            }
+                            float num1475 = 2f;
+                            if (Vector2.Distance(value77, value78) > 5f)
+                            {
+                                num1475 = 3f;
+                            }
+                            if (Vector2.Distance(value77, value78) > 10f)
+                            {
+                                num1475 = 4f;
+                            }
+                            for (float num1476 = 0f; num1476 < num1475; num1476 += 1f)
+                            {
+                                Dust dust20 = Main.dust[Dust.NewDust(vector223, 0, 0, 269, 0f, 0f, 0, default(Color), 1f)];
+                                dust20.position = Vector2.Lerp(value77, value78, num1476 / num1475) + Utils.RandomVector2(Main.rand, -2f, 2f);
+                                dust20.noLight = true;
+                                dust20.scale = 0.3f + num1473;
+                            }
+                        }
+                    }
+                }
+                float arg_46144_0 = npc.ai[0];
+            }
+            if (npc.ai[0] == 0f)
+            {
+                npc.ai[0] = 1f;
+                npc.netUpdate = true;
+                flag116 = true;
+            }
+            if (npc.justHit)
             {
                 npc.localAI[2] = 0f;
-                if (npc.ai[0] < 0f)
+            }
+            if (!flag112)
+            {
+                if (npc.localAI[2] >= 0f)
                 {
-                    npc.ai[0] = MathHelper.Min(npc.ai[0] + 1f, 0f);
-                }
-                if (npc.ai[0] > 0f)
-                {
-                    flag117 = false;
-                    flag116 = true;
-                    npc.ai[0] += 1f;
-                    if (npc.ai[0] >= 135f)
+                    float num1477 = 16f;
+                    bool flag119 = false;
+                    bool flag120 = false;
+                    if (npc.position.X > npc.localAI[0] - num1477 && npc.position.X < npc.localAI[0] + num1477)
                     {
-                        npc.ai[0] = -300f;
-                        npc.netUpdate = true;
+                        flag119 = true;
                     }
-                    Vector2 vector = npc.Center;
-                    vector = Vector2.UnitX * (float)npc.direction * 200f;
-                    Vector2 vector223 = npc.Center + Vector2.UnitX * (float)npc.direction * 50f - Vector2.UnitY * 6f;
-                    if (npc.ai[0] == 54f && Main.netMode != 1)
+                    else if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0))
                     {
-                        List<Point> list4 = new List<Point>();
-                        Vector2 vec5 = Main.player[npc.target].Center + new Vector2(Main.player[npc.target].velocity.X * 30f, 0f);
-                        Point point14 = vec5.ToTileCoordinates();
-                        int num1468 = 0;
-                        while (num1468 < 1000 && list4.Count < 3)
-                        {
-                            bool flag118 = false;
-                            int num1469 = Main.rand.Next(point14.X - 30, point14.X + 30 + 1);
-                            foreach (Point current in list4)
-                            {
-                                if (Math.Abs(current.X - num1469) < 10)
-                                {
-                                    flag118 = true;
-                                    break;
-                                }
-                            }
-                            if (!flag118)
-                            {
-                                int startY = point14.Y - 20;
-                                int num1470;
-                                int num1471;
-                                Collision.ExpandVertically(num1469, startY, out num1470, out num1471, 1, 51);
-                                if (StrayMethods.CanSpawnSandstormHostile(new Vector2((float)num1469, (float)(num1471 - 15)) * 16f, 15, 15))
-                                {
-                                    list4.Add(new Point(num1469, num1471 - 15));
-                                }
-                            }
-                            num1468++;
-                        }
-                        foreach (Point current2 in list4)
-                        {
-                            Projectile.NewProjectile((float)(current2.X * 16), (float)(current2.Y * 16), 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
-                        }
+                        flag119 = true;
+                        num1477 += 24f;
                     }
-                    new Vector2(0.9f, 2f);
-                    if (npc.ai[0] < 114f && npc.ai[0] > 0f)
+                    if (npc.position.Y > npc.localAI[1] - num1477 && npc.position.Y < npc.localAI[1] + num1477)
                     {
-                        List<Vector2> list5 = new List<Vector2>();
-                        for (int num1472 = 0; num1472 < 1000; num1472++)
-                        {
-                            Projectile projectile9 = Main.projectile[num1472];
-                            if (projectile9.active && projectile9.type == 658)
-                            {
-                                list5.Add(projectile9.Center);
-                            }
-                        }
-                        Vector2 value76 = new Vector2(0f, 1500f);
-                        float num1473 = (npc.ai[0] - 54f) / 30f;
-                        if (num1473 < 0.95f && num1473 >= 0f)
-                        {
-                            foreach (Vector2 current3 in list5)
-                            {
-                                Vector2 value77 = Vector2.CatmullRom(vector223 + value76, vector223, current3, current3 + value76, num1473);
-                                Vector2 value78 = Vector2.CatmullRom(vector223 + value76, vector223, current3, current3 + value76, num1473 + 0.05f);
-                                float num1474 = num1473;
-                                if (num1474 > 0.5f)
-                                {
-                                    num1474 = 1f - num1474;
-                                }
-                                float num1475 = 2f;
-                                if (Vector2.Distance(value77, value78) > 5f)
-                                {
-                                    num1475 = 3f;
-                                }
-                                if (Vector2.Distance(value77, value78) > 10f)
-                                {
-                                    num1475 = 4f;
-                                }
-                                for (float num1476 = 0f; num1476 < num1475; num1476 += 1f)
-                                {
-                                    Dust dust20 = Main.dust[Dust.NewDust(vector223, 0, 0, 269, 0f, 0f, 0, default(Color), 1f)];
-                                    dust20.position = Vector2.Lerp(value77, value78, num1476 / num1475) + Utils.RandomVector2(Main.rand, -2f, 2f);
-                                    dust20.noLight = true;
-                                    dust20.scale = 0.3f + num1473;
-                                }
-                            }
-                        }
+                        flag120 = true;
                     }
-                    float arg_46144_0 = npc.ai[0];
-                }
-                if (npc.ai[0] == 0f)
-                {
-                    npc.ai[0] = 1f;
-                    npc.netUpdate = true;
-                    flag116 = true;
-                }
-                if (npc.justHit)
-                {
-                    npc.localAI[2] = 0f;
-                }
-                if (!flag112)
-                {
-                    if (npc.localAI[2] >= 0f)
+                    if (flag119 && flag120)
                     {
-                        float num1477 = 16f;
-                        bool flag119 = false;
-                        bool flag120 = false;
-                        if (npc.position.X > npc.localAI[0] - num1477 && npc.position.X < npc.localAI[0] + num1477)
+                        npc.localAI[2] += 1f;
+                        if (npc.localAI[2] >= 30f && num1477 == 16f)
                         {
-                            flag119 = true;
+                            flag111 = true;
                         }
-                        else if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0))
+                        if (npc.localAI[2] >= 60f)
                         {
-                            flag119 = true;
-                            num1477 += 24f;
-                        }
-                        if (npc.position.Y > npc.localAI[1] - num1477 && npc.position.Y < npc.localAI[1] + num1477)
-                        {
-                            flag120 = true;
-                        }
-                        if (flag119 && flag120)
-                        {
-                            npc.localAI[2] += 1f;
-                            if (npc.localAI[2] >= 30f && num1477 == 16f)
-                            {
-                                flag111 = true;
-                            }
-                            if (npc.localAI[2] >= 60f)
-                            {
-                                npc.localAI[2] = -180f;
-                                npc.direction *= -1;
-                                npc.velocity.X = npc.velocity.X * -1f;
-                                npc.collideX = false;
-                            }
-                        }
-                        else
-                        {
-                            npc.localAI[0] = npc.position.X;
-                            npc.localAI[1] = npc.position.Y;
-                            npc.localAI[2] = 0f;
-                        }
-                        if (flag117)
-                        {
-                            npc.TargetClosest(true);
+                            npc.localAI[2] = -180f;
+                            npc.direction *= -1;
+                            npc.velocity.X = npc.velocity.X * -1f;
+                            npc.collideX = false;
                         }
                     }
                     else
                     {
-                        npc.localAI[2] += 1f;
-                        npc.direction = ((Main.player[npc.target].Center.X > npc.Center.X) ? 1 : -1);
+                        npc.localAI[0] = npc.position.X;
+                        npc.localAI[1] = npc.position.Y;
+                        npc.localAI[2] = 0f;
                     }
+                    if (flag117)
+                    {
+                        npc.TargetClosest(true);
+                    }
+                }
+                else
+                {
+                    npc.localAI[2] += 1f;
+                    npc.direction = ((Main.player[npc.target].Center.X > npc.Center.X) ? 1 : -1);
                 }
             }
             int num1478 = (int)((npc.position.X + (float)(npc.width / 2)) / 16f) + npc.direction * 2;

@@ -33,16 +33,22 @@ namespace AAMod.NPCs.Enemies.Void
 			npc.DeathSound = SoundID.NPCDeath14;
 		}
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public Color GetGlowAlpha()
         {
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (npc.spriteDirection == 1)
+            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+        }
+
+        public static Texture2D glowTex = null;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
             {
-                spriteEffects = SpriteEffects.FlipHorizontally;
+                glowTex = mod.GetTexture("Glowmasks/Zero_Glow");
             }
-            spriteBatch.Draw(mod.GetTexture("Glowmasks/Searcher_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-            npc.frame, Color.White, npc.rotation,
-            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            return false;
         }
 
         public override void HitEffect(int hitDirection, double damage)

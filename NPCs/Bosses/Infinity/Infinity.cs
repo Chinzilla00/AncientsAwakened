@@ -89,6 +89,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public int roarTimer = 200;
 		public bool[] roared = new bool[3];
         private int testime = 60;
+        private int StormTimer = 0;
         public override void AI()
 		{
             npc.timeLeft = 200;
@@ -96,7 +97,15 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 testime--;
             }
-			if(Main.netMode != 2)
+
+            StormTimer++;
+            if (StormTimer >= 750)
+            {
+                StormTimer = 0;
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("InfinityStorm"), npc.damage, 0, Main.myPlayer);
+            }
+
+            if (Main.netMode != 2)
 			{
 				int ThreeQuartersHealth = npc.lifeMax * (int).75f;
 				int HalfHealth = npc.lifeMax * (int).5f;

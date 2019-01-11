@@ -40,7 +40,7 @@ Grants effects of the Storm Riot Shield");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DiscordianShredders", 1);
+            recipe.AddIngredient(null, "DiscordianShredder", 1);
             recipe.AddIngredient(null, "StormRiot", 1);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);

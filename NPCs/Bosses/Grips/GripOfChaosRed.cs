@@ -198,10 +198,8 @@ namespace AAMod.NPCs.Bosses.Grips
         }
         private void DespawnHandler()
         {
-            if (!player.active || player.dead || Main.dayTime)
+            if (!player.active || player.dead || Main.dayTime || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
                 npc.alpha -= 10;
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;

@@ -204,19 +204,14 @@ namespace AAMod.NPCs.Bosses.Grips
         }
         private void DespawnHandler()
         {
-            if (!player.active || player.dead)
+            if (!player.active || player.dead || Main.dayTime ||  Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead || Main.dayTime)        // If the player is dead and not active, the npc flies off-screen and despawns
+                npc.alpha -= 10;
+                npc.velocity.X = 0;
+                npc.velocity.Y = 0;
+                if (npc.alpha >= 255)
                 {
-                    npc.alpha -= 10;
-                    npc.velocity.X = 0;
-                    npc.velocity.Y = 0;
-                    if (npc.alpha >= 255)
-                    {
-                        npc.active = false;
-                    }
+                    npc.active = false;
                 }
             }
         }

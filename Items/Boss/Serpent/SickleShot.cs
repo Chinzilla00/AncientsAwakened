@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Serpent
             item.knockBack = 2;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
-            item.UseSound = SoundID.Item11;
+            item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 8f;
 
@@ -38,7 +38,7 @@ namespace AAMod.Items.Boss.Serpent
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-		    float spread = 25f * 0.0174f;
+		    float spread = 15f * 0.0174f;
 		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
 		    double deltaAngle = spread / 6f;

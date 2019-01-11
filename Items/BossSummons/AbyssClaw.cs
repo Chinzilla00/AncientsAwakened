@@ -34,7 +34,7 @@ namespace AAMod.Items.BossSummons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "SuspiciousClaw", 1);
+            recipe.AddIngredient(null, "InterestingClaw", 1);
             recipe.AddIngredient(null, "DarkMatter", 5);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
