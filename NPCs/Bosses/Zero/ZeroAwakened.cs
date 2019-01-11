@@ -289,12 +289,12 @@ namespace AAMod.NPCs.Bosses.Zero
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
-
+                npc.TargetClosest(false);
                 Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {
-                    npc.timeLeft = 200;
+                    npc.timeLeft = 10;
                     return;
                 }
 
@@ -307,12 +307,12 @@ namespace AAMod.NPCs.Bosses.Zero
                     Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
-
+                npc.TargetClosest(false);
                 Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
                 {
-                    npc.timeLeft = 200;
+                    npc.timeLeft = 10;
                     return;
                 }
             }

@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Djinn
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sandaggeri");
+            DisplayName.SetDefault("Sandagger");
             Tooltip.SetDefault("");
         }
     }
