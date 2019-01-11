@@ -111,7 +111,8 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
                 }
                 else
                 {
-                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-1200, 1200), AAWorld.zeroUS(int)player.position.Y + Main.rand.Next(-1100, -350), mod.NPCType("Zero"));
+                    AAWorld.zeroUS = true;
+                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-1200, 1200), (int)player.position.Y + Main.rand.Next(-1100, -350), mod.NPCType("Zero"));
                 }
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));

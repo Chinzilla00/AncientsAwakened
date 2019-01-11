@@ -58,9 +58,9 @@ namespace AAMod.Items.Summoning.Minions
             {
                 if (player.dead)
                 {
-                    modPlayer.TerraMinion = false;
+                    modPlayer.DemonMinion = false;
                 }
-                if (modPlayer.TerraMinion)
+                if (modPlayer.DemonMinion)
                 {
                     projectile.timeLeft = 2;
                 }

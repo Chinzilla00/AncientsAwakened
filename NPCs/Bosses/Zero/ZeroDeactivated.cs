@@ -101,7 +101,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 var center = npc.Center - Main.screenPosition;
                 float num90 = npc.ai[3] / 120f;
                 float num91 = Math.Min(npc.ai[3] / 30f, 1f);
-                Filters.Scene["Tremor:Zero"].GetShader().UseIntensity(Math.Min(5f, 15f * num90) + 1f).UseProgress(num90);
                 DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), new Color(new Vector4(1f - (float)Math.Sqrt(num91))), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num91), SpriteEffects.None, 0);
                 GameShaders.Misc["ForceField"].UseColor(new Vector3(2f));
                 GameShaders.Misc["ForceField"].Apply(drawData);
@@ -204,23 +203,18 @@ namespace AAMod.NPCs.Bosses.Zero
         public void PutZeroHerelul(int position, int whoAmI)
         {
             int x = Main.maxTilesX / 6 * (1 + position);
-            Point spawnPos = AAWorld.WHERESDAVOIDAT;
-
-            Vector2 SpawnHereYaDingus()
-            {
-                Vector2 pt = new Vector2(AAWorld.WHERESDAVOIDAT.X, AAWorld.WHERESDAVOIDAT.Y);
-                return pt;
-            }
+            Point spawnTilePos = AAWorld.WHERESDAVOIDAT;
+            Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 
             if (whoAmI == -1)
             {
                 whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
-                ZX = spawnPos.X;
-                ZY = spawnPos.Y;
+                ZX = (int)spawnPos.X;
+                ZY = (int)spawnPos.Y;
             }
             else
             {
-                Main.npc[whoAmI].Center = SpawnHereYaDingus();
+                Main.npc[whoAmI].Center = new Vector2(spawnPos.X, spawnPos.Y);
                 ZeroSleep = true;
             }
             if (Main.netMode == 2 && whoAmI < 200)

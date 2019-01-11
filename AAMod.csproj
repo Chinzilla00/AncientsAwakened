@@ -380,6 +380,7 @@
     <Compile Include="Items\Blocks\CrimsonAltar.cs" />
     <Compile Include="Items\Blocks\DarkmatterOre.cs" />
     <Compile Include="Items\Blocks\Darkmud.cs" />
+    <Compile Include="Items\Blocks\DaybreakIncinceriteOre.cs" />
     <Compile Include="Items\Blocks\Depthsand.cs" />
     <Compile Include="Items\Blocks\Depthsandstone.cs" />
     <Compile Include="Items\Blocks\Depthice.cs" />
@@ -389,6 +390,7 @@
     <Compile Include="Items\Blocks\DoomstoneBrick.cs" />
     <Compile Include="Items\Blocks\DynaskullOre.cs" />
     <Compile Include="Items\Blocks\Equibox.cs" />
+    <Compile Include="Items\Blocks\EventideAbyssiumOre.cs" />
     <Compile Include="Items\Blocks\FulguriteShard.cs" />
     <Compile Include="Items\Blocks\GripsBox.cs" />
     <Compile Include="Items\Blocks\HallowedAnvil.cs" />
@@ -438,6 +440,7 @@
     <Compile Include="Items\Blocks\TechneciumOre.cs" />
     <Compile Include="Items\Blocks\TerraCore.cs" />
     <Compile Include="Items\Blocks\TerrariumBox.cs" />
+    <Compile Include="Items\Blocks\TodeBox.cs" />
     <Compile Include="Items\Blocks\Torchice.cs" />
     <Compile Include="Items\Blocks\Torchsand.cs" />
     <Compile Include="Items\Blocks\TorchsandHardened.cs" />
@@ -451,6 +454,8 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
+    <Compile Include="Items\BossSummons\AbyssClaw.cs" />
+    <Compile Include="Items\BossSummons\BlazeClaw.cs" />
     <Compile Include="Items\BossSummons\ChaosRune.cs" />
     <Compile Include="Items\BossSummons\ChaosSigil.cs" />
     <Compile Include="Items\BossSummons\CuriousClaw.cs" />
@@ -516,6 +521,10 @@
     <Compile Include="Items\Boss\Equinox\RadiantStar.cs" />
     <Compile Include="Items\Boss\EXArmor.cs" />
     <Compile Include="Items\Boss\EXSoul.cs" />
+    <Compile Include="Items\Boss\GripsShen\DiscordianBurst.cs" />
+    <Compile Include="Items\Boss\GripsShen\DiscordianRampart.cs" />
+    <Compile Include="Items\Boss\GripsShen\DiscordianShredder.cs" />
+    <Compile Include="Items\Boss\GripsShen\GripSBag.cs" />
     <Compile Include="Items\Boss\Grips\BulwarkOfChaos.cs" />
     <Compile Include="Items\Boss\Grips\ClawBaton.cs" />
     <Compile Include="Items\Boss\Grips\ClawOfChaos.cs" />
@@ -677,7 +686,6 @@
     <Compile Include="Items\Materials\Dragon_Scale.cs" />
     <Compile Include="Items\Materials\EventideAbyssium.cs" />
     <Compile Include="Items\Materials\Everleaf.cs" />
-    <Compile Include="Items\Materials\EXArmor.cs" />
     <Compile Include="Items\Materials\FulguriteBar.cs" />
     <Compile Include="Items\Materials\HydraClaw.cs" />
     <Compile Include="Items\Materials\HydraToxin.cs" />
@@ -948,9 +956,6 @@
     <Compile Include="Items\Vanity\Darkpuppy\FlowerBoots.cs" />
     <Compile Include="Items\Vanity\Darkpuppy\FlowerMask.cs" />
     <Compile Include="Items\Vanity\Darkpuppy\FlowerVest.cs" />
-    <Compile Include="Items\Vanity\Gavran\GavransChest.cs" />
-    <Compile Include="Items\Vanity\Gavran\GavransGoggles.cs" />
-    <Compile Include="Items\Vanity\Gavran\GavransTrunks.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesBreastplate.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesGreaves.cs" />
     <Compile Include="Items\Vanity\Glitched\GlitchesHat.cs" />
@@ -990,6 +995,8 @@
     <Compile Include="NPCs\Bosses\Djinn\Djinnado.cs" />
     <Compile Include="NPCs\Bosses\Djinn\Djinn.cs" />
     <Compile Include="NPCs\Bosses\EmperorFishron\EmperorFishron.cs" />
+    <Compile Include="NPCs\Bosses\GripsShen\AbyssGrip.cs" />
+    <Compile Include="NPCs\Bosses\GripsShen\BlazeGrip.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Hydra\Hydra.cs" />
@@ -1023,6 +1030,8 @@
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkuma.cs" />
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkumaA.cs" />
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkumaTransition.cs" />
+    <Compile Include="NPCs\Bosses\Shen\AbyssGripS.cs" />
+    <Compile Include="NPCs\Bosses\Shen\BlazeGripS.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
@@ -1070,6 +1079,7 @@
     <Compile Include="NPCs\Enemies\Desert\DjinnMagic1.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnMagic2.cs" />
     <Compile Include="NPCs\Enemies\Desert\MiniDjinn.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\BlazePhoenix.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Flamespitter.cs" />
     <Compile Include="NPCs\Enemies\Inferno\ChaoticDawn.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Flamebrute.cs" />
@@ -1740,6 +1750,7 @@
     <Content Include="Glowmasks\AbyssalYariP_Glow.png" />
     <Content Include="Glowmasks\AbyssalYari_Glow.png" />
     <Content Include="Glowmasks\AbyssArrow_Glow.png" />
+    <Content Include="Glowmasks\AbyssGrip_Glow.png" />
     <Content Include="Glowmasks\AbyssiumOre_glow.png" />
     <Content Include="Glowmasks\AcidProj_Glow.png" />
     <Content Include="Glowmasks\AFireProjHostile_Glow.png" />
@@ -1771,6 +1782,7 @@
     <Content Include="Glowmasks\Battery_Glow.png" />
     <Content Include="Glowmasks\Battlestar_Glow.png" />
     <Content Include="Glowmasks\BinaryReassembler_Glow.png" />
+    <Content Include="Glowmasks\BlazeGrip_Glow.png" />
     <Content Include="Glowmasks\BlazingDawn_glow.png" />
     <Content Include="Glowmasks\BogBomb_Glow.png" />
     <Content Include="Glowmasks\Bonesaw_Glow.png" />
@@ -2391,6 +2403,14 @@
     <Content Include="Items\Accessories\Wings\ZeroWings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings_Wings_Glow.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomiteGreaves.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomiteGreaves_Legs.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomiteMask.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomiteMask_Head.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomitePlate.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomitePlate_Arms.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomitePlate_Body.png" />
+    <Content Include="Items\Armor\AncientShroomite\AncientShroomitePlate_Female.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Arms.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Body.png" />
@@ -2717,6 +2737,7 @@
     <Content Include="Items\Blocks\CrimsonAltar.png" />
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
+    <Content Include="Items\Blocks\DaybreakIncineriteOre.png" />
     <Content Include="Items\Blocks\Depthice.png" />
     <Content Include="Items\Blocks\Depthsand.png" />
     <Content Include="Items\Blocks\DepthsandHardened.png" />
@@ -2729,6 +2750,7 @@
     <Content Include="Items\Blocks\DoomstoneBrick.png" />
     <Content Include="Items\Blocks\DynaskullOre.png" />
     <Content Include="Items\Blocks\Equibox.png" />
+    <Content Include="Items\Blocks\EventideAbyssiumOre.png" />
     <Content Include="Items\Blocks\FestiveWood.png" />
     <Content Include="Items\Blocks\FulguriteBlock.png" />
     <Content Include="Items\Blocks\FulguriteShard.png" />
@@ -2781,6 +2803,7 @@
     <Content Include="Items\Blocks\Templates\Item_2699.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
     <Content Include="Items\Blocks\TerrariumBox.png" />
+    <Content Include="Items\Blocks\TodeBox.png" />
     <Content Include="Items\Blocks\Torchice.png" />
     <Content Include="Items\Blocks\Torchsand.png" />
     <Content Include="Items\Blocks\TorchsandHardened.png" />
@@ -2795,6 +2818,8 @@
     <Content Include="Items\Blocks\YtriumOre.png" />
     <Content Include="Items\Blocks\Zero2Box.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
+    <Content Include="Items\BossSummons\AbyssClaw.png" />
+    <Content Include="Items\BossSummons\BlazeClaw.png" />
     <Content Include="Items\BossSummons\CalciumSkull.png" />
     <Content Include="Items\BossSummons\ChaosRune.png" />
     <Content Include="Items\BossSummons\ChaosRune_Inactive.png" />
@@ -2846,15 +2871,11 @@
     <Content Include="Items\Boss\Akuma\TaiyangBaolei_Shield.png" />
     <Content Include="Items\Boss\Akuma\YOTD.png" />
     <Content Include="Items\Boss\Broodmother\BroodBag.png" />
-    <Content Include="Items\Boss\Broodmother\BroodBag_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodmotherTrophy.png" />
-    <Content Include="Items\Boss\Broodmother\BroodmotherTrophy_Glow.png" />
     <Content Include="Items\Boss\Broodmother\BroodScale.png" />
-    <Content Include="Items\Boss\Broodmother\BroodScale_Glow.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape_Back.png" />
     <Content Include="Items\Boss\Broodmother\DragonCape_Front.png" />
-    <Content Include="Items\Boss\Broodmother\DragonCape_Glow.png" />
     <Content Include="Items\Boss\Djinn\DjinnBag.png" />
     <Content Include="Items\Boss\Djinn\Djinnerang.png" />
     <Content Include="Items\Boss\Djinn\SandLamp.png" />
@@ -2883,6 +2904,12 @@
     <Content Include="Items\Boss\EXArmor.png" />
     <Content Include="Items\Boss\EXSoul.png" />
     <Content Include="Items\Boss\EXSoul1.png" />
+    <Content Include="Items\Boss\GripsShen\DiscordianBurst.png" />
+    <Content Include="Items\Boss\GripsShen\DiscordianRampart.png" />
+    <Content Include="Items\Boss\GripsShen\DiscordianRampart_Shield.png" />
+    <Content Include="Items\Boss\GripsShen\DiscordianShredder.png" />
+    <Content Include="Items\Boss\GripsShen\DiscordianShredder_HandsOn.png" />
+    <Content Include="Items\Boss\GripsShen\GripSBag.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawBaton.png" />
@@ -2942,6 +2969,7 @@
     <Content Include="Items\Boss\Serpent\BlizzardBuster.png" />
     <Content Include="Items\Boss\Serpent\SnowflakeShuriken.png" />
     <Content Include="Items\Boss\Serpent\SubzeroSlasher.png" />
+    <Content Include="Items\Boss\Shen\Asteroid.png" />
     <Content Include="Items\Boss\Shen\ChaosScale.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayer.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayerEX.png" />
@@ -2950,8 +2978,12 @@
     <Content Include="Items\Boss\Shen\MeteorStrike.png" />
     <Content Include="Items\Boss\Shen\ShenCache.png" />
     <Content Include="Items\Boss\Shen\Skyfall.png" />
+    <Content Include="Items\Boss\Shen\Timesplitter.png" />
     <Content Include="Items\Boss\StormCharm.png" />
+    <Content Include="Items\Boss\Toad\AncientShroomite.png" />
+    <Content Include="Items\Boss\Toad\MushrockStaff.png" />
     <Content Include="Items\Boss\Toad\ToadBag.png" />
+    <Content Include="Items\Boss\Toad\ToadTongue.png" />
     <Content Include="Items\Boss\Yamata\AbyssalYari.png" />
     <Content Include="Items\Boss\Yamata\AbyssArrow.png" />
     <Content Include="Items\Boss\Yamata\Crescent.png" />
@@ -3027,6 +3059,8 @@
     <Content Include="Items\Dev\EnderStaffEX.png" />
     <Content Include="Items\Dev\Etheral.png" />
     <Content Include="Items\Dev\EtheralEX.png" />
+    <Content Include="Items\Dev\Fluff.png" />
+    <Content Include="Items\Dev\FluffEX.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
@@ -3068,6 +3102,7 @@
     <Content Include="Items\Magic\RazorLeaf.png" />
     <Content Include="Items\Magic\SkyBook.png" />
     <Content Include="Items\Magic\SludgeShot.png" />
+    <Content Include="Items\Magic\SpectrumL.png" />
     <Content Include="Items\Magic\StarWand.png" />
     <Content Include="Items\Magic\TerraRose.png" />
     <Content Include="Items\Magic\TrueGong.png" />
@@ -3078,7 +3113,6 @@
     <Content Include="Items\Materials\ApocalyptitePlate.png" />
     <Content Include="Items\Materials\Crystal.png" />
     <Content Include="Items\Materials\DarkEnergy.png" />
-    <Content Include="Items\Materials\DarkMatter - Copy.png" />
     <Content Include="Items\Materials\DarkMatter.png" />
     <Content Include="Items\Materials\Darkshroom.png" />
     <Content Include="Items\Materials\DaybreakIncinerite.png" />
@@ -3095,7 +3129,6 @@
     <Content Include="Items\Materials\Dragon_Scale.png" />
     <Content Include="Items\Materials\EventideAbyssium.png" />
     <Content Include="Items\Materials\Everleaf.png" />
-    <Content Include="Items\Materials\EXArmor.png" />
     <Content Include="Items\Materials\FulguriteBar.png" />
     <Content Include="Items\Materials\hmm.png" />
     <Content Include="Items\Materials\Hydrablossom.png" />
@@ -3160,6 +3193,7 @@
     <Content Include="Items\Melee\EnchantedWarhammer.png" />
     <Content Include="Items\Melee\ExilesKatana.png" />
     <Content Include="Items\Melee\Exorcist.png" />
+    <Content Include="Items\Melee\EXPAND.png" />
     <Content Include="Items\Melee\Firestorm.png" />
     <Content Include="Items\Melee\FlamingFury.png" />
     <Content Include="Items\Melee\FleshrendClaymore.png" />
@@ -3462,14 +3496,6 @@
     <Content Include="Items\Vanity\Fargo\FargoSuit_Arms.png" />
     <Content Include="Items\Vanity\Fargo\FargoSuit_Body.png" />
     <Content Include="Items\Vanity\Fargo\FargoSuit_Female.png" />
-    <Content Include="Items\Vanity\Gavran\GavransChest.png" />
-    <Content Include="Items\Vanity\Gavran\GavransChest_Arms.png" />
-    <Content Include="Items\Vanity\Gavran\GavransChest_Body.png" />
-    <Content Include="Items\Vanity\Gavran\GavransChest_Female.png" />
-    <Content Include="Items\Vanity\Gavran\GavransGoggles.png" />
-    <Content Include="Items\Vanity\Gavran\GavransGoggles_Head.png" />
-    <Content Include="Items\Vanity\Gavran\GavransTrunks.png" />
-    <Content Include="Items\Vanity\Gavran\GavransTrunks_Legs.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Arms.png" />
     <Content Include="Items\Vanity\Glitched\GlitchesBreastplate_Body.png" />
@@ -3550,6 +3576,8 @@
     <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />
+    <Content Include="NPCs\Bosses\Akuma\FuryPhoenix.png" />
+    <Content Include="NPCs\Bosses\Akuma\TurePhoenix.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />
@@ -3572,6 +3600,10 @@
     <Content Include="NPCs\Bosses\Djinn\Djinn_Head_Boss.png" />
     <Content Include="NPCs\Bosses\EmperorFishron\EmperorFishron.png" />
     <Content Include="NPCs\Bosses\Greed\Greed.png" />
+    <Content Include="NPCs\Bosses\GripsShen\AbyssGrip.png" />
+    <Content Include="NPCs\Bosses\GripsShen\AbyssGrip_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\GripsShen\BlazeGrip.png" />
+    <Content Include="NPCs\Bosses\GripsShen\BlazeGrip_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBluePunch.png" />
     <Content Include="NPCs\Bosses\Grips\GripOfChaosBlue_Head_Boss.png" />
@@ -3622,6 +3654,7 @@
     <Content Include="NPCs\Bosses\Infinity\ZeroBomb.png" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.gif" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.png" />
+    <Content Include="NPCs\Bosses\Lucifer\Lucifer.png" />
     <Content Include="NPCs\Bosses\Madness\Madness.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.png" />
@@ -3667,6 +3700,9 @@
     <Content Include="NPCs\Bosses\Raider\Raider.png" />
     <Content Include="NPCs\Bosses\Raider\Raider_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Raider\Raidmini.png" />
+    <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArm.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahLeg.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Serpent\SnowBreath.png" />
@@ -3685,6 +3721,10 @@
     <Content Include="NPCs\Bosses\Shadow\Akuma\SAkumaTail.png" />
     <Content Include="NPCs\Bosses\Shadow\Akuma\SAkumaTransition.png" />
     <Content Include="NPCs\Bosses\Shadow\Akuma\SAkuma_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\AbyssGripS.png" />
+    <Content Include="NPCs\Bosses\Shen\AbyssGripS_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\BlazeGripS.png" />
+    <Content Include="NPCs\Bosses\Shen\BlazeGripS_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
@@ -3796,6 +3836,7 @@
     <Content Include="NPCs\Enemies\Desert\DjinnMagic1.png" />
     <Content Include="NPCs\Enemies\Desert\DjinnMagic2.png" />
     <Content Include="NPCs\Enemies\Desert\MiniDjinn.png" />
+    <Content Include="NPCs\Enemies\Hallow\FatPixie.png" />
     <Content Include="NPCs\Enemies\Inferno\BlazePhoenix.png" />
     <Content Include="NPCs\Enemies\Inferno\ChaoticDawn.png" />
     <Content Include="NPCs\Enemies\Inferno\DragonDiver.png" />
@@ -4417,6 +4458,7 @@
     <Content Include="UI\IconHallowCorruption.png" />
     <Content Include="UI\IconHallowCrimson.png" />
     <Content Include="UI\Pick.png" />
+    <Content Include="UpgradeLog.htm" />
     <Content Include="Walls\DepthsandHardenedWall.png" />
     <Content Include="Walls\DepthsandstoneWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
@@ -4489,6 +4531,7 @@
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
     <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include="NPCs\Bosses\Lucifer\Lucifer.piskel" />
     <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />

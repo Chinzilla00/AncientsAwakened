@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.Grips
             if (timer >= 900)          //After 15 seconds this happens
             {
                 switchMove = false;     //Turns the switch off so the void Move stuff is disabled
-                npc.aiStyle = 5;        //Reverts back to the original Flying AI Style
+                BaseAI.AIEye(npc, ref npc.ai, false, true, 0.1f, 0.04f, 6f, 5f, 1f, 1f);
                 timer = 0;              //Sets the timer back to 0 to repeat
             }
             if (switchMove)

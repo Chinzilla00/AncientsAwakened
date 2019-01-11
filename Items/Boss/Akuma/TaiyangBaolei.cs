@@ -14,7 +14,6 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Makes you immune to almost all debuffs
-allows you to do a strong dash
 During the day, you gain 10% damage resistance and your melee & magic attacks set enemies ablaze
 From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic attacks inflict daybroken");
         }
@@ -179,7 +178,6 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             player.buffImmune[mod.BuffType("DragonFire")] = true;
             player.buffImmune[mod.BuffType("BurningAsh")] = true;
             player.noKnockback = true;
-            player.dash = 3;
             if (!Main.dayTime)
             {
                 player.endurance += 0f;

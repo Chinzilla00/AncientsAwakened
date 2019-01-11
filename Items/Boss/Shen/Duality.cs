@@ -19,7 +19,9 @@ Enemies that hit you are inflicted with Discordian Inferno
 You are immune to Terrablaze, Dragonfire, Hydratoxin, Discordian Inferno
 While in the chaos biomes, your attack is multiplied by 30%
 While in the Inferno, your defense is increased by 10
-While in the Mire, your speed is increased by 50%");
+While in the Mire, your speed is increased by 50%
+Grants a strong dash that shreds through enemies
+Grants effects of the Discordian Rampart");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
         }
 
@@ -44,6 +46,7 @@ While in the Mire, your speed is increased by 50%");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             player.buffImmune[20] = true;
             player.buffImmune[22] = true;
             player.buffImmune[23] = true;
@@ -77,7 +80,9 @@ While in the Mire, your speed is increased by 50%");
             player.noKnockback = true;
             player.blackBelt = true;
             player.spikedBoots = 2;
-            player.dash = 3;
+            modPlayer.clawsOfChaos = true;
+            modPlayer.StormClaw = true;
+            modPlayer.AADash = 1;
             player.moveSpeed += 2f;
             player.endurance += 0.2f;
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
@@ -114,6 +119,7 @@ While in the Mire, your speed is increased by 50%");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "TaiyangBaolei", 1);
             recipe.AddIngredient(null, "Naitokurosu", 1);
+            recipe.AddIngredient(null, "DiscordianRampart", 1);
             recipe.AddIngredient(null, "ChaosSoul", 1);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);

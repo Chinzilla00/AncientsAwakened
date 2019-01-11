@@ -27,9 +27,8 @@ namespace AAMod.Items.Materials
         public override void AddRecipes()
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FragmentStardust, 4);
-            recipe.AddIngredient(ItemID.LunarBar, 1);
-            recipe.AddIngredient(null, "DeepAbyssium", 1);             //example of how to craft with a modded item
+            recipe.AddIngredient(null, "EventideAbyssiumOre", 5);
+            recipe.AddIngredient(null, "DeepAbyssium", 1);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

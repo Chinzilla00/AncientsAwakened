@@ -38,6 +38,7 @@ namespace AAMod
         public static bool AltarSmashed;
         public static int ChaosAltarsSmashed;
         public static int OreCount;
+        public static bool DiscordOres;
         private int infernoSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
@@ -73,8 +74,13 @@ namespace AAMod
         public static int downedIZnumber;
         public static bool ShenSummoned;
         public static bool downedToad;
+        public static bool downedGripsS;
         //Stones
         public static bool RealityDropped;
+        public static bool SpaceDropped;
+        public static bool TimeDropped;
+        public static bool MindDropped;
+        public static bool PowerDropped;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -105,6 +111,7 @@ namespace AAMod
             downedIZnumber = 0;
             ShenSummoned = false;
             downedToad = false;
+            downedGripsS = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -114,8 +121,13 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
+            DiscordOres = downedGripsS;
             //Stones
             RealityDropped = false;
+            SpaceDropped = false;
+            TimeDropped = false;
+            MindDropped = false;
+            PowerDropped = false;
         }
 
         public static int Raycast(int x, int y)
@@ -171,6 +183,7 @@ namespace AAMod
             if (downedSerpent) downed.Add("Serpent");
             if (downedDjinn) downed.Add("Djinn");
             if (downedToad) downed.Add("Toad");
+            if (downedGripsS) downed.Add("GripsS");
 
             return new TagCompound {
                 {"downed", downed}
@@ -216,9 +229,10 @@ namespace AAMod
             BitsByte flags4 = new BitsByte();
             flags4[0] = Ancients;
             flags4[1] = ShenSummoned;
-            flags4[0] = downedSerpent;
-            flags4[0] = downedDjinn;
-            flags4[1] = downedToad;
+            flags4[2] = downedSerpent;
+            flags4[3] = downedDjinn;
+            flags4[4] = downedToad;
+            flags4[5] = downedGripsS;
             writer.Write(flags4);
         }
 
@@ -260,6 +274,7 @@ namespace AAMod
             downedSerpent = flags4[2];
             downedDjinn = flags4[3];
             downedToad = flags4[4];
+            downedGripsS = flags4[5];
         }
 
         public override void Load(TagCompound tag)
@@ -293,6 +308,7 @@ namespace AAMod
             downedSerpent = downed.Contains("Serpent");
             downedDjinn = downed.Contains("Djinn");
             downedToad = downed.Contains("Toad");
+            downedGripsS = downed.Contains("GripsS");
             //World Changes
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedRetriever;
@@ -920,6 +936,27 @@ namespace AAMod
                         {
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOre"));
                         }
+                    }
+                }
+            }
+
+            if (downedGripsS == true)
+            {
+                if (DiscordOres == false)
+                {
+                    DiscordOres = true;
+                    Main.NewText("Chaotic energy grows in the deepest parts of the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    int x = Main.maxTilesX;
+                    int y = Main.maxTilesY;
+                    int tilesX = WorldGen.genRand.Next(0, x);
+                    int tilesY = WorldGen.genRand.Next(0, y);
+                    if (Main.tile[tilesX, tilesY].type == 59)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EventideAbyssiumOre"));
+                    }
+                    if (Main.tile[tilesX, tilesY].type == 1)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
                     }
                 }
             }

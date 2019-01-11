@@ -19,6 +19,7 @@ using BaseMod;
 using Terraria.ModLoader.IO;
 using ReLogic.Graphics;
 using Terraria.Localization;
+using Terraria.Graphics.Shaders;
 
 namespace AAMod
 {
@@ -118,6 +119,10 @@ namespace AAMod
         public bool Naitokurosu;
         public bool DragonShell;
         public bool ammo20percentdown = false;
+        public int AADash;
+        public int dashTimeAA;
+        public int dashDelayAA;
+        public bool DiscordShredder;
 
 
         public bool PepsiAccessoryPrevious;
@@ -240,6 +245,8 @@ namespace AAMod
             Naitokurosu = false;
             ammo20percentdown = false;
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
+            AADash = 0;
+            DiscordShredder = false;
 
             PepsiAccessoryPrevious = PepsiAccessory;
             PepsiAccessory = PepsiHideVanity = PepsiForceVanity = PepsiPower = false;
@@ -450,6 +457,59 @@ namespace AAMod
             ZoneStorm = (AAWorld.stormTiles > 1);
         }
 
+        public void AADashMovement()
+        {
+            if (AADash == 1 && player.dashDelay < 0 && player.whoAmI == Main.myPlayer)
+            {
+                Rectangle rectangle2 = new Rectangle((int)((double)player.position.X + (double)player.velocity.X * 0.5 - 4.0), (int)((double)player.position.Y + (double)player.velocity.Y * 0.5 - 4.0), player.width + 8, player.height + 8);
+                for (int j = 0; j < 200; j++)
+                {
+                    if (Main.npc[j].active && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly && Main.npc[j].immune[player.whoAmI] <= 0)
+                    {
+                        NPC nPC2 = Main.npc[j];
+                        Rectangle rect2 = nPC2.getRect();
+                        if (rectangle2.Intersects(rect2) && (nPC2.noTileCollide || player.CanHit(nPC2)))
+                        {
+                            float num4 = 150f * player.meleeDamage;
+                            float num5 = 9f;
+                            bool crit2 = false;
+                            if (player.kbGlove)
+                            {
+                                num5 *= 2f;
+                            }
+                            if (player.kbBuff)
+                            {
+                                num5 *= 1.5f;
+                            }
+                            if (Main.rand.Next(100) < player.meleeCrit)
+                            {
+                                crit2 = true;
+                            }
+                            int direction = player.direction;
+                            if (player.velocity.X < 0f)
+                            {
+                                direction = -1;
+                            }
+                            if (player.velocity.X > 0f)
+                            {
+                                direction = 1;
+                            }
+                            if (player.whoAmI == Main.myPlayer)
+                            {
+                                player.ApplyDamageToNPC(nPC2, (int)num4, num5, direction, crit2);
+                                int num6 = Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("DiscordianBurst"), 150, 15f, Main.myPlayer, 0f, 0f);
+                                Main.projectile[num6].Kill();
+                            }
+                            nPC2.immune[player.whoAmI] = 6;
+                            player.immune = true;
+                            player.immuneNoBlink = true;
+                            player.immuneTime = 4;
+                        }
+                    }
+                }
+            }
+        }
+
         public override void UpdateBiomeVisuals()
         {
 
@@ -600,7 +660,141 @@ namespace AAMod
             }
         }
 
-        
+        public override void PostUpdateMiscEffects()
+        {
+            if (Main.netMode != 2 && player.whoAmI == Main.myPlayer)
+            {
+                /*Texture2D rain3 = mod.GetTexture("ExtraTextures/Rain3");
+                Texture2D rainOriginal = mod.GetTexture("ExtraTextures/RainOriginal");
+                Texture2D mana2 = mod.GetTexture("ExtraTextures/Mana2");
+                Texture2D mana3 = mod.GetTexture("ExtraTextures/Mana3");
+                Texture2D mana4 = mod.GetTexture("ExtraTextures/Mana4");
+                Texture2D manaOriginal = mod.GetTexture("ExtraTextures/ManaOriginal");
+                Texture2D heart3 = mod.GetTexture("ExtraTextures/Heart3");
+                Texture2D heart4 = mod.GetTexture("ExtraTextures/Heart4");
+                Texture2D heart5 = mod.GetTexture("ExtraTextures/Heart5");
+                Texture2D heart6 = mod.GetTexture("ExtraTextures/Heart6");
+                Texture2D heartOriginal = mod.GetTexture("ExtraTextures/HeartOriginal");*/
+            }
+            if (player.pulley)
+            {
+                AADashMovement();
+            }
+            else if (player.grappling[0] == -1 && !player.tongued)
+            {
+                AAHorizontalMovement();
+                AADashMovement();
+            }
+        }
+
+        public void AAHorizontalMovement()
+        {
+            float num = (player.accRunSpeed + player.maxRunSpeed) / 2f;
+            if (player.controlLeft && player.velocity.X > -player.accRunSpeed && dashDelayAA >= 0)
+            {
+                if (player.mount.Active && player.mount.Cart)
+                {
+                    if (player.velocity.X < 0f)
+                    {
+                        player.direction = -1;
+                    }
+                }
+                else if ((player.itemAnimation == 0 || player.inventory[player.selectedItem].useTurn) && player.mount.AllowDirectionChange)
+                {
+                    player.direction = -1;
+                }
+                if (player.velocity.Y == 0f || player.wingsLogic > 0 || player.mount.CanFly)
+                {
+                    if (player.velocity.X > player.runSlowdown)
+                    {
+                        player.velocity.X = player.velocity.X - player.runSlowdown;
+                    }
+                    player.velocity.X = player.velocity.X - player.runAcceleration * 0.2f;
+                    if (player.wingsLogic > 0)
+                    {
+                        player.velocity.X = player.velocity.X - player.runAcceleration * 0.2f;
+                    }
+                }
+                if (player.onWrongGround)
+                {
+                    if (player.velocity.X < player.runSlowdown)
+                    {
+                        player.velocity.X = player.velocity.X + player.runSlowdown;
+                    }
+                    else
+                    {
+                        player.velocity.X = 0f;
+                    }
+                }
+                if (player.velocity.X < -num && player.velocity.Y == 0f && !player.mount.Active)
+                {
+                    int num3 = 0;
+                    if (player.gravDir == -1f)
+                    {
+                        num3 -= player.height;
+                    }
+                    if (AADash == 1)
+                    {
+                        int num7 = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y + (float)player.height + (float)num3), player.width + 8, 4, mod.DustType<Dusts.Discord>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default(Color), 1.5f);
+                        Main.dust[num7].velocity.X = Main.dust[num7].velocity.X * 0.2f;
+                        Main.dust[num7].velocity.Y = Main.dust[num7].velocity.Y * 0.2f;
+                        Main.dust[num7].shader = GameShaders.Armor.GetSecondaryShader(player.cShoe, player);
+                    }
+                }
+            }
+            else if (player.controlRight && player.velocity.X < player.accRunSpeed && dashDelayAA >= 0)
+            {
+                if (player.mount.Active && player.mount.Cart)
+                {
+                    if (player.velocity.X > 0f)
+                    {
+                        player.direction = -1;
+                    }
+                }
+                else if ((player.itemAnimation == 0 || player.inventory[player.selectedItem].useTurn) && player.mount.AllowDirectionChange)
+                {
+                    player.direction = 1;
+                }
+                if (player.velocity.Y == 0f || player.wingsLogic > 0 || player.mount.CanFly)
+                {
+                    if (player.velocity.X < -player.runSlowdown)
+                    {
+                        player.velocity.X = player.velocity.X + player.runSlowdown;
+                    }
+                    player.velocity.X = player.velocity.X + player.runAcceleration * 0.2f;
+                    if (player.wingsLogic > 0)
+                    {
+                        player.velocity.X = player.velocity.X + player.runAcceleration * 0.2f;
+                    }
+                }
+                if (player.onWrongGround)
+                {
+                    if (player.velocity.X > player.runSlowdown)
+                    {
+                        player.velocity.X = player.velocity.X - player.runSlowdown;
+                    }
+                    else
+                    {
+                        player.velocity.X = 0f;
+                    }
+                }
+                if (player.velocity.X > num && player.velocity.Y == 0f && !player.mount.Active)
+                {
+                    int num8 = 0;
+                    if (player.gravDir == -1f)
+                    {
+                        num8 -= player.height;
+                    }
+                    if (AADash == 1)
+                    {
+                        int num12 = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y + (float)player.height + (float)num8), player.width + 8, 4, mod.DustType<Dusts.Discord>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default(Color), 1.5f);
+                        Main.dust[num12].velocity.X = Main.dust[num12].velocity.X * 0.2f;
+                        Main.dust[num12].velocity.Y = Main.dust[num12].velocity.Y * 0.2f;
+                        Main.dust[num12].shader = GameShaders.Armor.GetSecondaryShader(player.cShoe, player);
+                    }
+                }
+            }
+        }
 
         public override void PostUpdate()
         {
@@ -666,7 +860,295 @@ namespace AAMod
             }
         }
 
+        public void PHMDevArmor()
+        {
+            int choice = Main.rand.Next(20);
+            {
+                if (choice == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("HalHat"));
+                    player.QuickSpawnItem(mod.ItemType("HalTux"));
+                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                }
+                else if (choice == 1)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
+                }
+                else if (choice == 2)
+                {
+                    player.QuickSpawnItem(mod.ItemType("N1"));
+                }
+                if (choice == 3)
+                {
+                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                }
+                if (choice == 4)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
+                }
+                if (choice == 5)
+                {
+                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                }
+                if (choice == 6)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                }
+                if (choice == 7)
+                {
+                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                }
+            }
+        }
 
+        public void HMDevArmor()
+        {
+            int choice = Main.rand.Next(20);
+            {
+                if (choice == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("HalHat"));
+                    player.QuickSpawnItem(mod.ItemType("HalTux"));
+                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                }
+                else if (choice == 1)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
+                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
+                }
+                else if (choice == 2)
+                {
+                    player.QuickSpawnItem(mod.ItemType("N1"));
+                }
+                if (choice == 3)
+                {
+                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                }
+                if (choice == 4)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
+                }
+                if (choice == 5)
+                {
+                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                }
+                if (choice == 6)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                }
+                if (choice == 7)
+                {
+                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                }
+            }
+        }
+
+        public void PMLDevArmor()
+        {
+            int choice = Main.rand.Next(20);
+            {
+                if (choice == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("HalHat"));
+                    player.QuickSpawnItem(mod.ItemType("HalTux"));
+                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                    player.QuickSpawnItem(mod.ItemType("Prismeow"));
+                }
+                else if (choice == 1)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
+                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
+                    player.QuickSpawnItem(mod.ItemType("AmphibianLongsword"));
+                }
+                else if (choice == 2)
+                {
+                    player.QuickSpawnItem(mod.ItemType("N1"));
+                    player.QuickSpawnItem(mod.ItemType("Sax"));
+                }
+                if (choice == 3)
+                {
+                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                    player.QuickSpawnItem(mod.ItemType("UmbreonSP"));
+                }
+                if (choice == 4)
+                {
+
+                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
+                }
+                if (choice == 5)
+                {
+                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                    player.QuickSpawnItem(mod.ItemType("ChinStaff"));
+                }
+                if (choice == 6)
+                {
+                    player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
+                }
+                if (choice == 7)
+                {
+                    player.QuickSpawnItem(mod.ItemType("CharlieShell"));
+                }
+                if (choice == 8)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TimeTeller"));
+                }
+                if (choice == 9)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TitanAxe"));
+                }
+                if (choice == 10)
+                {
+                    player.QuickSpawnItem(mod.ItemType("EnderStaff"));
+                }
+                if (choice == 11)
+                {
+                    player.QuickSpawnItem(mod.ItemType("CatsEyeRifle"));
+                }
+                if (choice == 12)
+                {
+                    player.QuickSpawnItem(mod.ItemType("DuckstepGun"));
+                }
+                if (choice == 13)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                    player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
+                }
+                if (choice == 14)
+                {
+                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    player.QuickSpawnItem(mod.ItemType("Etheral"));
+                }
+            }
+        }
+
+        public void SADevArmor()
+        {
+            int choice = Main.rand.Next(20);
+            {
+                if (choice == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("HalHat"));
+                    player.QuickSpawnItem(mod.ItemType("HalTux"));
+                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                    player.QuickSpawnItem(mod.ItemType("PrismeowEX"));
+                }
+                else if (choice == 1)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FishDiverMaskA"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverJacketA"));
+                    player.QuickSpawnItem(mod.ItemType("FishDiverBootsA"));
+                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
+                    player.QuickSpawnItem(mod.ItemType("AmphibianLongswordEX"));
+                }
+                else if (choice == 2)
+                {
+                    player.QuickSpawnItem(mod.ItemType("N1"));
+                    player.QuickSpawnItem(mod.ItemType("Sax"));
+                }
+                if (choice == 3)
+                {
+                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                    player.QuickSpawnItem(mod.ItemType("UmbreonSPEX"));
+                }
+                if (choice == 4)
+                {
+
+                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
+                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
+                }
+                if (choice == 5)
+                {
+                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                    player.QuickSpawnItem(mod.ItemType("ChinStaffEX"));
+                }
+                if (choice == 6)
+                {
+                    player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
+                }
+                if (choice == 7)
+                {
+                    player.QuickSpawnItem(mod.ItemType("CharlieShellEX"));
+                }
+                if (choice == 8)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TimeTeller"));
+                }
+                if (choice == 9)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TitanAxeEX"));
+                }
+                if (choice == 10)
+                {
+                    player.QuickSpawnItem(mod.ItemType("EnderStaffEX"));
+                }
+                if (choice == 11)
+                {
+                    player.QuickSpawnItem(mod.ItemType("CatsEyeRifleEX"));
+                }
+                if (choice == 12)
+                {
+                    player.QuickSpawnItem(mod.ItemType("DuckstepGunEX"));
+                }
+                if (choice == 13)
+                {
+                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                    player.QuickSpawnItem(mod.ItemType("GentlemansLongblade"));
+                }
+                if (choice == 14)
+                {
+                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                    player.QuickSpawnItem(mod.ItemType("EtheralEX"));
+                }
+            }
+        }
 
         public override void PreUpdate()
         {
@@ -984,6 +1466,17 @@ namespace AAMod
             if (clawsOfChaos)
             {
                 player.ApplyDamageToNPC(target, 5, 0, 0, false);
+            }
+
+            if (StormClaw == true)
+            {
+                player.ApplyDamageToNPC(target, 20, 0, 0, false);
+            }
+
+            if (DiscordShredder)
+            {
+                player.ApplyDamageToNPC(target, 30, 0, 0, false);
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
             if (demonGauntlet && Main.rand.Next(2) == 0)
@@ -1335,6 +1828,12 @@ namespace AAMod
             if (StormClaw == true)
             {
                 player.ApplyDamageToNPC(target, 20, 0, 0, false);
+            }
+
+            if (DiscordShredder)
+            {
+                player.ApplyDamageToNPC(target, 30, 0, 0, false);
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
             if (trueDemon && proj.minion && Main.rand.Next(2) == 0)

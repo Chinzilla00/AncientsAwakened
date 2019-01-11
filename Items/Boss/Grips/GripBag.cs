@@ -39,55 +39,8 @@ namespace AAMod.Items.Boss.Grips
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
-                int choice = Main.rand.Next(10);
-                {
-                    if (choice == 0)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("HalHat"));
-                        player.QuickSpawnItem(mod.ItemType("HalTux"));
-                        player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                    }
-                    else if (choice == 1)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
-                        player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
-                        player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                    }
-                    else if (choice == 2)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("N1"));
-                    }
-                    if (choice == 3)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                        player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                        player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                    }
-                    if (choice == 4)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("GavransGoggles"));
-                        player.QuickSpawnItem(mod.ItemType("GavransChest"));
-                        player.QuickSpawnItem(mod.ItemType("GavransChest"));
-                    }
-                    if (choice == 5)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                    }
-                    if (choice == 6)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
-                    }
-                    if (choice == 7)
-                    {
-                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-                    }
-                }
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                modPlayer.PHMDevArmor();
             }
             if (Main.rand.Next(3) == 0)
             {

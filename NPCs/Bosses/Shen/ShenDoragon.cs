@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
@@ -36,6 +37,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 customAI[3] = reader.ReadFloat();				
             }
         }
+
+        public bool SpawnGrips = false;
 
         public override void SetStaticDefaults()
         {
@@ -568,6 +571,15 @@ namespace AAMod.NPCs.Bosses.Shen
     
         public override void HitEffect(int hitDirection, double damage)
         {
+            Player player = Main.player[npc.target];
+            if (npc.life <= npc.life / 2 && !SpawnGrips)
+            {
+                SpawnGrips = true;
+                Main.NewText("Grips! Assist me!", Color.Magenta);
+                SpawnBoss(player, "AbyssGripS", "GripOfChaosBlue");
+                SpawnBoss(player, "BlazeGripS", "GripOfChaosRed");
+                Main.PlaySound(SoundID.Roar, player.position, 0);
+            }
             if (npc.life <= 0)
             {
                 for (int m = 0; m < 60; m++)
@@ -669,6 +681,18 @@ namespace AAMod.NPCs.Bosses.Shen
 			npc.position.Y -= 130f; // offsetVec;
 			//BaseDrawing.DrawHitbox(sb, npc.Hitbox, Color.Red); //ENABLE THIS TO SEE HITBOX
             return false;
+        }
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
         }
     }
     
