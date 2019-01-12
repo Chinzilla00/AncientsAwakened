@@ -31,8 +31,8 @@ namespace AAMod.NPCs.Bosses.Infinity
 		{
 			npc.npcSlots = 18f;
 			npc.damage = 0;
-            npc.width = 342; 			
-            npc.height = 420;
+            npc.width = 420; 			
+            npc.height = 342;
             npc.npcSlots = 100;
             npc.scale = 1f;
 			npc.defense = 180;
