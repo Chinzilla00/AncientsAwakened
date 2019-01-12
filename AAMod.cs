@@ -62,7 +62,7 @@ namespace AAMod
 
         public override void PostSetupContent()
         {
-            Mod AchievementLibs = ModLoader.GetMod("AchievementLibs");
+            Mod AchievementLibs = ModLoader.GetMod("DradonIsDum");
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             Mod yabhb = ModLoader.GetMod("FKBossHealthBar");
             Mod Calamity = ModLoader.GetMod("CalamityMod");
@@ -155,6 +155,10 @@ namespace AAMod
                 //DukeFishron = 12f;
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
+            }
+            if (DradonIsDum != null)
+            {
+                mod.Call("AddAchievementWithoutReward", this, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", mod.GetTexture("BlankTex"), downedMonarch);
             }
 
         }
