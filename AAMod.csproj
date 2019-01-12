@@ -998,6 +998,7 @@
     <Compile Include="NPCs\Bosses\EmperorFishron\EmperorFishron.cs" />
     <Compile Include="NPCs\Bosses\GripsShen\AbyssGrip.cs" />
     <Compile Include="NPCs\Bosses\GripsShen\BlazeGrip.cs" />
+    <Compile Include="NPCs\Bosses\Grips\BaseGripOfChaos.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosBlue.cs" />
     <Compile Include="NPCs\Bosses\Grips\GripOfChaosRed.cs" />
     <Compile Include="NPCs\Bosses\Hydra\Hydra.cs" />
@@ -3583,6 +3584,7 @@
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\FuryPhoenix.png" />
     <Content Include="NPCs\Bosses\Akuma\TurePhoenix.png" />
+    <Content Include="NPCs\Bosses\Azathoth\AzathothWIP.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />

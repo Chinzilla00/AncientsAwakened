@@ -115,6 +115,30 @@ namespace AAMod
                     {
                         WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                     }
+                    if (Main.tile[tilesX, tilesY].type == 59)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EventideAbyssiumOre"));
+                    }
+                    if (Main.tile[tilesX, tilesY].type == 1)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
+                    }
+                    if (Main.tile[tilesX, tilesY].type == 117)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("HallowedOre"));
+                    }
+                    if (Main.tile[tilesX, tilesY].type == 397)
+                    {
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
+                    }
+                    WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
+                    int i2 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+                    double num9 = Main.worldSurface;
+                    int j2 = WorldGen.genRand.Next((int)((Main.rockLayer + Main.rockLayer + (double)Main.maxTilesY) / 3.0), Main.maxTilesY - 150);
+
+                    WorldGen.OreRunner(i2, WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150), (double)WorldGen.genRand.Next(5, 9 + 4), WorldGen.genRand.Next(5, 9 + 4), (ushort)mod.TileType("YtriumOre"));
+                    WorldGen.OreRunner(i2, WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150), (double)WorldGen.genRand.Next(5, 9 + 3), WorldGen.genRand.Next(5, 9 + 3), (ushort)mod.TileType("UraniumOre"));
+                    WorldGen.OreRunner(i2, j2, (double)WorldGen.genRand.Next(5, 9 + 2), WorldGen.genRand.Next(5, 9 + 2), (ushort)mod.TileType("TechneciumOre"));
                 }
             }
         }

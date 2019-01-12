@@ -158,6 +158,7 @@ namespace AAMod
         public bool RoyalKitten = false;
         public bool Mudkip = false;
         public bool MudkipS = false;
+        public bool BoomBoi = false;
 
         //NPCcount
 
@@ -273,6 +274,7 @@ namespace AAMod
             RoyalKitten = false;
             Mudkip = false;
             MudkipS = false;
+            BoomBoi = false;
             //EnemyChecks
             IsGoblin = false;
             

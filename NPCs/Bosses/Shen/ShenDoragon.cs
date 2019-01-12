@@ -572,7 +572,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void HitEffect(int hitDirection, double damage)
         {
             Player player = Main.player[npc.target];
-            if (npc.life <= npc.life / 2 && !SpawnGrips)
+            if (npc.life <= npc.life / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
                 Main.NewText("Grips! Assist me!", Color.Magenta);

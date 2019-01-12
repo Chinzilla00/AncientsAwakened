@@ -332,9 +332,9 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Corruption"));
+            int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
-            if (shiniesIndex == -1)
+            if (shiniesIndex != -1)
             {
                 tasks.Insert(shiniesIndex + 3, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
                 {
@@ -928,13 +928,13 @@ namespace AAMod
                     Main.NewText("The hallowed caves shine with light for a brief moment...", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
-                    int tilesX = WorldGen.genRand.Next(0, x);
-                    int tilesY = WorldGen.genRand.Next(0, y);
-                    if (Main.tile[tilesX, tilesY].type == 117)
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
-                        for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next(0, y);
+                        if (Main.tile[tilesX, tilesY].type == 117)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("HallowedOre"));
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("HallowedOre"));
                         }
                     }
                 }
@@ -948,15 +948,23 @@ namespace AAMod
                     Main.NewText("Chaotic energy grows in the deepest parts of the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
-                    int tilesX = WorldGen.genRand.Next(0, x);
-                    int tilesY = WorldGen.genRand.Next(0, y);
-                    if (Main.tile[tilesX, tilesY].type == 59)
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EventideAbyssiumOre"));
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next(0, y);
+                        if (Main.tile[tilesX, tilesY].type == 59)
+                        {
+                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EventideAbyssiumOre"));
+                        }
                     }
-                    if (Main.tile[tilesX, tilesY].type == 1)
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next(0, y);
+                        if (Main.tile[tilesX, tilesY].type == 1)
+                        {
+                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
+                        }
                     }
                 }
             }
@@ -970,11 +978,11 @@ namespace AAMod
                     Main.NewText("The winter hills rumble", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
-                    int tilesX = WorldGen.genRand.Next(0, x);
-                    int tilesY = WorldGen.genRand.Next(0, y);
-                    if (Main.tile[tilesX, tilesY].type == 397)
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
-                        for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next(0, y);
+                        if (Main.tile[tilesX, tilesY].type == 397)
                         {
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
                         }
@@ -1228,6 +1236,8 @@ namespace AAMod
                     Spawn(player, mod, "ChaosDragon");
                 }
             }
+
+            OreCount += 1;
             ChaosAltarsSmashed++;
         }
 

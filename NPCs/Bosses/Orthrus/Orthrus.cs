@@ -101,7 +101,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override void AI()
         {
-            
+
+            npc.frameCounter++;
 
             if (internalAI[1] == AISTATE_TURRET)
             {
@@ -122,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     HeadsSpawned = true;
                 }
                 npc.noTileCollide = true;
-                npc.noGravity = true;
+                npc.noGravity = false;
                 if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
                 {
                     
@@ -148,8 +149,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     internalAI[1] = AISTATE_DROP;
                 }
             }
-
-            npc.frameCounter++;
 
             if (internalAI[1] == AISTATE_TURRET) //Standing
             {
@@ -180,7 +179,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
             }
             if (internalAI[1] == AISTATE_RISE) //Rising
             {
-                npc.frameCounter++;
                 if (npc.frameCounter < 5)
                 {
                     npc.frame.Y = 102 * 11;
@@ -199,6 +197,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 }
                 if (npc.frameCounter < 25)
                 {
+                    npc.frameCounter = 0;
                     internalAI[1] = AISTATE_FLY;
                 }
             }
@@ -223,6 +222,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 }
                 if (npc.frameCounter < 25)
                 {
+                    npc.frameCounter = 0;
                     internalAI[1] = AISTATE_TURRET;
                 }
             }

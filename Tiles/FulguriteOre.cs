@@ -36,7 +36,7 @@ namespace AAMod.Tiles
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Violet, BaseDrawing.GetLightColor(new Vector2(x, y)), BaseDrawing.GetLightColor(new Vector2(x, y)));
+            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Violet, BaseDrawing.GetLightColor(new Vector2(x, y)), Color.Violet, BaseDrawing.GetLightColor(new Vector2(x, y)), BaseDrawing.GetLightColor(new Vector2(x, y)), BaseDrawing.GetLightColor(new Vector2(x, y)));
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
             if (Main.drawToScreen)
             {
