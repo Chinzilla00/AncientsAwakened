@@ -22,7 +22,7 @@ namespace AAMod.Items.Tools
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 11;
 		    item.pick = 235;
-            item.axe = 200;
+            item.axe = 100;
             item.tileBoost += 4;
 
             item.damage = 60;

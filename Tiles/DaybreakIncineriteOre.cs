@@ -24,7 +24,7 @@ namespace AAMod.Tiles
             drop = mod.ItemType("DaybreakIncineriteOre");   //put your CustomBlock name
             dustType = mod.DustType("AkumaADust");
             AddMapEntry(new Color(100, 30, 0));
-			minPick = 250;
+			minPick = 225;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)

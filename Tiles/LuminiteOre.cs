@@ -16,6 +16,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
             drop = ItemID.LunarOre;
+            dustType = mod.DustType<Dusts.LuminiteDust>();
             soundType = 21;
             AddMapEntry(new Color(0, 90, 60));
 			minPick = 225;

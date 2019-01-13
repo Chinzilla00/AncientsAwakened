@@ -23,7 +23,7 @@ namespace AAMod.Tiles
             drop = mod.ItemType("EventideAbyssiumOre");   //put your CustomBlock name
             dustType = mod.DustType("YamataADust");
             AddMapEntry(new Color(0, 0, 30));
-			minPick = 250;
+			minPick = 225;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)

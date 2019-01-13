@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -72,20 +73,20 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("BroodScale"), 50, 75);
             }
         }
+        
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public static Texture2D glowTex = null;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
+            if (glowTex == null)
             {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+                glowTex = mod.GetTexture("Glowmasks/Broodmother_Glow");
             }
-        }*/
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            return false;
+        }
 
         public override void BossLoot(ref string name, ref int potionType)
         {

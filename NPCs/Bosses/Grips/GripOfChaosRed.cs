@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,6 +30,19 @@ namespace AAMod.NPCs.Bosses.Grips
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/InfernoGripGore4"), 1f);
             }
+        }
+
+        public static Texture2D glowTex = null;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("Glowmasks/GripOfChaosRed_Glow");
+            }
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            return false;
         }
 
         public override void NPCLoot()

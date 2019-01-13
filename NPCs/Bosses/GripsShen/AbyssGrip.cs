@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Grips;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.GripsShen
 {
@@ -53,6 +54,20 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
             }
+        }
+
+
+        public static Texture2D glowTex = null;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("Glowmasks/AbyssGrip_Glow");
+            }
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            return false;
         }
 
         public override void NPCLoot()

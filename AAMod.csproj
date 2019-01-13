@@ -153,6 +153,7 @@
     <Compile Include="Dusts\AbyssiumDust.cs" />
     <Compile Include="Dusts\AcidDust.cs" />
     <Compile Include="Dusts\IceDust.cs" />
+    <Compile Include="Dusts\LuminiteDust.cs" />
     <Compile Include="Dusts\SandDust.cs" />
     <Compile Include="Dusts\SnowDustLight.cs" />
     <Compile Include="Dusts\SnowDust.cs" />
@@ -481,6 +482,8 @@
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
+    <Compile Include="Items\Boss\Akuma\AkumaTerratool_Axe.cs" />
+    <Compile Include="Items\Boss\Akuma\AkumaTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
     <Compile Include="Items\Boss\Akuma\Dawnstrike.cs" />
@@ -577,6 +580,9 @@
     <Compile Include="Items\Boss\Shen\Duality.cs" />
     <Compile Include="Items\Boss\Shen\MeteorStrike.cs" />
     <Compile Include="Items\Boss\Shen\ShenCache.cs" />
+    <Compile Include="Items\Boss\Shen\ShenTerratool.cs" />
+    <Compile Include="Items\Boss\Shen\ShenTerratool_Axe.cs" />
+    <Compile Include="Items\Boss\Shen\ShenTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Shen\Skyfall.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
     <Compile Include="Items\Boss\Toad\AncientShroomite.cs" />
@@ -598,6 +604,8 @@
     <Compile Include="Items\Boss\Yamata\Masamune.cs" />
     <Compile Include="Items\Boss\Yamata\Naitokurosu.cs" />
     <Compile Include="Items\Boss\Yamata\YamataTerratool.cs" />
+    <Compile Include="Items\Boss\Yamata\YamataTerratool_Axe.cs" />
+    <Compile Include="Items\Boss\Yamata\YamataTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Yamata\YamataTrophy.cs" />
     <Compile Include="Items\Boss\Zero\AMR.cs" />
     <Compile Include="Items\Boss\Zero\Battery.cs" />
@@ -615,6 +623,8 @@
     <Compile Include="Items\Boss\Zero\ZeroBag.cs" />
     <Compile Include="Items\Boss\Zero\ZeroStar.cs" />
     <Compile Include="Items\Boss\Zero\ZeroTerratool.cs" />
+    <Compile Include="Items\Boss\Zero\ZeroTerratool_Axe.cs" />
+    <Compile Include="Items\Boss\Zero\ZeroTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Zero\ZeroTrophy.cs" />
     <Compile Include="Items\Currency\GoblinSoul.cs" />
     <Compile Include="Items\DevTools\AncientOreGenner.cs" />
@@ -925,6 +935,8 @@
     <Compile Include="Items\Tools\RadiumHammaxe.cs" />
     <Compile Include="Items\Tools\TechneciumPickaxe.cs" />
     <Compile Include="Items\Tools\Terratool.cs" />
+    <Compile Include="Items\Tools\Terratool_Axe.cs" />
+    <Compile Include="Items\Tools\Terratool_Hammer.cs" />
     <Compile Include="Items\Tools\YtriumAxe.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
     <Compile Include="Items\Usable\DesertCrate.cs" />
@@ -1704,13 +1716,6 @@
     <Content Include="Dusts\DiscordLight.png" />
     <Content Include="Dusts\DoomDust.png" />
     <Content Include="Dusts\DragonflameDust.png" />
-    <Content Include="Dusts\dust_Grovite.png" />
-    <Content Include="Dusts\dust_Grovite2.png" />
-    <Content Include="Dusts\dust_Grovite3.png" />
-    <Content Include="Dusts\dust_Rainbow.png" />
-    <Content Include="Dusts\dust_Rainbow2.png" />
-    <Content Include="Dusts\dust_Rainbow3.png" />
-    <Content Include="Dusts\dust_Rainbow4.png" />
     <Content Include="Dusts\EverleafDust.png" />
     <Content Include="Dusts\FlowerDust.png" />
     <Content Include="Dusts\FulguriteDust.png" />
@@ -1726,6 +1731,7 @@
     <Content Include="Dusts\InfinityOverloadP.png" />
     <Content Include="Dusts\InfinityOverloadR.png" />
     <Content Include="Dusts\InfinityOverloadY.png" />
+    <Content Include="Dusts\LuminiteDust.png" />
     <Content Include="Dusts\MagicDust.png" />
     <Content Include="Dusts\MeleeDust.png" />
     <Content Include="Dusts\MindDust.png" />
@@ -1804,6 +1810,7 @@
     <Content Include="Glowmasks\BroodEgg_Glow.png" />
     <Content Include="Glowmasks\Broodmini_Glow.png" />
     <Content Include="Glowmasks\BroodmotherTrophy_Glow.png" />
+    <Content Include="Glowmasks\Broodmother_Glow.png" />
     <Content Include="Glowmasks\BroodScale_Glow.png" />
     <Content Include="Glowmasks\BroodTrophy_Glow.png" />
     <Content Include="Glowmasks\Bunnyzooka_Glow.png" />
@@ -1857,6 +1864,7 @@
     <Content Include="Glowmasks\DarkVoid_Glow.png" />
     <Content Include="Glowmasks\Dawnstrike_Glow.png" />
     <Content Include="Glowmasks\DaybreakArrow_Glow.png" />
+    <Content Include="Glowmasks\DaybreakIncineriteOre_Glow.png" />
     <Content Include="Glowmasks\DaybringerMask_Glow.png" />
     <Content Include="Glowmasks\DaybringerMask_Head_Glow.png" />
     <Content Include="Glowmasks\Daybringer_Glow.png" />
@@ -1928,6 +1936,7 @@
     <Content Include="Glowmasks\EtheralEX_Glow.png" />
     <Content Include="Glowmasks\Etheral_Glow.png" />
     <Content Include="Glowmasks\EventHorizon_Glow.png" />
+    <Content Include="Glowmasks\EventideAbyssiumOre_Glow.png" />
     <Content Include="Glowmasks\EXSoul_Glow.png" />
     <Content Include="Glowmasks\FallingTwilight_Glow.png" />
     <Content Include="Glowmasks\FireProjHostile_Glow.png" />
@@ -1951,6 +1960,7 @@
     <Content Include="Glowmasks\GentlemansRapier_Glow.png" />
     <Content Include="Glowmasks\GripMaskRed_Glow.png" />
     <Content Include="Glowmasks\GripMaskRed_Head_Glow.png" />
+    <Content Include="Glowmasks\GripOfChaosRed_Glow.png" />
     <Content Include="Glowmasks\GripRedTrophy_Glow.png" />
     <Content Include="Glowmasks\GripTrophyRed_Glow.png" />
     <Content Include="Glowmasks\GuardianNight_Glow.png" />
@@ -2161,6 +2171,7 @@
     <Content Include="Glowmasks\ThrowingCrescent_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Face_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Glow.png" />
+    <Content Include="Glowmasks\TodeBox_Glow.png" />
     <Content Include="Glowmasks\TopHat_Glow.png" />
     <Content Include="Glowmasks\TorchstoneWall_Glow.png" />
     <Content Include="Glowmasks\TotalDestruction_Glow.png" />
@@ -2989,6 +3000,9 @@
     <Content Include="Items\Boss\Shen\Duality.png" />
     <Content Include="Items\Boss\Shen\MeteorStrike.png" />
     <Content Include="Items\Boss\Shen\ShenCache.png" />
+    <Content Include="Items\Boss\Shen\ShenTerratool.png" />
+    <Content Include="Items\Boss\Shen\ShenTerratool_Axe.png" />
+    <Content Include="Items\Boss\Shen\ShenTerratool_Hammer.png" />
     <Content Include="Items\Boss\Shen\Skyfall.png" />
     <Content Include="Items\Boss\Shen\Timesplitter.png" />
     <Content Include="Items\Boss\StormCharm.png" />

@@ -31,17 +31,12 @@ namespace AAMod.Items.Boss.GripsShen
 		{
             if (Main.rand.NextFloat() < 0.01f)
             {
-
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();
             }
-            if (Main.rand.Next(3) == 0)
-            {
-                player.QuickSpawnItem(mod.ItemType("ClawBaton"));
-            }
-            player.QuickSpawnItem(mod.ItemType("Abyssium"), Main.rand.Next(25, 56));
-            player.QuickSpawnItem(mod.ItemType("Incinerite"), Main.rand.Next(25, 56));
-            player.QuickSpawnItem(mod.ItemType("ClawOfChaos"));
+            player.QuickSpawnItem(mod.ItemType("EventideAbyssiumOre"), Main.rand.Next(15, 26));
+            player.QuickSpawnItem(mod.ItemType("DaybreakIncineriteOre"), Main.rand.Next(15, 26));
+            player.QuickSpawnItem(mod.ItemType("DiscordianShredder"));
 		}
 	}
 }
