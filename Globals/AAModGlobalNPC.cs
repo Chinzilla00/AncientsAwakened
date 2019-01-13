@@ -38,6 +38,9 @@ namespace AAMod
         public bool DiscordInferno = false;
         public static int Toad = -1;
 
+        
+
+
         public override bool InstancePerEntity
 		{
 			get
@@ -783,5 +786,16 @@ namespace AAMod
             catch (Exception e) { BaseUtility.LogFancy("MNPC PREAI ERROR: ", e); }
             return true;
         }   
+    }
+    public abstract class AANPC : ParentNPC
+    {
+        public virtual bool CanSpawn(int x, int y, int type, Player player, NPCSpawnInfo info)
+        {
+            return CanSpawn(x, y, type, player);
+        }
+        public virtual bool CanSpawn(int x, int y, int type, Player player)
+        {
+            return false;
+        }
     }
 }

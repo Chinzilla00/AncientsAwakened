@@ -106,27 +106,26 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
             if (internalAI[1] == AISTATE_TURRET)
             {
-                if (!HeadsSpawned)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        int latestNPC = npc.whoAmI;
-                        latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].realLife = npc.whoAmI;
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Head1 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].realLife = npc.whoAmI;
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Head2 = Main.npc[latestNPC];
-                    }
-                    HeadsSpawned = true;
-                }
-                npc.noTileCollide = true;
-                npc.noGravity = false;
                 if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
                 {
-                    
+                    npc.noGravity = false;
+                    npc.noTileCollide = false;
+                    if (!HeadsSpawned)
+                    {
+                        if (Main.netMode != 1)
+                        {
+                            int latestNPC = npc.whoAmI;
+                            latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+                            Main.npc[latestNPC].realLife = npc.whoAmI;
+                            Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                            Head1 = Main.npc[latestNPC];
+                            latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+                            Main.npc[latestNPC].realLife = npc.whoAmI;
+                            Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                            Head2 = Main.npc[latestNPC];
+                        }
+                        HeadsSpawned = true;
+                    }
                 }
                 else
                 {

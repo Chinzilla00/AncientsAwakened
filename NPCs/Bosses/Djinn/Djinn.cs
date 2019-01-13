@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
+            npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

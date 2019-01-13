@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Retriever
 {
@@ -57,12 +58,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
         }
 
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            scale = 1.5f;
-            return null;
-        }
-
+        
         public override void NPCLoot()
         {
             if (Main.rand.Next(10) == 0)
@@ -108,123 +104,165 @@ namespace AAMod.NPCs.Bosses.Retriever
                 npc.frame.Y = 3 * frameHeight;
             }
         }
-
-
+        
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedRetriever = true;
         }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 0.8f);  //boss damage increase in expermode
         }
-        public int timer;
-        private bool switchMove = false;  //Creates a bool for this .cs only
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
+        }
+        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
+        {
+            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+        }
+
+        public Vector2 offsetBasePoint = new Vector2(240f, 0f);
+
+        public float moveSpeed = 6f;
+
         public override void AI()
         {
-            if (Main.dayTime)
+            npc.TargetClosest();
+            Player targetPlayer = Main.player[npc.target];
+
+            bool forceChange = false;
+            if (Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
             {
-                npc.position.Y -= 300;  //disappears at night
+                int stopValue = 175;
+                npc.ai[3]++;
+                if (npc.ai[3] > stopValue) npc.ai[3] = stopValue;
+                forceChange = npc.ai[3] >= stopValue;
             }
-            Target();
-            DespawnHandler();
-            if (switchMove)
+            if (npc.ai[0] == 1) //move to starting charge position
             {
-                Move(new Vector2(-240, 0));   //240 is the X axis, so its to the right of the player, -240 will be to the left
-            }
-            npc.ai[0]++;
-            Player P = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest(true);
-            }
-            npc.netUpdate = true;
-            if (Main.rand.Next(450) == 0) // The lower the value, the higher chance of a grippy boi spawning
-            {
-                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("CyberClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
-            }
-            timer++;                //Makes the int start
-            if (timer == 450)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
-            {
-                switchMove = true;     //Makes the switch turn on, making the AI change to nothing
-                npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
-            }
-            if (timer >= 900)          //After 15 seconds this happens
-            {
-                switchMove = false;     //Turns the switch off so the void Move stuff is disabled
-                npc.aiStyle = 5;        //Reverts back to the original Flying AI Style
-                timer = 0;              //Sets the timer back to 0 to repeat
-            }
-        }
-        private void Move(Vector2 offset)
-        {
-            if (switchMove)             //If the switchMove is on, all of this happens, if its off, all of this doesnt happen
-            {
-                npc.spriteDirection = 1;
-                if (Main.expertMode)
+                moveSpeed = 11f;
+                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
                 {
-                    speed = 60f; // Increased movement speed in expert mode (The Keeper only thing, change if you wish)
+                    npc.ai[0] = 2;
+                    npc.ai[1] = targetPlayer.Center.X;
+                    npc.ai[2] = targetPlayer.Center.Y;
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
                 }
-                else
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+            }
+            else
+            if (npc.ai[0] == 2) //dive down
+            {
+                moveSpeed = 15;
+                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
+                Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-                    speed = 90f; // Sets the max speed of the npc.
+                    bool doubleDive = (npc.life < npc.lifeMax / 2);
+                    if (doubleDive)
+                    {
+                        npc.ai[0] = 3;
+                        npc.ai[1] = targetPlayer.Center.X;
+                        npc.ai[2] = targetPlayer.Center.Y;
+                    }
+                    else
+                    {
+                        npc.ai[0] = 0;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                    }
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
                 }
-                Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
-                Vector2 move = moveTo - npc.Center;
-                float magnitude = Magnitude(move);
-                if (magnitude > speed)
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else
+            if (npc.ai[0] == 3) //dive up
+            {
+                moveSpeed = 14;
+                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
+                Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-                    move *= speed / magnitude;
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
                 }
-                float turnResistance = 15f; // The larget the number the slower the npc will turn.
-                move = ((npc.velocity * turnResistance) + move) / (turnResistance + 1f);
-                magnitude = Magnitude(move);
-                if (magnitude > speed)
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else //standard movement
+            {
+                moveSpeed = 8;
+                Vector2 point = targetPlayer.Center + offsetBasePoint;
+                MoveToPoint(point);
+                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 50f || forceChange))
                 {
-                    move *= speed / magnitude;
+                    npc.ai[1]++;
+                    if (npc.ai[1] > 150)
+                    {
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            offsetBasePoint.X = 240;
+                        }
+                        else
+                        {
+                            offsetBasePoint.X = -240;
+                        }
+                        
+                        npc.ai[0] = 1;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        npc.netUpdate = true;
+                    }
                 }
-                npc.velocity = move;
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
         }
 
-        private void Target()
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
-            player = Main.player[npc.target]; // This will get the player target.
-        }
-        private void DespawnHandler()
-        {
-            if (!player.active || player.dead)
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)        // If the player is dead and not active, the npc flies off-screen and despawns
-                {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if (npc.timeLeft > 10)
-                    {
-                        npc.timeLeft = 10;
-                    }
-                    return;
-                }
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-        }
-        private float Magnitude(Vector2 mag)
-        {
-            return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));      //No idea, leave this
-        }
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            if (length < 200f)
             {
-                target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+                moveSpeed *= 0.5f;
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
+            if (length < 100f)
             {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
 }

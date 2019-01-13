@@ -103,6 +103,7 @@
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\YamataSky.cs" />
     <Compile Include="Backgrounds\YamataSkyData.cs" />
+    <Compile Include="Buffs\BoomBoi.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
     <Compile Include="Buffs\DemonMinion.cs" />
     <Compile Include="Buffs\DevilMinion.cs" />
@@ -802,6 +803,8 @@
     <Compile Include="Items\Melee\Voidsaber.cs" />
     <Compile Include="Items\Melee\Xiphos.cs" />
     <Compile Include="Items\Melee\YtriumSword.cs" />
+    <Compile Include="Items\Pets\Bomb.cs" />
+    <Compile Include="Items\Pets\BoomBoi.cs" />
     <Compile Include="Items\Pets\BroodEgg.cs" />
     <Compile Include="Items\Pets\Broodmini.cs" />
     <Compile Include="Items\Pets\MiniProbe.cs" />
@@ -1406,7 +1409,6 @@
     <Compile Include="Tiles\BogwoodF\BogwoodChair.cs" />
     <Compile Include="Tiles\BogwoodF\BogwoodChest.cs" />
     <Compile Include="Tiles\BogwoodF\BogwoodDoorOpen.cs" />
-    <Compile Include="Tiles\Boss6Box.cs" />
     <Compile Include="Tiles\BroodBox.cs" />
     <Compile Include="Tiles\ChaosAltar.cs" />
     <Compile Include="Tiles\ChaosCrucible.cs" />
@@ -1630,6 +1632,7 @@
     <Content Include="bin\Debug\Terraria.exe" />
     <Content Include="BlankTex.png" />
     <Content Include="Buffs\BabyPhoenix.png" />
+    <Content Include="Buffs\BoomBoi.png" />
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\BurningAsh.png" />
     <Content Include="Buffs\ChairMinionBuff.png" />
@@ -3273,6 +3276,8 @@
     <Content Include="Items\Melee\Voidsaber.png" />
     <Content Include="Items\Melee\Xiphos.png" />
     <Content Include="Items\Melee\YtriumSword.png" />
+    <Content Include="Items\Pets\Bomb.png" />
+    <Content Include="Items\Pets\BoomBoi.png" />
     <Content Include="Items\Pets\BroodEgg.png" />
     <Content Include="Items\Pets\Broodmini.png" />
     <Content Include="Items\Pets\MiniProbe.png" />
@@ -3751,8 +3756,6 @@
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
-    <Content Include="NPCs\Bosses\Toad\ToadCloud.png" />
-    <Content Include="NPCs\Bosses\Toad\ToadRock.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
@@ -4314,7 +4317,6 @@
     <Content Include="Tiles\BogwoodF\BogwoodDoorOpen.png" />
     <Content Include="Tiles\BogwoodF\BogwoodDoorOpen_Highlight.png" />
     <Content Include="Tiles\BogwoodF\BogwoodPlatform.png" />
-    <Content Include="Tiles\Boss6Box.png" />
     <Content Include="Tiles\BroodBox.png" />
     <Content Include="Tiles\ChaosAltar.png" />
     <Content Include="Tiles\ChaosCrucible.png" />

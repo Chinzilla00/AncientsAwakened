@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.CloneDefaults(NPCID.ShadowFlameApparition);
             aiType = NPCID.ShadowFlameApparition;
             npc.aiStyle = NPCID.ShadowFlameApparition;
-            npc.npcSlots = 0;
+            npc.npcSlots = 1;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = 86;
             npc.lifeMax = 9000;

@@ -29,14 +29,13 @@ namespace AAMod.NPCs.Bosses.Infinity
 		}
 		public override void SetDefaults()
 		{
-			npc.npcSlots = 18f;
 			npc.damage = 0;
             npc.width = 420; 			
             npc.height = 342;
             npc.npcSlots = 100;
             npc.scale = 1f;
-			npc.defense = 180;
-			npc.lifeMax = 2000000;
+			npc.defense = 250;
+			npc.lifeMax = 2500000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
 			npc.value = Item.buyPrice(30, 0, 0, 0);
@@ -268,16 +267,7 @@ namespace AAMod.NPCs.Bosses.Infinity
                 npc.DropLoot(Items.Boss.EXSoul.type);
             }
         }
-
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            damage = damage * 0.8f;
-            if (damage >= 1000)
-            {
-                damage = 1000;
-            }
-            return true;
-        }
+        
 
         public override void FindFrame(int frameHeight)
         {
@@ -297,11 +287,12 @@ namespace AAMod.NPCs.Bosses.Infinity
 		
 		private void ModifyHit(ref int damage)
 		{
-			if (damage > npc.lifeMax / 8)
-			{
-				damage = npc.lifeMax / 8;
-			}
-		}
+            damage = (int)(damage * 0.6f);
+            if (damage >= 800)
+            {
+                damage = 800;
+            }
+        }
 		
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
 		{
@@ -332,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Redirecting resources to offensive systems.", new Color(158, 3, 32));
                 HalfHealth = true;
-                npc.defense = 175;
+                npc.defense = 225;
                 IZHand1.damageIdle = 250;
                 IZHand1.damageCharging = 350;
                 roarTimer = 200;
@@ -343,16 +334,16 @@ namespace AAMod.NPCs.Bosses.Infinity
                 quarterHealth = true;
                 roarTimer = 200;
             }
-            if (npc.life <= npc.lifeMax / 5 && !fifthHealth)
+            if (npc.life <= npc.lifeMax / 6 && !fifthHealth)
             {
                 fifthHealth = true;
                 if (Main.netMode != 1) BaseUtility.Chat("Terrarian, you will not win this. Rerouting all resources to offensive systems.", new Color(158, 3, 32));
-                npc.defense = 0;
+                npc.defense = 175;
                 IZHand1.damageIdle = 350;
                 IZHand1.damageCharging = 500;
                 roarTimer = 200;
             }
-            if (npc.life <= npc.lifeMax / 5)
+            if (npc.life <= npc.lifeMax / 6)
             {
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
             }

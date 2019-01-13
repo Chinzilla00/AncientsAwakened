@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Enemies.Hallow
             {
                 npc.spriteDirection = 1;
             }
-            BaseAI.AISlime(npc, ref npc.ai, false, 100, 6f, 4f, 6f, 6f);
+            BaseAI.AISlime(npc, ref npc.ai, false, 200, 2f, 6f, 3f, 8f);
         }
 
         public override void BossLoot(ref string name, ref int potionType)

@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 20000;   //boss life
+            npc.lifeMax = 14000;   //boss life
             npc.damage = 30;  //boss damage
             npc.defense = 20;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
@@ -57,6 +57,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.boss = true;
             npc.lavaImmune = true;
             npc.noGravity = false;
+            npc.noTileCollide = false;
             npc.noTileCollide = false;
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;

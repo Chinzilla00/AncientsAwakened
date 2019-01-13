@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaotic Dawn");
+			DisplayName.SetDefault("Flamespitter");
             Main.npcFrameCount[npc.type] = 15;
 		}
 

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -52,16 +53,33 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.netAlways = true;
         }
-
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write((short)npc.localAI[0]);
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((float)internalAI[0]);
+                writer.Write((float)internalAI[1]);
+                writer.Write((float)internalAI[2]);
+                writer.Write((float)internalAI[3]);
+            }
         }
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             npc.localAI[0] = reader.ReadInt16();
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
         }
+
+
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -180,40 +198,14 @@ namespace AAMod.NPCs.Bosses.Zero
             return false;
         }
 
-        public bool ChargeAttack //actually charging the player
-        {
-            get
-            {
-                return npc.ai[1] == 1;
-            }
-            set
-            {
-                float oldValue = npc.ai[1];
-                npc.ai[1] = (value ? 1f : 0f);
-                if (npc.ai[1] != oldValue) npc.netUpdate = true;
-            }
-        }
-        public bool Charging //preparing to charge the player
-        {
-            get
-            {
-                return npc.ai[1] == 1.5f;
-            }
-            set
-            {
-                float oldValue = npc.ai[1];
-                npc.ai[1] = (value ? 1.5f : 0f);
-                if (npc.ai[1] != oldValue) npc.netUpdate = true;
-            }
-        }
-
-        public int chargeTimer = 0;
-        public int movementtimer = 0;
-        public bool direction = false;
-        public int chargeTime = 100;
-        
+        public float moveSpeed = 6f;
         public int MinionTimer = 0;
         public int LineStopper = 180;
+        public Vector2 offsetBasePoint = new Vector2(-240f, 0f);
+
+        public float[] internalAI = new float[4];
+        public static int ChargeType = 0, XPos = 1, YPos = 2, PrepareCharge = 2;
+
         public override void AI()
         {
             MinionTimer++;
@@ -358,44 +350,126 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            else
+            else if(npc.ai[1] == 1f)
             {
-                if (npc.ai[1] == 1f)
+                Player targetPlayer = Main.player[npc.target];
+                bool forceChange = false;
+                if (Main.netMode != 1 && internalAI[0] != 2 && internalAI[0] != 3)
                 {
-                    if (npc.ai[1] == 1f)
-                    {
-                        npc.ai[2] += 1f;
-                        if (npc.ai[2] >= chargeTime)
-                        {
-                            npc.ai[1] = 0f;
-                            npc.ai[2] = 0f;
-                            npc.netUpdate = true;
-                            return;
-                        }
-                        npc.rotation = BaseMod.BaseUtility.RotationTo(npc.Center, (npc.Center + npc.velocity));
-                        return;
-                    }
+                    int stopValue = 200;
+                    internalAI[3]++;
+                    if (internalAI[3] > stopValue) internalAI[3] = stopValue;
+                    forceChange = internalAI[3] >= stopValue;
                 }
-                if (npc.ai[1] == 3f)
+                if (internalAI[0] == 1) //move to starting charge position
                 {
-                    npc.velocity.Y = npc.velocity.Y + 0.1f;
-                    if (npc.velocity.Y < 0f)
+                    moveSpeed = 17;
+                    Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+                    MoveToPoint(point);
+                    if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
                     {
-                        npc.velocity.Y = npc.velocity.Y * 0.95f;
+                        internalAI[0] = 2;
+                        internalAI[1] = targetPlayer.Center.X;
+                        internalAI[2] = targetPlayer.Center.Y;
+                        internalAI[3] = 0;
+                        npc.netUpdate = true;
                     }
-                    npc.velocity.X = npc.velocity.X * 0.95f;
-                    if (npc.timeLeft > 500)
+                    BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+                }
+                else
+                if (internalAI[0] == 2) //dive down
+                {
+                    moveSpeed = 17f;
+                    Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
+                    Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
+                    MoveToPoint(point);
+                    if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                     {
-                        npc.timeLeft = 500;
-                        return;
+                        bool doubleDive = (npc.life < npc.lifeMax / 2);
+                        if (doubleDive)
+                        {
+                            internalAI[0] = 3;
+                            internalAI[1] = targetPlayer.Center.X;
+                            internalAI[2] = targetPlayer.Center.Y;
+                        }
+                        else
+                        {
+                            internalAI[0] = 0;
+                            internalAI[1] = 0;
+                            internalAI[2] = 0;
+                        }
+                        internalAI[3] = 0;
+                        npc.netUpdate = true;
                     }
+                    BaseAI.Look(npc, 0, 0f, 0.1f, false);
+                }
+                else
+                if (internalAI[0] == 3) //dive up
+                {
+                    moveSpeed = 17f;
+                    Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
+                    Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
+                    MoveToPoint(point);
+                    if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    BaseAI.Look(npc, 0, 0f, 0.1f, false);
+                }
+                
+            }
+            else if (npc.ai[1] == 3f)
+            {
+                npc.velocity.Y = npc.velocity.Y + 0.1f;
+                if (npc.velocity.Y < 0f)
+                {
+                    npc.velocity.Y = npc.velocity.Y * 0.95f;
+                }
+                npc.velocity.X = npc.velocity.X * 0.95f;
+                if (npc.timeLeft > 500)
+                {
+                    npc.timeLeft = 500;
+                    return;
                 }
             }
         }
+
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        {
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
         public override void FindFrame(int frameHeight)
         {
             //npc.frameCounter++;
-            if (ChargeAttack || Charging)
+            if (npc.ai[1] == 1f)
             {
                 npc.frame.Y = 1 * frameHeight;
             }
