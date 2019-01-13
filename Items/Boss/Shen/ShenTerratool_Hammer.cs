@@ -26,17 +26,17 @@ namespace AAMod.Items.Boss.Shen
             item.width = 60;
             item.height = 54;
 			item.useStyle = 1;
-            item.useTime = 5;
-            item.useAnimation = 20;
-            item.tileBoost += 20;
+            item.useTime = 4;
+            item.useAnimation = 15;
+            item.tileBoost += 25;
             item.knockBack = 3;
             item.value = 1000000;
             item.rare = 11;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-            item.damage = 100;
-            item.hammer = 260;
+            item.damage = 120;
+            item.hammer = 270;
 
         }
 

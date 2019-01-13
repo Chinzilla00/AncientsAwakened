@@ -577,6 +577,7 @@
     <Compile Include="Items\Boss\Shen\ChaosSlayer.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSlayerEX.cs" />
     <Compile Include="Items\Boss\Shen\ChaosSoul.cs" />
+    <Compile Include="Items\Boss\Shen\Astroid.cs" />
     <Compile Include="Items\Boss\Shen\Duality.cs" />
     <Compile Include="Items\Boss\Shen\MeteorStrike.cs" />
     <Compile Include="Items\Boss\Shen\ShenCache.cs" />
@@ -1289,7 +1290,9 @@
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordEX.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordRed.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordRedEX.cs" />
+    <Compile Include="Projectiles\Shen\Astroid.cs" />
     <Compile Include="Projectiles\Shen\DiscordBeam.cs" />
+    <Compile Include="Projectiles\Shen\Meteorite.cs" />
     <Compile Include="Projectiles\Shen\Meteor.cs" />
     <Compile Include="Projectiles\Shen\MeteorBlue.cs" />
     <Compile Include="Projectiles\Shen\MeteorBoom.cs" />
@@ -2992,7 +2995,7 @@
     <Content Include="Items\Boss\Serpent\BlizzardBuster.png" />
     <Content Include="Items\Boss\Serpent\SnowflakeShuriken.png" />
     <Content Include="Items\Boss\Serpent\SubzeroSlasher.png" />
-    <Content Include="Items\Boss\Shen\Asteroid.png" />
+    <Content Include="Items\Boss\Shen\Astroid.png" />
     <Content Include="Items\Boss\Shen\ChaosScale.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayer.png" />
     <Content Include="Items\Boss\Shen\ChaosSlayerEX.png" />
@@ -4135,6 +4138,8 @@
     <Content Include="Projectiles\Serpent\SerpentTail.png" />
     <Content Include="Projectiles\Serpent\SS.png" />
     <Content Include="Projectiles\Serpent\Sting.png" />
+    <Content Include="Projectiles\Shen\Astroid.png" />
+    <Content Include="Projectiles\Shen\Astroid_Chain.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSword.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlue.png" />
     <Content Include="Projectiles\Shen\ChaosSlayerSwordBlueEX.png" />
@@ -4148,6 +4153,7 @@
     <Content Include="Projectiles\Shen\MeteorBoom.png" />
     <Content Include="Projectiles\Shen\MeteorBoomBlue.png" />
     <Content Include="Projectiles\Shen\MeteorBoomRed.png" />
+    <Content Include="Projectiles\Shen\Meteorite.png" />
     <Content Include="Projectiles\Shen\MeteorRed.png" />
     <Content Include="Projectiles\Shen\MeteorStrike.png" />
     <Content Include="Projectiles\Shen\MeteorStrikeBlue.png" />

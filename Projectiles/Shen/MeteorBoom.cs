@@ -25,6 +25,7 @@ namespace AAMod.Projectiles.Shen
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 6;
+            projectile.scale *= 1.4f;
         }
 
         public override Color? GetAlpha(Color lightColor)
