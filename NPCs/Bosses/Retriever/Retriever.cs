@@ -141,6 +141,11 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
 
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.velocity.Y -= 5;
+            }
+
             bool forceChange = false;
             if (Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
             {

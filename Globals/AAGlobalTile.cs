@@ -55,6 +55,22 @@ namespace AAMod
             return GetTimedColor(Color.Violet, color, min, max, clamp);
         }
 
+        public static Color GetAkumaColorBrightInvert(Color color) { return GetAkumaColor(color, 1f, 0.6f, true); }
+        public static Color GetAkumaColorDim(Color color) { return GetAkumaColor(color, 0.4f, 1f, false); }
+        public static Color GetAkumaColorBright(Color color) { return GetAkumaColor(color, 0.6f, 1f, false); }
+        public static Color GetAkumaColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.DeepSkyBlue, color, min, max, clamp);
+        }
+
+        public static Color GetYamataColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
+        public static Color GetYamataColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
+        public static Color GetYamataColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetYamataColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.Maroon, color, min, max, clamp);
+        }
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

@@ -15,20 +15,20 @@ namespace AAMod
             }
         }
         public static Color Akuma //Akuma
-		{
-			get
-			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 37, 30), new Color(102, 20, 48), new Color(146, 37, 30));
-			}
-		}
-		public static Color Yamata //Yamata
-		{
-			get
-			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75),  new Color(53, 57, 126));
-			}
-		}
-		public static Color Zero //Zero
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 37, 30), new Color(102, 20, 48), new Color(146, 37, 30));
+            }
+        }
+        public static Color Yamata2 //Yamata
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75), new Color(53, 57, 126));
+            }
+        }
+        public static Color Zero //Zero
 		{
 			get
 			{

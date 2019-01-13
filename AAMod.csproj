@@ -1362,6 +1362,9 @@
     <Compile Include="Tiles\AncientForge.cs" />
     <Compile Include="Tiles\DaybreakIncineriteOre.cs" />
     <Compile Include="Tiles\EventideAbyssiumOre.cs" />
+    <Compile Include="Tiles\SerpentBox.cs" />
+    <Compile Include="Tiles\SiegeBox.cs" />
+    <Compile Include="Tiles\TodeBox.cs" />
     <Compile Include="Tiles\Trophy\IZTrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataTrophy.cs" />
     <Compile Include="Tiles\Uranium.cs" />
@@ -4299,6 +4302,7 @@
     <Content Include="Tiles\OroborosChestC4_Highlight.png" />
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\SABox.png" />
+    <Content Include="Tiles\SerpentBox.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\Apocalyptite.png" />
@@ -4424,6 +4428,7 @@
     <Content Include="Tiles\RRBox.png" />
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
+    <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\StormCloud.png" />
@@ -4436,6 +4441,7 @@
     <Content Include="Tiles\TerraLeaves.png" />
     <Content Include="Tiles\TerrariumBox.png" />
     <Content Include="Tiles\TerraWood.png" />
+    <Content Include="Tiles\TodeBox.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />
     <Content Include="Tiles\TorchsandBall.png" />

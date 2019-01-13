@@ -85,7 +85,18 @@ namespace AAMod.NPCs.Bosses.Grips
 			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 
-			bool forceChange = false;
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest(false);
+                DespawnHandler();
+                return;
+            }
+            else
+            {
+                npc.alpha += 12;
+            }
+
+            bool forceChange = false;
 			if(Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
 			{
 				int stopValue = (shenGrips ? 100 : 250);
@@ -195,7 +206,24 @@ namespace AAMod.NPCs.Bosses.Grips
 			npc.velocity *= moveSpeed;
 			npc.velocity *= velMultiplier;
 		}
-		
+
+        private void DespawnHandler()
+        {
+            Player player = Main.player[npc.target];
+            npc.TargetClosest(false);
+            player = Main.player[npc.target];
+            if (!player.active || player.dead || Main.dayTime)        // If the player is dead and not active, the npc flies off-screen and despawns
+            {
+                npc.alpha -= 10;
+                npc.velocity.X = 0;
+                npc.velocity.Y = 0;
+                if (npc.alpha >= 255)
+                {
+                    npc.active = false;
+                }
+            }
+        }
+
         /*public int timer;
         private bool switchMove = false; //Creates a bool for this .cs only
         public void AIOLD()
@@ -275,24 +303,7 @@ namespace AAMod.NPCs.Bosses.Grips
         {
             player = Main.player[npc.target]; // This will get the player target.
         }
-        private void DespawnHandler()
-        {
-            if (!player.active || player.dead)
-            {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead || Main.dayTime)        // If the player is dead and not active, the npc flies off-screen and despawns
-                {
-                    npc.alpha -= 10;
-                    npc.velocity.X = 0;
-                    npc.velocity.Y = 0;
-                    if (npc.alpha >= 255)
-                    {
-                        npc.active = false;
-                    }
-                }
-            }
-        }
+        
         private float Magnitude(Vector2 mag)
         {
             return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));      //No idea, leave this
