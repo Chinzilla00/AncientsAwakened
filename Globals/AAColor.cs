@@ -21,7 +21,7 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 37, 30), new Color(102, 20, 48), new Color(146, 37, 30));
             }
         }
-        public static Color Yamata2 //Yamata
+        public static Color Yamata //Yamata
         {
             get
             {
