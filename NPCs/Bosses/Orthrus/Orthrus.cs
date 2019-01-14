@@ -48,7 +48,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             npc.npcSlots = 100;
             npc.width = 96;
-            animationType = NPCID.HellArmoredBonesSword;
             npc.height = 78;
             npc.aiStyle = -1;
             npc.damage = 40;
@@ -59,10 +58,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.knockBackResist = 0f;
             npc.boss = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
-            npc.noGravity = false;
             npc.netAlways = true;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
-            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
             bossBag = mod.ItemType("OrthrusBag");
             npc.noTileCollide = false;
         }
@@ -83,226 +80,179 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofMight, Main.rand.Next(20, 40));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
-                
             }
-            AAWorld.downedOrthrus = true ;
+            AAWorld.downedOrthrus = true;
         }
         
-        public int playerTooFarDist = 800;
-        public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
-        public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
         public Player playerTarget = null;
-        public static int AISTATE_TURRET = 0, AISTATE_FLY = 1, AISTATE_DROP = 2, AISTATE_RISE = 3;
+        public static int AISTATE_TURRET = 0, AISTATE_FLY = 1;
         public float[] internalAI = new float[4];
 
         //clientside stuff
-        public Vector2 bottomVisualOffset = default(Vector2);
-        public Vector2 topVisualOffset = default(Vector2);
+		public int frameWidth = 200;
+		public int frameHeight = 102;
 
         public override void AI()
         {
+			npc.TargetClosest();
+			Player playerTarget = Main.player[npc.target];
+			if(!playerTarget.active || playerTarget.dead) //fleeing
+			{
+	            npc.noGravity = true;	
+				npc.noTileCollide = true;				
+				npc.velocity.Y -= 0.15f;				
+				if(Main.netMode != 1)
+				{
+					if(npc.position.Y + npc.height + npc.velocity.Y < 0) //if out of map, kill boss
+					{
+						BaseAI.KillNPC(npc); 
+						npc.netUpdate = true;
+					}else
+					{
+						float oldAI = internalAI[1];	
+						internalAI[1] = AISTATE_FLY;					
+						if(internalAI[1] != oldAI) 
+							npc.netUpdate = true;					
 
-            npc.frameCounter++;
-
-            if (internalAI[1] == AISTATE_TURRET)
-            {
-                if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
-                {
-                    npc.noGravity = false;
-                    npc.noTileCollide = false;
-                    if (!HeadsSpawned)
-                    {
-                        if (Main.netMode != 1)
-                        {
-                            int latestNPC = npc.whoAmI;
-                            latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                            Main.npc[latestNPC].realLife = npc.whoAmI;
-                            Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                            Head1 = Main.npc[latestNPC];
-                            latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                            Main.npc[latestNPC].realLife = npc.whoAmI;
-                            Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                            Head2 = Main.npc[latestNPC];
-                        }
-                        HeadsSpawned = true;
-                    }
-                }
-                else
-                {
-                    internalAI[1] = AISTATE_RISE;
-                }
-            }
-
-            if (internalAI[1] == AISTATE_FLY)
-            {
-
-                HeadsSpawned = false;
-                npc.noTileCollide = true;
-                npc.noGravity = true;
-                if (npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + 100f  || npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - 100f)
-                {
-                    BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 100f, 60, 1.5f);
-                }
-                else
-                {
-                    internalAI[1] = AISTATE_DROP;
-                }
-            }
+						if(Head1 != null && Head2 != null)
+						{
+							float oldAIH1 = Head1.ai[0];
+							float oldAIH2 = Head2.ai[0];						
+							Head1.ai[0] = AISTATE_FLY;
+							Head2.ai[0] = AISTATE_FLY;							
+							if(Head1.ai[0] != oldAIH1) 
+								Head1.netUpdate = true;
+							if(Head2.ai[0] != oldAIH2) 
+								Head2.netUpdate = true;						
+						}
+					}
+				}
+			}else
+			{	
+				if (internalAI[1] == AISTATE_TURRET)
+				{
+					npc.noGravity = false;		
+					npc.noTileCollide = false;				
+					npc.velocity.X *= 0.8f;
+					if (!HeadsSpawned)
+					{
+						if (Main.netMode != 1)
+						{
+							int latestNPC = npc.whoAmI;
+							latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+							Main.npc[latestNPC].realLife = npc.whoAmI;
+							Main.npc[latestNPC].ai[0] = npc.whoAmI;
+							Head1 = Main.npc[latestNPC];
+							latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+							Main.npc[latestNPC].realLife = npc.whoAmI;
+							Main.npc[latestNPC].ai[0] = npc.whoAmI;
+							Head2 = Main.npc[latestNPC];					
+						}
+						HeadsSpawned = true;
+					}
+					if (Math.Abs(playerTarget.Center.X - npc.Center.X) < 300f) 
+					{
+						
+					}else
+					if(Main.netMode != 1)
+					{
+						internalAI[1] = AISTATE_FLY;
+						npc.netUpdate = true;
+						if(Head1 != null && Head2 != null)
+						{
+							Head1.ai[0] = AISTATE_FLY;
+							Head2.ai[0] = AISTATE_FLY;							 
+							Head1.netUpdate = true;
+							Head2.netUpdate = true;						
+						}
+					}
+				}else
+				if (internalAI[1] == AISTATE_FLY)
+				{
+					npc.noGravity = true;	
+					npc.noTileCollide = true;
+					if (Math.Abs(playerTarget.Center.X - npc.Center.X) > 250f || Collision.SolidCollision(npc.position, npc.width, npc.height)) //make it less then what makes it rise so it doesn't keep locking between them
+					{
+						playerTarget.Center += new Vector2(0f, -32f);
+						for(int m = 0; m < 4; m++)
+						{
+							BaseAI.AIEye(npc, ref npc.ai, false, true, 0.15f, 0.4f, 8f, 2f, 0.5f, 0.5f);
+							//BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 100f, 60, 8f);
+						}
+						playerTarget.Center += new Vector2(0f, 32f);						
+						int SHLOOPX = 34;
+						int SHLOOPY = 60;
+						Head1.Center = npc.Center + new Vector2(SHLOOPX, -SHLOOPY) + npc.velocity;
+						Head2.Center = npc.Center + new Vector2(-SHLOOPX, -SHLOOPY) + npc.velocity;
+					}
+					else
+					if(Main.netMode != 1) //digs itself out of the ground
+					{
+						internalAI[1] = AISTATE_TURRET;							
+						npc.netUpdate = true;
+						if(Head1 != null && Head2 != null)
+						{
+							Head1.ai[0] = AISTATE_TURRET;
+							Head2.ai[0] = AISTATE_TURRET;							 
+							Head1.netUpdate = true;
+							Head2.netUpdate = true;						
+						}				
+					}
+				}
+			}
 
             if (internalAI[1] == AISTATE_TURRET) //Standing
             {
-                if (npc.frameCounter >= 5)
+				npc.frameCounter++;				
+                if (npc.frameCounter >= 8)
                 {
                     npc.frameCounter = 0;
-                    npc.frame.Y += 102;
-                    if (npc.frame.Y > (102 * 3))
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > (frameHeight * 3))
                     {
-                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
                     }
                 }
-            }
-            if (internalAI[1] == AISTATE_FLY) //Following
+            }else //Following
             {
+				npc.frameCounter++;				
                 if (npc.frameCounter >= 5)
                 {
                     npc.frameCounter = 0;
-                    npc.frame.Y += 102;
-                    if (npc.frame.Y > (102 * 7) || npc.frame.Y < (102 * 3))
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > (frameHeight * 7))
                     {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 102 * 4;
-                    }
-                }
-                npc.noGravity = true;
-            }
-            if (internalAI[1] == AISTATE_RISE) //Rising
-            {
-                if (npc.frameCounter < 5)
-                {
-                    npc.frame.Y = 102 * 11;
-                }
-                if (npc.frameCounter < 10)
-                {
-                    npc.frame.Y = 102 * 10;
-                }
-                if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 102 * 9;
-                }
-                if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 102 * 8;
-                }
-                if (npc.frameCounter < 25)
-                {
-                    npc.frameCounter = 0;
-                    internalAI[1] = AISTATE_FLY;
-                }
-            }
-            if (internalAI[1] == AISTATE_DROP) //Dropping
-            {
-                npc.noGravity = false;
-                if (npc.frameCounter < 5)
-                {
-                    npc.frame.Y = 102 * 8;
-                }
-                if (npc.frameCounter < 10)
-                {
-                    npc.frame.Y = 102 * 9;
-                }
-                if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 102 * 10;
-                }
-                if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 102 * 11;
-                }
-                if (npc.frameCounter < 25)
-                {
-                    npc.frameCounter = 0;
-                    internalAI[1] = AISTATE_TURRET;
-                }
-            }
-
-        }
-
-        public void AIMovementRunAway()
-        {
-            npc.velocity.X *= 0.9f;
-            if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
-            npc.velocity.Y += 0.25f;
-			npc.noTileCollide = true;
-            npc.rotation = 0f;
-            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
-        }
-
-        public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
-        {
-            float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
-            bool playerTooFar = playerDistance > playerTooFarDist;
-            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 7, 7, 1000000, true, 1000000, 1000000, true, null, false);
-            if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
-            npc.rotation = 0f;
-        }
-
-        
-
-        public bool TargetClosest()
-        {
-            int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
-            float dist = 999999999f;
-            int foundPlayer = -1;
-            if (foundPlayer != -1)
-            {
-                BaseAI.SetTarget(npc, foundPlayer);
-                playerTarget = Main.player[foundPlayer];
-                return true;
-            }
-            else
-            {
-                for (int m = 0; m < players.Length; m++)
-                {
-                    Player p = Main.player[players[m]];
-                    if (Vector2.Distance(p.Center, npc.Center) < dist)
-                    {
-                        dist = Vector2.Distance(p.Center, npc.Center);
-                        foundPlayer = p.whoAmI;
+                        npc.frame.Y = frameHeight * 4;
                     }
                 }
             }
-            if (foundPlayer != -1)
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
-                BaseAI.SetTarget(npc, foundPlayer);
-                playerTarget = Main.player[foundPlayer];
-                return true;
+                npc.oldPos[m] = npc.oldPos[m - 1];
             }
-            return false;
-        }
+            npc.oldPos[0] = npc.position;			
+        }     
 
-        
-        public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
+        public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool leftHead)
         {
             if (head != null && head.active)
             {
                 string neckTex = ("NPCs/Bosses/Orthrus/OrthrusNeck");
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 10);
-                Vector2 connector = head.Center;
-                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
-                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-                
-            }
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y) + new Vector2(leftHead ? -37 : 37, -28);
+                Vector2 connector = head.Center - new Vector2(neckTex2D.Width * 0.5f, 0f);
+				BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);					
+				spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+				spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+			}
         }
-
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead2", "NPCs/Bosses/Orthrus/OrthrusHead2_Glow", Head2, dColor); BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead1", "NPCs/Bosses/Orthrus/OrthrusHead1_Glow", Head1, dColor);
-            return false;
-        }		
+            DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead1", "NPCs/Bosses/Orthrus/OrthrusHead1_Glow", Head1, dColor, false);			
+            DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead2", "NPCs/Bosses/Orthrus/OrthrusHead2_Glow", Head2, dColor, true); 			
+			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);		         
+		   return false;
+        }
     }
 }

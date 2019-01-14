@@ -126,14 +126,31 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
-            {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
         }
 
+        private int ProjectileTimer = 0;
         public override void AI()
         {
+            ProjectileTimer++;
+            if (ProjectileTimer == 300)
+            {
+                ProjectileTimer = 0;
+                if (Main.rand.Next(2) == 0)
+                {
+                    Projectile.NewProjectile(new Vector2(npc.Center.X - 101, npc.Center.Y), new Vector2(npc.velocity.X + 5, npc.velocity.Y), mod.ProjectileType("RaidSphere"), npc.damage, 1, 255);
+                }
+                int RocketNumber = 5;
+                 
+                if (Main.expertMode)
+                {
+                    RocketNumber = 7;
+                }
+                for (int Rockets = 0; Rockets < RocketNumber; Rockets++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RaidRocket>());
+                }
+            }
+
             int num1305 = 7;
             npc.noTileCollide = false;
             npc.noGravity = true;
@@ -231,10 +248,6 @@ namespace AAMod.NPCs.Bosses.Raider
                     npc.velocity *= 1.05f;
                 }
                 npc.ai[1] += 1f;
-                if (npc.justHit)
-                {
-                    npc.ai[1] += (float)Main.rand.Next(10, 30);
-                }
                 if (npc.ai[1] >= 180f && Main.netMode != 1)
                 {
                     npc.ai[1] = 0f;
@@ -566,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Raider
                                 npc.ai[3] += 1f;
                                 if (npc.ai[3] == (float)num1325)
                                 {
-                                    NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("Raidmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                                    NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("RaidEgg"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                                 }
                                 else if (npc.ai[3] == (float)(num1325 * 2))
                                 {

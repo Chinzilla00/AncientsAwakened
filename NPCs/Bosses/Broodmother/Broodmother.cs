@@ -38,6 +38,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.friendly = false;
             npc.lifeMax = 6000;
             npc.value = 20000;
+            npc.knockBackResist = 0f;
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
@@ -125,14 +126,20 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 target.AddBuff(BuffID.OnFire, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
-            {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
         }
 
+        private int ProjectileTimer = 0;
         public override void AI()
         {
+            ProjectileTimer++;
+            if (ProjectileTimer == 300)
+            {
+                ProjectileTimer = 0;
+                if (Main.rand.Next(2) == 0)
+                {
+                    Projectile.NewProjectile(new Vector2(npc.Center.X - 101, npc.Center.Y), new Vector2(npc.velocity.X + 5, npc.velocity.Y), mod.ProjectileType("BroodBall"), npc.damage, 1, 255);
+                }
+            }
             int num1305 = 7;
             bool DespawnAttempt = false;
             npc.noTileCollide = false;
@@ -143,7 +150,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 DespawnAttempt = true;
             }
-
             else if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -231,10 +237,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     npc.velocity *= 1.11f;
                 }
                 npc.ai[1] += 1f;
-                if (npc.justHit)
-                {
-                    npc.ai[1] += (float)Main.rand.Next(10, 30);
-                }
                 if (npc.ai[1] >= 180f && Main.netMode != 1)
                 {
                     npc.ai[1] = 0f;
@@ -566,7 +568,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                                 npc.ai[3] += 1f;
                                 if (npc.ai[3] == (float)num1325)
                                 {
-                                    NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("Broodmini"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                                    NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("BroodEgg"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                                 }
                                 else if (npc.ai[3] == (float)(num1325 * 2))
                                 {

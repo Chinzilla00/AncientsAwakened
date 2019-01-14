@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Retriever");
-            Main.npcFrameCount[npc.type] = 4;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 16;    //boss frame/animation 
 
         }
         public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.aiStyle = 5;  //5 is the flying AI
             npc.lifeMax = 25000;   //boss life
             npc.damage = 80;  //boss damage
-            npc.defense = 20;    //boss defense
+            npc.defense = 30;    //boss defense
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;
@@ -44,21 +44,24 @@ namespace AAMod.NPCs.Bosses.Retriever
             bossBag = mod.ItemType("RetrieverBag");
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public static Texture2D glowTex = null;
+        public static Texture2D glowTex1 = null;
+        public Color color;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
+            if (glowTex == null)
             {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("Glowmasks/Retriever_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
+                glowTex = mod.GetTexture("Glowmasks/Retriever_Glow1");
+                glowTex1 = mod.GetTexture("Glowmasks/Retriever_Glow2");
             }
+            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
+            BaseDrawing.DrawTexture(spritebatch, glowTex1, 0, npc, Color.White);
+            return false;
         }
 
-        
         public override void NPCLoot()
         {
             if (Main.rand.Next(10) == 0)
@@ -84,27 +87,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter++;
-            if (npc.frameCounter < 5)
-            {
-                npc.frame.Y = 0 * frameHeight;
-            }
-            else if (npc.frameCounter < 10)
-            {
-                npc.frame.Y = 1 * frameHeight;
-            }
-            else if (npc.frameCounter < 15)
-            {
-                npc.frame.Y = 2 * frameHeight;
-            }
-            else
-            {
-                npc.frame.Y = 3 * frameHeight;
-            }
-        }
-        
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
@@ -134,7 +116,10 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public Vector2 offsetBasePoint = new Vector2(240f, 0f);
 
-        public float moveSpeed = 6f;
+        public float moveSpeed = 10f;
+        private int LaserTimer = 1200;
+
+        public Projectile laser;
 
         public override void AI()
         {
@@ -144,6 +129,84 @@ namespace AAMod.NPCs.Bosses.Retriever
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.velocity.Y -= 5;
+            }
+
+            LaserTimer++;
+            npc.frameCounter--;
+
+            if (LaserTimer >= 300)
+            {
+                npc.velocity = new Vector2(0, 0);
+                BaseAI.LookAt(targetPlayer.Center, npc, 3, 0f, 0.1f, false);
+                npc.frame.Y = (62 * 4);
+                if (LaserTimer >= 293)
+                {
+                    npc.frame.Y = (62 * 5);
+                }
+                else if (LaserTimer >= 286)
+                {
+                    npc.frame.Y = (62 * 6);
+                }
+                else if (LaserTimer >= 279)
+                {
+                    npc.frame.Y = (62 * 7);
+                }
+                else if (LaserTimer >= 272)
+                {
+                    npc.frame.Y = (62 * 8);
+                }
+                else if (LaserTimer >= 265)
+                {
+                    npc.frame.Y = (62 * 9);
+                }
+                else if (LaserTimer >= 258)
+                {
+                    npc.frame.Y = (62 * 10);
+                }
+                else if (LaserTimer >= 251)
+                {
+                    npc.frame.Y = (62 * 11);
+                }
+                else if (LaserTimer >= 244 && LaserTimer <= 60)
+                {
+                    if (npc.frameCounter >= 7)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += 62;
+                        if (npc.frame.Y > (62 * 15))
+                        {
+                            npc.frameCounter = 0;
+                            npc.frame.Y = 62 * 11;
+                        }
+                    }
+                    npc.defense = 999;
+
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("RetrieverLaser"), npc.damage, 3f, Main.myPlayer, npc.whoAmI, 420)];
+
+                }
+                else if (LaserTimer >= 59)
+                {
+                    npc.frame.Y = (38 * 10);
+                }
+                else if (LaserTimer = 0)
+                {
+                    LaserTimer = 1200;
+                }
+                return;
+            }
+            else
+            {
+                npc.defense = 30;
+                if (npc.frameCounter >= 10)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += 62;
+                    if (npc.frame.Y > (62 * 3))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
+                }
             }
 
             bool forceChange = false;
@@ -231,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                         {
                             offsetBasePoint.X = -240;
                         }
-                        
+
                         npc.ai[0] = 1;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
@@ -242,6 +305,9 @@ namespace AAMod.NPCs.Bosses.Retriever
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
         }
+        
+        
+            
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {

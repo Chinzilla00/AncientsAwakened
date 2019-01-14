@@ -64,6 +64,7 @@ namespace AAMod
 		public override void SetDefaults(NPC npc)
 		{
 		}
+        
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -410,6 +411,14 @@ namespace AAMod
                     Item.NewItem(npc.getRect(), mod.ItemType("BugSwatter"));
                 }
                 Item.NewItem(npc.getRect(), mod.ItemType("Stinger"), Main.rand.Next(14, 20));
+            }
+            if (npc.type == NPCID.MoonLordCore)
+            {
+                if (AAWorld.Luminite)
+                {
+                    Main.NewText("The crash of a meteor can be heard upon the moon lord's death", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
+                    AAWorld.SpawnLuminite();
+                }
             }
             if ((npc.type == NPCID.GoblinArcher
                 || npc.type == NPCID.GoblinPeon

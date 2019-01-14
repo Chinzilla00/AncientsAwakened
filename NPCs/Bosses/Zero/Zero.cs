@@ -193,7 +193,6 @@ namespace AAMod.NPCs.Bosses.Zero
             if (!saythelinezero)
             {
                 BaseMod.BaseDrawing.DrawAura(spritebatch, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-                BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, Color.White);
             }
             return false;
         }

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
+using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
 {
@@ -14,10 +15,28 @@ namespace AAMod.Backgrounds
         public static Texture2D BGTexture;
         public bool Active;
         public float Intensity;
+        private Texture2D BeamTexture;
+        private Texture2D[] RockTextures;
+        private struct LightPillar
+        {
+            public Vector2 Position;
+
+            public float Depth;
+        }
+
+        private LightPillar[] _pillars;
+
+        private UnifiedRandom _random = new UnifiedRandom();
 
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/YamataMoon");
+            BeamTexture = TextureManager.Load("Backgrounds/YamataBeam");
+            RockTextures = new Texture2D[3];
+            for (int i = 0; i < RockTextures.Length; i++)
+            {
+                RockTextures[i] = TextureManager.Load("Backgrounds/YamataRock" + i);
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -71,7 +90,49 @@ namespace AAMod.Backgrounds
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                 }
             }
+            int num = -1;
+            int num2 = 0;
+            for (int i = 0; i < _pillars.Length; i++)
+            {
+                float depth = _pillars[i].Depth;
+                if (num == -1 && depth < maxDepth)
+                {
+                    num = i;
+                }
+                if (depth <= minDepth)
+                {
+                    break;
+                }
+                num2 = i;
+            }
+            if (num == -1)
+            {
+                return;
+            }
+            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
+            Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
+            float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
+            for (int j = num; j < num2; j++)
+            {
+                Vector2 value4 = new Vector2(1f / _pillars[j].Depth, 0.9f / _pillars[j].Depth);
+                Vector2 vector = _pillars[j].Position;
+                vector = (vector - value3) * value4 + value3 - Main.screenPosition;
+                if (rectangle.Contains((int)vector.X, (int)vector.Y))
+                {
+                    float num3 = value4.X * 450f;
+                    spriteBatch.Draw(BeamTexture, vector, null, Color.White * 0.2f * scale * Intensity, 0f, Vector2.Zero, new Vector2(num3 / 70f, num3 / 45f), SpriteEffects.None, 0f);
+                    int num4 = 0;
+                    for (float num5 = 0f; num5 <= 1f; num5 += 0.03f)
+                    {
+                        float num6 = 1f - (num5 + Main.GlobalTime * 0.02f + (float)Math.Sin((double)((float)j))) % 1f;
+                        spriteBatch.Draw(RockTextures[num4], vector + new Vector2((float)Math.Sin((double)(num5 * 1582f)) * (num3 * 0.5f) + num3 * 0.5f, num6 * 2000f), null, Color.White * num6 * scale * Intensity, num6 * 20f, new Vector2((float)(RockTextures[num4].Width >> 1), (float)(RockTextures[num4].Height >> 1)), 0.9f, SpriteEffects.None, 0f);
+                        num4 = (num4 + 1) % RockTextures.Length;
+                    }
+                }
+            }
         }
+
+
 
         public override float GetCloudAlpha()
         {
@@ -82,6 +143,19 @@ namespace AAMod.Backgrounds
         {
             Intensity = 0.002f;
             Active = true;
+            _pillars = new LightPillar[40];
+            for (int i = 0; i < _pillars.Length; i++)
+            {
+                _pillars[i].Position.X = (float)i / (float)_pillars.Length * ((float)Main.maxTilesX * 16f + 20000f) + _random.NextFloat() * 40f - 20f - 20000f;
+                _pillars[i].Position.Y = _random.NextFloat() * 200f - 2000f;
+                _pillars[i].Depth = _random.NextFloat() * 8f + 7f;
+            }
+            Array.Sort(_pillars, new Comparison<LightPillar>(SortMethod));
+        }
+
+        private int SortMethod(LightPillar pillar1, LightPillar pillar2)
+        {
+            return pillar2.Depth.CompareTo(pillar1.Depth);
         }
 
         public override void Deactivate(params object[] args)

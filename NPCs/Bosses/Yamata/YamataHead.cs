@@ -285,9 +285,25 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.frameCounter = 0;
             }
         }
-        public static Texture2D glowTex = null, glowTex2 = null;
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            Player player = Main.player[npc.target];
+            if (player.vortexStealthActive && projectile.ranged)
+            {
+                damage /= 2;
+                crit = false;
+            }
+            if (projectile.penetrate == -1 && !projectile.minion)
+            {
+                projectile.damage *= (int).2;
+            }
+            else if (projectile.penetrate >= 1)
+            {
+                projectile.damage *= (int).2;
+            }
+        }
+        
 
         public override void BossHeadRotation(ref float rotation)
         {

@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             if (fireAttack == true)
             {
                 attackTimer++;
-                if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
+                if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
                 {
                     for (int i = 0; i < 5; ++i)
                     {
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                             PlayerPosX += npc.velocity.X * 0.5f;
                             PlayerDistance.X -= PlayerPosX * 1f;
                             PlayerDistance.Y -= PlayerPosY * 1f;
-                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage, 0, Main.myPlayer);
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage / 2, 0, Main.myPlayer);
                         }
                     }
                 }
@@ -200,13 +200,9 @@ namespace AAMod.NPCs.Bosses.Serpent
                 int dust2 = mod.DustType<Dusts.SnowDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
             }
         }
@@ -237,6 +233,8 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Subzero Serpent");
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
+            Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults()
@@ -263,13 +261,9 @@ namespace AAMod.NPCs.Bosses.Serpent
                 int dust2 = mod.DustType<Dusts.SnowDustLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
             }
         }
@@ -310,6 +304,8 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Subzero Serpent");
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
+            Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults()
@@ -336,13 +332,9 @@ namespace AAMod.NPCs.Bosses.Serpent
                 int dust2 = mod.DustType<Dusts.SnowDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
             }
         }

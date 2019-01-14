@@ -7,6 +7,7 @@ namespace AAMod
 {
     public class AAAI
 	{
+        static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
         public static void InfernoFighterAI(NPC npc, ref float[] ai, bool fleeWhenNight = true, bool allowBoredom = true, int openDoors = 1, float moveInterval = 0.07f, float velMax = 1f, int maxJumpTilesX = 3, int maxJumpTilesY = 4, int ticksUntilBoredom = 60, bool targetPlayers = true, int doorBeatCounterMax = 10, int doorCounterMax = 60, bool jumpUpPlatforms = false, Action<bool, bool, Vector2, Vector2> onTileCollide = null, bool ignoreJumpTiles = false)
         {
             bool xVelocityChanged = false;
@@ -99,6 +100,94 @@ namespace AAMod
                     }
                     if (npc.velocity != newVec) { npc.velocity = newVec; npc.netUpdate = true; }
                 }
+            }
+        }
+
+        public static void AIClaw (NPC npc, ref float[] ai, bool isDragonClaw = true, bool ignoreWet = false, float moveIntervalX = 0.1f, float moveIntervalY = 0.04f, float velMaxX = 4f, float velMaxY = 1.5f, float bounceScalarX = 1f, float bounceScalarY = 1f)
+        {
+            //controls the npc's bouncing when it hits a wall.
+            if (npc.collideX)
+            {
+                npc.velocity.X = npc.oldVelocity.X * -0.5f;
+                if (npc.direction == -1 && npc.velocity.X > 0f && npc.velocity.X < 2f) { npc.velocity.X = 2f; }
+                if (npc.direction == 1 && npc.velocity.X < 0f && npc.velocity.X > -2f) { npc.velocity.X = -2f; }
+                npc.velocity.X *= bounceScalarX;
+            }
+            //controls the npc's bouncing when it hits a floor or ceiling.
+            if (npc.collideY)
+            {
+                npc.velocity.Y = npc.oldVelocity.Y * -0.5f;
+                if (npc.velocity.Y > 0f && npc.velocity.Y < 1f) { npc.velocity.Y = 1f; }
+                if (npc.velocity.Y < 0f && npc.velocity.Y > -1f) { npc.velocity.Y = -1f; }
+                npc.velocity.Y *= bounceScalarY;
+            }
+            //if it should flee when it's day, and it is day, the npc's position is at or above the surface, it will flee.
+            if (isDragonClaw && !modPlayer.ZoneInferno && Main.dayTime && (double)npc.position.Y <= Main.worldSurface * 16.0)
+            {
+                if (npc.timeLeft > 10) { npc.timeLeft = 10; }
+                npc.directionY = -1;
+                if (npc.velocity.Y > 0f) { npc.direction = 1; }
+                npc.direction = -1;
+                if (npc.velocity.X > 0f) { npc.direction = 1; }
+            }
+            else
+            {
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
+                {
+                    if (npc.timeLeft > 10) { npc.timeLeft = 10; }
+                    npc.directionY = -1;
+                    if (npc.velocity.Y > 0f) { npc.direction = 1; }
+                    npc.direction = -1;
+                    if (npc.velocity.X > 0f) { npc.direction = 1; }
+                }
+            }
+            //controls momentum when going left, and clamps velocity at -velMaxX.
+            if (npc.direction == -1 && npc.velocity.X > -velMaxX)
+            {
+                npc.velocity.X = npc.velocity.X - moveIntervalX;
+                if (npc.velocity.X > 4f) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                else
+                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                if (npc.velocity.X < -4f) { npc.velocity.X = -velMaxX; }
+            }
+            else //controls momentum when going right on the x axis and clamps velocity at velMaxX.
+                if (npc.direction == 1 && npc.velocity.X < velMaxX)
+            {
+                npc.velocity.X = npc.velocity.X + moveIntervalX;
+                if (npc.velocity.X < -velMaxX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                else
+                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+
+                if (npc.velocity.X > velMaxX) { npc.velocity.X = velMaxX; }
+            }
+            //controls momentum when going up on the Y axis and clamps velocity at -velMaxY.
+            if (npc.directionY == -1 && (double)npc.velocity.Y > -velMaxY)
+            {
+                npc.velocity.Y = npc.velocity.Y - moveIntervalY;
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                else
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + 0.03f; }
+
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = -velMaxY; }
+            }
+            else //controls momentum when going down on the Y axis and clamps velocity at velMaxY.
+                if (npc.directionY == 1 && (double)npc.velocity.Y < velMaxY)
+            {
+                npc.velocity.Y = npc.velocity.Y + moveIntervalY;
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                else
+                    if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - 0.03f; }
+
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = velMaxY; }
+            }
+            if (!ignoreWet && npc.wet) //if don't ignore being wet and is wet, accelerate upwards to get out.
+            {
+                if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y * 0.95f; }
+                npc.velocity.Y = npc.velocity.Y - 0.5f;
+                if (npc.velocity.Y < -velMaxY * 1.5f) { npc.velocity.Y = -velMaxY * 1.5f; }
+                npc.TargetClosest(true);
+                return;
             }
         }
 

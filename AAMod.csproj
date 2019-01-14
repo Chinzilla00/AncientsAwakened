@@ -88,7 +88,6 @@
     <Compile Include="Backgrounds\MireUgBgStyle.cs" />
     <Compile Include="Backgrounds\MushroomSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\MushroomUgBgStyle.cs" />
-    <Compile Include="Backgrounds\StormClouds.cs" />
     <Compile Include="Backgrounds\ScreenFog.cs" />
     <Compile Include="Backgrounds\ShenASky.cs" />
     <Compile Include="Backgrounds\ShenASkyData.cs" />
@@ -1003,6 +1002,7 @@
     <Compile Include="NPCs\Bosses\Akuma\AkumaABreath.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaBreath.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
+    <Compile Include="NPCs\Bosses\Broodmother\BroodBall.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
@@ -1039,12 +1039,21 @@
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusBreath.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead1.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead2.cs" />
+    <Compile Include="NPCs\Bosses\Orthrus\OrthrusSpark.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\Shocking.cs" />
     <Compile Include="NPCs\Bosses\Pantheon\Mercury.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidStrike.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidBoom.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidShock.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidRocket.cs" />
+    <Compile Include="NPCs\Bosses\Raider\RaidSphere.cs" />
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
+    <Compile Include="NPCs\Bosses\Retriever\RetrieverShot.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
+    <Compile Include="NPCs\Bosses\Retriever\RetrieverLaser.cs" />
+    <Compile Include="NPCs\Bosses\Retriever\RetrieverMinion.cs" />
     <Compile Include="NPCs\Bosses\Serpent\Serpent.cs" />
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkuma.cs" />
     <Compile Include="NPCs\Bosses\Shadow\Akuma\SAkumaA.cs" />
@@ -1190,7 +1199,6 @@
     <Compile Include="Projectiles\Djinn\DustDevil.cs" />
     <Compile Include="Projectiles\DoomBoom.cs" />
     <Compile Include="Projectiles\DoomProj.cs" />
-    <Compile Include="Projectiles\IceArrow.cs" />
     <Compile Include="Projectiles\EFish\EFlairon.cs" />
     <Compile Include="Projectiles\EFish\Typhoon.cs" />
     <Compile Include="Projectiles\EtheralBeam.cs" />
@@ -1578,6 +1586,8 @@
     <Content Include="Achievements\ZeroA.png" />
     <Content Include="Achievements\ZeroANot.png" />
     <Content Include="Achievements\ZeroNot.png" />
+    <Content Include="Backgrounds\AkumaAMeteor.png" />
+    <Content Include="Backgrounds\AkumaMeteor.png" />
     <Content Include="Backgrounds\AkumaSun.png" />
     <Content Include="Backgrounds\Asteroids.png" />
     <Content Include="Backgrounds\Asteroids1.png" />
@@ -1622,6 +1632,8 @@
     <Content Include="Backgrounds\MushroomUG3.png" />
     <Content Include="Backgrounds\MushroomUG4.png" />
     <Content Include="Backgrounds\ShenEclipse.png" />
+    <Content Include="Backgrounds\ShenMeteor1.png" />
+    <Content Include="Backgrounds\ShenMeteor2.png" />
     <Content Include="Backgrounds\StormBG.png" />
     <Content Include="Backgrounds\StormBolt.png" />
     <Content Include="Backgrounds\StormClouds.png" />
@@ -1638,7 +1650,11 @@
     <Content Include="Backgrounds\VoidSky.png" />
     <Content Include="Backgrounds\VoidSurface.png" />
     <Content Include="Backgrounds\VoidUG.png" />
+    <Content Include="Backgrounds\YamataBeam.png" />
     <Content Include="Backgrounds\YamataMoon.png" />
+    <Content Include="Backgrounds\YamataRock0.png" />
+    <Content Include="Backgrounds\YamataRock1.png" />
+    <Content Include="Backgrounds\YamataRock2.png" />
     <Content Include="BaseMod.dll" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
@@ -2097,6 +2113,7 @@
     <Content Include="Glowmasks\RaidEgg_Glow.png" />
     <Content Include="Glowmasks\RaiderBag_Glow.png" />
     <Content Include="Glowmasks\RaiderTrophy_Glow.png" />
+    <Content Include="Glowmasks\Raider_Glow.png" />
     <Content Include="Glowmasks\Raidmini_Glow.png" />
     <Content Include="Glowmasks\RainbowCatPro_Glow.png" />
     <Content Include="Glowmasks\RealityCannonZ.png" />
@@ -2111,6 +2128,8 @@
     <Content Include="Glowmasks\RetrieverMask_Head_Glow.png" />
     <Content Include="Glowmasks\RetrieverTrophy_Glow.png" />
     <Content Include="Glowmasks\Retriever_Glow.png" />
+    <Content Include="Glowmasks\Retriever_Glow1.png" />
+    <Content Include="Glowmasks\Retriever_Glow2.png" />
     <Content Include="Glowmasks\RiftShredderZ.png" />
     <Content Include="Glowmasks\RiftShredder_Glow.png" />
     <Content Include="Glowmasks\Rift_Glow.png" />
@@ -3610,6 +3629,8 @@
     <Content Include="NPCs\Bosses\Akuma\FuryPhoenix.png" />
     <Content Include="NPCs\Bosses\Akuma\TurePhoenix.png" />
     <Content Include="NPCs\Bosses\Azathoth\AzathothWIP.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodBall.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />
@@ -3714,6 +3735,7 @@
     <Content Include="NPCs\Bosses\Orthrus\OrthrusHead2_Glow.png" />
     <Content Include="NPCs\Bosses\Orthrus\OrthrusHead2_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Orthrus\OrthrusNeck.png" />
+    <Content Include="NPCs\Bosses\Orthrus\OrthrusSpark.png" />
     <Content Include="NPCs\Bosses\Orthrus\Orthrus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Orthrus\Shocking.png" />
     <Content Include="NPCs\Bosses\Pantheon\Earth.png" />
@@ -3727,15 +3749,24 @@
     <Content Include="NPCs\Bosses\Pantheon\Saturn.png" />
     <Content Include="NPCs\Bosses\Pantheon\Uranus.png" />
     <Content Include="NPCs\Bosses\Pantheon\Venus.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidBoom.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Raider\Raider.png" />
     <Content Include="NPCs\Bosses\Raider\Raider_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Raider\Raidmini.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidRocket.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidShock.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidSphere.png" />
+    <Content Include="NPCs\Bosses\Raider\RaidStrike.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArm.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahLeg.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
+    <Content Include="NPCs\Bosses\Retriever\RetrieverLaser.png" />
+    <Content Include="NPCs\Bosses\Retriever\RetrieverLAZAR.png" />
+    <Content Include="NPCs\Bosses\Retriever\RetrieverMinion.png" />
+    <Content Include="NPCs\Bosses\Retriever\RetrieverShot.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Serpent\SnowBreath.png" />
     <Content Include="NPCs\Bosses\Serpent\Serpent.png" />
@@ -3789,6 +3820,7 @@
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataAFoot.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataAHead.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataAHead_Glow.png" />
+    <Content Include="NPCs\Bosses\Yamata\Awakened\YamataAHead_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataALeg.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataALegCap.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\YamataALegCapR.png" />
@@ -3909,6 +3941,7 @@
     <Content Include="NPCs\Enemies\Mire\Toxitoad\ToxitoadWalk.png" />
     <Content Include="NPCs\Enemies\Mire\Toxitoad\Toxitongue.png" />
     <Content Include="NPCs\Enemies\Mire\Toxitoad\Toxitongue_Chain.png" />
+    <Content Include="NPCs\Enemies\Other\BlazeClaw.png" />
     <Content Include="NPCs\Enemies\Other\ChaosDragon.png" />
     <Content Include="NPCs\Enemies\Other\CyberClaw.png" />
     <Content Include="NPCs\Enemies\Other\DragonClaw.png" />
@@ -4085,7 +4118,6 @@
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraSpear.png" />
     <Content Include="Projectiles\HydraTuneller.png" />
-    <Content Include="Projectiles\IceArrow.png" />
     <Content Include="Projectiles\IceChunk.png" />
     <Content Include="Projectiles\IllumantBall.png" />
     <Content Include="Projectiles\IllumantBall_Chain.png" />
@@ -4161,6 +4193,7 @@
     <Content Include="Projectiles\Shen\Skyfall.png" />
     <Content Include="Projectiles\Shen\SkyfallB.png" />
     <Content Include="Projectiles\Shen\SkyfallR.png" />
+    <Content Include="Projectiles\Shen\Timesplitter.png" />
     <Content Include="Projectiles\SpookerangP.png" />
     <Content Include="Projectiles\SpookyKnife.png" />
     <Content Include="Projectiles\Squirt.png" />

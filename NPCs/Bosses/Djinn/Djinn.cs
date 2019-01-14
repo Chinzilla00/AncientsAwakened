@@ -80,7 +80,6 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         public override void AI()
         {
-            punchtimer++;
             bool flag111 = false;
             bool flag112 = false;
             bool flag113 = true;
@@ -542,63 +541,14 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (punchtimer < 420)
+            if (npc.frameCounter > 6)
             {
-                if (npc.frameCounter < 5)
+                npc.frameCounter = 0;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y > 5 * frameHeight)
                 {
-                    npc.frame.Y = 0 * frameHeight;
+                    npc.frame.Y = 0;
                 }
-                else if (npc.frameCounter < 10)
-                {
-                    npc.frame.Y = 1 * frameHeight;
-                }
-                else if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 2 * frameHeight;
-                }
-                else if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 3 * frameHeight;
-                }
-                else if (npc.frameCounter < 25)
-                {
-                    npc.frame.Y = 4 * frameHeight;
-                }
-                else if (npc.frameCounter < 30)
-                {
-                    npc.frame.Y = 5 * frameHeight;
-                }
-                else if (npc.frameCounter > 30)
-                {
-                    npc.frameCounter = 0;
-                }
-            }
-            else if (Charging)
-            {
-                if (npc.frameCounter < 5)
-                {
-                    npc.frame.Y = 6 * frameHeight;
-                }
-                else if (npc.frameCounter < 10)
-                {
-                    npc.frame.Y = 7 * frameHeight;
-                }
-                else if (npc.frameCounter < 15)
-                {
-                    npc.frame.Y = 8 * frameHeight;
-                }
-                else if (npc.frameCounter < 20)
-                {
-                    npc.frame.Y = 9 * frameHeight;
-                }
-                else if (npc.frameCounter > 20)
-                {
-                    npc.frameCounter = 0;
-                }
-            }
-            else if (ChargeAttack)
-            {
-                npc.frame.Y = 10 * frameHeight;
             }
         }
 

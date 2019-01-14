@@ -20,12 +20,17 @@ namespace AAMod.NPCs.Enemies.Other
             npc.friendly = false;
             npc.damage = 15;
             npc.defense = 4;
-            npc.lifeMax = 65;
+            npc.lifeMax = 45;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0f;
             npc.knockBackResist = 0.6f;
             npc.aiStyle = 2;
+        }
+
+        public override void AI()
+        {
+            AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 4f, 1.5f, 1f, 1f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

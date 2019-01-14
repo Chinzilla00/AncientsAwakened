@@ -75,6 +75,7 @@ namespace AAMod
         public static bool ShenSummoned;
         public static bool downedToad;
         public static bool downedGripsS;
+        public static bool LuminiteMeteorBool;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -122,6 +123,7 @@ namespace AAMod
             DarkMatter = downedNC;
             RadiumOre = downedDB;
             DiscordOres = downedGripsS;
+            LuminiteMeteorBool = false;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -909,11 +911,6 @@ namespace AAMod
 
             if (NPC.downedMoonlord == true)
             {
-                if (Luminite == true)
-                {
-                    Main.NewText("The crash of a meteor can be heard upon the moon lord's death", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
-                    SpawnLuminite();
-                }
                 if (Luminite == false)
                 {
                     Luminite = true;
@@ -1355,7 +1352,7 @@ namespace AAMod
         public static bool LuminiteMeteor(int i, int j)
         {
             Mod mod = AAMod.instance;
-            if (i < 50 || i > Main.maxTilesX - 50)
+            if (i < 300 || i > Main.maxTilesX - 300)
             {
                 return false;
             }

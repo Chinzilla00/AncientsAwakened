@@ -124,76 +124,58 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 else //Eat Pant
                 {
-                    NOM++;
-                    if (npc.frameCounter < 5)
+                    tongueTimer++;
+                    if (tongueTimer < 5)
                     {
                         npc.frame.Y = 5 * 72;
                     }
-                    else if (npc.frameCounter < 10)
+                    else if (tongueTimer < 10)
                     {
                         npc.frame.Y = 6 * 72;
                     }
-                    else if (npc.frameCounter < 15)
+                    else if (tongueTimer < 15)
                     {
                         npc.frame.Y = 7 * 72;
                     }
-                    else if (npc.frameCounter < 20)
+                    else if (tongueTimer < 20)
                     {
                         npc.frame.Y = 8 * 72;
                     }
-                    else if (npc.frameCounter < 25)
+                    else if (tongueTimer < 25)
                     {
                         npc.frame.Y = 9 * 72;
                     }
-                    else if (npc.frameCounter < 30)
+                    else if (tongueTimer < 30)
                     {
                         npc.frame.Y = 10 * 72;
                     }
-                    else if (npc.frameCounter < 35 && npc.frameCounter > 65)
+                    else if (tongueTimer < 35 && tongueTimer > 65)
                     {
                         npc.frame.Y = 11 * 72;
                         npc.velocity.X = 0;
-                        if (npc.frameCounter < 35 && npc.frameCounter > 65)
-                        {
-                            // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
-                            if (npc.direction == -1)
-                            {
-                                //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                                Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
-                            }
-                            else
-                            {
-                                //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                                Projectile.NewProjectile((new Vector2(npc.position.X + 57f, npc.position.Y + 18f)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
-                            }
-                        }
-                        if (tongueTimer >= 100)
-                        {
-                            tongueTimer = 0;
-                        }
                     }
-                    else if (npc.frameCounter < 65)
+                    else if (tongueTimer < 65)
                     {
                         tongueTimer = 0;
                         npc.frame.Y = 10 * 72;
                     }
-                    else if (npc.frameCounter < 68)
+                    else if (tongueTimer < 68)
                     {
                         npc.frame.Y = 9 * 72;
                     }
-                    else if (npc.frameCounter < 71)
+                    else if (tongueTimer < 71)
                     {
                         npc.frame.Y = 8 * 72;
                     }
-                    else if (npc.frameCounter < 74)
+                    else if (tongueTimer < 74)
                     {
                         npc.frame.Y = 8 * 72;
                     }
-                    else if (npc.frameCounter < 77)
+                    else if (tongueTimer < 77)
                     {
                         npc.frame.Y = 7 * 72;
                     }
-                    else if (npc.frameCounter < 80)
+                    else if (tongueTimer < 80)
                     {
                         npc.frame.Y = 6 * 72;
                     }
@@ -229,7 +211,26 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 else //Tongue
                 {
-
+                    tongueTimer++;
+                    if (tongueTimer < 35 && tongueTimer > 65)
+                    {
+                        // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
+                        if (npc.direction == -1)
+                        {
+                            //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
+                            Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
+                        }
+                        else
+                        {
+                            //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
+                            Projectile.NewProjectile((new Vector2(npc.position.X + 57f, npc.position.Y + 18f)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
+                        }
+                    }
+                    if (tongueTimer >= 100)
+                    {
+                        tongueTimer = 0;
+                        internalAI[1] = AISTATE_JUMP;
+                    }
                 }
             }
             else
@@ -252,7 +253,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 1.1f * bossLifeScale);  //boss life scale in expertmode
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
         }
     }

@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cyber Claw");
-            Main.npcFrameCount[npc.type] = 5;
+            Main.npcFrameCount[npc.type] = 4;
         }
         public override void SetDefaults()
         {
@@ -19,14 +19,16 @@ namespace AAMod.NPCs.Enemies.Other
             npc.friendly = false;
             npc.damage = 35;
             npc.defense = 4;
-            npc.lifeMax = 500;
+            npc.lifeMax = 300;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 1f;
             npc.knockBackResist = 0.6f;
-            npc.aiStyle = 2;
-            aiType = NPCID.DemonEye;  //npc behavior
-            animationType = NPCID.DemonEye;
+        }
+
+        public override void AI()
+        {
+            BaseMod.BaseAI.AIEye(npc, ref npc.ai, true, false, 0.1f, 0.04f, 6f, 3f, 1f, 1f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
