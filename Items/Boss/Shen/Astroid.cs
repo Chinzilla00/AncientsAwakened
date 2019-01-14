@@ -7,13 +7,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Astroid : ModItem
+    public class Asteroid : ModItem
     {
         
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Astroid");
+            DisplayName.SetDefault("Asteroid");
             Tooltip.SetDefault(@"Crashes into enemies with the force of an astroid crashing into earth
 Inflicts Discordian Inferno");
         }
