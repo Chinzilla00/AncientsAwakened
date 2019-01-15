@@ -18,46 +18,15 @@ namespace AAMod.NPCs.Bosses.Broodmother
         }
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.aiStyle = 8;
+            projectile.CloneDefaults(ProjectileID.Fireball);
             projectile.hostile = true;
-            projectile.light = 0.8f;
-            projectile.alpha = 100;
-            projectile.tileCollide = true;
-            projectile.penetrate = 1;
         }
 
-        public override void AI()
+        public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            bool flag11 = false;
-            if (projectile.velocity.X != projectile.velocity.X)
-            {
-                if (Math.Abs(projectile.velocity.X) > 4f)
-                {
-                    flag11 = true;
-                }
-                projectile.position.X = projectile.position.X + projectile.velocity.X;
-                projectile.velocity.X = -projectile.velocity.X * 0.2f;
-            }
-            if (projectile.velocity.Y != projectile.velocity.Y)
-            {
-                if (Math.Abs(projectile.velocity.Y) > 4f)
-                {
-                    flag11 = true;
-                }
-                projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
-                projectile.velocity.Y = -projectile.velocity.Y * 0.2f;
-            }
-            projectile.ai[0] = 1f;
-            if (flag11)
-            {
-                projectile.netUpdate = true;
-                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
-            }
+            projectile.Kill();
+            return true;
         }
-
         public override void Kill(int timeLeft)
         {
             for (int num468 = 0; num468 < 20; num468++)

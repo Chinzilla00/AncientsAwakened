@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (leftHead) aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < 7; ++i)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;

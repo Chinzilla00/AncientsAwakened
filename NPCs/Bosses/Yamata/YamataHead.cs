@@ -5,6 +5,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -64,6 +65,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int damage = 0;
         public float moveSpeedBoost = .04f;
         public NPC Body;
+        public Yamata yamata = null;
         public bool HoriSwitch = false;
         public int f = 1;
         public float TargetDirection = (float)Math.PI / 2;
@@ -92,6 +94,22 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
+            if (yamata == null)
+            {
+                NPC npcBody = Main.npc[(int)npc.ai[0]];
+                if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
+                {
+                    yamata = (Yamata)npcBody.modNPC;
+                }
+            }
+
+            if (yamata.TeleportMeBitch)
+            {
+                yamata.TeleportMeBitch = false;
+                npc.Center = yamata.npc.Center;
+                return;
+            }
+
 
             if (!Body.active)
             {

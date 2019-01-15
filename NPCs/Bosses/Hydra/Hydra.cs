@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             animationType = NPCID.HellArmoredBonesSword;
             npc.height = 78;
             npc.aiStyle = -1;
-            npc.damage = 30;
+            npc.damage = 40;
             npc.defense = 10;
             npc.lifeMax = 4000;
             npc.value = Item.buyPrice(0, 2, 0, 0);
@@ -143,24 +143,23 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public void AIMovementRunAway()
         {
-            npc.velocity.X *= 0.9f;
-            if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
-            npc.velocity.Y += 0.25f;
-			npc.noTileCollide = true;
+            npc.alpha += 10;
+
+			npc.noTileCollide = false;
             npc.rotation = 0f;
-            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
+            if ((npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) || npc.alpha >= 255) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
         }
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
-            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 7, 7, 1000000, true, 1000000, 1000000, true, null, false);
+            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 14, 20, 1, true, 1, 1, true, null, false);
             npc.rotation = 0f;
         }
 
         public bool TargetClosest()
         {
             int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
-            float dist = 999999999f;
+            float dist = 200;
             int foundPlayer = -1;
             if (foundPlayer != -1)
             {

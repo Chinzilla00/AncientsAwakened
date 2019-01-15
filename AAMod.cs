@@ -486,6 +486,7 @@ namespace AAMod
 
                     priority = MusicPriority.BossHigh;
 
+                    return;
                 }
 
             }
@@ -517,11 +518,13 @@ namespace AAMod
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
+                    return;
                 }
                 else
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
+                    return;
                 }
             }
             if (Ancients.Terrarium)
@@ -529,10 +532,14 @@ namespace AAMod
 
                 priority = MusicPriority.BiomeHigh;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium");
+
+                return;
             }
             if (Ancients.ZoneMush)
             {
                 music = MusicID.Mushrooms;
+
+                return;
             }
             if (Ancients.ZoneMire)
             {
@@ -541,22 +548,34 @@ namespace AAMod
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
+
+                    return;
                 }
                 else
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
+
+                    return;
                 }
+            }
+            if (Ancients.ZoneVoid && AAWorld.downedZero && !AAWorld.downedIZ)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void2");
+                return;
             }
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
+                return;
             }
             if (Ancients.ZoneStorm)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Maelstrom");
+                return;
             }
         }
 

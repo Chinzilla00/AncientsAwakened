@@ -20,8 +20,6 @@ namespace AAMod.Worldgeneration
 		public override bool Place(Point origin, StructureMap structures)
 		{
 			Mod mod = AAMod.instance;
-			bool DEV = true;			
-			//--- Initial variable creation
 			ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"),
 			tileIce = (ushort)mod.TileType("Depthice"), tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone");
 
@@ -30,8 +28,12 @@ namespace AAMod.Worldgeneration
 			
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
-            colorToTile[new Color(255, 128, 0)] = TileID.Mud;
-            colorToTile[new Color(0, 255, 0)] = mod.TileType("MireGrass");
+            colorToTile[new Color(255, 128, 0)] = mod.TileType("Darkmud");
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("AbyssGrass");
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("AbyssWood");
+            colorToTile[new Color(128, 0, 0)] = mod.TileType("AbyssWoodSolid");
+            colorToTile[new Color(255, 255, 0)] = mod.TileType("AbyssVines");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("AbyssLeaves");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
             colorToTile[Color.Black] = -1; //don't touch when genning
 
@@ -123,8 +125,7 @@ namespace AAMod.Worldgeneration
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
 
-            Mod mod = AAMod.instance; //replace with your own
-            bool DEV = true;
+            Mod mod = AAMod.instance;
             //--- Initial variable creation
             ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileStone = (ushort)mod.TileType("Torchstone"),
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
@@ -135,11 +136,15 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Torchstone");
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("ScorchedDynastyWoodS");
+            colorToTile[new Color(255, 255, 0)] = mod.TileType("ScorchedShinglesS");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("ScorchedPlatform");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
             colorToTile[Color.Black] = -1; //don't touch when genning
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
             colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
+            colorToWall[new Color(0, 255, 0)] = mod.WallType("BurnedDynastyWall");
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
@@ -346,10 +351,9 @@ namespace AAMod.Worldgeneration
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
-            Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
             
-            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
-
+            gen.Generate(origin.X, origin.Y, true, true);
+            WorldGen.PlaceObject(origin.X, origin.Y, (ushort)mod.TileType("DataBank"));
             return true;
         }
     }

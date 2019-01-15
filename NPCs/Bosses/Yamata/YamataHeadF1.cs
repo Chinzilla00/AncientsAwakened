@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
 		public int movementVariance = 60; //how far from the center point to move.
 
-		public override void AI()
+        public override void AI()
 		{
             if (Body == null)
             {
@@ -167,8 +167,44 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.velocity *= 5f;
 			}
 			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-			npc.spriteDirection = -1;			
-		}
+			npc.spriteDirection = -1;
+            if (Body.TeleportMe1)
+            {
+                Body.TeleportMe1 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+            if (Body.TeleportMe2)
+            {
+                Body.TeleportMe2 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+            if (Body.TeleportMe3)
+            {
+                Body.TeleportMe3 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+            if (Body.TeleportMe4)
+            {
+                Body.TeleportMe4 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+            if (Body.TeleportMe5)
+            {
+                Body.TeleportMe5 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+            if (Body.TeleportMe6)
+            {
+                Body.TeleportMe6 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+        }
 
         public override void FindFrame(int frameHeight)
         {

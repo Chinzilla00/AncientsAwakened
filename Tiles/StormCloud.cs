@@ -34,7 +34,7 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(x, y)), BaseDrawing.GetLightColor(new Vector2(x, y)), Color.Violet, BaseDrawing.GetLightColor(new Vector2(x, y)), Color.Violet, BaseDrawing.GetLightColor(new Vector2(x, y)));
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+            Vector2 zero=  new Vector2(Main.offScreenRange, Main.offScreenRange);
             if (Main.drawToScreen)
             {
                 zero = Vector2.Zero;

@@ -12,7 +12,6 @@ namespace AAMod.Backgrounds
 {
     public class VoidSky : CustomSky
     {
-
         private UnifiedRandom random = new UnifiedRandom();
 
         private struct Bolt
@@ -62,7 +61,7 @@ namespace AAMod.Backgrounds
             {
                 Intensity = Math.Max(0f, Intensity - 0.01f);
             }
-            if (true) //NPC.downedMoonlord)
+            if (NPC.downedMoonlord) //NPC.downedMoonlord)
             {
                 if (ticksUntilNextBolt <= 0)
                 {
@@ -187,7 +186,7 @@ namespace AAMod.Backgrounds
             Intensity = 0.002f;
             Active = true;
 
-            bolts = new VoidSky.Bolt[500];
+            bolts = new Bolt[500];
             for (int i = 0; i < bolts.Length; i++)
             {
                 bolts[i].IsAlive = false;

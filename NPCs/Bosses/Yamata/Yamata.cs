@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
+using AAMod.NPCs.Bosses.Yamata;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -104,8 +105,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public bool Dead = false;
+
         public override void NPCLoot()
         {
+            Dead = true;
             if (!Tag)
             {
                 if (!Main.expertMode)
@@ -143,6 +147,13 @@ namespace AAMod.NPCs.Bosses.Yamata
         public LegInfo[] legs = null;
 		public bool[] headsSaidOw = new bool[6];
         public bool Tag;
+        public bool TeleportMe1 = false;
+        public bool TeleportMe2 = false;
+        public bool TeleportMe3 = false;
+        public bool TeleportMe4 = false;
+        public bool TeleportMe5 = false;
+        public bool TeleportMe6 = false;
+        public bool TeleportMeBitch = false;
 
         public void CheckOnHeads()
 		{
@@ -194,7 +205,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 				}
 			}
 		}
-		
+
+        public int SayTheLineYamata = 300;
 
         public override void AI()
         {
@@ -218,6 +230,43 @@ namespace AAMod.NPCs.Bosses.Yamata
 					MinionTimer = 0;
 				}				
 			}
+            
+            if (SayTheLineYamata <= 0)
+            {
+                SayTheLineYamata = 300;
+            }
+
+            if (playerTarget != null)
+            {
+                float dist = npc.Distance(playerTarget.Center);
+                if (dist > 1200)
+                {
+                    if (!npc.noTileCollide && Main.netMode != 1 && SayTheLineYamata == 300)
+                    {
+                        BaseUtility.Chat(isAwakened ? "THERE IS NO ESCAPE FROM THE ABYSS!" : "Running away?! I DON'T THINK SO!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                    }
+                    SayTheLineYamata--;
+                    npc.alpha += 10;
+                    if (npc.alpha >= 255)
+                    {
+                        Player player = Main.player[npc.target];
+                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y - 100);
+                        TeleportMe1 = true;
+                        TeleportMe2 = true;
+                        TeleportMe3 = true;
+                        TeleportMe4 = true;
+                        TeleportMe5 = true;
+                        TeleportMe6 = true;
+                        TeleportMeBitch = true;
+                        npc.Center = tele;
+                    }
+                }
+                else
+                {
+                    npc.alpha -= 10;
+                    SayTheLineYamata = 300;
+                }
+            }
 
             if (!HeadsSpawned)
             {
@@ -280,22 +329,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
             fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
 
-			if(playerTarget != null)
-			{
-				float dist = npc.Distance(playerTarget.Center);
-				if (dist > 1200)
-				{
-					if(!npc.noTileCollide && Main.netMode != 1)
-					{
-						BaseUtility.Chat("ARE YOU RUNNING AWAY?! GET BACK HERE!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
-					}
-					npc.noTileCollide = true;
-				}
-				else
-				{
-					npc.noTileCollide = false;
-				}
-			}
+			
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];
@@ -588,7 +622,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             DrawHead(sb, headTex, headTex + "_Glow", TrueHead, dColor, false);
             if (isAwakened)
             {
-                BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Yamata)
+                BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Yamata);
             }
         }
 

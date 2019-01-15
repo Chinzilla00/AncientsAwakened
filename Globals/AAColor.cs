@@ -28,6 +28,20 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75), new Color(53, 57, 126));
             }
         }
+        public static Color AkumaA //Akuma Awakened
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.LightSkyBlue, Color.DeepSkyBlue, Color.LightSkyBlue);
+            }
+        }
+        public static Color YamataA //Yamata Awakened
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 30, 68), new Color(102, 20, 80), new Color(146, 30, 68));
+            }
+        }
         public static Color Zero //Zero
 		{
 			get
