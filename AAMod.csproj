@@ -4573,7 +4573,7 @@
     <Content Include="Tiles\StormChest.png" />
     <Content Include="Tiles\StormChestS.png" />
     <Content Include="Tiles\StormChest_Highlight.png" />
-    <Content Include="Tiles\StormChest_HighlightS.png" />
+    <Content Include="Tiles\StormChestS_Highlight.png" />
     <Content Include="Tiles\StormCloud.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
