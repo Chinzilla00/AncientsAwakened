@@ -76,11 +76,11 @@ namespace AAMod.NPCs.TownNPCs
 			switch (WorldGen.genRand.Next(4))
 			{
 				case 0:
-					return "Nobunaga";
+					return "Aletheia";
 				case 1:
-					return "Hattori";
+					return "C'thalpa";
 				case 2:
-					return "Hanzo";
+					return "D’endrrah";
                 case 3:
                     return "Genji";
                 case 4:
