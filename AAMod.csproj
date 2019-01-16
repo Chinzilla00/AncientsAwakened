@@ -153,6 +153,7 @@
     <Compile Include="Dusts\AcidDust.cs" />
     <Compile Include="Dusts\IceDust.cs" />
     <Compile Include="Dusts\LuminiteDust.cs" />
+    <Compile Include="Dusts\MushDust.cs" />
     <Compile Include="Dusts\SandDust.cs" />
     <Compile Include="Dusts\SnowDustLight.cs" />
     <Compile Include="Dusts\SnowDust.cs" />
@@ -632,7 +633,6 @@
     <Compile Include="Items\Currency\GoblinSoul.cs" />
     <Compile Include="Items\DevTools\AncientOreGenner.cs" />
     <Compile Include="Items\DevTools\ChaosConverter.cs" />
-    <Compile Include="Items\DevTools\DevSolution.cs" />
     <Compile Include="Items\DevTools\Minilake.cs" />
     <Compile Include="Items\DevTools\Smallcano.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
@@ -945,6 +945,7 @@
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
     <Compile Include="Items\Usable\DesertCrate.cs" />
     <Compile Include="Items\Usable\DoomstopperKey.cs" />
+    <Compile Include="Items\Usable\SporeSac.cs" />
     <Compile Include="Items\Usable\GoblinDoll.cs" />
     <Compile Include="Items\Usable\HellCrate.cs" />
     <Compile Include="Items\Usable\IceCrate.cs" />
@@ -1155,12 +1156,15 @@
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
+    <Compile Include="NPCs\TownNPCs\Eyeshot.cs" />
     <Compile Include="NPCs\TownNPCs\GoblinSlayer.cs" />
+    <Compile Include="NPCs\TownNPCs\Lovecraftian.cs" />
     <Compile Include="NPCs\TownNPCs\Mushman.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Projectiles\AASolution.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
@@ -1275,6 +1279,7 @@
     <Compile Include="Projectiles\MorningStar.cs" />
     <Compile Include="Projectiles\Nightmare_Hammer_Pro.cs" />
     <Compile Include="Projectiles\Number1.cs" />
+    <Compile Include="Projectiles\SPORZ.cs" />
     <Compile Include="Projectiles\OrangeSolution.cs" />
     <Compile Include="Projectiles\OrderSolution.cs" />
     <Compile Include="Projectiles\Paladins_Knife_Pro.cs" />
@@ -1288,6 +1293,7 @@
     <Compile Include="Projectiles\RainbowCatPro.cs" />
     <Compile Include="Projectiles\ReaperArrow.cs" />
     <Compile Include="Projectiles\Ryugen.cs" />
+    <Compile Include="Projectiles\SandPro.cs" />
     <Compile Include="Projectiles\Serpent\BB.cs" />
     <Compile Include="Projectiles\Serpent\SS.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
@@ -1777,6 +1783,7 @@
     <Content Include="Dusts\MeleeDust.png" />
     <Content Include="Dusts\MindDust.png" />
     <Content Include="Dusts\MireBubbleDust.png" />
+    <Content Include="Dusts\MushDust.png" />
     <Content Include="Dusts\OmegaDust.png" />
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
@@ -3527,8 +3534,10 @@
     <Content Include="Items\Usable\MireCrate.png" />
     <Content Include="Items\Usable\MireInsignia.png" />
     <Content Include="Items\Usable\MireKey.png" />
+    <Content Include="Items\Usable\Mushboom.png" />
     <Content Include="Items\Usable\OrangeSolution.png" />
     <Content Include="Items\Usable\OrderSolution.png" />
+    <Content Include="Items\Usable\SporeSac.png" />
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
@@ -4002,8 +4011,11 @@
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\Huo.png" />
     <Content Include="NPCs\Minibosses\Shin%27en.png" />
+    <Content Include="NPCs\TownNPCs\EyeShot.png" />
     <Content Include="NPCs\TownNPCs\GoblinSlayer.png" />
     <Content Include="NPCs\TownNPCs\GoblinSlayer_Head.png" />
+    <Content Include="NPCs\TownNPCs\Lovecraftian.png" />
+    <Content Include="NPCs\TownNPCs\Lovecraftian_Head.png" />
     <Content Include="NPCs\TownNPCs\Mushman.png" />
     <Content Include="NPCs\TownNPCs\Mushman_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
@@ -4175,11 +4187,17 @@
     <Content Include="Projectiles\MireProj.png" />
     <Content Include="Projectiles\MLP.png" />
     <Content Include="Projectiles\MorningStar.png" />
+    <Content Include="Projectiles\Nightmare1.png" />
+    <Content Include="Projectiles\Nightmare2.png" />
+    <Content Include="Projectiles\Nightmare3.png" />
+    <Content Include="Projectiles\Nightmare4.png" />
     <Content Include="Projectiles\Nightmare_Hammer_Pro.png" />
     <Content Include="Projectiles\Number1.png" />
+    <Content Include="Projectiles\SPORZ.png" />
     <Content Include="Projectiles\OrangeSolution.png" />
     <Content Include="Projectiles\OrderSolution.png" />
     <Content Include="Projectiles\Paladins_Knife_Pro.png" />
+    <Content Include="Projectiles\Pellet.png" />
     <Content Include="Projectiles\PepsiCan.png" />
     <Content Include="Projectiles\PerfectChaosE.png" />
     <Content Include="Projectiles\Petal_Kunai_Pro.png" />
@@ -4189,6 +4207,7 @@
     <Content Include="Projectiles\RainbowCatPro.png" />
     <Content Include="Projectiles\ReaperArrow.png" />
     <Content Include="Projectiles\Ryugen.png" />
+    <Content Include="Projectiles\SandPro.png" />
     <Content Include="Projectiles\Sandstorm.png" />
     <Content Include="Projectiles\Serpent\BB.png" />
     <Content Include="Projectiles\Serpent\IceArrow.png" />
