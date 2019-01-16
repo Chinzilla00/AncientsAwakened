@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Throwing
+namespace AAMod.Items.Usable
 {
     public class SporeSac : ModItem
 	{

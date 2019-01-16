@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    public class ScorchedShingleSs : ModTile
+    public class ScorchedShinglesS : ModTile
     {
         public override void SetDefaults()
         {

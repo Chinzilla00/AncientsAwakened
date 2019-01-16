@@ -61,7 +61,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Doomstone");
+            DisplayName.SetDefault("Charged Doomstone");
             Tooltip.SetDefault("");
 
         }

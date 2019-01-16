@@ -81,6 +81,10 @@ namespace AAMod
             {
                 return false;
             }
+            if (type == mod.TileType<Tiles.Doomstone>() && TileID.Sets.BreakableWhenPlacing[mod.TileType<Tiles.Doomstone>()]) //placing grass
+            {
+                return false;
+            }
             return base.Drop(i, j, type);
         }
 

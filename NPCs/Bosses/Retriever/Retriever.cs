@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                 {
                     npc.frame.Y = (38 * 10);
                 }
-                else if (LaserTimer = 0)
+                else if (LaserTimer == 0)
                 {
                     LaserTimer = 1200;
                 }

@@ -44,7 +44,6 @@ namespace AAMod.Worldgeneration
 			
 			TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
 			Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
-            WorldGen.PlaceObject((int)(origin.X) + 60, (int)(origin.Y - 10) + 31, (ushort)mod.TileType("DreadAltarS"));
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
@@ -89,6 +88,8 @@ namespace AAMod.Worldgeneration
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
 			gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+
+            WorldGen.PlaceObject((int)(origin.X) + 60, (int)(origin.Y - 10) + 31, (ushort)mod.TileType("DreadAltarS"));
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -151,7 +152,6 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
-            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, (ushort)mod.TileType("DracoAltarS"));
             
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
@@ -206,6 +206,7 @@ namespace AAMod.Worldgeneration
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
             gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, (ushort)mod.TileType("DracoAltarS"));
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {

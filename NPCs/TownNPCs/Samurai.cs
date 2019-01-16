@@ -145,8 +145,14 @@ namespace AAMod.NPCs.TownNPCs
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
-		{
-			shop.item[nextSlot].SetDefaults(ItemID.DynastyWood);
+        {
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.InfernoSeeds>());
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.MireSeeds>());
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.DynastyWood);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.DynastyWood);
 			nextSlot++;
 			shop.item[nextSlot].SetDefaults(ItemID.RedDynastyShingles);
 			nextSlot++;

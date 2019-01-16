@@ -78,6 +78,7 @@
     <Compile Include="Backgrounds\InfernoSky.cs" />
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\VoidUGBG.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
     <Compile Include="Backgrounds\IZSky.cs" />
     <Compile Include="Backgrounds\IZSkyData.cs" />
@@ -407,13 +408,11 @@
     <Compile Include="Items\Blocks\InfernoAltar.cs" />
     <Compile Include="Items\Blocks\InfernoBox.cs" />
     <Compile Include="Items\Blocks\InfernoChest.cs" />
-    <Compile Include="Items\Blocks\InfernoGrassBlock.cs" />
     <Compile Include="Items\Blocks\InfernoUBox.cs" />
     <Compile Include="Items\Blocks\IZBox.cs" />
     <Compile Include="Items\Blocks\MireAltar.cs" />
     <Compile Include="Items\Blocks\MireBox.cs" />
     <Compile Include="Items\Blocks\MireChest.cs" />
-    <Compile Include="Items\Blocks\MireGrassBlock.cs" />
     <Compile Include="Items\Blocks\MireUBox.cs" />
     <Compile Include="Items\Blocks\MonarchBox.cs" />
     <Compile Include="Items\Blocks\MoonAltarA.cs" />
@@ -714,6 +713,7 @@
     <Compile Include="Items\Materials\RadiumBar.cs" />
     <Compile Include="Items\Materials\ShinyCharm.cs" />
     <Compile Include="Items\Materials\DesertMana.cs" />
+    <Compile Include="Items\Materials\VoidEnergy.cs" />
     <Compile Include="Items\Materials\SoulOfSmite.cs" />
     <Compile Include="Items\Materials\SnowMana.cs" />
     <Compile Include="Items\Materials\SoulOfSpite.cs" />
@@ -943,8 +943,15 @@
     <Compile Include="Items\Tools\Terratool_Hammer.cs" />
     <Compile Include="Items\Tools\YtriumAxe.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\OrderBottle.cs" />
     <Compile Include="Items\Usable\DesertCrate.cs" />
     <Compile Include="Items\Usable\DoomstopperKey.cs" />
+    <Compile Include="Items\Usable\DoomSeeds.cs" />
+    <Compile Include="Items\Usable\BlackSolution.cs" />
+    <Compile Include="Items\Usable\MireSeeds.cs" />
+    <Compile Include="Items\Usable\InfernoSeeds.cs" />
+    <Compile Include="Items\Usable\DarkwaterFlask.cs" />
+    <Compile Include="Items\Usable\AshJar.cs" />
     <Compile Include="Items\Usable\SporeSac.cs" />
     <Compile Include="Items\Usable\GoblinDoll.cs" />
     <Compile Include="Items\Usable\HellCrate.cs" />
@@ -963,6 +970,7 @@
     <Compile Include="Items\Usable\MireKey.cs" />
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
+    <Compile Include="Items\Usable\VoidBomb.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
@@ -1164,7 +1172,6 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Projectiles\AASolution.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
@@ -1257,6 +1264,7 @@
     <Compile Include="Projectiles\IceChunk.cs" />
     <Compile Include="Projectiles\IllumantBall.cs" />
     <Compile Include="Projectiles\Incineration.cs" />
+    <Compile Include="Projectiles\BlackSolution.cs" />
     <Compile Include="Projectiles\IndigoSolution.cs" />
     <Compile Include="Projectiles\Infinity\Anhialation.cs" />
     <Compile Include="Projectiles\Infinity\AnhialationBurst.cs" />
@@ -1279,9 +1287,9 @@
     <Compile Include="Projectiles\MorningStar.cs" />
     <Compile Include="Projectiles\Nightmare_Hammer_Pro.cs" />
     <Compile Include="Projectiles\Number1.cs" />
+    <Compile Include="Projectiles\OrderSolution.cs" />
     <Compile Include="Projectiles\SPORZ.cs" />
     <Compile Include="Projectiles\OrangeSolution.cs" />
-    <Compile Include="Projectiles\OrderSolution.cs" />
     <Compile Include="Projectiles\Paladins_Knife_Pro.cs" />
     <Compile Include="Projectiles\PepsiCan.cs" />
     <Compile Include="Projectiles\PerfectChaosE.cs" />
@@ -1353,6 +1361,7 @@
     <Compile Include="Projectiles\TrueManaShot.cs" />
     <Compile Include="Projectiles\UmbreonSPProjectile.cs" />
     <Compile Include="Projectiles\Void.cs" />
+    <Compile Include="Projectiles\VoidBomb.cs" />
     <Compile Include="Projectiles\Yamata\AbyssalYariP.cs" />
     <Compile Include="Projectiles\Yamata\AbyssArrow.cs" />
     <Compile Include="Projectiles\Yamata\Crescent.cs" />
@@ -1391,6 +1400,8 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
     <Compile Include="Tiles\ACS.cs" />
+    <Compile Include="Tiles\Doomgrass.cs" />
+    <Compile Include="Tiles\DoomstoneB.cs" />
     <Compile Include="Tiles\DracoAltarS.cs" />
     <Compile Include="Tiles\DreadAltarS.cs" />
     <Compile Include="Tiles\DreadAltar.cs" />
@@ -3202,6 +3213,7 @@
     <Content Include="Items\Materials\DesertMana.png" />
     <Content Include="Items\Materials\DevilSilk.png" />
     <Content Include="Items\Materials\Discordium.png" />
+    <Content Include="Items\Materials\Doomite.png" />
     <Content Include="Items\Materials\DragonClaw.png" />
     <Content Include="Items\Materials\DragonFire.png" />
     <Content Include="Items\Materials\Dragonfruit.png" />
@@ -3234,6 +3246,7 @@
     <Content Include="Items\Materials\StarcloudBar.png" />
     <Content Include="Items\Materials\Stardust.png" />
     <Content Include="Items\Materials\TechneciumBar.png" />
+    <Content Include="Items\Materials\VoidEnergy.png" />
     <Content Include="Items\Materials\vulture_feather.png" />
     <Content Include="Items\Materials\YtriumBar.png" />
     <Content Include="Items\Melee\AbyssalTwilight.png" />
@@ -3511,7 +3524,10 @@
     <Content Include="Items\Tools\Terratool_Hammer.png" />
     <Content Include="Items\Tools\YtriumAxe.png" />
     <Content Include="Items\Tools\YtriumPickaxe.png" />
+    <Content Include="Items\Usable\AshJar.png" />
+    <Content Include="Items\Usable\DarkwaterFlask.png" />
     <Content Include="Items\Usable\DesertCrate.png" />
+    <Content Include="Items\Usable\DoomSeeds.png" />
     <Content Include="Items\Usable\DoomstopperKey.png" />
     <Content Include="Items\Usable\GoblinDoll.png" />
     <Content Include="Items\Usable\HellCrate.png" />
@@ -3520,6 +3536,7 @@
     <Content Include="Items\Usable\InfernoCrate.png" />
     <Content Include="Items\Usable\InfernoInsignia.png" />
     <Content Include="Items\Usable\InfernoKey.png" />
+    <Content Include="Items\Usable\InfernoSeeds.png" />
     <Content Include="Items\Usable\KeyOfBlight.png" />
     <Content Include="Items\Usable\KeyOfSmite.png" />
     <Content Include="Items\Usable\KeyOfSpite.png" />
@@ -3534,12 +3551,16 @@
     <Content Include="Items\Usable\MireCrate.png" />
     <Content Include="Items\Usable\MireInsignia.png" />
     <Content Include="Items\Usable\MireKey.png" />
+    <Content Include="Items\Usable\MireSeeds.png" />
     <Content Include="Items\Usable\Mushboom.png" />
+    <Content Include="Items\Usable\BlackSolution.png" />
     <Content Include="Items\Usable\OrangeSolution.png" />
+    <Content Include="Items\Usable\OrderBottle.png" />
     <Content Include="Items\Usable\OrderSolution.png" />
     <Content Include="Items\Usable\SporeSac.png" />
     <Content Include="Items\Usable\StoneOrb.png" />
     <Content Include="Items\Usable\StoneTesseract.png" />
+    <Content Include="Items\Usable\VoidBomb.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
@@ -3802,7 +3823,6 @@
     <Content Include="NPCs\Bosses\Rajah\RajahLeg.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever.png" />
     <Content Include="NPCs\Bosses\Retriever\RetrieverLaser.png" />
-    <Content Include="NPCs\Bosses\Retriever\RetrieverLAZAR.png" />
     <Content Include="NPCs\Bosses\Retriever\RetrieverMinion.png" />
     <Content Include="NPCs\Bosses\Retriever\RetrieverShot.png" />
     <Content Include="NPCs\Bosses\Retriever\Retriever_Head_Boss.png" />
@@ -4193,6 +4213,7 @@
     <Content Include="Projectiles\Nightmare4.png" />
     <Content Include="Projectiles\Nightmare_Hammer_Pro.png" />
     <Content Include="Projectiles\Number1.png" />
+    <Content Include="Projectiles\BlackSolution.png" />
     <Content Include="Projectiles\SPORZ.png" />
     <Content Include="Projectiles\OrangeSolution.png" />
     <Content Include="Projectiles\OrderSolution.png" />
@@ -4386,6 +4407,7 @@
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DoomstoneB.png" />
     <Content Include="Tiles\DracoAltarS.png" />
     <Content Include="Tiles\DracoAltar.png" />
     <Content Include="Tiles\DracoAltarSun.png" />

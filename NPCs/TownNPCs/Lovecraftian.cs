@@ -1,3 +1,4 @@
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -156,35 +157,23 @@ namespace AAMod.NPCs.TownNPCs
             //Providing materials
 
             //Purity
-            chat.Add("Thanks. These forests are so green, reminds me of home...except where I'm from, it's green everywhere.");
+            //chat.Add("Thanks. These forests are so green, reminds me of home...except where I'm from, it's green everywhere.");
 
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
 
-        /* 
-		// Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
-		// The WeightedRandom class needs "using Terraria.Utilities;" to use
-		public override string GetChat()
-		{
-			WeightedRandom<string> chat = new WeightedRandom<string>();
-
-			int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-			if (partyGirl >= 0 && Main.rand.Next(4) == 0)
-			{
-				chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
-			}
-			chat.Add("Sometimes I feel like I'm different from everyone else here.");
-			chat.Add("What's your favorite color? My favorite colors are white and black.");
-			chat.Add("What? I don't have any arms or legs? Oh, don't be ridiculous!");
-			chat.Add("This message has a weight of 5, meaning it appears 5 times more often.", 5.0);
-			chat.Add("This message has a weight of 0.1, meaning it appears 10 times as rare.", 0.1);
-			return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
-		}
-		*/
-
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            //button = "Shop"; button2 = "Research";
+            button = "Shop"; //button2 = "Research";
+        }
+
+        public override void OnChatButtonClicked(bool firstButton, ref bool openShop)
+        {
+            if (firstButton)
+            {
+                Main.npcChatCornerItem = 0;
+                openShop = true;
+            }
         }
 
         public static int[] ResearchItems = new int[1];
@@ -196,11 +185,41 @@ namespace AAMod.NPCs.TownNPCs
             ResearchItemCounts = new int[] { 2, 40, 1, 1, 1, 1, 1, 1, 2, 2, 1, 3, 5, 5 };
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
-		{
-		}
+        public override void SetupShop(Chest chest, ref int index)
+        {
+            int actionIndex = index;
+            Action<int, int> AddItemIndex = (type, value) =>
+            {
+                chest.item[actionIndex++].SetDefaults(type);
+                chest.item[actionIndex - 1].value = value;
+            };
+            Action<int, int, float> AddItem = (type, valueOverride, valueMult) =>
+            {
+                chest.item[actionIndex++].SetDefaults(type);
+                chest.item[actionIndex - 1].value = (valueOverride > 0 ? valueOverride : (int)(chest.item[actionIndex - 1].value * valueMult));
+            };
+            if (Main.netMode != 0) AddItem(ItemID.WormholePotion, -1, 1f);
+            if (AAWorld.downedBrood)
+            {
+                AddItem(mod.ItemType<Items.Usable.AshJar>(), -1, 2f);
+            }
+            if (AAWorld.downedHydra)
+            {
+                AddItem(mod.ItemType<Items.Usable.DarkwaterFlask>(), -1, 2f);
+            }
+            if (AAWorld.downedBrood && AAWorld.downedHydra)
+            {
+                AddItem(mod.ItemType<Items.Usable.OrderBottle>(), -1, 2f);
+                AddItem(mod.ItemType<Items.Usable.VoidBomb>(), -1, 2f);
+            }
+            if (NPC.downedMechBossAny)
+            {
+                AddItem(mod.ItemType<Items.Usable.BlackSolution>(), -1, 2f);
+            }
 
-		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        }
+
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
 			damage = 30;
 			knockback = 4f;

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -6,6 +7,7 @@ namespace AAMod.Projectiles
 {
     public class SunLance : ModProjectile
     {
+        public static Vector2[] spearPos = new Vector2[] { new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(150, 0), new Vector2(150, 0), new Vector2(30, 0) };
         public override void SetDefaults()
         {
             projectile.width = 18;
@@ -35,48 +37,49 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            // Since we access the owner player instance so much, it's useful to create a helper local variable for this
-            // Sadly, Projectile/ModProjectile does not have its own
-            Player projOwner = Main.player[projectile.owner];
-            // Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
-            Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
-            projectile.direction = projOwner.direction;
-            projOwner.heldProj = projectile.whoAmI;
-            projOwner.itemTime = projOwner.itemAnimation;
-            projectile.position.X = ownerMountedCenter.X - (float)(projectile.width / 2);
-            projectile.position.Y = ownerMountedCenter.Y - (float)(projectile.height / 2);
-            // As long as the player isn't frozen, the spear can move
-            if (!projOwner.frozen)
+            AIArcStabSpear(projectile, ref projectile.ai, false);
+            if (Main.rand.Next(3) != 0)
             {
-                if (MovementFactor == 0f) // When initially thrown out, the ai0 will be 0f
-                {
-                    MovementFactor = 3f; // Make sure the spear moves forward when initially thrown out
-                    projectile.netUpdate = true; // Make sure to netUpdate this spear
-                }
-                if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
-                {
-                    MovementFactor -= 2.4f;
-                }
-                else // Otherwise, increase the movement factor
-                {
-                    MovementFactor += 2.1f;
-                }
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.DragonflameDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                Dust dust = Main.dust[dustIndex];
+                dust.noGravity = true;
+                dust.scale *= 1.75f;
+                dust.velocity.X = dust.velocity.X * 2f;
+                dust.velocity.Y = dust.velocity.Y * 2f;
+                dust.scale *= 0.2f;
             }
-            // Change the spear position based off of the velocity and the movementFactor
-            projectile.position += projectile.velocity * MovementFactor;
-            // When we reach the end of the animation, we can kill the spear projectile
-            if (projOwner.itemAnimation == 0)
-            {
-                projectile.Kill();
-            }
-            // Apply proper rotation, with an offset of 135 degrees due to the sprite's rotation, notice the usage of MathHelper, use this class!
-            // MathHelper.ToRadians(xx degrees here)
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
-            // Offset by 90 degrees here
-            if (projectile.spriteDirection == -1)
-            {
-                projectile.rotation -= MathHelper.ToRadians(90f);
-            }
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            BaseMod.BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
+            return false;
+        }
+
+        public static void AIArcStabSpear(Projectile p, ref float[] ai, bool overrideKill = false)
+        {
+            Player plr = Main.player[p.owner];
+            Item item = plr.inventory[plr.selectedItem];
+            if (Main.myPlayer == p.owner && item != null && item.autoReuse && plr.itemAnimation == 1) { p.Kill(); return; } //prevents a bug with autoReuse and spears
+            Main.player[p.owner].heldProj = p.whoAmI;
+            Main.player[p.owner].itemTime = Main.player[p.owner].itemAnimation;
+            Vector2 gfxOffset = new Vector2(0, plr.gfxOffY);
+            AIArcStabSpear(p, ref ai, plr.Center + gfxOffset, BaseMod.BaseUtility.RotationTo(p.Center, p.Center + p.velocity), plr.direction, plr.itemAnimation, plr.itemAnimationMax, overrideKill, plr.frozen);
+        }
+
+        public static void AIArcStabSpear(Projectile p, ref float[] ai, Vector2 center, float itemRot, int ownerDirection, int itemAnimation, int itemAnimationMax, bool overrideKill = false, bool frozen = false)
+        {
+            if (p.timeLeft < 598) p.alpha -= 70; if (p.alpha < 0) p.alpha = 0;
+            p.direction = ownerDirection;
+            Vector2 oldCenter = p.Center;
+            p.position.X = center.X - (float)(p.width * 0.5f);
+            p.position.Y = center.Y - (float)(p.height * 0.5f);
+            p.position += BaseMod.BaseUtility.RotateVector(default(Vector2), BaseMod.BaseUtility.MultiLerpVector(1f - (float)(itemAnimation / (float)itemAnimationMax), spearPos), itemRot);
+            if (!overrideKill && Main.player[p.owner].itemAnimation == 0) { p.Kill(); }
+            p.rotation = BaseMod.BaseUtility.RotationTo(center, oldCenter) + 2.355f;
+            if (p.direction == -1) { p.rotation -= 0f; }
+            else
+            if (p.direction == 1) { p.rotation -= 1.57f; }
         }
     }
 }
