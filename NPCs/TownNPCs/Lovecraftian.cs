@@ -9,7 +9,21 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
 	{
-		public override string Texture
+
+        Mod Fargos = ModLoader.GetMod("FargoMod");
+        Mod GRealm = ModLoader.GetMod("Grealm");
+        private bool Purity = false;
+        private bool Snow = false;
+        private bool Desert = false;
+        private bool Corruption = false;
+        private bool Crimson = false;
+        private bool Inferno = false;
+        private bool Mire = false;
+        private bool Void = false;
+        private bool Hallow = false;
+
+
+        public override string Texture
 		{
 			get
 			{
@@ -90,25 +104,64 @@ namespace AAMod.NPCs.TownNPCs
         
         public override string GetChat()
         {
+            int Pirate = NPC.FindFirstNPC(NPCID.Pirate);
+            int Mutant = NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
+            int HordeZombie = NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
+
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            int TravellingMerchant = NPC.FindFirstNPC(NPCID.TravellingMerchant);
-			if (TravellingMerchant >= 0 && Main.rand.Next(4) == 0)
-			{
-                chat.Add("I've known " + Main.npc[TravellingMerchant].GivenName + " for a while. He's quite a man of culture.");
-            }
-            int DD2Bartender = NPC.FindFirstNPC(NPCID.DD2Bartender);
-            if (DD2Bartender >= 0 && Main.rand.Next(4) == 0)
+            chat.Add("You know, where I’m from, I’m what you would call in your world ‘hot stuff.’");
+
+            chat.Add("I wasn’t the only thing that came here when I did. A whole bunch of other stuff came through with me when a spacial rift opened up in my world. Stuff like the Eye of Cthulhu and the Brain of Cthulhu were already here though. No clue where those two came from.");
+
+            chat.Add("...what are you looking at? Ever seen a squid-person before?");
+
+            chat.Add("Yes I’m a woman. What about it? Is it the tentacle beard that threw you off?");
+
+            chat.Add("If you have any sense of self preservation, I’d avoid that sunken ship in the ocean just off the coast. Scary things from my neck of the woods hang out there, especially...nevermind.");
+
+            chat.Add("Ever just find things in your tentacles that you don’t know how they got there ? No ? Just me ?");
+
+            chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
+
+            
+            
+
+            //If Pirate is present
+            if (Pirate >= 0 && Main.rand.Next(10) == 0)
             {
-                return "I'm not really a fan of " + Main.npc[DD2Bartender].GivenName + "'s ale. It's a bit strong for my taste. I prefer Sake to be entirely honest.";
+                chat.Add("Oh.This is awkward. Poor " + Main.npc[Pirate].GivenName + ". His ship was the one that got destroyed when I got ripped here unwillingly.");
             }
-            chat.Add("The chaos biomes weren't always....err....chaotic.");
-            chat.Add("Have you seen my sword? I can't seem to find it anywhere.");
-            chat.Add("We used to be the most powerful nation in all of terraria...then...HE came...");
+
+            //If mutant is present
+
+            if (Mutant >= 0 && Main.rand.Next(10) == 1)
+            {
+                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him without any effort.");
+            }
+
+            //If Horde Zombie is present
+            if (HordeZombie >= 0 && Main.rand.Next(10) == 2)
+            {
+                chat.Add("That dead guy shambling around freaks me out, and that’s saying something considering I’m a walking horror story. I don’t know, I just feel like he knows too much...");
+            }
+
+
+            //Post - Moon Lord
+            if (NPC.downedMoonlord && Main.rand.Next(10) == 2)
+            {
+                chat.Add("Fun fact; The Moon Lord and Cthulhu are brothers. At least that’s what some pink pixie lady I met one time told me.");
+            }
+
+            //Providing materials
+
+            //Purity
+            chat.Add("Thanks. These forests are so green, reminds me of home...except where I'm from, it's green everywhere.");
+
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
 
-		/* 
+        /* 
 		// Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
 		// The WeightedRandom class needs "using Terraria.Utilities;" to use
 		public override string GetChat()
@@ -129,20 +182,21 @@ namespace AAMod.NPCs.TownNPCs
 		}
 		*/
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Language.GetTextValue("LegacyInterface.28");
-		}
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+            //button = "Shop"; button2 = "Research";
+        }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-		{
-			if (firstButton)
-			{
-				//shop = true;
-			}
-		}
+        public static int[] ResearchItems = new int[1];
+        public static int[] ResearchItemCounts = new int[1];
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+        public static void OnLoad(Mod mod)
+        {
+            ResearchItems = new int[] { ItemID.Sunflower, ItemID.IceBlock, ItemID.Cactus, ItemID.RottenChunk, ItemID.Vertebrae, mod.ItemType<Items.Materials.DragonScale>(), mod.ItemType<Items.Materials.MirePod>(), mod.ItemType<Items.Materials.DragonScale>(), mod.ItemType("AdvancedCircuitry"), mod.ItemType("LivingBranch"), mod.ItemType("AncientBoneFragments"), mod.ItemType("AcidSac"), mod.ItemType("BloodFang"), mod.ItemType("Corpsethorn") };
+            ResearchItemCounts = new int[] { 2, 40, 1, 1, 1, 1, 1, 1, 2, 2, 1, 3, 5, 5 };
+        }
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
 		{
 		}
 
