@@ -82,11 +82,9 @@ namespace AAMod.NPCs.TownNPCs
 				case 2:
 					return "D’endrrah";
                 case 3:
-                    return "Genji";
-                case 4:
-                    return "Oda";
+                    return "Ycnàgnnisssz";
                 default:
-					return "Hideyoshi";
+                    return "Yidhra";				
 			}
 		}
         
