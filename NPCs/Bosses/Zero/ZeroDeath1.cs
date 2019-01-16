@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.projFrames[projectile.type] = 8;
+            Main.projFrames[projectile.type] = 9;
         }
         public override void SetDefaults()
         {

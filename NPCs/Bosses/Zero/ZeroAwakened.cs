@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Protocol");
-            Main.npcFrameCount[npc.type] = 12;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 8;    //boss frame/animation 
             NPCID.Sets.TrailCacheLength[npc.type] = 15;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
@@ -41,8 +41,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.defense = 110;
             }
             npc.knockBackResist = 0f;
-            npc.width = 178;
-            npc.height = 174;
+            npc.width = 78;
+            npc.height = 78;
             npc.friendly = false;
             npc.aiStyle = 0;
             npc.value = Item.buyPrice(2, 0, 0, 0);
@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L Ω", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -170,38 +170,32 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             return false;
         }
-        private int endTimer;
-        private int timee = 5;
+        private int Glitch = 0;
+        private bool GlitchBool = false;
 
         public override void AI()
         {
-            if (npc.alpha > 0)
+            Glitch = Main.rand.Next(8);
+            npc.frameCounter++;
+            if (npc.frameCounter >= 10)
             {
-                npc.alpha -= 7;
-            }
-            if (npc.alpha < 0)
-            {
-                npc.alpha = 0;
-            }
-            if (timee > 0)
-            {
-                timee--;
-            }
-            if (timee == 0 && npc.frameCounter == 12)
-            {
-                npc.frameCounter = 1;
-                timee = 5;
-            }
-            if (timee == 0)
-            {
-                npc.frameCounter++;
-                if (npc.frameCounter == 12)
+                npc.frameCounter = 0;
+                npc.frame.Y += 170;
+                if (Glitch == 0)
                 {
-                    timee = Main.rand.Next(0, 9);
+                    if (npc.frame.Y > (108 * 7))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
                 }
                 else
                 {
-                    timee = 5;
+                    if (npc.frame.Y > (108 * 3))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
                 }
             }
             if (npc.life <= npc.lifeMax / 3)

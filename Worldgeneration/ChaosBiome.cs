@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using Terraria.World.Generation;
 using Terraria.GameContent.Generation;
 using BaseMod;
+using AAMod.Tiles;
 
 namespace AAMod.Worldgeneration
 { 
@@ -43,8 +44,9 @@ namespace AAMod.Worldgeneration
 			
 			TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile, mod.GetTexture("Worldgeneration/LakeWalls"), colorToWall, mod.GetTexture("Worldgeneration/LakeWater"));
 			Point newOrigin = new Point(origin.X, origin.Y - 10); //biomeRadius);
+            WorldGen.PlaceObject((int)(origin.X) + 60, (int)(origin.Y - 10) + 31, (ushort)mod.TileType("DreadAltarS"));
 
-			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
 			{
 				new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.JungleGrass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
@@ -149,6 +151,8 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
+            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, (ushort)mod.TileType("DracoAltarS"));
+            
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{
@@ -231,8 +235,90 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class SurfaceMushroom : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+            //--- Initial variable creation
+            ushort tileGrass = (ushort)mod.TileType("Mycelium");
+
+            int worldSize = GetWorldSize();
+            int biomeRadius = (worldSize == 3 ? 100 : 80), biomeRadiusHalf = biomeRadius / 2;	
+			
+
+            Point newOrigin = new Point(origin.X, origin.Y - 30);
+
+            Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
+            {
+                TileID.Grass,
+                TileID.Dirt,
+                TileID.Stone,
+                TileID.Sand,
+                TileID.SnowBlock,
+                TileID.IceBlock,
+                TileID.BlueDungeonBrick,
+                TileID.PinkDungeonBrick,
+                TileID.GreenDungeonBrick,
+                (ushort)mod.TileType<Torchstone>(),
+                (ushort)mod.TileType<Torchsand>(),
+                (ushort)mod.TileType<Torchsandstone>(),
+                (ushort)mod.TileType<TorchsandHardened>(),
+                (ushort)mod.TileType<Torchice>(),
+                (ushort)mod.TileType<InfernoGrass>(),
+                (ushort)mod.TileType<Depthstone>(),
+                (ushort)mod.TileType<Depthsand>(),
+                (ushort)mod.TileType<Depthsandstone>(),
+                (ushort)mod.TileType<DepthsandHardened>(),
+                (ushort)mod.TileType<Depthice>(),
+                (ushort)mod.TileType<MireGrass>(),
+            }).Output(dictionary));
+
+            int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
+            int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock];
+            int sandBiomeCount = dictionary[TileID.Sand];
+            int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
+            int InfernoBiomeCount = dictionary[(ushort)mod.TileType<InfernoGrass>()] + dictionary[(ushort)mod.TileType<Torchstone>()] + dictionary[(ushort)mod.TileType<Torchsandstone>()] + dictionary[(ushort)mod.TileType<TorchsandHardened>()] + dictionary[(ushort)mod.TileType<Torchice>()];
+            int MireBiomeCount = dictionary[(ushort)mod.TileType<MireGrass>()] + dictionary[(ushort)mod.TileType<Depthstone>()] + dictionary[(ushort)mod.TileType<Depthsandstone>()] + dictionary[(ushort)mod.TileType<DepthsandHardened>()] + dictionary[(ushort)mod.TileType<Depthice>()];
+
+
+            if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || MireBiomeCount >= normalBiomeCount || InfernoBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+            {
+                return false;
+            }
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new Actions.SetLiquid(0, 0)
+            }));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
+			{
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
+				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
+				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
+			}));
+
+            return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
+        }
+    }
+
     public class TerrariumDelete : MicroBiome
     {
+
+        Texture2D Terrasphere = null;
+
+        Texture2D TerraWalls = null;
+
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
@@ -249,6 +335,22 @@ namespace AAMod.Worldgeneration
             Texture2D TerraSmall = mod.GetTexture("Worldgeneration/TerrariumDelete");
             Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMedDelete");
             Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLargeDelete");
+
+            if (Terrasphere == null)
+            {
+                if (worldSize == 3)
+                {
+                    Terrasphere = TerraLarge;
+                }
+                if (worldSize == 2)
+                {
+                    Terrasphere = TerraMed;
+                }
+                if (worldSize == 1)
+                {
+                    Terrasphere = TerraSmall;
+                }
+            }
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile);
             Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
@@ -274,9 +376,13 @@ namespace AAMod.Worldgeneration
             return 1; //unknown size, assume small
         }
     }
-
+    
     public class TerrariumSphere : MicroBiome
     {
+        Texture2D Terrasphere = null;
+
+        Texture2D TerraWalls = null;
+
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
@@ -305,7 +411,29 @@ namespace AAMod.Worldgeneration
             Texture2D WallMed = mod.GetTexture("Worldgeneration/TerrariumMedWalls");
             Texture2D WallLarge = mod.GetTexture("Worldgeneration/TerrariumLargeWalls");
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile, worldSize == 3 ? WallLarge : worldSize == 2 ? WallMed : WallSmall, colorToWall);
+            if (Terrasphere == null)
+            {
+                if (worldSize == 3)
+                {
+                    Terrasphere = TerraLarge;
+
+                    TerraWalls = WallLarge;
+                }
+                if (worldSize == 2)
+                {
+                    Terrasphere = TerraMed;
+
+                    TerraWalls = WallMed;
+                }
+                if (worldSize == 1)
+                {
+                    Terrasphere = TerraSmall;
+
+                    TerraWalls = WallSmall;
+                }
+            }
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(Terrasphere, colorToTile, TerraWalls, colorToWall);
             Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
@@ -330,13 +458,17 @@ namespace AAMod.Worldgeneration
         }
     }
 
+
     public class Parthenan : MicroBiome
     {
+        public static int[] Tablet = new int[0];
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
 
             Mod mod = AAMod.instance;
+
+            Tablet = new int[mod.ItemType<Items.Tablet.LoreTablet>()];
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingS");
@@ -347,13 +479,15 @@ namespace AAMod.Worldgeneration
             colorToTile[Color.Black] = -1; //don't touch when genning		
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingWallS");
+            colorToWall[new Color(0, 255, 0)] = mod.WallType("FulguritePlatingWallS");
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject(origin.X, origin.Y, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 45, (ushort)mod.TileType("DataBank"));
+            BaseWorldGen.GenerateChest((int)(origin.X) + 34, (int)(origin.Y) + 47, (ushort)mod.TileType("StormChest"), 0, Tablet, false, false, false);
+            BaseWorldGen.GenerateChest((int)(origin.X) + 41, (int)(origin.Y) + 47, (ushort)mod.TileType("StormChest"), 0, Tablet, false, false, false);
             return true;
         }
     }

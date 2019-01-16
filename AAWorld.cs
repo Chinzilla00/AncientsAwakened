@@ -27,6 +27,8 @@ namespace AAMod
         public static int mushTiles = 0;
         public static int terraTiles = 0;
         public static int stormTiles = 0;
+        public static int pagodaTiles = 0;
+        public static int lakeTiles = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -286,6 +288,8 @@ namespace AAMod
             Chairlol = downed.Contains("lol");
             downedMonarch = downed.Contains("Monarch");
             downedGrips = downed.Contains("Grips");
+            downedBrood = downed.Contains("Brood");
+            downedHydra = downed.Contains("Hydra");
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             downedRetriever = downed.Contains("Storm1");
             downedOrthrus = downed.Contains("Storm2");
@@ -376,21 +380,17 @@ namespace AAMod
                 ParthenanIsland(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Altars", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Mush", delegate (GenerationProgress progress)
+            {
+                Mush(progress);
+            }));
+
+            tasks.Insert(shiniesIndex2 + 4, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
             }));
         }
-
-        public void Mush(GenerationProgress progress)
-        {
-            for (int k = 0; k < (int)((double)(WorldGen.worldSurface * Main.maxTilesY) * 1E-05); k++)
-            {
-                int X = WorldGen.genRand.Next((Main.maxTilesX / 2) - 150, (Main.maxTilesX / 2) + 150);
-                int Y = WorldGen.genRand.Next((int)WorldGen.worldSurface);
-                WorldGen.OreRunner(X, Y, WorldGen.genRand.Next(1, 2), WorldGen.genRand.Next(1, 2), (ushort)mod.TileType("Mycelium"));
-            }
-        }
+        
 
         public void VoidIslands(GenerationProgress progress) //method line
         {
@@ -1048,6 +1048,8 @@ namespace AAMod
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>()];
+            pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()];
+            pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 
@@ -1114,6 +1116,12 @@ namespace AAMod
             TerraSphere();
         }
 
+        private void Mush(GenerationProgress progress)
+        {
+            progress.Message = "Growing Shrooms";
+            Mushroom();
+        }
+
         private void ParthenanIsland(GenerationProgress progress)
         {
             progress.Message = "Storming the Parthenan";
@@ -1126,6 +1134,28 @@ namespace AAMod
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
+        }
+
+        public void Mushroom()
+        {
+            int x = Main.maxTilesX;
+            int y = Main.maxTilesY;
+            int WorldSize = GetWorldSize();
+            for (int biomes = 0; biomes < 0; biomes++)
+            {
+                Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow - 10);
+                origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+                SurfaceMushroom biome = new SurfaceMushroom();
+                biome.Place(origin, WorldGen.structures);
+            }
+        }
+
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 2; }
+            else if (Main.maxTilesX == 6300) { return 3; }
+            else if (Main.maxTilesX == 8400) { return 4; }
+            return 2; //unknown size, assume small
         }
 
         public void MireAbyss()

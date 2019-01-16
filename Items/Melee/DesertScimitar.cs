@@ -18,8 +18,8 @@ namespace AAmod.Items.Melee
             item.melee = true;
             item.width = 38;
             item.height = 38;
-            item.useTime = 14;
-            item.useAnimation = 14;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.useStyle = 1;
             item.knockBack = 4;
             item.value = Item.buyPrice(0, 0, 0, 52);
@@ -43,7 +43,7 @@ namespace AAmod.Items.Melee
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
                                                                                                                 // If you want to randomize the speed to stagger the projectiles

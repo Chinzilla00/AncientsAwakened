@@ -456,9 +456,11 @@ namespace AAMod
             ZoneMire = (AAWorld.mireTiles > 100) || NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>());
             ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<Akuma>()) || NPC.AnyNPCs(mod.NPCType<AkumaA>()));
             ZoneMush = (AAWorld.mushTiles > 100);
-            Terrarium = (AAWorld.terraTiles > 1);
+            Terrarium = (AAWorld.terraTiles >= 1);
             ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
-            ZoneStorm = (AAWorld.stormTiles > 1);
+            ZoneStorm = (AAWorld.stormTiles >= 1);
+            ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
+            ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
         }
 
         public void AADashMovement()
@@ -656,10 +658,10 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
             bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+            bool useInferno = (ZoneInferno || ZoneRisingSunPagoda || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+            bool useMire = (ZoneMire || ZoneRisingMoonLake || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = ZoneVoid || VoidUnit;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
@@ -683,6 +685,8 @@ namespace AAMod
             modOther.ZoneMush = ZoneMush;
             modOther.Terrarium = Terrarium;
             modOther.ZoneStorm = ZoneStorm;
+            modOther.ZoneRisingMoonLake = ZoneRisingMoonLake;
+            modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -700,6 +704,10 @@ namespace AAMod
                 flags |= 5;
             if (ZoneStorm)
                 flags |= 6;
+            if (ZoneRisingSunPagoda)
+                flags |= 7;
+            if (ZoneRisingMoonLake)
+                flags |= 8;
             writer.Write(flags);
         }
 
@@ -712,6 +720,8 @@ namespace AAMod
             ZoneMush = ((flags & 4) == 4);
             Terrarium = ((flags & 5) == 5);
             ZoneStorm = ((flags & 6) == 6);
+            ZoneRisingSunPagoda = ((flags & 7) == 7);
+            ZoneRisingMoonLake = ((flags & 8) == 8);
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
@@ -990,7 +1000,7 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.dayTime && !AAWorld.downedYamata)
                 {
@@ -1043,7 +1053,7 @@ namespace AAMod
                     player.gravity = 1f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
             {
                 if (AshCurse)
                 {
@@ -1349,7 +1359,7 @@ namespace AAMod
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
             {
                 if (Main.raining)
                 {
@@ -1358,7 +1368,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.raining)
                 {
@@ -1376,7 +1386,7 @@ namespace AAMod
             {
                 return;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.GetModPlayer<AAPlayer>(mod).AshCurse)
+            if ((player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda) && player.GetModPlayer<AAPlayer>(mod).AshCurse)
             {
                 if (!player.GetModPlayer<AAPlayer>(mod).AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
                 {
@@ -2078,11 +2088,11 @@ namespace AAMod
 
         public override Texture2D GetMapBackgroundImage()
         {
-            if (ZoneMire)
+            if (ZoneMire || ZoneRisingMoonLake)
             {
                 return mod.GetTexture("Map/MireMap");
             }
-            if (ZoneInferno)
+            if (ZoneInferno || ZoneRisingSunPagoda)
             {
                 return mod.GetTexture("Map/InfernoMap");
             }

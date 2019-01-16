@@ -138,10 +138,9 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-            nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("Mycelium"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("SporeSac"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
             nextSlot++;

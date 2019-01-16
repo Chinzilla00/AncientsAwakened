@@ -467,13 +467,22 @@ namespace AAMod
         }
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
+            Player player = Main.LocalPlayer;
+            AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
+            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
+            bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
             if (Main.gameMenu)
                 return;
             if (priority > MusicPriority.Environment)
                 return;
-            Player player = Main.LocalPlayer;
             if (!player.active)
                 return;
+            if (AAWorld.downedAllAncients && (zoneIZ || zoneShen))
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
+                return;
+            }
             if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
             {
 
@@ -511,12 +520,30 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
+
+            if (Ancients.ZoneVoid)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
+                return;
+            }
+            if (Ancients.ZoneStorm)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Maelstrom");
+                return;
+            }
             if (Ancients.ZoneInferno)
             {
-                if (player.ZoneRockLayerHeight)
+                if (Ancients.ZoneRisingSunPagoda)
                 {
                     priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
+                    return;
+                }
+                if (player.ZoneRockLayerHeight)
+                {
+                    priority = MusicPriority.BiomeMedium;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
                     return;
                 }
@@ -524,6 +551,29 @@ namespace AAMod
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
+                    return;
+                }
+            }
+            if (Ancients.ZoneMire)
+            {
+                if (Ancients.ZoneRisingMoonLake)
+                {
+                    priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
+                    return;
+                }
+                if (player.ZoneRockLayerHeight)
+                {
+                    priority = MusicPriority.BiomeMedium;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
+
+                    return;
+                }
+                else
+                {
+                    priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
+
                     return;
                 }
             }
@@ -541,42 +591,7 @@ namespace AAMod
 
                 return;
             }
-            if (Ancients.ZoneMire)
-            {
-
-                if (player.ZoneRockLayerHeight)
-                {
-                    priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
-
-                    return;
-                }
-                else
-                {
-                    priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
-
-                    return;
-                }
-            }
-            if (Ancients.ZoneVoid && AAWorld.downedZero && !AAWorld.downedIZ)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void2");
-                return;
-            }
-            if (Ancients.ZoneVoid)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
-                return;
-            }
-            if (Ancients.ZoneStorm)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Maelstrom");
-                return;
-            }
+            
         }
 
         #region recipes

@@ -29,14 +29,14 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(200, 50, 0), name);
 		}
 
-        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        public override bool CanExplode(int i, int j)
         {
             return false;
         }
 
-        public override bool CanExplode(int i, int j)
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            return false;
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("DracoAltar"));
         }
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

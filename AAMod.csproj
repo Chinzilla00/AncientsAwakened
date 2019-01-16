@@ -389,6 +389,8 @@
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
     <Compile Include="Items\Blocks\Doomstone.cs" />
     <Compile Include="Items\Blocks\DoomstoneBrick.cs" />
+    <Compile Include="Items\Blocks\DracoAltar.cs" />
+    <Compile Include="Items\Blocks\DreadAltar.cs" />
     <Compile Include="Items\Blocks\DynaskullOre.cs" />
     <Compile Include="Items\Blocks\Equibox.cs" />
     <Compile Include="Items\Blocks\EventideAbyssiumOre.cs" />
@@ -436,6 +438,7 @@
     <Compile Include="Items\Blocks\ShenBox.cs" />
     <Compile Include="Items\Blocks\SiegeBox.cs" />
     <Compile Include="Items\Blocks\Soul_Forge.cs" />
+    <Compile Include="Items\Blocks\StormChest.cs" />
     <Compile Include="Items\Blocks\SunAltar.cs" />
     <Compile Include="Items\Blocks\SunAltarA.cs" />
     <Compile Include="Items\Blocks\TechneciumOre.cs" />
@@ -1382,6 +1385,8 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
     <Compile Include="Tiles\ACS.cs" />
+    <Compile Include="Tiles\DracoAltarS.cs" />
+    <Compile Include="Tiles\DreadAltarS.cs" />
     <Compile Include="Tiles\DreadAltar.cs" />
     <Compile Include="Tiles\DracoAltar.cs" />
     <Compile Include="Tiles\AkumaABox.cs" />
@@ -1393,6 +1398,7 @@
     <Compile Include="Tiles\EventideAbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssGrass.cs" />
     <Compile Include="Tiles\AbyssVines.cs" />
+    <Compile Include="Tiles\StormChest.cs" />
     <Compile Include="Tiles\ScorchedDynastyWoodS.cs" />
     <Compile Include="Tiles\ScorchedPlatform.cs" />
     <Compile Include="Tiles\ScorchedShinglesS.cs" />
@@ -1400,6 +1406,7 @@
     <Compile Include="Tiles\SiegeBox.cs" />
     <Compile Include="Tiles\AbyssLeaves.cs" />
     <Compile Include="Tiles\AbyssWood.cs" />
+    <Compile Include="Tiles\StormChestS.cs" />
     <Compile Include="Tiles\TodeBox.cs" />
     <Compile Include="Tiles\Trophy\IZTrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataTrophy.cs" />
@@ -2809,6 +2816,9 @@
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
     <Content Include="Items\Blocks\Doomstone.png" />
     <Content Include="Items\Blocks\DoomstoneBrick.png" />
+    <Content Include="Items\Blocks\DracoAltar.png" />
+    <Content Include="Items\Blocks\DreadAltar.png" />
+    <Content Include="Items\Blocks\DreadAltarMoon.png" />
     <Content Include="Items\Blocks\DynaskullOre.png" />
     <Content Include="Items\Blocks\Equibox.png" />
     <Content Include="Items\Blocks\EventideAbyssiumOre.png" />
@@ -2858,6 +2868,7 @@
     <Content Include="Items\Blocks\ShenBox.png" />
     <Content Include="Items\Blocks\SiegeBox.png" />
     <Content Include="Items\Blocks\Soul_Forge.png" />
+    <Content Include="Items\Blocks\StormChest.png" />
     <Content Include="Items\Blocks\SunAltar.png" />
     <Content Include="Items\Blocks\SunAltarA.png" />
     <Content Include="Items\Blocks\TechneciumOre.png" />
@@ -4356,9 +4367,11 @@
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DracoAltarS.png" />
     <Content Include="Tiles\DracoAltar.png" />
     <Content Include="Tiles\DracoAltarSun.png" />
     <Content Include="Tiles\DragonRose.png" />
+    <Content Include="Tiles\DreadAltarS.png" />
     <Content Include="Tiles\DreadAltar.png" />
     <Content Include="Tiles\DreadAltarMoon.png" />
     <Content Include="Tiles\EventideAbyssiumOre.png" />
@@ -4516,6 +4529,10 @@
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\Sticker.png" />
+    <Content Include="Tiles\StormChest.png" />
+    <Content Include="Tiles\StormChestS.png" />
+    <Content Include="Tiles\StormChest_Highlight.png" />
+    <Content Include="Tiles\StormChest_HighlightS.png" />
     <Content Include="Tiles\StormCloud.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
