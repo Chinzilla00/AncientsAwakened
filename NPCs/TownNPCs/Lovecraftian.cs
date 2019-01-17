@@ -164,25 +164,15 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Shop"; //button2 = "Research";
+            button = Language.GetTextValue("LegacyInterface.28");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool openShop)
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             if (firstButton)
             {
-                Main.npcChatCornerItem = 0;
-                openShop = true;
+                shop = true;
             }
-        }
-
-        public static int[] ResearchItems = new int[1];
-        public static int[] ResearchItemCounts = new int[1];
-
-        public static void OnLoad(Mod mod)
-        {
-            ResearchItems = new int[] { ItemID.Sunflower, ItemID.IceBlock, ItemID.Cactus, ItemID.RottenChunk, ItemID.Vertebrae, mod.ItemType<Items.Materials.DragonScale>(), mod.ItemType<Items.Materials.MirePod>(), mod.ItemType<Items.Materials.DragonScale>(), mod.ItemType("AdvancedCircuitry"), mod.ItemType("LivingBranch"), mod.ItemType("AncientBoneFragments"), mod.ItemType("AcidSac"), mod.ItemType("BloodFang"), mod.ItemType("Corpsethorn") };
-            ResearchItemCounts = new int[] { 2, 40, 1, 1, 1, 1, 1, 1, 2, 2, 1, 3, 5, 5 };
         }
 
         public override void SetupShop(Chest chest, ref int index)

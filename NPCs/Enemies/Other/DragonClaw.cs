@@ -19,18 +19,19 @@ namespace AAMod.NPCs.Enemies.Other
             npc.height = 24;
             npc.friendly = false;
             npc.damage = 15;
-            npc.defense = 4;
+            npc.defense = 15;
             npc.lifeMax = 45;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0f;
             npc.knockBackResist = 0.6f;
-            npc.aiStyle = 2;
+            npc.aiStyle = -1;
+            npc.noGravity = true;
         }
 
         public override void AI()
         {
-            AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 4f, 1.5f, 1f, 1f);
+            AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -38,7 +39,11 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 return 0f;
             }
-            return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            if (!NPC.downedMoonlord)
+            {
+                return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            }
+            return 0;
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -56,7 +61,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override void NPCLoot()
         {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonClaw"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonClaw"));
         }
     }
 }

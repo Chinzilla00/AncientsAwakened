@@ -56,6 +56,14 @@ namespace AAMod.NPCs.Bosses.GripsShen
             }
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            if (npc.alpha > 0)
+            {
+                return AAColor.Yamata;
+            }
+            return lightColor;
+        }
 
         public static Texture2D glowTex = null;
 
@@ -88,12 +96,10 @@ namespace AAMod.NPCs.Bosses.GripsShen
             }
         }
 
+
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
-            {
-                target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), Main.rand.Next(180, 250));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
-            }
+            target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 180);
         }
     }
 }

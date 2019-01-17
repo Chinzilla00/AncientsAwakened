@@ -7,11 +7,14 @@ using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
 using AAMod.NPCs.Bosses.Infinity;
+using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {
     public class StormSky : CustomSky
     {
+
+        ScreenClouds BGClouds = new ScreenClouds(true);
 
         private UnifiedRandom random = new UnifiedRandom();
 
@@ -26,7 +29,6 @@ namespace AAMod.Backgrounds
             public bool IsAlive;
         }
 
-        
         public static Texture2D boltTexture;
         public static Texture2D flashTexture;
         private Bolt[] bolts;
@@ -124,23 +126,9 @@ namespace AAMod.Backgrounds
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
-
-            Viewport dimension = Main.graphics.GraphicsDevice.Viewport;
-
-            for (int i = 0; i < dimension.Width + _fogTimer; i += texture.Width)
-            {
-                for (int j = 0; j < dimension.Height; j += texture.Height)
-                {
-                    spriteBatch.Draw(texture, new Rectangle(i - _fogTimer, j, 512, 512), null, Color.White * fogOpacity1, 0f, Vector2.Zero, SpriteEffects.None, 0f);
-                }
-            }
-            for (int i = 0; i < Main.screenWidth + _fogTimer2; i += texture.Width)
-            {
-                for (int j = 0; j < Main.screenHeight; j += texture.Height)
-                {
-                    spriteBatch.Draw(texture, new Rectangle(i - _fogTimer2, j, 512, 512), null, Color.White * fogOpacity2, 0f, Vector2.Zero, SpriteEffects.None, 0f);
-                }
-            }
+            Mod mod = AAMod.instance;
+            BGClouds.Update(mod.GetTexture("Backgrounds/StormClouds"));
+            BGClouds.Draw(mod.GetTexture("Backgrounds/StormClouds"), true, new Color(160, 100, 180));
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);

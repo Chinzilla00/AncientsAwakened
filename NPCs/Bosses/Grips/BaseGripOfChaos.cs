@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.NPCs.Bosses.GripsShen;
+using AAMod.NPCs.Bosses.Grips;
 
 
 namespace AAMod.NPCs.Bosses.Grips
@@ -78,7 +80,8 @@ namespace AAMod.NPCs.Bosses.Grips
 
 		public Vector2 offsetBasePoint = Vector2.Zero;
 		public float moveSpeed = 6f;
-		public bool shenGrips = false;
+        public bool shenGrips = false;
+        public int MinionTimer = 0;
 
 		public override void AI()
 		{
@@ -157,6 +160,27 @@ namespace AAMod.NPCs.Bosses.Grips
 				BaseAI.Look(npc, 0, 0f, 0.1f, false);				
 			}else //standard movement
 			{
+                MinionTimer++;
+                if (MinionTimer == (shenGrips ? 50 : 75))
+                {
+                    if (npc.type == mod.NPCType<BlazeGrip>())
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<BlazeClawM>());
+                    }
+                    if (npc.type == mod.NPCType<AbyssGrip>())
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AbyssClawM>());
+                    }
+                    if (npc.type == mod.NPCType<GripOfChaosRed>())
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<DragonClawM>());
+                    }
+                    if (npc.type == mod.NPCType<GripOfChaosBlue>())
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HydraClawM>());
+                    }
+                    MinionTimer = 0;
+                }
 				moveSpeed = (shenGrips ? 12f : 5f);
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
@@ -173,10 +197,30 @@ namespace AAMod.NPCs.Bosses.Grips
 					}
 				}		
 				BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);			
-			}			
-		}
+			}
+            if (npc.ai[0] != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
+            {
+                npc.alpha += 5;
+                if (npc.alpha >= 50)
+                {
+                    npc.dontTakeDamage = true;
+                    npc.alpha = 50;
+                }
+            }
+            else
+            {
+                npc.alpha -= 5;
+                if (npc.alpha <= 0)
+                {
+                    npc.dontTakeDamage = false;
+                    npc.alpha = 0;
+                }
+            }
+        }
 
-		public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+      
+
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
 		{
 			if(moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
 			float velMultiplier = 1f;
@@ -214,90 +258,5 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.velocity.Y -= 1;
             }
         }
-
-        /*public int timer;
-        private bool switchMove = false; //Creates a bool for this .cs only
-        public void AIOLD()
-        {
-            if (Main.dayTime)
-            {
-                npc.position.Y -= 10;  //disappears at night
-            }
-            Target();
-            DespawnHandler();
-            if (switchMove)
-            {
-                Move(new Vector2(240, 0));   //240 is the X axis, so its to the right of the player, -240 will be to the left
-            }
-            npc.ai[0]++;
-            Player P = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest(true);
-            }
-            npc.netUpdate = true;
-            if (Main.rand.Next(700) == 0) // The lower the value, the higher chance of a grippy boi spawning
-            {
-                NPC.NewNPC((int)npc.position.X + 70, (int)npc.position.Y + 70, mod.NPCType("HydraClaw")); //Change name AAAAAAAAAAAAAAAAAAAA
-            }
-            timer++;                //Makes the int start
-            if (timer == 450)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
-            {
-                switchMove = true;     //Makes the switch turn on, making the AI change to nothing
-                npc.aiStyle = -1;      //So the AI doesnt mix with the flying AI Style
-                npc.rotation = 0;      // I think this is the right rotation, if not change it tooooo 180 or something
-            }
-            if (timer >= 900)          //After 15 seconds this happens
-            {
-                switchMove = false;     //Turns the switch off so the void Move stuff is disabled
-                npc.aiStyle = 5;        //Reverts back to the original Flying AI Style
-                timer = 0;              //Sets the timer back to 0 to repeat
-            }
-            if (switchMove)
-            {
-                float num4 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-                float num5 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
-                npc.rotation = (float)Math.Atan2((double)num5, (double)num4) - 1.57f;
-            }
-        }
-		private void Move(Vector2 offset)
-        {
-            if (switchMove)             //If the switchMove is on, all of this happens, if its off, all of this doesnt happen
-            {
-                if (Main.expertMode)
-                {
-                    speed = 30f; // Increased movement speed in expert mode (The Keeper only thing, change if you wish)
-                }
-                else
-                {
-                    speed = 30f; // Sets the max speed of the npc.
-                }
-                Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
-                Vector2 move = moveTo - npc.Center;
-                float magnitude = Magnitude(move);
-                if (magnitude > speed)
-                {
-                    move *= speed / magnitude;
-                }
-                float turnResistance = 35f; // The larger the number the slower the npc will turn.
-                move = ((npc.velocity * turnResistance) + move) / (turnResistance + 1f);
-                magnitude = Magnitude(move);
-                if (magnitude > speed)
-                {
-                    move *= speed / magnitude;
-                }
-                npc.velocity = move;
-            }
-        }
-
-        private void Target()
-        {
-            player = Main.player[npc.target]; // This will get the player target.
-        }
-        
-        private float Magnitude(Vector2 mag)
-        {
-            return (float)Math.Sqrt((mag.X * mag.X) + (mag.Y * mag.Y));      //No idea, leave this
-        }*/
     }
 }

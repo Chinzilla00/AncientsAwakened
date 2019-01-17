@@ -13,6 +13,7 @@ using AAMod.Tiles;
 using BaseMod;
 using AAMod.Worldgeneration;
 using AAMod.NPCs.Enemies.Other;
+using AAMod.Worldgen;
 
 namespace AAMod
 {
@@ -41,6 +42,7 @@ namespace AAMod
         public static int ChaosAltarsSmashed;
         public static int OreCount;
         public static bool DiscordOres;
+        public static bool ChaosStripes;
         private int infernoSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
@@ -125,6 +127,7 @@ namespace AAMod
             DarkMatter = downedNC;
             RadiumOre = downedDB;
             DiscordOres = downedGripsS;
+            ChaosStripes = Main.hardMode;
             LuminiteMeteorBool = false;
             //Stones
             RealityDropped = false;
@@ -323,7 +326,6 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
-
         }
 
         private string NumberRand(int size)
@@ -862,6 +864,24 @@ namespace AAMod
                     }
                 }
             }
+            int[] itemsToPlaceInStormChest = new int[] { mod.ItemType("LoreTablet") };
+            int itemsToPlaceInStormChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("StormChest")) // if glass chest
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == 0)
+                        {
+                            itemsToPlaceInStormChestsChoice = Main.rand.Next(itemsToPlaceInStormChest.Length);
+                            chest.item[0].SetDefaults(itemsToPlaceInStormChest[itemsToPlaceInStormChestsChoice]);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         
@@ -1039,6 +1059,21 @@ namespace AAMod
                     Main.NewText("You feel as if you are being watched by something...malicious...", new Color(158, 3, 32));
                 }
             }
+            if (Main.hardMode == true)
+            {
+                if (ChaosStripes == false)
+                {
+                    ChaosStripes = true;
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+                    infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+                    mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+
+                    Main.NewText("The Essenses of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 220, ConversionHandler.CONVERTID_INFERNO);
+                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 220, ConversionHandler.CONVERTID_MIRE);
+
+                }
+            }
         }
 
         public override void TileCountsAvailable(int[] tileCounts)
@@ -1056,7 +1091,7 @@ namespace AAMod
         private void MireAndInferno(GenerationProgress progress)
         {
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             int j = (int)WorldGen.worldSurfaceLow - 10;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())

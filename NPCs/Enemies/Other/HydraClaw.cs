@@ -19,21 +19,32 @@ namespace AAMod.NPCs.Enemies.Other
             npc.height = 24;
             npc.friendly = false;
             npc.damage = 25;
-            npc.defense = 0;
-            npc.lifeMax = 45;
+            npc.defense = 10;
+            npc.lifeMax = 40;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0f;
             npc.knockBackResist = 0.5f;
-            npc.aiStyle = 2;
+            npc.aiStyle = -1;
+            npc.noGravity = true;
         }
+
+        public override void AI()
+        {
+            AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
+        }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 return 0f;
             }
-            return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            if (!NPC.downedMoonlord)
+            {
+                return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+            }
+            return 0;
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -51,7 +62,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override void NPCLoot()
         {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraClaw"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraClaw"));
         }
     }
 }

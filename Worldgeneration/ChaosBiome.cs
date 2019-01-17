@@ -89,7 +89,7 @@ namespace AAMod.Worldgeneration
 			}));
 			gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
 
-            WorldGen.PlaceObject((int)(origin.X) + 60, (int)(origin.Y - 10) + 31, (ushort)mod.TileType("DreadAltarS"));
+            WorldGen.PlaceObject((origin.X) + 60, (origin.Y - 10) + 31, mod.TileType<DreadAltarS>());
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -102,7 +102,7 @@ namespace AAMod.Worldgeneration
                         Tile tile = Main.tile[AltarX, AltarY];
                         if (Main.rand.Next(15) == 0)
                         {
-                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<Tiles.ChaosAltar1>());
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<ChaosAltar1>());
                         }
                     }
                 }
@@ -116,7 +116,7 @@ namespace AAMod.Worldgeneration
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }		
@@ -206,7 +206,8 @@ namespace AAMod.Worldgeneration
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
             gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
-            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, (ushort)mod.TileType("DracoAltarS"));
+
+            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, mod.TileType<DracoAltarS>());
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -219,7 +220,7 @@ namespace AAMod.Worldgeneration
                         Tile tile = Main.tile[AltarX, AltarY];
                         if (Main.rand.Next(15) == 0)
                         {
-                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<Tiles.ChaosAltar2>());
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<ChaosAltar2>());
                         }
                     }
                 }
@@ -230,7 +231,7 @@ namespace AAMod.Worldgeneration
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
@@ -307,7 +308,7 @@ namespace AAMod.Worldgeneration
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
@@ -372,7 +373,7 @@ namespace AAMod.Worldgeneration
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
@@ -453,23 +454,21 @@ namespace AAMod.Worldgeneration
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
-            return 1; //unknown size, assume small
+            return 2; //unknown size, assume small
         }
     }
 
 
     public class Parthenan : MicroBiome
     {
-        public static int[] Tablet = new int[0];
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
 
             Mod mod = AAMod.instance;
-
-            Tablet = new int[mod.ItemType<Items.Tablet.LoreTablet>()];
+            
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingS");
@@ -481,14 +480,15 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
             colorToWall[new Color(0, 255, 0)] = mod.WallType("FulguritePlatingWallS");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("FulgurGlassWall");
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
             WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 45, (ushort)mod.TileType("DataBank"));
-            BaseWorldGen.GenerateChest((int)(origin.X) + 34, (int)(origin.Y) + 47, (ushort)mod.TileType("StormChest"), 0, Tablet, false, false, false);
-            BaseWorldGen.GenerateChest((int)(origin.X) + 41, (int)(origin.Y) + 47, (ushort)mod.TileType("StormChest"), 0, Tablet, false, false, false);
+            WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            WorldGen.PlaceChest((origin.X) + 43, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;
         }
     }

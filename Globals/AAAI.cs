@@ -122,7 +122,7 @@ namespace AAMod
                 npc.velocity.Y *= bounceScalarY;
             }
             //if it should flee when it's day, and it is day, the npc's position is at or above the surface, it will flee.
-            if (isDragonClaw && !modPlayer.ZoneInferno && Main.dayTime && (double)npc.position.Y <= Main.worldSurface * 16.0)
+            if (((isDragonClaw && !modPlayer.ZoneInferno && Main.dayTime) || (!isDragonClaw && Main.dayTime)) && npc.position.Y <= Main.worldSurface * 16.0)
             {
                 if (npc.timeLeft > 10) { npc.timeLeft = 10; }
                 npc.directionY = -1;

@@ -6,6 +6,8 @@ using Terraria.ObjectData;
 using Terraria.DataStructures;
 using System.Diagnostics;
 using System.Collections.Generic;
+using Terraria.Enums;
+using System;
 
 namespace AAMod.Tiles
 {
@@ -15,16 +17,17 @@ namespace AAMod.Tiles
 
         public override void SetDefaults()
 		{
-			Main.tileFrameImportant[Type] = true;
-			Main.tileObsidianKill[Type] = true;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-			TileObjectData.newTile.Origin = new Point16(0, 1);
-			TileObjectData.newTile.LavaDeath = false;
-			TileObjectData.newTile.DrawYOffset = 2;
-			TileObjectData.addTile(Type);
-			disableSmartCursor = true;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Dread Moon Pedestal");
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = true;
+            Main.tileTable[Type] = true;
+            Main.tileLavaDeath[Type] = true;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
+            ModTranslation name = CreateMapEntryName();
+            TileObjectData.addTile(Type);
+            minPick = 200;
+            mineResist = 3f;
+            name.SetDefault("Dread Moon Pedestal");
             dustType = mod.DustType("YamataDust");
             AddMapEntry(new Color(200, 200, 200), name);
 		}

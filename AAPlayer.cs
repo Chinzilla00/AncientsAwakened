@@ -1100,17 +1100,23 @@ namespace AAMod
                     player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                     player.QuickSpawnItem(mod.ItemType("ChinPants"));
                 }
-                if (choice == 6)
+                if (choice == 13)
                 {
                     player.QuickSpawnItem(mod.ItemType("TiedHat"));
                     player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                     player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                 }
-                if (choice == 7)
+                if (choice == 14)
                 {
                     player.QuickSpawnItem(mod.ItemType("MoonHood"));
                     player.QuickSpawnItem(mod.ItemType("MoonRobe"));
                     player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                }
+                if (choice == 15)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
                 }
             }
         }
@@ -1155,17 +1161,23 @@ namespace AAMod
                     player.QuickSpawnItem(mod.ItemType("ChinPants"));
                     player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
                 }
-                if (choice == 6)
+                if (choice == 13)
                 {
                     player.QuickSpawnItem(mod.ItemType("TiedHat"));
                     player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
                     player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
                 }
-                if (choice == 7)
+                if (choice == 14)
                 {
                     player.QuickSpawnItem(mod.ItemType("MoonHood"));
                     player.QuickSpawnItem(mod.ItemType("MoonRobe"));
                     player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                }
+                if (choice == 15)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
                 }
             }
         }
@@ -1258,6 +1270,12 @@ namespace AAMod
                     player.QuickSpawnItem(mod.ItemType("MoonBoots"));
                     player.QuickSpawnItem(mod.ItemType("Etheral"));
                 }
+                if (choice == 15)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
+                }
             }
         }
 
@@ -1348,6 +1366,12 @@ namespace AAMod
                     player.QuickSpawnItem(mod.ItemType("MoonRobe"));
                     player.QuickSpawnItem(mod.ItemType("MoonBoots"));
                     player.QuickSpawnItem(mod.ItemType("EtheralEX"));
+                }
+                if (choice == 15)
+                {
+                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
                 }
             }
         }

@@ -467,16 +467,16 @@ namespace AAMod
         }
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            Player player = Main.LocalPlayer;
-            AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
-            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
-            bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
             if (Main.gameMenu)
                 return;
             if (priority > MusicPriority.Environment)
                 return;
+            Player player = Main.LocalPlayer;
             if (!player.active)
                 return;
+            AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
+            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
+            bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
             if (AAWorld.downedAllAncients && (zoneIZ || zoneShen))
             {
                 priority = MusicPriority.Event;

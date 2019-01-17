@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -106,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 StartSandstorm();
             }
 
-            if (!player.ZoneDesert || player.dead || !Main.dayTime)
+            if (!player.InZone("Desert") || player.dead || !Main.dayTime)
             {
                 npc.alpha -= 5;
             }
