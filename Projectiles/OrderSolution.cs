@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Projectiles
 {
-    internal class Orderolution : ModProjectile
+    internal class OrderSolution : ModProjectile
     {
         public override void SetDefaults()
         {

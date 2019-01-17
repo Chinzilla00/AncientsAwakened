@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
         {
             get
             {
-                return "Fargowiltas/Items/Misc/MireRenewal";
+                return "AAMod/Items/Usable/VoidBomb";
             }
         }
 

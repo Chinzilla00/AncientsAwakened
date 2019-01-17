@@ -233,7 +233,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType<Eyeshot>();
+            projType = mod.ProjectileType<EyeShot>();
             attackDelay = 1;
         }
 
