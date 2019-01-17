@@ -1084,7 +1084,7 @@ namespace AAMod
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>()];
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()];
-            pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()];
+            lakeTiles = tileCounts[mod.TileType<DreadAltarS>() + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()]];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 

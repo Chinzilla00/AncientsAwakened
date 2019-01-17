@@ -1089,6 +1089,7 @@
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenSpawn.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenTransition.cs" />
+    <Compile Include="NPCs\Bosses\SoC\SoC.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBreath.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataA.cs" />
@@ -3885,6 +3886,8 @@
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
+    <Content Include="NPCs\Bosses\SoC\SoC.png" />
+    <Content Include="NPCs\Bosses\SoC\SoC_Wheel.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />

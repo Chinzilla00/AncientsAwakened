@@ -147,7 +147,7 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
             colorToWall[new Color(255, 0, 0)] = mod.WallType("TorchstoneWall");
-            colorToWall[new Color(0, 255, 0)] = mod.WallType("BurnedDynastyWall");
+            colorToWall[new Color(0, 0, 255)] = mod.WallType("BurnedDynastyWall");
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
