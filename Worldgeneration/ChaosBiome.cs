@@ -488,7 +488,34 @@ namespace AAMod.Worldgeneration
             gen.Generate(origin.X, origin.Y, true, true);
             WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 45, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
-            WorldGen.PlaceChest((origin.X) + 43, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            return true;
+        }
+    }
+
+    public class BOTE : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("RottedDynastyWoodS");
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("RottedPlatform");
+            colorToTile[new Color(0, 0, 255)] = TileID.Rope;
+            colorToTile[new Color(0, 255, 255)] = mod.TileType("CthulhuPortal");
+            colorToTile[new Color(150, 150, 150)] = -2;
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("RottedWall");
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/Ship"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
+
+            gen.Generate(origin.X, origin.Y, true, true);
             return true;
         }
     }

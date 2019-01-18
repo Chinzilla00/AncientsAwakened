@@ -53,6 +53,7 @@ namespace AAMod
         public bool ZoneStorm = false;
         public bool ZoneRisingSunPagoda = false;
         public bool ZoneRisingMoonLake = false;
+        public bool ZoneShip = false;
         public bool VoidUnit = false;
         public bool SunAltar = false;
         public bool MoonAltar = false;
@@ -62,6 +63,8 @@ namespace AAMod
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
+        public int CthulhuCountdown = 1800;
+        public bool Leave = false;
         // Armor bools.
         public bool steelSet;
         public bool goblinSlayer;
@@ -203,7 +206,6 @@ namespace AAMod
             TerraMinion = false;
             SnakeMinion = false;
             dustDevil = false;
-            //Biome
             //Armor
             valkyrieSet = false;
             kindledSet = false;
@@ -459,6 +461,7 @@ namespace AAMod
             Terrarium = (AAWorld.terraTiles >= 1);
             ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
             ZoneStorm = (AAWorld.stormTiles >= 1);
+            ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
         }
@@ -673,7 +676,13 @@ namespace AAMod
         public override bool CustomBiomesMatch(Player other)
         {
             AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
-            return (ZoneMire == modOther.ZoneMire && ZoneInferno == modOther.ZoneInferno && ZoneVoid == modOther.ZoneVoid && ZoneMush == modOther.ZoneMush && Terrarium == modOther.Terrarium && ZoneStorm == modOther.ZoneStorm);
+            return (ZoneMire == modOther.ZoneMire &&
+                ZoneInferno == modOther.ZoneInferno &&
+                ZoneVoid == modOther.ZoneVoid &&
+                ZoneMush == modOther.ZoneMush &&
+                Terrarium == modOther.Terrarium &&
+                ZoneStorm == modOther.ZoneStorm &&
+                ZoneShip == modOther.ZoneShip);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -687,6 +696,7 @@ namespace AAMod
             modOther.ZoneStorm = ZoneStorm;
             modOther.ZoneRisingMoonLake = ZoneRisingMoonLake;
             modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
+            modOther.ZoneShip = ZoneShip;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -708,6 +718,8 @@ namespace AAMod
                 flags |= 7;
             if (ZoneRisingMoonLake)
                 flags |= 8;
+            if (ZoneShip)
+                flags |= 9;
             writer.Write(flags);
         }
 
@@ -722,6 +734,7 @@ namespace AAMod
             ZoneStorm = ((flags & 6) == 6);
             ZoneRisingSunPagoda = ((flags & 7) == 7);
             ZoneRisingMoonLake = ((flags & 8) == 8);
+            ZoneShip = ((flags & 9) == 9);
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
@@ -1000,6 +1013,41 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+
+            if (ZoneShip && Leave == false)
+            {
+                Leave = true;
+                CthulhuCountdown--;
+                if (CthulhuCountdown == 1500 && Main.netMode != 1)
+                {
+                    BaseUtility.Chat("...leave...", Color.Blue);
+                }
+                if (CthulhuCountdown == 1050 && Main.netMode != 1)
+                {
+                    BaseUtility.Chat("...Leave this forsaken place...", Color.DarkCyan);
+                }
+                if (CthulhuCountdown == 550 && Main.netMode != 1)
+                {
+                    BaseUtility.Chat("...you are trespassing upon things you cannot even comprehend...", Color.Cyan);
+                }
+                if (CthulhuCountdown == 200 && Main.netMode != 1)
+                {
+                    BaseUtility.Chat("...turn back now...", Color.LightCyan);
+                }
+                if (CthulhuCountdown == 0 && Main.netMode != 1)
+                {
+                    Leave = false;
+                    BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECk", Color.LightCyan);
+                }
+            }
+            if (!ZoneShip && Leave == true)
+            {
+                Leave = false;
+                if (Main.netMode != 1)
+                {
+                    BaseUtility.Chat("...do not return...", Color.DarkCyan);
+                }
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.dayTime && !AAWorld.downedYamata)

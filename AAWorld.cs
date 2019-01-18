@@ -30,6 +30,7 @@ namespace AAMod
         public static int stormTiles = 0;
         public static int pagodaTiles = 0;
         public static int lakeTiles = 0;
+        public static int shipTiles = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -44,8 +45,10 @@ namespace AAMod
         public static bool DiscordOres;
         public static bool ChaosStripes;
         private int infernoSide = 0;
+        private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
+        private Vector2 shipPos = new Vector2(0, 0);
         private Vector2 TerraPos = new Vector2(0, 0);
         //Messages
         public static bool Evil;
@@ -390,6 +393,11 @@ namespace AAMod
             tasks.Insert(shiniesIndex2 + 4, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
+            }));
+
+            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Ship", delegate (GenerationProgress progress)
+            {
+                Ship(progress);
             }));
         }
         
@@ -1085,13 +1093,14 @@ namespace AAMod
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
+            shipTiles = tileCounts[mod.TileType<RottedDynastyWoodS>()] + tileCounts[mod.TileType<CthulhuPortal>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
         {
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             int j = (int)WorldGen.worldSurfaceLow - 10;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
@@ -1163,10 +1172,22 @@ namespace AAMod
             Parthenan();
         }
 
+        private void Ship(GenerationProgress progress)
+        {
+            shipSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+            int worldSize = GetWorldSize();
+            shipPos.X = (shipSide == 1 ? (Main.maxTilesX - 90) : 90);
+
+
+
+            progress.Message = "Sinking the ship";
+            SunkenShip();
+        }
+
         public void InfernoVolcano()
         {
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y + 16, true);	
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
         }
@@ -1188,7 +1209,7 @@ namespace AAMod
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 2; }
-            else if (Main.maxTilesX == 6300) { return 3; }
+            else if (Main.maxTilesX == 6400) { return 3; }
             else if (Main.maxTilesX == 8400) { return 4; }
             return 2; //unknown size, assume small
         }
@@ -1201,9 +1222,17 @@ namespace AAMod
             biome.Place(origin, WorldGen.structures);        
         }
 
+        public void SunkenShip()
+        {
+            Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            BOTE biome = new BOTE();
+            biome.Place(origin, WorldGen.structures);
+        }
+
         public void TerraSphere()
         {
-            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.5f)); ;
+            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f)); ;
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumDelete delete = new TerrariumDelete();
             TerrariumSphere biome = new TerrariumSphere();

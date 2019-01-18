@@ -38,55 +38,55 @@ namespace AAMod.NPCs.TownNPCs
 			return mod.Properties.Autoload;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			Main.npcFrameCount[npc.type] = 26;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
-			NPCID.Sets.AttackFrameCount[npc.type] = 5;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 40;
-			NPCID.Sets.AttackAverageChance[npc.type] = 20;
-			NPCID.Sets.HatOffsetY[npc.type] = 4;
-		}
+        public override void SetStaticDefaults()
+        {
+            Main.npcFrameCount[npc.type] = 26;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 10;
+            NPCID.Sets.AttackFrameCount[npc.type] = 5;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 40;
+            NPCID.Sets.AttackAverageChance[npc.type] = 20;
+            NPCID.Sets.HatOffsetY[npc.type] = 4;
+        }
 
-		public override void SetDefaults()
-		{
-			npc.townNPC = true;
-			npc.friendly = true;
-			npc.width = 18;
-			npc.height = 56;
-			npc.aiStyle = 7;
-			npc.damage = 60;
-			npc.defense = 58;
-			npc.lifeMax = 500;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = 2f;
-			animationType = NPCID.Guide;
-		}
+        public override void SetDefaults()
+        {
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 18;
+            npc.height = 56;
+            npc.aiStyle = 7;
+            npc.damage = 40;
+            npc.defense = 38;
+            npc.lifeMax = 600;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 2f;
+            animationType = NPCID.Guide;
+        }
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-		}
+        public override void HitEffect(int hitDirection, double damage)
+        {
+        }
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            for (int k = 0; k < 255; k++)
+            {
+                Player player = Main.player[k];
+                if (player.active)
+                {
                     if (NPC.downedBoss1 == true)
                     {
                         return true;
                     }
                 }
-			}
-			return false;
-		}
+            }
+            return false;
+        }
 
-		public override string TownNPCName()
+        public override string TownNPCName()
 		{
 			switch (WorldGen.genRand.Next(4))
 			{
@@ -105,11 +105,13 @@ namespace AAMod.NPCs.TownNPCs
         
         public override string GetChat()
         {
+
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+
+
             int Pirate = NPC.FindFirstNPC(NPCID.Pirate);
             int Mutant = NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
             int HordeZombie = NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
-
-            WeightedRandom<string> chat = new WeightedRandom<string>();
 
             chat.Add("You know, where I’m from, I’m what you would call in your world ‘hot stuff.’");
 
@@ -175,60 +177,52 @@ namespace AAMod.NPCs.TownNPCs
             }
         }
 
-        public override void SetupShop(Chest chest, ref int index)
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            int actionIndex = index;
-            Action<int, int> AddItemIndex = (type, value) =>
-            {
-                chest.item[actionIndex++].SetDefaults(type);
-                chest.item[actionIndex - 1].value = value;
-            };
-            Action<int, int, float> AddItem = (type, valueOverride, valueMult) =>
-            {
-                chest.item[actionIndex++].SetDefaults(type);
-                chest.item[actionIndex - 1].value = (valueOverride > 0 ? valueOverride : (int)(chest.item[actionIndex - 1].value * valueMult));
-            };
-            if (Main.netMode != 0) AddItem(ItemID.WormholePotion, -1, 1f);
             if (AAWorld.downedBrood)
             {
-                AddItem(mod.ItemType<Items.Usable.AshJar>(), -1, 2f);
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.AshJar>());
+                nextSlot++;
             }
             if (AAWorld.downedHydra)
             {
-                AddItem(mod.ItemType<Items.Usable.DarkwaterFlask>(), -1, 2f);
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.DarkwaterFlask>());
+                nextSlot++;
             }
             if (AAWorld.downedBrood && AAWorld.downedHydra)
             {
-                AddItem(mod.ItemType<Items.Usable.OrderBottle>(), -1, 2f);
-                AddItem(mod.ItemType<Items.Usable.VoidBomb>(), -1, 2f);
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.OrderBottle>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.VoidBomb>());
+                nextSlot++;
             }
             if (NPC.downedMechBossAny)
             {
-                AddItem(mod.ItemType<Items.Usable.BlackSolution>(), -1, 2f);
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.VoidBomb>());
+                nextSlot++;
             }
 
         }
-
-        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
-		{
-			damage = 30;
-			knockback = 4f;
-		}
-
-		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
-		{
-			cooldown = 20;
-			randExtraCooldown = 20;
-		}
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
             projType = mod.ProjectileType<EyeShot>();
             attackDelay = 1;
         }
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        {
+            damage = 30;
+            knockback = 4f;
+        }
+
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = 20;
+            randExtraCooldown = 20;
+        }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
-
         {
 
             multiplier = 4f;

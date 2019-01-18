@@ -71,6 +71,14 @@ namespace AAMod
             return GetTimedColor(Color.Maroon, color, min, max, clamp);
         }
 
+        public static Color GetCthulhuColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
+        public static Color GetCthulhuColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
+        public static Color GetCthulhuColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetCthulhuColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.DarkCyan, color, min, max, clamp);
+        }
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

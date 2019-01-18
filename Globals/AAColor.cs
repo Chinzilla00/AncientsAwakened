@@ -77,7 +77,17 @@ namespace AAMod
 				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(169, 34, 73), new Color(146, 37, 50), new Color(169, 34, 73));
 			}
 		}
-		public static Color Oblivion //Oblivion
+
+        public static Color Cthulhu //Infinity Zero
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Cyan, Color.DarkCyan, Color.Cyan);
+            }
+        }
+
+
+        public static Color Oblivion //Oblivion
 		{
 			get
 			{

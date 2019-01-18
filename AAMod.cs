@@ -477,6 +477,20 @@ namespace AAMod
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
+            if (AkumaMusic == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
+
+                priority = MusicPriority.BossHigh;
+                return;
+            }
+            if (YamataMusic == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
+
+                priority = MusicPriority.BossHigh;
+                return;
+            }
             if (AAWorld.downedAllAncients && (zoneIZ || zoneShen))
             {
                 priority = MusicPriority.Event;
@@ -499,20 +513,7 @@ namespace AAMod
                 }
 
             }
-            if (AkumaMusic == true)
-            {
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
-
-                priority = MusicPriority.BossHigh;
-                return;
-            }
-            if (YamataMusic == true)
-            {
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
-
-                priority = MusicPriority.BossHigh;
-                return;
-            }
+            
             if (Slayer == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroDeath");
@@ -527,6 +528,13 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
                 return;
             }
+            if (Ancients.ZoneShip)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
+                return;
+            }
+            
             if (Ancients.ZoneStorm)
             {
                 priority = MusicPriority.Event;

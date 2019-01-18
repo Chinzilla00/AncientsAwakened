@@ -1411,6 +1411,7 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
     <Compile Include="Tiles\ACS.cs" />
+    <Compile Include="Tiles\CthulhuPortal.cs" />
     <Compile Include="Tiles\Doomgrass.cs" />
     <Compile Include="Tiles\DoomstoneB.cs" />
     <Compile Include="Tiles\DracoAltarS.cs" />
@@ -1426,6 +1427,8 @@
     <Compile Include="Tiles\EventideAbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssGrass.cs" />
     <Compile Include="Tiles\AbyssVines.cs" />
+    <Compile Include="Tiles\RottedDynastyWoodS.cs" />
+    <Compile Include="Tiles\RottedPlatform.cs" />
     <Compile Include="Tiles\StormChest.cs" />
     <Compile Include="Tiles\ScorchedDynastyWoodS.cs" />
     <Compile Include="Tiles\ScorchedPlatform.cs" />
@@ -3886,9 +3889,14 @@
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuDeath.png" />
+    <Content Include="NPCs\Bosses\SoC\DeityEye.png" />
+    <Content Include="NPCs\Bosses\SoC\EoA.png" />
+    <Content Include="NPCs\Bosses\SoC\RiftVision.png" />
     <Content Include="NPCs\Bosses\SoC\SoC.png" />
     <Content Include="NPCs\Bosses\SoC\SoC_Wheel.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\SoC\SquidThing.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
@@ -4424,6 +4432,7 @@
     <Content Include="Tiles\Crates\IceCrate.png" />
     <Content Include="Tiles\Crates\InfernoCrate.png" />
     <Content Include="Tiles\Crates\MireCrate.png" />
+    <Content Include="Tiles\CthulhuPortal.png" />
     <Content Include="Tiles\DataBank.png" />
     <Content Include="Tiles\DaybreakIncineriteOre.png" />
     <Content Include="Tiles\DepthIce.png" />
@@ -4464,6 +4473,8 @@
     <Content Include="Tiles\OroborosChestC4.png" />
     <Content Include="Tiles\OroborosChestC4_Highlight.png" />
     <Content Include="Tiles\Razetus.png" />
+    <Content Include="Tiles\RottedDynastyWoodS.png" />
+    <Content Include="Tiles\RottedPlatform.png" />
     <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ScorchedDynastyWoodS.png" />
     <Content Include="Tiles\ScorchedPlatform.png" />
@@ -4596,6 +4607,7 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
+    <Content Include="Tiles\Statues\StatuesForFriends.png" />
     <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\StormChest.png" />
     <Content Include="Tiles\StormChestS.png" />
@@ -4699,6 +4711,9 @@
     <Content Include="Worldgeneration\LakeWater.png" />
     <Content Include="Worldgeneration\Parthenan.png" />
     <Content Include="Worldgeneration\ParthenanWalls.png" />
+    <Content Include="Worldgeneration\Ship.png" />
+    <Content Include="Worldgeneration\ShipWalls.png" />
+    <Content Include="Worldgeneration\ShipWater.png" />
     <Content Include="Worldgeneration\SurfaceRef.png" />
     <Content Include="Worldgeneration\SurfaceRef1.png" />
     <Content Include="Worldgeneration\Terrarium.png" />
