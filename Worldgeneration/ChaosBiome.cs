@@ -87,9 +87,16 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
-			gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+			int genX = origin.X - (gen.width / 2);
+			int genY = origin.Y - 20;
+			gen.Generate(genX, genY, true, true);
 
-            WorldGen.PlaceObject((origin.X) + 60, (origin.Y - 10) + 31, mod.TileType<DreadAltarS>());
+			//WorldGen.PlaceObject(genX + 62, genY + 32, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62, genY + 32 - 1, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32 - 1, TileID.Grass);		
+
+	        WorldGen.PlaceObject(genX + 61, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -205,9 +212,11 @@ namespace AAMod.Worldgeneration
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
-            gen.Generate(origin.X - (gen.width / 2), origin.Y - 20, true, true);
+			int genX = origin.X - (gen.width / 2);
+			int genY = origin.Y - 20;
+            gen.Generate(genX, genY, true, true);
 
-            WorldGen.PlaceObject((int)(origin.X) + 65, (int)(origin.Y - 30) + 4, mod.TileType<DracoAltarS>());
+            WorldGen.PlaceObject(genX + 65, genY + 19, mod.TileType<DracoAltarS>());
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -488,34 +497,7 @@ namespace AAMod.Worldgeneration
             gen.Generate(origin.X, origin.Y, true, true);
             WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 45, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
-            return true;
-        }
-    }
-
-    public class BOTE : MicroBiome
-    {
-        public override bool Place(Point origin, StructureMap structures)
-        {
-            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
-
-            Mod mod = AAMod.instance;
-
-
-            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
-            colorToTile[new Color(255, 0, 0)] = mod.TileType("RottedDynastyWoodS");
-            colorToTile[new Color(0, 255, 0)] = mod.TileType("RottedPlatform");
-            colorToTile[new Color(0, 0, 255)] = TileID.Rope;
-            colorToTile[new Color(0, 255, 255)] = mod.TileType("CthulhuPortal");
-            colorToTile[new Color(150, 150, 150)] = -2;
-            colorToTile[Color.Black] = -1; //don't touch when genning		
-
-            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
-            colorToWall[new Color(255, 0, 0)] = mod.WallType("RottedWall");
-            colorToWall[Color.Black] = -1; //don't touch when genning				
-
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/Ship"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
-
-            gen.Generate(origin.X, origin.Y, true, true);
+            WorldGen.PlaceChest((origin.X) + 42, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;
         }
     }
