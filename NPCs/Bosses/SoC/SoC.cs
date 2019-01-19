@@ -108,13 +108,13 @@ namespace AAMod.NPCs.Bosses.SoC
             if (npc.ai[1] == 0f)
             {
                 npc.damage = 100;
-                if (npc.life < EyeSummon && !Boss1)
+                if (npc.life < EyeSummon && !Boss1) //Spawn Eye boi
                 {
                     Boss1 = true;
                     npc.ai[1] = 2f;
                     npc.dontTakeDamage = true;
                 }
-                else if (npc.life < EaterSummon && !Boss1)
+                else if (npc.life < EaterSummon && !Boss2)
                 {
                     Boss2 = true;
                     npc.ai[1] = 3f;
