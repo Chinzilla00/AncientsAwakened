@@ -198,12 +198,19 @@ namespace AAMod.NPCs.Bosses.Grips
 				}		
 				BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);			
 			}
-            if (npc.ai[0] != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
+            if (npc.ai[0] == 0)
             {
                 npc.alpha += 5;
                 if (npc.alpha >= 50)
                 {
-                    npc.dontTakeDamage = true;
+                    if (shenGrips == true)
+                    {
+                        npc.dontTakeDamage = true;
+                    }
+                    else
+                    {
+                        npc.defense = 40;
+                    }
                     npc.alpha = 50;
                 }
             }
@@ -212,7 +219,21 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    npc.dontTakeDamage = false;
+                    if (shenGrips == true)
+                    {
+                        npc.dontTakeDamage = false;
+                    }
+                    else
+                    {
+                        if (npc.type == mod.NPCType<GripOfChaosRed>())
+                        {
+                            npc.defense = 20;
+                        }
+                        if (npc.type == mod.NPCType<GripOfChaosBlue>())
+                        {
+                            npc.defense = 12;
+                        }
+                    }
                     npc.alpha = 0;
                 }
             }

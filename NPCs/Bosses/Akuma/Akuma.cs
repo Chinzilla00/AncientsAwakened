@@ -9,7 +9,6 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-    [AutoloadBossHead]
     public class Akuma : ModNPC
 	{
         
@@ -456,6 +455,21 @@ namespace AAMod.NPCs.Bosses.Akuma
                 projectile.damage *= (int).2;
             }
         }
+        
+        public const string HeadTex= "AAMod/NPCs/Boss/Akuma/Akuma_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
     }
 
     public class AkumaArms : Akuma
@@ -601,6 +615,21 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.damage = (int)(npc.damage * 0.8f);
+        }
+
+        public const string ArmTex = "AAMod/NPCs/Boss/Akuma/AkumaArms_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(ArmTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
         }
     }
 
@@ -748,6 +777,21 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.damage = (int)(npc.damage * 0.8f);
         }
+
+        public const string BodyTex = "AAMod/NPCs/Boss/Akuma/AkumaBody_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
     }
 
     public class AkumaTail : Akuma
@@ -893,6 +937,21 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.damage = (int)(npc.damage * 0.8f);
+        }
+
+        public const string TailTex = "AAMod/NPCs/Boss/Akuma/AkumaTail_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(TailTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
         }
     }
     

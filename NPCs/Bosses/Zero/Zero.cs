@@ -9,9 +9,23 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    [AutoloadBossHead]
     public class Zero : ModNPC
     {
+        public const string HeadTex = "AAMod/NPCs/Boss/Zero_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
@@ -253,22 +267,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 saythelinezero = true;
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
-                if (!Main.expertMode && !AAWorld.downedZero)
-                {
-                    npc.damage = 100;
-                }
-                if (!Main.expertMode && AAWorld.downedZero)
-                {
-                    npc.damage = 110;
-                }
-                if (Main.expertMode && !AAWorld.downedZero)
-                {
-                    npc.damage = 110;
-                }
-                if (Main.expertMode && AAWorld.downedZero)
-                {
-                    npc.damage = 120;
-                }
+                npc.damage = 160;
             }
 
             if (saythelinezero && LineStopper == 0)
@@ -276,7 +275,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 saythelinezero = true;
                 Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            if (Main.player[npc.target].dead)
             {
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead)
@@ -284,12 +283,18 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[1] = 3f;
                 }
             }
-            else
+            if ( Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.defense = 70;
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
+                {
+                    npc.ai[1] = 4f;
+                }
             }
             if (npc.ai[1] == 0f)
             {
+                npc.damage = 100;
+                npc.defense = 90;
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 600f)
                 {
@@ -349,120 +354,59 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            else if(npc.ai[1] == 1f)
+            else
             {
-                Player targetPlayer = Main.player[npc.target];
-                bool forceChange = false;
-                if (Main.netMode != 1 && internalAI[0] != 2 && internalAI[0] != 3)
+                if (npc.ai[1] == 1f)
                 {
-                    int stopValue = 200;
-                    internalAI[3]++;
-                    if (internalAI[3] > stopValue) internalAI[3] = stopValue;
-                    forceChange = internalAI[3] >= stopValue;
-                }
-                if (internalAI[0] == 1) //move to starting charge position
-                {
-                    moveSpeed = 17;
-                    Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
-                    MoveToPoint(point);
-                    if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
+                    npc.defense = 180;
+                    npc.damage = 200;
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
+                    float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
+                    float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
+                    float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
+                    float num447 = 10f;
+                    num447 += num446 / 100f;
+                    if (num447 < 8f)
                     {
-                        internalAI[0] = 2;
-                        internalAI[1] = targetPlayer.Center.X;
-                        internalAI[2] = targetPlayer.Center.Y;
-                        internalAI[3] = 0;
-                        npc.netUpdate = true;
+                        num447 = 8f;
                     }
-                    BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
-                }
-                else
-                if (internalAI[0] == 2) //dive down
-                {
-                    moveSpeed = 17f;
-                    Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
-                    Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
-                    MoveToPoint(point);
-                    if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                    if (num447 > 32f)
                     {
-                        bool doubleDive = (npc.life < npc.lifeMax / 2);
-                        if (doubleDive)
-                        {
-                            internalAI[0] = 3;
-                            internalAI[1] = targetPlayer.Center.X;
-                            internalAI[2] = targetPlayer.Center.Y;
-                        }
-                        else
-                        {
-                            internalAI[0] = 0;
-                            internalAI[1] = 0;
-                            internalAI[2] = 0;
-                        }
-                        internalAI[3] = 0;
-                        npc.netUpdate = true;
+                        num447 = 32f;
                     }
-                    BaseAI.Look(npc, 0, 0f, 0.1f, false);
-                }
-                else
-                if (internalAI[0] == 3) //dive up
-                {
-                    moveSpeed = 17f;
-                    Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
-                    Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
-                    MoveToPoint(point);
-                    if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        npc.ai[1] = 0;
-                        npc.netUpdate = true;
-                    }
-                    BaseAI.Look(npc, 0, 0f, 0.1f, false);
-                }
-                
-            }
-            else if (npc.ai[1] == 3f)
-            {
-                npc.velocity.Y = npc.velocity.Y + 0.1f;
-                if (npc.velocity.Y < 0f)
-                {
-                    npc.velocity.Y = npc.velocity.Y * 0.95f;
-                }
-                npc.velocity.X = npc.velocity.X * 0.95f;
-                if (npc.timeLeft > 500)
-                {
-                    npc.timeLeft = 500;
+                    num446 = num447 / num446;
+                    npc.velocity.X = num444 * num446;
+                    npc.velocity.Y = num445 * num446;
                     return;
+
+                }
+                if (npc.ai[1] == 3f)
+                {
+                    Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red);
+                    npc.ai[1] = 5f;
+                }
+                if (npc.ai[1] == 4f)
+                {
+                    Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red);
+                    npc.ai[1] = 5f;
+                }
+                if (npc.ai[1] == 5f)
+                {
+                    npc.velocity.Y = npc.velocity.Y - 0.1f;
+                    if (npc.velocity.Y < 0f)
+                    {
+                        npc.velocity.Y = npc.velocity.Y * 0.95f;
+                    }
+                    npc.velocity.X = npc.velocity.X * 0.95f;
+                    if (npc.timeLeft > 500)
+                    {
+                        npc.timeLeft = 500;
+                        return;
+                    }
                 }
             }
-        }
-
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
-        {
-            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            if (length < moveSpeed)
-            {
-                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
-            }
-            if (length < 200f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 100f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 50f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
+            
         }
 
         public override void FindFrame(int frameHeight)

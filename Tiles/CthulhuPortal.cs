@@ -9,10 +9,9 @@ namespace AAMod.Tiles
     {
         public override void SetDefaults()
         {
-            Main.tileSolid[Type] = true;
+            Main.tileSolid[Type] = false;
             Main.tileMergeDirt[Type] = false;
-            soundType = 21;
-            drop = mod.ItemType("Apocalyptite");   //put your CustomBlock name
+            soundType = 0;
             dustType = 0;
             AddMapEntry(new Color(0, 80, 100));
         }

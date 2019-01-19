@@ -151,6 +151,7 @@ namespace AAMod
         public bool InfinityScorch = false;
         public bool LockedOn = false;
         public bool shroomed = false;
+        public bool riftbent = false;
         //buffs
 
         //pets
@@ -267,6 +268,7 @@ namespace AAMod
             InfinityScorch = false;
             LockedOn = false;
             shroomed = false;
+            riftbent = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -446,7 +448,7 @@ namespace AAMod
             player.front = -1;
             player.shoe = -1;
             player.waist = -1;
-            player.shield = -1;
+            player.shield = -1;f
             player.neck = -1;
             player.face = -1;
             player.balloon = -1;
@@ -1427,7 +1429,7 @@ namespace AAMod
         public override void PreUpdate()
         {
             groviteGlow[player.whoAmI] = false;
-            if ((Mind || Power || Reality || Soul || Space || Time) && (!dwarvenGauntlet || !InfinityGauntlet || !TrueInfinityGauntlet))
+            if ((Mind || Power || Reality || Soul || Space || Time) && !(dwarvenGauntlet || InfinityGauntlet || TrueInfinityGauntlet))
             {
                 player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
             }
@@ -1804,6 +1806,7 @@ namespace AAMod
         public int IZHoldTimer = 180;
         public bool InfZ = false;
         public int GetIZHealth = 2000000;
+        public int RiftTimer;
 
         public override void UpdateBadLifeRegen()
         {
@@ -1862,10 +1865,62 @@ namespace AAMod
             }
             if (hydraToxin)
             {
-                if (player.velocity.X < -2f || player.velocity.X > 2f)
+                if (player.velocity.X < -2f )
                 {
-                    player.velocity.X *= 0.4f;
+                    player.velocity. X = -2f;
                 }
+                if (player.velocity.X > 2f)
+                {
+
+                    player.velocity.X = 2f;
+                }
+            }
+            if (riftbent)
+            {
+                RiftTimer++;
+                float speedMod = 1;
+
+                if (RiftTimer >= 60)
+                {
+                    speedMod = .01f;
+                    player.velocity = player.velocity * speedMod;
+                    return;
+                }
+                if (RiftTimer >= 120)
+                {
+                    speedMod = .2f;
+                    player.velocity = player.velocity * speedMod;
+                    return;
+                }
+                if (RiftTimer >= 180)
+                {
+                    speedMod = .5f;
+                    player.velocity = player.velocity * speedMod;
+                    return;
+                }
+                if (RiftTimer >= 240)
+                {
+                    speedMod = .91f;
+                    player.velocity = player.velocity * speedMod;
+                    return;
+                }
+                if (RiftTimer >= 300)
+                {
+                    speedMod = 4f;
+                    player.velocity = player.velocity * speedMod;
+                    return;
+                }
+                if (RiftTimer >= 360)
+                {
+                    speedMod = .6f;
+                    player.velocity = player.velocity * speedMod;
+                    RiftTimer = 0;
+                    return;
+                }
+            }
+            else
+            {
+                RiftTimer = 0;
             }
         }
 

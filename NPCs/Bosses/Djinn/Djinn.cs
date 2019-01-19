@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             bool flag117 = true;
             Player player = Main.player[npc.target];
 
-            if (player.ZoneDesert && !player.dead)
+            if (player.InZone("Desert") && !player.dead)
             {
                 StartSandstorm();
             }

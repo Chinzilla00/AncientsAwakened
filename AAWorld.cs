@@ -1175,7 +1175,6 @@ namespace AAMod
         private void Ship(GenerationProgress progress)
         {
             shipSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            int worldSize = GetWorldSize();
             shipPos.X = (shipSide == 1 ? (Main.maxTilesX - 90) : 90);
 
 
@@ -1208,15 +1207,15 @@ namespace AAMod
 
         public static int GetWorldSize()
         {
-            if (Main.maxTilesX == 4200) { return 2; }
-            else if (Main.maxTilesX == 6400) { return 3; }
-            else if (Main.maxTilesX == 8400) { return 4; }
-            return 2; //unknown size, assume small
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
         }
 
         public void MireAbyss()
         {
-            Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
+            Point origin = new Point ((int)shipPos.X, (int)WorldGen.worldSurfaceLow);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             MireBiome biome = new MireBiome();
             biome.Place(origin, WorldGen.structures);        

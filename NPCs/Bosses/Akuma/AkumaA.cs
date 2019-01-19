@@ -9,7 +9,6 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-    [AutoloadBossHead]
     public class AkumaA : ModNPC
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
@@ -463,6 +462,23 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Panic = true;
                 Main.NewText("Still got it, do you? Ya got fire in your spirit! I like that about you, kid!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
+
+
+        }
+
+        public const string HeadTex = "AAMod/NPCs/Boss/Akuma/AkumaAHead_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
         }
 
         public override void NPCLoot()
@@ -636,6 +652,21 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
+        public const string BodyTex = "AAMod/NPCs/Boss/Akuma/AkumaABody_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             
@@ -796,6 +827,21 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
+        public const string BodyTex = "AAMod/NPCs/Boss/Akuma/AkumaABody_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             int dust1 = mod.DustType<Dusts.AkumaADust>();
@@ -953,6 +999,21 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public const string BodyTex = "AAMod/NPCs/Boss/Akuma/AkumaATail_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
         }
 
         public override void HitEffect(int hitDirection, double damage)
