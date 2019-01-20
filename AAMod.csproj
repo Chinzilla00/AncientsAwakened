@@ -3924,6 +3924,18 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityFlames.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\Leviathan.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfReality2_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityClaws.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityClaws_Chain.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityHook.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityHook_Chain.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityPoisonBarb.gif" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityPoisonBarb.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealitySplinter.gif" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealitySplinter.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityWoodchip.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfReality_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\Urchin.png" />
     <Content Include="NPCs\Bosses\SoC\Cthulhu.png" />
     <Content Include="NPCs\Bosses\SoC\DeityCircle.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragon.png" />
@@ -3935,7 +3947,6 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEater.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEaterBody.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEaterBody_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\DeityEaterHead.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEaterTail.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEaterTail_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEater_Head_Boss.png" />

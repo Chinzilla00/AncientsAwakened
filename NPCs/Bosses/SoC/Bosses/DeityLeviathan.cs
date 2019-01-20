@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dimensional Leviathan");
+            DisplayName.SetDefault("Vile-Oct");
             Main.npcFrameCount[npc.type] = 8;
         }
 
@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.aiStyle = -1;
             npc.damage = 130;
             npc.defense = 110;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 150000;
             npc.knockBackResist = 0f;
             npc.noTileCollide = true;
             npc.noGravity = true;

@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Necros");
+            DisplayName.SetDefault("Rhan-Tegoth");
         }
         public override void SetDefaults()
         {
@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.aiStyle = -1;
             npc.damage = 100;
             npc.defense = 80;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 150000;
             npc.knockBackResist = 0.0f;
             npc.noTileCollide = true;
             npc.noGravity = true;

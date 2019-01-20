@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Otherworldly Watcher");
+            DisplayName.SetDefault("Cyaegha");
 
             Main.npcFrameCount[npc.type] = 6;
         }
@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.aiStyle = -1;
             npc.defense = 50;
             npc.damage = 60;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0f;

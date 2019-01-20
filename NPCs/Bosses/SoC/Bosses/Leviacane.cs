@@ -55,20 +55,20 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
             {
                 projectile.localAI[0] = 1f;
-                projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-                projectile.scale = ((float)(num599 + num600) - projectile.ai[1]) * num601 / (float)(num600 + num599);
-                projectile.width = (int)((float)num602 * projectile.scale);
-                projectile.height = (int)((float)num603 * projectile.scale);
-                projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+                projectile.position.X = projectile.position.X + (projectile.width / 2);
+                projectile.position.Y = projectile.position.Y + (projectile.height / 2);
+                projectile.scale = ((num599 + num600) - projectile.ai[1]) * num601 / (num600 + num599);
+                projectile.width = (int)(num602 * projectile.scale);
+                projectile.height = (int)(num603 * projectile.scale);
+                projectile.position.X = projectile.position.X - (projectile.width / 2);
+                projectile.position.Y = projectile.position.Y - (projectile.height / 2);
                 projectile.netUpdate = true;
             }
             if (projectile.ai[1] != -1f)
             {
-                projectile.scale = ((float)(num599 + num600) - projectile.ai[1]) * num601 / (float)(num600 + num599);
-                projectile.width = (int)((float)num602 * projectile.scale);
-                projectile.height = (int)((float)num603 * projectile.scale);
+                projectile.scale = ((num599 + num600) - projectile.ai[1]) * num601 / (num600 + num599);
+                projectile.width = (int)(num602 * projectile.scale);
+                projectile.height = (int)(num603 * projectile.scale);
             }
             if (!Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
             {

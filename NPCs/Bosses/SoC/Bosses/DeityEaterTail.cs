@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.netAlways = true;
             npc.damage = 90;
             npc.defense = 100;
-            npc.lifeMax = 100000;
+            npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.noGravity = true;
