@@ -58,7 +58,7 @@ namespace AAMod.Tiles
             {
                 if (!AAWorld.downedAllAncients)
                 {
-                    SunTexture = mod.GetTexture("Tiles/DracAltarSun");
+                    SunTexture = mod.GetTexture("Tiles/DracoAltarSun");
                 }
                 else
                 {

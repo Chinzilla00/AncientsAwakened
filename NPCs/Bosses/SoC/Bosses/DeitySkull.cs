@@ -34,7 +34,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
             npc.buffImmune[39] = true;
-            npc.buffImmune[189] = npc.buffImmune[169] = npc.buffImmune[183] = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SoC");
+            for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
             npc.lavaImmune = true;
             music = MusicID.Boss2;
         }

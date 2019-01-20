@@ -43,10 +43,21 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.buffImmune[24] = true;
             npc.buffImmune[31] = true;
             npc.buffImmune[44] = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
         }
 
         public bool LeaveLine = false;
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 8)
+            {
+                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                damage = 0;
+            }
+            return false;
+        }
 
         public override void AI()
         {
@@ -1047,16 +1058,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                 }
             }
         }
-
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (damage > 0)
-            {
-                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
-                damage = 0;
-            }
-            return false;
-        }
+        
         
     }
 }

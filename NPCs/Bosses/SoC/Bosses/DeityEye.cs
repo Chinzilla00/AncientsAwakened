@@ -37,8 +37,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.noTileCollide = true;
             npc.timeLeft = NPC.activeTime * 30;
             npc.boss = true;
-            npc.value = 120000f;
             npc.npcSlots = 5f;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
         }
 
@@ -235,7 +235,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                             {
                                 float num418 = 12f;
                                 int num419 = 25;
-                                int num420 = 96;
+                                int num420 = mod.ProjectileType<DeityFlames>();
                                 if (Main.expertMode)
                                 {
                                     num418 = 14f;
@@ -519,7 +519,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                                 {
                                     num434 = 27;
                                 }
-                                int num435 = 101;
+                                int num435 = mod.ProjectileType<DeityFlames>();
                                 vector42 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
                                 num430 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector42.X;
                                 num431 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector42.Y;
@@ -606,7 +606,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (damage > 0)
+            if (damage > npc.lifeMax / 8)
             {
                 Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
                 damage = 0;

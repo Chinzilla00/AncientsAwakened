@@ -21,13 +21,13 @@ namespace AAMod.Items.Magic
 			item.useTime = 28;
 			item.useAnimation = 28;
 			item.useStyle = 1;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 1000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("DoomBomb");
+			item.shoot = mod.ProjectileType("DoomProj");
 			item.shootSpeed = 3f;
 		}
 	}

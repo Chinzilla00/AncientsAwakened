@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Shen
             base.SetDefaults();
             npc.damage = 230;
             npc.defense = 230;
-            npc.lifeMax = 1600000;
+            npc.lifeMax = 1000000;
             npc.value = Item.buyPrice(40, 0, 0, 0);
             bossBag = mod.ItemType("ShenCache");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");

@@ -66,6 +66,7 @@ namespace AAMod
         public static bool downedRaider;
         public static bool downedStormAny;
         public static bool downedStormAll;
+        public static bool downedEFish;
         public static bool downedDB;
         public static bool downedNC;
         public static bool downedEquinox;
@@ -82,6 +83,7 @@ namespace AAMod
         public static bool ShenSummoned;
         public static bool downedToad;
         public static bool downedGripsS;
+        public static bool downedSoC;
         public static bool LuminiteMeteorBool;
         //Stones
         public static bool RealityDropped;
@@ -105,6 +107,7 @@ namespace AAMod
             downedRaider = false;
             downedStormAny = false;
             downedStormAll = false;
+            downedEFish = false;
             downedDB = false;
             downedNC = false;
             downedEquinox = false;
@@ -120,6 +123,7 @@ namespace AAMod
             ShenSummoned = false;
             downedToad = false;
             downedGripsS = false;
+            downedSoC = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -194,6 +198,9 @@ namespace AAMod
             if (downedDjinn) downed.Add("Djinn");
             if (downedToad) downed.Add("Toad");
             if (downedGripsS) downed.Add("GripsS");
+            if (downedStormAny) downed.Add("AnyStorm");
+            if (downedEFish) downed.Add("Fish");
+            if (downedSoC) downed.Add("SoC");
 
             return new TagCompound {
                 {"downed", downed}
@@ -243,6 +250,12 @@ namespace AAMod
             flags4[3] = downedDjinn;
             flags4[4] = downedToad;
             flags4[5] = downedGripsS;
+            flags4[6] = downedStormAny;
+            flags4[7] = downedEFish;
+            writer.Write(flags4);
+
+            BitsByte flags5 = new BitsByte();
+            flags5[0] = downedSoC;
             writer.Write(flags4);
         }
 
@@ -285,6 +298,11 @@ namespace AAMod
             downedDjinn = flags4[3];
             downedToad = flags4[4];
             downedGripsS = flags4[5];
+            downedStormAny = flags4[6];
+            downedEFish = flags4[7];
+
+            BitsByte flags5 = reader.ReadByte();
+            downedSoC = flags5[0];
         }
 
         public override void Load(TagCompound tag)
@@ -321,9 +339,12 @@ namespace AAMod
             downedDjinn = downed.Contains("Djinn");
             downedToad = downed.Contains("Toad");
             downedGripsS = downed.Contains("GripsS");
+            downedStormAny = downed.Contains("AnyStorm");
+            downedEFish = downed.Contains("Fish");
+            downedSoC = downed.Contains("SoC");
             //World Changes
             Dynaskull = NPC.downedBoss3;
-            FulguriteOre = downedRetriever;
+            FulguriteOre = downedStormAny;
             HallowedOre = NPC.downedMechBossAny;
             Evil = NPC.downedPlantBoss;
             Luminite = NPC.downedMoonlord;
@@ -1031,6 +1052,11 @@ namespace AAMod
             if (downedRetriever || downedOrthrus || downedRaider)
             {
                 downedStormAny = true;
+                
+            }
+
+            if (downedStormAny)
+            {
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
@@ -1041,7 +1067,6 @@ namespace AAMod
                     }
                 }
             }
-
             if (downedRetriever & downedOrthrus & downedRaider)
             {
                 downedStormAll = true;
@@ -1102,7 +1127,7 @@ namespace AAMod
             infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
             infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
             mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-            int j = (int)WorldGen.worldSurfaceLow - 10;
+            int j = (int)WorldGen.worldSurfaceLow - 30;
             while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
             {
                 j++;
@@ -1186,7 +1211,7 @@ namespace AAMod
         public void InfernoVolcano()
         {
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y + 16, true);	
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
             InfernoBiome biome = new InfernoBiome();
             biome.Place(origin, WorldGen.structures);
         }
@@ -1198,7 +1223,7 @@ namespace AAMod
             int WorldSize = GetWorldSize();
             for (int biomes = 0; biomes < 0; biomes++)
             {
-                Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow - 10);
+                Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow);
                 origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
                 SurfaceMushroom biome = new SurfaceMushroom();
                 biome.Place(origin, WorldGen.structures);
@@ -1215,7 +1240,7 @@ namespace AAMod
 
         public void MireAbyss()
         {
-            Point origin = new Point ((int)shipPos.X, (int)WorldGen.worldSurfaceLow);
+            Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             MireBiome biome = new MireBiome();
             biome.Place(origin, WorldGen.structures);        
@@ -1223,7 +1248,7 @@ namespace AAMod
 
         public void SunkenShip()
         {
-            Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
+            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 50);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             BOTE biome = new BOTE();
             biome.Place(origin, WorldGen.structures);

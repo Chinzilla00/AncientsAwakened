@@ -74,11 +74,15 @@
     <Compile Include="AAWorld.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\AkumaSkyData.cs" />
+    <Compile Include="Backgrounds\CthulhuHandler.cs" />
     <Compile Include="Backgrounds\FogHandler.cs" />
     <Compile Include="Backgrounds\InfernoSky.cs" />
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\ScreenClouds.cs" />
+    <Compile Include="Backgrounds\ScreenCthulhuFog.cs" />
+    <Compile Include="Backgrounds\CthulhuSky.cs" />
+    <Compile Include="Backgrounds\CthulhuSkyData.cs" />
     <Compile Include="Backgrounds\VoidUGBG.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
     <Compile Include="Backgrounds\IZSky.cs" />
@@ -460,6 +464,7 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
+    <Compile Include="Items\BossSummons\SpatialWheel.cs" />
     <Compile Include="Items\BossSummons\AbyssClaw.cs" />
     <Compile Include="Items\BossSummons\BlazeClaw.cs" />
     <Compile Include="Items\BossSummons\ChaosRune.cs" />
@@ -1094,6 +1099,7 @@
     <Compile Include="NPCs\Bosses\Shen\ShenTransition.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEaterTail.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEye.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Bosses\DeityFlames.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityLeviathan.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEater.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEaterBody.cs" />
@@ -1667,6 +1673,7 @@
     <Content Include="Backgrounds\Asteroids2.png" />
     <Content Include="Backgrounds\Asteroids3.png" />
     <Content Include="Backgrounds\Aurora.png" />
+    <Content Include="Backgrounds\CthulhuClouds.png" />
     <Content Include="Backgrounds\Echo.png" />
     <Content Include="Backgrounds\Echo2.png" />
     <Content Include="Backgrounds\fog.png" />
@@ -2966,6 +2973,7 @@
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
     <Content Include="Items\BossSummons\ShroomGrub.png" />
+    <Content Include="Items\BossSummons\SpatialWheel.png" />
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
@@ -3911,6 +3919,12 @@
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityEye1_2.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityEyeREEEEEEEEEE_2.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityFlames.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\Leviathan.png" />
+    <Content Include="NPCs\Bosses\SoC\Cthulhu.png" />
     <Content Include="NPCs\Bosses\SoC\DeityCircle.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragon.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragonArms.png" />
@@ -3945,12 +3959,16 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\RazorbladeRift.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuBomb.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuDeath.png" />
+    <Content Include="NPCs\Bosses\SoC\DeityRitual.png" />
     <Content Include="NPCs\Bosses\SoC\EoA.png" />
+    <Content Include="NPCs\Bosses\SoC\EoA_Pupil.png" />
     <Content Include="NPCs\Bosses\SoC\RiftVision.png" />
     <Content Include="NPCs\Bosses\SoC\SoC.png" />
     <Content Include="NPCs\Bosses\SoC\SoC_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\SoC_Wheel.png" />
+    <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu Phase 2.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
+    <Content Include="NPCs\Bosses\SoC\Squid.png" />
     <Content Include="NPCs\Bosses\SoC\SquidThing.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />

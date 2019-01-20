@@ -64,13 +64,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
                 npc.DropLoot(mod.ItemType("BroodScale"), 2, 4);
         }
-
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.3f * bossLifeScale);
-        }
-
+        
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
             if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff

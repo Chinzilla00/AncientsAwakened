@@ -35,11 +35,11 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.noTileCollide = true;
             npc.knockBackResist = 0f;
             npc.behindTiles = true;
-            npc.value = 300f;
             npc.scale = 1f;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
             npc.buffImmune[39] = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
             npc.alpha = 255;
         }
@@ -247,6 +247,15 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
         }
 
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 8)
+            {
+                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                damage = 0;
+            }
+            return false;
+        }
 
 
         public override void HitEffect(int hitDirection, double dmg)

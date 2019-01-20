@@ -14,7 +14,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
-            Main.tileSolid[Type] = false;
+            Main.tileSolidTop[Type] = false;
             Main.tileMerge[Type][mod.TileType("AbyssWood")] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;

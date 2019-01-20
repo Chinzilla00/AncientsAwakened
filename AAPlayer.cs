@@ -14,6 +14,9 @@ using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Shen;
+using AAMod.NPCs.Bosses.Infinity;
+using AAMod.NPCs.Bosses.SoC;
 using System.Collections.Generic;
 using BaseMod;
 using Terraria.ModLoader.IO;
@@ -448,7 +451,7 @@ namespace AAMod
             player.front = -1;
             player.shoe = -1;
             player.waist = -1;
-            player.shield = -1;f
+            player.shield = -1;
             player.neck = -1;
             player.face = -1;
             player.balloon = -1;
@@ -658,17 +661,24 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
+            bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
+            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
+            player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
+            bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
+            player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
+            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
+            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar) && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || ZoneRisingSunPagoda || SunAltar) && !useAkuma;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || ZoneRisingMoonLake || MoonAltar) && !useYamata;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = ZoneVoid || VoidUnit;
+            bool useVoid = (ZoneVoid || VoidUnit) && !useIZ && !useShenA && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
             bool useStorm = ZoneStorm;
@@ -1442,7 +1452,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake || NPC.AnyNPCs(mod.NPCType<SoC>()))
             {
                 if (Main.raining)
                 {

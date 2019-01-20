@@ -9,13 +9,14 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Serpent
 {
-	public class SerpentHead : ModNPC
+	public class Serpent : ModNPC
 	{
 		bool TailSpawned = false;
 		
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Subzero Serpent");
+            Main.npcFrameCount[npc.type] = 4;
 		}
 		
 		public override void SetDefaults()
@@ -39,33 +40,88 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.netAlways = true;
             npc.value = Item.buyPrice(0, 0, 10, 0);
 		}
-		
-		public override void AI()
-		{
-			if (!TailSpawned)
+
+
+        private bool fireAttack;
+        private int attackCounter;
+        private int attackTimer;
+
+        public override void AI()
+        {
+            attackCounter++;
+
+            if (attackCounter == 400 && fireAttack == false)
             {
-                int Previous = npc.whoAmI;
-                for (int num36 = 0; num36 < 9; num36++)
-                {
-                    int Segment = 0;
-                    if (num36 >= 0 && num36 < 8)
-                    {
-                        Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentBody"), npc.whoAmI);
-                    }
-                    else
-                    {
-                        Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentTail"), npc.whoAmI);
-                    }
-                    Main.npc[Segment].realLife = npc.whoAmI;
-                    Main.npc[Segment].ai[2] = (float)npc.whoAmI;
-                    Main.npc[Segment].ai[1] = (float)Previous;
-                    Main.npc[Previous].ai[0] = (float)Segment;
-                    NetMessage.SendData(23, -1, -1, null, Segment, 0f, 0f, 0f, 0);
-                    Previous = Segment;
-                }
-                TailSpawned = true;
+                attackCounter = 0;
+                fireAttack = true;
             }
-		}
+            if (fireAttack == true)
+            {
+                attackTimer++;
+                if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
+                {
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        if (Main.netMode != 1)
+                        {
+                            int num429 = 1;
+                            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+                            {
+                                num429 = -1;
+                            }
+                            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+                            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+                            float num433 = 6f;
+                            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                            PlayerPos = num433 / PlayerPos;
+                            PlayerPosX *= PlayerPos;
+                            PlayerPosY *= PlayerPos;
+                            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                            PlayerPosY += npc.velocity.Y * 0.5f;
+                            PlayerPosX += npc.velocity.X * 0.5f;
+                            PlayerDistance.X -= PlayerPosX * 1f;
+                            PlayerDistance.Y -= PlayerPosY * 1f;
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("AkumaBreath"), npc.damage, 0, Main.myPlayer);
+                        }
+                    }
+                }
+                if (attackTimer >= 80)
+                {
+                    fireAttack = false;
+                    attackTimer = 0;
+                    attackCounter = 0;
+                }
+                if (!TailSpawned)
+                {
+                    int Previous = npc.whoAmI;
+                    for (int num36 = 0; num36 < 9; num36++)
+                    {
+                        int Segment = 0;
+                        if (num36 >= 0 && num36 < 8)
+                        {
+                            Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentBody"), npc.whoAmI);
+                        }
+                        else
+                        {
+                            Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentTail"), npc.whoAmI);
+                        }
+                        Main.npc[Segment].realLife = npc.whoAmI;
+                        Main.npc[Segment].ai[2] = (float)npc.whoAmI;
+                        Main.npc[Segment].ai[1] = (float)Previous;
+                        Main.npc[Previous].ai[0] = (float)Segment;
+                        NetMessage.SendData(23, -1, -1, null, Segment, 0f, 0f, 0f, 0);
+                        Previous = Segment;
+                    }
+                    TailSpawned = true;
+                }
+            }
+        }
 		
 		
 		public override void OnHitPlayer(Player player, int damage, bool crit)

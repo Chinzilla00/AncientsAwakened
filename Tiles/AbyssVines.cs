@@ -10,6 +10,7 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = false;
+            Main.tileSolidTop[Type] = false;
 			Main.tileMergeDirt[Type] = false;
             Main.tileBlockLight[Type] = false;
             AddMapEntry(new Color(50, 0, 0));

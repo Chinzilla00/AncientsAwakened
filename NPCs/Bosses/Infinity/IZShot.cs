@@ -15,7 +15,8 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             projectile.width = 18;
             projectile.height = 42;
-            projectile.friendly = true;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.penetrate = 1;
             projectile.aiStyle = -1;
             projectile.timeLeft = 600;

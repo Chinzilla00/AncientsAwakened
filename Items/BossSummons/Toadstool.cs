@@ -82,8 +82,9 @@ Can only be used in a blue mushroom biome");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Mushroom, 15);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 15);
+            recipe.AddIngredient(null, "Mushium", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

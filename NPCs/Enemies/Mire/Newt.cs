@@ -160,7 +160,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 1.25f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 2f : 0f;
         }
 
         public override void NPCLoot()

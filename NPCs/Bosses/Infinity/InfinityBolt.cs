@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             projectile.width = 14;
             projectile.height = 14;
             projectile.hostile = true;
+            projectile.friendly = false;
             projectile.alpha = 255;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;

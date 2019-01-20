@@ -27,6 +27,8 @@ a base.");
         public int frameTimer = 0;
         public int frameCount = 10;
         public Rectangle frame;
+        public static Texture2D tex = null;
+        public static Texture2D glowTex = null;
 
 
         public override void SetDefaults()
@@ -39,6 +41,7 @@ a base.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -47,6 +50,7 @@ a base.");
         // Same as above but for drawing inside the player's inventory
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
+
             TabletMethods.TabletDrawInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale, item, color);
             return false;
         }
@@ -92,6 +96,7 @@ dubbing it as the Inferno.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -144,6 +149,7 @@ the day safely. We are dubbing this area as the Mire.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -195,6 +201,7 @@ no natural predators. We will dub this area as theCorruption.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -246,6 +253,7 @@ due to it's unmistakeable color, we will call it the Crimson.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -298,6 +306,7 @@ over, much like cortiseps. Take caution.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -349,6 +358,7 @@ its territory. We dub it the Mushroom Monarch.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
             BaseDrawing.DrawTexture(spriteBatch, texture2, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, color);
             return false;
@@ -398,6 +408,7 @@ a giant crown it wears around. We will name it the King Slime.");
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
+            frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
             BaseDrawing.DrawTexture(spriteBatch, texture, 0, item.position, item.width, item.height, scale, rotation, 0, 11, frame, lightColor);
@@ -434,6 +445,7 @@ a giant crown it wears around. We will name it the King Slime.");
         {
             Texture2D texture = Main.itemTexture[item.type];
             Texture2D texture2 = AAMod.instance.GetTexture("Items/Tablets/LoreTablet_Glow");
+            frame = BaseDrawing.GetFrame(10, 24, 32, 0, 2);
             for (int i = 0; i < 4; i++)
             {
                 Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
@@ -476,7 +488,7 @@ a giant crown it wears around. We will name it the King Slime.");
             }
             {
                 recipe.AddIngredient(tablet);
-                recipe.AddIngredient(ItemID.Mushroom, 1);
+                recipe.AddIngredient(mod, "Mushium", 1);
                 recipe.AddTile(DataBank);
                 recipe.SetResult(mod.ItemType<MushroomTablet>());
                 recipe.AddRecipe();

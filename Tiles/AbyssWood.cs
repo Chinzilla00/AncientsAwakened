@@ -12,7 +12,7 @@ namespace AAMod.Tiles
         public bool glow = true; 
         public override void SetDefaults()
         {
-            Main.tileSolid[Type] = true;
+            Main.tileSolidTop[Type] = false;
             Main.tileBlockLight[Type] = true;
             Main.tileSolid[Type] = false;
             Main.tileMerge[Type][mod.TileType("AbyssLeaves")] = true;

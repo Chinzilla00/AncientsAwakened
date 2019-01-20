@@ -17,7 +17,9 @@ namespace AAMod.NPCs.Bosses.Toad
     [AutoloadBossHead]
     public class TruffleToad : ModNPC
     {
-		public override void SendExtraAI(BinaryWriter writer)
+        public float bossLife;
+
+        public override void SendExtraAI(BinaryWriter writer)
 		{
 			base.SendExtraAI(writer);
 			if((Main.netMode == 2 || Main.dedServ))
@@ -61,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.noTileCollide = false;
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Toad");
             npc.netAlways = true;
             bossBag = mod.ItemType("ToadBag");
             npc.alpha = 255;
@@ -79,163 +81,295 @@ namespace AAMod.NPCs.Bosses.Toad
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
-            npc.frameCounter++;
-            if (!player.dead)
+            float num230 = 1f;
+            bool flag8 = false;
+            bool flag9 = false;
+            npc.aiAction = 0;
+            if (npc.ai[3] == 0f && npc.life > 0)
             {
-                npc.alpha -= 3;
+                npc.ai[3] = npc.lifeMax;
             }
-            else
+            if (npc.localAI[3] == 0f && Main.netMode != 1)
             {
-                npc.alpha += 3;
-                if (npc.alpha >= 255)
-                {
-                    npc.active = false;
-                }
+                npc.ai[0] = -100f;
+                npc.localAI[3] = 1f;
+                npc.TargetClosest(true);
+                npc.netUpdate = true;
             }
-            if (npc.alpha > 0)
+            if (Main.player[npc.target].dead)
             {
-                if (internalAI[1] != AISTATE_NOM) //Mad Hops
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
                 {
-                    if (npc.velocity.Y == 0)
+                    npc.timeLeft = 0;
+                    if (Main.player[npc.target].Center.X < npc.Center.X)
                     {
-                        npc.frame.Y = 0;
+                        npc.direction = 1;
                     }
                     else
                     {
-                        if (npc.velocity.Y < 0)
+                        npc.direction = -1;
+                    }
+                }
+            }
+            if (!Main.player[npc.target].dead && npc.ai[2] >= 300f && npc.ai[1] < 5f && npc.velocity.Y == 0f)
+            {
+                npc.ai[2] = 0f;
+                npc.ai[0] = 0f;
+                npc.ai[1] = 5f;
+                if (Main.netMode != 1)
+                {
+                    npc.TargetClosest(false);
+                    Point point3 = npc.Center.ToTileCoordinates();
+                    Point point4 = Main.player[npc.target].Center.ToTileCoordinates();
+                    Vector2 vector26 = Main.player[npc.target].Center - npc.Center;
+                    int num231 = 10;
+                    int num232 = 0;
+                    int num233 = 7;
+                    int num234 = 0;
+                    bool flag10 = false;
+                    if (vector26.Length() > 2000f)
+                    {
+                        flag10 = true;
+                        num234 = 100;
+                    }
+                    while (!flag10 && num234 < 100)
+                    {
+                        num234++;
+                        npc.alpha += 10;
+                        if (npc.alpha >= 255)
                         {
-                            if (npc.frameCounter >= 10)
+                            npc.alpha = 255;
+                        }
+                        int num235 = Main.rand.Next(point4.X - num231, point4.X + num231 + 1);
+                        int num236 = Main.rand.Next(point4.Y - num231, point4.Y + 1);
+                        if ((num236 < point4.Y - num233 || num236 > point4.Y + num233 || num235 < point4.X - num233 || num235 > point4.X + num233) && (num236 < point3.Y - num232 || num236 > point3.Y + num232 || num235 < point3.X - num232 || num235 > point3.X + num232) && !Main.tile[num235, num236].nactive())
+                        {
+                            int num237 = num236;
+                            int num238 = 0;
+                            bool flag11 = Main.tile[num235, num237].nactive() && Main.tileSolid[(int)Main.tile[num235, num237].type] && !Main.tileSolidTop[(int)Main.tile[num235, num237].type];
+                            if (flag11)
                             {
-                                npc.frameCounter = 0;
-                                npc.frame.Y += 72;
-                                if (npc.frame.Y > (72 * 3))
+                                num238 = 1;
+                            }
+                            else
+                            {
+                                while (num238 < 150 && num237 + num238 < Main.maxTilesY)
                                 {
-                                    npc.frameCounter = 0;
-                                    npc.frame.Y = 72 * 3;
+                                    int num239 = num237 + num238;
+                                    bool flag12 = Main.tile[num235, num239].nactive() && Main.tileSolid[(int)Main.tile[num235, num239].type] && !Main.tileSolidTop[(int)Main.tile[num235, num239].type];
+                                    if (flag12)
+                                    {
+                                        num238--;
+                                        break;
+                                    }
+                                    num238++;
                                 }
                             }
+                            num236 += num238;
+                            bool flag13 = true;
+                            if (flag13 && Main.tile[num235, num236].lava())
+                            {
+                                flag13 = false;
+                            }
+                            if (flag13 && !Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
+                            {
+                                flag13 = false;
+                            }
+                            if (flag13)
+                            {
+                                npc.localAI[1] = (num235 * 16 + 8);
+                                npc.localAI[2] = (num236 * 16 + 16);
+                                break;
+                            }
+                        }
+                    }
+                    if (num234 >= 100)
+                    {
+                        npc.alpha -= 20;
+                        Vector2 bottom = Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].Bottom;
+                        npc.localAI[1] = bottom.X;
+                        npc.localAI[2] = bottom.Y;
+                    }
+                }
+            }
+            if (!Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
+            {
+                npc.ai[2] += 1f;
+            }
+            if (Math.Abs(npc.Top.Y - Main.player[npc.target].Bottom.Y) > 320f)
+            {
+                npc.ai[2] += 1f;
+            }
+            if (npc.ai[1] == 5f)
+            {
+                flag8 = true;
+                npc.aiAction = 1;
+                npc.ai[0] += 1f;
+                num230 = MathHelper.Clamp((60f - npc.ai[0]) / 60f, 0f, 1f);
+                num230 = 0.5f + num230 * 0.5f;
+                if (npc.ai[0] >= 60f)
+                {
+                    flag9 = true;
+                }
+                if (npc.ai[0] == 60f)
+                {
+                    Gore.NewGore(npc.Center + new Vector2(-40f, (float)(-(float)npc.height / 2)), npc.velocity, 734, 1f);
+                }
+                if (npc.ai[0] >= 60f && Main.netMode != 1)
+                {
+                    npc.Bottom = new Vector2(npc.localAI[1], npc.localAI[2]);
+                    npc.ai[1] = 6f;
+                    npc.ai[0] = 0f;
+                    npc.netUpdate = true;
+                }
+                if (Main.netMode == 1 && npc.ai[0] >= 120f)
+                {
+                    npc.ai[1] = 6f;
+                    npc.ai[0] = 0f;
+                }
+                if (!flag9)
+                {
+                    for (int num240 = 0; num240 < 10; num240++)
+                    {
+                        int num241 = Dust.NewDust(npc.position + Vector2.UnitX * -20f, npc.width + 40, npc.height, mod.DustType<Dusts.ShroomDust>(), npc.velocity.X, npc.velocity.Y, 150, default(Color), 2f);
+                        Main.dust[num241].noGravity = true;
+                        Main.dust[num241].velocity *= 0.5f;
+                    }
+                }
+            }
+            else if (npc.ai[1] == 6f)
+            {
+                flag8 = true;
+                npc.aiAction = 0;
+                npc.ai[0] += 1f;
+                num230 = MathHelper.Clamp(npc.ai[0] / 30f, 0f, 1f);
+                num230 = 0.5f + num230 * 0.5f;
+                if (npc.ai[0] >= 30f && Main.netMode != 1)
+                {
+                    npc.ai[1] = 0f;
+                    npc.ai[0] = 0f;
+                    npc.netUpdate = true;
+                    npc.TargetClosest(true);
+                }
+                if (Main.netMode == 1 && npc.ai[0] >= 60f)
+                {
+                    npc.ai[1] = 0f;
+                    npc.ai[0] = 0f;
+                    npc.TargetClosest(true);
+                }
+                for (int num242 = 0; num242 < 10; num242++)
+                {
+                    int num243 = Dust.NewDust(npc.position + Vector2.UnitX * -20f, npc.width + 40, npc.height, mod.DustType<Dusts.ShroomDust>(), npc.velocity.X, npc.velocity.Y, 150, default(Color), 2f);
+                    Main.dust[num243].noGravity = true;
+                    Main.dust[num243].velocity *= 2f;
+                }
+            }
+            npc.dontTakeDamage = (npc.hide = flag9);
+            if (npc.velocity.Y == 0f)
+            {
+                npc.velocity.X = npc.velocity.X * 0.8f;
+                if ((double)npc.velocity.X > -0.1 && (double)npc.velocity.X < 0.1)
+                {
+                    npc.velocity.X = 0f;
+                }
+                if (!flag8)
+                {
+                    npc.ai[0] += 2f;
+                    if ((double)npc.life < (double)npc.lifeMax * 0.8)
+                    {
+                        npc.ai[0] += 1f;
+                    }
+                    if ((double)npc.life < (double)npc.lifeMax * 0.6)
+                    {
+                        npc.ai[0] += 1f;
+                    }
+                    if ((double)npc.life < (double)npc.lifeMax * 0.4)
+                    {
+                        npc.ai[0] += 2f;
+                    }
+                    if ((double)npc.life < (double)npc.lifeMax * 0.2)
+                    {
+                        npc.ai[0] += 3f;
+                    }
+                    if ((double)npc.life < (double)npc.lifeMax * 0.1)
+                    {
+                        npc.ai[0] += 4f;
+                    }
+                    if (npc.ai[0] >= 0f)
+                    {
+                        npc.netUpdate = true;
+                        npc.TargetClosest(true);
+                        if (npc.ai[1] == 3f)
+                        {
+                            npc.velocity.Y = -26f;
+                            npc.velocity.X = npc.velocity.X + 3.5f * (float)npc.direction;
+                            npc.ai[0] = -200f;
+                            npc.ai[1] = 0f;
+                        }
+                        else if (npc.ai[1] == 2f)
+                        {
+                            npc.velocity.Y = -10f;
+                            npc.velocity.X = npc.velocity.X + 8.5f * (float)npc.direction;
+                            npc.ai[0] = -120f;
+                            npc.ai[1] += 1f;
                         }
                         else
-                        if (npc.velocity.Y > 0)
                         {
-                            npc.frame.Y = 72 * 0;
+                            npc.velocity.Y = -15f;
+                            npc.velocity.X = npc.velocity.X + 6f * (float)npc.direction;
+                            npc.ai[0] = -120f;
+                            npc.ai[1] += 1f;
                         }
                     }
-                }
-                else //Eat Pant
-                {
-                    tongueTimer++;
-                    if (tongueTimer < 5)
+                    else if (npc.ai[0] >= -30f)
                     {
-                        npc.frame.Y = 5 * 72;
-                    }
-                    else if (tongueTimer < 10)
-                    {
-                        npc.frame.Y = 6 * 72;
-                    }
-                    else if (tongueTimer < 15)
-                    {
-                        npc.frame.Y = 7 * 72;
-                    }
-                    else if (tongueTimer < 20)
-                    {
-                        npc.frame.Y = 8 * 72;
-                    }
-                    else if (tongueTimer < 25)
-                    {
-                        npc.frame.Y = 9 * 72;
-                    }
-                    else if (tongueTimer < 30)
-                    {
-                        npc.frame.Y = 10 * 72;
-                    }
-                    else if (tongueTimer < 35 && tongueTimer > 65)
-                    {
-                        npc.frame.Y = 11 * 72;
-                        npc.velocity.X = 0;
-                    }
-                    else if (tongueTimer < 65)
-                    {
-                        tongueTimer = 0;
-                        npc.frame.Y = 10 * 72;
-                    }
-                    else if (tongueTimer < 68)
-                    {
-                        npc.frame.Y = 9 * 72;
-                    }
-                    else if (tongueTimer < 71)
-                    {
-                        npc.frame.Y = 8 * 72;
-                    }
-                    else if (tongueTimer < 74)
-                    {
-                        npc.frame.Y = 8 * 72;
-                    }
-                    else if (tongueTimer < 77)
-                    {
-                        npc.frame.Y = 7 * 72;
-                    }
-                    else if (tongueTimer < 80)
-                    {
-                        npc.frame.Y = 6 * 72;
-                    }
-                    else
-                    {
-                        npc.frame.Y = 5 * 72;
-                        internalAI[1] = AISTATE_JUMP;
+                        npc.aiAction = 1;
                     }
                 }
-                if (player.Center.X > npc.Center.X)
+            }
+            else if (npc.target < 255 && ((npc.direction == 1 && npc.velocity.X < 3f) || (npc.direction == -1 && npc.velocity.X > -3f)))
+            {
+                if ((npc.direction == -1 && (double)npc.velocity.X < 0.1) || (npc.direction == 1 && (double)npc.velocity.X > -0.1))
                 {
-                    npc.spriteDirection = -1;
+                    npc.velocity.X = npc.velocity.X + 0.2f * (float)npc.direction;
                 }
                 else
                 {
-                    npc.spriteDirection = 1;
+                    npc.velocity.X = npc.velocity.X * 0.93f;
                 }
-                if (Main.netMode != 1)
-                {
-                    internalAI[0]++;
-                    if (internalAI[0] >= 180)
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = Main.rand.Next(2);
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
-                    }
-                }
-                if (internalAI[1] == AISTATE_JUMP)//jumper
-                {
-                    if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
-                    BaseAI.AISlime(npc, ref npc.ai, false, 100, 6f, -8f, 6f, -10f);
-                }
-                else //Tongue
-                {
-                    tongueTimer++;
-                    if (tongueTimer < 35 && tongueTimer > 65)
-                    {
-                        // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
-                        if (npc.direction == -1)
-                        {
-                            //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
-                        }
-                        else
-                        {
-                            //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile((new Vector2(npc.position.X + 57f, npc.position.Y + 18f)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 15, 3);
-                        }
-                    }
-                    if (tongueTimer >= 100)
-                    {
-                        tongueTimer = 0;
-                        internalAI[1] = AISTATE_JUMP;
-                    }
-                }
+            }
+            int num244 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.ShroomDust>(), npc.velocity.X, npc.velocity.Y, 255, default(Color), 1f);
+            Main.dust[num244].noGravity = true;
+            Main.dust[num244].velocity *= 0.5f;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.velocity.Y == 0)
+            {
+                npc.frame.Y = 0;
             }
             else
             {
-                npc.frame.Y = 72 * 0;
+                if (npc.velocity.Y < 0)
+                {
+                    if (npc.frameCounter >= 10)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += 72;
+                        if (npc.frame.Y > (108 * 3))
+                        {
+                            npc.frameCounter = 0;
+                            npc.frame.Y = 108 * 3;
+                        }
+                    }
+                }
+                else if (npc.velocity.Y > 0)
+                {
+                    npc.frame.Y = 108 * 4;
+                }
             }
         }
 

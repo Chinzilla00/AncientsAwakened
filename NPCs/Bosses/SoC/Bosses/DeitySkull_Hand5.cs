@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BMod.NPCs.SatanSkull
+namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     public class DeitySkull_Hand5 : ModNPC
     {
@@ -14,7 +14,7 @@ namespace BMod.NPCs.SatanSkull
         {
             get
             {
-                return "AAMod/NPCs/Bosses/SoC/DeitySkull_Hand";
+                return "AAMod/NPCs/Bosses/SoC/Bosses/DeitySkull_Hand";
             }
         }
         public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace BMod.NPCs.SatanSkull
             npc.height = 52;
             npc.damage = 40;
             npc.defense = 23;
-            npc.lifeMax = 9000;
+            npc.lifeMax = 20000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.noGravity = true;
@@ -50,19 +50,6 @@ namespace BMod.NPCs.SatanSkull
 
         public override void AI()
         {
-            bool flag = (npc.lifeMax / 2) >= npc.life;
-            if (flag && Main.netMode != 1)
-            {
-                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("handflame"), npc.whoAmI, npc.ai[0], npc.ai[1], 0f,0f, byte.MaxValue);
-                Main.npc[ind].life = npc.life;
-                Main.npc[ind].rotation = npc.rotation;
-                Main.npc[ind].velocity = npc.velocity;
-                Main.npc[ind].netUpdate = true;
-                Main.npc[(int)npc.ai[1]].ai[3]++;
-                Main.npc[(int)npc.ai[1]].netUpdate = true;
-            }
-
-
 
             Vector2 vector2_1 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float num1 = (float)(Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - 200.0 * npc.ai[0]) - vector2_1.X;
@@ -78,7 +65,7 @@ namespace BMod.NPCs.SatanSkull
             else if (num3 < 400.0)
                 npc.ai[2] = 0.0f;
             npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active || flag)
+            if (!Main.npc[(int)npc.ai[1]].active)
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50.0 || Main.netMode != 2)
