@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gorger of Realities");
+            DisplayName.SetDefault("Crom Cruach");
         }
 
         public override void SetDefaults()
