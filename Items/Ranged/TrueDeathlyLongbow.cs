@@ -38,7 +38,7 @@ namespace AAMod.Items.Ranged
             
 		}
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        /*public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             spriteBatch.Draw
@@ -57,7 +57,7 @@ namespace AAMod.Items.Ranged
                 SpriteEffects.None,
                 0f
             );
-        }
+        }*/
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-3, 0);
