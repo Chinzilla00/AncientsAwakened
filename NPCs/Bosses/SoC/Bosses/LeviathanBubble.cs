@@ -9,7 +9,6 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
-    [AutoloadBossHead]
     public class LeviathanBubble : ModNPC
 	{
         public bool HeadsSpawned = false;

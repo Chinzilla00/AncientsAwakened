@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BMod.NPCs.SatanSkull
+namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     public class DeitySkull_Hand5 : ModNPC
     {
@@ -14,7 +14,7 @@ namespace BMod.NPCs.SatanSkull
         {
             get
             {
-                return "AAMod/NPCs/Bosses/SoC/DeitySkull_Hand";
+                return "AAMod/NPCs/Bosses/SoC/Bosses/DeitySkull_Hand";
             }
         }
         public override void SetDefaults()
