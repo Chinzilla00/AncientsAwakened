@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             projectile.height = 30;
             projectile.hostile = true;
             projectile.penetrate = -1;
-            npc.aiStyle = -1;
+            projectile.aiStyle = -1;
             projectile.alpha = 255;
             projectile.timeLeft = 300;
         }

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
     	
         public override void SetDefaults()
         {
-            npc.aiStyle = -1;
+            projectile.aiStyle = -1;
             projectile.width = 150;
             projectile.height = 42;
             projectile.hostile = true;
