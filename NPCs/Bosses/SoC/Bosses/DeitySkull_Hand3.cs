@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BMod.NPCs.SatanSkull
+namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     public class DeitySkull_Hand3 : ModNPC
     {
