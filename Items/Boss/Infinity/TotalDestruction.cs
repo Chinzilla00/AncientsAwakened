@@ -38,6 +38,10 @@ namespace AAMod.Items.Boss.Infinity
             item.autoReuse = true;
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-53, -4);
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -48,7 +52,7 @@ namespace AAMod.Items.Boss.Infinity
                 new Vector2
                 (
                     item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * .5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
                 Color.White,
