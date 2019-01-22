@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Infinity
         // The maximum charge value
         private const float MaxChargeValue = 50f;
         //The distance charge particle from the player center
-        private const float MoveDistance = 60f;
+        private const float MoveDistance = 25f;
 
         // The actual distance is stored in the ai0 field
         // By making a property to handle this it makes our life easier, and the accessibility more readable
