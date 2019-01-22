@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Retriever");
-            Main.npcFrameCount[npc.type] = 16;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 14;    //boss frame/animation 
 
         }
         public override void SetDefaults()
@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y += 62;
-                        if (npc.frame.Y > (62 * 15))
+                        if (npc.frame.Y > (62 * 13))
                         {
                             npc.frameCounter = 0;
                             npc.frame.Y = 62 * 11;

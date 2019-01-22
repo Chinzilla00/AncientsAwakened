@@ -11,7 +11,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     public class DeityShark : ModNPC
 	{
-        public bool HeadsSpawned = false;
 
         public override void SetStaticDefaults()
         {

@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
 			npc.noTileCollide = true;
             npc.width = 84;
-            npc.height = 144;
+            npc.height = 120;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.lifeMax = 150000;
@@ -566,7 +566,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
              npc.width = 84;
-            npc.height = 96;
+            npc.height = 84;
             npc.dontCountMe = true;
             npc.alpha = 255;
         }
@@ -739,7 +739,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
              npc.width = 84;
-            npc.height = 96;
+            npc.height = 84;
             npc.dontCountMe = true;
             npc.alpha = 255;
         }
@@ -913,7 +913,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
             npc.width = 78;
-            npc.height = 96;
+            npc.height = 78;
             npc.dontCountMe = true;
             npc.alpha = 255;
         }

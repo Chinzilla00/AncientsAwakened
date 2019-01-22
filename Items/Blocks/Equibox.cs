@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
         
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Glowmasks/EquiBox_Glow");
             spriteBatch.Draw
             (
                 texture,

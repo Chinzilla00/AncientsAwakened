@@ -36,7 +36,7 @@ Allows for underwater breathing");
             item.width = 18;
             item.height = 20;
             item.rare = 9;
-            item.vanity = true;
+            item.defense = 40;
         }
 
         public override void UpdateEquip(Player player)

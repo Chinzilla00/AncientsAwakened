@@ -17,12 +17,14 @@ using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Infinity;
 using AAMod.NPCs.Bosses.SoC;
+using AAMod.NPCs.Bosses.SoC.Bosses;
 using System.Collections.Generic;
 using BaseMod;
 using Terraria.ModLoader.IO;
 using ReLogic.Graphics;
 using Terraria.Localization;
 using Terraria.Graphics.Shaders;
+using Terraria.Graphics.Effects;
 
 namespace AAMod
 {
@@ -155,6 +157,8 @@ namespace AAMod
         public bool LockedOn = false;
         public bool shroomed = false;
         public bool riftbent = false;
+        public bool DestinedToDie = false;
+        public int TeleportTimer = 0;
         //buffs
 
         //pets
@@ -184,7 +188,7 @@ namespace AAMod
 
         //Stat Boosts
         public int ManaLantern = 0;
-        private static int UIDisplay_ManaPerStar = 10;
+        //private static int UIDisplay_ManaPerStar = 10;
         private static int UI_ScreenAnchorX = Main.screenWidth - 800;
         public static SpriteFont fontMouseText;
 
@@ -272,6 +276,7 @@ namespace AAMod
             LockedOn = false;
             shroomed = false;
             riftbent = false;
+            DestinedToDie = false;
             //Buffs
             //Pets
             Broodmini = false;
@@ -658,6 +663,7 @@ namespace AAMod
         }
 
 
+        public float Intensity;
 
         public override void UpdateBiomeVisuals()
         {
@@ -666,6 +672,15 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
             bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
             player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
+            bool useCthulhu = (NPC.AnyNPCs(mod.NPCType<SoC>()) ||
+                NPC.AnyNPCs(mod.NPCType<DeitySkull>()) || 
+                NPC.AnyNPCs(mod.NPCType<DeityEater>()) || 
+                NPC.AnyNPCs(mod.NPCType<DeityEater>()) ||
+                NPC.AnyNPCs(mod.NPCType<DeityEaterTail>()) ||
+                NPC.AnyNPCs(mod.NPCType<DeityLeviathan>()) ||
+                NPC.AnyNPCs(mod.NPCType<DeityEye>())) ||
+                (player.InZone("Ocean") && AAWorld.downedAllAncients && !AAWorld.downedSoC);
+            player.ManageSpecialBiomeVisuals("AAMod:CthulhuSky", useCthulhu);
             bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
             bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen && !useShenA && !useIZ;
@@ -678,6 +693,15 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useIZ;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
+            bool useZero = NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
+            if (useZero)
+            {
+                if (!Filters.Scene["MoonLordShake"].IsActive())
+                {
+                    Filters.Scene.Activate("MoonLordShake", Main.player[Main.myPlayer].position, new object[0]);
+                }
+                Filters.Scene["MoonLordShake"].GetShader().UseIntensity(Math.Min(1f, 0.01f + Intensity));
+            }
             bool useVoid = (ZoneVoid || VoidUnit) && !useIZ && !useShenA && !useShen;
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
@@ -1051,6 +1075,10 @@ namespace AAMod
                     Leave = false;
                     BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECk", Color.LightCyan);
                 }
+            }
+            if (!ZoneShip)
+            {
+                CthulhuCountdown = 1800;
             }
             if (!ZoneShip && Leave == true)
             {

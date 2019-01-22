@@ -79,6 +79,7 @@
     <Compile Include="Backgrounds\InfernoSky.cs" />
     <Compile Include="Backgrounds\InfernoSkyData.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
+    <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\ScreenClouds.cs" />
     <Compile Include="Backgrounds\ScreenCthulhuFog.cs" />
     <Compile Include="Backgrounds\CthulhuSky.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Backgrounds\TerrariumBG.cs" />
     <Compile Include="Backgrounds\VoidSky.cs" />
     <Compile Include="Backgrounds\VoidSkyData.cs" />
-    <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\YamataSky.cs" />
     <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Buffs\TimeFrozen.cs" />
     <Compile Include="Buffs\TrueHallowedPrism.cs" />
     <Compile Include="Buffs\UnstableSoul.cs" />
+    <Compile Include="Buffs\DestinedToDie.cs" />
     <Compile Include="Buffs\Yanked.cs" />
     <Compile Include="ConversionHandler.cs" />
     <Compile Include="CustomCurrency.cs" />
@@ -464,7 +465,7 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
-    <Compile Include="Items\BossSummons\SpatialWheel.cs" />
+    <Compile Include="Items\BossSummons\CursedCompass.cs" />
     <Compile Include="Items\BossSummons\AbyssClaw.cs" />
     <Compile Include="Items\BossSummons\BlazeClaw.cs" />
     <Compile Include="Items\BossSummons\ChaosRune.cs" />
@@ -1103,6 +1104,10 @@
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityLeviathan.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEater.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityEaterBody.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Bosses\DeityRoseSpore.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Bosses\DeityRoseClaws.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Bosses\DeityRoseHook.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Bosses\DeityRose.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityShark2.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeityShark.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\DeitySkull.cs" />
@@ -1116,6 +1121,11 @@
     <Compile Include="NPCs\Bosses\SoC\Bosses\Leviacane2.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\Leviacane.cs" />
     <Compile Include="NPCs\Bosses\SoC\Bosses\LeviathanBubble.cs" />
+    <Compile Include="NPCs\Bosses\SoC\DeityDragon.cs" />
+    <Compile Include="NPCs\Bosses\SoC\RiftVision.cs" />
+    <Compile Include="NPCs\Bosses\SoC\EoA.cs" />
+    <Compile Include="NPCs\Bosses\SoC\Portal.cs" />
+    <Compile Include="NPCs\Bosses\SoC\CthulhuSpawn.cs" />
     <Compile Include="NPCs\Bosses\SoC\SoC.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBreath.cs" />
@@ -1326,6 +1336,11 @@
     <Compile Include="Projectiles\Nightmare_Hammer_Pro.cs" />
     <Compile Include="Projectiles\Number1.cs" />
     <Compile Include="Projectiles\OrderSolution.cs" />
+    <Compile Include="Projectiles\SoC\Anchor.cs" />
+    <Compile Include="Projectiles\SoC\RealityBurstHuge.cs" />
+    <Compile Include="Projectiles\SoC\RealityBurstMed.cs" />
+    <Compile Include="Projectiles\SoC\RealityBurstSmall.cs" />
+    <Compile Include="Projectiles\SoC\RealityBurstLarge.cs" />
     <Compile Include="Projectiles\SPORZ.cs" />
     <Compile Include="Projectiles\OrangeSolution.cs" />
     <Compile Include="Projectiles\Paladins_Knife_Pro.cs" />
@@ -1438,6 +1453,7 @@
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
     <Compile Include="Tiles\ACS.cs" />
+    <Compile Include="Tiles\SoCBox.cs" />
     <Compile Include="Tiles\CthulhuPortal.cs" />
     <Compile Include="Tiles\Doomgrass.cs" />
     <Compile Include="Tiles\DoomstoneB.cs" />
@@ -1612,7 +1628,6 @@
     <Compile Include="Tiles\YtriumOre.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
-    <Compile Include="UI\TerratoolUI.cs" />
     <Compile Include="Walls\BurnedDynastyWall.cs" />
     <Compile Include="Walls\DepthsandHardenedWall.cs" />
     <Compile Include="Walls\DepthsandstoneWall.cs" />
@@ -1754,6 +1769,7 @@
     <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\CrimeraMinion.png" />
     <Content Include="Buffs\DemonMinion.png" />
+    <Content Include="Buffs\DestinedToDie.png" />
     <Content Include="Buffs\DevilMinion.png" />
     <Content Include="Buffs\DiscordInferno.png" />
     <Content Include="Buffs\DragonFire.png" />
@@ -2957,6 +2973,8 @@
     <Content Include="Items\BossSummons\ChaosRune.png" />
     <Content Include="Items\BossSummons\ChaosRune_Inactive.png" />
     <Content Include="Items\BossSummons\ChaosSigil.png" />
+    <Content Include="Items\BossSummons\CursedCompass.png" />
+    <Content Include="Items\BossSummons\CursedCompass_Arrow.png" />
     <Content Include="Items\BossSummons\CuriousClaw.png" />
     <Content Include="Items\BossSummons\CyberneticBell.png" />
     <Content Include="Items\BossSummons\CyberneticClaw.png" />
@@ -3116,6 +3134,9 @@
     <Content Include="Items\Boss\Shen\ShenTerratool_Hammer.png" />
     <Content Include="Items\Boss\Shen\Skyfall.png" />
     <Content Include="Items\Boss\Shen\Timesplitter.png" />
+    <Content Include="Items\Boss\SoC\CthulhuCannon.png" />
+    <Content Include="Items\Boss\SoC\SoCCache.png" />
+    <Content Include="Items\Boss\SoC\SquidSlammer.png" />
     <Content Include="Items\Boss\StormCharm.png" />
     <Content Include="Items\Boss\Toad\AncientShroomite.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
@@ -3727,14 +3748,20 @@
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaAArms.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaAArms_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABody.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaABody_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaABreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaArms.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaArms_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaATail.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaATail_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBody.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaBody_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaBreath.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTail.png" />
+    <Content Include="NPCs\Bosses\Akuma\AkumaTail_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\AkumaTransition.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Akuma\FireProjHostile.png" />
@@ -3923,20 +3950,25 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityEyeREEEEEEEEEE_2.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityFlames.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseSpore.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\Leviathan.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfReality2_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityClaws.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityClaws_Chain.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityHook.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityHook_Chain.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityPoisonBarb.gif" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityPoisonBarb.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealitySplinter.gif" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealitySplinter.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfRealityWoodchip.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\RoseOfReality_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\SoC\Bosses\Urchin.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose2_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseClaws.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseClaws_Chain.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseHook.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseHook_Chain.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseBarb.gif" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseBarb.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseSplinter.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseUrchin.png" />
     <Content Include="NPCs\Bosses\SoC\Cthulhu.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuPortal.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuPortal2_2.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuRift.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuRift2.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuSpawn.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuSpawnEyes.png" />
     <Content Include="NPCs\Bosses\SoC\DeityCircle.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragon.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragonArms.png" />
@@ -3973,14 +4005,18 @@
     <Content Include="NPCs\Bosses\SoC\DeityRitual.png" />
     <Content Include="NPCs\Bosses\SoC\EoA.png" />
     <Content Include="NPCs\Bosses\SoC\EoA_Pupil.png" />
+    <Content Include="NPCs\Bosses\SoC\Portal.png" />
+    <Content Include="NPCs\Bosses\SoC\Rift.png" />
     <Content Include="NPCs\Bosses\SoC\RiftVision.png" />
     <Content Include="NPCs\Bosses\SoC\SoC.png" />
+    <Content Include="NPCs\Bosses\SoC\SoCBoom.png" />
     <Content Include="NPCs\Bosses\SoC\SoC_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\SoC_Wheel.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu Phase 2.png" />
     <Content Include="NPCs\Bosses\SoC\Soul of Cthulhu.png" />
     <Content Include="NPCs\Bosses\SoC\Squid.png" />
     <Content Include="NPCs\Bosses\SoC\SquidThing.png" />
+    <Content Include="NPCs\Bosses\SoC\Watcher.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
@@ -4333,6 +4369,12 @@
     <Content Include="Projectiles\Nightmare_Hammer_Pro.png" />
     <Content Include="Projectiles\Number1.png" />
     <Content Include="Projectiles\BlackSolution.png" />
+    <Content Include="Projectiles\SoC\Anchor.png" />
+    <Content Include="Projectiles\SoC\Anchor_Chain.png" />
+    <Content Include="Projectiles\SoC\RealityBurstHuge.png" />
+    <Content Include="Projectiles\SoC\RealityBurstLarge.png" />
+    <Content Include="Projectiles\SoC\RealityBurstMed.png" />
+    <Content Include="Projectiles\SoC\RealityBurstSmall.png" />
     <Content Include="Projectiles\SPORZ.png" />
     <Content Include="Projectiles\OrangeSolution.png" />
     <Content Include="Projectiles\OrderSolution.png" />
@@ -4457,6 +4499,7 @@
     <Content Include="Resprites\ManaGreen.png" />
     <Content Include="Resprites\Mushroom.png" />
     <Content Include="Resprites\SoulOfNight.png" />
+    <Content Include="Resprites\TEoCHead.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />
     <Content Include="Sounds\Music\IZ.mp3" />
@@ -4545,6 +4588,7 @@
     <Content Include="Tiles\FulguritePlating.png" />
     <Content Include="Tiles\FulguritePlatingS.png" />
     <Content Include="Tiles\FulguriteShrine.png" />
+    <Content Include="Tiles\Hotshroom.png" />
     <Content Include="Tiles\Hydrablossom.png" />
     <Content Include="Tiles\IZBox.png" />
     <Content Include="Tiles\MonarchBox.png" />
@@ -4566,6 +4610,7 @@
     <Content Include="Tiles\ScorchedPlatform.png" />
     <Content Include="Tiles\ScorchedShinglesS.png" />
     <Content Include="Tiles\SerpentBox.png" />
+    <Content Include="Tiles\SGBox.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\Apocalyptite.png" />
@@ -4692,6 +4737,7 @@
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\SiegeBox.png" />
+    <Content Include="Tiles\SoCBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\Statues\StatuesForFriends.png" />
     <Content Include="Tiles\Sticker.png" />
@@ -4819,12 +4865,6 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
-    <None Include=".vs\AAMod\DesignTimeBuild\.dtbcache" />
-    <None Include=".vs\AAMod\v15\.suo" />
-    <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />
-    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
-    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
-    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
     <None Include="NPCs\Bosses\Lucifer\Lucifer.piskel" />
     <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
@@ -4852,6 +4892,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"D:\SteamLibrary\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac  "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

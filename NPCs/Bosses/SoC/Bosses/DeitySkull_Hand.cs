@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.netAlways = true;
 
         }
+        
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -61,13 +62,14 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
         }
 
+
         public override void AI()
         {
             Vector2 vector2_1 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float num1 = (float)(Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - 200.0 * npc.ai[0]) - vector2_1.X;
             float num2 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector2_1.Y;
             float num3 = (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
-
+            
 
             if (npc.ai[2] != 99.0)
             {

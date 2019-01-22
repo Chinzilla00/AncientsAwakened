@@ -43,6 +43,11 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
             npc.alpha = 255;
         }
+        
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
 
         public override void AI()
         {
@@ -147,8 +152,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             {
                 num55 = 20f;
             }
-            npc.soundDelay = (int)num55;
-            Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
             num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
             float num56 = Math.Abs(num40);
             float num57 = Math.Abs(num41);
@@ -262,6 +265,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
+                SoC.ComeBack = true;
+                AAWorld.SoCBossDeathPoint = npc.position;
                 int num121 = 0;
                 while ((double)num121 < dmg / (double)npc.lifeMax * 3.0)
                 {

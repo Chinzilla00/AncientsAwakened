@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.damage = 60;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath14;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -40,6 +40,30 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.npcSlots = 5f;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                SoC.ComeBack = true;
+                AAWorld.SoCBossDeathPoint = npc.position;
+            }
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 8)
+            {
+                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                damage = 0;
+            }
+            return false;
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
         }
 
         public override void FindFrame(int frameHeight)
@@ -84,6 +108,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             {
                 npc.TargetClosest(true);
             }
+            
             bool dead3 = Main.player[npc.target].dead;
             float num406 = npc.position.X + (float)(npc.width / 2) - Main.player[npc.target].position.X - (float)(Main.player[npc.target].width / 2);
             float num407 = npc.position.Y + (float)npc.height - 59f - Main.player[npc.target].position.Y - (float)(Main.player[npc.target].height / 2);
@@ -396,7 +421,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
             else
             {
-                npc.HitSound = SoundID.NPCHit4;
+                npc.HitSound = SoundID.NPCHit1;
                 npc.damage = (int)((double)npc.defDamage * 1.5);
                 npc.defense = npc.defDefense + 18;
                 if (npc.ai[1] == 0f)
@@ -602,16 +627,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                     }
                 }
             }
-        }
-
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (damage > npc.lifeMax / 8)
-            {
-                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
-                damage = 0;
-            }
-            return false;
         }
         
     }

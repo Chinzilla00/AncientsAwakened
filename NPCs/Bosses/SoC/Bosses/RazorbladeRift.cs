@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] =4;
+            Main.projFrames[projectile.type] = 3;
         }
 
         public override void SetDefaults()

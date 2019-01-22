@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.EFish
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Aquamancer Wings");
+            DisplayName.SetDefault("Emperor Fishron Wings");
 		}
 
 		public override void SetDefaults()
@@ -41,18 +41,9 @@ namespace AAMod.Items.Boss.EFish
 
 		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
-			speed = 10f;
+			speed = 9f;
 			acceleration *= 2.5f;
 		}
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(null, "SoulOfSpite", 15);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        
     }
 }

@@ -40,8 +40,10 @@ namespace AAMod.Items.Tools
             return true;
         }
 
-        public override void OpenBossBag(Player player)
+
+        public override void RightClick(Player player)
         {
+            item.TurnToAir();
             player.QuickSpawnItem(mod.ItemType("Terratool_Hammer"));
         }
     }

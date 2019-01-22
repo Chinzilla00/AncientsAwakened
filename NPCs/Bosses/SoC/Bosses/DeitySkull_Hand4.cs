@@ -10,6 +10,12 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     public class DeitySkull_Hand4 : ModNPC
     {
+
+        public override void SetStaticDefaults()
+        {
+
+            Main.npcFrameCount[npc.type] = 4;
+        }
         public override string Texture
         {
             get

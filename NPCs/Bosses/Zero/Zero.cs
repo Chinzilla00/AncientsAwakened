@@ -101,6 +101,8 @@ namespace AAMod.NPCs.Bosses.Zero
             return null;
         }
 
+        public int frameHeight = 212;
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
@@ -293,6 +295,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (npc.ai[1] == 0f)
             {
+                npc.frame.Y = 0;
                 npc.damage = 100;
                 npc.defense = 90;
                 npc.ai[2] += 1f;
@@ -358,6 +361,8 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (npc.ai[1] == 1f)
                 {
+
+                    npc.frame.Y = frameHeight;
                     npc.defense = 180;
                     npc.damage = 200;
                     npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
@@ -407,20 +412,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
             }
             
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            //npc.frameCounter++;
-            if (npc.ai[1] == 1f)
-            {
-                npc.frame.Y = 1 * frameHeight;
-            }
-            else
-            {
-                npc.frame.Y = 0;
-                npc.frameCounter = 0;
-            }
         }
     }
 }

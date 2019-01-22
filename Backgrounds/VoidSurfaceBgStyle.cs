@@ -33,15 +33,19 @@ namespace AAMod.Backgrounds
             }
         }
 
+        public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
+        {
+            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
+        }
+
+        public override int ChooseMiddleTexture()
+        {
+            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
+        }
+
         public override int ChooseFarTexture()
         {
-            Player player = Main.player[Main.myPlayer];
-            if (player.ZoneSkyHeight)
-            {
-                return mod.GetBackgroundSlot("Backgrounds/VoidBG");
-
-            }
-            return mod.GetBackgroundSlot("Backgrounds/VoidSurface");
+            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
         }
     }
 }

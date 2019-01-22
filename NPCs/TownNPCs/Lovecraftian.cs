@@ -62,7 +62,7 @@ namespace AAMod.NPCs.TownNPCs
             npc.lifeMax = 600;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 2f;
+            npc.knockBackResist = 0f;
             animationType = NPCID.Guide;
         }
 

@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.noTileCollide = false;
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Toad");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");
             npc.netAlways = true;
             bossBag = mod.ItemType("ToadBag");
             npc.alpha = 255;

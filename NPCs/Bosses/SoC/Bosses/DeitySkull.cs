@@ -37,7 +37,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
             npc.lavaImmune = true;
-            music = MusicID.Boss2;
         }
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -50,22 +49,61 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.localAI[0] = reader.ReadInt16();
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                SoC.ComeBack = true;
+                AAWorld.SoCBossDeathPoint = npc.position;
+            }
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (damage > npc.lifeMax / 8)
+            {
+                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                damage = 0;
+            }
+            return false;
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public const string MapHead = "AAMod/NPCs/Boss/SoC/Bosses/DeitySkull_Head_Boss";
+
+        public override void BossHeadSlot(ref int index)
+        {
+
+            index = NPCHeadLoader.GetBossHeadSlot(MapHead);
+
+        }
+        public override void BossHeadRotation(ref float rotation)
+        {
+
+            rotation = npc.rotation;
+
+        }
+
         public override void AI()
         {
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
             bool expert = Main.expertMode;
 
-            
-            if (npc.ai[3] != 6)
-            {
-                npc.dontTakeDamage = true;
-            }
-            else
+
+            if (npc.type == mod.NPCType<DeitySkull>() && (!NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand1>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand2>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand3>()) || !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand4>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand5>())))
             {
                 npc.life = 0;
             }
-            if(npc.ai[0] < 300f)npc.ai[0]++;
+            else
+            {
+                npc.dontTakeDamage = true;
+            }
+            if (npc.ai[0] < 300f)npc.ai[0]++;
             if (npc.ai[0] == 300.0 && Main.netMode != 1)
             {
                 npc.TargetClosest(true);

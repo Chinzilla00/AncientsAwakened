@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
     [AutoloadBossHead]
     public class DeityLeviathan : ModNPC
 	{
-        public bool HeadsSpawned = false;
 
         public override void SetStaticDefaults()
         {
@@ -57,6 +56,25 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                 damage = 0;
             }
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                SoC.ComeBack = true;
+                AAWorld.SoCBossDeathPoint = npc.position;
+            }
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = 0;   //boss drops
         }
 
         public override void AI()

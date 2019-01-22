@@ -64,7 +64,7 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 17), Color.DarkMagenta * 0.05f * Intensity);
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 18), Color.DarkMagenta * 0.05f * Intensity);
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 19), Color.DarkMagenta * 0.05f * Intensity);
-                var planetPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
+                var planetPos = new Vector2((Main.screenWidth / 2), Main.screenHeight / 4);
                 spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
         }

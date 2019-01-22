@@ -93,6 +93,7 @@ namespace AAMod
         public static bool PowerDropped;
         //Points
         public static Point WHERESDAVOIDAT;
+        public static Vector2 SoCBossDeathPoint;
 
         public string nums = "1234567890";
 

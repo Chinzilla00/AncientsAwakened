@@ -37,8 +37,9 @@ namespace AAMod
         public bool InfinityScorch = false;
         public bool DiscordInferno = false;
         public static int Toad = -1;
+        public static int Rose = -1;
 
-        
+
 
 
         public override bool InstancePerEntity
@@ -794,7 +795,17 @@ namespace AAMod
             }
             catch (Exception e) { BaseUtility.LogFancy("MNPC PREAI ERROR: ", e); }
             return true;
-        }   
+        }
+
+        public const string HeadTex = "AAMod/Resprites/TEoCHead";
+
+        public override void BossHeadSlot(NPC npc, ref int index)
+        {
+            if (npc.type == NPCID.MoonLordFreeEye)
+            {
+                index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
+            }
+        }
     }
     public abstract class AANPC : ParentNPC
     {

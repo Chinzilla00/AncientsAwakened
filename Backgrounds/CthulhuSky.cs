@@ -21,10 +21,6 @@ namespace AAMod.Backgrounds
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
-        private bool _isLeaving = false;
-        private bool _isActive = false;
-        private readonly float fogOpacity1 = 0.5f;
-        private readonly float fogOpacity2 = 0.4f;
         private int _fogTimer = 300;
         private int _fogTimer2 = 300;
         private Texture2D texture = AAMod.instance.GetTexture("Backgrounds/CthulhuClouds");

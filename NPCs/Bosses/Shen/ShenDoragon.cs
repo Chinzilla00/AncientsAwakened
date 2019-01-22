@@ -214,9 +214,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.Center = center;
                 npc.netUpdate = true;
             }
-
-            //Main.fastForwardTime = true;
-            //Main.dayRate = 20;
             #endregion
 
             Player player = Main.player[npc.target];
@@ -572,7 +569,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void HitEffect(int hitDirection, double damage)
         {
             Player player = Main.player[npc.target];
-            if (npc.life <= npc.life / 2 && !SpawnGrips && !isAwakened)
+            if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
                 Main.NewText("Grips! Assist me!", Color.Magenta);

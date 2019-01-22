@@ -413,11 +413,11 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
 
@@ -555,11 +555,11 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
 
@@ -697,11 +697,11 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }
@@ -838,11 +838,11 @@ namespace AAMod.NPCs.Bosses.Shadow.Akuma
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
-                projectile.penetrate = 1;
+                projectile.damage *= (int).2;
             }
         }
     }

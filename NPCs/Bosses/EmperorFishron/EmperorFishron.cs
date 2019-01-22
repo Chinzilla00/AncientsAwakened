@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.buffImmune[44] = true;
             aiType = NPCID.DukeFishron;
 			animationType = NPCID.DukeFishron;
+            npc.scale *= 1.3f;
 		}
 
         public override void NPCLoot()
