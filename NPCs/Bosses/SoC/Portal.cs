@@ -29,27 +29,32 @@ namespace AAMod.NPCs.Bosses.SoC
             }
         }
 
-        public int Spawntimer = 0;
+
+        public bool Spawned = false;
 
         public override void AI()
         {
+            npc.scale = 1f - npc.alpha / 255f;
+            npc.rotation += .05f;
+            npc.velocity.X = npc.ai[0];
+            npc.velocity.Y = npc.ai[1];
 
-            npc.alpha -= 6;
-            if (npc.alpha >= 255)
+            if (npc.alpha <= 0 && !Spawned)
             {
-                Spawntimer++;
-                npc.alpha = 255;
+                SummonEnemy();
+                Spawned = true;
             }
-            
-
-            if (Spawntimer >= 240)
+            if (!Spawned)
             {
-                //SummonEnemy();
-                npc.scale -= .05f;
+                npc.alpha -= 3;
             }
-            if (npc.scale <= 0)
+            if (Spawned)
             {
-                npc.life = 0;
+                npc.alpha += 3;
+                if (npc.alpha >= 255)
+                {
+                    npc.active = false;
+                }
             }
         }
 
@@ -69,39 +74,28 @@ namespace AAMod.NPCs.Bosses.SoC
 
         public void SummonEnemy()
         {
+            int Enemy = Main.rand.Next(3);
+
+            switch (Enemy)
+            {
+                case 0:
+                    Enemy = mod.NPCType("DeityDragon");
+                    break;
+                case 1:
+                    Enemy = mod.NPCType("EoA");
+                    break;
+                default:
+                    Enemy = mod.NPCType("RiftVision");
+                    break;
+            }
             if (Main.netMode != 1)
             {
-                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("SoC"));
+                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Enemy);
                 Main.npc[npcID].Center = npc.Center;
                 Main.npc[npcID].netUpdate = true;
             }
 
             npc.active = false;
-        }
-        
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
-        public static Texture2D EyeTex = null;
-        public float Rotation1;
-        public float Rotation2;
-
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-
-            Vector2 vector38 = npc.position + new Vector2(npc.width, npc.height) / 2f + Vector2.UnitY * npc.gfxOffY - Main.screenPosition;
-            int num214 = Main.npcTexture[npc.type].Height / Main.projFrames[npc.type];
-            int y6 = 0;
-            Rectangle Frame = BaseDrawing.GetFrame(0, 70, 79, 0, 2);
-            Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-            Texture2D Portal1 = mod.GetTexture("NPCs/Bosses/SoC/Portal");
-
-            Rotation1 += .005f;
-
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            Main.spriteBatch.Draw(Portal1, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Portal1.Width, num214)), Color.White, Rotation1, new Vector2(Portal1.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-            BaseDrawing.DrawAura(sb, Portal1, 0, drawCenter - Main.screenPosition, 120, 120, auraPercent, 1f, npc.scale, Rotation1, 0, 1, Frame, 0f, 0f, Color.White * .1f);
-            return false;
         }
     }
 }

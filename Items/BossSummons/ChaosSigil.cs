@@ -63,6 +63,10 @@ Summons the chaos emperor");
                 {
                     return false;
                 }
+                if (p != null && p.active && p.type == mod.ProjectileType("ShenSpawn"))
+                {
+                    return false;
+                }
             }
             return true;
         }

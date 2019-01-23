@@ -656,13 +656,24 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
-                if (NPC.downedMoonlord)
+                if (AAWorld.downedEquinox)
                 {
                     pool.Add(mod.NPCType("Searcher"), .5f);
                     if (AAWorld.downedZero && !Main.expertMode)
                     {
                         pool.Add(mod.NPCType("Null"), .5f);
                     }
+                }
+            }
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneShip)
+            {
+                pool.Clear();
+                if (AAWorld.downedEquinox)
+                {
+                    pool.Add(mod.NPCType("DimensionDiver"), .5f);
+
+                    pool.Add(mod.NPCType("Squid"), .7f);
                 }
             }
 

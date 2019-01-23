@@ -105,6 +105,11 @@ Summons Shen Doragon's true awakened form");
                 {
                     return false;
                 }
+
+                if (p != null && p.active && p.type == mod.ProjectileType("ShenSpawn"))
+                {
+                    return false;
+                }
             }
             return true;
         }

@@ -75,15 +75,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
         public override void BossHeadSlot(ref int index)
         {
-            if (Morphed)
-            {
-                index = NPCHeadLoader.GetBossHeadSlot(BlankTex);
-            }
-            else
-            {
-                index = NPCHeadLoader.GetBossHeadSlot(MapHead);
-
-            }
+            index = NPCHeadLoader.GetBossHeadSlot(MapHead);
 
         }
         public override void BossHeadRotation(ref float rotation)
@@ -94,6 +86,8 @@ namespace AAMod.NPCs.Bosses.SoC
         }
 
         int oneTime = 0;
+
+        public int EnemyTimer = 0;
 
         public override void AI()
         {
@@ -107,6 +101,14 @@ namespace AAMod.NPCs.Bosses.SoC
             float SkullSummon = npc.lifeMax * .4f;
             float LeviathanSummon = npc.lifeMax * .2f;
             bool BossAlive = NPC.AnyNPCs(mod.NPCType<DeityEye>()) || NPC.AnyNPCs(mod.NPCType<DeityEater>()) || NPC.AnyNPCs(mod.NPCType<DeitySkull>()) || NPC.AnyNPCs(mod.NPCType<DeityLeviathan>());
+            EnemyTimer++;
+
+            if (EnemyTimer >= 600)
+            {
+                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("Portal"), 255, -npc.velocity.X, -npc.velocity.Y);
+                EnemyTimer = 0;
+            }
+
 
             if (oneTime == 0)
             {
@@ -117,6 +119,7 @@ namespace AAMod.NPCs.Bosses.SoC
             if (BossAlive)
             {
                 Morphed = true;
+                return;
             }
 
             if (!BossAlive && ComeBack == true)
@@ -150,6 +153,11 @@ namespace AAMod.NPCs.Bosses.SoC
                 npc.dontTakeDamage = false;
 
                 npc.netUpdate = true;
+            }
+
+            if (npc.ai[1] != 1f || npc.ai[1] != 0f)
+            {
+                npc.dontTakeDamage = true;
             }
             if (npc.life <= npc.lifeMax / 10)
             {
@@ -190,24 +198,28 @@ namespace AAMod.NPCs.Bosses.SoC
                     Boss1 = true;
                     npc.ai[1] = 2f;
                     npc.dontTakeDamage = true;
+                    morphTimer = 0;
                 }
                 else if (npc.life < EaterSummon && !Boss2)
                 {
                     Boss2 = true;
                     npc.ai[1] = 3f;
                     npc.dontTakeDamage = true;
+                    morphTimer = 0;
                 }
                 else if (npc.life < SkullSummon && !Boss3)
                 {
                     Boss3 = true;
                     npc.ai[1] = 4f;
                     npc.dontTakeDamage = true;
+                    morphTimer = 0;
                 }
                 else if (npc.life < LeviathanSummon && !Boss4)
                 {
                     Boss4 = true;
                     npc.ai[1] = 7f;
                     npc.dontTakeDamage = true;
+                    morphTimer = 0;
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 600f)
@@ -336,6 +348,7 @@ namespace AAMod.NPCs.Bosses.SoC
                             
                         }
                     }
+                    return;
                 }
                 if (npc.ai[1] == 3f)
                 {
@@ -367,6 +380,8 @@ namespace AAMod.NPCs.Bosses.SoC
                         }
 
                     }
+
+                    return;
                 }
                 if (npc.ai[1] == 4f)
                 {
@@ -400,7 +415,46 @@ namespace AAMod.NPCs.Bosses.SoC
                         }
 
                     }
+
+
+                    return;
                 }
+
+                if (npc.ai[1] == 6f)
+                {
+                    Summon = true;
+                    npc.velocity *= .8f;
+                    if (npc.velocity.X < .5f || npc.velocity.X > -.5f)
+                    {
+                        npc.velocity.X = 0;
+                    }
+                    if (npc.velocity.Y < .5f || npc.velocity.Y > -.5f)
+                    {
+                        npc.velocity.Y = 0;
+                    }
+
+                    if (npc.velocity.X == 0 && npc.velocity.Y == 0)
+                    {
+                        Rotation += .2f;
+                        RiftSpin -= .2f;
+                        morphTimer++;
+                        if (morphTimer > 300)
+                        {
+                            if (Eye == false)
+                            {
+                                Eye = true;
+                                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityRose"));
+                                npc.ai[3] = 1f;
+                                npc.ai[2] = 0f;
+                                npc.ai[1] = 0f;
+                            }
+                        }
+                    }
+
+
+                    return;
+                }
+
                 if (npc.ai[1] == 7f)
                 {
                     Summon = true;
@@ -431,6 +485,9 @@ namespace AAMod.NPCs.Bosses.SoC
                             }
                         }
                     }
+
+
+                    return;
                 }
                 if (npc.ai[1] == 8f)
                 {
@@ -507,11 +564,6 @@ namespace AAMod.NPCs.Bosses.SoC
                 Main.spriteBatch.Draw(RingTex, vector38, null, AAColor.Cthulhu, -RingRotation, RingTex.Size() / 2f, scale, SpriteEffects.None, 0f);
                 Main.spriteBatch.Draw(RitualTex, vector38, null, AAColor.Cthulhu, RingRotation, origin8, scale * 0.42f, SpriteEffects.None, 0f);
                 Main.spriteBatch.Draw(RingTex, vector38, null, AAColor.Cthulhu, -RingRotation, RingTex.Size() / 2f, scale * 0.42f, SpriteEffects.None, 0f);
-                if (scale == 0f)
-                {
-                    Summon = false;
-                    morphTimer = 0;
-                }
             }
             if (npc.alpha > 0)
             {
@@ -523,7 +575,7 @@ namespace AAMod.NPCs.Bosses.SoC
             }
             if (!Morphed)
             {
-                Main.spriteBatch.Draw(Rift, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Rift.Width, Rift.Height)), AAColor.Cthulhu, RiftSpin, new Vector2(Rift.Width / 2f, Rift.Height / 2f), npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(Rift, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Rift.Width, Rift.Height)), AAColor.Cthulhu, RiftSpin, new Vector2(Rift.Width / 2f, Rift.Height / 2f), 1.5f, SpriteEffects.None, 0f);
                 Main.spriteBatch.Draw(WheelTex, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, WheelTex.Width, num214)), color, Rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
                 Main.spriteBatch.Draw(texture2D13, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), color, npc.rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
             }

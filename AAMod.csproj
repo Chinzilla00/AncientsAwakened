@@ -465,6 +465,7 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
+    <Compile Include="Items\BossSummons\Portal.cs" />
     <Compile Include="Items\BossSummons\CursedCompass.cs" />
     <Compile Include="Items\BossSummons\AbyssClaw.cs" />
     <Compile Include="Items\BossSummons\BlazeClaw.cs" />
@@ -708,6 +709,7 @@
     <Compile Include="Items\Materials\Dragon_Scale.cs" />
     <Compile Include="Items\Materials\EventideAbyssium.cs" />
     <Compile Include="Items\Materials\Everleaf.cs" />
+    <Compile Include="Items\Materials\RiftSphere.cs" />
     <Compile Include="Items\Materials\FulguriteBar.cs" />
     <Compile Include="Items\Materials\HydraClaw.cs" />
     <Compile Include="Items\Materials\HydraToxin.cs" />
@@ -1058,6 +1060,11 @@
     <Compile Include="NPCs\Bosses\Infinity\IZShot.cs" />
     <Compile Include="NPCs\Bosses\Infinity\IZSpawn1.cs" />
     <Compile Include="NPCs\Bosses\Infinity\Oblivion.cs" />
+    <Compile Include="NPCs\Bosses\Kraken\KrakenPortal.cs" />
+    <Compile Include="NPCs\Bosses\Kraken\Tentacle1.cs" />
+    <Compile Include="NPCs\Bosses\Kraken\Tentacle2.cs" />
+    <Compile Include="NPCs\Bosses\Kraken\Kraken.cs" />
+    <Compile Include="NPCs\Bosses\Kraken\KrakenSpawn.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\MushroomMonarch.cs" />
     <Compile Include="NPCs\Bosses\Nightcrawler\Moonray.cs" />
@@ -1197,6 +1204,9 @@
     <Compile Include="NPCs\Enemies\Other\HydraClaw.cs" />
     <Compile Include="NPCs\Enemies\Other\ChaosDragon.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SnowBreath.cs" />
+    <Compile Include="NPCs\Enemies\Ship\DimensionDiver.cs" />
+    <Compile Include="NPCs\Enemies\Ship\DiverShot.cs" />
+    <Compile Include="NPCs\Enemies\Ship\Squid.cs" />
     <Compile Include="NPCs\Enemies\Snow\MiniSerpent.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\MagicBlast.cs" />
@@ -2989,6 +2999,7 @@
     <Content Include="Items\BossSummons\InfinityOverloader.png" />
     <Content Include="Items\BossSummons\InterestingClaw.png" />
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
+    <Content Include="Items\BossSummons\Portal.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
     <Content Include="Items\BossSummons\ShroomGrub.png" />
     <Content Include="Items\BossSummons\SpatialWheel.png" />
@@ -3290,6 +3301,7 @@
     <Content Include="Items\Materials\Everleaf.png" />
     <Content Include="Items\Materials\FulguriteBar.png" />
     <Content Include="Items\Materials\hmm.png" />
+    <Content Include="Items\Materials\Hotshroom.png" />
     <Content Include="Items\Materials\Hydrablossom.png" />
     <Content Include="Items\Materials\HydraClaw.png" />
     <Content Include="Items\Materials\HydraToxin.png" />
@@ -3850,6 +3862,10 @@
     <Content Include="NPCs\Bosses\Infinity\ZeroBomb.png" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.gif" />
     <Content Include="NPCs\Bosses\Kraken\Kraken.png" />
+    <Content Include="NPCs\Bosses\Kraken\KrakenSpawn.png" />
+    <Content Include="NPCs\Bosses\Kraken\KrakenPortal.png" />
+    <Content Include="NPCs\Bosses\Kraken\Tentacle.gif" />
+    <Content Include="NPCs\Bosses\Kraken\Tentacle1.png" />
     <Content Include="NPCs\Bosses\Lucifer\Lucifer.png" />
     <Content Include="NPCs\Bosses\Madness\Madness.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\MonarchRUNAWAY.png" />
@@ -3963,12 +3979,10 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseUrchin.png" />
     <Content Include="NPCs\Bosses\SoC\Cthulhu.png" />
-    <Content Include="NPCs\Bosses\SoC\CthulhuPortal.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuPortal2_2.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuRift.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuRift2.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuSpawn.png" />
-    <Content Include="NPCs\Bosses\SoC\CthulhuSpawnEyes.png" />
     <Content Include="NPCs\Bosses\SoC\DeityCircle.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragon.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragonArms.png" />
@@ -4162,6 +4176,9 @@
     <Content Include="NPCs\Enemies\Other\HydraClaw.png" />
     <Content Include="NPCs\Enemies\Other\MadnessBat.png" />
     <Content Include="NPCs\Enemies\Other\Steve.png" />
+    <Content Include="NPCs\Enemies\Ship\DimensionDiver.png" />
+    <Content Include="NPCs\Enemies\Ship\DiverShot.png" />
+    <Content Include="NPCs\Enemies\Ship\Squid.png" />
     <Content Include="NPCs\Enemies\Snow\Serpent.png" />
     <Content Include="NPCs\Enemies\Snow\SerpentBody1.png" />
     <Content Include="NPCs\Enemies\Snow\SerpentBody2.png" />
@@ -4183,6 +4200,7 @@
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
+    <Content Include="NPCs\Enemies\Void\SmallProbe.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\Huo.png" />
     <Content Include="NPCs\Minibosses\Shin%27en.png" />

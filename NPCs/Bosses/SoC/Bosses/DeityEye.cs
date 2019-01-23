@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             if (npc.life <= 0)
             {
                 SoC.ComeBack = true;
-                AAWorld.SoCBossDeathPoint = npc.position;
+                AAWorld.SoCBossDeathPoint = npc.Center;
             }
         }
 
