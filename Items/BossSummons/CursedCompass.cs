@@ -15,13 +15,13 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cursed Compass");
+            Tooltip.SetDefault(@"An old Compass. Who knows what it's for?");
         }
 
         private bool CthulhuFightable = AAWorld.downedAllAncients && !AAWorld.downedSoC;
 
         public override void SetDefaults()
         {
-            Tooltip.SetDefault(@"Unnerving energy radiates from this old ship's wheel");
             item.width = 20;
             item.height = 20;
             item.rare = 11;
@@ -79,7 +79,7 @@ namespace AAMod.Items.BossSummons
             }
         }
 
-        public float ArrowSpin = 0;
+        /*public float ArrowSpin = 0;
 
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
@@ -97,7 +97,7 @@ namespace AAMod.Items.BossSummons
             Vector2 offsetPositon = new Vector2(item.position.X, item.position.Y - 2);
             spriteBatch.Draw(Arrow, position, null, Main.DiscoColor, CthulhuFightable ? ArrowSpin : rotation, texture2D13.Size() * 0.5f, scale, SpriteEffects.None, 0f);
 
-        }
+        }*/
 
         public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
         public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }

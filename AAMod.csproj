@@ -4865,6 +4865,13 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\AAMod\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include=".vs\config\applicationhost.config" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
     <None Include="NPCs\Bosses\Lucifer\Lucifer.piskel" />
     <None Include="NPCs\Bosses\Oblivion\00110000.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
@@ -4879,6 +4886,7 @@
     <None Include="obj\Release\AAMod.csprojAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
     <Folder Include="NPCs\Bosses\Zero\Zero2\" />
     <Folder Include="obj\Debug\TempPE\" />
