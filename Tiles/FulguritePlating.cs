@@ -17,8 +17,7 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("FulguritePlating");   //put your CustomBlock name
             dustType = mod.DustType("FulguriteDust");
-            AddMapEntry(new Color(70, 20, 90
-                ));
+            AddMapEntry(new Color(70, 20, 90));
 			minPick = 200;
         }
 
