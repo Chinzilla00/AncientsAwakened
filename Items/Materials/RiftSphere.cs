@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.Items.Boss
+namespace AAMod.Items.Materials
 {
     public class RiftSphere : ModItem
     {
