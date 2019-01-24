@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 3;
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override Color? GetAlpha(Color lightColor)
