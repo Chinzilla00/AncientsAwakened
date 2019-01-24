@@ -114,12 +114,8 @@ namespace AAMod.Worldgeneration
                     }
                 }
             }
-
             return true;
 		}
-
-
-
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
@@ -128,6 +124,41 @@ namespace AAMod.Worldgeneration
             return 1; //unknown size, assume small
         }		
 	}
+
+    public class MireDelete : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 0, 255)] = -2;
+            colorToTile[new Color(255, 128, 0)] = -2;
+            colorToTile[new Color(0, 255, 0)] = -2;
+            colorToTile[new Color(255, 0, 0)] = -2;
+            colorToTile[new Color(128, 0, 0)] = -2;
+            colorToTile[new Color(255, 255, 0)] = -2;
+            colorToTile[new Color(255, 0, 255)] = -2;
+            colorToTile[Color.Black] = -1;
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile);
+            Point newOrigin = new Point(origin.X, origin.Y);
+            int genX = origin.X - (gen.width / 2);
+            int genY = origin.Y - 50;
+            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
+
+            return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
+        }
+    }
 
     public class InfernoBiome : MicroBiome
     {
@@ -243,6 +274,33 @@ namespace AAMod.Worldgeneration
             else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
+        }
+    }
+
+    public class InfernoDelete : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(255, 0, 0)] = -2;
+            colorToTile[new Color(0, 0, 255)] = -2;
+            colorToTile[new Color(0, 255, 0)] = -2;
+            colorToTile[new Color(255, 255, 0)] = -2;
+            colorToTile[new Color(255, 0, 255)] = -2;
+            colorToTile[new Color(150, 150, 150)] = -2;
+            colorToTile[Color.Black] = -1;
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile);
+            Point newOrigin = new Point(origin.X, origin.Y);
+            int genX = origin.X - (gen.width / 2);
+            int genY = origin.Y - 50;
+            gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
+
+            return true;
         }
     }
 

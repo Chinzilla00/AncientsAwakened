@@ -226,9 +226,10 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/YamataMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuPortal"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuRift"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuRift2"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuPortal2"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/Portal"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuSpawn"));
+                PremultiplyTexture(GetTexture("Projectiles/SoC/CthulhuBoom"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 

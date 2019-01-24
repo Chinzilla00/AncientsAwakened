@@ -1214,6 +1214,8 @@ namespace AAMod
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
             InfernoBiome biome = new InfernoBiome();
+            InfernoDelete delete = new InfernoDelete();
+            delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
         }
 
@@ -1243,13 +1245,15 @@ namespace AAMod
         {
             Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            MireDelete delete = new MireDelete();
             MireBiome biome = new MireBiome();
-            biome.Place(origin, WorldGen.structures);        
+            biome.Place(origin, WorldGen.structures);
+            delete.Place(origin, WorldGen.structures);
         }
 
         public void SunkenShip()
         {
-            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 50);
+            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 100);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             BOTE biome = new BOTE();
             biome.Place(origin, WorldGen.structures);

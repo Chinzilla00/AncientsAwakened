@@ -90,6 +90,19 @@ namespace AAMod.NPCs.Bosses.Shen
 			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
+        public override void UpdateLifeRegen(ref int damage)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+            npc.lifeRegen -= 48;
+            if (damage < 10)
+            {
+                damage = 10;
+            }
+        }
+
         public bool spawnalpha = false;
 		public bool isAwakened = false;
 		public float _normalSpeed = 15f; //base for normal movement

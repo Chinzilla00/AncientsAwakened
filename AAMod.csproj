@@ -3316,6 +3316,7 @@
     <Content Include="Items\Materials\PureEvil.png" />
     <Content Include="Items\Materials\RadiantIncinerite.png" />
     <Content Include="Items\Materials\RadiumBar.png" />
+    <Content Include="Items\Materials\RiftSphere.png" />
     <Content Include="Items\Materials\ShinyCharm.png" />
     <Content Include="Items\Materials\SnowMana.png" />
     <Content Include="Items\Materials\SoulOfSmite.png" />
@@ -3979,9 +3980,9 @@
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRose_Head_Boss.png" />
     <Content Include="NPCs\Bosses\SoC\Bosses\DeityRoseUrchin.png" />
     <Content Include="NPCs\Bosses\SoC\Cthulhu.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuPortal.png" />
+    <Content Include="NPCs\Bosses\SoC\CthulhuPortal2.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuPortal2_2.png" />
-    <Content Include="NPCs\Bosses\SoC\CthulhuRift.png" />
-    <Content Include="NPCs\Bosses\SoC\CthulhuRift2.png" />
     <Content Include="NPCs\Bosses\SoC\CthulhuSpawn.png" />
     <Content Include="NPCs\Bosses\SoC\DeityCircle.png" />
     <Content Include="NPCs\Bosses\SoC\DeityDragon.png" />

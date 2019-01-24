@@ -392,16 +392,9 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                     }
                     else
                     {
-                        Main.PlaySound(3, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
-                        for (int num425 = 0; num425 < 2; num425++)
-                        {
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 144, 1f);
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 7, 1f);
-                            Gore.NewGore(npc.position, new Vector2((float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f), 6, 1f);
-                        }
                         for (int num426 = 0; num426 < 20; num426++)
                         {
-                            Dust.NewDust(npc.position, npc.width, npc.height, 5, (float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f, 0, default(Color), 1f);
+                            Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.CthulhuDust>(), (float)Main.rand.Next(-30, 31) * 0.2f, (float)Main.rand.Next(-30, 31) * 0.2f, 0, default(Color), 1f);
                         }
                         Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0f);
                     }
@@ -434,9 +427,9 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                         num429 = -1;
                     }
                     Vector2 vector42 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    float num430 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + (float)(num429 * 180) - vector42.X;
+                    float num430 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + (float)(num429 * 400) - vector42.X;
                     float num431 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector42.Y;
-                    float num432 = (float)Math.Sqrt((double)(num430 * num430 + num431 * num431));
+                    float num432 =  (float)Math.Sqrt((num430 * num430) + (num431 * num431));
                     if (Main.expertMode)
                     {
                         if (num432 > 300f)

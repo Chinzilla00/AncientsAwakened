@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 3;
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public bool PlayerHit = false;
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 28;
-                if (npc.frame.Y > (28 * 2))
+                if (npc.frame.Y > (28 * 3))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;

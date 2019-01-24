@@ -375,7 +375,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
     public class DeityDragonArms : DeityDragon
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/SoC/DeityDragonArms"; } }
 
         public override void SetStaticDefaults()
         {
@@ -510,7 +510,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
     public class DeityDragonBody1 : DeityDragon
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/SoC/DeityDragonBody1"; } }
 
         public override void SetStaticDefaults()
         {
@@ -645,7 +645,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
     public class DeityDragonBody2 : DeityDragon
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/SoC/DeityDragonBody2"; } }
 
         public override void SetStaticDefaults()
         {
@@ -780,7 +780,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
     public class DeityDragonBody3 : DeityDragon
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/SoC/DeityDragonBody3"; } }
 
         public override void SetStaticDefaults()
         {
@@ -915,7 +915,7 @@ namespace AAMod.NPCs.Bosses.SoC
 
     public class DeityDragonTail : DeityDragon
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/SoC/DeityDragonTail"; } }
 
         public override void SetStaticDefaults()
         {
