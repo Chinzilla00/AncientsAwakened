@@ -63,5 +63,15 @@ You gain a fishy companion";
             player.GetModPlayer<AAPlayer>(mod).Mudkip = true;
             player.ignoreWater = true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "FishDiverMask", 1);
+            recipe.AddIngredient(null, "EXArmor", 1);
+            recipe.AddTile(null, "AncientForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
