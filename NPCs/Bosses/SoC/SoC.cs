@@ -121,11 +121,14 @@ namespace AAMod.NPCs.Bosses.SoC
                 Morphed = true;
                 return;
             }
+            else
+            {
+                Morphed = false;
+            }
 
             if (!BossAlive && ComeBack == true)
             {
                 ComeBack = false;
-                Morphed = false;
                 npc.Center = GoHere;
                 ReturnTimer = 100;
                 return;
@@ -155,7 +158,11 @@ namespace AAMod.NPCs.Bosses.SoC
                 npc.netUpdate = true;
             }
 
-            if (npc.ai[1] != 1f || npc.ai[1] != 0f)
+            if (npc.ai[1] == 1f || npc.ai[1] == 0f)
+            {
+                npc.dontTakeDamage = false;
+            }
+            else
             {
                 npc.dontTakeDamage = true;
             }

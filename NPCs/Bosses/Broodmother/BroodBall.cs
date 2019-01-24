@@ -18,8 +18,15 @@ namespace AAMod.NPCs.Bosses.Broodmother
         }
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.Fireball);
+            projectile.height = 22;
+            projectile.width = 22;
+            projectile.penetrate = -1;
             projectile.hostile = true;
+        }
+
+        public override void AI()
+        {
+            projectile.velocity.Y += .05f;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

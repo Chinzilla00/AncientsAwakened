@@ -502,7 +502,7 @@ namespace AAMod.NPCs.Bosses.SoC
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture8 = Main.npcTexture[npc.type];
-            Texture2D texture2D30 = Main.extraTexture[19];
+            Texture2D texture2D30 = mod.GetTexture("NPCs/Bosses/SoC/EoA_Pupil");
             Vector2 origin15 = new Vector2(40f, 40f);
             Vector2 value33 = new Vector2(30f, 30f);
             Vector2 arg_A019_0 = npc.Center;

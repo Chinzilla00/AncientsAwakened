@@ -158,5 +158,45 @@ namespace AAMod.Projectiles.Akuma
                 }
             }
         }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D texture2D14 = Main.projectileTexture[projectile.type];
+            int num215 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type];
+            int y7 = num215 * projectile.frame;
+            Vector2 vector27 = (projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition).Floor();
+            float scale5 = 1f;
+            Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
+            Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
+            if (projectile.hide && !ProjectileID.Sets.DontAttachHideToAlpha[projectile.type])
+            {
+                color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
+            }
+            if (Main.player[projectile.owner].shroomiteStealth && Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].ranged)
+            {
+                float num216 = Main.player[projectile.owner].stealth;
+                if ((double)num216 < 0.03)
+                {
+                    num216 = 0.03f;
+                }
+                float arg_97B3_0 = (1f + num216 * 10f) / 11f;
+                color25 *= num216;
+                scale5 = num216;
+            }
+            if (Main.player[projectile.owner].setVortex && Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].ranged)
+            {
+                float num217 = Main.player[projectile.owner].stealth;
+                if ((double)num217 < 0.03)
+                {
+                    num217 = 0.03f;
+                }
+                float arg_9854_0 = (1f + num217 * 10f) / 11f;
+                color25 = color25.MultiplyRGBA(new Microsoft.Xna.Framework.Color(Vector4.Lerp(Vector4.One, new Vector4(0f, 0.12f, 0.16f, 0f), 1f - num217)));
+                scale5 = num217;
+            }
+            Main.spriteBatch.Draw(texture2D14, vector27, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y7, texture2D14.Width, num215)), projectile.GetAlpha(color25), projectile.rotation, new Vector2((float)texture2D14.Width / 2f, (float)num215 / 2f), projectile.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(Main.glowMaskTexture[35], vector27, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y7, texture2D14.Width, num215)), new Microsoft.Xna.Framework.Color(255, 255, 255, 0) * scale5, projectile.rotation, new Vector2((float)texture2D14.Width / 2f, (float)num215 / 2f), projectile.scale, SpriteEffects.None, 0f);
+            return false;
+        }
     }
 }
