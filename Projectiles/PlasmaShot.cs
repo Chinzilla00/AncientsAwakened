@@ -13,16 +13,21 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Plasma Shot");
+            Main.projFrames[projectile.type] = 3;
         }
 
         public override void SetDefaults()
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.aiStyle = 1;
             projectile.friendly = true;
             projectile.ranged = true;
-            aiType = 14;
+            projectile.ignoreWater = true;
+        }
+
+        public override void AI()
+        {
+            projectile.rotation = projectile.velocity.ToRotation(); // projectile faces sprite right
         }
     }
 }

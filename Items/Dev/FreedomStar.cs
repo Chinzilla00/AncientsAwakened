@@ -24,10 +24,15 @@ namespace AAMod.Items.Dev
         {
             item.width = 58;
             item.height = 40;
+            item.scale = 0.75f;
             item.ranged = true;
-            item.damage = 500;
+            item.damage = 400;
             item.shoot = mod.ProjectileType("PlasmaShot");
+            item.shootSpeed = 20f;
             item.useTime = 10;
+            item.useAnimation = 10;
+            item.useStyle = 5;
+            Item.sellPrice(1, 0, 0, 0);
         }
     }
 }
