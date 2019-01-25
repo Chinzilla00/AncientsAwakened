@@ -18,19 +18,14 @@ namespace AAMod.NPCs.Bosses.Kraken
             projectile.width = 10;
             projectile.height = 10;
             projectile.hostile = true;
-            projectile.friendly = false;
+            projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
         }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-
-            return false;
-        }
+        
 
         public int usetimer = 0;
 

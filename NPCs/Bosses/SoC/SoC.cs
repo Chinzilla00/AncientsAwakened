@@ -43,6 +43,7 @@ namespace AAMod.NPCs.Bosses.SoC
         public bool Eye = false;
         public bool Eater = false;
         public bool Skull = false;
+        public bool Rose = false;
         public bool Leviathan = false;
         public bool Summon = false;
         public bool Boss1 = false;
@@ -377,9 +378,9 @@ namespace AAMod.NPCs.Bosses.SoC
                         morphTimer++;
                         if (morphTimer > 300)
                         {
-                            if (Eye == false)
+                            if (Eater == false)
                             {
-                                Eye = true;
+                                Eater = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityEater"));
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
@@ -411,9 +412,9 @@ namespace AAMod.NPCs.Bosses.SoC
                         morphTimer++;
                         if (morphTimer > 300)
                         {
-                            if (Eye == false)
+                            if (Skull == false)
                             {
-                                Eye = true;
+                                Skull = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeitySkull"));
                                 npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
@@ -447,9 +448,9 @@ namespace AAMod.NPCs.Bosses.SoC
                         morphTimer++;
                         if (morphTimer > 300)
                         {
-                            if (Eye == false)
+                            if (Rose == false)
                             {
-                                Eye = true;
+                                Rose = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityRose"));
                                 npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
@@ -482,9 +483,9 @@ namespace AAMod.NPCs.Bosses.SoC
                         morphTimer++;
                         if (morphTimer > 300)
                         {
-                            if (Eye == false)
+                            if (Leviathan == false)
                             {
-                                Eye = true;
+                                Leviathan = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityLeviathan"));
                                 npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
@@ -521,12 +522,18 @@ namespace AAMod.NPCs.Bosses.SoC
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (damage > npc.lifeMax / 8)
+            if (AAWorld.Anticheat == true)
             {
-                Main.NewText("YOU CANNOT CHEAT A GOD", Color.DarkCyan);
-                damage = 0;
+                if (damage > npc.lifeMax / 8)
+                {
+                    Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                    damage = 0;
+                }
+
+                return false;
             }
-            return false;
+
+            return true;
         }
 
 

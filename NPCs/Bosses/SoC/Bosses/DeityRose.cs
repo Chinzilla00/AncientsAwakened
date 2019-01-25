@@ -36,6 +36,22 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.buffImmune[20] = true;
         }
 
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (AAWorld.Anticheat == true)
+            {
+                if (damage > npc.lifeMax / 8)
+                {
+                    Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                    damage = 0;
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter += 1.0;
