@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Serpent
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Subzero");
+            DisplayName.SetDefault("Subzero Breath");
         }
 
         public override void SetDefaults()
@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         if (Main.rand.Next(3) == 0)
                         {
                             Main.dust[num299].noGravity = true;
-                            Main.dust[num299].scale *= 3f;
+                            Main.dust[num299].scale *= 2f;
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
                             expr_DD5D_cp_0.velocity.X = expr_DD5D_cp_0.velocity.X * 2f;
                             Dust expr_DD7D_cp_0 = Main.dust[num299];

@@ -9,12 +9,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Djinn
 {
+    [AutoloadBossHead]
     public class Djinn : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Djinn");
-			Main.npcFrameCount[npc.type] = 11;
+			Main.npcFrameCount[npc.type] = 15;
 		}
 
 		public override void SetDefaults()

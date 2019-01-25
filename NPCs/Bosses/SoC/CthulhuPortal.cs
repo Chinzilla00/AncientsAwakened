@@ -61,6 +61,11 @@ namespace AAMod.NPCs.Bosses.SoC
                 if (Speechtimer < 1440)
                 {
                     npc.alpha -= 3;
+
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
                 }
                 else
                 {

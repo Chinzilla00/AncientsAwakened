@@ -11,6 +11,7 @@ using AAMod.NPCs.Bosses.SoC.Bosses;
 
 namespace AAMod.NPCs.Bosses.SoC
 {
+    [AutoloadBossHead]
     public class SoC : ModNPC
     {
 
@@ -549,7 +550,7 @@ namespace AAMod.NPCs.Bosses.SoC
             Texture2D Rift = mod.GetTexture("NPCs/Bosses/SoC/Rift");
             Vector2 vector38 = npc.position + new Vector2(npc.width, npc.height) / 2f + Vector2.UnitY * npc.gfxOffY - Main.screenPosition;
             Vector2 origin8 = new Vector2((float)RitualTex.Width, (float)RitualTex.Height) / 2f;
-            int num214 = Main.npcTexture[npc.type].Height / Main.projFrames[npc.type];
+            int num214 = Main.npcTexture[npc.type].Height;
             int y6 = 0;
             Color color25 = Lighting.GetColor((int)(npc.position.X + npc.width * 0.5) / 16, (int)((npc.position.Y + npc.height * 0.5) / 16.0));
             Color? alpha4 = GetAlpha(color25);
@@ -592,8 +593,8 @@ namespace AAMod.NPCs.Bosses.SoC
             if (!Morphed)
             {
                 Main.spriteBatch.Draw(Rift, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Rift.Width, Rift.Height)), AAColor.Cthulhu, RiftSpin, new Vector2(Rift.Width / 2f, Rift.Height / 2f), 1.5f, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(WheelTex, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, WheelTex.Width, num214)), color, Rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(texture2D13, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), color, npc.rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(WheelTex, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, WheelTex.Width, WheelTex.Height)), color, Rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(texture2D13, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, texture2D13.Width, texture2D13.Height)), color, npc.rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
             }
             return false;
         }

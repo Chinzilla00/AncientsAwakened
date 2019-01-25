@@ -29,7 +29,6 @@ Only usable during the day");
 			item.useStyle = 4;
 			item.UseSound = SoundID.Item44;
 			item.consumable = true;
-            item.shoot = mod.ProjectileType<Projectiles.Djinn.LampPoof>();
 		}
 
         public override bool UseItem(Player player)
@@ -41,11 +40,9 @@ Only usable during the day");
 
         public override bool CanUseItem(Player player)
         {
-            Poof = false;
             if (!Main.dayTime)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The lamp shimmers in the moonlight, yet does nothing", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
-                Poof = true;
                 return false;
             }
             if (!player.ZoneDesert)
@@ -59,18 +56,6 @@ Only usable during the day");
                 return false;
             }
             return true;
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            if (Poof == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public void SpawnBoss(Player player, string name, string displayName)

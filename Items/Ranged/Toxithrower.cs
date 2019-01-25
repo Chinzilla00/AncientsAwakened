@@ -35,7 +35,7 @@ namespace AAMod.Items.Ranged
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HydraToxin", 5);
-            recipe.AddIngredient(null, "Abyssium", 10);
+            recipe.AddIngredient(null, "AbyssiumBar", 10);
             recipe.AddIngredient(null, "SoulOfSpite", 3);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

@@ -16,7 +16,6 @@ namespace AAMod.NPCs.Enemies.Hallow
 {
     public class FatPixie : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fat Pixie");
@@ -50,39 +49,60 @@ namespace AAMod.NPCs.Enemies.Hallow
             return spawnInfo.player.ZoneHoly && Main.hardMode ? .7f : 0f;
         }
 
+		int frameCounter = 0;
         public override void AI()
         {
+			npc.TargetClosest();
             Player player = Main.player[npc.target];
-            if (npc.velocity.Y == 0)
+            if (npc.velocity.Y == 0 || npc.velocity.Y < 0)
             {
-                npc.frame.Y = 0;
-            }
-            else
-            {
-                if (npc.velocity.Y < 0)
-                {
-                    npc.frame.Y = 36;
-                }
-                else
-                if (npc.velocity.Y > 0)
-                {
-                    npc.frame.Y = 36 * 2;
-                }
-            }
-            if (player.Center.X > npc.Center.X) // so it faces the player
-            {
-                npc.spriteDirection = -1;
+				frameCounter--;
+				if(frameCounter <= 0)
+				{
+					frameCounter = (npc.velocity.Y < 0 ? 3 : 10);
+					npc.frame.Y = (npc.frame.Y == 0 ? npc.frame.Height : 0);
+				}
             }else
             {
-                npc.spriteDirection = 1;
+                if (npc.velocity.Y > 0)
+                {
+                    npc.frame.Y = npc.frame.Height * 2;
+                }
             }
-            BaseAI.AISlime(npc, ref npc.ai, false, 200, 2f, 6f, 3f, 8f);
+			if(npc.velocity.X != 0)
+			{
+				if(npc.collideX)
+					npc.velocity.X *= -2f;
+				if (npc.velocity.X > 0)
+				{
+					npc.spriteDirection = 1;
+				}else
+				{
+					npc.spriteDirection = -1;
+				}
+			}
+			float jumpWidth = 3f;
+			float jumpHeight = -1f;
+			if(npc.whoAmI % 30 == 0) //THE LEGENDARY SUPER FAT PIXIE
+			{
+				jumpWidth = 8f;
+				jumpHeight = -25f;
+			}
+            BaseAI.AISlime(npc, ref npc.ai, false, 150, 4f, 2f, jumpWidth, jumpHeight);
+			BaseDrawing.AddLight(npc.Center, new Color(212, 208, 107), 2f);
         }
 
-        public override void BossLoot(ref string name, ref int potionType)
-        {   //boss drops
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.PixieDust, Main.rand.Next(5, 7));
+        public override void NPCLoot()
+        {
+			if(Main.netMode != 1)
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.PixieDust, Main.rand.Next(5, 7));
         }
+
+		public override bool PreDraw(SpriteBatch sb, Color dColor)
+		{
+			BaseMod.BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
+			return false;
+		}
     }
 }
 
