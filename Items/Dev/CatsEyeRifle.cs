@@ -7,9 +7,8 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class CatsEyeRifle : ModItem
+    public class CatsEyeRifle : BaseAAItem
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cat's Eye Rifle");
@@ -31,7 +30,6 @@ Doesn't require ammo
 
         public override void SetDefaults()
         {
-            
             item.damage = 530;
             item.noMelee = true;
             item.ranged = true; 
@@ -48,39 +46,13 @@ Doesn't require ammo
             item.autoReuse = true; 
             item.shootSpeed = 20f;
             item.crit = 0;
+
+			glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+			glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun
+			glowmaskDrawColor = Color.White; //glowmask draw color			
+			customNameColor = new Color(121, 21, 214); //custom name color				
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(121, 21, 214);
-                }
-            }
-        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-1, 0);

@@ -25,7 +25,7 @@ using ReLogic.Graphics;
 using Terraria.Localization;
 using Terraria.Graphics.Shaders;
 using Terraria.Graphics.Effects;
-
+using AAMod.Items;
 namespace AAMod
 {
     public class AAPlayer : ModPlayer
@@ -2354,11 +2354,44 @@ namespace AAMod
             BaseDrawing.AddPlayerLayer(list, glAfterHead, PlayerLayer.Head, false);
             BaseDrawing.AddPlayerLayer(list, glAfterBody, PlayerLayer.Body, false);
             BaseDrawing.AddPlayerLayer(list, glAfterArm, PlayerLayer.Arms, false);
+            BaseDrawing.AddPlayerLayer(list, glAfterWep, PlayerLayer.HeldItem, false);
             BaseDrawing.AddPlayerLayer(list, glAfterLegs, PlayerLayer.Legs, false);
-            BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, true);
-            BaseDrawing.AddPlayerLayer(list, glAfterShield, PlayerLayer.ShieldAcc, true);
-            BaseDrawing.AddPlayerLayer(list, glAfterNeck, PlayerLayer.NeckAcc, true);
+            BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, false);
+            BaseDrawing.AddPlayerLayer(list, glAfterShield, PlayerLayer.ShieldAcc, false);
+            BaseDrawing.AddPlayerLayer(list, glAfterNeck, PlayerLayer.NeckAcc, false);
         }
+
+        public PlayerLayer glAfterWep = new PlayerLayer("AAMod", "glAfterWep", PlayerLayer.HeldItem, delegate (PlayerDrawInfo edi)
+        {
+            if (edi.shadow != 0) return;
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            Color lightColor = GetItemColor(drawPlayer, drawPlayer.Center);
+            bool letDraw = true;
+
+            Item heldItem = drawPlayer.inventory[drawPlayer.selectedItem];
+            BaseAAItem baseAAItem = null;
+            if (heldItem.modItem != null && heldItem.modItem is BaseAAItem)
+            {
+                baseAAItem = (BaseAAItem)heldItem.modItem;
+            }
+
+            if (baseAAItem != null && baseAAItem.glowmaskTexture != null && baseAAItem.glowmaskDrawType != BaseAAItem.GLOWMASKTYPE_NONE)
+            {
+                Vector2? offsetNull = baseAAItem.HoldoutOffset();
+                Vector2 offset = Vector2.Zero;
+                if (offsetNull != null) offset = (Vector2)offsetNull;
+                if (baseAAItem.glowmaskDrawType == BaseAAItem.GLOWMASKTYPE_SWORD)
+                {
+                    BaseMod.BaseDrawing.DrawHeldSword(Main.playerDrawData, 0, drawPlayer, baseAAItem.glowmaskDrawColor, 0f, (int)offset.X, (int)offset.Y, null, 1, mod.GetTexture(baseAAItem.glowmaskTexture));
+                }
+                else
+                if (baseAAItem.glowmaskDrawType == BaseAAItem.GLOWMASKTYPE_GUN)
+                {
+                    BaseMod.BaseDrawing.DrawHeldGun(Main.playerDrawData, 0, drawPlayer, baseAAItem.glowmaskDrawColor, 0f, (int)offset.X, (int)offset.Y, false, false, 0f, 0f, null, 1, mod.GetTexture(baseAAItem.glowmaskTexture));
+                }
+            }
+        });
 
         public PlayerLayer glAfterHead = new PlayerLayer("AAMod", "glAfterHead", PlayerLayer.Head, delegate (PlayerDrawInfo edi)
         {

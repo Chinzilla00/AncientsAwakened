@@ -33,7 +33,7 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "Serpent", "The Subzero Serpent");
+            SpawnBoss(player, "SerpentHead", "The Subzero Serpent");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
