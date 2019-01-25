@@ -54,7 +54,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
                     0f
                 );
             }
-            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+            if (!Main.dayTime && Main.time < 14400 || Main.time > 21600)
             {
                 spriteBatch.Draw
                 (

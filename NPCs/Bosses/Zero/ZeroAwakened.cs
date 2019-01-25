@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame.Y += 170;
                 if (Glitch == 0)
                 {
-                    if (npc.frame.Y > (108 * 7))
+                    if (npc.frame.Y > (170 * 7))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;
@@ -197,7 +197,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    if (npc.frame.Y > (108 * 3))
+                    if (npc.frame.Y > (170 * 3))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;

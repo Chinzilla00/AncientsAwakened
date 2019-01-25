@@ -109,12 +109,12 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (!player.InZone("Desert") || player.dead || !Main.dayTime)
             {
-                npc.alpha -= 5;
+                npc.alpha += 5;
             }
             else
             {
                 Sandstorm.TimeLeft = 0;
-                npc.alpha += 5;
+                npc.alpha -= 5;
             }
 
             if (npc.alpha >= 255)
