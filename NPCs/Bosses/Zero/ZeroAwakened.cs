@@ -163,12 +163,18 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (damage > npc.lifeMax / 2)
+            if (AAWorld.Anticheat == true)
             {
-                Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red.R, Color.Red.G, Color.Red.B);
-                damage = 0;
+                if (damage > npc.lifeMax / 8)
+                {
+                    Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
+                    damage = 0;
+                }
+
+                return false;
             }
-            return false;
+
+            return true;
         }
         private int Glitch = 0;
         private bool GlitchBool = false;
@@ -183,7 +189,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.frame.Y += 170;
                 if (Glitch == 0)
                 {
-                    if (npc.frame.Y > (108 * 7))
+                    if (npc.frame.Y > (170 * 7))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;
@@ -191,7 +197,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    if (npc.frame.Y > (108 * 3))
+                    if (npc.frame.Y > (170 * 3))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;

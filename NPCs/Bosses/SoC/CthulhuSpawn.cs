@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.SoC
         public override void AI()
         {
             npc.scale = 1f - npc.alpha / 255f;
-            npc.rotation += .05f;
+            npc.rotation += .1f;
             if (npc.alpha <= 0 && !Spawned)
             {
                 SummonSoul();

@@ -50,12 +50,18 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (damage > npc.lifeMax / 8)
+            if (AAWorld.Anticheat == true)
             {
-                Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
-                damage = 0;
+                if (damage > npc.lifeMax / 8)
+                {
+                    Main.NewText("YOU CANNOT CHEAT DEATH", Color.DarkCyan);
+                    damage = 0;
+                }
+
+                return false;
             }
-            return false;
+
+            return true;
         }
 
         public override void HitEffect(int hitDirection, double damage)

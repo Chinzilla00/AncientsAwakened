@@ -50,6 +50,7 @@ namespace AAMod
         private Vector2 mirePos = new Vector2(0, 0);
         private Vector2 shipPos = new Vector2(0, 0);
         private Vector2 TerraPos = new Vector2(0, 0);
+        public string nums = "1234567890";
         //Messages
         public static bool Evil;
         //Boss Bools
@@ -95,7 +96,7 @@ namespace AAMod
         public static Point WHERESDAVOIDAT;
         public static Vector2 SoCBossDeathPoint;
 
-        public string nums = "1234567890";
+        public static bool Anticheat = true;
 
         public override void Initialize()
         {
@@ -137,6 +138,7 @@ namespace AAMod
             DiscordOres = downedGripsS;
             ChaosStripes = Main.hardMode;
             LuminiteMeteorBool = false;
+            Anticheat = true;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -1202,9 +1204,6 @@ namespace AAMod
         {
             shipSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
             shipPos.X = (shipSide == 1 ? (Main.maxTilesX - 90) : 90);
-
-
-
             progress.Message = "Sinking the ship";
             SunkenShip();
         }
@@ -1238,7 +1237,7 @@ namespace AAMod
             if (Main.maxTilesX == 4200) { return 1; }
             else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
-            return 1; //unknown size, assume small
+            return 1;
         }
 
         public void MireAbyss()
@@ -1247,13 +1246,13 @@ namespace AAMod
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             MireDelete delete = new MireDelete();
             MireBiome biome = new MireBiome();
-            biome.Place(origin, WorldGen.structures);
             delete.Place(origin, WorldGen.structures);
+            biome.Place(origin, WorldGen.structures);
         }
 
         public void SunkenShip()
         {
-            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 100);
+            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 200);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             BOTE biome = new BOTE();
             biome.Place(origin, WorldGen.structures);

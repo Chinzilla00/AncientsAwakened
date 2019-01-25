@@ -54,7 +54,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     0f
                 );
             }
-            if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
+            if (Main.dayTime && Main.time < 23400 || Main.time > 30600)
             {
                 spriteBatch.Draw
                 (
