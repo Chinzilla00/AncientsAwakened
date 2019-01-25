@@ -842,13 +842,13 @@ namespace AAMod
                 {
                     caughtType = mod.ItemType("DesertCrate");
                 }
-                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+                if ((liquidType == 0 ||  liquidType == 1) && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
                 {
                     caughtType = mod.ItemType("InfernoCrate");
                 }
-                if ((liquidType == 0 || liquidType == 1)  && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                if (liquidType == 0  && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
                 {
-                    caughtType = mod.ItemType("IceCrate");
+                    caughtType = mod.ItemType("MireCrate");
                 }
                 else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
