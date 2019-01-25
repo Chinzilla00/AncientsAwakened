@@ -92,10 +92,10 @@ namespace AAMod.NPCs.Bosses.SoC
                     int num9 = npc.whoAmI;
                     for (int l = 0; l < 30; l++)
                     {
-                        int num10 = mod.NPCType<DeityDragonArms>();
+                        int num10 = mod.NPCType<DeityDragonBody1>();
                         if ((l - 2) % 4 == 0 && l < 26)
                         {
-                            num10 = mod.NPCType<DeityDragonBody1>();
+                            num10 = mod.NPCType<DeityDragonArms>();
                         }
                         else if (l == 27)
                         {
@@ -108,6 +108,10 @@ namespace AAMod.NPCs.Bosses.SoC
                         else if (l == 29)
                         {
                             num10 = mod.NPCType<DeityDragonBody3>();
+                        }
+                        else if (l == 30)
+                        {
+                            num10 = mod.NPCType<DeityDragonTail>();
                         }
                         int num11 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                         Main.npc[num11].ai[3] = (float)npc.whoAmI;
