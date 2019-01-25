@@ -26,7 +26,8 @@ namespace AAMod.Items.Dev
             item.height = 40;
             item.ranged = true;
             item.damage = 500;
-            item.shoot = 
+            item.shoot = mod.ProjectileType("PlasmaShot");
+            item.useTime = 10;
         }
     }
 }
