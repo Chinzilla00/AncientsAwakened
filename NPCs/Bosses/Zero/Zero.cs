@@ -261,7 +261,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].target = npc.target;
                 Main.npc[index4].netUpdate = true;
                 Main.npc[index4].ai[3] = 150f;
-                
             }
 
             if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
@@ -275,7 +274,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (saythelinezero && LineStopper == 0)
             {
                 saythelinezero = true;
-                Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0RCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0URCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (Main.player[npc.target].dead)
             {
