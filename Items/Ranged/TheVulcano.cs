@@ -6,15 +6,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class TheVulcano : ModItem
+    public class TheVulcano : BaseAAItem
     {
         
         public override void SetDefaults()
         {
-
             item.damage = 44;
             item.noMelee = true;
-
             item.ranged = true;
             item.width = 58;
             item.height = 24;
@@ -28,8 +26,10 @@ namespace AAMod.Items.Ranged
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;
             item.shootSpeed = 14f;
-            
 
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 
         public override void SetStaticDefaults()
@@ -48,27 +48,6 @@ namespace AAMod.Items.Ranged
             return true;
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -77,6 +56,11 @@ namespace AAMod.Items.Ranged
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0, 0);
         }
     }
 }
