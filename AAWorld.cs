@@ -346,6 +346,7 @@ namespace AAMod
             downedEFish = downed.Contains("Fish");
             downedSoC = downed.Contains("SoC");
             //World Changes
+            ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedStormAny;
             HallowedOre = NPC.downedMechBossAny;
@@ -353,7 +354,9 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
+            DiscordOres = downedGripsS;
         }
+
 
         private string NumberRand(int size)
         {
