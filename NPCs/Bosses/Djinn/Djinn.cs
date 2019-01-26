@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.value = (float)Item.buyPrice(0, 8, 0, 0);
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Boss6");
+            music = MusicID.Sandstorm;
             npc.noGravity = true;
             npc.noTileCollide = true;
         }
