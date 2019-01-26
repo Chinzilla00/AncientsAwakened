@@ -50,7 +50,7 @@ namespace AAMod.Items.Ranged
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Dragonfire", 5);
-            recipe.AddIngredient(null, "IncineriteBare", 10);
+            recipe.AddIngredient(null, "IncineriteBar", 10);
             recipe.AddIngredient(null, "SoulOfSmite", 3);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

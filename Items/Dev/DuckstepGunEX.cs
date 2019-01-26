@@ -31,7 +31,7 @@ namespace AAMod.Items.Dev
 			item.knockBack = 4;
 			item.value = 1000000;
             item.expert = true;
-			item.UseSound = new LegacySoundStyle(29, 11, Terraria.Audio.SoundType.Sound);
+			item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 15f;
