@@ -29,7 +29,6 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             npc.npcSlots = 100;
             npc.width = 96;
-            animationType = NPCID.HellArmoredBonesSword;
             npc.height = 78;
             npc.aiStyle = -1;
             npc.damage = 40;
@@ -43,6 +42,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.noGravity = false;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
+			
+			frameWidth = 94;
+			frameHeight = 76;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
             bossBag = mod.ItemType("HydraBag");
@@ -76,9 +78,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1);
         public Player playerTarget = null;
 		public bool chasePlayer = false;
-
-        //clientside stuff
-        public Vector2 bottomVisualOffset = default(Vector2);
+		public bool runningAway = false;
 
         public override void AI()
         {
@@ -87,37 +87,21 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (Main.netMode != 1)
                 {
                     int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead1"), npc.whoAmI + 1, npc.whoAmI);
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead2"), npc.whoAmI + 1, npc.whoAmI);
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead3"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead3"), npc.whoAmI + 1, npc.whoAmI);
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head3 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
             }
-			if(playerTarget != null)
-			{
-				float dist = npc.Distance(playerTarget.Center);
-				if (dist > 1000)
-				{
-					if(!chasePlayer) npc.netUpdate = true;		
-					chasePlayer = true;
-					npc.noTileCollide = true;
-				}
-				else
-				{
-					if(chasePlayer) npc.netUpdate = true;		
-					chasePlayer = false;
-					npc.noTileCollide = false;
-				}
-			}
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];
@@ -125,29 +109,53 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.oldPos[0] = npc.position;
 
             bool foundTarget = TargetClosest();
-            if (foundTarget)
+            if (!runningAway && foundTarget)
             {
                 int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
-                npc.timeLeft = 300;
                 float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
                 if (Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
                 if (Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
+				npc.timeLeft = 50;
                 AIMovementNormal();
             }else
             {
+				runningAway = true;
                 AIMovementRunAway();
             }
-            bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 30f) * (npc.velocity.X < 0 ? 1 : -1);
         }
+
+		public override void PostAI()
+		{
+			if(npc.velocity.X != 0)
+				npc.spriteDirection = npc.velocity.X > 0 ? 1 : -1;
+			
+			nextFrameCounter--;
+			if(nextFrameCounter <= 0)
+			{
+				nextFrameCounter = 2;
+				frameCount++;
+				if(frameCount > 14)
+					frameCount = 1;
+			}
+			if(npc.velocity.X == 0)
+			{
+				nextFrameCounter = 0;
+				frameCount = 1;
+			}
+			if(npc.velocity.Y != 0)
+			{
+				nextFrameCounter = 0;
+				frameCount = 0;
+			}
+		}
 
         public void AIMovementRunAway()
         {
-            npc.alpha += 10;
-
-			npc.noTileCollide = false;
+			npc.noTileCollide = true;
             npc.rotation = 0f;
-            if ((npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) || npc.alpha >= 255) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
+			npc.velocity.Y += 1f;
+            if (npc.Top.Y - npc.height > (Main.maxTilesY * 16)) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
         }
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
@@ -158,8 +166,8 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public bool TargetClosest()
         {
-            int[] players = BaseAI.GetPlayers(npc.Center, 4200f);
-            float dist = 200;
+            int[] players = BaseAI.GetPlayers(npc.Center, 2000f);
+            float dist = 999999;
             int foundPlayer = -1;
             if (foundPlayer != -1)
             {
@@ -206,12 +214,16 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
-            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
+			dColor = npc.GetAlpha(dColor);
+			if(Head1 != null && Head2 != null && Head3 != null)
+			{
+				DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
+				DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
+				DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
+			}
             string tailTex = ("NPCs/Bosses/Hydra/HydraTail");
-            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
-            DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor);
             return false;
         }		
     }

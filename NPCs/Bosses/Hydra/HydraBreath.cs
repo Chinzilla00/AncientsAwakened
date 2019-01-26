@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -25,14 +27,19 @@ namespace AAMod.NPCs.Bosses.Hydra
             projectile.aiStyle = -1;
         }
 
+		bool spawnSound = false;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-
             return false;
         }
 
         public override void AI()
         {
+			if(!spawnSound)
+			{
+				Main.PlaySound(SoundID.Item34, projectile.position);
+				spawnSound = true;
+			}
             if (projectile.ai[0] < 8f)
             {
                 projectile.ai[0] = 8f;
@@ -57,9 +64,9 @@ namespace AAMod.NPCs.Bosses.Hydra
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                if (Main.rand.Next(2) == 0)
+                if (Main.rand.Next(3) != 0)
                 {
-                    for (int num298 = 0; num298 < 2; num298++)
+                    for (int num298 = 0; num298 < 5; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AbyssDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                         if (Main.rand.Next(6) != 0)

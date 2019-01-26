@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
@@ -17,244 +16,148 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void SetDefaults()
         {
-            npc.life = npc.lifeMax = 100;
-            npc.damage = 30;
-            npc.defense = 10;
+			npc.aiStyle = -1;
+            npc.lifeMax = 35000;
             npc.width = 36;
             npc.height = 32;
             npc.npcSlots = 0;
+			npc.timeLeft = 500;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
+            npc.boss = false;
             npc.noGravity = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+			middleHead = true;
+        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return 0f;
         }
 
-        public int varTime = 0;
-
-        public int YvarOld = 0;
-
-        public int XvarOld = 0;
-        public int numberOfAttacks = 0;
-        public int endAttack = 0;
+        public Hydra Body = null;
+        public bool leftHead = false;
+		public bool middleHead = true;
         public int damage = 0;
-        public float moveSpeedBoost = .04f;
-        public NPC Body;
-        public bool HoriSwitch = false;
-        public int f = 1;
-        public float TargetDirection = (float)Math.PI / 2;
-        public float s = 1;
-        public Projectile Breath;
-        private int MouthFrame;
-        private int MouthCounter;
-        private bool fireAttack;
-        private int attackFrame;
-        private int attackCounter;
-        private int attackTimer;
-        public int fireTimer = 0;
+
+        public int distFromBodyX = 50; //how far from the body to centeralize the movement points. (X coord)
+        public int distFromBodyY = 80; //how far from the body to centeralize the movement points. (Y coord)
+        public int movementVariance = 30; //how far from the center point to move.
 
         public override void AI()
         {
+			npc.timeLeft = 50;
+            if (Body == null)
+            {
+                NPC npcBody = Main.npc[(int)npc.ai[0]];
+                if (npcBody.type == mod.NPCType("Hydra"))
+                {
+                    Body = (Hydra)npcBody.modNPC;
+                }
+            }
+			if(Body == null) return;
+            if (!Body.npc.active || Body.npc.life <= 0)
+            {
+                npc.life = 0;
+				npc.checkDead();
+                return;
+            }
+			npc.realLife = (int)npc.ai[0];
+			npc.alpha = Body.npc.alpha;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
+                //attackDelay = 180;
             }
             else
             {
                 damage = npc.damage / 2;
             }
-            Body = Main.npc[(int)npc.ai[0]];
-            npc.realLife = (int)npc.ai[0];
+            npc.TargetClosest();
+            Player targetPlayer = Main.player[npc.target];
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
-            npc.TargetClosest(true);
-            Player player = Main.player[npc.target];
-
-            if (!Body.active || Body.life <= 0)
+            if (Main.netMode != 1)
             {
-                npc.life = 0;
-				npc.checkDead();
-				return;
-            }
+                npc.ai[1]++;
+                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                if (leftHead) aiTimerFire += 30;
+				if(middleHead)
+				{
+					aiTimerFire = 100;
+				}
 
-            int num429 = 1;
-            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-            {
-                num429 = -1;
-            }
-            Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
-            float num433 = 6f;
-            PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-            PlayerPos = num433 / PlayerPos;
-            PlayerPosX *= PlayerPos;
-            PlayerPosY *= PlayerPos;
-            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosY += npc.velocity.Y * 0.5f;
-            PlayerPosX += npc.velocity.X * 0.5f;
-            PlayerDistance.X -= PlayerPosX * 1f;
-            PlayerDistance.Y -= PlayerPosY * 1f;
-
-            if (!Body.active)
-            {
-                if (npc.timeLeft > 10) npc.timeLeft = 10;
-            }
-
-            if (fireAttack == true)
-            {
-                attackCounter++;
-                if (attackCounter > 10)
+                if (targetPlayer != null)
+				{
+					Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);					
+					if(!middleHead && npc.ai[1] == aiTimerFire)
+					{
+						dir *= 9f;
+						for (int i = 0; i < 7; ++i)
+						{
+							int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
+							Main.projectile[projID].netUpdate = true;
+						}
+					}else
+					if(middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0)
+					{
+						dir *= 6f;		
+						dir.X += Main.rand.Next(-1, 1) * 0.25f;
+						dir.Y += Main.rand.Next(-1, 1) * 0.25f;
+						int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+						Main.projectile[projID].netUpdate = true;													
+					}
+				}
+                if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
-                    attackFrame++;
-                    attackCounter = 0;
-                }
-                if (attackFrame >= 3)
-                {
-                    attackFrame = 2;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
+                    npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
+                    npc.netUpdate = true;
                 }
             }
-
-            if (!player.active || player.dead)
+            npc.rotation = 1.57f;
+            Vector2 nextTarget = Body.npc.Center + new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+            if (Vector2.Distance(nextTarget, npc.Center) < 40f)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)
-                {
-                    npc.velocity = new Vector2(0f, 10f);
-                    if (npc.timeLeft > 10)
-                    {
-                        npc.timeLeft = 10;
-                    }
-                    return;
-                }
-            }
-            fireTimer++;
-            if (fireTimer >= 240 && fireAttack == false)
-            {
-                fireAttack = true;
-
-                fireTimer = 0;
-            }
-            if (fireAttack == true)
-            {
-                attackTimer++;
-                if (Main.rand.Next(3) == 0)
-                {
-                    if (attackTimer == 40)
-                    {
-                        Main.PlaySound(SoundID.Item34, npc.position);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 4f, npc.velocity.Y * 4f, mod.ProjectileType("AcidProj"), 20, 0, Main.myPlayer);
-                        Main.projectile[proj2].damage = npc.damage / 3;
-                        attackTimer = 0;
-                        attackFrame = 0;
-                        attackCounter = 0;
-                    }
-                    if (attackTimer >= 80)
-                    {
-                        fireAttack = false;
-                    }
-                }
-                else
-                {
-                    if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
-                    {
-                        Main.PlaySound(SoundID.Item34, npc.position);
-                        for (int i = 0; i < 5; ++i)
-                        {
-                            if (Main.netMode != 1)
-                            {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-                            }
-                        }
-
-                    }
-                    if (attackTimer >= 80)
-                    {
-                        fireAttack = false;
-                        attackTimer = 0;
-                        attackFrame = 0;
-                        attackCounter = 0;
-                    }
-                }
-
-            }
-
-            if (player != null)
-            {
-                float dist = npc.Distance(player.Center);
-                if (dist > 1000)
-                {
-                    npc.noTileCollide = true;
-                }
-                else
-                {
-                    npc.noTileCollide = false;
-                }
-            }
-
-
-            npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
-            if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
-            {
-                f = -1;
+                npc.velocity *= 0.9f;
+                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
             }
             else
             {
-                f = 1;
+                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+                npc.velocity *= 5f;
             }
-            if (npc.rotation <= TargetDirection + MathHelper.ToRadians(4 * s) && npc.rotation >= TargetDirection - MathHelper.ToRadians(4 * s))
-            {
-                npc.rotation = TargetDirection;
-            }
-            else if (npc.rotation <= TargetDirection)
-            {
-                npc.rotation += MathHelper.ToRadians(2 * s) * f;
-            }
-            else if (npc.rotation >= TargetDirection)
-            {
-                npc.rotation -= MathHelper.ToRadians(2 * s) * f;
-            }
-            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (70f + npc.ai[2])) - npc.Center;
-            npc.velocity = (moveTo) * moveSpeedBoost;
+			if(Body.chasePlayer || Body.runningAway) //player trying to outrun it, force heads to keep up with body
+			{
+				npc.Center = Body.npc.Center;	
+				npc.Center += new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY);
+			}else
+			{
+				npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
+				npc.position += Body.npc.velocity;
+			}
             npc.spriteDirection = -1;
         }
-        public override void FindFrame(int frameHeight)
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            if (fireAttack)
+            if (Body != null)
             {
-                MouthCounter++;
-                if (MouthCounter > 10)
-                {
-                    MouthFrame++;
-                    MouthCounter = 0;
-                }
-                if (MouthFrame >= 3)
-                {
-                    MouthFrame = 2;
-                }
+				dColor = npc.GetAlpha(dColor);
+                Body.DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", npc, dColor);
             }
-            else
-            {
-                npc.frame.Y = 0 * frameHeight;
-            }
+            return true;
         }
 
-        public override void PostDraw(SpriteBatch sb, Color lightColor)
-        {
-            if (Body != null && Body.modNPC is Hydra)
-            {
-                string headTex = ("NPCs/Bosses/Hydra/HydraHead1");
-                ((Hydra)Body.modNPC).DrawHead(sb, headTex, headTex + "_Glow", npc, lightColor);
-            }
-        }
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
         }
-        // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
+
         public override bool PreNPCLoot()
         {
             return false;
