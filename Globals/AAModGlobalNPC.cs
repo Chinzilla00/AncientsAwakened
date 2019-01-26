@@ -570,20 +570,16 @@ namespace AAMod
 
             if (Moonraze)
             {
-                for (int i = 0; i < 20; i++)
+                int dustCount = Math.Max(1, Math.Min(5, (Math.Max(npc.width, npc.height) / 10)));
+                for (int i = 0; i < dustCount; i++)
                 {
-                    int num3 = Utils.SelectRandom<int>(Main.rand, new int[]
-                    {
-                        6,
-                        259,
-                        158
-                    });
-                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, num3, 0f, -2.5f, 0, new Color(115, 149, 171), 1f);
-                    Main.dust[num4].alpha = 200;
-                    Main.dust[num4].velocity *= 1.4f;
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.Moonraze>(), 0f, 1f, 0, default(Color), 1f);
+                    if (Main.dust[num4].velocity.Y > 0) Main.dust[num4].velocity.Y *= -1;
+                    Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
                 }
             }
+
 
             if (DiscordInferno)
             {
