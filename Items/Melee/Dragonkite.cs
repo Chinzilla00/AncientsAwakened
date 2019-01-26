@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Dragonkite : ModItem
+    public class Dragonkite : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -28,28 +28,11 @@ namespace AAMod.Items.Melee   //where is located
             item.rare = 9;
             item.UseSound = SoundID.Item20;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
-            item.useTurn = true; 
-        }
+            item.useTurn = true;
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 
         public override void AddRecipes()  //How to craft this sword
