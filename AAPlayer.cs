@@ -2315,13 +2315,18 @@ namespace AAMod
         public static bool HasAndCanDraw(Player player, int type, ref bool social, ref int slot)
         {
             if (player.wereWolf || player.merman) { return false; }
-            Item item = ItemLoader.GetItem(type).item;
-            if (item.headSlot > 0) return BasePlayer.HasHelmet(player, type) && BaseDrawing.ShouldDrawHelmet(player, type);
-            else if (item.bodySlot > 0) return BasePlayer.HasChestplate(player, type) && BaseDrawing.ShouldDrawChestplate(player, type);
-            else if (item.legSlot > 0) return BasePlayer.HasLeggings(player, type) && BaseDrawing.ShouldDrawLeggings(player, type);
-            else if (item.accessory) return BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseDrawing.ShouldDrawAccessory(player, type);
+            ModItem mitem = ItemLoader.GetItem(type);
+            if (mitem != null)
+            {
+                Item item = mitem.item;
+                if (item.headSlot > 0) return BaseMod.BasePlayer.HasHelmet(player, type) && BaseMod.BaseDrawing.ShouldDrawHelmet(player, type);
+                else if (item.bodySlot > 0) return BaseMod.BasePlayer.HasChestplate(player, type) && BaseMod.BaseDrawing.ShouldDrawChestplate(player, type);
+                else if (item.legSlot > 0) return BaseMod.BasePlayer.HasLeggings(player, type) && BaseMod.BaseDrawing.ShouldDrawLeggings(player, type);
+                else if (item.accessory) return BaseMod.BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseMod.BaseDrawing.ShouldDrawAccessory(player, type);
+            }
             return false;
         }
+
         public static bool ShouldDrawArmSkin(Player drawPlayer, int type)
         {
             return BasePlayer.HasChestplate(drawPlayer, type, true) && BaseDrawing.ShouldDrawChestplate(drawPlayer, type);
