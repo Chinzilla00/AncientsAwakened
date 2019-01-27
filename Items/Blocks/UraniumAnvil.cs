@@ -31,7 +31,7 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(mod, "UraniumBar", 10);
-                recipe.AddIngredient(ItemID.Anvils, 1);
+                recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
