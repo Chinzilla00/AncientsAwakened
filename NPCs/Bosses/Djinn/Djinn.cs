@@ -103,6 +103,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (npc.ai[3] > 430)
                 {
                     npc.frame.Y = FrameHeight * 7;
+                }
+                if (npc.ai[3] == 430)
+                {
                     fireProjectile();
                 }
                 if (npc.ai[3] > 440)
@@ -116,6 +119,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (npc.ai[3] > 460)
                 {
                     npc.frame.Y = FrameHeight * 10;
+                }
+                if (npc.ai[3] == 460)
+                {
                     fireProjectile();
                 }
                 if (npc.ai[3] > 470)
@@ -129,11 +135,18 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (npc.ai[3] > 490)
                 {
                     npc.frame.Y = FrameHeight * 13;
+                }
+                if (npc.ai[3] == 490)
+                {
                     fireProjectile();
                 }
                 if (npc.ai[3] > 500)
                 {
                     npc.frame.Y = FrameHeight * 14;
+                }
+                if (npc.ai[3] > 510)
+                {
+                    npc.ai[3] = 0;
                 }
             }
         }
