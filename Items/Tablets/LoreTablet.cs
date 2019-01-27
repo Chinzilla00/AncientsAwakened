@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tablet
 {
-    public class LoreTablet : ModItem
+    /*public class LoreTablet : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Tablets/LoreTablet"; } }
         public Color color = Color.Purple;
@@ -508,6 +508,6 @@ a giant crown it wears around. We will name it the King Slime.");
                 recipe.AddRecipe();
             }
         }
-    }
+    }*/
 
 }

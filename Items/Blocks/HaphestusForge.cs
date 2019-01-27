@@ -61,8 +61,8 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer'
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.ObsidianTable, 1);
-                recipe.AddIngredient(ItemID.ObsidianChair, 1);
+                recipe.AddIngredient(ItemID.WoodenTable);
+                recipe.AddIngredient(ItemID.WoodenChair, 1);
                 recipe.AddIngredient(null, "HellstoneAnvil", 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -73,8 +73,8 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer'
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.ObsidianTable, 1);
-                recipe.AddIngredient(ItemID.ObsidianChair, 1);
+                recipe.AddIngredient(ItemID.WoodenTable);
+                recipe.AddIngredient(ItemID.WoodenChair, 1);
                 recipe.AddIngredient(null, "HellstoneAnvil", 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -85,8 +85,8 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer'
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.ObsidianTable, 1);
-                recipe.AddIngredient(ItemID.ObsidianChair, 1);
+                recipe.AddIngredient(ItemID.WoodenTable);
+                recipe.AddIngredient(ItemID.WoodenChair, 1);
                 recipe.AddIngredient(null, "HellstoneAnvil", 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -97,8 +97,8 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer'
                 recipe.AddIngredient(ItemID.Hellforge, 1);
                 recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
                 recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.ObsidianTable, 1);
-                recipe.AddIngredient(ItemID.ObsidianChair, 1);
+                recipe.AddIngredient(ItemID.WoodenTable);
+                recipe.AddIngredient(ItemID.WoodenChair, 1);
                 recipe.AddIngredient(null, "HellstoneAnvil", 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
