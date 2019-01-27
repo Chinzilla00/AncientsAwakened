@@ -11,8 +11,6 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]
     class DaybringerHead : Daybringer
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/Daybringer"; } }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Daybringer");
@@ -96,8 +94,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class DaybringerBody : DaybringerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/DBBody"; } }
-
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -155,8 +151,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class DaybringerTail : DaybringerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/DBTail"; } }
-
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -212,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Equinox
         }
     }
     // I made this 2nd base class to limit code repetition.
-    class Daybringer : WormDay
+    public abstract class Daybringer : WormDay
     {
         public override void Init()
         {

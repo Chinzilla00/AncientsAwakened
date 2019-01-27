@@ -11,8 +11,6 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]
     class NightcrawlerHead : Nightcrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/Nightcrawler"; } }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nightcrawler");
@@ -95,8 +93,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class NightcrawlerBody : NightcrawlerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NCBody"; } }
-
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -153,8 +149,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class NightcrawlerTail : NightcrawlerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NightcrawlerTail"; } }
-
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -210,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Equinox
         }
     }
     // I made this 2nd base class to limit code repetition.
-    class Nightcrawler : WormNight
+	public abstract class Nightcrawler : WormNight
     {
         public override void Init()
         {
