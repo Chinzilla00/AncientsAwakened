@@ -757,37 +757,6 @@ namespace AAMod
                 npc.type != NPCID.AncientLight ||
                 npc.type != NPCID.AncientDoom ||
                 npc.type != NPCID.SandElemental ||
-                npc.type != NPCID.DD2EterniaCrystal ||
-                npc.type != NPCID.DD2AttackerTest ||
-                npc.type != NPCID.DD2Betsy ||
-                npc.type != NPCID.DD2DarkMageT1 ||
-                npc.type != NPCID.DD2DarkMageT3 ||
-                npc.type != NPCID.DD2DrakinT2 ||
-                npc.type != NPCID.DD2DrakinT3 ||
-                npc.type != NPCID.DD2GoblinBomberT1 ||
-                npc.type != NPCID.DD2GoblinBomberT2 ||
-                npc.type != NPCID.DD2GoblinBomberT3 ||
-                npc.type != NPCID.DD2GoblinT1 ||
-                npc.type != NPCID.DD2GoblinT2 ||
-                npc.type != NPCID.DD2GoblinT3 ||
-                npc.type != NPCID.DD2JavelinstT1 ||
-                npc.type != NPCID.DD2JavelinstT2 ||
-                npc.type != NPCID.DD2JavelinstT3 ||
-                npc.type != NPCID.DD2KoboldFlyerT2 ||
-                npc.type != NPCID.DD2KoboldFlyerT3 ||
-                npc.type != NPCID.DD2KoboldWalkerT2 ||
-                npc.type != NPCID.DD2KoboldWalkerT3 ||
-                npc.type != NPCID.DD2LanePortal ||
-                npc.type != NPCID.DD2LightningBugT3 ||
-                npc.type != NPCID.DD2OgreT2 ||
-                npc.type != NPCID.DD2OgreT3 ||
-                npc.type != NPCID.DD2SkeletonT1 ||
-                npc.type != NPCID.DD2SkeletonT3 ||
-                npc.type != NPCID.DD2WitherBeastT2 ||
-                npc.type != NPCID.DD2WitherBeastT3 ||
-                npc.type != NPCID.DD2WyvernT1 ||
-                npc.type != NPCID.DD2WyvernT2 ||
-                npc.type != NPCID.DD2WyvernT3 ||
                 npc.type != NPCID.ShadowFlameApparition)
             {
                 if (TimeFrozen)

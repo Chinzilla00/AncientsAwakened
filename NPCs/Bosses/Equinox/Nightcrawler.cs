@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]
     class NightcrawlerHead : Nightcrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/Nightcrawler"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/Nightcrawler"; } }
 
         public override void SetStaticDefaults()
         {
@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class NightcrawlerBody : NightcrawlerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NightcrawlerBody"; } }
 
         public override void SetDefaults()
         {
@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class NightcrawlerTail : NightcrawlerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Nightcrawler/NightcrawlerTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NightcrawlerTail"; } }
 
         public override void SetDefaults()
         {
