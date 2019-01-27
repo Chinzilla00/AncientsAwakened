@@ -766,12 +766,12 @@ namespace AAMod
                     return false;
                 }
             }
-            Player targetPlayer = Main.player[npc.target];
+            Player targetPlayer = (npc.target <= 0 || npc.target >= 255 ? null : Main.player[npc.target]);
             try
             {
                 if (npc.type == NPCID.Harpy || npc.type == NPCID.WyvernHead || npc.type == NPCID.MartianProbe)
                 {
-                    if (npc.timeLeft > 10 && targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneVoid == true)
+                    if (targetPlayer != null && (npc.timeLeft > 10 && targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneVoid == true))
                     {
                         npc.timeLeft = 10;
                     }

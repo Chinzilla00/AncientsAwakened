@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
     class NightcrawlerBody : NightcrawlerHead
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NightcrawlerBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Equinox/NCBody"; } }
 
         public override void SetDefaults()
         {
