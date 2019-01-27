@@ -49,6 +49,16 @@ namespace AAMod.Items.Blocks
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.HallowedBar, 10);
+                recipe.AddIngredient(mod, "UraniumAnvil", 1);
+                recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
+                recipe.AddIngredient(ItemID.CrystalBall, 1);
+                recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 }

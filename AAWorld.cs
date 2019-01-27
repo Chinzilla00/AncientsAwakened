@@ -1298,7 +1298,7 @@ namespace AAMod
                 return;
             }
             int Ore1 = mod.TileType<YtriumOre>();
-            int Ore2 = mod.TileType<UraniumOre>();
+            int Ore2 = mod.TileType<Uranium>();
             int Ore3 = mod.TileType<TechneciumOre>();
             Player player = Main.player[Main.myPlayer];
             int num = 0;
