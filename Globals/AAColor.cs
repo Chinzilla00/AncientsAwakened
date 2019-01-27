@@ -86,7 +86,6 @@ namespace AAMod
             }
         }
 
-
         public static Color Oblivion //Oblivion
 		{
 			get

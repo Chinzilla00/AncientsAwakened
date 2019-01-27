@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Uranium
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TribalHat : ModItem
+    public class UraniumVisor : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tribal Hat");
-            Tooltip.SetDefault(@"8% Increased magic critical chance
-Increases maximum mana by 20");
+            DisplayName.SetDefault("Uranium Visor");
+            Tooltip.SetDefault(@"4% increased melee critical strike chance
+8% increased melee damage");
         }
 
         public override void SetDefaults()
@@ -21,52 +21,36 @@ Increases maximum mana by 20");
             item.height = 24;
             item.value = 90000;
             item.rare = 4;
-            item.defense = 7;
+            item.defense = 22;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.statManaMax2 += 20;
-            player.magicCrit += 8;
+            player.meleeCrit += 4;
+            player.meleeDamage *= 1.08f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("TribalCloak") && legs.type == mod.ItemType("TribalKilt");
+            return body.type == mod.ItemType("UraniumChestplate") && legs.type == mod.ItemType("UraniumBoots");
         }
 
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"You are blessed with a gift of nature, allowing you to autodrink mana potions
-Mana usage lowered by 30%";
+            player.setBonus = @"Enemies near you are burned by radiation emitted by your armor";
 
-            player.manaCost *= 0.7f;
-            player.manaFlower = true;
+
+            player.GetModPlayer<AAPlayer>(mod).uraniumSet = true;
         }
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.CrimsonHelmet, 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(null, "ImpHood", 1);
-                recipe.AddTile(TileID.DemonAltar);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.ShadowHelmet, 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(null, "ImpHood", 1);
-                recipe.AddTile(TileID.DemonAltar);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod, "UraniumBar", 12);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
