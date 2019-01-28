@@ -15,11 +15,6 @@ namespace AAMod.Buffs
                 Stringy = Stringy + @"
 Infinity Zero: " + IZHP;
             }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) || NPC.AnyNPCs(mod.NPCType<ShenA>()))
-            {
-                Stringy = Stringy + @"
-Shen Doragon: " + ShenHP;
-            }
             return Stringy;
         }
 
@@ -27,8 +22,6 @@ Shen Doragon: " + ShenHP;
     	public int IZHP = 2000000;
     	public int ShenHP = 1600000;
         public Infinity Inf = null;
-        public ShenDoragon Shen = null;
-        public ShenA ShenA = null;
 
         public override void SetDefaults()
         {
@@ -42,7 +35,7 @@ Shen Doragon: " + ShenHP;
 
         public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            tip = "A Super Boss has you locked on!" + SBHP();
+            tip = "Target Locked." + SBHP();
             rare = 10;
         }
 
@@ -79,28 +72,6 @@ Shen Doragon: " + ShenHP;
                 {
                     Inf = null;
                 }
-            }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
-            {
-                if (Shen == null)
-                {
-                    Shen = (ShenDoragon)Main.npc[NPC.FindFirstNPC(mod.NPCType<ShenDoragon>())].modNPC;
-                }
-                ShenHP = Shen.npc.life;
-            }
-            if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
-            {
-                if (ShenA == null)
-                {
-                    ShenA = (ShenA)Main.npc[NPC.FindFirstNPC(mod.NPCType<ShenA>())].modNPC;
-                }
-                ShenHP = ShenA.npc.life;
-            }
-
-            if (!NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !NPC.AnyNPCs(mod.NPCType<ShenA>()))
-            {
-            	player.ClearBuff(Type);
-            	buffIndex--;
             }
         }
     }

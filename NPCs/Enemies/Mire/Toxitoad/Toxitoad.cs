@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
-            if (player.Center.X > npc.Center.X) // so it faces the player
+            if (player.Center.X > npc.Center.X)
             {
                 npc.spriteDirection = -1;
             }

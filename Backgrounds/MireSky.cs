@@ -11,6 +11,7 @@ namespace AAMod.Backgrounds
     {
 
         public static Texture2D PlanetTexture;
+        public static Texture2D SkyTexture;
         public static Texture2D BGTexture;
         public bool Active;
         public float Intensity;
@@ -18,6 +19,7 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/MireMoon");
+            SkyTexture = TextureManager.Load("Backgrounds/MireSky");
         }
 
         public override void Update(GameTime gameTime)
@@ -44,27 +46,9 @@ namespace AAMod.Backgrounds
             {
                 if (!Main.dayTime)
                 {
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 1), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 2), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 3), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 4), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 5), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 6), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 7), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 8), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 9), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 10), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 11), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 12), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 13), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 14), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 15), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 16), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 17), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 18), Color.Indigo * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 19), Color.Indigo * 0.05f * Intensity);
+                    Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                     var planetPos = new Vector2((Main.screenWidth / 4) * 3, Main.screenHeight / 4);
+                    spriteBatch.Draw(SkyTexture, SkyPos, null, Color.White, 0f, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                 }
             }

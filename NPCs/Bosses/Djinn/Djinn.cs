@@ -77,11 +77,22 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 npc.alpha = 0;
             }
+
+
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+            
             npc.ai[3]++;
-            if (npc.ai[3] <= 420)
+            if (npc.ai[3] <= 300)
             {
                 npc.frameCounter++;
-                if (npc.frameCounter > 12)
+                if (npc.frameCounter > 9)
                 {
                     npc.frame.Y += 130;
                     npc.frameCounter = 0;
@@ -96,55 +107,55 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;
-                if (npc.ai[3] > 420)
+                if (npc.ai[3] > 300)
                 {
                     npc.frame.Y = FrameHeight * 6;
                 }
-                if (npc.ai[3] > 430)
+                if (npc.ai[3] > 309)
                 {
                     npc.frame.Y = FrameHeight * 7;
                 }
-                if (npc.ai[3] == 430)
+                if (npc.ai[3] == 309)
                 {
                     fireProjectile();
                 }
-                if (npc.ai[3] > 440)
+                if (npc.ai[3] > 318)
                 {
                     npc.frame.Y = FrameHeight * 8;
                 }
-                if (npc.ai[3] > 450)
+                if (npc.ai[3] > 327)
                 {
                     npc.frame.Y = FrameHeight * 9;
                 }
-                if (npc.ai[3] > 460)
+                if (npc.ai[3] > 336)
                 {
                     npc.frame.Y = FrameHeight * 10;
                 }
-                if (npc.ai[3] == 460)
+                if (npc.ai[3] == 336)
                 {
                     fireProjectile();
                 }
-                if (npc.ai[3] > 470)
+                if (npc.ai[3] > 345)
                 {
                     npc.frame.Y = FrameHeight * 11;
                 }
-                if (npc.ai[3] > 480)
+                if (npc.ai[3] > 354)
                 {
                     npc.frame.Y = FrameHeight * 12;
                 }
-                if (npc.ai[3] > 490)
+                if (npc.ai[3] > 363)
                 {
                     npc.frame.Y = FrameHeight * 13;
                 }
-                if (npc.ai[3] == 490)
+                if (npc.ai[3] == 372)
                 {
                     fireProjectile();
                 }
-                if (npc.ai[3] > 500)
+                if (npc.ai[3] > 372)
                 {
                     npc.frame.Y = FrameHeight * 14;
                 }
-                if (npc.ai[3] > 510)
+                if (npc.ai[3] > 381)
                 {
                     npc.ai[3] = 0;
                 }
@@ -236,20 +247,6 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             npc.value = 0f;
             npc.boss = false;
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter++;
-            if (npc.frameCounter > 6)
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y += frameHeight;
-                if (npc.frame.Y > 5 * frameHeight)
-                {
-                    npc.frame.Y = 0;
-                }
-            }
         }
 
         private static void StartSandstorm()
