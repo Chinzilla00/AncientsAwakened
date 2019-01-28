@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class HallamDevWeapon : ModItem
+    public class HallamDevWeapon : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -39,28 +39,12 @@ Prismeow EX");
 			item.shoot = mod.ProjectileType("RainbowCatPro");
 			item.shootSpeed = 0f;
             item.expert = true;
-		}
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_NONE; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawColor = Color.White;  //glowmask draw color
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             position = Main.MouseWorld;

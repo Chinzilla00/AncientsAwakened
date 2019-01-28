@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class UmbreonSP : ModItem
+    public class UmbreonSP : BaseAAItem
 	{
 		
 		public override void SetStaticDefaults()
@@ -31,28 +31,10 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("UmbreonSPProjectile");
 			item.shootSpeed = 20f;
-			
-		}
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawColor = Color.White;  //glowmask draw color
         }
     }
 }
