@@ -53,6 +53,7 @@ namespace AAMod
         public string nums = "1234567890";
         //Messages
         public static bool Evil;
+        public static bool Compass;
         //Boss Bools
         public static bool Chairlol;
         public static bool Ancients;
@@ -94,7 +95,6 @@ namespace AAMod
         public static bool PowerDropped;
         //Points
         public static Point WHERESDAVOIDAT;
-        public static Vector2 SoCBossDeathPoint;
 
         public static bool Anticheat = true;
 
@@ -139,6 +139,7 @@ namespace AAMod
             ChaosStripes = Main.hardMode;
             LuminiteMeteorBool = false;
             Anticheat = true;
+            Compass = false;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -204,6 +205,7 @@ namespace AAMod
             if (downedStormAny) downed.Add("AnyStorm");
             if (downedEFish) downed.Add("Fish");
             if (downedSoC) downed.Add("SoC");
+            if (Compass) downed.Add("Compass");
 
             return new TagCompound {
                 {"downed", downed}
@@ -259,6 +261,7 @@ namespace AAMod
 
             BitsByte flags5 = new BitsByte();
             flags5[0] = downedSoC;
+            flags5[1] = Compass;
             writer.Write(flags4);
         }
 
@@ -306,6 +309,7 @@ namespace AAMod
 
             BitsByte flags5 = reader.ReadByte();
             downedSoC = flags5[0];
+            Compass = flags5[1];
         }
 
         public override void Load(TagCompound tag)
@@ -345,6 +349,7 @@ namespace AAMod
             downedStormAny = downed.Contains("AnyStorm");
             downedEFish = downed.Contains("Fish");
             downedSoC = downed.Contains("SoC");
+            Compass = downed.Contains("Compass");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -912,6 +917,25 @@ namespace AAMod
                         {
                             itemsToPlaceInStormChestsChoice = Main.rand.Next(itemsToPlaceInStormChest.Length);
                             chest.item[0].SetDefaults(itemsToPlaceInStormChest[itemsToPlaceInStormChestsChoice]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            int[] itemsToPlaceInSunkenChest = new int[] { mod.ItemType("CursedCompass") };
+            int itemsToPlaceInSunkenChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("SunkenChest")) // if glass chest
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == 0)
+                        {
+                            itemsToPlaceInSunkenChestsChoice = Main.rand.Next(itemsToPlaceInSunkenChest.Length);
+                            chest.item[0].SetDefaults(itemsToPlaceInSunkenChest[itemsToPlaceInSunkenChestsChoice]);
                             break;
                         }
                     }

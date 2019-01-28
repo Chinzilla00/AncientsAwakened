@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && spawnInfo.spawnTileY > Main.worldSurface ? .05f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && spawnInfo.spawnTileY > Main.worldSurface && Main.hardMode ? .05f : 0f;
         }
 
 		public override void HitEffect(int hitDirection, double damage)

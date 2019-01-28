@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.SoC
             npc.knockBackResist = 0f;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            animationType = NPCID.MoonLordFreeEye;
             npc.npcSlots = 0f;
             npc.noGravity = true;
             npc.dontTakeDamage = false;

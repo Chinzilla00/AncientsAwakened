@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
@@ -174,19 +175,18 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.damage = (int)(npc.damage * 0.8f);
         }
 
-        public const string BodyTex = "AAMod/NPCs/Bosses/SoC/Bosses/DeityEaterTail_Head_Boss";
-
-        public override void BossHeadSlot(ref int index)
+        public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
+            Texture2D currentTex = Main.npcTexture[npc.type];
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/DeityEaterTail_Glow");
 
-            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 
-        }
-        public override void BossHeadRotation(ref float rotation)
-        {
+            //draw glow/glow afterimage
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, AAColor.Cthulhu2);
+            BaseDrawing.DrawAfterimage(sb, GlowTex, 0, npc, 0.8f, 1f, 6, false, 0f, 0f, AAColor.Cthulhu2);
 
-            rotation = npc.rotation;
-
+            return false;
         }
     }
 }

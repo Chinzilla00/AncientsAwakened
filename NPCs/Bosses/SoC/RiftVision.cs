@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.SoC
             npc.lifeMax = 8000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
+            animationType = NPCID.AncientCultistSquidhead;
             npc.knockBackResist = 0f;
             npc.alpha = 50;
             for (int k = 0; k < npc.buffImmune.Length; k++)

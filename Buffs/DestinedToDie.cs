@@ -16,8 +16,6 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.wingTime = 0;
-            player.velocity.Y += 10;
             player.GetModPlayer<AAPlayer>(mod).DestinedToDie = true;
         }
     }

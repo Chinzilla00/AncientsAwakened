@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.SoC
             {
                 SummonSoul();
                 Spawned = true;
+                npc.alpha = 0;
             }
             if (!Spawned)
             {

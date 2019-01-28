@@ -99,17 +99,13 @@ namespace AAMod.NPCs.Bosses.SoC
                         }
                         else if (l == 27)
                         {
-                            num10 = mod.NPCType<DeityDragonBody1>();
+                            num10 = mod.NPCType<DeityDragonBody2>();
                         }
                         else if (l == 28)
                         {
-                            num10 = mod.NPCType<DeityDragonBody2>();
-                        }
-                        else if (l == 29)
-                        {
                             num10 = mod.NPCType<DeityDragonBody3>();
                         }
-                        else if (l == 30)
+                        else if (l == 29)
                         {
                             num10 = mod.NPCType<DeityDragonTail>();
                         }
@@ -151,7 +147,7 @@ namespace AAMod.NPCs.Bosses.SoC
             {
                 npc.spriteDirection = -1;
             }
-            float num37 = 8f;
+            float num37 = 10f;
             float num38 = 0.07f;
             num37 = 20f;
             num38 = 0.55f;

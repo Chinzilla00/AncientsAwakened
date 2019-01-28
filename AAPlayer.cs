@@ -1057,7 +1057,24 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (NPC.AnyNPCs(mod.NPCType<UDUNFUKED>()))
+            {
+                CthulhuCountdown = 1800;
+            }
+            if (AAWorld.Compass == false)
+            {
+                if (player.inventory.Any(i => i.type == mod.ItemType<Items.BossSummons.CursedCompass>() && i.stack > 0))
+                {
+                    AAWorld.Compass = true;
 
+                    Leave = false;
+                    NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
+                    if (Main.netMode != 1)
+                    {
+                        BaseUtility.Chat("UNHAND WHAT ISN'T YOURS, THIEF", Color.LightCyan);
+                    }
+                }
+            }
             if (ZoneShip && Leave == false)
             {
                 Leave = true;
@@ -1078,10 +1095,14 @@ namespace AAMod
                 {
                     BaseUtility.Chat("...turn back now...", Color.LightCyan);
                 }
-                if (CthulhuCountdown == 0 && Main.netMode != 1)
+                if (CthulhuCountdown == 0)
                 {
                     Leave = false;
-                    BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECk", Color.LightCyan);
+                    NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
+                    if (Main.netMode != 1)
+                    {
+                        BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECK", Color.LightCyan);
+                    }
                 }
             }
             if (!ZoneShip)
@@ -1536,9 +1557,6 @@ namespace AAMod
         public override void clientClone(ModPlayer clientClone)
         {
             AAPlayer clone = clientClone as AAPlayer;
-            // Here we would make a backup clone of values that are only correct on the local players Player instance.
-            // Some examples would be RPG stats from a GUI, Hotkey states, and Extra Item Slots
-            // clone.someLocalVariable = someLocalVariable;
         }
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -1696,6 +1714,7 @@ namespace AAMod
         public bool InfZ = false;
         public int GetIZHealth = 2000000;
         public int RiftTimer;
+        public int EscapeLine = 180;
 
         public override void UpdateBadLifeRegen()
         {
@@ -1712,6 +1731,28 @@ namespace AAMod
                 {
                     RespawnIZ(player);
                     IZHoldTimer = 180;
+                }
+            }
+
+            if (DestinedToDie && !player.ZoneBeach)
+            {
+                player.lifeRegen -= 50;
+                if (player.position.X > Main.maxTilesX / 2)
+                {
+                    player.velocity.X += 10f;
+                }
+                if (player.position.X < Main.maxTilesX / 2)
+                {
+                    player.velocity.X -= 10f;
+                }
+                if (EscapeLine == 180)
+                {
+                    Main.NewText("YOU CANNOT ESCAPE A GOD", Color.DarkCyan);
+                }
+                EscapeLine--;
+                if (EscapeLine <= 0)
+                {
+                    EscapeLine = 180;
                 }
             }
 

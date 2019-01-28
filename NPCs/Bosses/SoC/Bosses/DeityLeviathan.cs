@@ -12,7 +12,7 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityLeviathan : ModNPC
+    public class DeityLeviathan : SoC
 	{
 
         public override void SetStaticDefaults()
@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.defense = 110;
             npc.lifeMax = 150000;
             npc.knockBackResist = 0f;
+            animationType = NPCID.DukeFishron;
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.npcSlots = 10f;
@@ -45,8 +46,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/SoC");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
         }
-
-        public bool LeaveLine = false;
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
@@ -68,8 +67,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                AAWorld.SoCBossDeathPoint = npc.position;
-                SoC.ComeBack = true;
+                GoHere = npc.Center;
+                ComeBack = true;
             }
         }
 

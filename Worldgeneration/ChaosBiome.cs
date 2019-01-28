@@ -553,9 +553,9 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 45, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 47, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
-            WorldGen.PlaceChest((origin.X) + 42, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;
         }
     }
@@ -582,8 +582,10 @@ namespace AAMod.Worldgeneration
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/Ship"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
-
-            gen.Generate(origin.X, origin.Y, true, true);
+            
+            gen.Generate(origin.X, origin.Y - 28, true, true);
+            
+            WorldGen.PlaceChest((origin.X) + 13, (origin.Y - 28) + 26, (ushort)mod.TileType("SunkenChest"), true);
             return true;
         }
     }

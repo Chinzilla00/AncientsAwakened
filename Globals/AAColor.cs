@@ -70,19 +70,27 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Magenta, Color.Indigo, Color.Indigo, Color.Magenta, Color.OrangeRed);
             }
         }
-        public static Color IZ //Infinity Zero
-		{
+        public static Color IZ
+        { 
 			get
 			{
 				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(169, 34, 73), new Color(146, 37, 50), new Color(169, 34, 73));
 			}
 		}
 
-        public static Color Cthulhu //Infinity Zero
+        public static Color Cthulhu
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Cyan, Color.DarkCyan, Color.Cyan);
+            }
+        }
+
+        public static Color Cthulhu2 //Infinity Zero
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(10, 22, 28), Color.White, new Color(10, 22, 28));
             }
         }
 

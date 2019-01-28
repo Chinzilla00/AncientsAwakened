@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityRose : ModNPC
+    public class DeityRose : SoC
 	{
 
         public override void SetStaticDefaults()
@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.height = 86;
             npc.aiStyle = 51;
             npc.damage = 90;
-            npc.defense = 50;
-            npc.lifeMax = 100000;
+            npc.defense = 100;
+            npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0f;
@@ -438,8 +438,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
-                AAWorld.SoCBossDeathPoint = npc.position;
-                SoC.ComeBack = true;
+                GoHere = npc.Center;
+                ComeBack = true;
                 int num440 = 0;
                 while ((double)num440 < dmg / (double)npc.lifeMax * 100.0)
                 {

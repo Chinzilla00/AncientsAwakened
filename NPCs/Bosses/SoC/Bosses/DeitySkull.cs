@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,7 +10,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeitySkull : ModNPC
+    public class DeitySkull : SoC
     {
 
         public override void SetStaticDefaults()
@@ -44,7 +45,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             writer.Write((short)npc.localAI[0]);
         }
-
+    
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             npc.localAI[0] = reader.ReadInt16();
@@ -54,7 +55,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                AAWorld.SoCBossDeathPoint = npc.position;
+                GoHere = npc.Center;
                 SoC.ComeBack = true;
             }
         }
@@ -145,11 +146,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
                     npc.ai[1] = 3f;
-            }
-            if (((int)(Main.player[npc.target].position.Y/16) <= Main.maxTilesY - 190 -(int)(Main.maxTilesY/5)) && npc.ai[1] != 3.0 && npc.ai[1] != 2.0)
-            {
-                npc.ai[1] = 2f;
-                Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
             }
             if (npc.ai[1] == 0.0)
             {
@@ -272,6 +268,20 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                     return;
                 npc.timeLeft = 500;
             }
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color drawColor)
+        {
+            Texture2D currentTex = Main.npcTexture[npc.type];
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/DeitySkull_Glow");
+
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
+
+            //draw glow/glow afterimage
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, AAColor.Cthulhu2);
+            BaseDrawing.DrawAfterimage(sb, GlowTex, 0, npc, 0.8f, 1f, 6, false, 0f, 0f, AAColor.Cthulhu2);
+
+            return false;
         }
     }
 }

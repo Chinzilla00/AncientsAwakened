@@ -11,7 +11,7 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityEye : ModNPC
+    public class DeityEye : SoC
 	{
         public bool HeadsSpawned = false;
 
@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.width = 100;
             npc.height = 110;
             npc.aiStyle = -1;
-            npc.defense = 50;
+            npc.defense = 100;
             npc.damage = 60;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
@@ -46,8 +46,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                SoC.ComeBack = true;
-                AAWorld.SoCBossDeathPoint = npc.Center;
+                GoHere = npc.Center;
+                ComeBack = true;
             }
         }
 
@@ -627,6 +627,20 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
                 }
             }
         }
-        
+
+        public override bool PreDraw(SpriteBatch sb, Color drawColor)
+        {
+            Texture2D currentTex = Main.npcTexture[npc.type];
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/DeityEye_Glow");
+            
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
+
+            //draw glow/glow afterimage
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, AAColor.Cthulhu2);
+            BaseDrawing.DrawAfterimage(sb, GlowTex, 0, npc, 0.8f, 1f, 6, false, 0f, 0f, AAColor.Cthulhu2);
+            
+            return false;
+        }
+
     }
 }

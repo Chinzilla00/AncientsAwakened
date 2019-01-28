@@ -32,11 +32,17 @@ namespace AAMod.NPCs.Bosses.Kraken
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            projectile.rotation += .02f;
+            projectile.alpha -= 20;
+            if (projectile.alpha <= 0)
+            {
+                projectile.alpha = 0;
+            }
+            projectile.rotation += .1f;
             usetimer++;
             if (usetimer >= 60)
             {
-                SpawnBoss(player, "Kraken", "Kraken");
+                SpawnBoss(player, "KrakenSpawn", "Kraken");
+                projectile.active = false;
             }
         }
 

@@ -67,85 +67,76 @@ namespace AAMod.NPCs.Bosses.Kraken
             }
         }
 
-        public bool TentaclesSpawned = false;
-        private int testime = 60;
-        public bool Reseting = false;
+        int frameheight = 130;
 
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            if (player.Center.X > npc.Center.X) // so it faces the player
+            
+            BaseAI.AISkull(npc, ref customAI, true, 7f, 100f, .04f, .049f);
+
+            npc.ai[1]++;
+            npc.frameCounter++;
+
+
+            if (npc.ai[1] < 400)
             {
-                npc.spriteDirection = -1;
+                if (npc.frameCounter > 8)
+                {
+                    npc.frame.Y += 130;
+                }
+                if (npc.frame.Y >= 130 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
             }
             else
             {
-                npc.spriteDirection = 1;
-            }
-
-            if (testime > 0)
-            {
-                testime--;
-            }
-
-            BaseAI.AIElemental(npc, ref customAI, false, 0, false, false, 800f, 600f, 60, 2.5f);
-
-            if (!TentaclesSpawned)
-            {
-                if (Main.netMode != 1)
+                if (npc.ai[1] >= 407)
                 {
-                    if (Main.netMode != 1)
+                    npc.frame.Y = frameheight * 4;
+                }
+                if (npc.ai[1] >= 414)
+                {
+                    npc.frame.Y = frameheight * 5;
+                }
+                if (npc.ai[1] >= 421)
+                {
+                    npc.frame.Y = frameheight * 6;
+                }
+                if (npc.ai[1] == 421)
+                {
+                    Projectile.NewProjectile(new Vector2(player.Center.X + 80, player.Center.Y), new Vector2(0, 0), mod.ProjectileType<Tentacle>(), 120, 0);
+                }
+                if (npc.ai[1] >= 428 && npc.ai[1] < 490)
+                {
+                    if (npc.frameCounter > 8)
                     {
-                        int latestNPC = npc.whoAmI;
-                        int handType = 0;
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle1"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        handType++;
-                        Tentacle1 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle1"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        handType++;
-                        Tentacle2 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle1"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        handType++;
-                        Tentacle3 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle2"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        handType++;
-                        Tentacle4 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle2"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        handType++;
-                        Tentacle5 = Main.npc[latestNPC];
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("Tentacle2"), 0, npc.whoAmI);
-                        Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                        Main.npc[latestNPC].ai[1] = handType;
-                        Tentacle6 = Main.npc[latestNPC];
+                        npc.frame.Y += frameheight;
+                    }
+                    if (npc.frame.Y >= frameheight * 10)
+                    {
+                        npc.frame.Y = frameheight * 7;
                     }
                 }
-                TentaclesSpawned = true;
+                if (npc.ai[1] >= 497)
+                {
+                    npc.frame.Y = frameheight * 11;
+                }
+                if (npc.ai[1] >= 504)
+                {
+                    npc.frame.Y = frameheight * 12;
+                }
+                if (npc.ai[1] >= 511)
+                {
+                    npc.frame.Y = frameheight * 13;
+                }
+                if (npc.ai[1] >= 518)
+                {
+                    npc.frame.Y = 0;
+                    npc.ai[1] = 0;
+                }
             }
-            if (testime == 0 && (Tentacle1 == null || Tentacle2 == null || Tentacle3 == null || Tentacle4 == null || Tentacle5 == null || Tentacle6 == null || !Tentacle1.active || !Tentacle2.active || !Tentacle3.active || !Tentacle4.active || !Tentacle5.active || !Tentacle6.active))
-            {
-                Reseting = true;
-                testime = 60;
-            }
-            if ((Tentacle1 == null || !Tentacle1.active) && (Tentacle2 == null || !Tentacle2.active) && (Tentacle3 == null || !Tentacle3.active) && (Tentacle4 == null || !Tentacle4.active) && (Tentacle5 == null || !Tentacle5.active) && (Tentacle6 == null || !Tentacle6.active))
-            {
-                TentaclesSpawned = false;
-            }
-            for (int m = npc.oldPos.Length - 1; m > 0; m--)
-            {
-                npc.oldPos[m] = npc.oldPos[m - 1];
-            }
-            npc.oldPos[0] = npc.position;
-
         }
     }
 }

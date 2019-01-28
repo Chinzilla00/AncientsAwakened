@@ -57,16 +57,6 @@ namespace AAMod.Projectiles.SoC
                 projectile.spriteDirection = 1;
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
-            if (projectile.alpha <= 0)
-            {
-                for (int num107 = 0; num107 < 3; num107++)
-                {
-                    int num108 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 240, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[num108].noGravity = true;
-                    Main.dust[num108].velocity *= 0.3f;
-                    Main.dust[num108].noLight = true;
-                }
-            }
             if (projectile.alpha > 0)
             {
                 projectile.alpha -= 55;
@@ -74,7 +64,7 @@ namespace AAMod.Projectiles.SoC
                 if (projectile.alpha < 0)
                 {
                     projectile.alpha = 0;
-                    float num109 = 16f;
+                    float num109 = 4f;
                     int num110 = 0;
                     while ((float)num110 < num109)
                     {
@@ -111,7 +101,7 @@ namespace AAMod.Projectiles.SoC
                 int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default(Color), 1.5f);
                 Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
             }
-            for (int num87 = 0; num87 < 20; num87++)
+            for (int num87 = 0; num87 < 5; num87++)
             {
                 int num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.CthulhuDust>(), 0f, 0f, 200, default(Color), 3.7f);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
@@ -128,7 +118,7 @@ namespace AAMod.Projectiles.SoC
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * 8f;
             }
-            for (int num89 = 0; num89 < 20; num89++)
+            for (int num89 = 0; num89 < 5; num89++)
             {
                 int num90 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.CthulhuDust>(), 0f, 0f, 0, default(Color), 2.7f);
                 Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2)) * (float)num84 / 2f);

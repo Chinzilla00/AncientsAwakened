@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.SoC
         public bool Morphed = false;
         public static bool ComeBack = false;
         public int ReturnTimer = 100;
-        public Vector2 GoHere = AAWorld.SoCBossDeathPoint;
+        public Vector2 GoHere = new Vector2(0, 0);
 
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

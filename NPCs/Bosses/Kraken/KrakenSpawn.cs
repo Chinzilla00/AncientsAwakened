@@ -37,15 +37,16 @@ namespace AAMod.NPCs.Bosses.Kraken
         public override void AI()
         {
             npc.scale = 1f - npc.alpha / 255f;
-            npc.rotation += .05f;
+            npc.rotation += .15f;
+            if (!Spawned)
+            {
+                npc.alpha -= 3;
+            }
             if (npc.alpha <= 0 && !Spawned)
             {
                 SummonSoul();
                 Spawned = true;
-            }
-            if (!Spawned)
-            {
-                npc.alpha -= 3;
+                npc.alpha = 0;
             }
             if (Spawned)
             {
@@ -61,8 +62,8 @@ namespace AAMod.NPCs.Bosses.Kraken
         {
             if (Main.netMode != 1)
             {
-                Main.NewText("The Kraken has Awoken", new Color(175, 75, 255));
-                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("SoC"));
+                Main.NewText("The Kraken has Awoken!", new Color(175, 75, 255));
+                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Kraken"));
                 Main.npc[npcID].Center = npc.Center;
                 Main.npc[npcID].netUpdate = true;
             }

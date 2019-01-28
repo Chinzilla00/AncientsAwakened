@@ -6,11 +6,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityEater : ModNPC
+    public class DeityEater : SoC
 	{
         public bool HeadsSpawned = false;
 
@@ -90,162 +91,111 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
             npc.ai[1] = (float)Main.rand.Next(-2, 0);
             npc.netUpdate = true;
-            bool flag = false;
-            float num4 = 0.2f;
-            int num5 = npc.type;
-            if (npc.ai[3] > 0f)
+            int minTilePosX = (int)(npc.position.X / 16.0) - 1;
+            int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
+            int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
+            int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
+            if (minTilePosX < 0)
+                minTilePosX = 0;
+            if (maxTilePosX > Main.maxTilesX)
+                maxTilePosX = Main.maxTilesX;
+            if (minTilePosY < 0)
+                minTilePosY = 0;
+            if (maxTilePosY > Main.maxTilesY)
+                maxTilePosY = Main.maxTilesY;
+            
+
+            for (int i = minTilePosX; i < maxTilePosX; ++i)
             {
-                npc.realLife = (int)npc.ai[3];
-            }
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || (flag && (double)Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
-            {
-                npc.TargetClosest(true);
-            }
-            if (Main.player[npc.target].dead || (flag && (double)Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
-            {
-                if (npc.timeLeft > 300)
+                for (int j = minTilePosY; j < maxTilePosY; ++j)
                 {
-                    npc.timeLeft = 300;
-                }
-                if (flag)
-                {
-                    npc.velocity.Y = npc.velocity.Y + num4;
-                }
-            }
-            int num29 = (int)(npc.position.X / 16f) - 1;
-            int num30 = (int)((npc.position.X + (float)npc.width) / 16f) + 2;
-            int num31 = (int)(npc.position.Y / 16f) - 1;
-            int num32 = (int)((npc.position.Y + (float)npc.height) / 16f) + 2;
-            if (num29 < 0)
-            {
-                num29 = 0;
-            }
-            if (num30 > Main.maxTilesX)
-            {
-                num30 = Main.maxTilesX;
-            }
-            if (num31 < 0)
-            {
-                num31 = 0;
-            }
-            if (num32 > Main.maxTilesY)
-            {
-                num32 = Main.maxTilesY;
-            }
-            float num37 = 9f;
-            float num38 = 0.16f;
-            Vector2 vector2 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            float num41 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
-            num40 = ((int)(num40 / 16f) * 16);
-            num41 = ((int)(num41 / 16f) * 16);
-            vector2.X = ((int)(vector2.X / 16f) * 16);
-            vector2.Y = ((int)(vector2.Y / 16f) * 16);
-            num40 -= vector2.X;
-            num41 -= vector2.Y;
-            float num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
-            float num55 = num53 / 40f;
-            if (num55 < 10f)
-            {
-                num55 = 10f;
-            }
-            if (num55 > 20f)
-            {
-                num55 = 20f;
-            }
-            num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
-            float num56 = Math.Abs(num40);
-            float num57 = Math.Abs(num41);
-            float num58 = num37 / num53;
-            num40 *= num58;
-            num41 *= num58;
-            bool flag6 = false;
-            if (!flag6)
-            {
-                if ((npc.velocity.X > 0f && num40 > 0f) || (npc.velocity.X < 0f && num40 < 0f) || (npc.velocity.Y > 0f && num41 > 0f) || (npc.velocity.Y < 0f && num41 < 0f))
-                {
-                    if (npc.velocity.X < num40)
+                    if (Main.tile[i, j] != null && (Main.tile[i, j].nactive() && (Main.tileSolid[(int)Main.tile[i, j].type] || Main.tileSolidTop[(int)Main.tile[i, j].type] && (int)Main.tile[i, j].frameY == 0) || (int)Main.tile[i, j].liquid > 64))
                     {
-                        npc.velocity.X = npc.velocity.X + num38;
-                    }
-                    else if (npc.velocity.X > num40)
-                    {
-                        npc.velocity.X = npc.velocity.X - num38;
-                    }
-                    if (npc.velocity.Y < num41)
-                    {
-                        npc.velocity.Y = npc.velocity.Y + num38;
-                    }
-                    else if (npc.velocity.Y > num41)
-                    {
-                        npc.velocity.Y = npc.velocity.Y - num38;
-                    }
-                    if ((double)Math.Abs(num41) < (double)num37 * 0.2 && ((npc.velocity.X > 0f && num40 < 0f) || (npc.velocity.X < 0f && num40 > 0f)))
-                    {
-                        if (npc.velocity.Y > 0f)
+                        Vector2 vector2;
+                        vector2.X = (float)(i * 16);
+                        vector2.Y = (float)(j * 16);
+                        if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && (npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0))
                         {
-                            npc.velocity.Y = npc.velocity.Y + num38 * 2f;
-                        }
-                        else
-                        {
-                            npc.velocity.Y = npc.velocity.Y - num38 * 2f;
-                        }
-                    }
-                    if ((double)Math.Abs(num40) < (double)num37 * 0.2 && ((npc.velocity.Y > 0f && num41 < 0f) || (npc.velocity.Y < 0f && num41 > 0f)))
-                    {
-                        if (npc.velocity.X > 0f)
-                        {
-                            npc.velocity.X = npc.velocity.X + num38 * 2f;
-                        }
-                        else
-                        {
-                            npc.velocity.X = npc.velocity.X - num38 * 2f;
+                            if (Main.rand.Next(100) == 0 && Main.tile[i, j].nactive())
+                                WorldGen.KillTile(i, j, true, true, false);
                         }
                     }
                 }
-                else if (num56 > num57)
+            }
+            float speed = 11f;
+            float acceleration = 0.18f;
+
+            Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
+            float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+
+            float targetRoundedPosX = (float)((int)(targetXPos / 16.0) * 16);
+            float targetRoundedPosY = (float)((int)(targetYPos / 16.0) * 16);
+            npcCenter.X = (float)((int)(npcCenter.X / 16.0) * 16);
+            npcCenter.Y = (float)((int)(npcCenter.Y / 16.0) * 16);
+            float dirX = targetRoundedPosX - npcCenter.X;
+            float dirY = targetRoundedPosY - npcCenter.Y;
+            npc.TargetClosest(true);
+            float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
+
+            float absDirX = Math.Abs(dirX);
+            float absDirY = Math.Abs(dirY);
+            float newSpeed = speed / length;
+            dirX = dirX * (newSpeed * 2);
+            dirY = dirY * (newSpeed * 2);
+            if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+            {
+                if (npc.velocity.X < dirX)
+                    npc.velocity.X = npc.velocity.X + acceleration;
+                else if (npc.velocity.X > dirX)
+                    npc.velocity.X = npc.velocity.X - acceleration;
+                if (npc.velocity.Y < dirY)
+                    npc.velocity.Y = npc.velocity.Y + acceleration;
+                else if (npc.velocity.Y > dirY)
+                    npc.velocity.Y = npc.velocity.Y - acceleration;
+                if (Math.Abs(dirY) < speed * 0.2 && (npc.velocity.X > 0.0 && dirX < 0.0 || npc.velocity.X < 0.0 && dirX > 0.0))
                 {
-                    if (npc.velocity.X < num40)
-                    {
-                        npc.velocity.X = npc.velocity.X + num38 * 1.1f;
-                    }
-                    else if (npc.velocity.X > num40)
-                    {
-                        npc.velocity.X = npc.velocity.X - num38 * 1.1f;
-                    }
-                    if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num37 * 0.5)
-                    {
-                        if (npc.velocity.Y > 0f)
-                        {
-                            npc.velocity.Y = npc.velocity.Y + num38;
-                        }
-                        else
-                        {
-                            npc.velocity.Y = npc.velocity.Y - num38;
-                        }
-                    }
+                    if (npc.velocity.Y > 0.0)
+                        npc.velocity.Y = npc.velocity.Y + acceleration * 2f;
+                    else
+                        npc.velocity.Y = npc.velocity.Y - acceleration * 2f;
                 }
-                else
+                if (Math.Abs(dirX) < speed * 0.2 && (npc.velocity.Y > 0.0 && dirY < 0.0 || npc.velocity.Y < 0.0 && dirY > 0.0))
                 {
-                    if (npc.velocity.Y < num41)
-                    {
-                        npc.velocity.Y = npc.velocity.Y + num38 * 1.1f;
-                    }
-                    else if (npc.velocity.Y > num41)
-                    {
-                        npc.velocity.Y = npc.velocity.Y - num38 * 1.1f;
-                    }
-                    if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num37 * 0.5)
-                    {
-                        if (npc.velocity.X > 0f)
-                        {
-                            npc.velocity.X = npc.velocity.X + num38;
-                        }
-                        else
-                        {
-                            npc.velocity.X = npc.velocity.X - num38;
-                        }
-                    }
+                    if (npc.velocity.X > 0.0)
+                        npc.velocity.X = npc.velocity.X + acceleration * 2f;
+                    else
+                        npc.velocity.X = npc.velocity.X - acceleration * 2f;
+                }
+            }
+            else if (absDirX > absDirY)
+            {
+                if (npc.velocity.X < dirX)
+                    npc.velocity.X = npc.velocity.X + acceleration * 1.1f;
+                else if (npc.velocity.X > dirX)
+                    npc.velocity.X = npc.velocity.X - acceleration * 1.1f;
+
+                if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
+                {
+                    if (npc.velocity.Y > 0.0)
+                        npc.velocity.Y = npc.velocity.Y + acceleration;
+                    else
+                        npc.velocity.Y = npc.velocity.Y - acceleration;
+                }
+            }
+            else
+            {
+                if (npc.velocity.Y < dirY)
+                    npc.velocity.Y = npc.velocity.Y + acceleration * 1.1f;
+                else if (npc.velocity.Y > dirY)
+                    npc.velocity.Y = npc.velocity.Y - acceleration * 1.1f;
+
+                if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
+                {
+                    if (npc.velocity.X > 0.0)
+                        npc.velocity.X = npc.velocity.X + acceleration;
+                    else
+                        npc.velocity.X = npc.velocity.X - acceleration;
                 }
             }
             npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
@@ -271,8 +221,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
-                AAWorld.SoCBossDeathPoint = npc.Center;
-                SoC.ComeBack = true;
+                GoHere = npc.Center;
+                ComeBack = true;
                 int num121 = 0;
                 while ((double)num121 < dmg / (double)npc.lifeMax * 3.0)
                 {
@@ -342,19 +292,18 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
         }
 
-        /*public const string BodyTex = "AAMod/NPCs/Bosses/SoC/Bosses/DeityEater_Head_Boss";
-
-        public override void BossHeadSlot(ref int index)
+        public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
+            Texture2D currentTex = Main.npcTexture[npc.type];
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/DeityEater_Glow");
 
-            index = NPCHeadLoader.GetBossHeadSlot(BodyTex);
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 
+            //draw glow/glow afterimage
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, AAColor.Cthulhu2);
+            BaseDrawing.DrawAfterimage(sb, GlowTex, 0, npc, 0.8f, 1f, 6, false, 0f, 0f, AAColor.Cthulhu2);
+
+            return false;
         }
-        public override void BossHeadRotation(ref float rotation)
-        {
-
-            rotation = npc.rotation;
-
-        }*/
     }
 }
