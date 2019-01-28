@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    public class UraniumOre : ModTile
+    public class Uranium : ModTile
     {
         public Texture2D glowTex;
         public bool glow = true;
@@ -32,7 +32,7 @@ namespace AAMod.Tiles
             Tile tile = Main.tile[x, y];
             if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
-                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/ApocalyptiteTile_Glow");
+                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/UraniumOre_Glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetUraniumColorDim);
             }
         }

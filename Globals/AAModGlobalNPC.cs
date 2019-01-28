@@ -34,6 +34,7 @@ namespace AAMod
         public bool Moonraze = false;
         public bool Electrified = false;
         public bool InfinityScorch = false;
+        public bool irradiated = false;
         public bool DiscordInferno = false;
         public static int Toad = -1;
         public static int Rose = -1;
@@ -59,6 +60,7 @@ namespace AAMod
             Electrified = false;
             InfinityScorch = false;
             DiscordInferno = false;
+            irradiated = false;
         }
 
 		public override void SetDefaults(NPC npc)

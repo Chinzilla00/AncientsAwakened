@@ -94,13 +94,36 @@ namespace AAMod
 
                 Call("RegisterHealthBarMini", instance.NPCType("YamataHeadF2"));
 
-                #region Zero HB
+                #region Healthbars
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/BMBarHead"),
+                    GetTexture("Healthbars/BMBarBody"),
+                    GetTexture("Healthbars/BMBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetMidBarOffset", 28, 8);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Broodmother")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/HydraBarHead"),
+                    GetTexture("Healthbars/HydraBarBody"),
+                    GetTexture("Healthbars/HydraBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetMidBarOffset", 40, 10);
+                yabhb.Call("hbSetBossHeadCentre", 40, 34);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Hydra")));
+
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/ZeroBarHead"),
                     GetTexture("Healthbars/ZeroBarBody"),
                     GetTexture("Healthbars/ZeroBarTail"),
-                    GetTexture("Healthbars/ZeroBarFill"));
+                    GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
@@ -115,7 +138,7 @@ namespace AAMod
                     GetTexture("Healthbars/ZeroBarHead"),
                     GetTexture("Healthbars/ZeroBarBody"),
                     GetTexture("Healthbars/ZeroBarTail"),
-                    GetTexture("Healthbars/ZeroBarFill"));
+                    GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
                 new Color(0.76f, 0.24f, 0.24f), // 100%
                 new Color(0.631f, 0.152f, 0.215f), // 50%
