@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.SoC
             if (Main.netMode != 1)
             {
                 Main.NewText("The Soul of Cthulhu shreds through reality into this world", Color.DarkCyan);
-                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("SoC"));
+                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("SoC"), 0);
                 Main.npc[npcID].Center = npc.Center;
                 Main.npc[npcID].netUpdate = true;
             }

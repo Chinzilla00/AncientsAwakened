@@ -102,12 +102,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     Body.HeadsSpawned = true;
                 }
             }
-            if (!Body.npc.active)
-            {
-				if(npc.timeLeft > 10) npc.timeLeft = 10;
-                killedbyplayer = false;
-                return;
-            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;

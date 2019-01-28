@@ -26,10 +26,10 @@ namespace AAMod.NPCs.Bosses.SoC
             npc.width = 54;
             npc.height = 54;
             npc.aiStyle = -1;
-            npc.damage = 40;
-            npc.defense = 10;
+            npc.damage = 100;
+            npc.defense = 150;
             npc.lifeMax = 1000000;
-            npc.value = Item.buyPrice(0, 2, 0, 0);
+            npc.value = Item.buyPrice(35, 0, 0, 0);
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -71,21 +71,7 @@ namespace AAMod.NPCs.Bosses.SoC
             scale = 1.5f;
             return null;
         }
-
-        public const string MapHead = "AAMod/NPCs/Boss/SoC/SoC_Head_Boss";
-        public const string BlankTex = "AAMod/BlankTex";
-
-        public override void BossHeadSlot(ref int index)
-        {
-            index = NPCHeadLoader.GetBossHeadSlot(MapHead);
-
-        }
-        public override void BossHeadRotation(ref float rotation)
-        {
-
-            rotation = npc.rotation;
-
-        }
+        
 
         int oneTime = 0;
 
@@ -102,12 +88,12 @@ namespace AAMod.NPCs.Bosses.SoC
             float EaterSummon = npc.lifeMax * .6f;
             float SkullSummon = npc.lifeMax * .4f;
             float LeviathanSummon = npc.lifeMax * .2f;
-            bool BossAlive = NPC.AnyNPCs(mod.NPCType<DeityEye>()) || NPC.AnyNPCs(mod.NPCType<DeityEater>()) || NPC.AnyNPCs(mod.NPCType<DeitySkull>()) || NPC.AnyNPCs(mod.NPCType<DeityLeviathan>());
+            bool BossAlive = NPC.AnyNPCs(mod.NPCType<DeityEye>()) || NPC.AnyNPCs(mod.NPCType<DeityEater>()) || NPC.AnyNPCs(mod.NPCType<DeitySkull>()) || NPC.AnyNPCs(mod.NPCType<DeityLeviathan>()) || NPC.AnyNPCs(mod.NPCType<DeityRose>());
             EnemyTimer++;
 
             if (EnemyTimer >= 600)
             {
-                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("Portal"), 255, -npc.velocity.X, -npc.velocity.Y);
+                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("Portal"), 0, -npc.velocity.X, -npc.velocity.Y);
                 EnemyTimer = 0;
             }
 
@@ -353,7 +339,6 @@ namespace AAMod.NPCs.Bosses.SoC
                             {
                                 Eye = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityEye"));
-                                npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
                             }
@@ -420,7 +405,6 @@ namespace AAMod.NPCs.Bosses.SoC
                             {
                                 Skull = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeitySkull"));
-                                npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
                             }
@@ -456,7 +440,6 @@ namespace AAMod.NPCs.Bosses.SoC
                             {
                                 Rose = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityRose"));
-                                npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
                             }
@@ -491,7 +474,6 @@ namespace AAMod.NPCs.Bosses.SoC
                             {
                                 Leviathan = true;
                                 NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeityLeviathan"));
-                                npc.ai[3] = 1f;
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
                             }

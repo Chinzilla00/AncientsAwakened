@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
+    [AutoloadBossHead]
     public class DeityEater : ModNPC
 	{
         public bool HeadsSpawned = false;
@@ -131,8 +132,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             {
                 num32 = Main.maxTilesY;
             }
-            float num37 = 6f;
-            float num38 = 0.2f;
+            float num37 = 9f;
+            float num38 = 0.16f;
             Vector2 vector2 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
             float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
             float num41 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
@@ -270,8 +271,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
+                AAWorld.SoCBossDeathPoint = npc.Center;
                 SoC.ComeBack = true;
-                AAWorld.SoCBossDeathPoint = npc.position;
                 int num121 = 0;
                 while ((double)num121 < dmg / (double)npc.lifeMax * 3.0)
                 {
@@ -341,7 +342,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
         }
 
-        public const string BodyTex = "AAMod/NPCs/Bosses/SoC/Bosses/DeityEater_Head_Boss";
+        /*public const string BodyTex = "AAMod/NPCs/Bosses/SoC/Bosses/DeityEater_Head_Boss";
 
         public override void BossHeadSlot(ref int index)
         {
@@ -354,6 +355,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
 
             rotation = npc.rotation;
 
-        }
+        }*/
     }
 }

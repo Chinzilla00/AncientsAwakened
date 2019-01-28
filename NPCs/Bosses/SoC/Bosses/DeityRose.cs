@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
+    [AutoloadBossHead]
     public class DeityRose : ModNPC
 	{
 
@@ -437,6 +438,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
+                AAWorld.SoCBossDeathPoint = npc.position;
+                SoC.ComeBack = true;
                 int num440 = 0;
                 while ((double)num440 < dmg / (double)npc.lifeMax * 100.0)
                 {

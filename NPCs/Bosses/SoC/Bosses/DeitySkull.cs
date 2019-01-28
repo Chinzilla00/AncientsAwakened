@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
+    [AutoloadBossHead]
     public class DeitySkull : ModNPC
     {
 
@@ -53,8 +54,8 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                SoC.ComeBack = true;
                 AAWorld.SoCBossDeathPoint = npc.position;
+                SoC.ComeBack = true;
             }
         }
 
@@ -79,29 +80,16 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             return false;
         }
 
-        public const string MapHead = "AAMod/NPCs/Boss/SoC/Bosses/DeitySkull_Head_Boss";
-
-        public override void BossHeadSlot(ref int index)
-        {
-
-            index = NPCHeadLoader.GetBossHeadSlot(MapHead);
-
-        }
-        public override void BossHeadRotation(ref float rotation)
-        {
-
-            rotation = npc.rotation;
-
-        }
+        public int HandTimer = 120;
 
         public override void AI()
         {
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
             bool expert = Main.expertMode;
+            HandTimer--;
 
-
-            if (npc.type == mod.NPCType<DeitySkull>() && (!NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand1>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand2>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand3>()) || !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand4>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand5>())))
+            if ((npc.type == mod.NPCType<DeitySkull>() && (!NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand1>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand2>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand3>()) || !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand4>()) && !NPC.AnyNPCs(mod.NPCType<DeitySkull_Hand5>()))) && HandTimer <= 0)
             {
                 npc.life = 0;
             }

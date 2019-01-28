@@ -1158,318 +1158,161 @@ namespace AAMod
             }
         }
 
-        public void PHMDevArmor()
+        public void DropDevArmor(int dropType)
         {
-            int choice = Main.rand.Next(20);
+            bool spawnedDevItems = false; //this prevents it from not dropping anything if the chance lands on something it cannot drop yet (for prehm/hm) as by this point it's past the 10% chance and thus should drop.
+            string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
+            while (!spawnedDevItems)
             {
-                if (choice == 0)
+                int choice = Main.rand.Next(16);
+                switch (choice)
                 {
-                    player.QuickSpawnItem(mod.ItemType("HalHat"));
-                    player.QuickSpawnItem(mod.ItemType("HalTux"));
-                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                }
-                else if (choice == 1)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                }
-                else if (choice == 2)
-                {
-                    player.QuickSpawnItem(mod.ItemType("N1"));
-                }
-                if (choice == 3)
-                {
-                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                }
-                if (choice == 4)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
-                }
-                if (choice == 5)
-                {
-                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                }
-                if (choice == 13)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
-                }
-                if (choice == 14)
-                {
-                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-                }
-                if (choice == 15)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
+                    case 0:
+                        player.QuickSpawnItem(mod.ItemType("HalHat"));
+                        player.QuickSpawnItem(mod.ItemType("HalTux"));
+                        player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+                        if (dropType >= 2) player.QuickSpawnItem(mod.ItemType("Prismeow" + addonEX));
+                        spawnedDevItems = true;
+                        break;
+                    case 1:
+                        string addonA = (dropType == 3 ? "A" : "");
+                        player.QuickSpawnItem(mod.ItemType("FishDiverMask" + addonA));
+                        player.QuickSpawnItem(mod.ItemType("FishDiverJacket" + addonA));
+                        player.QuickSpawnItem(mod.ItemType("FishDiverBoots" + addonA));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("KipronWings"));
+                            player.QuickSpawnItem(mod.ItemType("AmphibianLongsword" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 2:
+                        player.QuickSpawnItem(mod.ItemType("N1"));
+                        if (dropType >= 2) player.QuickSpawnItem(mod.ItemType("Sax"));
+                        spawnedDevItems = true;
+                        break;
+                    case 3:
+                        player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
+                        player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
+                        player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
+                        if (dropType >= 2) player.QuickSpawnItem(mod.ItemType("UmbreonSP" + addonEX));
+                        spawnedDevItems = true;
+                        break;
+                    case 4:
+                        player.QuickSpawnItem(mod.ItemType("FlowerMask"));
+                        player.QuickSpawnItem(mod.ItemType("FlowerVest"));
+                        player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
+                        spawnedDevItems = true;
+                        break;
+                    case 5:
+                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
+                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
+                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                            player.QuickSpawnItem(mod.ItemType("ChinStaff" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 6:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 7:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "DragonShell" : "CharlieShell"));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 8:
+                        player.QuickSpawnItem(mod.ItemType("FezLordsBag"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "Chronos" : "TimeTeller"));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 9:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("TitanAxe" + addonEX));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 10:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("EnderStaff" + addonEX));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 11:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("CatsEyeRifle" + addonEX));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 12:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("DuckstepGun" + addonEX));
+                            spawnedDevItems = true;
+                        }
+                        break;
+                    case 13:
+                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
+                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
+                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "GentlemansLongblade" : "GentlemansRapier"));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 14:
+                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
+                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
+                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("Etheral" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 15:
+                        player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                        player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                        player.QuickSpawnItem(mod.ItemType("FazerPants"));
+                        spawnedDevItems = true;
+                        break;
                 }
             }
+        }
+
+        public void PHMDevArmor()
+        {
+            DropDevArmor(0);
         }
 
         public void HMDevArmor()
         {
-            int choice = Main.rand.Next(20);
-            {
-                if (choice == 0)
-                {
-                    player.QuickSpawnItem(mod.ItemType("HalHat"));
-                    player.QuickSpawnItem(mod.ItemType("HalTux"));
-                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                }
-                else if (choice == 1)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
-                }
-                else if (choice == 2)
-                {
-                    player.QuickSpawnItem(mod.ItemType("N1"));
-                }
-                if (choice == 3)
-                {
-                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                }
-                if (choice == 4)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
-                }
-                if (choice == 5)
-                {
-                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
-                }
-                if (choice == 13)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
-                }
-                if (choice == 14)
-                {
-                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-                }
-                if (choice == 15)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
-                }
-            }
+            DropDevArmor(1);
         }
-
+        
         public void PMLDevArmor()
         {
-            int choice = Main.rand.Next(20);
-            {
-                if (choice == 0)
-                {
-                    player.QuickSpawnItem(mod.ItemType("HalHat"));
-                    player.QuickSpawnItem(mod.ItemType("HalTux"));
-                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                    player.QuickSpawnItem(mod.ItemType("Prismeow"));
-                }
-                else if (choice == 1)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FishDiverMask"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverJacket"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverBoots"));
-                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
-                    player.QuickSpawnItem(mod.ItemType("AmphibianLongsword"));
-                }
-                else if (choice == 2)
-                {
-                    player.QuickSpawnItem(mod.ItemType("N1"));
-                    player.QuickSpawnItem(mod.ItemType("Sax"));
-                }
-                if (choice == 3)
-                {
-                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                    player.QuickSpawnItem(mod.ItemType("UmbreonSP"));
-                }
-                if (choice == 4)
-                {
-
-                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
-                }
-                if (choice == 5)
-                {
-                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
-                    player.QuickSpawnItem(mod.ItemType("ChinStaff"));
-                }
-                if (choice == 6)
-                {
-                    player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
-                }
-                if (choice == 7)
-                {
-                    player.QuickSpawnItem(mod.ItemType("CharlieShell"));
-                }
-                if (choice == 8)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TimeTeller"));
-                }
-                if (choice == 9)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TitanAxe"));
-                }
-                if (choice == 10)
-                {
-                    player.QuickSpawnItem(mod.ItemType("EnderStaff"));
-                }
-                if (choice == 11)
-                {
-                    player.QuickSpawnItem(mod.ItemType("CatsEyeRifle"));
-                }
-                if (choice == 12)
-                {
-                    player.QuickSpawnItem(mod.ItemType("DuckstepGun"));
-                }
-                if (choice == 13)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
-                    player.QuickSpawnItem(mod.ItemType("GentlemansRapier"));
-                }
-                if (choice == 14)
-                {
-                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-                    player.QuickSpawnItem(mod.ItemType("Etheral"));
-                }
-                if (choice == 15)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
-                }
-            }
+            DropDevArmor(2);
         }
 
         public void SADevArmor()
         {
-            int choice = Main.rand.Next(20);
-            {
-                if (choice == 0)
-                {
-                    player.QuickSpawnItem(mod.ItemType("HalHat"));
-                    player.QuickSpawnItem(mod.ItemType("HalTux"));
-                    player.QuickSpawnItem(mod.ItemType("HalTrousers"));
-                    player.QuickSpawnItem(mod.ItemType("PrismeowEX"));
-                }
-                else if (choice == 1)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FishDiverMaskA"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverJacketA"));
-                    player.QuickSpawnItem(mod.ItemType("FishDiverBootsA"));
-                    player.QuickSpawnItem(mod.ItemType("KipronWings"));
-                    player.QuickSpawnItem(mod.ItemType("AmphibianLongswordEX"));
-                }
-                else if (choice == 2)
-                {
-                    player.QuickSpawnItem(mod.ItemType("N1"));
-                    player.QuickSpawnItem(mod.ItemType("Sax"));
-                }
-                if (choice == 3)
-                {
-                    player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                    player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-                    player.QuickSpawnItem(mod.ItemType("UmbreonSPEX"));
-                }
-                if (choice == 4)
-                {
-
-                    player.QuickSpawnItem(mod.ItemType("FlowerMask"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerVest"));
-                    player.QuickSpawnItem(mod.ItemType("FlowerBoots"));
-                }
-                if (choice == 5)
-                {
-                    player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                    player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                    player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                    player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
-                    player.QuickSpawnItem(mod.ItemType("ChinStaffEX"));
-                }
-                if (choice == 6)
-                {
-                    player.QuickSpawnItem(mod.ItemType("SkrallStaff"));
-                }
-                if (choice == 7)
-                {
-                    player.QuickSpawnItem(mod.ItemType("CharlieShellEX"));
-                }
-                if (choice == 8)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TimeTeller"));
-                }
-                if (choice == 9)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TitanAxeEX"));
-                }
-                if (choice == 10)
-                {
-                    player.QuickSpawnItem(mod.ItemType("EnderStaffEX"));
-                }
-                if (choice == 11)
-                {
-                    player.QuickSpawnItem(mod.ItemType("CatsEyeRifleEX"));
-                }
-                if (choice == 12)
-                {
-                    player.QuickSpawnItem(mod.ItemType("DuckstepGunEX"));
-                }
-                if (choice == 13)
-                {
-                    player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                    player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                    player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
-                    player.QuickSpawnItem(mod.ItemType("GentlemansLongblade"));
-                }
-                if (choice == 14)
-                {
-                    player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                    player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                    player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-                    player.QuickSpawnItem(mod.ItemType("EtheralEX"));
-                }
-                if (choice == 15)
-                {
-                    player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                    player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                    player.QuickSpawnItem(mod.ItemType("FazerPants"));
-                }
-            }
+            DropDevArmor(3);
         }
 
         public override void PreUpdate()

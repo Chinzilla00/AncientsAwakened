@@ -15,6 +15,7 @@ namespace AAMod.Dusts
 
         public override bool MidUpdate(Dust dust)
         {
+            dust.scale *= 0.8f;
             if (!dust.noGravity)
             {
                 dust.velocity.Y += 0.05f;

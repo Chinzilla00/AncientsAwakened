@@ -38,29 +38,25 @@ namespace AAMod.Projectiles.SoC
         public override void AI()
         {
             projectile.scale = 1f - projectile.alpha / 255f;
-            projectile.rotation += .05f;
+            projectile.rotation += .1f;
             if (projectile.alpha <= 0 && !Shrink)
             {
                 Shrink = true;
             }
             if (!Shrink)
             {
-                projectile.alpha -= 3;
+                projectile.alpha -= 8;
             }
             if (Shrink)
             {
-                projectile.alpha += 3;
+                projectile.alpha += 8;
                 if (projectile.alpha >= 255)
                 {
                     projectile.active = false;
                 }
             }
         }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("Moonraze"), 600);
-        }
+        
 
         public override void Kill(int timeLeft)
         {
