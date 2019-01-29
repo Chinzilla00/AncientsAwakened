@@ -16,9 +16,9 @@ namespace AAMod.Items.Tablet
         {
             DisplayName.SetDefault("Fulgarian Data Log #001; Contact");
             Tooltip.SetDefault(@"Contact with the world of terraria has been made.
-We will be documenting all of the strange anomolies 
+We will be documenting all of the strange anomalies 
 detected here on this small planet. First step; Establish 
-a base.");
+a base of operations.");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,11));
         }
         #region methods
