@@ -30,7 +30,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             npc.defense = 110;
             npc.lifeMax = 150000;
             npc.knockBackResist = 0f;
-            animationType = NPCID.DukeFishron;
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.npcSlots = 10f;
@@ -69,6 +68,101 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             {
                 GoHere = npc.Center;
                 ComeBack = true;
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            int num = Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type];
+            if (npc.ai[0] == 0f || npc.ai[0] == 5f)
+            {
+                int num112 = 5;
+                if (npc.ai[0] == 5f)
+                {
+                    num112 = 4;
+                }
+                npc.frameCounter += 1.0;
+                if (npc.frameCounter > (double)num112)
+                {
+                    npc.frameCounter = 0.0;
+                    npc.frame.Y = npc.frame.Y + num;
+                }
+                if (npc.frame.Y >= num * 6)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+            if (npc.ai[0] == 1f || npc.ai[0] == 6f)
+            {
+                if (npc.ai[2] < 10f)
+                {
+                    npc.frame.Y = num * 6;
+                }
+                else
+                {
+                    npc.frame.Y = num * 7;
+                }
+            }
+            if (npc.ai[0] == 2f || npc.ai[0] == 7f)
+            {
+                if (npc.ai[2] < 10f)
+                {
+                    npc.frame.Y = num * 6;
+                }
+                else
+                {
+                    npc.frame.Y = num * 7;
+                }
+            }
+            if (npc.ai[0] == 3f || npc.ai[0] == 8f || npc.ai[0] == -1f)
+            {
+                int num113 = 90;
+                if (npc.ai[2] < (float)(num113 - 30) || npc.ai[2] > (float)(num113 - 10))
+                {
+                    npc.frameCounter += 1.0;
+                    if (npc.frameCounter > 5.0)
+                    {
+                        npc.frameCounter = 0.0;
+                        npc.frame.Y = npc.frame.Y + num;
+                    }
+                    if (npc.frame.Y >= num * 6)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+                else
+                {
+                    npc.frame.Y = num * 6;
+                    if (npc.ai[2] > (float)(num113 - 20) && npc.ai[2] < (float)(num113 - 15))
+                    {
+                        npc.frame.Y = num * 7;
+                    }
+                }
+            }
+            if (npc.ai[0] == 4f || npc.ai[0] == 9f)
+            {
+                int num114 = 180;
+                if (npc.ai[2] < (float)(num114 - 60) || npc.ai[2] > (float)(num114 - 20))
+                {
+                    npc.frameCounter += 1.0;
+                    if (npc.frameCounter > 5.0)
+                    {
+                        npc.frameCounter = 0.0;
+                        npc.frame.Y = npc.frame.Y + num;
+                    }
+                    if (npc.frame.Y >= num * 6)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+                else
+                {
+                    npc.frame.Y = num * 6;
+                    if (npc.ai[2] > (float)(num114 - 50) && npc.ai[2] < (float)(num114 - 25))
+                    {
+                        npc.frame.Y = num * 7;
+                    }
+                }
             }
         }
 

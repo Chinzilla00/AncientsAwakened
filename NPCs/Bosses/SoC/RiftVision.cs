@@ -242,7 +242,7 @@ namespace AAMod.NPCs.Bosses.SoC
                 Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
                 spriteBatch.Draw(Trail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
-            return true;
+            return false;
         }
     }
 }
