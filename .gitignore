@@ -19,3 +19,5 @@ AAMod.csproj.user
 *.CopyComplete
 *.cache
 *.txt
+bin/Debug/AAMod.dll
+bin/Debug/AAMod.pdb
