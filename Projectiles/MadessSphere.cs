@@ -25,11 +25,6 @@ namespace AAMod.Projectiles
 
 		public override void AI()
 		{
-            if (((projectile.velocity.X != velocity.X && (velocity.X < -3f || velocity.X > 3f)) || (projectile.velocity.Y != velocity.Y && (velocity.Y < -3f || velocity.Y > 3f))))
-            {
-                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 1f, 0f);
-            }
             projectile.ai[0] += 1f;
             if (projectile.ai[0] > 15f)
             {

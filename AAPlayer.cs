@@ -2588,23 +2588,23 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("UraniumBoots")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumBoots_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumBoots_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayLeggings")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomsdayLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomsdayLeggings_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterGreaves")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DarkmatterGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DarkmatterGreaves_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("RadiumCuisses")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumCuisses_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumCuisses_Legs"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGreaves")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/InfinityGreaves_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
             {
@@ -2612,7 +2612,32 @@ namespace AAMod
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosGreavesBlue_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.legFrame);
                 }
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosGreaves_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.legFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
+            {
+                if (!drawPlayer.invis && !drawPlayer.mount.Active)
+                {
+                    DrawData value = default(DrawData);
+                    Color color14 = drawPlayer.GetImmuneAlphaPure(Lighting.GetColor((int)((double)edi.position.X + (double)drawPlayer.width * 0.5) / 16, (int)((double)edi.position.Y + (double)drawPlayer.height * 0.75) / 16, Microsoft.Xna.Framework.Color.White), edi.shadow);
+                    Texture2D texture2 = mod.GetTexture("Items/Armor/Djinn/DjinnLegs");
+                    bool flag10 = drawPlayer.legFrame.Y == 0;
+                    int num65 = drawPlayer.miscCounter / 3 % 8;
+                    if (flag10)
+                    {
+                        num65 = drawPlayer.miscCounter / 4 % 8;
+                    }
+                    Rectangle rectangle3 = new Rectangle(18 * flag10.ToInt(), num65 * 26, 16, 24);
+                    float num66 = 12f - Main.OffsetsPlayerHeadgear[drawPlayer.bodyFrame.Y / drawPlayer.bodyFrame.Height].Y;
+                    Vector2 scale2 = new Vector2(1f, 1f);
+                    Vector2 arg_6147_0 = edi.position + drawPlayer.Size * new Vector2(0.5f, 0.5f + 0.5f * drawPlayer.gravDir);
+                    int arg_6135_0 = drawPlayer.direction;
+                    Vector2 vector7 = arg_6147_0 + new Vector2((float)0, -num66 * drawPlayer.gravDir) - Main.screenPosition + drawPlayer.legPosition;
+                    vector7 = vector7.Floor();
+                    value = new DrawData(texture2, vector7, new Rectangle?(rectangle3), color14, drawPlayer.legRotation, rectangle3.Size() * new Vector2(0.5f, 0.5f - drawPlayer.gravDir * 0.5f), scale2, SpriteEffects.None, 0);
+                    value.shader = edi.legArmorShader;
+                    Main.playerDrawData.Add(value);
+                }
             }
         });
 

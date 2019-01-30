@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Djinn
 {
-    class LampPoof : ModProjectile
+    class Sandstorm : ModProjectile
     {
 
         public override void SetDefaults()

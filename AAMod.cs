@@ -115,8 +115,8 @@ namespace AAMod
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/RGCBarHead"),
-                    GetTexture("Healthbars/RGCarBody"),
-                    GetTexture("Healthbars/RGCarTail"),
+                    GetTexture("Healthbars/RGCBarBody"),
+                    GetTexture("Healthbars/RGCBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
                     AAColor.Broodmother,
@@ -129,9 +129,9 @@ namespace AAMod
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
-                    GetTexture("Healthbars/BGCarHead"),
-                    GetTexture("Healthbars/BGCarBody"),
-                    GetTexture("Healthbars/BGCarTail"),
+                    GetTexture("Healthbars/BGCBarHead"),
+                    GetTexture("Healthbars/BGCBarBody"),
+                    GetTexture("Healthbars/BGCBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
                     AAColor.Hydra,
