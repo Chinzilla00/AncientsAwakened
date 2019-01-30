@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infinity Zero; Mechanical Malice");
-			Main.npcFrameCount[npc.type] = 2;
+			Main.npcFrameCount[npc.type] = 4;
 		}
 		public override void SetDefaults()
 		{
@@ -273,7 +273,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         {
             if (roarTimer > -1)
             {
-                npc.frame.Y = 1 * frameHeight;
+                npc.frame.Y = 2 * frameHeight;
             } else
             {
                 npc.frame.Y = 0;

@@ -76,5 +76,16 @@ Gentleman's Rapier EX");
             }
             return false;
         }
+
+        public override void AddRecipes()
+        {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "GentlemansRapier");
+                recipe.AddIngredient(null, "EXSoul");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+        }
     }
 }

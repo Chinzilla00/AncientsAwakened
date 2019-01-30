@@ -736,6 +736,7 @@ namespace AAMod
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
+            bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
@@ -750,7 +751,7 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            if (AAWorld.downedAllAncients && (zoneIZ || zoneShen))
+            if (AAWorld.downedAllAncients && (zoneIZ || zoneShen || zoneSoC))
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
@@ -758,9 +759,6 @@ namespace AAMod
             }
             if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
             {
-
-                // Make sure your logic here goes from lowest priority to highest so your intended priority is maintained.
-
                 if (player.HeldItem.type == ItemType("Sax"))
                 {
 
@@ -770,9 +768,7 @@ namespace AAMod
 
                     return;
                 }
-
             }
-            
             if (Slayer == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroDeath");
@@ -780,7 +776,6 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
@@ -790,7 +785,7 @@ namespace AAMod
             if (Ancients.ZoneShip)
             {
                 priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Ship");
                 return;
             }
             
@@ -802,10 +797,10 @@ namespace AAMod
             }
             if (Ancients.ZoneInferno)
             {
-                if (Ancients.ZoneRisingSunPagoda)
+                if (Ancients.ZoneRisingSunPagoda && AAWorld.downedEquinox && !AAWorld.downedAkuma)
                 {
                     priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine");
                     return;
                 }
                 if (player.ZoneRockLayerHeight)
@@ -823,7 +818,7 @@ namespace AAMod
             }
             if (Ancients.ZoneMire)
             {
-                if (Ancients.ZoneRisingMoonLake)
+                if (Ancients.ZoneRisingMoonLake && AAWorld.downedEquinox && !AAWorld.downedYamata)
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
@@ -1419,6 +1414,23 @@ namespace AAMod
             }
             {
                 ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.Glass, 10);
+                recipe.AddIngredient(ItemID.RecallPotion, 10);
+                recipe.AddTile(TileID.GlassKiln);
+                recipe.SetResult(ItemID.MagicMirror);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IceBrick, 10);
+                recipe.AddIngredient(ItemID.RecallPotion, 10);
+                recipe.AddTile(TileID.IceMachine);
+                recipe.SetResult(ItemID.IceMirror);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.IceBlock, 30);
                 recipe.AddIngredient(ItemID.Diamond, 1);
                 recipe.AddIngredient(ItemID.Sapphire, 1);
@@ -1448,18 +1460,22 @@ namespace AAMod
                         case "hydra": return AAWorld.downedHydra;
                         case "grips":
                         case "gripsofchaos": return AAWorld.downedGrips;
+                        case "tode": return AAWorld.downedToad;
                         case "retriever": return AAWorld.downedRetriever;
                         case "orthrus": return AAWorld.downedOrthrus;
                         case "raider": return AAWorld.downedRaider;
                         case "stormany": return AAWorld.downedStormAny;
                         case "stormall": return AAWorld.downedStormAll;
                         case "daybringer": return AAWorld.downedDB;
-                        case "Nightcrawler": return AAWorld.downedNC;
+                        case "nightcrawler": return AAWorld.downedNC;
                         case "equinox": return AAWorld.downedEquinox;
                         case "ancient":
                         case "ancientany": return AAWorld.downedAncient;
                         case "sancient":
                         case "sancientany": return AAWorld.downedSAncient;
+                        case "gripsS":
+                        case "discordgrips": return AAWorld.downedGripsS;
+                        case "kraken": return AAWorld.downedKraken;
                         case "akuma": return AAWorld.downedAkuma;
                         case "yamata": return AAWorld.downedYamata;
                         case "zero": return AAWorld.downedZero;
@@ -1467,6 +1483,8 @@ namespace AAMod
                         case "shendoragon": return AAWorld.downedShen;
                         case "iz":
                         case "infinityzero": return AAWorld.downedIZ;
+                        case "soc":
+                        case "soulofcthulhu": return AAWorld.downedSoC;
                     }
                 };
                 return downed;
@@ -1482,7 +1500,11 @@ namespace AAMod
                     {
                         default: return false;
                         case "mire": return aap.ZoneMire;
+                        case "lake": return aap.ZoneRisingMoonLake;
                         case "inferno": return aap.ZoneInferno;
+                        case "pagoda": return aap.ZoneRisingSunPagoda;
+                        case "ship": return aap.ZoneShip;
+                        case "storm": return aap.ZoneStorm;
                         case "void": return aap.ZoneVoid;
                         case "mush": return aap.ZoneMush;
                         case "terrarium": return aap.Terrarium;

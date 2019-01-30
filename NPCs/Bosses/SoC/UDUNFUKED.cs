@@ -40,7 +40,14 @@ namespace AAMod.NPCs.Bosses.SoC
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            if (player.dead || !player.active)
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
+            {
+                npc.TargetClosest(true);
+                npc.active = false;
+            }
+            if (player.dead || !player.active || !modPlayer.ZoneShip)
             {
                 if (Line == false && Main.netMode != 1)
                 {
@@ -60,7 +67,6 @@ namespace AAMod.NPCs.Bosses.SoC
                 }
                 return;
             }
-            AAPlayer modPlayer = Main.player[npc.target].GetModPlayer<AAPlayer>();
             npc.rotation += npc.direction * 0.7f;
             Vector2 vector44 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
             float num441 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector44.X;

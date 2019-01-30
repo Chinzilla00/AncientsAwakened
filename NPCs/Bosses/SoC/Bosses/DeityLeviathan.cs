@@ -12,7 +12,7 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityLeviathan : SoC
+    public class DeityLeviathan : ModNPC
 	{
 
         public override void SetStaticDefaults()
@@ -66,8 +66,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                GoHere = npc.Center;
-                ComeBack = true;
+                SoC.ComeBack = true;
             }
         }
 

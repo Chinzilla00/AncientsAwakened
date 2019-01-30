@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityRose : SoC
+    public class DeityRose : ModNPC
 	{
 
         public override void SetStaticDefaults()
@@ -438,8 +438,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life > 0)
             {
-                GoHere = npc.Center;
-                ComeBack = true;
+                SoC.ComeBack = true;
                 int num440 = 0;
                 while ((double)num440 < dmg / (double)npc.lifeMax * 100.0)
                 {

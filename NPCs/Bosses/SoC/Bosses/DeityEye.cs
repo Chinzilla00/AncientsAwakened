@@ -11,8 +11,8 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeityEye : SoC
-	{
+    public class DeityEye : ModNPC
+    {
         public bool HeadsSpawned = false;
 
         public override void SetStaticDefaults()
@@ -46,8 +46,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                GoHere = npc.Center;
-                ComeBack = true;
+                SoC.ComeBack = true;
             }
         }
 

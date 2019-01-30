@@ -360,7 +360,6 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (npc.ai[1] == 1f)
                 {
-
                     npc.frame.Y = frameHeight;
                     npc.defense = 180;
                     npc.damage = 200;
@@ -382,6 +381,15 @@ namespace AAMod.NPCs.Bosses.Zero
                     num446 = num447 / num446;
                     npc.velocity.X = num444 * num446;
                     npc.velocity.Y = num445 * num446;
+
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= 240f)
+                    {
+                        npc.ai[2] = 0f;
+                        npc.ai[1] = 0f;
+                        npc.TargetClosest(true);
+                        npc.netUpdate = true;
+                    }
                     return;
 
                 }

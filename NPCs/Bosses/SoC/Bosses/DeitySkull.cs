@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.SoC.Bosses
 {
     [AutoloadBossHead]
-    public class DeitySkull : SoC
+    public class DeitySkull : ModNPC
     {
 
         public override void SetStaticDefaults()
@@ -55,7 +55,6 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
         {
             if (npc.life <= 0)
             {
-                GoHere = npc.Center;
                 SoC.ComeBack = true;
             }
         }
@@ -98,8 +97,7 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             {
                 npc.dontTakeDamage = true;
             }
-            if (npc.ai[0] < 300f)npc.ai[0]++;
-            if (npc.ai[0] == 300.0 && Main.netMode != 1)
+            if (Main.netMode != 1)
             {
                 npc.TargetClosest(true);
                 npc.ai[0]++;

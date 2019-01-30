@@ -807,8 +807,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             base.SetDefaults();
 
-            npc.width = 78;
-            npc.height = 78;
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
 
             npc.alpha = 255;

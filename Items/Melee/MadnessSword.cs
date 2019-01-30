@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(null, "MadnessShard", 5);
+            recipe.AddIngredient(null, "MadnessFragment", 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

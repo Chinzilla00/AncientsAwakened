@@ -1126,6 +1126,8 @@ namespace AAMod
                     Main.NewText("Chaos begins to stir in the atmosphere around you", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
                     Main.NewText("You feel as if you are being watched by something...malicious...", new Color(158, 3, 32));
+
+                    Main.NewText("An otherworldly fog encompasses the ocean", Color.Cyan);
                 }
             }
             if (Main.hardMode == true)

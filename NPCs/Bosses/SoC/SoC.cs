@@ -63,7 +63,6 @@ namespace AAMod.NPCs.Bosses.SoC
         public bool Morphed = false;
         public static bool ComeBack = false;
         public int ReturnTimer = 100;
-        public Vector2 GoHere;
 
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -114,20 +113,12 @@ namespace AAMod.NPCs.Bosses.SoC
                 Morphed = false;
             }
 
-            if (!BossAlive && ComeBack == true)
-            {
-                ComeBack = false;
-                npc.Center = GoHere;
-                ReturnTimer = 100;
-                return;
-            }
-
             if (Morphed)
             {
-                npc.alpha += 30;
-                if (npc.alpha >= 255)
+                npc.alpha += 12;
+                if (npc.alpha >= 140)
                 {
-                    npc.alpha = 255;
+                    npc.alpha = 140;
                 }
                 npc.dontTakeDamage = true;
 
@@ -404,7 +395,7 @@ namespace AAMod.NPCs.Bosses.SoC
                             if (Skull == false)
                             {
                                 Skull = true;
-                                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeitySkull"));
+                                NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("DeitySkull"), 0, 0, 1);
                                 npc.ai[2] = 0f;
                                 npc.ai[1] = 0f;
                             }
@@ -572,12 +563,9 @@ namespace AAMod.NPCs.Bosses.SoC
             {
                 color = drawColor;
             }
-            if (!Morphed)
-            {
-                Main.spriteBatch.Draw(Rift, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Rift.Width, Rift.Height)), AAColor.Cthulhu, RiftSpin, new Vector2(Rift.Width / 2f, Rift.Height / 2f), 1.5f, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(WheelTex, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, WheelTex.Width, WheelTex.Height)), color, Rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(texture2D13, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, texture2D13.Width, texture2D13.Height)), color, npc.rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
-            }
+            Main.spriteBatch.Draw(Rift, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Rift.Width, Rift.Height)), AAColor.Cthulhu, RiftSpin, new Vector2(Rift.Width / 2f, Rift.Height / 2f), 1.5f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(WheelTex, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, WheelTex.Width, WheelTex.Height)), color, Rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture2D13, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, texture2D13.Width, texture2D13.Height)), color, npc.rotation, new Vector2(texture2D13.Width / 2f, texture2D13.Height / 2f), npc.scale, SpriteEffects.None, 0f);
             return false;
         }
 

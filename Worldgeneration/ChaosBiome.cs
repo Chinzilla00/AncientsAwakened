@@ -581,7 +581,7 @@ namespace AAMod.Worldgeneration
             colorToWall[new Color(255, 0, 0)] = mod.WallType("RottedWall");
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/Ship"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/ShipWalls"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
             
             gen.Generate(origin.X, origin.Y - 28, true, true);
             

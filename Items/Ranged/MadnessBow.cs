@@ -33,7 +33,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "MadnessShard", 6);
+            recipe.AddIngredient(mod, "MadnessFragment", 6);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
