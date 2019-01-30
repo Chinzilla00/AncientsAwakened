@@ -190,6 +190,9 @@ namespace AAMod
         private static int UI_ScreenAnchorX = Main.screenWidth - 800;
         public static SpriteFont fontMouseText;
 
+        //Misc
+        public bool Compass = false;
+
         public override void ResetEffects()
         {
             //Minions
@@ -288,6 +291,9 @@ namespace AAMod
             BoomBoi = false;
             //EnemyChecks
             IsGoblin = false;
+
+            //Misc
+            Compass = false;
             
         }
 
@@ -298,8 +304,13 @@ namespace AAMod
 
         public override TagCompound Save()
         {
-            return new TagCompound
-            {
+            var PlayerBool = new List<string>();
+
+
+            if (Compass) PlayerBool.Add("Compass");
+
+            return new TagCompound {
+                {"PlayerBool", PlayerBool},
                 {
                     "ManaLantern", ManaLantern
                 }
@@ -310,6 +321,10 @@ namespace AAMod
         public override void Load(TagCompound tag)
         {
             int ManaLantern = tag.GetInt("ManaLantern");
+            var PlayerBool = tag.GetList<string>("PlayerBool");
+
+            Compass = PlayerBool.Contains("Compass");
+
             if (tag.ContainsKey("ManaLantern"))
             {
                 ManaLantern = tag.GetInt("ManaLantern");
@@ -1057,16 +1072,12 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (NPC.AnyNPCs(mod.NPCType<UDUNFUKED>()))
-            {
-                CthulhuCountdown = 1800;
-            }
-            if (AAWorld.Compass == false)
+            if (AAWorld.Compass == false && Compass == false)
             {
                 if (player.inventory.Any(i => i.type == mod.ItemType<Items.BossSummons.CursedCompass>() && i.stack > 0))
                 {
                     AAWorld.Compass = true;
-
+                    Compass = true;
                     Leave = false;
                     NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
                     if (Main.netMode != 1)
@@ -1077,7 +1088,6 @@ namespace AAMod
             }
             if (ZoneShip && Leave == false)
             {
-                Leave = true;
                 CthulhuCountdown--;
                 if (CthulhuCountdown == 1500 && Main.netMode != 1)
                 {
@@ -1105,7 +1115,7 @@ namespace AAMod
                     }
                 }
             }
-            if (!ZoneShip)
+            if (!ZoneShip || NPC.AnyNPCs(mod.NPCType<UDUNFUKED>()))
             {
                 CthulhuCountdown = 1800;
             }
@@ -2256,6 +2266,7 @@ namespace AAMod
             BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, false);
             BaseDrawing.AddPlayerLayer(list, glAfterShield, PlayerLayer.ShieldAcc, false);
             BaseDrawing.AddPlayerLayer(list, glAfterNeck, PlayerLayer.NeckAcc, false);
+            BaseDrawing.AddPlayerLayer(list, glAfterFace, PlayerLayer.FaceAcc, false);
         }
 
         public PlayerLayer glAfterWep = new PlayerLayer("AAMod", "glAfterWep", PlayerLayer.HeldItem, delegate (PlayerDrawInfo edi)
@@ -2316,6 +2327,42 @@ namespace AAMod
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TaiyangBaoleiA_Shield_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
+            }
+        });
+
+        public PlayerLayer glAfterFace = new PlayerLayer("AAMod", "glAfterFace", PlayerLayer.FaceAcc, delegate (PlayerDrawInfo edi)
+        {
+            Mod mod = AAMod.instance;
+            Player drawPlayer = edi.drawPlayer;
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("SoulStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/SoulStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/SoulStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Orange);
+            }
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("SpaceStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/SpaceStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/SpaceStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Cyan);
+            }
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("RealityStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/RealityStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/RealityStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Red);
+            }
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("TimeStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/TimeStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/TimeStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Green);
+            }
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("PowerStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/PowerStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/PowerStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Purple);
+            }
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("MindStone")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/MindStone_Face_Glow"), edi.faceShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame);
+                BaseDrawing.DrawAfterimage(drawPlayer, mod.GetTexture("Glowmasks/MindStone_Face_Glow"), edi.faceShader, drawPlayer, 0.8f, 1f, 6, false, 0f, 0f, Color.Yellow);
             }
         });
 

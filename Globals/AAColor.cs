@@ -7,55 +7,86 @@ namespace AAMod
 {
 	public class AAColor
     {
-        public static Color Lantern //Blaze Lantern
+        public static Color Lantern
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(224, 213, 94), new Color(130, 104, 41), new Color(224, 213, 94));
             }
         }
-        public static Color Akuma //Akuma
+        
+        public static Color Mushroom
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.LightCoral, Color.Coral, Color.LightCoral);
+            }
+        }
+
+        public static Color Broodmother
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Orange, Color.DarkOrange, Color.Orange);
+            }
+        }
+
+        public static Color Hydra
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkSlateBlue, Color.Indigo, Color.DarkSlateBlue);
+            }
+        }
+
+        public static Color Akuma
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 37, 30), new Color(102, 20, 48), new Color(146, 37, 30));
             }
         }
-        public static Color Yamata //Yamata
+
+        public static Color Yamata
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75), new Color(53, 57, 126));
             }
         }
-        public static Color AkumaA //Akuma Awakened
+
+        public static Color AkumaA
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.LightSkyBlue, Color.DeepSkyBlue, Color.LightSkyBlue);
             }
         }
-        public static Color YamataA //Yamata Awakened
+
+        public static Color YamataA 
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 30, 68), new Color(102, 20, 80), new Color(146, 30, 68));
             }
         }
-        public static Color Zero //Zero
+
+        public static Color Zero
 		{
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(113, 37, 55), new Color(67, 22, 37), new Color(113, 37, 55));
+				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Red, Color.DarkRed, Color.Red);
 			}
 		}
-		public static Color Shen //Shen Doragon
+
+		public static Color Shen
 		{
 			get
 			{
 				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Magenta, Color.DarkMagenta, Color.Magenta);
 			}
 		}
+
         public static Color Shen2
         {
             get
@@ -63,6 +94,7 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Indigo, Color.Indigo, Color.OrangeRed);
             }
         }
+
         public static Color Shen3
         {
             get
@@ -70,11 +102,12 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Magenta, Color.Indigo, Color.Indigo, Color.Magenta, Color.OrangeRed);
             }
         }
+
         public static Color IZ
         { 
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(169, 34, 73), new Color(146, 37, 50), new Color(169, 34, 73));
+				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkGray, Color.Gray, Color.DarkGray);
 			}
 		}
 
@@ -86,7 +119,7 @@ namespace AAMod
             }
         }
 
-        public static Color Cthulhu2 //Infinity Zero
+        public static Color Cthulhu2 
         {
             get
             {
@@ -94,7 +127,7 @@ namespace AAMod
             }
         }
 
-        public static Color Oblivion //Oblivion
+        public static Color Oblivion
 		{
 			get
 			{
@@ -214,6 +247,63 @@ namespace AAMod
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(3, 179, 0), new Color(0, 102, 15), new Color(3, 179, 0));
+            }
+        }
+
+        public static Color Daybringer
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Turquoise, Color.DarkTurquoise, Color.Turquoise);
+            }
+        }
+
+        public static Color Nightcrawler
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Blue, Color.DarkBlue, Color.Blue);
+            }
+        }
+
+        public static Color Storm
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.Violet, Color.DarkViolet, Color.Violet, Color.DarkViolet);
+            }
+        }
+        
+        public static Color Djinn
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.SandyBrown, Color.Sienna, Color.SandyBrown);
+            }
+        }
+        
+        public static Color Serpent
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.CornflowerBlue, Color.CadetBlue, Color.CornflowerBlue);
+            }
+        }
+        
+        public static Color TODE
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DodgerBlue, Color.CornflowerBlue, Color.DodgerBlue);
+            }
+        }
+
+
+        public static Color CthulhuItemRarity
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.SeaGreen, Color.DarkSeaGreen, Color.SeaGreen);
             }
         }
 
