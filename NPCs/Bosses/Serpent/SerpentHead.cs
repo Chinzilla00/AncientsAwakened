@@ -39,7 +39,8 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.value = Item.buyPrice(0, 0, 10, 0);
-		}
+            bossBag = mod.ItemType<Items.Boss.Serpent.SerpentBag>();
+        }
 
         private bool fireAttack;
         private int attackCounter;

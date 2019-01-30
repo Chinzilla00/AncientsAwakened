@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             music = MusicID.Sandstorm;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
