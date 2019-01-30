@@ -96,13 +96,63 @@ namespace AAMod
 
                 #region Healthbars
 
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/MBarHead"),
+                    GetTexture("Healthbars/MBarBody"),
+                    GetTexture("Healthbars/MBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Mushroom,
+                    AAColor.Mushroom,
+                    AAColor.Mushroom);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("MushroomMonarch")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/RGCBarHead"),
+                    GetTexture("Healthbars/RGCarBody"),
+                    GetTexture("Healthbars/RGCarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Broodmother,
+                    AAColor.Broodmother,
+                    AAColor.Broodmother);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosRed")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/BGCarHead"),
+                    GetTexture("Healthbars/BGCarBody"),
+                    GetTexture("Healthbars/BGCarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Hydra,
+                    AAColor.Hydra,
+                    AAColor.Hydra);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosBlue")));
+
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/BMBarHead"),
                     GetTexture("Healthbars/BMBarBody"),
                     GetTexture("Healthbars/BMBarTail"),
                     GetTexture("Healthbars/BarFill"));
-                yabhb.Call("hbSetMidBarOffset", 28, 8);
+                yabhb.Call("hbSetColours",
+                    AAColor.Broodmother,
+                    AAColor.Broodmother,
+                    AAColor.Broodmother);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Broodmother")));
@@ -113,25 +163,181 @@ namespace AAMod
                     GetTexture("Healthbars/HydraBarBody"),
                     GetTexture("Healthbars/HydraBarTail"),
                     GetTexture("Healthbars/BarFill"));
-                yabhb.Call("hbSetMidBarOffset", 40, 10);
-                yabhb.Call("hbSetBossHeadCentre", 40, 34);
+                yabhb.Call("hbSetColours",
+                    AAColor.Hydra,
+                    AAColor.Hydra,
+                    AAColor.Hydra);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Hydra")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
-                    GetTexture("Healthbars/ZeroBarHead"),
-                    GetTexture("Healthbars/ZeroBarBody"),
-                    GetTexture("Healthbars/ZeroBarTail"),
+                    GetTexture("Healthbars/SSBarHead"),
+                    GetTexture("Healthbars/SSBarBody"),
+                    GetTexture("Healthbars/SSBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                new Color(0.76f, 0.24f, 0.24f), // 100%
-                new Color(0.631f, 0.152f, 0.215f), // 50%
-                new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 0, 10);
-                yabhb.Call("hbSetBossHeadCentre", 54, 34);
+                    AAColor.Serpent,
+                    AAColor.Serpent,
+                    AAColor.Serpent);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("Zero")));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHead")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DDBarHead"),
+                    GetTexture("Healthbars/DDBarBody"),
+                    GetTexture("Healthbars/DDBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Djinn,
+                    AAColor.Djinn,
+                    AAColor.Djinn);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Djinn")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SBarHead"),
+                    GetTexture("Healthbars/SBarBody"),
+                    GetTexture("Healthbars/SBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Storm,
+                    AAColor.Storm,
+                    AAColor.Storm);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Retriever")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SBarHead"),
+                    GetTexture("Healthbars/SBarBody"),
+                    GetTexture("Healthbars/SBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Storm,
+                    AAColor.Storm,
+                    AAColor.Storm);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Raider")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SBarHead"),
+                    GetTexture("Healthbars/SBarBody"),
+                    GetTexture("Healthbars/SBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Storm,
+                    AAColor.Storm,
+                    AAColor.Storm);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Orthrus")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DBBarHead"),
+                    GetTexture("Healthbars/DBBarBody"),
+                    GetTexture("Healthbars/DBBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Daybringer,
+                    AAColor.Daybringer,
+                    AAColor.Daybringer);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("DaybringerHead")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/NCBarHead"),
+                    GetTexture("Healthbars/NCBarBody"),
+                    GetTexture("Healthbars/NCBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Nightcrawler,
+                    AAColor.Nightcrawler,
+                    AAColor.Nightcrawler);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("NightcrawlerHead")));
+
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/BGBarHead"),
+                    GetTexture("Healthbars/BGBarBody"),
+                    GetTexture("Healthbars/BGBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Akuma,
+                    AAColor.Akuma,
+                    AAColor.Akuma);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("BlazeGrip")));
+
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/AGBarHead"),
+                    GetTexture("Healthbars/AGBarBody"),
+                    GetTexture("Healthbars/AGBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Yamata,
+                    AAColor.Yamata,
+                    AAColor.Yamata);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("AbyssGrip")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/YamataBarHead"),
+                    GetTexture("Healthbars/YamataBarBody"),
+                    GetTexture("Healthbars/YamataBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Yamata,
+                    AAColor.Yamata,
+                    AAColor.Yamata);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Yamata")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/YamataABarHead"),
+                    GetTexture("Healthbars/YamataABarBody"),
+                    GetTexture("Healthbars/YamataABarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.YamataA,
+                    AAColor.YamataA,
+                    AAColor.YamataA);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("YamataA")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -140,12 +346,27 @@ namespace AAMod
                     GetTexture("Healthbars/ZeroBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                new Color(0.76f, 0.24f, 0.24f), // 100%
-                new Color(0.631f, 0.152f, 0.215f), // 50%
-                new Color(0.568f, 0.55f, 0.121f));// 0%
-                yabhb.Call("hbSetMidBarOffset", 0, 10);
-                yabhb.Call("hbSetBossHeadCentre", 54, 34);
-                yabhb.Call("hbSetFillDecoOffsetSmall", 10);
+                    AAColor.Zero,
+                    AAColor.Zero,
+                    AAColor.Zero);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/ZeroABarHead"),
+                    GetTexture("Healthbars/ZeroBarBody"),
+                    GetTexture("Healthbars/ZeroABarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    AAColor.Oblivion,
+                    AAColor.Oblivion,
+                    AAColor.Oblivion);
+                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
                 #endregion
 
@@ -164,8 +385,9 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999997f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("HydraChow") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Emperor Fishron", 14.00000000001f, (Func<bool>)(() => AAWorld.downedEFish), "Use a [i:" + ItemType("ShroomGrub") + " at the ocean]");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 14.00000000002f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Yamata", 16.4f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
-                bossChecklist.Call("AddBossWithInfo", "Akuma", 16.4f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
+                bossChecklist.Call("AddBossWithInfo", "Kraken", 16.1f, (Func<bool>)(() => AAWorld.downedKraken), "Use a [i:" + ItemType("Portal") + "] at the Ocean");
+                bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
+                bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
                 bossChecklist.Call("AddBossWithInfo", "Soul of Cthulhu", 17.997f, (Func<bool>)(() => AAWorld.downedSoC), "Use a [i:" + ItemType("SpatialWheel") + "at the ocean]");
                 bossChecklist.Call("AddBossWithInfo", "Infinity Zero", 17.998f, (Func<bool>)(() => AAWorld.downedIZ), "Use a [i:" + ItemType("InfinityOverloader") + "]");
@@ -189,26 +411,30 @@ namespace AAMod
             }
             if (DradonIsDum != null)
             {
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedMonarch);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", AAMod.instance.GetTexture("Achievments/Grips"), AAWorld.downedGrips);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Magmatic Meltdown", "Defeat the magmatic matriarch, the Broodmother", AAMod.instance.GetTexture("Achievments/Brood"), AAWorld.downedBrood);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Amphibious Atrocity", "Defeat the three-headed horror, the Hydra", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedHydra);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Slithering Snowmongerer", "Defeat the Snow-burrowing Snake, the Subzero Serpent", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedSerpent);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Sandskrit Sandman", "Defeat majin of magic, the Desert Djinn", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedDjinn);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "T O D E", "Defeat the fungal frog, the Truffle Toad", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedToad);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Shocking", "Destroy any of the S.I.E.G.E. unit bosses", AAMod.instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAny);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Storming Smackdown", "Destroy all of the S.I.E.G.E. unit bosses", AAMod.instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAll);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", AAMod.instance.GetTexture("Achievments/Equinox"), AAWorld.downedEquinox);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Grip it and rip it", "Rematch the Grips of Chaos in their enhanced, discordian form", AAMod.instance.GetTexture("Achievments/Grips"), AAWorld.downedGripsS);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", AAMod.instance.GetTexture("Achievments/Zero"), AAWorld.downedZero);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doomslayer", "Destroy Zero's true, dark form; Zero Protocol", AAMod.instance.GetTexture("Achievments/ZeroA"), (AAWorld.downedZero && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", AAMod.instance.GetTexture("Achievments/Akuma"), AAWorld.downedAkuma);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Serpentslayer", "Slay Akuma's true, blazing form; Akuma Awakened", AAMod.instance.GetTexture("Achievments/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedYamata);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Hydraslayer", "Slay Yamata's true, abyssal form; Yamata Awakened", AAMod.instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Dragonslayer", "Slay Shen Doragon's true, chaotic form; Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Destroy the slayer of worlds, Infinity Zero", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedIZ);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", instance.GetTexture("BlankTex"), AAWorld.downedMonarch);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", instance.GetTexture("Achievments/Grips"), AAWorld.downedGrips);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Magmatic Meltdown", "Defeat the magmatic matriarch, the Broodmother", instance.GetTexture("Achievments/Brood"), AAWorld.downedBrood);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Amphibious Atrocity", "Defeat the three-headed horror, the Hydra", instance.GetTexture("BlankTex"), AAWorld.downedHydra);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Slithering Snowmongerer", "Defeat the Snow-burrowing Snake, the Subzero Serpent", instance.GetTexture("BlankTex"), AAWorld.downedSerpent);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Sandskrit Sandman", "Defeat majin of magic, the Desert Djinn", instance.GetTexture("BlankTex"), AAWorld.downedDjinn);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "T O D E", "Defeat the fungal frog, the Truffle Toad", instance.GetTexture("BlankTex"), AAWorld.downedToad);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Shocking", "Destroy any of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAny);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Storming Smackdown", "Destroy all of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAll);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", instance.GetTexture("Achievments/Equinox"), AAWorld.downedEquinox);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Grip it and rip it", "Rematch the Grips of Chaos in their enhanced, discordian form", instance.GetTexture("Achievments/Grips"), AAWorld.downedGripsS);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Hurricane Horror", "Defeat the Spatial Squid of the Ocean, the Kraken", instance.GetTexture("BlankTex"), AAWorld.downedKraken);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Kraken Slayer", "Defeat the Kraken in Expert mode", instance.GetTexture("BlankTex"), (AAWorld.downedKraken && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", instance.GetTexture("Achievments/Zero"), AAWorld.downedZero);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", instance.GetTexture("Achievments/ZeroA"), (AAWorld.downedZero && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", instance.GetTexture("Achievments/Akuma"), AAWorld.downedAkuma);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", instance.GetTexture("Achievments/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", instance.GetTexture("BlankTex"), AAWorld.downedYamata);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", instance.GetTexture("BlankTex"), AAWorld.downedShen);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Destroy the slayer of worlds, Infinity Zero", instance.GetTexture("BlankTex"), AAWorld.downedIZ);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Song of the Sea", "Defeat the nautical nightmare, the Soul of Cthulhu", instance.GetTexture("BlankTex"), AAWorld.downedSoC);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Triumph over the Soul of Cthulhu's unbound form, Cthulhu; Cosmic Calamity", instance.GetTexture("BlankTex"), AAWorld.downedSoC && Main.expertMode);
             }
 
         }

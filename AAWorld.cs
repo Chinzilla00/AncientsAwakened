@@ -80,6 +80,7 @@ namespace AAMod
         public static bool downedZero;
         public static bool downedShen;
         public static bool downedIZ;
+        public static bool downedKraken;
         public static bool downedAllAncients;
         public static int downedIZnumber;
         public static bool ShenSummoned;
@@ -126,6 +127,7 @@ namespace AAMod
             downedToad = false;
             downedGripsS = false;
             downedSoC = false;
+            downedKraken = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -206,6 +208,7 @@ namespace AAMod
             if (downedEFish) downed.Add("Fish");
             if (downedSoC) downed.Add("SoC");
             if (Compass) downed.Add("Compass");
+            if (downedKraken) downed.Add("Kraken");
 
             return new TagCompound {
                 {"downed", downed}
@@ -262,6 +265,7 @@ namespace AAMod
             BitsByte flags5 = new BitsByte();
             flags5[0] = downedSoC;
             flags5[1] = Compass;
+            flags5[2] = downedKraken;
             writer.Write(flags4);
         }
 
@@ -310,6 +314,7 @@ namespace AAMod
             BitsByte flags5 = reader.ReadByte();
             downedSoC = flags5[0];
             Compass = flags5[1];
+            downedKraken = flags5[2];
         }
 
         public override void Load(TagCompound tag)
@@ -350,6 +355,7 @@ namespace AAMod
             downedEFish = downed.Contains("Fish");
             downedSoC = downed.Contains("SoC");
             Compass = downed.Contains("Compass");
+            downedKraken = downed.Contains("Kraken");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
