@@ -17,9 +17,9 @@ namespace AAMod.Items.Tools
             item.useAnimation = 20;
             item.axe = 50;    //pickaxe power
             item.useStyle = 1;
-            item.knockBack = 6;
+            item.knockBack = 3;
             item.value = 10;
-            item.rare = 5;
+            item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

@@ -16,7 +16,7 @@ namespace AAMod.Items.Tools
             item.width = 36;
             item.height = 38;
             item.damage = 39;
-            item.axe = 17;
+            item.axe = 100;
             item.UseSound = SoundID.Item1;
             item.rare = 4;
             item.value = 81000;
@@ -26,7 +26,7 @@ namespace AAMod.Items.Tools
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Uranium Axe");
+            DisplayName.SetDefault("Uranium Logger");
         }
 
         public override void AddRecipes()  //How to craft this item

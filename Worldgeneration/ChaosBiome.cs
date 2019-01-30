@@ -88,7 +88,7 @@ namespace AAMod.Worldgeneration
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 20;
+			int genY = origin.Y - 40;
 			gen.Generate(genX, genY, true, true);
 
 			//WorldGen.PlaceObject(genX + 62, genY + 32, TileID.Grass);
@@ -244,7 +244,7 @@ namespace AAMod.Worldgeneration
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 20;
+			int genY = origin.Y - 80;
             gen.Generate(genX, genY, true, true);
 
             WorldGen.PlaceObject(genX + 65, genY + 19, mod.TileType<DracoAltarS>());
@@ -553,7 +553,7 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject((int)(origin.X) + 37, (int)(origin.Y) + 47, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceObject((int)(origin.X) + 34, (int)(origin.Y) + 47, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;

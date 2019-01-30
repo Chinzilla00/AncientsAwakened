@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 1f;
             npc.knockBackResist = 0.6f;
+            npc.noGravity = true;
         }
 
         public override void AI()

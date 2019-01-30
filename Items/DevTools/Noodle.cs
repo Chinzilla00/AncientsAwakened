@@ -49,9 +49,9 @@ namespace AAMod.Items.DevTools
             int dustId3 = Dust.NewDust(new Vector2(projectile.position.X + (float)num557, projectile.position.Y + (float)num557), projectile.width - num557 * 2, projectile.height - num557 * 2, DustID.AncientLight, 0f, 0f, 0, default(Color), 1f);
             Main.dust[dustId3].noGravity = true;
 
-            const int aislotHomingCooldown = 0;
+            const int aislotHomingCooldown = 30;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float desiredFlySpeedInPixelsPerFrame = 20;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

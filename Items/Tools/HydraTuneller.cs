@@ -25,7 +25,6 @@ namespace AAMod.Items.Tools
 			item.noUseGraphic = true;
 			item.noMelee = true;
 			item.pick = 65;
-			item.tileBoost++;
 			item.useStyle = 5;
 			item.knockBack = 0;
 			item.value = Item.buyPrice(0, 0, 30, 0);
