@@ -17,7 +17,8 @@ namespace AAMod.Items.Dev
             Tooltip.SetDefault("Tails' trusty blaster.\n" +
                 "Hold the use button to charge, and then release a powerful plasma beam!\n" +
                 "\"You mess with me or my friends, and your ass is Stardust.\" \n" +
-                "- Tails");
+                "- Tails\n" +
+                "Spur EX");
         }
 
         public override void SetDefaults()
