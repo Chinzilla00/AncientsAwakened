@@ -1769,6 +1769,16 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Wet, 600);
             }
+			
+			if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+            {
+                target.AddBuff(mod.BuffType("DragonFire"), 900);
+            }
+			
+			if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+            {
+                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+            }
         }
 
         public void RespawnIZ(Player player)
@@ -2280,6 +2290,16 @@ namespace AAMod
                 {
                     target.AddBuff(BuffID.Ichor, 180);
                 }
+            }
+			
+			if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")) && proj.melee)
+            {
+                target.AddBuff(mod.BuffType("DragonFire"), 900);
+            }
+			
+			if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")) && proj.melee)
+            {
+                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
             }
         }
 
