@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                 };
             int loot = Main.rand.Next(lootTable.Length);
             npc.DropLoot(mod.ItemType(lootTable[loot]));
-
+            AAWorld.downedEFish = true;
             if (Main.rand.NextFloat() < 0.1f)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));

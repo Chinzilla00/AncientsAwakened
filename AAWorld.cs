@@ -1109,7 +1109,6 @@ namespace AAMod
             {
                 if (downedStormAll == false)
                 {
-                    Main.NewText("The jungle grows restless...", Color.ForestGreen);
                     downedStormAll = true;
                 }
             }
@@ -1125,72 +1124,7 @@ namespace AAMod
                 downedSAncient = true;
             }
 
-            if (downedStormAll)
-            {
-                float num3 = 1.5E-05f * (float)Main.worldRate;
-                int num63 = 0;
-                while ((float)num63 < (float)(Main.maxTilesX * Main.maxTilesY) * num3)
-                {
-                    int num64 = WorldGen.genRand.Next(10, Main.maxTilesX - 10);
-                    int num65 = WorldGen.genRand.Next((int)Main.worldSurface - 1, Main.maxTilesY - 20);
-                    int num68 = num65 - 1;
-                    if (num68 < 10)
-                    {
-                        num68 = 10;
-                    }
-                    if (Main.tile[num64, num65] != null)
-                    {
-                        if (Main.tile[num64, num65].liquid <= 32)
-                        {
-                            if (Main.tile[num64, num65].nactive())
-                            {
-                                WorldGen.hardUpdateWorld(num64, num65);
-                                if (Main.tile[num64, num65].type == 60)
-                                {
-                                    int type7 = (int)Main.tile[num64, num65].type;
-                                    if (!Main.tile[num64, num68].active() && WorldGen.genRand.Next(10) == 0)
-                                    {
-                                        WorldGen.PlaceTile(num64, num68, 61, true, false, -1, 0);
-                                        if (Main.netMode == 2 && Main.tile[num64, num68].active())
-                                        {
-                                            NetMessage.SendTileSquare(-1, num64, num68, 1, TileChangeType.None);
-                                        }
-                                    }
-                                    else if (WorldGen.genRand.Next(25) == 0 && Main.tile[num64, num68].liquid == 0)
-                                    {
-                                        if (Main.hardMode && WorldGen.genRand.Next(60) == 0)
-                                        {
-                                            bool flag20 = true;
-                                            int num83 = 150;
-                                            for (int num84 = num64 - num83; num84 < num64 + num83; num84 += 2)
-                                            {
-                                                for (int num85 = num65 - num83; num85 < num65 + num83; num85 += 2)
-                                                {
-                                                    if (num84 > 1 && num84 < Main.maxTilesX - 2 && num85 > 1 && num85 < Main.maxTilesY - 2 && Main.tile[num84, num85].active() && Main.tile[num84, num85].type == 238)
-                                                    {
-                                                        flag20 = false;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            if (flag20)
-                                            {
-                                                WorldGen.PlaceJunglePlant(num64, num68, 238, 0, 0);
-                                                WorldGen.SquareTileFrame(num64, num68, true);
-                                                WorldGen.SquareTileFrame(num64 + 1, num68 + 1, true);
-                                                if (Main.tile[num64, num68].type == 238 && Main.netMode == 2)
-                                                {
-                                                    NetMessage.SendTileSquare(-1, num64, num68, 4, TileChangeType.None);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+           
 
 
             /*if (downedAkuma && downedYamata && downedZero)
