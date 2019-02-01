@@ -390,9 +390,9 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
-                bossChecklist.Call("AddBossWithInfo", "Soul of Cthulhu", 17.997f, (Func<bool>)(() => AAWorld.downedSoC), "Use a [i:" + ItemType("SpatialWheel") + "at the ocean]");
-                bossChecklist.Call("AddBossWithInfo", "Infinity Zero", 17.998f, (Func<bool>)(() => AAWorld.downedIZ), "Use a [i:" + ItemType("InfinityOverloader") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.999f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil") + "]");
+                //bossChecklist.Call("AddBossWithInfo", "Soul of Cthulhu", 17.997f, (Func<bool>)(() => AAWorld.downedSoC), "Use a [i:" + ItemType("SpatialWheel") + "at the ocean]");
+                //bossChecklist.Call("AddBossWithInfo", "Infinity Zero", 17.998f, (Func<bool>)(() => AAWorld.downedIZ), "Use a [i:" + ItemType("InfinityOverloader") + "]");
+                //bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.999f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil") + "]");
 
 
                 //SlimeKing = 1f;
@@ -431,11 +431,11 @@ namespace AAMod
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", instance.GetTexture("Achievments/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", instance.GetTexture("BlankTex"), AAWorld.downedYamata);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", instance.GetTexture("BlankTex"), AAWorld.downedShen);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Destroy the slayer of worlds, Infinity Zero", instance.GetTexture("BlankTex"), AAWorld.downedIZ);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Song of the Sea", "Defeat the nautical nightmare, the Soul of Cthulhu", instance.GetTexture("BlankTex"), AAWorld.downedSoC);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Triumph over the Soul of Cthulhu's unbound form, Cthulhu; Cosmic Calamity", instance.GetTexture("BlankTex"), AAWorld.downedSoC && Main.expertMode);
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", instance.GetTexture("BlankTex"), AAWorld.downedShen);
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Destroy the slayer of worlds, Infinity Zero", instance.GetTexture("BlankTex"), AAWorld.downedIZ);
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "Song of the Sea", "Defeat the nautical nightmare, the Soul of Cthulhu", instance.GetTexture("BlankTex"), AAWorld.downedSoC);
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "Endless Nothing", "Triumph over the Soul of Cthulhu's unbound form, Cthulhu; Cosmic Calamity", instance.GetTexture("BlankTex"), AAWorld.downedSoC && Main.expertMode);
             }
 
         }
@@ -477,11 +477,6 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaSun"));
                 PremultiplyTexture(GetTexture("Backgrounds/YamataMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuPortal"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuPortal2"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/Portal"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/SoC/CthulhuSpawn"));
-                PremultiplyTexture(GetTexture("Projectiles/SoC/CthulhuBoom"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -514,12 +509,12 @@ namespace AAMod
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2"), ItemType("AkumaABox"), TileType("AkumaABox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2"), ItemType("YamataABox"), TileType("YamataABox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/IZ"), ItemType("IZBox"), TileType("IZBox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope"), ItemType("RoHBox"), TileType("RoHBox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/IZ"), ItemType("IZBox"), TileType("IZBox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope"), ItemType("RoHBox"), TileType("RoHBox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 }
 
                 Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
@@ -738,9 +733,9 @@ namespace AAMod
             if (!player.active)
                 return;
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
-            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
-            bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
-            bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
+            //bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
+            //bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
+            //bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
@@ -755,12 +750,12 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            if (AAWorld.downedAllAncients && (zoneIZ || zoneShen || zoneSoC))
+            /*if (AAWorld.downedAllAncients && (zoneIZ || zoneShen || zoneSoC))
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
-            }
+            }*/
             if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
             {
                 if (player.HeldItem.type == ItemType("Sax"))

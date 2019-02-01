@@ -13,11 +13,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
-using AAMod.NPCs.Bosses.Infinity;
-using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Yamata;
-using AAMod.NPCs.Bosses.SoC;
-using AAMod.NPCs.Bosses.SoC.Bosses;
 using System.Collections.Generic;
 using BaseMod;
 using Terraria.ModLoader.IO;
@@ -699,31 +695,15 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
-            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useShenA);
-            bool useIZ = NPC.AnyNPCs(mod.NPCType<Infinity>()) || NPC.AnyNPCs(mod.NPCType<IZSpawn1>());
-            player.ManageSpecialBiomeVisuals("AAMod:IZSky", useIZ);
-            bool useCthulhu = (NPC.AnyNPCs(mod.NPCType<SoC>()) ||
-                NPC.AnyNPCs(mod.NPCType<DeitySkull>()) || 
-                NPC.AnyNPCs(mod.NPCType<DeityEater>()) || 
-                NPC.AnyNPCs(mod.NPCType<DeityEater>()) ||
-                NPC.AnyNPCs(mod.NPCType<DeityEaterTail>()) ||
-                NPC.AnyNPCs(mod.NPCType<DeityLeviathan>()) ||
-                NPC.AnyNPCs(mod.NPCType<DeityEye>())) ||
-                (player.InZone("Ocean") && AAWorld.downedAllAncients && !AAWorld.downedSoC);
-            player.ManageSpecialBiomeVisuals("AAMod:CthulhuSky", useCthulhu);
-            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>());
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
-            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar) && !useShen && !useShenA && !useIZ;
+            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar) && !useShen && !useShenA && !useIZ;
+            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useIZ;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useIZ;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useZero = NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
             if (useZero)
@@ -734,7 +714,7 @@ namespace AAMod
                 }
                 Filters.Scene["MoonLordShake"].GetShader().UseIntensity(Math.Min(1f, 0.01f + Intensity));
             }
-            bool useVoid = (ZoneVoid || VoidUnit) && !useIZ && !useShenA && !useShen;
+            bool useVoid = (ZoneVoid || VoidUnit);
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
             bool useStorm = ZoneStorm;
@@ -1081,64 +1061,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (AAWorld.Compass == false && Compass == false)
-            {
-                if (player.inventory.Any(i => i.type == mod.ItemType<Items.BossSummons.CursedCompass>() && i.stack > 0))
-                {
-                    AAWorld.Compass = true;
-                    Compass = true;
-                    Leave = false;
-                    if (ZoneShip)
-                    {
-                        NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
-                        if (Main.netMode != 1)
-                        {
-                            BaseUtility.Chat("UNHAND WHAT ISN'T YOURS, THIEF", Color.Cyan);
-                        }
-                    }
-                }
-            }
-            if (ZoneShip && Leave == false)
-            {
-                CthulhuCountdown--;
-                if (CthulhuCountdown == 1500 && Main.netMode != 1)
-                {
-                    BaseUtility.Chat("...leave...", Color.Blue);
-                }
-                if (CthulhuCountdown == 1050 && Main.netMode != 1)
-                {
-                    BaseUtility.Chat("...Leave this forsaken place...", Color.DarkCyan);
-                }
-                if (CthulhuCountdown == 550 && Main.netMode != 1)
-                {
-                    BaseUtility.Chat("...you are trespassing upon things you cannot even comprehend...", Color.Cyan);
-                }
-                if (CthulhuCountdown == 200 && Main.netMode != 1)
-                {
-                    BaseUtility.Chat("...turn back now...", Color.Cyan);
-                }
-                if (CthulhuCountdown == 0)
-                {
-                    Leave = false;
-                    NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
-                    if (Main.netMode != 1)
-                    {
-                        BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECK", Color.Cyan);
-                    }
-                }
-            }
-            if (!ZoneShip || NPC.AnyNPCs(mod.NPCType<UDUNFUKED>()))
-            {
-                CthulhuCountdown = 1800;
-            }
-            if (!ZoneShip && Leave == true)
-            {
-                Leave = false;
-                if (Main.netMode != 1)
-                {
-                    BaseUtility.Chat("...do not return...", Color.DarkCyan);
-                }
-            }
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.dayTime && !AAWorld.downedYamata)
@@ -1378,7 +1300,7 @@ namespace AAMod
                     Main.maxRaining = 0f;
                 }
             }
-            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake || NPC.AnyNPCs(mod.NPCType<SoC>()))
+            if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.raining)
                 {
