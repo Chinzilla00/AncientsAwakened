@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.noGravity = true;
             npc.noTileCollide = true;
             bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
+            npc.alpha = 255;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -224,6 +225,12 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.SuperHealingPotion;   //boss drops
+            AAWorld.downedAkuma = true;
+        }
+
         public override void NPCLoot()
         {
             if (!Main.expertMode)
@@ -231,9 +238,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 AAWorld.downedDjinn = true;
                 Sandstorm.TimeLeft = 0;
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
-                string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
+                string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar", "Sandstorm" };
                 int loot = Main.rand.Next(lootTable.Length);
-                if (Main.rand.Next(9) == 0)
+                if (Main.rand.Next(6) == 0)
                 {
                     npc.DropLoot(mod.ItemType("Sandagger"), 90, 120);
                 }

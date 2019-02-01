@@ -1125,6 +1125,10 @@ namespace AAMod
 
         public void DropDevArmor(int dropType)
         {
+            //0 = Pre-HM
+            //1 = HM
+            //2 = PML
+            //3 = PA
             bool spawnedDevItems = false; //this prevents it from not dropping anything if the chance lands on something it cannot drop yet (for prehm/hm) as by this point it's past the 10% chance and thus should drop.
             string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
@@ -1144,9 +1148,12 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("FishDiverMask" + addonA));
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket" + addonA));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots" + addonA));
-                        if (dropType >= 2)
+                        if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("KipronWings"));
+                        }
+                        if (dropType >= 2)
+                        {
                             player.QuickSpawnItem(mod.ItemType("AmphibianLongsword" + addonEX));
                         }
                         spawnedDevItems = true;
@@ -1173,9 +1180,12 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("ChinMask"));
                         player.QuickSpawnItem(mod.ItemType("ChinSuit"));
                         player.QuickSpawnItem(mod.ItemType("ChinPants"));
-                        if (dropType >= 2)
+                        if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                        }
+                        if (dropType >= 2)
+                        {
                             player.QuickSpawnItem(mod.ItemType("ChinStaff" + addonEX));
                         }
                         spawnedDevItems = true;

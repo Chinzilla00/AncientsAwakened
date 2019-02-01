@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -44,13 +45,22 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
+            for (int k = 0; k < 3; k++)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CyberClawGore4"), 1f);
+                Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.FulguriteDust>(), hitDirection, -1f, 0, default(Color), 1f);
             }
+            if (npc.life <= 0)
+            {
+                for (int k = 0; k < 15; k++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.FulguriteDust>(), hitDirection, -1f, 0, default(Color), 1f);
+                }
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteShard"), Main.rand.Next(2));
         }
     }
 }

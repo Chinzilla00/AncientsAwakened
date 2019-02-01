@@ -286,15 +286,14 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if ( Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead)
-                {
-                    npc.ai[1] = 4f;
-                }
+                npc.ai[1] = 4f;
+            }
+            if (Main.player[npc.target].dead)
+            {
+                npc.ai[1] = 3f;
             }
             if (npc.ai[1] == 0f)
             {
-                npc.frame.Y = 0;
                 npc.damage = 100;
                 npc.defense = 90;
                 npc.ai[2] += 1f;
@@ -358,12 +357,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                if (npc.ai[1] == 1f)
+                if (npc.ai[1] == 2f)
                 {
-                    npc.frame.Y = frameHeight;
-                    npc.defense = 180;
-                    npc.damage = 200;
-                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    npc.damage = 1000;
+                    npc.defense = 9999;
+                    npc.rotation += (float)npc.direction * 0.7f;
                     Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                     float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                     float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
@@ -381,18 +379,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     num446 = num447 / num446;
                     npc.velocity.X = num444 * num446;
                     npc.velocity.Y = num445 * num446;
-
-                    npc.ai[2] += 1f;
-                    if (npc.ai[2] >= 240f)
-                    {
-                        npc.ai[2] = 0f;
-                        npc.ai[1] = 0f;
-                        npc.TargetClosest(true);
-                        npc.netUpdate = true;
-                    }
                     return;
 
-                }
+            }
                 if (npc.ai[1] == 3f)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red);

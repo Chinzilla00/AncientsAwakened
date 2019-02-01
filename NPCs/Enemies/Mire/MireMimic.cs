@@ -29,12 +29,17 @@ namespace AAMod.NPCs.Enemies.Mire
             animationType = 475;
         }
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && spawnInfo.spawnTileY > Main.worldSurface && Main.hardMode ? .05f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            Player player = spawnInfo.player;
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode && !spawnInfo.playerSafe)
+            {
+                return SpawnCondition.UndergroundMimic.Chance;
+            }
+            return 0f;
         }
 
-		public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{

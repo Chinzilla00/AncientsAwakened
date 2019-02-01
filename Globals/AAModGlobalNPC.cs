@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Grips;
 using AAMod.NPCs.Bosses.Broodmother;
 using AAMod.NPCs.Bosses.Hydra;
+using AAMod.NPCs.Bosses.Djinn;
+using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Bosses.Equinox;
 using AAMod.NPCs.Bosses.Orthrus;
 using AAMod.NPCs.Bosses.Raider;
@@ -633,6 +635,8 @@ namespace AAMod
                 NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()) ||
                 NPC.AnyNPCs(mod.NPCType<Broodmother>()) ||
                 NPC.AnyNPCs(mod.NPCType<Hydra>()) ||
+                NPC.AnyNPCs(mod.NPCType<Djinn>()) ||
+                NPC.AnyNPCs(mod.NPCType<SerpentHead>()) ||
                 NPC.AnyNPCs(mod.NPCType<Raider>()) ||
                 NPC.AnyNPCs(mod.NPCType<Retriever>()) ||
                 NPC.AnyNPCs(mod.NPCType<Orthrus>()) ||
@@ -642,11 +646,8 @@ namespace AAMod
                 NPC.AnyNPCs(mod.NPCType<AkumaA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Yamata>()) ||
                 NPC.AnyNPCs(mod.NPCType<YamataA>()) ||
-                NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) ||
-                NPC.AnyNPCs(mod.NPCType<ShenA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Zero>()) ||
-                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>())||
-                NPC.AnyNPCs(mod.NPCType<Infinity>()))
+                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
             {
                 spawnRate = 0;
                 maxSpawns = 0;

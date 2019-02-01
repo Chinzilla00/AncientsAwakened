@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
+            Player player = Main.player[npc.target];
             BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
             npc.frameCounter++;
             if (npc.frameCounter >= 8)
@@ -47,15 +48,45 @@ namespace AAMod.NPCs.Enemies.Other
                     npc.frame.Y = 0;
                 }
             }
+
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.spawnTileY > Main.worldSurface ? 0.8f : 0;
+            if (spawnInfo.playerSafe || Main.hardMode)
+            {
+                return 0f;
+            }
+            return SpawnCondition.Underground.Chance * 0.3f;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.InfinityOverloadR>() : mod.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0, default(Color), 1f);
+            }
+            if (npc.life <= 0)
+            {
+                for (int k = 0; k < 15; k++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.InfinityOverloadR>() : mod.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0, default(Color), 1f);
+                }
+            }
         }
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MadnessShard"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MadnessFragment"), Main.rand.Next(3));
         }
+
     }
 }

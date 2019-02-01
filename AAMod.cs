@@ -476,7 +476,6 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/fog"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaSun"));
                 PremultiplyTexture(GetTexture("Backgrounds/YamataMoon"));
-                PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
 
                 AddEquipTexture(null, EquipType.Legs, "N1_Legs", "AAMod/Items/Vanity/N1/N1_Legs");
 
@@ -521,9 +520,6 @@ namespace AAMod
                 SkyManager.Instance["AAMod:MireSky"] = new MireSky();
                 MireSky.PlanetTexture = GetTexture("Backgrounds/MireMoon");
 
-                Filters.Scene["AAMod:CthulhuSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
-                SkyManager.Instance["AAMod:CthulhuSky"] = new CthulhuSky();
-
                 Filters.Scene["AAMod:StormSky"] = new Filter(new StormSkyData("FilterMiniTower").UseColor(0.4f, 0f, 0.6f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:StormSky"] = new StormSky();
 
@@ -538,11 +534,6 @@ namespace AAMod
                 VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
                 VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
 
-                Filters.Scene["AAMod:IZSky"] = new Filter(new IZSkyData("FilterMiniTower").UseColor(0.4f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
-                SkyManager.Instance["AAMod:IZSky"] = new IZSky();
-                IZSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
-                IZSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
-
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/InfernoSun");
@@ -554,15 +545,6 @@ namespace AAMod
                 Filters.Scene["AAMod:YamataSky"] = new Filter(new YamataSkyData("FilterMiniTower").UseColor(.7f, 0f, 0f).UseOpacity(0.5f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
                 YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
-
-                Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
-                SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-                ShenSky.Sun = GetTexture("Backgrounds/InfernoSun");
-                ShenSky.Moon = GetTexture("Backgrounds/MireMoon");
-
-                Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
-                SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
-                ShenASky.PlanetTexture = GetTexture("Backgrounds/ShenEclipse");
 
                 UserInterface = new UserInterface();
                 Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
@@ -733,7 +715,7 @@ namespace AAMod
             if (!player.active)
                 return;
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
-            //bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
+            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             //bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
             //bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
             if (AkumaMusic == true)
@@ -750,29 +732,18 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            /*if (AAWorld.downedAllAncients && (zoneIZ || zoneShen || zoneSoC))
+            if (AAWorld.downedZero && zoneIZ)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
-            }*/
-            if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
-            {
-                if (player.HeldItem.type == ItemType("Sax"))
-                {
-
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne");
-
-                    priority = MusicPriority.BossHigh;
-
-                    return;
-                }
             }
-            if (Slayer == true)
+            if (Ancients.Terrarium)
             {
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroDeath");
 
-                priority = MusicPriority.BossHigh;
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium");
+
                 return;
             }
             if (Ancients.ZoneVoid)
@@ -786,6 +757,18 @@ namespace AAMod
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Ship");
                 return;
+            }
+            if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
+            {
+                if (player.HeldItem.type == ItemType("Sax"))
+                {
+
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/WeAreNumberOne");
+
+                    priority = MusicPriority.BossHigh;
+
+                    return;
+                }
             }
             
             if (Ancients.ZoneStorm)
@@ -837,14 +820,6 @@ namespace AAMod
 
                     return;
                 }
-            }
-            if (Ancients.Terrarium)
-            {
-
-                priority = MusicPriority.BiomeHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium");
-
-                return;
             }
             if (Ancients.ZoneMush)
             {

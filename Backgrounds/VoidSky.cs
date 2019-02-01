@@ -6,7 +6,6 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
-using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod.Backgrounds
 {
