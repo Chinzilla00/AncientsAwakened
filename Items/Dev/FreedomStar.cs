@@ -30,7 +30,7 @@ namespace AAMod.Items.Dev
             item.damage = 400;
             item.scale = .65f;
             item.shoot = mod.ProjectileType("PlasmaShot");
-            item.shootSpeed = 20f;
+            item.shootSpeed = 30f;
             item.useTime = 10;
             item.useAnimation = 10;
             item.useStyle = 5;
