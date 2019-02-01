@@ -131,8 +131,8 @@ namespace AAMod.NPCs.Bosses.Retriever
                 npc.velocity.Y -= 5;
             }
 
-            LaserTimer++;
-            npc.frameCounter--;
+            LaserTimer--;
+            npc.frameCounter++;
 
             if (LaserTimer >= 300)
             {

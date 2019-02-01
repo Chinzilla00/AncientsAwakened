@@ -54,42 +54,8 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     0f
                 );
             }
-            if (Main.dayTime && Main.time < 23400 || Main.time > 30600)
-            {
-                spriteBatch.Draw
-                (
-                    texture,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-                spriteBatch.Draw
-                (
-                    textureGlow,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-            }
-            if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+            
+            else if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
             {
                 spriteBatch.Draw
                 (
@@ -124,6 +90,41 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     0f
                 );
             }
+            else
+            {
+                spriteBatch.Draw
+                (
+                    texture,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+                spriteBatch.Draw
+                (
+                    textureGlow,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
             return false;
         }
 
@@ -136,13 +137,13 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             {
                 spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
-            {
-                spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-            }
-            if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+            else if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
             {
                 spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
             return false;
         }
@@ -182,13 +183,13 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             {
                 player.endurance += 0f;
             }
-            if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
-            {
-                player.endurance += 0.1f;
-            }
-            if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+            else if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
             {
                 player.endurance += 0.2f;
+            }
+            else
+            {
+                player.endurance += 0.1f;
             }
         }
     }
