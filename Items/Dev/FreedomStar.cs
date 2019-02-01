@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,15 +26,20 @@ namespace AAMod.Items.Dev
         {
             item.width = 58;
             item.height = 40;
-            item.scale = 0.75f;
             item.ranged = true;
             item.damage = 400;
+            item.scale = .65f;
             item.shoot = mod.ProjectileType("PlasmaShot");
             item.shootSpeed = 20f;
             item.useTime = 10;
             item.useAnimation = 10;
             item.useStyle = 5;
             Item.sellPrice(1, 0, 0, 0);
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2 (3, 1);
         }
     }
 }
