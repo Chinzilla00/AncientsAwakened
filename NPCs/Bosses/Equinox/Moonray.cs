@@ -1,19 +1,19 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
     public class Moonray : ModProjectile
     {
-    	public int splitTimer = 100;
-    	
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Moonray");
 		}
-    	
+
         public override void SetDefaults()
         {
             projectile.width = 10;
@@ -23,30 +23,36 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.alpha = 60;
+			projectile.extraUpdates = 2;
+			projectile.timeLeft = 1000;
             cooldownSlot = 1;
         }
 
+		bool playedSound = false;		
         public override void AI()
         {
-        	splitTimer--;
-        	if (splitTimer <= 0)
-        	{
-	        	int numProj = 3;
-	            float rotation = MathHelper.ToRadians(20);
-	            if (projectile.owner == Main.myPlayer)
-	            {
-		            for (int i = 0; i < numProj + 1; i++)
-		            {
-		                Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numProj - 1)));
-		                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("MoonrayScatter"), (int)projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-		            }
-	            }
-	            projectile.Kill();
-        	}
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f);
-        	projectile.velocity.X *= 1.05f;
-        	projectile.velocity.Y *= 1.05f;
+			if(!playedSound)
+			{
+				playedSound = true;
+				Main.PlaySound(SoundID.Item42, (int)projectile.Center.X, (int)projectile.Center.Y);				
+			}
+			Effects();
+			if(projectile.velocity.Length() < 12f)
+			{
+				projectile.velocity.X *= 1.05f;
+				projectile.velocity.Y *= 1.05f;
+			}
         	projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
         }
+
+		public virtual void Effects()
+		{
+	        Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f);		
+		}
+		
+		public override Color? GetAlpha(Color lightColor)
+		{
+			return Color.White;
+		}		
     }
 }

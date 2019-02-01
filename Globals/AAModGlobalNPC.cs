@@ -639,9 +639,8 @@ namespace AAMod
                 NPC.AnyNPCs(mod.NPCType<Raider>()) ||
                 NPC.AnyNPCs(mod.NPCType<Retriever>()) ||
                 NPC.AnyNPCs(mod.NPCType<Orthrus>()) ||
-                NPC.AnyNPCs(mod.NPCType<Daybringer>()) ||
-                NPC.AnyNPCs(mod.NPCType<Nightcrawler>()) ||
-                NPC.AnyNPCs(mod.NPCType<Daybringer>()) ||
+                NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) ||
+                NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) ||
                 NPC.AnyNPCs(mod.NPCType<Akuma>()) ||
                 NPC.AnyNPCs(mod.NPCType<AkumaA>()) ||
                 NPC.AnyNPCs(mod.NPCType<Yamata>()) ||

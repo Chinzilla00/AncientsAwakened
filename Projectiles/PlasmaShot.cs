@@ -18,8 +18,8 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 36;
+            projectile.height = 28;
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.ignoreWater = true;
