@@ -100,8 +100,7 @@ namespace AAMod.NPCs.Bosses.Zero
             scale = 1.5f;
             return null;
         }
-
-        public int frameHeight = 212;
+        
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -361,27 +360,24 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.damage = 1000;
                     npc.defense = 9999;
-                    npc.rotation += (float)npc.direction * 0.7f;
-                    Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
-                    float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
-                    float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
-                    float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
-                    float num447 = 10f;
-                    num447 += num446 / 100f;
-                    if (num447 < 8f)
+                    ++npc.ai[2];
+                    if (npc.ai[2] == 2.0)
+                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
+                    if (npc.ai[2] >= 400.0)
                     {
-                        num447 = 8f;
+                        npc.ai[2] = 0.0f;
+                        npc.ai[1] = 0.0f;
                     }
-                    if (num447 > 32f)
-                    {
-                        num447 = 32f;
-                    }
-                    num446 = num447 / num446;
-                    npc.velocity.X = num444 * num446;
-                    npc.velocity.Y = num445 * num446;
+                    npc.rotation += npc.direction * 0.3f;
+                    Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    float num1 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector2.X;
+                    float num2 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector2.Y;
+                    float num3 = 2f / (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
+                    npc.velocity.X = num1 * num3;
+                    npc.velocity.Y = num2 * num3;
                     return;
 
-            }
+                }
                 if (npc.ai[1] == 3f)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red);

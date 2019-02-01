@@ -143,30 +143,39 @@ namespace AAMod.NPCs.Bosses.Retriever
                 if (LaserTimer >= 293)
                 {
                     npc.frame.Y = (62 * 5);
+
+                    return;
                 }
                 else if (LaserTimer >= 286)
                 {
                     npc.frame.Y = (62 * 6);
+
+                    return;
                 }
                 else if (LaserTimer >= 279)
                 {
                     npc.frame.Y = (62 * 7);
+                    return;
                 }
                 else if (LaserTimer >= 272)
                 {
                     npc.frame.Y = (62 * 8);
+                    return;
                 }
                 else if (LaserTimer >= 265)
                 {
                     npc.frame.Y = (62 * 9);
+                    return;
                 }
                 else if (LaserTimer >= 258)
                 {
                     npc.frame.Y = (62 * 10);
+                    return;
                 }
                 else if (LaserTimer >= 251)
                 {
                     npc.frame.Y = (62 * 11);
+                    return;
                 }
                 else if (LaserTimer >= 244 && LaserTimer <= 60)
                 {
@@ -206,16 +215,18 @@ namespace AAMod.NPCs.Bosses.Retriever
                     PlayerDistance.X -= PlayerPosX * 1f;
                     PlayerDistance.Y -= PlayerPosY * 1f;
                     Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
+                    return;
                 }
                 else if (LaserTimer >= 59)
                 {
                     npc.frame.Y = (38 * 10);
+                    return;
                 }
                 else if (LaserTimer == 0)
                 {
-                    LaserTimer = 1200;
+                    LaserTimer = 1000;
+                    return;
                 }
-                return;
             }
             else
             {
