@@ -9,19 +9,23 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
-    [AutoloadBossHead]		
-	public class NightcrawlerHead : DaybringerHead
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Nightcrawler");
-            Main.npcFrameCount[npc.type] = 1;
-		}		
-		
+	public class NightcrawlerTail : NightcrawlerHead
+	{	
 		public override void SetDefaults()
 		{
             base.SetDefaults();
+            npc.dontCountMe = true;
 			nightcrawler = true;
 		}
-    }
+
+		public override bool PreNPCLoot()
+		{
+			return false;
+		}
+
+		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+		{
+			return false;
+		}
+	}
 }
