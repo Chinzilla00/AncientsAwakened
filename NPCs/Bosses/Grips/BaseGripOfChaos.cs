@@ -60,7 +60,14 @@ namespace AAMod.NPCs.Bosses.Grips
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.LesserHealingPotion;
+            if (shenGrips)
+            {
+                potionType = ItemID.SuperHealingPotion;
+            }
+            else
+            {
+                potionType = ItemID.LesserHealingPotion;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

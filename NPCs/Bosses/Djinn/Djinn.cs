@@ -226,8 +226,8 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;   //boss drops
-            AAWorld.downedAkuma = true;
+            potionType = ItemID.HealingPotion;   //boss drops
+            AAWorld.downedDjinn = true;
         }
 
         public override void NPCLoot()

@@ -251,7 +251,14 @@ namespace AAMod.NPCs.Bosses.Serpent
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.HealingPotion;   //boss drops
+            AAWorld.downedSerpent = true;
+        }
+
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.85f);
