@@ -43,8 +43,16 @@ namespace AAMod.NPCs.Enemies.Snow
         public override void AI()
         {
 			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 5, 8f, 12f, 0.1f, false, false);
-			bool isHead = npc.type == mod.NPCType("SnakeHead");
-			bool isBody = npc.type == mod.NPCType("SnakeBody");
+
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = 1;
+
+            }
+            else
+            {
+                npc.spriteDirection = -1;
+            }
         }
         
 		public override void OnHitPlayer(Player player, int damage, bool crit)
