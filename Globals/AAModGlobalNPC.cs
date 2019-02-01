@@ -16,7 +16,6 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.MushroomMonarch;
 using AAMod.NPCs.Bosses.Shen;
-
 using System;
 using BaseMod;
 using AAMod.NPCs.Bosses.Yamata;
