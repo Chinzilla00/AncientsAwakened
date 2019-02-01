@@ -1215,8 +1215,8 @@ namespace AAMod
                     mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
                     Main.NewText("The Souls of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 220, ConversionHandler.CONVERTID_INFERNO);
-                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 220, ConversionHandler.CONVERTID_MIRE);
+                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, ConversionHandler.CONVERTID_INFERNO);
+                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, ConversionHandler.CONVERTID_MIRE);
 
                 }
             }

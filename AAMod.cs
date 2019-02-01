@@ -108,7 +108,7 @@ namespace AAMod
                     Color.Firebrick,
                     Color.Firebrick,
                     Color.Firebrick);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("MushroomMonarch")));
@@ -123,7 +123,7 @@ namespace AAMod
                     Color.DarkOrange,
                     Color.DarkOrange,
                     Color.DarkOrange);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosRed")));
@@ -138,7 +138,7 @@ namespace AAMod
                     Color.Indigo,
                     Color.Indigo,
                     Color.Indigo);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosBlue")));
@@ -153,7 +153,7 @@ namespace AAMod
                     Color.DarkOrange,
                     Color.DarkOrange,
                     Color.DarkOrange);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Broodmother")));
@@ -168,7 +168,7 @@ namespace AAMod
                     Color.Indigo,
                     Color.Indigo,
                     Color.Indigo);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Hydra")));
@@ -183,7 +183,7 @@ namespace AAMod
                     Color.Cyan,
                     Color.Cyan,
                     Color.Cyan);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHead")));
@@ -198,7 +198,7 @@ namespace AAMod
                     Color.IndianRed,
                     Color.IndianRed,
                     Color.IndianRed);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Djinn")));
@@ -213,7 +213,7 @@ namespace AAMod
                     Color.Violet,
                     Color.Violet,
                     Color.Violet);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Retriever")));
@@ -228,7 +228,7 @@ namespace AAMod
                     Color.Violet,
                     Color.Violet,
                     Color.Violet);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Raider")));
@@ -243,7 +243,7 @@ namespace AAMod
                     Color.Violet,
                     Color.Violet,
                     Color.Violet);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Orthrus")));
@@ -258,7 +258,7 @@ namespace AAMod
                     Color.Cyan,
                     Color.Cyan,
                     Color.Cyan);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("DaybringerHead")));
@@ -273,7 +273,7 @@ namespace AAMod
                     Color.MediumBlue,
                     Color.MediumBlue,
                     Color.MediumBlue);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("NightcrawlerHead")));
@@ -289,7 +289,7 @@ namespace AAMod
                     Color.OrangeRed,
                     Color.OrangeRed,
                     Color.OrangeRed);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("BlazeGrip")));
@@ -305,7 +305,7 @@ namespace AAMod
                     Color.Navy,
                     Color.Navy,
                     Color.Navy);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("AbyssGrip")));
@@ -320,7 +320,7 @@ namespace AAMod
                     Color.Navy,
                     Color.Navy,
                     Color.Navy);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Yamata")));
@@ -335,7 +335,7 @@ namespace AAMod
                     Color.MediumVioletRed,
                     Color.MediumVioletRed,
                     Color.MediumVioletRed);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("YamataA")));
@@ -350,7 +350,7 @@ namespace AAMod
                     Color.Red,
                     Color.Red,
                     Color.Red);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
@@ -365,7 +365,7 @@ namespace AAMod
                     Color.Black,
                     Color.Black,
                     Color.Black);
-                yabhb.Call("hbSetMidBarOffset", 30, 10);
+                yabhb.Call("hbSetMidBarOffset", 0, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));

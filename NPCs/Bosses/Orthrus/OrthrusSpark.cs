@@ -26,8 +26,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
             projectile.alpha = 0;
             projectile.penetrate = 1;
             projectile.timeLeft = 900;
-            projectile.friendly = true;
-            projectile.hostile = false;
         }
 
         public override Color? GetAlpha(Color lightColor)

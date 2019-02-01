@@ -144,9 +144,9 @@ namespace AAMod.Worldgeneration
             colorToTile[Color.Black] = -1;
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile);
-            Point newOrigin = new Point(origin.X, origin.Y);
+            Point newOrigin = new Point(origin.X, origin.Y - 10);
             int genX = origin.X - (gen.width / 2);
-            int genY = origin.Y - 50;
+            int genY = origin.Y - 40;
             gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);
 
             return true;
@@ -295,7 +295,7 @@ namespace AAMod.Worldgeneration
             colorToTile[Color.Black] = -1;
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile);
-            Point newOrigin = new Point(origin.X, origin.Y);
+            Point newOrigin = new Point(origin.X, origin.Y - 30);
             int genX = origin.X - (gen.width / 2);
             int genY = origin.Y - 50;
             gen.Generate(origin.X - (gen.width / 2), origin.Y, true, true);

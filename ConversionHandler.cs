@@ -17,7 +17,7 @@ namespace AAMod.Worldgen
 		public static int genWidth = -1;
 		public static int conversionType = 1;
 		
-		public static bool FULLBRIGHT_MAP = true; //causes the gen to be fullbright on the map for easy viewing
+		public static bool FULLBRIGHT_MAP = false; //causes the gen to be fullbright on the map for easy viewing
 
 		//CALL THIS TO START CONVERTING
 		//example use: ConversionHandler.ConvertDown(x, y, 10, ConversionHandler.CONVERTID_MIRE);

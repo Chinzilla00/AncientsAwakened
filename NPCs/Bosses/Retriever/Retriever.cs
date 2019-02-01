@@ -134,10 +134,10 @@ namespace AAMod.NPCs.Bosses.Retriever
             LaserTimer--;
             npc.frameCounter++;
 
-            if (LaserTimer >= 300)
+            if (LaserTimer <= 300)
             {
                 npc.velocity = new Vector2(0, 0);
-                BaseAI.LookAt(targetPlayer.Center, npc, 3, 0f, 0.1f, false);
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
                 npc.frame.Y = (62 * 4);
                 if (LaserTimer >= 293)
                 {

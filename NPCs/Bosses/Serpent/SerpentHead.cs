@@ -38,6 +38,8 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.HitSound = SoundID.NPCHit5;
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
+            npc.boss = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
             npc.value = Item.buyPrice(0, 0, 10, 0);
             bossBag = mod.ItemType<Items.Boss.Serpent.SerpentBag>();
         }

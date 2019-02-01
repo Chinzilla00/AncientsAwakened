@@ -9,7 +9,6 @@ namespace AAMod.Items.BossSummons
 	//imported from my tAPI mod because I'm lazy
 	public class DjinnLamp : ModItem
 	{
-        public bool Poof = false;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Desert Lamp");
@@ -65,7 +64,7 @@ Only usable during the day");
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-200f, 200f, (float)Main.rand.NextDouble()), 200);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-200f, 200f, (float)Main.rand.NextDouble()), 0);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
                 if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }

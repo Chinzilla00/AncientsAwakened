@@ -36,7 +36,6 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.noGravity = true;
             npc.noTileCollide = true;
             bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
-            npc.alpha = 255;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
