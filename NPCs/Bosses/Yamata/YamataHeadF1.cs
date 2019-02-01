@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Bosses.Infinity.Awakened;
 
-namespace AAMod.NPCs.Bosses.Infinity
+namespace AAMod.NPCs.Bosses.Yamata
 {
     [AutoloadBossHead]
     public class YamataHeadF1 : ModNPC

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Infinity
+namespace AAMod.NPCs.Bosses.Yamata
 {
     public class Yanker : ModProjectile
     {

@@ -4,7 +4,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Infinity
+namespace AAMod.NPCs.Bosses.Yamata
 {
     internal class YamataBomb : ModProjectile
     {

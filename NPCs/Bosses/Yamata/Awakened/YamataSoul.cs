@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.Infinity.Awakened
+namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class YamataSoul : ModNPC
     {

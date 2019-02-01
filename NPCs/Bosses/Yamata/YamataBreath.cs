@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Infinity
+namespace AAMod.NPCs.Bosses.Yamata
 {
     internal class YamataBreath : ModProjectile
     {
