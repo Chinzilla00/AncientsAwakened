@@ -41,9 +41,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 
 		public Infinity Body = null;
 		public int handType = 0; //0 == left top, 1 == left middle, 2 == left bottom, 3 == right top, 4 == right middle, 5 == right bottom
-		public bool leftHand= true;	
+		public bool leftHand= true;
+        public static bool RepairMode = false;
 
-		public static int damageIdle = 200;
+        public static int damageIdle = 200;
 		public static int damageCharging = 300;
 		
         public bool killedbyplayer = true;	
@@ -111,19 +112,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
         }
 
-        public bool RepairMode = false;
-        public int RepairTimer = 0;
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)
-            {
-                npc.life = npc.lifeMax;
-                RepairMode = true;
-                RepairTimer = 400;
-            }
-        }
-
         private int ZeroShot = 0;
         
         public override void AI()
@@ -171,12 +159,10 @@ namespace AAMod.NPCs.Bosses.Infinity
 
             if (RepairMode)
             {
-                RepairTimer--;
                 npc.dontTakeDamage = true;
             }
-            if (RepairTimer <= 0)
+            else
             {
-                RepairMode = false;
                 npc.dontTakeDamage = false;
             }
             if (Body != null && Body.Reseting)
@@ -346,6 +332,16 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 			return new Vector2(offsetX, offsetY);
 		}
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                npc.life = npc.lifeMax;
+                RepairMode = true;
+                Body.npc.ai[3] += 1;
+            }
+        }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {

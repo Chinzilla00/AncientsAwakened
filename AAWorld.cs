@@ -1139,7 +1139,7 @@ namespace AAMod
                     infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
                     mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
-                    Main.NewText("The Essenses of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)infernoPos.X, 0, 220, ConversionHandler.CONVERTID_INFERNO);
                     ConversionHandler.ConvertDown((int)mirePos.X, 0, 220, ConversionHandler.CONVERTID_MIRE);
 
@@ -1156,7 +1156,7 @@ namespace AAMod
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
-            shipTiles = tileCounts[mod.TileType<RottedDynastyWoodS>()] + tileCounts[mod.TileType<CthulhuPortal>()];
+            shipTiles = tileCounts[mod.TileType<CthulhuPortal>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 

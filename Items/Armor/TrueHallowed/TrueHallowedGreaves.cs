@@ -22,9 +22,9 @@ namespace AAMod.Items.Armor.TrueHallowed
 		{
             item.width = 22;
             item.height = 18;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.defense = 14;
-            item.rare = 6;
+            item.rare = 7;
         }
 
         public override void UpdateEquip(Player player)

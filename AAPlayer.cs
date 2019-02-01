@@ -12,8 +12,8 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
-using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Infinity.Awakened;
+using AAMod.NPCs.Bosses.Infinity;
 using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Infinity;
 using AAMod.NPCs.Bosses.SoC;
@@ -90,6 +90,9 @@ namespace AAMod
         public bool trueTribal;
         public bool trueDeathly;
         public bool trueDemon;
+        public bool trueDynaskull;
+        public bool terraSet;
+        public bool chaosSet;
         public bool darkmatterSetMe;
         public bool darkmatterSetRa;
         public bool darkmatterSetMa;
@@ -117,7 +120,8 @@ namespace AAMod
         public bool Time;
         public bool Soul;
         public bool Space;
-        public int SnapCD = 18000;
+        public int SnapCD = 0;
+        public int AbilityCD = 180;
         public bool death;
         public bool AshRemover;
         public bool FogRemover;
@@ -226,6 +230,9 @@ namespace AAMod
             impSet = false;
             trueDemon = false;
             trueDeathly = false;
+            trueDynaskull = false;
+            terraSet = false;
+            chaosSet = false;
             DynaskullSet = false;
             zeroSet = false;
             dracoSet = false;
@@ -240,6 +247,8 @@ namespace AAMod
             perfectChaos = false;
             Alpha = false;
             //Accessory
+            SnapCD = 0;
+            AbilityCD = 0;
             AshRemover = false;
             FogRemover = false;
             clawsOfChaos = false;
@@ -1079,10 +1088,13 @@ namespace AAMod
                     AAWorld.Compass = true;
                     Compass = true;
                     Leave = false;
-                    NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
-                    if (Main.netMode != 1)
+                    if (ZoneShip)
                     {
-                        BaseUtility.Chat("UNHAND WHAT ISN'T YOURS, THIEF", Color.LightCyan);
+                        NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
+                        if (Main.netMode != 1)
+                        {
+                            BaseUtility.Chat("UNHAND WHAT ISN'T YOURS, THIEF", Color.Cyan);
+                        }
                     }
                 }
             }
@@ -1103,7 +1115,7 @@ namespace AAMod
                 }
                 if (CthulhuCountdown == 200 && Main.netMode != 1)
                 {
-                    BaseUtility.Chat("...turn back now...", Color.LightCyan);
+                    BaseUtility.Chat("...turn back now...", Color.Cyan);
                 }
                 if (CthulhuCountdown == 0)
                 {
@@ -1111,7 +1123,7 @@ namespace AAMod
                     NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<UDUNFUKED>());
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECK", Color.LightCyan);
+                        BaseUtility.Chat("FACE THE WRATH OF THE OUTER GODS YOU INSIGNIFICANT SPECK", Color.Cyan);
                     }
                 }
             }
@@ -1320,6 +1332,10 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("FazerHood"));
                         player.QuickSpawnItem(mod.ItemType("FazerShirt"));
                         player.QuickSpawnItem(mod.ItemType("FazerPants"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
+                        }
                         spawnedDevItems = true;
                         break;
                 }
@@ -1600,6 +1616,42 @@ namespace AAMod
                     });
                 }
             }
+            if (trueDynaskull)
+            {
+                if (AAMod.AbilityKey.JustPressed && AbilityCD == 0)
+                {
+                    AbilityCD = 180;
+                    int i = Main.myPlayer;
+                    float num72 = 8;
+                    int num73 = 70;
+                    float num74 = 1;
+                    Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+                    float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+                    float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                    if (player.gravDir == -1f)
+                    {
+                        num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                    }
+                    float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+                    float num81 = num80;
+                    if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
+                    {
+                        num78 = (float)player.direction;
+                        num79 = 0f;
+                    }
+                    else
+                    {
+                        num80 = num72 / num80;
+                    }
+                    vector2.X = (float)Main.mouseX + Main.screenPosition.X;
+                    vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("Dynabomb"), num73, num74, i, 0f, 0f);
+                }
+            }
+            if (AbilityCD != 0)
+            {
+                AbilityCD--;
+            }
             if (SnapCD != 0)
             {
                 SnapCD--;
@@ -1630,6 +1682,17 @@ namespace AAMod
                     IsGoblin = true;
                 }
             }
+
+            if (trueFlesh && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.Ichor, 300);
+            }
+
+            if (trueNights && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.CursedInferno, 300);
+            }
+
             if (valkyrieSet && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
@@ -1725,6 +1788,15 @@ namespace AAMod
         public int GetIZHealth = 2000000;
         public int RiftTimer;
         public int EscapeLine = 180;
+
+        public override void UpdateLifeRegen()
+        {
+            if (trueFlesh)
+            {
+                player.lifeRegenTime++;
+                player.lifeRegenTime++;
+            }
+        }
 
         public override void UpdateBadLifeRegen()
         {
@@ -1869,6 +1941,46 @@ namespace AAMod
             infinityOverload = false;
         }
 
+        public override void MeleeEffects(Item item, Rectangle hitbox)
+        {
+            if (trueFlesh)
+            {
+                if (Main.rand.NextFloat() < 1f)
+                {
+                    Dust dust;
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 246, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust.noGravity = true;
+                }
+            }
+            if (trueNights)
+            {
+                if (Main.rand.NextFloat() < 1f)
+                {
+                    Dust dust;
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 76, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust.noGravity = true;
+                }
+            }
+            if (demonGauntlet && !dwarvenGauntlet)
+            {
+                int ThisDust;
+                if (WorldGen.crimson)
+                {
+                    ThisDust = 76;
+                }
+                else
+                {
+                    ThisDust = 264;
+                }
+                if (Main.rand.NextFloat() < 1f)
+                {
+                    Dust dust;
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ThisDust, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust.noGravity = true;
+                }
+            }
+        }
+
         public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
             if (infinityOverload)
@@ -2004,6 +2116,24 @@ namespace AAMod
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
+
+            if (trueFlesh && proj.melee && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.Ichor, 300);
+            }
+
+            if (trueNights && proj.melee && Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.CursedInferno, 300);
+            }
+
+            if (trueNights && proj.melee && Main.rand.Next(3) == 0)
+            {
+                if (target.life <= 0)
+                {
+                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType("CursedFireball"), damage, 0);
+                }
+            }
 
             if (Baolei && (proj.melee || proj.magic) && Main.rand.Next(2) == 0)
             {

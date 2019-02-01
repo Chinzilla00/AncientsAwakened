@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Yamata.Awakened
+namespace AAMod.NPCs.Bosses.Infinity.Awakened
 {
     [AutoloadBossHead]
     public class YamataAHead : YamataHead

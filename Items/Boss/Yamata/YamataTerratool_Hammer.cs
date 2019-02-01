@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Yamata
         public override void RightClick(Player player)
         {
             item.TurnToAir();
-            player.QuickSpawnItem(mod.ItemType("YamataTerratool"));
+            Item.NewItem(player.Center, mod.ItemType("YamataTerratool"), 1, false, item.prefix, true, false);
         }
     }
 }

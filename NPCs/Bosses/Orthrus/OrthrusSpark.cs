@@ -18,7 +18,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             projectile.width = 34;
             projectile.height = 16;
-            projectile.friendly = true;
+            projectile.hostile = true;
+            projectile.friendly = false;
             projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;

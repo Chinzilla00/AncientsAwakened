@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Zero
         public override void RightClick(Player player)
         {
             item.TurnToAir();
-            player.QuickSpawnItem(mod.ItemType("ZeroTerratool_Hammer"));
+            Item.NewItem(player.Center, mod.ItemType("ZeroTerratool_Hammer"), 1, false, item.prefix, true, false);
         }
     }
 }

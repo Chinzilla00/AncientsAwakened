@@ -19,7 +19,6 @@ namespace AAMod.Items.DevTools
 
         public override void SetDefaults()
         {
-
             item.damage = 10000;     
             item.melee = true;    
             item.width = 64;            
@@ -30,7 +29,7 @@ namespace AAMod.Items.DevTools
             item.knockBack = 4;   
             item.value = 0;        
             item.rare = 11;
-            item.UseSound = SoundID.Item37;
+            item.UseSound = SoundID.Item1;
             item.autoReuse = true;   
             item.useTurn = true;
             item.expert = true;

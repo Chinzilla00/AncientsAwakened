@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Infinity
         public NPC Zero4;
         public NPC Zero5;
         public NPC Zero6;
+        public NPC Core;
         public bool ZerosSpawned = false;
         public bool Reseting = false;
         public Vector2 topVisualOffset = default(Vector2);
@@ -34,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             npc.height = 342;
             npc.npcSlots = 100;
             npc.scale = 1f;
-			npc.defense = 250;
+            npc.dontTakeDamage = true;
 			npc.lifeMax = 2500000;
 			npc.knockBackResist = 0f;
 			npc.aiStyle = -1;
@@ -219,6 +220,10 @@ namespace AAMod.NPCs.Bosses.Infinity
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
 					Main.npc[latestNPC].ai[1] = handType;
                     Zero6 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("InfinityCore"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                    Core = Main.npc[latestNPC];
                 }
                 ZerosSpawned = true;
             }
@@ -310,6 +315,9 @@ namespace AAMod.NPCs.Bosses.Infinity
         public bool threeQuarterHealth = false;
         public bool HalfHealth = false;
         public bool fifthHealth = false;
+        public bool OpenCore = false;
+        public bool FirstCoreLine = false;
+        public int CoreTimer = 600;
 
         public override void HitEffect(int hitDirection, double damage)
 		{
@@ -342,6 +350,26 @@ namespace AAMod.NPCs.Bosses.Infinity
                 IZHand1.damageIdle = 350;
                 IZHand1.damageCharging = 500;
                 roarTimer = 200;
+            }
+            if (npc.ai[3] == 6)
+            {
+                CoreTimer--;
+                OpenCore = true;
+                if (Main.netMode != 1 && !FirstCoreLine)
+                {
+                    FirstCoreLine = true;
+                    BaseUtility.Chat("Zero Units in critical condition. Rerouting resources to repair systems. Core defense temporarily disabled.", new Color(158, 3, 32));
+                }
+                if (CoreTimer <= 0)
+                {
+                    BaseUtility.Chat("Zero Units sufficiently repaired. Reengaging Core defense system.", new Color(158, 3, 32));
+                    npc.ai[3] = 0;
+                    OpenCore = false;
+                    CoreTimer = 600;
+                    IZHand1.RepairMode = false;
+                    IZHand2.RepairMode = false;
+                }
+
             }
             if (npc.life <= npc.lifeMax / 6)
             {
@@ -382,7 +410,15 @@ namespace AAMod.NPCs.Bosses.Infinity
 			}
 		}
 
-		public static Color infinityGlowRed = new Color(233, 53, 53);
+        public void DrawCore(SpriteBatch spriteBatch, string coreTex, NPC core, Color drawColor, bool DrawUnder)
+        {
+            if (core != null && core.active)
+            {
+                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(coreTex), 0, npc.Center, core.width, core.height, core.scale, core.rotation, core.spriteDirection, Main.npcFrameCount[core.type], core.frame, drawColor, false);
+            }
+        }
+
+        public static Color infinityGlowRed = new Color(233, 53, 53);
         public static Color GetGlowAlpha(bool aura)
         {
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
@@ -424,6 +460,7 @@ namespace AAMod.NPCs.Bosses.Infinity
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            DrawCore(sb, "NPCs/Bosses/Infinity/InfinityCore", Core, AAColor.Oblivion, false);
             if (fifthHealth)
             {
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);

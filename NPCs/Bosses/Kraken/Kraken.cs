@@ -50,24 +50,24 @@ namespace AAMod.NPCs.Bosses.Kraken
         }
         public override void SetDefaults()
         {
-            npc.width = 100;
-            npc.height = 120;
-            npc.alpha = 255;
+            npc.width = 106;
+            npc.height = 122;
+            //npc.alpha = 255;
             npc.damage = 80;
             npc.defense = 40;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Kraken");
             npc.lifeMax = 120000;
-            npc.dontTakeDamage = true;
+            npc.dontTakeDamage = false;
             npc.noGravity = true;
             npc.aiStyle = -1;
-            npc.timeLeft = 10;
+            //npc.timeLeft = 10;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
         }
 
-        int frameheight = 130;
+        int frameheight = 122;
 
         public override void AI()
         {
@@ -83,9 +83,9 @@ namespace AAMod.NPCs.Bosses.Kraken
             {
                 if (npc.frameCounter > 8)
                 {
-                    npc.frame.Y += 130;
+                    npc.frame.Y += 122;
                 }
-                if (npc.frame.Y >= 130 * 4)
+                if (npc.frame.Y >= 122 * 4)
                 {
                     npc.frame.Y = 0;
                 }

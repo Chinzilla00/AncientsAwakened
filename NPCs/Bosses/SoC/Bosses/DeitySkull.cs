@@ -99,45 +99,46 @@ namespace AAMod.NPCs.Bosses.SoC.Bosses
             }
             if (Main.netMode != 1)
             {
-                npc.TargetClosest(true);
-                npc.ai[0]++;
-                int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index1].ai[0] = -1f;
-                Main.npc[index1].ai[1] = npc.whoAmI;
-                Main.npc[index1].target = npc.target;
-                Main.npc[index1].netUpdate = true;
-                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand1"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index2].ai[0] = -1f;
-                Main.npc[index2].ai[1] = npc.whoAmI;
-                Main.npc[index2].target = npc.target;
-                Main.npc[index2].ai[3] = 150f;
-                Main.npc[index2].netUpdate = true;
-                int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Han2"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index3].ai[0] = -1f;
-                Main.npc[index3].ai[1] = npc.whoAmI;
-                Main.npc[index3].target = npc.target;
-                Main.npc[index3].ai[3] = 150f;
-                Main.npc[index3].netUpdate = true;
-                int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand3"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index4].ai[0] = 1f;
-                Main.npc[index4].ai[1] = npc.whoAmI;
-                Main.npc[index4].target = npc.target;
-                Main.npc[index4].netUpdate = true;
-                Main.npc[index4].ai[3] = 150f;
-                int index5 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand4"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index5].ai[0] = 1f;
-                Main.npc[index5].ai[1] = npc.whoAmI;
-                Main.npc[index5].target = npc.target;
-                Main.npc[index5].netUpdate = true;
-                Main.npc[index5].ai[3] = 150f;
-                int index6 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand5"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-                Main.npc[index6].ai[0] = 1f;
-                Main.npc[index6].ai[1] = npc.whoAmI;
-                Main.npc[index6].ai[3] = 150f;
-                Main.npc[index6].target = npc.target;
-                Main.npc[index6].netUpdate = true;
-
-
+                if (npc.ai[0] == 0)
+                {
+                    npc.TargetClosest(true);
+                    npc.ai[0]++;
+                    int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index1].ai[0] = -1f;
+                    Main.npc[index1].ai[1] = npc.whoAmI;
+                    Main.npc[index1].target = npc.target;
+                    Main.npc[index1].netUpdate = true;
+                    int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand1"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index2].ai[0] = -1f;
+                    Main.npc[index2].ai[1] = npc.whoAmI;
+                    Main.npc[index2].target = npc.target;
+                    Main.npc[index2].ai[3] = 150f;
+                    Main.npc[index2].netUpdate = true;
+                    int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Han2"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index3].ai[0] = -1f;
+                    Main.npc[index3].ai[1] = npc.whoAmI;
+                    Main.npc[index3].target = npc.target;
+                    Main.npc[index3].ai[3] = 150f;
+                    Main.npc[index3].netUpdate = true;
+                    int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand3"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index4].ai[0] = 1f;
+                    Main.npc[index4].ai[1] = npc.whoAmI;
+                    Main.npc[index4].target = npc.target;
+                    Main.npc[index4].netUpdate = true;
+                    Main.npc[index4].ai[3] = 150f;
+                    int index5 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand4"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index5].ai[0] = 1f;
+                    Main.npc[index5].ai[1] = npc.whoAmI;
+                    Main.npc[index5].target = npc.target;
+                    Main.npc[index5].netUpdate = true;
+                    Main.npc[index5].ai[3] = 150f;
+                    int index6 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + npc.height / 2, mod.NPCType("DeitySkull_Hand5"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                    Main.npc[index6].ai[0] = 1f;
+                    Main.npc[index6].ai[1] = npc.whoAmI;
+                    Main.npc[index6].ai[3] = 150f;
+                    Main.npc[index6].target = npc.target;
+                    Main.npc[index6].netUpdate = true;
+                }
             }
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000.0 || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000.0)
             {

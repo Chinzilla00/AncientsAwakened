@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
+using AAMod.NPCs.Bosses.Infinity.Awakened;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {

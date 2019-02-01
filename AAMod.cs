@@ -25,6 +25,7 @@ namespace AAMod
     {
         public static int GoblinSoul;
         public static ModHotKey InfinityHotKey;
+        public static ModHotKey AbilityKey;
         internal static AAMod instance;
         internal UserInterface UserInterface;
         public static bool AkumaMusic = false;
@@ -379,7 +380,7 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 4.00000000001f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5.00000000001f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + ItemType("SubzeroCrystal") + "] in the Snow biome at night");
                 bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5.00000000001f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + ItemType("DjinnLamp") + "] in the Desert during the day");
-                bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 6.00000000001f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + ItemType("Toadstool") + "] in an underground mushroom biome");
+                //bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 6.00000000001f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + ItemType("Toadstool") + "] in an underground mushroom biome");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999997f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999997f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("HydraChow") + "] at night");
@@ -417,7 +418,7 @@ namespace AAMod
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Amphibious Atrocity", "Defeat the three-headed horror, the Hydra", instance.GetTexture("BlankTex"), AAWorld.downedHydra);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Slithering Snowmongerer", "Defeat the Snow-burrowing Snake, the Subzero Serpent", instance.GetTexture("BlankTex"), AAWorld.downedSerpent);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Sandskrit Sandman", "Defeat majin of magic, the Desert Djinn", instance.GetTexture("BlankTex"), AAWorld.downedDjinn);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "T O D E", "Defeat the fungal frog, the Truffle Toad", instance.GetTexture("BlankTex"), AAWorld.downedToad);
+                //DradonIsDum.Call("AddAchievementWithoutReward", this, "T O D E", "Defeat the fungal frog, the Truffle Toad", instance.GetTexture("BlankTex"), AAWorld.downedToad);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Shocking", "Destroy any of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAny);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Storming Smackdown", "Destroy all of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAll);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", instance.GetTexture("Achievments/Equinox"), AAWorld.downedEquinox);
@@ -461,6 +462,8 @@ namespace AAMod
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
 
+            AbilityKey = RegisterHotKey("Armor Ability", "Y");
+
             if (!Main.dedServ)
             {
 
@@ -500,7 +503,7 @@ namespace AAMod
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
-                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TODE"), ItemType("TodeBox"), TileType("TodeBox"));
+                    //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TODE"), ItemType("TodeBox"), TileType("TodeBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Siege"), ItemType("SiegeBox"), TileType("SiegeBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
@@ -583,6 +586,7 @@ namespace AAMod
         public override void Unload()
         {
             InfinityHotKey = null;
+            AbilityKey = null;
         }
         public override void AddRecipeGroups()
         {

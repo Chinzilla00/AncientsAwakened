@@ -3,9 +3,9 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
+using AAMod.NPCs.Bosses.Infinity.Awakened;
 
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.Infinity
 {
     [AutoloadBossHead]
     public class YamataHeadF1 : ModNPC

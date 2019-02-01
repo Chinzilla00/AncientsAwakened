@@ -13,16 +13,16 @@ namespace AAMod.NPCs.Bosses.Kraken
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Kraken Tentacle");
-            Main.projFrames[projectile.type] = 29;
+            Main.projFrames[projectile.type] = 30;
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            projectile.width = 94;
-            projectile.height = 54;
+            projectile.width = 90;
+            projectile.height = 62;
 			projectile.aiStyle = -1;
-            projectile.alpha = 255;
+           // projectile.alpha = 255;
         }
 
         public override void AI()

@@ -7,10 +7,10 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
-using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Infinity.Awakened;
+using AAMod.NPCs.Bosses.Infinity;
 
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.Infinity
 {
     //[AutoloadBossHead]
     public class Yamata : YamataBoss

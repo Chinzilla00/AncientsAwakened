@@ -44,7 +44,7 @@ namespace AAMod.Items.Tools
         public override void RightClick(Player player)
         {
             item.TurnToAir();
-            player.QuickSpawnItem(mod.ItemType("Terratool"));
+            Item.NewItem(player.Center, mod.ItemType("Terratool"), 1, false, item.prefix, true, false);
         }
     }
 }

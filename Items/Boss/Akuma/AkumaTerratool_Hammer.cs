@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void RightClick(Player player)
         {
             item.TurnToAir();
-            player.QuickSpawnItem(mod.ItemType("AkumaTerratool"));
+            Item.NewItem(player.Center, mod.ItemType("AkumaTerratool"), 1, false, item.prefix, true, false);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace AAMod.Items.Boss.Shen
         public override void RightClick(Player player)
         {
             item.TurnToAir();
-            player.QuickSpawnItem(mod.ItemType("ShenTerratool"));
+            Item.NewItem(player.Center, mod.ItemType("ShenTerratool"), 1, false, item.prefix, true, false);
         }
     }
 }

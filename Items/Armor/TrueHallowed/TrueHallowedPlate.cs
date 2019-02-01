@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.TrueHallowed
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Chaos Slayer Plate");
+            DisplayName.SetDefault("True Hallowed Plate");
             Tooltip.SetDefault(@"10% increased critical strike chance");
         }
 
@@ -23,7 +23,7 @@ namespace AAMod.Items.Armor.TrueHallowed
 		{
 			item.width = 26;
 			item.height = 20;
-			item.value = Item.sellPrice(3, 0, 0, 0);
+			item.value = Item.sellPrice(0, 10, 0, 0);
 			item.rare = 7;
 			item.defense = 18;
 		}

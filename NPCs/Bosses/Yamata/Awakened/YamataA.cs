@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.Yamata.Awakened
+namespace AAMod.NPCs.Bosses.Infinity.Awakened
 {
     //[AutoloadBossHead]
 
