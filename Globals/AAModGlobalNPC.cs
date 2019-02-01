@@ -12,14 +12,14 @@ using AAMod.NPCs.Bosses.Raider;
 using AAMod.NPCs.Bosses.Retriever;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Infinity;
-using AAMod.NPCs.Bosses.Infinity.Awakened;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.MushroomMonarch;
 using AAMod.NPCs.Bosses.Shen;
 
 using System;
 using BaseMod;
-using AAMod.NPCs.Bosses.Infinity;
+using AAMod.NPCs.Bosses.Yamata;
 
 namespace AAMod
 {
