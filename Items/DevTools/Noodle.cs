@@ -8,11 +8,11 @@ namespace AAMod.Items.DevTools
 {
     public class Noodle : ModProjectile
     {
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Noodle");
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Noodle");
         }
-    	
+
         public override void SetDefaults()
         {
             projectile.width = 30;
@@ -31,7 +31,7 @@ namespace AAMod.Items.DevTools
         public override void AI()
         {
 
-           
+
             if (projectile.velocity.X < 0f)
             {
                 projectile.spriteDirection = -1;
@@ -49,9 +49,9 @@ namespace AAMod.Items.DevTools
             int dustId3 = Dust.NewDust(new Vector2(projectile.position.X + (float)num557, projectile.position.Y + (float)num557), projectile.width - num557 * 2, projectile.height - num557 * 2, DustID.AncientLight, 0f, 0f, 0, default(Color), 1f);
             Main.dust[dustId3].noGravity = true;
 
-            const int aislotHomingCooldown = 30;
+            const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 20;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -93,7 +93,7 @@ namespace AAMod.Items.DevTools
             return selectedTarget;
         }
 
-        
+
 
         public override void Kill(int timeLeft)
         {

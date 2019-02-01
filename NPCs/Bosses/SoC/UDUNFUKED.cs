@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.SoC
             npc.boss = true;
             npc.noGravity = true;
             npc.netAlways = true;
+            npc.noTileCollide = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
         }
 

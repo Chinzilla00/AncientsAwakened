@@ -21,3 +21,4 @@ AAMod.csproj.user
 *.txt
 bin/Debug/AAMod.dll
 bin/Debug/AAMod.pdb
+obj/Debug/AAMod.csproj.CoreCompileInputs.cache
