@@ -1,11 +1,6 @@
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using BaseMod;
-using AAMod.NPCs.Bosses.Infinity.Awakened;
 
 namespace AAMod.NPCs.Bosses.Infinity
 {
@@ -114,17 +109,6 @@ namespace AAMod.NPCs.Bosses.Infinity
             {
                 projectile.damage *= (int).2;
             }
-        }
-        
-
-        public override void BossHeadRotation(ref float rotation)
-        {
-            rotation = npc.rotation;
-        }
-        // We use this hook to prevent any loot from dropping. We do this because this is a multistage npc and it shouldn't drop anything until the final form is dead.
-        public override bool PreNPCLoot()
-        {
-            return false;
         }
 
     }

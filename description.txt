@@ -4,10 +4,13 @@ Thanks to all these amazing people for all their help with the mod!
 
 
 Coders:
+-Grox The Great
 -Hallam, God of Rainbows (Mod of Redemption/Coder)
 -Chinzilla
 -StealYourFace
 -Tails the Fox92
+-Gregg
+-TailsTheFox
 
 Spriters:
 -Welox
@@ -21,6 +24,8 @@ Spriters:
 -SpectralAves
 -Darkpuppey
 -Beg
+-GamingWithZack
+-FailureOfMankind
 
 Composers:
 -SpectralAves
@@ -28,6 +33,7 @@ Composers:
 -Charlie Debnam
 -OmegaFerretMusic
 -LordCakeSpy
+-Wizzor
 
 Testers:
 -Dradonhunter11
@@ -37,10 +43,9 @@ Testers:
 -GamingWithZack
 -WordOfTheDayIsYay
 -Fazergamer
+-Hero
 
 Artists:
--Runefield
--Non
 -MechanicPluto
 -Ezalos
 
@@ -49,12 +54,12 @@ Development:
 -Eliza Miles
 
 Development Assistance:
--Grox The Great
 -Fargowilta
 -PrehistoricBanana
 -Dradonhunter11
 -ZipZopZoop
 -Omega-Z
+-Dan Yami
 
 Retired:
 -JaceDaDorito
@@ -67,3 +72,5 @@ Retired:
 -Turquoise
 -GabeHasWon
 -PrehistoricBanana
+-Runefield
+-Non

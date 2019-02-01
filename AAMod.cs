@@ -105,10 +105,10 @@ namespace AAMod
                     GetTexture("Healthbars/MBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Mushroom,
-                    AAColor.Mushroom,
-                    AAColor.Mushroom);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Firebrick,
+                    Color.Firebrick,
+                    Color.Firebrick);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("MushroomMonarch")));
@@ -120,10 +120,10 @@ namespace AAMod
                     GetTexture("Healthbars/RGCBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Broodmother,
-                    AAColor.Broodmother,
-                    AAColor.Broodmother);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosRed")));
@@ -135,10 +135,10 @@ namespace AAMod
                     GetTexture("Healthbars/BGCBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Hydra,
-                    AAColor.Hydra,
-                    AAColor.Hydra);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("GripOfChaosBlue")));
@@ -150,10 +150,10 @@ namespace AAMod
                     GetTexture("Healthbars/BMBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Broodmother,
-                    AAColor.Broodmother,
-                    AAColor.Broodmother);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Broodmother")));
@@ -165,10 +165,10 @@ namespace AAMod
                     GetTexture("Healthbars/HydraBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Hydra,
-                    AAColor.Hydra,
-                    AAColor.Hydra);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Hydra")));
@@ -180,10 +180,10 @@ namespace AAMod
                     GetTexture("Healthbars/SSBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Serpent,
-                    AAColor.Serpent,
-                    AAColor.Serpent);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Cyan,
+                    Color.Cyan,
+                    Color.Cyan);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHead")));
@@ -195,10 +195,10 @@ namespace AAMod
                     GetTexture("Healthbars/DDBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Djinn,
-                    AAColor.Djinn,
-                    AAColor.Djinn);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.IndianRed,
+                    Color.IndianRed,
+                    Color.IndianRed);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Djinn")));
@@ -210,10 +210,10 @@ namespace AAMod
                     GetTexture("Healthbars/SBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Storm,
-                    AAColor.Storm,
-                    AAColor.Storm);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Violet,
+                    Color.Violet,
+                    Color.Violet);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Retriever")));
@@ -225,10 +225,10 @@ namespace AAMod
                     GetTexture("Healthbars/SBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Storm,
-                    AAColor.Storm,
-                    AAColor.Storm);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Violet,
+                    Color.Violet,
+                    Color.Violet);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Raider")));
@@ -240,10 +240,10 @@ namespace AAMod
                     GetTexture("Healthbars/SBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Storm,
-                    AAColor.Storm,
-                    AAColor.Storm);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Violet,
+                    Color.Violet,
+                    Color.Violet);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Orthrus")));
@@ -255,10 +255,10 @@ namespace AAMod
                     GetTexture("Healthbars/DBBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Daybringer,
-                    AAColor.Daybringer,
-                    AAColor.Daybringer);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Cyan,
+                    Color.Cyan,
+                    Color.Cyan);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("DaybringerHead")));
@@ -270,10 +270,10 @@ namespace AAMod
                     GetTexture("Healthbars/NCBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Nightcrawler,
-                    AAColor.Nightcrawler,
-                    AAColor.Nightcrawler);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.MediumBlue,
+                    Color.MediumBlue,
+                    Color.MediumBlue);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("NightcrawlerHead")));
@@ -286,10 +286,10 @@ namespace AAMod
                     GetTexture("Healthbars/BGBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Akuma,
-                    AAColor.Akuma,
-                    AAColor.Akuma);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.OrangeRed,
+                    Color.OrangeRed,
+                    Color.OrangeRed);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("BlazeGrip")));
@@ -302,10 +302,10 @@ namespace AAMod
                     GetTexture("Healthbars/AGBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Yamata,
-                    AAColor.Yamata,
-                    AAColor.Yamata);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Navy,
+                    Color.Navy,
+                    Color.Navy);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("AbyssGrip")));
@@ -317,10 +317,10 @@ namespace AAMod
                     GetTexture("Healthbars/YamataBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Yamata,
-                    AAColor.Yamata,
-                    AAColor.Yamata);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Navy,
+                    Color.Navy,
+                    Color.Navy);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Yamata")));
@@ -332,10 +332,10 @@ namespace AAMod
                     GetTexture("Healthbars/YamataABarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.YamataA,
-                    AAColor.YamataA,
-                    AAColor.YamataA);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.MediumVioletRed,
+                    Color.MediumVioletRed,
+                    Color.MediumVioletRed);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("YamataA")));
@@ -347,10 +347,10 @@ namespace AAMod
                     GetTexture("Healthbars/ZeroBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Zero,
-                    AAColor.Zero,
-                    AAColor.Zero);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Red,
+                    Color.Red,
+                    Color.Red);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
@@ -362,10 +362,10 @@ namespace AAMod
                     GetTexture("Healthbars/ZeroABarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    AAColor.Oblivion,
-                    AAColor.Oblivion,
-                    AAColor.Oblivion);
-                yabhb.Call("hbSetMidBarOffset", 10, 30);
+                    Color.Black,
+                    Color.Black,
+                    Color.Black);
+                yabhb.Call("hbSetMidBarOffset", 30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
