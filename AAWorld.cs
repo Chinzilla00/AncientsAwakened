@@ -434,10 +434,10 @@ namespace AAMod
                 Altars(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Ship", delegate (GenerationProgress progress)
+            /*tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Ship", delegate (GenerationProgress progress)
             {
                 Ship(progress);
-            }));
+            }));*/
         }
         
 

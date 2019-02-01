@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Enemis.Other
+namespace AAMod.NPCs.Enemies.Other
 {
 	public class MadnessSlime : ModNPC
 	{

@@ -1683,7 +1683,7 @@ namespace AAMod
                 for (int i = 0; i < 255; i++)
                 {
 
-                    target.AddBuff(BuffID.Chilled, 1200);
+                    target.AddBuff(BuffID.Slow, 1200);
                 }
             }
 
@@ -2136,8 +2136,7 @@ namespace AAMod
 
             if (Time && Main.rand.Next(2) == 0)
             {
-                target.AddBuff(BuffID.Chilled, 180);
-                target.AddBuff(mod.BuffType("TimeFrozen"), 300);
+                target.AddBuff(BuffID.Slow, 180);
             }
 
             if (DynaskullSet && proj.thrown && Main.rand.Next(2) == 0)
