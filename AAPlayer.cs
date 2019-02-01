@@ -2293,14 +2293,14 @@ namespace AAMod
             }
 			
 			if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")) && proj.melee)
-            {
-                target.AddBuff(mod.BuffType("DragonFire"), 900);
-            }
-			
+			{
+				target.AddBuff(mod.BuffType("DragonFire"), 900);
+			}
+
 			if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")) && proj.melee)
-            {
-                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
-            }
+			{
+				target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+			}
         }
 
         public override Texture2D GetMapBackgroundImage()

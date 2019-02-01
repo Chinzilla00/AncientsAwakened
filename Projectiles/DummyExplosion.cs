@@ -30,6 +30,6 @@ namespace AAMod.Projectiles
 			target.immune[projectile.owner] = 1;
 			target.AddBuff(BuffID.OnFire, 300);
 		}
-	
+
 	}
 }

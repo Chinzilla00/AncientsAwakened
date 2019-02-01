@@ -5,24 +5,24 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class FireballP : ModProjectile
-    {
-        public override void SetDefaults()
-        {
-            projectile.CloneDefaults(14);
-            projectile.penetrate = 1;
-            projectile.width = 16;
-            projectile.height = 16;
+	public class FireballP : ModProjectile
+	{
+		public override void SetDefaults()
+		{
+			projectile.CloneDefaults(14);
+			projectile.penetrate = 1;
+			projectile.width = 16;
+			projectile.height = 16;
 			projectile.friendly = true;
-            projectile.timeLeft = 300;
+			projectile.timeLeft = 300;
 			projectile.alpha = 10;
 			projectile.aiStyle = 1;
 			aiType = 14;
-        }
+		}
 
 		public override void SetStaticDefaults()
 		{
-		    DisplayName.SetDefault("Fireball");
+			DisplayName.SetDefault("Fireball");
 		}
 
 		public override void AI()
@@ -39,21 +39,21 @@ namespace AAMod.Projectiles
 				Main.dust[index3].scale *= 0.8f;
 			}
 		}
-		
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.OnFire, 300);
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(BuffID.OnFire, 300);
 			projectile.Kill();
-        }
+		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.Kill();
 			return true;
 		}
-		
-        public override void Kill(int timeLeft)
-        {
+
+		public override void Kill(int timeLeft)
+		{
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
 			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("DummyExplosion"), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
 			for (int index1 = 0; index1 < 30; ++index1)
@@ -91,6 +91,6 @@ namespace AAMod.Projectiles
 				--Main.gore[index5].velocity.X;
 				--Main.gore[index5].velocity.Y;
 			}
-        }
-    }
+		}
+	}
 }

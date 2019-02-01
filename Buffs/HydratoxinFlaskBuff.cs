@@ -13,6 +13,6 @@ namespace AAMod.Buffs
 			Main.persistentBuff[Type] = true;
 			Main.meleeBuff[Type] = true;
 			canBeCleared = true;
-        }
+		}
 	}
 }
