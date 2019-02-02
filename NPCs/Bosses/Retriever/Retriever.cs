@@ -118,6 +118,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public float moveSpeed = 10f;
         private int LaserTimer = 1000;
+        private int minionTimer = 0;
 
         public Projectile laser;
 
@@ -177,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.frame.Y = (62 * 11);
                     return;
                 }
-                else if (LaserTimer >= 244 && LaserTimer <= 60)
+                else if (LaserTimer >= 130)
                 {
                     npc.frameCounter++;
                     if (npc.frameCounter >= 7)
@@ -190,7 +191,6 @@ namespace AAMod.NPCs.Bosses.Retriever
                         npc.frame.Y = 62 * 11;
                     }
                     npc.defense = 999;
-
                     int num429 = 1;
                     if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
                     {
@@ -214,13 +214,17 @@ namespace AAMod.NPCs.Bosses.Retriever
                     PlayerPosX += npc.velocity.X * 0.5f;
                     PlayerDistance.X -= PlayerPosX * 1f;
                     PlayerDistance.Y -= PlayerPosY * 1f;
-                    Main.NewText("SHIT HAPPENED YO");
-                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
+                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.8f), 0f, Main.myPlayer);
                     return;
                 }
                 else if (LaserTimer >= 59)
                 {
                     npc.frame.Y = (38 * 10);
+                    return;
+                }
+                else if (LaserTimer > 0)
+                {
+                    npc.frame.Y = (38 * 7);
                     return;
                 }
                 else if (LaserTimer == 0)
@@ -256,6 +260,11 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
             if (npc.ai[0] == 1) //move to starting charge position
             {
+                minionTimer++;
+                if (minionTimer == 150)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RetrieverMinion>());
+                }
                 moveSpeed = 11f;
                 Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);

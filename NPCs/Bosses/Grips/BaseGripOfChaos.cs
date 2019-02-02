@@ -168,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Grips
 			}else //standard movement
 			{
                 MinionTimer++;
-                if (MinionTimer == (shenGrips ? 50 : 75))
+                if (MinionTimer == (shenGrips ? 100 : 160))
                 {
                     if (npc.type == mod.NPCType<BlazeGrip>())
                     {
