@@ -1,8 +1,11 @@
+using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Broodmother
 {
@@ -19,10 +22,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             npc.width = 66;
             npc.height = 56;
-            npc.aiStyle = 0;
+            npc.aiStyle = -1;
             npc.damage = 30;
             npc.defense = 9;
-            npc.lifeMax = 250;
+            npc.lifeMax = 100;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.HitSound = new LegacySoundStyle(3, 43, Terraria.Audio.SoundType.Sound);
@@ -33,23 +36,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
             animationType = NPCID.MothronSpawn;
         }
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmini_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }*/
-
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
+			bool isDead = npc.life <= 0;		
+            if (isDead)          //this make so when the npc has 0 life(dead) he will spawn this
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore1"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore2"), 1f);
@@ -57,6 +47,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore3"), 1f);
             }
+			for (int m = 0; m < (isDead ? 35 : 6); m++)
+			{
+				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead? 2f : 1.5f));
+			}			
         }
 
         public override void NPCLoot()
@@ -64,17 +58,13 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
                 npc.DropLoot(mod.ItemType("BroodScale"), 2, 4);
         }
-        
+
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
             if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
             {
                 target.AddBuff(BuffID.OnFire, Main.rand.Next(60, 120));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
-            {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
         }
 
         public override void AI()
@@ -82,13 +72,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noTileCollide = false;
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
-            npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 if (npc.timeLeft > 5)
-                {
-                    npc.timeLeft = 5;
-                }
+					npc.timeLeft = 5;
                 npc.velocity.Y = npc.velocity.Y - 0.2f;
                 if (npc.velocity.Y < -8f)
                 {
@@ -220,7 +207,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.08f)) / 10f;
                     Vector2 value58 = Main.player[npc.target].Center - npc.Center;
                     if (value58.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
                     {
@@ -248,7 +234,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
-                    npc.rotation = ((npc.rotation * 7f) + (npc.velocity.X * 0.1f)) / 8f;
                     npc.knockBackResist = 0f;
                     npc.noTileCollide = true;
                     Vector2 vector211 = Main.player[npc.target].Center - npc.Center;
@@ -320,5 +305,17 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
             }
         }
+		
+		
+		public Color GetGlowAlpha()
+		{
+			return GenericUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
+		}
+
+        public override void PostDraw(SpriteBatch sb, Color dColor)
+        {
+			BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Broodmini_Glow"), 0, npc, GetGlowAlpha());
+        }		
+		
     }
 }

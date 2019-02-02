@@ -13,6 +13,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.width = 16;
 			projectile.height = 16;
+			projectile.ranged = false;
+			projectile.thrown = true;
 			projectile.friendly = true;
 			projectile.timeLeft = 300;
 			projectile.alpha = 10;
@@ -30,11 +32,11 @@ namespace AAMod.Projectiles
 			projectile.alpha = 10;
 			for (int index1 = 0; index1 < 3; ++index1)
 			{
-				int index2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, (float)(-projectile.velocity.X * 0.200000002980232), (float)(-projectile.velocity.Y * 0.200000002980232), 100, new Color(), 2f);
+				int index2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, (float)(-projectile.velocity.X * 0.2), (float)(-projectile.velocity.Y * 0.2), 100, new Color(), 2f);
 				Main.dust[index2].noGravity = true;
 				Main.dust[index2].velocity *= 2f;
 				Main.dust[index2].scale *= 0.8f;
-				int index3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, (float)(-projectile.velocity.X * 0.200000002980232), (float)(-projectile.velocity.Y * 0.200000002980232), 100, new Color(), 1f);
+				int index3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, (float)(-projectile.velocity.X * 0.2), (float)(-projectile.velocity.Y * 0.2), 100, new Color(), 1f);
 				Main.dust[index3].velocity *= 2f;
 				Main.dust[index3].scale *= 0.8f;
 			}

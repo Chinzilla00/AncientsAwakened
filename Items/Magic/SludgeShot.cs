@@ -4,40 +4,40 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class BlazePike : ModItem
+	public class SludgeShot : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blaze Pike");
-			Tooltip.SetDefault("Very hot to touch");
+			DisplayName.SetDefault("Sludge Shot");
+			Tooltip.SetDefault("Eew! It's mossy!");
 			Item.staff[item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 24;
 			item.magic = true;
-			item.mana = 3;
-			item.width = 56;
-			item.height = 56;
-			item.useTime = 27;
-			item.useAnimation = 27;
+			item.mana = 4;
+			item.width = 45;
+			item.height = 45;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
-			item.knockBack = 5;
+			item.noMelee = true;
+			item.knockBack = 4;
 			item.value = 10000;
 			item.rare = 3;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = 664;
-			item.shootSpeed = 6f;
+			item.shoot = mod.ProjectileType("SludgeShotP");
+			item.shootSpeed = 12f;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "IncineriteBar", 10);
-			recipe.AddIngredient(null, "BroodScale", 10);
+			recipe.AddIngredient(null, "AbyssiumBar", 10);
+			recipe.AddIngredient(null, "MirePod", 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

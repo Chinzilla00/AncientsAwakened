@@ -6,6 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Retriever
 {
@@ -42,6 +43,31 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("RetrieverBag");
+        }
+
+        public float[] customAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)customAI[0]);
+                writer.Write((short)customAI[1]);
+                writer.Write((short)customAI[2]);
+                writer.Write((short)customAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                customAI[0] = reader.ReadFloat();
+                customAI[1] = reader.ReadFloat();
+                customAI[2] = reader.ReadFloat();
+                customAI[3] = reader.ReadFloat();
+            }
         }
 
         public static Texture2D glowTex = null;
@@ -117,10 +143,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public Vector2 offsetBasePoint = new Vector2(240f, 0f);
 
         public float moveSpeed = 10f;
-        private int LaserTimer = 1000;
-        private int minionTimer = 0;
-
-        public Projectile laser;
+        
 
         public override void AI()
         {
@@ -132,53 +155,53 @@ namespace AAMod.NPCs.Bosses.Retriever
                 npc.velocity.Y -= 5;
             }
 
-            LaserTimer--;
+            customAI[0]--;
 
-            if (LaserTimer <= 300)
+            if (customAI[0] <= 300)
             {
                 moveSpeed = 11f;
                 Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
                 npc.frame.Y = (62 * 4);
-                if (LaserTimer >= 293)
+                if (customAI[0] >= 293)
                 {
                     npc.frame.Y = (62 * 5);
 
                     return;
                 }
-                else if (LaserTimer >= 286)
+                else if (customAI[0] >= 286)
                 {
                     npc.frame.Y = (62 * 6);
 
                     return;
                 }
-                else if (LaserTimer >= 279)
+                else if (customAI[0] >= 279)
                 {
                     npc.frame.Y = (62 * 7);
                     return;
                 }
-                else if (LaserTimer >= 272)
+                else if (customAI[0] >= 272)
                 {
                     npc.frame.Y = (62 * 8);
                     return;
                 }
-                else if (LaserTimer >= 265)
+                else if (customAI[0] >= 265)
                 {
                     npc.frame.Y = (62 * 9);
                     return;
                 }
-                else if (LaserTimer >= 258)
+                else if (customAI[0] >= 258)
                 {
                     npc.frame.Y = (62 * 10);
                     return;
                 }
-                else if (LaserTimer >= 251)
+                else if (customAI[0] >= 251)
                 {
                     npc.frame.Y = (62 * 11);
                     return;
                 }
-                else if (LaserTimer >= 130)
+                else if (customAI[0] >= 60)
                 {
                     npc.frameCounter++;
                     if (npc.frameCounter >= 7)
@@ -191,45 +214,23 @@ namespace AAMod.NPCs.Bosses.Retriever
                         npc.frame.Y = 62 * 11;
                     }
                     npc.defense = 999;
-                    int num429 = 1;
-                    if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-                    {
-                        num429 = -1;
-                    }
-                    Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-                    float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-                    float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
-                    float num433 = 6f;
-                    PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-                    PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-                    PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-                    PlayerPos = num433 / PlayerPos;
-                    PlayerPosX *= PlayerPos;
-                    PlayerPosY *= PlayerPos;
-                    PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-                    PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-                    PlayerPosY += npc.velocity.Y * 0.5f;
-                    PlayerPosX += npc.velocity.X * 0.5f;
-                    PlayerDistance.X -= PlayerPosX * 1f;
-                    PlayerDistance.Y -= PlayerPosY * 1f;
-                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.8f), 0f, Main.myPlayer);
+
+                    BaseAI.ShootPeriodic(npc, npc.Center, npc.width, npc.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], 40, (int)(npc.damage * 1.6f), 10f, true);
                     return;
                 }
-                else if (LaserTimer >= 59)
+                else if (customAI[0] >= 59)
                 {
-                    npc.frame.Y = (38 * 10);
+                    npc.frame.Y = (62 * 10);
                     return;
                 }
-                else if (LaserTimer > 0)
+                else if (customAI[0] > 0)
                 {
-                    npc.frame.Y = (38 * 7);
+                    npc.frame.Y = (62 * 7);
                     return;
                 }
-                else if (LaserTimer == 0)
+                else if (customAI[0] <= 0)
                 {
-                    LaserTimer = 1000;
+                    customAI[0] = 1000;
                     return;
                 }
             }
@@ -260,11 +261,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
             if (npc.ai[0] == 1) //move to starting charge position
             {
-                minionTimer++;
-                if (minionTimer == 150)
-                {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RetrieverMinion>());
-                }
                 moveSpeed = 11f;
                 Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);
