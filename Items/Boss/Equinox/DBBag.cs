@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Equinox
 			item.height = 36;
 			item.rare = 11;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Daybringer");
+			bossBagNPC = mod.NPCType("DaybringerHead");
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

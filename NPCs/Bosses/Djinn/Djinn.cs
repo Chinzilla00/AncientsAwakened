@@ -226,16 +226,15 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.HealingPotion;   //boss drops
+            potionType = ItemID.HealingPotion;
             AAWorld.downedDjinn = true;
         }
 
         public override void NPCLoot()
         {
+            Sandstorm.TimeLeft = 0;
             if (!Main.expertMode)
             {
-                AAWorld.downedDjinn = true;
-                Sandstorm.TimeLeft = 0;
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
                 string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar", "Sandstorm" };
                 int loot = Main.rand.Next(lootTable.Length);

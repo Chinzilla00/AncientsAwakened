@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Equinox
             item.height = 36;
             item.rare = 11;
             item.expert = true;
-            bossBagNPC = mod.NPCType("Nightcrawler");
+            bossBagNPC = mod.NPCType("NightcrawlerHead");
         }
 
         public override bool CanRightClick()

@@ -58,7 +58,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.knockBackResist = -1f;
             npc.boss = true;
             npc.friendly = false;
-            animationType = NPCID.SkeletronPrime;
             npc.npcSlots = 1f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -275,14 +274,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 saythelinezero = true;
                 Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0URCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (Main.player[npc.target].dead)
-            {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead)
-                {
-                    npc.ai[1] = 3f;
-                }
-            }
             if ( Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.ai[1] = 4f;
@@ -356,7 +347,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                if (npc.ai[1] == 2f)
+                if (npc.ai[1] == 1f)
                 {
                     npc.damage = 1000;
                     npc.defense = 9999;

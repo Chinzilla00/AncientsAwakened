@@ -214,6 +214,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     PlayerPosX += npc.velocity.X * 0.5f;
                     PlayerDistance.X -= PlayerPosX * 1f;
                     PlayerDistance.Y -= PlayerPosY * 1f;
+                    Main.NewText("SHIT HAPPENED YO");
                     Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
                     return;
                 }

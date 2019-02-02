@@ -22,8 +22,8 @@ namespace AAMod.NPCs.Bosses.GripsShen
         {
 			base.SetDefaults();
 			npc.lifeMax = 80000;
-            npc.damage = 300;
-            npc.defense = 90;
+            npc.damage = 200;
+            npc.defense = 110;
             npc.buffImmune[BuffID.OnFire] = true;	
             bossBag = mod.ItemType("GripSBag");			
 

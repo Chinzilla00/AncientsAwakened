@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Bosses.Grips
                 {
                     if (shenGrips == true)
                     {
-                        npc.dontTakeDamage = true;
+                        npc.defense = 1000;
                     }
                     else
                     {
@@ -226,20 +226,21 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    if (shenGrips == true)
+                    if (npc.type == mod.NPCType<BlazeGrip>())
                     {
-                        npc.dontTakeDamage = false;
+                        npc.defense = 110;
                     }
-                    else
+                    if (npc.type == mod.NPCType<AbyssGrip>())
                     {
-                        if (npc.type == mod.NPCType<GripOfChaosRed>())
-                        {
-                            npc.defense = 20;
-                        }
-                        if (npc.type == mod.NPCType<GripOfChaosBlue>())
-                        {
-                            npc.defense = 12;
-                        }
+                        npc.defense = 90;
+                    }
+                    if (npc.type == mod.NPCType<GripOfChaosRed>())
+                    {
+                        npc.defense = 20;
+                    }
+                    if (npc.type == mod.NPCType<GripOfChaosBlue>())
+                    {
+                        npc.defense = 12;
                     }
                     npc.alpha = 0;
                 }
