@@ -15,17 +15,17 @@ namespace AAMod.Items.Tools
             item.width = 54;
             item.height = 60;
 			item.useStyle = 1;
-            item.useTime = 5;
+            item.useTime = 8;
             item.useAnimation = 20;
-            item.tileBoost += 20;
+            item.tileBoost += 3;
             item.knockBack = 3;
             item.value = 1000000;
-            item.rare = 11;
+            item.rare = 8;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-            item.damage = 100;
-            item.pick = 260;
+            item.damage = 60;
+            item.pick = 205;
 
         }
 
@@ -42,8 +42,34 @@ namespace AAMod.Items.Tools
 
         public override void RightClick(Player player)
         {
+            byte pre = item.prefix;
             item.TurnToAir();
-            Item.NewItem(player.Center, mod.ItemType("Terratool_Axe"), 1, false, item.prefix, true, false);
+            int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("Terratool_Axe"), 1, false, pre, false, false);
+            if (Main.netMode == 1)
+            {
+                NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
+            }
+        }
+
+        public override void AddRecipes()  //How to craft this item
+        {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "TrueNightaxe");
+                recipe.AddIngredient(ItemID.PickaxeAxe);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "TrueScalpel");
+                recipe.AddIngredient(ItemID.PickaxeAxe);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Yamata
             Tooltip.SetDefault(@"Grants you the abilities of a true master ninja
 Allows you to do a speedy dash
 At night, you move twice as fast and your attacks inflict venom on your targets
-From 11:00 PM to 1:00 AM, you move three times as fast and your ranged attacks & minions inflict Moonraze");
+From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwing attacks inflict Moonraze");
         }
 
         public override void SetDefaults()
@@ -54,43 +54,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged attacks &
                     0f
                 );
             }
-            
-            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
-            {
-                spriteBatch.Draw
-                (
-                    texture3,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-                spriteBatch.Draw
-                (
-                    texture3Glow,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-            }
-            else
+            if (!Main.dayTime && Main.time < 14400 || Main.time > 21600)
             {
                 spriteBatch.Draw
                 (
@@ -125,6 +89,41 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged attacks &
                     0f
                 );
             }
+            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            {
+                spriteBatch.Draw
+                (
+                    texture3,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+                spriteBatch.Draw
+                (
+                    texture3Glow,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
             return false;
         }
 
@@ -139,15 +138,15 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged attacks &
             {
                 spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
-            {
-                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-                spriteBatch.Draw(texture3Glow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
-            }
-            else
+            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
             {
                 spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
                 spriteBatch.Draw(textureGlow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            {
+                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture3Glow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
             }
             return false;
         }
@@ -164,13 +163,13 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged attacks &
             {
                 player.moveSpeed += 0f;
             }
-            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
-            {
-                player.moveSpeed += 2f;
-            }
-            else
+            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
             {
                 player.moveSpeed += 1f;
+            }
+            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            {
+                player.moveSpeed += 2f;
             }
         }
     }
