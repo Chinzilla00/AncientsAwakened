@@ -152,6 +152,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().Baolei = true;
+            player.dash = 3;
             player.buffImmune[20] = true;
             player.buffImmune[22] = true;
             player.buffImmune[23] = true;

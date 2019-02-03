@@ -163,42 +163,41 @@ namespace AAMod.NPCs.Bosses.Retriever
                 Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
-                npc.frame.Y = (62 * 4);
                 if (customAI[0] >= 293)
                 {
-                    npc.frame.Y = (62 * 5);
+                    npc.frame.Y = (100 * 5);
 
                     return;
                 }
                 else if (customAI[0] >= 286)
                 {
-                    npc.frame.Y = (62 * 6);
+                    npc.frame.Y = (100 * 6);
 
                     return;
                 }
                 else if (customAI[0] >= 279)
                 {
-                    npc.frame.Y = (62 * 7);
+                    npc.frame.Y = (100 * 7);
                     return;
                 }
                 else if (customAI[0] >= 272)
                 {
-                    npc.frame.Y = (62 * 8);
+                    npc.frame.Y = (100 * 8);
                     return;
                 }
                 else if (customAI[0] >= 265)
                 {
-                    npc.frame.Y = (62 * 9);
+                    npc.frame.Y = (100 * 9);
                     return;
                 }
                 else if (customAI[0] >= 258)
                 {
-                    npc.frame.Y = (62 * 10);
+                    npc.frame.Y = (100 * 10);
                     return;
                 }
                 else if (customAI[0] >= 251)
                 {
-                    npc.frame.Y = (62 * 11);
+                    npc.frame.Y = (100 * 11);
                     return;
                 }
                 else if (customAI[0] >= 60)
@@ -207,30 +206,54 @@ namespace AAMod.NPCs.Bosses.Retriever
                     if (npc.frameCounter >= 7)
                     {
                         npc.frameCounter = 0;
-                        npc.frame.Y += 62;
+                        npc.frame.Y += 100;
                     }
-                    if (npc.frame.Y > (62 * 13))
+                    if (npc.frame.Y > (100 * 13))
                     {
-                        npc.frame.Y = 62 * 11;
+                        npc.frame.Y = 100 * 11;
                     }
                     npc.defense = 999;
 
-                    BaseAI.ShootPeriodic(npc, npc.Center, npc.width, npc.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], 40, (int)(npc.damage * 1.6f), 10f, true);
+
+                    int num429 = 1;
+                    if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+                    {
+                        num429 = -1;
+                    }
+                    Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
+                    float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                    float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+                    float num433 = 6f;
+                    PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                    PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                    PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                    PlayerPos = num433 / PlayerPos;
+                    PlayerPosX *= PlayerPos;
+                    PlayerPosY *= PlayerPos;
+                    PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                    PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                    PlayerPosY += npc.velocity.Y * 0.5f;
+                    PlayerPosX += npc.velocity.X * 0.5f;
+                    PlayerDistance.X -= PlayerPosX * 1f;
+                    PlayerDistance.Y -= PlayerPosY * 1f;
+                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
                     return;
                 }
                 else if (customAI[0] >= 59)
                 {
-                    npc.frame.Y = (62 * 10);
+                    npc.frame.Y = (100 * 10);
                     return;
                 }
                 else if (customAI[0] > 0)
                 {
-                    npc.frame.Y = (62 * 7);
+                    npc.frame.Y = (100 * 7);
                     return;
                 }
                 else if (customAI[0] <= 0)
                 {
-                    customAI[0] = 1000;
+                    customAI[0] = 1200;
                     return;
                 }
             }

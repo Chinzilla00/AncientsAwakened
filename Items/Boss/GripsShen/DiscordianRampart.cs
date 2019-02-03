@@ -34,7 +34,7 @@ Grants effects of the Storm Riot Shield");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             modPlayer.clawsOfChaos = true;
             modPlayer.StormClaw = true;
-            modPlayer.AADash = 1;
+            player.dash = 1;
         }
 
         public override void AddRecipes()
