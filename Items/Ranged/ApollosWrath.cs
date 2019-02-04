@@ -34,7 +34,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Apollo's Wraths");
+            DisplayName.SetDefault("Apollo's Wrath");
             Tooltip.SetDefault(@"Shoots Shadow beams
 Doesn't use Ammo");
         }

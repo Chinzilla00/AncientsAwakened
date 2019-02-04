@@ -5,7 +5,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace AAMod.NPCs.TownNPCs
+/*namespace AAMod.NPCs.TownNPCs
 {
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
@@ -232,3 +232,4 @@ namespace AAMod.NPCs.TownNPCs
         }
     }
 }
+*/

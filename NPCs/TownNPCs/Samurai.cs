@@ -52,11 +52,11 @@ namespace AAMod.NPCs.TownNPCs
 			npc.aiStyle = 7;
 			npc.damage = 40;
 			npc.defense = 38;
-			npc.lifeMax = 600;
+			npc.lifeMax = 250;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = 2f;
-			animationType = NPCID.Guide;
+            npc.knockBackResist = .01f;
+            animationType = NPCID.Guide;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

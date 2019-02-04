@@ -83,8 +83,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;   //boss drops
-            AAWorld.downedZero = true;
+            potionType = ItemID.SuperHealingPotion; 
             Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
         }
 

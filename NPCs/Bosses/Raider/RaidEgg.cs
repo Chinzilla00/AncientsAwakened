@@ -1,3 +1,6 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -31,20 +34,22 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.npcSlots = 0f;
         }
 
-        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            {
-                SpriteEffects spriteEffects = SpriteEffects.None;
-                if (npc.spriteDirection == 1)
-                {
-                    spriteEffects = SpriteEffects.FlipHorizontally;
-                }
-                spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/BroodEgg_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
-                npc.frame, Color.White, npc.rotation,
-                new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
-            }
-        }*/
 
+
+        public static Texture2D glowTex = null;
+        public Color color;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("Glowmasks/RaidEgg_Glow");
+            }
+            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
+            return false;
+        }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

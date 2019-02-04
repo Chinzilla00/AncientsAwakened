@@ -362,9 +362,9 @@ namespace AAMod
                     GetTexture("Healthbars/ZeroABarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    Color.Black,
-                    Color.Black,
-                    Color.Black);
+                    Color.Red,
+                    Color.Red,
+                    Color.Red);
                 yabhb.Call("hbSetMidBarOffset",  -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);

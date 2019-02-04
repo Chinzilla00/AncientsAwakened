@@ -287,7 +287,15 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			if (Main.expertMode)
 			{
-				npc.DropBossBags();
+                if (!nightcrawler)
+                {
+
+                    npc.DropBossBags();
+                }
+                else
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NCBag"));
+                }
 			}
 			else
 			{
@@ -295,7 +303,14 @@ namespace AAMod.NPCs.Bosses.Equinox
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(wormType + "Mask"));
 				}
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Stardust"), Main.rand.Next(30, 75));
+                if (!nightcrawler)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Stardust"), Main.rand.Next(30, 75));
+                }
+                else
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkEnergy"), Main.rand.Next(30, 75));
+                }
 			}
         }
 

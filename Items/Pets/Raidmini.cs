@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Pets
 {
@@ -11,7 +12,7 @@ namespace AAMod.Items.Pets
         
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Broodmini"); // Automatic from .lang files
+			DisplayName.SetDefault("Raidmini"); // Automatic from .lang files
 			Main.projFrames[projectile.type] = 3;
 			Main.projPet[projectile.type] = true;
         }
@@ -23,6 +24,26 @@ namespace AAMod.Items.Pets
             projectile.width = 66;
             projectile.height = 56;
         }
+
+
+        public static Texture2D glowTex = null;
+        public static Texture2D glowTex1 = null;
+        public Color color;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if (glowTex == null)
+            {
+                glowTex = mod.GetTexture("Glowmasks/Raidmini_Glow1");
+                glowTex1 = mod.GetTexture("Glowmasks/Raidmini_Glow2");
+            }
+            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(projectile.position), BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position));
+            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, color);
+            BaseDrawing.DrawTexture(spritebatch, glowTex1, 0, projectile, Color.White);
+            return false;
+        }
+
 
         public override bool PreAI()
 		{

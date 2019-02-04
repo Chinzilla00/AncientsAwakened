@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Pets
 {
@@ -28,6 +29,8 @@ namespace AAMod.Items.Pets
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
             spriteBatch.Draw
             (
                 texture,
@@ -37,7 +40,7 @@ namespace AAMod.Items.Pets
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
+                color,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,

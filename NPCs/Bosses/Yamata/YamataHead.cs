@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 80;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
-            npc.noTileCollide = false;
+            npc.noTileCollide = true;
             npc.noGravity = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -244,20 +244,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
 
             }
-
-            if (player != null)
-            {
-                float dist = npc.Distance(player.Center);
-                if (dist > 1000)
-                {
-                    npc.noTileCollide = true;
-                }
-                else
-                {
-                    npc.noTileCollide = false;
-                }
-            }
-
 
             npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
             if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)

@@ -236,9 +236,13 @@ namespace AAMod.NPCs.Bosses.Retriever
                     PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
                     PlayerPosY += npc.velocity.Y * 0.5f;
                     PlayerPosX += npc.velocity.X * 0.5f;
-                    PlayerDistance.X -= PlayerPosX * 1f;
-                    PlayerDistance.Y -= PlayerPosY * 1f;
-                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
+                    PlayerDistance.X -= PlayerPosX * 2f;
+                    PlayerDistance.Y -= PlayerPosY * 2f;
+                    if (npc.ai[3] == 250 || npc.ai[3] == 230 || npc.ai[3] == 210 || npc.ai[3] == 190 || npc.ai[3] == 170 || npc.ai[3] == 150 || npc.ai[3] == 130 || npc.ai[3] == 110 || npc.ai[3] == 90 || npc.ai[3] == 70)
+                    {
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
+                    }
+                    
                     return;
                 }
                 else if (customAI[0] >= 59)
@@ -265,8 +269,8 @@ namespace AAMod.NPCs.Bosses.Retriever
                 if (npc.frameCounter >= 10)
                 {
                     npc.frameCounter = 0;
-                    npc.frame.Y += 62;
-                    if (npc.frame.Y > (62 * 3))
+                    npc.frame.Y += 100;
+                    if (npc.frame.Y > (100 * 3))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;

@@ -38,10 +38,10 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 AAMod.Slayer = true;
             }
-            if (++projectile.frameCounter >= 10)
+            if (++projectile.frameCounter >= 7)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 8)
+                if (++projectile.frame >= 9)
                 {
                     projectile.Kill();
                    

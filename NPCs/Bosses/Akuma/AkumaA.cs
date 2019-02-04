@@ -9,6 +9,8 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
+
+    [AutoloadBossHead]
     public class AkumaA : ModNPC
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaA"; } }
@@ -553,6 +555,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
     }
 
+
+    [AutoloadBossHead]
     public class AkumaAArms : AkumaA
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaAArms"; } }
@@ -725,7 +729,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.damage = (int)(npc.damage * 0.8f);
         }
     }
-
+    
+    [AutoloadBossHead]
     public class AkumaABody : AkumaA
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaABody"; } }
@@ -900,6 +905,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
     }
 
+
+    [AutoloadBossHead]
     public class AkumaATail : AkumaA
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaATail"; } }
