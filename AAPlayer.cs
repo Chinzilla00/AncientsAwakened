@@ -1264,6 +1264,10 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("FazerHood"));
                         player.QuickSpawnItem(mod.ItemType("FazerShirt"));
                         player.QuickSpawnItem(mod.ItemType("FazerPants"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("FazerPaws"));
+                        }
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
