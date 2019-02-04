@@ -60,7 +60,6 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.buffImmune[k] = true;
             }
-            npc.alpha = 255;
         }
 
         public override void NPCLoot()
@@ -181,25 +180,29 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            Glitch = Main.rand.Next(8);
+            Glitch = Main.rand.Next(10);
+            if(Glitch == 0)
+            {
+                GlitchBool = true;
+            }
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 170;
-                if (Glitch == 0)
+                if (GlitchBool)
                 {
+
                     if (npc.frame.Y > (170 * 7))
                     {
-                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
+                        GlitchBool = false;
                     }
                 }
                 else
                 {
                     if (npc.frame.Y > (170 * 3))
                     {
-                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
                     }
                 }
