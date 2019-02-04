@@ -18,7 +18,7 @@ Fluff EX");
         public override void SetDefaults()
         {
             item.damage = 220;
-            item.thrown = true;
+            item.magic = true;
             item.width = 32;
             item.height = 32;
             item.noUseGraphic = true;
@@ -26,7 +26,7 @@ Fluff EX");
             item.useAnimation = 15;
             item.shoot = mod.ProjectileType("FluffEX");
             item.shootSpeed = 12f;
-            item.useStyle = 1;
+            item.useStyle = 5;
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 8;

@@ -7,12 +7,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using AAMod.Dusts;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
     [AutoloadBossHead]	
 	public class DaybringerHead : ModNPC
 	{
+        public float[] customAI = new float[2];		
 		public bool nightcrawler = false;
 		public override void SetStaticDefaults()
 		{
@@ -34,8 +36,9 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.behindTiles = true;
             npc.DeathSound = null;
+			npc.HitSound = SoundID.NPCHit4;
+			npc.DeathSound = SoundID.NPCDeath14;			
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -44,6 +47,11 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             bossBag = mod.ItemType("DBBag");			
 		}
+		
+		public override void BossHeadRotation(ref float rotation)
+		{
+			rotation = npc.rotation;
+		}		
 
 		public void HandleDayNightCycle()
 		{
@@ -79,8 +87,17 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
 		}
 
+		bool prevWormStronger = false;
+		bool initCustom = false;
         public override void AI()
         {
+			if(Main.netMode != 1 && !initCustom)
+			{
+				initCustom = true;
+				customAI[0] += (npc.whoAmI % 7) * 12; //so it doesn't pew all at once
+				npc.velocity.X += 0.1f;
+				npc.velocity.Y -= 4f;
+			}
 			bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
 			if(isHead)
 			{
@@ -88,38 +105,171 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			bool isDay = Main.dayTime;
 			bool wormStronger = (nightcrawler && !isDay) ||  (!nightcrawler && isDay);
+			if(wormStronger != prevWormStronger)
+			{
+				int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
+				for (int k = 0; k < 10; k++)
+				{
+					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
+					Main.dust[dustID].noGravity = true;
+				}
+			}
+
+			if(isHead) //prevents despawn and allows them to run away
+			{
+				bool foundTarget = TargetClosest();		
+				if(foundTarget)
+				{
+					npc.timeLeft = 300;	
+				}else
+				{					
+					if(npc.timeLeft > 50) npc.timeLeft = 50;
+					npc.velocity.Y -= 0.2f;
+					if(npc.velocity.Y > 20f) npc.velocity.Y = 20f;
+					return;
+				}
+			}else
+			{
+				npc.timeLeft = 300; //pieces should not despawn naturally, only despawn when the head does
+			}
+			
 			float wormDistance = -26f;
-			int aiCount = (wormStronger ? 4 : 2);
-			float moveSpeedMax = 16f;
+			int aiCount = 2;
+			float moveSpeedMax = 16f;	
+			npc.damage = 200;
+			npc.defense = 100;
+			int laserFireRate = 300;
+			int laserInterval = 20;
+			if(wormStronger)
+			{
+				aiCount = (!nightcrawler ? 6 : 4); //daybringer is a bit faster
+				moveSpeedMax = (!nightcrawler ? 20f : 16f); //ditto as above
+				npc.damage = 300;		
+				npc.defense = (!nightcrawler ? 120 : 150); //nightcrawler has more defense
+				laserFireRate = 200;
+				laserInterval = 10;
+			}
+
+			/*if(Main.netMode != 1 && isHead) //shoot lasers (disabled - probes fire lasers)
+			{
+				Player player = Main.player[npc.target];
+				int projType = (nightcrawler ? mod.ProjType("Moonray") : mod.ProjType("Sunbeam"));
+				if((customAI[0] <= (laserInterval * 3)) && customAI[0] % laserInterval == 0 && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+					BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.2f), 0f, 4f);
+				customAI[0]--;
+				if(customAI[0] <= 0) customAI[0] = laserFireRate;			
+			}*/
+			if(!isHead)
+			{
+				SpawnProbe();
+			}
 			for(int m = 0; m < aiCount; m++)
 			{
 				int[] wormTypes = (nightcrawler ? new int[]{ mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[]{ mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") });
-				BaseMod.BaseAI.AIWorm(npc, wormTypes, 30, wormDistance, moveSpeedMax, 0.07f, true, false, false, true, true, false);	
+				BaseMod.BaseAI.AIWorm(npc, wormTypes, 30, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);	
 			}
 			npc.spriteDirection = 1;
+			prevWormStronger = wormStronger;
         }
 
+		public int probeCounter = -1;
+        public void SpawnProbe()
+        {
+			if(probeCounter == -1)
+				probeCounter = 500 + Main.rand.Next(750);
+			if(Main.netMode == 1 || npc.whoAmI % 3 != 0) return;
+			probeCounter = Math.Max(0, probeCounter - 1);
+            if (probeCounter <= 0)
+            {
+				probeCounter = 500 + Main.rand.Next(750);
+				if(BaseAI.GetNPCs(npc.Center, mod.NPCType("Equiprobe"), 8000f).Length < 6)
+				{
+					int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Equiprobe"), 0);
+					Main.npc[npcID].netUpdate = true;
+				}
+            }
+        }
+
+		public int playerTooFarDist = 3200; //200 tile radius, these worms move fast!		
+		public bool TargetClosest()
+		{
+			int[] players = BaseAI.GetPlayers(npc.Center, Math.Min(6000f, playerTooFarDist * 3));
+			float dist = 999999999f;
+			int foundPlayer = -1;
+			for (int m = 0; m < players.Length; m++)
+			{
+				Player p = Main.player[players[m]];
+				if (Vector2.Distance(p.Center, npc.Center) < dist)
+				{
+					dist = Vector2.Distance(p.Center, npc.Center);
+					foundPlayer = p.whoAmI;
+				}
+			}
+			if (foundPlayer != -1)
+			{
+				BaseMod.BaseAI.SetTarget(npc, foundPlayer);
+				return true;
+			}
+			return false;
+		}		
+		
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.85f);
 		}
 
+		bool spawnedGore = false;
         public override void HitEffect(int hitDirection, double damage)
         {
-			//TODO: ADD DUST
+			int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
             for (int k = 0; k < 5; k++)
             {
-                //Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default(Color), 1f);
+                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
             }
-            if (npc.life == 0)
-            {
+            if (npc.life <= 0 || (npc.life - damage <= 0))
+            {			
 				Main.dayRate = 1;
-                Main.fastForwardTime = false;			
-                for (int k = 0; k < 5; k++)
-                {
-                    //Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default(Color), 1f);
-                }
+                Main.fastForwardTime = false;	
+				if(!spawnedGore)
+				{
+					spawnedGore = true;
+					bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
+					bool isBody = npc.type == mod.NPCType("DaybringerBody") || npc.type == mod.NPCType("NightcrawlerBody");						
+					if(nightcrawler)
+					{
+						if(isHead)
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/NCGore1"), 1f);	
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/NCGore2"), 1f);						
+						}else
+						if(isBody)
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/NCGore3"), 1f);							
+						}else
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/NCGore4"), 1f);						
+						}
+					}else
+					{
+						if(isHead)
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DBGore1"), 1f);	
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DBGore2"), 1f);						
+						}else
+						if(isBody)
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DBGore3"), 1f);							
+						}else
+						{
+							Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DBGore4"), 1f);						
+						}					
+					}
+					for (int k = 0; k < 15; k++)
+					{
+						int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.5f);
+					}
+				}
             }
         }
 
@@ -131,28 +281,13 @@ namespace AAMod.NPCs.Bosses.Equinox
                 AAWorld.downedEquinox = true;
             }
 			string wormType = (nightcrawler ? "Nightcrawler" : "Daybringer");
-            if (nightcrawler)
-            {
-                AAWorld.downedDB = true;
-            }
-            if (!nightcrawler)
-            {
-                AAWorld.downedNC = true;
-            }
 			if (Main.rand.Next(10) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(wormType + "Trophy"));
 			}
 			if (Main.expertMode)
 			{
-                if (!nightcrawler)
-                {
-                    npc.DropBossBags();
-                }
-                if (nightcrawler)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NCBag"));
-                }
+				npc.DropBossBags();
 			}
 			else
 			{

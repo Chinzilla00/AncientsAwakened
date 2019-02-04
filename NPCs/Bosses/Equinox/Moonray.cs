@@ -22,13 +22,13 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.scale = 2f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
-            projectile.alpha = 60;
 			projectile.extraUpdates = 2;
 			projectile.timeLeft = 1000;
             cooldownSlot = 1;
         }
 
-		bool playedSound = false;		
+		public bool playedSound = false;		
+		public int dontDrawDelay = 2;		
         public override void AI()
         {
 			if(!playedSound)
@@ -49,10 +49,16 @@ namespace AAMod.NPCs.Bosses.Equinox
 		{
 	        Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f);		
 		}
-		
+
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
-		}		
+		}
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+			dontDrawDelay = Math.Max(0, dontDrawDelay - 1);
+			return dontDrawDelay == 0;
+		}
     }
 }

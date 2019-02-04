@@ -19,7 +19,7 @@ namespace AAMod.Items.Dev
         public override void SetDefaults()
         {
             item.damage = 120;
-            item.thrown = true;
+            item.magic = true;
             item.width = 32;
             item.height = 32;
             item.noUseGraphic = true;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev
             item.useAnimation = 25;
             item.shoot = mod.ProjectileType("Fluff");
             item.shootSpeed = 10f;
-            item.useStyle = 1;
+            item.useStyle = 5;
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 8;
