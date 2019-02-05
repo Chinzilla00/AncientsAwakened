@@ -823,7 +823,10 @@ namespace AAMod
             }
             if (Ancients.ZoneMush)
             {
-                music = MusicID.Mushrooms;
+
+                priority = MusicPriority.BiomeMedium;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrooms");
+
 
                 return;
             }
