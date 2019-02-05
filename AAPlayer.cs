@@ -452,14 +452,13 @@ namespace AAMod
         { 
             Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
             Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
-            int num = 24;
-            float num2 = 200f;
+            float RadiationDistance = 48f;
             if (player.whoAmI == Main.myPlayer)
             {
                 for (int l = 0; l < 200; l++)
                 {
                     NPC nPC = Main.npc[l];
-                    if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.buffImmune[num] && Vector2.Distance(player.Center, nPC.Center) <= num2)
+                    if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance)
                     {
                         player.ApplyDamageToNPC(nPC, 1, 0f, 0, false);
                     }
@@ -1146,7 +1145,7 @@ namespace AAMod
             string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
             {
-                int choice = Main.rand.Next(16);
+                int choice = Main.rand.Next(17);
                 switch (choice)
                 {
                     case 0:
@@ -1286,6 +1285,13 @@ namespace AAMod
                             player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
                         }
                         spawnedDevItems = true;
+                        break;
+                    case 17:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("CordesDuFuret_Notes"));
+                            spawnedDevItems = true;
+                        }
                         break;
                 }
             }

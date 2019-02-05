@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Djinn   //where is located
 
         public override void SetDefaults()
         {
-            item.shoot = mod.ProjectileType("Meteor");
+            item.shoot = mod.ProjectileType("Sandstorn");
             item.damage = 20;
             item.magic = true;
             item.width = 32;

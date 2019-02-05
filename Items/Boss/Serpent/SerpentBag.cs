@@ -50,6 +50,7 @@ namespace AAMod.Items.Boss.Serpent
             {
                 player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             }
+			player.QuickSpawnItem(mod.ItemType("ArcticMedallion"));			
         }
     }
 }

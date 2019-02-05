@@ -36,13 +36,17 @@ namespace AAMod.Items.Boss.Djinn
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-                modPlayer.PHMDevArmor();
+                int choice = Main.rand.Next(17);
+                {
+
+                    AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                    modPlayer.PHMDevArmor();
+                }
             }
             player.QuickSpawnItem(mod.ItemType("DesertMana"), Main.rand.Next(15, 20));
-            string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar", "Sandstorm"};
+            string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
             int loot = Main.rand.Next(lootTable.Length);
-            if (Main.rand.Next(6) == 0)
+            if (Main.rand.Next(9) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("Sandagger"), Main.rand.Next(100, 130));
             }
@@ -50,6 +54,7 @@ namespace AAMod.Items.Boss.Djinn
             {
                 player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             }
+			player.QuickSpawnItem(mod.ItemType("SandstormMedallion"));		
         }
     }
 }
