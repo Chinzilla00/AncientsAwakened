@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         }
         
         public Player playerTarget = null;
-        public static int AISTATE_TURRET = 0, AISTATE_FLY = 1;
+        public static int AISTATE_TURRET = 0, AISTATE_FLY = 1, AISTATE_RUNAWAY = 2;
         public float[] internalAI = new float[4];
 
         //clientside stuff
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 			{
 	            npc.noGravity = true;	
 				npc.noTileCollide = true;				
-				npc.velocity.Y -= 0.15f;				
+				npc.velocity.Y -= 0.5f;				
 				if(Main.netMode != 1)
 				{
 					if(npc.position.Y + npc.height + npc.velocity.Y < 0) //if out of map, kill boss
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}				
 					}
 				}
-			}
+            }
 
             if (internalAI[1] == AISTATE_TURRET) //Standing
             {

@@ -38,7 +38,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(null, "Dragonfire", 1);
+            recipe.AddIngredient(null, "TheDragonfire", 1);
             recipe.AddIngredient(null, "RadiantIncinerite", 10);
             recipe.AddIngredient(ItemID.Ectoplasm, 15); //you need 1 DirtBlock
             recipe.AddTile(TileID.MythrilAnvil);   //at work bench

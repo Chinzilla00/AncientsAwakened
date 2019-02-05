@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         //SPAWN CONDITIONS:
         public override void NPCLoot()
 		{
-			BaseAI.DropItem(npc, mod.ItemType("Dragonfire"), 1 + Main.rand.Next(2), 2, 100, true);
+			BaseAI.DropItem(npc, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2), 2, 100, true);
 		}
 
         public bool shootFrame = false;

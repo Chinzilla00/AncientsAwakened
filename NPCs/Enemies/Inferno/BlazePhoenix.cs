@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             npc.CloneDefaults(NPCID.ShadowFlameApparition);
             aiType = NPCID.ShadowFlameApparition;
-            npc.aiStyle = NPCID.ShadowFlameApparition;
+            npc.aiStyle = 86;
             npc.npcSlots = 1;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = 86;
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Dragonfire"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonFire"));
         }
 
         public static Texture2D glowTex = null;

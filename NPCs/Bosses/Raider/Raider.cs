@@ -132,17 +132,19 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 192;
+                bool isCharging = (npc.ai[0] >= AISTATE_CHARGEATPLAYER && npc.ai[0] < AISTATE_SPAWNEGGS); //all ai states between charges
+                if (isCharging && npc.frame.Y >= 192 * 8)
+                {
+                    npc.frame.Y = 192 * 4;
+                }
+                else
+                if (!isCharging && npc.frame.Y >= 192 * 4)
+                {
+                    npc.frame.Y = 192 * 0;
+                }
             }
-            if (!(npc.ai[0] == AISTATE_FLYABOVEPLAYER || npc.ai[0] == AISTATE_RUNAWAY) && (npc.frame.Y < 192 * 4 || npc.frame.Y > 192 * 7))
-            {
-                npc.frame.Y = 192 * 4;
-            }
-            else
-            {
-                npc.frame.Y = 0;
-            }
-
         }
+
 
         public static Texture2D glowTex = null;
         public static Texture2D glowTex1 = null;
@@ -203,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
-            if (Main.player[npc.target] == null || Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
+            if (Main.player[npc.target] == null || Main.dayTime)
             {
                 DespawnAttempt = true;
             }

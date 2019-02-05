@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.EmperorFishron
 {
-    public class EmperorHurricane : ModProjectile
+    public class EmperorHurricane1 : ModProjectile
     {
     	public int spawnCount = 0;
     	

@@ -49,7 +49,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Dragonfire", 5);
+            recipe.AddIngredient(null, "DragonFire", 5);
             recipe.AddIngredient(null, "IncineriteBar", 10);
             recipe.AddIngredient(null, "SoulOfSmite", 3);
             recipe.AddTile(TileID.MythrilAnvil);

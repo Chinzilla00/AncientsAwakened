@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.defense = 4;
             npc.lifeMax = 30;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
             npc.knockBackResist = 0.05f;
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 return 0f;
             }
-            return SpawnCondition.Underground.Chance * 0.3f;
+            return SpawnCondition.Cavern.Chance * 0.3f;
         }
 
         public override void HitEffect(int hitDirection, double damage)
