@@ -6,55 +6,55 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class BurningGelP : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Burning Gel");
-        }
-		
-        public override void SetDefaults()
-        {
+	public class BurningGelP : ModProjectile
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Burning Gel");
+		}
+
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(261);
 			projectile.aiStyle = 14;
 			aiType = 261;
-            projectile.width = 20;
-            projectile.height = 18;
-            projectile.ranged = false;
-			projectile.magic = true;
-            projectile.penetrate = 1;
-            projectile.hostile = false;
-            projectile.friendly = true;
-            projectile.tileCollide = true;
-            projectile.ignoreWater = true;
-            projectile.timeLeft = 300;
-        }
-		
+			projectile.width = 20;
+			projectile.height = 18;
+			projectile.ranged = false;
+			projectile.thrown = true;
+			projectile.penetrate = 1;
+			projectile.hostile = false;
+			projectile.friendly = true;
+			projectile.tileCollide = true;
+			projectile.ignoreWater = true;
+			projectile.timeLeft = 300;
+		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.Kill();
 			return true;
 		}
-		
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(BuffID.OnFire, 600);
 			target.immune[projectile.owner] = 1;
 			projectile.Kill();
 		}
-		
+
 		public override void AI()
 		{
 			projectile.alpha = 0;
 			if (Main.rand.Next(2) == 0)
 			{
 				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 6,
-					projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
+				projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
 				dust.velocity += projectile.velocity * 0.3f;
 				dust.velocity *= 0.2f;
 			}
 		}
-		
+
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 22);
@@ -94,5 +94,5 @@ namespace AAMod.Projectiles
 				}
 			}
 		}
-    }
+	}
 }

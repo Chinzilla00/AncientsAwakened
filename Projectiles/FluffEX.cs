@@ -15,7 +15,7 @@ namespace AAMod.Projectiles
             projectile.height = 30;
 			projectile.friendly = true;
 			projectile.hostile = false;
-            projectile.timeLeft = 400;
+            projectile.timeLeft = 150;
         }
 
 		public override void SetStaticDefaults()
