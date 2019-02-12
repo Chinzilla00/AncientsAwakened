@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vile-Oct");
+            DisplayName.SetDefault("Emperor Fishron");
             Main.npcFrameCount[npc.type] = 8;
         }
 
