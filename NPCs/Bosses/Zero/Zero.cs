@@ -201,9 +201,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            if (internalAI[0] == 2 || internalAI[0] == 3)
+            {
+                BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(dColor.R, dColor.G, dColor.B, (byte)150));
+            }
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
             if (!saythelinezero)
             {
                 BaseMod.BaseDrawing.DrawAura(spritebatch, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
@@ -274,14 +278,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 saythelinezero = true;
                 Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0URCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if ( Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-            {
-                npc.ai[1] = 4f;
-            }
-            if (Main.player[npc.target].dead)
-            {
-                npc.ai[1] = 3f;
-            }
             if (npc.ai[1] == 0f)
             {
                 npc.damage = 100;
@@ -345,56 +341,171 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            else
+            else if (npc.ai[1] == 1f)
             {
-                if (npc.ai[1] == 1f)
+                npc.frame.Y = 202;
+                npc.defense = 180;
+                npc.damage = 200;
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
+                float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
+                float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
+                float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
+                float num447 = 10f;
+                num447 += num446 / 100f;
+                if (num447 < 8f)
                 {
-                    npc.damage = 1000;
-                    npc.defense = 9999;
-                    ++npc.ai[2];
-                    if (npc.ai[2] == 2.0)
-                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
-                    if (npc.ai[2] >= 400.0)
-                    {
-                        npc.ai[2] = 0.0f;
-                        npc.ai[1] = 0.0f;
-                    }
-                    npc.rotation += npc.direction * 0.3f;
-                    Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                    float num1 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector2.X;
-                    float num2 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector2.Y;
-                    float num3 = 2f / (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
-                    npc.velocity.X = num1 * num3;
-                    npc.velocity.Y = num2 * num3;
-                    return;
+                    num447 = 8f;
+                }
+                if (num447 > 32f)
+                {
+                    num447 = 32f;
+                }
+                num446 = num447 / num446;
+                npc.velocity.X = num444 * num446;
+                npc.velocity.Y = num445 * num446;
 
-                }
-                if (npc.ai[1] == 3f)
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 240f)
                 {
-                    Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red);
-                    npc.ai[1] = 5f;
+                    npc.ai[2] = 0f;
+                    npc.ai[1] = 0f;
+                    npc.TargetClosest(true);
+                    npc.netUpdate = true;
                 }
-                if (npc.ai[1] == 4f)
+                return;
+            }
+            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.ai[1] = 4f;
+            }
+            if (Main.player[npc.target].dead)
+            {
+                npc.ai[1] = 3f;
+            }
+            else if (npc.ai[1] == 3f)
+            {
+                Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red);
+                npc.ai[1] = 5f;
+            }
+            else if (npc.ai[1] == 4f)
+            {
+                Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red);
+                npc.ai[1] = 5f;
+            }
+            else if (npc.ai[1] == 5f)
+            {
+                npc.velocity.Y = npc.velocity.Y - 0.1f;
+                if (npc.velocity.Y < 0f)
                 {
-                    Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red);
-                    npc.ai[1] = 5f;
+                    npc.velocity.Y = npc.velocity.Y * 0.95f;
                 }
-                if (npc.ai[1] == 5f)
+                npc.velocity.X = npc.velocity.X * 0.95f;
+                if (npc.timeLeft > 500)
                 {
-                    npc.velocity.Y = npc.velocity.Y - 0.1f;
-                    if (npc.velocity.Y < 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.95f;
-                    }
-                    npc.velocity.X = npc.velocity.X * 0.95f;
-                    if (npc.timeLeft > 500)
-                    {
-                        npc.timeLeft = 500;
-                        return;
-                    }
+                    npc.timeLeft = 500;
+                    return;
                 }
             }
-            
+        }
+
+        public void chargeAI()
+        {
+            Player targetPlayer = Main.player[npc.target];
+            if (internalAI[0] == 1) //move to starting charge position
+            {
+                moveSpeed = 16;
+                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f))
+                {
+                    internalAI[0] = 2;
+                    internalAI[1] = targetPlayer.Center.X;
+                    internalAI[2] = targetPlayer.Center.Y;
+                    internalAI[3] = 0;
+                    npc.netUpdate = true;
+                }
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+            }
+            else if (internalAI[0] == 2) //dive down
+            {
+                moveSpeed = 25;
+                Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
+                Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                {
+                    bool doubleDive = (npc.life < npc.lifeMax / 2);
+                    if (doubleDive)
+                    {
+                        internalAI[0] = 3;
+                        internalAI[1] = targetPlayer.Center.X;
+                        internalAI[2] = targetPlayer.Center.Y;
+                    }
+                    else
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                    }
+                    internalAI[3] = 0;
+                    npc.netUpdate = true;
+                }
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else if (internalAI[0] == 3) //dive up
+            {
+                moveSpeed = 25;
+                Vector2 targetCenter = new Vector2(internalAI[1], internalAI[2]);
+                Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
+                    npc.netUpdate = true;
+                }
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else
+            {
+                npc.damage = npc.defDamage;
+                npc.defense = npc.defDefense;
+                npc.ai[1] = 0;
+                internalAI[0] = 1;
+                internalAI[1] = 0;
+                internalAI[2] = 0;
+                internalAI[3] = 0;
+            }
+        }
+
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        {
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
 }

@@ -9,35 +9,30 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Fury");
+            Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 144;
-            projectile.height = 144;
+            projectile.width = 20;
+            projectile.height = 32;
+            projectile.scale *= 1.2f;
             projectile.friendly = false;
         }
         public int timer;
         public bool ATransitionActive = false;
+        public int RVal = 255;
+        public int BVal = 0;
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(RVal, 125, BVal);
+        }
+
         public override void AI()
         {
             timer++;
             ATransitionActive = true;
-            if (timer < 900)
-            {
-                Dust dust1;
-                Dust dust2;
-                Dust dust3;
-                Dust dust4;
-                Vector2 position = projectile.Center;
-                dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
-                dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
-                dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = false;
-                dust2.noGravity = false;
-                dust3.noGravity = false;
-                dust4.noGravity = false;
-            }
+            
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Heh...", new Color(180, 41, 32));
@@ -47,21 +42,19 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
-            if (timer >= 900)
+
+            if (timer >= 750)
             {
-                Dust dust1;
-                Dust dust2;
-                Dust dust3;
-                Dust dust4;
-                Vector2 position = projectile.Center;
-                dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-                dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-                dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.noGravity = false;
-                dust2.noGravity = false;
-                dust3.noGravity = false;
-                dust4.noGravity = false;
+                RVal--;
+                BVal++;
+                if (RVal <= 0)
+                {
+                    RVal = 0;
+                }
+                if (RVal >= 255)
+                {
+                    RVal = 255;
+                }
             }
 
             if (timer == 900)
@@ -78,33 +71,12 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void Kill(int timeleft)
         {
-            ATransitionActive = false;
-            Dust dust1;
-            Dust dust2;
-            Dust dust3;
-            Dust dust4;
-            Dust dust5;
-            Dust dust6;
-            Vector2 position = projectile.Center;
-            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust3 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust4 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust5 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust6 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0, 0, 0, default(Color), 1f)];
-            dust1.noGravity = false;
-            dust2.noGravity = false;
-            dust3.noGravity = false;
-            dust4.noGravity = false;
-            dust5.noGravity = false;
-            dust6.noGravity = false;
-
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
             AAMod.AkumaMusic = false;
 
-            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType<AkumaA>());
+            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("AkumaA"));
         }
         
     }

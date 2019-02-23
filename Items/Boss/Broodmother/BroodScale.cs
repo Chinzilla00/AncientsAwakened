@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Broodmother
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon Scale");
+            DisplayName.SetDefault("Scorched Scale");
             Tooltip.SetDefault("The scale of a formidable foe");
         }
 

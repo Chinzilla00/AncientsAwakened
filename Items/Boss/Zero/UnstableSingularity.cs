@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.White;
+            return AAColor.Oblivion;
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -52,7 +52,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Color.DarkRed.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

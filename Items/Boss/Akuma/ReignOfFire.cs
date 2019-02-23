@@ -18,7 +18,6 @@ namespace AAMod.Items.Boss.Akuma   //where is located
             DisplayName.SetDefault("Reign of Fire");
             Tooltip.SetDefault(@"Rains fire and fury upon your foes
 Inflicts Daybroken");
-            
         }
 
         
@@ -63,7 +62,7 @@ Inflicts Daybroken");
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if (Main.rand.NextFloat() < 1f) ;
+            if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
@@ -71,15 +70,15 @@ Inflicts Daybroken");
             }
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             float num72 = item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num78 = Main.mouseX + Main.screenPosition.X - vector2.X;
-            float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+            float num78 = target.position.X + Main.screenPosition.X - vector2.X;
+            float num79 = target.position.Y + Main.screenPosition.Y - vector2.Y;
             if (player.gravDir == -1f)
             {
-                num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                num79 = target.position.Y + (float)Main.screenHeight - target.position.Y - vector2.Y;
             }
             float num80 = (float)Math.Sqrt((double)((num78 * num78) + (num79 * num79)));
             float num81 = num80;
@@ -98,11 +97,11 @@ Inflicts Daybroken");
             int num112 = 3;
             for (int num113 = 0; num113 < num112; num113++)
             {
-                vector2 = new Vector2(player.position.X + ((float)player.width * 0.5f) + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                vector2 = new Vector2(player.position.X + ((float)player.width * 0.5f) + (float)(Main.rand.Next(201) * -(float)player.direction) + (target.position.X + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
                 vector2.X = ((vector2.X + player.Center.X) / 2f) + (float)Main.rand.Next(-200, 201);
                 vector2.Y -= (float)(100 * num113);
-                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X + ((float)Main.rand.Next(-40, 41) * 0.03f);
-                num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                num78 = target.position.X + Main.screenPosition.X - vector2.X + ((float)Main.rand.Next(-40, 41) * 0.03f);
+                num79 = target.position.Y + Main.screenPosition.Y - vector2.Y;
                 if (num79 < 0f)
                 {
                     num79 *= -1f;
@@ -117,8 +116,13 @@ Inflicts Daybroken");
                 num79 *= num80;
                 float num114 = num78;
                 float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, item.shoot, damage, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
+            target.AddBuff(BuffID.Daybreak, 600);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
             return false;
         }
 
@@ -132,11 +136,7 @@ Inflicts Daybroken");
                 }
             }
         }
-
-        public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 600);
-        }
+        
         
         public override void AddRecipes()  //How to craft this sword
         {

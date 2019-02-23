@@ -48,29 +48,10 @@ You don't look so good
             item.accessory = true;
         }
 
-
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        public override Color? GetAlpha(Color lightColor)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            return AAColor.Oblivion;
         }
-
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -149,7 +130,7 @@ You don't look so good
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Color.DarkRed.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

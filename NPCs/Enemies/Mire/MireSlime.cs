@@ -47,5 +47,10 @@ namespace AAMod.NPCs.Enemies.Mire
                 Main.dust[dustIndex].velocity *= 0.3f;
 			}
 		}
+		
+		public override void NPCLoot()
+		{
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MurkyGel"), Main.rand.Next(50,100));
+        }
 	}
 }

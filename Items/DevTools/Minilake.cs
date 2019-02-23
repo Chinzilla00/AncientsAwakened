@@ -14,6 +14,7 @@ namespace AAMod.Items.DevTools
 	{
 		public override void SetStaticDefaults()
 		{	
+			DisplayName.SetDefault("[DEV] Minilake");
             BaseMod.BaseUtility.AddTooltips(item, new string[] { "Generates a Mire Biome below you", "'Careful not to use it near your house!'" });					
 		}		
 		
@@ -21,7 +22,7 @@ namespace AAMod.Items.DevTools
         {
             item.width = 20;
             item.height = 20;
-            item.maxStack = 1;
+            item.maxStack = 99;
             item.rare = 10;
             item.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 0);
 

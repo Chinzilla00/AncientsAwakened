@@ -196,14 +196,14 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (!ZeroUS)
             {
-                PutZeroHerelul(1, mod.NPCType<ZeroDeactivated>());
+                PutZeroHerelul(1, -1);
             }
         }
 
         public void PutZeroHerelul(int position, int whoAmI)
         {
-            int x = Main.maxTilesX / 6 * (1 + position);
-            Point spawnTilePos = AAWorld.WHERESDAVOIDAT;
+            int VoidHeight = 120;
+            Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, spawnTilePos.Y = VoidHeight);
             Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 
             if (whoAmI == -1)

@@ -35,7 +35,23 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkSlateBlue, Color.Indigo, Color.DarkSlateBlue);
+                return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkSlateBlue, Color.Indigo, Color.DarkSlateBlue);
+            }
+        }
+
+        public static Color Glow
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, Color.Transparent, Color.Transparent, Color.White);
+            }
+        }
+
+        public static Color Flash
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Transparent, Color.White, Color.Transparent, Color.White, Color.Transparent, Color.Transparent, Color.Transparent);
             }
         }
 
@@ -298,12 +314,35 @@ namespace AAMod
             }
         }
 
+        public static Color Jevil
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Violet, Color.ForestGreen, Color.ForestGreen, Color.Violet);
+            }
+        }
 
         public static Color CthulhuItemRarity
         {
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.SeaGreen, Color.DarkSeaGreen, Color.SeaGreen);
+            }
+        }
+
+        public static Color CursedInferno
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Lime, Color.LimeGreen, Color.Lime);
+            }
+        }
+
+        public static Color Ichor
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Gold, Color.DarkGoldenrod, Color.Gold);
             }
         }
 

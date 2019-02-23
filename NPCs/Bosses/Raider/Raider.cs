@@ -29,7 +29,6 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.noTileCollide = true;
             npc.chaseable = true;
             npc.damage = 70;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
             npc.defense = 30;
             npc.lavaImmune = true;
             npc.boss = true;
@@ -166,6 +165,14 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void AI()
         {
+            if (Config.StormMusic)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
+            }
+            else
+            {
+                music = MusicID.Boss2;
+            }
             if (Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
             {
                 projectileTimer++;
@@ -233,8 +240,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 npc.ai[3] = 0;
                 if (npc.timeLeft < 10)
                     npc.timeLeft = 10;
-                npc.velocity.X *= 0.9f;
-                //npc.velocity.Y -= 0.1f;
+                npc.velocity.Y *= 0.9f;
                 if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
                 if (npc.Bottom.Y + npc.height < 0f)
                 {

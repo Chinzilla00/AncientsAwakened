@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Terraria.DataStructures;
 using BaseMod;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -51,15 +51,16 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit");
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ZeroDeath");
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero2");
+            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Sounds/Zerohit");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/ZeroDeath");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2");
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+            npc.alpha = 255;
         }
 
         public override void NPCLoot()
@@ -83,7 +84,8 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion; 
+            potionType = ItemID.SuperHealingPotion;   //boss drops
+            AAWorld.downedZero = true;
             Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
         }
 
@@ -130,30 +132,35 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public static Texture2D glowTex = null;
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
-
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/ZeroAwakened_Glow");
-            }
-
-            Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
-            Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
-            BaseDrawing.DrawAfterimage(spritebatch, ZeroTrail, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, color1);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color1);
-            return false;
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            spriteBatch.Draw(mod.GetTexture("Glowmasks/ZeroAwakened_Glow"), new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y),
+            npc.frame, color1, npc.rotation,
+            new Vector2(npc.width * 0.5f, npc.height * 0.5f), 1f, spriteEffects, 0f);
         }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
+            for (int k = 0; k < npc.oldPos.Length; k++)
+            {
+                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
+                lightColor = new Color(k * 50, 0, 0);
+                Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
+                Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
+                spriteBatch.Draw(ZeroTrail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
+            }
+            return true;
+        }
+
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if (AAWorld.Anticheat == true)
@@ -174,29 +181,25 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            Glitch = Main.rand.Next(10);
-            if(Glitch == 0)
-            {
-                GlitchBool = true;
-            }
+            Glitch = Main.rand.Next(8);
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 170;
-                if (GlitchBool)
+                if (Glitch == 0)
                 {
-
-                    if (npc.frame.Y > (170 * 7))
+                    if (npc.frame.Y > (108 * 7))
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
-                        GlitchBool = false;
                     }
                 }
                 else
                 {
-                    if (npc.frame.Y > (170 * 3))
+                    if (npc.frame.Y > (108 * 3))
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
                     }
                 }

@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Enemies.Other
 			{
 				return 0f;
 			}
-			return SpawnCondition.OverworldDaySlime.Chance * 0.7f;
+			return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
 		}
 		
 		public override void HitEffect(int hitDirection, double damage)

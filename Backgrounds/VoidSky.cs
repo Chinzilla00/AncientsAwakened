@@ -6,6 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
+//using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod.Backgrounds
 {
@@ -33,6 +34,7 @@ namespace AAMod.Backgrounds
         public static Texture2D LB;
         public static Texture2D boltTexture;
         public static Texture2D flashTexture;
+        public static Texture2D Stars;
         private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
@@ -48,6 +50,7 @@ namespace AAMod.Backgrounds
             LB = TextureManager.Load("Backgrounds/LB");
             boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
             flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
+            Stars =  TextureManager.Load("Backgrounds/VoidStars");
         }
 
         public override void Update(GameTime gameTime)
@@ -135,9 +138,17 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
                 Asteroidpos2.Y += (float)Math.Sin(asteroidPercent2) * -30f;
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
-                spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-				float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
-                spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                if (!NPC.downedMoonlord)
+                {
+                    spriteBatch.Draw(Stars, planetPos, null, Color.White, 0, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                }
+                else
+                {
+                    spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
+                    spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+
+                }
                 if (AAWorld.downedZero)
                 {
                     if (!AAWorld.downedIZ)

@@ -13,7 +13,7 @@ namespace AAMod.Items.DevTools
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Noodle Sword");
+            DisplayName.SetDefault("[DEV] Noodle Sword");
             Tooltip.SetDefault(@"Top 10 op weapons in video games");
         }
 

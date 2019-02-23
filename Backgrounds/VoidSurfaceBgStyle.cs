@@ -35,17 +35,17 @@ namespace AAMod.Backgrounds
 
         public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
         {
-            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
+            return mod.GetBackgroundSlot("BlankTex");
         }
 
         public override int ChooseMiddleTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
+            return mod.GetBackgroundSlot("BlankTex");
         }
 
         public override int ChooseFarTexture()
         {
-            return mod.GetBackgroundSlot("Backgrounds/VoidBG");
+            return mod.GetBackgroundSlot("BlankTex");
         }
     }
 }

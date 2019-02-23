@@ -364,10 +364,8 @@ namespace AAMod.NPCs.Enemies.Terrarium
                         npc.ai[1] += (float)num179;
 
                         npc.ai[2] = 0f;
-                        bool flag24 = false;
                         if (npc.ai[1] >= 10f)
                         {
-                            flag24 = true;
                             npc.ai[1] = 10f;
                         }
 

@@ -14,7 +14,7 @@ using BaseMod;
 using AAMod.Worldgeneration;
 using AAMod.NPCs.Enemies.Other;
 using AAMod.Worldgen;
-using Terraria.DataStructures;
+using Terraria.Utilities;
 
 namespace AAMod
 {
@@ -44,14 +44,18 @@ namespace AAMod
         public static int ChaosAltarsSmashed;
         public static int OreCount;
         public static bool DiscordOres;
-        public static bool ChaosStripes;
+        public static bool InfernoStripe;
+        public static bool MireStripe;
         private int infernoSide = 0;
         private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
-        private Vector2 shipPos = new Vector2(0, 0);
+        public static Vector2 shipPos = new Vector2(0, 0);
         private Vector2 TerraPos = new Vector2(0, 0);
         public string nums = "1234567890";
+        public static bool CorruptionSpread;
+        public static bool CrimsonSpread;
+        public static bool HallowSpread;
         //Messages
         public static bool Evil;
         public static bool Compass;
@@ -89,6 +93,7 @@ namespace AAMod
         public static bool downedGripsS;
         public static bool downedSoC;
         public static bool LuminiteMeteorBool;
+        public static bool downedSOCC;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -129,6 +134,7 @@ namespace AAMod
             downedGripsS = false;
             downedSoC = false;
             downedKraken = false;
+            downedSOCC = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -139,10 +145,14 @@ namespace AAMod
             DarkMatter = downedNC;
             RadiumOre = downedDB;
             DiscordOres = downedGripsS;
-            ChaosStripes = Main.hardMode;
+            InfernoStripe = Main.hardMode;
+            MireStripe = Main.hardMode;
             LuminiteMeteorBool = false;
             Anticheat = true;
             Compass = false;
+            CorruptionSpread = false;
+            CrimsonSpread = false;
+            HallowSpread = false;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -210,12 +220,15 @@ namespace AAMod
             if (downedSoC) downed.Add("SoC");
             if (Compass) downed.Add("Compass");
             if (downedKraken) downed.Add("Kraken");
+            if (downedSOCC) downed.Add("SOCC");
+            if (CorruptionSpread) downed.Add("Corruption");
+            if (CrimsonSpread) downed.Add("Crimson");
+            if (HallowSpread) downed.Add("Hallow");
 
             return new TagCompound {
-                {"downed", downed}
+                {"downed", downed},
             };
         }
-
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -267,7 +280,11 @@ namespace AAMod
             flags5[0] = downedSoC;
             flags5[1] = Compass;
             flags5[2] = downedKraken;
-            writer.Write(flags4);
+            flags5[3] = downedSOCC;
+            flags5[4] = CorruptionSpread;
+            flags5[5] = CrimsonSpread;
+            flags5[6] = HallowSpread;
+            writer.Write(flags5);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -316,6 +333,13 @@ namespace AAMod
             downedSoC = flags5[0];
             Compass = flags5[1];
             downedKraken = flags5[2];
+            downedSOCC = flags5[3];
+            CorruptionSpread = flags5[4];
+            CrimsonSpread = flags5[5];
+            HallowSpread = flags5[6];
+
+
+            BitsByte CorruptionFlag = reader.ReadByte();
         }
 
         public override void Load(TagCompound tag)
@@ -357,6 +381,7 @@ namespace AAMod
             downedSoC = downed.Contains("SoC");
             Compass = downed.Contains("Compass");
             downedKraken = downed.Contains("Kraken");
+            downedSOCC = downed.Contains("Socc");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -367,6 +392,9 @@ namespace AAMod
             DarkMatter = downedNC;
             RadiumOre = downedDB;
             DiscordOres = downedGripsS;
+            CorruptionSpread = downed.Contains("Corruption");
+            CrimsonSpread = downed.Contains("Crimson");
+            HallowSpread = downed.Contains("Hallow");
         }
 
 
@@ -419,10 +447,6 @@ namespace AAMod
             {
                 VoidIslands(progress);
             }));
-            tasks.Insert(shiniesIndex2 + 2, new PassLegacy("Parthenan", delegate (GenerationProgress progress)
-            {
-                ParthenanIsland(progress);
-            }));
 
             tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Mush", delegate (GenerationProgress progress)
             {
@@ -434,10 +458,123 @@ namespace AAMod
                 Altars(progress);
             }));
 
-            /*tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Ship", delegate (GenerationProgress progress)
+            int DungeonChests = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Dungeon"));
+            if (DungeonChests >= 0)
             {
-                Ship(progress);
-            }));*/
+                tasks.Insert(DungeonChests + 1, new PassLegacy("InfernoChest", delegate (GenerationProgress progress)
+                {
+                    int Loops = 0;
+                    int Minimum = 50;
+                    int Maximum = Main.maxTilesX / 2;
+                    if (Main.dungeonX > Maximum)
+                    {
+                        Minimum = Maximum;
+                        Maximum = Main.maxTilesX - 50;
+                    }
+                    while (Loops < 1000)
+                    {
+                        int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
+                        int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);
+                        if (Main.wallDungeon[Main.tile[PlaceHere, PlacementHeight].wall] && !Main.tile[PlaceHere, PlacementHeight].active())
+                        {
+                            while (PlacementHeight < Main.maxTilesY - 200)
+                            {
+                                PlacementHeight++;
+                                if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
+                                {
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("InfernoChest"), false, 2);
+                                    if (PlacementSuccess >= 0)
+                                    {
+                                        Chest chest = Main.chest[PlacementSuccess];
+                                        chest.item[0].SetDefaults(mod.ItemType("DragonriderStaff"), false);
+                                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { mod.ItemType("RadiantIncinerite") }), false);
+                                        chest.item[1].stack = WorldGen.genRand.Next(11, 20);
+                                        Item item = chest.item[2];
+                                        UnifiedRandom genRand = WorldGen.genRand;
+                                        int[] array = new int[]
+                                        { mod.ItemType("DragonfireFlask") };
+                                        item.SetDefaults(Utils.Next<int>(genRand, array), false);
+                                        chest.item[2].stack = WorldGen.genRand.Next(1, 4);
+                                        Item item2 = chest.item[3];
+                                        UnifiedRandom genRand2 = WorldGen.genRand;
+                                        int[] array2 = new int[]
+                                        { 302, 2327, 2351, 304, 2329 };
+                                        item2.SetDefaults(Utils.Next(genRand2, array2), false);
+                                        chest.item[3].stack = WorldGen.genRand.Next(1, 3);
+                                        chest.item[4].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { 282, 286 }), false);
+                                        chest.item[4].stack = WorldGen.genRand.Next(15, 31);
+                                        chest.item[5].SetDefaults(73, false);
+                                        chest.item[5].stack = WorldGen.genRand.Next(1, 3);
+                                        Loops += 1000;
+                                        break;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        Loops++;
+                    }
+                }));
+
+                tasks.Insert(DungeonChests + 2, new PassLegacy("MireChest", delegate (GenerationProgress progress)
+                {
+                    int Loops = 0;
+                    int Minimum = 50;
+                    int Maximum = Main.maxTilesX / 2;
+                    if (Main.dungeonX > Maximum)
+                    {
+                        Minimum = Maximum;
+                        Maximum = Main.maxTilesX - 50;
+                    }
+                    while (Loops < 1000)
+                    {
+                        int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
+                        int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);
+                        if (Main.wallDungeon[Main.tile[PlaceHere, PlacementHeight].wall] && !Main.tile[PlaceHere, PlacementHeight].active())
+                        {
+                            while (PlacementHeight < Main.maxTilesY - 200)
+                            {
+                                PlacementHeight++;
+                                if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
+                                {
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("MireChest"), false, 2);
+                                    if (PlacementSuccess >= 0)
+                                    {
+                                        Chest chest = Main.chest[PlacementSuccess];
+                                        chest.item[0].SetDefaults(mod.ItemType("BogBomb"), false);
+                                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { mod.ItemType("DeepAbyssium") }), false);
+                                        chest.item[1].stack = WorldGen.genRand.Next(11, 20);
+                                        Item item = chest.item[2];
+                                        UnifiedRandom genRand = WorldGen.genRand;
+                                        int[] array = new int[]
+                                        { mod.ItemType("HydratoxinFlask") };
+                                        item.SetDefaults(Utils.Next(genRand, array), false);
+                                        chest.item[2].stack = WorldGen.genRand.Next(1, 4);
+                                        Item item2 = chest.item[3];
+                                        UnifiedRandom genRand2 = WorldGen.genRand;
+                                        int[] array2 = new int[]
+                                        { 302, 2327, 2351, 304, 2329 };
+                                        item2.SetDefaults(Utils.Next(genRand2, array2), false);
+                                        chest.item[3].stack = WorldGen.genRand.Next(1, 3);
+                                        chest.item[4].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { 282, 286 }), false);
+                                        chest.item[4].stack = WorldGen.genRand.Next(15, 31);
+                                        chest.item[5].SetDefaults(73, false);
+                                        chest.item[5].stack = WorldGen.genRand.Next(1, 3);
+                                        Loops += 1000;
+                                        break;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        Loops++;
+                    }
+                }));
+            }
         }
         
 
@@ -448,7 +585,7 @@ namespace AAMod
             progress.Set(0f);
             int VoidHeight = 0;
             progress.Set(0.1f);
-            VoidHeight = 120;
+            VoidHeight = 100;
             progress.Set(0.4f);
             Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
             progress.Set(0.5f);
@@ -536,6 +673,37 @@ namespace AAMod
             }
         }
 
+        private void ChaosChests(GenerationProgress progress)
+        {
+            for (int num78 = 0; num78 < 2; num78++)
+            {
+                bool flag5 = false;
+                int success = -1;
+                while (!flag5)
+                {
+                    int num79 = WorldGen.genRand.Next(0, Main.maxTilesX);
+                    int num80 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
+                    if (Main.wallDungeon[Main.tile[num79, num80].wall] && !Main.tile[num79, num80].active())
+                    {
+                        int Style = 0;
+                        if (num78 == 0)
+                        {
+                            Style = (ushort)mod.TileType("InfernoChest");
+                        }
+                        else if (num78 == 1)
+                        {
+                            Style = (ushort)mod.TileType("MireChest");
+                        }
+                        success = WorldGen.PlaceChest(num79, num80, (ushort)Style, false, 2);
+                        if (success > -1)
+                        {
+                            flag5 = true;
+                        }
+                    }
+                }
+            }
+        }
+
         private void Altars (GenerationProgress progress)
         {
             progress.Message = "Placing Chaos Altars";
@@ -587,167 +755,7 @@ namespace AAMod
                 }
             }
         }
-
-        /*public void ChaosChests(GenerationProgress progress)
-        {
-            Main.mouseRightRelease = false;
-            int num60 = 0;
-            int num61;
-            for (num61 = (int)(Main.tile[myX, myY].frameX / 18); num61 > 1; num61 -= 2)
-            {
-            }
-            num61 = myX - num61;
-            int num62 = myY - (int)(Main.tile[myX, myY].frameY / 18);
-            if (Main.tile[myX, myY].type == 29)
-            {
-                num60 = 1;
-            }
-            else if (Main.tile[myX, myY].type == 97)
-            {
-                num60 = 2;
-            }
-            else if (Main.tile[myX, myY].type == 463)
-            {
-                num60 = 3;
-            }
-            if (this.sign > -1)
-            {
-                Main.PlaySound(11, -1, -1, 1, 1f, 0f);
-                this.sign = -1;
-                Main.editSign = false;
-                Main.npcChatText = string.Empty;
-            }
-            if (Main.editChest)
-            {
-                Main.PlaySound(12, -1, -1, 1, 1f, 0f);
-                Main.editChest = false;
-                Main.npcChatText = string.Empty;
-            }
-            if (this.editedChestName)
-            {
-                NetMessage.SendData(33, -1, -1, Main.chest[this.chest].name, this.chest, 1f, 0f, 0f, 0, 0, 0);
-                this.editedChestName = false;
-            }
-            if (Main.netMode == 1 && num60 == 0 && (Main.tile[num61, num62].frameX < 72 || Main.tile[num61, num62].frameX > 106) && (Main.tile[num61, num62].frameX < 144 || Main.tile[num61, num62].frameX > 178) && (Main.tile[num61, num62].frameX < 828 || Main.tile[num61, num62].frameX > 1006) && (Main.tile[num61, num62].frameX < 1296 || Main.tile[num61, num62].frameX > 1330) && (Main.tile[num61, num62].frameX < 1368 || Main.tile[num61, num62].frameX > 1402) && (Main.tile[num61, num62].frameX < 1440 || Main.tile[num61, num62].frameX > 1474))
-            {
-                if (num61 == this.chestX && num62 == this.chestY && this.chest != -1)
-                {
-                    this.chest = -1;
-                    Recipe.FindRecipes();
-                    Main.PlaySound(11, -1, -1, 1, 1f, 0f);
-                }
-                else
-                {
-                    NetMessage.SendData(31, -1, -1, "", num61, (float)num62, 0f, 0f, 0, 0, 0);
-                    Main.stackSplit = 600;
-                }
-            }
-            else
-            {
-                int num63 = -1;
-                if (num60 == 1)
-                {
-                    num63 = -2;
-                }
-                else if (num60 == 2)
-                {
-                    num63 = -3;
-                }
-                else if (num60 == 3)
-                {
-                    num63 = -4;
-                }
-                else
-                {
-                    bool flag11 = false;
-                    if (Chest.isLocked(num61, num62))
-                    {
-                        int num64 = 327;
-                        if (Main.tile[num61, num62].frameX >= 144 && Main.tile[num61, num62].frameX <= 178)
-                        {
-                            num64 = 329;
-                        }
-                        if (Main.tile[num61, num62].frameX >= 828 && Main.tile[num61, num62].frameX <= 1006)
-                        {
-                            int num65 = (int)(Main.tile[num61, num62].frameX / 18);
-                            int num66 = 0;
-                            while (num65 >= 2)
-                            {
-                                num65 -= 2;
-                                num66++;
-                            }
-                            num66 -= 23;
-                            num64 = 1533 + num66;
-                        }
-                        flag11 = true;
-                        for (int num67 = 0; num67 < 58; num67++)
-                        {
-                            if (this.inventory[num67].type == num64 && this.inventory[num67].stack > 0 && Chest.Unlock(num61, num62))
-                            {
-                                if (num64 != 329)
-                                {
-                                    this.inventory[num67].stack--;
-                                    if (this.inventory[num67].stack <= 0)
-                                    {
-                                        this.inventory[num67] = new Item();
-                                    }
-                                }
-                                if (Main.netMode == 1)
-                                {
-                                    NetMessage.SendData(52, -1, -1, "", this.whoAmI, 1f, (float)num61, (float)num62, 0, 0, 0);
-                                }
-                            }
-                        }
-                    }
-                    if (!flag11)
-                    {
-                        num63 = Chest.FindChest(num61, num62);
-                    }
-                }
-                if (num63 != -1)
-                {
-                    Main.stackSplit = 600;
-                    if (num63 == this.chest)
-                    {
-                        this.chest = -1;
-                        Main.PlaySound(11, -1, -1, 1, 1f, 0f);
-                    }
-                    else if (num63 != this.chest && this.chest == -1)
-                    {
-                        this.chest = num63;
-                        Main.playerInventory = true;
-                        if (PlayerInput.GrappleAndInteractAreShared)
-                        {
-                            PlayerInput.Triggers.JustPressed.Grapple = false;
-                        }
-                        Main.recBigList = false;
-                        Main.PlaySound(10, -1, -1, 1, 1f, 0f);
-                        this.chestX = num61;
-                        this.chestY = num62;
-                        if (Main.tile[num61, num62].frameX >= 36 && Main.tile[num61, num62].frameX < 72)
-                        {
-                            AchievementsHelper.HandleSpecialEvent(this, 16);
-                        }
-                    }
-                    else
-                    {
-                        this.chest = num63;
-                        Main.playerInventory = true;
-                        if (PlayerInput.GrappleAndInteractAreShared)
-                        {
-                            PlayerInput.Triggers.JustPressed.Grapple = false;
-                        }
-                        Main.recBigList = false;
-                        Main.PlaySound(12, -1, -1, 1, 1f, 0f);
-                        this.chestX = num61;
-                        this.chestY = num62;
-                    }
-                    Recipe.FindRecipes();
-                }
-            }
-        }*/
-
-
+        
         public int ChestNumber = 0;
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
@@ -930,6 +938,44 @@ namespace AAMod
                 }
             }
 
+            int[] itemsToPlaceInInfernoChest = new int[] { mod.ItemType("DragonriderStaff") };
+            int itemsToPlaceInInfernoChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("InfernoChest")) // if glass chest
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == 0)
+                        {
+                            itemsToPlaceInInfernoChestsChoice = Main.rand.Next(itemsToPlaceInInfernoChest.Length);
+                            chest.item[0].SetDefaults(itemsToPlaceInInfernoChest[itemsToPlaceInInfernoChestsChoice]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            int[] itemsToPlaceInMireChest = new int[] { mod.ItemType("BogBomb") };
+            int itemsToPlaceInMireChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("MireChest")) // if glass chest
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == 0)
+                        {
+                            itemsToPlaceInMireChestsChoice = Main.rand.Next(itemsToPlaceInMireChest.Length);
+                            chest.item[0].SetDefaults(itemsToPlaceInMireChest[itemsToPlaceInMireChestsChoice]);
+                            break;
+                        }
+                    }
+                }
+            }
+
             int[] itemsToPlaceInSunkenChest = new int[] { mod.ItemType("CursedCompass") };
             int itemsToPlaceInSunkenChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
@@ -1088,7 +1134,6 @@ namespace AAMod
             }
             if (downedRetriever || downedOrthrus || downedRaider)
             {
-
                 downedStormAny = true;
                 
             }
@@ -1107,16 +1152,12 @@ namespace AAMod
             }
             if (downedRetriever & downedOrthrus & downedRaider)
             {
-                if (downedStormAll == false)
-                {
-                    downedStormAll = true;
-                }
+                downedStormAll = true;
             }
 
             if (downedAkuma || downedYamata || downedZero)
             {
                 downedAncient = true;
-                NPC.downedMechBossAny = true;
             }
 
             if (downedShen || downedIZ)
@@ -1124,10 +1165,7 @@ namespace AAMod
                 downedSAncient = true;
             }
 
-           
-
-
-            /*if (downedAkuma && downedYamata && downedZero)
+            if (downedAkuma && downedYamata && downedZero)
             {
                 if (downedAllAncients == false)
                 {
@@ -1138,35 +1176,39 @@ namespace AAMod
 
                     Main.NewText("An otherworldly fog encompasses the ocean", Color.Cyan);
                 }
-            }*/
+            }
             if (Main.hardMode == true)
             {
-                if (ChaosStripes == false)
+                if (InfernoStripe == false)
                 {
-                    ChaosStripes = true;
+                    InfernoStripe = true;
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+                    infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+
+                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, 1);
+
+                }
+                if (MireStripe == false)
+                {
+                    InfernoStripe = true;
                     infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
                     infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
                     mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-
-                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, ConversionHandler.CONVERTID_INFERNO);
-                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, ConversionHandler.CONVERTID_MIRE);
+                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, 0);
 
                 }
             }
         }
-        
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
-            shipTiles = tileCounts[mod.TileType<CthulhuPortal>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 
@@ -1199,7 +1241,7 @@ namespace AAMod
                 }
             }
             infernoPos.Y = j;
-            int q = (int)WorldGen.worldSurfaceLow - 10;
+            int q = (int)WorldGen.worldSurfaceLow - 30;
             while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
             {
                 q++;
@@ -1237,20 +1279,6 @@ namespace AAMod
         {
             progress.Message = "Growing Shrooms";
             Mushroom();
-        }
-
-        private void ParthenanIsland(GenerationProgress progress)
-        {
-            progress.Message = "Storming the Parthenan";
-            Parthenan();
-        }
-
-        private void Ship(GenerationProgress progress)
-        {
-            shipSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            shipPos.X = (shipSide == 1 ? (Main.maxTilesX - 90) : 90);
-            progress.Message = "Sinking the ship";
-            SunkenShip();
         }
 
         public void InfernoVolcano()
@@ -1295,14 +1323,6 @@ namespace AAMod
             biome.Place(origin, WorldGen.structures);
         }
 
-        public void SunkenShip()
-        {
-            Point origin = new Point((int)shipPos.X, (int)WorldGen.worldSurfaceLow - 200);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            BOTE biome = new BOTE();
-            biome.Place(origin, WorldGen.structures);
-        }
-
         public void TerraSphere()
         {
             Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f)); ;
@@ -1311,15 +1331,6 @@ namespace AAMod
             TerrariumSphere biome = new TerrariumSphere();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-        }
-
-        public void Parthenan()
-        {
-            int ParthenanHeight = 0;
-            ParthenanHeight = 120;
-            Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
-            Parthenan biome = new Parthenan();
-            biome.Place(center, WorldGen.structures);
         }
 
 

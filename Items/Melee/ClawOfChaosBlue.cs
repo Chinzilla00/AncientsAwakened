@@ -9,11 +9,12 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abyssal Baghnakhs");
-		}
+            Tooltip.SetDefault("Strike your foes with the speed of a shadowy slash");
+        }
 
 		public override void SetDefaults()
 		{
-			item.damage = 80;
+			item.damage = 75;
 			item.melee = true;
 			item.width = 28;
 			item.height = 22;
@@ -31,8 +32,8 @@ namespace AAMod.Items.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "DeepAbyssium", 20);
-			recipe.AddIngredient(mod, "HydraClaw", 5);
-			recipe.AddIngredient(ItemID.FetidBaghnakhs, 1);
+            recipe.AddIngredient(mod, "HydraGlove", 1);
+            recipe.AddIngredient(ItemID.FetidBaghnakhs, 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

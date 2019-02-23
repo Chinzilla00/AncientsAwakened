@@ -98,17 +98,12 @@ namespace AAMod.Tiles
 			{
 				if (player.inventory[num66].type == mod.ItemType("InfernoKey") && player.inventory[num66].stack > 0)
 				{
-					/* player.inventory[num66].stack--; */
-					Chest.Unlock(i, j);
-					Chest.Unlock(i - 1, j - 1);
-					Chest.Unlock(i, j - 1);
-					Chest.Unlock(i - 1, j);
-					/*     if (player.inventory[num66].stack <= 0)
-						 {
-							 player.inventory[num66] = new Item();
-						 } */
-
-				}
+                    player.inventory[num66].stack--;
+                    Chest.Unlock(i, j);
+                    Chest.Unlock(i - 1, j - 1);
+                    Chest.Unlock(i, j - 1);
+                    Chest.Unlock(i - 1, j);
+                }
 			}
 
 			Tile tile = Main.tile[i, j];
@@ -199,27 +194,16 @@ namespace AAMod.Tiles
 			}
 			int chest = Chest.FindChest(left, top);
 			player.showItemIcon2 = -1;
-			if (chest < 0)
-			{
-				player.showItemIconText = Lang.chestType[0].Value;
-			}
-			else
-			{
-				player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Inferno Chest";
-				if (player.showItemIconText == "Inferno Chest")
-				{
-					if (tile.frameX == 72 || tile.frameX == 90)
-					{
-						player.showItemIcon2 = mod.ItemType("InfernoKey");
-						player.showItemIconText = "";
-					}
-					//else
-					//{
-					//player.showItemIcon2 = mod.ItemType("CrystalChest");
-					//}
-				}
-			}
-			player.noThrow = 2;
+            player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Inferno Chest";
+            if (player.showItemIconText == "Inferno Chest")
+            {
+                if (tile.frameX == 72 || tile.frameX == 90)
+                {
+                    player.showItemIcon2 = mod.ItemType("InfernoKey");
+                    player.showItemIconText = "";
+                }
+            }
+            player.noThrow = 2;
 			player.showItemIcon = true;
 		}
 

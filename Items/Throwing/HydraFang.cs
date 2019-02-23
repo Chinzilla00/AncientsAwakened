@@ -37,7 +37,7 @@ namespace AAMod.Items.Throwing
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("HydraClaw"));
+			recipe.AddIngredient(mod.ItemType("AbyssiumBar"));
 			recipe.SetResult(this, 99);
 			recipe.AddTile(TileID.Anvils);
 			recipe.AddRecipe();

@@ -33,13 +33,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            float num = 1.57079637f;
             Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
-            num = 0f;
-            if (projectile.spriteDirection == -1)
-            {
-                num = 3.14159274f;
-            }
             if (++projectile.frame >= Main.projFrames[projectile.type])
             {
                 projectile.frame = 0;
@@ -81,7 +75,7 @@ namespace AAMod.Projectiles
             Lighting.AddLight(vector14, Main.DiscoR * .3f, 0, Main.DiscoB * .3f);
             if (Main.rand.Next(3) == 0)
             {
-                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, new Color(Main.DiscoR, 0, Main.DiscoB), 2f);
+                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, new Color(Main.DiscoR * .02f, 0, Main.DiscoB * .02f), 2f);
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= projectile.velocity;
             }

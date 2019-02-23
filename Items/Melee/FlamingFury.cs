@@ -37,7 +37,7 @@ namespace AAMod.Items.Melee
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if (Main.rand.NextFloat() < 1f) ;
+            if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.AshRain>(), 0f, 0f, 46, default(Color), 1.381579f)];

@@ -39,7 +39,6 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.boss = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
             npc.value = Item.buyPrice(0, 0, 10, 0);
             bossBag = mod.ItemType<Items.Boss.Serpent.SerpentBag>();
         }
@@ -60,6 +59,14 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 RainStart();
                 RunOnce = 1;
+            }
+            if (Config.SerpentMusic)
+            {
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+            }
+            else
+            {
+                music = MusicID.Boss1;
             }
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f || Main.player[npc.target].dead)
             {

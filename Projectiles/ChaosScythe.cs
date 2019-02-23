@@ -40,10 +40,7 @@ namespace AAMod.Projectiles
             const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
             for (int num468 = 0; num468 < 20; num468++)
             {
-                float Eggroll = Math.Abs(Main.GameUpdateCount) / 8f;
-                float Pie = 1f * (float)Math.Sin(Eggroll);
-                Color color1 = Color.Lerp(new Color(85, 145, 93), new Color(64, 61, 99), Pie);
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, color1, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, AAColor.Jevil, 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
             }

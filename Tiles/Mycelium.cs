@@ -11,7 +11,7 @@ namespace AAMod.Tiles
 		public override void SetDefaults()
 		{
 			Main.tileSolid[Type] = true;
-			SetModTree(new BogwoodTree());
+			SetModTree(new MushroomTree());
             Main.tileMergeDirt[Type] = true;
 			Main.tileBlendAll[this.Type] = true;
             drop = mod.ItemType("Mycelium");

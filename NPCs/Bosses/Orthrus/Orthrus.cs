@@ -57,9 +57,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
             npc.netAlways = true;
-            npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
+            npc.frame = BaseDrawing.GetFrame(frameCount, fWidth, fHeight, 0, 2);
             bossBag = mod.ItemType("OrthrusBag");
             npc.noTileCollide = false;
         }
@@ -89,8 +88,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public float[] internalAI = new float[4];
 
         //clientside stuff
-		public int frameWidth = 200;
-		public int frameHeight = 102;
+		public int fWidth = 200;
+		public int fHeight = 102;
 
         public override void AI()
         {
@@ -201,14 +200,23 @@ namespace AAMod.NPCs.Bosses.Orthrus
 				}
             }
 
+            if (Config.StormMusic)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
+            }
+            else
+            {
+                music = MusicID.Boss3;
+            }
+
             if (internalAI[1] == AISTATE_TURRET) //Standing
             {
 				npc.frameCounter++;				
                 if (npc.frameCounter >= 8)
                 {
                     npc.frameCounter = 0;
-                    npc.frame.Y += frameHeight;
-                    if (npc.frame.Y > (frameHeight * 3))
+                    npc.frame.Y += fHeight;
+                    if (npc.frame.Y > (fHeight * 3))
                     {
                         npc.frame.Y = 0;
                     }
@@ -219,10 +227,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 if (npc.frameCounter >= 5)
                 {
                     npc.frameCounter = 0;
-                    npc.frame.Y += frameHeight;
-                    if (npc.frame.Y > (frameHeight * 7))
+                    npc.frame.Y += fHeight;
+                    if (npc.frame.Y > (fHeight * 7))
                     {
-                        npc.frame.Y = frameHeight * 4;
+                        npc.frame.Y = fHeight * 4;
                     }
                 }
             }

@@ -11,9 +11,8 @@ namespace AAMod.Items.Usable
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Discordium");
-            Tooltip.SetDefault("The World Chaoses melded together into a single, powerful bar");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 12));
+            DisplayName.SetDefault("Void Bomb");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 9));
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

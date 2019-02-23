@@ -44,10 +44,10 @@ namespace AAMod.NPCs.TownNPCs
             npc.aiStyle = 7;
             npc.damage = 40;
             npc.defense = 38;
-            npc.lifeMax = 250;
+            npc.lifeMax = 600;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = .01f;
+            npc.knockBackResist = 2f;
             animationType = NPCID.Truffle;
         }
         
@@ -97,7 +97,7 @@ namespace AAMod.NPCs.TownNPCs
             int Clothier = NPC.FindFirstNPC(NPCID.Clothier);
             if (WitchDoctor >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[WitchDoctor].GivenName + "Asked me one time if red truffles tasted as good as blue ones. Obviously not. Blue truffles are way saltier.";
+                return Main.npc[WitchDoctor].GivenName + "asked me one time if red truffles tasted as good as blue ones. Obviously not. Blue truffles are way saltier.";
             }
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }

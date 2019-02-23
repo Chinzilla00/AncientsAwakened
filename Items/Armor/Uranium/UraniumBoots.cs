@@ -11,6 +11,7 @@ namespace AAMod.Items.Armor.Uranium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Boots");
+            Tooltip.SetDefault(@"8% increased movement speed");
         }
 
         public override void SetDefaults()

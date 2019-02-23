@@ -28,15 +28,17 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
 
+
+        public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -82,6 +84,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.netAlways = true;
             frameWidth = 162;
             frameHeight = 118;
+            npc.alpha = 255;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
@@ -122,6 +125,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                     npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                     Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
+                    if (!AAWorld.downedYamata)
+                    {
+                        Main.NewText("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
+                    }
                 }
                 if (Main.expertMode)
                 {
@@ -133,7 +140,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             
         }
 
-        public float[] internalAI = new float[4];
         public int playerTooFarDist = 800;
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1), frameHead = new Rectangle(0, 0, 1, 1);
         public bool prevHalfHPLeft = false, halfHPLeft = false, prevFourthHPLeft = false, fourthHPLeft = false;
@@ -194,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				if(Head7 != null && Head7.life > 0) headCount++;
 				if(headCount == 0) //killed all fake heads
 				{
-					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! I'M GONNA STOMP YOU MAGGOT!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
+					BaseUtility.Chat("Y-you...YOU KILLED ALL MY SPARE HEADS!!!! I'M GONNA STOMP YOU INTO DUST YOU LITTLE MAGGOT!!", new Color(45, 46, 70));	//used BaseUtility.Chat as it auto-syncs on servers, and this is called serverside			
 				}else
 				if(headCount == 5) //killed one fake head
 				{
@@ -217,8 +223,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.netUpdate = true;
             }
 
-            Main.dayTime = false;
-            Main.time = 24000;
+            
 	
 			if(isAwakened)
 			{
@@ -265,6 +270,29 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     npc.alpha -= 10;
                     SayTheLineYamata = 300;
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+            }
+
+            if (Main.dayTime)
+            {
+                Main.NewText(isAwakened? "HISSSSSSSSSSSSSSS!!! THE SUNNNNNNNNNN! I'M OUT!": "THE SUN DOESN'T SHINE IN THE ABYSS!!! NYEHEHEHEHEHEHEHEH!!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                if (isAwakened)
+                {
+                    Main.dayTime = false;
+                    Main.time = 0;
+                }
+                else
+                {
+
+                    npc.alpha += 10;
+                    if (npc.alpha >= 255)
+                    {
+                        npc.active = false;
+                    }
                 }
             }
 
@@ -356,15 +384,22 @@ namespace AAMod.NPCs.Bosses.Yamata
             UpdateLimbs();
         }
 
+
         public void AIMovementRunAway()
         {
 			if(Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
-            npc.velocity.X *= 0.9f;
+
+            npc.alpha += 10;
+            if (npc.alpha >= 255)
+            {
+                npc.active = false;
+            }
+            /*npc.velocity.X *= 0.9f;
             if (Math.Abs(npc.velocity.X) < 0.01f) npc.velocity.X = 0f;
             npc.velocity.Y += 0.25f;
 			npc.noTileCollide = true;
             npc.rotation = 0f;
-            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss
+            if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; } //if out of map, kill boss*/
         }
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
@@ -570,17 +605,21 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public Vector2 position, oldPosition;
+        
+
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool DrawUnder)
         {
+            Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
             if (head != null && head.active)
             {
 				string neckTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck");
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 connector = head.Center;
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
-                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, DrawUnder, null);
-                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
-                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
+                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, lightColor, 1f, DrawUnder, null);
+                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, lightColor, false);
+                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, lightColor, false);
             }
         }
 
@@ -590,6 +629,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void PostDraw(SpriteBatch sb, Color dColor)
         {
+            Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
             if (glowTex == null)
             {
                 glowTex = mod.GetTexture("Glowmasks/YamataAHead_Glow");
@@ -597,7 +637,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
 			string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, lightColor, false);
 			if(legs != null && legs.Length == 4)
 			{
 				legs[2].DrawLeg(sb, npc, dColor); //back legs
@@ -605,10 +645,10 @@ namespace AAMod.NPCs.Bosses.Yamata
 				legs[0].DrawLeg(sb, npc, dColor); //front legs
 				legs[1].DrawLeg(sb, npc, dColor);
 			}		
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
             if (isAwakened)
             {
-                BaseDrawing.DrawTexture(sb, glowTexBody, 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.Yamata, false);
+                BaseDrawing.DrawTexture(sb, glowTexBody, 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.YamataA, false);
             }
             if (!isAwakened)
             {

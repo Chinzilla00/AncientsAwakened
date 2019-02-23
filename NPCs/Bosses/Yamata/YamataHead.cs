@@ -121,6 +121,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 return;
             }
+            if (Body.active)
+            {
+                npc.alpha = Body.alpha;
+            }
 
             bool SISSY = false;
             int GETDOWNHERE = 0;
@@ -197,6 +201,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             fireTimer++;
             if (fireTimer >= 240 && fireAttack == false)
             {
+                Roar(roarTimerMax, false);
                 fireAttack = true;
 
                 fireTimer = 0;
@@ -209,6 +214,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(SoundID.Item34, npc.position);
+                        Roar(roarTimerMax, true);
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
@@ -229,6 +235,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
+                                Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
                                 Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                             }
                         }
@@ -270,6 +277,30 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.velocity = (moveTo) * moveSpeedBoost;
 			npc.spriteDirection = -1;
         }
+
+        public int roarTimer = 0; //if this is > 0, then use the roaring frame.
+        public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
+        public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
+        {
+            get
+            {
+                return roarTimer > 0;
+            }
+        }
+
+        public void Roar(int timer, bool fireSound)
+        {
+            roarTimer = timer;
+            if (fireSound)
+            {
+            }
+            else
+            {
+                int roarSound = mod.GetSoundSlot(SoundType.Music, "Sounds/Sounds/YamataRoar");
+                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+            }
+        }
+
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;

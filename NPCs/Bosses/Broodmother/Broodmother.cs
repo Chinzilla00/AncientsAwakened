@@ -27,7 +27,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noTileCollide = true;
             npc.chaseable = true;
             npc.damage = 35;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.defense = 10;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -140,6 +139,14 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void AI()
         {
+            if (Config.BroodMusic)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
+            }
+            else
+            {
+                music = MusicID.Boss1;
+            }
 			if(Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
 			{
 				projectileTimer++;
@@ -188,8 +195,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 				npc.ai[3] = 0;
 				if(npc.timeLeft < 10) 
 					npc.timeLeft = 10;
-				npc.velocity.X *= 0.9f;
-				//npc.velocity.Y -= 0.1f;
+				npc.velocity.Y *= 0.9f;
 				if(npc.velocity.Y > 15f) npc.velocity.Y = 15f;
 				if(npc.Bottom.Y + npc.height < 0f)
 				{

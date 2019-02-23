@@ -14,7 +14,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = false;
             
             drop = mod.ItemType("RottedDynastyWood");   //put your CustomBlock name
-            AddMapEntry(new Color(0, 30, 120));
+            AddMapEntry(new Color(39, 34, 8));
 			minPick = 0;
         }
 

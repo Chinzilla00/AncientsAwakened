@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using Terraria.Enums;
 using System;
+using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -35,6 +37,101 @@ namespace AAMod.Tiles
         public override bool CanExplode(int i, int j)
         {
             return false;
+        }
+
+        public override void RightClick(int i, int j)
+        {
+            Player player = Main.player[Main.myPlayer];
+            for (int num66 = 0; num66 < 58; num66++)
+            {
+                if (!AAWorld.downedYamata && player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
+                    return;
+                }
+                if (Main.dayTime && player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                    return;
+                }
+                if (NPC.AnyNPCs(mod.NPCType("Yamata")) && player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+                    return;
+                }
+                if (NPC.AnyNPCs(mod.NPCType("YamataA")) && player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                    return;
+                }
+                for (int m = 0; m < Main.maxProjectiles; m++)
+                {
+                    Projectile p = Main.projectile[m];
+                    if (p != null && p.active && p.type == mod.ProjectileType("YamataTransition") && player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                    {
+                        return;
+                    }
+
+                    if (p != null && p.active && p.type == mod.ProjectileType("ShenTransition") && player.inventory[num66].type == mod.ItemType("ChaosSigil") && player.inventory[num66].stack > 0)
+                    {
+                        return;
+                    }
+                    if (p != null && p.active && p.type == mod.ProjectileType("ShenSpawn") && player.inventory[num66].type == mod.ItemType("ChaosSigil") && player.inventory[num66].stack > 0)
+                    {
+                        return;
+                    }
+                }
+                if (player.inventory[num66].type == mod.ItemType("DreadSigil") && player.inventory[num66].stack > 0)
+                {
+                    SpawnBoss(player, "Yamata", "Yamata; Dread Nightmare");
+                    Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+                    if (!AAWorld.downedYamata)
+                    {
+                        Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                    }
+                    if (AAWorld.downedYamata)
+                    {
+                        Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                    }
+                }
+                if ((NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenDoragon>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenA>()) && player.inventory[num66].type == mod.ItemType("ChaosSigil") && player.inventory[num66].stack > 0))
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                    return;
+                }
+                if (player.inventory[num66].type == mod.ItemType("Chaosigil") && player.inventory[num66].stack > 0)
+                {
+                    if (AAWorld.ShenSummoned)
+                    {
+                        Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+                        SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+                    }
+                    if (!AAWorld.ShenSummoned)
+                    {
+                        SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
+                        AAWorld.ShenSummoned = true;
+                        Main.PlaySound(SoundID.Roar, player.position, 0);
+                    }
+                    Main.PlaySound(SoundID.Roar, player.position, 0);
+                    return;
+
+                }
+
+            }
+        }
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 400f);
+                Main.npc[npcID].netUpdate2 = true;
+
+            }
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -86,7 +183,7 @@ namespace AAMod.Tiles
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("DreadAltar");
+			player.showItemIcon2 = mod.ItemType("DreadSigil");
 		}
 	}
 }

@@ -45,6 +45,12 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+
+            Color GlowColor = AAColor.CursedInferno;
+            if (WorldGen.crimson)
+            {
+                GlowColor = AAColor.Ichor;
+            }
             spriteBatch.Draw
             (
                 texture,
@@ -54,13 +60,32 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
+                GlowColor,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
                 SpriteEffects.None,
                 0f
             );
+        }
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = Main.itemTexture[item.type];
+
+            Texture2D Glow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+
+            Color GlowColor = AAColor.CursedInferno;
+            if (WorldGen.crimson)
+            {
+                GlowColor = AAColor.Ichor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, GlowColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            return true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

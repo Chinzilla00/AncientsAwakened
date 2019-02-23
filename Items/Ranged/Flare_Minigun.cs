@@ -58,7 +58,6 @@ namespace AAMod.Items.Ranged
 			{
 				return true;
 			}
-			return base.CanUseItem(player);
 		}
 		
 		public override bool ConsumeAmmo(Player player)

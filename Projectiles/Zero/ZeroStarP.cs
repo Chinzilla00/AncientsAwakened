@@ -2,34 +2,18 @@
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using BaseMod;
 
 namespace AAMod.Projectiles.Zero
 {
     // to investigate: Projectile.Damage, (8843)
     class ZeroStarP : ModProjectile
 	{
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
-        {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-        }
         public override void SetDefaults()
 		{
-
             projectile.CloneDefaults(ProjectileID.LightDisc);
             aiType = ProjectileID.LightDisc;
-            // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
             projectile.width = 46;
 			projectile.height = 46;
 			projectile.friendly = true;
@@ -38,5 +22,61 @@ namespace AAMod.Projectiles.Zero
 			projectile.penetrate = -1;
 			projectile.timeLeft = 300;
         }
-	}
+        
+        public float[] shootAI = new float[4];
+
+        public override void AI()
+        {
+            Player player = Main.player[projectile.owner];
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, player.Center, 20, 20, false, 16, 40, .9f, 1f, true);
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 20;
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    projectile.ai[aislotHomingCooldown] = 0;
+                    NPC n = Main.npc[foundTarget];
+                    BaseAI.ShootPeriodic(projectile, n.position, n.width, n.height, mod.ProjectileType<Darkray>(), ref shootAI[0], 5, (int)(projectile.damage), 24f, true, projectile.Center);
+                }
+            }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D Glow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, AAColor.Oblivion, true);
+            return false;
+        }
+    }
 }

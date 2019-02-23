@@ -43,10 +43,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
         }
-
-        public bool Flex1 = false;
-        public bool Flex2 = false;
-        public bool Flex3 = false;
+        
         public int runonce = 0;
         public int FrameHeight = 130;
 

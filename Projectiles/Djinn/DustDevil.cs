@@ -23,7 +23,7 @@ namespace AAMod.Projectiles.Djinn
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dust Devil");
-			Main.projFrames[projectile.type] = 5;
+			Main.projFrames[projectile.type] = 6;
 			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 		}
@@ -237,7 +237,7 @@ namespace AAMod.Projectiles.Djinn
                             }
                             shootVel.Normalize();
                             shootVel *= shootSpeed;
-                            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootVel.X, shootVel.Y, mod.ProjectileType("SandSpray"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootVel.X, shootVel.Y, mod.ProjectileType("SandPro"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                             Main.projectile[proj].timeLeft = 300;
                             Main.projectile[proj].netUpdate = true;
                             projectile.netUpdate = true;

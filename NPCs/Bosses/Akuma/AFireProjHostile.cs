@@ -24,8 +24,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;
-            projectile.timeLeft = 300;
-            
+            projectile.timeLeft = 180;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void AI()
@@ -49,25 +53,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 60;
-            const float desiredFlySpeedInPixelsPerFrame = 20;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
-
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
-            {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
-
-                int foundTarget = HomeOnTarget();
-                if (foundTarget != -1)
-                {
-                    Player target = Main.player[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
-                }
-            }
             for (int num189 = 0; num189 < 1; num189++)
             {
                 int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f);
@@ -84,45 +69,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             Kill(0);
         }
 
-        public override void Kill(int timeleft)
+        public override void Kill(int timeLeft)
         {
-            float spread = 45f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
-            double deltaAngle = spread / 8f;
-            for (int num468 = 0; num468 < 20; num468++)
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double deltaAngle = spread / (Main.expertMode ? 6 : 3);
+            double offsetAngle;
+            int i;
+            for (i = 0; i < (Main.expertMode ? 6 : 3); i++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].velocity *= 2f;
+                offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }
-        }
-
-        private int HomeOnTarget()
-        {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 500;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            for (int dust = 0; dust <= 10; dust++)
             {
-                Player target = Main.player[i];
-                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(target.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
-                    )
-                        selectedTarget = i;
-                }
+                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
             }
-
-            return selectedTarget;
         }
     }
 }

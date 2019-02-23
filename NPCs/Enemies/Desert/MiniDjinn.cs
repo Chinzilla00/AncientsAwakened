@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.ZoneDesert && NPC.downedBoss3 && Main.dayTime ? .3f : 0f;
+            return spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && Main.dayTime ? .3f : 0f;
         }
 
         public float[] shootAI = new float[4];
@@ -124,9 +124,9 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override void NPCLoot()
         {
-            if (Main.rand.NextFloat(4) == 0f)
+            if (Main.rand.Next(4) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.BossSummons.DjinnLamp>());
+                npc.DropLoot(mod.ItemType<Items.BossSummons.DjinnLamp>());
             }
         }
     }

@@ -30,12 +30,15 @@ namespace AAMod.Backgrounds
         }
         private Meteor[] Meteors;
         private Texture2D MeteorTexture;
+        public static Texture2D SkyTex;
         private UnifiedRandom _random = new UnifiedRandom();
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/InfernoSun");
-            PlanetTexture = TextureManager.Load("Backgrounds/AkumaMeteors");
+            PlanetTexture = TextureManager.Load("Backgrounds/Sun");
+            MeteorTexture = TextureManager.Load("Backgrounds/AkumaMeteors");
+
+            SkyTex = TextureManager.Load("Backgrounds/Sky");
         }
 
         public override void Update(GameTime gameTime)
@@ -62,29 +65,37 @@ namespace AAMod.Backgrounds
             {
                 if (Main.dayTime)
                 {
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 1), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 2), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 3), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 4), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 5), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 6), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 7), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 8), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 9), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 10), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 11), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 12), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 13), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 14), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 15), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 16), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 17), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 18), Color.Firebrick * 0.05f * Intensity);
-                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, (Main.screenHeight / 20) * 19), Color.Firebrick * 0.05f * Intensity);
-
-                    var planetPos = new Vector2((Main.screenWidth / 4) * 1, Main.screenHeight / 4);
-                    spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                    spriteBatch.Draw(SkyTex, SkyPos, null, Color.OrangeRed, 0f, new Vector2(SkyTex.Width >> 1, SkyTex.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    float num64 = 1f;
+                    num64 -= Main.cloudAlpha * 1.5f;
+                    if (num64 < 0f)
+                    {
+                        num64 = 0f;
+                    }
+                    int num20 = (int)(Main.time / 54000.0 * (double)(Main.screenWidth + Main.sunTexture.Width * 2)) - Main.sunTexture.Width;
+                    int num21 = 0;
+                    float num22 = 1f;
+                    float rotation = (float)(Main.time / 54000.0) * 2f - 7.3f;
+                    double bgTop = ((-Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
+                    float rotation2 = (float)(Main.time / 32400.0) * 2f - 7.3f;
+                    if (Main.dayTime)
+                    {
+                        double num26;
+                        if (Main.time < 27000.0)
+                        {
+                            num26 = Math.Pow(1.0 - Main.time / 54000.0 * 2.0, 2.0);
+                            num21 = (int)(bgTop + num26 * 250.0 + 180.0);
+                        }
+                        else
+                        {
+                            num26 = Math.Pow((Main.time / 54000.0 - 0.5) * 2.0, 2.0);
+                            num21 = (int)(bgTop + num26 * 250.0 + 180.0);
+                        }
+                        num22 = (float)(1.2 - num26 * 0.4);
+                    }
+                    Color color6 = new Color(((byte)(255f * num64)), ((byte)(Color.White.G * num64)), ((byte)(Color.White.B * num64)), ((byte)(255f * num64)));
+                    Main.spriteBatch.Draw(PlanetTexture, new Vector2(num20, (num21 + Main.sunModY)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, PlanetTexture.Width, PlanetTexture.Height)), color6, rotation, new Vector2((PlanetTexture.Width / 2), (PlanetTexture.Height / 2)), num22, SpriteEffects.None, 0f);
                 }
             }
             int num = -1;

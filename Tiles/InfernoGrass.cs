@@ -19,7 +19,7 @@ namespace AAMod.Tiles
 			Main.tileLighted[Type] = true;
             dustType = mod.DustType("RazeleafDust");
             AddMapEntry(new Color(255, 153, 51));
-            drop = TileID.Dirt;
+            drop = ItemID.DirtBlock;
         }
 
 		public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)

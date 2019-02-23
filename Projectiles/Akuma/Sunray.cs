@@ -9,22 +9,8 @@ namespace AAMod.Projectiles.Akuma
 {
     public class Sunray : ModProjectile
 	{
-
-        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Sun Portal");    //The recording mode
 		}
 
@@ -50,9 +36,7 @@ namespace AAMod.Projectiles.Akuma
 
             return false;
         }
-
-
-
+        
         public override bool PreAI()
         {
             projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
@@ -121,7 +105,7 @@ namespace AAMod.Projectiles.Akuma
         {
             for (int num56 = 0; num56 < 1000; num56++)
             {
-                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner && Main.projectile[num56].type == 642)
+                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner && Main.projectile[num56].type == mod.ProjectileType<Sunray>())
                 {
                     Main.projectile[num56].Kill();
                 }

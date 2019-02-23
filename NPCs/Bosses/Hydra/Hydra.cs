@@ -38,7 +38,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
             npc.noGravity = false;
             npc.netAlways = true;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
@@ -101,6 +100,16 @@ namespace AAMod.NPCs.Bosses.Hydra
                     Head3 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
+            }
+
+            if (Config.HydraMusic)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
+            }
+            else
+            {
+                music = MusicID.Boss3;
+
             }
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {

@@ -199,27 +199,16 @@ namespace AAMod.Tiles
 			}
 			int chest = Chest.FindChest(left, top);
 			player.showItemIcon2 = -1;
-			if (chest < 0)
-			{
-				player.showItemIconText = Lang.chestType[0].Value;
-			}
-			else
-			{
-				player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Mire Chest";
-				if (player.showItemIconText == "Mire Chest")
-				{
-					if (tile.frameX == 72 || tile.frameX == 90)
-					{
-						player.showItemIcon2 = mod.ItemType("MireKey");
-						player.showItemIconText = "";
-					}
-					//else
-					//{
-					//player.showItemIcon2 = mod.ItemType("CrystalChest");
-					//}
-				}
-			}
-			player.noThrow = 2;
+            player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Mire Chest";
+            if (player.showItemIconText == "Mire Chest")
+            {
+                if (tile.frameX == 72 || tile.frameX == 90)
+                {
+                    player.showItemIcon2 = mod.ItemType("MireKey");
+                    player.showItemIconText = "";
+                }
+            }
+            player.noThrow = 2;
 			player.showItemIcon = true;
 		}
 

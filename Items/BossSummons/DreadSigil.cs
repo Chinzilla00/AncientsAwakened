@@ -75,6 +75,11 @@ Only Usable at night");
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
 			{
+                /*if (!AAWorld.downedYamata)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
+                    return false;
+                }*/
 				if (NPC.AnyNPCs(mod.NPCType("Yamata")))
 				{
 					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);

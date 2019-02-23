@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Judgment : ModItem
+    public class Judgement : ModItem
     {
         public override void SetDefaults()
         {
@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee   //where is located
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Judgment");
+            DisplayName.SetDefault("Judgement");
             Tooltip.SetDefault("Would be more clever if it was a hammer");
         }
 

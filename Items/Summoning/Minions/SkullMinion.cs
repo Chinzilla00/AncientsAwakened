@@ -47,10 +47,6 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void AI()
         {
-            float num633 = 700f;
-            float num634 = 800f;
-            float num635 = 1200f;
-            float num636 = 150f;
             bool flag64 = projectile.type == mod.ProjectileType("SkullMinion");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);

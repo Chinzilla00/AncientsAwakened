@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -7,22 +8,8 @@ namespace AAMod.Projectiles.Akuma
 {
     public class SunOrb : ModProjectile
 	{
-
-        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Sun Portal");
             Main.projFrames[projectile.type] = 1;
         }
@@ -40,17 +27,15 @@ namespace AAMod.Projectiles.Akuma
             projectile.alpha = 255;
         }
 
-        
-
         public override void AI()
         {
             float num1058 = 1000f;
             projectile.velocity = Vector2.Zero;
             
             projectile.alpha -= 5;
-            if (projectile.alpha < 0)
+            if (projectile.alpha < 30)
             {
-                    projectile.alpha = 0;
+                    projectile.alpha = 30;
             }
             if (projectile.direction == 0)
             {
@@ -176,9 +161,10 @@ namespace AAMod.Projectiles.Akuma
         public float Rotation = 0;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
+            Rectangle SunFrame = new Rectangle(0, 0, 64, 64);
             Rotation += .0008f;
-            spriteBatch.Draw(Main.projectileTexture[projectile.type], projectile.Center, null, Color.White, Rotation, new Vector2(projectile.width >> 1, projectile.height >> 1), 1f, SpriteEffects.None, 1f);
-            return true;
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, AAColor.AkumaA, true);
+            return false;
         }
     }
 }

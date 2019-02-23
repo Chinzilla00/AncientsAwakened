@@ -18,7 +18,7 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/MireMoon");
+            PlanetTexture = TextureManager.Load("Backgrounds/Moon");
             SkyTexture = TextureManager.Load("Backgrounds/MireSky");
         }
 
@@ -49,7 +49,42 @@ namespace AAMod.Backgrounds
                     Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                     var planetPos = new Vector2((Main.screenWidth / 4) * 3, Main.screenHeight / 4);
                     spriteBatch.Draw(SkyTexture, SkyPos, null, Color.White, 0f, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                    spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * this.Intensity, 0f, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    double bgTop = (int)((double)(-(double)Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
+                    Main.bgColor = Color.White;
+                    if (Main.gameMenu || Main.netMode == 2)
+                    {
+                        bgTop = -200;
+                    }
+                    int num23 = (int)(Main.time / 32400.0 * (Main.screenWidth + Main.moonTexture[Main.moonType].Width * 2)) - Main.moonTexture[Main.moonType].Width;
+                    int num24 = 0;
+                    Color white2 = Color.White;
+                    float num25 = 1f;
+                    float rotation2 = (float)(Main.time / 32400.0) * 2f - 7.3f;
+                    if (!Main.dayTime)
+                    {
+                        double num27;
+                        if (Main.time < 16200.0)
+                        {
+                            num27 = Math.Pow(1.0 - Main.time / 32400.0 * 2.0, 2.0);
+                            num24 = (int)(bgTop + num27 * 250.0 + 180.0);
+                        }
+                        else
+                        {
+                            num27 = Math.Pow((Main.time / 32400.0 - 0.5) * 2.0, 2.0);
+                            num24 = (int)(bgTop + num27 * 250.0 + 180.0);
+                        }
+                        num25 = (float)(1.2 - num27 * 0.4);
+                    }
+                    float num65 = 1f - Main.cloudAlpha * 1.5f;
+                    if (num65 < 0f)
+                    {
+                        num65 = 0f;
+                    }
+                    white2.R = (byte)(white2.R * num65);
+                    white2.G = (byte)(white2.G * num65);
+                    white2.B = (byte)(white2.B * num65);
+                    white2.A = (byte)(white2.A * num65);
+                    Main.spriteBatch.Draw(PlanetTexture, new Vector2(num23, (num24 + Main.moonModY)), new Rectangle?(new Rectangle(0, 0, PlanetTexture.Width, PlanetTexture.Width)), white2, rotation2, new Vector2(PlanetTexture.Width / 2, PlanetTexture.Width / 2), num25, SpriteEffects.None, 0f);
                 }
             }
         }

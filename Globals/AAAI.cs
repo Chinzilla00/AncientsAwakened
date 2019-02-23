@@ -1,7 +1,10 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using System;
 using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -99,6 +102,246 @@ namespace AAMod
                         npc.velocity = slopeVel;
                     }
                     if (npc.velocity != newVec) { npc.velocity = newVec; npc.netUpdate = true; }
+                }
+            }
+        }
+
+        /*
+		 * A method that slowly lowers an NPC's alpha while spawning dust to give a bursting into existence look. Works great with worms.
+		 * 
+		 * DustType: What dust is used 
+         * DustFrequency: How much dust is spawned
+		 * AlphaRate: How fast the npc lowers alpha. The higher it is, the faster the alpha drops
+		 */
+
+        public static void DustOnNPCSpawn(NPC npc, int DustType = 1, int DustFrequency = 1, int AlphaRate = 1)
+        {
+            if (npc.alpha != 0)
+            {
+                for (int spawnDust = 0; spawnDust < DustFrequency; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustType, 0f, 0f, 100, default(Color), 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+            }
+            npc.alpha -= AlphaRate;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+        }
+
+        /*
+		 * A method that's good for flamethrower-like projectiles
+		 * 
+		 * ProjectileType: What Projectile is used 
+         * UseNPCVelocity: Uses the npc's velocity for speed instead of the player's position. Good for worms.
+         * SpeedBoost: How much faster the projectile should be (1 = Flamethrower/Yamata)
+		 * DamageReduction: How much to divide damage by to prevent one-shotting projectiles
+		 */
+
+        public static void BreatheFire(NPC npc, bool UseNPCVelocity = false, int ProjectileType = 85, float SpeedBoost = 1, float DamageReduction = 2)
+        {
+            int num429 = 1;
+            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+            {
+                num429 = -1;
+            }
+            Vector2 Origin = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - Origin.X;
+            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Origin.Y;
+            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+            float num433 = 6f;
+            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - Origin.X;
+            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Origin.Y;
+            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            PlayerPos = num433 / PlayerPos;
+            PlayerPosX *= PlayerPos;
+            PlayerPosY *= PlayerPos;
+            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+            PlayerPosY += npc.velocity.Y * 0.5f;
+            PlayerPosX += npc.velocity.X * 0.5f;
+            Origin.X -= PlayerPosX * 1f;
+            Origin.Y -= PlayerPosY * 1f;
+            if (UseNPCVelocity)
+            {
+                PlayerPosX = npc.velocity.X;
+                PlayerPosY = npc.velocity.Y;
+            }
+            Projectile.NewProjectile(Origin.X, Origin.Y, PlayerPosX * SpeedBoost, PlayerPosY * SpeedBoost, ProjectileType, (int)(npc.damage / DamageReduction), 0f, Main.myPlayer);
+        }
+
+        /*
+		 * A method that handles boss loot & downed bools
+		 * 
+		 * Loot: The items you want the boss to have a random chance of dropping. Example: { "Item1", "Item2" }. NoTE: THIS ONLY WORKS WITH MODDED ITEMS.
+         * DownedBoss: The Boss's downed bool
+         * HasItemDrop: Whether or not the boss drops an item along with it's random chance drop (Such as a material)
+         * ItemType: What the Extra Item drop is
+         * ItemMin: The minimum ammount of the extra item can drop
+         * ItemMax: The maximum ammount of the extra item can drop
+		 * DamageReduction: How much to divide damage by to prevent one-shotting projectiles
+         * HasMask: Whether or not the boss has a mask. 
+		 */
+
+        public static void DownedBoss(NPC npc, Mod mod, string[] Loot, bool DownedBoss, bool HasItemDrop = false, int ItemType = 0, int ItemMin = 0, int ItemMax = 1, bool HasMask = false, bool ExpertMaskDrop = false, bool HasTrophy = false, int MaskType = 0, int TrophyType = 0, bool HasExpertBag = false)
+        {
+            DownedBoss = true;
+            if (HasMask && !Main.expertMode)
+            {
+                npc.DropLoot(MaskType, 1 / 10);
+            }
+            if (Main.expertMode && ExpertMaskDrop)
+            {
+                npc.DropLoot(MaskType, 1 / 10);
+            }
+            if (HasTrophy)
+            {
+                npc.DropLoot(TrophyType, 1 / 10);
+            }
+            if (HasExpertBag && Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                if (HasItemDrop)
+                {
+                    npc.DropLoot(ItemType, ItemMin, ItemMax);
+                }
+                string[] lootTable = Loot;
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
+        }
+
+        public static void AIShadowflameGhost(NPC npc, ref float[] ai, bool speedupOverTime = false, float distanceBeforeTakeoff = 660f, float velIntervalX = 0.3f, float velMaxX = 7f, float velIntervalY = 0.2f, float velMaxY = 4f, float velScalarY = 4f, float velScalarYMax = 15f, float velIntervalXTurn = 0.4f, float velIntervalYTurn = 0.4f, float velIntervalScalar = 0.95f, float velIntervalMaxTurn = 5f)
+        {
+            int npcAvoidCollision;
+            for (int m = 0; m < 200; m = npcAvoidCollision + 1)
+            {
+                if (m != npc.whoAmI && Main.npc[m].active && Main.npc[m].type == npc.type)
+                {
+                    Vector2 dist = Main.npc[m].Center - npc.Center;
+                    if (dist.Length() < 50f)
+                    {
+                        dist.Normalize();
+                        if (dist.X == 0f && dist.Y == 0f)
+                        {
+                            if (m > npc.whoAmI)
+                                dist.X = 1f;
+                            else
+                                dist.X = -1f;
+                        }
+                        dist *= 0.4f;
+                        npc.velocity -= dist;
+                        Main.npc[m].velocity += dist;
+                    }
+                }
+                npcAvoidCollision = m;
+            }
+            if (speedupOverTime)
+            {
+                float timerMax = 120f;
+                if (npc.localAI[0] < timerMax)
+                {
+                    if (npc.localAI[0] == 0f)
+                    {
+                        Main.PlaySound(SoundID.Item8, npc.Center);
+                        npc.TargetClosest(true);
+                        if (npc.direction > 0)
+                        {
+                            npc.velocity.X = npc.velocity.X + 2f;
+                        }
+                        else
+                        {
+                            npc.velocity.X = npc.velocity.X - 2f;
+                        }
+                        for (int m = 0; m < 20; m = npcAvoidCollision + 1)
+                        {
+                            npcAvoidCollision = m;
+                        }
+                    }
+                    npc.localAI[0] += 1f;
+                    float timerPartial = 1f - npc.localAI[0] / timerMax;
+                    float timerPartialTimes20 = timerPartial * 20f;
+                    int nextNPC = 0;
+                    while ((float)nextNPC < timerPartialTimes20)
+                    {
+                        npcAvoidCollision = nextNPC;
+                        nextNPC = npcAvoidCollision + 1;
+                    }
+                }
+            }
+            if (npc.ai[0] == 0f)
+            {
+                npc.TargetClosest(true);
+                npc.ai[0] = 1f;
+                npc.ai[1] = (float)npc.direction;
+            }
+            else if (npc.ai[0] == 1f)
+            {
+                npc.TargetClosest(true);
+                npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalX;
+
+                if (npc.velocity.X > velMaxX)
+                    npc.velocity.X = velMaxX;
+                else if (npc.velocity.X < -velMaxX)
+                    npc.velocity.X = -velMaxX;
+
+                float playerDistY = Main.player[npc.target].Center.Y - npc.Center.Y;
+                if (Math.Abs(playerDistY) > velMaxY)
+                    velScalarY = velScalarYMax;
+
+                if (playerDistY > velMaxY)
+                    playerDistY = velMaxY;
+                else if (playerDistY < -velMaxY)
+                    playerDistY = -velMaxY;
+
+                npc.velocity.Y = (npc.velocity.Y * (velScalarY - 1f) + playerDistY) / velScalarY;
+                if ((npc.ai[1] > 0f && Main.player[npc.target].Center.X - npc.Center.X < -distanceBeforeTakeoff) || (npc.ai[1] < 0f && Main.player[npc.target].Center.X - npc.Center.X > distanceBeforeTakeoff))
+                {
+                    npc.ai[0] = 2f;
+                    npc.ai[1] = 0f;
+                    if (npc.Center.Y + 20f > Main.player[npc.target].Center.Y)
+                        npc.ai[1] = -1f;
+                    else
+                        npc.ai[1] = 1f;
+                }
+            }
+            else if (npc.ai[0] == 2f)
+            {
+                npc.velocity.Y = npc.velocity.Y + npc.ai[1] * velIntervalYTurn;
+
+                if (npc.velocity.Length() > velIntervalMaxTurn)
+                    npc.velocity *= velIntervalScalar;
+
+                if (npc.velocity.X > -1f && npc.velocity.X < 1f)
+                {
+                    npc.TargetClosest(true);
+                    npc.ai[0] = 3f;
+                    npc.ai[1] = (float)npc.direction;
+                }
+            }
+            else if (npc.ai[0] == 3f)
+            {
+                npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalXTurn;
+
+                if (npc.Center.Y > Main.player[npc.target].Center.Y)
+                    npc.velocity.Y = npc.velocity.Y - velIntervalY;
+                else
+                    npc.velocity.Y = npc.velocity.Y + velIntervalY;
+
+                if (npc.velocity.Length() > velIntervalMaxTurn)
+                    npc.velocity *= velIntervalScalar;
+
+                if (npc.velocity.Y > -1f && npc.velocity.Y < 1f)
+                {
+                    npc.TargetClosest(true);
+                    npc.ai[0] = 0f;
+                    npc.ai[1] = (float)npc.direction;
                 }
             }
         }
@@ -350,5 +593,6 @@ namespace AAMod
                 if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = velMaxY; }
             }
         }
+
     }
 }

@@ -54,7 +54,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
                     0f
                 );
             }
-            if (!Main.dayTime && Main.time < 14400 || Main.time > 21600)
+            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
             {
                 spriteBatch.Draw
                 (
@@ -89,7 +89,7 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
                     0f
                 );
             }
-            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            else
             {
                 spriteBatch.Draw
                 (
@@ -138,12 +138,12 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
             {
                 spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
             {
                 spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
                 spriteBatch.Draw(textureGlow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            else
             {
                 spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
                 spriteBatch.Draw(texture3Glow, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0f);
@@ -163,11 +163,11 @@ From 11:00 PM to 1:00 AM, you move three times as fast and your ranged & throwin
             {
                 player.moveSpeed += 0f;
             }
-            if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+            else if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
             {
                 player.moveSpeed += 1f;
             }
-            if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+            else
             {
                 player.moveSpeed += 2f;
             }

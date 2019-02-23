@@ -30,8 +30,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
-            npc.rotation = npc.velocity.Y * 0.1f * (float)npc.direction;
-            AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
+            BaseMod.BaseAI.AIEye(npc, ref npc.ai, true, false, 0.1f, 0.04f, 6f, 3f, 1f, 1f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

@@ -13,6 +13,7 @@ namespace AAMod.Items.DevTools
 	{
 		public override void SetStaticDefaults()
 		{	
+			DisplayName.SetDefault("[DEV] Ancient Ore Genner");		
             BaseUtility.AddTooltips(item, new string[] { "Spawns Ancient Awakened Ores!" });	
 		}
 

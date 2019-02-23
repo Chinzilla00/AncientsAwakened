@@ -13,8 +13,6 @@ namespace AAMod.NPCs.Bosses.Retriever
     [AutoloadBossHead]
     public class Retriever : ModNPC
     {
-        private Player player;
-        private float speed;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Retriever");
@@ -24,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override void SetDefaults()
         {
             npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 25000;   //boss life
+            npc.lifeMax = 30000;   //boss life
             npc.damage = 80;  //boss damage
             npc.defense = 30;    //boss defense
             npc.knockBackResist = 0f;
@@ -39,7 +37,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.noTileCollide = true;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("RetrieverBag");
@@ -155,6 +152,15 @@ namespace AAMod.NPCs.Bosses.Retriever
                 npc.velocity.Y -= 5;
             }
 
+            if (Config.StormMusic)
+            {
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
+            }
+            else
+            {
+                music = MusicID.Boss4;
+            }
+
             customAI[0]--;
 
             if (customAI[0] <= 300)
@@ -238,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     PlayerPosX += npc.velocity.X * 0.5f;
                     PlayerDistance.X -= PlayerPosX * 2f;
                     PlayerDistance.Y -= PlayerPosY * 2f;
-                    if (npc.ai[3] == 250 || npc.ai[3] == 230 || npc.ai[3] == 210 || npc.ai[3] == 190 || npc.ai[3] == 170 || npc.ai[3] == 150 || npc.ai[3] == 130 || npc.ai[3] == 110 || npc.ai[3] == 90 || npc.ai[3] == 70)
+                    if (npc.ai[0] == 250 || npc.ai[0] == 230 || npc.ai[0] == 210 || npc.ai[0] == 190 || npc.ai[0] == 170 || npc.ai[0] == 150 || npc.ai[0] == 130 || npc.ai[0] == 110 || npc.ai[0] == 90 || npc.ai[0] == 70)
                     {
                         Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType("RetrieverShot"), (int)(npc.damage * 1.4f), 0f, Main.myPlayer);
                     }

@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileBlockLight[Type] = true;
             dustType = mod.DustType("DeepAbyssiumDust");
-            drop = TileID.Mud;
+            drop = ItemID.MudBlock;
 			AddMapEntry(new Color(0, 20, 100));
 		}
 		

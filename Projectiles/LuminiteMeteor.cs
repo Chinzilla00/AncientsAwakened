@@ -36,7 +36,7 @@ namespace AAMod.Projectiles
             int x = Main.rand.Next(0, Main.maxTilesX);
             int y = Main.maxTilesY;
             int[] tileIDs = { mod.TileType("LuminiteOre") };
-            if (Main.tile[x, y].type <= -1)
+            if (Main.tile[x, y].type <= 0)
             {
                 y++;
             }

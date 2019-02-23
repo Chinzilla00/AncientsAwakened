@@ -8,19 +8,20 @@ namespace AAMod.Items.Melee
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Draconic Baghnakhs");
+            DisplayName.SetDefault("Infernal Baghnakhs");
+            Tooltip.SetDefault("Strike your foes with the power of an infernal strike");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 95;
+            item.damage = 85;
             item.melee = true;
             item.width = 28;
             item.height = 22;
-            item.useTime = 6;
-            item.useAnimation = 6;
+            item.useTime = 7;
+            item.useAnimation = 7;
             item.useStyle = 1;
-            item.knockBack = 7;
+            item.knockBack = 4;
             item.value = 80000;
             item.rare = 7;
             item.UseSound = SoundID.Item1;
@@ -31,7 +32,7 @@ namespace AAMod.Items.Melee
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "RadiantIncinerite", 20);
-            recipe.AddIngredient(mod, "DragonClaw", 5);
+            recipe.AddIngredient(mod, "DragonGlove", 1);
             recipe.AddIngredient(ItemID.FetidBaghnakhs, 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.GripsShen;
-using AAMod.NPCs.Bosses.Grips;
+using AAMod.NPCs.Bosses.Shen;
 
 
 namespace AAMod.NPCs.Bosses.Grips
@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grip of Chaos");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults()
@@ -33,7 +33,6 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");	
             npc.netAlways = true;
             bossBag = mod.ItemType("GripBag");
         }
@@ -45,10 +44,20 @@ namespace AAMod.NPCs.Bosses.Grips
             {
 				npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-				if(npc.frame.Y > 3 * frameHeight)
-				{
-					npc.frame.Y = 0;
-				}
+                if (npc.ai[0] == 2 || npc.ai[0] == 3)
+                {
+                    if (npc.frame.Y < 4 * frameHeight || npc.frame.Y < 7 * frameHeight)
+                    {
+                        npc.frame.Y = 4 * frameHeight;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > 4 * frameHeight)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
             }
         }
 
@@ -100,6 +109,15 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.TargetClosest(false);
                 DespawnHandler();
                 return;
+            }
+
+            if (Config.GripsMusic && (npc.type != mod.NPCType<AbyssGripS>() || npc.type != mod.NPCType<BlazeGrip>()))
+            {
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");
+            }
+            else
+            {
+                music = MusicID.Boss4;
             }
 
             bool forceChange = false;

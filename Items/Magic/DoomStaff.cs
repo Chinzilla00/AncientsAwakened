@@ -28,7 +28,7 @@ namespace AAMod.Items.Magic
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("DoomProj");
-			item.shootSpeed = 3f;
+			item.shootSpeed = 6f;
 		}
 	}
 }

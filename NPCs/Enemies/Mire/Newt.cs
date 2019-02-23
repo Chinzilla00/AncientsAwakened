@@ -57,11 +57,11 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
-            if (npc.velocity.X < 0) // so it faces the player
+            if (player.Center.X > npc.Center.X) // so it faces the player
             {
                 npc.spriteDirection = -1;
             }
-            if (npc.velocity.X > 0)
+            else
             {
                 npc.spriteDirection = 1;
             }

@@ -35,14 +35,26 @@ namespace AAMod.Items.Ranged
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "BoneBow", 1);
-            recipe.AddIngredient(ItemID.BeesKnees, 1);
-            recipe.AddIngredient(ItemID.DemonBow, 1);
-            recipe.AddIngredient(ItemID.MoltenFury, 1);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "BoneBow", 1);
+                recipe.AddIngredient(ItemID.BeesKnees, 1);
+                recipe.AddIngredient(ItemID.DemonBow, 1);
+                recipe.AddIngredient(ItemID.MoltenFury, 1);
+                recipe.AddTile(TileID.DemonAltar);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "BoneBow", 1);
+                recipe.AddIngredient(ItemID.BeesKnees, 1);
+                recipe.AddIngredient(ItemID.TendonBow, 1);
+                recipe.AddIngredient(ItemID.MoltenFury, 1);
+                recipe.AddTile(TileID.DemonAltar);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
         /*public override Vector2? HoldoutOffset()
         {

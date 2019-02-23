@@ -10,7 +10,7 @@ namespace AAMod.Items.DevTools
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noodle");
+			DisplayName.SetDefault("[DEV] Noodle");
         }
     	
         public override void SetDefaults()

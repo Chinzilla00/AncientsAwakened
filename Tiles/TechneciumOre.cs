@@ -14,7 +14,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("TechneciumOre");   //put your CustomBlock name
             AddMapEntry(new Color(100, 200, 200));
-			minPick = 250;
+			minPick = 150;
         }
       
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors

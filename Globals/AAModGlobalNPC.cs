@@ -6,16 +6,17 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Grips;
 using AAMod.NPCs.Bosses.Broodmother;
 using AAMod.NPCs.Bosses.Hydra;
-using AAMod.NPCs.Bosses.Djinn;
-using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Bosses.Equinox;
 using AAMod.NPCs.Bosses.Orthrus;
 using AAMod.NPCs.Bosses.Raider;
 using AAMod.NPCs.Bosses.Retriever;
 using AAMod.NPCs.Bosses.Akuma;
+using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.MushroomMonarch;
+using AAMod.NPCs.Bosses.Djinn;
+using AAMod.NPCs.Bosses.Serpent;
 using System;
 using BaseMod;
 using AAMod.NPCs.Bosses.Yamata;
@@ -35,8 +36,10 @@ namespace AAMod
         public bool InfinityScorch = false;
         public bool irradiated = false;
         public bool DiscordInferno = false;
+        public bool riftBent = false;
         public static int Toad = -1;
         public static int Rose = -1;
+        public static int Brain = -1;
 
 
 
@@ -60,12 +63,11 @@ namespace AAMod
             InfinityScorch = false;
             DiscordInferno = false;
             irradiated = false;
+            riftBent = false;
         }
-
-		public override void SetDefaults(NPC npc)
-		{
-		}
         
+        public int RiftTimer;
+        public int RiftDamage = 10;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -89,7 +91,7 @@ namespace AAMod
                     damage = 40;
                 }
             }
-
+            
             if (InfinityScorch)
             {
                 drain = true;
@@ -113,6 +115,31 @@ namespace AAMod
                     }
                     npc.lifeRegen -= 20;
                 }
+            }
+
+            if (riftBent)
+            {
+                RiftTimer++;
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen = 0;
+                if (RiftTimer >= 120)
+                {
+                    RiftDamage += 10;
+                    RiftTimer = 0;
+                }
+                if (RiftDamage >= 80)
+                {
+                    RiftDamage = 80;
+                }
+                npc.lifeRegen -= RiftDamage;
+            }
+            else
+            {
+                RiftDamage = 10;
+                RiftTimer = 0;
             }
 
             if (noDamage)
@@ -184,14 +211,12 @@ namespace AAMod
             }
             if (Hydratoxin)
             {
-                if (npc.velocity.X < -2f || npc.velocity.X > 2f)
+                drain = true;
+                if (npc.lifeRegen > 0)
                 {
-                    npc.velocity.X *= 0.8f;
+                    npc.lifeRegen = 0;
                 }
-                if (npc.velocity.Y < -2f || npc.velocity.Y > 2f)
-                {
-                    npc.velocity.Y *= 0.8f;
-                }
+                npc.lifeRegen -= (int)(npc.velocity.X);
             }
 
         }
@@ -405,6 +430,13 @@ namespace AAMod
                     Item.NewItem(npc.getRect(), mod.ItemType("Bloody_Mary"));
                 }
             }
+			if (npc.type == NPCID.AngryBones || npc.type == NPCID.DarkCaster)
+            {
+                if (Main.rand.Next(200) == 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("M79Parts"));
+                }
+            }
             if (npc.type == NPCID.QueenBee)
             {
                 if (Main.rand.NextFloat() < .01f)
@@ -454,6 +486,21 @@ namespace AAMod
                 if (Main.rand.Next(0, 100) >= 80)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
+                }
+            }
+
+            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire) && Main.hardMode)
+            {
+                if (Main.rand.Next(0, 2499) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireKey"), 1);
+                }
+            }
+            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno) && Main.hardMode)
+            {
+                if (Main.rand.Next(0, 2499) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
                 }
             }
         }
@@ -580,6 +627,18 @@ namespace AAMod
                 }
             }
 
+            if (riftBent)
+            {
+                int Loops = RiftDamage / 10;
+                for (int i = 0; i < Loops; i++)
+                {
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.CthulhuAuraDust>(), 0f, 1f, 0, default(Color), 1f);
+                    if (Main.dust[num4].velocity.Y > 0) Main.dust[num4].velocity.Y *= -1;
+                    Main.dust[num4].noGravity = true;
+                    Main.dust[num4].scale += Main.rand.NextFloat();
+                }
+                Lighting.AddLight((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f), 0f, 0.45f, 0.45f);
+            }
 
             if (DiscordInferno)
             {
@@ -656,6 +715,8 @@ namespace AAMod
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            Player player = Main.player[Main.myPlayer];
+
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
@@ -667,13 +728,21 @@ namespace AAMod
                         pool.Add(mod.NPCType("Null"), .5f);
                     }
                 }
+                else
+                {
+                    pool.Add(mod.NPCType("Searcher1"), .5f);
+                }
             }
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneShip)
             {
                 pool.Clear();
+
+
                 if (AAWorld.downedEquinox)
                 {
+                    pool.Add(mod.NPCType("RiftShark"), .6f);
+
                     pool.Add(mod.NPCType("DimensionDiver"), .5f);
 
                     pool.Add(mod.NPCType("Squid"), .7f);
@@ -695,10 +764,18 @@ namespace AAMod
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
-            if (type == NPCID.Clothier)
+			if (type == NPCID.Demolitionist)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Vanity.Pepsi.PepsimanCan>());
+                shop.item[nextSlot].SetDefaults(mod.ItemType("M79Round"));
                 nextSlot++;
+            }
+        }
+
+        public override void GetChat(NPC npc, ref string chat)
+        {
+            if (npc.type == NPCID.Clothier && Main.rand.Next(14) == 0)
+            {
+                chat = "If you don't want tobe destroyed, I'd avoid using a Blessed Sock. The great silken lord does not like to be bothered.";
             }
         }
 

@@ -19,7 +19,7 @@ namespace AAMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.DD2PetDragon);
+			item.CloneDefaults(ItemID.DD2PetGhost);
 			item.shoot = mod.ProjectileType("Broodmini");
             
             item.buffType = mod.BuffType("Broodmini");

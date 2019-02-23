@@ -1,46 +1,42 @@
+using System; using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Melee
 {
-    public class SunLance : ModItem
-    {
-        public override void SetStaticDefaults()
+	public class SunLance : ModItem
+	{
+		public override void SetStaticDefaults()
 		{
-		DisplayName.SetDefault("Sun Halberd");
-		Tooltip.SetDefault("");
+			DisplayName.SetDefault("Sun Halberd");
+            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Strikes foes in an arc, then stabs in the direction of the cursor"});			
 		}
+		
         public override void SetDefaults()
         {
-            item.damage = 100;
-            item.melee = true;
-            item.width = 74;
-            item.height = 84;
-            item.shoot = mod.ProjectileType("SunLance");
+            item.width = 35;
+            item.height = 35;
+            item.maxStack = 1;
+            item.rare = 5;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 15, 0, 0);
+
             item.useStyle = 5;
-            item.shootSpeed = 12f;
-            item.scale = 1.1f;
-            item.useTime = 30;
             item.useAnimation = 30;
-            item.knockBack = 5f;
+            item.useTime = 30;
             item.UseSound = SoundID.Item1;
-            item.useTurn = true;
-			item.autoReuse = true;
-            item.noMelee = true;
+            item.damage = 100;
+            item.knockBack = 6;
+            item.melee = true;
+            item.autoReuse = true;
             item.noUseGraphic = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 5; //put your Spear projectile name
-            item.shootSpeed = 4f;
+            item.noMelee = true;
+            item.shoot = mod.ProjType("SunLance");
+            item.shootSpeed = 4;			
         }
-        
-
-        public override bool CanUseItem(Player player)
-        {
-
-            return player.ownedProjectileCounts[item.shoot] < 1;
-            
-        }
-        
     }
 }

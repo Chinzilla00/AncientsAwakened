@@ -38,7 +38,11 @@ namespace AAMod.NPCs.Enemies.Snow
             npc.netAlways = true;
             npc.value = Item.buyPrice(0, 0, 10, 0);
         }
-        
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return spawnInfo.player.ZoneSnow && NPC.downedBoss3 && !Main.dayTime ? .3f : 0f;
+        }
 
         public override void AI()
         {

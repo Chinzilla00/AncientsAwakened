@@ -41,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             float num = 6f;
-            float num2 = 0.05f;
             Vector2 vector = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
             float num4 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
             float num5 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);

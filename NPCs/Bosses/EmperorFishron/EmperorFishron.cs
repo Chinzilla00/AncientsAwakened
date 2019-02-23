@@ -149,7 +149,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = 0;   //boss drops
+            potionType = ItemID.SuperHealingPotion;   //boss drops
         }
 
         public override void AI()
@@ -157,7 +157,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             bool expertMode = Main.expertMode;
             float expertDamage = expertMode ? (0.6f * Main.damageMultiplier) : 1f;
             bool Phase2Check = (double)npc.life <= (double)npc.lifeMax * 0.5;
-            bool ExpertPhaseCheck = expertMode && (double)npc.life <= (double)npc.lifeMax * 0.15;
+            bool ExpertPhaseCheck = expertMode && npc.life <= npc.lifeMax * 0.15;
             bool Phase2Change = npc.ai[0] > 4f;
             bool ExpertPhaseChange = npc.ai[0] > 9f;
             bool isCharging = npc.ai[3] < 10f;
@@ -749,7 +749,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     npc.spriteDirection = -npc.direction;
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)aiChangeRate)
+                if (npc.ai[2] >= aiChangeRate)
                 {
                     int num28 = 0;
                     switch ((int)npc.ai[3])
@@ -1161,33 +1161,44 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             return newColor;
         }
 
+        public static float NPCAddHeight(int i)
+        {
+            float num = 0f;
+            return num * Main.npc[i].scale;
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture2D15 = Main.npcTexture[npc.type];
-            Color color9 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
             Color color36 = Color.White;
             float amount9 = 0f;
             bool flag8 = npc.ai[0] > 4f;
             bool flag9 = npc.ai[0] > 9f;
             int num157 = 120;
             int num158 = 60;
-            float num68 = 0f;
-            float num69 = Main.NPCAddHeight(npc.type);
             Vector2 vector10 = new Vector2((float)(Main.npcTexture[npc.type].Width / 2), (float)(Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2));
-            Color color37 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+            Color color9 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+            Color color37 = color9;
+            float num68 = 0f;
+            float num69 = 0f;
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (npc.spriteDirection == 1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
             if (flag9)
             {
-                color37 = buffColor(color37, 0.4f, 0.8f, 0.4f, 1f);
+                color9 = buffColor(color9, 0.4f, 0.8f, 0.4f, 1f);
             }
             else if (flag8)
             {
-                color37 = buffColor(color37, 0.5f, 0.7f, 0.5f, 1f);
+                color9 = buffColor(color9, 0.5f, 0.7f, 0.5f, 1f);
             }
             else if (npc.ai[0] == 4f && npc.ai[2] > (float)num157)
             {
                 float num159 = npc.ai[2] - (float)num157;
-                num159 /= (float)num158;
-                color37 = buffColor(color37, 1f - 0.5f * num159, 1f - 0.3f * num159, 1f - 0.5f * num159, 1f);
+                num159 /= num158;
+                color9 = buffColor(color9, 1f - 0.5f * num159, 1f - 0.3f * num159, 1f - 0.5f * num159, 1f);
             }
             int num160 = 10;
             int num161 = 2;
@@ -1206,8 +1217,9 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             }
             else
             {
-                color37 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+                color37 = color9;
             }
+            
             for (int num162 = 1; num162 < num160; num162 += num161)
             {
                 Vector2 arg_7753_0 = npc.oldPos[num162];
@@ -1218,7 +1230,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                 Vector2 vector38 = npc.oldPos[num162] + new Vector2((float)npc.width, (float)npc.height) / 2f - Main.screenPosition;
                 vector38 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[npc.type])) * npc.scale / 2f;
                 vector38 += vector10 * npc.scale + new Vector2(0f, num68 + num69 + npc.gfxOffY);
-                Main.spriteBatch.Draw(texture2D15, vector38, new Rectangle?(npc.frame), color38, npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(texture2D15, vector38, new Rectangle?(npc.frame), color38, npc.rotation, vector10, npc.scale, spriteEffects, 0f);
             }
             int num163 = 0;
             float num164 = 0f;
@@ -1269,17 +1281,17 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                 Vector2 vector39 = npc.Center + ((float)num167 / (float)num163 * 6.28318548f + npc.rotation).ToRotationVector2() * scaleFactor9 * num164 - Main.screenPosition;
                 vector39 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[npc.type])) * npc.scale / 2f;
                 vector39 += vector10 * npc.scale + new Vector2(0f, num68 + num69 + npc.gfxOffY);
-                Main.spriteBatch.Draw(texture2D15, vector39, new Rectangle?(npc.frame), color39, npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(texture2D15, vector39, new Rectangle?(npc.frame), color39, npc.rotation, vector10, npc.scale, spriteEffects, 0f);
             }
             Vector2 vector40 = npc.Center - Main.screenPosition;
             vector40 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[npc.type])) * npc.scale / 2f;
             vector40 += vector10 * npc.scale + new Vector2(0f, num68 + num69 + npc.gfxOffY);
-            Main.spriteBatch.Draw(texture2D15, vector40, new Rectangle?(npc.frame), npc.GetAlpha(color9), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture2D15, vector40, new Rectangle?(npc.frame), npc.GetAlpha(color9), npc.rotation, vector10, npc.scale, spriteEffects, 0f);
             if (npc.ai[0] >= 4f)
             {
                 texture2D15 = Main.dukeFishronTexture;
                 Color color40 = Color.Lerp(Color.White, Color.Cyan, 0.5f);
-                color36 = Color.Yellow;
+                color36 = Color.Cyan;
                 amount9 = 1f;
                 num164 = 0.5f;
                 scaleFactor9 = 10f;
@@ -1313,7 +1325,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     Vector2 vector41 = npc.oldPos[num170] + new Vector2((float)npc.width, (float)npc.height) / 2f - Main.screenPosition;
                     vector41 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[npc.type])) * npc.scale / 2f;
                     vector41 += vector10 * npc.scale + new Vector2(0f, num68 + num69 + npc.gfxOffY);
-                    Main.spriteBatch.Draw(texture2D15, vector41, new Rectangle?(npc.frame), color41, npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture2D15, vector41, new Rectangle?(npc.frame), color41, npc.rotation, vector10, npc.scale, spriteEffects, 0f);
                 }
                 for (int num171 = 1; num171 < num163; num171++)
                 {
@@ -1324,10 +1336,11 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     Vector2 vector42 = npc.Center + ((float)num171 / (float)num163 * 6.28318548f + npc.rotation).ToRotationVector2() * scaleFactor9 * num164 - Main.screenPosition;
                     vector42 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[npc.type])) * npc.scale / 2f;
                     vector42 += vector10 * npc.scale + new Vector2(0f, num68 + num69 + npc.gfxOffY);
-                    Main.spriteBatch.Draw(texture2D15, vector42, new Rectangle?(npc.frame), color42, npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture2D15, vector42, new Rectangle?(npc.frame), color42, npc.rotation, vector10, npc.scale, spriteEffects, 0f);
                 }
-                Main.spriteBatch.Draw(texture2D15, vector40, new Rectangle?(npc.frame), color40, npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
-                
+                Main.spriteBatch.Draw(texture2D15, vector40, new Rectangle?(npc.frame), color40, npc.rotation, vector10, npc.scale, spriteEffects, 0f);
+
+                return false;
             }
             return false;
         }

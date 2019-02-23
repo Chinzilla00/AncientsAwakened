@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
+
 namespace AAMod
 {
     public class GenericUtils
@@ -177,3 +178,5 @@ namespace AAMod
 
     }
 }
+
+//ADD TO AAUTILS AT THE TOP

@@ -16,18 +16,14 @@ namespace AAMod.Worldgen
 		public static int startY = -1;
 		public static int genWidth = -1;
 		public static int conversionType = 1;
-		
-		public static bool FULLBRIGHT_MAP = false; //causes the gen to be fullbright on the map for easy viewing
 
-		//CALL THIS TO START CONVERTING
-		//example use: ConversionHandler.ConvertDown(x, y, 10, ConversionHandler.CONVERTID_MIRE);
 		public static void ConvertDown(int centerX, int y, int width, int convertType)
 		{
 			startX = centerX;
 			startY = y;
 			genWidth = width;
 			conversionType = convertType;
-			ThreadPool.QueueUserWorkItem(new WaitCallback(ConversionHandler.ConvertDownCallback), null);
+			ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownCallback), null);
 		}
 
 	#region thread callback stuff
@@ -38,8 +34,8 @@ namespace AAMod.Worldgen
 				do_ConvertDown(threadContext);
 				startX = startY = genWidth = conversionType = -1;				
 			}
-			catch (Exception e)
-			{
+			catch (Exception)
+            {
 				startX = startY = genWidth = conversionType = -1;
 			}
 		}
@@ -107,103 +103,67 @@ namespace AAMod.Worldgen
 			{
 				for (int l = j - size; l <= j + size; l++)
 				{
-					if (WorldGen.InWorld(k, l, 1))// && Math.Abs(k - i) + Math.Abs(l - j) < 6)
+					if (WorldGen.InWorld(k, l, 1))
 					{
 						int type = (int)Main.tile[k, l].type;
 						int wall = (int)Main.tile[k, l].wall;
-						bool tileChanged = false;
 						if (wallGrass != 0 && WallID.Sets.Conversion.Grass[wall] && wall != wallGrass)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].wall = (ushort)wallGrass;
-							//WorldGen.SquareWallFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (wallStone != 0 && WallID.Sets.Conversion.Stone[wall] && wall != wallStone)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].wall = (ushort)wallStone;
-							//WorldGen.SquareWallFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (wallSandHard != 0 && WallID.Sets.Conversion.HardenedSand[wall] && wall != wallSandHard)
 						{
-							tileChanged = true;						
 							Main.tile[k, l].wall = (ushort)wallSandHard;
-							//WorldGen.SquareWallFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (wallSandstone != 0 && WallID.Sets.Conversion.Sandstone[wall] && wall != wallSandstone)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].wall = (ushort)wallSandstone;
-							//WorldGen.SquareWallFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						if (tileStone != 0 && (Main.tileMoss[type] || TileID.Sets.Conversion.Stone[type]) && type != tileStone)
 						{
-							tileChanged = true;						
 							Main.tile[k, l].type = (ushort)tileStone;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileGrass != 0 && TileID.Sets.Conversion.Grass[type] && type != tileGrass)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].type = (ushort)tileGrass;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileIce != 0 && TileID.Sets.Conversion.Ice[type] && type != tileIce)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].type = (ushort)tileIce;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileSand != 0 && TileID.Sets.Conversion.Sand[type] && type != tileSand)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].type = (ushort)tileSand;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileSandHard != 0 && TileID.Sets.Conversion.HardenedSand[type] && type != tileSandHard)
 						{
-							tileChanged = true;						
 							Main.tile[k, l].type = (ushort)tileSandHard;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileSandstone != 0 && TileID.Sets.Conversion.Sandstone[type] && type != tileSandstone)
 						{
-							tileChanged = true;							
 							Main.tile[k, l].type = (ushort)tileSandstone;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
 						}
 						else if (tileThorn != 0 && TileID.Sets.Conversion.Thorn[type] && type != tileThorn)
 						{
-							tileChanged = true;
 							Main.tile[k, l].type = (ushort)tileThorn;
-							//WorldGen.SquareTileFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-						}
-						if(FULLBRIGHT_MAP && tileChanged)
-						{
-							Main.Map.UpdateLighting(k, l, (byte)255);						
 						}
 					}
 				}
-			}
-			if(FULLBRIGHT_MAP)
-			{
-				//Main.mapMinX = i - size; Main.mapMinY = i + size;
-				//Main.mapMaxX = j - size; Main.mapMaxY = j + size;
-				Main.mapMinX = 10; Main.mapMinY = 10;
-				Main.mapMaxX = Main.maxTilesX - 10; Main.mapMaxY = Main.maxTilesY - 10;				
-				Main.refreshMap = true;
-				//Main.instance.DrawToMap();	
 			}
 		}
 	}

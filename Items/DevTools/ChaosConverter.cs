@@ -7,6 +7,12 @@ namespace AAMod.Items.DevTools
 {
     public class ChaosConverter : ModItem
 	{
+		public override void SetStaticDefaults()
+		{	
+			DisplayName.SetDefault("[DEV] Chaos Converter");
+            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Converts a strand of Mire or Inferno down below you." });					
+		}			
+		
         public override void SetDefaults()
         {
             item.width = 20;

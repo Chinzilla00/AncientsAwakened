@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Akuma;
+using AAMod.NPCs.Bosses.Akuma.Awakened;
 using System.Collections.Generic;
 using BaseMod;
 using Terraria.Localization;
@@ -53,6 +54,11 @@ Only Usable during the day");
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
+                /*if (!AAWorld.downedAkuma)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("That sigil has to be used at the Altar of the Draconian Sun. It's in the middle of the inferno.", new Color(180, 41, 32), false);
+                    return false;
+                }*/
                 if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);

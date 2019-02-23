@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.width = 38;
             npc.height = 38;
             npc.aiStyle = 0;
-            npc.damage = 100;
+            npc.damage = 30;
             npc.defense = 30;
             npc.lifeMax = 800;
             npc.HitSound = SoundID.DD2_WyvernHurt;
@@ -38,6 +38,15 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
+            Player player = Main.player[npc.target];
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.spriteDirection = 1;
+            }
+            else
+            {
+                npc.spriteDirection = -1;
+            }
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
