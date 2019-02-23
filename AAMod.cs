@@ -594,25 +594,12 @@ namespace AAMod
                 AkumaSky.PlanetTexture = null;
                 AkumaSky.BGTexture = null;
                 AkumaSky.SkyTex = null;
-                //CthulhuStars.boltTexture = null;
-                //CthulhuStars.flashTexture = null;
                 InfernoSky.PlanetTexture = null;
                 InfernoSky.BGTexture = null;
                 InfernoSky.SkyTex = null;
-                //IZSky.boltTexture = null;
-                //IZSky.flashTexture = null;
                 MireSky.PlanetTexture = null;
                 MireSky.SkyTexture = null;
                 MireSky.BGTexture = null;
-                ShenSky.Sun = null;
-                ShenSky.Moon = null;
-                ShenSky.SkyTex = null;
-                ShenSky.BGTexture = null;
-                ShenASky.PlanetTexture = null;
-                ShenASky.BGTexture = null;
-                ShenASky.SkyTex = null;
-                //StormSky.boltTexture = null;
-                //StormSky.flashTexture = null;
                 VoidSky.PlanetTexture = null;
                 VoidSky.BGTexture = null;
                 VoidSky.Echo = null;
@@ -632,11 +619,6 @@ namespace AAMod
                 NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
                 NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
                 NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;
-                //NPCs.Bosses.Infinity.Infinity.glowTex = null;
-                //NPCs.Bosses.Infinity.InfinityStorm.glowTex = null;
-                //NPCs.Bosses.Infinity.InfinityStorm.tex = null;
-                //NPCs.Bosses.Infinity.Oblivion.glowTex = null;
-                //NPCs.Bosses.Infinity.Oblivion.glitchTex = null;
                 NPCs.Bosses.Raider.Raider.glowTex = null;
                 NPCs.Bosses.Raider.Raider.glowTex1 = null;
                 NPCs.Bosses.Raider.RaidEgg.glowTex = null;
@@ -654,6 +636,7 @@ namespace AAMod
                 NPCs.Enemies.Void.Searcher.glowTex = null;
             }
         }
+
         public override void AddRecipeGroups()
         {
             // Registers the new recipe group with the specified name
@@ -794,6 +777,7 @@ namespace AAMod
                 RecipeGroup.recipeGroups[index].ValidItems.Add(ItemType<OroborosWood>());
             }
         }
+
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
             if (Main.gameMenu)
@@ -845,7 +829,7 @@ namespace AAMod
             }
             if (Ancients.ZoneInferno)
             {
-                if (Ancients.ZoneRisingSunPagoda && AAWorld.downedEquinox && !AAWorld.downedAkuma && Config.ShrinesMusic)
+                if (Ancients.ZoneRisingSunPagoda && AAWorld.downedEquinox && !AAWorld.downedAkuma)
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine");
@@ -866,7 +850,7 @@ namespace AAMod
             }
             if (Ancients.ZoneMire)
             {
-                if (Ancients.ZoneRisingMoonLake && AAWorld.downedEquinox && !AAWorld.downedYamata && Config.ShrinesMusic)
+                if (Ancients.ZoneRisingMoonLake && AAWorld.downedEquinox && !AAWorld.downedYamata)
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
@@ -906,8 +890,7 @@ namespace AAMod
             }
             
         }
-
-        #region recipes
+        
         public override void AddRecipes()
         {
             RecipeFinder finder = new RecipeFinder();
@@ -1490,10 +1473,8 @@ namespace AAMod
                 recipe.AddRecipe();
             }
     }
-        #endregion
 
         //Stuff 4 Grox
-
         public override object Call(params object[] args)
         {
             if (args.Length <= 0 || !(args[0] is string)) return new Exception("ANCIENTS AWAKENED CALL ERROR: NO METHOD NAME! First param MUST be a method name!");

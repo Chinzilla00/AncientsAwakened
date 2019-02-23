@@ -15,7 +15,7 @@ namespace AAMod.Tiles
 
         public override int DropWood()
         {
-            return mod.ItemType("Mushroom");
+            return mod.ItemType("MushroomBlock");
         }
 
         public override Texture2D GetTexture()

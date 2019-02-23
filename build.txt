@@ -7,3 +7,4 @@ hideCode = false
 hideResources = false
 includeSource = true
 modReferences = BaseMod
+homepage = https://discord.gg/MmpCpj4

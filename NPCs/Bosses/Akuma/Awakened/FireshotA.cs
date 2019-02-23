@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.width = 5;
             projectile.height = 5;
             projectile.aiStyle = 1;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.alpha = 255;
             projectile.scale = 1f;

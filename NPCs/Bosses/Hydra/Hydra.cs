@@ -40,6 +40,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.boss = true;
             npc.noGravity = false;
             npc.netAlways = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
 			
 			frameWidth = 94;
@@ -100,16 +101,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                     Head3 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
-            }
-
-            if (Config.HydraMusic)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
-            }
-            else
-            {
-                music = MusicID.Boss3;
-
             }
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {

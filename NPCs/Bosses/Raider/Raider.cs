@@ -39,6 +39,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("RaiderBag");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -165,14 +166,6 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void AI()
         {
-            if (Config.StormMusic)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
-            }
-            else
-            {
-                music = MusicID.Boss2;
-            }
             if (Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
             {
                 projectileTimer++;

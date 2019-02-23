@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.GripsShen;
-using AAMod.NPCs.Bosses.Shen;
+
 
 
 namespace AAMod.NPCs.Bosses.Grips
@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.DeathSound = SoundID.NPCDeath1;
             npc.netAlways = true;
             bossBag = mod.ItemType("GripBag");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");
         }
 
         public override void FindFrame(int frameHeight)
@@ -109,15 +110,6 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.TargetClosest(false);
                 DespawnHandler();
                 return;
-            }
-
-            if (Config.GripsMusic && (npc.type != mod.NPCType<AbyssGripS>() || npc.type != mod.NPCType<BlazeGrip>()))
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");
-            }
-            else
-            {
-                music = MusicID.Boss4;
             }
 
             bool forceChange = false;

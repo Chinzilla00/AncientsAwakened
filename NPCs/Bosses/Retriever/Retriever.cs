@@ -40,6 +40,8 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("RetrieverBag");
+
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
         }
 
         public float[] customAI = new float[4];
@@ -151,16 +153,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             {
                 npc.velocity.Y -= 5;
             }
-
-            if (Config.StormMusic)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
-            }
-            else
-            {
-                music = MusicID.Boss4;
-            }
-
+            
             customAI[0]--;
 
             if (customAI[0] <= 300)

@@ -38,8 +38,9 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.noTileCollide = true;
             npc.DeathSound = null;
 			npc.HitSound = SoundID.NPCHit4;
-			npc.DeathSound = SoundID.NPCDeath14;			
-            
+			npc.DeathSound = SoundID.NPCDeath14;
+            music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
+
             musicPriority = MusicPriority.BossHigh;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -91,15 +92,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 		bool initCustom = false;
         public override void AI()
         {
-            if (Config.EquinoxMusic)
-            {
-                music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-            }
-            else
-            {
-                music = MusicID.Boss5;
-            }
-
             if (Main.netMode != 1 && !initCustom)
 			{
 				initCustom = true;

@@ -1170,11 +1170,7 @@ namespace AAMod
                 if (downedAllAncients == false)
                 {
                     downedAllAncients = true;
-                    Main.NewText("Chaos begins to stir in the atmosphere around you", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-
-                    Main.NewText("You feel as if you are being watched by something...malicious...", new Color(158, 3, 32));
-
-                    Main.NewText("An otherworldly fog encompasses the ocean", Color.Cyan);
+                    /*Main.NewText("Chaos begins to stir in the atmosphere around you", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);*/
                 }
             }
             if (Main.hardMode == true)

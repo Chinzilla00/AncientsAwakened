@@ -61,6 +61,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.frame = BaseDrawing.GetFrame(frameCount, fWidth, fHeight, 0, 2);
             bossBag = mod.ItemType("OrthrusBag");
             npc.noTileCollide = false;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -199,15 +200,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 					}
 				}
             }
-
-            if (Config.StormMusic)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
-            }
-            else
-            {
-                music = MusicID.Boss3;
-            }
+            
 
             if (internalAI[1] == AISTATE_TURRET) //Standing
             {

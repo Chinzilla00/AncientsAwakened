@@ -62,6 +62,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[47] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("MonarchBag");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
 
         }
       
@@ -71,16 +72,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-
-            if (Config.MonarchMusic)
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
-            }
-            else
-            {
-                music = MusicID.Boss1;
-
-            }
+            
 
             npc.frameCounter++;
             if (internalAI[1] != AISTATE_JUMP) //walk or charge

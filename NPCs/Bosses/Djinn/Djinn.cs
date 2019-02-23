@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             music = MusicID.Sandstorm;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Djinn");
             bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
         }
 

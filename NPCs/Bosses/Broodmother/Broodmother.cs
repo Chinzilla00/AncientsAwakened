@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.lifeMax = 6000;
             npc.value = 20000;
             npc.knockBackResist = 0f;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
@@ -139,14 +140,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void AI()
         {
-            if (Config.BroodMusic)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
-            }
-            else
-            {
-                music = MusicID.Boss1;
-            }
 			if(Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
 			{
 				projectileTimer++;

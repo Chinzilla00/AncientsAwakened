@@ -10,7 +10,6 @@ namespace AAMod.Projectiles.Akuma
     public class SunSpear : ModProjectile
     {
 
-
         public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -58,6 +57,13 @@ namespace AAMod.Projectiles.Akuma
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 600);
+			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+			int p = Projectile.NewProjectile(target.Center.X, target.Center.Y, 0f, 0f, mod.ProjectileType("AkumaExp"), projectile.damage*2, projectile.knockBack, projectile.owner);
+			Main.projectile[p].melee = true;
+			Main.projectile[p].friendly = true;
+			Main.projectile[p].hostile = false;
+			Main.projectile[p].usesLocalNPCImmunity = true;
+			Main.projectile[p].localNPCHitCooldown = 6;
         }
 
         public override void AI()
