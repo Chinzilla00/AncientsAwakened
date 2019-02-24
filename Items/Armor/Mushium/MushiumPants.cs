@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Mushium
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushium Pants");
-            Tooltip.SetDefault(@"10% Increased throwing critical chance");
+            Tooltip.SetDefault("2% Increased life regeneration");
 
         }
 
@@ -25,9 +25,9 @@ namespace AAMod.Items.Armor.Mushium
 		}
 
 		public override void UpdateEquip(Player player)
-		{
-			player.thrownCrit += 10;
-		}
+        {
+            player.lifeRegen += 2;
+        }
 
 		public override void AddRecipes()
 		{

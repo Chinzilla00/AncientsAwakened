@@ -21,7 +21,7 @@ namespace AAMod.Items.Vanity.Mask
 
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
-            drawHair = true;
+            drawHair = false;
         }
     }
 }

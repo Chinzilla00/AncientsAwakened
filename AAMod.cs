@@ -418,7 +418,6 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
-                bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 17.999f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + ItemType("ChaosSigil") + "]");
 
 
                 //SlimeKing = 1f;
@@ -1472,7 +1471,14 @@ namespace AAMod
                 recipe.SetResult(ItemID.IceBlade);
                 recipe.AddRecipe();
             }
-    }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "MushroomBlock");
+                recipe.AddTile(TileID.WorkBenches);
+                recipe.SetResult(ItemID.Mushroom, 3);
+                recipe.AddRecipe();
+            }
+        }   
 
         //Stuff 4 Grox
         public override object Call(params object[] args)

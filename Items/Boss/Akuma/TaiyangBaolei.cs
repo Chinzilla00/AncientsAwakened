@@ -53,6 +53,8 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     SpriteEffects.None,
                     0f
                 );
+
+                return false;
             }
             else if (Main.dayTime && Main.time > 23400 && Main.time < 30600)
             {
@@ -88,43 +90,10 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     SpriteEffects.None,
                     0f
                 );
+
+                return false;
             }
-            else
-            {
-                spriteBatch.Draw
-                (
-                    texture,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-                spriteBatch.Draw
-                (
-                    textureGlow,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-            }
-            return false;
+            return true;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

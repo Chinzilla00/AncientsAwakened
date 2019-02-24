@@ -10,9 +10,8 @@ namespace AAMod.Items.Armor.Mushium
 	{
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
 			DisplayName.SetDefault("Mushium Shirt");
-            Tooltip.SetDefault("15% increased Throwing damage");
+            Tooltip.SetDefault("2% Increased life regeneration");
         }
 
 		public override void SetDefaults()
@@ -25,9 +24,9 @@ namespace AAMod.Items.Armor.Mushium
 		}
 
 		public override void UpdateEquip(Player player)
-		{
-			player.thrownDamage *= 1.15f;
-		}
+        {
+            player.lifeRegen += 2;
+        }
 
 		public override void AddRecipes()
 		{

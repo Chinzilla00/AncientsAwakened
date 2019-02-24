@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Mushium
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushroom Hat");
-			Tooltip.SetDefault("10% increased throwing velocity");
+			Tooltip.SetDefault("2% Increased life regeneration");
 
 		}
 
@@ -25,9 +25,9 @@ namespace AAMod.Items.Armor.Mushium
 		}
 		
 		public override void UpdateEquip(Player player)
-		{
-            player.thrownVelocity *= 1.10f;
-		}
+        {
+            player.lifeRegen += 2;
+        }
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
@@ -36,9 +36,7 @@ namespace AAMod.Items.Armor.Mushium
 
 		public override void UpdateArmorSet(Player player)
 		{
-
             player.setBonus = @"Potion Sickness time is cut by 25%";
-            
             player.pStone = true;
 		}
 

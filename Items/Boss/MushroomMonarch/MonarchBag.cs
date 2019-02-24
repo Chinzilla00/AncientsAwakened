@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("NCMask"));
+                player.QuickSpawnItem(mod.ItemType<Items.Vanity.Mask.MonarchMask>());
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
