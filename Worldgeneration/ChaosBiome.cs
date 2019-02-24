@@ -91,6 +91,11 @@ namespace AAMod.Worldgeneration
 			int genY = origin.Y - 40;
 			gen.Generate(genX, genY, true, true);
 
+			//WorldGen.PlaceObject(genX + 62, genY + 32, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62, genY + 32 - 1, TileID.Grass);
+			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32 - 1, TileID.Grass);		
+
 	        WorldGen.PlaceObject(genX + 61, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
@@ -521,6 +526,75 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class Parthenan : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+
+            Mod mod = AAMod.instance;
+            
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("FulguritePlatingS");
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("FulguriteBrickS");
+            colorToTile[new Color(0, 0, 255)] = mod.TileType("StormCloud");
+            colorToTile[new Color(255, 0, 255)] = mod.TileType("FulgurGlassS");
+            colorToTile[new Color(150, 150, 150)] = -2; //turn into air
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(0, 255, 0)] = mod.WallType("FulguritePlatingWallS");
+            colorToWall[new Color(255, 0, 255)] = mod.TileType("FulgurGlassWall");
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
+            
+            gen.Generate(origin.X, origin.Y, true, true);
+            WorldGen.PlaceObject((int)(origin.X) + 34, (int)(origin.Y) + 47, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            return true;
+        }
+    }
+
+    public class BOTE : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
+            colorToTile[new Color(255, 0, 0)] = mod.TileType("RottedDynastyWoodS");
+            colorToTile[new Color(0, 255, 0)] = mod.TileType("RottedPlatform");
+            colorToTile[new Color(0, 0, 255)] = TileID.Rope;
+            colorToTile[new Color(0, 255, 255)] = mod.TileType("CthulhuPortal");
+            colorToTile[new Color(255, 255, 0)] = TileID.Sand;			
+            colorToTile[new Color(150, 150, 150)] = -2;
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToWall[new Color(255, 0, 0)] = mod.WallType("RottedFence");
+            colorToWall[new Color(255, 255, 0)] = mod.WallType("RottedWall");
+            colorToWall[new Color(255, 255, 255)] = mod.WallType("RottedWall");
+            colorToWall[new Color(0, 255, 255)] = mod.WallType("RottedWall");
+            colorToWall[new Color(255, 0, 255)] = mod.WallType("RottedWall");
+            colorToWall[new Color(0, 255, 0)] = mod.WallType("RottedWall");
+            colorToWall[new Color(0, 0, 255)] = WallID.Sail;
+            colorToWall[new Color(150, 150, 150)] = -2;
+            colorToWall[Color.Black] = -1; //don't touch when genning				
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/BOTE"), colorToTile, mod.GetTexture("Worldgeneration/BOTEWalls"), colorToWall, mod.GetTexture("Worldgeneration/BOTEWater"));
+
+			int newOriginX = origin.X - (gen.width / 2);
+			int newOriginY = origin.Y - (gen.height / 2) + 10;
+            gen.Generate(newOriginX, newOriginY, true, true);
+            
+            WorldGen.PlaceChest(newOriginX + 130, newOriginY + 102, (ushort)mod.TileType("SunkenChest"), true);
+            return true;
+        }
+    }
 
     public class RadialDitherTopMiddle2 : GenAction
 	{

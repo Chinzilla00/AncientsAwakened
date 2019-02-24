@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     npc.frame.Y = 0;
                 }
-                BaseAI.AIFloater(npc, ref npc.ai, true, 0.5f, 2.5f, 2.5f, 0.06f, 1.5f, 3);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 70f, null);
             }
             else
             {

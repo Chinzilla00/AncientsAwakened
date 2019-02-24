@@ -8,45 +8,87 @@ using Terraria.ModLoader;
 namespace AAMod.Worldgen
 {
     class ConversionHandler
-	{		
+	{
 		public static int CONVERTID_MIRE = 0;
 		public static int CONVERTID_INFERNO = 1;
-		
-		public static int startX = -1;
-		public static int startY = -1;
-		public static int genWidth = -1;
-		public static int conversionType = 1;
+	
+		public static int startMireX = -1;
+		public static int startMireY = -1;
+		public static int genMireWidth = -1;
+
+		public static int startInfernoX = -1;
+		public static int startInfernoY = -1;
+		public static int genInfernoWidth = -1;
 
 		public static void ConvertDown(int centerX, int y, int width, int convertType)
 		{
-			startX = centerX;
-			startY = y;
-			genWidth = width;
-			conversionType = convertType;
-			ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownCallback), null);
+			int worldSize = GetWorldSize();
+			int biomeRadius = (worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150);	
+			biomeRadius /= 2;
+			switch(convertType)
+			{	
+				case 0: //MIRE
+				{
+					startMireX = centerX + biomeRadius - width + 10;
+					startMireY = y;
+					genMireWidth = width;
+					ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownMireCallback), null);
+					break;
+				}
+				case 1: //INFERNO
+				{
+					startInfernoX = centerX + biomeRadius - width + 10;
+					startInfernoY = y;
+					genInfernoWidth = width;
+					ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownInfernoCallback), null);
+					break;
+				}				
+			}
 		}
 
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
+        }			
+
 	#region thread callback stuff
-		public static void ConvertDownCallback(object threadContext)
+		public static void ConvertDownMireCallback(object threadContext)
 		{
 			try
 			{
-				do_ConvertDown(threadContext);
-				startX = startY = genWidth = conversionType = -1;				
+				do_ConvertDownMire(threadContext);				
 			}
 			catch (Exception)
             {
-				startX = startY = genWidth = conversionType = -1;
 			}
 		}
 
-		public static void do_ConvertDown(object threadContext)
+		public static void do_ConvertDownMire(object threadContext)
 		{
-			dodo_ConvertDown();
+			dodo_ConvertDown(startMireX, startMireY, genMireWidth, 0);
 		}
+
+		public static void ConvertDownInfernoCallback(object threadContext)
+		{
+			try
+			{
+				do_ConvertDownInferno(threadContext);			
+			}
+			catch (Exception)
+			{
+			}
+		}
+
+		public static void do_ConvertDownInferno(object threadContext)
+		{
+			dodo_ConvertDown(startInfernoX, startInfernoY, genInfernoWidth, 1);
+		}		
 	#endregion	
 	
-		public static void dodo_ConvertDown()
+		public static void dodo_ConvertDown(int startX, int startY, int genWidth, int conversionType)
 		{
 			Mod mod = AAMod.instance;
 			int tileGrass = 0, wallGrass = 0, tileStone = 0, wallStone = 0, tileSand = 0, tileSandHard = 0, wallSandHard = 0, tileSandstone = 0, wallSandstone = 0, tileIce = 0, tileThorn = 0;
@@ -93,8 +135,7 @@ namespace AAMod.Worldgen
 					Convert(centerX + x1, y, genWidth, tileGrass, wallGrass, tileStone, wallStone, tileSand, tileSandHard, wallSandHard, tileSandstone, wallSandstone, tileIce, tileThorn);
 					y += genWidth * 2;
 				}
-			}
-					
+			}					
 		}
 
 		public static void Convert(int i, int j, int size, int tileGrass, int wallGrass, int tileStone, int wallStone, int tileSand, int tileSandHard, int wallSandHard, int tileSandstone, int wallSandstone, int tileIce, int tileThorn)

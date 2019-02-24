@@ -227,6 +227,8 @@ namespace AAMod
 
             return new TagCompound {
                 {"downed", downed},
+				{"mirePosX", mirePos.X },
+				{"infernoPosX", infernoPos.X }			
             };
         }
         public override void NetSend(BinaryWriter writer)
@@ -395,6 +397,13 @@ namespace AAMod
             CorruptionSpread = downed.Contains("Corruption");
             CrimsonSpread = downed.Contains("Crimson");
             HallowSpread = downed.Contains("Hallow");
+			
+			var mirePosX = tag.GetFloat("mirePosX");
+			var infernoPosX = tag.GetFloat("infernoPosX");	
+			if(mirePosX is float)
+				mirePos = new Vector2((float)mirePosX, 150);
+			if(infernoPosX is float)
+				infernoPos = new Vector2((float)infernoPosX, 150);
         }
 
 
@@ -1170,7 +1179,6 @@ namespace AAMod
                 if (downedAllAncients == false)
                 {
                     downedAllAncients = true;
-                    /*Main.NewText("Chaos begins to stir in the atmosphere around you", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);*/
                 }
             }
             if (Main.hardMode == true)
@@ -1178,33 +1186,34 @@ namespace AAMod
                 if (InfernoStripe == false)
                 {
                     InfernoStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-                    infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));		
+					if(infernoPos.X == 0)
+						infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
-                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, 1);
-
+                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 60, 1);
                 }
                 if (MireStripe == false)
                 {
-                    InfernoStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-                    infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-                    mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, 0);
-
+                    MireStripe = true;
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));	
+					if(mirePos.X == 0)
+						mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 60, 0);
                 }
             }
         }
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
+            //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
+            //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
         }
 
@@ -1277,6 +1286,21 @@ namespace AAMod
             Mushroom();
         }
 
+        private void ParthenanIsland(GenerationProgress progress)
+        {
+            progress.Message = "Storming the Parthenan";
+            Parthenan();
+        }
+
+        private void Ship(GenerationProgress progress)
+        {
+            shipSide = (Main.dungeonX > Main.maxTilesX / 2 ? -1 : 1);
+            shipPos.X = (shipSide == 1 ? Main.maxTilesX - 140 : 140);
+			shipPos.Y = BaseWorldGen.GetFirstTileFloor((int)shipPos.X, 10, true);
+            progress.Message = "Sinking the ship";
+            SunkenShip();
+        }
+
         public void InfernoVolcano()
         {
             Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
@@ -1319,6 +1343,14 @@ namespace AAMod
             biome.Place(origin, WorldGen.structures);
         }
 
+        public void SunkenShip()
+        {
+            Point origin = new Point((int)shipPos.X, (int)shipPos.Y);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            BOTE biome = new BOTE();
+            biome.Place(origin, WorldGen.structures);
+        }
+
         public void TerraSphere()
         {
             Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f)); ;
@@ -1327,6 +1359,15 @@ namespace AAMod
             TerrariumSphere biome = new TerrariumSphere();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
+        }
+
+        public void Parthenan()
+        {
+            int ParthenanHeight = 0;
+            ParthenanHeight = 120;
+            Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
+            Parthenan biome = new Parthenan();
+            biome.Place(center, WorldGen.structures);
         }
 
 
