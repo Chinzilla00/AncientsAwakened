@@ -14,8 +14,8 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Makes you immune to almost all debuffs
-During the day, you gain 10% damage resistance and your melee & magic attacks set enemies ablaze
-From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic attacks inflict daybroken");
+You gain 10% damage resistance and your melee & magic attacks set enemies ablaze
+During the day, you gain 20% damage resistance and your melee & magic attacks inflict daybroken instead of 'On Fire!'");
         }
 
         public override void SetDefaults()
@@ -32,10 +32,46 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
         {
             Texture2D texture = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei");
             Texture2D textureGlow = mod.GetTexture("Glowmasks/TaiyangBaolei_Glow");
-            Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei1");
-            Texture2D texture3 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
-            Texture2D texture3Glow = mod.GetTexture("Glowmasks/TaiyangBaoleiA_Glow");
+            Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
+            Texture2D texture2Glow = mod.GetTexture("Glowmasks/TaiyangBaoleiA_Glow");
             if (!Main.dayTime)
+            {
+                spriteBatch.Draw
+                (
+                    texture,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+                spriteBatch.Draw
+                (
+                    textureGlow,
+                    new Vector2
+                    (
+                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                    ),
+                    new Rectangle(0, 0, texture.Width, texture.Height),
+                    lightColor,
+                    rotation,
+                    texture.Size() * 0.5f,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+
+                return false;
+            }
+            else
             {
                 spriteBatch.Draw
                 (
@@ -53,30 +89,9 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
                     SpriteEffects.None,
                     0f
                 );
-
-                return false;
-            }
-            else if (Main.dayTime && Main.time > 23400 && Main.time < 30600)
-            {
                 spriteBatch.Draw
                 (
-                    texture3,
-                    new Vector2
-                    (
-                        item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                        item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                    ),
-                    new Rectangle(0, 0, texture.Width, texture.Height),
-                    lightColor,
-                    rotation,
-                    texture.Size() * 0.5f,
-                    scale,
-                    SpriteEffects.None,
-                    0f
-                );
-                spriteBatch.Draw
-                (
-                    texture3Glow,
+                    texture2Glow,
                     new Vector2
                     (
                         item.position.X - Main.screenPosition.X + item.width * 0.5f,
@@ -93,25 +108,19 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
 
                 return false;
             }
-            return true;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei");
-            Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaolei1");
-            Texture2D texture3 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
+            Texture2D texture2 = mod.GetTexture("Items/Boss/Akuma/TaiyangBaoleiA");
             if (!Main.dayTime)
-            {
-                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-            }
-            if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
             {
                 spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
-            if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+            else
             {
-                spriteBatch.Draw(texture3, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             }
             return false;
         }
@@ -120,6 +129,7 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().Baolei = true;
+            player.dash = 3;
             player.buffImmune[20] = true;
             player.buffImmune[22] = true;
             player.buffImmune[23] = true;
@@ -149,13 +159,9 @@ From 11:00 AM to 1:00 PM, you gain 20% damage resistance and your melee & magic 
             player.noKnockback = true;
             if (!Main.dayTime)
             {
-                player.endurance += 0f;
-            }
-            if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
-            {
                 player.endurance += 0.1f;
             }
-            if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+            else
             {
                 player.endurance += 0.2f;
             }

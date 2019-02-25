@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.MushroomMonarch
 {
-    public class gLOWINGMushium : ModItem
+    public class GlowingMushium : ModItem
     {
         public override void SetDefaults()
         {

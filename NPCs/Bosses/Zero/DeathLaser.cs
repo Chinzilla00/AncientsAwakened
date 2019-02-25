@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
@@ -9,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doom Laser");
+            DisplayName.SetDefault("Moonray");
         }
 
         public override void SetDefaults()
@@ -19,35 +21,45 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.hostile = true;
             projectile.scale = 2f;
             projectile.ignoreWater = true;
-            projectile.penetrate = 1;
-            projectile.alpha = 60;
-            projectile.timeLeft = 60;
+            projectile.penetrate = -1;
+            projectile.extraUpdates = 2;
+            projectile.timeLeft = 1000;
+            cooldownSlot = 1;
         }
 
+        public bool playedSound = false;
+        public int dontDrawDelay = 2;
         public override void AI()
         {
-            int num103 = Player.FindClosest(projectile.Center, 1, 1);
-            projectile.ai[1] += 1f;
-            if (projectile.ai[1] < 110f && projectile.ai[1] > 30f)
+            if (!playedSound)
             {
-                float scaleFactor2 = projectile.velocity.Length();
-                Vector2 vector11 = Main.player[num103].Center - projectile.Center;
-                vector11.Normalize();
-                vector11 *= scaleFactor2;
-                projectile.velocity = ((projectile.velocity * 24f) + vector11) / 25f;
-                projectile.velocity.Normalize();
-                projectile.velocity *= scaleFactor2;
+                playedSound = true;
+                Main.PlaySound(SoundID.Item42, (int)projectile.Center.X, (int)projectile.Center.Y);
             }
-            if (projectile.ai[0] < 0f)
+            Effects();
+            if (projectile.velocity.Length() < 12f)
             {
-                if (projectile.velocity.Length() < 18f)
-                {
-                    projectile.velocity *= 1.02f;
-                }
+                projectile.velocity.X *= 1.05f;
+                projectile.velocity.Y *= 1.05f;
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
         }
-        
+
+        public virtual void Effects()
+        {
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return AAColor.Oblivion;
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            dontDrawDelay = Math.Max(0, dontDrawDelay - 1);
+            return dontDrawDelay == 0;
+        }
+
     }
 }

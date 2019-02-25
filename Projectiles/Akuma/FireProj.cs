@@ -36,7 +36,6 @@ namespace AAMod.Projectiles.Akuma
             {
                 projectile.tileCollide = true;
             }
-            projectile.scale = projectile.ai[1];
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
             Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
             for (int num189 = 0; num189 < 1; num189++)

@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Feudal Fungus");
-            Main.npcFrameCount[npc.type] = 11;
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults()
@@ -65,102 +65,131 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
+            npc.noGravity = true;
             bossBag = mod.ItemType("FungusBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
-
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");
+            npc.alpha = 255;
         }
 
-        public static int AISTATE_WALK = 0, AISTATE_MAGIC = 1, AISTATE_FLY = 2;
+        public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2;
 		public float[] internalAI = new float[4];
+        bool HasStopped = false;
 		
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-            
+
+            if ((Main.dayTime && player.position.Y < Main.worldSurface && !player.ZoneGlowshroom) || (player.position.Y > Main.worldSurface && !player.ZoneGlowshroom))
+            {
+                npc.velocity *= 0;
+
+                if (npc.velocity.X <= .1f && npc.velocity.X >= -.1f)
+                {
+                    npc.velocity.X = 0;
+                }
+                if (npc.velocity.Y <= .1f && npc.velocity.Y >= -.1f)
+                {
+                    npc.velocity.Y = 0;
+                }
+
+                npc.alpha += 10;
+
+                if (npc.alpha >= 255)
+                {
+                    npc.active = false;
+                }
+                return;
+            }
+            npc.alpha -= 10;
 
             npc.frameCounter++;
-            if (internalAI[1] == AISTATE_WALK) //walk or charge
+            if (!HasStopped)
             {
 				if (npc.frameCounter >= 10)
 				{
 					npc.frameCounter = 0;
-					npc.frame.Y += 108;
-					if (npc.frame.Y > (108 * 4))
+					npc.frame.Y += 90;
+					if (npc.frame.Y > (90 * 4))
 					{
 						npc.frameCounter = 0;
 						npc.frame.Y = 0;
 					}
 				}
-                if(npc.velocity.Y != 0)
-                {
-                    if (npc.velocity.Y < 0)
-                    {
-                        npc.frame.Y = 648;
-                    }else
-                    if (npc.velocity.Y > 0)
-                    {
-                        npc.frame.Y = 756;
-                    }
-                }
-            }else if (internalAI[1] == AISTATE_MAGIC) //magic
+            }
+            else
             {
-                if (npc.velocity.Y != 0)
+                internalAI[2]++;
+                if (internalAI[2] > 8)
                 {
-                    npc.frame.Y = 108 * 5;
+                    npc.frame.Y += 90;
+                    internalAI[3] += 1;
+                    internalAI[2] = 0;
                 }
-                else
+                if (internalAI[3] == 3)
                 {
-                    internalAI[2]++;
-                    if (internalAI[2] > 15)
-                    {
-                        npc.frame.Y = 108 * 7;
-                        internalAI[3] = Main.rand.Next(4);
-                        FungusAttack(internalAI[3]);
-                        internalAI[0] = 0;
-                        internalAI[1] = AISTATE_WALK;
-                        npc.netUpdate = true;
-                    }
-
+                    int attack = Main.rand.Next(4);
+                    FungusAttack(attack);
+                }
+                if (internalAI[3] > 4)
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = Main.rand.Next(3);
+                    HasStopped = false;
+                    npc.netUpdate = true;
                 }
             }
-            if (player.Center.X > npc.Center.X) // so it faces the player
-            {
-                npc.spriteDirection = -1;
-            }else
-            {
-                npc.spriteDirection = 1;
-            }
 
-			if(Main.netMode != 1)
+			if(Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
 			{
-                if (Math.Abs(player.Center.X - npc.Center.X) < 300f)
+                internalAI[0]++;
+                if (internalAI[0] >= 180)
                 {
-                    internalAI[0]++;
-                    if (internalAI[0] >= 180)
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = Main.rand.Next(2);
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
-                    }
-                }
-                else
-                {
-                    internalAI[1] = AISTATE_FLY;
+                    internalAI[0] = 0;
+                    internalAI[1] = Main.rand.Next(3);
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
-			if(internalAI[1] == AISTATE_WALK) //fighter
-			{
-                AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
-			}
+			if(internalAI[1] == AISTATE_HOVER) 
+            {
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 56f, FireMagic);
+            }
+            else if (internalAI[1] == AISTATE_FLIER) 
+            {
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 5f, 3f, false, 1);
+            }
+            else 
+            {
+                npc.velocity *= 0;
+
+                if (npc.velocity.X <= .1f && npc.velocity.X >= -.1f)
+                {
+                    npc.velocity.X = 0;
+                }
+                if (npc.velocity.Y <= .1f && npc.velocity.Y >= -.1f)
+                {
+                    npc.velocity.Y = 0;
+                }
+                if (npc.velocity == new Vector2(0, 0))
+                {
+                    HasStopped = true;
+                }
+            }
+        }
+
+
+        public float[] shootAI = new float[4];
+
+        public void FireMagic(NPC npc, Vector2 velocity)
+        {
+            Player player = Main.player[npc.target];
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("MagicBlast"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
             AAWorld.downedMonarch = true;
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusDig>());
+            Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0);
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();
@@ -178,17 +207,23 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
         }
 
-        public void FungusAttack(float Attack)
+        public void FungusAttack(int Attack)
         {
             Player player = Main.player[npc.target];
 
             if (Attack == 0)
             {
-
+                for (int i = 0; i < (Main.expertMode ? 3 : 2); i++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Mushling>());
+                }
             }
             if (Attack == 1)
             {
-
+                for (int i = 0; i < 4; i++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusFlier>());
+                }
             }
             if (Attack == 2)
             {
@@ -204,8 +239,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
             else
             {
-
+                for (int i = 0; i < 4; i++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusSpore>(), 255, i);
+                }
             }
+        }
+
+        public override void PostDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungus_Glow");
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Glow);
         }
     }
 

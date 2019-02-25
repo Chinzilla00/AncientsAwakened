@@ -376,6 +376,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
             if (Main.expertMode)
             {
+                AAWorld.downedAkuma = true;
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Akuma.AkumaATrophy.type, 1f / 10);
                 if (Main.rand.NextFloat() < 0.1f)

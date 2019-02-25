@@ -58,26 +58,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                 runonce += 1;
             }
 
-            if (!player.InZone("Desert") || player.dead || !Main.dayTime)
-            {
-                npc.alpha += 5;
-            }
-            else
-            {
-                Sandstorm.TimeLeft = 10;
-                npc.alpha -= 5;
-            }
-
-            if (npc.alpha >= 255)
-            {
-                npc.active = false;
-            }
-            if (npc.alpha < 0)
-            {
-                npc.alpha = 0;
-            }
-
-
             if (player.Center.X > npc.Center.X)
             {
                 npc.spriteDirection = -1;
@@ -158,6 +138,25 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     npc.ai[3] = 0;
                 }
+            }
+
+            if (!player.InZone("Desert") || player.dead || !Main.dayTime)
+            {
+                npc.alpha += 5;
+            }
+            else
+            {
+                Sandstorm.TimeLeft = 10;
+                npc.alpha -= 5;
+            }
+
+            if (npc.alpha >= 255)
+            {
+                npc.active = false;
+            }
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
             }
         }
 

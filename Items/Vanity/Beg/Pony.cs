@@ -10,7 +10,7 @@ namespace AAMod.Items.Vanity.Beg
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Weird Horse Doll");
-			Tooltip.SetDefault("neigh.");
+			Tooltip.SetDefault("Neigh.");
 		}
 
 		public override void SetDefaults()

@@ -44,6 +44,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.buffImmune[44] = true;
             npc.scale *= 1.3f;
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
+            bossBag = mod.ItemType<Items.Boss.EFish.EFishBag>();
         }
         
 
@@ -142,14 +143,24 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             }
         }
 
-        public override bool PreNPCLoot()
+        public override void NPCLoot()
         {
-            return false;
+            if (!Main.expertMode)
+            {
+                string[] lootTable = { "EFishWings", "EFlairon", "Hurricane", "SoapBlaster", "UltibladeTyphoon" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;   //boss drops
+            AAWorld.downedEFish = true;
+            potionType = ItemID.SuperHealingPotion;
         }
 
         public override void AI()

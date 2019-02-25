@@ -121,7 +121,6 @@ namespace AAMod.Backgrounds
 
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 var echoPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 var Asteroidpos1 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
@@ -138,15 +137,15 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
                 Asteroidpos2.Y += (float)Math.Sin(asteroidPercent2) * -30f;
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
-                if (!NPC.downedMoonlord)
+                if (!AAWorld.downedEquinox)
                 {
-                    spriteBatch.Draw(Stars, planetPos, null, Color.White, 0, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(Stars, planetPos, null, Color.White, 0, new Vector2(Stars.Width >> 1, Stars.Height >> 1), 1f, SpriteEffects.None, 1f);
                 }
                 else
                 {
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
-                    spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
 
                 }
                 if (AAWorld.downedZero)
@@ -158,9 +157,9 @@ namespace AAMod.Backgrounds
                 }
 				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
 				astroGlow.A = (byte)(255f * Intensity);
-                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, astroGlow, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, astroGlow, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, astroGlow, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids1, Asteroidpos1, null, AAWorld.downedEquinox ? astroGlow : Color.White, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids2, Asteroidpos2, null, AAWorld.downedEquinox ? astroGlow : Color.White, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(Asteroids3, Asteroidpos3, null, AAWorld.downedEquinox ? astroGlow : Color.White, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));

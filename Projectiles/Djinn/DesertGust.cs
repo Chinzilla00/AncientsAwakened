@@ -30,14 +30,11 @@ namespace AAMod.Projectiles.Djinn
 
         public override void AI()
         {
-            if (projectile.type == 228)
+            projectile.velocity *= 0.98f;
+            projectile.alpha += 2;
+            if (projectile.alpha > 255)
             {
-                projectile.velocity *= 0.98f;
-                projectile.alpha += 2;
-                if (projectile.alpha > 255)
-                {
-                    projectile.Kill();
-                }
+                projectile.Kill();
             }
         }
 

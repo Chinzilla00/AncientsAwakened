@@ -40,19 +40,16 @@ namespace AAMod.Items.Usable
         {
             if (item.lavaWet)
             {
-                //if (Main.netMode != 1)
-                //{
                 for (int i = 0; i < 255; ++i)
                 {
                     if (Main.npc[i].type == NPCID.GoblinTinkerer)
                     {
-                        Player player = Main.player[Main.myPlayer];
+                        Player player = Main.player[item.owner];
                         player.QuickSpawnItem(mod.ItemType("SoulStone"), 1);
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
                         Main.NewText("The soul stone materializes in your hand", 180, 120, 0);
                     }
                 }
-                //}
             }
         }
     }

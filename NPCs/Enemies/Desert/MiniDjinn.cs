@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && Main.dayTime ? .3f : 0f;
+            return spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && Main.dayTime ? .2f : 0f;
         }
 
         public float[] shootAI = new float[4];
@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Enemies.Desert
                     break;
             }
 
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Shoot, ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Shoot, ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
         }
 
         public override void HitEffect(int hitDirection, double damage)

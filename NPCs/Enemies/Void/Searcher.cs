@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Enemies.Void
         float shootAI = 0;
         public override void AI()
         {
-            BaseMod.BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
+            BaseMod.BaseAI.AISkull(npc, ref npc.ai, true, 6f, 350f, 0.1f, 0.15f);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
             BaseMod.BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);

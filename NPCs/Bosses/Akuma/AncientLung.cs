@@ -277,6 +277,7 @@ namespace AAMod.NPCs.Boss.Akuma
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
+            Texture2D texture = Main.npcTexture[npc.type];
             Texture2D glowTex = null, glowTex2 = null, glowTex3 = null, glowTex4 = null, glowTex5 = null;
 
             if (glowTex == null)
@@ -287,23 +288,23 @@ namespace AAMod.NPCs.Boss.Akuma
                 glowTex4 = mod.GetTexture("Glowmasks/ShenlingBody_Glow3");
                 glowTex5 = mod.GetTexture("Glowmasks/ShenlingTail_Glow");
             }
+            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
+
             int shader = 0;
             if (NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
-                shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye); ;
+                shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye); 
             }
-            npc.position.Y += npc.height * 0.5f;
 
             Texture2D myGlowTex = (npc.type == mod.NPCType<AncientLung>() ? glowTex : npc.type == mod.NPCType<AncientLungBody>() ? glowTex2 : npc.type == mod.NPCType<AncientLungBody1>() ? glowTex2 : glowTex5);
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(spritebatch, myGlowTex, shader, npc, Color.Goldenrod);
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spritebatch.Draw(texture, Drawpos, npc.frame, npc.GetAlpha(dColor), npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
+            BaseDrawing.DrawTexture(spritebatch, myGlowTex, shader, npc, npc.GetAlpha(Color.White), true, npc.frame.Size() / 2);
             if (npc.type == mod.NPCType<AncientLungBody>() || npc.type == mod.NPCType<AncientLungBody1>())
             {
                 BaseDrawing.DrawTexture(spritebatch, glowTex3, shader, npc, Color.Goldenrod);
                 BaseDrawing.DrawTexture(spritebatch, glowTex4, shader, npc, Color.Goldenrod);
             }
-
-            npc.position.Y -= npc.height * 0.5f;
             return false;
         }
     }

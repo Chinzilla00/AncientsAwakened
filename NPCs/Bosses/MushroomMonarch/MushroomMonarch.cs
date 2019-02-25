@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
             AAWorld.downedMonarch = true;
-            Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y - 2), new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+            Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();

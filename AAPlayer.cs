@@ -131,13 +131,12 @@ namespace AAMod
         public int[] AADoubleTapKeyTimer = new int[4];
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
-
-
+        
         public bool BegAccessoryPrevious;
         public bool BegAccessory;
         public bool BegHideVanity;
         public bool BegForceVanity;
-        public bool nullified = false;
+        public bool HorseBuff;
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -268,8 +267,7 @@ namespace AAMod
             DiscordShredder = false;
 
             BegAccessoryPrevious = BegAccessory;
-            BegAccessory = BegHideVanity = BegForceVanity = false;
-            nullified = false;
+            BegAccessory = BegHideVanity = BegForceVanity = HorseBuff = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -353,17 +351,22 @@ namespace AAMod
             }
         }
 
+        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
+        {
+            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
+            if (BegAccessory)
+            {
+                player.AddBuff(mod.BuffType<Buffs.Horse>(), 60, true);
+            }
+        }
+
         public override void FrameEffects()
         {
-            if ((BegForceVanity) && !BegHideVanity)
+            if ((HorseBuff || BegForceVanity) && !BegHideVanity)
             {
                 player.legs = mod.GetEquipSlot("Pony_Legs", EquipType.Legs);
                 player.body = mod.GetEquipSlot("Pony_Body", EquipType.Body);
                 player.head = mod.GetEquipSlot("Pony_Head", EquipType.Head);
-            }
-            if (nullified)
-            {
-                Nullify();
             }
         }
 
@@ -386,41 +389,6 @@ namespace AAMod
                     }
                 }
             }
-        }
-
-        public override void PostUpdateBuffs()
-        {
-            if (nullified)
-            {
-                Nullify();
-            }
-        }
-
-        public override void PostUpdateEquips()
-        {
-            if (nullified)
-            {
-                Nullify();
-            }
-        }
-
-        private void Nullify()
-        {
-            player.ResetEffects();
-            player.head = -1;
-            player.body = -1;
-            player.legs = -1;
-            player.handon = -1;
-            player.handoff = -1;
-            player.back = -1;
-            player.front = -1;
-            player.shoe = -1;
-            player.waist = -1;
-            player.shield = -1;
-            player.neck = -1;
-            player.face = -1;
-            player.balloon = -1;
-            nullified = true;
         }
 
         public override void UpdateBiomes()
@@ -1108,6 +1076,10 @@ namespace AAMod
                         break;
                     case 2:
                         player.QuickSpawnItem(mod.ItemType("Pony"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("MonochromeApple"));
+                        }
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("PoniumStaff" + addonEX));
@@ -1926,6 +1898,8 @@ namespace AAMod
             }
         }
 
+        
+
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
             if (ammo20percentdown && Main.rand.Next(5) == 0)
@@ -1960,29 +1934,21 @@ namespace AAMod
             {
                 if (!Main.dayTime)
                 {
-
-                }
-                if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
-                {
                     target.AddBuff(BuffID.OnFire, 1000);
                 }
-                if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+                else
                 {
                     target.AddBuff(BuffID.Daybreak, 1000);
                 }
             }
 
-            if (Naitokurosu && (proj.ranged || proj.thrown) && Main.rand.Next(2) == 0)
+            if (Naitokurosu && (proj.ranged || proj.minion) && Main.rand.Next(2) == 0)
             {
                 if (Main.dayTime)
                 {
-
-                }
-                if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
-                {
                     target.AddBuff(BuffID.Venom, 1000);
                 }
-                if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+                else
                 {
                     target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
@@ -2180,8 +2146,7 @@ namespace AAMod
             return BaseDrawing.GetFrame(count, width, height, 0, 2);
         }
         #endregion
-
-
+        
         public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
         {
             if (Clueless)
@@ -2271,11 +2236,11 @@ namespace AAMod
             Player drawPlayer = edi.drawPlayer;
             if (HasAndCanDraw(drawPlayer, mod.ItemType("TaiyangBaolei")))
             {
-                if (Main.dayTime && Main.time < 23400 && Main.time > 30600)
+                if (!Main.dayTime)
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TaiyangBaolei_Shield_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
-                if (Main.dayTime && Main.time >= 23400 && Main.time <= 30600)
+                else
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TaiyangBaoleiA_Shield_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
@@ -2324,11 +2289,11 @@ namespace AAMod
             Player drawPlayer = edi.drawPlayer;
             if (HasAndCanDraw(drawPlayer, mod.ItemType("Naitokurosu")))
             {
-                if (!Main.dayTime && Main.time < 14400 && Main.time > 21600)
+                if (Main.dayTime)
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Naitokurosu_Neck_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
-                if (!Main.dayTime && Main.time >= 14400 && Main.time <= 21600)
+                else
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/NaitokurosuA_Neck_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
@@ -2463,15 +2428,10 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/RetrieverMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
-            //else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("ZeroMask")))
-            //{
-                //BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/ZeroMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
-            //}
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("InfinityVisor")))
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("ZeroMask")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/InfinityVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/ZeroMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
-            
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TiedMask")))
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TiedMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(FlashGlow, edi.shadow), drawPlayer.headFrame, scale);

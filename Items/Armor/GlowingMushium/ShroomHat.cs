@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.GlowingMushium
 {
     [AutoloadEquip(EquipType.Head)]
-	public class MushiumHat : ModItem
+	public class ShroomHat : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

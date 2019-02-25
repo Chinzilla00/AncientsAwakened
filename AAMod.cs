@@ -18,6 +18,7 @@ using AAMod.Items.Armor.Darkmatter;
 using AAMod.Items.Armor.Radium;
 using AAMod.Items.Blocks;
 using AAMod;
+using BaseMod;
 
 namespace AAMod
 {
@@ -62,6 +63,114 @@ namespace AAMod
                 AutoloadBackgrounds = true
             };
             instance = this;
+        }
+
+        public static void SetupBannerItemTextures()
+        {
+            if (Main.netMode == 2 || Main.dedServ) return; //don't do any texture stuff on a server lol
+            try
+            {
+                int fx = 16;
+                Texture2D tex = Main.tileTexture[AAMod.instance.TileType("Banners")];
+
+                while (Tiles.Banners.Banners.GetBannerName(fx) != null)
+                {
+                    string name = Tiles.Banners.Banners.GetBannerName(fx);
+                    if (name.Equals("DUMMY")) { fx += 16; continue; }
+                    Main.itemTexture[AAMod.instance.ItemType(name + "Banner")] = BaseDrawing.GetCroppedTex(tex, new Rectangle(fx, 0, 16, 16 * 3));
+                    fx += 16;
+                }
+            }
+            catch (Exception e) { ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); }
+        }
+
+        public static FieldInfo _bannerField = null;
+        public static IDictionary<int, int> bannerToItemDict
+        {
+            get
+            {
+                if (_bannerField == null)
+                {
+                    _bannerField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
+                }
+                return (IDictionary<int, int>)_bannerField.GetValue(null);
+            }
+            set
+            {
+                if (_bannerField != null)
+                {
+                    _bannerField.SetValue(null, value);
+                }
+            }
+        }
+
+        public static void SetupBannerNPCs()
+        {
+            Mod mod = AAMod.instance;
+            try
+            {
+                IDictionary<int, int> bannerToItem = bannerToItemDict;
+                int fx = 16;
+                while (Tiles.Banners.Banners.GetBannerName(fx) != null)
+                {
+                    string name = Tiles.Banners.Banners.GetBannerName(fx, false);
+                    if (name.Equals("DUMMY")) { fx += 16; continue; }
+                    if (name.Contains("Wyrmling"))
+                    {
+                        for (int m = 0; m < 4; m++)
+                        {
+                            ModNPC npc = mod.GetNPC(m == 0 ? "Wyrmling" : (m == 1 ? "WyrmlingBody" : (m == 2 ? "WyrmlingTail1" : "WyrmlingTail2")));
+                            if (npc != null)
+                            {
+                                npc.banner = mod.NPCType("Wyrmling");
+                                npc.bannerItem = mod.ItemType("WyrmlingBanner");
+                                bannerToItem[npc.banner] = npc.bannerItem;
+                            }
+                        }
+                    }
+                    else
+                    if (name.Contains("Wyrm"))
+                    {
+                        for (int m = 0; m < 5; m++)
+                        {
+                            ModNPC npc = mod.GetNPC(m == 0 ? "Wyrm" : (m == 1 ? "WyrmBody1" : (m == 2 ? "WyrmBody2" : (m == 3 ? "WyrmBody3" : "WyrmBody4"))));
+                            if (npc != null)
+                            {
+                                npc.banner = mod.NPCType("Wyrm");
+                                npc.bannerItem = mod.ItemType("WyrmBanner");
+                                bannerToItem[npc.banner] = npc.bannerItem;
+                            }
+                        }
+                    }
+                    else
+                    if (name.Contains("Snake"))
+                    {
+                        for (int m = 0; m < 3; m++)
+                        {
+                            ModNPC npc = mod.GetNPC(m == 0 ? "SnakeHead" : (m == 1 ? "SnakeBody" : "SnakeTail"));
+                            if (npc != null)
+                            {
+                                npc.banner = mod.NPCType("SnakeHead");
+                                npc.bannerItem = mod.ItemType("SnakeBanner");
+                                bannerToItem[npc.banner] = npc.bannerItem;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ModNPC npc = mod.GetNPC(name);
+                        if (npc != null)
+                        {
+                            npc.banner = mod.NPCType(name);
+                            npc.bannerItem = mod.ItemType(name + "Banner");
+                            bannerToItem[npc.banner] = npc.bannerItem;
+                        }
+                    }
+                    fx += 16;
+                }
+                bannerToItemDict = bannerToItem;
+            }
+            catch (Exception e) { ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); }
         }
 
         public override void PostSetupContent()
@@ -404,7 +513,7 @@ namespace AAMod
             }
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0.0000000000000000001f, (Func<bool>)(() => AAWorld.downedMonarch), "Use a [i:" + ItemType("IntimidatingMushroom") + "] during the day");
+                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch or Feudal Fungus", 0.0000000000000000001f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day / [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 4.00000000001f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");

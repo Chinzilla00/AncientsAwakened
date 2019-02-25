@@ -498,13 +498,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 		{
             if (!Main.expertMode)
             {
-                string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
-                AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
-                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
                 if (!AAWorld.downedAkuma)
                 {
                     BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
+                string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
+                AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
+                Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
             }
             if (Main.expertMode)
             {

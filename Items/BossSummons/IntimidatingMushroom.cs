@@ -11,7 +11,7 @@ namespace AAMod.Items.BossSummons
 {
     public class IntimidatingMushroom : ModItem
     {
-        
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Intimidating Looking Mushroom");
@@ -31,7 +31,7 @@ Can only be used during the day");
             item.useStyle = 4;
             item.consumable = true;
         }
-        
+
         public override bool UseItem(Player player)
         {
             SpawnBoss(player, "MushroomMonarch", "The Mushroom Monarch");
@@ -75,6 +75,7 @@ Can only be used during the day");
                 }
             }
         }
+        
 
         public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
         public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
