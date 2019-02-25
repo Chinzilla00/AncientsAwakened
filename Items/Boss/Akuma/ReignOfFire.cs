@@ -23,16 +23,16 @@ Inflicts Daybroken");
         
         public override void SetDefaults()
         {
-            item.damage = 250;            //Sword damage
+            item.damage = 270;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 86;              //Sword width
             item.height = 86;             //Sword height
-            item.useTime = 21;          //how fast 
-            item.useAnimation = 21;     
+            item.useTime = 29;          //how fast 
+            item.useAnimation = 29;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 6.5f;      //Sword knockback
             item.value = Item.buyPrice(1, 0, 0, 0);
-			item.UseSound = SoundID.Item1;
+			item.UseSound = SoundID.Item20;
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
         }
@@ -79,27 +79,24 @@ Inflicts Daybroken");
 			{
 				num119 = player.Center.Y - 200f;
 			}
-			for (int num120 = 0; num120 < 3; num120++)
-			{
-				vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
-				vector2.Y -= (float)(100 * num120);
-				Vector2 vector13 = vector12 - vector2;
-				if (vector13.Y < 0f)
-				{
-					vector13.Y *= -1f;
-				}
-				if (vector13.Y < 20f)
-				{
-					vector13.Y = 20f;
-				}
-				vector13.Normalize();
-				vector13 *= num75;
-				float num82 = vector13.X;
-				float num83 = vector13.Y;
-				float speedX5 = num82;
-				float speedY6 = num83 + (float)Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("FireProj"), damage, knockBack, Main.myPlayer);
-			}
+            vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
+            vector2.Y -= (float)(100);
+            Vector2 vector13 = vector12 - vector2;
+            if (vector13.Y < 0f)
+            {
+                vector13.Y *= -1f;
+            }
+            if (vector13.Y < 20f)
+            {
+                vector13.Y = 20f;
+            }
+            vector13.Normalize();
+            vector13 *= num75;
+            float num82 = vector13.X;
+            float num83 = vector13.Y;
+            float speedX5 = num82;
+            float speedY6 = num83 + (float)Main.rand.Next(-40, 41) * 0.02f;
+            Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("FireProj"), damage, knockBack, Main.myPlayer);
             target.AddBuff(BuffID.Daybreak, 600);
         }
 

@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             music = MusicID.Sandstorm;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Djinn");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn");
             bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
         }
 
@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     npc.frame.Y = 0;
                 }
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 70f, null);
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 1.5f, false, 300);
             }
             else
             {
@@ -142,12 +142,20 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (!player.InZone("Desert") || player.dead || !Main.dayTime)
             {
-                npc.alpha += 5;
+                npc.TargetClosest(true);
+                if (!player.InZone("Desert") || player.dead || !Main.dayTime)
+                {
+                    npc.alpha += 2;
+                }
             }
             else
             {
                 Sandstorm.TimeLeft = 10;
-                npc.alpha -= 5;
+                npc.alpha -= 2;
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
             }
 
             if (npc.alpha >= 255)
