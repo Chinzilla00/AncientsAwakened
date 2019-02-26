@@ -233,14 +233,11 @@ namespace AAMod.NPCs.Bosses.Raider
                 npc.ai[3] = 0;
                 if (npc.timeLeft < 10)
                     npc.timeLeft = 10;
-                npc.velocity.Y *= 0.9f;
+                npc.velocity.X *= 0.9f;
+                npc.velocity.Y -= 0.1f;
                 if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                if (npc.Bottom.Y + npc.height < 0f)
-                {
-                    npc.life = 0;
-                    npc.checkDead();
-                    npc.netUpdate = true;
-                }
+                npc.rotation = 0f;
+                if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
             }
             else
             if (npc.ai[0] == AISTATE_FLYABOVEPLAYER)

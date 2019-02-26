@@ -72,6 +72,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noTileCollide = false;
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
+            npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 if (npc.timeLeft > 5)
@@ -207,6 +208,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
+                    npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.08f)) / 10f;
                     Vector2 value58 = Main.player[npc.target].Center - npc.Center;
                     if (value58.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
                     {
@@ -234,6 +236,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
+                    npc.rotation = ((npc.rotation * 7f) + (npc.velocity.X * 0.1f)) / 8f;
                     npc.knockBackResist = 0f;
                     npc.noTileCollide = true;
                     Vector2 vector211 = Main.player[npc.target].Center - npc.Center;

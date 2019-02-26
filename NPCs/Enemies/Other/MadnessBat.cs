@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 3f, 1.5f, false, 300);
             npc.frameCounter++;
             if (npc.frameCounter >= 8)
             {
@@ -64,6 +64,10 @@ namespace AAMod.NPCs.Enemies.Other
             if (spawnInfo.playerSafe || Main.hardMode)
             {
                 return 0f;
+            }
+            if (!Main.dayTime)
+            {
+                return SpawnCondition.OverworldNightMonster.Chance * 0.1f;
             }
             return SpawnCondition.Underground.Chance * 0.1f;
         }

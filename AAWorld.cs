@@ -224,6 +224,8 @@ namespace AAMod
             if (CorruptionSpread) downed.Add("Corruption");
             if (CrimsonSpread) downed.Add("Crimson");
             if (HallowSpread) downed.Add("Hallow");
+            if (InfernoStripe) downed.Add("IStripe");
+            if (MireStripe) downed.Add("MStripe");
 
             return new TagCompound {
                 {"downed", downed},
@@ -286,7 +288,12 @@ namespace AAMod
             flags5[4] = CorruptionSpread;
             flags5[5] = CrimsonSpread;
             flags5[6] = HallowSpread;
+            flags5[7] = InfernoStripe;
             writer.Write(flags5);
+
+            BitsByte flags6 = new BitsByte();
+            flags5[0] = MireStripe;
+            writer.Write(flags6);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -339,7 +346,10 @@ namespace AAMod
             CorruptionSpread = flags5[4];
             CrimsonSpread = flags5[5];
             HallowSpread = flags5[6];
+            InfernoStripe = flags5[7];
 
+            BitsByte flags6 = reader.ReadByte();
+            downedSoC = flags6[0];
 
             BitsByte CorruptionFlag = reader.ReadByte();
         }
@@ -397,8 +407,9 @@ namespace AAMod
             CorruptionSpread = downed.Contains("Corruption");
             CrimsonSpread = downed.Contains("Crimson");
             HallowSpread = downed.Contains("Hallow");
-			
-			var mirePosX = tag.GetFloat("mirePosX");
+            InfernoStripe = downed.Contains("IStripe");
+            MireStripe = downed.Contains("MStripe");
+            var mirePosX = tag.GetFloat("mirePosX");
 			var infernoPosX = tag.GetFloat("infernoPosX");	
 			if(mirePosX is float)
 				mirePos = new Vector2((float)mirePosX, 150);
@@ -594,7 +605,7 @@ namespace AAMod
             progress.Set(0f);
             int VoidHeight = 0;
             progress.Set(0.1f);
-            VoidHeight = 100;
+            VoidHeight = 120;
             progress.Set(0.4f);
             Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
             progress.Set(0.5f);
@@ -1191,7 +1202,7 @@ namespace AAMod
 						infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
                     Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 60, 1);
+                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, 1);
                 }
                 if (MireStripe == false)
                 {
@@ -1199,7 +1210,7 @@ namespace AAMod
                     infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));	
 					if(mirePos.X == 0)
 						mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 60, 0);
+                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, 0);
                 }
             }
         }

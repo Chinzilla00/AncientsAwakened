@@ -6,6 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Broodmother
 {
@@ -27,6 +28,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noTileCollide = true;
             npc.chaseable = true;
             npc.damage = 35;
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.defense = 10;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -37,7 +39,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.lifeMax = 6000;
             npc.value = 20000;
             npc.knockBackResist = 0f;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
@@ -47,6 +48,25 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             scale = 1.5f;
             return null;
+        }
+
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((float)internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
         }
 
         public override void NPCLoot()
@@ -167,6 +187,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             else if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
+                internalAI[0] = 0;
                 Vector2 vector204 = Main.player[npc.target].Center - npc.Center;
                 if (Main.player[npc.target].dead || vector204.Length() > 3000f)
                 {
@@ -186,17 +207,21 @@ namespace AAMod.NPCs.Bosses.Broodmother
 				npc.ai[1] = 0;
 				npc.ai[2] = 0;
 				npc.ai[3] = 0;
+                internalAI[0]++;
+
 				if(npc.timeLeft < 10) 
 					npc.timeLeft = 10;
-				npc.velocity.Y *= 0.9f;
-				if(npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-				if(npc.Bottom.Y + npc.height < 0f)
-				{
-					npc.life = 0;
-					npc.checkDead();
-					npc.netUpdate = true;
-				}
-			}else
+				npc.velocity.X *= 0.9f;
+
+                if (internalAI[0] > 180)
+                {
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                }
+            }
+            else
             if (npc.ai[0] == AISTATE_FLYABOVEPLAYER)
             {
                 npc.TargetClosest(true);
@@ -209,6 +234,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     npc.direction = -1;
                 }
                 npc.spriteDirection = npc.direction;
+                npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.4f)) / 10f;
                 if (npc.collideX)
                 {
                     npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.6f);
@@ -303,6 +329,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 					npc.direction = 1;
 				}
 				npc.spriteDirection = npc.direction;
+				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.10f)) / 10f;
 				Vector2 value52 = Main.player[npc.target].Center - npc.Center;
 				if (value52.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
 				{
@@ -339,6 +366,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 					npc.direction = 1;
 				}
 				npc.spriteDirection = npc.direction;
+				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.1f)) / 5f;
 				if (npc.collideX)
 				{
 					npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
@@ -398,6 +426,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 					npc.direction = 1;
 				}
 				npc.spriteDirection = npc.direction;
+				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
 				Vector2 value54 = Main.player[npc.target].Center - npc.Center;
 				value54.Y -= 12f;
 				if (npc.Center.X > Main.player[npc.target].Center.X)
@@ -425,6 +454,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 			{
 				npc.knockBackResist = 0f;
 				npc.noTileCollide = true;
+				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
 				Vector2 vector206 = Main.player[npc.target].Center - npc.Center;
 				vector206.Y -= 12f;
 				float scaleFactor19 = 16f;
@@ -485,6 +515,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 						npc.ai[3] = 0f;
 					}
 				}
+				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
 				return;
 			}else
 			if (npc.ai[0] == AISTATE_SPAWNEGGS)
@@ -533,6 +564,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 					npc.direction = 1;
 				}
 				npc.spriteDirection = npc.direction;
+				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
 				npc.noTileCollide = true;
 				int num1317 = (int)npc.ai[1];
 				int num1318 = (int)npc.ai[2];
@@ -557,6 +589,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 			}else
 			if (npc.ai[0] == 4.2f) //sub spawning eggs
 			{
+				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
 				npc.knockBackResist = 0f;
 				npc.noTileCollide = true;
 				int num1321 = (int)npc.ai[1];

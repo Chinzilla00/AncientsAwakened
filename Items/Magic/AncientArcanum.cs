@@ -39,7 +39,9 @@ namespace AAMod.Items.Magic
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.NebulaArcanum);
-			recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddIngredient(null, "Stardust", 10);
+            recipe.AddIngredient(null, "DarkEnergy", 10);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

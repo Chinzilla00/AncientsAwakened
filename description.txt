@@ -1,77 +1,72 @@
-Ancients Awakened is a passion project created by Alphakip with the help of many in the Terraria community. It adds 5 new biomes, 16 bosses, several new structures, and a boatload of new items spread throughout the game.
+The Ancients have Awakened. Chaos reigns, storms ravage, and reality tears at the seams!
+
+This mod adds:
+
+800+ Items, including EX items; powerful upgrades to previous weapons with a new twist to them!
+
+100+ NPCs
+
+16 Bosses (7 Pre-Hardmode, 3 Hardmode, and 6 Post-Moon Lord)
+
+4 New Biomes.
+
+-The World Chaoses: Alternatives to the World Evils. 
+
+	The Inferno, a volcanic biome ravaged by dragons, with gear mainly focusing on raw defense.
+
+	The Mire, a swampy biome infested by slithering creatures of the dark, with gear mainly focusing on sheer speed.
+
+-The Void: Floating Islands at the top right of the world. Nothing is there, there is no reason to go there (Or is there?)
+
+-The Terrarium: A crystal biosphere safe from the ever-corrupting world around you. Currently underdeveloped, but it has content post-plantera.
+
+Cross-Mod content with GRealm and Thorium, with Mod of Redemption & Varia cross-mod content planned! (Thorium support being worked on. Currently only one healer weap)
+
+Fargo's Mutant Mod support.
+
+A unique soundtrack.
+
+
+**Don't forget to download Basemod! It's required for this mod because I'm a shitty coder without it ;w;**
+
 
 Thanks to all these amazing people for all their help with the mod!
 
-Don't forget to download Basemod!
-
-Coders:
+-TheDoctorDallin
+-Elizabeth Miles
 -Grox The Great
--Hallam, God of Rainbows (Mod of Redemption/Coder)
--Chinzilla
--StealYourFace
+-Hallam, God of Rainbows
+-Chinzilla00
 -Tails the Fox92
 -Gregg
--TailsTheFox
-
-Spriters:
 -Welox
 -KyuuSW
--Schmizz 
 -TheRedstoneBro
 -Glitched Pixel
 -Niorin
 -Tied
--Cooper
 -SpectralAves
--Darkpuppey
 -Beg
 -GamingWithZack
 -FailureOfMankind
-
-Composers:
--SpectralAves
 -Karamitasu
 -Charlie Debnam
 -OmegaFerretMusic
 -LordCakeSpy
--Wizzor
-
-Testers:
--Dradonhunter11
--JerryHNK
--Flurr
+-Rockwizard
+-Frogtism
+-ZipZopZoop
 -Fargowilta
--GamingWithZack
--WordOfTheDayIsYay
 -Fazergamer
 -Hero
-
-Artists:
+-Sume
 -MechanicPluto
 -Ezalos
-
-Development:
--TheDoctorDallin
--Eliza Miles
-
-Development Assistance:
--Fargowilta
--PrehistoricBanana
 -Dradonhunter11
--ZipZopZoop
--Omega-Z
+-Omega-Zacharias
 -Dan Yami
 
-Retired:
--JaceDaDorito
--Saucecoie
--RunicGlympse 
--Atlantean/Dot/Org
--MoonlitWyvern
--Toxin
--Ender
--Turquoise
--GabeHasWon
--PrehistoricBanana
--Runefield
--Non
+Thank you to our amazing Patrons!
+
+-Spectral Aves
+-Rockwizard

@@ -21,7 +21,7 @@ namespace AAMod.Items.Magic
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 8;             //mana use
-            item.UseSound = SoundID.Item13;            //this is the sound when you use the item
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Sounds/GONG");
             item.autoReuse = true;
             item.shoot = 122;
 			item.shootSpeed = 10f;
@@ -30,6 +30,7 @@ namespace AAMod.Items.Magic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gong");
+            Tooltip.SetDefault("MORE GONG");
         }
 
         public override void AddRecipes()  //How to craft this item

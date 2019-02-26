@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Protocol");
-            Main.npcFrameCount[npc.type] = 8;    //boss frame/animation 
+            Main.npcFrameCount[npc.type] = 8; 
             NPCID.Sets.TrailCacheLength[npc.type] = 15;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
@@ -60,7 +60,6 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.buffImmune[k] = true;
             }
-            npc.alpha = 255;
         }
 
         public override void NPCLoot()
@@ -204,10 +203,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                 }
             }
-            if (npc.life <= npc.lifeMax / 3)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
-            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -216,6 +211,11 @@ namespace AAMod.NPCs.Bosses.Zero
             float num367 = npc.position.X + (npc.width / 2) - Main.player[npc.target].position.X - (Main.player[npc.target].width / 2);
             float num368 = npc.position.Y + npc.height - 59f - Main.player[npc.target].position.Y - (Main.player[npc.target].height / 2);
             float num369 = (float)Math.Atan2(num368, num367) + 1.57f;
+            if (Panic)
+            {
+
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ZeroPinch");
+            }
             if (num369 < 0f)
             {
                 num369 += 6.283f;

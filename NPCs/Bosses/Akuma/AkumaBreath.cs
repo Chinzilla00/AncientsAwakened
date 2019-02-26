@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 int num297 = mod.DustType<Dusts.AkumaDust>();
                 if (Main.rand.Next(2) == 0)
                 {
-                    for (int num298 = 0; num298 < 3; num298++)
+                    for (int num298 = 0; num298 < 2; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                         if (Main.rand.Next(3) == 0)

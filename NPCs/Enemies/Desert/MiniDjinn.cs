@@ -34,7 +34,14 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && Main.dayTime ? .2f : 0f;
+            return spawnInfo.player.ZoneDesert && 
+                !spawnInfo.player.ZoneBeach &&
+                !spawnInfo.player.ZoneCorrupt &&
+                !spawnInfo.player.ZoneCrimson &&
+                !spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire &&
+                !spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno &&
+                NPC.downedBoss3 && 
+                Main.dayTime ? .1f : 0f;
         }
 
         public float[] shootAI = new float[4];
@@ -50,10 +57,16 @@ namespace AAMod.NPCs.Enemies.Desert
             {
                 npc.spriteDirection = 1;
             }
-            npc.noGravity = true;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
-            BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.15f, 6f, 250f, 120f, FireMagic);
+            BaseAI.AIFloater(npc, ref npc.ai, true, 0.2f, 3, 1.5f, .05f, 1.3f, 4);
+            npc.ai[3]++;
+
+            if (npc.ai[3] >= 120)
+            {
+                FireMagic(npc, npc.velocity);
+                npc.ai[3] = 0;
+            }
             
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
@@ -62,7 +75,11 @@ namespace AAMod.NPCs.Enemies.Desert
                 npc.frame.Y += 66;
                 if (Shooty == true)
                 {
-                    if (npc.frame.Y > (66 * 15))
+                    if (npc.frame.Y < 66 * 8)
+                    {
+                        npc.frame.Y = 66 * 8;
+                    }
+                    if (npc.frame.Y > (66 * 15) )
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;
@@ -84,7 +101,6 @@ namespace AAMod.NPCs.Enemies.Desert
         {
             Player player = Main.player[npc.target];
             Shooty = true;
-            npc.frame.Y = 66 * 8;
             int Shoot = Main.rand.Next(2);
             switch (Shoot)
             {
@@ -96,7 +112,7 @@ namespace AAMod.NPCs.Enemies.Desert
                     break;
             }
 
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Shoot, ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+            BaseAI.FireProjectile(player.Center, npc, Shoot, (int)(npc.damage * 0.25f), 0f, 2f);
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -9,7 +9,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Djinn   //where is located
 {
-    public class Sandstorm : ModItem
+    /*public class Sandstorm : ModItem
     {
 
         public override void SetStaticDefaults()
@@ -39,5 +39,5 @@ namespace AAMod.Items.Boss.Djinn   //where is located
             item.useTurn = true;
             item.shootSpeed = 7f;
         }
-    }
+    }*/
 }

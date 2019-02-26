@@ -32,6 +32,18 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             timer++;
             ATransitionActive = true;
+
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 10)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame += 1;
+            }
+
+            if (projectile.frame > 3)
+            {
+                projectile.frame = 0;
+            }
             
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
@@ -45,8 +57,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (timer >= 750)
             {
-                RVal--;
-                BVal++;
+                RVal -= 5;
+                BVal += 5;
                 if (RVal <= 0)
                 {
                     RVal = 0;

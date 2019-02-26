@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Enemies.Desert
             projectile.magic = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.alpha = 40;
         }
 
 

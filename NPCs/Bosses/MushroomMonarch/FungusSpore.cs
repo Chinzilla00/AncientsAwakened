@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mushling");
+            DisplayName.SetDefault("Fungal Spore");
         }
 
         public override void SetDefaults()

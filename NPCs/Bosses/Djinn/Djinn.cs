@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.value = (float)Item.buyPrice(0, 8, 0, 0);
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
-            music = MusicID.Sandstorm;
+            npc.boss = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn");
@@ -241,7 +241,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             if (!Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
-                string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar", "Sandstorm" };
+                string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
                 int loot = Main.rand.Next(lootTable.Length);
                 if (Main.rand.Next(6) == 0)
                 {

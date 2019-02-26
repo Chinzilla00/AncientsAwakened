@@ -107,21 +107,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             float dist = npc.Distance(player.Center);
             npc.ai[2]++;
-            if (npc.ai[2] == 500)
+            if (npc.ai[2] == 300)
             {
-
                 Roar(roarTimerMax, false);
                 internalAI[1] += 1;
                 Attack(npc);
             }
-            if (npc.ai[2] >= 600)
+            if (npc.ai[2] >= 400)
             {
                 npc.ai[2] = 0;
-            }
-
-            if (npc.life <= npc.lifeMax / 3)
-            {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
             }
 
             if (npc.life > npc.lifeMax / 3)
@@ -131,10 +125,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (npc.life <= npc.lifeMax / 3 && Panic == false && npc.type == mod.NPCType<AkumaA>())
             {
                 Panic = true;
+
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
                 Main.NewText(AAWorld.downedAkuma ? "Still got it, do you? Ya got fire in your spirit! I like that about you, kid!" : "What?! How have you lasted this long?! Why you little... I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
 
-            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 500)
+            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
             {
                 npc.ai[1] = 1;
             }
@@ -394,7 +390,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Player player = Main.player[npc.target];
             if (internalAI[1] == 1 || internalAI[1] == 7 || internalAI[1] == 15 || internalAI[1] == 18 || internalAI[1] == 21)
             {
-                if (internalAI[0] == 520 || internalAI[0] == 540 || internalAI[0] == 560 || internalAI[0] == 580)
+                if (npc.ai[2] == 320 || npc.ai[2] == 340 || npc.ai[2] == 360 || npc.ai[2] == 380)
                 {
                     int Fireballs = Main.expertMode ? 10 : 7;
                     for (int Loops = 0; Loops < Fireballs; Loops++)
@@ -406,7 +402,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if ((internalAI[1] == 2 || internalAI[1] == 6 || internalAI[1] == 12 || internalAI[1] == 16 || internalAI[1] == 24))
             {
-                if (internalAI[0] == 550)
+                if (npc.ai[2] == 350)
                 {
                     int Fireballs = Main.expertMode ? 5 : 3;
                     float spread = 45f * 0.0174f;
@@ -443,7 +439,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             
             if (internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 14 || internalAI[1] == 19 || internalAI[1] == 22)
             {
-                if (internalAI[0] == 550)
+                if (npc.ai[2] == 350)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                 }

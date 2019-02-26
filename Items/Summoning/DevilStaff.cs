@@ -16,20 +16,23 @@ namespace AAMod.Items.Summoning
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
-            item.shoot = mod.ProjectileType("DevilMinion");
             item.damage = 90;
-            item.width = 52;
-            item.height = 52;
-            item.UseSound = SoundID.Item44;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.noMelee = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-            item.knockBack = 5f;
-            item.rare = 3;
             item.summon = true;
-            item.mana = 5;
+            item.mana = 10;
+            item.width = 26;
+            item.height = 28;
+            item.useTime = 36;
+            item.useAnimation = 36;
+            item.useStyle = 1;
+            item.noMelee = true;
+            item.knockBack = 3;
+            item.rare = 4;
+            item.UseSound = SoundID.Item44;
+            item.shoot = mod.ProjectileType("DevilMinion");
+            item.shootSpeed = 10f;
+            item.buffType = mod.BuffType("DevilMinion");
+            item.buffTime = 3600;
+            item.autoReuse = true;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
