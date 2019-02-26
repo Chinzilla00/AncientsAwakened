@@ -10,7 +10,7 @@ namespace AAMod.Backgrounds
 		ScreenFog mireBGFog = new ScreenFog(true);
         public override bool ChooseBgStyle()
         {
-            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire;
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.LocalPlayer.ZoneSnow; ;
         }
 
         public override void ModifyFarFades(float[] fades, float transitionSpeed)
