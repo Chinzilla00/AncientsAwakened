@@ -350,5 +350,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             return false;
         }
 
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

@@ -603,6 +603,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
 
                 SNAKETYPES = GetWormTypes("MiniSerpent");
                 SERPENTTYPES = GetWormTypes("Serpent");
@@ -647,6 +648,7 @@ namespace AAMod
                 VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
                 VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
                 VoidSky.Stars = GetTexture("Backgrounds/StarTex");
+                VoidSky.SkyTexture = GetTexture("Backgrounds/Sky");
 
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
@@ -741,6 +743,7 @@ namespace AAMod
                 NPCs.Bosses.Zero.Taser.glowTex = null;
                 NPCs.Bosses.Zero.TeslaHand.glowTex = null;
                 NPCs.Bosses.Zero.SearcherZero.glowTex = null;
+                NPCs.Bosses.Zero.ZeroAwakened.glowTex = null;
                 NPCs.Enemies.Void.Searcher.glowTex = null;
             }
         }

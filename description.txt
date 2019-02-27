@@ -1,5 +1,7 @@
 The Ancients have Awakened. Chaos reigns, storms ravage, and reality tears at the seams!
 
+**PLEASE NOTE: This mod is still in beta. I'm still doing my best to iron out bugs and add content.**
+
 This mod adds:
 
 800+ Items, including EX items; powerful upgrades to previous weapons with a new twist to them!
@@ -65,6 +67,7 @@ Thanks to all these amazing people for all their help with the mod!
 -Dradonhunter11
 -Omega-Zacharias
 -Dan Yami
+-Gregg
 
 Thank you to our amazing Patrons!
 

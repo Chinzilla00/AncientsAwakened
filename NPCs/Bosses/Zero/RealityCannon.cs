@@ -290,7 +290,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 float rotation7 = (float)Math.Atan2((double)num22, (double)num21) - 1.57f;
                 Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
-                Main.spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Zero/ZeroArm"), new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.boneArmTexture.Width, Main.boneArmTexture.Height)), color7, rotation7, new Vector2((float)Main.boneArmTexture.Width * 0.5f, (float)Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                Texture2D Arm = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
+                Texture2D ArmGlow = mod.GetTexture("Glowmasks/ZeroArm_Glow");
+                Main.spriteBatch.Draw(Arm, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Arm.Width, Arm.Height)), color7, rotation7, new Vector2((float)Main.boneArmTexture.Width * 0.5f, (float)Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(ArmGlow, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Arm.Width, Arm.Height)), GetGlowAlpha(), rotation7, new Vector2((float)Main.boneArmTexture.Width * 0.5f, (float)Main.boneArmTexture.Height * 0.5f), 1f, SpriteEffects.None, 0f);
                 if (l == 0)
                 {
                     vector7.X += num21 * num23 / 2f;
@@ -310,7 +313,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public Color GetGlowAlpha()
         {
-            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+            return AAColor.ZeroShield * (Main.mouseTextColor / 255f);
         }
 
         public static Texture2D glowTex = null;

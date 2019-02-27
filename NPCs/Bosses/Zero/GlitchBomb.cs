@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.melee = true;
             projectile.penetrate = 1;
             projectile.timeLeft = 240;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.aiStyle = 0;
             projectile.scale *= 2;
             projectile.damage = 22;
@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.Red;
+            return AAColor.Oblivion;
         }
 
         public override void AI()
@@ -77,6 +77,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
+
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
         {

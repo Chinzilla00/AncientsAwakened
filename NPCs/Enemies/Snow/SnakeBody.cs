@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace AAMod.NPCs.Enemies.Snow
 {
@@ -7,7 +8,8 @@ namespace AAMod.NPCs.Enemies.Snow
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snow Serpent");
-		}
+            Main.npcFrameCount[npc.type] = 5;
+        }
 
 		public override void SetDefaults()
 		{

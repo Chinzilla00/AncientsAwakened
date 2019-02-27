@@ -330,6 +330,14 @@ namespace AAMod
             }
         }
 
+        public static Color ZeroShield
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Red, Color.DarkRed, Color.DarkRed, Color.Red);
+            }
+        }
+
         public static Color CursedInferno
         {
             get

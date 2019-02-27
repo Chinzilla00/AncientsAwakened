@@ -35,6 +35,7 @@ namespace AAMod.Backgrounds
         public static Texture2D boltTexture;
         public static Texture2D flashTexture;
         public static Texture2D Stars;
+        public static Texture2D SkyTexture;
         private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
@@ -51,6 +52,7 @@ namespace AAMod.Backgrounds
             boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
             flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
             Stars =  TextureManager.Load("Backgrounds/VoidStars");
+            SkyTexture = TextureManager.Load("Backgrounds/Sky");
         }
 
         public override void Update(GameTime gameTime)
@@ -143,6 +145,7 @@ namespace AAMod.Backgrounds
                 }
                 else
                 {
+                    spriteBatch.Draw(SkyTexture, planetPos, null, Color.Black, 0, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
@@ -152,7 +155,7 @@ namespace AAMod.Backgrounds
                 {
                     if (!AAWorld.downedIZ)
                     {
-                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), AAWorld.downedAllAncients ? 0.8f : .6f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), AAWorld.downedAllAncients ? 0.4f : .3f, SpriteEffects.None, 1f);
                     }
                 }
 				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));

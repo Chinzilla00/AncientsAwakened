@@ -22,13 +22,13 @@ namespace AAMod.NPCs.Bosses.Zero
 		}
 		public override void SetDefaults()
 		{
-			npc.aiStyle = 94;
+			npc.aiStyle = -1;
 			npc.lifeMax = 20000;
 			npc.damage = 0;
 			npc.defense = 20;
 			npc.knockBackResist = 0f;
-			npc.width = 170;
-			npc.height = 359;
+			npc.width = 110;
+			npc.height = 138;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.noGravity = true;
@@ -36,114 +36,73 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.noTileCollide = true;
 			npc.alpha = 0;
             npc.immortal = true;
+			npc.dontTakeDamage = true;
 			NPCID.Sets.MustAlwaysDraw[npc.type] = true;
 		}
 
-       
-        
 		public override void AI()
 		{
-            if (AAWorld.zeroUS == false)
+
+            RingRoatation += .01f;
+            if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Zero"));
                 npc.active = false;
+				npc.netUpdate = true;
+				return;
             }
-            npc.timeLeft = 1;
-            if (npc.ai[2] == 1f)
-            {
-                npc.velocity = Vector2.UnitY * npc.velocity.Length();
-                if (npc.velocity.Y < 0.25f)
-                {
-                    npc.velocity.Y = npc.velocity.Y + 0.02f;
-                }
-                if (npc.velocity.Y > 0.25f)
-                {
-                    npc.velocity.Y = npc.velocity.Y - 0.02f;
-                }
-                npc.dontTakeDamage = true;
-            }
+            npc.timeLeft = 10;
+			if(npc.ai[0] == 0)
+			{
+				npc.velocity.Y += 0.005f;	
+				if(npc.velocity.Y > .5f)
+				{
+					npc.ai[0] = 1f;
+					npc.netUpdate = true;
+				}	
+			}else
+			if(npc.ai[0] == 1)
+			{
+				npc.velocity.Y -= 0.005f;	
+				if(npc.velocity.Y < -.5f)
+				{
+					npc.ai[0] = 0f;
+					npc.netUpdate = true;
+				}				
+			}
         }
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-		{
-			var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(Main.npcTexture[npc.type], npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY), npc.frame,
-							 Color.White, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
-			return false;
-		}
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+        public bool saythelinezero = false;
+        public float ShieldScale = 0.5f;
+        public float RingRoatation = 0;
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public Color GetGlowAlpha()
         {
-            float num88 = ZeroHandler.Shield / (float)NPC.ShieldStrengthTowerMax;
-            if (ZeroHandler.Shield > 0)
-            {
-                Main.spriteBatch.End();
-                Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
-
-                var center = npc.Center - Main.screenPosition;
-                float num89 = 0f;
-                if (npc.ai[3] > 0f && npc.ai[3] <= 30f)
-                {
-                    num89 = 1f - npc.ai[3] / 30f;
-                }
-                DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), Color.White * (num88 * 0.8f + 0.2f), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num89 * 0.05f), SpriteEffects.None, 0);
-                GameShaders.Misc["ForceField"].UseColor(new Vector3(1f + num89 * 0.5f));
-                GameShaders.Misc["ForceField"].Apply(drawData);
-                drawData.Draw(Main.spriteBatch);
-                Main.spriteBatch.End();
-                Main.spriteBatch.Begin();
-                return;
-            }
-            if (npc.ai[3] > 0f)
-            {
-                Main.spriteBatch.End();
-                Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
-                var center = npc.Center - Main.screenPosition;
-                float num90 = npc.ai[3] / 120f;
-                float num91 = Math.Min(npc.ai[3] / 30f, 1f);
-                DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), new Color(new Vector4(1f - (float)Math.Sqrt(num91))), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num91), SpriteEffects.None, 0);
-                GameShaders.Misc["ForceField"].UseColor(new Vector3(2f));
-                GameShaders.Misc["ForceField"].Apply(drawData);
-                drawData.Draw(Main.spriteBatch);
-                Main.spriteBatch.End();
-                Main.spriteBatch.Begin();
-                return;
-            }
-        }
-    }
-
-    public class ZeroData : ScreenShaderData
-    {
-        int ZeroIndex;
-
-        public ZeroData(string passName) : base(passName) { }
-
-        void UpdatePuritySpiritIndex()
-        {
-            int Zero = AAMod.instance.NPCType("ZeroDeactivated");
-            if (ZeroIndex >= 0 && Main.npc[ZeroIndex].active && Main.npc[ZeroIndex].type == Zero)
-            {
-                return;
-            }
-            ZeroIndex = -1;
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                if (Main.npc[i].active && Main.npc[i].type == Zero)
-                {
-                    ZeroIndex = i;
-                    break;
-                }
-            }
+            return AAColor.ZeroShield;
         }
 
-        public override void Apply()
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color drawColor)
         {
-            UpdatePuritySpiritIndex();
-            if (ZeroIndex != -1)
+            Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
+            Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
+            Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
+
+            Player player = Main.player[Main.myPlayer];
+            if (!player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                UseTargetPosition(Main.npc[ZeroIndex].Center);
+                return false;
             }
-            base.Apply();
+
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, drawColor);
+            BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GetGlowAlpha(), true);
+            BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), drawColor, true);
+            BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GetGlowAlpha(), true);
+            return false;
         }
     }
 
@@ -151,28 +110,17 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public static int ZX = -1;
         public static int ZY = -1;
-        public static bool ZeroSleep;
         public static int Shield;
-        public static bool ZeroUS;
 
         public override void Initialize()
         {
-            ZeroUS = AAWorld.zeroUS;
             ZX = -1;
             ZY = -1;
         }
 
-        public override void PreUpdate()
-        {
-            ZeroSleep = NPC.AnyNPCs(mod.NPCType("ZeroDeactivated"));
-        }
-
         public override TagCompound Save()
         {
-            var tag = new TagCompound
-            {
-                {"ZeroSleep", ZeroSleep}
-            };
+            var tag = new TagCompound();
             if (ZX != -1)
             {
                 tag.Add("ZX", ZX);
@@ -183,43 +131,48 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void Load(TagCompound tag)
         {
-            ZeroSleep = tag.GetBool("ZeroSleep");
+			Reset(); //reset it so it doesn't fuck up between world loads	
             if (tag.ContainsKey("ZX"))
             {
                 ZX = tag.GetInt("ZX");
                 ZY = tag.GetInt("ZY");
-                NPC.NewNPC(ZX, ZY, mod.NPCType("ZeroDeactivated"));
+				if(!AAWorld.downedZero)			
+					NPC.NewNPC(ZX, ZY, mod.NPCType("ZeroDeactivated"));
             }
         }
 
         public override void PostUpdate()
         {
-            if (!ZeroUS)
+            if (Main.netMode != 1 && !AAWorld.downedZero)
             {
-                PutZeroHerelul(1, -1);
+                SpawnDeactivatedZero();
             }
         }
 
-        public void PutZeroHerelul(int position, int whoAmI)
+		public void Reset()
+		{
+			ZX = -1;
+			ZY = -1;
+			Shield = 0;	
+		}
+
+        public void SpawnDeactivatedZero()
         {
+			int whoAmI = -1;
             int VoidHeight = 120;
             Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, spawnTilePos.Y = VoidHeight);
             Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
+			bool spawnNewZero = !NPC.AnyNPCs(mod.NPCType<ZeroDeactivated>()) && !NPC.AnyNPCs(mod.NPCType<Zero>()) && !NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
 
-            if (whoAmI == -1)
+            if (spawnNewZero)
             {
                 whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
                 ZX = (int)spawnPos.X;
-                ZY = (int)spawnPos.Y;
-            }
-            else
-            {
-                Main.npc[whoAmI].Center = new Vector2(spawnPos.X, spawnPos.Y);
-                ZeroSleep = true;
-            }
-            if (Main.netMode == 2 && whoAmI < 200)
-            {
-                NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
+                ZY = (int)spawnPos.Y;				
+	            if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
+				{					
+					NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
+				}			
             }
         }
     }

@@ -41,7 +41,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             recipe.AddIngredient(null, "RubyGreatsword", 1);
             recipe.AddIngredient(null, "SapphireGreatsword", 1);
             recipe.AddIngredient(null, "TopazGreatsword", 1);
-            recipe.AddIngredient(null, "EmeraldGreatsword", 1);
+            recipe.AddIngredient(null, "AmberGreatsword", 1);
             recipe.AddIngredient(null, "DiamondGreatsword", 1); ;
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

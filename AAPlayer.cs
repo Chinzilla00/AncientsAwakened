@@ -977,6 +977,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            {
+                player.wingTimeMax = 60;
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.dayTime && !AAWorld.downedYamata)

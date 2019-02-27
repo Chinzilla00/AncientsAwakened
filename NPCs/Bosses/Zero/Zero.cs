@@ -185,13 +185,16 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public Color GetGlowAlpha()
         {
-            return new Color(233, 53, 53) * (Main.mouseTextColor / 255f);
+            return AAColor.ZeroShield * (Main.mouseTextColor / 255f);
         }
 
         public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;
+        public bool ArmsGone = false;
+        public float ShieldScale = 0.5f;
+        public float RingRoatation = 0;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
@@ -208,6 +211,16 @@ namespace AAMod.NPCs.Bosses.Zero
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+
+            Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
+            Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
+            Texture2D RingGlow = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing_Glow");
+            if (ShieldScale > 0)
+            {
+                BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
+                BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, ShieldScale, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
+            }
             return false;
         }
 
@@ -223,6 +236,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             MinionTimer++;
             LineStopper--;
+            RingRoatation += 0.03f;
             if (MinionTimer == 180 && NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 8)
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<SearcherZero>());
@@ -263,11 +277,41 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
             {
-                saythelinezero = true;
-                Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. SHIELDS L0WERED. RER0UTING RES0URCES TO OFFENSIVE PR0T0C0LS", Color.Red.R, Color.Red.G, Color.Red.B);
+                ArmsGone = true;
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
                 npc.damage = 160;
+            }
+
+            if (ArmsGone && !saythelinezero)
+            {
+                saythelinezero = true;
+                Main.NewText("CRITICAL ERR0R: ARM UNITS NOT FOUND. RER0UTING RES0URCES TO OFFENSIVE PR0T0C0LS. SHIELD L0WERED.", Color.Red.R, Color.Red.G, Color.Red.B);
+            }
+
+            if (!ArmsGone)
+            {
+                ShieldScale += .05f;
+                if (ShieldScale > .5f)
+                {
+                    ShieldScale = .5f;
+                }
+            }
+            else if (npc.ai[1] == 1f)
+            {
+                ShieldScale += .8f;
+                if (ShieldScale > .5f)
+                {
+                    ShieldScale = .5f;
+                }
+            }
+            else
+            {
+                ShieldScale -= .05f;
+                if (ShieldScale > .5f)
+                {
+                    ShieldScale = .5f;
+                }
             }
 
             if (Main.player[npc.target].dead)
@@ -362,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else if (npc.ai[1] == 1f)
             {
-                npc.defense = 180;
+                npc.dontTakeDamage = true;
                 npc.damage = 200;
                 npc.rotation += (float)npc.direction * 0.7f;
                 Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
@@ -386,6 +430,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 240f)
                 {
+                    npc.dontTakeDamage = false;
                     npc.ai[2] = 0f;
                     npc.ai[1] = 0f;
                     npc.TargetClosest(true);

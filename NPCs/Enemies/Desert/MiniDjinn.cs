@@ -9,16 +9,16 @@ using BaseMod;
 namespace AAMod.NPCs.Enemies.Desert
 {
     public class MiniDjinn : ModNPC
-	{
+    {
         private bool Shooty = false;
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Djinn");
-			Main.npcFrameCount[npc.type] = 16;
-		}
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Djinn");
+            Main.npcFrameCount[npc.type] = 16;
+        }
 
-		public override void SetDefaults()
-		{
+        public override void SetDefaults()
+        {
             npc.lifeMax = 200;
             npc.defense = 20;
             npc.damage = 20;
@@ -34,12 +34,12 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.ZoneDesert && 
-                !spawnInfo.player.ZoneBeach &&
-                !spawnInfo.player.ZoneCorrupt &&
-                !spawnInfo.player.ZoneCrimson &&
-                !spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire &&
-                !spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno &&
+            return spawnInfo.player.ZoneDesert &&
+                !(spawnInfo.player.ZoneBeach ||
+                spawnInfo.player.ZoneCorrupt ||
+                spawnInfo.player.ZoneCrimson ||
+                spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire ||
+                spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno) &&
                 NPC.downedBoss3 && 
                 Main.dayTime ? .1f : 0f;
         }

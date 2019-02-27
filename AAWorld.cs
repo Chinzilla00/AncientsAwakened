@@ -32,6 +32,8 @@ namespace AAMod
         public static int pagodaTiles = 0;
         public static int lakeTiles = 0;
         public static int shipTiles = 0;
+        public static int Radium = 0;
+        public static int Darkmatter = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -123,7 +125,7 @@ namespace AAMod
             downedSAncient = false;
             downedAkuma = false;
             downedYamata = false;
-            zeroUS = true;
+            zeroUS = false;
             downedZero = false;
             downedShen = false;
             downedIZ = false;
@@ -1218,7 +1220,7 @@ namespace AAMod
         public override void TileCountsAvailable(int[] tileCounts)
         {
             Main.sandTiles = Main.sandTiles + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
-            Main.snowTiles = Main.sandTiles + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()];
+            Main.snowTiles = Main.snowTiles + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()];
             //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
@@ -1228,6 +1230,8 @@ namespace AAMod
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
             //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
+            Radium = tileCounts[mod.TileType<RadiumOre>()];
+            Darkmatter = tileCounts[mod.TileType<Darkmatter>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)

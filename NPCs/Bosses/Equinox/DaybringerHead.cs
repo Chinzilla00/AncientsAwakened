@@ -33,6 +33,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
+			npc.timeLeft = 500;
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -40,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
             music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
-
             musicPriority = MusicPriority.BossHigh;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -52,7 +52,13 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public override void BossHeadRotation(ref float rotation)
 		{
 			rotation = npc.rotation;
-		}		
+		}
+
+		public override bool CheckActive()
+		{
+			npc.timeLeft--;
+			return npc.timeLeft < 50;
+		}
 
 		public void HandleDayNightCycle()
 		{
@@ -116,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				}
 			}
 
-			if(isHead)
+			if(isHead) //prevents despawn and allows them to run away
 			{
 				bool foundTarget = TargetClosest();		
 				if(foundTarget)
@@ -126,12 +132,12 @@ namespace AAMod.NPCs.Bosses.Equinox
 				{					
 					if(npc.timeLeft > 50) npc.timeLeft = 50;
 					npc.velocity.Y -= 0.2f;
-					if(npc.velocity.Y > 20f) npc.velocity.Y = 20f;
+					if(npc.velocity.Y < -20f) npc.velocity.Y = -20f;
 					return;
 				}
 			}else
 			{
-				npc.timeLeft = 300;
+				npc.timeLeft = 300; //pieces should not despawn naturally, only despawn when the head does
 			}
 			
 			float wormDistance = -26f;
@@ -139,14 +145,27 @@ namespace AAMod.NPCs.Bosses.Equinox
 			float moveSpeedMax = 16f;	
 			npc.damage = 200;
 			npc.defense = 100;
+			//int laserFireRate = 300;
+			//int laserInterval = 20;
 			if(wormStronger)
 			{
-                aiCount = (!nightcrawler ? 6 : 4);
-				moveSpeedMax = (!nightcrawler ? 20f : 16f);
+				aiCount = (!nightcrawler ? 6 : 4); //daybringer is a bit faster
+				moveSpeedMax = (!nightcrawler ? 20f : 16f); //ditto as above
 				npc.damage = 300;		
-				npc.defense = (!nightcrawler ? 120 : 150);
+				npc.defense = (!nightcrawler ? 120 : 150); //nightcrawler has more defense
+				//laserFireRate = 200;
+				//laserInterval = 10;
 			}
-            
+
+			/*if(Main.netMode != 1 && isHead) //shoot lasers (disabled - probes fire lasers)
+			{
+				Player player = Main.player[npc.target];
+				int projType = (nightcrawler ? mod.ProjType("Moonray") : mod.ProjType("Sunbeam"));
+				if((customAI[0] <= (laserInterval * 3)) && customAI[0] % laserInterval == 0 && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+					BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.2f), 0f, 4f);
+				customAI[0]--;
+				if(customAI[0] <= 0) customAI[0] = laserFireRate;			
+			}*/
 			if(!isHead)
 			{
 				SpawnProbe();
@@ -178,10 +197,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
         }
 
-		public int playerTooFarDist = 6000; //200 tile radius, these worms move fast!		
+		public int playerTooFarDist = 16000; //1000 tile radius, these worms move fast!		
 		public bool TargetClosest()
 		{
-			int[] players = BaseAI.GetPlayers(npc.Center, Math.Min(6000f, playerTooFarDist * 3));
+			int[] players = BaseAI.GetPlayers(npc.Center, Math.Min(20000f, playerTooFarDist * 3));
 			float dist = 999999999f;
 			int foundPlayer = -1;
 			for (int m = 0; m < players.Length; m++)
@@ -266,12 +285,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             int otherWormAlive = (nightcrawler ? mod.NPCType("DaybringerHead") : mod.NPCType("NightcrawlerHead"));
             if (!nightcrawler)
             {
-                AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
             }
             else
             {
-                AAWorld.downedNC = true;
                 BaseAI.DropItem(npc, mod.ItemType("NCTrophy"), 1, 1, 15, true);
             }
             if (NPC.CountNPCS(otherWormAlive) == 0)

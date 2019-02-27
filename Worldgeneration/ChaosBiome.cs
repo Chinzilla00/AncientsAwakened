@@ -59,7 +59,7 @@ namespace AAMod.Worldgeneration
 			}));
 			WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //stone...
 			{
-				new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone }),
+				new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone }),
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileStone, true, true)
 			}));			
@@ -214,7 +214,7 @@ namespace AAMod.Worldgeneration
              }));*/
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
 			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone }),
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileStone, true, true)
             }));

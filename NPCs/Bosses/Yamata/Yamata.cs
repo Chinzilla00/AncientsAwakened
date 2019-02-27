@@ -213,18 +213,27 @@ namespace AAMod.NPCs.Bosses.Yamata
 		}
 
         public int SayTheLineYamata = 300;
+        public bool NoFly4U = false;
+        public int NoFlyCountDown = 60;
 
         public override void AI()
         {
+            Player player = Main.player[npc.target];
+
+            NoFlyCountDown--;
+            if (!NoFly4U && NoFlyCountDown <= 0 && !AAWorld.downedYamata)
+            {
+                NoFly4U = true;
+                BaseUtility.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!",  new Color(45, 46, 70));
+            }
+
             if (Tag)
             {
                 npc.life = 0;
                 npc.checkDead();
                 npc.netUpdate = true;
             }
-
             
-	
 			if(isAwakened)
 			{
 				MinionTimer++;
@@ -254,7 +263,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     npc.alpha += 10;
                     if (npc.alpha >= 255)
                     {
-                        Player player = Main.player[npc.target];
                         Vector2 tele = new Vector2(player.Center.X, player.Center.Y - 100);
                         TeleportMe1 = true;
                         TeleportMe2 = true;

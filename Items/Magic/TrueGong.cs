@@ -24,7 +24,7 @@ namespace AAMod.Items.Magic
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 13;             //mana use
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Sounds/MOARGONG");  //this is the sound when you use the item
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/MOARGONG"); 
             item.autoReuse = true;
             item.shoot = 122;
 			item.shootSpeed = 10f;
@@ -33,7 +33,7 @@ namespace AAMod.Items.Magic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The True Gong");
-            Tooltip.SetDefault("MORE GONG, CHARLIE. MORE. GONG.");
+            Tooltip.SetDefault("MORE GONG");
         }
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

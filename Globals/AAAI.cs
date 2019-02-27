@@ -5,6 +5,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod
 {
@@ -594,5 +595,41 @@ namespace AAMod
             }
         }
 
+        public static void DrawAura(object sb, Texture2D texture, int shader, Entity codable, float auraPercent, float distanceScalar = 1f, float offsetX = 0f, float offsetY = 0f, Color? overrideColor = null)
+        {
+            int frameCount = (codable is NPC ? Main.npcFrameCount[((NPC)codable).type] : 1);
+            Rectangle frame = (codable is NPC ? ((NPC)codable).frame : new Rectangle(0, 0, texture.Height, texture.Width));
+            float scale = (codable is NPC ? ((NPC)codable).scale : ((Projectile)codable).scale);
+            float rotation = (codable is NPC ? ((NPC)codable).rotation : ((Projectile)codable).rotation);
+            int spriteDirection = (codable is NPC ? ((NPC)codable).spriteDirection : ((Projectile)codable).spriteDirection);
+            float offsetY2 = (codable is NPC ? ((NPC)codable).gfxOffY : 0f);
+            DrawAura(sb, texture, shader, codable.position + new Vector2(0f, offsetY2), codable.width, codable.height, auraPercent, distanceScalar, scale, rotation, spriteDirection, frameCount, frame, offsetX, offsetY, overrideColor);
+        }
+
+        public static void DrawAura(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, float auraPercent, float distanceScalar = 1f, float scale = 1f, float rotation = 0f, int direction = 0, int framecount = 1, Rectangle frame = default(Rectangle), float offsetX = 0f, float offsetY = 0f, Color? overrideColor = null)
+        {
+            Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
+            float percentHalf = auraPercent * 5f * distanceScalar;
+            float percentLight = MathHelper.Lerp(0.8f, 0.2f, auraPercent);
+            lightColor.R = (byte)(lightColor.R * percentLight);
+            lightColor.G = (byte)(lightColor.G * percentLight);
+            lightColor.B = (byte)(lightColor.B * percentLight);
+            lightColor.A = (byte)(lightColor.A * percentLight);
+            Vector2 position2 = position;
+            for (int m = 0; m < 4; m++)
+            {
+                float offX = offsetX;
+                float offY = offsetY;
+                switch (m)
+                {
+                    case 0: offX += percentHalf; break;
+                    case 1: offX -= percentHalf; break;
+                    case 2: offY += percentHalf; break;
+                    case 3: offY -= percentHalf; break;
+                }
+                position2 = new Vector2(position.X + offX, position.Y + offY);
+                BaseDrawing.DrawTexture(sb, texture, shader, position2, width, height, scale, rotation, direction, framecount, frame, lightColor, true);
+            }
+        }
     }
 }
