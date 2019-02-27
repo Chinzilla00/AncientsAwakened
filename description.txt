@@ -29,7 +29,7 @@ Fargo's Mutant Mod support.
 A unique soundtrack.
 
 
-**Don't forget to download Basemod! It's required for this mod because I'm a shitty coder without it ;w;**
+**Don't forget to download Base Mod! It's required for this mod because I'm a shitty coder without it ;w;**
 
 
 Thanks to all these amazing people for all their help with the mod!

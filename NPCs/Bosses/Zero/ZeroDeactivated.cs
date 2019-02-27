@@ -5,11 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using BaseMod;
-using Terraria.Graphics.Shaders;
-using System;
-using Terraria.Graphics.Effects;
-using Terraria.DataStructures;
-using Terraria.Graphics;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -32,12 +27,10 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.noGravity = true;
-			npc.npcSlots = 0;
 			npc.noTileCollide = true;
 			npc.alpha = 0;
             npc.immortal = true;
 			npc.dontTakeDamage = true;
-			NPCID.Sets.MustAlwaysDraw[npc.type] = true;
 		}
 
 		public override void AI()
@@ -145,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.netMode != 1 && !AAWorld.downedZero)
             {
-                SpawnDeactivatedZero();
+                //SpawnDeactivatedZero();
             }
         }
 
@@ -153,13 +146,12 @@ namespace AAMod.NPCs.Bosses.Zero
 		{
 			ZX = -1;
 			ZY = -1;
-			Shield = 0;	
 		}
 
         public void SpawnDeactivatedZero()
         {
 			int whoAmI = -1;
-            int VoidHeight = 120;
+            int VoidHeight = 140;
             Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, spawnTilePos.Y = VoidHeight);
             Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 			bool spawnNewZero = !NPC.AnyNPCs(mod.NPCType<ZeroDeactivated>()) && !NPC.AnyNPCs(mod.NPCType<Zero>()) && !NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());

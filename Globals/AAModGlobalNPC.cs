@@ -722,15 +722,15 @@ namespace AAMod
                 pool.Clear();
                 if (AAWorld.downedEquinox)
                 {
-                    pool.Add(mod.NPCType("Searcher"), .5f);
-                    if (AAWorld.downedZero && !Main.expertMode)
+                    pool.Add(mod.NPCType("Searcher"), .2f);
+                    if (AAWorld.downedZero && Main.expertMode)
                     {
-                        pool.Add(mod.NPCType("Null"), .5f);
+                        pool.Add(mod.NPCType("Null"), .1f);
                     }
                 }
                 else
                 {
-                    pool.Add(mod.NPCType("Searcher1"), .5f);
+                    pool.Add(mod.NPCType("Searcher1"), .2f);
                 }
             }
 
@@ -764,18 +764,10 @@ namespace AAMod
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
-			if (type == NPCID.Demolitionist)
+			if (type == NPCID.Demolitionist && !Main.dayTime)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("M79Round"));
                 nextSlot++;
-            }
-        }
-
-        public override void GetChat(NPC npc, ref string chat)
-        {
-            if (npc.type == NPCID.Clothier && Main.rand.Next(14) == 0)
-            {
-                chat = "If you don't want tobe destroyed, I'd avoid using a Blessed Sock. The great silken lord does not like to be bothered.";
             }
         }
 

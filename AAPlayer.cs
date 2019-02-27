@@ -299,6 +299,12 @@ namespace AAMod
             Compass = false;
 
             //Biomes
+            
+        }
+
+        public override void Initialize()
+        {
+            ManaLantern = 0;
             ZoneInferno = false;
             ZoneMire = false;
             ZoneMush = false;
@@ -307,12 +313,6 @@ namespace AAMod
             ZoneRisingMoonLake = false;
             ZoneRisingSunPagoda = false;
             ZoneShip = false;
-            
-        }
-
-        public override void Initialize()
-        {
-            ManaLantern = 0;
         }
 
         public override TagCompound Save()
@@ -1985,7 +1985,6 @@ namespace AAMod
             if (Time && Main.rand.Next(2) == 0)
             {
                 target.AddBuff(BuffID.Chilled, 180);
-                target.AddBuff(mod.BuffType("TimeFrozen"), 300);
             }
 
             if (DynaskullSet && proj.thrown && Main.rand.Next(2) == 0)
