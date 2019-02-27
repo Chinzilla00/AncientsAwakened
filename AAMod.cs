@@ -921,7 +921,7 @@ namespace AAMod
             {
                 music = MusicID.Boss4;
             }
-            if (AAWorld.downedAllAncients && (zoneIZ || zoneShen))
+            if (zoneIZ && AAWorld.downedZero)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");

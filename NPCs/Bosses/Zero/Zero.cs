@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.knockBackResist = -1f;
             npc.boss = true;
             npc.friendly = false;
-            npc.npcSlots = 1f;
+            npc.npcSlots = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -214,12 +214,12 @@ namespace AAMod.NPCs.Bosses.Zero
 
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
-            Texture2D RingGlow = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing_Glow");
+            Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
             if (ShieldScale > 0)
             {
                 BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
-                BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, ShieldScale, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
-                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
+                BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
             }
             return false;
         }
@@ -291,7 +291,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (!ArmsGone)
             {
-                ShieldScale += .05f;
+                ShieldScale += .02f;
                 if (ShieldScale > .5f)
                 {
                     ShieldScale = .5f;
@@ -413,7 +413,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                 float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
                 float num446 = (float)Math.Sqrt((double)((num444 * num444) + (num445 * num445)));
-                float num447 = 10f;
+                float num447 = 8f;
                 num447 += num446 / 100f;
                 if (num447 < 8f)
                 {

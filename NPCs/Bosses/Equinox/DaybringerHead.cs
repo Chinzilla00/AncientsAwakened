@@ -145,27 +145,13 @@ namespace AAMod.NPCs.Bosses.Equinox
 			float moveSpeedMax = 16f;	
 			npc.damage = 200;
 			npc.defense = 100;
-			//int laserFireRate = 300;
-			//int laserInterval = 20;
 			if(wormStronger)
 			{
-				aiCount = (!nightcrawler ? 6 : 4); //daybringer is a bit faster
-				moveSpeedMax = (!nightcrawler ? 20f : 16f); //ditto as above
+				aiCount = (!nightcrawler ? 6 : 4); 
+				moveSpeedMax = (!nightcrawler ? 20f : 16f);
 				npc.damage = 300;		
-				npc.defense = (!nightcrawler ? 120 : 150); //nightcrawler has more defense
-				//laserFireRate = 200;
-				//laserInterval = 10;
+				npc.defense = (!nightcrawler ? 120 : 150); 
 			}
-
-			/*if(Main.netMode != 1 && isHead) //shoot lasers (disabled - probes fire lasers)
-			{
-				Player player = Main.player[npc.target];
-				int projType = (nightcrawler ? mod.ProjType("Moonray") : mod.ProjType("Sunbeam"));
-				if((customAI[0] <= (laserInterval * 3)) && customAI[0] % laserInterval == 0 && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-					BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.2f), 0f, 4f);
-				customAI[0]--;
-				if(customAI[0] <= 0) customAI[0] = laserFireRate;			
-			}*/
 			if(!isHead)
 			{
 				SpawnProbe();
@@ -285,10 +271,12 @@ namespace AAMod.NPCs.Bosses.Equinox
             int otherWormAlive = (nightcrawler ? mod.NPCType("DaybringerHead") : mod.NPCType("NightcrawlerHead"));
             if (!nightcrawler)
             {
+                AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
             }
             else
             {
+                AAWorld.downedNC = true;
                 BaseAI.DropItem(npc, mod.ItemType("NCTrophy"), 1, 1, 15, true);
             }
             if (NPC.CountNPCS(otherWormAlive) == 0)

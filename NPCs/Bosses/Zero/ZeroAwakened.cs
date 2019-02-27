@@ -147,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Zero
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
-            BaseDrawing.DrawAfterimage(spritebatch, ZeroTrail, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
+            BaseDrawing.DrawAfterimage(spritebatch, ZeroTrail, 0, npc, 1f, 1f, 10, false, 0f, 0f, AAColor.Oblivion);
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);

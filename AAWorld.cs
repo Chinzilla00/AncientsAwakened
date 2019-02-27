@@ -207,7 +207,6 @@ namespace AAMod
             if (downedSAncient) downed.Add("SA");
             if (downedAkuma) downed.Add("Akuma");
             if (downedYamata) downed.Add("Yamata");
-            if (zeroUS) downed.Add("0U");
             if (downedZero) downed.Add("0");
             if (downedShen) downed.Add("Shen");
             if (downedIZ) downed.Add("IZ");
@@ -263,7 +262,6 @@ namespace AAMod
             flags3[0] = downedAllAncients;
             flags3[1] = downedYamata;
             flags3[2] = Chairlol;
-            flags3[3] = zeroUS;
             flags3[4] = downedZero;
             flags3[5] = downedSAncient;
             flags3[6] = downedShen;
@@ -324,7 +322,6 @@ namespace AAMod
             downedAllAncients = flags3[0];
             downedYamata = flags3[1];
             Chairlol = flags3[2];
-            zeroUS = flags3[3];
             downedZero = flags3[4];
             downedSAncient = flags3[4];
             downedShen = flags3[6];
@@ -379,7 +376,6 @@ namespace AAMod
             downedSAncient = downed.Contains("SA");
             downedAkuma = downed.Contains("Akuma");
             downedYamata = downed.Contains("Yamata");
-            zeroUS = downed.Contains("0U");
             downedZero = downed.Contains("0");
             downedShen = downed.Contains("Shen");
             downedIZ = downed.Contains("IZ");
