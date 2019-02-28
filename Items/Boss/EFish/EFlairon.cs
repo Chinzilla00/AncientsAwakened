@@ -10,7 +10,6 @@ namespace AAMod.Items.Boss.EFish
 {
     public class EFlairon : ModItem
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Emperor Flairon");
@@ -23,7 +22,5 @@ namespace AAMod.Items.Boss.EFish
             item.rare = 11;
             item.shoot = mod.ProjectileType("EFlairon");
         }
-
-
     }
 }

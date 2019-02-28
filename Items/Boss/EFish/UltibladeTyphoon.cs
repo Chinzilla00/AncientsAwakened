@@ -11,8 +11,7 @@ namespace AAMod.Items.Boss.EFish
 		{
 			DisplayName.SetDefault("Ultiblade Typhoon");
 			Tooltip.SetDefault(@"Casts 3 fast homing razorwheels
-Razorwheels are ignoring enemy invincibility frames
-Razorblade Typhoojn EX");
+Razorblade Typhoon EX");
 		}
 
 		public override void SetDefaults()

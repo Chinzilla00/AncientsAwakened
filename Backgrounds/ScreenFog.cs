@@ -1,8 +1,10 @@
-﻿
+﻿using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using BaseMod;
+using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {
@@ -51,9 +53,16 @@ namespace AAMod.Backgrounds
         {
 			if(fadeOpacity == 0f) return; //don't draw if no fog
             if(setSB) Main.spriteBatch.Begin();
-			
-			Color bgColor = GetAlpha(defaultColor, 0.2f * fadeOpacity * dayTimeOpacity);
-			Color fogColor = GetAlpha(defaultColor, 0.4f * fadeOpacity * dayTimeOpacity);
+            Mod mod = AAMod.instance;
+
+            Color DefaultFog = new Color(62, 68, 100);
+            Color YamataFog = new Color(100, 38, 62);
+
+            bool Yamata = NPC.AnyNPCs(mod.NPCType<Yamata>());
+            bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
+
+            Color bgColor = GetAlpha(defaultColor, 0.2f * fadeOpacity * dayTimeOpacity);
+			Color fogColor = GetAlpha(YamataA ? YamataFog : DefaultFog, 0.4f * fadeOpacity * dayTimeOpacity);
 			
 			//ensure we cover the whole screen first
            // Main.spriteBatch.Draw(texture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), null, bgColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);	

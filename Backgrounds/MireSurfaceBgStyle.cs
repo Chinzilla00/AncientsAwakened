@@ -2,6 +2,8 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.Backgrounds
 {
@@ -51,8 +53,14 @@ namespace AAMod.Backgrounds
 		
 		public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
 		{
-			mireBGFog.Update(mod.GetTexture("Backgrounds/fog"));
-			mireBGFog.Draw(mod.GetTexture("Backgrounds/fog"), true, new Color(120, 120, 200));
+
+            Color DefaultFog = new Color(120, 120, 200);
+            Color YamataFog = new Color(200, 100, 100);
+            
+            bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
+
+            mireBGFog.Update(mod.GetTexture("Backgrounds/FogTex"));
+			mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);
 			return true;
 		}
     }

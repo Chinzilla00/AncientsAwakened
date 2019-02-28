@@ -9,23 +9,9 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]	
     public class Zero : ModNPC
     {
-        public const string HeadTex = "AAMod/NPCs/Boss/Zero_Head_Boss";
-
-        public override void BossHeadSlot(ref int index)
-        {
-
-            index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
-
-        }
-        public override void BossHeadRotation(ref float rotation)
-        {
-
-            rotation = npc.rotation;
-
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
@@ -319,7 +305,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead)
                 {
-                    npc.ai[1] = 3f;
+					if(npc.ai[1] != 5f)
+					{
+						npc.ai[1] = 3f;
+						npc.netUpdate = true;
+					}
                 }
             }
 
@@ -328,8 +318,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.TargetClosest(true);
                 if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-
-                    npc.ai[1] = 4f;
+					if(npc.ai[1] != 5f)
+					{
+						npc.ai[1] = 4f;
+						npc.netUpdate = true;
+					}
                 }
             }
 
@@ -445,16 +438,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else if (npc.ai[1] == 4f)
             {
+				BaseUtility.Chat("KILLING ZERO");				
                 Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red);
                 npc.ai[1] = 5f;
             }
             else if (npc.ai[1] == 5f)
             {
-                npc.velocity.Y = npc.velocity.Y - 0.1f;
-                if (npc.velocity.Y < 0f)
-                {
-                    npc.velocity.Y = npc.velocity.Y * 0.95f;
-                }
+                npc.velocity.Y -= 0.1f;
+                if (npc.velocity.Y < -16f)
+					npc.velocity.Y = -16f;
                 npc.velocity.X = npc.velocity.X * 0.95f;
                 if (npc.timeLeft > 500)
                 {

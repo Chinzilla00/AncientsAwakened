@@ -12,17 +12,32 @@ namespace AAMod.Items.Summoning.Minions
         {
             projectile.width = 80;
             projectile.height = 74;
-            projectile.aiStyle = 53;
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.ignoreWater = true;
             projectile.sentry = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Hydra");
+			Main.projFrames[projectile.type] = 10;
 
         }
+		
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		{
+			fallThrough = false;
+			return true;
+		}
+		
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			projectile.width = 80;
+			projectile.velocity.Y = 0f;
+			return false;
+		}
+		
         public override void AI()
         {
             if (projectile.localAI[0] == 0f)
@@ -186,7 +201,7 @@ namespace AAMod.Items.Summoning.Minions
                         num523 *= num525;
                         num524 *= num525;
                         int num526 = projectile.damage;
-                        Projectile.NewProjectile(vector37.X, vector37.Y, num523, num524, num522, num526, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(vector37.X, vector37.Y, num523*1.5f, num524*1.5f, num522, num526, projectile.knockBack, Main.myPlayer, 0f, 0f);
                     }
                 }
             }

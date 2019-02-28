@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.EFish
             DisplayName.SetDefault("Hurricane");
 			Tooltip.SetDefault(@"Shoots 2 waves of 6 arrows
 You have a chance to shoot Oceanic Arrow
-n66% chance not to consume arrow
+66% chance not to consume arrow
 Tsunami EX");
         }
 

@@ -9,7 +9,6 @@ namespace AAMod.Projectiles.EFish
 {
     public class EFlairon : ModProjectile
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Emperor Flairon");
@@ -18,6 +17,32 @@ namespace AAMod.Projectiles.EFish
         {
             projectile.CloneDefaults(ProjectileID.Flairon);
         }
+		
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			for (int h = 0; h < 6; h++)
+			{
+				Vector2 vel = new Vector2(0, -1);
+				float rand = Main.rand.NextFloat() * 6.3f;
+				vel = vel.RotatedBy(rand);
+				vel *= 4f;
+				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+			}
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			for (int h = 0; h < 6; h++)
+			{
+				Vector2 vel = new Vector2(0, -1);
+				float rand = Main.rand.NextFloat() * 6.3f;
+				vel = vel.RotatedBy(rand);
+				vel *= 4f;
+				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+			}
+			return true;
+		}
+		
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 

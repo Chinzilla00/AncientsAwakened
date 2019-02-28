@@ -30,13 +30,17 @@ namespace AAMod.Items.Boss.EFish
 
         public override void OpenBossBag(Player player)
         {
+            if (Main.rand.Next(7) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("EFishMask"));
+            }
             if (Main.rand.NextFloat() < 0.01f)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("FancyTruffle"));
-            string[] lootTable = { "EFishWings", "EFlairon", "Hurricane", "SoapBlaster", "UltibladeTyphoon" };
+            string[] lootTable = { "EFishWings", "EFlairon", "FishnadoFtaff", "Hurricane", "SoapBlaster", "UltibladeTyphoon"};
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

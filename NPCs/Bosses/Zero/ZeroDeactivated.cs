@@ -8,6 +8,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]	
 	public class ZeroDeactivated : ModNPC
 	{
         public static int ZeroShieldStrength = 0;
@@ -29,9 +30,14 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.alpha = 0;
-            npc.immortal = true;
 			npc.dontTakeDamage = true;
+			npc.boss = false;
 		}
+
+		public override bool CheckActive()
+		{
+			return false;
+		}		
 
 		public override void AI()
 		{
@@ -39,6 +45,7 @@ namespace AAMod.NPCs.Bosses.Zero
             RingRoatation += .01f;
             if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
+				AAWorld.zeroUS = false;
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Zero"));
                 npc.active = false;
 				npc.netUpdate = true;
@@ -82,12 +89,6 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
-
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
-            {
-                return false;
-            }
 
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
@@ -138,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.netMode != 1 && !AAWorld.downedZero)
             {
-                //SpawnDeactivatedZero();
+                SpawnDeactivatedZero();
             }
         }
 
@@ -151,21 +152,21 @@ namespace AAMod.NPCs.Bosses.Zero
         public void SpawnDeactivatedZero()
         {
 			int whoAmI = -1;
-            int VoidHeight = 140;
-            Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, spawnTilePos.Y = VoidHeight);
-            Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
-			bool spawnNewZero = !NPC.AnyNPCs(mod.NPCType<ZeroDeactivated>()) && !NPC.AnyNPCs(mod.NPCType<Zero>()) && !NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
-
-            if (spawnNewZero)
-            {
-                whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
-                ZX = (int)spawnPos.X;
-                ZY = (int)spawnPos.Y;				
-	            if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
+			int VoidHeight = 140;
+			
+			Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);				
+			Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
+			bool anyZerosExist = NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")) || NPC.AnyNPCs(mod.NPCType("Zero")) || NPC.AnyNPCs(mod.NPCType("ZeroAwakened"));			
+			if (!anyZerosExist)
+			{
+				whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
+				ZX = (int)spawnPos.X;
+				ZY = (int)spawnPos.Y;				
+				if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
 				{					
 					NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
 				}			
-            }
+			}
         }
     }
 }

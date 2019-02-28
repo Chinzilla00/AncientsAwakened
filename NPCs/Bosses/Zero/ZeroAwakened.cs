@@ -279,7 +279,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (dead2)
             {
-
                 if (Killed == false)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -291,13 +290,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.timeLeft > 10)
                 {
                     npc.timeLeft = 10;
-                    return;
                 }
-
-                if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+				return;
             }
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
+				BaseUtility.Chat("KILLING ZERO A");
                 if (Killed == false)
                 {
                     Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -309,8 +308,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.timeLeft > 10)
                 {
                     npc.timeLeft = 10;
-                    return;
                 }
+                if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }				
+				return;				
             }
             else if (npc.ai[0] == 0f)
             {

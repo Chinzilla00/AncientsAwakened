@@ -47,8 +47,22 @@ namespace AAMod.Items.Summoning
             {
                 num155 = (int)(Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY) / 16;
             }
-            Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, num74, num76, num77, i, 0f, 0f);
-            player.UpdateMaxTurrets();
+			if (player.ownedProjectileCounts[num74] < player.maxTurrets)
+			{
+				Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, num74, num76, num77, i, 0f, 0f);
+			}
+			if (player.ownedProjectileCounts[num74] == player.maxTurrets)
+			{
+				for(int g = 0; g < 1000; ++g)
+				{
+					if(Main.projectile[g].active && Main.projectile[g].type == num74)
+					{
+						Main.projectile[g].Kill();
+						break;
+					}
+				}
+				 Projectile.NewProjectile((float)Main.mouseX + Main.screenPosition.X, (float)(num155 * 16 - 24), 0f, 15f, num74, num76, num77, i, 0f, 0f);
+			}
 
             return false;
         }

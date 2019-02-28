@@ -430,8 +430,22 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 
             }
-
-            if ((internalAI[1] == 2 || internalAI[1] == 7 || internalAI[1] == 12 || internalAI[1] == 15 || internalAI[1] == 19))
+            else if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
+            {
+                if (MinionCount < MaxMinons)
+                {
+                    AkumaAttacks.SpawnLung(player, mod);
+                    MinionCount += 1;
+                }
+            }
+            else if (internalAI[1] == 4 || internalAI[1] == 6 || internalAI[1] == 10 || internalAI[1] == 14 || internalAI[1] == 17)
+            {
+                if (internalAI[0] == 400)
+                {
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                }
+            }
+            else
             {
                 if (internalAI[0] == 400)
                 {
@@ -446,23 +460,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                         offsetAngle = startAngle + (deltaAngle * i);
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AkumaBomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                     }
-                }
-            }
-
-            if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
-            {
-                if (MinionCount < MaxMinons)
-                {
-                    AkumaAttacks.SpawnLung(player, mod);
-                    MinionCount += 1;
-                }
-            }
-
-            if (internalAI[1] == 4 || internalAI[1] == 6 || internalAI[1] == 10 || internalAI[1] == 14 || internalAI[1] == 17)
-            {
-                if (internalAI[0] == 400)
-                {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                 }
             }
 

@@ -8,13 +8,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 98;
-            projectile.height = 98;
+            projectile.width = 176;
+            projectile.height = 230;
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 6)

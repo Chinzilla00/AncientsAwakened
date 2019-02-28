@@ -43,8 +43,8 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             npc.buffImmune[31] = true;
             npc.buffImmune[44] = true;
             npc.scale *= 1.3f;
+			bossBag = mod.ItemType("EFishBag");
             for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
-            bossBag = mod.ItemType<Items.Boss.EFish.EFishBag>();
         }
         
 
@@ -143,25 +143,27 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             }
         }
 
-        public override void NPCLoot()
+        public override void BossLoot(ref string name, ref int potionType)
         {
+            potionType = ItemID.SuperHealingPotion;   //boss drops
+			AAWorld.downedEFish = true;
+        }
+		
+		public override void NPCLoot()
+		{
             if (!Main.expertMode)
             {
-                string[] lootTable = { "EFishWings", "EFlairon", "Hurricane", "SoapBlaster", "UltibladeTyphoon" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
+				npc.DropLoot(mod.ItemType("EFishMask"), 1f / 7);
+                string[] lootTable = { "EFishWings", "EFlairon", "FishnadoFtaff", "Hurricane", "SoapBlaster", "UltibladeTyphoon"};
+				int loot = Main.rand.Next(lootTable.Length);
+				npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
             if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
-        }
-
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            AAWorld.downedEFish = true;
-            potionType = ItemID.SuperHealingPotion;
-        }
+			npc.DropLoot(mod.ItemType("EFishTrophy"), 1f / 10);
+		}
 
         public override void AI()
         {
@@ -188,7 +190,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                 npc.defense = npc.defDefense;
             }
             int aiChangeRate = expertMode ? 50 : 70;
-            float npcVelocity = expertMode ? 0.70f : 0.50f;
+            float npcVelocity = expertMode ? 0.50f : 0.40f;
             float scaleFactor = expertMode ? 8f : 7f;
             if (ExpertPhaseChange)
             {
@@ -207,18 +209,18 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                 aiChangeRate = 30;
             }
             int ChargeTime = expertMode ? 28 : 30;
-            float ChargeSpeed = expertMode ? 19f : 16f;
+            float ChargeSpeed = expertMode ? 17f : 16f;
             if (ExpertPhaseChange)
             {
-                ChargeTime = 27;
-                ChargeSpeed = 30f;
+                ChargeTime = 25;
+                ChargeSpeed = 27f;
             }
             else if (isCharging && Phase2Change)
             {
                 ChargeTime = (expertMode ? 27 : 30);
                 if (expertMode)
                 {
-                    ChargeSpeed = 24f;
+                    ChargeSpeed = 21f;
                 }
             }
             int num6 = 80;
@@ -639,7 +641,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     if (Main.netMode != 1)
                     {
                         Vector2 vector6 = Vector2.Normalize(player.Center - vector) * (float)(npc.width + 20) / 2f + vector;
-                        NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, 371, 0, 0f, 0f, 0f, 0f, 255);
+                        NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, mod.NPCType<EmperorBubble>(), 0, 0f, 0f, 0f, 0f, 255);
                     }
                 }
                 int num26 = Math.Sign(player.Center.X - vector.X);
@@ -873,7 +875,7 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
                     if (Main.netMode != 1)
                     {
                         Vector2 vector10 = Vector2.Normalize(npc.velocity) * (float)(npc.width + 20) / 2f + vector;
-                        int num31 = NPC.NewNPC((int)vector10.X, (int)vector10.Y + 45, 371, 0, 0f, 0f, 0f, 0f, 255);
+                        int num31 = NPC.NewNPC((int)vector10.X, (int)vector10.Y + 45, mod.NPCType<EmperorBubble>(), 0, 0f, 0f, 0f, 0f, 255);
                         Main.npc[num31].target = npc.target;
                         Main.npc[num31].velocity = Vector2.Normalize(npc.velocity).RotatedBy((double)(1.57079637f * (float)npc.direction), default(Vector2)) * scaleFactor3;
                         Main.npc[num31].netUpdate = true;

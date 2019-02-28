@@ -23,7 +23,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
 			DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 2;
+            npc.frame.Width = 112;
+            npc.frame.Height = 146;
         }
 
 		public override void SetDefaults()
@@ -93,15 +94,25 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
         }
 
-
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
             if (npc.ai[1] == 1 || npc.ai[2] >= 500)
             {
-                npc.frame.Y = 146;
+                npc.frame.X = 112;
             }
             else
+            {
+                npc.frame.X = 0;
+            }
+
+            npc.frameCounter++;
+            if (npc.frameCounter > 8)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 146;
+            }
+            if (npc.frame.Y > 146 * 2)
             {
                 npc.frame.Y = 0;
             }
