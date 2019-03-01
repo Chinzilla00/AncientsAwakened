@@ -37,8 +37,8 @@ namespace AAMod.NPCs.Bosses.Grips
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");
         }
 
-        public Texture2D ChargeTex;
-        public Rectangle ChargeFrame;
+        //public Texture2D ChargeTex;
+        //public Rectangle ChargeFrame;
 
         public override void FindFrame(int frameHeight)
         {
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Grips
             {
 				npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-                ChargeFrame.Y += ChargeTex.Height;
+                //ChargeFrame.Y += ChargeTex.Height;
                 //if (ChargeFrame.Y > ChargeTex.Height * 3)
                 //{
                     //ChargeFrame.Y = 0;

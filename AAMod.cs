@@ -224,6 +224,21 @@ namespace AAMod
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/FBarHead"),
+                    GetTexture("Healthbars/FBarBody"),
+                    GetTexture("Healthbars/FBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkCyan,
+                    Color.DarkCyan,
+                    Color.DarkCyan);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("FeudalFungus")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/RGCBarHead"),
                     GetTexture("Healthbars/RGCBarBody"),
                     GetTexture("Healthbars/RGCBarTail"),
@@ -299,6 +314,66 @@ namespace AAMod
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SSCoBarHead"),
+                    GetTexture("Healthbars/SSCoBarBody"),
+                    GetTexture("Healthbars/SSCoBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.MediumPurple,
+                    Color.MediumPurple,
+                    Color.MediumPurple);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHeadCo")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SSCrBarHead"),
+                    GetTexture("Healthbars/SSCrBarBody"),
+                    GetTexture("Healthbars/SSCrBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Firebrick,
+                    Color.Firebrick,
+                    Color.Firebrick);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHeadCr")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SSIBarHead"),
+                    GetTexture("Healthbars/SSIBarBody"),
+                    GetTexture("Healthbars/SSIBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHeadI")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/SSMBarHead"),
+                    GetTexture("Healthbars/SSMBarBody"),
+                    GetTexture("Healthbars/SSMBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("SerpentHeadM")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/DDBarHead"),
                     GetTexture("Healthbars/DDBarBody"),
                     GetTexture("Healthbars/DDBarTail"),
@@ -311,6 +386,66 @@ namespace AAMod
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Djinn")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DDCoBarHead"),
+                    GetTexture("Healthbars/DDCoBarBody"),
+                    GetTexture("Healthbars/DDCoBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.MediumPurple,
+                    Color.MediumPurple,
+                    Color.MediumPurple);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("DjinnCo")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DDCrBarHead"),
+                    GetTexture("Healthbars/DDCrBarBody"),
+                    GetTexture("Healthbars/DDCrBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Firebrick,
+                    Color.Firebrick,
+                    Color.Firebrick);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("DjinnCr")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DDIBarHead"),
+                    GetTexture("Healthbars/DDIBarBody"),
+                    GetTexture("Healthbars/DDIBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("DjinnI")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("Healthbars/DDMBarHead"),
+                    GetTexture("Healthbars/DDMBarBody"),
+                    GetTexture("Healthbars/DDMBarTail"),
+                    GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("DjinnM")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -492,7 +627,7 @@ namespace AAMod
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("ZeroAwakened")));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Zero")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -524,6 +659,7 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999997f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("ScrapHeap") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Emperor Fishron", 15f, (Func<bool>)(() => AAWorld.downedEFish), "Use a [i:" + ItemType("ShroomGrub") + "] at the ocean");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
+                bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
@@ -917,10 +1053,6 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            if (NPC.AnyNPCs(NPCID.EyeofCthulhu))
-            {
-                music = MusicID.Boss4;
-            }
             if (zoneIZ && AAWorld.downedZero)
             {
                 priority = MusicPriority.Event;
@@ -930,6 +1062,11 @@ namespace AAMod
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
+                if (NPC.downedMoonlord)
+                {
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky");
+                    return;
+                }
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Void");
                 return;
             }
@@ -941,7 +1078,7 @@ namespace AAMod
             }
             if (Ancients.ZoneInferno)
             {
-                if (Ancients.ZoneRisingSunPagoda && AAWorld.downedEquinox && !AAWorld.downedAkuma)
+                if (Ancients.ZoneRisingSunPagoda && NPC.downedMoonlord && !AAWorld.downedAkuma)
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine");
@@ -962,7 +1099,7 @@ namespace AAMod
             }
             if (Ancients.ZoneMire)
             {
-                if (Ancients.ZoneRisingMoonLake && AAWorld.downedEquinox && !AAWorld.downedYamata)
+                if (Ancients.ZoneRisingMoonLake && NPC.downedMoonlord && !AAWorld.downedYamata)
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");

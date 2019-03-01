@@ -95,7 +95,7 @@ namespace AAMod
         public static bool downedGripsS;
         public static bool downedSoC;
         public static bool LuminiteMeteorBool;
-        public static bool downedSOCC;
+        public static bool downedFungus;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -136,7 +136,11 @@ namespace AAMod
             downedGripsS = false;
             downedSoC = false;
             downedKraken = false;
-            downedSOCC = false;
+            downedFungus = false;
+            downedDjinn = false;
+            downedSerpent = false;
+            downedBrood = false;
+            downedHydra = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -221,7 +225,7 @@ namespace AAMod
             if (downedSoC) downed.Add("SoC");
             if (Compass) downed.Add("Compass");
             if (downedKraken) downed.Add("Kraken");
-            if (downedSOCC) downed.Add("SOCC");
+            if (downedFungus) downed.Add("Fungus");
             if (CorruptionSpread) downed.Add("Corruption");
             if (CrimsonSpread) downed.Add("Crimson");
             if (HallowSpread) downed.Add("Hallow");
@@ -284,7 +288,7 @@ namespace AAMod
             flags5[0] = downedSoC;
             flags5[1] = Compass;
             flags5[2] = downedKraken;
-            flags5[3] = downedSOCC;
+            flags5[3] = downedFungus;
             flags5[4] = CorruptionSpread;
             flags5[5] = CrimsonSpread;
             flags5[6] = HallowSpread;
@@ -341,7 +345,7 @@ namespace AAMod
             downedSoC = flags5[0];
             Compass = flags5[1];
             downedKraken = flags5[2];
-            downedSOCC = flags5[3];
+            downedFungus = flags5[3];
             CorruptionSpread = flags5[4];
             CrimsonSpread = flags5[5];
             HallowSpread = flags5[6];
@@ -391,7 +395,7 @@ namespace AAMod
             downedSoC = downed.Contains("SoC");
             Compass = downed.Contains("Compass");
             downedKraken = downed.Contains("Kraken");
-            downedSOCC = downed.Contains("Socc");
+            downedFungus = downed.Contains("Fungus");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -1052,15 +1056,16 @@ namespace AAMod
 
             if (downedEquinox == true)
             {
+                
+            }
+
+            if (NPC.downedMoonlord == true)
+            {
                 if (Ancients == false)
                 {
                     Ancients = true;
                     Main.NewText("The Ancients have Awakened!", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
                 }
-            }
-
-            if (NPC.downedMoonlord == true)
-            {
                 if (Luminite == false)
                 {
                     Luminite = true;
@@ -1069,9 +1074,8 @@ namespace AAMod
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
                     }
+                    return;
                 }
-
-                
             }
             if (NPC.downedMechBossAny == true)
             {

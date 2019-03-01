@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 glowTex = mod.GetTexture("Glowmasks/AbyssGrip_Glow");
             }
 
-            ChargeTex = mod.GetTexture("NPCs/Bosses/ShenGrips/Charge");
+            //ChargeTex = mod.GetTexture("NPCs/Bosses/ShenGrips/Charge");
 
             /*int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
