@@ -43,16 +43,16 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            ChargeFrame = new Rectangle(0, 0, ChargeTex.Width, ChargeTex.Height);
+            //ChargeFrame = new Rectangle(0, 0, ChargeTex.Width, ChargeTex.Height);
             if (npc.frameCounter > 6)
             {
 				npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
                 ChargeFrame.Y += ChargeTex.Height;
-                if (ChargeFrame.Y > ChargeTex.Height * 3)
-                {
-                    ChargeFrame.Y = 0;
-                }
+                //if (ChargeFrame.Y > ChargeTex.Height * 3)
+                //{
+                    //ChargeFrame.Y = 0;
+                //}
                 if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
                 {
                     if (npc.frame.Y < 4 * frameHeight || npc.frame.Y < 7 * frameHeight)

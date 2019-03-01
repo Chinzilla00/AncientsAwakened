@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grip of Blazing Fury");
-            Main.npcFrameCount[npc.type] = 12;
+            Main.npcFrameCount[npc.type] = 14;
         }
 
 	    public override void SetDefaults()
@@ -77,12 +77,12 @@ namespace AAMod.NPCs.Bosses.GripsShen
             }
             ChargeTex = mod.GetTexture("NPCs/Bosses/ShenGrips/Charge");
             
-            int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
+            /*int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
             {
                 BaseDrawing.DrawAfterimage(spritebatch, ChargeTex, shader, npc, 1f, 1f, 5, true, 0, 0, Color.White, ChargeFrame, 4);
                 BaseDrawing.DrawTexture(spritebatch, ChargeTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, ChargeFrame, Color.White, true);
-            }
+            }*/
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
             return false;

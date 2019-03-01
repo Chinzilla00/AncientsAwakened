@@ -23,8 +23,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
 			DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            npc.frame.Width = 112;
-            npc.frame.Height = 146;
+            Main.npcFrameCount[npc.type] = 3;
         }
 
 		public override void SetDefaults()
@@ -93,17 +92,18 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 internalAI[3] = reader.ReadFloat();
             }
         }
+        public Texture2D AkumaTex = null;
 
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
             if (npc.ai[1] == 1 || npc.ai[2] >= 500)
             {
-                npc.frame.X = 112;
+                AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
             }
             else
             {
-                npc.frame.X = 0;
+                AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA");
             }
 
             npc.frameCounter++;
@@ -471,14 +471,18 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
         }
 
-        public static Texture2D glowTex = null, glowTex2 = null, glowTex3 = null, glowTex4 = null, glowTex5 = null;
+        public static Texture2D glowTex = null, glowTex1 = null, glowTex2 = null, glowTex3 = null, glowTex4 = null, glowTex5 = null;
         
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D texture = Main.npcTexture[npc.type];
+            if (AkumaTex == null)
+            {
+                AkumaTex = Main.npcTexture[npc.type];
+            }
             if (glowTex == null)
             {
                 glowTex = mod.GetTexture("Glowmasks/AkumaA_Glow");
+                glowTex1 = mod.GetTexture("Glowmasks/AkumaA1_Glow");
                 glowTex2 = mod.GetTexture("Glowmasks/AkumaAArms_Glow");
                 glowTex3 = mod.GetTexture("Glowmasks/AkumaABody_Glow");
                 glowTex4 = mod.GetTexture("Glowmasks/AkumaABody1_Glow");
@@ -494,12 +498,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             }
-            
 
+            Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
 
-            Texture2D myGlowTex = (npc.type == mod.NPCType<AkumaA>() ? glowTex : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5);
+            Texture2D myGlowTex = (npc.type == mod.NPCType<AkumaA>() ? HeadGlow : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5);
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, Drawpos, npc.frame, npc.GetAlpha(drawColor), npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
+            spriteBatch.Draw(AkumaTex, Drawpos, npc.frame, npc.GetAlpha(drawColor), npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
             BaseDrawing.DrawTexture(spriteBatch, myGlowTex, shader, npc, npc.GetAlpha(Color.White), true, npc.frame.Size() / 2);
             return false;
         }
