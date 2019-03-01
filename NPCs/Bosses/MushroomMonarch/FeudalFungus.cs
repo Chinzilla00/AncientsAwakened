@@ -65,6 +65,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
+            npc.noTileCollide = true;
             npc.noGravity = true;
             bossBag = mod.ItemType("FungusBag");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");

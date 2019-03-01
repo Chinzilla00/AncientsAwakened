@@ -88,15 +88,21 @@ namespace AAMod.Worldgeneration
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 40;
+			int genY = origin.Y;
 			gen.Generate(genX, genY, true, true);
 
-			//WorldGen.PlaceObject(genX + 62, genY + 32, TileID.Grass);
-			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32, TileID.Grass);
-			//WorldGen.PlaceObject(genX + 62, genY + 32 - 1, TileID.Grass);
-			//WorldGen.PlaceObject(genX + 62 - 1, genY + 32 - 1, TileID.Grass);		
 
-	        WorldGen.PlaceObject(genX + 61, genY + 31, mod.TileType<DreadAltarS>());		   
+            WorldGen.PlaceObject(genX + 25, genY + 204, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 44, genY + 212, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 50, genY + 222, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 82, genY + 224, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 104, genY + 232, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 125, genY + 223, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 144, genY + 217, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 162, genY + 215, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 172, genY + 206, mod.TileType<HydraPod>());
+
+            WorldGen.PlaceObject(genX + 60, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -145,7 +151,7 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile);
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 40;			
+			int genY = origin.Y;			
             gen.Generate(genX, genY, true, true);
 
             return true;
@@ -247,6 +253,15 @@ namespace AAMod.Worldgeneration
             gen.Generate(genX, genY, true, true);
 
             WorldGen.PlaceObject(genX + 65, genY + 19, mod.TileType<DracoAltarS>());
+            WorldGen.PlaceObject(genX + 34, genY + 314, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 47, genY + 315, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 58, genY + 317, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 68, genY + 317, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 79, genY + 318, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 88, genY + 316, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 97, genY + 313, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 104, genY + 308, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 25, genY + 308, mod.TileType<DragonEgg>());
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
