@@ -79,8 +79,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-
-            if ((Main.dayTime && player.position.Y < Main.worldSurface && !player.ZoneGlowshroom) || (player.position.Y > Main.worldSurface && !player.ZoneGlowshroom))
+             
+            if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)
             {
                 npc.velocity *= 0;
 
@@ -102,7 +102,10 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 return;
             }
             npc.alpha -= 10;
-
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
             npc.frameCounter++;
             if (!HasStopped)
             {
@@ -184,7 +187,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("MagicBlast"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("Mushshot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
         }
 
         public override void BossLoot(ref string name, ref int potionType)

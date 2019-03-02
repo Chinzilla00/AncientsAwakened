@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.lifeMax = 30;
             npc.noGravity = true;
             npc.noTileCollide = false;
-            npc.knockBackResist = 0.05f;
+            npc.knockBackResist = 0.5f;
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
@@ -36,7 +36,12 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 3f, 1.5f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 3f, 1.5f, true, 300);
+
+            if (npc.wet)
+            {
+                npc.velocity *= 1.1f;
+            }
             npc.frameCounter++;
             if (npc.frameCounter >= 8)
             {

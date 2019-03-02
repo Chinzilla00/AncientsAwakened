@@ -1,3 +1,6 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.MushroomMonarch
@@ -15,6 +18,11 @@ namespace AAMod.Items.Boss.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glowing Mushium");
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, lightColor, lightColor, Color.White);
         }
     }
 }

@@ -11,7 +11,7 @@ using Terraria.Graphics.Shaders;
 namespace AAMod.NPCs.Bosses.GripsShen
 {
     [AutoloadBossHead]
-    public class AbyssGrip : BaseGripOfChaos
+    public class AbyssGrip : BaseShenGrips
     {
         public override void SetStaticDefaults()
         {
@@ -28,8 +28,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             npc.buffImmune[BuffID.Poisoned] = true;	
             bossBag = mod.ItemType("GripSBag");			
 
-			offsetBasePoint = new Vector2(240f, 0f);
-			shenGrips = true;
+			offsetBasePoint = new Vector2(280f, 0f);
         }
 		
         public override void HitEffect(int hitDirection, double damage)
@@ -75,17 +74,19 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 glowTex = mod.GetTexture("Glowmasks/AbyssGrip_Glow");
             }
 
-            //ChargeTex = mod.GetTexture("NPCs/Bosses/ShenGrips/Charge");
 
-            /*int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
-            if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
+            int shader = 0;
+            if (npc.ai[0] == 0)
             {
-                BaseDrawing.DrawAfterimage(spritebatch, ChargeTex, shader, npc, 1f, 1f, 5, true, 0, 0, Color.White, ChargeFrame, 4);
-                BaseDrawing.DrawTexture(spritebatch, ChargeTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, ChargeFrame, Color.White, true);
-            }*/
+                shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
+            }
+            if (npc.ai[0] != 0 || npc.ai[0] != 1 || npc.ai[0] != 5)
+            {
+                BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 2, npc.scale, 7, true, 0, 0, Color.Indigo, npc.frame);
+            }
 
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], shader, npc, dColor);
+            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, shader, npc, Color.White);
             return false;
         }
 

@@ -2447,6 +2447,22 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/LizEars_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("StarcrystalHelm")) && drawPlayer.statMana > drawPlayer.statMana * .2f)
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/StarcrystalHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("HeartstoneHelmet")) && drawPlayer.statLife > 40)
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/HeartstoneHelmets_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedHelm")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueHallowedHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.headFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("ShroomHat")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/ShroomHat_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -2488,11 +2504,48 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DarkmatterBreastplate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterBreastplate")))
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("RadiumPlatemail")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumPlatemail_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-            
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("StarcrystaPlate")) && drawPlayer.statMana > drawPlayer.statMana * .2f)
+            {
+                if (drawPlayer.Male)
+                {
+                    BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/StarcrystaPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+                }
+                else
+                {
+                    BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/StarcrystaPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+                }
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("HeartstoneChestguard")) && drawPlayer.statLife > 40)
+            {
+                if (drawPlayer.Male)
+                {
+                    BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/HeartstoneChestguard_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+                }
+                else
+                {
+                    BaseDrawing.DrawPlayerTexture(drawPlayer, mod.GetTexture("Glowmasks/HeartstoneChestguard_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+                }
+            }
+            else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedPlate")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedPlate")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("ShroomShirt")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomShirt_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("ShroomShirt")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomShirt_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
@@ -2518,11 +2571,26 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DarkmatterBreastplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterBreastplate")))
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("RadiumPlatemail")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumPlatemail_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
-            
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("StarcrystaPlate")) && drawPlayer.statMana > drawPlayer.statMana * .2f)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/StarcrystalPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("HeartstoneChestguard")) && drawPlayer.statLife > 40)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/HeartstoneChestguard_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedPlate")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomShirt")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomShirt_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
@@ -2552,7 +2620,22 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/Radium/RadiumCuisses_Legs"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
             }
-            
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("StarcrystalBoots")) && drawPlayer.statMana > drawPlayer.statMana * .2f)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/StarcrystalBoots_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("HeartstoneLeggings")) && drawPlayer.statLife > 40)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/HeartstoneLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedGreaves")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomPants")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
 
         public static void DrawWingGlow(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default(Vector2), Vector2 framePos = default(Vector2))

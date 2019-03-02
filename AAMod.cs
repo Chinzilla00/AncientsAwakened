@@ -1132,7 +1132,7 @@ namespace AAMod
             {
 
                 priority = MusicPriority.BiomeMedium;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrooms");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom");
 
 
                 return;

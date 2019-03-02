@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushling");
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
 
-            BaseAI.AICharger(npc, ref npc.ai, 0.07f, 8f, false, 30);
+            BaseAI.AIZombie(npc, ref npc.ai, true, true, -1, .09f, 2, 3, 5, 120, true, 10, 10, true);
 
             if (npc.velocity.Y != 0)
             {
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
             else
             {
-                npc.frame.Y = 44 * 7;
+                npc.frame.Y = 44 * 6;
             }
         }
     }

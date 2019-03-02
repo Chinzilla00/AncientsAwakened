@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Other
         {
             if (AAWorld.downedRetriever)
             {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+                return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
             }
             else
             {

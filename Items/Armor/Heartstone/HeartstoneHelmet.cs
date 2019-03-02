@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.Heartstone
             item.width = 22;
             item.height = 20;
             item.value = 10;
-            item.rare = 2;
+            item.rare = 3;
             item.defense = 6;
         }
 
@@ -35,7 +35,7 @@ Its forged with heart, no really");
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Doubles damage when health below 40"; // the armor set bonus
+            player.setBonus = "Doubles damage when health is below 40"; // the armor set bonus
 			if (player.statLife < 40)  //this make that if you have less then 100 health your melee damage multiple for 2
             {
                 player.meleeDamage *= 2;
@@ -49,9 +49,8 @@ Its forged with heart, no really");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.FallenStar, 1);
-			recipe.AddIngredient(ItemID.StoneBlock, 50);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddRecipeGroup("AAMod:Gold", 10);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

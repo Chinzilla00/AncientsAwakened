@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
 		{
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(TileID.Iron, 2);
+                recipe.AddIngredient(ItemID.IronBar, 2);
                 recipe.AddIngredient(null, "Bogwood", 12);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this);
@@ -38,7 +38,7 @@ namespace AAMod.Items.Blocks
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(TileID.Lead, 2);
+                recipe.AddIngredient(ItemID.LeadBar, 2);
                 recipe.AddIngredient(null, "Bogwood", 12);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this);

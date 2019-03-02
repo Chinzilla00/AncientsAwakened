@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Player player = Main.player[npc.target];
 
-            if (fireAttack == true || internalAI[0] >= 500)
+            if (fireAttack == true || internalAI[0] >= 450)
             {
                 attackCounter++;
                 if (attackCounter > 10)
@@ -126,6 +126,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 Roar(roarTimerMax, false);
                 internalAI[1] += 1;
+            }
+            if (internalAI[0] > 350)
+            {
                 Attack(npc, npc.velocity);
             }
             if (internalAI[0] >= 450)

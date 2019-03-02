@@ -37,15 +37,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
             projectile.velocity *= 0;
-
-            if (projectile.velocity.X <= .1f && projectile.velocity.X >= -.1f)
-            {
-                projectile.velocity.X = 0;
-            }
-            if (projectile.velocity.Y <= .1f && projectile.velocity.Y >= -.1f)
-            {
-                projectile.velocity.Y = 0;
-            }
             projectile.alpha -= 10;
             if (projectile.alpha >= 255)
             {
@@ -53,10 +44,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
         }
 
-        public override void PostDraw(SpriteBatch spritebatch, Color dColor)
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/FungusIGoNow_Glow");
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, AAColor.Glow);
+            Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungusIGoNow_Glow");
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[projectile.type], 0, projectile, projectile.GetAlpha(dColor));
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, projectile.GetAlpha(Color.White));
+            return false;
         }
     }
 }

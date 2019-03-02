@@ -1,3 +1,6 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +24,12 @@ namespace AAMod.Items.Boss.MushroomMonarch
             Tooltip.SetDefault("Glowy");
         }
 
-		public override void AddRecipes()
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, lightColor, lightColor, Color.White);
+        }
+
+        public override void AddRecipes()
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "GlowingMushium", 3);              //example of how to craft with a modded item

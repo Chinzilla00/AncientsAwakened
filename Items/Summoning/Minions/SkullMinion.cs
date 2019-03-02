@@ -89,7 +89,7 @@ namespace AAMod.Items.Summoning.Minions
             Vector2 targetPos = projectile.position;
             float targetDist = viewDist;
             bool target = false;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             if (player.HasMinionAttackTargetNPC)
             {
                 NPC npc = Main.npc[player.MinionAttackTargetNPC];

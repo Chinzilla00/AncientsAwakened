@@ -122,6 +122,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 Roar(roarTimerMax, false);
                 internalAI[1] += 1;
+            }
+            if (npc.ai[2] > 300)
+            {
                 Attack(npc);
             }
             if (npc.ai[2] >= 400)

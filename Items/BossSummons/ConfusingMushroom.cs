@@ -41,7 +41,11 @@ Can only be used in a glowing mushroom biome or at night");
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.dayTime || !player.ZoneGlowshroom)
+            if (!Main.dayTime && player.position.Y < Main.worldSurface || player.ZoneGlowshroom )
+            {
+                return true;
+            }
+            if ((Main.dayTime && player.position.Y > Main.worldSurface) || !player.ZoneGlowshroom)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom glows, and the smell of it makes you feel loopy.", Color.SkyBlue, false);
                 return false;
@@ -51,7 +55,7 @@ Can only be used in a glowing mushroom biome or at night");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Feudal Fungus keeps trying to attack you", Color.SkyBlue, false);
                 return false;
             }
-            return true;
+            return false;
         }
 
         public void SpawnBoss(Player player, string name, string displayName)

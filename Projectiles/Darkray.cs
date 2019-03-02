@@ -45,7 +45,7 @@ namespace AAMod.Projectiles
 			projectile.alpha = 100;
 			projectile.light = 0.5f;
 			projectile.ignoreWater = true;
-			projectile.tileCollide = false;
+			projectile.tileCollide = true;
             projectile.extraUpdates = 1;
 			aiType = ProjectileID.Bullet;           
 		}

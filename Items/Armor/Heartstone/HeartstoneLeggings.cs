@@ -13,9 +13,8 @@ namespace AAMod.Items.Armor.Heartstone
             item.width = 18;
             item.height = 18;
 
-
-            item.value = 10;
-            item.rare = 2;
+            item.value = 2000;
+            item.rare = 3;
             item.defense = 6;
         }
 
@@ -36,9 +35,8 @@ Its forged with heart, no really");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.FallenStar, 1);
-			recipe.AddIngredient(ItemID.StoneBlock, 50);   //you need 10 Wood
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddRecipeGroup("AAMod:Gold", 12);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

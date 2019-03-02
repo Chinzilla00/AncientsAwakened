@@ -11,6 +11,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Scorch Bomb");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -28,7 +29,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Glow;
+            return Color.White;
         }
 
         public override void AI()

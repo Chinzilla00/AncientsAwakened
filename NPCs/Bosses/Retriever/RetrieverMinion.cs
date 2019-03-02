@@ -149,18 +149,5 @@ namespace AAMod.NPCs.Bosses.Retriever
                 Main.dust[dust2].noGravity = true;
             }
         }
-
-        public override void NPCLoot()
-        {
-            if (Main.rand.NextFloat() < 0.5f)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
-            }
-        }
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
-        {
-            target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 300);
-        }
     }
 }

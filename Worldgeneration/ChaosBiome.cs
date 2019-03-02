@@ -88,7 +88,7 @@ namespace AAMod.Worldgeneration
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y;
+			int genY = origin.Y - 30;
 			gen.Generate(genX, genY, true, true);
 
 
@@ -151,7 +151,7 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Lake"), colorToTile);
 			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y;			
+			int genY = origin.Y - 30;			
             gen.Generate(genX, genY, true, true);
 
             return true;

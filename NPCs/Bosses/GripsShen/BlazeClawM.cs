@@ -31,6 +31,14 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override void AI()
         {
+            if (!NPC.AnyNPCs(mod.NPCType<AbyssGrip>()) && !NPC.AnyNPCs(mod.NPCType<BlazeGrip>()))
+            {
+                npc.alpha += 10;
+                if (npc.alpha > 255)
+                {
+                    npc.active = false;
+                }
+            }
             AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 8f, 3f, 1f, 1f);
         }
 

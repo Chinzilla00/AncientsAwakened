@@ -27,10 +27,19 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.knockBackResist = 0.5f;
             npc.aiStyle = -1;
             npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public override void AI()
         {
+            if (!NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()) && !NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()))
+            {
+                npc.alpha += 10;
+                if (npc.alpha > 255)
+                {
+                    npc.active = false;
+                }
+            }
             AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5.5f, 2.5f, 1f, 1f);
         }
 

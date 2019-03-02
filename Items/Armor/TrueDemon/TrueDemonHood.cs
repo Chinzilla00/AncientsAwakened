@@ -37,9 +37,16 @@ Increases your max number of minions by 2");
 
         public override void UpdateArmorSet(Player player)
         {
-
-            player.setBonus = "Your minions bathe your enemies in shadowflame \n" + "You Always have a small Imp servant by your side";
-            Projectile.NewProjectile(player.position, new Microsoft.Xna.Framework.Vector2(0, 0), ProjectileID.FlyingImp, 0, 0f, Main.myPlayer, 0f, 0f);
+            player.setBonus = @"Your minions bathe your enemies in shadowflame
+You Always have an Imp army by your side
+Imp army doesn't affect minion count";
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (player.ownedProjectileCounts[mod.ProjectileType("ImpMinion")] < 5)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ImpMinion"), 0, 0f, Main.myPlayer, 0f, 0f);
+                }
+            }
             player.GetModPlayer<AAPlayer>(mod).trueDemon = true;
             player.impMinion = true;
         }

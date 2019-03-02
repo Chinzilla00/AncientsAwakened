@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Enemies.Other
             }
             if (!NPC.downedMoonlord)
             {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.12f;
+                return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
             }
             return 0;
         }

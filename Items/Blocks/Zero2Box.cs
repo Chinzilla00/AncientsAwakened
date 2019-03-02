@@ -69,7 +69,7 @@ namespace AAMod.Items.Blocks
                 recipe.AddIngredient(ItemID.MusicBox);
                 recipe.AddIngredient(null, "ZeroBox");
                 recipe.AddIngredient(null, "EXSoul");
-                recipe.AddTile(ItemID.Sawmill);
+                recipe.AddTile(TileID.Sawmill);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
