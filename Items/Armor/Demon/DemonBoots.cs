@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Demon
             item.height = 18;
             item.value = 9000;
             item.rare = 4;
-            item.defense = 6;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)

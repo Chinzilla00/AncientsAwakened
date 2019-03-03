@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Imp
             item.height = 20;
             item.value = 7000;
             item.rare = 2;
-            item.defense = 6;
+            item.defense = 1;
         }
 
         public override void UpdateEquip(Player player)

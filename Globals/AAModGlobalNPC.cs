@@ -754,6 +754,12 @@ namespace AAMod
                 shop.item[nextSlot].SetDefaults(mod.ItemType("M79Round"));
                 nextSlot++;
             }
+
+            if (type == NPCID.WitchDoctor && Main.hardMode)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("Mortar"));
+                nextSlot++;
+            }
         }
 
         public override bool PreAI(NPC npc)

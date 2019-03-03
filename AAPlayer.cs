@@ -102,6 +102,7 @@ namespace AAMod
         public bool valkyrieSet;
         public bool infinitySet;
         public bool Alpha;
+        public bool Palladium;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -240,6 +241,7 @@ namespace AAMod
             darkmatterSetTh = false;
             infinitySet = false;
             Alpha = false;
+            Palladium = false;
             //Accessory
             SnapCD = 0;
             AbilityCD = 0;
@@ -705,6 +707,22 @@ namespace AAMod
             ZoneRisingSunPagoda = ((flags & 7) == 7);
             ZoneRisingMoonLake = ((flags & 8) == 8);
             ZoneShip = ((flags & 9) == 9);
+        }
+
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            if (Palladium)
+            {
+                player.AddBuff(BuffID.RapidHealing, 300);
+            }
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        {
+            if (Palladium)
+            {
+                player.AddBuff(BuffID.RapidHealing, 300);
+            }
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
@@ -1531,6 +1549,7 @@ namespace AAMod
 
         public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
         {
+            
             if (goblinSlayer)
             {
                 if (target.type == NPCID.GoblinArcher 
