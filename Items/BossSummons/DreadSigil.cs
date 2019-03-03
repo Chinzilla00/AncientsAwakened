@@ -53,7 +53,7 @@ Only Usable at night");
         public override bool UseItem(Player player)
 		{
 			SpawnBoss(player, "Yamata", "Yamata; Dread Nightmare");
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+			Main.PlaySound(mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"));
             if (!AAWorld.downedYamata)
             {
                 Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));

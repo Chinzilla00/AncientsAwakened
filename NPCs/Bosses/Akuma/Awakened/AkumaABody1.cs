@@ -126,5 +126,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             rotation = npc.rotation;
         }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -41,32 +41,34 @@ namespace AAMod.NPCs.Bosses.GripsShen
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (npc.frameCounter > 6)
+            if (npc.frameCounter > 9)
             {
-				npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
+                npc.frameCounter = 0;
                 if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
                 {
-                    
+                    if (npc.frame.Y < 4 * frameHeight || npc.frame.Y > 7 * frameHeight)
+                    {
+                        npc.frame.Y = 4 * frameHeight;
+                    }
+
                 }
                 else if (npc.ai[0] == 5)
                 {
-                    if (npc.ai[1] < 10)
-                    {npc.frame.Y = frameHeight * 8;}
-                    if (npc.ai[1] < 20)
+                    npc.frame.Y = frameHeight * 8;
+                    if (internalAI[0] > 8)
                     {npc.frame.Y = frameHeight * 9;}
-                    if (npc.ai[1] < 30)
+                    if (internalAI[0] > 16)
                     {npc.frame.Y = frameHeight * 10;}
-                    if (npc.ai[1] < 40)
+                    if (internalAI[0] > 24)
                     { npc.frame.Y = frameHeight * 11; }
-                    if (npc.ai[1] < 50)
+                    if (internalAI[0] > 32)
                     { npc.frame.Y = frameHeight * 12; }
-                    else
-                    { npc.frame.Y = npc.frame.Y * 13 ;}
+                    if (internalAI[0] > 40)
+                    { npc.frame.Y = frameHeight * 13 ;}
                 }
                 else
                 {
-                    npc.frame.Y += frameHeight;
                     if (npc.frame.Y > 3 * frameHeight)
                     {
                         npc.frame.Y = 0;
@@ -196,7 +198,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             {
                 moveSpeed = 30f;
                 Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
-                Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, -250f);
+                Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
@@ -218,11 +220,11 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
                 {
                     internalAI[0]++;
-                    if (internalAI[0] == 50)
+                    if (internalAI[0] == 40)
                     {
                         BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? mod.ProjectileType<BlazeBomb>() : mod.ProjectileType<AbyssalBomb>(), (int)(npc.damage * (Main.expertMode ? .25f : .5f)), 2, 9f, -1, Main.myPlayer);
                     }
-                    if (internalAI[0] > 60)
+                    if (internalAI[0] > 50)
                     {
                         npc.ai[0] = 2;
                         npc.ai[1] = targetPlayer.Center.X;
@@ -239,20 +241,26 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 MinionTimer++;
                 if (MinionTimer == 120)
                 {
-                    if (npc.type == mod.NPCType<BlazeGrip>())
+                    if (npc.type == mod.NPCType<BlazeGrip>() && NPC.AnyNPCs(mod.NPCType<BlazeClawM>()))
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<BlazeClawM>());
+                        for (int Loops = 0; Loops < (Main.expertMode ? 6 : 4); Loops++)
+                        {
+                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<BlazeClawM>());
+                        }
                     }
                     if (npc.type == mod.NPCType<AbyssGrip>())
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AbyssClawM>());
+                        for (int Loops = 0; Loops < (Main.expertMode ? 6 : 4); Loops++)
+                        {
+                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AbyssClawM>());
+                        }
                     }
                     MinionTimer = 0;
                 }
 				moveSpeed = 12f;
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
-				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 50f || forceChange))
+				if(Main.netMode != 1)
 				{
 					npc.ai[1]++;
 					if(npc.ai[1] > 150)

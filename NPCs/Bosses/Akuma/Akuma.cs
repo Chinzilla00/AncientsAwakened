@@ -435,10 +435,13 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
             {
-                if (MinionCount < MaxMinons)
+                if (internalAI[0] == 400)
                 {
-                    AkumaAttacks.SpawnLung(player, mod);
-                    MinionCount += 1;
+                    if (MinionCount < MaxMinons)
+                    {
+                        AkumaAttacks.SpawnLung(player, mod);
+                        MinionCount += 1;
+                    }
                 }
             }
             else if (internalAI[1] == 4 || internalAI[1] == 6 || internalAI[1] == 10 || internalAI[1] == 14 || internalAI[1] == 17)
@@ -562,7 +565,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Sounds/AkumaRoar");
+                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar");
                 Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
             }
         }
@@ -676,6 +679,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             rotation = npc.rotation;
         }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
     
     [AutoloadBossHead]
@@ -775,6 +787,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
+        }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            {
+                return false;
+            }
+            return true;
         }
     }
     
@@ -876,6 +897,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             rotation = npc.rotation;
         }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
     [AutoloadBossHead]
@@ -975,6 +1005,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
+        }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (!playedSound)
             {
                 playedSound = true;
-                Main.PlaySound(SoundID.Item42, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Item12, (int)projectile.Center.X, (int)projectile.Center.Y);
             }
             Effects();
             if (projectile.velocity.Length() < 12f)

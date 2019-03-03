@@ -82,7 +82,7 @@ Only Usable during the day in the inferno");
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             SpawnBoss(player, "AkumaA", "Akuma Awakened; Blazing Fury Incarnate");
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            Main.PlaySound(mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"));
             return true;
         }
 

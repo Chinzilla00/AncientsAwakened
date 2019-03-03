@@ -57,8 +57,8 @@ Only Usable at night in the mire");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
             SpawnBoss(player, "YamataA", "Yamata Awakened");
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
+            Main.PlaySound(mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"));
+            return true;
 		}
 
         public override bool CanUseItem(Player player)

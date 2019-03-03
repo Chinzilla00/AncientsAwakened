@@ -31,6 +31,15 @@ namespace AAMod.NPCs.Bosses.Serpent
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
 		{
 			return false;
-		}	
+		}
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<SerpentHead>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

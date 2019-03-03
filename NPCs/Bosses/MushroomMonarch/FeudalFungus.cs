@@ -61,14 +61,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.boss = true;
             npc.lavaImmune = true;
             npc.noGravity = false;
-            npc.noTileCollide = false;
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
             bossBag = mod.ItemType("FungusBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Fungus");
             npc.alpha = 255;
         }
 
@@ -192,7 +191,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
-            AAWorld.downedMonarch = true;
+            AAWorld.downedFungus = true;
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0);
             if (Main.expertMode == true)
             {

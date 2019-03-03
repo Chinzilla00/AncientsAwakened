@@ -37,6 +37,18 @@ namespace AAMod.Items.Boss.GripsShen
             player.QuickSpawnItem(mod.ItemType("EventideAbyssiumOre"), Main.rand.Next(15, 26));
             player.QuickSpawnItem(mod.ItemType("DaybreakIncineriteOre"), Main.rand.Next(15, 26));
             player.QuickSpawnItem(mod.ItemType("DiscordianShredder"));
-		}
+
+            if (Main.rand.Next(10) == 0)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("GripMaskAbyss"));
+                }
+                else
+                {
+                    player.QuickSpawnItem(mod.ItemType("GripMaskBlaze"));
+                }
+            }
+        }
 	}
 }

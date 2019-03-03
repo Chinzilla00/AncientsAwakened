@@ -49,6 +49,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -213,7 +214,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (attackTimer == 40)
                     {
-                        Main.PlaySound(SoundID.Item34, npc.position);
                         Roar(roarTimerMax, true);
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
@@ -230,7 +230,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
                     {
-                        Main.PlaySound(SoundID.Item34, npc.position);
                         for (int i = 0; i < 5; ++i)
                         {
                             if (Main.netMode != 1)
@@ -296,7 +295,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(SoundType.Music, "Sounds/Sounds/YamataRoar");
+                int roarSound = mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar");
                 Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
             }
         }
@@ -317,6 +316,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
+
+                npc.frame.Y = 0 * frameHeight;
                 npc.frameCounter = 0;
             }
         }

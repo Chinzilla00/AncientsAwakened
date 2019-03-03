@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungusIGoNow_Glow");
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[projectile.type], 0, projectile, projectile.GetAlpha(dColor));
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, projectile.GetAlpha(Color.White));
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, new Rectangle(0, 0, glowTex.Width, glowTex.Height), projectile.GetAlpha(AAColor.Glow), true);
             return false;
         }
     }

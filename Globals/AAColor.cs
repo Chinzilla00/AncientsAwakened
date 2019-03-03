@@ -47,6 +47,22 @@ namespace AAMod
             }
         }
 
+        public static Color Heartstone
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.HotPink, Color.Transparent, Color.Transparent, Color.HotPink);
+            }
+        }
+
+        public static Color Starcrystal
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DeepSkyBlue, Color.Transparent, Color.Transparent, Color.DeepSkyBlue);
+            }
+        }
+
         public static Color Flash
         {
             get
@@ -262,7 +278,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(3, 179, 0), new Color(0, 102, 15), new Color(3, 179, 0));
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkGreen, Color.Green, Color.DarkGreen);
             }
         }
 

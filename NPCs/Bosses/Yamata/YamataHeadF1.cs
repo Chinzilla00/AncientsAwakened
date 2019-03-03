@@ -43,6 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -218,6 +219,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
+                npc.frame.Y = 0 * frameHeight;
                 npc.frameCounter = 0;
             }
         }

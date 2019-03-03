@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.Electrified, 1000);
+            target.AddBuff(BuffID.Electrified, 300);
         }
 
         public override void Kill(int timeleft)

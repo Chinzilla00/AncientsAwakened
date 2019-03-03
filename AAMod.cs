@@ -648,18 +648,19 @@ namespace AAMod
             }
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch or Feudal Fungus", 0.0000000000000000001f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day / [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
+                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch or Feudal Fungus", 0f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day");
+                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch or Feudal Fungus", 0f, (Func<bool>)(() => AAWorld.downedFungus), "Use a [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 4.00000000001f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
-                bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5.00000000001f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + ItemType("SubzeroCrystal") + "] in the Snow biome at night");
-                bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5.00000000001f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + ItemType("DjinnLamp") + "] in the Desert during the day");
-                bossChecklist.Call("AddBossWithInfo", "Retriever", 6.9999997f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 6.9999997f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Orthrus X", 6.9999997f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("ScrapHeap") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + ItemType("SubzeroCrystal") + "] in the Snow biome at night");
+                bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + ItemType("DjinnLamp") + "] in the Desert during the day");
+                bossChecklist.Call("AddBossWithInfo", "Retriever", 9.5f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 9.5f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Orthrus X", 9.5f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("ScrapHeap") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Emperor Fishron", 15f, (Func<bool>)(() => AAWorld.downedEFish), "Use a [i:" + ItemType("ShroomGrub") + "] at the ocean");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 16f, (Func<bool>)(() => AAWorld.downedGrips), "Use an [i:" + ItemType("AbyssClaw") + "] or [i:" + ItemType("BlazeClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
@@ -730,6 +731,11 @@ namespace AAMod
 
             if (!Main.dedServ)
             {
+
+                AddEquipTexture(new Items.Vanity.Beg.Pony_Head(), null, EquipType.Head, "Pony_Head", "AAMod/Items/Vanity/Beg/Pony_Head");
+                AddEquipTexture(new Items.Vanity.Beg.Pony_Body(), null, EquipType.Body, "Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Arms");
+                AddEquipTexture(new Items.Vanity.Beg.Pony_Legs(), null, EquipType.Legs, "Pony_Legs", "AAMod/Items/Vanity/Beg/Pony_Legs");
+
                 PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
                 PremultiplyTexture(GetTexture("Backgrounds/Moon"));
                 PremultiplyTexture(GetTexture("Backgrounds/Sun"));

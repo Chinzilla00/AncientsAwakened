@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-            if (npc.ai[1] == 1 || npc.ai[2] >= 500)
+            if (npc.ai[1] == 1 || npc.ai[2] >= 400)
             {
                 AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
             }
@@ -386,6 +386,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
             if (Main.expertMode)
             {
+
+                Main.NewText(AAWorld.downedAkuma ? "Heh, not to shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Heere's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Akuma.AkumaATrophy.type, 1f / 10);
@@ -394,8 +396,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
                 npc.DropBossBags();
-                
+                return;
             }
+            Main.NewText("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
 
@@ -435,19 +438,27 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 11 || internalAI[1] == 17 || internalAI[1] == 23)
             {
                 int Fireballs = Main.expertMode ? 12 : 14;
-                for (int Loops = 0; Loops < Fireballs; Loops++)
+
+                if (npc.ai[2] == 350)
                 {
-                    AkumaAttacks.Eruption(npc, mod);
+                    for (int Loops = 0; Loops < Fireballs; Loops++)
+                    {
+                        AkumaAttacks.Eruption(npc, mod);
+                    }
                 }
             }
 
             if (internalAI[1] == 4 || internalAI[1] == 10 || internalAI[1] == 13 || internalAI[1] == 20 || internalAI[1] == 25)
             {
                 int MaxMinons = Main.expertMode ? 3 : 4;
-                if (MinionCount < MaxMinons)
+
+                if (npc.ai[2] == 350)
                 {
-                    AkumaAttacks.SpawnLung(player, mod);
-                    MinionCount += 1;
+                    if (MinionCount < MaxMinons)
+                    {
+                        AkumaAttacks.SpawnLung(player, mod);
+                        MinionCount += 1;
+                    }
                 }
             }
             
@@ -552,7 +563,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Sounds/AkumaRoar");
+                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar");
                 Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
             }
         }
@@ -565,6 +576,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
+        }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

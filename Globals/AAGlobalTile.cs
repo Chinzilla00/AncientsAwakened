@@ -36,7 +36,7 @@ namespace AAMod
         public static Color GetTerraColorBright(Color color) { return GetTerraColor(color, 0.6f, 1f, false); }
         public static Color GetTerraColor(Color color, float min, float max, bool clamp)
         {
-            return GetTimedColor(Color.White, color, min, max, clamp);
+            return GetTimedColor(Color.Green, color, min, max, clamp);
         }
 
         public static Color GetUraniumColorBrightInvert(Color color) { return GetUraniumColor(color, 1f, 0.6f, true); }

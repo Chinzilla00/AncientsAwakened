@@ -32,5 +32,14 @@ namespace AAMod.NPCs.Bosses.Serpent
 		{
 			return false;
 		}
-	}
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<SerpentHead>()))
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }

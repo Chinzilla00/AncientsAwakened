@@ -330,6 +330,15 @@ namespace AAMod.NPCs.Bosses.Serpent
         {
             return false;
         }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<SerpentHeadM>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
     public class SerpentTailM : SerpentHeadCo
     {
@@ -354,6 +363,15 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;
+        }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<SerpentHeadM>()))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

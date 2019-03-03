@@ -40,8 +40,7 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-
-            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/TerraCrystal"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Doomstone_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.TerraGlow, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
