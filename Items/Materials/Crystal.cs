@@ -567,7 +567,7 @@ namespace AAMod.Items.Materials
                 {
                     if (Main.rand.Next(0, 100) >= 99)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<VoidCrystal>(), 1);
+                        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<VoidCrystal>(), 1);
                     }
                 }
                 if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)

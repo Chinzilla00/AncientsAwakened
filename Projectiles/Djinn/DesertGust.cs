@@ -26,6 +26,7 @@ namespace AAMod.Projectiles.Djinn
             projectile.extraUpdates = 1;
             projectile.scale = 1.1f;
             projectile.penetrate = -1;
+            projectile.melee = true;
         }
 
         public override void AI()

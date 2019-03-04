@@ -15,11 +15,9 @@ namespace AAMod.Projectiles.Djinn
 			projectile.height = 18;
 			projectile.aiStyle = 3;
 			projectile.friendly = true;
-			projectile.thrown = true;
 			projectile.timeLeft = 550;
 			projectile.extraUpdates = 2;
-			
-			
-		}
+            projectile.melee = true;
+        }
     }
 }

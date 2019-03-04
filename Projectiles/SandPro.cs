@@ -30,6 +30,11 @@ namespace AAMod.Projectiles
             projectile.localAI[0] += 1f;
             projectile.rotation += 0.06f;
             projectile.velocity.Y += 0.3F;
+            if (projectile.ai[1] != 0)
+            {
+                projectile.melee = false;
+                projectile.minion = true;
+            }
 
             if (projectile.localAI[0] > 130f) //projectile time left before disappears
             {

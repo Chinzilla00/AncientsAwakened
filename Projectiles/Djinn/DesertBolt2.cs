@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Djinn
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
+            projectile.ranged = true;
         }
 
         public override void AI()

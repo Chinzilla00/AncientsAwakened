@@ -37,7 +37,6 @@ namespace AAMod.Projectiles.Serpent
         public override void SetDefaults()
 		{
             projectile.CloneDefaults(ProjectileID.FruitcakeChakram);
-
-		}
+        }
     }
 }
