@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Technecium Mask");
-            Tooltip.SetDefault(@"4% increased damage reistance
+            Tooltip.SetDefault(@"4% increased damage resistance
 14% increased ranged damage & critical strike chance");
         }
 

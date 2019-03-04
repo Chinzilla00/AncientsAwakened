@@ -9,7 +9,7 @@ namespace AAMod.Items.Throwing
 		public override void SetDefaults()
 		{
 			item.damage = 20;
-			item.thrown = true;
+			item.ranged = true;
 			item.noUseGraphic = true;
 			item.maxStack = 999;
 			item.consumable = true;

@@ -273,11 +273,21 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
+                if (Main.rand.Next(20) == 0 && AAWorld.MindDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MindStone"));
+                    AAWorld.MindDropped = true;
+                }
             }
             else
             {
                 AAWorld.downedNC = true;
                 BaseAI.DropItem(npc, mod.ItemType("NCTrophy"), 1, 1, 15, true);
+                if (Main.rand.Next(20) == 0 && AAWorld.TimeDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TimeStone"));
+                    AAWorld.TimeDropped = true;
+                }
             }
             if (NPC.CountNPCS(otherWormAlive) == 0)
             {

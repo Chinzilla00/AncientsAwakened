@@ -105,7 +105,7 @@ namespace AAMod.Projectiles.Akuma
         {
             for (int num56 = 0; num56 < 1000; num56++)
             {
-                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner && Main.projectile[num56].type == mod.ProjectileType<Sunray>())
+                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner)
                 {
                     Main.projectile[num56].Kill();
                 }

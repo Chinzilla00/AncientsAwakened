@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Ytrium
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Uranium Visor");
+            DisplayName.SetDefault("Yttrium Mask");
             Tooltip.SetDefault(@"8% increased movement speed
 15% increased melee speed");
         }

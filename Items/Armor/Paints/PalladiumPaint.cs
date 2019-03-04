@@ -53,7 +53,7 @@ Greatly increases life regeneration after striking an enemy";
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.PalladiumBar, 6);
-                recipe.AddIngredient(ItemID.BottledWater, 6);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
                 recipe.AddTile(null, "Mortar_Tile");
                 recipe.SetResult(this);
                 recipe.AddRecipe();

@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Yamata
 		{
 
             item.damage = 300;            
-            item.thrown = true;
+            item.melee = true;
             item.width = 30;
             item.height = 30;
 			item.useTime = 8;

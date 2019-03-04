@@ -9,7 +9,7 @@ namespace AAMod.Items.Throwing
 		{
 
             item.damage = 60;            
-            item.thrown = true;
+            item.ranged = true;
             item.width = 20;
             item.height = 20;
 			item.useTime = 8;

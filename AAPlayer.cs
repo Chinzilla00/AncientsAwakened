@@ -103,6 +103,7 @@ namespace AAMod
         public bool infinitySet;
         public bool Alpha;
         public bool Palladium;
+        public bool fulgurite;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -127,11 +128,14 @@ namespace AAMod
         public bool DragonShell;
         public bool ammo20percentdown = false;
         public int AADash;
+        public bool RStar;
+        public bool DVoid;
         public int dashTimeAA;
         public int dashDelayAA;
         public int[] AADoubleTapKeyTimer = new int[4];
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
+        public bool lantern = false;
         
         public bool BegAccessoryPrevious;
         public bool BegAccessory;
@@ -156,6 +160,9 @@ namespace AAMod
         public bool riftbent = false;
         public bool DestinedToDie = false;
         public int TeleportTimer = 0;
+        public bool YamataGravity = false;
+        public bool YamataAGravity = false;
+        public bool Hunted = false;
         //buffs
 
         //pets
@@ -242,6 +249,7 @@ namespace AAMod
             infinitySet = false;
             Alpha = false;
             Palladium = false;
+            fulgurite = false;
             //Accessory
             SnapCD = 0;
             AbilityCD = 0;
@@ -267,6 +275,9 @@ namespace AAMod
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
             AADash = 0;
             DiscordShredder = false;
+            RStar = false;
+            DVoid = false;
+            lantern = false;
 
             BegAccessoryPrevious = BegAccessory;
             BegAccessory = BegHideVanity = BegForceVanity = HorseBuff = false;
@@ -283,6 +294,9 @@ namespace AAMod
             shroomed = false;
             riftbent = false;
             DestinedToDie = false;
+            YamataGravity = false;
+            YamataAGravity = false;
+            Hunted = false;
             //Buffs
 			//Weapons
             //Pets
@@ -751,6 +765,11 @@ namespace AAMod
                 }
             }
 
+            if (fulgurite)
+            {
+                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+            }
+
             if (techneciumSet)
             {
                 npc.AddBuff(mod.BuffType<Electrified>(), 180);
@@ -1005,9 +1024,48 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (!Main.expertMode)
             {
-                player.wingTimeMax = 60;
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DraconianRune>() && player.inventory[num66].stack > 0)
+                    {
+                        player.inventory[num66].TurnToAir();
+                        player.QuickSpawnItem(mod.ItemType("CrucibleScale"), 20);
+                        player.QuickSpawnItem(mod.ItemType("DraconianSigil"));
+                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", Color.DeepSkyBlue);
+                    }
+                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[num66].stack > 0)
+                    {
+                        player.inventory[num66].TurnToAir();
+                        player.QuickSpawnItem(mod.ItemType("DreadScale"), 20);
+                        player.QuickSpawnItem(mod.ItemType("DreadSigil"));
+                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", new Color(146, 30, 68));
+                    }
+                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.ZeroRune>() && player.inventory[num66].stack > 0)
+                    {
+                        player.inventory[num66].TurnToAir();
+                        player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), 20);
+                        player.QuickSpawnItem(mod.ItemType("ApocalyptitePlate"), 10);
+                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", Color.Red);
+                    }
+                }
+            }
+            if (RStar)
+            {
+                Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, 1f, 0.95f, 0.8f);
+            }
+            if (kindledSet || lantern)
+            {
+                Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, AAColor.Lantern.R / 255, (AAColor.Lantern.G / 255) * 0.95f, (AAColor.Lantern.B / 255) * 0.8f);
+            }
+            if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
+            {
+                player.AddBuff(mod.BuffType<Buffs.YamataGravity>(), 10, true);
+            }
+            if (NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            {
+                player.AddBuff(mod.BuffType<Buffs.YamataAGravity>(), 10, true);
             }
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
@@ -1501,10 +1559,10 @@ namespace AAMod
             {
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
                 {
+                    Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
                     SnapCD = 18000;
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() /*&& x.type != mod.NPCType<IZHand1>() && x.type != mod.NPCType<IZHand2>()*/ && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
-                        Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
                     });
                 }
@@ -1699,6 +1757,31 @@ namespace AAMod
             {
                 drain = true;
                 player.lifeRegen -= 60;
+            }
+
+            if (YamataGravity || YamataAGravity)
+            {
+                if (player.wingTimeMax > 60)
+                {
+                    player.wingTimeMax = 60;
+                }
+            }
+
+            if (Hunted)
+            {
+                if (player.rocketTimeMax > 30)
+                {
+                    player.wingTimeMax = 30;
+                }
+                if (player.accRunSpeed > 3f)
+                {
+                    player.accRunSpeed = 3f;
+                }
+                player.wingTimeMax /= 2;
+                if (player.wingTimeMax <= 0)
+                {
+                    player.wingTimeMax = 0;
+                }
             }
             
             if (drain && before > 0)

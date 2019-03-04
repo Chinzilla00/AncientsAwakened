@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("RealityCannon");
+            DisplayName.SetDefault("Reality Cannon");
             Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()

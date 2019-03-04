@@ -87,7 +87,7 @@ namespace AAMod.Items.Accessories
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType<HydraClaw>(), 15);
-            recipe.AddTile(mod.TileType<ChaosAltar>());
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

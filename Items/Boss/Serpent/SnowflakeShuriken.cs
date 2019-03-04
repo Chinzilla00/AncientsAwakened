@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Serpent
 		{
             item.damage = 10;
             item.maxStack = 999;
-            item.thrown = true;
+            item.ranged = true;
             item.width = 10;
             item.height = 10;
 			item.useTime = 20;

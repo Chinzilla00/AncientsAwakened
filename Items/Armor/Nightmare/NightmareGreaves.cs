@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Nightmare
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightmare Greaves");
-			Tooltip.SetDefault("5% increased trown velocity");
+			Tooltip.SetDefault("5% increased movement speed");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace AAMod.Items.Armor.Nightmare
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownVelocity += 0.05f;
+			player.moveSpeed += 0.05f;
 		}
 		
 		public override void AddRecipes()

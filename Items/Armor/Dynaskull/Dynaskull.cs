@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Dynaskull
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dynaskull");
-			Tooltip.SetDefault("50% increased throwing velocity");
+			Tooltip.SetDefault("20% decreased ammo consumption");
 
 		}
 
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.Dynaskull
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.thrownVelocity *= 1.50f;
+            player.ammoCost80 = true ;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,10 +37,8 @@ namespace AAMod.Items.Armor.Dynaskull
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Your thrown projectiles have so much power behind them, they confuse the target due to concussive force
-50% chance to not consume thrown weapons";
-
-            player.thrownCost50 = true;
+            player.setBonus = @"Your ranged projectiles have so much power behind them, they confuse the target due to concussive force";
+            
 			player.GetModPlayer<AAPlayer>(mod).DynaskullSet = true;
 		}
 

@@ -14,7 +14,8 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("0");
-            Tooltip.SetDefault(@"ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT");
+            Tooltip.SetDefault(@"ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT
+Only craftable in expert mode");
         }
 
         public override void SetDefaults()
@@ -55,7 +56,7 @@ namespace AAMod.Items.BossSummons
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Oblivion;
                 }
             }
         }
@@ -94,15 +95,12 @@ namespace AAMod.Items.BossSummons
 
         public override void AddRecipes()
         {
-            if (Main.expertMode == true)
-            { 
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 10);
-            recipe.AddIngredient(null, "UnstableSingularity", 10);
+            recipe.AddIngredient(null, "UnstableSingularity", 20);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
-            }
         }
     }
 }

@@ -16,16 +16,16 @@ namespace AAMod.Items.Accessories.Ankh
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<AAPlayer>().ammo20percentdown = true;
+            player.manaCost -= 0.1f;
             player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Ankh Necklace");
+        {
+            DisplayName.SetDefault("Ankh Necklace");
             Tooltip.SetDefault(@"Grants immunity to knockback and fire blocks
 Grants immunity to most debuffs
-20% chance not to consume ammo");
+10% reduced mana usage");
         }
 
         public override void AddRecipes()

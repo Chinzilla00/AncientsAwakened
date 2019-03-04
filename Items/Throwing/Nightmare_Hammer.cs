@@ -10,7 +10,7 @@ namespace AAMod.Items.Throwing
 		{
 
 			item.damage = 31;
-			item.thrown = true;
+			item.melee = true;
 			item.width = 22;
 			item.noUseGraphic = true;
 			item.height = 44;

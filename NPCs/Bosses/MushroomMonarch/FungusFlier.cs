@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushling");
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults()
@@ -46,6 +47,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             if (npc.wet)
             {
                 npc.life = 0;
+            }
+
+            npc.frameCounter++;
+            if (npc.frameCounter > 8)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 20;
+                if (npc.frame.Y > 60)
+                {
+                    npc.frame.Y = 0;
+                }
             }
         }
     }

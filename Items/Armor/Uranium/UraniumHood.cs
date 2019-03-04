@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Uranium
         {
             DisplayName.SetDefault("Uranium Hood");
             Tooltip.SetDefault(@"+60 increased max mana
-3% increased damage reistance
+3% increased damage resistance
 8% increased Magic damage");
         }
 

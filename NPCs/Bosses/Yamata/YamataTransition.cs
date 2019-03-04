@@ -11,40 +11,40 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spirit of Wrath");
+            Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 1;
-            projectile.height = 1;
+            projectile.width = 20;
+            projectile.height = 32;
+            projectile.scale *= 1.2f;
             projectile.friendly = false;
+            projectile.scale *= 1.5f;
         }
         public int timer;
+
+
+        public int RVal = 125;
+        public int BVal = 255;
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(RVal, 0, BVal);
+        }
+
         public override void AI()
         {
             timer++;
-            if (timer < 900)
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 7)
             {
-                Dust dust1;
-                Dust dust2;
-                Dust dust3;
-                Dust dust4;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.scale *= 1.3f;
-                dust1.noGravity = true;
-                dust1.velocity.Y -= 6;
-                dust2.scale *= 1.3f;
-                dust2.noGravity = true;
-                dust2.velocity.Y -= 6;
-                dust3.scale *= 1.3f;
-                dust3.noGravity = true;
-                dust3.velocity.Y -= 6;
-                dust4.scale *= 1.3f;
-                dust4.noGravity = true;
-                dust4.velocity.Y -= 6;
+                projectile.frameCounter = 0;
+                projectile.frame += 1;
+            }
+
+            if (projectile.frame > 3)
+            {
+                projectile.frame = 0;
             }
             if (timer == 375)    
             {
@@ -59,33 +59,24 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Main.NewText("HAH! AS IF!", new Color(45, 46, 70));
             }
+
             if (timer >= 900)
             {
-                Dust dust1;
-                Dust dust2;
-                Dust dust3;
-                Dust dust4;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-                dust3 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-                dust4 = Main.dust[Dust.NewDust(position, 1, 1, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-                dust1.scale *= 1.3f;
-                dust1.noGravity = true;
-                dust1.velocity.Y -= 9;
-                dust2.scale *= 1.3f;
-                dust2.noGravity = true;
-                dust2.velocity.Y -= 9;
-                dust3.scale *= 1.3f;
-                dust3.noGravity = true;
-                dust3.velocity.Y -= 9;
-                dust4.scale *= 1.3f;
-                dust4.noGravity = true;
-                dust4.velocity.Y -= 9;
+                RVal += 5;
+                BVal -= 5;
+                if (RVal <= 90)
+                {
+                    BVal = 90;
+                }
+                if (RVal >= 255)
+                {
+                    RVal = 255;
+                }
             }
+
             if (timer == 1100)
             {
-                Main.NewText("I HOPE YOU ARE READY...", new Color(45, 46, 70));
+                Main.NewText("I HOPE YOU ARE READY...", new Color(146, 30, 68));
             }
             if (timer == 1455)
             {
@@ -123,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             SpawnBoss(projectile.Center, "YamataA", "Yamata Awakened");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WHELP!!!", new Color(146, 30, 68));
+            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WRETCH!!!", new Color(146, 30, 68));
             AAMod.YamataMusic = false; 
         }
 

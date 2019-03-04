@@ -28,6 +28,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
         public override void AI()
         {
+            projectile.scale = projectile.ai[0];
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;

@@ -16,7 +16,7 @@ namespace AAMod.Items.Tools
             item.width = 36;
             item.height = 38;
             item.damage = 39;
-            item.axe = 100;
+            item.axe = 25;
             item.UseSound = SoundID.Item1;
             item.rare = 4;
             item.value = 81000;

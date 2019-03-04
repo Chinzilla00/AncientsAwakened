@@ -445,6 +445,21 @@ namespace AAMod
                 }
                 Item.NewItem(npc.getRect(), mod.ItemType("Stinger"), Main.rand.Next(14, 20));
             }
+
+            if (npc.type == NPCID.Plantera)
+            {
+                Item.NewItem(npc.getRect(),  ItemID.ChlorophyteOre, Main.rand.Next(50, 80));
+            }
+
+            if (npc.type == NPCID.SkeletronHand)
+            {
+                Item.NewItem(npc.getRect(), ItemID.Bone, Main.rand.Next(4, 8));
+            }
+            if (npc.type == NPCID.SkeletronHead)
+            {
+                Item.NewItem(npc.getRect(), ItemID.ChlorophyteOre, Main.rand.Next(30, 45));
+            }
+
             if (npc.type == NPCID.MoonLordCore)
             {
                 if (AAWorld.Luminite)

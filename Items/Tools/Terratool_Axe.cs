@@ -25,7 +25,7 @@ namespace AAMod.Items.Tools
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 60;
-            item.axe = 130;
+            item.axe = 50;
 
         }
 

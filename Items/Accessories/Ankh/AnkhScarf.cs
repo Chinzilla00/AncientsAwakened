@@ -14,20 +14,22 @@ namespace AAMod.Items.Accessories.Ankh
             AutoDefaults();
         }
 
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.thrownVelocity += 0.085f;
+            player.GetModPlayer<AAPlayer>().ammo20percentdown = true;
             player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Ankh Scarf");
+        {
+            DisplayName.SetDefault("Ankh Scarf");
             Tooltip.SetDefault(@"Grants immunity to knockback and fire blocks
 Grants immunity to most debuffs
-8.5% throwing velocity");
+20% chance not to consume ammo");
         }
 
+        
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Dynaskull
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Dynaskull Ribguard");
-            Tooltip.SetDefault("30% increased Throwing damage");
+            Tooltip.SetDefault("15% increased Ranged damage");
         }
 
 		public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.Dynaskull
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownDamage *= 1.3f;
+			player.rangedDamage *= 1.15f;
 		}
 
 		public override void AddRecipes()

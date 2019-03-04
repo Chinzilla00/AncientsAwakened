@@ -162,7 +162,8 @@ namespace AAMod.NPCs.Bosses.EmperorFishron
             {
                 npc.DropBossBags();
             }
-			npc.DropLoot(mod.ItemType("EFishTrophy"), 1f / 10);
+            
+            npc.DropLoot(mod.ItemType("EFishTrophy"), 1f / 10);
 		}
 
         public override void AI()

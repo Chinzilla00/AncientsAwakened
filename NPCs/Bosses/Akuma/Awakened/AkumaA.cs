@@ -396,6 +396,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
                 npc.DropBossBags();
+                if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
+                    AAWorld.PowerDropped = true;
+                }
                 return;
             }
             Main.NewText("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);

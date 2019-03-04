@@ -8,8 +8,7 @@ namespace AAMod.Items.Throwing
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.LightDisc);
-			item.melee = false;
-			item.thrown = true;
+			item.melee = true;
 			item.shootSpeed = 16f;
 			item.stack = 1;
 			item.useTime = 12;

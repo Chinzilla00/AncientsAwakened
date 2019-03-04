@@ -10,7 +10,7 @@ namespace AAMod.Items.Throwing
         {
 			item.useTime = 25;
             item.CloneDefaults(ItemID.PossessedHatchet);
-
+            item.melee = true;
             item.damage = 140;                            
             item.value = 20;
             item.rare = 3;

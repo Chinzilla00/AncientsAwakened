@@ -20,7 +20,7 @@ namespace AAMod.Items.Throwing
         {
 
             item.damage = 70;           //this is the item damage
-            item.thrown = true;             //this make the item do throwing damage
+            item.melee = true;             //this make the item do throwing damage
             item.noMelee = true;
             item.width = 30;
             item.height = 30;

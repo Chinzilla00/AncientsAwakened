@@ -18,7 +18,8 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Dread Moon Rune");
             Tooltip.SetDefault(@"An enchanted tablet eminating with dark chaotic energy
 Summons Yamata Awakened
-Only Usable at night in the mire");
+Only Usable at night in the mire
+Only craftable in expert mode");
         }
         public override void SetDefaults()
         {
@@ -42,12 +43,13 @@ Only Usable at night in the mire");
             }
         }
 
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "EventideAbyssium", 10);
-            recipe.AddIngredient(null, "DarkMatter", 5);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.AddIngredient(null, "DreadScale", 20);
+            recipe.AddIngredient(null, "DreadSigil");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

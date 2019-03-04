@@ -20,7 +20,6 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("Time Stone");
             Tooltip.SetDefault(
 @"Respawn time cut by 80%
-hitting enemies causes time for them to slow
 'Dread it. Run from it. Destiny still arives.'");
 
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
@@ -55,40 +54,37 @@ hitting enemies causes time for them to slow
         {
             player.GetModPlayer<AAPlayer>().Time = true;
         }
-
-        public override void AddRecipes()
+        
+        public override bool CanEquipAccessory(Player player, int slot)
         {
+            if (slot < 10)
             {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Emerald, 10);
-                recipe.AddIngredient(ItemID.LargeEmerald, 1);
-                recipe.AddIngredient(null, "TimeTeller", 1);
-                recipe.AddIngredient(ItemID.FragmentNebula, 15);
-                recipe.AddIngredient(ItemID.FragmentSolar, 15);
-                recipe.AddIngredient(ItemID.FragmentVortex, 15);
-                recipe.AddIngredient(ItemID.FragmentStardust, 15);
-                recipe.AddIngredient(ItemID.SoulofSight, 30);
-                recipe.AddIngredient(null, "DarkMatter", 10);
-                recipe.AddIngredient(null, "RadiumBar", 10);
-                recipe.AddTile(null, "QuantumFusionAccelerator");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
-        public bool CanEquipAccessory(Item item, Player player, int slot)
-        {
-            if (item.type == mod.ItemType("TimeStone"))
-            {
-                if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
-                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    if (slot != i && player.armor[i].type == mod.ItemType<PowerStone>())
                     {
-                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                        if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<RealityStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SpaceStone>())
+                    {
+                        return false;
                     }
                 }
             }

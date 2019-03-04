@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Dynaskull
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dynaskull Greaves");
-            Tooltip.SetDefault("40% Increased throwing critical chance");
+            Tooltip.SetDefault("10% Increased ranged critical chance");
 
         }
 
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.Dynaskull
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownCrit += 40;
+			player.rangedCrit += 10;
 		}
 
 		public override void AddRecipes()

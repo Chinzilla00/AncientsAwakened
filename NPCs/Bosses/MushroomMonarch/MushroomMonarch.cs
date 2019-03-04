@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushroom Monarch");
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[npc.type] = 12;
         }
 
         public override void SetDefaults()
@@ -66,16 +66,18 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         }
       
-		public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2;
+		public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2, AISTATE_FLY = 3;
 		public float[] internalAI = new float[2];
 		
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-            
+
+
+            float dist = npc.Distance(player.Center);
 
             npc.frameCounter++;
-            if (internalAI[1] != AISTATE_JUMP) //walk or charge
+            if (internalAI[1] != AISTATE_JUMP && internalAI[1] != AISTATE_FLY) //walk or charge
             {
                 int FrameSpeed = 10;
                 if (internalAI[1] == AISTATE_CHARGE)
@@ -104,6 +106,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                         npc.frame.Y = 756;
                     }
                 }
+            }else if (internalAI[1] == AISTATE_FLY)
+            {
+                if (npc.frameCounter > 7)
+                {
+                    npc.frame.Y += 108;
+                    if (npc.frame.Y < 108 * 7 || npc.frame.Y > 108 * 11)
+                    {
+                        npc.frame.Y = 108 * 7;
+                    }
+                }
+                
             }else //jump
             {
                 if (npc.velocity.Y == 0)
@@ -130,14 +143,23 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 			if(Main.netMode != 1)
 			{
-				internalAI[0]++;
-				if (internalAI[0] >= 180)
-				{
-					internalAI[0] = 0;
-					internalAI[1] = Main.rand.Next(3);
-					npc.ai = new float[4];
-					npc.netUpdate = true;
-				}
+                if (internalAI[1] != AISTATE_FLY)
+                {
+                    internalAI[0]++;
+                }
+                if (internalAI[0] >= 180)
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = Main.rand.Next(3);
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+                else if ((dist > 360 || npc.velocity == new Vector2(0, 0)) && internalAI[1] != AISTATE_FLY)
+                {
+                    internalAI[1] = AISTATE_FLY;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
 			}
 			if(internalAI[1] == AISTATE_WALK) //fighter
 			{
@@ -147,7 +169,19 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
 				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);				
-			}else //charger
+			}
+            if (internalAI[1] == AISTATE_FLY)//jumper
+            {
+                npc.noTileCollide = true;
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.4f, 6, 6, false, 300);
+                if (dist < 120)
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = Main.rand.Next(3);
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }else //charger
 			{			
                 BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				
 			}

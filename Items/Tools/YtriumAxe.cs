@@ -15,7 +15,7 @@ namespace AAMod.Items.Tools
 
             item.useTime = 8;
             item.useAnimation = 12;
-            item.axe = 70;    //pickaxe power
+            item.axe = 14;    //pickaxe power
             item.useStyle = 1;
             item.knockBack = 1;
             item.value = 10;

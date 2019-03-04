@@ -59,13 +59,14 @@ All effects of the infinity stones
             player.meleeDamage *= 3;
             player.meleeSpeed += 0.18f;
             player.aggro += 8;
-            player.rangedDamage *= 3;
-            player.magicDamage *= 3;
-            player.thrownDamage *= 3;
-            player.minionDamage *= 3;
+            player.meleeDamage *= 1.5f;
+            player.rangedDamage *= 1.5f;
+            player.magicDamage *= 1.5f;
+            player.thrownDamage *= 1.5f;
+            player.minionDamage *= 1.5f;
             player.statManaMax2 += 1000;
             player.buffImmune[88] = true;
-            player.maxMinions += 15;
+            player.maxMinions += 10;
             player.manaCost *= 0.0f;
             player.accRunSpeed = 10;
             player.moveSpeed += 1f;
@@ -147,40 +148,36 @@ All effects of the infinity stones
                 recipe.AddRecipe();
             }
         }
-        public bool CanEquipAccessory(Item item, Player player, int slot)
+        public override bool CanEquipAccessory(Player player, int slot)
         {
-            if (item.type == mod.ItemType("InfinityGauntlet"))
+            if (slot < 10)
             {
-                if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
-                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    if (slot != i && player.armor[i].type == mod.ItemType<PowerStone>())
                     {
-                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                        if (slot != i && player.armor[i].type == mod.ItemType<PowerStone>())
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<RealityStone>())
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<TimeStone>())
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<SpaceStone>())
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<RealityStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<TimeStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SpaceStone>())
+                    {
+                        return false;
                     }
                 }
             }

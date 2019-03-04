@@ -16,7 +16,7 @@ namespace AAMod.Items.Throwing
         public override void SetDefaults()
 		{
             item.damage = 170;            
-            item.thrown = true;
+            item.melee = true;
             item.width = 30;
             item.height = 30;
 			item.useTime = 16;

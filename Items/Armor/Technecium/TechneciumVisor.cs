@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Technecium Visor");
-            Tooltip.SetDefault(@"4% increased damage reistance
+            Tooltip.SetDefault(@"4% increased damage resistance
 12% increased melee damage & critical strike chance");
         }
 

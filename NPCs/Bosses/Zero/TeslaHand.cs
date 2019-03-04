@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else if (num3 < 400.0)
                 npc.ai[2] = 0.0f;
-            if (!Main.npc[(int)npc.ai[1]].active)
+            if (!Main.npc[(int)npc.ai[1]].active || (Main.npc[(int)npc.ai[1]].ai[0] == 2 && Main.npc[(int)npc.ai[1]].ai[3] == 0))
             {
                 npc.ai[2] += 10f;
                 if (npc.ai[2] > 50.0 || Main.netMode != 2)

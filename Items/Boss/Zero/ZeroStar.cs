@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.Zero
 			item.value = Item.buyPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.thrown = true;
+            item.melee = true;
             item.shoot = mod.ProjectileType("ZeroStarP");
             item.shootSpeed = 20f;
             item.noMelee = true;

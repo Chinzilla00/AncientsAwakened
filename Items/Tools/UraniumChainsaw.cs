@@ -13,8 +13,8 @@ namespace AAMod.Items.Tools
 		}
 
 		public override void SetDefaults()
-		{
-            item.useStyle = 1;
+        {
+            item.useStyle = 5;
             item.useAnimation = 29;
             item.useTime = 12;
             item.knockBack = 5f;
@@ -24,7 +24,7 @@ namespace AAMod.Items.Tools
             item.width = 36;
             item.height = 36;
             item.damage = 25;
-            item.axe = 100;
+            item.axe = 25;
             item.UseSound = SoundID.Item1;
             item.rare = 4;
             item.value = 81000;

@@ -11,7 +11,8 @@ namespace AAMod.Items.Armor.Fulgurite
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fulgurite Visor");
-			Tooltip.SetDefault("70% increased throwing velocity");
+			Tooltip.SetDefault(@"17% increased ranged damage
+5% increased ranged critical strike chance");
 
 		}
 
@@ -19,14 +20,15 @@ namespace AAMod.Items.Armor.Fulgurite
 		{
 			item.width = 30;
 			item.height = 28;
-			item.value = 90000;
+			item.value = 50000;
 			item.rare = 5;
-			item.defense = 10;
+			item.defense = 8;
 		}
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.thrownVelocity *= 1.70f;
+            player.rangedDamage *= 1.17f;
+            player.rangedCrit += 5;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,11 +39,11 @@ namespace AAMod.Items.Armor.Fulgurite
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Your Thrown weapons fly as fast as a bolt of lightning
-50% chance to not consume thrown weapons";
+            player.setBonus = @"Being struck causes a burst of lightning to erupt from your body, knocking back enemies
+25% chance to not consume ammo weapons";
 
-            player.thrownCost50 = true;
-            player.thrownVelocity *= 2;
+            player.GetModPlayer<AAPlayer>(mod).fulgurite = true;
+            player.ammoCost75 = true;
 		}
 
 		public override void AddRecipes()

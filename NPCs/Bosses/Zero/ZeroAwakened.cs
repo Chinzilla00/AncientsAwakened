@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Zero Protocol");
+            DisplayName.SetDefault("ZER0 PR0T0C0L");
             Main.npcFrameCount[npc.type] = 8; 
             NPCID.Sets.TrailCacheLength[npc.type] = 15;
             NPCID.Sets.TrailingMode[npc.type] = 0;
@@ -104,11 +104,19 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
+                for (int Shadows = 0; Shadows < 4; Shadows++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ZeroShadow>());
+                }
             }
             if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
+                for (int Shadows = 0; Shadows < 4; Shadows++)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ZeroShadow>());
+                }
             }
             if (damage > 30)
             {

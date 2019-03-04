@@ -11,9 +11,9 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Dynaskull");
-			Tooltip.SetDefault(@"100% increased throwing velocity");
+            Tooltip.SetDefault("25% decreased ammo consumption");
 
-		}
+        }
 
 		public override void SetDefaults()
 		{
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.thrownVelocity *= 2f;
+            player.ammoCost75 = true;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,12 +37,11 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Your thrown projectiles have so much power behind them, they confuse the target due to concussive force
-83% chance to not consume thrown weapons
+            player.setBonus = @"Your ranged projectiles have so much power behind them, they confuse the target due to concussive force
+45% chance to not consume ammo
 Pressing the Ability hotkey fires off a dynaskull shot towards your cursor";
 
-            player.thrownCost50 = true;
-            player.thrownCost33 = true;
+            player.ammoCost80 = true;
             player.GetModPlayer<AAPlayer>(mod).DynaskullSet = true;
             player.GetModPlayer<AAPlayer>(mod).trueDynaskull = true;
 		}

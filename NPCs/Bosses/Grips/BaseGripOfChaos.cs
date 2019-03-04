@@ -198,11 +198,11 @@ namespace AAMod.NPCs.Bosses.Grips
                 MinionTimer++;
                 if (MinionTimer == 160)
                 {
-                    if (npc.type == mod.NPCType<GripOfChaosRed>())
+                    if (npc.type == mod.NPCType<GripOfChaosRed>() && NPC.CountNPCS(mod.NPCType<DragonClawM>()) < 4)
                     {
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<DragonClawM>());
                     }
-                    if (npc.type == mod.NPCType<GripOfChaosBlue>())
+                    if (npc.type == mod.NPCType<GripOfChaosBlue>() && NPC.CountNPCS(mod.NPCType<HydraClawM>()) < 4)
                     {
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HydraClawM>());
                     }

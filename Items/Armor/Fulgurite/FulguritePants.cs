@@ -11,8 +11,8 @@ namespace AAMod.Items.Armor.Fulgurite
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fulgurite Pants");
-            Tooltip.SetDefault(@"40% Increased throwing critical chance
-12% increased movement speed");
+            Tooltip.SetDefault(@"5% increased critical chance
+16% increased movement speed");
 
         }
 
@@ -27,8 +27,11 @@ namespace AAMod.Items.Armor.Fulgurite
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownCrit += 40;
-            player.moveSpeed *= 1.12f;
+			player.thrownCrit += 5;
+            player.meleeCrit += 5;
+            player.magicCrit += 5;
+            player.rangedCrit += 5;
+            player.moveSpeed *= 1.16f;
 		}
 
 		public override void AddRecipes()

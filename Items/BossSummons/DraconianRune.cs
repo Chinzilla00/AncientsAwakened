@@ -17,7 +17,8 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Draconian Sun Rune");
             Tooltip.SetDefault(@"An enchanted tablet bursting with flaming chaotic energy
 Summons Akuma Awakened
-Only Usable during the day in the inferno");
+Only Usable during the day in the inferno
+Only craftable in expert mode");
         }
 
         public override void SetDefaults()
@@ -41,7 +42,6 @@ Only Usable during the day in the inferno");
                 }
             }
         }
-
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
@@ -99,15 +99,12 @@ Only Usable during the day in the inferno");
         }
         public override void AddRecipes()
         {
-            if (Main.expertMode)
-            { 
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "CrucibleScale", 20);
-                recipe.AddIngredient(null, "DraconianSigil");
-                recipe.AddTile(null, "QuantumFusionAccelerator");
-                recipe.SetResult(this, 1);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "CrucibleScale", 20);
+            recipe.AddIngredient(null, "DraconianSigil");
+            recipe.AddTile(null, "ACS");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

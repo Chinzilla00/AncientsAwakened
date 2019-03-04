@@ -19,7 +19,7 @@ namespace AAMod.Items.Accessories
         {
             DisplayName.SetDefault("Power Stone");
             Tooltip.SetDefault(
-@"Multiplies your attack power by 2.25
+@"Multiplies your attack power by 50%
 'Fun isn’t something one considers when balancing the universe'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
             ItemID.Sets.ItemNoGravity[item.type] = true;
@@ -52,50 +52,48 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 2.25f;
-            player.rangedDamage *= 2.25f;
-            player.magicDamage *= 2.25f;
-            player.thrownDamage *= 2.25f;
-            player.minionDamage *= 2.25f;
+            player.meleeDamage *= 1.5f;
+            player.rangedDamage *= 1.5f;
+            player.magicDamage *= 1.5f;
+            player.thrownDamage *= 1.5f;
+            player.minionDamage *= 1.5f;
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().Power = true;
         }
 
-        public override void AddRecipes()
+        
+        public override bool CanEquipAccessory(Player player, int slot)
         {
+            if (slot < 10)
             {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Amethyst, 10);
-                recipe.AddIngredient(ItemID.LargeAmethyst, 1);
-                recipe.AddIngredient(ItemID.AvengerEmblem, 1);
-                recipe.AddIngredient(ItemID.FragmentNebula, 15);
-                recipe.AddIngredient(ItemID.FragmentSolar, 15);
-                recipe.AddIngredient(ItemID.FragmentVortex, 15);
-                recipe.AddIngredient(ItemID.FragmentStardust, 15);
-                recipe.AddIngredient(ItemID.SoulofMight, 30);
-                recipe.AddIngredient(null, "DarkMatter", 10);
-                recipe.AddIngredient(null, "RadiumBar", 10);
-                recipe.AddTile(null, "QuantumFusionAccelerator");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
-        public bool CanEquipAccessory(Item item, Player player, int slot)
-        {
-            if (item.type == mod.ItemType("PowerStone"))
-            {
-                if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
-                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
                     {
-                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                        if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<RealityStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<TimeStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SpaceStone>())
+                    {
+                        return false;
                     }
                 }
             }

@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Dynaskull Greaves");
-            Tooltip.SetDefault(@"80% Increased throwing critical chance
+            Tooltip.SetDefault(@"20% Increased ranged critical chance
 +12% movement speed");
 
         }
@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownCrit += 80;
+			player.thrownCrit += 20;
             player.moveSpeed *= 1.12f;
 		}
 

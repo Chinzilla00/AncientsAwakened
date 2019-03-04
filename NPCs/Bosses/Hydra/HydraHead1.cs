@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.height = 32;
             npc.npcSlots = 0;
 			npc.timeLeft = 500;
+            npc.damage = 20;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;
@@ -78,6 +79,27 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+
+            if (npc.type == mod.NPCType<HydraHead1>() && Body.TeleportMe1)
+            {
+                Body.TeleportMe1 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+
+            if (npc.type == mod.NPCType<HydraHead2>() && Body.TeleportMe2)
+            {
+                Body.TeleportMe2 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
+
+            if (npc.type == mod.NPCType<HydraHead3>() && Body.TeleportMe3)
+            {
+                Body.TeleportMe3 = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
 
             if (Main.netMode != 1)
             {
@@ -161,6 +183,15 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override bool PreNPCLoot()
         {
             return false;
+        }
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Hydra>()))
+            {
+                return false;
+            }
+            return true;
         }
 
     }

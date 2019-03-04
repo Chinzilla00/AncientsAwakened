@@ -10,7 +10,6 @@ namespace AAMod.Items.Armor.Nightmare
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightmare Helmet");
-			Tooltip.SetDefault("10% increased thrown damage");
 		}
 
 		public override void SetDefaults()
@@ -27,16 +26,9 @@ namespace AAMod.Items.Armor.Nightmare
 			return body.type == mod.ItemType("NightmareBreastplate") && legs.type == mod.ItemType("NightmareGreaves");
 		}
 		
-		public override void UpdateEquip(Player player)
-		{
-			player.thrownDamage += 0.1f; //10% throwing damage
-		}
-		
 		public override void ArmorSetShadows(Player player)
 		{
-			//player.armorEffectDrawShadow = true;
 			player.armorEffectDrawOutlines = true;
-			//player.armorEffectDrawShadowLokis = true;
 		}
 		
 		public override void UpdateArmorSet(Player player)

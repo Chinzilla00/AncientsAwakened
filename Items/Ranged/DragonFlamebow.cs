@@ -11,7 +11,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 24;
+            item.damage = 14;
             item.noMelee = true;
             item.ranged = true;
             item.width = 30;
@@ -40,7 +40,7 @@ namespace AAMod.Items.Ranged
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.DragonArrow>(), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
-            return false; //Makes sure to not fire the original projectile
+            return false;
         }
         public override void AddRecipes()
         {

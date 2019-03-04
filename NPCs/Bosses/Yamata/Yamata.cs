@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool quarterHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
+        public bool loludide = false;
 
 
         public float[] internalAI = new float[4];
@@ -130,6 +131,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         Main.NewText("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
                     }
+                    if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
+                        AAWorld.SpaceDropped = true;
+                    }
                 }
                 if (Main.expertMode)
                 {
@@ -225,6 +231,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!NoFly4U && NoFlyCountDown <= 0 && !AAWorld.downedYamata)
             {
                 NoFly4U = true;
+                player.AddBuff(isAwakened ? mod.BuffType<Buffs.YamataAGravity>() : mod.BuffType<Buffs.YamataGravity>(), 10, true);
                 BaseUtility.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!",  new Color(45, 46, 70));
             }
 
@@ -397,7 +404,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void AIMovementRunAway()
         {
-			if(Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+			if ((Main.netMode != 1) && !loludide)
+            {
+                BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                loludide = true;
+            }
 
             npc.alpha += 10;
             if (npc.alpha >= 255)

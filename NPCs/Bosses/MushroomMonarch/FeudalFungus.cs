@@ -78,6 +78,31 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
+            if (NPC.downedPlantBoss)
+            {
+                npc.damage = 50;
+                npc.defense = 14;
+                npc.lifeMax = 33000;
+                npc.HitSound = SoundID.NPCHit1;
+                npc.DeathSound = SoundID.NPCDeath1;
+                npc.knockBackResist = 0f;
+                npc.value = (float)Item.buyPrice(0, 15, 0, 0);
+                npc.noGravity = true;
+                npc.boss = true;
+                npc.aiStyle = 26;
+                npc.width = 74;
+                npc.height = 108;
+                npc.npcSlots = 1f;
+                npc.lavaImmune = true;
+                npc.buffImmune[46] = true;
+                npc.buffImmune[47] = true;
+                npc.netAlways = true;
+                npc.noTileCollide = true;
+                bossBag = mod.ItemType("FungusBag");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Fungus");
+                npc.alpha = 255;
+                npc.scale *= 1.3f;
+            }
              
             if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)
             {
@@ -155,11 +180,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 			if(internalAI[1] == AISTATE_HOVER) 
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 56f, FireMagic);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, NPC.downedPlantBoss ? 0.3f : 0.15f, NPC.downedPlantBoss ? 7f : 4f, 200, NPC.downedPlantBoss ? 40f : 56f, FireMagic);
             }
             else if (internalAI[1] == AISTATE_FLIER) 
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 5f, 3f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, NPC.downedPlantBoss ? 0.2f : 0.1f, NPC.downedPlantBoss ? 0.1f : 0.04f, NPC.downedPlantBoss ? 8f : 5f, NPC.downedPlantBoss ? 5f : 3f, false, 1);
             }
             else 
             {
@@ -192,14 +217,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
             AAWorld.downedFungus = true;
-            Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0);
+            Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0, 255, npc.scale);
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();
             }
             else
             {
-
+                if (NPC.downedPlantBoss)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingMushium"), Main.rand.Next(12, 30));
+                }
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingMushium"), Main.rand.Next(25, 35));
             }
         }
@@ -252,7 +280,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void PostDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungus_Glow");
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Glow);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, AAColor.Glow, true);
         }
     }
 

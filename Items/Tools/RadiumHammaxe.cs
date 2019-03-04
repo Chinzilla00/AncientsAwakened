@@ -15,7 +15,7 @@ namespace AAMod.Items.Tools
             item.useTime = 10;
             item.useAnimation = 20;
             item.axe = 190;
-            item.hammer = 120;
+            item.hammer = 45;
             item.useStyle = 1;
             item.knockBack = 6;
             item.value = 10;

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Grips
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("HydraClaw");
-            item.damage = 35;
+            item.damage = 14;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;

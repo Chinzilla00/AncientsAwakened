@@ -43,12 +43,12 @@ Can only be used at the beach");
 
         public override bool CanUseItem(Player player)
         {
-            if (!BaseExtensions.InZone(player, "Ocean", null))
+            if (!player.ZoneBeach)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You wiggle the worm around like a weirdo. Stop it.", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B, false);
                 return true;
             }
-            if (NPC.AnyNPCs(mod.NPCType("Raider")))
+            if (NPC.AnyNPCs(mod.NPCType("EmperorFishron")))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Emperor Fishron wants to eat you, not the worm", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B, false);
                 return false;

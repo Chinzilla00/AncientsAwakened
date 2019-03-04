@@ -152,7 +152,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
-                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+                if (Main.rand.Next(20) == 0 && AAWorld.RealityDropped == false)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                     AAWorld.RealityDropped = true;
@@ -194,18 +194,25 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(dColor.R, dColor.G, dColor.B, (byte)150));
             }
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
 
+            Texture2D Unit = mod.GetTexture("NPCs/Bosses/Zero/ZeroUnit");
+            Texture2D UnitGlow = mod.GetTexture("Glowmasks/ZeroUnit_Glow");
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
+
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            BaseDrawing.DrawTexture(spritebatch, Unit, 0, npc.position, npc.width, npc.height, 1, UnitRotation, 0, 2, npc.frame, dColor, true);
+            BaseDrawing.DrawAura(spritebatch, UnitGlow, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
+            BaseDrawing.DrawTexture(spritebatch, UnitGlow, 0, npc, GetGlowAlpha());
+
             if (ShieldScale > 0)
             {
-                BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
+                BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GetGlowAlpha(), true);
                 BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
-                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), ArmsGone ? AAColor.Oblivion * (Main.mouseTextColor / 255f) : GetGlowAlpha(), true);
+                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), GetGlowAlpha(), true);
             }
             return false;
         }
@@ -214,21 +221,14 @@ namespace AAMod.NPCs.Bosses.Zero
         public int MinionTimer = 0;
         public int LineStopper = 180;
         public Vector2 offsetBasePoint = new Vector2(-240f, 0f);
-
+        public float UnitRotation;
         public float[] internalAI = new float[4];
         public static int ChargeType = 0, XPos = 1, YPos = 2, PrepareCharge = 2;
 
         public override void AI()
         {
-            MinionTimer++;
             LineStopper--;
             RingRoatation += 0.03f;
-            if (MinionTimer == 180 && NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 8)
-            {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<SearcherZero>());
-
-                MinionTimer = 0;
-            }
             
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
@@ -236,7 +236,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.ai[0] == 0 && Main.netMode != 1)
             {
                 npc.TargetClosest(true);
-                npc.ai[0]++;
+                npc.ai[0] = 1;
                 int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("VoidStar"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index1].ai[0] = -1f;
                 Main.npc[index1].ai[1] = npc.whoAmI;
@@ -261,12 +261,59 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].ai[3] = 150f;
             }
 
-            if (npc.type == mod.NPCType<Zero>() && (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) && !NPC.AnyNPCs(mod.NPCType<Taser>()) && !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && !NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
+            if (npc.life <= npc.lifeMax / 2 && npc.ai[0] == 1)
+            {
+                npc.TargetClosest(true);
+                npc.ai[0] = 2;
+                Main.NewText("INITIALIZING BACKUP WEAPON RP0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("NovaFocus"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index1].ai[0] = -1f;
+                Main.npc[index1].ai[1] = npc.whoAmI;
+                Main.npc[index1].target = npc.target;
+                Main.npc[index1].netUpdate = true;
+                int index2 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("OmegaVolley"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index2].ai[0] = 1f;
+                Main.npc[index2].ai[1] = npc.whoAmI;
+                Main.npc[index2].target = npc.target;
+                Main.npc[index2].netUpdate = true;
+                int index3 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("Neutralizer"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index3].ai[0] = -1f;
+                Main.npc[index3].ai[1] = npc.whoAmI;
+                Main.npc[index3].target = npc.target;
+                Main.npc[index3].ai[3] = 150f;
+                Main.npc[index3].netUpdate = true;
+                int index4 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("GenocideCannon"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+                Main.npc[index4].ai[0] = 1f;
+                Main.npc[index4].ai[1] = npc.whoAmI;
+                Main.npc[index4].target = npc.target;
+                Main.npc[index4].netUpdate = true;
+                Main.npc[index4].ai[3] = 150f;
+                npc.ai[3] = 1;
+            }
+            UnitRotation = npc.velocity.X / 15f;
+
+            if (npc.type == mod.NPCType<Zero>() && 
+                (NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
+                !NPC.AnyNPCs(mod.NPCType<Taser>()) && 
+                !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && 
+                !NPC.AnyNPCs(mod.NPCType<RiftShredder>()) && 
+                !NPC.AnyNPCs(mod.NPCType<Neutralizer>()) && 
+                !NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) && 
+                !NPC.AnyNPCs(mod.NPCType<NovaFocus>()) && 
+                !NPC.AnyNPCs(mod.NPCType<GenocideCannon>())))
             {
                 ArmsGone = true;
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
                 npc.damage = 160;
+            }
+            else
+            {
+                ArmsGone = false;
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+                npc.damage = 80;
+                saythelinezero = false;
             }
 
             if (ArmsGone && !saythelinezero)
@@ -283,9 +330,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     ShieldScale = .5f;
                 }
             }
-            else if (npc.ai[1] == 1f)
+            else if (npc.ai[1] == 1f || npc.ai[1] == 6f)
             {
-                ShieldScale += .8f;
+                ShieldScale += .2f;
                 if (ShieldScale > .5f)
                 {
                     ShieldScale = .5f;
@@ -437,8 +484,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = 5f;
             }
             else if (npc.ai[1] == 4f)
-            {
-				BaseUtility.Chat("KILLING ZERO");				
+            {				
                 Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red);
                 npc.ai[1] = 5f;
             }
@@ -452,6 +498,27 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     npc.timeLeft = 500;
                     return;
+                }
+            }
+            else if (npc.ai[1] == 6f)
+            {
+                npc.frame.Y = 202;
+                npc.dontTakeDamage = true;
+                npc.velocity *= 0.8f;
+                internalAI[1]++;
+                if (internalAI[1] == 1) Main.NewText("INITIATING PR0BE CREATI0N SYSTEM.", Color.Red);
+                if ((internalAI[1] == 20 || internalAI[1] == 40 || internalAI[1] == 60 || internalAI[1] == 80 || internalAI[1] == 100 || internalAI[1] == 120 || internalAI[1] == 140 || internalAI[1] == 160) && NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 12)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<SearcherZero>());
+                }
+
+                if (internalAI[1] == 180)
+                {
+                    npc.dontTakeDamage = false;
+                    npc.ai[2] = 0f;
+                    npc.ai[1] = 0f;
+                    npc.TargetClosest(true);
+                    npc.netUpdate = true;
                 }
             }
         }

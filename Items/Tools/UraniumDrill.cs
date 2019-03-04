@@ -13,8 +13,8 @@ namespace AAMod.Items.Tools
 		}
 
 		public override void SetDefaults()
-		{
-            item.useStyle = 1;
+        {
+            item.useStyle = 5;
             item.useAnimation = 29;
             item.useTime = 12;
             item.knockBack = 5f;

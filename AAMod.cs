@@ -937,20 +937,20 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:AncientMaterials", group4);
 
-            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Superancient Material", new int[]
+            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "superancient material", new int[]
             {
                 ItemType("ChaosSoul")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
 
-            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any World Evil Material", new int[]
+            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "world evil material", new int[]
             {
                 ItemID.Ichor,
                 ItemID.CursedFlame
             });
             RecipeGroup.RegisterGroup("AnyIchor", group6);
 
-            group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " Hardmode Forge", validItems: new int[]
+            group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + "hardmode forge", validItems: new int[]
             {
                 ItemID.AdamantiteForge,
                 ItemID.TitaniumForge,
@@ -958,49 +958,49 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AnyHardmodeForge", group6);
 
-            RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Chaos Claw", new int[]
+            RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "chaos claw", new int[]
             {
                 ItemType<DragonClaw>(),
                 ItemType<HydraClaw>(),
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosClaw", group7);
 
-            RecipeGroup group8 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Iron", new int[]
+            RecipeGroup group8 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "iron bar", new int[]
             {
                 ItemID.IronBar,
                 ItemID.LeadBar
             });
             RecipeGroup.RegisterGroup("AAMod:Iron", group8);
 
-            RecipeGroup group9 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Copper", new int[]
+            RecipeGroup group9 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "copper bar", new int[]
             {
                 ItemID.CopperBar,
                 ItemID.TinBar
             });
             RecipeGroup.RegisterGroup("AAMod:Copper", group9);
 
-            RecipeGroup group10 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Silver", new int[]
+            RecipeGroup group10 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "silver bar", new int[]
             {
                 ItemID.SilverBar,
                 ItemID.TungstenBar
             });
             RecipeGroup.RegisterGroup("AAMod:Silver", group10);
 
-            RecipeGroup group11 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Evil Bar", new int[]
+            RecipeGroup group11 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil bar", new int[]
             {
                 ItemID.DemoniteBar,
                 ItemID.CrimtaneBar
             });
             RecipeGroup.RegisterGroup("AAMod:EvilBar", group11);
 
-            RecipeGroup group12 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Chaos Bar", new int[]
+            RecipeGroup group12 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "chaos bar", new int[]
             {
                 ItemType<IncineriteBar>(),
                 ItemType<AbyssiumBar>(),
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBar", group12);
 
-            RecipeGroup group13 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Evil/Chaos Bar", new int[]
+            RecipeGroup group13 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil/chaos bar", new int[]
             {
                 ItemID.DemoniteBar,
                 ItemID.CrimtaneBar,
@@ -1009,14 +1009,14 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:EvilorChaosBar", group13);
 
-            RecipeGroup group14 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Ancient Crafting Station", new int[]
+            RecipeGroup group14 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "ancient crafting station", new int[]
             {
                 ItemType<BinaryReassembler>(),
                 ItemType<ChaosCrucible>()
             });
             RecipeGroup.RegisterGroup("AAMod:ACS", group14);
 
-            RecipeGroup group15 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Evil Summon Staff", new int[]
+            RecipeGroup group15 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil summon staff", new int[]
             {
                 ItemType<Items.Summoning.EaterStaff>(),
                 ItemType<Items.Summoning.CrimsonStaff>()

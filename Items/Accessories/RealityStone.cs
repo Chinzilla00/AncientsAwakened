@@ -81,26 +81,41 @@ namespace AAMod.Items.Accessories
             speed = 25f;
             acceleration *= 5f;
         }
-        
-        public bool CanEquipAccessory(Item item, Player player, int slot)
+
+        public override bool CanEquipAccessory(Player player, int slot)
         {
-            if (item.type == mod.ItemType("RealityStone"))
+            if (slot < 10)
             {
-                if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
-                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    if (slot != i && player.armor[i].type == mod.ItemType<PowerStone>())
                     {
-                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                        if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<TimeStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SpaceStone>())
+                    {
+                        return false;
                     }
                 }
             }
             return true;
         }
-
     }
 }

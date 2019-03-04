@@ -2,6 +2,7 @@ using AAMod.Items.Materials;
 using AAMod.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -77,7 +78,7 @@ namespace AAMod.Items.Accessories
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType<DragonClaw>(), 15);
-            recipe.AddTile(mod.TileType<ChaosAltar>());
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

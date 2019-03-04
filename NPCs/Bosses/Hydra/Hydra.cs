@@ -76,12 +76,42 @@ namespace AAMod.NPCs.Bosses.Hydra
         }
 
         public Rectangle frameBottom = new Rectangle(0, 0, 1, 1);
-        public Player playerTarget = null;
 		public bool chasePlayer = false;
 		public bool runningAway = false;
+        public Player playerTarget = null;
+
+        public bool TeleportMe1 = false;
+        public bool TeleportMe2 = false;
+        public bool TeleportMe3 = false;
 
         public override void AI()
         {
+            if (playerTarget != null)
+            {
+                float dist = npc.Distance(playerTarget.Center);
+                if (dist > 320)
+                {
+                    npc.alpha += 10;
+                    if (npc.alpha >= 255)
+                    {
+                        Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 80 : -80), playerTarget.Center.Y);
+                        TeleportMe1 = true;
+                        TeleportMe2 = true;
+                        TeleportMe3 = true;
+                        npc.Center = tele;
+                        npc.netUpdate = true;
+                    }
+                }
+                else
+                {
+                    npc.alpha -= 5;
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+            }
+
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
@@ -109,6 +139,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.oldPos[0] = npc.position;
 
             bool foundTarget = TargetClosest();
+
+            
+
             if (!runningAway && foundTarget)
             {
                 int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
@@ -152,10 +185,11 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public void AIMovementRunAway()
         {
-			npc.noTileCollide = true;
-            npc.rotation = 0f;
-			npc.velocity.Y += 1f;
-            if (npc.Top.Y - npc.height > (Main.maxTilesY * 16)) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+            npc.alpha += 10;
+            if (npc.alpha >= 255)
+            {
+                npc.active = false;
+            }
         }
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)

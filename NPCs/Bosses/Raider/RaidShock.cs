@@ -19,7 +19,8 @@ namespace AAMod.NPCs.Bosses.Raider
             projectile.width = 14;
             projectile.height = 14;
             projectile.aiStyle = 1;
-            projectile.friendly = true;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.alpha = 255;
             projectile.scale = 1f;
             projectile.timeLeft = 600;

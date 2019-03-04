@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.Nightmare
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("7% increased thrown damage");
+			Tooltip.SetDefault("7% increased damage");
 			DisplayName.SetDefault("Nightmare Breastplate");
 		}
 
@@ -24,8 +24,12 @@ namespace AAMod.Items.Armor.Nightmare
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownDamage += 0.07f; //7% throwing damage
-		}
+			player.thrownDamage += 0.07f;
+            player.rangedDamage += 0.07f;
+            player.magicDamage += 0.07f;
+            player.meleeDamage += 0.07f;
+            player.minionDamage += 0.07f;
+        }
 		
 		public override void AddRecipes()
 		{

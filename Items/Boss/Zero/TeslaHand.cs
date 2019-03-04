@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Zero
             item.noUseGraphic = false;
             item.channel = true;
             item.autoReuse = true;
-            item.thrown = true;
+            item.ranged = true;
             item.useAnimation = 9;
             item.useTime = 9;
             item.useStyle = 1;

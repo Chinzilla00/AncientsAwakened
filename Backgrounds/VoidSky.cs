@@ -51,8 +51,7 @@ namespace AAMod.Backgrounds
             LB = TextureManager.Load("Backgrounds/LB");
             boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
             flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
-            Stars =  TextureManager.Load("Backgrounds/VoidStars");
-            SkyTexture = TextureManager.Load("Backgrounds/Sky");
+            Stars =  TextureManager.Load("Backgrounds/Void_Starfield");
         }
 
         public override void Update(GameTime gameTime)

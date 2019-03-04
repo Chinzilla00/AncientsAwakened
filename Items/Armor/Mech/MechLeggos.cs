@@ -9,7 +9,6 @@ namespace AAMod.Items.Armor.Mech
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mechanical Greaves");
-			Tooltip.SetDefault("7% increased thrown damage");
 		}
 
 		public override void SetDefaults()
@@ -18,12 +17,7 @@ namespace AAMod.Items.Armor.Mech
 			item.height = 18;
 			item.value = Item.sellPrice(0, 3, 0, 0);
 			item.rare = 5;
-			item.defense = 10;
-		}
-
-		public override void UpdateEquip(Player player)
-		{
-			player.thrownDamage += 0.07f;
+			item.defense = 14;
 		}
 	}
 }

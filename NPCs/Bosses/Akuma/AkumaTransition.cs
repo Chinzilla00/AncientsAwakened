@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             projectile.width = 20;
             projectile.height = 32;
-            projectile.scale *= 1.2f;
             projectile.friendly = false;
+            projectile.scale *= 1.5f;
         }
         public int timer;
         public bool ATransitionActive = false;
@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             ATransitionActive = true;
 
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 10)
+            if (projectile.frameCounter >=7)
             {
                 projectile.frameCounter = 0;
                 projectile.frame += 1;
@@ -63,15 +63,15 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     RVal = 0;
                 }
-                if (RVal >= 255)
+                if (BVal >= 255)
                 {
-                    RVal = 255;
+                    BVal = 255;
                 }
             }
 
             if (timer == 900)
             {
-                Main.NewText("fanning the flames doesn't put them out...", new Color(180, 41, 32));
+                Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
             if (timer == 1165)

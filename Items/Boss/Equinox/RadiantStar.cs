@@ -70,7 +70,7 @@ namespace AAMod.Items.Boss.Equinox
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(BuffID.Shine, 2);
+            player.GetModPlayer<AAPlayer>(mod).lantern = true;
         }
 
     }

@@ -32,11 +32,18 @@ namespace AAMod.Items.Boss.Serpent
 			item.autoReuse = true;
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
-            item.shoot = mod.ProjectileType<Projectiles.Serpent.Sting>();
+            item.shoot = 10;
             item.crit = 3;
 		}
 
-		public override Vector2? HoldoutOffset()
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType<Projectiles.Serpent.Sting>(), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
+            return false;
+        }
+
+        public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-2, 4);
 		}

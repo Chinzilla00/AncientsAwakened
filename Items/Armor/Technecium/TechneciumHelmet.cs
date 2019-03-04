@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Technecium Helmet");
-            Tooltip.SetDefault(@"4% increased damage reistance
+            Tooltip.SetDefault(@"4% increased damage resistance
 10% increased magic damage & critical strike chance
 +100 increased mana");
         }
@@ -44,7 +44,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"Enemies that hit you are inflicted with electrified";
+            player.setBonus = @"Enemies that hit you are electrified";
 
 
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;

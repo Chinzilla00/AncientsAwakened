@@ -77,7 +77,7 @@ You are immune to the Chaos State Debuff
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         
-                        StoneCD = 30;
+                        StoneCD = 120;
                     }
                 }
             }
@@ -88,40 +88,37 @@ You are immune to the Chaos State Debuff
             
         }
 
-        public override void AddRecipes()
+
+        public override bool CanEquipAccessory(Player player, int slot)
         {
+            if (slot < 10)
             {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "BrokenCode", 1);
-                recipe.AddIngredient(ItemID.Sapphire, 10);
-                recipe.AddIngredient(ItemID.LargeSapphire, 1);
-                recipe.AddIngredient(ItemID.RodofDiscord, 1);
-                recipe.AddIngredient(ItemID.FragmentNebula, 15);
-                recipe.AddIngredient(ItemID.FragmentSolar, 15);
-                recipe.AddIngredient(ItemID.FragmentVortex, 15);
-                recipe.AddIngredient(ItemID.FragmentStardust, 15);
-                recipe.AddIngredient(ItemID.SoulofFlight, 30);
-                recipe.AddIngredient(null, "DarkMatter", 10);
-                recipe.AddIngredient(null, "RadiumBar", 10);
-                recipe.AddTile(null, "QuantumFusionAccelerator");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
-        public bool CanEquipAccessory(Item item, Player player, int slot)
-        {
-            if (item.type == mod.ItemType("SpaceStone"))
-            {
-                if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
-                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    if (slot != i && player.armor[i].type == mod.ItemType<PowerStone>())
                     {
-                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                        if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<MindStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<SoulStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<RealityStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<TimeStone>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<InfinityGauntlet>())
+                    {
+                        return false;
                     }
                 }
             }
