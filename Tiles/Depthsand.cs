@@ -10,11 +10,18 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             SetModCactus(new Bogtus());
+            SetModPalmTree(new BogPalmTree());
             Main.tileMergeDirt[Type] = true;
             Main.tileBlendAll[this.Type] = true;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthsand");   //put your CustomBlock name
             AddMapEntry(new Color(0, 30, 127));
+        }
+
+        public override int SaplingGrowthType(ref int style)
+        {
+            style = 0;
+            return mod.TileType("BogPalmSapling");
         }
     }
 }

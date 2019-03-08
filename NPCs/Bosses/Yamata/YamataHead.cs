@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -23,27 +24,10 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.life = npc.lifeMax = 100;
-            if (!Main.expertMode && !AAWorld.downedYamata)
-            {
-                npc.damage = 130;
-                npc.defense = 40;
-            }
-            if (!Main.expertMode && AAWorld.downedYamata)
-            {
-                npc.damage = 140;
-                npc.defense = 40;
-            }
-            if (Main.expertMode && !AAWorld.downedYamata)
-            {
-                npc.damage = 140;
-                npc.defense = 50;
-            }
-            if (Main.expertMode && AAWorld.downedYamata)
-            {
-                npc.damage = 150;
-                npc.defense = 60;
-            }
-            npc.width = 64;
+
+            npc.damage = 150;
+            npc.defense = 60;
+            npc.width = 78;
             npc.height = 80;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
@@ -74,11 +58,47 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Projectile Breath;
         private int MouthFrame;
         private int MouthCounter;
-        private bool fireAttack;
+        public static bool fireAttack;
         private int attackFrame;
         private int attackCounter;
         private int attackTimer;
         public int fireTimer = 0;
+        public static bool EATTHELITTLEMAGGOT = false;
+        public bool Quote1;
+        public bool Quote2;
+        public bool Quote3;
+        public bool Quote4;
+        public bool Quote5;
+        public bool Quote6;
+        public bool QuoteSaid;
+        public static int HeadFrame = 0;
+
+        public float[] internalAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+                writer.Write(EATTHELITTLEMAGGOT);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+                EATTHELITTLEMAGGOT = reader.ReadBool();
+            }
+        }
 
         public override void AI()
         {
@@ -92,7 +112,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             Body = Main.npc[(int)npc.ai[0]];
             npc.realLife = (int)npc.ai[0];
-
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             if (yamata == null)
@@ -127,27 +146,9 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.alpha = Body.alpha;
             }
 
-            bool SISSY = false;
-            int GETDOWNHERE = 0;
-            if (player.position.Y <= npc.position.Y - 1200)
-            {
-                if (!SISSY)
-                {
-                    GETDOWNHERE = 300;
-                    SISSY = true;
-                }
-                if (GETDOWNHERE == 0)
-                {
-                    SISSY = false;
-                }
-                
-                GETDOWNHERE--;
-                if (GETDOWNHERE == 299)
-                {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType("Yanker"), 20, 0, 0);
-                    BaseUtility.Chat("Oh NO you don't! Get down here!!!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
-                }
-            }
+
+            int roarSound = mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar");
+
             int num429 = 1;
             if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
             {
@@ -171,8 +172,36 @@ namespace AAMod.NPCs.Bosses.Yamata
             PlayerDistance.X -= PlayerPosX * 1f;
             PlayerDistance.Y -= PlayerPosY * 1f;
 
+            npc.ai[2]++;
+            if (npc.ai[2] == 399)
+            {
+                QuoteSaid = false;
+                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+                int AttackType = 2;
+                int AwakenedAttackType = 4;
+                if (!isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataHeadF2>())))
+                {
+                    AttackType = 3;
+                }
+                if (isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataAHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataAHeadF2>())))
+                {
+                    AwakenedAttackType = 5;
+                }
+                internalAI[1] = isAwakened ? Main.rand.Next(AwakenedAttackType) : Main.rand.Next(AttackType);
+            }
 
-            if (fireAttack == true)
+            if (npc.ai[2] >= 400)
+            {
+                Attacks(internalAI[1]);
+            }
+
+            if (npc.ai[2] >= 560)
+            {
+                EATTHELITTLEMAGGOT = false;
+                npc.ai[2] = 0;
+            }
+
+            if (npc.ai[3] == 1)
             {
                 attackCounter++;
                 if (attackCounter > 10)
@@ -200,21 +229,19 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
             fireTimer++;
-            if (fireTimer >= 240 && fireAttack == false)
+            if (fireTimer >= 240 && npc.ai[3] == 0)
             {
-                Roar(roarTimerMax, false);
-                fireAttack = true;
-
+                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+                npc.ai[3] = 1;
                 fireTimer = 0;
             }
-            if (fireAttack == true)
+            if (npc.ai[3] == 1)
             {
                 attackTimer++;
                 if (Main.rand.Next(3) == 0)
                 {
                     if (attackTimer == 40)
                     {
-                        Roar(roarTimerMax, true);
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), 20, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
@@ -223,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                     if (attackTimer >= 80)
                     {
-                        fireAttack = false;
+                        npc.ai[3] = 0;
                     }
                 }
                 else
@@ -242,7 +269,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                     if (attackTimer >= 80)
                     {
-                        fireAttack = false;
+                        npc.ai[3] = 0;
                         attackTimer = 0;
                         attackFrame = 0;
                         attackCounter = 0;
@@ -251,74 +278,151 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             }
 
-            npc.rotation = new Vector2((float)Math.Cos(npc.rotation), (float)Math.Sin(npc.rotation)).ToRotation();
-            if (Math.Abs(npc.rotation - TargetDirection) > Math.PI)
-            {
-                f = -1;
-            }
-            else
-            {
-                f = 1;
-            }
-            if (npc.rotation <= TargetDirection + MathHelper.ToRadians(4 * s) && npc.rotation >= TargetDirection - MathHelper.ToRadians(4 * s))
-            {
-                npc.rotation = TargetDirection;
-            }
-            else if (npc.rotation <= TargetDirection)
-            {
-                npc.rotation += MathHelper.ToRadians(2 * s) * f;
-            }
-            else if (npc.rotation >= TargetDirection)
-            {
-                npc.rotation -= MathHelper.ToRadians(2 * s) * f;
-            }
             Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
-			npc.spriteDirection = -1;
+            npc.rotation = 0;
         }
-
-        public int roarTimer = 0; //if this is > 0, then use the roaring frame.
-        public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
-        public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
+        
+        public void Attacks(float AttackType)
         {
-            get
+            Player player = Main.player[npc.target];
+            if (!isAwakened)
             {
-                return roarTimer > 0;
-            }
-        }
-
-        public void Roar(int timer, bool fireSound)
-        {
-            roarTimer = timer;
-            if (fireSound)
-            {
+                if (AttackType == 0f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote1) ? "TASTE ACID YOU UNBEARABLE MAGGOT!!!" : "STOP MOVING AND LET ME MELT YOU!!!", new Color(45, 46, 70));
+                        QuoteSaid = true;
+                        Quote1 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 30, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 1f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote3) ? "Down Down DOWN THE VENOM GOES!!! When it will it stop? WHO KNOWS?! NYEHEHEHEHEHEH!!!" : "DIEDIEDIEDIEDIEDIEDIEDIIIIIIIIIIIIIIIE!!!", new Color(45, 46, 70));
+                        QuoteSaid = true;
+                        Quote3 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 60, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 2f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote4) ? ("GET THEM! EAT THEM! JUST GET " + (player.Male ? "HIM" : "HER") + " OUT OF MY FACE!!!") : "I’VE EATEN RABBITS MORE INTIMIDATING THAN YOU!", new Color(45, 46, 70));
+                        QuoteSaid = true;
+                        Quote4 = true;
+                    }
+                    EATTHELITTLEMAGGOT = true;
+                }
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar");
-                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+                if (AttackType == 0f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote1) ? "HOPE YOU BROUGHT YOUR UMBRELLA! BECAUSE IT’S RAINING PAIN!!! NYEHEHEHEHEHEHEHEH!!!" : "DOWN COMES THE VENOM!!!NYEHEHEHEHEHEHEHEH!", new Color(146, 30, 68));
+                        QuoteSaid = true;
+                        Quote1 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, new Vector2(Main.rand.Next(-2, 2), -3f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 1f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote2) ? "EAT ECTOPLASM YOU LITTLE WRETCH" : "NYAAAAAAAAAAAH!!!", new Color(146, 30, 68));
+                        QuoteSaid = true;
+                        Quote2 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<HomingSoul>(), ref internalAI[3], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 2f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote3) ? "WHOOPS! DROPPED ACID! Hope you're not degradable..!" : "WHOOPS! DROPPED ACID AGAIN! NYEHEHEHEHEHEHEHEHEHEHEHEH", new Color(146, 30, 68));
+                        QuoteSaid = true;
+                        Quote3 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AbyssalThunder>(), ref internalAI[3], 60, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 3f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote4) ? "NYAAAAAAAH! YOU WON’T LIVE THROUGH THIS ONE!" : "COME ON!!!STAND STILL SO I CAN BLOW YOU TO MARS!", new Color(146, 30, 68));
+                        QuoteSaid = true;
+                        Quote4 = true;
+                    }
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 20, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                }
+                if (AttackType == 4f)
+                {
+                    if (!QuoteSaid)
+                    {
+                        Main.NewText((!Quote6) ? "I'M GONNA RIP YOU TO PIECES YOU LITTLE WRETCH!!!" : "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!", new Color(45, 46, 70));
+                        QuoteSaid = true;
+                        Quote6 = true;
+                    }
+                    EATTHELITTLEMAGGOT = true;
+                }
             }
         }
 
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if(fireAttack)
+            if (isAwakened)
             {
-                if (npc.frameCounter < 5)
+                if (npc.frameCounter > 5)
                 {
-                    npc.frame.Y = 1 * frameHeight;
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > frameHeight * 2)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+                if (npc.ai[3] == 1 || npc.ai[2] >= 400)
+                {
+                    if (npc.frameCounter < 5)
+                    {
+                        npc.frame.X = npc.width;
+                    }
+                    else
+                    {
+                        npc.frame.X = npc.width * 2;
+                    }
                 }
                 else
                 {
-                    npc.frame.Y = 2 * frameHeight;
+                    npc.frame.X = 0;
                 }
             }
             else
             {
+                if (npc.ai[3] == 1 || npc.ai[2] >= 400)
+                {
+                    if (npc.frameCounter < 5)
+                    {
+                        npc.frame.Y = 1 * frameHeight;
+                    }
+                    else
+                    {
+                        npc.frame.Y = 2 * frameHeight;
+                    }
+                }
+                else
+                {
 
-                npc.frame.Y = 0 * frameHeight;
-                npc.frameCounter = 0;
+                    npc.frame.Y = 0 * frameHeight;
+                    npc.frameCounter = 0;
+                }
             }
         }
 

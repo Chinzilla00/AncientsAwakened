@@ -48,6 +48,26 @@ namespace AAMod.NPCs.Bosses.Serpent
                 }
                 projectile.ai[0] += 1f;
                 int num297 = mod.DustType<Dusts.SnowDustLight>();
+                if (projectile.ai[1] == 1)
+                {
+                    num297 = 75;
+                }
+
+                if (projectile.ai[1] == 2)
+                {
+
+                    num297 = DustID.GoldFlame;
+                }
+
+                if (projectile.ai[1] == 3)
+                {
+                    num297 = mod.DustType<Dusts. BroodmotherDust>();
+                }
+
+                if (projectile.ai[1] == 4)
+                {
+                    num297 = mod.DustType<Dusts.AcidDust>();
+                }
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 3; num298++)
@@ -86,6 +106,22 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(BuffID.Chilled, 300);
+            if  (projectile.ai[1] == 1)
+            {
+                target.AddBuff(BuffID.CursedInferno, 180);
+            }
+            if (projectile.ai[1] == 2)
+            {
+                target.AddBuff(BuffID.Ichor, 180);
+            }
+            if (projectile.ai[1] == 3)
+            {
+                target.AddBuff(BuffID.OnFire, 180);
+            }
+            if (projectile.ai[1] == 4)
+            {
+                target.AddBuff(BuffID.Poisoned, 180);
+            }
         }
     }
 }

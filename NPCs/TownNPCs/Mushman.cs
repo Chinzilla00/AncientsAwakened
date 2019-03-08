@@ -47,7 +47,7 @@ namespace AAMod.NPCs.TownNPCs
             npc.lifeMax = 600;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 2f;
+            npc.knockBackResist = 0.5f;
             animationType = NPCID.Truffle;
         }
         
@@ -89,39 +89,18 @@ namespace AAMod.NPCs.TownNPCs
             int WitchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
             if (WitchDoctor >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[WitchDoctor].GivenName + "offered to let me get in his hot tub one time. I denied because I had better things to do";
+                return Main.npc[WitchDoctor].GivenName + " offered to let me get in his hot tub one time. I denied because I had better things to do";
             }
             chat.Add("The Mushroom Monarch isn't all he seems, you know.");
             chat.Add("Don't ask where I get the mushrooms for my potions.");
             chat.Add("I got potions, you got money. Wanna trade?");
             int Clothier = NPC.FindFirstNPC(NPCID.Clothier);
-            if (WitchDoctor >= 0 && Main.rand.Next(4) == 0)
+            if (Clothier >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[WitchDoctor].GivenName + "asked me one time if red truffles tasted as good as blue ones. Obviously not. Blue truffles are way saltier.";
+                return Main.npc[Clothier].GivenName + " asked me one time if red truffles tasted as good as blue ones. Obviously not. Blue truffles are way saltier.";
             }
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
-
-		/* 
-		// Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
-		// The WeightedRandom class needs "using Terraria.Utilities;" to use
-		public override string GetChat()
-		{
-			WeightedRandom<string> chat = new WeightedRandom<string>();
-
-			int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-			if (partyGirl >= 0 && Main.rand.Next(4) == 0)
-			{
-				chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
-			}
-			chat.Add("Sometimes I feel like I'm different from everyone else here.");
-			chat.Add("What's your favorite color? My favorite colors are white and black.");
-			chat.Add("What? I don't have any arms or legs? Oh, don't be ridiculous!");
-			chat.Add("This message has a weight of 5, meaning it appears 5 times more often.", 5.0);
-			chat.Add("This message has a weight of 0.1, meaning it appears 10 times as rare.", 0.1);
-			return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
-		}
-		*/
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

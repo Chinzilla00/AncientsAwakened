@@ -18,7 +18,6 @@ namespace AAMod.Tiles
             drop = mod.ItemType("Dirt");
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 40, 40));
-			minPick = 60;
         }
 
         public override int SaplingGrowthType(ref int style)

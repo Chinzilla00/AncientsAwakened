@@ -111,9 +111,9 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 if (npc.frameCounter > 7)
                 {
                     npc.frame.Y += 108;
-                    if (npc.frame.Y < 108 * 7 || npc.frame.Y > 108 * 11)
+                    if (npc.frame.Y < 108 * 8 || npc.frame.Y > 108 * 11)
                     {
-                        npc.frame.Y = 108 * 7;
+                        npc.frame.Y = 108 * 8;
                     }
                 }
                 
@@ -154,7 +154,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
-                else if ((dist > 360 || npc.velocity == new Vector2(0, 0)) && internalAI[1] != AISTATE_FLY)
+                else if (dist > 360)
                 {
                     internalAI[1] = AISTATE_FLY;
                     npc.ai = new float[4];

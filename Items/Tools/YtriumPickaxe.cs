@@ -27,7 +27,7 @@ namespace AAMod.Items.Tools
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Pickaxe");
+      DisplayName.SetDefault("Yttrium Pickaxe");
       Tooltip.SetDefault("");
     }
 

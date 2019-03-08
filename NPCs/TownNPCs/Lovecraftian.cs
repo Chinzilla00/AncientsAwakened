@@ -61,7 +61,7 @@ namespace AAMod.NPCs.TownNPCs
             npc.lifeMax = 600;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0f;
+            npc.knockBackResist = 0.5f;
             animationType = NPCID.Guide;
         }
 
@@ -126,33 +126,33 @@ namespace AAMod.NPCs.TownNPCs
 
             chat.Add("Ever just find things in your tentacles that you don’t know how they got there? No? Just me?");
 
-            chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
+            //chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
 
             
             
 
             //If Pirate is present
-            if (Pirate >= 0 && Main.rand.Next(10) == 0)
+            if (Pirate >= 0)
             {
                 chat.Add("Oh. This is awkward. Poor " + Main.npc[Pirate].GivenName + ". His ship was the one that got destroyed when I fell out of that rift.");
             }
 
             //If mutant is present
 
-            if (Mutant >= 0 && Main.rand.Next(10) == 1)
+            if (Mutant >= 0)
             {
                 chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him without any effort.");
             }
 
             //If Horde Zombie is present
-            if (HordeZombie >= 0 && Main.rand.Next(10) == 2)
+            if (HordeZombie >= 0)
             {
                 chat.Add("That dead guy shambling around freaks me out, and that’s saying something considering I’m a walking horror story. I don’t know, I just feel like he knows too much...");
             }
 
 
             //Post - Moon Lord
-            if (NPC.downedMoonlord && Main.rand.Next(10) == 2)
+            if (NPC.downedMoonlord)
             {
                 chat.Add("Fun fact; The Moon Lord and Cthulhu are brothers. At least that’s what some pink pixie lady I met one time told me.");
             }

@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Ytrium
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ytrium Headgear");
+            DisplayName.SetDefault("Yttrium Headgear");
             Tooltip.SetDefault(@"+50 Max Mana
 5% increased magic critical strike chance
 8% increased movement speed");

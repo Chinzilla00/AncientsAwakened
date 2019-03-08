@@ -21,7 +21,7 @@ Increases your max number of minions
             item.height = 18;
             item.value = 700000;
             item.rare = 8;
-            item.defense = 15;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player)

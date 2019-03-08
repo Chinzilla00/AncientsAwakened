@@ -9,7 +9,7 @@ namespace AAMod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Ytrium Chainsaw");
+            DisplayName.SetDefault("Yttrium Chainsaw");
 		}
 
 		public override void SetDefaults()

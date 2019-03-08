@@ -74,7 +74,7 @@ namespace AAMod.Projectiles.Zero
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D Glow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Zero/ZeroStarP"), 0, projectile, lightColor, true);
             BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, AAColor.Oblivion, true);
             return false;
         }

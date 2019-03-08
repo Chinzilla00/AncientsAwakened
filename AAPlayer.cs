@@ -1783,9 +1783,9 @@ namespace AAMod
 
             if (YamataGravity || YamataAGravity)
             {
-                if (player.wingTimeMax > 60)
+                if (player.wingTimeMax > 30)
                 {
-                    player.wingTimeMax = 60;
+                    player.wingTimeMax = 30;
                 }
             }
 

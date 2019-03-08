@@ -31,7 +31,7 @@ namespace AAMod.Items.Magic
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ytrium Staff");
+            DisplayName.SetDefault("Yttrium Staff");
             Item.staff[item.type] = true;
         }
 

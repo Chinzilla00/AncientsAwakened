@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wyvern");
+            DisplayName.SetDefault("Drake");
             Main.npcFrameCount[npc.type] = 8;
 		}
 

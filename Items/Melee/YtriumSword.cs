@@ -25,7 +25,7 @@ namespace AAMod.Items.Melee   //where is located
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Blade");
+      DisplayName.SetDefault("Yttrium Blade");
       Tooltip.SetDefault("");
     }
 

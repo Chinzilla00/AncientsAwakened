@@ -9,7 +9,7 @@ namespace AAMod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Ytrium Drill");
+            DisplayName.SetDefault("Yttrium Drill");
 		}
 
 		public override void SetDefaults()

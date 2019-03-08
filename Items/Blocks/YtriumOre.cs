@@ -21,7 +21,7 @@ namespace AAMod.Items.Blocks
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Ore");
+      DisplayName.SetDefault("Yttrium Ore");
       Tooltip.SetDefault("");
     }
 

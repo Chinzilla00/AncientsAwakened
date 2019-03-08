@@ -4,6 +4,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
+using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -19,22 +21,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
             base.SetDefaults();
-            if (!Main.expertMode && !AAWorld.downedYamata)
-            {
-                npc.lifeMax = 20000;
-            }
-            if (!Main.expertMode && AAWorld.downedYamata)
-            {
-                npc.lifeMax = 30000;
-            }
-            if (Main.expertMode && !AAWorld.downedYamata)
-            {
-                npc.lifeMax = 25000;
-            }
-            if (Main.expertMode && AAWorld.downedYamata)
-            {
-                npc.lifeMax = 35000;
-            }
+            npc.lifeMax = 25000;
             npc.width = 64;
             npc.height = 48;
             npc.npcSlots = 0;
@@ -43,12 +30,37 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
         }
+
+        public float[] customAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)customAI[0]);
+                writer.Write((short)customAI[1]);
+                writer.Write((short)customAI[2]);
+                writer.Write((short)customAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                customAI[0] = reader.ReadFloat();
+                customAI[1] = reader.ReadFloat();
+                customAI[2] = reader.ReadFloat();
+                customAI[3] = reader.ReadFloat();
+            }
+        }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return 0f;
@@ -126,44 +138,29 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 return;
             }
-            if (Main.netMode != 1)
-			{
-				npc.ai[1]++;
-				int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
-				if(leftHead) aiTimerFire += 30;
-				if(targetPlayer != null && npc.ai[1] == aiTimerFire)
-				{
-                    fireAttack = true;
-                    for (int i = 0; i < 5; ++i)
-                    {
-						Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
-						dir *= 5f;
-                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-                    }	
-				}else
-				if(npc.ai[1] >= 200) //pick random spot to move head to
-				{
-                    fireAttack = false;
-					npc.ai[1] = 0;
-					npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
-					npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
-					npc.netUpdate = true;
-				}
-			}
-			npc.rotation = 1.57f;
 			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
 			if(Vector2.Distance(nextTarget, npc.Center) < 40f)
 			{
-				npc.velocity *= 0.9f;
-				if(Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-				if(Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+                if (YamataHead.EATTHELITTLEMAGGOT)
+                {
+                    BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
+                }
+                else
+                {
+                    npc.velocity *= 0.9f;
+                    if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                    if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+                }
 			}else
 			{
 				npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
 				npc.velocity *= 5f;
 			}
-			npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
+            if (YamataHead.EATTHELITTLEMAGGOT)
+            {
+                BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
+            }
+			npc.position += (Body.npc.position - Body.npc.oldPosition);	
 			npc.spriteDirection = -1;
             if (Body.TeleportMe1)
             {
@@ -201,12 +198,39 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.Center = Body.npc.Center;
                 return;
             }
+
+            if (Main.netMode != 1 && !YamataHead.EATTHELITTLEMAGGOT)
+            {
+                npc.ai[1]++;
+                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                if (leftHead) aiTimerFire += 30;
+                if (targetPlayer != null && npc.ai[1] == aiTimerFire)
+                {
+                    fireAttack = true;
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                        dir *= 5f;
+                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                    }
+                }
+                else
+                if (npc.ai[1] >= 200) //pick random spot to move head to
+                {
+                    fireAttack = false;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = Main.rand.Next(-movementVariance, movementVariance);
+                    npc.ai[3] = Main.rand.Next(-movementVariance, movementVariance);
+                    npc.netUpdate = true;
+                }
+            }
         }
 
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (fireAttack)
+            if (fireAttack || YamataHead.EATTHELITTLEMAGGOT)
             {
                 if (npc.frameCounter < 5)
                 {
@@ -219,7 +243,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
-                npc.frame.Y = 0 * frameHeight;
                 npc.frameCounter = 0;
             }
         }
@@ -249,6 +272,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         
 		public override bool PreNPCLoot()
         {
+            BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
             return false;
         }
 

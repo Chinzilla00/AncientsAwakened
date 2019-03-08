@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Ytrium
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ytrium Greaves");
+            DisplayName.SetDefault("Yttrium Greaves");
             Tooltip.SetDefault(@"8% increased movement speed");
         }
 

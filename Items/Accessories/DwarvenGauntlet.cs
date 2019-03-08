@@ -30,7 +30,7 @@ namespace AAMod.Items.Accessories
             Tooltip.SetDefault(
 @"Enemies are much more likely to target you
 18% Increased Melee Damage and Speed
-Increased Melee Knockbac
+Increased Melee Knockback
 Having this gauntlet allows you to handle the infinity stones without overloading
 'Fine. I'll do it myself.'");
         }

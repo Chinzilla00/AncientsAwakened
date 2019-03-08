@@ -34,6 +34,7 @@ namespace AAMod
         public static int shipTiles = 0;
         public static int Radium = 0;
         public static int Darkmatter = 0;
+        public static int DiscoBall = 0;
         //Worldgen
         public static bool Luminite;
         public static bool DarkMatter;
@@ -406,6 +407,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Slush"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if (shiniesIndex != -1)
             {
@@ -429,8 +431,7 @@ namespace AAMod
                     }
                 }));
             }
-            int chaosBiomeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
-            tasks.Insert(chaosBiomeIndex, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
             }));
@@ -583,17 +584,27 @@ namespace AAMod
             VoidHeight = 120;
             progress.Set(0.4f);
             Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
+            WHERESDAVOIDAT = center;
             progress.Set(0.5f);
             Point oldposition = new Point(1, 1);
             progress.Set(0.6f);
             List<Point> posIslands = new List<Point>();
             progress.Set(0.7f);
-            for (int i = 0; i < 4; i++)
+            int IslandNumber = 2;
+            if (GetWorldSize() == 2)
+            {
+                IslandNumber = 4;
+            }
+            if (GetWorldSize() == 3)
+            {
+                IslandNumber = 6;
+            }
+
+            for (int i = 0; i < IslandNumber; i++)
             {
                 Point position = new Point(
                     center.X + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)),
                     center.Y + (WorldGen.genRand.Next(35, 55) * (WorldGen.genRand.NextBool() ? -1 : 1)));
-                WHERESDAVOIDAT = position;
 
                 while (posIslands.Any(x => Vector2.Distance(x.ToVector2(), position.ToVector2()) < 35))
                 {
@@ -792,6 +803,7 @@ namespace AAMod
             WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("Doomstone"));
             if (chestType == 1)
             {
+                ChestNumber = Main.rand.Next(4);
                 if (ChestNumber == 0)
                 {
                     WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
@@ -808,7 +820,6 @@ namespace AAMod
                 {
                     WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
                 }
-                ChestNumber += 1;
             }
             //Side holes
             for (int i = Y + sizeY - 4; i > Y + sizeY; --i)
@@ -1103,9 +1114,9 @@ namespace AAMod
                 if (Dynaskull == false)
                 {
                     Dynaskull = true;
-                    Main.NewText("Bones of the ancient past burst with energy...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    Main.NewText("The desert winds stir", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B);
-                    Main.NewText("The winter hills rumble", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    Main.NewText("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    Main.NewText("The desert winds stir...", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B);
+                    Main.NewText("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
@@ -1205,6 +1216,7 @@ namespace AAMod
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
             Darkmatter = tileCounts[mod.TileType<Darkmatter>()];
+            DiscoBall = tileCounts[TileID.DiscoBall];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -1317,9 +1329,9 @@ namespace AAMod
 
         public static int GetWorldSize()
         {
-            if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6400) { return 2; }
-            else if (Main.maxTilesX == 8400) { return 3; }
+            if (Main.maxTilesX <= 4200) { return 1; }
+            else if (Main.maxTilesX <= 6400) { return 2; }
+            else if (Main.maxTilesX <= 8400) { return 3; }
             return 1;
         }
 

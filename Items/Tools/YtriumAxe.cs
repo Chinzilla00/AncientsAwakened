@@ -27,7 +27,7 @@ namespace AAMod.Items.Tools
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Hatchet");
+      DisplayName.SetDefault("Yttrium Hatchet");
       Tooltip.SetDefault("");
     }
 

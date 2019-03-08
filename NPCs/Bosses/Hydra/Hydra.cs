@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 float dist = npc.Distance(playerTarget.Center);
                 if (dist > 320)
                 {
-                    npc.alpha += 10;
+                    npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
                         Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 80 : -80), playerTarget.Center.Y);
@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
                 else
                 {
-                    npc.alpha -= 5;
+                    npc.alpha -= 3;
                     if (npc.alpha <= 0)
                     {
                         npc.alpha = 0;

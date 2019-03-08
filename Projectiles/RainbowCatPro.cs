@@ -51,10 +51,15 @@ namespace AAMod.Projectiles
             }
             if (projectile.localAI[0] > 21f) //projectile time left before disappears
             {
+
+                int Shoot = ProjectileID.Meowmere;
+                Main.projectile[Shoot].melee = false;
+                Main.projectile[Shoot].magic = true;
+
                 if (Main.rand.Next(3) == 0)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), ProjectileID.Meowmere, projectile.damage, 3, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), ProjectileID.Meowmere, projectile.damage, 3, Main.myPlayer);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
                 }
                 if (Main.rand.Next(50) == 0)
                 {

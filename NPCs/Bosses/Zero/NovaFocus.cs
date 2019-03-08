@@ -289,7 +289,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.localAI[0] = 0.0f;
                 }
                 LaserTime++;
-                npc.ai[2] = 0;
                 if (LaserTime >= 600)
                 {
                     internalAI[0] = 0;

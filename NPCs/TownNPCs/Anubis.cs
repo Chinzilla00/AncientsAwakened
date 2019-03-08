@@ -1,0 +1,545 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.Utilities;
+
+namespace AAMod.NPCs.TownNPCs
+{
+    [AutoloadHead]
+	public class Anubis : ModNPC
+	{
+		public override string Texture
+		{
+			get
+			{
+				return "AAMod/NPCs/TownNPCs/Anubis";
+			}
+		}
+
+		public override bool Autoload(ref string name)
+		{
+			return mod.Properties.Autoload;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			Main.npcFrameCount[npc.type] = 26;
+			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
+			NPCID.Sets.AttackFrameCount[npc.type] = 5;
+			NPCID.Sets.DangerDetectRange[npc.type] = 700;
+			NPCID.Sets.AttackType[npc.type] = 0;
+			NPCID.Sets.AttackTime[npc.type] = 40;
+			NPCID.Sets.AttackAverageChance[npc.type] = 20;
+			NPCID.Sets.HatOffsetY[npc.type] = 4;
+		}
+
+		public override void SetDefaults()
+		{
+			npc.townNPC = true;
+			npc.friendly = true;
+			npc.width = 18;
+			npc.height = 56;
+			npc.aiStyle = 7;
+			npc.damage = 80;
+			npc.defense = 68;
+			npc.lifeMax = 160000;
+            npc.HitSound = SoundID.NPCHit23;
+            npc.DeathSound = SoundID.NPCDeath39;
+            npc.knockBackResist = 0f;
+			animationType = NPCID.Guide;
+            npc.lavaImmune = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+        }
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+		}
+
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+		{
+			for (int k = 0; k < 255; k++)
+			{
+				Player player = Main.player[k];
+				if (player.active)
+				{
+                    return true;
+                }
+			}
+			return false;
+		}
+
+		public override string TownNPCName()
+		{
+			switch (WorldGen.genRand.Next(4))
+			{
+                default:
+					return "Anubis";
+			}
+		}
+
+        public static bool SwitchInfo = false;
+        public static bool DoNext = false;
+        public static bool Mushroom = false;
+        public static bool Glowshroom = false;
+        public static bool Grips = false;
+        public static bool Brood = false;
+        public static bool Hydra = false;
+        public static bool Djinn = false;
+        public static bool Serpent = false;
+        public static bool Retriever = false;
+        public static bool Raider = false;
+        public static bool Orthrus = false;
+        public static bool Fishron = false;
+        public static bool Equinox = false;
+        public static bool AnubisB = false;
+        public static bool GripsS = false;
+        public static bool Akuma = false;
+        public static bool Yamata = false;
+        public static bool Zero = false;
+        public static bool BaseChat = false;
+        public static int ChatNumber = 0;
+
+        public override void ResetEffects()
+        {
+            SwitchInfo = false;
+            DoNext = false;
+            Mushroom = false;
+            Glowshroom = false;
+            Grips = false;
+            Brood = false;
+            Hydra = false;
+            Djinn = false;
+            Serpent = false;
+            Raider = false;
+            Retriever = false;
+            Orthrus = false;
+            Fishron = false;
+            Equinox = false;
+            AnubisB = false;
+            GripsS = false;
+            Akuma = false;
+            Yamata = false;
+            Zero = false;
+            ChatNumber = 0;
+        }
+        
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+			string SwitchInfoT = "Switch Info";
+
+            string DoNextT = "What Do I do now?";
+
+            string MushT = "Mushrooms. I'm serious.";
+
+            string GlowT = "More Mushrooms.";
+
+            string GripT = "Get a Grip";
+
+            string BroodT = "Deadweight Dragon";
+
+            string HydraT = "Three-Headed Freak";
+
+            string DjinnT = "3 Wishes";
+
+            string SerpentT = "Snakes. Why is it always snakes?";
+
+            string RetT = "Gotcha'";
+
+            string RaidT = "Mechanical Mass";
+
+            string OrthrusT = "Two heads; zero brains";
+
+            string FishT = "It was THIIIIIS big.";
+
+            string EquinoxT = "More worm bosses god dammit.";
+
+            string AnubisT = "Ancient of Judgement";
+
+            string GripsST = "Gotcha Again!";
+
+            string AkumaT = "Ancient of Fury";
+
+            string YamataT = "Ancient of Wrath";
+
+            string ZeroT = "Ancient of Null";
+
+            Player player = Main.player[Main.myPlayer];
+
+            button = SwitchInfoT;
+
+            if (ChatNumber == 0)
+			{
+			    button2 = DoNextT;
+                DoNext = true;
+            }
+            else if (ChatNumber == 1)
+            {
+                button2 = MushT;
+                Mushroom = true;
+            }
+            else if (ChatNumber == 2)
+            {
+                button2 = GlowT;
+                Glowshroom = true;
+            }
+            else if (ChatNumber == 3)
+            {
+                button2 = GripT;
+                Grips = true;
+            }
+            else if (ChatNumber == 4)
+            {
+                button2 = BroodT;
+                Brood = true;
+            }
+            else if (ChatNumber == 5)
+            {
+                button2 = HydraT;
+                Hydra = true;
+            }
+            else if (ChatNumber == 6 && NPC.downedBoss3)
+            {
+                button2 = DjinnT;
+                Djinn = true;
+            }
+            else if (ChatNumber == 7 && NPC.downedBoss3)
+            {
+                button2 = SerpentT;
+                Serpent = true;
+            }
+            else if (ChatNumber == 8 && Main.hardMode)
+            {
+                button2 = RetT;
+                Retriever = true;
+            }
+            else if (ChatNumber == 9 && Main.hardMode)
+            {
+                button2 = RaidT;
+                Raider = true;
+            }
+            else if (ChatNumber == 10 && Main.hardMode)
+            {
+                button2 = OrthrusT;
+                Orthrus = true;
+            }
+            else if (ChatNumber == 11 && NPC.downedMoonlord)
+            {
+                button2 = FishT;
+                Fishron = true;
+            }
+            else if (ChatNumber == 12 && NPC.downedMoonlord)
+            {
+                button2 = EquinoxT;
+                Equinox = true;
+            }
+            else if (ChatNumber == 13 && NPC.downedMoonlord)
+            {
+                button2 = AnubisT;
+                AnubisB = true;
+            }
+            else if (ChatNumber == 14 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
+            {
+                button2 = GripsST;
+                GripsS = true;
+            }
+            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            {
+                button2 = AkumaT;
+                Akuma = true;
+            }
+            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            {
+                button2 = YamataT;
+                Yamata = true;
+            }
+            else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedNC)
+            {
+                button2 = ZeroT;
+                Zero = true;
+            }
+            else
+            {
+                ChatNumber = 0;
+                button2 = DoNextT;
+                DoNext = true;
+            }
+        }
+
+        public void ResetBools()
+        {
+            Mushroom = false;
+            Glowshroom = false;
+            Grips = false;
+            Brood = false;
+            Hydra = false;
+            Djinn = false;
+            Serpent = false;
+            Raider = false;
+            Retriever = false;
+            Orthrus = false;
+            Fishron = false;
+            Equinox = false;
+            DoNext = false;
+            Akuma = false;
+            Yamata = false;
+            Zero = false;
+            GripsS = false;
+        }
+
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                ResetBools();
+                ChatNumber += 1;
+            }
+            else
+            {
+                Player player = Main.player[Main.myPlayer];
+                Main.npcChatText = BossChat();
+            }
+        }
+
+        public static string BossChat()
+        {
+            if (Mushroom)
+            {
+                return AAWorld.downedMonarch ? "...that was it?" : 
+                    "Hey, you know all these little red mushrooms growing everywhere? I hear if you squish a bunch of them together and wave them around, their king or something will come and attempt to run you down. I gotta see that.";
+            }
+            else if (Glowshroom)
+            {
+                return AAWorld.downedFungus ? "Nice work. Now be honest, how high are you right now?" : 
+                    "The glowing mushroom caves always make me feel loopy for some reason. Anyways, you want better magic abilities? There's a big mushroom monster that has some great magic abilities infused into it. Just plug your nose while your down there.";
+            }
+            else if (Grips)
+            {
+                return AAWorld.downedGrips ? "Nice job taking down those giant hands. Maybe the little ones will finally leave me alone for once." : 
+                    "Those flying claws at night are a nightmare to deal with, and they freak me out. In my travels, I've come across these two REEEEEEEEALLY big ones. Maybe if you kill them, the little ones will bugger off. Maybe killing a few of them and showing that you have in some way will call them down.";
+            }
+            else if (Brood)
+            {
+                return AAWorld.downedBrood ? "That was the fattest dragon I've ever seen in my life." :
+                    "Like dragons? No? Too bad. You want better gear? You gotta go kill of this HUGE dragon made of lava. She's big, scary, and WAAAAAAAAAAAY too fat to fly, but she does anyways.";
+            }
+            else if (Hydra)
+            {
+                return AAWorld.downedHydra ? "" : 
+                    "";
+            }
+            else if (Djinn)
+            {
+                return AAWorld.downedDjinn ? "" : 
+                    "";
+            }
+            else if (Serpent)
+            {
+                return AAWorld.downedSerpent ? "" : 
+                    "";
+            }
+            else if (Retriever)
+            {
+                return AAWorld.downedRetriever ? "" : 
+                    "";
+            }
+            else if (Raider)
+            {
+                return AAWorld.downedRaider ? "" : 
+                    "";
+            }
+            else if (Orthrus)
+            {
+                return AAWorld.downedOrthrus ? "" : 
+                    "";
+            }
+            else if (Fishron)
+            {
+                return AAWorld.downedEFish ? "" : 
+                    "You know duke fishron? Big pig dragon thing? Well there's a bigger one out there, and it's even nastier than regular ol' fishron. Good luck, I ain't going near that.";
+            }
+            else if (Equinox)
+            {
+                return AAWorld.downedEquinox ? "Nice job taking out the Equinox worms. I could tell you did because the sky lit up with those weird balls of light." : 
+                    "Like worms? Me neither, but guess what? There are 2 big ones that control the flow of day and night, and they're tough buggers. Good luck.";
+            }
+            else if (AnubisB)
+            {
+                return "I hear there’s this Anubis guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
+            }
+            else if (GripsS)
+            {
+                return AAWorld.downedGripsS ? "" : 
+                    "";
+            }
+            else if (Akuma)
+            {
+                return AAWorld.downedAkuma ? "" : 
+                    "";
+            }
+            else if (Yamata)
+            {
+                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my hair out." :
+                    "Yamata, the whiny baby! He complains about everything, and he WONT SHUT UP! LIKE SERIOUSLY, YOU try and deal with seven obnoxiously loud dragon heads that chatter constantly and talk over eachother!";
+            }
+            else if (Zero)
+            {
+                return AAWorld.downedZero ? "" : 
+                    "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public override string GetChat()
+        {
+            Mod GRealm = ModLoader.GetMod("Grealm");
+            Mod Fargos = ModLoader.GetMod("Fargowiltas");
+            Mod Alchemist = ModLoader.GetMod("AlchemistNPC");
+            Mod AlchemistLite = ModLoader.GetMod("AlchemistNPCLite");
+            Mod Redemption = ModLoader.GetMod("Redemption");
+            Mod Thorium = ModLoader.GetMod("ThoriumMod");
+
+            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
+            int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
+            int Newb = Redemption == null ? -1 : NPC.FindFirstNPC(Redemption.NPCType("Newb"));
+            int Cobbler = Thorium == null ? -1 : NPC.FindFirstNPC(Thorium.NPCType("Cobbler"));
+            int ConfusedZombie = Thorium == null ? -1 : NPC.FindFirstNPC(Thorium.NPCType("ConfusedZombie"));
+
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+
+            chat.Add("You wouldn’t happen to be good at belly rubs would you?");
+            chat.Add("You know that awful feeling of getting sand in your swim trunks after going to the beach? Imagine having that all the time. Welcome to my life.");
+            chat.Add("For the thousandth time, I AM NOT A FURRY!");
+            chat.Add("Hey, I got this really bad itch on my back. Could ya get it for me?");
+            chat.Add(@"No. I won’t wear a flea collar.
+ 
+*Scratch Scratch*");
+            chat.Add("Everyone asks me who's a good boy, but I'm upset because they never tell me who it is.");
+            chat.Add("Have you seen my tail? I need to teach it a thing or two.");
+            chat.Add("The Desert Djinn may be ripped but he's got nothing on me! Check it!");
+            chat.Add("Thanks for letting me crash here by the way. Walking around the desert for a couple thousand years really tuckers ya out.");
+            chat.Add("I wrote the Terraria Historia, yes. But I also wrote another great book. 'The Life and Epic Adventures of Anubis the Wonder Dog!' Want a copy?");
+            chat.Add("Don't you hate it when " + (WorldGen.crimson ? "red fleshy crap" : "purple muggy crap") + " takes over your biome? it's disgusting.");
+            chat.Add("What creature do I hate most? Oh that's easy, King Slime. If that thing lands on you, good luck washing the slime out of your clothes or fur without a blowtorch.");
+            
+            Player player = Main.player[Main.myPlayer];
+
+
+            int FemaleNPC = NPC.FindFirstNPC(FindFemaleNPC());
+
+
+            if (Main.bloodMoon && FemaleNPC != NPCID.PartyGirl)
+            {
+                chat.Add("Geeze, I tried hitting on " + Main.npc[FemaleNPC].GivenName + " earlier and they kicked the bajeezus out of me. What is it with these ladies and blood moons?");
+            }
+            else if (Main.bloodMoon && FemaleNPC == NPCID.PartyGirl)
+            {
+                chat.Add("I tried hitting on " + Main.npc[FemaleNPC].GivenName + " and she was totally polite to me. That's...odd...especially during a blood moon.");
+            }
+
+            if (player.head == 200 && player.body == 198 && player.legs == 142)
+            {
+                chat.Add("Hey, nice outfit.");
+            }
+
+            if (AAWorld.DiscoBall > 0)
+            {
+                chat.Add("Disco is still popular with you terrarians, right? I can do a mean boogie.");
+            }
+
+            if (HordeZombie >= 0)
+            {
+                chat.Add("Hey uh...if anyone asks, " + Main.npc[HordeZombie].GivenName + " got all of his info from me, got it?");
+            }
+
+            if (Mutant >= 0)
+            {
+                chat.Add("That " + Main.npc[Mutant].GivenName + " is pretty chill. Knows a lot about bosses too...actually I hope he isn't stalking me or anything.");
+            }
+
+            if (Newb >= 0)
+            {
+                chat.Add("I think " + Main.npc[Newb].GivenName + " isn't letting in on how smart he actually is. I mean look at that face. Pure. Raw. Genius.");
+            }
+
+            if (Cobbler >= 0)
+            {
+                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. What do I do?");
+            }
+
+            if (ConfusedZombie >= 0)
+            {
+                chat.Add("Don't ask " + Main.npc[ConfusedZombie].GivenName + " where he gets his merch. It's nasty.");
+            }
+
+            return chat;
+        }
+
+        public static string WHATTHEFUCKDOIDOANUBIS()
+        {
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+            
+            return chat;
+        }
+
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+		{
+			damage = 30;
+			knockback = 4f;
+		}
+
+		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+		{
+			cooldown = 20;
+			randExtraCooldown = 20;
+		}
+
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+            projType = mod.ProjectileType<JudgementNPC>();
+            attackDelay = 5;
+        }
+
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+        {
+
+            multiplier = 4f;
+
+            randomOffset = 2f;
+
+        }
+
+        public int FindFemaleNPC()
+        {
+            int FemaleNPC = Main.rand.Next(6);
+            switch (FemaleNPC)
+            {
+                case 0:
+                    FemaleNPC = NPCID.Nurse;
+                    break;
+                case 1:
+                    FemaleNPC = NPCID.Dryad;
+                    break;
+                case 2:
+                    FemaleNPC = NPCID.Stylist;
+                    break;
+                case 3:
+                    FemaleNPC = NPCID.Mechanic;
+                    break;
+                case 4:
+                    FemaleNPC = NPCID.Steampunker;
+                    break;
+                default:
+                    FemaleNPC = NPCID.PartyGirl;
+                    break;
+            }
+            return FemaleNPC;
+        }
+    }
+}

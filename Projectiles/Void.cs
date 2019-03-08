@@ -38,10 +38,9 @@ namespace AAMod.Projectiles
             {
                 int latestProjectile= projectile.whoAmI;
 
-                latestProjectile = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+                latestProjectile = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
                 Main.projectile[latestProjectile].ai[3] = projectile.whoAmI;
                 Main.projectile[latestProjectile].Center = projectile.Center;
-                projectile.ai[3] = 1;
             }
         }
 	}

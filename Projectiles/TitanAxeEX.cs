@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             Vector2 vector14 = projectile.Center + projectile.velocity * 3f;
-            Lighting.AddLight(vector14, Main.DiscoR, 0.8f, Main.DiscoB);
+            Lighting.AddLight(vector14, Main.DiscoR / 255, 0.8f, Main.DiscoB / 255);
             for (int i = 0; i < 5; i++)
             {
                 int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, new Color(Main.DiscoR, 0, Main.DiscoB), 2f);

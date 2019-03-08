@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -50,6 +51,8 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.localAI[0] = reader.ReadInt16();
         }
+
+        public float[] shootAI = new float[4];
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -194,12 +197,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                if (npc.localAI[0] == 201 || npc.localAI[0] == 205 || npc.localAI[0] == 210 || npc.localAI[0] == 215 || npc.localAI[0] == 220 || npc.localAI[0] == 225 || 
-                    npc.localAI[0] == 230 || npc.localAI[0] == 235 || npc.localAI[0] == 240 || npc.localAI[0] == 245 || npc.localAI[0] == 250 || npc.localAI[0] == 255 || 
-                    npc.localAI[0] == 260 || npc.localAI[0] == 265 || npc.localAI[0] == 270 || npc.localAI[0] == 275 || npc.localAI[0] == 280 || npc.localAI[0] == 285 || 
-                    npc.localAI[0] == 290 || npc.localAI[0] == 295)
+                if (npc.localAI[0] >= 200)
                 {
-                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                    BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType("OmegaBullet"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
                 }
             }
             else

@@ -98,18 +98,6 @@ namespace AAMod.Projectiles.Akuma
             DelegateMethods.v3_1 = new Vector3(0.3f, 0.65f, 0.7f);
             Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], (float)projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
             return false;
-            
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            for (int num56 = 0; num56 < 1000; num56++)
-            {
-                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner)
-                {
-                    Main.projectile[num56].Kill();
-                }
-            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

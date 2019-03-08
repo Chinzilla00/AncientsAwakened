@@ -1,9 +1,10 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
-    public class YamataBoom : ModProjectile
+    public class SoulBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -21,6 +22,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void AI()

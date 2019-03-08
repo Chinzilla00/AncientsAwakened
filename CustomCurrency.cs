@@ -23,8 +23,9 @@ namespace AAMod
 					color.B,
 					Language.GetTextValue("LegacyTooltip.50"),
 					price,
-					"Goblin Souls"
-				});
+                    "Goblin Soul" + (price == 1 ? "" : "s")
+
+            });
 		}
 	}
 }

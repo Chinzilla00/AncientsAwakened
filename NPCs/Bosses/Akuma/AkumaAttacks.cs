@@ -38,7 +38,7 @@ namespace AAMod
             num79 *= num80;
             vector2 = new Vector2(player.position.X + ((float)player.width * 0.5f) + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
             vector2.X = ((vector2.X + player.Center.X) / 2f) + (float)Main.rand.Next(-200, 201);
-            vector2.Y -= (float)(100);
+            vector2.Y -= (float)(100 * Main.rand.Next(3));
             num78 = player.Center.X + Main.screenPosition.X - vector2.X + ((float)Main.rand.Next(-40, 41) * 0.03f);
             num79 = player.Center.Y + Main.screenPosition.Y - vector2.Y;
             if (num79 < 0f)

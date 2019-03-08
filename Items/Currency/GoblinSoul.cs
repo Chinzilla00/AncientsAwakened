@@ -21,10 +21,8 @@ namespace AAMod.Items.Currency
         
         public override void SetDefaults()
 		{
-			Item refItem = new Item();
-			refItem.SetDefaults(ItemID.SoulofSight);
-			item.width = refItem.width;
-			item.height = refItem.height;
+			item.width = 16;
+            item.height = 16;
 			item.maxStack = 999;
 			item.value = 1000;
 			item.rare = 3;

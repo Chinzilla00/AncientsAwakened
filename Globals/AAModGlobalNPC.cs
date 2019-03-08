@@ -759,6 +759,13 @@ namespace AAMod
                     pool.Add(mod.NPCType("TerraWizard"), .4f);
                     pool.Add(mod.NPCType("TerraWarlock"), .4f);
                 }
+                else
+                {
+                    pool.Add(mod.NPCType("TerraWeaver"), .4f);
+                    pool.Add(mod.NPCType("TerraSphere"), .4f);
+                    pool.Add(mod.NPCType("TerraCrawler"), .4f);
+                    pool.Add(mod.NPCType("PuritySquid"), .4f);
+                }
             }
         }
 

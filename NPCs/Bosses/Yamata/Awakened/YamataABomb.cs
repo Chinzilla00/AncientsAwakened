@@ -8,22 +8,15 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     internal class YamataABomb : ModProjectile
     {
-        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("NPCs/Bosses/Yamata/Awakened/" + GetType().Name);
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Abyssal Bomb");
+            Main.projFrames[projectile.type] = 4;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void SetDefaults()
@@ -37,7 +30,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.penetrate = 1;
             projectile.alpha = 60;
             projectile.timeLeft = 300;
-            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()

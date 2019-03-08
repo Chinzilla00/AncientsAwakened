@@ -17,7 +17,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Crimson Prism");
             Tooltip.SetDefault("Imbued with the carnal energy of the flesh-ridden wasteland");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -52,7 +52,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Corruption Prism");
             Tooltip.SetDefault("Imbued with the shadowy essence of the decaying woodlands");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -87,7 +87,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Dungeon Prism");
             Tooltip.SetDefault("Imbued with the ghastly spirits of the ancient crypt");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -122,7 +122,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Hallow Prism");
             Tooltip.SetDefault("Imbued with the holy light of the blessed plains");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -157,7 +157,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Hell Prism");
             Tooltip.SetDefault("Imbued with the sinful influence of the unholy caverns");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -192,7 +192,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Sky Prism");
             Tooltip.SetDefault("Imbued with the celestial wonder of the expansive ozone");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -237,7 +237,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Ocean Prism");
             Tooltip.SetDefault("Imbued with the calming sounds of the seven seas");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -272,7 +272,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Snow Prism");
             Tooltip.SetDefault("Imbued with the chilling winds of the frozen mountains");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -307,7 +307,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Desert Prism");
             Tooltip.SetDefault("Imbued with the heated rays of the sandy wastes");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -342,7 +342,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Jungle Prism");
             Tooltip.SetDefault("Imbued with the rythmic beat of the tribal rainforest");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -412,7 +412,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Mire Prism");
             Tooltip.SetDefault("Imbued with the abyssal wrath of the dark bogs");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -447,7 +447,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Terra Prism");
             Tooltip.SetDefault("Imbued with the unified harmony of the land of Terraria");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -482,7 +482,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Chaos Prism");
             Tooltip.SetDefault("Imbued with the discordian flames of chaos");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -517,7 +517,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Void Prism");
             Tooltip.SetDefault("Imbued with the echoes of unyielding malice");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?

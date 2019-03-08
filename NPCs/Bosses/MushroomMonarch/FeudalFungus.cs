@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 1200;   //boss life
+            npc.lifeMax = NPC.downedPlantBoss ? 33000 : 1200;   //boss life
             npc.damage = 12;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
@@ -81,27 +81,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             if (NPC.downedPlantBoss)
             {
                 npc.damage = 50;
-                npc.defense = 14;
-                npc.lifeMax = 33000;
-                npc.HitSound = SoundID.NPCHit1;
-                npc.DeathSound = SoundID.NPCDeath1;
-                npc.knockBackResist = 0f;
-                npc.value = (float)Item.buyPrice(0, 15, 0, 0);
-                npc.noGravity = true;
-                npc.boss = true;
-                npc.aiStyle = 26;
-                npc.width = 74;
-                npc.height = 108;
-                npc.npcSlots = 1f;
-                npc.lavaImmune = true;
-                npc.buffImmune[46] = true;
-                npc.buffImmune[47] = true;
-                npc.netAlways = true;
-                npc.noTileCollide = true;
-                bossBag = mod.ItemType("FungusBag");
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Fungus");
-                npc.alpha = 255;
-                npc.scale *= 1.3f;
+                npc.defense = 30;
             }
              
             if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)

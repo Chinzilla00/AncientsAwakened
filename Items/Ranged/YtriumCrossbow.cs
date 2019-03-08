@@ -10,7 +10,7 @@ namespace AAMod.Items.Ranged
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ytrium Repeater");
+			DisplayName.SetDefault("Yttrium Repeater");
 			Tooltip.SetDefault("20% chance not to consume arrows");
         }
 

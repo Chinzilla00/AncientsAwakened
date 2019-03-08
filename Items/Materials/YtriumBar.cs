@@ -16,7 +16,7 @@ namespace AAMod.Items.Materials
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Bar");
+      DisplayName.SetDefault("Yttrium Bar");
       Tooltip.SetDefault("");
     }
 

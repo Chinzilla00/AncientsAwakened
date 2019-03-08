@@ -28,7 +28,7 @@ namespace AAMod.Items.Throwing
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Ytrium Boomerang");
+      DisplayName.SetDefault("Yttrium Boomerang");
       Tooltip.SetDefault("");
     }
 

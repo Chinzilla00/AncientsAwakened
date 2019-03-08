@@ -92,6 +92,27 @@ namespace AAMod.Items.Boss.Zero
             double offsetAngle;
             for (int i = 0; i < 4; i++)
             {
+                float ai1;
+                if (i == 0)
+                {
+                    ai1 = ai3;
+                }
+                if (i == 1)
+                {
+                    ai1 = ai3X;
+                }
+                if (i == 2)
+                {
+                    ai1 = ai3Y;
+                }
+                if (i == 3)
+                {
+                    ai1 = ai3Z;
+                }
+                if (i == 4)
+                {
+                    ai1 = ai3;
+                }
                 offsetAngle = startAngle + (deltaAngle * i);
                 Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("EventHorizon"), damage, knockBack, player.whoAmI, 0.0f, ai3);
 

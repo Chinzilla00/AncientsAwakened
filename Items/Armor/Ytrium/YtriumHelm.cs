@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Ytrium
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ytrium Helm");
+            DisplayName.SetDefault("Yttrium Helm");
             Tooltip.SetDefault(@"9% increased ranged critical strike chance
 8% increased movement speed");
         }

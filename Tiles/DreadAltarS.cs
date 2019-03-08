@@ -10,6 +10,8 @@ using Terraria.Enums;
 using System;
 using BaseMod;
 using Terraria.ID;
+using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.Tiles
 {
@@ -106,11 +108,63 @@ namespace AAMod.Tiles
         }
 
         public override void MouseOver(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
-			player.noThrow = 2;
-			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("DreadSigil");
-		}
-	}
+        {
+            Player player = Main.LocalPlayer;
+            player.noThrow = 2;
+            player.showItemIcon = true;
+            player.showItemIcon2 = mod.ItemType("DreadSigil");
+        }
+
+        public override void RightClick(int i, int j)
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (Main.dayTime)
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                return;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("Yamata")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+                return;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("YamataA")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                return;
+            }
+            for (int m = 0; m < Main.maxProjectiles; m++)
+            {
+                Projectile p = Main.projectile[m];
+                if (p != null && p.active && p.type == mod.ProjectileType("YamataTransition"))
+                {
+                    return;
+                }
+            }
+            if (!NPC.AnyNPCs(mod.NPCType("Yamata")) && !NPC.AnyNPCs(mod.NPCType("YamataA")))
+            {
+                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadSigil>() && player.inventory[player.selectedItem].stack > 0)
+                {
+                    if (!AAWorld.downedYamata)
+                    {
+                        Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                    }
+                    if (AAWorld.downedYamata)
+                    {
+                        Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                    }
+
+                    SpawnBoss(player, "Yamata", "Yamata");
+                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
+                }
+                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[player.selectedItem].stack > 0)
+                {
+                    Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
+                    SpawnBoss(player, "YamataA", "Yamata Awakened");
+                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
+                }
+            }
+        }
+    }
 }

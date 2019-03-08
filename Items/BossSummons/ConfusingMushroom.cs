@@ -50,7 +50,7 @@ Can only be used in a glowing mushroom biome or at night");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom glows, and the smell of it makes you feel loopy.", Color.SkyBlue, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()))
+            if (NPC.AnyNPCs(mod.NPCType<FeudalFungus>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Feudal Fungus keeps trying to attack you", Color.SkyBlue, false);
                 return false;

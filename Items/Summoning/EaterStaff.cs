@@ -11,7 +11,7 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Demonite Staff");
-            Tooltip.SetDefault(@"Summons a Eater to fight with you");
+            Tooltip.SetDefault(@"Summons an Eater to fight with you");
         }
 
         public override void SetDefaults()

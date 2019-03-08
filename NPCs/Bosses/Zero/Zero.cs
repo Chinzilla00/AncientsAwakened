@@ -194,9 +194,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(dColor.R, dColor.G, dColor.B, (byte)150));
             }
-
-            Texture2D Unit = mod.GetTexture("NPCs/Bosses/Zero/ZeroUnit");
-            Texture2D UnitGlow = mod.GetTexture("Glowmasks/ZeroUnit_Glow");
+            
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
@@ -204,9 +202,6 @@ namespace AAMod.NPCs.Bosses.Zero
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
-            BaseDrawing.DrawTexture(spritebatch, Unit, 0, npc.position, npc.width, npc.height, 1, UnitRotation, 0, 2, npc.frame, dColor, true);
-            BaseDrawing.DrawAura(spritebatch, UnitGlow, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(spritebatch, UnitGlow, 0, npc, GetGlowAlpha());
 
             if (ShieldScale > 0)
             {
@@ -265,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.TargetClosest(true);
                 npc.ai[0] = 2;
-                Main.NewText("INITIALIZING BACKUP WEAPON RP0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("INITIALIZING BACKUP WEAPON PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                 int index1 = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("NovaFocus"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
                 Main.npc[index1].ai[0] = -1f;
                 Main.npc[index1].ai[1] = npc.whoAmI;
@@ -288,12 +283,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].target = npc.target;
                 Main.npc[index4].netUpdate = true;
                 Main.npc[index4].ai[3] = 150f;
-                npc.ai[3] = 1;
             }
             UnitRotation = npc.velocity.X / 15f;
 
             if (npc.type == mod.NPCType<Zero>() && 
-                (NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
+                (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
                 !NPC.AnyNPCs(mod.NPCType<Taser>()) && 
                 !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && 
                 !NPC.AnyNPCs(mod.NPCType<RiftShredder>()) && 
@@ -315,6 +309,20 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.damage = 80;
                 saythelinezero = false;
             }
+
+            if (npc.type == mod.NPCType<Zero>() &&
+                NPC.AnyNPCs(mod.NPCType<Neutralizer>()) &&
+                NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) &&
+                NPC.AnyNPCs(mod.NPCType<NovaFocus>()) &&
+                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+            {
+                npc.ai[3] = 1;
+            }
+            else
+            {
+                npc.ai[3] = 0;
+            }
+
 
             if (ArmsGone && !saythelinezero)
             {

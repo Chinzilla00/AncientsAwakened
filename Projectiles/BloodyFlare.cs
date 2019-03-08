@@ -15,8 +15,7 @@ namespace AAMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(356);
-			projectile.magic = false;   
+			projectile.CloneDefaults(356);  
 			projectile.melee = true;   
 			projectile.timeLeft = 600;           
 		}

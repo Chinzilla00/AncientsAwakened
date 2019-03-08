@@ -24,7 +24,7 @@ namespace AAMod.Items.Melee   //where is located
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Dragon's Breath");
+            DisplayName.SetDefault("The " + item.prefix + (item.prefix == 0 ? "" : " ") + "Dragon's Breath");
             Tooltip.SetDefault("It must need to brush it's teeth");
         }
 

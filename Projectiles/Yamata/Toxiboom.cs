@@ -30,6 +30,7 @@ namespace AAMod.Projectiles.Yamata
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 4;
+            projectile.magic = true;
         }
 
         public override void AI()

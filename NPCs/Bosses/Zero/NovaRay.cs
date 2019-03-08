@@ -1,58 +1,43 @@
+using Terraria;
+using Terraria.ModLoader;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
     public class NovaRay : ModProjectile
-	{
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Nova Ray");    //The recording mode
-		}
-
-		public override void SetDefaults()
-		{
-            projectile.width = 18;
-            projectile.height = 18;
-            projectile.aiStyle = 0;
-            projectile.friendly = false;
-            projectile.hostile = true;
-            projectile.penetrate = -1;
-            projectile.alpha = 255;
-            projectile.tileCollide = false;
-            projectile.usesLocalNPCImmunity = true;
-            
-        }
-
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            float n = 0f;
-            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], 30f * projectile.scale, ref n))
-                return true;
-
-            return false;
-        }
-
-        public NPC shooter;
+    {
         private const float MoveDistance = 70f;
         
         public float Distance;
 
 
-        public bool runOnce = true;
+        public NPC shooter;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Nova Ray");
+        }
+        public override void SetDefaults()
+        {
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.friendly = false;
+            projectile.penetrate = -1;
+            projectile.tileCollide = false;
+            projectile.hostile = true;
+            projectile.hide = false;
+        }
+        // The AI of the projectile
+        public bool runOnce=true;
         public override void AI()
         {
-
-
+            
+            
             float rOffset = 0;
             shooter = Main.npc[(int)projectile.ai[0]];
-            Vector2 mousePos = Main.MouseWorld;
             Player player = Main.player[projectile.owner];
-            if (!shooter.active || shooter.life <= 0)
+            if (!shooter.active || shooter.life <=0)
             {
                 projectile.Kill();
             }
@@ -70,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 2;
             int dir = projectile.direction;
             #endregion
-
+            
             Vector2 start = new Vector2(shooter.Center.X, shooter.Center.Y);
             Vector2 unit = projectile.velocity;
             unit *= -1;
@@ -92,38 +77,75 @@ namespace AAMod.NPCs.Bosses.Zero
                 DelegateMethods.CastLight);
 
         }
-
-        public override void Kill(int timeLeft)
-        {
-            for (int num56 = 0; num56 < 1000; num56++)
-            {
-                if (Main.projectile[num56].active && Main.projectile[num56].owner == projectile.owner && Main.projectile[num56].type == mod.ProjectileType<NovaRay>())
-                {
-                    Main.projectile[num56].Kill();
-                }
-            }
-        }
-
+        public int colorCounter;
+        public Color lineColor;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            if (projectile.velocity == Vector2.Zero)
-                return false;
 
-            Texture2D tex2 = Main.projectileTexture[projectile.type];
-            float num210 = projectile.localAI[1];
-            Color c_ = new Color(AAColor.ZeroShield.R, AAColor.ZeroShield.G, AAColor.ZeroShield.B, 127);
-            Vector2 value20 = projectile.Center.Floor();
-            num210 -= projectile.scale * 10.5f;
-            Vector2 vector41 = new Vector2(projectile.scale);
-            DelegateMethods.f_1 = 1f;
-            DelegateMethods.c_1 = c_;
-            DelegateMethods.i_1 = 54000 - (int)Main.time / 2;
-            Vector2 vector42 = projectile.oldPos[0] + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-            Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
-            DelegateMethods.c_1 = new Color(AAColor.ZeroShield.R, AAColor.ZeroShield.G, AAColor.ZeroShield.B, 127) * 0.75f * projectile.Opacity;
-            Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41 / 2f, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
+            
+                DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], new Vector2(shooter.Center.X, shooter.Center.Y),
+                    projectile.velocity, 10, projectile.damage, -1.57f, 1f, 4000f, AAColor.Oblivion, (int)MoveDistance);
+            
+            
             return false;
         }
 
+        // The core function of drawing a laser
+        public void DrawLaser(SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 unit, float step, int damage, float rotation = 0f, float scale = 1f, float maxDist = 4000f, Color color = default(Color), int transDist = 50)
+        {
+            Vector2 origin = start;
+            float r = unit.ToRotation() + rotation;
+
+            #region Draw laser body
+            for (float i = transDist; i <= Distance; i += step)
+            {
+                Color c = AAColor.Oblivion;
+                origin = start + i * unit;
+                spriteBatch.Draw(texture, origin - Main.screenPosition,
+                    new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
+                    new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+            }
+            #endregion
+
+            #region Draw laser tail
+            spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
+                new Rectangle(0, 0, 28, 26), AAColor.Oblivion, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+            #endregion
+
+            #region Draw laser head
+            spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
+                new Rectangle(0, 52, 28, 26), AAColor.Oblivion, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+            #endregion
+        }
+
+        // Change the way of collision check of the projectile
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            // We can only collide if we are at max charge, which is when the laser is actually fired
+
+            Player player = Main.player[projectile.owner];
+            Vector2 unit = projectile.velocity;
+            float point = 0f;
+            // Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
+            // It will look for collisions on the given line using AABB
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), new Vector2(shooter.Center.X, shooter.Center.Y),
+                new Vector2(shooter.Center.X, shooter.Center.Y) + unit * Distance, 22, ref point);
+
+            return false;
+        }
+
+        // Set custom immunity time on hitting an NPC
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.immune[projectile.owner] = 5;
+        }
+
+
+
+        public override bool ShouldUpdatePosition()
+        {
+            return false;
+        }
     }
+
 }

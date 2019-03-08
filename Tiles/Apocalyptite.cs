@@ -14,6 +14,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("Doomstone")] = true;
             Main.tileMergeDirt[Type] = false;
+            SetModTree(new OroborosTree());
             soundType = 21;
             drop = mod.ItemType("Apocalyptite");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
@@ -37,6 +38,7 @@ namespace AAMod.Tiles
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
             }
         }
+
 
         public override int SaplingGrowthType(ref int style)
         {

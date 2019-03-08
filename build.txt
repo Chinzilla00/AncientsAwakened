@@ -1,6 +1,6 @@
 author = Alphakip
 version = 0.5.5.1
-displayName = Ancients-Awakened
+displayName = Ancients Awakened
 includePDB = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.gif, *.piskel, *.csproj.user
 hideCode = true

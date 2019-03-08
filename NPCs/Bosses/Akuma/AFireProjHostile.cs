@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / (Main.expertMode ? 6 : 3);
+            double deltaAngle = spread / (Main.expertMode ? 6 : 4);
             double offsetAngle;
             int i;
             for (i = 0; i < (Main.expertMode ? 6 : 3); i++)

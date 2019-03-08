@@ -127,9 +127,9 @@ namespace AAMod.Backgrounds
                 var Asteroidpos1 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 var Asteroidpos2 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 var Asteroidpos3 = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                asteroidPercent1 += 0.002f;
-                asteroidPercent2 += 0.003f;
-                asteroidPercent3 += 0.004f;
+                asteroidPercent1 += 0.004f;
+                asteroidPercent2 += 0.005f;
+                asteroidPercent3 += 0.006f;
 				if(asteroidPercent1 > (float)Math.PI) asteroidPercent1 = 0f;
 				if(asteroidPercent2 > (float)Math.PI) asteroidPercent2 = 0f;
 				if(asteroidPercent3 > (float)Math.PI) asteroidPercent3 = 0f;

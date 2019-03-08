@@ -10,39 +10,47 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Surasshu");
             Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 30;
-            projectile.height = 30;
-            projectile.penetrate = -1;
-            projectile.aiStyle = 0;
-            projectile.alpha = 255;
-            projectile.timeLeft = 360;
+            projectile.width = 132;
+            projectile.height = 66;
             projectile.friendly = true;
-            projectile.tileCollide = true;
-            projectile.extraUpdates = 2;
+            projectile.penetrate = -1;
+            projectile.tileCollide = false;
             projectile.melee = true;
-            projectile.ignoreWater = true;
+            projectile.ownerHitCheck = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 2;
+            projectile.localNPCHitCooldown = 5;
         }
 
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
+            float num = 0f;
             Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
-            if (++projectile.frame >= Main.projFrames[projectile.type])
+            if (projectile.spriteDirection == -1)
+            {
+                num = 3.14159274f;
+            }
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 5)
+            {
+                projectile.frame += 1;
+                projectile.frameCounter = 0;
+            }
+            if (projectile.frame >= Main.projFrames[projectile.type])
             {
                 projectile.frame = 0;
             }
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)
             {
-                Main.PlaySound(SoundID.Item1, projectile.Center);
-                projectile.soundDelay = 12;
+                Main.PlaySound(SoundID.Item15, projectile.Center);
+                projectile.soundDelay = 24;
             }
             if (Main.myPlayer == projectile.owner)
             {
@@ -72,13 +80,27 @@ namespace AAMod.Projectiles
                 }
             }
             Vector2 vector14 = projectile.Center + projectile.velocity * 3f;
-            Lighting.AddLight(vector14, Main.DiscoR * .3f, 0, Main.DiscoB * .3f);
+            Lighting.AddLight(vector14, 1f, 0.2f, 2f);
             if (Main.rand.Next(3) == 0)
             {
-                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, new Color(Main.DiscoR * .02f, 0, Main.DiscoB * .02f), 2f);
+                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), projectile.velocity.X, projectile.velocity.Y, 100, AAColor.Shen2, 1f);
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= projectile.velocity;
             }
+            projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
+            projectile.rotation = projectile.velocity.ToRotation() + num;
+            projectile.spriteDirection = projectile.direction;
+            projectile.timeLeft = 2;
+            player.ChangeDir(projectile.direction);
+            player.heldProj = projectile.whoAmI;
+            player.itemTime = 2;
+            player.itemAnimation = 2;
+            player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White ;
         }
     }
 }

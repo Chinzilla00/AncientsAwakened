@@ -1,5 +1,7 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,9 +28,28 @@ namespace AAMod.Projectiles
             projectile.ranged = true;
         }
 
+        public float[] internalAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
-            projectile.Center = Main.npc[(int)projectile.ai[3]].Center;
+            projectile.Center = Main.projectile[(int)projectile.ai[0]].Center;
             if (projectile.alpha != 0)
             {
                 projectile.localAI[0] += 1f;
@@ -46,7 +67,7 @@ namespace AAMod.Projectiles
             {
                 projectile.scale += .1f;
             }
-            if (Vector2.Distance(projectile.Center, new Vector2(projectile.ai[0], projectile.ai[1]) * 16f + Vector2.One * 8f) <= 16f)
+            if (Vector2.Distance(projectile.Center, new Vector2(internalAI[0], projectile.ai[1]) * 16f + Vector2.One * 8f) <= 16f)
             {
                 projectile.Kill();
                 return;

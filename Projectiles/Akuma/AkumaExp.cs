@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 5;
+            projectile.melee = true;
         }
 
         public override void AI()

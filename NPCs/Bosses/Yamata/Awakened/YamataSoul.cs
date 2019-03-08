@@ -24,8 +24,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.npcSlots = 0;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.aiStyle = 86;
-            npc.lifeMax = 9000;
-            npc.defense = 30;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.damage = 80;
             npc.alpha = 255;
@@ -33,11 +33,15 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         }
         public override void AI()
         {
+            if (NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            {
+                npc.life = 0;
+            }
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("YamataADust"), 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("YamataAuraDust"), 0f, 0f, 100, default(Color), 2f);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = true;
                 }

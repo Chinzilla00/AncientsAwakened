@@ -893,7 +893,7 @@ namespace AAMod
         public override void AddRecipeGroups()
         {
             // Registers the new recipe group with the specified name
-            RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Darkmatter Helmet", new int[]
+            RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " darkmatter helmet", new int[]
             {
                 ItemType<DarkmatterVisor>(),
                 ItemType<DarkmatterHelm>(),
@@ -904,7 +904,7 @@ namespace AAMod
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:DarkmatterHelmets", group0);
 
-            RecipeGroup group1 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Radium Helmet", new int[]
+            RecipeGroup group1 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " radium helmet", new int[]
             {
                 ItemType<RadiumHat>(),
                 ItemType<RadiumHelm>(),
@@ -915,21 +915,21 @@ namespace AAMod
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:RadiumHelmets", group1);
 
-            RecipeGroup group2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Gold", new int[]
+            RecipeGroup group2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " gold bar", new int[]
             {
                 ItemID.GoldBar,
                 ItemID.PlatinumBar
             });
             // Registers the new recipe group with the specified name
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
-            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Astral Station", new int[]
+            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " astral crafting station", new int[]
             {
                 ItemType("RadiantArcanum"),
                 ItemType("QuantumFusionAccelerator"),
             });
             RecipeGroup.RegisterGroup("AAMod:AstralStations", group3);
 
-            RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Any Ancient Material", new int[]
+            RecipeGroup group4 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " ancient material", new int[]
             {
                 ItemType("UnstableSingularity"),
                 ItemType("CrucibleScale"),
@@ -937,20 +937,20 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:AncientMaterials", group4);
 
-            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "superancient material", new int[]
+            RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " superancient material", new int[]
             {
                 ItemType("ChaosSoul")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
 
-            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "world evil material", new int[]
+            RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " world evil material", new int[]
             {
                 ItemID.Ichor,
                 ItemID.CursedFlame
             });
             RecipeGroup.RegisterGroup("AnyIchor", group6);
 
-            group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + "hardmode forge", validItems: new int[]
+            group6 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " hardmode forge", validItems: new int[]
             {
                 ItemID.AdamantiteForge,
                 ItemID.TitaniumForge,
@@ -958,49 +958,49 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AnyHardmodeForge", group6);
 
-            RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "chaos claw", new int[]
+            RecipeGroup group7 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " chaos claw", new int[]
             {
                 ItemType<DragonClaw>(),
                 ItemType<HydraClaw>(),
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosClaw", group7);
 
-            RecipeGroup group8 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "iron bar", new int[]
+            RecipeGroup group8 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " iron bar", new int[]
             {
                 ItemID.IronBar,
                 ItemID.LeadBar
             });
             RecipeGroup.RegisterGroup("AAMod:Iron", group8);
 
-            RecipeGroup group9 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "copper bar", new int[]
+            RecipeGroup group9 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " copper bar", new int[]
             {
                 ItemID.CopperBar,
                 ItemID.TinBar
             });
             RecipeGroup.RegisterGroup("AAMod:Copper", group9);
 
-            RecipeGroup group10 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "silver bar", new int[]
+            RecipeGroup group10 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " silver bar", new int[]
             {
                 ItemID.SilverBar,
                 ItemID.TungstenBar
             });
             RecipeGroup.RegisterGroup("AAMod:Silver", group10);
 
-            RecipeGroup group11 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil bar", new int[]
+            RecipeGroup group11 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " evil bar", new int[]
             {
                 ItemID.DemoniteBar,
                 ItemID.CrimtaneBar
             });
             RecipeGroup.RegisterGroup("AAMod:EvilBar", group11);
 
-            RecipeGroup group12 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "chaos bar", new int[]
+            RecipeGroup group12 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " chaos bar", new int[]
             {
                 ItemType<IncineriteBar>(),
                 ItemType<AbyssiumBar>(),
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBar", group12);
 
-            RecipeGroup group13 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil/chaos bar", new int[]
+            RecipeGroup group13 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " evil/chaos bar", new int[]
             {
                 ItemID.DemoniteBar,
                 ItemID.CrimtaneBar,
@@ -1009,19 +1009,28 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:EvilorChaosBar", group13);
 
-            RecipeGroup group14 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "ancient crafting station", new int[]
+            RecipeGroup group14 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " ancient crafting station", new int[]
             {
                 ItemType<BinaryReassembler>(),
                 ItemType<ChaosCrucible>()
             });
             RecipeGroup.RegisterGroup("AAMod:ACS", group14);
 
-            RecipeGroup group15 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "evil summon staff", new int[]
+            RecipeGroup group15 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " evil summon staff", new int[]
             {
                 ItemType<Items.Summoning.EaterStaff>(),
                 ItemType<Items.Summoning.CrimsonStaff>()
             });
             RecipeGroup.RegisterGroup("AAMod:EvilStaff", group15);
+
+            RecipeGroup group16 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " altar", new int[]
+            {
+                ItemType<MireAltar>(),
+                ItemType<CrimsonAltar>(),
+                ItemType<CorruptAltar>(),
+                ItemType<InfernoAltar>()
+            });
+            RecipeGroup.RegisterGroup("AAMod:Altar", group16);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
@@ -1145,7 +1154,7 @@ namespace AAMod
             }
             
         }
-        
+
         public override void AddRecipes()
         {
             RecipeFinder finder = new RecipeFinder();
@@ -1734,6 +1743,735 @@ namespace AAMod
                 recipe.SetResult(ItemID.Mushroom, 3);
                 recipe.AddRecipe();
             }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PlatinumBroadsword);
+                recipe.AddIngredient(ItemID.FallenStar, 10);
+                recipe.AddIngredient(ItemID.ManaCrystal);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.Starfury);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoldBroadsword);
+                recipe.AddIngredient(ItemID.FallenStar, 10);
+                recipe.AddIngredient(ItemID.ManaCrystal);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.Starfury);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PlatinumBroadsword);
+                recipe.AddIngredient(ItemID.ManaCrystal, 3);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.EnchantedSword);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoldBroadsword);
+                recipe.AddIngredient(ItemID.ManaCrystal, 3);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.EnchantedSword);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.EnchantedSword);
+                recipe.AddIngredient(ItemID.Muramasa);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.Arkhalis);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CobaltBar, 5);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.CobaltShield);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "PalladiumShield");
+                recipe.AddIngredient(ItemID.ObsidianShield);
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.SetResult(ItemID.ObsidianShield);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.Ebonwood, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.Shadewood);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.Shadewood, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.Ebonwood);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.EbonstoneBlock, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CrimstoneBlock);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.CrimstoneBlock, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.EbonstoneBlock);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CopperBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TinBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TinBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CopperBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.LeadBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.IronBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IronBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.LeadBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SilverBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TungstenBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TungstenBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.SilverBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoldBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PlatinumBar);
+                recipe.AddRecipe();
+
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PlatinumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.GoldBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DemoniteBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CrimtaneBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CrimtaneBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.DemoniteBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "AbyssiumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "IncineriteBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "IncineriteBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "AbyssiumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.ShadowScale, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TissueSample);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TissueSample, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.DemoniteBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "BroodScale", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "HydraHide");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "HydraHide", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "BroodScale");
+                recipe.AddRecipe();
+            }
+            #region Cobalt
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CobaltBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PalladiumBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PalladiumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CobaltBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CobaltBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PalladiumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PalladiumBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CobaltBar);
+                recipe.AddRecipe();
+            }
+
+            #endregion
+
+            #region Mythril
+
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MythrilBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.OrichalcumBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.OrichalcumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.MythrilBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MythrilBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "UraniumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.OrichalcumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "UraniumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "UraniumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.MythrilBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "UraniumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.OrichalcumBar);
+                recipe.AddRecipe();
+            }
+            #endregion
+
+            #region Adamantite
+            
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.AdamantiteBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TitaniumBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TitaniumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.AdamantiteBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.AdamantiteBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TitaniumBar, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumBar");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.AdamantiteBar);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumBar", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TitaniumBar);
+                recipe.AddRecipe();
+            }
+
+                #endregion
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.Ichor, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CursedFlame);
+                recipe.AddRecipe();
+
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CursedFlame, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.Ichor);
+                recipe.AddRecipe();
+
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "DragonFire", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "HydraToxin");
+                recipe.AddRecipe();
+
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "HydraToxin", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "DragonFire");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CrimsonKey, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CorruptionKey);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CorruptionKey, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CrimsonKey);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SoulofNight, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.SoulofLight);
+                recipe.AddRecipe();
+
+                recipe.AddIngredient(ItemID.SoulofLight, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.SoulofNight);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "SoulOfSmite", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "SoulOfSpite");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "SoulOfSpite", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "SoulOfSmite");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "InfernoKey", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "MireKey");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "MireKey", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "InfernoKey");
+                recipe.AddRecipe();
+
+            }
+            //Ores
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CopperOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TinOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TinOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CopperOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.LeadOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.IronOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IronOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.LeadOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SilverOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TungstenOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TungstenOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.SilverOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoldOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PlatinumOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PlatinumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.GoldOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DemoniteOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CrimtaneOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CrimtaneOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.DemoniteOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Abyssium", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Incinerite");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Incinerite", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Abyssium");
+                recipe.AddRecipe();
+            }
+
+            #region Cobalt
+            
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CobaltOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PalladiumOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PalladiumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CobaltOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.CobaltOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumOre");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PalladiumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "YtriumOre");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumOre", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.PalladiumOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "YtriumOre", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.CobaltOre);
+                recipe.AddRecipe();
+            }
+            #endregion
+            
+            #region Mythril
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MythrilOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.OrichalcumOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.OrichalcumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.MythrilOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.MythrilOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Uranium");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(ItemID.OrichalcumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Uranium");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(null, "Uranium", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.MythrilOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+
+                recipe.AddIngredient(null, "Uranium", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.OrichalcumOre);
+                recipe.AddRecipe();
+            }
+
+            #endregion
+
+            #region Adamantite
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.AdamantiteOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TitaniumOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TitaniumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.AdamantiteOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.AdamantiteOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "TechneciumOre");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TitaniumOre, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "TechneciumOre");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "TechneciumOre", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.AdamantiteOre);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "TechneciumOre", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.TitaniumOre);
+                recipe.AddRecipe();
+            }
+                #endregion
+
         }   
 
         //Stuff 4 Grox

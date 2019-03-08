@@ -16,7 +16,7 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;                       //this is the projectile penetration
             Main.projFrames[projectile.type] = 1;           //this is projectile frames
             projectile.hostile = false;
-            projectile.magic = true;                        //this make the projectile do magic damage
+            projectile.melee = true;                        //this make the projectile do magic damage
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
         }

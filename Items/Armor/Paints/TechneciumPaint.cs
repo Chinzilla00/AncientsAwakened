@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.Paints
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Uranium Face Paint");
+            DisplayName.SetDefault("Technecium Face Paint");
             Tooltip.SetDefault(@"+100 max mana
 4% increased damage reistance
 25% increased minion damage");

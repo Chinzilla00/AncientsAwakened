@@ -13,7 +13,7 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ytrium Halberd");
+			DisplayName.SetDefault("Yttrium Halberd");
             BaseMod.BaseUtility.AddTooltips(item, new string[] { "Strikes foes in an arc, then stabs in the direction of the cursor"});			
 		}
 		
