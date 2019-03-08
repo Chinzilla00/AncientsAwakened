@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 20;
             item.height = 12;
             item.damage = 150;
-            item.shoot = mod.ProjectileType("DaystormProj");
+            item.shoot = mod.ProjectileType("Daystorm");
             item.mana = 6;
             item.rare = 8;
             item.value = Item.buyPrice(1, 0, 0, 0);
