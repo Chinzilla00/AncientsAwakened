@@ -134,26 +134,22 @@ namespace AAMod.Tiles
             }
             if (!NPC.AnyNPCs(mod.NPCType("Yamata")) && !NPC.AnyNPCs(mod.NPCType("YamataA")))
             {
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadSigil>() && player.inventory[player.selectedItem].stack > 0)
+                for (int num66 = 0; num66 < 58; num66++)
                 {
-                    if (!AAWorld.downedYamata)
+                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[num66].stack > 0)
                     {
-                        Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
-                    }
-                    if (AAWorld.downedYamata)
-                    {
-                        Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
-                    }
+                        if (!AAWorld.downedYamata)
+                        {
+                            Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                        }
+                        if (AAWorld.downedYamata)
+                        {
+                            Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                        }
 
-                    SpawnBoss(player, "Yamata", "Yamata");
-                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
-                }
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[player.selectedItem].stack > 0)
-                {
-                    Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-                    SpawnBoss(player, "YamataA", "Yamata Awakened");
-                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
+                        SpawnBoss(player, "Yamata", "Yamata");
+                        Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
+                    }
                 }
             }
         }

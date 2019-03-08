@@ -141,9 +141,9 @@ namespace AAMod.Tiles
                     return;
                 }
             }
-            if (!NPC.AnyNPCs(mod.NPCType("Yamata")) && !NPC.AnyNPCs(mod.NPCType("YamataA")))
+            for (int num66 = 0; num66 < 58; num66++)
             {
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadSigil>() && player.inventory[player.selectedItem].stack > 0)
+                if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[num66].stack > 0)
                 {
                     if (!AAWorld.downedYamata)
                     {
@@ -155,13 +155,6 @@ namespace AAMod.Tiles
                     }
 
                     SpawnBoss(player, "Yamata", "Yamata");
-                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
-                }
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[player.selectedItem].stack > 0)
-                {
-                    Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-                    SpawnBoss(player, "YamataA", "Yamata Awakened");
                     Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar"));
                 }
             }

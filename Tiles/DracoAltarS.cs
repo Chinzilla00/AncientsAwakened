@@ -124,80 +124,46 @@ namespace AAMod.Tiles
             Player player = Main.player[Main.myPlayer];
             if (!NPC.AnyNPCs(mod.NPCType("Akuma")) && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DraconianSigil>() && player.inventory[player.selectedItem].stack > 0)
+                for (int num66 = 0; num66 < 58; num66++)
                 {
-                    if (!Main.dayTime)
+                    if (player.selectedItem == mod.ItemType<Items.BossSummons.DraconianSigil>() && player.inventory[player.selectedItem].stack > 0)
                     {
-                        BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
-                        return;
-                    }
-                    if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-                    {
-                        BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
-                        return;
-                    }
-                    if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
-                    {
-                        BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
-                        return;
-                    }
-                    for (int m = 0; m < Main.maxProjectiles; m++)
-                    {
-                        Projectile p = Main.projectile[m];
-                        if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
+                        if (!Main.dayTime)
                         {
+                            BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                             return;
                         }
-                    }
-
-                    if (!AAWorld.downedAkuma)
-                    {
-                        Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
-                    }
-                    if (AAWorld.downedAkuma)
-                    {
-                        Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
-                    }
-
-                    SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");
-                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/AkumaRoar"));
-                }
-                if (player.selectedItem == mod.ItemType<Items.BossSummons.DraconianRune>() && player.inventory[player.selectedItem].stack > 0)
-                {
-                    if (!Main.dayTime)
-                    {
-                        BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
-                        return;
-                    }
-                    if (!AAWorld.downedAkuma)
-                    {
-                        BaseUtility.Chat("That sigil has to be used at the Altar of the Draconian Sun, kid. It's in the middle of the inferno.", new Color(180, 41, 32), false);
-                        return;
-                    }
-                    if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-                    {
-                        BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
-                        return;
-                    }
-                    if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
-                    {
-                        BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
-                        return;
-                    }
-                    for (int m = 0; m < Main.maxProjectiles; m++)
-                    {
-                        Projectile p = Main.projectile[m];
-                        if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
+                        if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
                         {
+                            BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
                             return;
                         }
+                        if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+                        {
+                            BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
+                            return;
+                        }
+                        for (int m = 0; m < Main.maxProjectiles; m++)
+                        {
+                            Projectile p = Main.projectile[m];
+                            if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
+                            {
+                                return;
+                            }
+                        }
+                        if (!AAWorld.downedAkuma)
+                        {
+                            Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
+                        }
+                        if (AAWorld.downedAkuma)
+                        {
+                            Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
+                        }
+
+                        SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");
+                        Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/AkumaRoar"));
+                        return;
                     }
-
-                    Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
-                    SpawnBoss(player, "AkumaA", "Akuma; Draconian Demon");
-                    Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/AkumaRoar"));
                 }
             }
         }
