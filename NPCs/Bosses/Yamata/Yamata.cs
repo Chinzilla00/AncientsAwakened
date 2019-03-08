@@ -648,7 +648,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head5, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head6, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "NPCs/Bosses/Yamata/YamataHeadF2_Glow", Head7, dColor, false);
-                DrawHead(sb, headTex, "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor, false)
+                DrawHead(sb, headTex, "NPCs/Bosses/Yamata/YamataHead_Glow", TrueHead, dColor, false);
             }
             else
             {
@@ -659,7 +659,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF1_Glow", Head5, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF1_Glow", Head6, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF1_Glow", Head7, dColor, false);
-                DrawHead(sb, headTex, "Glowmasks/YamataAHead_Glow", TrueHead, dColor, false)
+                DrawHead(sb, headTex, "Glowmasks/YamataAHead_Glow", TrueHead, dColor, false);
             }
             if (isAwakened)
             {
