@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
-            projectile.ranged = true;
         }
 
         public override void AI()
@@ -39,19 +38,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             projectile.scale = projectile.ai[1];
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
-            Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
-            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
-            dust20.position = position;
-            dust20.velocity = (projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
-            dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
-            dust20.fadeIn = 0.5f;
-            dust20.noGravity = true;
-            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
-            dust20.position = position;
-            dust20.velocity = (projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
-            dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
-            dust20.fadeIn = 0.5f;
-            dust20.noGravity = true;
         }
 
         public override void Kill(int timeLeft)

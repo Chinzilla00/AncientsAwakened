@@ -124,7 +124,6 @@ namespace AAMod.NPCs.TownNPCs
             Akuma = false;
             Yamata = false;
             Zero = false;
-            ChatNumber = 0;
         }
         
         public override void SetChatButtons(ref string button, ref string button2)
@@ -290,19 +289,23 @@ namespace AAMod.NPCs.TownNPCs
             GripsS = false;
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-        {
-            if (firstButton)
-            {
-                ResetBools();
-                ChatNumber += 1;
-            }
-            else
-            {
-                Player player = Main.player[Main.myPlayer];
-                Main.npcChatText = BossChat();
-            }
-        }
+		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		{
+			if (firstButton)
+			{
+				ResetBools();
+				ChatNumber += 1;
+				if (ChatNumber > 17)
+				{
+					ChatNumber = 0;
+				}
+			}
+			else
+			{
+				Player player = Main.player[Main.myPlayer];
+				Main.npcChatText = BossChat();
+			}
+		}
 
         public static string BossChat()
         {
@@ -328,37 +331,37 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Hydra)
             {
-                return AAWorld.downedHydra ? "" : 
-                    "";
+                return AAWorld.downedHydra ? "Thanks for killing that hydra. Every time I go into the mire that thing always finds me and chases me down." : 
+                    "Mire is a native place for creatures, named Hydras. They are 3 headed, very poisonous reptiles. And they also laying a lot of eggs. Go and kill some. Maybe Mire will become a bit friendlier after that.";
             }
             else if (Djinn)
             {
-                return AAWorld.downedDjinn ? "" : 
-                    "";
+                return AAWorld.downedDjinn ? "You actually found and defeated one? And you even didn't try to make a wish? What a shame..." : 
+                    "I am sure you heard some Arabian fairy tales before. Often, they mention a wish-granting spirit called a Djinn or Genie. It mostly showed there like almighty and kind spirit, which may present 3 wishes to his liberator. In reality, however, they are smart and evil creatures, whos only purpose is to create chaos. If you will see one, do not try to talk, just kill it...also he keeps flexing on me and I'm obviously 10 times more ripped.";
             }
             else if (Serpent)
             {
-                return AAWorld.downedSerpent ? "" : 
-                    "";
+                return AAWorld.downedSerpent ? "How are your frostbites? I hope that they are not as deep as they look." : 
+                    "Normal serpents are usually hibernate while it is cold around. But this exact kind of serpents behave diffirently. They are very active during cold times. But the strangest thing is that they are capable to fly and breathe subzero frost. I am sure you can find something useful in their lair, so go and kill one.";
             }
             else if (Retriever)
             {
-                return AAWorld.downedRetriever ? "" : 
-                    "";
+                return AAWorld.downedRetriever ? "My only hope is that Fulgarians will not send another one and cause time paradox." : 
+                    "You heard about the probe which floats somewhere in night time? Nobody knows what it is doing here. It also looks pretty dangerous. It would be better if you will stop it forever.";
             }
             else if (Raider)
             {
-                return AAWorld.downedRaider ? "" : 
-                    "";
+                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. Also, maybe you should show you wounds to Nurse?" : 
+                    "People said that they saw strange shade in one of the nights. It was so big that it even closed the moon for a moment. You should discover this mystery and do something.";
             }
             else if (Orthrus)
             {
-                return AAWorld.downedOrthrus ? "" : 
-                    "";
+                return AAWorld.downedOrthrus ? "You actually did it, how surprising. I thought that you would just die. Well, happens..." : 
+                    "Can you even imagine that one of Greek myths was true? The one about Cerberus, guardian of Netherworld. Well, not exactly, but about his brother, Twin-Headed Orthus. He was created by alien race, Fulgarians. Turn him into scrap.";
             }
             else if (Fishron)
             {
-                return AAWorld.downedEFish ? "" : 
+                return AAWorld.downedEFish ? "Is there any leftovers? I would like some sushi now." : 
                     "You know duke fishron? Big pig dragon thing? Well there's a bigger one out there, and it's even nastier than regular ol' fishron. Good luck, I ain't going near that.";
             }
             else if (Equinox)
@@ -372,23 +375,23 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (GripsS)
             {
-                return AAWorld.downedGripsS ? "" : 
-                    "";
+                return AAWorld.downedGripsS ? "You managed to do it? I am impressed! Hope that others will finally leave me alone..." : 
+                    "I thought I was afraid of big ones, but how I was wrong... I saw even bigger ones not long ago. Maybe if you defeat them, the others will never show up again?";
             }
             else if (Akuma)
             {
-                return AAWorld.downedAkuma ? "" : 
-                    "";
+                return AAWorld.downedAkuma ? "That wasn't that hard after all, was it? Also, you may need to visit our Stylist. Even a helmet didn't save your hair." : 
+                    "Why would anyone call east dragon a Demon? I have no idea personally... Hey, you, go here quick. You better get rid of this ''Akuma'' before it will come and destroy our living places.";
             }
             else if (Yamata)
             {
-                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my hair out." :
+                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my fur out." :
                     "Yamata, the whiny baby! He complains about everything, and he WONT SHUT UP! LIKE SERIOUSLY, YOU try and deal with seven obnoxiously loud dragon heads that chatter constantly and talk over eachother!";
             }
             else if (Zero)
             {
-                return AAWorld.downedZero ? "" : 
-                    "";
+                return AAWorld.downedZero ? "Thank gods, you are alive! And this thing finally shut up. Hope it will never return here..." : 
+                    "Once I woke up from a strange sound. And when I look at the windows I saw something... Something was in it. Something which made me tremble in fear... Go, find and destroy this thing. It is too fearsome.";
             }
             else
             {
@@ -470,7 +473,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Cobbler >= 0)
             {
-                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. What do I do?");
+                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. It's not my fault he uses fancy leather.");
             }
 
             if (ConfusedZombie >= 0)

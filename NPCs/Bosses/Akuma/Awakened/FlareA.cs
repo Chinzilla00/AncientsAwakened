@@ -13,8 +13,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void SetDefaults()
         {
-            projectile.width = 98;
-            projectile.height = 98;
+            projectile.width = 10;
+            projectile.height = 10;
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
