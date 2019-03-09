@@ -7,7 +7,7 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Desert Scimitar");
+			DisplayName.SetDefault("Sand Scimitar");
 		}
 		public override void SetDefaults()
 		{

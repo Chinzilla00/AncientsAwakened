@@ -99,7 +99,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 30, 68), new Color(102, 20, 80), new Color(146, 30, 68));
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 30, 68), new Color(195, 62, 64), new Color(146, 30, 68));
             }
         }
 

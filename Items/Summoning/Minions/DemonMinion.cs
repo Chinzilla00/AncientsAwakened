@@ -34,7 +34,8 @@ namespace AAMod.Items.Summoning.Minions
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             Inertia = 20f;
-            Shoot = 114;
+            Shoot =
+            Shoot = mod.ProjectileType<DemonProj>();
             ShootSpeed = 16f;
         }
 
