@@ -204,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (fireAttack || YamataHead.EATTHELITTLEMAGGOT)
             {
-                if (npc.frameCounter < 5)
+                if (npc.frameCounter > 5)
                 {
                     npc.frame.X = npc.width;
                 }
