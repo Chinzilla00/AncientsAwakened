@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Dragon_Scale : ModItem
+    /*public class Dragon_Scale : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -18,5 +18,5 @@ namespace AAMod.Items.Materials
 			item.value = Item.sellPrice(0, 0, 15, 0);
 			item.rare = 4;
 		}
-	}
+	}*/
 }
