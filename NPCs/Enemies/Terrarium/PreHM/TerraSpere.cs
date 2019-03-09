@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
             npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
         }
 
 

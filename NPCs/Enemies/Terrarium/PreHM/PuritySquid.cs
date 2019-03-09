@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
             npc.noGravity = true;
         }
 
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.alpha = 0;
             }
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 4f, 1.5f, false, 300);
             
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
