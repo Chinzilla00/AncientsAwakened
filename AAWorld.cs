@@ -1183,9 +1183,9 @@ namespace AAMod
                 if (InfernoStripe == false)
                 {
                     InfernoStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));		
-					if(infernoPos.X == 0)
-						infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+                    if (infernoPos.X == 0)
+                        infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
                     Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, 1);
@@ -1193,9 +1193,9 @@ namespace AAMod
                 if (MireStripe == false)
                 {
                     MireStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));	
-					if(mirePos.X == 0)
-						mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+                    if (mirePos.X == 0)
+                        mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
                     ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, 0);
                 }
             }

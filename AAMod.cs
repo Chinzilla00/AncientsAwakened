@@ -1068,7 +1068,7 @@ namespace AAMod
                 priority = MusicPriority.BossHigh;
                 return;
             }
-            if (zoneIZ && AAWorld.downedZero)
+            if (zoneIZ && AAWorld.downedZero && NPC.downedMoonlord)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
@@ -1077,7 +1077,7 @@ namespace AAMod
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
-                if (NPC.downedMoonlord)
+                if (NPC.downedMoonlord && !AAWorld.downedZero)
                 {
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky");
                     return;

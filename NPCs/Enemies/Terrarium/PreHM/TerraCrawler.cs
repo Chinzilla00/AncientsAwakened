@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
         public override void AI()
         {
+            //Grealm Crawler AI for now until I can think of something to make it more unique
             if (npc.type == mod.NPCType<TerraCrawler>())
             {
                 if (npc.alpha != 0)

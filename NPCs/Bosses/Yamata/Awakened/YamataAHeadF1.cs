@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             base.SetDefaults();
 
             npc.lifeMax = 35000;
-            npc.width = 64;
+            npc.width = 46;
             npc.height = 46;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
@@ -206,15 +206,18 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (npc.frameCounter > 5)
                 {
+                    npc.frame.Width = npc.width;
                     npc.frame.X = npc.width;
                 }
                 else
                 {
+                    npc.frame.Width = npc.width;
                     npc.frame.X = npc.width * 2;
                 }
             }
             else
             {
+                npc.frame.Width = npc.width;
                 npc.frame.X = 0;
             }
         }

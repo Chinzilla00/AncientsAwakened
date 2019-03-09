@@ -172,8 +172,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             PlayerDistance.X -= PlayerPosX * 1f;
             PlayerDistance.Y -= PlayerPosY * 1f;
 
-            npc.ai[2]++;
-            if (npc.ai[2] == 399)
+            internalAI[2]++;
+            if (internalAI[2] == 399)
             {
                 QuoteSaid = false;
                 Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
@@ -190,15 +190,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 internalAI[1] = isAwakened ? Main.rand.Next(AwakenedAttackType) : Main.rand.Next(AttackType);
             }
 
-            if (npc.ai[2] >= 400)
+            if (internalAI[2] >= 400)
             {
                 Attacks(internalAI[1]);
             }
 
-            if (npc.ai[2] >= 560)
+            if (internalAI[2] >= 560)
             {
                 EATTHELITTLEMAGGOT = false;
-                npc.ai[2] = 0;
+                internalAI[2] = 0;
             }
 
             if (npc.ai[3] == 1)
@@ -281,6 +281,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
             npc.velocity = (moveTo) * moveSpeedBoost;
             npc.rotation = 0;
+            npc.position += Body.position - Body.oldPosition;
         }
         
         public void Attacks(float AttackType)
@@ -390,17 +391,20 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 if (npc.ai[3] == 1 || npc.ai[2] >= 400)
                 {
-                    if (npc.frameCounter < 5)
+                    if (npc.frameCounter > 5)
                     {
+                        npc.frame.Width = npc.width;
                         npc.frame.X = npc.width;
                     }
                     else
                     {
+                        npc.frame.Width = npc.width;
                         npc.frame.X = npc.width * 2;
                     }
                 }
                 else
                 {
+                    npc.frame.Width = npc.width;
                     npc.frame.X = 0;
                 }
             }

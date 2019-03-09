@@ -14,9 +14,9 @@ namespace AAMod.Items.BossSummons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Skull");
-            Tooltip.SetDefault(@"Summons Skeletron
-Can Only be used at night");
+            DisplayName.SetDefault("Jungle Orchid");
+            Tooltip.SetDefault(@"Summons Plantera
+Can only be used in the underground jungle");
         }
 
         public override void SetDefaults()
