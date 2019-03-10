@@ -14,6 +14,7 @@ using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
+using AAMod.NPCs.Bosses.Zero.Protocol;
 using AAMod.NPCs.Bosses.MushroomMonarch;
 using AAMod.NPCs.Bosses.Djinn;
 using AAMod.NPCs.Bosses.Serpent;

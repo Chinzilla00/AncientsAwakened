@@ -4,19 +4,19 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-    public class AkumaTransition : ModProjectile
+    public class AkumaTransition : ModNPC
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Fury");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[npc.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 32;
-            projectile.friendly = false;
-            projectile.scale *= 1.5f;
+            npc.width = 20;
+            npc.height = 32;
+            npc.friendly = false;
+            npc.scale *= 1.5f;
         }
         public int timer;
         public bool ATransitionActive = false;
@@ -33,18 +33,18 @@ namespace AAMod.NPCs.Bosses.Akuma
             timer++;
             ATransitionActive = true;
 
-            projectile.frameCounter++;
-            if (projectile.frameCounter >=7)
+            npc.frameCounter++;
+            if (npc.frameCounter >= 7)
             {
-                projectile.frameCounter = 0;
-                projectile.frame += 1;
+                npc.frameCounter = 0;
+                npc.frame.Y += Main.npcTexture[npc.type].Height / 4;
             }
 
-            if (projectile.frame > 3)
+            if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
             {
-                projectile.frame = 0;
+                npc.frame.Y = 0;
             }
-            
+
             if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Heh...", new Color(180, 41, 32));
@@ -76,19 +76,20 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (timer == 1165)
             {
-                projectile.Kill();
+                npc.life = 0;
             }
 
         }
 
-        public override void Kill(int timeleft)
+        public override bool PreNPCLoot()
         {
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 
             AAMod.AkumaMusic = false;
 
-            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("AkumaA"));
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+            return false;
         }
         
     }

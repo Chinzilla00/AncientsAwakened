@@ -229,14 +229,14 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Mushling>());
                 }
             }
-            if (Attack == 1)
+            else if (Attack == 1)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusFlier>());
                 }
             }
-            if (Attack == 2)
+            else if (Attack == 2)
             {
                 float spread = 12f * 0.0174f;
                 double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;

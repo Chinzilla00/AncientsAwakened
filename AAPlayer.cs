@@ -5,6 +5,7 @@ using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
+using AAMod.NPCs.Bosses.Zero.Protocol;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -163,6 +164,7 @@ namespace AAMod
         public bool YamataGravity = false;
         public bool YamataAGravity = false;
         public bool Hunted = false;
+        public bool Unstable = false;
         //buffs
 
         //pets
@@ -297,6 +299,7 @@ namespace AAMod
             YamataGravity = false;
             YamataAGravity = false;
             Hunted = false;
+            Unstable = false;
             //Buffs
 			//Weapons
             //Pets
@@ -645,7 +648,7 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useZero = NPC.AnyNPCs(mod.NPCType<ZeroAwakened>());
+            bool useZero = NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Zero.Protocol.ZeroAwakened>());
             if (useZero)
             {
                 if (!Filters.Scene["MoonLordShake"].IsActive())
@@ -1768,12 +1771,38 @@ namespace AAMod
                 player.lifeRegenTime++;
             }
         }
+        
+        public Vector2 OldHeadPos;
+        public Vector2 OldBodyPos;
+        public Vector2 OldLegPos;
 
         public override void UpdateBadLifeRegen()
         {
             int before = player.lifeRegen;
             bool drain = false;
-            
+            if (!Unstable)
+            {
+                OldHeadPos = player.headPosition;
+                OldBodyPos = player.bodyPosition;
+                OldLegPos = player.legPosition;
+            }
+
+            if (Unstable)
+            {
+                player.confused = true;
+                player.headPosition.Y -= 20f;
+                player.headPosition.X += 15f;
+                player.bodyPosition.Y += 37f;
+                player.bodyPosition.X -= 23f;
+                player.legPosition.Y += 20f;
+                player.legPosition.X -= 12f;
+            }
+            else
+            {
+                player.headPosition = OldHeadPos;
+                player.bodyPosition = OldBodyPos;
+                player.legPosition = OldLegPos;
+            }
 
             if (infinityOverload)
             {

@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class GlitchBoom : ModProjectile
     {
@@ -23,6 +23,15 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 600;
         }
 
+
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(7) == 0)
+            {
+                target.AddBuff(mod.BuffType<Buffs.Unstable>(), 180);
+            }
+        }
+
         public override void AI()
         {
             if (++projectile.frameCounter >= 5)
@@ -41,6 +50,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             projectile.timeLeft = 0;
         }
 

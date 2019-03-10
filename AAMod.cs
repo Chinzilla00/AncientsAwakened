@@ -888,7 +888,7 @@ namespace AAMod
                 NPCs.Bosses.Zero.Taser.glowTex = null;
                 NPCs.Bosses.Zero.TeslaHand.glowTex = null;
                 NPCs.Bosses.Zero.SearcherZero.glowTex = null;
-                NPCs.Bosses.Zero.ZeroAwakened.glowTex = null;
+                NPCs.Bosses.Zero.Protocol.ZeroAwakened.glowTex = null;
                 NPCs.Enemies.Void.Searcher.glowTex = null;
             }
         }

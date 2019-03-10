@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class GlitchBomb : ModProjectile
     {
@@ -64,6 +64,15 @@ namespace AAMod.NPCs.Bosses.Zero
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
         }
 
+
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(7) == 0)
+            {
+                target.AddBuff(mod.BuffType<Buffs.Unstable>(), 180);
+            }
+        }
+
         public override void Kill(int timeLeft)
         {
             if (Main.netMode != 2)
@@ -78,6 +87,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
+            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens

@@ -20,17 +20,9 @@ namespace AAMod.Items.Boss.Zero
             DisplayName.SetDefault("Broken Code");
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
-Removes The Void's Gravity Effect
+Grants immunity to the Unstable debuff
 While cooldown is occurring, your speed is increased, but you lose invincibility frames
-You don't look so good
-01001111
-01100010
-01101100
-01101001
-01110110
-01101001
-01101111
-01101110");
+'You don't look so good'");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 36));
             ItemID.Sets.ItemNoGravity[item.type] = true;
@@ -55,6 +47,7 @@ You don't look so good
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.buffImmune[mod.BuffType<Buffs.Unstable>()] = true;
             if (player.controlHook && CodeCD == 0 && Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector32;

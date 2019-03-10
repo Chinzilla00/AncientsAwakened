@@ -6,20 +6,20 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
-    public class YamataTransition : ModProjectile
+    public class YamataTransition : ModNPC
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spirit of Wrath");
-            Main.projFrames[projectile.type] = 4;
+            Main.npcFrameCount[npc.type] = 4;
         }
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 32;
-            projectile.scale *= 1.2f;
-            projectile.friendly = false;
-            projectile.scale *= 1.5f;
+            npc.width = 20;
+            npc.height = 32;
+            npc.scale *= 1.2f;
+            npc.friendly = false;
+            npc.scale *= 1.5f;
         }
         public int timer;
 
@@ -35,16 +35,16 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void AI()
         {
             timer++;
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 7)
+            npc.frameCounter++;
+            if (npc.frameCounter >= 7)
             {
-                projectile.frameCounter = 0;
-                projectile.frame += 1;
+                npc.frameCounter = 0;
+                npc.frame.Y += Main.npcTexture[npc.type].Height / 4 ;
             }
 
-            if (projectile.frame > 3)
+            if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
             {
-                projectile.frame = 0;
+                npc.frame.Y = 0 ;
             }
             if (timer == 375)    
             {
@@ -80,11 +80,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (timer == 1455)
             {
-                projectile.Kill();               
+                npc.life = 0;             
             }
         }
 
-        public override void Kill(int timeleft)
+        public override bool PreNPCLoot()
         {
             Dust dust1;
             Dust dust2;
@@ -92,13 +92,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             Dust dust4;
             Dust dust5;
             Dust dust6;
-            Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust3 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust4 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust5 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
-            dust6 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            Vector2 position = npc.position;
+            dust1 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            dust2 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            dust3 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            dust4 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            dust5 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
+            dust6 = Main.dust[Dust.NewDust(position, npc.width, npc.height, mod.DustType<Dusts.YamataADust>(), 0, 0, 0, default(Color), 1f)];
             dust1.noGravity = true;
             dust1.velocity.Y -= 1;
             dust2.noGravity = true;
@@ -112,10 +112,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             dust6.noGravity = true;
             dust6.velocity.Y -= 1;
 
-            SpawnBoss(projectile.Center, "YamataA", "Yamata Awakened");
+            SpawnBoss(npc.Center, "YamataA", "Yamata Awakened");
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WRETCH!!!", new Color(146, 30, 68));
-            AAMod.YamataMusic = false; 
+            AAMod.YamataMusic = false;
+            return false;
         }
 
         public void SpawnBoss(Vector2 center, string name, string displayName)

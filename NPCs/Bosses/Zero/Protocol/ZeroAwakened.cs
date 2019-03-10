@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     [AutoloadBossHead]
     public class ZeroAwakened : ModNPC
@@ -30,16 +30,8 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.lifeMax = 120000;
-            if (npc.life > npc.lifeMax / 3)
-            {
-                npc.damage = 120;
-                npc.defense = 80;
-            }
-            if (npc.life <= npc.lifeMax / 3)
-            {
-                npc.damage = 140;
-                npc.defense = 110;
-            }
+            npc.damage = 140;
+            npc.defense = 110;
             npc.knockBackResist = 0f;
             npc.width = 78;
             npc.height = 78;
@@ -142,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 glowTex = mod.GetTexture("Glowmasks/ZeroAwakened_Glow");
             }
 
-            Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
+            Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
@@ -176,29 +168,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            Glitch = Main.rand.Next(8);
-            npc.frameCounter++;
-            if (npc.frameCounter >= 10)
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y += 170;
-                if (Glitch == 0)
-                {
-                    if (npc.frame.Y > (108 * 7))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-                else
-                {
-                    if (npc.frame.Y > (108 * 3))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -210,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Panic)
             {
 
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ZeroPinch");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroPinch");
             }
             if (num369 < 0f)
             {
@@ -296,7 +265,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-				BaseUtility.Chat("KILLING ZERO A");
                 if (Killed == false)
                 {
                     Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
@@ -785,6 +753,71 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.netUpdate = true;
                         return;
                     }
+                }
+            }
+        }
+
+        public void Attack(int Attack)
+        {
+            Player player = Main.player[npc.target];
+
+            if (Attack == 0)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i == 1)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<NullZP>());
+                    }
+                    else if (i == 2)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<NullZP>());
+                    }
+                    else if (i == 3)
+                    {
+                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<NullZP>());
+                    }
+                    else
+                    {
+                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<NullZP>());
+                    }
+                }
+            }
+            else if (Attack == 1)
+            {
+
+                float spread = 12f * 0.0174f;
+                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                double deltaAngle = 6;
+                double offsetAngle;
+                for (int i = 0; i < 6; i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("GlitchRocket"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                }
+            }
+            else if (Attack == 2)
+            {
+                float spread = 12f * 0.0174f;
+                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                double deltaAngle = 5;
+                double offsetAngle;
+                for (int i = 0; i < 5; i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Error"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                }
+            }
+            else if (Attack == 3)
+            {
+                float spread = 12f * 0.0174f;
+                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                double deltaAngle = 4;
+                double offsetAngle;
+                for (int i = 0; i < 4; i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }
