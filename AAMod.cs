@@ -835,10 +835,6 @@ namespace AAMod
             if (Main.netMode != 2) //handle clearing all static texture arrays
             {
                 precachedTextures.Clear();
-                NPCs.Bosses.Yamata.Yamata.glowTex = null;
-                NPCs.Bosses.Yamata.Yamata.glowTex2 = null;
-                NPCs.Bosses.Yamata.Yamata.glowTex3 = null;
-                NPCs.Bosses.Yamata.Yamata.glowTexBody = null;
                 NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex = null;
                 NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex2 = null;
                 NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex = null;

@@ -107,6 +107,9 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Player player = Main.player[npc.target];
 
+            float speed = 18f;
+            float acceleration = 0.09f;
+            
             if (fireAttack == true || internalAI[0] >= 450)
             {
                 attackCounter++;
@@ -250,8 +253,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             bool collision = true;
 
-            float speed = 18f;
-            float acceleration = 0.09f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -376,6 +377,31 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
             }
 
+            if (internalAI[3] != 0)
+            {
+                if (loludided == false)
+                {
+                    npc.NPCLoot();
+                    loludided = true;
+                }
+                npc.velocity.Y = npc.velocity.Y - 1f;
+                if (npc.position.Y < 0)
+                {
+                    npc.velocity.Y = npc.velocity.Y - 1f;
+                    speed = 30f;
+                }
+                if (npc.position.Y < 0)
+                {
+                    for (int num957 = 0; num957 < 200; num957++)
+                    {
+                        if (Main.npc[num957].aiStyle == npc.aiStyle)
+                        {
+                            Main.npc[num957].active = false;
+                        }
+                    }
+                }
+            }
+
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 if (loludided == false)
@@ -383,13 +409,13 @@ namespace AAMod.NPCs.Bosses.Akuma
                     Main.NewText("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
                     loludided = true;
                 }
-                npc.velocity.Y = npc.velocity.Y + 1f;
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                npc.velocity.Y = npc.velocity.Y - 1f;
+                if (npc.position.Y < 0)
                 {
-                    npc.velocity.Y = npc.velocity.Y + 1f;
+                    npc.velocity.Y = npc.velocity.Y - 1f;
                     speed = 30f;
                 }
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                if (npc.position.Y < 0)
                 {
                     for (int num957 = 0; num957 < 200; num957++)
                     {
@@ -544,7 +570,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.expertMode)
             {
-                Projectile.NewProjectile((new Vector2(npc.position.X, npc.position.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("AkumaTransition"), 0, 0);
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.ProjectileType("AkumaTransition"), 0, 0);
             }
             npc.value = 0f;
             npc.boss = false;
@@ -1048,6 +1074,25 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
             {
                 return false;
+            }
+            return true;
+        }
+
+        public override bool CheckDead()
+        {
+            if (npc.life <= 0)
+            {
+                if (Main.expertMode)
+                {
+                    return true;
+                }
+                else
+                {
+                    internalAI[3] = 1f;
+                    npc.life = npc.lifeMax;
+                    npc.netUpdate = true;
+                    npc.dontTakeDamage = true;
+                }
             }
             return true;
         }

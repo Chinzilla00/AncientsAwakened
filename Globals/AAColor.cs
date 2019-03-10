@@ -75,7 +75,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 37, 30), new Color(102, 20, 48), new Color(146, 37, 30));
+                return new Color(146, 37, 30);
             }
         }
 
@@ -83,7 +83,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(53, 57, 126), new Color(38, 36, 75), new Color(53, 57, 126));
+                return new Color(53, 57, 126);
             }
         }
 
@@ -91,7 +91,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.LightSkyBlue, Color.DeepSkyBlue, Color.LightSkyBlue);
+                return Color.DeepSkyBlue;
             }
         }
 
@@ -99,7 +99,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(146, 30, 68), new Color(195, 62, 64), new Color(146, 30, 68));
+                return new Color(146, 30, 68);
             }
         }
 

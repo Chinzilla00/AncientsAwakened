@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Main.dust[num469].velocity *= 2f;
             }
             Main.PlaySound(new LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shock"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51 + 8, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shock"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

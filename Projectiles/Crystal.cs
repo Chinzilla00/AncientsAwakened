@@ -16,6 +16,8 @@ namespace AAMod.Projectiles
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.timeLeft = 900;
+            projectile.melee = false;
+            projectile.magic = true;
         }
 		
 		public override void AI()

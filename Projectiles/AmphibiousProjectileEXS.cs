@@ -111,6 +111,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeleft)
         {
+            Projectile.NewProjectile(projectile.Center, 0, mod.ProjectileType<AmphibiousBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 1, 0);
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

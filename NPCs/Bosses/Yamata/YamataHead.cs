@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.damage = 150;
             npc.defense = 60;
             npc.width = 78;
-            npc.height = 80;
+            npc.height = 60;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
@@ -109,30 +109,20 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 damage = npc.damage / 2;
             }
-            Body = Main.npc[(int)npc.ai[0]];
-            npc.realLife = (int)npc.ai[0];
-            npc.TargetClosest(true);
-            Player player = Main.player[npc.target];
-            if (yamata == null)
+	        if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
                 {
-                    yamata = (Yamata)npcBody.modNPC;
+                    Body = npcBody;
+					yamata = (Yamata)npcBody.modNPC;
                 }
             }
-
-            if (yamata.TeleportMeBitch)
-            {
-                yamata.TeleportMeBitch = false;
-                npc.Center = yamata.npc.Center;
-                return;
-            }
-
-
+			if(Body == null)
+				return;
             if (!Body.active)
             {
-                if (Main.netMode != 1) //force a kill to prevent 'ghost heads'
+                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
                 {
                     npc.life = 0;
                     npc.checkDead();
@@ -140,6 +130,18 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 return;
             }
+	
+            npc.realLife = (int)Body.whoAmI;
+            npc.TargetClosest(true);
+            Player player = Main.player[npc.target];
+		
+            if (yamata.TeleportMeBitch)
+            {
+                yamata.TeleportMeBitch = false;
+                npc.Center = yamata.npc.Center;
+                return;
+            }
+
             if (Body.active)
             {
                 npc.alpha = Body.alpha;
@@ -174,7 +176,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (internalAI[2] == 399)
             {
                 QuoteSaid = false;
-                Main.PlaySound(roarSound, npc.Center, 0);
+                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
                 int AttackType = 2;
                 int AwakenedAttackType = 4;
                 if (!isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataHeadF2>())))
@@ -199,7 +201,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 internalAI[2] = 0;
             }
 
-            if (npc.ai[3] == 1 || internalAI[2] >= 400)
+            if (npc.ai[3] == 1)
             {
                 attackCounter++;
                 if (attackCounter > 10)
@@ -229,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             fireTimer++;
             if (fireTimer >= 240 && npc.ai[3] == 0)
             {
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
                 npc.ai[3] = 1;
                 fireTimer = 0;
             }
@@ -295,7 +297,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 15, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataBlast>(), ref internalAI[3], 15, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {

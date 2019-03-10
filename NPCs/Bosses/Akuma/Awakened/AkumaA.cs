@@ -382,6 +382,19 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return false;
         }
 
+        public override bool CheckDead()
+        {
+            if (npc.life <= 0)
+            {
+
+                internalAI[3] = 1f;
+                npc.life = npc.lifeMax;
+                npc.netUpdate = true;
+                npc.dontTakeDamage = true;
+            }
+                return true;
+        }
+
         public override void NPCLoot()
 		{
             if (Main.expertMode)

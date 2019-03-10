@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.YamataA;
+            return new Color(250, 250, 250, 0);
         }
 
         public override void AI()

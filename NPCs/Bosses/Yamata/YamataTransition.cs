@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.scale *= 1.2f;
             npc.friendly = false;
             npc.scale *= 1.5f;
+            npc.life = 1;
         }
         public int timer;
 

@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             npc.width = 20;
+            npc.life = 1;
             npc.height = 32;
             npc.friendly = false;
             npc.scale *= 1.5f;

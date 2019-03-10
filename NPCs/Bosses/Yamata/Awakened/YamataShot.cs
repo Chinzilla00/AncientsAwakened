@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     -projectile.velocity.Y - 4f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shockwave"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51 + 8, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shockwave"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

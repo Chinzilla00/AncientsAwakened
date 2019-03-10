@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SoulBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SoulBoomY"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
         private int HomeOnTarget()
