@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 				}
 			}
 			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-			if(Vector2.Distance(nextTarget, npc.Center) < 40f)
+			if(Vector2.Distance(nextTarget, npc.Center) < 100f)
 			{
                 if (YamataHead.EATTHELITTLEMAGGOT)
                 {

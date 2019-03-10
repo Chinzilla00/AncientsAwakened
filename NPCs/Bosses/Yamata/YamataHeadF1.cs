@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 return;
             }
 			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-			if(Vector2.Distance(nextTarget, npc.Center) < 40f)
+			if(Vector2.Distance(nextTarget, npc.Center) < 100)
 			{
                 if (YamataHead.EATTHELITTLEMAGGOT)
                 {
@@ -156,10 +156,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 				npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
 				npc.velocity *= 5f;
 			}
-            if (YamataHead.EATTHELITTLEMAGGOT)
-            {
-                BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
-            }
 			npc.position += (Body.npc.position - Body.npc.oldPosition);	
 			npc.spriteDirection = -1;
             if (Body.TeleportMe1)
