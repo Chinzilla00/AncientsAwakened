@@ -511,8 +511,8 @@ namespace AAMod.NPCs.Bosses.Shen
 			}else
 			{
                 int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Sounds/ShenRoar");
-                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);			
-			}
+                Main.PlaySound(roarSound, npc.Center);
+            }
 		}
 
 		public void MoveToPoint(Vector2 point)

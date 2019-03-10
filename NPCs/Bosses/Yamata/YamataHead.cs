@@ -174,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (internalAI[2] == 399)
             {
                 QuoteSaid = false;
-                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+                Main.PlaySound(roarSound, npc.Center, 0);
                 int AttackType = 2;
                 int AwakenedAttackType = 4;
                 if (!isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataHeadF2>())))
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 internalAI[2] = 0;
             }
 
-            if (npc.ai[3] == 1)
+            if (npc.ai[3] == 1 || internalAI[2] >= 400)
             {
                 attackCounter++;
                 if (attackCounter > 10)
@@ -229,7 +229,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             fireTimer++;
             if (fireTimer >= 240 && npc.ai[3] == 0)
             {
-                Main.PlaySound(roarSound, (int)npc.Center.X, (int)npc.Center.Y, 92);
+                Main.PlaySound(roarSound, npc.Center);
                 npc.ai[3] = 1;
                 fireTimer = 0;
             }

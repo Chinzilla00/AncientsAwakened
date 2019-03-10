@@ -207,7 +207,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }
