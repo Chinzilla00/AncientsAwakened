@@ -46,6 +46,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             projectile.timeLeft = 0;
         }
 

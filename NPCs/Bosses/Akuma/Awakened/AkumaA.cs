@@ -407,11 +407,25 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return;
         }
 
+        
+        public bool Quote1;
+        public bool Quote2;
+        public bool Quote3;
+        public bool Quote4;
+        public bool Quote5;
+        public bool QuoteSaid;
+
         public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
             if (internalAI[1] == 1 || internalAI[1] == 7 || internalAI[1] == 15 || internalAI[1] == 18 || internalAI[1] == 21)
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", new Color(45, 46, 70));
+                    QuoteSaid = true;
+                    Quote1 = true;
+                }
                 if (npc.ai[2] == 320 || npc.ai[2] == 340 || npc.ai[2] == 360 || npc.ai[2] == 380)
                 {
                     int Fireballs = Main.expertMode ? 10 : 7;
@@ -424,6 +438,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if ((internalAI[1] == 2 || internalAI[1] == 6 || internalAI[1] == 12 || internalAI[1] == 16 || internalAI[1] == 24))
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", new Color(45, 46, 70));
+                    QuoteSaid = true;
+                    Quote1 = true;
+                }
                 if (npc.ai[2] == 350)
                 {
                     int Fireballs = Main.expertMode ? 5 : 3;
@@ -435,7 +455,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AkumaABomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaABomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                     }
                 }
             }
@@ -443,7 +463,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 11 || internalAI[1] == 17 || internalAI[1] == 23)
             {
                 int Fireballs = Main.expertMode ? 12 : 14;
-
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", new Color(45, 46, 70));
+                    QuoteSaid = true;
+                    Quote1 = true;
+                }
                 if (npc.ai[2] == 350)
                 {
                     for (int Loops = 0; Loops < Fireballs; Loops++)
@@ -455,11 +480,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (internalAI[1] == 4 || internalAI[1] == 10 || internalAI[1] == 13 || internalAI[1] == 20 || internalAI[1] == 25)
             {
-                int MaxMinons = Main.expertMode ? 3 : 4;
-
                 if (npc.ai[2] == 350)
                 {
-                    if (MinionCount < MaxMinons)
+                    if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
                         AkumaAttacks.SpawnLung(player, mod);
                         MinionCount += 1;
@@ -469,6 +492,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             
             if (internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 14 || internalAI[1] == 19 || internalAI[1] == 22)
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", new Color(45, 46, 70));
+                    QuoteSaid = true;
+                    Quote1 = true;
+                }
                 if (npc.ai[2] == 350)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);

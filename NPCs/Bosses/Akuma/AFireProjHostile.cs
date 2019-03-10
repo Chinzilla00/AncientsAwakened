@@ -72,21 +72,17 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / (Main.expertMode ? 6 : 4);
+            double deltaAngle = spread / 15;
             double offsetAngle;
             int i;
-            for (i = 0; i < (Main.expertMode ? 6 : 3); i++)
+            for (i = 0; i < 15; i++)
             {
                 offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            }
-            for (int dust = 0; dust <= 10; dust++)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
             }
         }
     }

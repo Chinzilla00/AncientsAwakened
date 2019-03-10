@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 45f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
             double deltaAngle = spread / 8f;

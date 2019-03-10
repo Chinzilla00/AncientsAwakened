@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -53,7 +54,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                     -projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 51, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shock"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Main.PlaySound(new LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shock"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

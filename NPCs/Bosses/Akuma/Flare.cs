@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 10)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame > 3)
@@ -46,6 +46,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             projectile.timeLeft = 0;
         }
 

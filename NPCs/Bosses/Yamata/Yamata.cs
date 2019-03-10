@@ -216,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 float dist = npc.Distance(playerTarget.Center);
 
                 MoveSpeed = dist > 300 ? 6f : 3f;
-                if (dist > 800)
+                if (dist > 600)
                 {
                     if (!npc.noTileCollide && Main.netMode != 1 && SayTheLineYamata == 300)
                     {
@@ -602,7 +602,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool DrawUnder)
         {
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
-            Color GlowColor = npc.GetAlpha(isAwakened ? AAColor.YamataA : Color.White);
+            Color GlowColor = npc.GetAlpha(isAwakened ? AAColor.Glow : Color.White);
             if (head != null && head.active)
             {
 				string neckTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck");
@@ -643,7 +643,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
             if (isAwakened)
             {
-                BaseDrawing.DrawTexture(sb, glowTexBody, 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.Glow, false);
+                BaseDrawing.DrawTexture(sb, glowTexBody, 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.YamataA, false);
             }
             if (!isAwakened)
             {
@@ -668,7 +668,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (isAwakened)
             {
-                BaseDrawing.DrawAfterimage(sb, glowTexBody, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.Yamata);
+                BaseDrawing.DrawAfterimage(sb, glowTexBody, 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.YamataA);
             }
         }
 
@@ -849,7 +849,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void UpdateLeg(NPC npc)
         {
             leftLeg = limbType == 1 || limbType == 3;
-            if (Vector2.Distance(Center, npc.Center) > 499f) position = npc.Center; //prevent issues when the legs are WAY off.
+            if (Vector2.Distance(Center, npc.Center) > 499) position = npc.Center; //prevent issues when the legs are WAY off.
             if (overrideAnimation != null)
             {
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;

@@ -18,7 +18,6 @@ namespace AAMod.Items.Accessories.Ankh
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().ammo20percentdown = true;
-            player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()

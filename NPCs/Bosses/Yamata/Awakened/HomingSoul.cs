@@ -54,6 +54,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+
+            if (projectile.velocity.X < 0f)
+            {
+                projectile.spriteDirection = 1;
+
+            }
+            else
+            {
+                projectile.spriteDirection = -1;
+            }
+
             const int aislotHomingCooldown = 0;
             const int homingDelay = 00;
             const float desiredFlySpeedInPixelsPerFrame = 6;

@@ -73,6 +73,9 @@ namespace AAMod.NPCs.Bosses.Retriever
         public static Texture2D glowTex1 = null;
         public Color color;
 
+        int LaserTime = 0;
+        Projectile laser;
+
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             if (glowTex == null)
@@ -217,16 +220,17 @@ namespace AAMod.NPCs.Bosses.Retriever
 
                     Player player = Main.player[npc.target];
 
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("MagicBlast"), ref shootAI[0], 20, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
-
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<RetrieverLaser>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
+                    
                     return;
                 }
                 else if (customAI[0] >= 59)
                 {
+                    if (Main.netMode != 1) laser.Kill();
                     npc.frame.Y = (100 * 10);
                     return;
                 }
-                else if (customAI[0] > 0)
+                else if (customAI[0] == 1)
                 {
                     npc.frame.Y = (100 * 7);
                     return;

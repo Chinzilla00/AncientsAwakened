@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -72,8 +73,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void Kill(int timeLeft)
         {
-        	Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
-        	float spread = 12f * 0.0174f;
+            Main.PlaySound(new LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
+            float spread = 12f * 0.0174f;
 			double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y)- spread/2;
 	    	double Angle = spread/4;
 	    	double offsetAngle;

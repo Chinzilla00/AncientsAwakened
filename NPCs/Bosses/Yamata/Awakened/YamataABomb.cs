@@ -100,6 +100,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].velocity *= 2f;
             }
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 

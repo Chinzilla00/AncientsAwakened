@@ -173,96 +173,116 @@ namespace AAMod.NPCs.TownNPCs
             if (ChatNumber == 0)
 			{
 			    button2 = DoNextT;
+                ResetBools();
                 DoNext = true;
+
             }
             else if (ChatNumber == 1)
             {
                 button2 = MushT;
+                ResetBools();
                 Mushroom = true;
             }
             else if (ChatNumber == 2)
             {
                 button2 = GlowT;
+                ResetBools();
                 Glowshroom = true;
             }
             else if (ChatNumber == 3)
             {
                 button2 = GripT;
+                ResetBools();
                 Grips = true;
             }
             else if (ChatNumber == 4)
             {
                 button2 = BroodT;
+                ResetBools();
                 Brood = true;
             }
             else if (ChatNumber == 5)
             {
                 button2 = HydraT;
+                ResetBools();
                 Hydra = true;
             }
             else if (ChatNumber == 6 && NPC.downedBoss3)
             {
                 button2 = DjinnT;
+                ResetBools();
                 Djinn = true;
             }
             else if (ChatNumber == 7 && NPC.downedBoss3)
             {
                 button2 = SerpentT;
+                ResetBools();
                 Serpent = true;
             }
             else if (ChatNumber == 8 && Main.hardMode)
             {
                 button2 = RetT;
+                ResetBools();
                 Retriever = true;
             }
             else if (ChatNumber == 9 && Main.hardMode)
             {
                 button2 = RaidT;
+                ResetBools();
                 Raider = true;
             }
             else if (ChatNumber == 10 && Main.hardMode)
             {
                 button2 = OrthrusT;
+                ResetBools();
                 Orthrus = true;
             }
             else if (ChatNumber == 11 && NPC.downedMoonlord)
             {
                 button2 = FishT;
+                ResetBools();
                 Fishron = true;
             }
             else if (ChatNumber == 12 && NPC.downedMoonlord)
             {
                 button2 = EquinoxT;
+                ResetBools();
                 Equinox = true;
             }
             else if (ChatNumber == 13 && NPC.downedMoonlord)
             {
                 button2 = AnubisT;
+                ResetBools();
                 AnubisB = true;
             }
             else if (ChatNumber == 14 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
             {
                 button2 = GripsST;
+                ResetBools();
                 GripsS = true;
             }
             else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = AkumaT;
+                ResetBools();
                 Akuma = true;
             }
             else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = YamataT;
+                ResetBools();
                 Yamata = true;
             }
             else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
+                ResetBools();
                 Zero = true;
             }
             else
             {
                 ChatNumber = 0;
+                ResetBools();
                 button2 = DoNextT;
                 DoNext = true;
             }
@@ -293,7 +313,6 @@ namespace AAMod.NPCs.TownNPCs
 		{
 			if (firstButton)
 			{
-				ResetBools();
 				ChatNumber += 1;
 				if (ChatNumber > 17)
 				{

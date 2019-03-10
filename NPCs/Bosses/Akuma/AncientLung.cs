@@ -8,7 +8,7 @@ using Terraria.Audio;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 
-namespace AAMod.NPCs.Boss.Akuma
+namespace AAMod.NPCs.Bosses.Akuma
 {
     public class AncientLung : ModNPC
 	{

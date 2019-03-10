@@ -43,6 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void Kill(int timeleft)
         {
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
@@ -53,7 +54,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     -projectile.velocity.Y - 4f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 101, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 101, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

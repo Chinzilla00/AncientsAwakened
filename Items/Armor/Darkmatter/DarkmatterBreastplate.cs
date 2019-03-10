@@ -50,11 +50,11 @@ Dark, yet still barely visible");
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.20f;
-            player.rangedDamage *= 1.20f;
-            player.magicDamage *= 1.20f;
-            player.minionDamage *= 1.20f;
-            player.thrownDamage *= 1.20f;
+			player.meleeDamage += .20f;
+            player.rangedDamage += .20f;
+            player.magicDamage += .20f;
+            player.minionDamage += .20f;
+            player.thrownDamage += .20f;
 		}
 
 		public override void AddRecipes()

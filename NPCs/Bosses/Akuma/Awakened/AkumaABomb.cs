@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
             double deltaAngle = spread / 15f;

@@ -170,16 +170,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);				
 			}
-            if (internalAI[1] == AISTATE_FLY)//jumper
+            else if (internalAI[1] == AISTATE_FLY)//fly
             {
                 npc.noTileCollide = true;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.4f, 6, 6, false, 300);
-                if (dist < 120)
+                if (dist < 120 && npc.collideY == false)
                 {
                     internalAI[0] = 0;
                     internalAI[1] = Main.rand.Next(3);
                     npc.ai = new float[4];
                     npc.netUpdate = true;
+                    npc.noTileCollide = false;
                 }
             }else //charger
 			{			

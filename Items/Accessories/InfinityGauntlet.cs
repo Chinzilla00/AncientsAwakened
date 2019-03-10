@@ -56,14 +56,13 @@ All effects of the infinity stones
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 3;
             player.meleeSpeed += 0.18f;
             player.aggro += 8;
-            player.meleeDamage *= 1.5f;
-            player.rangedDamage *= 1.5f;
-            player.magicDamage *= 1.5f;
-            player.thrownDamage *= 1.5f;
-            player.minionDamage *= 1.5f;
+            player.meleeDamage += .5f;
+            player.rangedDamage += .5f;
+            player.magicDamage += .5f;
+            player.thrownDamage += .5f;
+            player.minionDamage += .5f;
             player.statManaMax2 += 1000;
             player.buffImmune[88] = true;
             player.maxMinions += 10;

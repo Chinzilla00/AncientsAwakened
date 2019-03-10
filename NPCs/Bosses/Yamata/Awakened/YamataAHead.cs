@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
@@ -9,6 +10,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetStaticDefaults();
             DisplayName.SetDefault("Yamata Awakened");
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()

@@ -17,7 +17,6 @@ namespace AAMod.Items.Accessories.Ankh
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.manaCost -= 0.1f;
-            player.meleeSpeed -= 0.07f;
         }
 
         public override void SetStaticDefaults()

@@ -64,8 +64,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Item89, projectile.position);
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+            projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
 			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
 			projectile.width = (int)(128f * projectile.scale);
 			projectile.height = (int)(128f * projectile.scale);

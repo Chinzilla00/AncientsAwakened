@@ -716,12 +716,15 @@ namespace AAMod
             }
             texture.SetData(buffer);
         }
+        
+        public static int GobSouls = -1;
+
 
         public override void Load()
         {
             Textures = (IDictionary<string, Texture2D>)typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
             instance = this;
-            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new CustomCurrency(ItemType<Items.Currency.GoblinSoul>(), 999L));
+            GobSouls = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
             if (Main.rand == null)
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 

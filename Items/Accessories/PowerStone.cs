@@ -19,7 +19,7 @@ namespace AAMod.Items.Accessories
         {
             DisplayName.SetDefault("Power Stone");
             Tooltip.SetDefault(
-@"Multiplies your attack power by 50%
+@"Multiplies your attack power by 65%
 'Fun isn’t something one considers when balancing the universe'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
             ItemID.Sets.ItemNoGravity[item.type] = true;
@@ -52,11 +52,11 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.5f;
-            player.rangedDamage *= 1.5f;
-            player.magicDamage *= 1.5f;
-            player.thrownDamage *= 1.5f;
-            player.minionDamage *= 1.5f;
+            player.meleeDamage += .65f;
+            player.rangedDamage += .65f;
+            player.magicDamage += .65f;
+            player.thrownDamage += .65f;
+            player.minionDamage += .65f;
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {

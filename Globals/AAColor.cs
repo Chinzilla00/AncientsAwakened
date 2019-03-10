@@ -305,7 +305,19 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.Violet, Color.DarkViolet, Color.Violet, Color.DarkViolet);
             }
         }
-        
+
+
+        public static Color Storm2
+        {
+            get
+            {
+                float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+                float Pie = 1f * (float)Math.Sin(Eggroll);
+                Color color1 = Color.Lerp(new Color(86, 50, 125), Color.Black, Pie);
+                return color1;
+            }
+        }
+
         public static Color Djinn
         {
             get

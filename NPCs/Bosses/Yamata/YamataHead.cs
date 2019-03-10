@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.life = npc.lifeMax = 100;
-
             npc.damage = 150;
             npc.defense = 60;
             npc.width = 78;
@@ -146,8 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.alpha = Body.alpha;
             }
 
-
-            int roarSound = mod.GetSoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar");
+            int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
             int num429 = 1;
             if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
@@ -195,7 +193,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Attacks(internalAI[1]);
             }
 
-            if (internalAI[2] >= 560)
+            if (internalAI[2] >= 600)
             {
                 EATTHELITTLEMAGGOT = false;
                 internalAI[2] = 0;
@@ -297,7 +295,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 30, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 15, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {
@@ -307,7 +305,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 60, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 2f)
                 {
@@ -330,7 +328,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(Main.rand.Next(-2, 2), -3f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(Main.rand.Next(-2, 2), -1f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 30, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {
@@ -340,7 +338,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote2 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<HomingSoul>(), ref internalAI[3], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<HomingSoul>(), ref internalAI[3], 15, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 2f)
                 {
@@ -350,7 +348,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AbyssalThunder>(), ref internalAI[3], 60, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 10, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 3f)
                 {
@@ -360,7 +358,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote4 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 20, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AbyssalThunder>(), ref internalAI[3], 20, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 4f)
                 {
@@ -389,23 +387,21 @@ namespace AAMod.NPCs.Bosses.Yamata
                         npc.frame.Y = 0;
                     }
                 }
-                if (npc.ai[3] == 1 || npc.ai[2] >= 400)
+                if (npc.ai[3] == 1 || internalAI[2] > 400)
                 {
-                    if (npc.frameCounter > 5)
+                    if (npc.frameCounter < 5)
                     {
-                        npc.frame.Width = npc.width;
-                        npc.frame.X = npc.width;
+                        npc.frame.Y = frameHeight * 3;
                     }
-                    else
+                    if (npc.frameCounter > 10)
                     {
-                        npc.frame.Width = npc.width;
-                        npc.frame.X = npc.width * 2;
+                        npc.frame.Y += frameHeight;
+                        npc.frameCounter = 5;
+                        if (npc.frame.Y > frameHeight * 6)
+                        {
+                            npc.frame.Y = frameHeight * 4;
+                        }
                     }
-                }
-                else
-                {
-                    npc.frame.Width = npc.width;
-                    npc.frame.X = 0;
                 }
             }
             else

@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         }
         public override void AI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
             {
                 npc.life = 0;
             }

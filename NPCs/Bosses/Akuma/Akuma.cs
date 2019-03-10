@@ -124,6 +124,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             internalAI[0]++;
             if (internalAI[0] == 350)
             {
+                QuoteSaid = false;
                 Roar(roarTimerMax, false);
                 internalAI[1] += 1;
             }
@@ -418,14 +419,26 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
+        public bool Quote1;
+        public bool Quote2;
+        public bool Quote3;
+        public bool Quote4;
+        public bool QuoteSaid;
+
         public void Attack(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
             if (internalAI[1] == 1 || internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 16 || internalAI[1] == 18)
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote1) ? "Hey kid! Sky's fallin', watch out!" : "Down comes fire and fury!", new Color(180, 41, 32));
+                    QuoteSaid = true;
+                    Quote1 = true;
+                }
                 if (internalAI[0] == 370 || internalAI[0] == 390 || internalAI[0] == 410 || internalAI[0] == 430)
                 {
-                    int Fireballs = Main.expertMode ? 4 : 3;
+                    int Fireballs = Main.expertMode ? 5 : 4;
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Dragonfire(npc, mod, false);
@@ -435,9 +448,15 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
             {
+                if (!QuoteSaid)
+                {
+                     if (!Quote2) Main.NewText("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
+                    QuoteSaid = true;
+                    Quote2 = true;
+                }
                 if (internalAI[0] == 400)
                 {
-                    if (MinionCount < MaxMinons)
+                    if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
                         AkumaAttacks.SpawnLung(player, mod);
                         MinionCount += 1;
@@ -446,6 +465,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else if (internalAI[1] == 4 || internalAI[1] == 6 || internalAI[1] == 10 || internalAI[1] == 14 || internalAI[1] == 17)
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote3) ? "Hey kid! Watch out!" : "Incoming!", new Color(180, 41, 32));
+                    QuoteSaid = true;
+                    Quote3 = true;
+                }
                 if (internalAI[0] == 400)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
@@ -453,6 +478,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else
             {
+                if (!QuoteSaid)
+                {
+                    Main.NewText((!Quote4) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
+                    QuoteSaid = true;
+                    Quote4 = true;
+                }
                 if (internalAI[0] == 400)
                 {
                     int Fireballs = Main.expertMode ? 3 : 5;
@@ -464,7 +495,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AkumaBomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaBomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                     }
                 }
             }

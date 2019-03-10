@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
@@ -14,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yamata Awakened");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 9;
         }
 
         public override void SetDefaults()
@@ -40,7 +41,31 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return 0f;
         }
 
-		public Yamata Body = null;
+        public float[] customAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)customAI[0]);
+                writer.Write((short)customAI[1]);
+                writer.Write((short)customAI[2]);
+                writer.Write((short)customAI[3]);
+            }
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                customAI[0] = reader.ReadFloat();
+                customAI[1] = reader.ReadFloat();
+                customAI[2] = reader.ReadFloat();
+                customAI[3] = reader.ReadFloat();
+            }
+        }
+
+        public Yamata Body = null;
         public Yamata Head = null;
         public bool killedbyplayer = true;	
 		public bool leftHead = false;
@@ -142,9 +167,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
 			if(Vector2.Distance(nextTarget, npc.Center) < 40f)
 			{
-				npc.velocity *= 0.9f;
-				if(Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-				if(Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+                if (YamataHead.EATTHELITTLEMAGGOT)
+                {
+                    BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
+                }
+                else
+                {
+                    npc.velocity *= 0.9f;
+                    if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                    if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+                }
+
 			}else
 			{
 				npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
@@ -193,6 +226,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
+            
             if (npc.frameCounter > 5)
             {
                 npc.frameCounter = 0;
@@ -204,21 +238,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (fireAttack || YamataHead.EATTHELITTLEMAGGOT)
             {
-                if (npc.frameCounter > 5)
+                if (npc.frameCounter < 5)
                 {
-                    npc.frame.Width = npc.width;
-                    npc.frame.X = npc.width;
+                    npc.frame.Y = frameHeight * 4;
                 }
-                else
+                if (npc.frameCounter > 10)
                 {
-                    npc.frame.Width = npc.width;
-                    npc.frame.X = npc.width * 2;
+                    npc.frame.Y += frameHeight;
+                    npc.frameCounter = 5;
+                    if (npc.frame.Y > frameHeight * 8)
+                    {
+                        npc.frame.Y = frameHeight * 5;
+                    }
                 }
-            }
-            else
-            {
-                npc.frame.Width = npc.width;
-                npc.frame.X = 0;
             }
         }
 

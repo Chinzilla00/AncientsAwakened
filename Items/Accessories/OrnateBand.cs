@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 0.05f;
+            player.endurance += 0.05f;
         }
 
         public override void SetStaticDefaults()
