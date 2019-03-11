@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -94,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
                 {
                     npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -102,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 6.0)
                             npc.velocity.Y = 6f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -136,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[3] = 0.0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -144,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 3.0)
                             npc.velocity.Y = 3f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -191,6 +192,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
+                Main.PlaySound(new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound));
                 Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
             else
@@ -257,6 +259,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
+                Main.PlaySound(new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound));
                 Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
         }

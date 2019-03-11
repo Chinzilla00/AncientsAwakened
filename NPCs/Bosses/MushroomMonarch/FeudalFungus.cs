@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetDefaults()
         {
-            npc.lifeMax = NPC.downedPlantBoss ? 33000 : 1200;   //boss life
+            npc.lifeMax = 1200;   //boss life
             npc.damage = 12;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
@@ -82,6 +82,15 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 npc.damage = 50;
                 npc.defense = 30;
+            }
+
+            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            {
+                npc.noTileCollide = true;
+            }
+            else
+            {
+                npc.noTileCollide = false;
             }
              
             if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)

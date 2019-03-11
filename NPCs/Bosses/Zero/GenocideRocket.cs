@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -121,6 +122,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
+            Main.PlaySound(new LegacySoundStyle(2, 14, Terraria.Audio.SoundType.Sound));
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<GenocideBoom>(), projectile.damage, 1, projectile.owner);
         }
 

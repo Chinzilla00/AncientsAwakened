@@ -195,9 +195,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
-                npc.rotation = (float)Math.Atan2(num2, num1) - 1.57f;
-                if (Main.netMode == 1)
-                    return;
+                npc.rotation = (float)Math.Atan2(num2, num1);
                 ++npc.localAI[0];
                 if (npc.localAI[0] <= 200.0)
                     return;
@@ -233,7 +231,9 @@ namespace AAMod.NPCs.Bosses.Zero
             else
             {
                 if (npc.ai[2] != 1.0)
+                {
                     return;
+                }
                 ++npc.ai[3];
                 if (npc.ai[3] >= 200.0)
                 {
@@ -277,7 +277,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num6 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num8 = (float)Math.Sqrt((num6 * (double)num6) + (num7 * (double)num7));
-                npc.rotation = (float)Math.Atan2(num7, num6);
+                float NewRotation = (float)Math.Atan2(num7, num6);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
                 if (Main.netMode != 1)
                     return;
                 ++npc.localAI[0];
@@ -341,7 +342,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     vector7.X += num21 * num23;
                     vector7.Y += num22 * num23;
                 }
-                float rotation7 = (float)Math.Atan2((double)num22, (double)num21);
+                float rotation7 = (float)Math.Atan2((double)num22, (double)num21) - 1.57f;
                 Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
                 Texture2D Arm = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
                 Texture2D ArmGlow = mod.GetTexture("Glowmasks/ZeroArm_Glow");
