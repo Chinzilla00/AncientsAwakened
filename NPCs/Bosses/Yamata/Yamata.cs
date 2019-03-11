@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public bool TeleportMe4 = false;
         public bool TeleportMe5 = false;
         public bool TeleportMe6 = false;
-        public bool TeleportMeBitch = false;
+        public static bool TeleportMeBitch = false;
         float MoveSpeed = 3f;
 
         public int SayTheLineYamata = 300;
@@ -314,6 +314,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     npc.alpha += 10;
                     if (npc.alpha >= 255)
                     {
+                        npc.alpha = 255;
                         Vector2 tele = new Vector2(playerTarget.Center.X, playerTarget.Center.Y - 100);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
@@ -827,7 +828,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void UpdateLeg(NPC npc)
         {
             leftLeg = limbType == 1 || limbType == 3;
-            if (Vector2.Distance(Center, npc.Center) > 499) position = npc.Center; //prevent issues when the legs are WAY off.
+            if (Vector2.Distance(Center, npc.Center) > 499 || Yamata.TeleportMeBitch) position = npc.Center; //prevent issues when the legs are WAY off.
             if (overrideAnimation != null)
             {
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;

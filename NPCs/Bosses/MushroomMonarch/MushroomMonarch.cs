@@ -154,7 +154,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
-                else if (dist > 360)
+                else if (dist > 360 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     internalAI[1] = AISTATE_FLY;
                     npc.ai = new float[4];

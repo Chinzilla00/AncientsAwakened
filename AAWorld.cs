@@ -407,7 +407,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Slush"));
+            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if (shiniesIndex != -1)
             {
