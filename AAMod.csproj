@@ -1502,6 +1502,7 @@
     <Compile Include="Projectiles\AmphibiousBoom.cs" />
     <Compile Include="Projectiles\DragonfireDart.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
+    <Compile Include="Projectiles\FreedomShot.cs" />
     <Compile Include="Projectiles\GemShots\AmberShot.cs" />
     <Compile Include="Projectiles\GemShots\AmethystShot.cs" />
     <Compile Include="Projectiles\GemShots\DiamondShot.cs" />
@@ -1618,7 +1619,6 @@
     <Compile Include="Projectiles\PonyBoomEX2.cs" />
     <Compile Include="Projectiles\PonyBoomEX.cs" />
     <Compile Include="Projectiles\PonyBoom.cs" />
-    <Compile Include="Projectiles\PlasmaShot.cs" />
     <Compile Include="Projectiles\SharkLauncherP.cs" />
     <Compile Include="Projectiles\Shen\Astroid.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
@@ -4946,6 +4946,7 @@
     <Content Include="Projectiles\FireblastP.png" />
     <Content Include="Projectiles\Fluff.png" />
     <Content Include="Projectiles\FluffEX.png" />
+    <Content Include="Projectiles\FreedomShot.png" />
     <Content Include="Projectiles\FulguritePhasesaber.png" />
     <Content Include="Projectiles\GemShots\AmberShot.png" />
     <Content Include="Projectiles\GemShots\AmethystShot.png" />
@@ -4995,7 +4996,6 @@
     <Content Include="Projectiles\OceanicArrow.png" />
     <Content Include="Projectiles\OrderArrow.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
-    <Content Include="Projectiles\PlasmaShot.png" />
     <Content Include="Projectiles\AmphibiousBoom.png" />
     <Content Include="Projectiles\PonyBoom.png" />
     <Content Include="Projectiles\PonyShot.png" />
