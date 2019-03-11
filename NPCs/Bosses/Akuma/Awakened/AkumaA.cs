@@ -165,8 +165,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         Main.NewText("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
                     }
                 }
-                else
+                else if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(BuffID.Wet))
                 {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaABreath>(), 2, 2);
                 }
                 if (attackTimer >= 80)

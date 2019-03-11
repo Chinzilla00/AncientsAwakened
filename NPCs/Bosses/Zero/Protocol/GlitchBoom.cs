@@ -7,7 +7,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
+            DisplayName.SetDefault("b00m");     //The English name of the projectile
             Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 

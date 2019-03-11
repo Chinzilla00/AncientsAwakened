@@ -319,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;
-                        Vector2 tele = new Vector2(playerTarget.Center.X, playerTarget.Center.Y - 100);
+                        Vector2 tele = new Vector2(playerTarget.Center.X, playerTarget.Center.Y);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
                         TeleportMe3 = true;

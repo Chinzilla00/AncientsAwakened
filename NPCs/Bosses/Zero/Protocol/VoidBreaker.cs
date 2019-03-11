@@ -18,7 +18,18 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            
+            projectile.width = 30;
+            projectile.height = 30;
+            projectile.penetrate = -1;
+            projectile.aiStyle = 71;
+            projectile.alpha = 255;
+            projectile.timeLeft = 360;
+            projectile.friendly = true;
+            projectile.tileCollide = true;
+            projectile.extraUpdates = 2;
+            projectile.ignoreWater = true;
+            projectile.hostile = true;
+            projectile.friendly = false;
         }
 		
         public override void AI()

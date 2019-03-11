@@ -277,7 +277,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num6 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num8 = (float)Math.Sqrt((num6 * (double)num6) + (num7 * (double)num7));
-                npc.rotation = (float)Math.Atan2(num7, num6) - 1.57f;
+                npc.rotation = (float)Math.Atan2(num7, num6);
                 if (Main.netMode != 1)
                     return;
                 ++npc.localAI[0];
@@ -341,7 +341,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     vector7.X += num21 * num23;
                     vector7.Y += num22 * num23;
                 }
-                float rotation7 = (float)Math.Atan2((double)num22, (double)num21) - 1.57f;
+                float rotation7 = (float)Math.Atan2((double)num22, (double)num21);
                 Color color7 = Lighting.GetColor((int)vector7.X / 16, (int)(vector7.Y / 16f));
                 Texture2D Arm = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
                 Texture2D ArmGlow = mod.GetTexture("Glowmasks/ZeroArm_Glow");

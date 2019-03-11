@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Abyssal Storm");
+			DisplayName.SetDefault("R0CKET");
 		}
     	
         public override void SetDefaults()
@@ -88,8 +88,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 		    	for (i = 0; i < 4; i++ )
 		    	{
 		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 2f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 2f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		    	}
 	    	}
         	for (int dust = 0; dust <= 10; dust++)

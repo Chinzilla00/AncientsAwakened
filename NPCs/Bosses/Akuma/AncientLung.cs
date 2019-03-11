@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noTileCollide = true;
             npc.behindTiles = true;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -355,6 +355,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
             if (Main.netMode != 1)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("AncientLung"))
@@ -454,6 +455,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
 
             if (Main.netMode != 1)
             {

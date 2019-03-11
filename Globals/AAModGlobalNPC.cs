@@ -738,27 +738,27 @@ namespace AAMod
                 pool.Clear();
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
                 {
-                    pool.Add(mod.NPCType("Wyrmling"), .8f);
-                    pool.Add(mod.NPCType("InfernalSlime"), 1.5f);
-                    pool.Add(mod.NPCType("Flamebrute"), .8f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), 1.2f);
-                    pool.Add(mod.NPCType("DragonClaw"), 1.2f);
+                    pool.Add(mod.NPCType("Wyrmling"), .5f);
+                    pool.Add(mod.NPCType("InfernalSlime"), 1f);
+                    pool.Add(mod.NPCType("Flamebrute"), .5f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), 1f);
+                    pool.Add(mod.NPCType("DragonClaw"), 1f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Wyvern"), .6f);
-                        pool.Add(mod.NPCType("BlazePhoenix"), .4f);
+                        pool.Add(mod.NPCType("Wyvern"), .3f);
+                        pool.Add(mod.NPCType("BlazePhoenix"), .2f);
                     }
                 }
                 else if (player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    pool.Add(mod.NPCType("Wyrmling"), .8f);
-                    pool.Add(mod.NPCType("Flamebrute"), .8f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), 1.2f);
-                    pool.Add(mod.NPCType("DragonClaw"), 1.2f);
+                    pool.Add(mod.NPCType("Wyrmling"), .5f);
+                    pool.Add(mod.NPCType("Flamebrute"), .5f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), 1f);
+                    pool.Add(mod.NPCType("DragonClaw"), 1f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Wyvern"), .6f);
-                        pool.Add(mod.NPCType("Wyrm"), .5f);
+                        pool.Add(mod.NPCType("Wyvern"), .3f);
+                        pool.Add(mod.NPCType("Wyrm"), .2f);
                         pool.Add(mod.NPCType("ChaoticDawn"), .1f);
                         if (player.ZoneSnow)
                         {
@@ -768,7 +768,7 @@ namespace AAMod
                 }
                 if (AAWorld.downedGripsS)
                 {
-                    pool.Add(mod.NPCType("BlazeClaw"), 1f);
+                    pool.Add(mod.NPCType("BlazeClaw"), .8f);
                 }
                 if (AAWorld.downedAkuma)
                 {
@@ -781,24 +781,24 @@ namespace AAMod
                 pool.Clear();
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
                 {
-                    pool.Add(mod.NPCType("MireSlime"), 1.5f);
-                    pool.Add(mod.NPCType("Mosster"), .8f);
-                    pool.Add(mod.NPCType("Newt"), 1.2f);
-                    pool.Add(mod.NPCType("HydraClaw"), 1.2f);
+                    pool.Add(mod.NPCType("MireSlime"), 1f);
+                    pool.Add(mod.NPCType("Mosster"), .5f);
+                    pool.Add(mod.NPCType("Newt"), 1f);
+                    pool.Add(mod.NPCType("HydraClaw"), 1f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Toxitoad"), .5f);
-                        pool.Add(mod.NPCType("Kappa"), .6f);
+                        pool.Add(mod.NPCType("Toxitoad"), .2f);
+                        pool.Add(mod.NPCType("Kappa"), .4f);
                     }
                 }
                 else if (player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    pool.Add(mod.NPCType("Mosster"), .8f);
-                    pool.Add(mod.NPCType("Newt"), 1.2f);
-                    pool.Add(mod.NPCType("HydraClaw"), 1.2f);
+                    pool.Add(mod.NPCType("Mosster"), .5f);
+                    pool.Add(mod.NPCType("Newt"), 1f);
+                    pool.Add(mod.NPCType("HydraClaw"), 1f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Kappa"), .6f);
+                        pool.Add(mod.NPCType("Kappa"), .4f);
                         pool.Add(mod.NPCType("ChaoticTwilight"), .1f);
                         if (player.ZoneSnow)
                         {
@@ -808,7 +808,7 @@ namespace AAMod
                 }
                 if (AAWorld.downedGripsS)
                 {
-                    pool.Add(mod.NPCType("AbyssClaw"), 1f);
+                    pool.Add(mod.NPCType("AbyssClaw"), .8f);
                 }
             }
 
@@ -817,15 +817,15 @@ namespace AAMod
                 pool.Clear();
                 if (NPC.downedMoonlord)
                 {
-                    pool.Add(mod.NPCType("Searcher"), .2f);
+                    pool.Add(mod.NPCType("Searcher"), .1f);
                     if (AAWorld.downedZero && Main.expertMode)
                     {
-                        pool.Add(mod.NPCType("Null"), .1f);
+                        pool.Add(mod.NPCType("Null"), .05f);
                     }
                 }
                 else
                 {
-                    pool.Add(mod.NPCType("Searcher1"), .2f);
+                    pool.Add(mod.NPCType("Searcher1"), .1f);
                 }
             }
 
@@ -834,17 +834,17 @@ namespace AAMod
                 pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .4f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .4f);
-                    pool.Add(mod.NPCType("TerraWizard"), .4f);
-                    pool.Add(mod.NPCType("TerraWarlock"), .4f);
+                    pool.Add(mod.NPCType("Bladon"), .2f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), .2f);
+                    pool.Add(mod.NPCType("TerraWizard"), .2f);
+                    pool.Add(mod.NPCType("TerraWarlock"), .2f);
                 }
                 else
                 {
-                    pool.Add(mod.NPCType("TerraWeaver"), .4f);
-                    pool.Add(mod.NPCType("TerraSphere"), .4f);
-                    pool.Add(mod.NPCType("TerraCrawler"), .4f);
-                    pool.Add(mod.NPCType("PuritySquid"), .4f);
+                    pool.Add(mod.NPCType("TerraWeaver"), .2f);
+                    pool.Add(mod.NPCType("TerraSphere"), .2f);
+                    pool.Add(mod.NPCType("TerraCrawler"), .2f);
+                    pool.Add(mod.NPCType("PuritySquid"), .2f);
                 }
             }
         }

@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
     	
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ERROR");
+			DisplayName.SetDefault("ERR0R");
             Main.projFrames[projectile.type] = 4;
 		}
     	
@@ -25,7 +25,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.ignoreWater = true;
             projectile.penetrate = -11;
             projectile.extraUpdates = 1;
-            projectile.scale = 1.1f;
             projectile.penetrate = -1;
         }
 

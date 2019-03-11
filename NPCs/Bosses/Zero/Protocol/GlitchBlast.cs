@@ -19,7 +19,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.width = 10;
             projectile.height = 10;
             projectile.hostile = true;
-            projectile.scale = 2f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.extraUpdates = 2;

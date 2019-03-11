@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("YamataRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		    	}
 	    	}
-        	for (int dust = 0; dust <= 10; dust++)
+        	for (int dust = 0; dust <= 5; dust++)
         	{
         		Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 235, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
         	}

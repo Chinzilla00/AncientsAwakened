@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Awakened Lung");
+			DisplayName.SetDefault("Ancient Lung");
 
         }
 
@@ -279,7 +279,15 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             return false;
         }
-        
+
+
+
+        public override void NPCLoot()
+        {
+            BaseMod.BaseAI.DropItem(npc, mod.ItemType("CrucibleScale"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
+        }
+
+
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -321,7 +329,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Awakened Lung");
+            DisplayName.SetDefault("Ancient Lung");
         }
 
         public override void SetDefaults()
@@ -349,6 +357,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
             if (Main.netMode != 1)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))
@@ -416,7 +425,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Awakened Lung");
+            DisplayName.SetDefault("Ancient Lung");
         }
 
         public override void SetDefaults()
@@ -449,6 +458,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
             if (Main.netMode != 1)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))

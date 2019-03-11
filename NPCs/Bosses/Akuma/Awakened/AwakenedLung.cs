@@ -346,6 +346,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
+
             if (Main.netMode != 1)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("AwakenedLung"))
@@ -445,6 +447,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             if (Main.netMode != 1)
             {

@@ -17,7 +17,5 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.friendly = false;
             projectile.hostile = true;
         }
-        
-
     }
 }

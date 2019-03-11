@@ -33,6 +33,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.HitSound = SoundID.NPCHit2;
             npc.DeathSound = SoundID.NPCDeath5;
             npc.knockBackResist = 0.5f;
+            npc.noTileCollide = false;
 		}
 
 		public bool brokenJaw = false;
@@ -144,8 +145,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             else
 			{
 				Player player = Main.player[npc.target];
-				bool canSee = Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height);				
-				BaseAI.AISkull(npc, ref npc.ai, !canSee, 6f, 350f, 0.1f, 0.15f);
+				bool canSee = Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height);
+                BaseAI.AIFlier(npc, ref npc.ai, true, .05f, .4f, 4, 2, true, 300);
 				BaseAI.LookAt(player.Center, npc, 0);
 				if (Vector2.Distance(npc.Center, player.Center) <= 220f && canSee)
                 { 

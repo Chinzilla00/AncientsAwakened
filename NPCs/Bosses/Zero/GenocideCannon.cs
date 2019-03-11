@@ -29,9 +29,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
             animationType = NPCID.PrimeVice;
-            npc.buffImmune[20] = true;
-            npc.buffImmune[24] = true;
-            npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -330,7 +327,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (glowTex == null)
             {
-                glowTex = mod.GetTexture("Glowmasks/VoidStarZ");
+                glowTex = mod.GetTexture("Glowmasks/GenocideCannon_Glow");
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }

@@ -180,8 +180,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.NewText("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
                     }
                 }
-                else
+                else if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(BuffID.Wet))
                 {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 2);
                 }
                 if (attackTimer >= 80)
@@ -581,7 +582,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (Main.expertMode)
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.ProjectileType("AkumaTransition"), 0, 0);
+                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTransition"), 0, 0, 0, 0, 0, npc.target);
+                Main.npc[npcID].Center = npc.Center;
+                Main.npc[npcID].netUpdate2 = true;
             }
             npc.value = 0f;
             npc.boss = false;

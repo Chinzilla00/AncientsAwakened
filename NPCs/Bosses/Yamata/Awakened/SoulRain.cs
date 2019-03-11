@@ -50,12 +50,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
 
-            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.2f,
+            int dustId = Dust.NewDust(projectile.Center, projectile.width, projectile.height + 5, mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
             Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
-            Main.dust[dustId3].noGravity = true;
         }
 
         public override void Kill(int timeleft)
@@ -63,11 +60,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                    -projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                 Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
         }

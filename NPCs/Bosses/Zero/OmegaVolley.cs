@@ -139,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[3] = 0.0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -147,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 3.0)
                             npc.velocity.Y = 3f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -179,10 +179,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
                 npc.rotation = (float)Math.Atan2(num2, num1) - 1.57f;
                 if (Main.netMode == 1)
+                {
                     return;
+                }
                 ++npc.localAI[0];
                 if (npc.localAI[0] <= 200.0)
+                {
                     return;
+                }
                 if (npc.localAI[0] > 300)
                 {
                     npc.localAI[0] = 0.0f;
@@ -197,10 +201,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                if (npc.localAI[0] >= 200)
-                {
-                    BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType("OmegaBullet"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
-                }
+                BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType("OmegaBullet"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
             }
             else
             {

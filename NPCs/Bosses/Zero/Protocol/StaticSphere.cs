@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 3;
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.timeLeft = 240;
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.scale *= 2;
             projectile.damage = 22;
         }
 
@@ -59,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 5;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
