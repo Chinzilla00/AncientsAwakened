@@ -135,9 +135,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 		
-            if (yamata.TeleportMeBitch)
+            if (Yamata.TeleportMeBitch)
             {
-                yamata.TeleportMeBitch = false;
+                Yamata.TeleportMeBitch = false;
                 npc.Center = yamata.npc.Center;
                 return;
             }

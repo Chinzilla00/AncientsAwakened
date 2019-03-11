@@ -96,13 +96,13 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 15f;
+            double deltaAngle = spread / 4f;
             double betaAngle = spread / 7f;
             double offsetAngle;
             int i;
             if (projectile.owner == Main.myPlayer && !DidntHitPlayer)
             {
-                for (i = 0; i < 15; i++)
+                for (i = 0; i < 4; i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireballA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);

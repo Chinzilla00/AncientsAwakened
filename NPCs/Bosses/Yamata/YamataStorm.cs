@@ -81,11 +81,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 	    	int i;
 	    	if (projectile.owner == Main.myPlayer)
 	    	{
-		    	for (i = 0; i < 20; i++ )
+		    	for (i = 0; i < 10; i++ )
 		    	{
 		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("SoulRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("SoulRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("YamataRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("YamataRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		    	}
 	    	}
         	for (int dust = 0; dust <= 10; dust++)
