@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.hostile = true;
             projectile.melee = true;
             projectile.penetrate = 1;
-            projectile.timeLeft = 240;
+            projectile.timeLeft = 320;
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
             projectile.damage = 22;
@@ -74,14 +74,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            for (int num189 = 0; num189 < 1; num189++)
-            {
-                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1f);
-
-                Main.dust[num190].scale *= 1.3f;
-                Main.dust[num190].fadeIn = 1f;
-                Main.dust[num190].noGravity = true;
-            }
         }
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
@@ -120,19 +112,22 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void Kill(int timeLeft)
         {
-            if (Main.netMode != 2)
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double Angle = spread / 3f;
+            double offsetAngle;
+            int i;
+            if (projectile.owner == Main.myPlayer)
             {
-                for (int m = 0; m < 6; m++)
+                for (i = 0; i < 3; i++)
                 {
-                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
-                    Main.dust[dustID].noGravity = true;
-                    Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                    offsetAngle = (startAngle + Angle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Static"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Static"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 }
-                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
-                Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
-            
+
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

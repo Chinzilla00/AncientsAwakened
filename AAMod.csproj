@@ -994,6 +994,7 @@
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
     <Compile Include="Items\Ranged\UraniumRepeater.cs" />
     <Compile Include="Items\Ranged\YtriumCrossbow.cs" />
+    <Compile Include="Items\Summoning\BlizzardDragonStaff.cs" />
     <Compile Include="Items\Summoning\CrimsonStaff.cs" />
     <Compile Include="Items\Summoning\DemonStaff.cs" />
     <Compile Include="Items\Summoning\DevilStaff.cs" />
@@ -4035,6 +4036,7 @@
     <Content Include="Items\Smite\ShadowflameHammer.png" />
     <Content Include="Items\Smite\StarfishSlammer.png" />
     <Content Include="Items\Smite\Wyvern.png" />
+    <Content Include="Items\Summoning\BlizzardDragonStaff.png" />
     <Content Include="Items\Summoning\CrimsonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff_Glow.png" />

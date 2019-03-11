@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     AAWorld.downedYamata = true;
                     npc.DropLoot(mod.ItemType("DreadScale"), 20, 30);
-                    string[] lootTable = { "Flairdra", "Masamune", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
+                    string[] lootTable = { "Flairdra", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);

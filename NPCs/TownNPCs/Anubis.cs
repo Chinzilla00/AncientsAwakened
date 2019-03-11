@@ -395,7 +395,7 @@ namespace AAMod.NPCs.TownNPCs
             }
             else
             {
-                return "";
+                return "I dunno? Ask me about any strong creatures you can fight currently.";
             }
         }
 
@@ -473,7 +473,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Cobbler >= 0)
             {
-                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. What do I do?");
+                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. It'snot my fault he makes them with gourmet lether.");
             }
 
             if (ConfusedZombie >= 0)

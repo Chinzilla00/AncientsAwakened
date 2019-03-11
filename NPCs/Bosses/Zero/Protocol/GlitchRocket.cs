@@ -22,7 +22,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 120;
             cooldownSlot = 1;
         }
 
@@ -33,11 +32,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
-        	projectile.alpha -= 1;
-        	if (projectile.alpha <= 0)
-        	{
-        		projectile.Kill();
-        	}
         	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.4f) / 255f);
         	projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
         	if (projectile.ai[1] == 0f)
@@ -92,10 +86,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 2f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		    	}
 	    	}
-        	for (int dust = 0; dust <= 10; dust++)
-        	{
-        		Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 235, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-        	}
         }
     }
 }
