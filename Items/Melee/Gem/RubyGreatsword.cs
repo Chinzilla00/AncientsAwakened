@@ -20,9 +20,9 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.rare = 4;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = false;   //if it's capable of autoswing.
-            item.useTurn = true; 
-			item.shoot = 125;
-			item.shootSpeed = 15f;
+            item.useTurn = true;
+            item.shoot = mod.ProjectileType<Projectiles.GemShot.RubyShot>();
+            item.shootSpeed = 15f;
         }
 
     public override void SetStaticDefaults()

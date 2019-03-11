@@ -13,7 +13,8 @@ namespace AAMod.Projectiles
             projectile.height = 10;
             projectile.aiStyle = -1;
             projectile.alpha = 255;
-            projectile.magic = true;
+            projectile.magic = false;
+            projectile.melee = true;
             projectile.penetrate = 3;
             projectile.friendly = true;
         }

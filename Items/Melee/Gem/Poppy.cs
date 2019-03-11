@@ -29,9 +29,9 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.rare = 4;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
-            item.useTurn = true; 
-			item.shoot =  121;
-			item.shootSpeed = 16f;
+            item.useTurn = true;
+            item.shoot = mod.ProjectileType<Projectiles.GemShot.AmethystShot>();
+            item.shootSpeed = 16f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

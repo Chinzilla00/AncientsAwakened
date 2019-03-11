@@ -21,15 +21,15 @@ namespace AAMod.Items.Melee.Gem
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = false;   //if it's capable of autoswing.
             item.useTurn = true; 
-			item.shoot = 597;
+			item.shoot = mod.ProjectileType<Projectiles.GemShot.AmberShot>();
 			item.shootSpeed = 15f;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Amber Greatsword");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Amber Greatsword");
+            Tooltip.SetDefault("");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {
