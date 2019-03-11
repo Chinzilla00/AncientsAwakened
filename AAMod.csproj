@@ -5164,7 +5164,7 @@
     <Compile Include="Projectiles\Paladins_Knife_Pro.cs" />
     <Compile Include="Projectiles\PerfectChaosE.cs" />
     <Compile Include="Projectiles\Petal_Kunai_Pro.cs" />
-    <Compile Include="Projectiles\PlasmaShot.cs" />
+    <Compile Include="Projectiles\FreedomShot.cs" />
     <Compile Include="Projectiles\Platinum_Kunai_Pro.cs" />
     <Compile Include="Projectiles\PonyBoom.cs" />
     <Compile Include="Projectiles\PonyBoomEX.cs" />

@@ -8,11 +8,11 @@ using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
-    public class PlasmaShot : ModProjectile
+    public class FreedomShot : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Plasma Shot");
+            DisplayName.SetDefault("Freedom Shot");
             Main.projFrames[projectile.type] = 3;
         }
 
