@@ -177,6 +177,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+            TargetClosest();
+
             if (!HeadsSpawned)
             {
 				headsSaidOw = new bool[7];				

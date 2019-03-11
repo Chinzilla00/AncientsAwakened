@@ -88,16 +88,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (timer == 1455)
             {
-                npc.life = 0;             
+                SpawnBoss(npc.Center, "YamataA", "Yamata Awakened");
+                Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WRETCH!!!", new Color(146, 30, 68));
+                AAMod.YamataMusic = false;
+                npc.active = false;
             }
-        }
-
-        public override void NPCLoot()
-        {
-            SpawnBoss(npc.Center, "YamataA", "Yamata Awakened");
-            Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WRETCH!!!", new Color(146, 30, 68));
-            AAMod.YamataMusic = false;
         }
 
         public void SpawnBoss(Vector2 center, string name, string displayName)
