@@ -497,7 +497,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
-                        AkumaAttacks.SpawnLung(player, mod);
+                        AkumaAttacks.SpawnLung(player, mod, true);
                         MinionCount += 1;
                     }
                 }

@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 if (Main.expertMode)
                 {
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("YamataTransition"), 0, 0);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.ProjectileType("YamataTransition"), 0, 0);
                 }
                 npc.value = 0f;
                 npc.boss = false;
@@ -300,9 +300,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                 float dist = npc.Distance(playerTarget.Center);
                 MoveSpeed = dist > 300 ? 6f : 3f;
-                if (dist > 600)
+                if (dist > 600 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
-                    if (!npc.noTileCollide && Main.netMode != 1 && SayTheLineYamata == 300)
+                    if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {
                         if (!FirstLine)
                         {
@@ -343,7 +343,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else if (internalAI[3] == 1)
             {
-
+                IDedNow();
             }
             else
             {
@@ -387,7 +387,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             float dist = npc.Distance(playerTarget.Center);
             float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
-			YamataBody(npc, ref npc.ai, true, 0.2f, MoveSpeed, 1.5f, 0.04f, 1.5f, 3);
+			YamataBody(npc, ref npc.ai, true, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }

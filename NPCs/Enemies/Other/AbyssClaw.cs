@@ -36,9 +36,9 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (NPC.downedMoonlord)
+            if (AAWorld.downedGripsS)
             {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
+                return SpawnCondition.OverworldNightMonster.Chance * 0.04f;
             }
             return 0;
         }
@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraClaw"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EventideAbyssiumOre"));
         }
     }
 }

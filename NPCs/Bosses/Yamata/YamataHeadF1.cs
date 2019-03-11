@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -178,7 +179,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
                     }
                 }

@@ -102,6 +102,24 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
         }
 
+        public override bool CheckDead()
+        {
+            if (npc.life <= 0)
+            {
+                if (Main.expertMode)
+                {
+                    return true;
+                }
+                else
+                {
+                    internalAI[3] = 1f;
+                    npc.life = npc.lifeMax;
+                    npc.netUpdate = true;
+                    npc.dontTakeDamage = true;
+                }
+            }
+            return true;
+        }
 
         public override bool PreAI()
         {
@@ -195,13 +213,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 else
                     npc.ai[3] = 0;
-            }
-
-            for (int k = 0; k < 2; k++)
-            {
-                int dust = Dust.NewDust(npc.position - new Vector2(8f, 8f), npc.width + 16, npc.height + 16, 6, 0f, 0f, 0, Color.Black, 0.2f);
-                Main.dust[dust].velocity *= 0.0f;
-                Main.dust[dust].noGravity = true;
             }
             if (Main.netMode != 1)
             {
@@ -484,7 +495,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
-                        AkumaAttacks.SpawnLung(player, mod);
+                        AkumaAttacks.SpawnLung(player, mod, false);
                         MinionCount += 1;
                     }
                 }
@@ -1078,23 +1089,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             return true;
         }
 
-        public override bool CheckDead()
-        {
-            if (npc.life <= 0)
-            {
-                if (Main.expertMode)
-                {
-                    return true;
-                }
-                else
-                {
-                    internalAI[3] = 1f;
-                    npc.life = npc.lifeMax;
-                    npc.netUpdate = true;
-                    npc.dontTakeDamage = true;
-                }
-            }
-            return true;
-        }
+        
     }
 }

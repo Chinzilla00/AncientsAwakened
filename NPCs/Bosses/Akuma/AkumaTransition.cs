@@ -13,11 +13,19 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
         public override void SetDefaults()
         {
-            npc.width = 20;
-            npc.life = 1;
-            npc.height = 32;
+            npc.width = 100;
+            npc.height = 100;
             npc.friendly = false;
-            npc.scale *= 1.5f;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+            npc.scale *= 1.3f;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
         public int timer;
         public bool ATransitionActive = false;
@@ -82,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         }
 
-        public override bool PreNPCLoot()
+        public override void NPCLoot()
         {
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -90,7 +98,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             AAMod.AkumaMusic = false;
 
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
-            return false;
         }
         
     }

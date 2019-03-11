@@ -459,7 +459,7 @@ namespace AAMod
             {
                 tasks.Insert(DungeonChests + 1, new PassLegacy("InfernoChest", delegate (GenerationProgress progress)
                 {
-                    int Loops = 0;
+                    bool placed = false;
                     int Minimum = 50;
                     int Maximum = Main.maxTilesX / 2;
                     if (Main.dungeonX > Maximum)
@@ -467,7 +467,7 @@ namespace AAMod
                         Minimum = Maximum;
                         Maximum = Main.maxTilesX - 50;
                     }
-                    while (Loops < 1000)
+                    while (!placed)
                     {
                         int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
                         int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);
@@ -503,20 +503,19 @@ namespace AAMod
                                         chest.item[4].stack = WorldGen.genRand.Next(15, 31);
                                         chest.item[5].SetDefaults(73, false);
                                         chest.item[5].stack = WorldGen.genRand.Next(1, 3);
-                                        Loops += 1000;
+                                        placed = true ;
                                         break;
                                     }
                                     break;
                                 }
                             }
                         }
-                        Loops++;
                     }
                 }));
 
                 tasks.Insert(DungeonChests + 2, new PassLegacy("MireChest", delegate (GenerationProgress progress)
                 {
-                    int Loops = 0;
+                    bool placed = false;
                     int Minimum = 50;
                     int Maximum = Main.maxTilesX / 2;
                     if (Main.dungeonX > Maximum)
@@ -524,7 +523,7 @@ namespace AAMod
                         Minimum = Maximum;
                         Maximum = Main.maxTilesX - 50;
                     }
-                    while (Loops < 1000)
+                while (!placed)
                     {
                         int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
                         int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);
@@ -560,14 +559,13 @@ namespace AAMod
                                         chest.item[4].stack = WorldGen.genRand.Next(15, 31);
                                         chest.item[5].SetDefaults(73, false);
                                         chest.item[5].stack = WorldGen.genRand.Next(1, 3);
-                                        Loops += 1000;
+                                        placed = true;
                                         break;
                                     }
                                     break;
                                 }
                             }
                         }
-                        Loops++;
                     }
                 }));
             }
@@ -591,13 +589,9 @@ namespace AAMod
             List<Point> posIslands = new List<Point>();
             progress.Set(0.7f);
             int IslandNumber = 2;
-            if (GetWorldSize() == 2)
+            if (GetWorldSize() != 1)
             {
                 IslandNumber = 4;
-            }
-            if (GetWorldSize() == 3)
-            {
-                IslandNumber = 6;
             }
 
             for (int i = 0; i < IslandNumber; i++)

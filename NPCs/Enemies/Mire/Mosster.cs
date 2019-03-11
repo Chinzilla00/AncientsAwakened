@@ -45,13 +45,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MossterGoreHead"), 1f);
             }
         }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.dayTime ? 1.5f : 0f;
-        }
-
+        
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;

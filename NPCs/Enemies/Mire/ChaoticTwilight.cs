@@ -33,6 +33,8 @@ namespace AAMod.NPCs.Enemies.Mire
         public override void AI()
         {
             BaseAI.AIWeapon(npc, ref npc.ai, 120, 100, 9f, 1f, 1f);
+            if (npc.ai[0] == 0f)
+                npc.rotation += 0.785f;
         }
 
         public override void FindFrame(int frameHeight)
@@ -59,11 +61,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.frameCounter = 0;
             }
         }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && spawnInfo.spawnTileY > Main.worldSurface && Main.hardMode ? .1f : 0f;
-        }
+        
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

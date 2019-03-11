@@ -29,14 +29,11 @@ namespace AAMod.NPCs.Enemies.Mire
 			animationType = NPCID.CreatureFromTheDeep;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            if (Main.hardMode && !Main.dayTime)
-            {
-                return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire ? .05f : 0f;
-            }
-            return 0f;
-		}
+        public override void NPCLoot()
+        {
+
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"));
+        }
 
         public override void AI()
         {
@@ -132,14 +129,6 @@ namespace AAMod.NPCs.Enemies.Mire
             if (npc.justHit)
             {
                 flag4 = false;
-            }
-            if (Main.netMode != 1 && npc.type == 198 && (double)npc.life <= (double)npc.lifeMax * 0.55)
-            {
-                npc.Transform(199);
-            }
-            if (Main.netMode != 1 && npc.type == 348 && (double)npc.life <= (double)npc.lifeMax * 0.55)
-            {
-                npc.Transform(349);
             }
             int num36 = 60;
             

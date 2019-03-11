@@ -173,116 +173,96 @@ namespace AAMod.NPCs.TownNPCs
             if (ChatNumber == 0)
 			{
 			    button2 = DoNextT;
-                ResetBools();
                 DoNext = true;
-
             }
             else if (ChatNumber == 1)
             {
                 button2 = MushT;
-                ResetBools();
                 Mushroom = true;
             }
             else if (ChatNumber == 2)
             {
                 button2 = GlowT;
-                ResetBools();
                 Glowshroom = true;
             }
             else if (ChatNumber == 3)
             {
                 button2 = GripT;
-                ResetBools();
                 Grips = true;
             }
             else if (ChatNumber == 4)
             {
                 button2 = BroodT;
-                ResetBools();
                 Brood = true;
             }
             else if (ChatNumber == 5)
             {
                 button2 = HydraT;
-                ResetBools();
                 Hydra = true;
             }
             else if (ChatNumber == 6 && NPC.downedBoss3)
             {
                 button2 = DjinnT;
-                ResetBools();
                 Djinn = true;
             }
             else if (ChatNumber == 7 && NPC.downedBoss3)
             {
                 button2 = SerpentT;
-                ResetBools();
                 Serpent = true;
             }
             else if (ChatNumber == 8 && Main.hardMode)
             {
                 button2 = RetT;
-                ResetBools();
                 Retriever = true;
             }
             else if (ChatNumber == 9 && Main.hardMode)
             {
                 button2 = RaidT;
-                ResetBools();
                 Raider = true;
             }
             else if (ChatNumber == 10 && Main.hardMode)
             {
                 button2 = OrthrusT;
-                ResetBools();
                 Orthrus = true;
             }
             else if (ChatNumber == 11 && NPC.downedMoonlord)
             {
                 button2 = FishT;
-                ResetBools();
                 Fishron = true;
             }
             else if (ChatNumber == 12 && NPC.downedMoonlord)
             {
                 button2 = EquinoxT;
-                ResetBools();
                 Equinox = true;
             }
             else if (ChatNumber == 13 && NPC.downedMoonlord)
             {
                 button2 = AnubisT;
-                ResetBools();
                 AnubisB = true;
             }
             else if (ChatNumber == 14 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
             {
                 button2 = GripsST;
-                ResetBools();
                 GripsS = true;
             }
             else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = AkumaT;
-                ResetBools();
                 Akuma = true;
             }
             else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = YamataT;
-                ResetBools();
                 Yamata = true;
             }
             else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
-                ResetBools();
                 Zero = true;
             }
             else
             {
                 ChatNumber = 0;
-                ResetBools();
                 button2 = DoNextT;
                 DoNext = true;
             }
@@ -313,6 +293,7 @@ namespace AAMod.NPCs.TownNPCs
 		{
 			if (firstButton)
 			{
+				ResetBools();
 				ChatNumber += 1;
 				if (ChatNumber > 17)
 				{
@@ -350,18 +331,18 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Hydra)
             {
-                return AAWorld.downedHydra ? "Thanks for killing that hydra. Every time I go into the mire that thing always finds me and chases me down." : 
+                return AAWorld.downedHydra ? "Good thing is that those Hydras are not like in Greek mythology. They are not totally immortal like Lernean Hydra." : 
                     "Mire is a native place for creatures, named Hydras. They are 3 headed, very poisonous reptiles. And they also laying a lot of eggs. Go and kill some. Maybe Mire will become a bit friendlier after that.";
             }
             else if (Djinn)
             {
                 return AAWorld.downedDjinn ? "You actually found and defeated one? And you even didn't try to make a wish? What a shame..." : 
-                    "I am sure you heard some Arabian fairy tales before. Often, they mention a wish-granting spirit called a Djinn or Genie. It mostly showed there like almighty and kind spirit, which may present 3 wishes to his liberator. In reality, however, they are smart and evil creatures, whos only purpose is to create chaos. If you will see one, do not try to talk, just kill it...also he keeps flexing on me and I'm obviously 10 times more ripped.";
+                    "I am sure you heard some Arabian fairy tales before. Often, they have a character, named Djinn or Genie. It mostly showed there like almighty and kind spirit, which may present 3 wishes to his liberator. In reality, however, they are smart and evil creatures, whos only purpose is to create chaos. If you will see one, do not try to talk, just kill it.";
             }
             else if (Serpent)
             {
                 return AAWorld.downedSerpent ? "How are your frostbites? I hope that they are not as deep as they look." : 
-                    "Normal serpents are usually hibernate while it is cold around. But this exact kind of serpents behave diffirently. They are very active during cold times. But the strangest thing is that they are capable to fly and breathe subzero frost. I am sure you can find something useful in their lair, so go and kill one.";
+                    "Normal serpents are usually hibernate while it is cold around. But this exact kind of serpents behaves diffirently. They are very active during cold times. But the strangest thing is that they are capable to fly and breathe subzero frost. I am sure you can find something useful in their lair, so go and kill one.";
             }
             else if (Retriever)
             {
@@ -399,12 +380,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Akuma)
             {
-                return AAWorld.downedAkuma ? "That wasn't that hard after all, was it? Also, you may need to visit our Stylist. Even a helmet didn't save your hair." : 
+                return AAWorld.downedAkuma ? "That wasn't that hard after all, was it? Also, you may need to visit our Stylist. Even helmet didn't save your hair." : 
                     "Why would anyone call east dragon a Demon? I have no idea personally... Hey, you, go here quick. You better get rid of this ''Akuma'' before it will come and destroy our living places.";
             }
             else if (Yamata)
             {
-                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my fur out." :
+                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my hair out." :
                     "Yamata, the whiny baby! He complains about everything, and he WONT SHUT UP! LIKE SERIOUSLY, YOU try and deal with seven obnoxiously loud dragon heads that chatter constantly and talk over eachother!";
             }
             else if (Zero)
@@ -492,7 +473,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Cobbler >= 0)
             {
-                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. It's not my fault he uses fancy leather.");
+                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. What do I do?");
             }
 
             if (ConfusedZombie >= 0)

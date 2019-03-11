@@ -56,13 +56,13 @@ namespace AAMod
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
             int projType = Awakened ? mod.ProjectileType("AkumaAMeteor") : mod.ProjectileType("AkumaMeteor");
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.25f, projType, npc.damage / 2, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.5f, projType, npc.damage / 2, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
-        public static void SpawnLung(Player player, Mod mod)
+        public static void SpawnLung(Player player, Mod mod, bool isAwakened)
         {
             if (Main.netMode != 1)
             {
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, mod.NPCType("AncientLung"), 0);
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, mod.NPCType(isAwakened ? "AwakenedLung" : "AncientLung"), 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 600f);
                 Main.npc[npcID].netUpdate2 = true;
             }
@@ -71,7 +71,7 @@ namespace AAMod
         public static void Eruption(NPC npc, Mod mod)
         {
             Player player = Main.player[npc.target];
-            float num72 = 10;
+            float num72 = 15;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = player.Center.X + Main.screenPosition.X - vector2.X;
             float num79 = player.Center.Y + Main.screenPosition.Y - vector2.Y;
@@ -112,7 +112,7 @@ namespace AAMod
             num79 *= num80;
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 0.75f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.75f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
         

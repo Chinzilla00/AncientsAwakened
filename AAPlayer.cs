@@ -1780,28 +1780,11 @@ namespace AAMod
         {
             int before = player.lifeRegen;
             bool drain = false;
-            if (!Unstable)
-            {
-                OldHeadPos = player.headPosition;
-                OldBodyPos = player.bodyPosition;
-                OldLegPos = player.legPosition;
-            }
 
             if (Unstable)
             {
                 player.confused = true;
-                player.headPosition.Y -= 20f;
-                player.headPosition.X += 15f;
-                player.bodyPosition.Y += 37f;
-                player.bodyPosition.X -= 23f;
-                player.legPosition.Y += 20f;
-                player.legPosition.X -= 12f;
-            }
-            else
-            {
-                player.headPosition = OldHeadPos;
-                player.bodyPosition = OldBodyPos;
-                player.legPosition = OldLegPos;
+                player.moveSpeed *= Main.rand.NextFloat(.25f, 2f);
             }
 
             if (infinityOverload)

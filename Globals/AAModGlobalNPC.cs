@@ -733,6 +733,85 @@ namespace AAMod
         {
             Player player = Main.player[Main.myPlayer];
 
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            {
+                pool.Clear();
+                if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
+                {
+                    pool.Add(mod.NPCType("Wyrmling"), .8f);
+                    pool.Add(mod.NPCType("InfernalSlime"), 1.5f);
+                    pool.Add(mod.NPCType("Flamebrute"), .8f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), 1.2f);
+                    pool.Add(mod.NPCType("DragonClaw"), 1.2f);
+                    if (Main.hardMode)
+                    {
+                        pool.Add(mod.NPCType("Wyvern"), .6f);
+                        pool.Add(mod.NPCType("BlazePhoenix"), .4f);
+                    }
+                }
+                else if (player.position.Y > (Main.worldSurface * 16.0))
+                {
+                    pool.Add(mod.NPCType("Wyrmling"), .8f);
+                    pool.Add(mod.NPCType("Flamebrute"), .8f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), 1.2f);
+                    pool.Add(mod.NPCType("DragonClaw"), 1.2f);
+                    if (Main.hardMode)
+                    {
+                        pool.Add(mod.NPCType("Wyvern"), .6f);
+                        pool.Add(mod.NPCType("Wyrm"), .5f);
+                        pool.Add(mod.NPCType("ChaoticDawn"), .1f);
+                        if (player.ZoneSnow)
+                        {
+                            pool.Add(mod.NPCType("Dragron"), .05f);
+                        }
+                    }
+                }
+                if (AAWorld.downedGripsS)
+                {
+                    pool.Add(mod.NPCType("BlazeClaw"), 1f);
+                }
+                if (AAWorld.downedAkuma)
+                {
+                    pool.Add(mod.NPCType("Lung"), .5f);
+                }
+            }
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            {
+                pool.Clear();
+                if ((player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
+                {
+                    pool.Add(mod.NPCType("MireSlime"), 1.5f);
+                    pool.Add(mod.NPCType("Mosster"), .8f);
+                    pool.Add(mod.NPCType("Newt"), 1.2f);
+                    pool.Add(mod.NPCType("HydraClaw"), 1.2f);
+                    if (Main.hardMode)
+                    {
+                        pool.Add(mod.NPCType("Toxitoad"), .5f);
+                        pool.Add(mod.NPCType("Kappa"), .6f);
+                    }
+                }
+                else if (player.position.Y > (Main.worldSurface * 16.0))
+                {
+                    pool.Add(mod.NPCType("Mosster"), .8f);
+                    pool.Add(mod.NPCType("Newt"), 1.2f);
+                    pool.Add(mod.NPCType("HydraClaw"), 1.2f);
+                    if (Main.hardMode)
+                    {
+                        pool.Add(mod.NPCType("Kappa"), .6f);
+                        pool.Add(mod.NPCType("ChaoticTwilight"), .1f);
+                        if (player.ZoneSnow)
+                        {
+                            pool.Add(mod.NPCType("Miregron"), .05f);
+                        }
+                    }
+                }
+                if (AAWorld.downedGripsS)
+                {
+                    pool.Add(mod.NPCType("AbyssClaw"), 1f);
+                }
+            }
+
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();

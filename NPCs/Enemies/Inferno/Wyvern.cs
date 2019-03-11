@@ -64,14 +64,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
         }
 
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode && Main.dayTime ? 2f : 0f;
-        }
-
-
         //SPAWN CONDITIONS:
         public override void NPCLoot()
 		{

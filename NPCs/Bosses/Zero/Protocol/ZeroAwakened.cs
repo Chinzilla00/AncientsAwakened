@@ -8,6 +8,7 @@ using System.Reflection;
 using Terraria.DataStructures;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -166,6 +167,31 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         private int Glitch = 0;
         private bool GlitchBool = false;
 
+        public float[] internalAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
@@ -246,14 +272,20 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                 }
             }
+            internalAI[0]++;
+            if (internalAI[0] >= 240)
+            {
+                Attack(Main.rand.Next(4));
+                internalAI[0] = 0;
+            }
             if (dead2)
             {
+                npc.TargetClosest(false);
                 if (Killed == false)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
-                npc.TargetClosest(false);
                 Panic = false;
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
                 if (npc.timeLeft > 10)
@@ -263,7 +295,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
 				return;
             }
-            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 if (Killed == false)
                 {

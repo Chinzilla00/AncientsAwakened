@@ -81,12 +81,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             return new Color(220, 150, 150) * ((float)Main.mouseTextColor / 255f);
         }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime && Main.hardMode ? .8f : 0f;
-        }
-
+        
         public override void NPCLoot()
         {
 			if(Main.netMode != 1)

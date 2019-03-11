@@ -253,15 +253,6 @@ namespace AAMod.NPCs.Bosses.Wyrm
             return false;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            if (Main.hardMode)
-            {
-                return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 0.5f : 0f;
-            }
-            return 0f;
-        }
-
         public override void NPCLoot()
         {
             npc.DropLoot(mod.ItemType("DragonFire"), 1, 3);

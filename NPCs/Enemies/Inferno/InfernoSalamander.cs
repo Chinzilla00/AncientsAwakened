@@ -127,13 +127,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
             return false;
         }
-        
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.dayTime ? 2f : 0f;
-        }
 
         public override void NPCLoot()
         {

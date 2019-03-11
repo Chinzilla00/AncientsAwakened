@@ -33,11 +33,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             animationType = 81;
         }
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && spawnInfo.spawnTileY > Main.worldSurface && Main.dayTime ? 2f : 0f;
-        }
-
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;

@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.alpha = 0;
             }
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 4f, 1.5f, false, 300);
+            BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, true, 800, 400, 180, 2);
             
             npc.frameCounter++;
             if (npc.frameCounter >= 10)

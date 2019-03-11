@@ -35,15 +35,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
-            {
-                return 0f;
-            }
-            if (!NPC.downedMoonlord)
-            {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
-            }
-            return 0;
+            return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

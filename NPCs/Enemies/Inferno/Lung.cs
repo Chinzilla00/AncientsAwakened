@@ -8,26 +8,20 @@ using Terraria.Audio;
 using BaseMod;
 using System.IO;
 
-namespace AAMod.NPCs.Bosses.Akuma
+namespace AAMod.NPCs.Enemies.Inferno
 {
     [AutoloadBossHead]
-    public class AncientLung : ModNPC
+    public class Lung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLung"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/Lung"; } }
 
         public bool loludided;
         private bool weakness;
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Lung");
+			DisplayName.SetDefault("Awakened Lung");
 
-        }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
         }
 
         public override void SetDefaults()
@@ -39,8 +33,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
             npc.damage = 50;
-            npc.defense = 90;
-            npc.lifeMax = 8000;
+            npc.defense = 100;
+            npc.lifeMax = 10000;
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             npc.lavaImmune = true;
@@ -48,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noTileCollide = true;
             npc.behindTiles = true;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -66,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             float acceleration = 0.09f;
             
             
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
+            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
             npc.ai[1]++;
@@ -98,13 +92,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 
                     for (int i = 0; i < 5; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AncientLungBody"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("LungBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
                         
                     }
                     
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AncientLungTail"), npc.whoAmI, 0, latestNPC);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("LungTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
 
@@ -296,8 +290,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + (float)(npc.height / 2);
                 npc.position.X = npc.position.X - (float)(npc.width / 2);
                 npc.position.Y = npc.position.Y - (float)(npc.height / 2);
-                int dust1 = mod.DustType<Dusts.AkumaDust>();
-                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                int dust1 = mod.DustType<Dusts.AkumaADust>();
+                int dust2 = mod.DustType<Dusts.AkumaADust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -323,13 +317,13 @@ namespace AAMod.NPCs.Bosses.Akuma
     }
     
     [AutoloadBossHead]
-    public class AncientLungBody : AncientLung
+    public class LungBody : Lung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungBody"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Lung");
+            DisplayName.SetDefault("Awakened Lung");
         }
 
         public override void SetDefaults()
@@ -359,7 +353,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (Main.netMode != 1)
             {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("AncientLung"))
+                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
@@ -410,7 +404,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<AncientLung>()))
+            if (NPC.AnyNPCs(mod.NPCType<Lung>()))
             {
                 return false;
             }
@@ -418,13 +412,13 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
     }
     
-    public class AncientLungTail : AncientLung
+    public class LungTail : Lung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungTail"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Lung");
+            DisplayName.SetDefault("Awakened Lung");
         }
 
         public override void SetDefaults()
@@ -459,7 +453,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (Main.netMode != 1)
             {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("AncientLung"))
+                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
@@ -515,7 +509,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<AncientLung>()))
+            if (NPC.AnyNPCs(mod.NPCType<Lung>()))
             {
                 return false;
             }

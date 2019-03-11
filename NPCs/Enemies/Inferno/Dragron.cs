@@ -163,16 +163,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode && !spawnInfo.playerSafe)
-            {
-                return SpawnCondition.UndergroundMimic.Chance;
-            }
-            return 0f;
-        }
-
         public override void HitEffect(int hitDirection, double damage)
 		{
             if (npc.life > 0)

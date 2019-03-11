@@ -33,6 +33,8 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void AI()
         {
             BaseAI.AIWeapon(npc, ref npc.ai, 100, 100, 9f, 1f, 1f);
+            if (npc.ai[0] == 0f)
+                npc.rotation += 0.785f;
         }
 
         /*public override void FindFrame(int frameHeight)
