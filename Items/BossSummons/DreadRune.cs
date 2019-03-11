@@ -82,13 +82,9 @@ Only craftable in expert mode");
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                     return false;
                 }
-                for (int m = 0; m < Main.maxProjectiles; m++)
+                if (NPC.AnyNPCs(mod.NPCType("YamataTransition")))
                 {
-                    Projectile p = Main.projectile[m];
-                    if (p != null && p.active && p.type == mod.ProjectileType("YamataTransition"))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
                 return true;
             }

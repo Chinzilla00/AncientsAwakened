@@ -53,8 +53,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Player player = Main.player[npc.target];
 
-            float speed = 18f;
-            float acceleration = 0.09f;
             
             
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
@@ -86,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
 
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < 12; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AwakenedLungBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
@@ -118,6 +116,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             bool collision = true;
 
+            float speed = 12;
+            float acceleration = 0.15f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);

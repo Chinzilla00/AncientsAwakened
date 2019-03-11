@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Fury");
-            Main.projFrames[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 4;
         }
         public override void SetDefaults()
         {
@@ -40,16 +40,14 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void AI()
         {
             timer++;
-            ATransitionActive = true;
-
             npc.frameCounter++;
             if (npc.frameCounter >= 7)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += Main.npcTexture[npc.type].Height / 4;
+                npc.frame.Y += 32;
             }
 
-            if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
+            if (npc.frame.Y > 32 * 3)
             {
                 npc.frame.Y = 0;
             }
@@ -83,21 +81,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (timer == 1165)
+            if (timer >= 1165)
             {
-                npc.life = 0;
+                Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+
+                AAMod.AkumaMusic = false;
+
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+                npc.active = false;
             }
 
-        }
-
-        public override void NPCLoot()
-        {
-            Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("IT ONLY MAKES THEM STRONGER", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
-            AAMod.AkumaMusic = false;
-
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
         }
         
     }

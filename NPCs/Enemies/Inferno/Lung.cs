@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
 
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < 9; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("LungBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;

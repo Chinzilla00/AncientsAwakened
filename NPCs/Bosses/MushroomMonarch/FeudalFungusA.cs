@@ -15,7 +15,7 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
     [AutoloadBossHead]
-    public class FeudalFungus : ModNPC
+    public class FeudalFungusA : ModNPC
     {
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -49,9 +49,9 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 1200;   //boss life
-            npc.damage = 12;  //boss damage
-            npc.defense = 12;    //boss defense
+            npc.lifeMax = 35000;   //boss life
+            npc.damage = 60;  //boss damage
+            npc.defense = 35;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.buyPrice(0, 0, 75, 45);
             npc.aiStyle = 26;
@@ -69,6 +69,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             bossBag = mod.ItemType("FungusBag");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Fungus");
             npc.alpha = 255;
+            npc.scale *= 1.2f;
         }
 
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2;
@@ -164,11 +165,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 			if(internalAI[1] == AISTATE_HOVER) 
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 56f, FireMagic);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, .3f, 7f, 200, 40, FireMagic);
             }
             else if (internalAI[1] == AISTATE_FLIER) 
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f,0.04f, 5f, 3f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, .1f, .1f, 8f, 5f, false, 1);
             }
             else 
             {
@@ -208,6 +209,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
             else
             {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.ShroomiteBar, Main.rand.Next(12, 30));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingMushium"), Main.rand.Next(25, 35));
             }
         }

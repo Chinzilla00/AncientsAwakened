@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
 			npc.noTileCollide = true;
             npc.width = 84;
-            npc.height = 120;
+            npc.height = 84;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.lifeMax = 150000;
@@ -120,6 +120,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.ai[2]++;
             if (npc.ai[2] == 300)
             {
+                QuoteSaid = false;
                 Roar(roarTimerMax, false);
                 internalAI[1] += 1;
             }
@@ -165,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         Main.NewText("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
                     }
                 }
-                else if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(BuffID.Wet))
+                else
                 {
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaABreath>(), 2, 2);
@@ -382,20 +383,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             
             return false;
         }
-
-        public override bool CheckDead()
-        {
-            if (npc.life <= 0)
-            {
-
-                internalAI[3] = 1f;
-                npc.life = npc.lifeMax;
-                npc.netUpdate = true;
-                npc.dontTakeDamage = true;
-            }
-                return true;
-        }
-
         public override void NPCLoot()
 		{
             if (Main.expertMode)

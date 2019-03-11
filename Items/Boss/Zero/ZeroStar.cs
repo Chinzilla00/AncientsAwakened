@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroStar : ModItem
+    /*public class ZeroStar : ModItem
     {
         
         public override void SetStaticDefaults()
@@ -81,5 +81,5 @@ namespace AAMod.Items.Boss.Zero
                 recipe.AddRecipe();
             }
         }
-	}
+	}*/
 }

@@ -101,32 +101,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 internalAI[3] = reader.ReadFloat();
             }
         }
-
-        public override bool CheckDead()
-        {
-            if (npc.life <= 0)
-            {
-                if (Main.expertMode)
-                {
-                    return true;
-                }
-                else
-                {
-                    internalAI[3] = 1f;
-                    npc.life = npc.lifeMax;
-                    npc.netUpdate = true;
-                    npc.dontTakeDamage = true;
-                }
-            }
-            return true;
-        }
+        
 
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
 
-            float speed = 18f;
-            float acceleration = 0.09f;
             
             if (fireAttack == true || internalAI[0] >= 450)
             {
@@ -180,9 +160,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.NewText("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
                     }
                 }
-                else if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && !npc.HasBuff(BuffID.Wet))
+                else
                 {
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 2);
                 }
                 if (attackTimer >= 80)
@@ -265,6 +244,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             bool collision = true;
 
+
+            float speed = 8f;
+            float acceleration = 0.13f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);

@@ -63,13 +63,9 @@ Only craftable in expert mode");
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(0, 191, 255), false);
                     return false;
                 }
-                for (int m = 0; m < Main.maxProjectiles; m++)
+                if (NPC.AnyNPCs(mod.NPCType("AkumaTransition")))
                 {
-                    Projectile p = Main.projectile[m];
-                    if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
                 return true;
             }

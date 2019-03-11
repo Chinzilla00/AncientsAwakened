@@ -57,7 +57,7 @@ namespace AAMod.Items.Armor.Paints
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "FulguriteBar", 6);
             recipe.AddIngredient(ItemID.BottledWater, 1);
-            recipe.AddTile(null, "Mortar_Tile");
+            recipe.AddTile(TileID.BewitchingTable);
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

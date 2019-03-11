@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("R0CKET");
+            Main.projFrames[projectile.type] = 3;
 		}
     	
         public override void SetDefaults()

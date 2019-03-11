@@ -1261,6 +1261,7 @@
     <Compile Include="NPCs\Bosses\Hydra\HydraHead1.cs" />
     <Compile Include="NPCs\Bosses\Hydra\HydraHead2.cs" />
     <Compile Include="NPCs\Bosses\Hydra\HydraHead3.cs" />
+    <Compile Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusCloud.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusFlier.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusIGoNow.cs" />
@@ -1349,6 +1350,7 @@
     <Compile Include="NPCs\Bosses\Zero\Protocol\ERROR.cs" />
     <Compile Include="NPCs\Bosses\Zero\Protocol\GlitchBlast.cs" />
     <Compile Include="NPCs\Bosses\Zero\Protocol\GlitchRocket.cs" />
+    <Compile Include="NPCs\Bosses\Zero\Protocol\Static.cs" />
     <Compile Include="NPCs\Bosses\Zero\Protocol\StaticSphere.cs" />
     <Compile Include="NPCs\Bosses\Zero\Protocol\GlitchBomb.cs" />
     <Compile Include="NPCs\Bosses\Zero\Protocol\GlitchBoom.cs" />
@@ -4463,6 +4465,8 @@
     <Content Include="NPCs\Bosses\Hydra\HydraNeck.png" />
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA.png" />
+    <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FungusCloud.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FungusFlier.png" />
@@ -4650,6 +4654,7 @@
     <Content Include="NPCs\Bosses\Zero\Protocol\GlitchBoom.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\GlitchRocket.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\NullZP.png" />
+    <Content Include="NPCs\Bosses\Zero\Protocol\Static.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\StaticSphere.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\VoidBreaker.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\ZeroProtocol_Head_Boss.png" />

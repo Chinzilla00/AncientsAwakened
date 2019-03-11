@@ -54,7 +54,7 @@ Briefly become invulnerable after your minions strike an enemy";
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.TitaniumBar, 6);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
-                recipe.AddTile(null, "Mortar_Tile");
+                recipe.AddTile(TileID.BewitchingTable);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

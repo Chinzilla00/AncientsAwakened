@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class Daystorm : BaseAAItem //extend BaseAAItem
+    /*public class Daystorm : BaseAAItem //extend BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -50,5 +50,5 @@ namespace AAMod.Items.Boss.Akuma
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }
+    }*/
 }

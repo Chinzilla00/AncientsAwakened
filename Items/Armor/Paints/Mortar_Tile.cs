@@ -13,14 +13,17 @@ namespace AAMod.Items.Armor.Paints
     {
         public override void SetDefaults()
         {
+            Main.tileSolidTop[Type] = false;
+            Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
+            Main.tileTable[Type] = false;
             Main.tileLavaDeath[Type] = true;
-            Main.tileTable[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
+            TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Mortar and Pestle");
-            AddMapEntry(new Color(0, 160,0 ), name);
+            AddMapEntry(new Color(0, 160 ,0 ), name);
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Bottles };
         }

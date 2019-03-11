@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
             for (int k = 0; k < npc.oldPos.Length; k++)
             {
-                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/ZeroTrail");
+                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
                 Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
                 Color color = npc.GetAlpha(color1) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
                 spritebatch.Draw(ZeroTrail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);

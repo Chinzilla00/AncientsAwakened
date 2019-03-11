@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.ModLoader;
 
@@ -30,8 +28,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
         public int timer;
-
-
+        
         public int RVal = 125;
         public int BVal = 255;
 
