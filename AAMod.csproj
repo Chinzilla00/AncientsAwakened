@@ -1899,6 +1899,7 @@
     <Content Include="Items\Dev\ExcaligrimEX.png" />
     <Content Include="Items\Dev\Fluff.png" />
     <Content Include="Items\Dev\FluffEX.png" />
+    <Content Include="Items\Dev\FreedomBlaster.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
