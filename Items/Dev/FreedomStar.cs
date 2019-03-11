@@ -29,7 +29,7 @@ namespace AAMod.Items.Dev
             item.ranged = true;
             item.damage = 400;
             item.scale = .65f;
-            item.shoot = mod.ProjectileType("PlasmaShot");
+            item.shoot = mod.ProjectileType("Freedom Shot");
             item.shootSpeed = 30f;
             item.useTime = 10;
             item.useAnimation = 10;
