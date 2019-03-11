@@ -10,7 +10,6 @@ using System.IO;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    [AutoloadBossHead]
     public class Lung : ModNPC
 	{
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/Lung"; } }
@@ -316,7 +315,6 @@ namespace AAMod.NPCs.Enemies.Inferno
         }
     }
     
-    [AutoloadBossHead]
     public class LungBody : Lung
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungBody"; } }

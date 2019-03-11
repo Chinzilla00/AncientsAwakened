@@ -10,7 +10,6 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
-    [AutoloadBossHead]
     public class AncientLung : ModNPC
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLung"; } }
@@ -322,7 +321,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
     }
     
-    [AutoloadBossHead]
     public class AncientLungBody : AncientLung
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungBody"; } }

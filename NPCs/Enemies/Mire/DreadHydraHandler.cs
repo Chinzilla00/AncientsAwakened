@@ -13,6 +13,9 @@ namespace AAMod
 {
 	public class DreadHydraHandler : ParentNPC
 	{
+
+        public override string Texture { get { return "AAMod/BlankTex"; } }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return G_CanSpawn(spawnInfo.spawnTileX, spawnInfo.spawnTileY, npc.type, spawnInfo.player, spawnInfo) ? 1f : 0f;
