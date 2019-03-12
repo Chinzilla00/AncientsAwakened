@@ -363,9 +363,6 @@
     <Compile Include="Items\Armor\Paladin\Paladin_Boots.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Chestplate.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Helmet.cs" />
-    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
-    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
-    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
     <Compile Include="Items\Armor\Radium\RadiumCuisses.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHat.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHeadgear.cs" />
@@ -707,7 +704,6 @@
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\Smallcano.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
-    <Compile Include="Items\DevTools\ToySunkenShip.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
@@ -739,8 +735,6 @@
     <Compile Include="Items\Dev\PoniumStaffEX.cs" />
     <Compile Include="Items\Dev\Prismeow.cs" />
     <Compile Include="Items\Dev\PoniumStaff.cs" />
-    <Compile Include="Items\Dev\YourBestNightmare.cs" />
-    <Compile Include="Items\Dev\YourBestFriend.cs" />
     <Compile Include="Items\Dev\SkrallStaff.cs" />
     <Compile Include="Items\Dev\TimeTeller.cs" />
     <Compile Include="Items\Dev\TitanAxe.cs" />
@@ -1149,9 +1143,6 @@
     <Compile Include="Items\Vanity\Chinzilla\ChinsMagicCoin.cs" />
     <Compile Include="Items\Vanity\Chinzilla\ChinSuit.cs" />
     <Compile Include="Items\Vanity\Dallin\FezLordsBag.cs" />
-    <Compile Include="Items\Vanity\Darkpuppy\FlowerBoots.cs" />
-    <Compile Include="Items\Vanity\Darkpuppy\FlowerMask.cs" />
-    <Compile Include="Items\Vanity\Darkpuppy\FlowerVest.cs" />
     <Compile Include="Items\Vanity\Eliza\LizBoots.cs" />
     <Compile Include="Items\Vanity\Eliza\LizEars.cs" />
     <Compile Include="Items\Vanity\Eliza\LizScarf.cs" />
@@ -1748,7 +1739,6 @@
     <Compile Include="Projectiles\Zero\Vortex.cs" />
     <Compile Include="Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Projectiles\Zero\ZeroStarP.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sounds\Sounds\AkumaRoar.cs" />
     <Compile Include="Sounds\Sounds\FerretNote.cs" />
     <Compile Include="Sounds\Sounds\Glitch.cs" />
@@ -1824,7 +1814,6 @@
     <Compile Include="Tiles\FulguriteBrickS.cs" />
     <Compile Include="Tiles\FulguritePlatingS.cs" />
     <Compile Include="Tiles\HydraPod.cs" />
-    <Compile Include="Tiles\ManaLantern.cs" />
     <Compile Include="Tiles\OroborosChestC1.cs" />
     <Compile Include="Tiles\OroborosChestC2.cs" />
     <Compile Include="Tiles\OroborosChestC3.cs" />
@@ -3227,20 +3216,6 @@
     <Content Include="Items\Armor\Paladin\Paladin_Crown_Head.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet_Head.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreavesBlue_Legs.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves_Legs.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabutoBlue_Head.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto_Head.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Arms.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Body.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Female.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Arms.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Body.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Female.png" />
-    <Content Include="Items\Armor\PerfectChaos\PerfectChaos_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses_Legs.png" />
     <Content Include="Items\Armor\Radium\RadiumHat.png" />
@@ -3719,7 +3694,6 @@
     <Content Include="Items\DevTools\Noodle.png" />
     <Content Include="Items\DevTools\NoodleSword.png" />
     <Content Include="Items\DevTools\Smallcano.png" />
-    <Content Include="Items\DevTools\ToySunkenShip.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />
@@ -3767,8 +3741,6 @@
     <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
-    <Content Include="Items\Dev\YourBestFriend.png" />
-    <Content Include="Items\Dev\YourBestNightmare.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Hooks\DragonsGripP.png" />
     <Content Include="Items\Hooks\DragonsGrip_Chain.png" />
@@ -4231,14 +4203,6 @@
     <Content Include="Items\Vanity\Chinzilla\Platinum_Wings.png" />
     <Content Include="Items\Vanity\Chinzilla\Silver_Wings.png" />
     <Content Include="Items\Vanity\Dallin\FezLordsBag.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerBoots.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerBoots_Legs.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerMask.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerMask_Head.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerVest.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerVest_Arms.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerVest_Body.png" />
-    <Content Include="Items\Vanity\Darkpuppy\FlowerVest_Female.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots_Legs.png" />
     <Content Include="Items\Vanity\Eliza\LizEars.png" />
@@ -5518,6 +5482,7 @@
     <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
     <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
