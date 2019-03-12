@@ -161,6 +161,12 @@ namespace AAMod.NPCs.Bosses.Retriever
             
             customAI[0]--;
 
+            if (Main.dayTime)
+            {
+                npc.velocity.Y -= 4;
+                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+            }
+
             if (customAI[0] <= 300)
             {
                 moveSpeed = 11f;
@@ -220,13 +226,11 @@ namespace AAMod.NPCs.Bosses.Retriever
 
                     Player player = Main.player[npc.target];
 
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<RetrieverLaser>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
-                    
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<Orthrus.OrthrusSpark>(), ref customAI[3], 5, npc.damage / 2, 12);
                     return;
                 }
                 else if (customAI[0] >= 59)
                 {
-                    if (Main.netMode != 1) laser.Kill();
                     npc.frame.Y = (100 * 10);
                     return;
                 }
@@ -259,9 +263,14 @@ namespace AAMod.NPCs.Bosses.Retriever
             }
 
             bool forceChange = false;
+
+            bool Dive1 = npc.life < npc.lifeMax * .8f;
+            bool Dive2 = npc.life < npc.lifeMax * .5f;
+            bool Dive3 = npc.life < npc.lifeMax * .2f;
+            int DiveSpeed = Dive1 ? 14 : Dive2 ? 17 : 20;
             if (Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
             {
-                int stopValue = 175;
+                int stopValue = 60;
                 npc.ai[3]++;
                 if (npc.ai[3] > stopValue) npc.ai[3] = stopValue;
                 forceChange = npc.ai[3] >= stopValue;
@@ -284,25 +293,17 @@ namespace AAMod.NPCs.Bosses.Retriever
             else
             if (npc.ai[0] == 2) //dive down
             {
-                moveSpeed = 15;
+                moveSpeed = DiveSpeed;
                 Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
                 Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
                     bool doubleDive = (npc.life < npc.lifeMax / 2);
-                    if (doubleDive)
-                    {
-                        npc.ai[0] = 3;
-                        npc.ai[1] = targetPlayer.Center.X;
-                        npc.ai[2] = targetPlayer.Center.Y;
-                    }
-                    else
-                    {
-                        npc.ai[0] = 0;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                    }
+
+                    npc.ai[0] = Dive1 ? 3 : 0;
+                    npc.ai[1] = Dive1 ? targetPlayer.Center.X : 0;
+                    npc.ai[2] = Dive1 ? targetPlayer.Center.Y : 0;
                     npc.ai[3] = 0;
                     npc.netUpdate = true;
                 }
@@ -311,7 +312,41 @@ namespace AAMod.NPCs.Bosses.Retriever
             else
             if (npc.ai[0] == 3) //dive up
             {
-                moveSpeed = 14;
+                moveSpeed = DiveSpeed;
+                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
+                Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                {
+                    npc.ai[0] = Dive2 ? 4 : 0;
+                    npc.ai[1] = Dive2 ? targetPlayer.Center.X : 0;
+                    npc.ai[2] = Dive2 ? targetPlayer.Center.Y : 0;
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
+                }
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else
+            if (npc.ai[0] == 4) //dive down
+            {
+                moveSpeed = DiveSpeed;
+                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
+                Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                {
+                    npc.ai[0] = Dive3 ? 5 : 0;
+                    npc.ai[1] = Dive3 ? targetPlayer.Center.X : 0;
+                    npc.ai[2] = Dive3 ? targetPlayer.Center.Y : 0;
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
+                }
+                BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else
+            if (npc.ai[0] == 5) //dive up
+            {
+                moveSpeed = DiveSpeed;
                 Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
                 Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);

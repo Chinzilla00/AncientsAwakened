@@ -243,7 +243,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (Tag)
             {
                 npc.life = 0;
-                npc.checkDead();
                 npc.netUpdate = true;
             }      
             if (SayTheLineYamata <= 0)
@@ -346,10 +345,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
                 AIMovementNormal();
             }
-            else if (internalAI[3] == 1)
-            {
-                IDedNow();
-            }
             else
             {
                 AIMovementRunAway();
@@ -357,20 +352,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();
         }
-
-        public void IDedNow()
-        {
-            if (!loludide)
-            {
-                npc.NPCLoot();
-                loludide = true;
-            }
-            npc.alpha += 10;
-            if (npc.alpha >= 255)
-            {
-                npc.active = false;
-            }
-        }
+        
 
         public void AIMovementRunAway()
         {
@@ -694,25 +676,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     quarterHealth = true;
                 }
             }
-        }
-
-        public override bool CheckDead()
-        {
-            if (npc.life <= 0)
-            {
-                if (!isAwakened && Main.expertMode)
-                {
-                    return true;
-                }
-                else
-                {
-                    internalAI[3] = 1f;
-                    npc.life = npc.lifeMax;
-                    npc.netUpdate = true;
-                    npc.dontTakeDamage = true;
-                }
-            }
-            return true;
         }
     }
 

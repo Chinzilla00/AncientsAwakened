@@ -1,6 +1,10 @@
 The Ancients have Awakened. Chaos reigns, storms ravage, and reality tears at the seams!
 
-**PLEASE NOTE: This mod is still in beta. I'm still doing my best to iron out bugs and add content.**
+**Don't forget to download Base Mod! It's required for this mod because I'm a shitty coder without it ;w; Ypu can find it on the mod browser.**
+
+**NOTE 1: This mod is still in beta. I'm still doing my best to iron out bugs and add content.**
+
+**NOTE 2: THIS MOD CONTAINS COPYRIGHTED MUSIC AS PLACEHOLDERS.**
 
 This mod adds:
 
@@ -27,10 +31,6 @@ Cross-Mod content with GRealm and Thorium, with Mod of Redemption & Varia cross-
 Fargo's Mutant Mod support.
 
 A unique soundtrack.
-
-
-**Don't forget to download Base Mod! It's required for this mod because I'm a shitty coder without it ;w;**
-
 
 Thanks to all these amazing people for all their help with the mod!
 

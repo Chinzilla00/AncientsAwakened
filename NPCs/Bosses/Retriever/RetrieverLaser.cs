@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             Vector2 diff = new Vector2((float)Math.Cos(shooter.rotation + rOffset) * 14f, (float)Math.Sin(shooter.rotation + rOffset) * 14f);
             diff.Normalize();
             projectile.velocity = diff;
-            projectile.direction = projectile.Center.X > shooter.Center.X ? 1 : -1;
+            projectile.direction = projectile.Center.X > shooter.Center.X ? -1 : 1;
             projectile.netUpdate = true;
 
             projectile.position = new Vector2(shooter.Center.X, shooter.Center.Y) + projectile.velocity * MoveDistance;

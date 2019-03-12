@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                         npc.frame.Y = 756;
                     }
                 }
-            }else if (internalAI[1] == AISTATE_FLY)
+            }else if (internalAI[1] == AISTATE_FLY || !Main.dayTime)
             {
                 if (npc.frameCounter > 7)
                 {
@@ -143,6 +143,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 			if(Main.netMode != 1)
 			{
+                if (!Main.dayTime)
+                {
+                    npc.dontTakeDamage = true;
+                    npc.velocity.Y -= 4;
+                    return;
+                }
                 if (internalAI[1] != AISTATE_FLY)
                 {
                     internalAI[0]++;
@@ -154,7 +160,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
-                else if (dist > 360 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                else if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     internalAI[1] = AISTATE_FLY;
                     npc.ai = new float[4];
@@ -173,9 +179,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             else if (internalAI[1] == AISTATE_FLY)//fly
             {
                 npc.noTileCollide = true;
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.4f, 6, 6, false, 300);
-                if (dist < 120 && npc.collideY == false)
+                npc.noGravity = true;
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
+                    npc.rotation = 0;
+                    npc.noGravity = false;
                     internalAI[0] = 0;
                     internalAI[1] = Main.rand.Next(3);
                     npc.ai = new float[4];

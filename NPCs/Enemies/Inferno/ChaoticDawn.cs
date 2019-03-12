@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 			npc.lifeMax = 250;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath6;
-            npc.value = 240000f;
+            npc.value = 24000f;
             npc.knockBackResist = .30f;
             npc.aiStyle = -1;
             npc.noTileCollide = true;
