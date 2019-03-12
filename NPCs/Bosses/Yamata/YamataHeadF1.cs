@@ -100,7 +100,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-			float playerDistance = Vector2.Distance(targetPlayer.Center, npc.Center);
+
+            float playerDistance = (targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center));
+
             if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
