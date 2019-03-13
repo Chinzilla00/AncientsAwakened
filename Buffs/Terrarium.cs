@@ -18,7 +18,6 @@ You are so awestruck by the glow of the terrarium that you can't think of anythi
 		{
             player.noFallDmg = true;
             player.nightVision = true;
-            player.noBuilding = true;
 		}
 	}
 }

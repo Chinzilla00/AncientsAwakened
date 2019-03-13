@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 		public int movementVariance = 60; //how far from the center point to move.
 
         public override void AI()
-		{
+        {
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -87,51 +87,22 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     Body = (Yamata)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<YamataHead>())
-                {
-                    Head = (Yamata)npcBody.modNPC;
-                    int latestNPC = npcBody.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npcBody.Center.X, (int)npcBody.Center.Y + 100, mod.NPCType("Yamata"), 0, npcBody.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npcBody.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npcBody.whoAmI;
-                    NPC RealBody = Main.npc[latestNPC];
-                    Body = (Yamata)RealBody.modNPC;
-                    Head.Tag = true;
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head2 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head3 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head4 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head5 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head6 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)Body.npc.Center.X, (int)Body.npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, Body.npc.whoAmI);
-                    Main.npc[(int)latestNPC].ai[0] = Body.npc.whoAmI;
-                    Body.Head7 = Main.npc[latestNPC];
-                    Body.HeadsSpawned = true;
-                }
             }
+            if (Body == null)
+                return;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
                 //attackDelay = 180;
-            }else
+            }
+            else
             {
                 damage = npc.damage / 2;
             }
-			npc.TargetClosest();
-			Player targetPlayer = Main.player[npc.target];
-			if(targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-			float playerDistance = Vector2.Distance(targetPlayer.Center, npc.Center);
-
-            npc.alpha = Main.npc[(int)npc.ai[0]].alpha;
+            npc.TargetClosest();
+            Player targetPlayer = Main.player[npc.target];
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+            float playerDistance = (targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center));
             if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
@@ -143,24 +114,26 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 return;
             }
-			Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-			float dist = Vector2.Distance(nextTarget, npc.Center);
-			if(YamataHead.EATTHELITTLEMAGGOT && playerDistance < 300f)
-			{
-				BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
-			}else
-			if(dist < 40f)
-			{
-				npc.velocity *= 0.9f;
-				if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-				if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
-			}else				
-			{
-				npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-				npc.velocity *= 5f;
-			}
-			npc.position += (Body.npc.position - Body.npc.oldPosition);	
-			npc.spriteDirection = -1;
+            Vector2 nextTarget = Body.npc.Center + new Vector2(leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+            float dist = Vector2.Distance(nextTarget, npc.Center);
+            if (YamataHead.EATTHELITTLEMAGGOT && playerDistance < 300f)
+            {
+                BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
+            }
+            else
+            if (dist < 40f)
+            {
+                npc.velocity *= 0.9f;
+                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+            }
+            else
+            {
+                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+                npc.velocity *= 5f;
+            }
+            npc.position += (Body.npc.position - Body.npc.oldPosition);
+            npc.spriteDirection = -1;
             if (Body.TeleportMe1)
             {
                 Body.TeleportMe1 = false;

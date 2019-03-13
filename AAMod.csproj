@@ -415,6 +415,8 @@
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverBootsA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverJacketA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverMaskA.cs" />
+    <Compile Include="Items\Armor\Witch\WitchHood.cs" />
+    <Compile Include="Items\Armor\Witch\WitchRobe.cs" />
     <Compile Include="Items\Armor\Ytrium\YtriumGreaves.cs" />
     <Compile Include="Items\Armor\Ytrium\YtriumHeadgear.cs" />
     <Compile Include="Items\Armor\Ytrium\YtriumHelm.cs" />
@@ -5478,6 +5480,7 @@
   <ItemGroup>
     <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="Items\Armor\PerfectChaos\" />
     <Folder Include="Items\Armor\Shinobi\" />
     <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
     <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />
