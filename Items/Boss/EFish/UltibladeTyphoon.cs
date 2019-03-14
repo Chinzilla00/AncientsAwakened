@@ -54,8 +54,8 @@ Razorblade Typhoon EX");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);      
-			recipe.AddIngredient(2662);
-			recipe.AddIngredient(mod.ItemType("EXSoul"));
+			recipe.AddIngredient(ItemID.RazorbladeTyphoon);
+			recipe.AddIngredient(null, "EXSoul", 1);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

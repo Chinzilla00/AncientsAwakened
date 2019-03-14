@@ -94,6 +94,9 @@ namespace AAMod
         public static bool downedSoC;
         public static bool DarkmatterMeteorBool;
         public static bool downedFungus;
+        public static bool downedAshe;
+        public static bool downedHaruka;
+        public static bool downedSisters;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -139,7 +142,10 @@ namespace AAMod
             downedSerpent = false;
             downedBrood = false;
             downedHydra = false;
-            //World Changes
+            downedAshe = false ;
+            downedHaruka = false;
+            downedSisters = false;
+        //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedStormAny;
@@ -223,6 +229,9 @@ namespace AAMod
             if (downedFungus) downed.Add("Fungus");
             if (InfernoStripe) downed.Add("IStripe");
             if (MireStripe) downed.Add("MStripe");
+            if (downedAshe) downed.Add("Ashe");
+            if (downedHaruka) downed.Add("Haruka");
+            if (downedSisters) downed.Add("Sisters");
 
             return new TagCompound {
                 {"downed", downed},
@@ -283,7 +292,14 @@ namespace AAMod
             flags5[3] = downedFungus;
             flags5[4] = InfernoStripe;
             flags5[5] = MireStripe;
+            flags5[6] = downedAshe;
+            flags5[7] = downedHaruka;
             writer.Write(flags5);
+
+
+            BitsByte flags6 = new BitsByte();
+            flags6[0] = downedSisters;
+            writer.Write(flags6);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -334,6 +350,11 @@ namespace AAMod
             downedFungus = flags5[3];
             InfernoStripe = flags5[4];
             MireStripe = flags5[5];
+            downedAshe = flags5[6];
+            downedHaruka = flags5[7];
+            
+            BitsByte flags6 = reader.ReadByte();
+            downedSisters = flags6[0];
         }
 
         public override void Load(TagCompound tag)
@@ -375,6 +396,9 @@ namespace AAMod
             Compass = downed.Contains("Compass");
             downedKraken = downed.Contains("Kraken");
             downedFungus = downed.Contains("Fungus");
+            downedAshe = downed.Contains("Ashe");
+            downedHaruka = downed.Contains("Haruka");
+            downedSisters = downed.Contains("Sisters");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;

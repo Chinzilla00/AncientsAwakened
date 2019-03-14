@@ -238,6 +238,7 @@
     <Compile Include="Globals\AAGlobalTile.cs" />
     <Compile Include="Globals\AAModGlobalItem.cs" />
     <Compile Include="Globals\AAModGlobalNPC.cs" />
+    <Compile Include="Globals\AAModReforgeSouls.cs" />
     <Compile Include="Globals\AANet.cs" />
     <Compile Include="Globals\AAProjectile.cs" />
     <Compile Include="Globals\ModCrossoverContent.cs" />
@@ -754,9 +755,6 @@
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
-    <Compile Include="Items\Dyes\AbyssalWrathDye.cs" />
-    <Compile Include="Items\Dyes\BlazingFuryDye.cs" />
-    <Compile Include="Items\Dyes\DoomsdayDye.cs" />
     <Compile Include="Items\Hooks\DragonsGrip.cs" />
     <Compile Include="Items\Magic\AncientArcanum.cs" />
     <Compile Include="Items\Magic\AtlanteanTrident.cs" />
@@ -1004,10 +1002,6 @@
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
     <Compile Include="Items\Ranged\UraniumRepeater.cs" />
     <Compile Include="Items\Ranged\YtriumCrossbow.cs" />
-    <Compile Include="Items\ReforgeSouls\Godly.cs" />
-    <Compile Include="Items\ReforgeSouls\Legendary.cs" />
-    <Compile Include="Items\ReforgeSouls\Mythical.cs" />
-    <Compile Include="Items\ReforgeSouls\Unreal.cs" />
     <Compile Include="Items\Summoning\BlizzardDragonStaff.cs" />
     <Compile Include="Items\Summoning\CrimsonStaff.cs" />
     <Compile Include="Items\Summoning\DemonStaff.cs" />
@@ -1201,6 +1195,7 @@
     <Compile Include="Mounts\BegPony.cs" />
     <Compile Include="Mounts\MonochromeApple.cs" />
     <Compile Include="Mounts\PrinceFishron.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody.cs" />
@@ -3789,9 +3784,6 @@
     <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
-    <Content Include="Items\Dyes\AbyssalWrathDye.png" />
-    <Content Include="Items\Dyes\BlazingFuryDye.png" />
-    <Content Include="Items\Dyes\DoomsdayDye.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Hooks\DragonsGripP.png" />
     <Content Include="Items\Hooks\DragonsGrip_Chain.png" />
@@ -4050,10 +4042,6 @@
     <Content Include="Items\Ranged\UraniumRepeater.png" />
     <Content Include="Items\Ranged\UWAM.png" />
     <Content Include="Items\Ranged\YtriumCrossbow.png" />
-    <Content Include="Items\ReforgeSouls\Godly.png" />
-    <Content Include="Items\ReforgeSouls\Legendary.png" />
-    <Content Include="Items\ReforgeSouls\Mythical.png" />
-    <Content Include="Items\ReforgeSouls\Unreal.png" />
     <Content Include="Items\Smite\CrystallineMace.png" />
     <Content Include="Items\Smite\Dragonslayer.png" />
     <Content Include="Items\Smite\Floral.png" />
@@ -4347,11 +4335,13 @@
     <Content Include="NPCs\Bosses\AH\Ashe.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka.gif" />
-    <Content Include="NPCs\Bosses\AH\Haruka.png" />
-    <Content Include="NPCs\Bosses\AH\HarukaSlash.gif" />
-    <Content Include="NPCs\Bosses\AH\Surasshu.gif" />
-    <Content Include="NPCs\Bosses\AH\Surasshu.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\Haruka.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaJump.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaSpin.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaWalk.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\Haruka_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\Surasshu.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA.png" />
@@ -5535,9 +5525,6 @@
     <None Include=".vs\config\applicationhost.config" />
     <None Include=".vs\slnx.sqlite" />
     <None Include=".vs\VSWorkspaceState.json" />
-    <None Include="Effects\dyeshader.xnb" />
-    <None Include="Effects\TotalBlack.xnb" />
-    <None Include="NPCs\Bosses\AH\Haruka.piskel" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

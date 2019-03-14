@@ -115,44 +115,38 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.alpha = 0;
             }
             npc.frameCounter++;
-            if (!HasStopped)
+            if (npc.frameCounter >= 10)
             {
-				if (npc.frameCounter >= 10)
-				{
-					npc.frameCounter = 0;
-					npc.frame.Y += 90;
-					if (npc.frame.Y > (90 * 4))
-					{
-						npc.frameCounter = 0;
-						npc.frame.Y = 0;
-					}
-				}
+                npc.frameCounter = 0;
+                npc.frame.Y += 90;
+                if (npc.frame.Y > (90 * 7))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
             }
-            else
+            internalAI[2]++;
+            if (internalAI[2] > 8)
             {
-                internalAI[2]++;
-                if (internalAI[2] > 8)
-                {
-                    npc.frame.Y += 90;
-                    internalAI[3] += 1;
-                    internalAI[2] = 0;
-                }
-                if (internalAI[3] == 3)
-                {
-                    int attack = Main.rand.Next(4);
-                    FungusAttack(attack);
-                    internalAI[3] = 0;
-                }
-                if (internalAI[3] > 4)
-                {
-                    internalAI[0] = 0;
-                    internalAI[1] = Main.rand.Next(3);
-                    HasStopped = false;
-                    npc.netUpdate = true;
-                }
+                internalAI[3] += 1;
+                internalAI[2] = 0;
+            }
+            if (internalAI[3] == 3)
+            {
+                int attack = Main.rand.Next(4);
+                FungusAttack(attack);
+                internalAI[3] = 0;
+            }
+            if (internalAI[3] > 4)
+            {
+                internalAI[3] = 0;
+                internalAI[0] = 0;
+                internalAI[1] = Main.rand.Next(3);
+                HasStopped = false;
+                npc.netUpdate = true;
             }
 
-			if(Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
+            if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
 			{
                 internalAI[0]++;
                 if (internalAI[0] >= 180)
