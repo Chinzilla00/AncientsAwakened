@@ -17,6 +17,7 @@ namespace AAMod.NPCs.Enemies.Mushroom
 		public override void SetDefaults()
         {
             npc.CloneDefaults(NPCID.FungoFish);
+            animationType = NPCID.FungoFish;
             npc.noGravity = true;
             npc.width = 26;
             npc.height = 26;

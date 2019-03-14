@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
+            npc.damage = 100;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -72,7 +73,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Yamata Head = null;
         public bool killedbyplayer = true;	
 		public bool leftHead = false;
-		public int damage = 0;
         public bool fireAttack = false;
 		public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
 		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
@@ -80,6 +80,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+            int attackpower = isAwakened ? 130 : 100;
+            int projectileDamage = 0;
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -90,14 +92,25 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (Body == null)
                 return;
-            if (Main.expertMode)
+
+            npc.alpha = Body.npc.alpha;
+
+            if (npc.alpha > 0)
             {
-                damage = npc.damage / 4;
-                //attackDelay = 180;
+                npc.damage = 0;
             }
             else
             {
-                damage = npc.damage / 2;
+                npc.damage = attackpower;
+            }
+
+            if (Main.expertMode)
+            {
+                projectileDamage = attackpower / 4;
+            }
+            else
+            {
+                projectileDamage = attackpower / 2;
             }
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
@@ -173,7 +186,10 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (Main.netMode != 1 && !YamataHead.EATTHELITTLEMAGGOT)
             {
-                npc.ai[1]++;
+                if (npc.alpha <= 0)
+                {
+                    npc.ai[1]++; ;
+                }
                 int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
                 if (leftHead) aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
@@ -184,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (int)(projectileDamage * .8f), 0f, Main.myPlayer);
                     }
                 }
                 else

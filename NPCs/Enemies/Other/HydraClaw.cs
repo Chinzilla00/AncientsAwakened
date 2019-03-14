@@ -32,6 +32,18 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
+
+            npc.frameCounter++;
+            if (npc.frameCounter >= 8)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 26;
+                if (npc.frame.Y > (26 * 4))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
+            }
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

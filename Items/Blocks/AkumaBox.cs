@@ -12,7 +12,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Akuma Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Trial By Fire' by Saucecoie");
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

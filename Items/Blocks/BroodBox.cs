@@ -10,7 +10,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Broodmother Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Blazing Fury' by Spectral Aves");
+        }
 
 		public override void SetDefaults()
 		{

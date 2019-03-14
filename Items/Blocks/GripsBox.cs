@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grips of Chaos Music Box");
-		}
+            Tooltip.SetDefault(@"Plays Claws of Catastrophe' by Turquoise");
+        }
 
 		public override void SetDefaults()
 		{

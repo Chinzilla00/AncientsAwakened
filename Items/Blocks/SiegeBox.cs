@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("S.I.E.G.E. Bosses Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Storming S.I.E.G.E.' by Karamitasu");
+        }
 
 		public override void SetDefaults()
 		{

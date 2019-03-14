@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.life = npc.lifeMax = 100;
-            npc.damage = 150;
+            npc.damage = 100;
             npc.defense = 60;
             npc.width = 78;
             npc.height = 60;
@@ -101,6 +101,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
+            int attackpower = isAwakened ? 130 : 100;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -131,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 return;
             }
 	
-            npc.realLife = (int)Body.whoAmI;
+            npc.realLife = Body.whoAmI;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 		
@@ -141,10 +142,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.Center = yamata.npc.Center;
                 return;
             }
-
-            if (Body.active)
+            
+            npc.alpha = Body.alpha;
+            if (npc.alpha > 0)
             {
-                npc.alpha = Body.alpha;
+                npc.damage = 0;
+            }
+            else
+            {
+                npc.damage = attackpower;
             }
 
             int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
@@ -172,7 +178,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             PlayerDistance.X -= PlayerPosX * 1f;
             PlayerDistance.Y -= PlayerPosY * 1f;
 
-            internalAI[2]++;
+            if (npc.alpha <= 0)
+            {
+                internalAI[2]++;
+            }
             if (internalAI[2] == 399)
             {
                 QuoteSaid = false;

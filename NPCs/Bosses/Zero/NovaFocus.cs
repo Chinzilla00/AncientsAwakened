@@ -100,14 +100,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
-            {
-                npc.defense = 999999999;
-            }
-            else
-            {
-                npc.defense = 70;
-            }
             if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
@@ -195,13 +187,15 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
-                npc.rotation = (float)Math.Atan2(num2, num1);
+                float NewRotation = (float)Math.Atan2(num2, num1);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
                 ++npc.localAI[0];
                 if (npc.localAI[0] <= 200.0)
                     return;
                 if (npc.localAI[0] > 360)
                 {
                     npc.localAI[0] = 0.0f;
+                    LaserTime = 0;
                 }
                 LaserTime++;
                 if (LaserTime >= 600)
@@ -287,6 +281,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.localAI[0] > 160)
                 {
                     npc.localAI[0] = 0.0f;
+                    LaserTime = 0;
                 }
                 LaserTime++;
                 if (LaserTime >= 600)

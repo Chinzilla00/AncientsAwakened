@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mire Surface Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Where the Darkness Creeps' by OmegaFerretMusic");
+        }
 
 		public override void SetDefaults()
 		{

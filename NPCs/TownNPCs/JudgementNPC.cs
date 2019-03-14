@@ -20,7 +20,8 @@ namespace AAMod.NPCs.TownNPCs
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.hostile = true;
+            projectile.hostile = false;
+            projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;

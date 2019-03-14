@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hydra Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Abyssal Wrath' by Spectral Aves");
+        }
 
 		public override void SetDefaults()
 		{

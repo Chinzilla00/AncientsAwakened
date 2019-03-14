@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Yamata
+namespace AAMod.Items.Boss.AH
 {
     public class Masamune : ModItem
 	{

@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Inferno Underground Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Smolder' by OmegaFerretMusic");
+        }
 
 		public override void SetDefaults()
 		{

@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Enemies.Other
         public override void SetDefaults()
         {
             aiType = NPCID.DemonEye;
-            animationType = NPCID.DemonEye;
             npc.width = 28;
             npc.height = 24;
             npc.friendly = false;
@@ -32,6 +31,17 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
+            npc.frameCounter++;
+            if (npc.frameCounter >= 8)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 26;
+                if (npc.frame.Y > (26 * 4))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
+            }
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

@@ -22,26 +22,54 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void SetDefaults()
         {
             npc.aiStyle = 0;
-            npc.width = 202;
-            npc.height = 100;
+            npc.width = 352;
+            npc.height = 200;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;
-            npc.damage = 35;
+            npc.damage = 25;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.defense = 10;
             npc.boss = true;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
-            animationType = NPCID.Mothron;
             npc.netAlways = true;
             npc.friendly = false;
             npc.lifeMax = 6000;
             npc.value = 20000;
+            npc.behindTiles = true;
             npc.knockBackResist = 0f;
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
+        }
+
+        public int frame = 0;
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+
+            if (npc.frameCounter > 10)
+            {
+                frame++;
+                if (frame >= 11)
+                {
+                    frame = 0;
+                }
+                npc.frameCounter = 0;
+            }
+            if (frame > 5)
+            {
+                npc.frame.Y = (frame - 6) * frameHeight;
+                npc.frame.X = npc.width;
+                npc.frame.Width = npc.width;
+            }
+            else
+            {
+                npc.frame.Y = frame * frameHeight;
+                npc.frame.X = 0;
+                npc.frame.Width = npc.width;
+            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -93,18 +121,22 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("BroodScale"), 50, 75);
             }
         }
-        
 
-        public static Texture2D glowTex = null;
 
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (glowTex == null)
+            Vector2 Source = new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y);
+            Vector2 Origin = new Vector2(npc.width * 0.5f, npc.height * 0.5f);
+
+            SpriteEffects flipSprite = SpriteEffects.None;
+            if (npc.direction == -1)
             {
-                glowTex = mod.GetTexture("Glowmasks/Broodmother_Glow");
+                flipSprite = SpriteEffects.FlipHorizontally;
             }
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother"), Source, npc.frame, drawColor, npc.rotation, Origin, 1f, flipSprite, 0f);
+            spriteBatch.Draw(mod.GetTexture("Glowmasks/Broodmother_Glow"), Source, npc.frame, Color.White, npc.rotation, Origin, 1f, flipSprite, 0f);
             return false;
         }
 
@@ -233,7 +265,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 {
                     npc.direction = -1;
                 }
-                npc.spriteDirection = npc.direction;
                 npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.4f)) / 10f;
                 if (npc.collideX)
                 {

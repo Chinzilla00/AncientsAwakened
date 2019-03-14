@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using Terraria.GameContent.Events;
 
 namespace AAMod.NPCs.TownNPCs
 {
@@ -13,7 +14,14 @@ namespace AAMod.NPCs.TownNPCs
 		{
 			get
 			{
-				return "AAMod/NPCs/TownNPCs/Samurai";
+                if (BirthdayParty.GenuineParty || BirthdayParty.ManualParty)
+                {
+                    return "AAMod/NPCs/TownNPCs/SamuraiParty";
+                }
+                else
+                {
+                    return "AAMod/NPCs/TownNPCs/Samurai";
+                }
 			}
 		}
 
@@ -21,7 +29,7 @@ namespace AAMod.NPCs.TownNPCs
 		{
 			get
 			{
-				return new string[] { "AAMod/NPCs/TownNPCs/Samurai_1" };
+				return new string[] { "AAMod/NPCs/TownNPCs/SamuraiParty" };
             }
         }
 
@@ -40,7 +48,7 @@ namespace AAMod.NPCs.TownNPCs
 			NPCID.Sets.AttackType[npc.type] = 0;
 			NPCID.Sets.AttackTime[npc.type] = 40;
 			NPCID.Sets.AttackAverageChance[npc.type] = 20;
-			NPCID.Sets.HatOffsetY[npc.type] = 4;
+			NPCID.Sets.HatOffsetY[npc.type] = -2;
 		}
 
 		public override void SetDefaults()
@@ -96,19 +104,6 @@ namespace AAMod.NPCs.TownNPCs
                 default:
 					return "Hideyoshi";
 			}
-		}
-
-		public override void FindFrame(int frameHeight)
-		{
-			/*npc.frame.Width = 40;
-			if (((int)Main.time / 10) % 2 == 0)
-			{
-				npc.frame.X = 40;
-			}
-			else
-			{
-				npc.frame.X = 0;
-			}*/
 		}
 
         public override string GetChat()

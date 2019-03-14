@@ -13,7 +13,8 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Awakened Music Box");
-		}
+            Tooltip.SetDefault("Plays 'Doomsday Arrives' by Saucecoie");
+        }
 		public override void SetDefaults()
 		{
 			item.useStyle = 1;

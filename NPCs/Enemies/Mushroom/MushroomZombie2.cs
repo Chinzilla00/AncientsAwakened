@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Enemies.Mushroom
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushroom Zombie");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 3;
 		}
 
 		public override void SetDefaults()

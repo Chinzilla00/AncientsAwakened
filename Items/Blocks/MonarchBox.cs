@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushroom Monarch Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Fungal Face-off' by Spectral Aves");
+        }
 
 		public override void SetDefaults()
 		{

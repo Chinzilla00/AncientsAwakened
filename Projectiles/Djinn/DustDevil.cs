@@ -17,7 +17,7 @@ namespace AAMod.Projectiles.Djinn
         protected float chaseAccel = 4f;
         protected float inertia = 5f;
         protected float shootCool = 90f;
-        protected float shootSpeed = 7;
+        protected float shootSpeed = 14;
         protected int shoot;
 
         public override void SetStaticDefaults()
@@ -30,26 +30,25 @@ namespace AAMod.Projectiles.Djinn
     	
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
             projectile.netImportant = true;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
-            projectile.minionSlots = 0.5f;
-            projectile.timeLeft = 18000;
+            projectile.width = 28;
+            projectile.height = 40;
+            projectile.aiStyle = 62;
             projectile.penetrate = -1;
-            projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
+            projectile.friendly = true;
+            projectile.minionSlots = 1f;
             projectile.tileCollide = false;
+            projectile.ignoreWater = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
         public int FrameTimer = 0;
 
         public override void AI()
         {
-            shoot = ProjectileID.DemonScythe;
-            float num9 = (float)projectile.width;
             bool flag64 = projectile.type == mod.ProjectileType("DustDevil");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
@@ -65,59 +64,97 @@ namespace AAMod.Projectiles.Djinn
                     projectile.timeLeft = 2;
                 }
             }
-            float spacing = (float)projectile.width * spacingMult;
-            for (int k = 0; k < 1000; k++)
+            float num8 = 0.1f;
+            float num9 = projectile.width * 2f;
+            for (int j = 0; j < 1000; j++)
             {
-                Projectile otherProj = Main.projectile[k];
-                if (k != projectile.whoAmI && otherProj.active && otherProj.owner == projectile.owner && otherProj.type == projectile.type && System.Math.Abs(projectile.position.X - otherProj.position.X) + System.Math.Abs(projectile.position.Y - otherProj.position.Y) < spacing)
+                if (j != projectile.whoAmI && Main.projectile[j].active && Main.projectile[j].owner == projectile.owner && Main.projectile[j].type == projectile.type && Math.Abs(projectile.position.X - Main.projectile[j].position.X) + Math.Abs(projectile.position.Y - Main.projectile[j].position.Y) < num9)
                 {
-                    if (projectile.position.X < Main.projectile[k].position.X)
+                    if (projectile.position.X < Main.projectile[j].position.X)
                     {
-                        projectile.velocity.X -= idleAccel;
+                        projectile.velocity.X = projectile.velocity.X - num8;
                     }
                     else
                     {
-                        projectile.velocity.X += idleAccel;
+                        projectile.velocity.X = projectile.velocity.X + num8;
                     }
-                    if (projectile.position.Y < Main.projectile[k].position.Y)
+                    if (projectile.position.Y < Main.projectile[j].position.Y)
                     {
-                        projectile.velocity.Y -= idleAccel;
+                        projectile.velocity.Y = projectile.velocity.Y - num8;
                     }
                     else
                     {
-                        projectile.velocity.Y += idleAccel;
+                        projectile.velocity.Y = projectile.velocity.Y + num8;
                     }
                 }
             }
-            Vector2 targetPos = projectile.position;
-            float targetDist = viewDist;
-            bool target = false;
-            projectile.tileCollide = true;
-            if (player.HasMinionAttackTargetNPC)
+            Vector2 vector = projectile.position;
+            float num10 = 400f;
+            
+            bool flag = false;
+            int num11 = -1;
+            projectile.tileCollide = false;
+            if (Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
             {
-                NPC npc = Main.npc[player.MinionAttackTargetNPC];
-                if (Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                projectile.alpha += 20;
+                if (projectile.alpha > 150)
                 {
-                    targetDist = Vector2.Distance(projectile.Center, targetPos);
-                    targetPos = npc.Center;
-                    target = true;
+                    projectile.alpha = 150;
                 }
             }
-            else for (int k = 0; k < 200; k++)
+            else
+            {
+                projectile.alpha -= 50;
+                if (projectile.alpha < 60)
                 {
-                    NPC npc = Main.npc[k];
-                    if (npc.CanBeChasedBy(this, false))
+                    projectile.alpha = 60;
+                }
+            }
+            Vector2 center = Main.player[projectile.owner].Center;
+            Vector2 value = new Vector2(0.5f);
+            if (projectile.type == 423)
+            {
+                value.Y = 0f;
+            }
+            NPC ownerMinionAttackTargetNPC = projectile.OwnerMinionAttackTargetNPC;
+            if (ownerMinionAttackTargetNPC != null && ownerMinionAttackTargetNPC.CanBeChasedBy(this, false))
+            {
+                Vector2 vector2 = ownerMinionAttackTargetNPC.position + ownerMinionAttackTargetNPC.Size * value;
+                float num12 = Vector2.Distance(vector2, center);
+                if (((Vector2.Distance(center, vector) > num12 && num12 < num10) || !flag) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, ownerMinionAttackTargetNPC.position, ownerMinionAttackTargetNPC.width, ownerMinionAttackTargetNPC.height))
+                {
+                    num10 = num12;
+                    vector = vector2;
+                    flag = true;
+                    num11 = ownerMinionAttackTargetNPC.whoAmI;
+                }
+            }
+            if (!flag)
+            {
+                for (int k = 0; k < 200; k++)
+                {
+                    NPC nPC = Main.npc[k];
+                    if (nPC.CanBeChasedBy(this, false))
                     {
-                        float distance = Vector2.Distance(npc.Center, projectile.Center);
-                        if ((distance < targetDist || !target) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                        Vector2 vector3 = nPC.position + nPC.Size * value;
+                        float num13 = Vector2.Distance(vector3, center);
+                        if (((Vector2.Distance(center, vector) > num13 && num13 < num10) || !flag) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC.position, nPC.width, nPC.height))
                         {
-                            targetDist = distance;
-                            targetPos = npc.Center;
-                            target = true;
+                            num10 = num13;
+                            vector = vector3;
+                            flag = true;
+                            num11 = k;
                         }
                     }
                 }
-            if (Vector2.Distance(player.Center, projectile.Center) > (target ? 1000f : 500f))
+            }
+            int num16 = 500;
+            if (flag)
+            {
+                num16 = 1200;
+            }
+            float num17 = Vector2.Distance(player.Center, projectile.Center);
+            if (num17 > (float)num16)
             {
                 projectile.ai[0] = 1f;
                 projectile.netUpdate = true;
@@ -126,72 +163,77 @@ namespace AAMod.Projectiles.Djinn
             {
                 projectile.tileCollide = false;
             }
-            if (target && projectile.ai[0] == 0f)
+            if (flag && projectile.ai[0] == 0f)
             {
-                Vector2 direction = targetPos - projectile.Center;
-                if (direction.Length() > chaseDist)
+                Vector2 vector4 = vector - projectile.Center;
+                float num18 = vector4.Length();
+                vector4.Normalize();
+                if (num18 > 400f)
                 {
-                    direction.Normalize();
-                    projectile.velocity = (projectile.velocity * inertia + direction * chaseAccel) / (inertia + 1);
+                    float scaleFactor = 2f;
+                    vector4 *= scaleFactor;
+                    projectile.velocity = (projectile.velocity * 20f + vector4) / 21f;
                 }
                 else
                 {
-                    projectile.velocity *= (float)Math.Pow(0.97, 40.0 / inertia);
+                    projectile.velocity *= 0.96f;
+                }
+                if (num18 > 200f)
+                {
+                    float scaleFactor2 = 6f;
+                    vector4 *= scaleFactor2;
+                    projectile.velocity.X = (projectile.velocity.X * 40f + vector4.X) / 41f;
+                    projectile.velocity.Y = (projectile.velocity.Y * 40f + vector4.Y) / 41f;
+                }
+                else if (projectile.velocity.Y > -1f)
+                {
+                    projectile.velocity.Y = projectile.velocity.Y - 0.1f;
                 }
             }
             else
             {
-                if (!Collision.CanHitLine(projectile.Center, 1, 1, player.Center, 1, 1))
+                if (!Collision.CanHitLine(projectile.Center, 1, 1, Main.player[projectile.owner].Center, 1, 1))
                 {
                     projectile.ai[0] = 1f;
                 }
-                float speed = 6f;
-                if (projectile.ai[0] == 1f)
+                float num22 = 9f;
+                Vector2 center2 = projectile.Center;
+                Vector2 vector6 = player.Center - center2 + new Vector2(0f, -60f);
+                vector6 += new Vector2(0f, 40f);
+                float num24 = vector6.Length();
+                if (num24 > 200f && num22 < 9f)
                 {
-                    speed = 15f;
+                    num22 = 9f;
                 }
-                Vector2 center = projectile.Center;
-                Vector2 direction = player.Center - center;
-                projectile.ai[1] = 3600f;
-                projectile.netUpdate = true;
-                int num = 1;
-                for (int k = 0; k < projectile.whoAmI; k++)
-                {
-                    if (Main.projectile[k].active && Main.projectile[k].owner == projectile.owner && Main.projectile[k].type == projectile.type)
-                    {
-                        num++;
-                    }
-                }
-                direction.X -= (float)((10 + num * 40) * player.direction);
-                direction.Y -= 70f;
-                float distanceTo = direction.Length();
-                if (distanceTo > 200f && speed < 9f)
-                {
-                    speed = 9f;
-                }
-                if (distanceTo < 100f && projectile.ai[0] == 1f && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
+                if (num24 < 100f && projectile.ai[0] == 1f && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                 {
                     projectile.ai[0] = 0f;
                     projectile.netUpdate = true;
                 }
-                if (distanceTo > 2000f)
+                if (num24 > 2000f)
                 {
-                    projectile.Center = player.Center;
+                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.width / 2);
                 }
-                if (distanceTo > 48f)
+                if (Math.Abs(vector6.X) > 40f || Math.Abs(vector6.Y) > 10f)
                 {
-                    direction.Normalize();
-                    direction *= speed;
-                    float temp = inertia / 2f;
-                    projectile.velocity = (projectile.velocity * temp + direction) / (temp + 1);
+                    vector6.Normalize();
+                    vector6 *= num22;
+                    vector6 *= new Vector2(1.25f, 0.65f);
+                    projectile.velocity = (projectile.velocity * 20f + vector6) / 21f;
                 }
                 else
                 {
-                    projectile.direction = Main.player[projectile.owner].direction;
-                    projectile.velocity *= (float)Math.Pow(0.9, 40.0 / inertia);
+                    if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
+                    {
+                        projectile.velocity.X = -0.15f;
+                        projectile.velocity.Y = -0.05f;
+                    }
+                    projectile.velocity *= 1.01f;
                 }
             }
             projectile.rotation = projectile.velocity.X * 0.05f;
+            projectile.frameCounter++;
             if (projectile.velocity.X > 0f)
             {
                 projectile.spriteDirection = (projectile.direction = -1);
@@ -203,50 +245,45 @@ namespace AAMod.Projectiles.Djinn
             if (projectile.ai[1] > 0f)
             {
                 projectile.ai[1] += 1f;
-                if (Main.rand.Next(3) == 0)
+                if (Main.rand.Next(3) != 0)
                 {
                     projectile.ai[1] += 1f;
                 }
             }
-            if (projectile.ai[1] > shootCool)
+            if (projectile.ai[1] > 60f)
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;
             }
             if (projectile.ai[0] == 0f)
             {
-                if (target)
+                float scaleFactor4 = 5f;
+                int num29 = mod.ProjectileType<DevilGust>();
+                
+                if (flag)
                 {
-                    if ((targetPos - projectile.Center).X > 0f)
+                    if (Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                     {
-                        projectile.spriteDirection = (projectile.direction = -1);
+                        return;
                     }
-                    else if ((targetPos - projectile.Center).X < 0f)
+                    else if (projectile.ai[1] == 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = 1);
-                    }
-                    if (projectile.ai[1] == 0f)
-                    {
-                        projectile.ai[1] = 1f;
+                        projectile.ai[1] += 1f;
                         if (Main.myPlayer == projectile.owner)
                         {
-                            Vector2 shootVel = targetPos - projectile.Center;
-                            if (shootVel == Vector2.Zero)
-                            {
-                                shootVel = new Vector2(0f, 1f);
-                            }
-                            shootVel.Normalize();
-                            shootVel *= shootSpeed;
-                            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootVel.X, shootVel.Y, mod.ProjectileType("SandPro"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 1f);
-                            Main.projectile[proj].timeLeft = 300;
-                            Main.projectile[proj].netUpdate = true;
+                            Vector2 value4 = vector - projectile.Center;
+                            value4.Normalize();
+                            value4 *= scaleFactor4;
+                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X, value4.Y, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            Main.projectile[num33].timeLeft = 300;
+                            Main.projectile[num33].netUpdate = true;
                             projectile.netUpdate = true;
                         }
                     }
                 }
             }
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 10)
+            if (projectile.frameCounter >= 7)
             {
                 projectile.frame += 1;
                 projectile.frameCounter = 0;

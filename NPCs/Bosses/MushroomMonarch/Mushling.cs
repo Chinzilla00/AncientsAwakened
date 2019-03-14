@@ -40,7 +40,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
-
         }
 
         public override void AI()
@@ -49,7 +48,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
             BaseAI.AIZombie(npc, ref npc.ai, true, true, -1, .09f, 2, 3, 5, 120, true, 10, 10, true);
 
-            if (npc.velocity.Y != 0)
+            if (npc.velocity.Y == 0)
             {
                 npc.frameCounter++;
                 if (npc.frameCounter > 8)

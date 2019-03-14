@@ -80,14 +80,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
-            {
-                npc.defense = 999999999;
-            }
-            else
-            {
-                npc.defense = 70;
-            }
             if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
@@ -95,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
                 {
                     npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -103,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 6.0)
                             npc.velocity.Y = 6f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -137,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[3] = 0.0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -145,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 3.0)
                             npc.velocity.Y = 3f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -179,7 +171,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.netMode == 1)
                     return;
                 ++npc.localAI[0];
-                if (npc.localAI[0] <= 160.0)
+                if (npc.localAI[0] <= 200.0)
                     return;
                 npc.localAI[0] = 0.0f;
                 float num4 = 8f;
@@ -192,7 +184,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                Main.PlaySound(new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound));
                 Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
             else
@@ -251,7 +242,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.localAI[0] = 0.0f;
                 float num9 = 10f;
                 int Damage = npc.damage;
-                int Type = mod.ProjectileType<NeutralizerP>();
+                int Type = 100;
                 float num10 = num9 / num8;
                 float num11 = num6 * num10;
                 float num12 = num7 * num10;
@@ -259,7 +250,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                Main.PlaySound(new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound));
                 Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
         }

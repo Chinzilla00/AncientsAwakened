@@ -460,15 +460,7 @@ namespace AAMod
             {
                 Item.NewItem(npc.getRect(), ItemID.ChlorophyteOre, Main.rand.Next(30, 45));
             }
-
-            if (npc.type == NPCID.MoonLordCore)
-            {
-                if (AAWorld.Luminite)
-                {
-                    Main.NewText("The crash of a meteor can be heard upon the moon lord's death", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
-                    AAWorld.SpawnLuminite();
-                }
-            }
+            
             if ((npc.type == NPCID.GoblinArcher
                 || npc.type == NPCID.GoblinPeon
                 || npc.type == NPCID.GoblinScout

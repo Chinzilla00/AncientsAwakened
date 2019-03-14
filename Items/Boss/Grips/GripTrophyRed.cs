@@ -8,7 +8,7 @@ namespace AAMod.Items.Boss.Grips
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Grip of Chaos Trophy");
+            DisplayName.SetDefault("Inferno Grip of Chaos Trophy");
 		}
 
 		public override void SetDefaults()

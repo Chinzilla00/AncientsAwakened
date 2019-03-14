@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mushling");
+            DisplayName.SetDefault("Fungus Flier");
             Main.npcFrameCount[npc.type] = 3;
         }
 
@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = null;
             npc.knockBackResist = 0f;
+            npc.noGravity = true;
         }
 
         public override void AI()

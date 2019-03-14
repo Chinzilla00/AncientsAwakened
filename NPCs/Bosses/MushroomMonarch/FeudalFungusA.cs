@@ -142,6 +142,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 {
                     int attack = Main.rand.Next(4);
                     FungusAttack(attack);
+                    internalAI[3] = 0;
                 }
                 if (internalAI[3] > 4)
                 {

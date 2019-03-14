@@ -126,8 +126,8 @@ namespace AAMod.NPCs.Bosses.Hydra
 					if(middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0)
 					{
 						dir *= 6f;		
-						dir.X += Main.rand.Next(-1, 1) * 0.25f;
-						dir.Y += Main.rand.Next(-1, 1) * 0.25f;
+						dir.X += Main.rand.Next(-1, 1) * 0.5f;
+						dir.Y += Main.rand.Next(-1, 1) * 0.5f;
 						int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
 						Main.projectile[projID].netUpdate = true;													
 					}

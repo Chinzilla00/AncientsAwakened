@@ -11,7 +11,9 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Akuma Awakened Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Battle! Ho-oh' from Pokemon Heart Gold
+Remix by Yuki");
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

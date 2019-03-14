@@ -75,14 +75,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
-            {
-                npc.defense = 999999999;
-            }
-            else
-            {
-                npc.defense = 70;
-            }
             if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
@@ -187,10 +179,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                for (int Loop = 0; Loop < 3; Loop++)
-                {
-                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
-                }
+                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
             else
             {
@@ -256,10 +245,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                for (int Loop = 0; Loop < 3; Loop++)
-                {
-                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
-                }
+                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
         }
 

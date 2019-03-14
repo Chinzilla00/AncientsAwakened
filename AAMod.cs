@@ -17,6 +17,7 @@ using AAMod.Items.Materials;
 using AAMod.Items.Armor.Darkmatter;
 using AAMod.Items.Armor.Radium;
 using AAMod.Items.Blocks;
+using AAMod.Items.Vanity.Beg;
 using AAMod;
 using BaseMod;
 
@@ -684,20 +685,20 @@ namespace AAMod
             if (DradonIsDum != null)
             {
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", instance.GetTexture("BlankTex"), AAWorld.downedMonarch);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", instance.GetTexture("Achievments/Grips"), AAWorld.downedGrips);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Magmatic Meltdown", "Defeat the magmatic matriarch, the Broodmother", instance.GetTexture("Achievments/Brood"), AAWorld.downedBrood);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", instance.GetTexture("Achievements/Grips"), AAWorld.downedGrips);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Magmatic Meltdown", "Defeat the magmatic matriarch, the Broodmother", instance.GetTexture("Achievements/Brood"), AAWorld.downedBrood);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Amphibious Atrocity", "Defeat the three-headed horror, the Hydra", instance.GetTexture("BlankTex"), AAWorld.downedHydra);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Slithering Snowmongerer", "Defeat the Snow-burrowing Snake, the Subzero Serpent", instance.GetTexture("BlankTex"), AAWorld.downedSerpent);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Sandskrit Sandman", "Defeat majin of magic, the Desert Djinn", instance.GetTexture("BlankTex"), AAWorld.downedDjinn);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Shocking", "Destroy any of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAny);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Storming Smackdown", "Destroy all of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievments/Storm"), AAWorld.downedStormAll);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", instance.GetTexture("Achievments/Equinox"), AAWorld.downedEquinox);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Grip it and rip it", "Rematch the Grips of Chaos in their enhanced, discordian form", instance.GetTexture("Achievments/Grips"), AAWorld.downedGripsS);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Shocking", "Destroy any of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievements/Storm"), AAWorld.downedStormAny);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Storming Smackdown", "Destroy all of the S.I.E.G.E. unit bosses", instance.GetTexture("Achievements/Storm"), AAWorld.downedStormAll);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", instance.GetTexture("Achievements/Equinox"), AAWorld.downedEquinox);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Grip it and rip it", "Rematch the Grips of Chaos in their enhanced, discordian form", instance.GetTexture("Achievements/Grips"), AAWorld.downedGripsS);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Hurricane Horror", "Defeat the Spatial Squid of the Ocean, the Kraken", instance.GetTexture("BlankTex"), AAWorld.downedKraken);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", instance.GetTexture("Achievments/Zero"), AAWorld.downedZero);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", instance.GetTexture("Achievments/ZeroA"), (AAWorld.downedZero && Main.expertMode));
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", instance.GetTexture("Achievments/Akuma"), AAWorld.downedAkuma);
-                DradonIsDum.Call("AddAchievementWithoutReward", this, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", instance.GetTexture("Achievments/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", instance.GetTexture("Achievements/Zero"), AAWorld.downedZero);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", instance.GetTexture("Achievements/ZeroA"), (AAWorld.downedZero && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", instance.GetTexture("Achievements/Akuma"), AAWorld.downedAkuma);
+                DradonIsDum.Call("AddAchievementWithoutReward", this, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", instance.GetTexture("Achievements/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", instance.GetTexture("BlankTex"), AAWorld.downedYamata);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", instance.GetTexture("BlankTex"), AAWorld.downedShen);
@@ -719,10 +720,8 @@ namespace AAMod
         
         public static int GobSouls = -1;
 
-
         public override void Load()
         {
-            Textures = (IDictionary<string, Texture2D>)typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
             instance = this;
             GobSouls = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
             if (Main.rand == null)
@@ -734,10 +733,9 @@ namespace AAMod
 
             if (!Main.dedServ)
             {
-
-                AddEquipTexture(new Items.Vanity.Beg.Pony_Head(), null, EquipType.Head, "Pony_Head", "AAMod/Items/Vanity/Beg/Pony_Head");
-                AddEquipTexture(new Items.Vanity.Beg.Pony_Body(), null, EquipType.Body, "Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Arms");
-                AddEquipTexture(new Items.Vanity.Beg.Pony_Legs(), null, EquipType.Legs, "Pony_Legs", "AAMod/Items/Vanity/Beg/Pony_Legs");
+                AddEquipTexture(new Pony_Head(), null, EquipType.Head, "Pony_Head", "AAMod/Items/Vanity/Beg/Pony_Head");
+                AddEquipTexture(new Pony_Body(), null, EquipType.Body, "Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Arms");
+                AddEquipTexture(new Pony_Legs(), null, EquipType.Legs, "Pony_Legs", "AAMod/Items/Vanity/Beg/Pony_Legs");
 
                 PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
                 PremultiplyTexture(GetTexture("Backgrounds/Moon"));
@@ -750,23 +748,26 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
 
-                SNAKETYPES = GetWormTypes("MiniSerpent");
-                SERPENTTYPES = GetWormTypes("Serpent");
-
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch"), ItemType("MonarchBox"), TileType("MonarchBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Fungus"), ItemType("FungusBox"), TileType("FungusBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme"), ItemType("GripsBox"), TileType("GripsBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/HydraTheme"), ItemType("HydraBox"), TileType("HydraBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom"), ItemType("MushBox"), TileType("MushBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn"), ItemType("DjinnBox"), TileType("DjinnBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Siege"), ItemType("SiegeBox"), TileType("SiegeBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky"), ItemType("FateBox"), TileType("FateBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines"), ItemType("LakeBox"), TileType("LakeBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine"), ItemType("PagodaBox"), TileType("PagodaBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero"), ItemType("ZeroBox"), TileType("ZeroBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2"), ItemType("Zero2Box"), TileType("Zero2Box"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma"), ItemType("AkumaBox"), TileType("AkumaBox"));
@@ -813,15 +814,9 @@ namespace AAMod
                 Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
-                Main.itemTexture[5] = GetTexture("Resprites/Mushroom");
             }
         }
-
-        public int[] GetWormTypes(string s)
-        {
-            return new int[] { NPCType(s + "Head"), NPCType(s + "Body"), NPCType(s + "Tail") };
-        }
-
+        
         public override void Unload()
         {
             CleanupStaticArrays();
@@ -866,7 +861,6 @@ namespace AAMod
                 Items.Accessories.SoulStone._glow = null;
                 Items.Pets.Mudkip.glowTex = null;
                 Items.Pets.MudkipS.glowTex = null;
-                NPCs.Bosses.Broodmother.Broodmother.glowTex = null;
                 NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
                 NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
                 NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;

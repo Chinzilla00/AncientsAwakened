@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -30,7 +31,20 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIEye(npc, ref npc.ai, true, false, 0.1f, 0.04f, 6f, 3f, 1f, 1f);
+            npc.noGravity = true;
+            BaseMod.BaseAI.AIEye(npc, ref npc.ai, false, true, 0.13f, 0.08f, 2f, 1.1f, 1.2f, 1.2f);
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
+            npc.frameCounter++;
+            if (npc.frameCounter >= 8)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 38;
+                if (npc.frame.Y > (38 * 3))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
+            }
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

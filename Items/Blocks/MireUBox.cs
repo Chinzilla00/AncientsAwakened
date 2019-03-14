@@ -8,7 +8,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mire Underground Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Depths of Despair' by Karamitasu");
+        }
 
 		public override void SetDefaults()
 		{

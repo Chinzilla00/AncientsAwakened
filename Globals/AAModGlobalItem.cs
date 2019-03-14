@@ -14,6 +14,7 @@ namespace AAMod
         {
             if (item.type == ItemID.SoulofNight)
             {
+                //item.CloneDefaults(ItemID.SoulofNight);
                 if (WorldGen.crimson)
                 {
                     item.color = Color.Firebrick;
@@ -25,6 +26,7 @@ namespace AAMod
             }
             if (item.type == ItemID.LunarOre)
             {
+                //item.CloneDefaults(ItemID.LunarOre);
                 item.createTile = mod.TileType("LuminiteOre");
             }
         }

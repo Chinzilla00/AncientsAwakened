@@ -28,7 +28,6 @@ namespace AAMod.Items.Armor.Demon
         {
             player.minionDamage += 0.09f;
             player.maxMinions += 2;
-            Projectile.NewProjectile(player.position, new Microsoft.Xna.Framework.Vector2(0, 0), ProjectileID.FlyingImp, 0, 0f, Main.myPlayer, 0f, 0f);
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -42,14 +41,20 @@ namespace AAMod.Items.Armor.Demon
             player.setBonus = @"Your minions set enemies ablaze
 You Always have a small Imp servant by your side
 Imp isn't counted in your max minion count";
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            modPlayer.impSet = true;
+            modPlayer.demonBonus = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.ownedProjectileCounts[mod.ProjectileType("ImpServant")] < 1)
+                if (player.FindBuffIndex(mod.BuffType("DemonBuff")) == -1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("RedDevil"), 0, 0f, Main.myPlayer, 0f, 0f);
+                    player.AddBuff(mod.BuffType("DemonBuff"), 3600, true);
+                }
+                if (player.ownedProjectileCounts[mod.ProjectileType("ImpMinion")] < 1)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ImpMinion"), 20, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
-            player.GetModPlayer<AAPlayer>(mod).impSet = true;
         }
 
         public override void AddRecipes()

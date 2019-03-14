@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 400 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)

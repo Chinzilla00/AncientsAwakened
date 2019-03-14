@@ -226,7 +226,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 
                     Player player = Main.player[npc.target];
 
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<Orthrus.OrthrusSpark>(), ref customAI[3], 5, npc.damage / 2, 12);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<RetrieverShot>(), ref customAI[3], 5, npc.damage / 2, 12);
                     return;
                 }
                 else if (customAI[0] >= 59)

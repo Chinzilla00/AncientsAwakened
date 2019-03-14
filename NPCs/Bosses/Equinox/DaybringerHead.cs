@@ -283,6 +283,8 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedNC = true;
                 BaseAI.DropItem(npc, mod.ItemType("NCTrophy"), 1, 1, 15, true);
+                Main.NewText("Darkmatter rips into exsistence somewhere in the world", Color.Blue.R, Color.Blue.G, Color.Blue.B);
+                AAWorld.SpawnDarkmatter();
                 if (Main.rand.Next(20) == 0 && AAWorld.TimeDropped == false)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TimeStone"));

@@ -127,7 +127,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}
 					}
 				}
-			}else
+			}
+            else
 			{	
 				if (internalAI[1] == AISTATE_TURRET)
 				{
@@ -153,8 +154,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 					if (Math.Abs(playerTarget.Center.X - npc.Center.X) < 300f) 
 					{
 						
-					}else
-					if(Main.netMode != 1)
+					}
+                    else if(Main.netMode != 1)
 					{
 						internalAI[1] = AISTATE_FLY;
 						npc.netUpdate = true;
@@ -166,8 +167,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 							Head2.netUpdate = true;						
 						}
 					}
-				}else
-				if (internalAI[1] == AISTATE_FLY)
+				}else if (internalAI[1] == AISTATE_FLY)
 				{
 					npc.noGravity = true;	
 					npc.noTileCollide = true;
@@ -177,7 +177,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						for(int m = 0; m < 4; m++)
 						{
 							BaseAI.AIEye(npc, ref npc.ai, false, true, 0.15f, 0.4f, 8f, 2f, 0.5f, 0.5f);
-							//BaseAI.AIElemental(npc, ref npc.ai, false, 0, false, false, 800f, 100f, 60, 8f);
 						}
 						playerTarget.Center += new Vector2(0f, 32f);						
 						int SHLOOPX = 34;
@@ -185,8 +184,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						Head1.Center = npc.Center + new Vector2(SHLOOPX, -SHLOOPY) + npc.velocity;
 						Head2.Center = npc.Center + new Vector2(-SHLOOPX, -SHLOOPY) + npc.velocity;
 					}
-					else
-					if(Main.netMode != 1) //digs itself out of the ground
+					else if(Main.netMode != 1) //digs itself out of the ground
 					{
 						internalAI[1] = AISTATE_TURRET;							
 						npc.netUpdate = true;

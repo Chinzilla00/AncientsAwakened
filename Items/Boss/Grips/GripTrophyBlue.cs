@@ -6,7 +6,7 @@ namespace AAMod.Items.Boss.Grips
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blue Grip of Chaos Trophy");
+			DisplayName.SetDefault("Mire Grip of Chaos Trophy");
 		}
 
 		public override void SetDefaults()

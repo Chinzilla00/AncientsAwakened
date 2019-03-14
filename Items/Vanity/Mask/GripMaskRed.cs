@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Mask
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Red Grip of Chaos Mask");
+            DisplayName.SetDefault("Inferno Grip of Chaos Mask");
 		}
 
         public override void SetDefaults()

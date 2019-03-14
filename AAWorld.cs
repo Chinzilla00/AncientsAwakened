@@ -92,7 +92,7 @@ namespace AAMod
         public static bool downedToad;
         public static bool downedGripsS;
         public static bool downedSoC;
-        public static bool LuminiteMeteorBool;
+        public static bool DarkmatterMeteorBool;
         public static bool downedFungus;
         //Stones
         public static bool RealityDropped;
@@ -151,7 +151,7 @@ namespace AAMod
             DiscordOres = downedGripsS;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
-            LuminiteMeteorBool = false;
+            DarkmatterMeteorBool = false;
             Anticheat = true;
             Compass = false;
             //Stones
@@ -1024,11 +1024,6 @@ namespace AAMod
                 if (DarkMatter == false)
                 {
                     DarkMatter = true;
-                    Main.NewText("Darkness grows in the depths of the world...", Color.DarkBlue.R, Color.DarkBlue.G, Color.DarkBlue.B);
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(11, 12), (ushort)mod.TileType("DarkmatterOre"));
-                    }
                 }
             }
 
@@ -1467,7 +1462,7 @@ namespace AAMod
             }
         }
 
-        public static void SpawnLuminite()
+        public static void SpawnDarkmatter()
         {
             Mod mod = AAMod.instance;
             bool flag = true;
@@ -1491,7 +1486,7 @@ namespace AAMod
                 int num4 = 5;
                 while ((double)num4 < Main.worldSurface)
                 {
-                    if (Main.tile[j, num4].active() && Main.tile[j, num4].type == mod.TileType("LuminiteOre"))
+                    if (Main.tile[j, num4].active() && Main.tile[j, num4].type == mod.TileType<Tiles.DarkmatterOre>())
                     {
                         num++;
                         if (num > num3)
@@ -1536,12 +1531,12 @@ namespace AAMod
                                 }
                             }
                         }
-                        if ((float)num8 < num5)
+                        if (num8 < num5)
                         {
                             num5 -= 0.5f;
                             break;
                         }
-                        flag = AAWorld.LuminiteMeteor(num7, k);
+                        flag = DarkmatterMeteor(num7, k);
                         if (flag)
                         {
                             break;
@@ -1560,7 +1555,7 @@ namespace AAMod
             }
         }
 
-        public static bool LuminiteMeteor(int i, int j)
+        public static bool DarkmatterMeteor(int i, int j)
         {
             Mod mod = AAMod.instance;
             if (i < 300 || i > Main.maxTilesX - 300)
@@ -1621,7 +1616,7 @@ namespace AAMod
                             {
                                 Main.tile[num2, num3].active(false);
                             }
-                            Main.tile[num2, num3].type = (ushort)mod.TileType("LuminiteOre");
+                            Main.tile[num2, num3].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
                         }
                     }
                 }
@@ -1659,7 +1654,7 @@ namespace AAMod
                         }
                         Main.tile[num12, num13].liquid = 0;
                     }
-                    if (Main.tile[num12, num13].type == (ushort)mod.TileType("LuminiteOre"))
+                    if (Main.tile[num12, num13].type == (ushort)mod.TileType<Tiles.DarkmatterOre>())
                     {
                         if (!WorldGen.SolidTile(num12 - 1, num13) && !WorldGen.SolidTile(num12 + 1, num13) && !WorldGen.SolidTile(num12, num13 - 1) && !WorldGen.SolidTile(num12, num13 + 1))
                         {
@@ -1690,7 +1685,7 @@ namespace AAMod
                             {
                                 WorldGen.KillTile(num17, num18, false, false, false);
                             }
-                            Main.tile[num17, num18].type = (ushort)mod.TileType("LuminiteOre");
+                            Main.tile[num17, num18].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
                             WorldGen.SquareTileFrame(num17, num18, true);
                         }
                     }
@@ -1712,7 +1707,7 @@ namespace AAMod
                             {
                                 WorldGen.KillTile(num22, num23, false, false, false);
                             }
-                            Main.tile[num22, num23].type = (ushort)mod.TileType("LuminiteOre");
+                            Main.tile[num22, num23].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
                             WorldGen.SquareTileFrame(num22, num23, true);
                         }
                     }

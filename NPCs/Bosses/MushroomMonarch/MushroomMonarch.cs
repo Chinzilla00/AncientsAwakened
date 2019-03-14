@@ -106,16 +106,10 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                         npc.frame.Y = 756;
                     }
                 }
-            }else if (internalAI[1] == AISTATE_FLY || !Main.dayTime)
+            }else if (internalAI[1] == AISTATE_FLY)
             {
-                if (npc.frameCounter > 7)
-                {
-                    npc.frame.Y += 108;
-                    if (npc.frame.Y < 108 * 8 || npc.frame.Y > 108 * 11)
-                    {
-                        npc.frame.Y = 108 * 8;
-                    }
-                }
+                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                npc.active = false;
                 
             }else //jump
             {
@@ -145,8 +139,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
                 if (!Main.dayTime)
                 {
-                    npc.dontTakeDamage = true;
-                    npc.velocity.Y -= 4;
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                    npc.active = false;
                     return;
                 }
                 if (internalAI[1] != AISTATE_FLY)

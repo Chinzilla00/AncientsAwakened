@@ -28,6 +28,8 @@ namespace AAMod
     public class AAPlayer : ModPlayer
     {
         //Minions
+        public bool ImpServant = false;
+        public bool ImpSlave = false;
         public bool enderMinion = false;
         public bool enderMinionEX = false;
         public bool ChairMinion = false;
@@ -81,6 +83,8 @@ namespace AAMod
         public bool nightsSet;
         public bool deathlySet;
         public bool tribalSet;
+        public bool demonSet;
+        public bool demonBonus;
         public bool uraniumSet;
         public bool techneciumSet;
         public bool trueHallow;
@@ -89,6 +93,7 @@ namespace AAMod
         public bool trueTribal;
         public bool trueDeathly;
         public bool trueDemon;
+        public bool trueDemonBonus;
         public bool trueDynaskull;
         public bool terraSet;
         public bool chaosSet;
@@ -203,6 +208,8 @@ namespace AAMod
         public override void ResetEffects()
         {
             //Minions
+            ImpServant = false;
+            ImpSlave = false;
             enderMinion = false;
             enderMinionEX = false;
             ChairMinion = false;
@@ -227,13 +234,16 @@ namespace AAMod
             valkyrieSet = false;
             kindledSet = false;
             depthSet = false;
+            demonSet = false;
+            demonBonus = false;
             fleshrendSet = false;
             goblinSlayer = false;
             tribalSet = false;
             techneciumSet = false;
-             trueTribal = false;
+            trueTribal = false;
             impSet = false;
             trueDemon = false;
+            trueDemonBonus = false;
             trueDeathly = false;
             trueDynaskull = false;
             terraSet = false;
@@ -2250,34 +2260,6 @@ namespace AAMod
             return HasAndCanDraw(player, type, ref dummy, ref dum);
         }
 
-        public static void DrawFlickerTexture(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default(Vector2), Vector2 framePos = default(Vector2))
-        {
-            if (drawPlayer == null || !drawPlayer.active || drawPlayer.dead) { return; }
-            for (int j = 0; j < 7; j++)
-            {
-                Color color = new Color(110 - j * 10, 110 - j * 10, 110 - j * 10, 110 - j * 10);
-                Vector2 vector = new Vector2((float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5));
-                vector *= 0.4f;
-                if (drawType == 2)
-                {
-                    BaseDrawing.DrawPlayerTexture(sb, tex, shader, drawPlayer, edi.position, 1, -6f + vector.X, (drawPlayer.wings > 0 ? 0f : BaseDrawing.GetYOffset(drawPlayer)) + vector.Y, color, frame);
-                }
-                else
-                {
-                    bool wings = drawType == 1;
-                    if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2((float)(Main.wingsTexture[drawPlayer.wings].Width / 2), (float)(Main.wingsTexture[drawPlayer.wings].Height / 8)); }
-                    Vector2 pos = (wings ? new Vector2((float)((int)(edi.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) - (float)(9 * drawPlayer.direction))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + 2f * drawPlayer.gravDir))) : new Vector2((float)((int)(edi.position.X - Main.screenPosition.X - (float)(frame.Width / 2) + (float)(drawPlayer.width / 2))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)drawPlayer.height - (float)frame.Height + 4f))));
-                    if (sb is List<DrawData>)
-                    {
-                        DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
-                        dd.shader = shader;
-                        ((List<DrawData>)sb).Add(dd);
-                    }
-                    else if (sb is SpriteBatch) ((SpriteBatch)sb).Draw(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
-                }
-            }
-        }
-
         public static bool HasAndCanDraw(Player player, int type, ref bool social, ref int slot)
         {
             if (player.wereWolf || player.merman) { return false; }
@@ -2337,7 +2319,6 @@ namespace AAMod
             BaseDrawing.AddPlayerLayer(list, glAfterArm, PlayerLayer.Arms, false);
             BaseDrawing.AddPlayerLayer(list, glAfterWep, PlayerLayer.HeldItem, false);
             BaseDrawing.AddPlayerLayer(list, glAfterLegs, PlayerLayer.Legs, false);
-            BaseDrawing.AddPlayerLayer(list, glAfterWings, PlayerLayer.Wings, false);
             BaseDrawing.AddPlayerLayer(list, glAfterShield, PlayerLayer.ShieldAcc, false);
             BaseDrawing.AddPlayerLayer(list, glAfterNeck, PlayerLayer.NeckAcc, false);
             BaseDrawing.AddPlayerLayer(list, glAfterFace, PlayerLayer.FaceAcc, false);
@@ -2764,50 +2745,6 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomPants")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
-            }
-        });
-
-        public static void DrawWingGlow(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default(Vector2), Vector2 framePos = default(Vector2))
-        {
-            if (drawPlayer == null || !drawPlayer.active || drawPlayer.dead) { return; }
-            for (int j = 0; j < 7; j++)
-            {
-                Color color = default(Color);
-                Vector2 vector = new Vector2((float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5));
-                vector *= 0.4f;
-                if (drawType == 2)
-                {
-                    BaseDrawing.DrawPlayerTexture(sb, tex, shader, drawPlayer, edi.position, 1, -6f + vector.X, (drawPlayer.wings > 0 ? 0f : BaseDrawing.GetYOffset(drawPlayer)) + vector.Y, color, frame);
-                }
-                else
-                {
-                    bool wings = drawType == 1;
-                    if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2((float)(Main.wingsTexture[drawPlayer.wings].Width / 2), (float)(Main.wingsTexture[drawPlayer.wings].Height / 8)); }
-                    Vector2 pos = (wings ? new Vector2((float)((int)(edi.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) - (float)(9 * drawPlayer.direction))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + 2f * drawPlayer.gravDir))) : new Vector2((float)((int)(edi.position.X - Main.screenPosition.X - (float)(frame.Width / 2) + (float)(drawPlayer.width / 2))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)drawPlayer.height - (float)frame.Height + 4f))));
-                    if (sb is SpriteBatch) ((SpriteBatch)sb).Draw(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
-                }
-            }
-        }
-
-        public PlayerLayer glAfterWings = new PlayerLayer("AAMod", "glAfterWings", PlayerLayer.Wings, delegate (PlayerDrawInfo edi)
-        {
-            Mod mod = AAMod.instance;
-            Player drawPlayer = edi.drawPlayer;
-            int accSlot = 0;
-            bool social = false;
-            if (edi.shadow == 0 && !drawPlayer.mount.Active && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterJetpack"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
-                if (dye == -1) dye = 0;
-                DrawWingGlow(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/DarkmatterJetpack_Wings_Glow"), dye, drawPlayer);
-                //BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Accessories/Wings/DarkmatterJetpack_Wings_Glow"), edi.wingShader, drawPlayer, edi.position, 2, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), frame);
-            }
-            else
-            if (edi.shadow == 0 && !drawPlayer.mount.Active && HasAndCanDraw(drawPlayer, mod.ItemType("DraconianWings"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
-                if (dye == -1) dye = 0;
-                DrawWingGlow(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/DraconianWings_Wings_Glow"), dye, drawPlayer);
             }
         });
     }

@@ -40,15 +40,20 @@ Increases your max number of minions by 2");
             player.setBonus = @"Your minions bathe your enemies in shadowflame
 You Always have an Imp army by your side
 Imp army doesn't affect minion count";
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            modPlayer.trueDemonBonus = true;
+            modPlayer.trueDemon = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.ownedProjectileCounts[mod.ProjectileType("ImpMinion")] < 5)
+                if (player.FindBuffIndex(mod.BuffType("DevilBuff")) == -1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ImpMinion"), 0, 0f, Main.myPlayer, 0f, 0f);
+                    player.AddBuff(mod.BuffType("DevilBuff"), 3600, true);
+                }
+                if (player.ownedProjectileCounts[mod.ProjectileType("ImpSlave")] < 5)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ImpSlave"), 20, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
-            player.GetModPlayer<AAPlayer>(mod).trueDemon = true;
-            player.impMinion = true;
         }
 
         public override void AddRecipes()

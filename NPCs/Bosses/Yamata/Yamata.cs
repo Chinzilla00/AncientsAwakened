@@ -98,7 +98,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.damage * 1.2f);
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -303,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                 float dist = npc.Distance(playerTarget.Center);
                 MoveSpeed = dist > 300 ? 6f : 3f;
-                if (dist > 600 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 700 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {
@@ -314,7 +313,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         }
                     }
                     SayTheLineYamata--;
-                    npc.alpha += 10;
+                    npc.alpha += 5;
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;

@@ -12,7 +12,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Subzero Serpent Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Burrowing Down' by Charlie Debnam");
+        }
         
 
         public override void SetDefaults()

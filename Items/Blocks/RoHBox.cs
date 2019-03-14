@@ -10,7 +10,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ray of Hope Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Pursuit 2016' from Ace Attorney 6");
+        }
 
 		public override void SetDefaults()
 		{

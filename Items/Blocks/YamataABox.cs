@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using Terraria.ID;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
@@ -8,9 +9,21 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Yamata Awakened Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'The Ultimate Show' from Super Paper Mario
+Remix by GAMetal");
+        }
 
-		public override void SetDefaults()
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.YamataA;
+                }
+            }
+        }
+        public override void SetDefaults()
 		{
 			item.useStyle = 1;
 			item.useTurn = true;
