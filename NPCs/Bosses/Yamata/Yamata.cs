@@ -302,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                 float dist = npc.Distance(playerTarget.Center);
                 MoveSpeed = dist > 300 ? 6f : 3f;
-                if (dist > 700 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 800 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {

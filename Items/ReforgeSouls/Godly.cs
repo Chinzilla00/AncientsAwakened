@@ -22,5 +22,13 @@ Right-click weapon with the soul to set prefix
 Consumes in process");
         }
 
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(Terraria.ID.ItemID.FragmentStardust, 15);
+            recipe.AddTile(Terraria.ID.TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

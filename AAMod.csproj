@@ -755,6 +755,9 @@
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
+    <Compile Include="Items\Dyes\AbyssalWrathDye.cs" />
+    <Compile Include="Items\Dyes\BlazingFuryDye.cs" />
+    <Compile Include="Items\Dyes\DoomsdayDye.cs" />
     <Compile Include="Items\Hooks\DragonsGrip.cs" />
     <Compile Include="Items\Magic\AncientArcanum.cs" />
     <Compile Include="Items\Magic\AtlanteanTrident.cs" />
@@ -1002,6 +1005,10 @@
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
     <Compile Include="Items\Ranged\UraniumRepeater.cs" />
     <Compile Include="Items\Ranged\YtriumCrossbow.cs" />
+    <Compile Include="Items\ReforgeSouls\Godly.cs" />
+    <Compile Include="Items\ReforgeSouls\Legendary.cs" />
+    <Compile Include="Items\ReforgeSouls\Mythical.cs" />
+    <Compile Include="Items\ReforgeSouls\Unreal.cs" />
     <Compile Include="Items\Summoning\BlizzardDragonStaff.cs" />
     <Compile Include="Items\Summoning\CrimsonStaff.cs" />
     <Compile Include="Items\Summoning\DemonStaff.cs" />
@@ -3784,6 +3791,9 @@
     <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
+    <Content Include="Items\Dyes\AbyssalWrathDye.png" />
+    <Content Include="Items\Dyes\BlazingFuryDye.png" />
+    <Content Include="Items\Dyes\DoomsdayDye.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Hooks\DragonsGripP.png" />
     <Content Include="Items\Hooks\DragonsGrip_Chain.png" />
@@ -4042,6 +4052,10 @@
     <Content Include="Items\Ranged\UraniumRepeater.png" />
     <Content Include="Items\Ranged\UWAM.png" />
     <Content Include="Items\Ranged\YtriumCrossbow.png" />
+    <Content Include="Items\ReforgeSouls\Godly.png" />
+    <Content Include="Items\ReforgeSouls\Legendary.png" />
+    <Content Include="Items\ReforgeSouls\Mythical.png" />
+    <Content Include="Items\ReforgeSouls\Unreal.png" />
     <Content Include="Items\Smite\CrystallineMace.png" />
     <Content Include="Items\Smite\Dragonslayer.png" />
     <Content Include="Items\Smite\Floral.png" />
