@@ -11,21 +11,6 @@ namespace AAMod.Items.BossSummons
 {
     public class Lifescanner : ModItem
     {
-        public override string Texture
-        {
-            get
-            {
-                if ((Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneVoid && !AAWorld.downedZero) || AAWorld.downedZero)
-                {
-                    return "AAMod/Items/BossSummons/Lifescanner";
-                }
-                else
-                {
-                    return "AAMod/Items/BossSummons/LifescannerInactive";
-                }
-            }
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lifescanner");
@@ -99,7 +84,7 @@ Most likely you.");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "UnchargedDoomite", 10);
+            recipe.AddIngredient(null, "DeactivatedDoomite", 10);
             recipe.AddTile(null, "HellstoneAnvil");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
