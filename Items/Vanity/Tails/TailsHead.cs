@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Tails
 {
     [AutoloadEquip(EquipType.Head)]
-    public class FishDiverMask : ModItem
+    public class TailsHead : ModItem
     {
         public override void SetStaticDefaults()
         {

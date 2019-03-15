@@ -5,10 +5,9 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Tails
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class FishDiverBoots : ModItem
+    public class TailsLegs : ModItem
     {
         public override void SetStaticDefaults()
-
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Tails Leggings");
@@ -35,3 +34,4 @@ namespace AAMod.Items.Vanity.Tails
             item.vanity = true;
         }
     }
+}
