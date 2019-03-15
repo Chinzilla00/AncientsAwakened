@@ -684,7 +684,6 @@
     <Compile Include="Items\Boss\Yamata\YamataBag.cs" />
     <Compile Include="Items\Boss\Yamata\Flairdra.cs" />
     <Compile Include="Items\Boss\Yamata\DreadScale.cs" />
-    <Compile Include="Items\Boss\Yamata\Masamune.cs" />
     <Compile Include="Items\Boss\Yamata\Naitokurosu.cs" />
     <Compile Include="Items\Boss\Yamata\YamataTerratool.cs" />
     <Compile Include="Items\Boss\Yamata\YamataTerratool_Axe.cs" />
@@ -740,6 +739,7 @@
     <Compile Include="Items\Dev\Etheral.cs" />
     <Compile Include="Items\Dev\EtheralEX.cs" />
     <Compile Include="Items\Dev\FluffEX.cs" />
+    <Compile Include="Items\Dev\FreedomBlaster.cs" />
     <Compile Include="Items\Dev\FreedomStar.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
@@ -912,7 +912,6 @@
     <Compile Include="Items\Melee\MoltenLance.cs" />
     <Compile Include="Items\Melee\NightKeeper.cs" />
     <Compile Include="Items\Melee\Nightmare_Katana.cs" />
-    <Compile Include="Items\Melee\NightSkyYoyo.cs" />
     <Compile Include="Items\Melee\Oblivion.cs" />
     <Compile Include="Items\Melee\OceanRazor.cs" />
     <Compile Include="Items\Melee\PerfectChaos.cs" />
@@ -1194,6 +1193,9 @@
     <Compile Include="Items\Vanity\Moon\MoonBoots.cs" />
     <Compile Include="Items\Vanity\Moon\MoonHood.cs" />
     <Compile Include="Items\Vanity\Moon\MoonRobe.cs" />
+    <Compile Include="Items\Vanity\Tails\TailsBody.cs" />
+    <Compile Include="Items\Vanity\Tails\TailsHead.cs" />
+    <Compile Include="Items\Vanity\Tails\TailsLegs.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsLeggings.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsMask.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsSuit.cs" />
@@ -1523,6 +1525,7 @@
     <Compile Include="Projectiles\DragonfireDart.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
+    <Compile Include="Projectiles\FreedomStar.cs" />
     <Compile Include="Projectiles\GemShot\AmberShot.cs" />
     <Compile Include="Projectiles\GemShot\AmethystShot.cs" />
     <Compile Include="Projectiles\GemShot\DiamondShot.cs" />
@@ -1744,7 +1747,6 @@
     <Compile Include="Projectiles\Yamata\Masamune.cs" />
     <Compile Include="Projectiles\Yamata\MidnightWrath.cs" />
     <Compile Include="Projectiles\Yamata\Moonblow.cs" />
-    <Compile Include="Projectiles\Yamata\Surasshu.cs" />
     <Compile Include="Projectiles\Yamata\TC.cs" />
     <Compile Include="Projectiles\Yamata\Toxibomb.cs" />
     <Compile Include="Projectiles\Yamata\Toxiboom.cs" />
@@ -3699,7 +3701,6 @@
     <Content Include="Items\Boss\Yamata\Flairdra.png" />
     <Content Include="Items\Boss\Yamata\Hydraslayer.png" />
     <Content Include="Items\Boss\Yamata\HydraStabber.png" />
-    <Content Include="Items\Boss\Yamata\Masamune.png" />
     <Content Include="Items\Boss\Yamata\MidnightWrath.png" />
     <Content Include="Items\Boss\Yamata\MoonStaff.png" />
     <Content Include="Items\Boss\Yamata\Naitokurosu.png" />
@@ -3774,6 +3775,8 @@
     <Content Include="Items\Dev\ExcaligrimEX.png" />
     <Content Include="Items\Dev\Fluff.png" />
     <Content Include="Items\Dev\FluffEX.png" />
+    <Content Include="Items\Dev\FreedomBlaster.png" />
+    <Content Include="Items\Dev\FreedomStar - Copy.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
@@ -3944,7 +3947,6 @@
     <Content Include="Items\Melee\MoltenLance.png" />
     <Content Include="Items\Melee\NightKeeper.png" />
     <Content Include="Items\Melee\Nightmare_Katana.png" />
-    <Content Include="Items\Melee\NightSkyYoyo.png" />
     <Content Include="Items\Melee\Oblivion.png" />
     <Content Include="Items\Melee\OceanRazor.png" />
     <Content Include="Items\Melee\PerfectChaos.png" />
@@ -4327,6 +4329,12 @@
     <Content Include="Items\Vanity\Moon\MoonRobe_Arms.png" />
     <Content Include="Items\Vanity\Moon\MoonRobe_Body.png" />
     <Content Include="Items\Vanity\Moon\MoonRobe_Female.png" />
+    <Content Include="Items\Vanity\Tails\TailsBody.png" />
+    <Content Include="Items\Vanity\Tails\TailsHead.png" />
+    <Content Include="Items\Vanity\Tails\TailsLegs.png" />
+    <Content Include="Items\Vanity\Tails\Tails_Body.png" />
+    <Content Include="Items\Vanity\Tails\Tails_Head.png" />
+    <Content Include="Items\Vanity\Tails\Tails_Legs.png" />
     <Content Include="Items\Vanity\Tied\TiedsLeggings.png" />
     <Content Include="Items\Vanity\Tied\TiedsLeggings_Legs.png" />
     <Content Include="Items\Vanity\Tied\TiedsMask.png" />
@@ -4983,6 +4991,7 @@
     <Content Include="Projectiles\Fluff.png" />
     <Content Include="Projectiles\FluffEX.png" />
     <Content Include="Projectiles\FreedomShot.png" />
+    <Content Include="Projectiles\FreedomStar.png" />
     <Content Include="Projectiles\FulguritePhasesaber.png" />
     <Content Include="Projectiles\GemShot\AmberShot.png" />
     <Content Include="Projectiles\GemShot\AmethystShot.png" />
@@ -5152,7 +5161,6 @@
     <Content Include="Projectiles\Yamata\Masamune.png" />
     <Content Include="Projectiles\Yamata\MidnightWrath.png" />
     <Content Include="Projectiles\Yamata\Moonblow.png" />
-    <Content Include="Projectiles\Yamata\Surasshu.png" />
     <Content Include="Projectiles\Yamata\TC.png" />
     <Content Include="Projectiles\Yamata\Toxibomb.png" />
     <Content Include="Projectiles\Yamata\Toxiboom.png" />
@@ -5176,12 +5184,10 @@
     <Content Include="Projectiles\Zero\ZeroArrow.png" />
     <Content Include="Projectiles\Zero\ZeroStarP.png" />
     <Content Include="Resprites\DeathSickle.png" />
-    <Content Include="Resprites\GMushroom.png" />
     <Content Include="Resprites\LifeFruit.png" />
     <Content Include="Resprites\Luminite.png" />
     <Content Include="Resprites\Mana.png" />
     <Content Include="Resprites\ManaGreen.png" />
-    <Content Include="Resprites\Mushroom.png" />
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Resprites\TEoCHead.png" />
     <Content Include="Sounds\Music\Akuma.mp3" />
@@ -5261,6 +5267,7 @@
     <Content Include="Tiles\Depthsand.png" />
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
+    <Content Include="Tiles\DjinnBox.png" />
     <Content Include="Tiles\Doomgrass.png" />
     <Content Include="Tiles\DoomstoneB.png" />
     <Content Include="Tiles\DracoAltarS.png" />
@@ -5270,17 +5277,22 @@
     <Content Include="Tiles\DreadAltarS.png" />
     <Content Include="Tiles\DreadAltar.png" />
     <Content Include="Tiles\DreadAltarMoon.png" />
+    <Content Include="Tiles\EbonstoneNoSpread.png" />
     <Content Include="Tiles\EventideAbyssiumOre.png" />
+    <Content Include="Tiles\FateBox.png" />
     <Content Include="Tiles\FulgurGlass.png" />
     <Content Include="Tiles\FulgurGlassS.png" />
     <Content Include="Tiles\FulguriteBrick.png" />
     <Content Include="Tiles\FulguriteBrickS.png" />
     <Content Include="Tiles\FulguritePlating.png" />
     <Content Include="Tiles\FulguritePlatingS.png" />
+    <Content Include="Tiles\FungusBox.png" />
     <Content Include="Tiles\InfernoFoliage.png" />
+    <Content Include="Tiles\LakeBox.png" />
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
+    <Content Include="Tiles\MushBox.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\MushroomBlocks.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
@@ -5291,6 +5303,7 @@
     <Content Include="Tiles\OroborosChestC3_Highlight.png" />
     <Content Include="Tiles\OroborosChestC4.png" />
     <Content Include="Tiles\OroborosChestC4_Highlight.png" />
+    <Content Include="Tiles\PagodaBox.png" />
     <Content Include="Tiles\RazePalmSapling.png" />
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />

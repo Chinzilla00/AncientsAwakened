@@ -14,12 +14,12 @@ namespace AAMod.Items.Dev
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Freedom Star");
+            DisplayName.SetDefault("Freedom Star");
             Tooltip.SetDefault("Tails' trusty blaster.\n" +
-                "Hold the use button to charge, and then release a powerful plasma beam!\n" +
+                "Hold the use button to charge, and then release a powerful Freedom Blast!\n" +
                 "\"You mess with me or my friends, and your ass is Stardust.\" \n" +
                 "- Tails\n" +
-                "Spur EX");
+                "Mobian Buster EX");
         }
 
         public override void SetDefaults()
@@ -28,7 +28,6 @@ namespace AAMod.Items.Dev
             item.height = 40;
             item.ranged = true;
             item.damage = 400;
-            item.scale = .65f;
             item.shoot = mod.ProjectileType("Freedom Shot");
             item.shootSpeed = 30f;
             item.useTime = 10;
