@@ -29,6 +29,7 @@ namespace AAMod.Items.Armor.Fulgurite
 		{
             player.magicDamage *= 1.14f;
             player.magicCrit += 14;
+            player.statManaMax2 += 120;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
