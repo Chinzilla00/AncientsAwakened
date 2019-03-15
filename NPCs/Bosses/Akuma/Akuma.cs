@@ -23,7 +23,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 			DisplayName.SetDefault("Akuma; Draconian Demon");
 			NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
-
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

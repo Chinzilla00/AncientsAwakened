@@ -59,6 +59,11 @@ namespace AAMod.NPCs.Enemies.Void
             
         }
 
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DeactivatedDoomite"), Main.rand.Next(3));
+        }
+
         public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;

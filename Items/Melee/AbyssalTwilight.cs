@@ -34,7 +34,7 @@ namespace AAMod.Items.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "ExilesKatana", 1);
 			recipe.AddIngredient(mod, "OceanRazor", 1);
-			recipe.AddIngredient(mod, "DesertScimitar", 1);
+			recipe.AddIngredient(mod, "DoomiteSaber", 1);
 			recipe.AddIngredient(mod, "IceLongsword", 1);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);

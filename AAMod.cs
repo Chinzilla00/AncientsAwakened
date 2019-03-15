@@ -752,6 +752,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield"));
 
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
@@ -1793,7 +1794,7 @@ namespace AAMod
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "PalladiumShield");
-                recipe.AddIngredient(ItemID.ObsidianShield);
+                recipe.AddIngredient(ItemID.ObsidianSkull);
                 recipe.AddTile(TileID.TinkerersWorkbench);
                 recipe.SetResult(ItemID.ObsidianShield);
                 recipe.AddRecipe();

@@ -110,6 +110,7 @@ namespace AAMod
         public bool Alpha;
         public bool Palladium;
         public bool fulgurite;
+        public bool doomite;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -170,6 +171,8 @@ namespace AAMod
         public bool YamataAGravity = false;
         public bool Hunted = false;
         public bool Unstable = false;
+        public bool Abducted = false;
+        public Vector2 RingLocation;
         //buffs
 
         //pets
@@ -262,6 +265,7 @@ namespace AAMod
             Alpha = false;
             Palladium = false;
             fulgurite = false;
+            doomite = false;
             //Accessory
             SnapCD = 0;
             AbilityCD = 0;
@@ -1791,6 +1795,11 @@ namespace AAMod
             int before = player.lifeRegen;
             bool drain = false;
 
+            if (Abducted)
+            {
+                player.Center = RingLocation;
+            }
+
             if (Unstable)
             {
                 player.confused = true;
@@ -2467,6 +2476,7 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = (mapHead ? edhi.drawPlayer : edi.drawPlayer);
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
             object drawObj = null; if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
             Vector2 Position = (mapHead ? drawPlayer.position : edi.position);
             int dyeHead = (mapHead ? edhi.armorShader : edi.headArmorShader);
@@ -2591,11 +2601,16 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DJDuckHead_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteVisor")) && modPlayer.doomite)
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DoomiteVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.headFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoPlate")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DracoPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
@@ -2656,11 +2671,16 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DJDuckShirt_" + (drawPlayer.Male ? "Body" : "Female") + "_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteBreastplate")) && modPlayer.doomite)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_" + (drawPlayer.Male ? "Body" : "Female") + "_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoPlate")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DracoPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
@@ -2701,11 +2721,16 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomShirt_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteBreastplate")) && modPlayer.doomite)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoLeggings")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DracoLeggings_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 2, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.legFrame);
@@ -2745,6 +2770,10 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomPants")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteGreaves")) && modPlayer.doomite)
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
             }
         });
     }

@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.hostile = true;
             projectile.friendly = false;
             projectile.tileCollide = false;
-            projectile.magic = true;
+            projectile.penetrate = 1;
             projectile.extraUpdates = 2;
             projectile.alpha = 255;
         }

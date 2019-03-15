@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Moonray");
+            DisplayName.SetDefault("Death Laser");
         }
 
         public override void SetDefaults()

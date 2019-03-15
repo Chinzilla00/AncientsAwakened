@@ -470,7 +470,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                if (npc.ai[2] == 350)
+                if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
                 {
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {

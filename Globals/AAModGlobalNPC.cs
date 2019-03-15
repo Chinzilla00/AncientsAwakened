@@ -730,27 +730,27 @@ namespace AAMod
                 pool.Clear();
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
                 {
-                    pool.Add(mod.NPCType("Wyrmling"), .5f);
-                    pool.Add(mod.NPCType("InfernalSlime"), 1f);
-                    pool.Add(mod.NPCType("Flamebrute"), .5f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), 1f);
-                    pool.Add(mod.NPCType("DragonClaw"), 1f);
+                    pool.Add(mod.NPCType("Wyrmling"), .3f);
+                    pool.Add(mod.NPCType("InfernalSlime"), .7f);
+                    pool.Add(mod.NPCType("Flamebrute"), .3f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), .7f);
+                    pool.Add(mod.NPCType("DragonClaw"), .7f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Wyvern"), .3f);
-                        pool.Add(mod.NPCType("BlazePhoenix"), .2f);
+                        pool.Add(mod.NPCType("Wyvern"), .2f);
+                        pool.Add(mod.NPCType("BlazePhoenix"), .1f);
                     }
                 }
                 else if (player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    pool.Add(mod.NPCType("Wyrmling"), .5f);
-                    pool.Add(mod.NPCType("Flamebrute"), .5f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), 1f);
-                    pool.Add(mod.NPCType("DragonClaw"), 1f);
+                    pool.Add(mod.NPCType("Wyrmling"), .3f);
+                    pool.Add(mod.NPCType("Flamebrute"), .3f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), .7f);
+                    pool.Add(mod.NPCType("DragonClaw"), .7f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Wyvern"), .3f);
-                        pool.Add(mod.NPCType("Wyrm"), .2f);
+                        pool.Add(mod.NPCType("Wyvern"), .2f);
+                        pool.Add(mod.NPCType("Wyrm"), .1f);
                         pool.Add(mod.NPCType("ChaoticDawn"), .1f);
                         if (player.ZoneSnow)
                         {
@@ -760,11 +760,11 @@ namespace AAMod
                 }
                 if (AAWorld.downedGripsS)
                 {
-                    pool.Add(mod.NPCType("BlazeClaw"), .8f);
+                    pool.Add(mod.NPCType("BlazeClaw"), .6f);
                 }
                 if (AAWorld.downedAkuma)
                 {
-                    pool.Add(mod.NPCType("Lung"), .5f);
+                    pool.Add(mod.NPCType("Lung"), .2f);
                 }
             }
 
@@ -810,6 +810,7 @@ namespace AAMod
                 if (NPC.downedMoonlord)
                 {
                     pool.Add(mod.NPCType("Searcher"), .1f);
+                    pool.Add(mod.NPCType("Searcher1"), .05f);
                     if (AAWorld.downedZero && Main.expertMode)
                     {
                         pool.Add(mod.NPCType("Null"), .05f);
