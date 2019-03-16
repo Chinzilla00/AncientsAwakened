@@ -9,6 +9,7 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Sagittarius
 {
+    [AutoloadBossHead]
     public class Sagittarius : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,7 +33,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         public float[] shootAI = new float[1];
-        public float[] MovementType = new float[1];
         public float[] internalAI = new float[6];
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -46,7 +46,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 writer.Write(internalAI[4]);
                 writer.Write(internalAI[5]);
                 writer.Write(shootAI[0]);
-                writer.Write(MovementType[0]);
             }
         }
 
@@ -62,7 +61,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[4] = reader.ReadFloat();
                 internalAI[5] = reader.ReadFloat();
                 shootAI[0] = reader.ReadFloat();
-                MovementType[0] = reader.ReadFloat();
             }
         }
 
@@ -89,14 +87,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     }
                 }
                 internalAI[0] = 1;
-            }
-
-            internalAI[5]++;
-            if (internalAI[5] > 200)
-            {
-                internalAI[5] = 0;
-                MovementType[0] = Main.rand.Next(3);
-                npc.netUpdate = true;
             }
 
             if (internalAI[4] < 60)
@@ -183,18 +173,18 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
             if (internalAI[2] == 0) //Hover over target
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.07f, 6f, 250f, 70f, null);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.20f, 6f, 250f, 70f, null);
                 npc.rotation = 0;
             }
             else
             if (internalAI[2] == 1) //Chaase down the target
             {
-                BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 1f);
+                BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 2f);
                 npc.rotation = 0;
             }
             else //Charge the target
             {
-                BaseAI.AIWeapon(npc, ref npc.ai, 120, 100, 4f, 1f, .5f);
+                BaseAI.AIWeapon(npc, ref npc.ai, ref npc.rotation, Main.player[npc.target].Center, false, 0, 60, 8f, 4f, 2.5f);
             }
         }
 
@@ -229,5 +219,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(30, 40));
         }
+        
     }
 }

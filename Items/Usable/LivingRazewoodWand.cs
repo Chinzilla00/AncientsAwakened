@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
@@ -16,14 +17,28 @@ namespace AAMod.Items.Usable
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = false;
-            item.createTile = mod.TileType("LivingRazewood"); //put your CustomBlock Tile name
-            item.useAmmo = mod.ItemType("Razewood");
+            item.createTile = mod.TileType("LivingRazewood");
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Living Razewood Wand");
             Tooltip.SetDefault("Consumes Razewood");
+        }
+
+        public override bool UseItem(Player player)
+        {
+            for (int num66 = 0; num66 < 58; num66++)
+            {
+                if (player.inventory[num66].type == mod.ItemType<Blocks.Razewood>() && player.inventory[num66].stack > 0)
+                {
+                    item.createTile = mod.TileType("LivingRazewood");
+                    player.inventory[num66].stack -= 1;
+                    return true;
+                }
+            }
+            item.createTile = -1;
+            return true;
         }
 
         public override void AddRecipes()

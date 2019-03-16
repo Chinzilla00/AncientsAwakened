@@ -8,6 +8,7 @@ namespace AAMod.Tiles
 {
     public class TerraLeaves : ModTile
     {
+
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -29,24 +30,25 @@ namespace AAMod.Tiles
         {
             return false;
         }
+        
+        Texture2D glowTex = null;
 
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        public override void PostDraw(int x, int y, SpriteBatch sb)
         {
-            Tile tile = Main.tile[i, j];
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
+            Tile tile = Main.tile[x, y];
+            bool glow = true;
+            if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
-                zero = Vector2.Zero;
+                if (glowTex == null) glowTex = mod.GetTexture("Tiles/TerraLeaves");
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetTerra2ColorDim);
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/TerraLeaves"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.DiscoColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
-            r = Main.DiscoR * .001f;
-            g = Main.DiscoG * .001f;
-            b = Main.DiscoB * .001f;
+            r = Color.YellowGreen.R / 255;
+            g = Color.YellowGreen.G / 255;
+            b = Color.YellowGreen.B / 255;
         }
     }
 }

@@ -44,6 +44,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         int ChainTimer = 0;
 
 
+        public float[] MovementType = new float[1];
         public float[] InternalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -54,6 +55,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 writer.Write(InternalAI[1]);
                 writer.Write(InternalAI[2]);
                 writer.Write(InternalAI[3]);
+                writer.Write(MovementType[0]);
             }
         }
 
@@ -66,6 +68,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 InternalAI[1] = reader.ReadFloat();
                 InternalAI[2] = reader.ReadFloat();
                 InternalAI[3] = reader.ReadFloat();
+                MovementType[0] = reader.ReadFloat();
             }
         }
 
@@ -99,8 +102,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
             pos = sagittarius.Center;
 
-            
-            
+            npc.ai[1]++;
+            if (npc.ai[1] > 200)
+            {
+                npc.ai[1] = 0;
+                MovementType[0] = MovementType[0] == 1 ? 0 : 1;
+                npc.netUpdate = true;
+            }
+
             if (MovementType[0] == 0)
             {
                 for (int m = npc.oldPos.Length - 1; m > 0; m--)
@@ -113,43 +122,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
                 rotValue += 0.05f;
                 while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-                if (npc.Center != BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140f, 0f), rotValue))
-                {
-                    MoveToPoint(BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140f, 0f), rotValue));
-                }
-                else
-                {
-                    npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140f, 0f), rotValue);
-                }
+                MoveToPoint(BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue));
+                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
             else if (MovementType[0] == 1)
             {
                 BaseAI.AIEye(npc, ref InternalAI, false, true, 0.2f, 0.2f, 5f, 5f, 1f, 1f);
-            }	
-            else if (MovementType[0] == 2)
-            {
-                for (int m = npc.oldPos.Length - 1; m > 0; m--)
-                {
-                    npc.oldPos[m] = npc.oldPos[m - 1];
-                }
-                npc.oldPos[0] = npc.position;
-
-                int probeNumber = ((Sagittarius)sagittarius.modNPC).ProbeCount;
-                if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
-                rotValue += 0.05f;
-                while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-                if (npc.Center != BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(100f, 0f), rotValue))
-                {
-                    MoveToPoint(BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(100f, 0f), rotValue));
-                }
-                else
-                {
-                    npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(100f, 0f), rotValue);
-                }
-
-                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
-
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
 		}
 
@@ -166,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             if (npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float moveSpeed = 5f;
+            float moveSpeed = 18f ;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
             if (length < moveSpeed)
             {
@@ -206,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 chainTex = mod.GetTexture("NPCs/Bosses/Sagittarius/OrbiterChain3");
             }
             Vector2 endPoint = BaseUtility.RotateVector(npc.Center, npc.Center + new Vector2(-2f, 0), npc.rotation + (npc.spriteDirection == -1 ? (float)Math.PI : 0));
-            BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, AAColor.ZeroShield, 1);
+            BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, AAColor.Oblivion);
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, lightColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, AAColor.ZeroShield);
             BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, 2f, 0.9f, 4, false, 0f, 0f, AAColor.ZeroShield);

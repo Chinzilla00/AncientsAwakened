@@ -97,6 +97,7 @@ namespace AAMod
         public static bool downedAshe;
         public static bool downedHaruka;
         public static bool downedSisters;
+        public static bool downedSag;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -145,6 +146,7 @@ namespace AAMod
             downedAshe = false ;
             downedHaruka = false;
             downedSisters = false;
+            downedSag = false;
         //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -232,6 +234,7 @@ namespace AAMod
             if (downedAshe) downed.Add("Ashe");
             if (downedHaruka) downed.Add("Haruka");
             if (downedSisters) downed.Add("Sisters");
+            if (downedSag) downed.Add("Sag");
 
             return new TagCompound {
                 {"downed", downed},
@@ -299,6 +302,7 @@ namespace AAMod
 
             BitsByte flags6 = new BitsByte();
             flags6[0] = downedSisters;
+            flags6[1] = downedSag;
             writer.Write(flags6);
         }
 
@@ -355,6 +359,7 @@ namespace AAMod
             
             BitsByte flags6 = reader.ReadByte();
             downedSisters = flags6[0];
+            downedSag = flags6[1];
         }
 
         public override void Load(TagCompound tag)
@@ -399,6 +404,7 @@ namespace AAMod
             downedAshe = downed.Contains("Ashe");
             downedHaruka = downed.Contains("Haruka");
             downedSisters = downed.Contains("Sisters");
+            downedSag = downed.Contains("Sag");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;

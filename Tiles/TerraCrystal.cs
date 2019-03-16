@@ -43,6 +43,19 @@ namespace AAMod.Tiles
             Main.spriteBatch.Draw(mod.GetTexture("Tiles/TerraCrystal"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.TerraGlow, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
+        /*
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            bool glow = true;
+            if (glow && (tile != null && tile.active() && tile.type == this.Type))
+            {
+                if (glowTex == null) glowTex = mod.GetTexture("Tiles/TerraLeaves");
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetTerraColorDim);
+            }
+        }
+         */
+
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
             if (!glow) return;

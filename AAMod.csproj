@@ -1480,6 +1480,7 @@
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraCrawler.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraSpere.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraWeaver.cs" />
+    <Compile Include="NPCs\Enemies\Void\SagittariusMini.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher1.cs" />
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
@@ -4927,6 +4928,8 @@
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerrariumArrow.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerraWarlock.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerraWizard.png" />
+    <Content Include="NPCs\Enemies\Void\SagittariusMini.gif" />
+    <Content Include="NPCs\Enemies\Void\SagittariusMini.png" />
     <Content Include="NPCs\Enemies\Void\Searcher1.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />

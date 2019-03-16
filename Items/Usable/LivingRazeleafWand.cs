@@ -18,14 +18,28 @@ namespace AAMod.Items.Usable
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = false;
-            item.createTile = mod.TileType("LivingRazeleaves"); //put your CustomBlock Tile name
-            item.useAmmo = mod.ItemType("Razewood");
+            item.createTile = mod.TileType("LivingRazeleaves");
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Living Razeleaf Wand");
             Tooltip.SetDefault("Consumes Razewood");
+        }
+
+        public override bool UseItem(Terraria.Player player)
+        {
+            for (int num66 = 0; num66 < 58; num66++)
+            {
+                if (player.inventory[num66].type == mod.ItemType<Blocks.Razewood>() && player.inventory[num66].stack > 0)
+                {
+                    item.createTile = mod.TileType("LivingRazeleaves");
+                    player.inventory[num66].stack -= 1;
+                    return true;
+                }
+            }
+            item.createTile = -1;
+            return true;
         }
 
         public override void AddRecipes()

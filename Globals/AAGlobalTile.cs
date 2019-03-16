@@ -28,7 +28,7 @@ namespace AAMod
         public static Color GetZeroColorBright(Color color) { return GetZeroColor(color, 0.6f, 1f, false); }
         public static Color GetZeroColor(Color color, float min, float max, bool clamp)
         {
-            return GetTimedColor(AAPlayer.ZeroColor, color, min, max, clamp);
+            return GetTimedColor(AAColor.ZeroShield, color, min, max, clamp);
         }
 
         public static Color GetTerraColorBrightInvert(Color color) { return GetTerraColor(color, 1f, 0.6f, true); }
@@ -36,7 +36,15 @@ namespace AAMod
         public static Color GetTerraColorBright(Color color) { return GetTerraColor(color, 0.6f, 1f, false); }
         public static Color GetTerraColor(Color color, float min, float max, bool clamp)
         {
-            return GetTimedColor(Color.Green, color, min, max, clamp);
+            return GetTimedColor(Color.LimeGreen, color, min, max, clamp);
+        }
+
+        public static Color GetTerra2ColorBrightInvert(Color color) { return GetTerra2Color(color, 1f, 0.6f, true); }
+        public static Color GetTerra2ColorDim(Color color) { return GetTerra2Color(color, 0.4f, 1f, false); }
+        public static Color GetTerra2ColorBright(Color color) { return GetTerra2Color(color, 0.6f, 1f, false); }
+        public static Color GetTerra2Color(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.YellowGreen, color, min, max, clamp);
         }
 
         public static Color GetUraniumColorBrightInvert(Color color) { return GetUraniumColor(color, 1f, 0.6f, true); }

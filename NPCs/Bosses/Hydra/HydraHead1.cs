@@ -49,7 +49,6 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-			npc.timeLeft = 50;
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -59,6 +58,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
             }
 			if(Body == null) return;
+            npc.timeLeft = 50;
             if (!Body.npc.active || Body.npc.life <= 0)
             {
                 npc.life = 0;

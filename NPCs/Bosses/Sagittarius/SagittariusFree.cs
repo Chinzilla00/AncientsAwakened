@@ -9,6 +9,7 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Sagittarius
 {
+    [AutoloadBossHead]
     public class SagittariusFree : Sagittarius
 	{
 		public override void SetStaticDefaults()
@@ -70,6 +71,17 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             if (internalAI[3] > 0)
             {
                 internalAI[3]--;
+            }
+
+            npc.frameCounter++;
+            if (npc.frameCounter > 7)
+            {
+                npc.frame.Y += 70;
+                npc.frameCounter = 0;
+                if (npc.frame.Y > 70 * 3)
+                {
+                    npc.frame.Y = 0;
+                }
             }
 
             if (Main.player[npc.target].dead && Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
@@ -143,8 +155,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             
             if (internalAI[2] == 1) 
             {
-                BaseAI.AIEater(npc, ref npc.ai, 0.05f, 6f, 0, false, true);
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+                BaseAI.AIEater(npc, ref npc.ai, 0.05f, 4f, 0, false, true);
+                npc.rotation = 0;
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], 30, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
             else if (internalAI[2] == 2) //Shield Mode
             {
@@ -153,18 +166,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     ShieldScale = 1f;
                 }
-                internalAI[3] = 1000; // To prevent him from doing his shield attack repeatedly
-                npc.ai[3]++;
-                if (npc.ai[3] > 2)
-                {
-                    npc.ai[3] = 0;
-                    npc.life += 1;
-                }
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.07f, 6f, 250f, 70f, null);
+                internalAI[3] = 1000;
+                npc.life += 1;
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.07f, 5f, 250f, 70f, null);
             }
             else
             {
-                BaseAI.AIEye(npc, ref npc.ai, false, true, .3f, .3f, 6, 4, 0, 0);
+                BaseAI.AIEye(npc, ref npc.ai, false, true, .3f, .3f, 4, 4, 0, 0);
                 npc.rotation = 0;
             }
             
@@ -200,10 +208,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void NPCLoot()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
-            {
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(20, 30));
-            }
+            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(20, 30));
         }
 
         public float ShieldScale = 0f;

@@ -811,7 +811,11 @@ namespace AAMod
                 {
                     pool.Add(mod.NPCType("Searcher"), .1f);
                     pool.Add(mod.NPCType("Searcher1"), .05f);
-                    if (AAWorld.downedZero && Main.expertMode)
+                    if (AAWorld.downedSag)
+                    {
+                        pool.Add(mod.NPCType("SagittariusMini"), .05f);
+                    }
+                    if (AAWorld.downedZero)
                     {
                         pool.Add(mod.NPCType("Null"), .05f);
                     }

@@ -212,11 +212,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
-            if (Main.player[npc.target] == null || Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
-            {
-                DespawnAttempt = true;
-            }
-            else if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+            if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active || Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 npc.TargetClosest(true);
                 internalAI[0] = 0;
@@ -245,7 +241,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 					npc.timeLeft = 10;
 				npc.velocity.X *= 0.9f;
 
-                if (internalAI[0] > 180)
+                if (internalAI[0] > 300)
                 {
                     npc.velocity.Y -= 0.1f;
                     if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
