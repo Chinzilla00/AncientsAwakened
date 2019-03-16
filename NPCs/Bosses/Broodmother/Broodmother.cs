@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             npc.frameCounter++;
 
-            if (npc.frameCounter > 10)
+            if (npc.frameCounter > 6)
             {
                 frame++;
                 if (frame >= 11)

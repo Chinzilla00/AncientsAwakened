@@ -32,8 +32,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         public float[] shootAI = new float[1];
-
-        public float[] internalAI = new float[4];
+        public float[] MovementType = new float[1];
+        public float[] internalAI = new float[6];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -43,7 +43,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
+                writer.Write(internalAI[5]);
                 writer.Write(shootAI[0]);
+                writer.Write(MovementType[0]);
             }
         }
 
@@ -56,7 +59,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
+                internalAI[5] = reader.ReadFloat();
                 shootAI[0] = reader.ReadFloat();
+                MovementType[0] = reader.ReadFloat();
             }
         }
 
@@ -85,7 +91,19 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[0] = 1;
             }
 
-            if (!NPC.AnyNPCs(mod.NPCType<SagittariusOrbiter>()))
+            internalAI[5]++;
+            if (internalAI[5] > 200)
+            {
+                internalAI[5] = 0;
+                MovementType[0] = Main.rand.Next(3);
+                npc.netUpdate = true;
+            }
+
+            if (internalAI[4] < 60)
+            {
+                internalAI[4]++;
+            }
+            if (!NPC.AnyNPCs(mod.NPCType<SagittariusOrbiter>()) && internalAI[4] >= 60)
             {
                 npc.Transform(mod.NPCType<SagittariusFree>());
             }
@@ -202,17 +220,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagitarrius_Glow"), 0, npc, AAColor.ZeroShield);
-            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/Sagitarrius_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, AAColor.ZeroShield);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusBoss_Glow"), 0, npc, AAColor.ZeroShield);
+            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusBoss_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, AAColor.ZeroShield);
             return false;
         }
 
         public override void NPCLoot()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
-            {
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(30, 40));
-            }
+            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(30, 40));
         }
     }
 }

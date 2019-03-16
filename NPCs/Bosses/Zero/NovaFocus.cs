@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Star");
+            DisplayName.SetDefault("Nova Focus");
             Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()

@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (internalAI[0] == 1)
             {
-                BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Saggitarius/SagittariusShield"), 0, npc, AAColor.ZeroShield);
+                BaseDrawing.DrawTexture(sb, mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield"), 0, npc, AAColor.ZeroShield);
             }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagitarriusFreeRing_Glow"), 0, npc, AAColor.ZeroShield);
