@@ -15,8 +15,8 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
             item.useStyle = 5;
-            item.useAnimation = 26;
-            item.useTime = 26;
+            item.useAnimation = 28;
+            item.useTime = 28;
             item.width = 12;
             item.height = 28;
             item.shoot = 1;

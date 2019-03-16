@@ -11,12 +11,22 @@ using AAMod.Worldgeneration;
 namespace AAMod.Items.DevTools
 {
 	public class Smallcano : ModItem
-	{
-		public override void SetStaticDefaults()
+    {
+        private int infernoSide = 0;
+
+        private Vector2 infernoPos = new Vector2(0, 0);
+
+        public override void SetStaticDefaults()
 		{	
-			DisplayName.SetDefault("[DEV] Smallcano");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Generates a Volcano below you", "'Careful not to use it near your house!'" });					
-		}		
+			DisplayName.SetDefault("Smallcano");
+
+            Tooltip.SetDefault(@"Spawns an Inferno somewhere on the dungeon side of your world
+You have this item because either
+A: This is an old world w/o AA worldgen in it
+B: The thing this item is for failed to spawn.
+No need to worry. Just use this item and you'll be good as new.
+Careful though, this may lag your game for a few moments.");
+        }		
 		
         public override void SetDefaults()
         {
@@ -35,11 +45,40 @@ namespace AAMod.Items.DevTools
 
 		public override bool UseItem(Player player)
 		{
-            Mod mod = AAMod.instance;
-            Point origin = new Point((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f));
+            infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
+            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            int j = (int)WorldGen.worldSurfaceLow - 30;
+            while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
+            {
+                j++;
+            }
+            for (int l = (int)(infernoPos.X) - 25; l < (int)(infernoPos.X) + 25; l++)
+            {
+                for (int m = j - 6; m < j + 90; m++)
+                {
+                    if (Main.tile[l, m] != null && Main.tile[l, m].active())
+                    {
+                        int type = Main.tile[l, m].type;
+                        if (type == TileID.Cloud || type == TileID.RainCloud || type == TileID.Sunplate)
+                        {
+                            j++;
+                            if (!Main.tile[l, m].active())
+                            {
+                                j++;
+                            }
+                        }
+                    }
+                }
+            }
+            infernoPos.Y = j;
+            int q = (int)WorldGen.worldSurfaceLow - 30;
+            Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             InfernoBiome biome = new InfernoBiome();
+            InfernoDelete delete = new InfernoDelete();
+            delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
+            AAWorld.InfernoGenerated = true;
             return true;
 		}
 

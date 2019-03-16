@@ -45,7 +45,7 @@ namespace AAMod.Items.Melee
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "Doomite", 20);
+            recipe.AddIngredient(mod, "DeactivatedDoomite", 20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

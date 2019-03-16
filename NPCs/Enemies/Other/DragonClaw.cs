@@ -17,13 +17,13 @@ namespace AAMod.NPCs.Enemies.Other
             npc.width = 28;
             npc.height = 24;
             npc.friendly = false;
-            npc.damage = 15;
+            npc.damage = 8;
             npc.defense = 15;
-            npc.lifeMax = 45;
+            npc.lifeMax = 25;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 0f;
-            npc.knockBackResist = 0.6f;
+            npc.value = 100f;
+            npc.knockBackResist = 0.4f;
             npc.aiStyle = -1;
             npc.noGravity = true;
         }
@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.08f;
+            return SpawnCondition.OverworldNightMonster.Chance * 0.05f;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

@@ -729,8 +729,8 @@ namespace AAMod
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 
 
-            GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame")).UseColor(Color.SkyBlue.R / 255, Color.SkyBlue.G / 255, Color.SkyBlue.B / 255).UseSecondaryColor(Color.LightSkyBlue.R / 255, Color.LightSkyBlue.G / 255, Color.LightSkyBlue.B / 255);
-            GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame").UseColor(146 / 255, 30 / 255, 68 / 255).UseSecondaryColor(105 / 255, 20 / 255, 50 / 255));
+            GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.LightSkyBlue.R / 255, Color.LightSkyBlue.G / 255, Color.LightSkyBlue.B / 255);
+            GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("DoomsdayDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorVortex")).UseImage("Images/Misc/noise").UseColor(0f, 0f, 0f).UseSecondaryColor(1f, 0f, 0f).UseSaturation(1f);
 
             InfinityHotKey = RegisterHotKey("Snap", "G");

@@ -21,7 +21,7 @@ namespace AAMod.Items.Ranged
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
-            item.knockBack = 2;
+            item.knockBack = 0;
             item.value = 2000;
             item.rare = 2;
             item.UseSound = SoundID.Item11;

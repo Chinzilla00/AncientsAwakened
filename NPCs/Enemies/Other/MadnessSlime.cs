@@ -20,11 +20,11 @@ namespace AAMod.NPCs.Enemies.Other
 		public override void SetDefaults()
 		{
 			npc.aiStyle = 1;
-			npc.damage = 10;
+			npc.damage = 7;
             npc.width = 30;
 			npc.height = 22;
 			npc.defense = 4;
-			npc.lifeMax = 32;
+			npc.lifeMax = 25;
 			npc.knockBackResist = 0f;
 			animationType = 81;
 			npc.value = Item.buyPrice(0, 0, 5, 0);

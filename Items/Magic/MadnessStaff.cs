@@ -28,7 +28,7 @@ namespace AAMod.Items.Magic
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("MadnessSphere");
-            item.shootSpeed = 3f;
+            item.shootSpeed = 6f;
         }
 
         public override void AddRecipes()  //How to craft this sword

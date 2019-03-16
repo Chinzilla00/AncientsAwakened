@@ -19,7 +19,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 5;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ProbeMinion");
-            item.damage = 17;
+            item.damage = 14;
             item.width = 20;
             item.height = 24;
             item.UseSound = SoundID.Item44;

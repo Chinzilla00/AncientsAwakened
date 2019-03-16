@@ -22,16 +22,22 @@ namespace AAMod.Tiles
 			minPick = 225;
         }
 
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        public override void PostDraw(int x, int y, SpriteBatch sb)
         {
-            Tile tile = Main.tile[i, j];
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
+            Tile tile = Main.tile[x, y];
+            Texture2D glowTex = null;
+            bool glow = AAWorld.downedZero;
+            if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
-                zero = Vector2.Zero;
+                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/DoomstoneGlow");
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Doomstone_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+        }
+
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return AAWorld.downedZero;
+
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)

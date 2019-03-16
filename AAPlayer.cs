@@ -23,6 +23,8 @@ using Terraria.Localization;
 using Terraria.Graphics.Shaders;
 using Terraria.Graphics.Effects;
 using AAMod.Items;
+using AAMod.Items.DevTools;
+using AAMod.Items.BossSummons;
 namespace AAMod
 {
     public class AAPlayer : ModPlayer
@@ -30,6 +32,7 @@ namespace AAMod
         //Minions
         public bool ImpServant = false;
         public bool ImpSlave = false;
+        public bool Searcher = false;
         public bool enderMinion = false;
         public bool enderMinionEX = false;
         public bool ChairMinion = false;
@@ -143,7 +146,7 @@ namespace AAMod
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
         public bool lantern = false;
-        
+
         public bool BegAccessoryPrevious;
         public bool BegAccessory;
         public bool BegHideVanity;
@@ -208,11 +211,19 @@ namespace AAMod
         //Misc
         public bool Compass = false;
 
+        public bool InfernoSpawner = false;
+        public bool MireSpawner = false;
+        public bool VoidSpawner = false;
+        public bool TerrariumSpawner = false;
+        public bool OreSpawner = false;
+        public bool WorldGenner = false;
+
         public override void ResetEffects()
         {
             //Minions
             ImpServant = false;
             ImpSlave = false;
+            Searcher = false;
             enderMinion = false;
             enderMinionEX = false;
             ChairMinion = false;
@@ -315,7 +326,7 @@ namespace AAMod
             Hunted = false;
             Unstable = false;
             //Buffs
-			//Weapons
+            //Weapons
             //Pets
             Broodmini = false;
             Raidmini = false;
@@ -332,7 +343,7 @@ namespace AAMod
             Compass = false;
 
             //Biomes
-            
+
         }
 
         public override void Initialize()
@@ -346,6 +357,12 @@ namespace AAMod
             ZoneRisingMoonLake = false;
             ZoneRisingSunPagoda = false;
             ZoneShip = false;
+            InfernoSpawner = false;
+            MireSpawner = false;
+            VoidSpawner = false;
+            TerrariumSpawner = false;
+            OreSpawner = false;
+            WorldGenner = false;
         }
 
         public override TagCompound Save()
@@ -834,11 +851,11 @@ namespace AAMod
                 {
                     caughtType = mod.ItemType("DesertCrate");
                 }
-                if ((liquidType == 0 ||  liquidType == 1) && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+                if ((liquidType == 0 || liquidType == 1) && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
                 {
                     caughtType = mod.ItemType("InfernoCrate");
                 }
-                if (liquidType == 0  && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
                 {
                     caughtType = mod.ItemType("MireCrate");
                 }
@@ -1041,25 +1058,109 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if ((!AAWorld.InfernoGenerated || !AAWorld.MireGenerated || !AAWorld.TerrariumGenerated || !AAWorld.VoidGenerated || !AAWorld.OresGenerated) && !WorldGenner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<AAWorldgenner>() && player.inventory[num66].stack > 0)
+                    {
+                        WorldGenner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<AAWorldgenner>());
+                    }
+                }
+            }
+            if (!AAWorld.InfernoGenerated && !InfernoSpawner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<Smallcano>() && player.inventory[num66].stack > 0)
+                    {
+                        InfernoSpawner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<Smallcano>());
+                    }
+                }
+            }
+            if (!AAWorld.MireGenerated && !MireSpawner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<Minilake>() && player.inventory[num66].stack > 0)
+                    {
+                        MireSpawner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<Minilake>());
+                    }
+                }
+            }
+            if (!AAWorld.VoidGenerated && !VoidSpawner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<VoidSpawner>() && player.inventory[num66].stack > 0)
+                    {
+                        VoidSpawner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<VoidSpawner>());
+                    }
+                }
+            }
+            if (!AAWorld.TerrariumGenerated && !TerrariumSpawner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<TerrariumGenerator>() && player.inventory[num66].stack > 0)
+                    {
+                        TerrariumSpawner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<TerrariumGenerator>());
+                    }
+                }
+            }
+            if (!AAWorld.OresGenerated && !OreSpawner)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType<OreGenerator>() && player.inventory[num66].stack > 0)
+                    {
+                        OreSpawner = true;
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(mod.ItemType<OreGenerator>());
+                    }
+                }
+            }
             if (!Main.expertMode)
             {
                 for (int num66 = 0; num66 < 58; num66++)
                 {
-                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DraconianRune>() && player.inventory[num66].stack > 0)
+                    if (player.inventory[num66].type == mod.ItemType<DraconianRune>() && player.inventory[num66].stack > 0)
                     {
                         player.inventory[num66].TurnToAir();
                         player.QuickSpawnItem(mod.ItemType("CrucibleScale"), 20);
                         player.QuickSpawnItem(mod.ItemType("DraconianSigil"));
                         Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", Color.DeepSkyBlue);
                     }
-                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.DreadRune>() && player.inventory[num66].stack > 0)
+                    if (player.inventory[num66].type == mod.ItemType<DreadRune>() && player.inventory[num66].stack > 0)
                     {
                         player.inventory[num66].TurnToAir();
                         player.QuickSpawnItem(mod.ItemType("DreadScale"), 20);
                         player.QuickSpawnItem(mod.ItemType("DreadSigil"));
                         Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", new Color(146, 30, 68));
                     }
-                    if (player.inventory[num66].type == mod.ItemType<Items.BossSummons.ZeroRune>() && player.inventory[num66].stack > 0)
+                    if (player.inventory[num66].type == mod.ItemType<ZeroRune>() && player.inventory[num66].stack > 0)
                     {
                         player.inventory[num66].TurnToAir();
                         player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), 20);

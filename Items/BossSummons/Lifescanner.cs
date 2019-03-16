@@ -85,7 +85,7 @@ Most likely you.");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DeactivatedDoomite", 10);
-            recipe.AddTile(null, "HellstoneAnvil");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

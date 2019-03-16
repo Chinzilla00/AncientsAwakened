@@ -219,14 +219,19 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
             if (Attack == 0)
             {
-                for (int i = 0; i < (Main.expertMode ? 3 : 2); i++)
+                if (NPC.CountNPCS(mod.NPCType<Mushling>()) < 4)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Mushling>());
+                    for (int i = 0; i < (Main.expertMode ? 3 : 2); i++)
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Mushling>());
+                    }
                 }
+                else
+                { Attack = 2; }
             }
             else if (Attack == 1)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusFlier>());
                 }

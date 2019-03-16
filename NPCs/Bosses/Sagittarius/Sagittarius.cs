@@ -18,10 +18,11 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 		}
 
 		public override void SetDefaults()
-		{
-            npc.lifeMax = 7000;
-            npc.defense = 130;
-            npc.damage = 40;
+        {
+            npc.lifeMax = 22000;
+            npc.boss = true;
+            npc.defense = 300;
+            npc.damage = 45;
             npc.width = 92;
             npc.height = 92;
             npc.aiStyle = -1;
@@ -30,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Sagittarius");
             npc.knockBackResist = 0f;
             npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public float[] shootAI = new float[1];
@@ -64,13 +66,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
         }
 
-        public int ProbeCount = Main.expertMode ? 6 : 4;
+        public int ProbeCount = Main.expertMode ? 12 : 6;
 
         public override void AI()
         {
             npc.noGravity = true;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
             if (internalAI[0] == 0)
             {
@@ -109,7 +112,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     }
                 }
             }
-            else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
+            else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f || !modPlayer.ZoneVoid)
             {
                 npc.TargetClosest(true);
                 if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
@@ -171,21 +174,19 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
 
-            if (internalAI[2] == 0) //Hover over target
-            {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.20f, 6f, 250f, 70f, null);
-                npc.rotation = 0;
-            }
-            else
+            
             if (internalAI[2] == 1) //Chaase down the target
             {
-                BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 2f);
+                BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 2.5f);
                 npc.rotation = 0;
             }
-            else //Charge the target
+            else //Hover over target
             {
-                BaseAI.AIWeapon(npc, ref npc.ai, ref npc.rotation, Main.player[npc.target].Center, false, 0, 60, 8f, 4f, 2.5f);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.3f, 7f, 250f, 70f, null);
+                npc.rotation = 0;
             }
+
+            npc.noTileCollide = true;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -210,8 +211,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusBoss_Glow"), 0, npc, AAColor.ZeroShield);
-            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusBoss_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, AAColor.ZeroShield);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, AAColor.ZeroShield);
+            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, AAColor.ZeroShield);
             return false;
         }
 

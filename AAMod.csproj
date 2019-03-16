@@ -109,6 +109,7 @@
     <Compile Include="Buffs\Abducted.cs" />
     <Compile Include="Buffs\DragonfireFlaskBuff.cs" />
     <Compile Include="Buffs\Horse.cs" />
+    <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
     <Compile Include="Buffs\HydratoxinFlaskBuff.cs" />
     <Compile Include="Buffs\Irradiated.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Items\Armor\Doomite\DoomiteBreastplate.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteGreaves.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteVisor.cs" />
+    <Compile Include="Items\Armor\Doomite\Searcher.cs" />
     <Compile Include="Items\Armor\Doomsday\DoomsdayChestplate.cs" />
     <Compile Include="Items\Armor\Doomsday\DoomsdayHelmet.cs" />
     <Compile Include="Items\Armor\Doomsday\DoomsdayLeggings.cs" />
@@ -720,8 +722,12 @@
     <Compile Include="Items\DevTools\Minilake.cs" />
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
+    <Compile Include="Items\DevTools\OreGenerator.cs" />
+    <Compile Include="Items\DevTools\AAWorldgenner.cs" />
     <Compile Include="Items\DevTools\Smallcano.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\DevTools\TerrariumGenerator.cs" />
+    <Compile Include="Items\DevTools\VoidSpawner.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEXS.cs" />
@@ -1012,6 +1018,7 @@
     <Compile Include="Items\Ranged\Toxithrower.cs" />
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
     <Compile Include="Items\Ranged\UraniumRepeater.cs" />
+    <Compile Include="Items\Ranged\UWAM.cs" />
     <Compile Include="Items\Ranged\YtriumCrossbow.cs" />
     <Compile Include="Items\ReforgeSouls\Godly.cs" />
     <Compile Include="Items\ReforgeSouls\Legendary.cs" />
@@ -2148,6 +2155,7 @@
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
     <Content Include="Buffs\RoyalKitten.png" />
+    <Content Include="Buffs\Searcher.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Shroomed.png" />
     <Content Include="Buffs\SkullMinion.png" />
@@ -3145,6 +3153,7 @@
     <Content Include="Items\Armor\Doomite\DoomiteGreaves_Legs.png" />
     <Content Include="Items\Armor\Doomite\DoomiteVisor.png" />
     <Content Include="Items\Armor\Doomite\DoomiteVisor_Head.png" />
+    <Content Include="Items\Armor\Doomite\Searcher.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayChestplate.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayChestplate_Arms.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayChestplate_Body.png" />
@@ -3813,15 +3822,18 @@
     <Content Include="Items\Boss\Zero\ZeroTerratool_Hammer.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
     <Content Include="Items\Currency\GoblinSoul.png" />
+    <Content Include="Items\DevTools\AAWorldgenner.png" />
     <Content Include="Items\DevTools\AncientOreGenner.png" />
     <Content Include="Items\DevTools\Anticheat.png" />
     <Content Include="Items\DevTools\ChaosConverter.png" />
     <Content Include="Items\DevTools\DevRadar.png" />
-    <Content Include="Items\DevTools\DevSolution.png" />
     <Content Include="Items\DevTools\Minilake.png" />
     <Content Include="Items\DevTools\Noodle.png" />
     <Content Include="Items\DevTools\NoodleSword.png" />
+    <Content Include="Items\DevTools\OreGenerator.png" />
     <Content Include="Items\DevTools\Smallcano.png" />
+    <Content Include="Items\DevTools\TerrariumGenerator.png" />
+    <Content Include="Items\DevTools\VoidSpawner.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />
@@ -4643,9 +4655,10 @@
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusFree.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusFreeRing.png" />
-    <Content Include="NPCs\Bosses\Sagittarius\SagittariusMini.png" />
+    <Content Include="NPCs\Bosses\Sagittarius\SagittariusFree_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
+    <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentBodyCo.png" />

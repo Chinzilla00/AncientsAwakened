@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.aiStyle = -1;
             npc.damage = 5;
             npc.defense = 4;
-            npc.lifeMax = 30;
+            npc.lifeMax = 20;
             npc.noGravity = true;
             npc.noTileCollide = false;
             npc.knockBackResist = 0.5f;

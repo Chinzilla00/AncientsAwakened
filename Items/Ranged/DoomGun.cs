@@ -18,16 +18,15 @@ namespace AAMod.Items.Ranged
             item.useTime = 19;
             item.width = 24;
             item.height = 28;
-            item.shoot = 20;
             item.UseSound = SoundID.Item12;
             item.knockBack = 0.75f;
-            item.damage = 22;
+            item.damage = 15;
             item.shootSpeed = 10f;
             item.noMelee = true;
             item.scale = 0.8f;
             item.rare = 1;
             item.ranged = true;
-            item.value = 20000;
+            item.value = 2000;
             item.shoot = mod.ProjectileType<Projectiles.Darkray>();
         }
 

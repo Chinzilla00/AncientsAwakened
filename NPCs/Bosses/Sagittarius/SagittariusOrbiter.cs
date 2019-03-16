@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
-            npc.lifeMax = 500;
+            npc.lifeMax = 1000;
             npc.defense = 20;
             npc.damage = 10;
             npc.HitSound = SoundID.NPCHit4;
@@ -100,37 +100,130 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
             Player player = Main.player[sagittarius.target];
 
+
             pos = sagittarius.Center;
 
-            npc.ai[1]++;
-            if (npc.ai[1] > 200)
+
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
-                npc.ai[1] = 0;
-                MovementType[0] = MovementType[0] == 1 ? 0 : 1;
-                npc.netUpdate = true;
+                npc.oldPos[m] = npc.oldPos[m - 1];
             }
+            npc.oldPos[0] = npc.position;
+
+            int probeNumber = ((Sagittarius)sagittarius.modNPC).ProbeCount;
+            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            rotValue += 0.04f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
 
             if (MovementType[0] == 0)
             {
+                npc.alpha -= 5;
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
+
+                npc.ai[1]++;
+
+                if (npc.ai[1] > 200)
+                {
+                    npc.ai[1] = 0f;
+                    MovementType[0] = Main.rand.Next(3);
+                    npc.netUpdate = true;
+                }
+
                 for (int m = npc.oldPos.Length - 1; m > 0; m--)
                 {
                     npc.oldPos[m] = npc.oldPos[m - 1];
                 }
                 npc.oldPos[0] = npc.position;
 
-                int probeNumber = ((Sagittarius)sagittarius.modNPC).ProbeCount;
-                if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
-                rotValue += 0.05f;
-                while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-                MoveToPoint(BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue));
+                npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue);
                 int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
                 BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
-            else if (MovementType[0] == 1)
+            if (MovementType[0] == 1)
             {
-                BaseAI.AIEye(npc, ref InternalAI, false, true, 0.2f, 0.2f, 5f, 5f, 1f, 1f);
+                BaseAI.AIWeapon(npc, ref internalAI, ref npc.rotation, player.Center, false, 20, 130, 8, 2, 0);
+
+                npc.ai[1]++;
+
+                if (npc.ai[1] > 240)
+                {
+
+                    npc.ai[1] = 0;
+                    MovementType[0] = 5;
+                    npc.netUpdate = true;
+                }
             }
-		}
+            else if (MovementType[0] == 2)
+            {
+                npc.alpha += 5;
+                if (npc.alpha >= 255)
+                {
+                    MovementType[0] = 2;
+                }
+                for (int m = npc.oldPos.Length - 1; m > 0; m--)
+                {
+                    npc.oldPos[m] = npc.oldPos[m - 1];
+                }
+                npc.oldPos[0] = npc.position;
+                
+                npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue);
+            }
+            else if (MovementType[0] == 3)
+            {
+
+                npc.alpha -= 5;
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
+
+
+                npc.ai[1]++;
+
+                if (npc.ai[1] > 360)
+                {
+
+                    npc.ai[1] = 0;
+                    MovementType[0] = 3;
+                    npc.netUpdate = true;
+                }
+
+                npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(140, 0f), rotValue);
+                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+            }
+            else if (MovementType[0] == 4)
+            {
+                npc.alpha += 5;
+                if (npc.alpha >= 255)
+                {
+                    MovementType[0] = 0;
+                }
+
+                for (int m = npc.oldPos.Length - 1; m > 0; m--)
+                {
+                    npc.oldPos[m] = npc.oldPos[m - 1];
+                }
+                npc.oldPos[0] = npc.position;
+                
+                npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue);
+            }
+            else if (MovementType[0] == 5)
+            {
+                npc.alpha += 5;
+                if (npc.alpha >= 255)
+                {
+                    MovementType[0] = 0;
+                }
+                npc.velocity *= .8f;
+            }
+
+
+        }
 
         public override void NPCLoot()
         {
@@ -185,10 +278,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 chainTex = mod.GetTexture("NPCs/Bosses/Sagittarius/OrbiterChain3");
             }
             Vector2 endPoint = BaseUtility.RotateVector(npc.Center, npc.Center + new Vector2(-2f, 0), npc.rotation + (npc.spriteDirection == -1 ? (float)Math.PI : 0));
-            BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, AAColor.Oblivion);
+            if (MovementType[0] == 0 || MovementType[0] == 2)
+            {
+                BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, npc.GetAlpha(AAColor.Oblivion));
+            }
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, lightColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, AAColor.ZeroShield);
-            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, 2f, 0.9f, 4, false, 0f, 0f, AAColor.ZeroShield);
+            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, 2f, 0.9f, 4, false, 0f, 0f, Color.Red);
             return false;
 		}		
 	}
