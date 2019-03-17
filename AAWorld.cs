@@ -79,7 +79,6 @@ namespace AAMod
         public static bool downedRaider;
         public static bool downedStormAny;
         public static bool downedStormAll;
-        public static bool downedEFish;
         public static bool downedDB;
         public static bool downedNC;
         public static bool downedEquinox;
@@ -126,7 +125,6 @@ namespace AAMod
             downedRaider = false;
             downedStormAny = false;
             downedStormAll = false;
-            downedEFish = false;
             downedDB = false;
             downedNC = false;
             downedEquinox = false;
@@ -231,7 +229,6 @@ namespace AAMod
             if (downedToad) downed.Add("Toad");
             if (downedGripsS) downed.Add("GripsS");
             if (downedStormAny) downed.Add("AnyStorm");
-            if (downedEFish) downed.Add("Fish");
             if (downedSoC) downed.Add("SoC");
             if (Compass) downed.Add("Compass");
             if (downedKraken) downed.Add("Kraken");
@@ -298,7 +295,7 @@ namespace AAMod
             flags4[4] = downedToad;
             flags4[5] = downedGripsS;
             flags4[6] = downedStormAny;
-            flags4[7] = downedEFish;
+            //Slot open here
             writer.Write(flags4);
 
             BitsByte flags5 = new BitsByte();
@@ -364,7 +361,6 @@ namespace AAMod
             downedToad = flags4[4];
             downedGripsS = flags4[5];
             downedStormAny = flags4[6];
-            downedEFish = flags4[7];
 
             BitsByte flags5 = reader.ReadByte();
             downedSoC = flags5[0];
@@ -421,7 +417,6 @@ namespace AAMod
             downedToad = downed.Contains("Toad");
             downedGripsS = downed.Contains("GripsS");
             downedStormAny = downed.Contains("AnyStorm");
-            downedEFish = downed.Contains("Fish");
             downedSoC = downed.Contains("SoC");
             Compass = downed.Contains("Compass");
             downedKraken = downed.Contains("Kraken");
@@ -584,7 +579,7 @@ namespace AAMod
                         Minimum = Maximum;
                         Maximum = Main.maxTilesX - 50;
                     }
-                while (!placed)
+                    while (!placed)
                     {
                         int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
                         int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);

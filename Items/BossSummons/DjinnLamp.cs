@@ -32,30 +32,6 @@ Only usable during the day");
 
         public override bool UseItem(Player player)
         {
-            if (player.ZoneCrimson)
-            {
-                SpawnBoss(player, "DjinnCr", "The Desert Djinn");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.ZoneCorrupt)
-            {
-                SpawnBoss(player, "DjinnCo", "The Desert Djinn");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
-            {
-                SpawnBoss(player, "DjinnI", "The Desert Djinn");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
-            {
-                SpawnBoss(player, "DjinnM", "The Desert Djinn");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
             SpawnBoss(player, "Djinn", "The Desert Djinn");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

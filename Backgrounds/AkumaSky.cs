@@ -26,7 +26,7 @@ namespace AAMod.Backgrounds
             public float StartX;
         }
         private Meteor[] Meteors;
-        private Texture2D MeteorTexture;
+        public static Texture2D MeteorTexture;
         public static Texture2D SkyTex;
         public bool Active;
         public float Intensity;

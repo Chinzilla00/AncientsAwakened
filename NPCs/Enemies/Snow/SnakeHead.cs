@@ -16,7 +16,6 @@ namespace AAMod.NPCs.Enemies.Snow
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snow Serpent");
-            Main.npcFrameCount[npc.type] = 5;
 		}
 
 		public override void SetDefaults()
@@ -44,40 +43,14 @@ namespace AAMod.NPCs.Enemies.Snow
         {
             return spawnInfo.player.ZoneSnow &&
                 NPC.downedBoss3 && 
-                !Main.dayTime ? .1f : 0f;
+                !Main.dayTime ? .2f : 0f;
         }
 
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
+			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeBody2"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
             
-            if (npc.localAI[0] == 0)
-            {
-                npc.localAI[0] = 1;
-                if (player.ZoneCorrupt)
-                {
-                    npc.localAI[1] = 1;
-                }
-                else if (player.ZoneCorrupt)
-                {
-                    npc.localAI[1] = 2;
-                }
-                else if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
-                {
-                    npc.localAI[1] = 3;
-                }
-                else if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
-                {
-                    npc.localAI[1] = 4;
-                }
-                else
-                {
-                    npc.localAI[1] = 0;
-                }
-            }
-            npc.frame.Y = (int)npc.localAI[1] * npc.frame.Height;
-
             if (npc.velocity.X < 0f)
             {
                 npc.spriteDirection = 1;
@@ -118,10 +91,7 @@ namespace AAMod.NPCs.Enemies.Snow
 
         public override void NPCLoot()
         {
-            if (Main.rand.Next(4) == 0)
-            {
-                npc.DropLoot(mod.ItemType("SubzeroCrystal"));
-            }
+            npc.DropLoot(mod.ItemType("SubzeroCrystal"));
         }
     }
 }

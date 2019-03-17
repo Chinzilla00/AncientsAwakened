@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Enemies.Snow
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snow Serpent");
-            Main.npcFrameCount[npc.type] = 5;
         }
 		
 		public override void SetDefaults()

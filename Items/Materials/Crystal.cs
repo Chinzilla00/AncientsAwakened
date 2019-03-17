@@ -588,7 +588,7 @@ namespace AAMod.Items.Materials
                 {
                     if (Main.rand.Next(0, 100) >= 99)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<OceanCrystal>(), 1);
+                        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<OceanCrystal>(), 1);
                     }
                 }
                 if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly)
@@ -631,6 +631,20 @@ namespace AAMod.Items.Materials
                     if (Main.rand.Next(0, 100) >= 99.5f)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<ChaosCrystal>(), 1);
+                    }
+                }
+                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
+                {
+                    if (Main.rand.Next(0, 100) >= 99f)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<CorruptionCrystal>(), 1);
+                    }
+                }
+                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
+                {
+                    if (Main.rand.Next(0, 100) >= 99f)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<CrimsonCrystal>(), 1);
                     }
                 }
             }

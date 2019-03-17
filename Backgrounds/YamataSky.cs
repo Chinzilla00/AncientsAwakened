@@ -16,8 +16,8 @@ namespace AAMod.Backgrounds
         public static Texture2D SkyTex;
         public bool Active;
         public float Intensity;
-        private Texture2D BeamTexture;
-        private Texture2D[] RockTextures;
+        public static Texture2D BeamTexture;
+        public static Texture2D[] RockTextures;
         private struct LightPillar
         {
             public Vector2 Position;
