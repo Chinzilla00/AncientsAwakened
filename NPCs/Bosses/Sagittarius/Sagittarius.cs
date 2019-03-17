@@ -34,8 +34,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.noTileCollide = true;
         }
 
+        public static float[] MovementType = new float[1];
         public float[] shootAI = new float[1];
-        public float[] internalAI = new float[6];
+        public float[] internalAI = new float[7];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -47,7 +48,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
                 writer.Write(internalAI[5]);
+                writer.Write(internalAI[6]);
                 writer.Write(shootAI[0]);
+                writer.Write(MovementType[0]);
             }
         }
 
@@ -62,7 +65,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[3] = reader.ReadFloat();
                 internalAI[4] = reader.ReadFloat();
                 internalAI[5] = reader.ReadFloat();
+                internalAI[6] = reader.ReadFloat();
                 shootAI[0] = reader.ReadFloat();
+                MovementType[0] = reader.ReadFloat();
             }
         }
 
@@ -90,6 +95,52 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     }
                 }
                 internalAI[0] = 1;
+            }
+
+            if (MovementType[0] == 0)
+            {
+                internalAI[6]++;
+
+                if (internalAI[6] > 200)
+                {
+                    internalAI[6] = 0f;
+                    MovementType[0] = Main.rand.Next(3);
+                    npc.netUpdate = true;
+                }
+            }
+            if (MovementType[0] == 1)
+            {
+                npc.ai[1]++;
+
+                if (npc.ai[1] > 240)
+                {
+
+                    npc.ai[1] = 0;
+                    MovementType[0] = 5;
+                    npc.netUpdate = true;
+                }
+            }
+            if (MovementType[0] == 0)
+            {
+                internalAI[6]++;
+
+                if (internalAI[6] > 200)
+                {
+                    internalAI[6] = 0f;
+                    MovementType[0] = Main.rand.Next(3);
+                    npc.netUpdate = true;
+                }
+            }
+            if (MovementType[0] == 0)
+            {
+                internalAI[6]++;
+
+                if (internalAI[6] > 200)
+                {
+                    internalAI[6] = 0f;
+                    MovementType[0] = Main.rand.Next(3);
+                    npc.netUpdate = true;
+                }
             }
 
             if (internalAI[4] < 60)

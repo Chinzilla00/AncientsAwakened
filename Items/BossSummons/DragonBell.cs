@@ -86,6 +86,7 @@ Only useable during the day");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DragonScale", 15);
+            recipe.AddIngredient(null, "Sunpowder", 30);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

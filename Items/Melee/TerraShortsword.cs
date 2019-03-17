@@ -15,8 +15,8 @@ namespace AAMod.Items.Melee
             
 			item.damage = 36;
 			item.melee = true;
-			item.width = 40;
-			item.height = 46;
+			item.width = 30;
+			item.height = 36;
 			item.useTime = 15;
 			item.useAnimation = 15;
 			item.useStyle = 1;

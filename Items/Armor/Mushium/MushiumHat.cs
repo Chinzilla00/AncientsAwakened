@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Mushium
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mushroom Hat");
+			DisplayName.SetDefault("Mushium Hat");
 			Tooltip.SetDefault("2% Increased life regeneration");
 
 		}

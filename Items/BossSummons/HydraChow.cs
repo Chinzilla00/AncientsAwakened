@@ -34,6 +34,7 @@ Only Usable at night");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "MirePod", 15);
+            recipe.AddIngredient(null, "Moonpowder", 30);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

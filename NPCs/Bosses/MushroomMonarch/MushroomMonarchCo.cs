@@ -15,7 +15,7 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
     [AutoloadBossHead]
-    public class MushroomMonarch : ModNPC
+    public class MushroomMonarchCo : ModNPC
     {
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -108,10 +108,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }else if (internalAI[1] == AISTATE_FLY)
             {
-                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
-                npc.active = false;
-                
-            }else //jump
+                npc.frameCounter = 0;
+                npc.frame.Y += 108;
+                if (npc.frame.Y > (108 * 11) || npc.frame.Y < (108 * 8))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 108 * 8;
+                }
+
+            }
+            else //jump
             {
                 if (npc.velocity.Y == 0)
                 {
@@ -139,7 +145,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
                 if (!Main.dayTime)
                 {
-                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAYCo"), 0, 0);
                     npc.active = false;
                     return;
                 }
@@ -194,7 +200,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
             AAWorld.downedMonarch = true;
-            Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+            Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAYCo"), 0, 0);
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();

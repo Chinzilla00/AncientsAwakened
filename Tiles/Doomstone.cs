@@ -26,10 +26,10 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = null;
-            bool glow = AAWorld.downedZero;
-            if (glow && (tile != null && tile.active() && tile.type == this.Type))
+            bool glow = !AAWorld.downedZero;
+            if (glow && (tile != null && tile.active() && tile.type == Type))
             {
-                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/DoomstoneGlow");
+                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/Doomstone_Glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
             }
         }
@@ -37,7 +37,6 @@ namespace AAMod.Tiles
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             return AAWorld.downedZero;
-
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
