@@ -25,6 +25,7 @@ namespace AAMod.NPCs.TownNPCs
 		public override void SetStaticDefaults()
 		{
 			Main.npcFrameCount[npc.type] = 26;
+            npc.dontTakeDamageFromHostiles = true;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
 			NPCID.Sets.AttackFrameCount[npc.type] = 5;
 			NPCID.Sets.DangerDetectRange[npc.type] = 700;
@@ -41,7 +42,7 @@ namespace AAMod.NPCs.TownNPCs
 			npc.width = 18;
 			npc.height = 56;
 			npc.aiStyle = 7;
-			npc.damage = 80;
+			npc.damage = 10;
 			npc.defense = 68;
 			npc.lifeMax = 160000;
             npc.HitSound = SoundID.NPCHit23;

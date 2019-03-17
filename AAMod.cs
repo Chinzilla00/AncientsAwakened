@@ -751,7 +751,6 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
-                PremultiplyTexture(GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield"));
 
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
@@ -805,7 +804,7 @@ namespace AAMod
                 SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
                 InfernoSky.PlanetTexture = GetTexture("Backgrounds/Sun");
                 InfernoSky.SkyTex = GetTexture("Backgrounds/Sky");
-                AkumaSky.MeteorTexture = GetTexture("Backgrounds/AkumaMeteors");
+                AkumaSky.MeteorTexture = GetTexture("Backgrounds/AkumaMeteor");
 
                 Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.3f, 0.4f).UseOpacity(0.5f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();

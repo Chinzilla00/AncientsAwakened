@@ -18,6 +18,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
+            drop = mod.ItemType("Darkshroom");
         }
 
         public override bool Dangersense(int i, int j, Player player)
@@ -28,11 +29,6 @@ namespace AAMod.Tiles
         public override bool CreateDust(int i, int j, ref int type)
         {
             return false;
-        }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType("Darkshroom"));
         }
 
 

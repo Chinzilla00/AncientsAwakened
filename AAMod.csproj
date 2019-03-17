@@ -1173,10 +1173,6 @@
     <Compile Include="Items\Usable\KeyOfBlight.cs" />
     <Compile Include="Items\Usable\KeyOfSmite.cs" />
     <Compile Include="Items\Usable\KeyOfSpite.cs" />
-    <Compile Include="Items\Usable\LivingBogleafWand.cs" />
-    <Compile Include="Items\Usable\LivingBogwoodWand.cs" />
-    <Compile Include="Items\Usable\LivingRazeleafWand.cs" />
-    <Compile Include="Items\Usable\LivingRazewoodWand.cs" />
     <Compile Include="Items\Usable\MireCrate.cs" />
     <Compile Include="Items\Usable\MireKey.cs" />
     <Compile Include="Items\Usable\OrangeSolution.cs" />
@@ -1811,6 +1807,7 @@
     <Compile Include="Tiles\ACS.cs" />
     <Compile Include="Tiles\DjinnBox.cs" />
     <Compile Include="Tiles\Darkshroom.cs" />
+    <Compile Include="Tiles\DoomsdayChest.cs" />
     <Compile Include="Tiles\Hotshroom.cs" />
     <Compile Include="Tiles\MushBox.cs" />
     <Compile Include="Tiles\FungusBox.cs" />
@@ -4346,10 +4343,6 @@
     <Content Include="Items\Usable\KeyOfBlight.png" />
     <Content Include="Items\Usable\KeyOfSmite.png" />
     <Content Include="Items\Usable\KeyOfSpite.png" />
-    <Content Include="Items\Usable\LivingBogleafWand.png" />
-    <Content Include="Items\Usable\LivingBogwoodWand.png" />
-    <Content Include="Items\Usable\LivingRazeleafWand.png" />
-    <Content Include="Items\Usable\LivingRazewoodWand.png" />
     <Content Include="Items\Usable\MireCrate.png" />
     <Content Include="Items\Usable\MireKey.png" />
     <Content Include="Items\Usable\MireSeeds.png" />
@@ -4973,6 +4966,7 @@
     <Content Include="NPCs\TownNPCs\Mushman_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai.png" />
     <Content Include="NPCs\TownNPCs\SamuraiParty.png" />
+    <Content Include="NPCs\TownNPCs\SamuraiParty_Head.png" />
     <Content Include="NPCs\TownNPCs\Samurai_Head.png" />
     <Content Include="obj\Debug\AAMod.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AAMod.dll" />
@@ -5382,6 +5376,8 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DoomsdayChest.png" />
+    <Content Include="Tiles\DoomsdayChestLockedFrame.png" />
     <Content Include="Tiles\DoomstoneB.png" />
     <Content Include="Tiles\DracoAltarS.png" />
     <Content Include="Tiles\DracoAltar.png" />
