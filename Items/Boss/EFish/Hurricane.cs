@@ -79,7 +79,7 @@ Tsunami EX");
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(ItemID.Tsunami);
-			recipe.AddIngredient(mod.ItemType("EXSoul"));
+			recipe.AddIngredient(null, "EXSoul");
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

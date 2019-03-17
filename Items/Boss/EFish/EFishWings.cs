@@ -44,6 +44,18 @@ namespace AAMod.Items.Boss.EFish
 			speed = 9f;
 			acceleration *= 2.5f;
 		}
-        
+
+
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.FishronWings);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+
     }
 }
