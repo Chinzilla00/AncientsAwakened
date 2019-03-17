@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
 			ModRecipe recipe = new ModRecipe(mod);      
 			recipe.AddIngredient(ItemID.SlapHand);
 			recipe.AddIngredient(mod.ItemType("EXSoul"));
-			recipe.AddTile(TileID.Sawmill);
+			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

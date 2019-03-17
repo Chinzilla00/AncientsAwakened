@@ -28,7 +28,7 @@ Projectiles go through walls");
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 6;
 			item.value = 300000;
-			item.rare = 2;
+			item.rare = 4;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("TerraRoseShot");
