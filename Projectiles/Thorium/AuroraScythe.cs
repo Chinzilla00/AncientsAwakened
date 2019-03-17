@@ -11,13 +11,13 @@ using BaseMod;
 
 namespace AAMod.Projectiles.Thorium
 {
-	public class DragonsClaw : ModProjectile
+	public class AuroraScythe : ModProjectile
 	{	
 
 		public override void SetDefaults()
 		{
-			projectile.width = 138;
-			projectile.height = 138;
+			projectile.width = 130;
+			projectile.height = 128;
 			projectile.aiStyle = 0;
 			projectile.penetrate = -1;
 			projectile.light = 0.2f;
@@ -54,13 +54,13 @@ namespace AAMod.Projectiles.Thorium
 			projectile.position.X = player.Center.X - ((float)projectile.width / 2f);
 			projectile.position.Y = player.Center.Y - ((float)projectile.height / 2f);
 			
-			Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("DragonsClawDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-			Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("DragonsClawDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+			Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("AuroraScytheDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+			Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("AuroraScytheDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 			
 			if (projectile.timeLeft == 13)
 			{
-				Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("DragonsClawDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
-				Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("DragonsClawDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("AuroraScytheDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("AuroraScytheDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
 			}
 			
 			if (projectile.timeLeft < 8)

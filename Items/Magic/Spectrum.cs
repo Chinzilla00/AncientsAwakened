@@ -43,6 +43,7 @@ namespace AAMod.Items.Magic
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LastPrism);
 			recipe.AddIngredient(mod.ItemType("EXSoul"));
+			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

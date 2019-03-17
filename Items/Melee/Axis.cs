@@ -10,7 +10,7 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Axis");
-			Tooltip.SetDefault("Enemies struck by this spear will be surrounded by snowflakes");
+			Tooltip.SetDefault("Enemies struck by this spear will be surrounded by snowflakes\nNorth Pole EX");
 		}
 		
         public override void SetDefaults()
@@ -39,7 +39,7 @@ namespace AAMod.Items.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.NorthPole);
             recipe.AddIngredient(mod.ItemType("EXSoul"));
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

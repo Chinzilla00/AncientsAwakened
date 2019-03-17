@@ -26,8 +26,8 @@ namespace AAMod.Items.Melee
 
 		public override void SetStaticDefaults()
 		{
-		  DisplayName.SetDefault("Star Wrath EX");
-		  Tooltip.SetDefault("Causes stars to rain from the sky\nStars can reach enemy through any obstacles");
+		  DisplayName.SetDefault("Cosmic Fury");
+		  Tooltip.SetDefault("Causes stars to rain from the sky\nStars can reach enemy through any obstacles\nStar Wrath EX");
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -69,7 +69,7 @@ namespace AAMod.Items.Melee
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(ItemID.StarWrath);
 			recipe.AddIngredient(mod.ItemType("EXSoul"));
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
