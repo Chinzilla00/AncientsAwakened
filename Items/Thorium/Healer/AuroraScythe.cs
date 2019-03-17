@@ -10,14 +10,14 @@ using BaseMod;
 
 namespace AAMod.Items.Thorium.Healer
 {
-	public class DragonsClaw : CrossoverItem
+	public class AuroraScythe : CrossoverItem
 	{
 		public override void SetStaticDefaults()
 		{
 			crossoverModName = "Thorium";
-            DisplayName.SetDefault("Dragon's Claw");
-            Tooltip.SetDefault(@"Spins a fiery scythe around you that shreds through enemies
-Scythes ignites enemies on contact
+            DisplayName.SetDefault("Aurora Scythe");
+            Tooltip.SetDefault(@"Spins a frostburning scythe around you that shreds through enemies
+Scythes inflict frostburn on contact
 Grants 1 soul essence on direct hit");			
 		}
 
@@ -33,12 +33,12 @@ Grants 1 soul essence on direct hit");
             item.useAnimation = 25;
             item.useTime = 25;
             item.UseSound = SoundID.Item1;
-            item.damage = 11;
+            item.damage = 24;
             item.knockBack = 6;
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType("DragonsClaw");
+            item.shoot = mod.ProjectileType("AuroraScythe");
             item.shootSpeed = 0.1f;
 		}
 		
@@ -46,7 +46,7 @@ Grants 1 soul essence on direct hit");
 		{
 			for (int k = 0; k < 2; k++)
 			{
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("DragonsClawEffect"), damage, knockBack, player.whoAmI, k, 0f);
+				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("AuroraScytheEffect"), damage, knockBack, player.whoAmI, k, 0f);
 			}
 			return true;
 		}
@@ -95,8 +95,15 @@ Grants 1 soul essence on direct hit");
         {
             if (!AAMod.thoriumLoaded) return;
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "IncineriteBar", 8);
-            recipe.AddTile(TileID.Anvils);
+			recipe.AddIngredient(1306);
+            recipe.AddIngredient(null, "AdamantiteBar", 8);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(1306);
+            recipe.AddIngredient(null, "TitaniumBar", 8);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

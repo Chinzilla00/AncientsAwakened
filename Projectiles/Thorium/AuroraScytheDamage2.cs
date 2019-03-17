@@ -12,13 +12,13 @@ using AAMod;
 
 namespace AAMod.Projectiles.Thorium
 {
-    public class DragonsClawDamage2 : ModProjectile
+    public class AuroraScytheDamage2 : ModProjectile
     {
 
 		public override void SetDefaults()
 		{
-			projectile.width = 138;
-			projectile.height = 138;
+			projectile.width = 130;
+			projectile.height = 128;
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
 			projectile.tileCollide = false;

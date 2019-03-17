@@ -16,8 +16,8 @@ namespace AAMod.Projectiles.Thorium
     {
         public override void SetDefaults()
 		{
-			projectile.width = 152;
-			projectile.height = 152;
+			projectile.width = 138;
+			projectile.height = 138;
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
 			projectile.tileCollide = false;
