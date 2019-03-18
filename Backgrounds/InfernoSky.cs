@@ -29,7 +29,7 @@ namespace AAMod.Backgrounds
             public float StartX;
         }
         private Meteor[] Meteors;
-        private Texture2D MeteorTexture;
+        public static Texture2D MeteorTexture;
         public static Texture2D SkyTex;
         private UnifiedRandom _random = new UnifiedRandom();
 
@@ -37,7 +37,6 @@ namespace AAMod.Backgrounds
         {
             PlanetTexture = TextureManager.Load("Backgrounds/Sun");
             MeteorTexture = TextureManager.Load("Backgrounds/AkumaMeteors");
-
             SkyTex = TextureManager.Load("Backgrounds/Sky");
         }
 

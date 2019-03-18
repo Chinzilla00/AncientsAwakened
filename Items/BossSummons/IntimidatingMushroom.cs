@@ -46,7 +46,7 @@ Can only be used during the day");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom just glares at you and gives you chills just looking at it.", new Color(216, 110, 40), false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<MushroomMonarchCo>()))
+            if (NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom Monarch keeps trying to stomp you", new Color(216, 110, 40), false);
                 return false;

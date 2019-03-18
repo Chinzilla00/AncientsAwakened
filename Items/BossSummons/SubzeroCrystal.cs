@@ -33,30 +33,6 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            if (player.ZoneCrimson)
-            {
-                SpawnBoss(player, "SerpentHeadCr", "The Subzero Serpent");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.ZoneCorrupt)
-            {
-                SpawnBoss(player, "SerpentHeadCo", "The Subzero Serpent");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
-            {
-                SpawnBoss(player, "SerpentHeadI", "The Subzero Serpent");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
-            {
-                SpawnBoss(player, "SerpentHeadM", "The Subzero Serpent");
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-                return true;
-            }
             SpawnBoss(player, "SerpentHead", "The Subzero Serpent");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

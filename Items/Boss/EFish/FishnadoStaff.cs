@@ -21,6 +21,16 @@ namespace AAMod.Items.Boss.EFish
 			item.damage = 150;
 			item.rare = 11;
 			item.shoot = mod.ProjectileType("Fishnado");
-		}
-	}
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.TempestStaff);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

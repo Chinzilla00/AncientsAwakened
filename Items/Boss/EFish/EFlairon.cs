@@ -22,5 +22,17 @@ namespace AAMod.Items.Boss.EFish
             item.rare = 11;
             item.shoot = mod.ProjectileType("EFlairon");
         }
+
+
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Flairon);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

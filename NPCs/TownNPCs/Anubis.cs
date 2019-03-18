@@ -25,6 +25,7 @@ namespace AAMod.NPCs.TownNPCs
 		public override void SetStaticDefaults()
 		{
 			Main.npcFrameCount[npc.type] = 26;
+            npc.dontTakeDamageFromHostiles = true;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
 			NPCID.Sets.AttackFrameCount[npc.type] = 5;
 			NPCID.Sets.DangerDetectRange[npc.type] = 700;
@@ -41,7 +42,7 @@ namespace AAMod.NPCs.TownNPCs
 			npc.width = 18;
 			npc.height = 56;
 			npc.aiStyle = 7;
-			npc.damage = 80;
+			npc.damage = 10;
 			npc.defense = 68;
 			npc.lifeMax = 160000;
             npc.HitSound = SoundID.NPCHit23;
@@ -93,7 +94,6 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Retriever = false;
         public static bool Raider = false;
         public static bool Orthrus = false;
-        public static bool Fishron = false;
         public static bool Equinox = false;
         public static bool AnubisB = false;
         public static bool GripsS = false;
@@ -117,7 +117,6 @@ namespace AAMod.NPCs.TownNPCs
             Raider = false;
             Retriever = false;
             Orthrus = false;
-            Fishron = false;
             Equinox = false;
             AnubisB = false;
             GripsS = false;
@@ -151,8 +150,6 @@ namespace AAMod.NPCs.TownNPCs
             string RaidT = "Mechanical Mass";
 
             string OrthrusT = "Two heads; zero brains";
-
-            string FishT = "It was THIIIIIS big.";
 
             string EquinoxT = "More worm bosses god dammit.";
 
@@ -227,35 +224,30 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (ChatNumber == 11 && NPC.downedMoonlord)
             {
-                button2 = FishT;
-                Fishron = true;
-            }
-            else if (ChatNumber == 12 && NPC.downedMoonlord)
-            {
                 button2 = EquinoxT;
                 Equinox = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord)
+            else if (ChatNumber == 12 && NPC.downedMoonlord)
             {
                 button2 = AnubisT;
                 AnubisB = true;
             }
-            else if (ChatNumber == 14 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
+            else if (ChatNumber == 13 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
             {
                 button2 = GripsST;
                 GripsS = true;
             }
-            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
             {
                 button2 = YamataT;
                 Yamata = true;
             }
-            else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedNC)
+            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
                 Zero = true;
@@ -280,7 +272,6 @@ namespace AAMod.NPCs.TownNPCs
             Raider = false;
             Retriever = false;
             Orthrus = false;
-            Fishron = false;
             Equinox = false;
             DoNext = false;
             Akuma = false;
@@ -358,11 +349,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedOrthrus ? "You actually did it, how surprising. I thought that you would just die. Well, happens..." : 
                     "Can you even imagine that one of Greek myths was true? The one about Cerberus, guardian of Netherworld. Well, not exactly, but about his brother, Twin-Headed Orthus. He was created by alien race, Fulgarians. Turn him into scrap.";
-            }
-            else if (Fishron)
-            {
-                return AAWorld.downedEFish ? "Is there any leftovers? I would like some sushi now." : 
-                    "You know duke fishron? Big pig dragon thing? Well there's a bigger one out there, and it's even nastier than regular ol' fishron. Good luck, I ain't going near that.";
             }
             else if (Equinox)
             {

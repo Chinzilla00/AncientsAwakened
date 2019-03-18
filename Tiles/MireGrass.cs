@@ -26,13 +26,37 @@ namespace AAMod.Tiles
         {
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(100) == 0)
             {
-
                 PlaceObject(i, j - 1, mod.TileType("Darkshroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Darkshroom"), 0, 0, -1, -1);
-
             }
 
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
+            {
+                switch (Main.rand.Next(5))
+                {
+                    case 0:
+                        PlaceObject(i, j - 1, mod.TileType("MireFoliage1"));
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MireFoliage1"), 0, 0, -1, -1);
+                        break;
+                    case 1:
+                        PlaceObject(i, j - 1, mod.TileType("MireFoliage2"));
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MireFoliage2"), 0, 0, -1, -1);
+                        break;
+                    case 2:
+                        PlaceObject(i, j - 1, mod.TileType("MireFoliage3"));
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MireFoliage3"), 0, 0, -1, -1);
+                        break;
+                    case 3:
+                        PlaceObject(i, j - 1, mod.TileType("MireFoliage4"));
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MireFoliage4"), 0, 0, -1, -1);
+                        break;
 
+                    default:
+                        PlaceObject(i, j - 1, mod.TileType("MireFoliage5"));
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MireFoliage5"), 0, 0, -1, -1);
+                        break;
+                }
+            }
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)

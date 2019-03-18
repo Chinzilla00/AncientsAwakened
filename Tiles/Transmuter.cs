@@ -36,7 +36,7 @@ namespace AAMod.Tiles
             if (++frameCounter >= 5)
             {
                 frameCounter = 0;
-                if (++frame >= 10) frame = 0;
+                if (++frame >= 4) frame = 0;
             }
         }
 

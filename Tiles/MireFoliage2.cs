@@ -6,36 +6,31 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class Darkshroom : ModTile
-	{
+    public class MireFoliage2 : ModTile
+    {
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
+            TileObjectData.addTile(Type);
             Main.tileCut[Type] = true;
-
+            Main.tileSolid[Type] = false;
             Main.tileMergeDirt[Type] = true;
             //Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+            TileObjectData.newTile.CoordinateHeights = new int[]
+            {
+                16,
+                16
+            };
             TileObjectData.addTile(Type);
-            drop = mod.ItemType("Darkshroom");
+            dustType = mod.DustType<Dusts.MireDust>();
+            soundType = 6;
         }
-
-        public override bool Dangersense(int i, int j, Player player)
-        {
-            return true;
-        }
-
-        public override bool CreateDust(int i, int j, ref int type)
-        {
-            return false;
-        }
-
 
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 10;
         }
     }
-
 }

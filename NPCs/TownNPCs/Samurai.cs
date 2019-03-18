@@ -155,18 +155,38 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.InfernoSeeds>());
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.MireSeeds>());
-            nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.DynastyWood);
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(ItemID.DynastyWood);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.RedDynastyShingles);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.BlueDynastyShingles);
-			nextSlot++;
+            if (Main.dayTime)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.RedDynastyShingles);
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.InfernoSeeds>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.Sunpowder>());
+                nextSlot++;
+                if (AAWorld.downedBrood == true)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType<Items.BossSummons.DragonBell>());
+                    shop.item[nextSlot].value = 100000;
+                    nextSlot++;
+                }
+            }
+            if (!Main.dayTime)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.BlueDynastyShingles);
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.MireSeeds>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.Moonpowder>());
+                nextSlot++;
+                if (AAWorld.downedHydra == true)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType<Items.BossSummons.HydraChow>());
+                    shop.item[nextSlot].value = 100000;
+                    nextSlot++;
+                }
+            }
 			shop.item[nextSlot].SetDefaults(ItemID.Sake);
 			nextSlot++;
 			shop.item[nextSlot].SetDefaults(ItemID.Pho);
@@ -189,16 +209,26 @@ namespace AAMod.NPCs.TownNPCs
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.NinjaPants);
             nextSlot++;
-            if (Main.hardMode == true)
+            if (Main.dayTime)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType("IndigoSolution"));
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType("OrangeSolution"));
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType("OrderSolution"));
-                nextSlot++;
+                if (Main.hardMode == true)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType("OrangeSolution"));
+                    nextSlot++;
+                }
             }
-		}
+            if (!Main.dayTime)
+            {
+                if (Main.hardMode == true)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType("IndigoSolution"));
+                    nextSlot++;
+                }
+            }
+
+            shop.item[nextSlot].SetDefaults(mod.ItemType("OrderSolution"));
+            nextSlot++;
+        }
 
 		public override void NPCLoot()
 		{

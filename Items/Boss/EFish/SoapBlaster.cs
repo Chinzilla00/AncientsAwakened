@@ -60,5 +60,17 @@ namespace AAMod.Items.Boss.EFish
 			}
 			return false;
 		}
+
+
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.BubbleGun);
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
