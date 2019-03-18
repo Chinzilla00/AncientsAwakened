@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Fury");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 6;
         }
         public override void SetDefaults()
         {
@@ -21,7 +21,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
-            npc.scale *= 1.3f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -47,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.frame.Y += 32;
             }
 
-            if (npc.frame.Y > 32 * 3)
+            if (npc.frame.Y > 32 * 5)
             {
                 npc.frame.Y = 0;
             }

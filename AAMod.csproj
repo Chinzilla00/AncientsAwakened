@@ -1075,10 +1075,7 @@
     <Compile Include="Items\Summoning\SkullStaff.cs" />
     <Compile Include="Items\Summoning\TerraStaff.cs" />
     <Compile Include="Items\Summoning\TrueHallowStaff.cs" />
-<<<<<<< HEAD
     <Compile Include="Items\Thorium\Healer\AuroraScythe.cs" />
-=======
->>>>>>> 0fc72c5f7c302272178140d8e5d214f7433b90c2
     <Compile Include="Items\Thorium\Healer\DragonsClaw.cs" />
     <Compile Include="Items\Thorium\Healer\HydrasFury.cs" />
     <Compile Include="Items\Throwing\AbyssalArc.cs" />
