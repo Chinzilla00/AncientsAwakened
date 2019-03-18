@@ -55,20 +55,20 @@ namespace AAMod.Items.Boss.Equinox
 
         public override void UpdateEquip(Player player)
         {
-                player.lifeRegen += 6;
-                player.statDefense += 9;
-                player.meleeSpeed += 0.35f;
-                player.meleeDamage += 0.35f;
-                player.meleeCrit += 5;
-                player.rangedDamage += 0.35f;
-                player.rangedCrit += 5;
-                player.magicDamage += 0.35f;
-                player.magicCrit += 5;
-                player.pickSpeed -= 0.35f;
-                player.minionDamage += 0.35f;
-                player.minionKB += 0.75f;
-                player.thrownDamage += 0.35f;
-                player.thrownCrit += 5;
+            player.lifeRegen += 6;
+            player.statDefense += 9;
+            player.meleeSpeed += 0.35f;
+            player.meleeDamage += 0.35f;
+            player.meleeCrit += 5;
+            player.rangedDamage += 0.35f;
+            player.rangedCrit += 5;
+            player.magicDamage += 0.35f;
+            player.magicCrit += 5;
+            player.pickSpeed -= 0.35f;
+            player.minionDamage += 0.35f;
+            player.minionKB += 0.75f;
+            player.thrownDamage += 0.35f;
+            player.thrownCrit += 5;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -85,8 +85,8 @@ namespace AAMod.Items.Boss.Equinox
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(BuffID.NightOwl, 3);
-            player.AddBuff(BuffID.Shine, 3);
+            player.nightVision = true;
+            player.GetModPlayer<AAPlayer>(mod).RStar = true;
         }
         public override void AddRecipes()
         {

@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee   //where is located
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = false;
-            item.shoot = 521;
+            item.shoot = mod.ProjectileType<Projectiles.CGP>();
             item.shootSpeed = 6f;                //projectile speed                 
         }
 

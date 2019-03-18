@@ -37,7 +37,12 @@ Shines with the light of a starry night sky");
 		{
 			
 			player.setBonus = @"Increases max number of minions by 7
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
+Being hit causes stars from the heavans to fall around you and increases your movement speed
+30% increased movement speed during the day";
+            if (Main.dayTime)
+            {
+                player.moveSpeed += .3f;
+            }
             player.maxMinions += 7;
             player.panic = true;
             player.starCloak = true;

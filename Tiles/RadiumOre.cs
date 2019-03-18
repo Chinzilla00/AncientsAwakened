@@ -31,14 +31,25 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/RadiumOre_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Tiles/RadiumOre"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.dayTime ? AAColor.Glow : Color.Transparent, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return Main.dayTime;
+        }
+
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
-            r = 0.500f;
-            g = .200f;
-            b = 0;
+            r = Main.dayTime ? 0.5f : 0f ;
+            g = Main.dayTime ? .2f : 0f;
+            b = 0f;
         }
     }
 }

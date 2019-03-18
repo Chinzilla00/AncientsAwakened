@@ -53,6 +53,7 @@ namespace AAMod
         public bool SnakeMinion = false;
         public bool dustDevil = false;
         public bool KrakenMinion = false;
+        public bool Fishnado = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -244,6 +245,7 @@ namespace AAMod
             SnakeMinion = false;
             dustDevil = false;
             KrakenMinion = false;
+            Fishnado = false;
             //Armor
             valkyrieSet = false;
             kindledSet = false;
@@ -1066,9 +1068,10 @@ namespace AAMod
                     {
                         WorldGenner = true;
                     }
-                    else
+                    if (num66 >= 56 && !WorldGenner)
                     {
                         player.QuickSpawnItem(mod.ItemType<AAWorldgenner>());
+                        WorldGenner = true;
                     }
                 }
             }
@@ -1080,9 +1083,10 @@ namespace AAMod
                     {
                         InfernoSpawner = true;
                     }
-                    else
+                    if (num66 >= 56 && !InfernoSpawner)
                     {
                         player.QuickSpawnItem(mod.ItemType<Smallcano>());
+                        InfernoSpawner = true;
                     }
                 }
             }
@@ -1094,9 +1098,10 @@ namespace AAMod
                     {
                         MireSpawner = true;
                     }
-                    else
+                    if (num66 >= 56 && !MireSpawner)
                     {
                         player.QuickSpawnItem(mod.ItemType<Minilake>());
+                        MireSpawner = true;
                     }
                 }
             }
@@ -1108,9 +1113,10 @@ namespace AAMod
                     {
                         VoidSpawner = true;
                     }
-                    else
+                    if (num66 >= 56 && !VoidSpawner)
                     {
                         player.QuickSpawnItem(mod.ItemType<VoidSpawner>());
+                        VoidSpawner = true;
                     }
                 }
             }
@@ -1122,9 +1128,10 @@ namespace AAMod
                     {
                         TerrariumSpawner = true;
                     }
-                    else
+                    if (num66 >= 56 && !TerrariumSpawner)
                     {
                         player.QuickSpawnItem(mod.ItemType<TerrariumGenerator>());
+                        TerrariumSpawner = true;
                     }
                 }
             }
@@ -1136,9 +1143,10 @@ namespace AAMod
                     {
                         OreSpawner = true;
                     }
-                    else
+                    if (num66 >= 56 && !OreSpawner)
                     {
                         player.QuickSpawnItem(mod.ItemType<OreGenerator>());
+                        OreSpawner = true;
                     }
                 }
             }
@@ -2614,45 +2622,45 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DoomsdayHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterVisor")))
+            else if (!mapHead && !Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterVisor")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Nightcrawler, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelm")))
+            else if (!mapHead && !Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelm")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Nightcrawler, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelmet")))
+            else if (!mapHead && !Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHelmet")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHelmet_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Nightcrawler, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHeaddress")))
+            else if (!mapHead && !Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterHeaddress")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHeaddress_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterHeaddress_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Nightcrawler, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterMask")))
+            else if (!mapHead && !Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("DarkmatterMask")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DarkmatterMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Nightcrawler, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHat")))
+            else if (!mapHead && Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHat")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHat_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHat_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHelm")))
+            else if (!mapHead && Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHelm")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHelm_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHelm_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHelmet")))
+            else if (!mapHead && Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHelmet")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHelmet_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHelmet_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHeadgear")))
+            else if (!mapHead && Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumHeadgear")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHeadgear_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumHeadgear_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
             }
-            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumMask")))
+            else if (!mapHead && Main.dayTime && HasAndCanDraw(drawPlayer, mod.ItemType("RadiumMask")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumMask_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/Radium/RadiumMask_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.headFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("GripMaskRed")))
             {

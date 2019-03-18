@@ -100,6 +100,7 @@
     <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
+    <Compile Include="Buffs\Fishnado.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
     <Compile Include="Buffs\DemonBuff.cs" />
     <Compile Include="Buffs\DevilBuff.cs" />
@@ -866,8 +867,6 @@
     <Compile Include="Items\Melee\DoomiteSaber.cs" />
     <Compile Include="Items\Melee\HydraGlove.cs" />
     <Compile Include="Items\Melee\DragonGlove.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosAbyss.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosBlaze.cs" />
     <Compile Include="Items\Melee\Firestorm.cs" />
     <Compile Include="Items\Melee\IchorSpear.cs" />
     <Compile Include="Items\Melee\MadnessSword.cs" />
@@ -1089,6 +1088,8 @@
     <Compile Include="Items\Summoning\SkullStaff.cs" />
     <Compile Include="Items\Summoning\TerraStaff.cs" />
     <Compile Include="Items\Summoning\TrueHallowStaff.cs" />
+    <Compile Include="Items\Thorium\Healer\AuroraScythe.cs" />
+    <Compile Include="Items\Thorium\Healer\DragonsClaw.cs" />
     <Compile Include="Items\Thorium\Healer\HydrasFury.cs" />
     <Compile Include="Items\Throwing\AbyssalArc.cs" />
     <Compile Include="Items\Throwing\BurningGel.cs" />
@@ -1470,6 +1471,7 @@
     <Compile Include="NPCs\Enemies\Ship\DiverShot.cs" />
     <Compile Include="NPCs\Enemies\Ship\Squid.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeBody.cs" />
+    <Compile Include="NPCs\Enemies\Snow\SnakeBody2.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeHead.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeTail.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Bladon.cs" />
@@ -1488,7 +1490,9 @@
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraCrawler.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraSpere.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraWeaver.cs" />
+    <Compile Include="NPCs\Enemies\Void\DoomLaser.cs" />
     <Compile Include="NPCs\Enemies\Void\SagittariusMini.cs" />
+    <Compile Include="NPCs\Enemies\Void\Scout.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher1.cs" />
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
@@ -1545,6 +1549,7 @@
     <Compile Include="Projectiles\DoomBlast.cs" />
     <Compile Include="Projectiles\DoomShot.cs" />
     <Compile Include="Projectiles\DragonfireDart.cs" />
+    <Compile Include="Projectiles\DummyExplosionTerra.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
     <Compile Include="Projectiles\FreedomStar.cs" />
@@ -1692,6 +1697,7 @@
     <Compile Include="Projectiles\Shen\SkyfallB.cs" />
     <Compile Include="Projectiles\Shen\SkyfallR.cs" />
     <Compile Include="Projectiles\Shen\TimesplitterP.cs" />
+    <Compile Include="Projectiles\Sisters\Surasshu.cs" />
     <Compile Include="Projectiles\SludgeShotP.cs" />
     <Compile Include="Projectiles\Spectrum.cs" />
     <Compile Include="Projectiles\SpectrumBeam.cs" />
@@ -2810,7 +2816,6 @@
     <Content Include="Glowmasks\TrueHallowedPlate_Female_Glow.png" />
     <Content Include="Glowmasks\TrueHallowedPlate_Glow.png" />
     <Content Include="Glowmasks\TrueHallowedPrism_Glow.png" />
-    <Content Include="Glowmasks\TrueManaRose_Glow.png" />
     <Content Include="Glowmasks\TrueNightsGreaves_Glow_Legs.png" />
     <Content Include="Glowmasks\TrueNightsHelm_Glow_Head.png" />
     <Content Include="Glowmasks\TrueNightsPlate_Glow_Arms.png" />
@@ -4039,8 +4044,6 @@
     <Content Include="Items\Melee\CarnalCrusher.png" />
     <Content Include="Items\Melee\Chaos.png" />
     <Content Include="Items\Melee\ChaosScythe.png" />
-    <Content Include="Items\Melee\ClawOfChaosAbyss.png" />
-    <Content Include="Items\Melee\ClawOfChaosBlaze.png" />
     <Content Include="Items\Melee\ClawOfChaosBlue.png" />
     <Content Include="Items\Melee\ClawOfChaosRed.png" />
     <Content Include="Items\Melee\CloudEdge.png" />
@@ -4271,6 +4274,7 @@
     <Content Include="Items\Thorium\Bard\SongOfTheDeep.png" />
     <Content Include="Items\Thorium\Healer\AuroraScythe.png" />
     <Content Include="Items\Thorium\Healer\DragonsClaw.png" />
+    <Content Include="Items\Thorium\Healer\DragonsClawOld.png" />
     <Content Include="Items\Thorium\Healer\HydrasFury.png" />
     <Content Include="Items\Throwing\AbyssalArc.png" />
     <Content Include="Items\Throwing\BurningGel.png" />
@@ -4503,6 +4507,7 @@
     <Content Include="Mounts\BegPony.png" />
     <Content Include="Mounts\MonochromeApple.png" />
     <Content Include="Mounts\PrinceFishron.png" />
+    <Content Include="Mounts\PrinceFishron_Glow.png" />
     <Content Include="NPCs\Bosses\AH\Ashe.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.png" />
@@ -4950,13 +4955,13 @@
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerrariumArrow.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerraWarlock.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\TerraWizard.png" />
-    <Content Include="NPCs\Enemies\Void\SagittariusMini.gif" />
+    <Content Include="NPCs\Enemies\Void\DoomLaser.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMini.png" />
+    <Content Include="NPCs\Enemies\Void\Scout.png" />
     <Content Include="NPCs\Enemies\Void\Searcher1.png" />
     <Content Include="NPCs\Enemies\Void\MiniProbe.gif" />
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
-    <Content Include="NPCs\Enemies\Void\SmallProbe.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\ExterminatorCharge.png" />
     <Content Include="NPCs\Minibosses\Huo.png" />
@@ -5084,6 +5089,7 @@
     <Content Include="Projectiles\Duck.png" />
     <Content Include="Projectiles\DuckEX.png" />
     <Content Include="Projectiles\DummyExplosion.png" />
+    <Content Include="Projectiles\DummyExplosionTerra.png" />
     <Content Include="Projectiles\EFish\EFlairon.png" />
     <Content Include="Projectiles\EFish\EFlairon_Chain.png" />
     <Content Include="Projectiles\EFish\Fishnado.png" />
@@ -5191,6 +5197,7 @@
     <Content Include="Projectiles\Shen\SkyfallR.png" />
     <Content Include="Projectiles\Shen\TimesplitterP.png" />
     <Content Include="Projectiles\Sisters\FlameSpirit.png" />
+    <Content Include="Projectiles\Sisters\Surasshu.png" />
     <Content Include="Projectiles\SludgeShotP.png" />
     <Content Include="Projectiles\Spectrum.png" />
     <Content Include="Projectiles\SpectrumBeam.png" />

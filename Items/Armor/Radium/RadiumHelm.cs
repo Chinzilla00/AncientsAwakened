@@ -38,8 +38,12 @@ Shines with the light of a starry night sky");
 		{
 			
 			player.setBonus = @"30% throwing crit chance and velocity
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
-            
+Being hit causes stars from the heavans to fall around you and increases your movement speed
+30% increased movement speed during the day";
+            if (Main.dayTime)
+            {
+                player.moveSpeed += .3f;
+            }
             player.meleeSpeed += 0.30f;
             player.thrownCrit += 30;
             player.panic = true;

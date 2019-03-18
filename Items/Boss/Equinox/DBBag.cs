@@ -59,7 +59,7 @@ namespace AAMod.Items.Boss.Equinox
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();
             }
-            player.QuickSpawnItem(mod.ItemType("Stardust"), Main.rand.Next(35, 45));
+            player.QuickSpawnItem(mod.ItemType("Stardust"), Main.rand.Next(40, 90));
             player.QuickSpawnItem(mod.ItemType("RadiantStar"));
         }
 	}

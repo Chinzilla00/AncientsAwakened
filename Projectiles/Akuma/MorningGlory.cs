@@ -24,7 +24,6 @@ namespace AAMod.Projectiles.Akuma
             }
             projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Morning Glory");
-            Main.projFrames[projectile.type] = 3;
         }
 
         public override void SetDefaults()

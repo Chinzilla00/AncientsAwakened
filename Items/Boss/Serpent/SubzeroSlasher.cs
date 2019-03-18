@@ -36,8 +36,10 @@ namespace AAMod.Items.Boss.Serpent
         {
             shoot++;
             if (shoot % 2 != 0) return false;
-
             shoot = 0;
+            Main.projectile[type].melee = true;
+            Main.projectile[type].ranged = false;
+            Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockback);
             return true;
         }
 

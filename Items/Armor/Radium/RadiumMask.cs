@@ -38,7 +38,12 @@ Shines with the light of a starry night sky");
 		{
 			player.setBonus = @"200 increased maximum mana
 20% reduced mana usage
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
+Being hit causes stars from the heavans to fall around you and increases your movement speed
+30% increased movement speed during the day";
+            if (Main.dayTime)
+            {
+                player.moveSpeed += .3f;
+            }
             player.statManaMax2 += 200;
             player.manaCost *= 0.80f;
             player.panic = true;

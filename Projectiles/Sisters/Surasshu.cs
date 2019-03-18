@@ -19,12 +19,11 @@ namespace AAMod.Projectiles.Sisters
             projectile.width = 136;
             projectile.height = 66;
             projectile.friendly = true;
+            projectile.hostile = false;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.melee = true;
             projectile.ownerHitCheck = true;
-            projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 8;
         }
 
         public override void AI()
@@ -43,7 +42,7 @@ namespace AAMod.Projectiles.Sisters
 			projectile.soundDelay--;
 			if (projectile.soundDelay <= 0)
 			{
-				Main.PlaySound(SoundID.Item15, projectile.Center);
+				Main.PlaySound(SoundID.Item1, projectile.Center);
 				projectile.soundDelay = 24;
 			}
 			if (Main.myPlayer == projectile.owner)
