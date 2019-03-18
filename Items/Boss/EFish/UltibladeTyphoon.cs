@@ -56,7 +56,7 @@ Razorblade Typhoon EX");
 			ModRecipe recipe = new ModRecipe(mod);      
 			recipe.AddIngredient(ItemID.RazorbladeTyphoon);
 			recipe.AddIngredient(null, "EXSoul", 1);
-			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
