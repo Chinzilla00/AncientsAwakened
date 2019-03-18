@@ -1682,7 +1682,7 @@ namespace AAMod
                 player.HealEffect(80);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 180 : 120;
-                Main.NewText("Your soul ripples", 51, 255, 255);
+                Main.NewText("Your soul ripples...", 51, 255, 255);
                 player.AddBuff(mod.BuffType("UnstableSoul"), 18000);
                 return false;
             }

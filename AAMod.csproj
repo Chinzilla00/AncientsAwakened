@@ -778,6 +778,7 @@
     <Compile Include="Items\Magic\CrystalTome.cs" />
     <Compile Include="Items\Magic\Depthsprayer.cs" />
     <Compile Include="Items\Magic\Fireblast.cs" />
+    <Compile Include="Items\Magic\HiveArtillery.cs" />
     <Compile Include="Items\Magic\MadnessStaff.cs" />
     <Compile Include="Items\Magic\DoomStaff.cs" />
     <Compile Include="Items\Magic\DragonsBreath.cs" />
@@ -788,6 +789,7 @@
     <Compile Include="Items\Magic\MagicFlower.cs" />
     <Compile Include="Items\Magic\BlazePike.cs" />
     <Compile Include="Items\Magic\ManaRose.cs" />
+    <Compile Include="Items\Magic\NovaFlare.cs" />
     <Compile Include="Items\Magic\OceanTrident.cs" />
     <Compile Include="Items\Magic\RazorLeaf.cs" />
     <Compile Include="Items\Magic\SkyBook.cs" />
@@ -797,6 +799,7 @@
     <Compile Include="Items\Magic\Toxifang.cs" />
     <Compile Include="Items\Magic\TrueGong.cs" />
     <Compile Include="Items\Magic\TrueManaRose.cs" />
+    <Compile Include="Items\Magic\TrueTerraRose.cs" />
     <Compile Include="Items\Magic\VenomSpray.cs" />
     <Compile Include="Items\Magic\YtriumStaff.cs" />
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
@@ -1645,6 +1648,7 @@
     <Compile Include="Projectiles\PonyBoomEX2.cs" />
     <Compile Include="Projectiles\PonyBoomEX.cs" />
     <Compile Include="Projectiles\PonyBoom.cs" />
+    <Compile Include="Projectiles\ScourgeOfShadowsP.cs" />
     <Compile Include="Projectiles\SharkLauncherP.cs" />
     <Compile Include="Projectiles\Shen\Astroid.cs" />
     <Compile Include="Projectiles\Shen\ChaosSlayerSword.cs" />
@@ -1708,6 +1712,7 @@
     <Compile Include="Projectiles\TechneciumBoomerangP.cs" />
     <Compile Include="Projectiles\TerraArrow.cs" />
     <Compile Include="Projectiles\TerraRoseShot.cs" />
+    <Compile Include="Projectiles\TerraRoseShotEX.cs" />
     <Compile Include="Projectiles\TerraShotEX.cs" />
     <Compile Include="Projectiles\TFGWP.cs" />
     <Compile Include="Projectiles\TheIlluminatiP.cs" />
@@ -1720,6 +1725,7 @@
     <Compile Include="Projectiles\Thorium\HydrasFuryDamage.cs" />
     <Compile Include="Projectiles\Thorium\HydrasFuryDamage2.cs" />
     <Compile Include="Projectiles\Thorium\HydrasFuryEffect.cs" />
+    <Compile Include="Projectiles\Time.cs" />
     <Compile Include="Projectiles\Throwshroom.cs" />
     <Compile Include="Projectiles\TimeTeller.cs" />
     <Compile Include="Projectiles\TitanAxe.cs" />
@@ -3933,9 +3939,11 @@
     <Content Include="Items\Magic\Fireblast.png" />
     <Content Include="Items\Magic\GelWand.png" />
     <Content Include="Items\Magic\Gong.png" />
+    <Content Include="Items\Magic\HiveArtillery.png" />
     <Content Include="Items\Magic\MadnessStaff.png" />
     <Content Include="Items\Magic\MagicFlower.png" />
     <Content Include="Items\Magic\ManaRose.png" />
+    <Content Include="Items\Magic\NovaFlare.png" />
     <Content Include="Items\Magic\OceanTrident.png" />
     <Content Include="Items\Magic\RazorLeaf.png" />
     <Content Include="Items\Magic\SkyBook.png" />
@@ -3946,6 +3954,7 @@
     <Content Include="Items\Magic\Toxifang.png" />
     <Content Include="Items\Magic\TrueGong.png" />
     <Content Include="Items\Magic\TrueManaRose.png" />
+    <Content Include="Items\Magic\TrueTerraRose.png" />
     <Content Include="Items\Magic\VenomSpray.png" />
     <Content Include="Items\Magic\YtriumStaff.png" />
     <Content Include="Items\Materials\AbyssiumBar.png" />
@@ -5122,6 +5131,7 @@
     <Content Include="Projectiles\PonyShot.png" />
     <Content Include="Projectiles\PonyBoomEX2.png" />
     <Content Include="Projectiles\PonyBoomEX.png" />
+    <Content Include="Projectiles\ScourgeOfShadowsP.png" />
     <Content Include="Projectiles\SharkLauncherP.png" />
     <Content Include="Projectiles\Shen\Astroid.png" />
     <Content Include="Projectiles\Shen\Astroid_Chain.png" />
@@ -5191,6 +5201,7 @@
     <Content Include="Projectiles\TechneciumBoomerangP.png" />
     <Content Include="Projectiles\TerraArrow.png" />
     <Content Include="Projectiles\TerraRoseShot.png" />
+    <Content Include="Projectiles\TerraRoseShotEX.png" />
     <Content Include="Projectiles\TerraShotEX.png" />
     <Content Include="Projectiles\TFGWP.png" />
     <Content Include="Projectiles\TheIlluminatiP.png" />
@@ -5204,6 +5215,7 @@
     <Content Include="Projectiles\Thorium\HydrasFuryDamage2.png" />
     <Content Include="Projectiles\Thorium\HydrasFuryEffect.png" />
     <Content Include="Projectiles\Throwshroom.png" />
+    <Content Include="Projectiles\Time.png" />
     <Content Include="Projectiles\TimeTeller.png" />
     <Content Include="Projectiles\TitanAxe.png" />
     <Content Include="Projectiles\TitanAxeEX.png" />

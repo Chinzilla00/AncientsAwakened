@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Intimidating Looking Mushroom");
             Tooltip.SetDefault(@"Summons the Mushroom Monarch
-Can only be used during the day");
+Can only be used during the day in a red mushroom biome");
         }
 
         public override void SetDefaults()
@@ -41,7 +41,7 @@ Can only be used during the day");
 
         public override bool CanUseItem(Player player)
         {
-            if (!Main.dayTime)
+            if (!Main.dayTime && !player.GetModPlayer<AAPlayer>(mod).ZoneMush)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The mushroom just glares at you and gives you chills just looking at it.", new Color(216, 110, 40), false);
                 return false;

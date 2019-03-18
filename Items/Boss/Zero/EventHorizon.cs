@@ -13,7 +13,6 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Event Horizon");
-            Tooltip.SetDefault("Throws out 4 razor sharp flails");
         }
 
         public override void SetDefaults()

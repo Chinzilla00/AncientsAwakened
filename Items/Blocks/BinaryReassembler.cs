@@ -12,7 +12,8 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Binary Fragmentation Reassembler");
-            Tooltip.SetDefault("Reality has never been so easy to manipulate");
+            Tooltip.SetDefault(@"Reality has never been so easy to manipulate
+also acts as all vanilla crafting stations");
         }
 
         public override void SetDefaults()
@@ -66,14 +67,12 @@ namespace AAMod.Items.Blocks
 
         public override void AddRecipes()
         {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "RadiumBar", 20);
-                recipe.AddIngredient(null, "DarkMatter", 20);
-                recipe.AddIngredient(null, "Apocalyptite", 10);
-                recipe.AddTile(null, "TerraCore");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            ///recipe.AddRecipeGroup("AAMod:DarkmatterHelmets");
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DarkMatter", 30);
+            recipe.AddIngredient(null, "Apocalyptite", 10);
+            recipe.AddIngredient(null, "TerraCore", 1);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

@@ -377,7 +377,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Inferno Prism");
             Tooltip.SetDefault("Imbued with the blazing fury of the fire-ravaged mountains");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
