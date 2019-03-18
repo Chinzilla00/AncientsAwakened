@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Crimtane Crimera");
-			Description.SetDefault("Like a normal crimera, but with a crappy pallet.");
+			Description.SetDefault("Like a normal crimera, but with a crappy palette.");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

@@ -80,7 +80,7 @@ Tsunami EX");
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(ItemID.Tsunami);
 			recipe.AddIngredient(null, "EXSoul");
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

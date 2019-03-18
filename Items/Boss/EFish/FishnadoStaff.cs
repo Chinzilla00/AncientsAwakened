@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.EFish
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.TempestStaff);
             recipe.AddIngredient(null, "EXSoul");
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
