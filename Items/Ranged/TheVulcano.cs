@@ -26,6 +26,7 @@ namespace AAMod.Items.Ranged
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;
             item.shootSpeed = 14f;
+            item.value = 10000;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

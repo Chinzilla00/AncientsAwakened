@@ -367,7 +367,7 @@ namespace AAMod.Worldgeneration
             int InfernoBiomeCount = dictionary[(ushort)mod.TileType<InfernoGrass>()] + dictionary[(ushort)mod.TileType<Torchstone>()] + dictionary[(ushort)mod.TileType<Torchsandstone>()] + dictionary[(ushort)mod.TileType<TorchsandHardened>()] + dictionary[(ushort)mod.TileType<Torchice>()];
             int MireBiomeCount = dictionary[(ushort)mod.TileType<MireGrass>()] + dictionary[(ushort)mod.TileType<Depthstone>()] + dictionary[(ushort)mod.TileType<Depthsandstone>()] + dictionary[(ushort)mod.TileType<DepthsandHardened>()] + dictionary[(ushort)mod.TileType<Depthice>()];
 
-            if (origin.X > Main.maxTilesX / 4 && origin.X < Main.maxTilesX / 6)
+            if (origin.X > (Main.maxTilesX * 0.40f) && origin.X < (Main.maxTilesY * 0.60f))
             {
                 return false;
             }

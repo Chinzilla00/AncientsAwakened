@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
-            if (player.Center.X > npc.Center.X) // so it faces the player
+            if (npc.velocity.X > 0) // so it faces the player
             {
                 npc.spriteDirection = -1;
             }

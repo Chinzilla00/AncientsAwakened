@@ -12,7 +12,7 @@ namespace AAMod.Items.Ranged
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Terra Ballista");
+			DisplayName.SetDefault("Unity Ballista");
             Tooltip.SetDefault(@"Replaces Arrows with Terra Arrows
 Shoots 3 waves of 3 arrows on single use
 Terra Ballista EX");
