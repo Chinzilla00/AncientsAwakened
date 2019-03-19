@@ -24,21 +24,18 @@ namespace AAMod.Items.Dev
 
         public override void SetDefaults()
         {
-            item.width = 58;
-            item.height = 40;
+            item.width = 40;
+            item.height = 32;
             item.ranged = true;
             item.damage = 400;
-            item.shoot = mod.ProjectileType("Freedom Shot");
-            item.shootSpeed = 30f;
+            item.shoot = mod.ProjectileType("FreedomStar");
             item.useTime = 10;
             item.useAnimation = 10;
             item.useStyle = 5;
+            item.channel = true;
             Item.sellPrice(1, 0, 0, 0);
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2 (3, 1);
+            item.noMelee = true;
+            item.noUseGraphic = true;
         }
     }
 }

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Akuma
 {
-    public class Daystorm : ModProjectile
+    public class DaystormP : ModProjectile
     {
         public override void SetStaticDefaults()
         {
