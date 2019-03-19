@@ -64,9 +64,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
-    <Reference Include="Thorium">
-      <HintPath>lib\Thorium.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AAMod.cs" />
@@ -754,6 +751,7 @@
     <Compile Include="Items\Dev\EtheralEX.cs" />
     <Compile Include="Items\Dev\FluffEX.cs" />
     <Compile Include="Items\Dev\FreedomBlaster.cs" />
+    <Compile Include="Items\Dev\MobianBuster.cs" />
     <Compile Include="Items\Dev\FreedomStar.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
@@ -1533,8 +1531,11 @@
     <Compile Include="Projectiles\DragonfireDart.cs" />
     <Compile Include="Projectiles\DummyExplosionTerra.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
+    <Compile Include="Projectiles\MobianShotCharged.cs" />
+    <Compile Include="Projectiles\MobianShot.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
     <Compile Include="Projectiles\FreedomShotCharged.cs" />
+    <Compile Include="Projectiles\MobianBuster.cs" />
     <Compile Include="Projectiles\FreedomStar.cs" />
     <Compile Include="Projectiles\GemShot\AmberShot.cs" />
     <Compile Include="Projectiles\GemShot\AmethystShot.cs" />
@@ -2764,6 +2765,7 @@
     <Content Include="Glowmasks\TerraCore_Glow.png" />
     <Content Include="Glowmasks\TerraCrystal_Glow.png" />
     <Content Include="Glowmasks\TerraPrism_Glow.png" />
+    <Content Include="Glowmasks\TerraRoseShotEX_Glow.png" />
     <Content Include="Glowmasks\TerraRoseShot_Glow.png" />
     <Content Include="Glowmasks\TerraRose_Glow.png" />
     <Content Include="Glowmasks\TerraShotEX_Glow.png" />
@@ -2814,6 +2816,7 @@
     <Content Include="Glowmasks\TrueNightsPlate_Glow_Female.png" />
     <Content Include="Glowmasks\TrueOblivion_Glow.png" />
     <Content Include="Glowmasks\TruePaladinsSmeltery_Glow.png" />
+    <Content Include="Glowmasks\TrueTerraRose_Glow.png" />
     <Content Include="Glowmasks\UmbreonSPEX_Glow.png" />
     <Content Include="Glowmasks\UmbreonSPProjectile_Glow.png" />
     <Content Include="Glowmasks\UmbreonSP_Glow.png" />
@@ -3915,6 +3918,7 @@
     <Content Include="Items\Dev\GentlemansRapier.png" />
     <Content Include="Items\Dev\GroxNote.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
+    <Content Include="Items\Dev\MobianBuster.png" />
     <Content Include="Items\Dev\OmegaBlade.png" />
     <Content Include="Items\Dev\PoniumStaff.png" />
     <Content Include="Items\Dev\PoniumStaffEX.png" />
@@ -4693,6 +4697,8 @@
     <Content Include="NPCs\Bosses\Shen\DiscordianFlare.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianSun.png" />
+    <Content Include="NPCs\Bosses\Shen\FuryAshe.gif" />
+    <Content Include="NPCs\Bosses\Shen\FuryAshe.png" />
     <Content Include="NPCs\Bosses\Shen\SeekingFlame.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenAWings.png" />
@@ -5133,6 +5139,9 @@
     <Content Include="Projectiles\ManaShot.png" />
     <Content Include="Projectiles\MireProj.png" />
     <Content Include="Projectiles\MLP.png" />
+    <Content Include="Projectiles\MobianBuster.png" />
+    <Content Include="Projectiles\MobianShot.png" />
+    <Content Include="Projectiles\MobianShotCharged.png" />
     <Content Include="Projectiles\Moonpowder.png" />
     <Content Include="Projectiles\MorningStar.png" />
     <Content Include="Projectiles\MurkyGelP.png" />
