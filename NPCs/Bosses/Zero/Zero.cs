@@ -51,6 +51,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.lavaImmune = true;
             npc.netAlways = true;
+            musicPriority = MusicPriority.BossHigh;
         }
         public override void SendExtraAI(BinaryWriter writer)
         {

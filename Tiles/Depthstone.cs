@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             soundType = 21;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthstone");   //put your CustomBlock name
-            AddMapEntry(new Color(0, 0, 127));
+            AddMapEntry(new Color(27, 19, 50));
 			minPick = 65;
         }
     }

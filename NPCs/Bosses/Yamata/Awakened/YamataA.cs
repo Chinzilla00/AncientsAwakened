@@ -40,31 +40,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.value = Item.buyPrice(20, 0, 0, 0);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
-            if (Main.expertMode)
-            {
-                int playerCount = 0;
-                float bossHPScalar = 1f, scalarIncrement = 0.35f;
-                if (Main.netMode != 0)
-                {
-                    for (int i = 0; i < 255; i++)
-                    {
-                        if (Main.player[i].active)
-                        {
-                            playerCount++;
-                        }
-                    }
-                    for (int j = 1; j < playerCount; j++)
-                    {
-                        bossHPScalar += scalarIncrement;
-                        scalarIncrement += (1f - scalarIncrement) / 3f;
-                    }
-                }
-                ScaleExpertStats(playerCount, bossHPScalar);
-            }
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+            musicPriority = MusicPriority.BossHigh;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

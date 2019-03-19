@@ -22,7 +22,7 @@ namespace AAMod.Walls
             if (glow)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/TorchstoneWall_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);
+                BaseMod.BaseDrawing.DrawWallTexture(sb, glowTex, x, y, false, AAGlobalTile.GetIncineriteColorDim);
             }
         }
     }

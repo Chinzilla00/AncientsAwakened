@@ -286,7 +286,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Turquoise, Color.DarkTurquoise, Color.Turquoise);
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(47, 31, 108), new Color(42, 7, 74), new Color(47, 31, 108));
             }
         }
 
@@ -305,8 +305,7 @@ namespace AAMod
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.DarkViolet, Color.Violet, Color.DarkViolet, Color.Violet, Color.DarkViolet);
             }
         }
-
-
+        
         public static Color Storm2
         {
             get

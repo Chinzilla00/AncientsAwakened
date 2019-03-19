@@ -238,6 +238,7 @@
     <Compile Include="Dusts\YamataDustLight.cs" />
     <Compile Include="Dusts\YtriumDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
+    <Compile Include="Globals\AAAI.cs" />
     <Compile Include="Globals\AAColor.cs" />
     <Compile Include="Globals\AAGlobalTile.cs" />
     <Compile Include="Globals\AAModGlobalItem.cs" />
@@ -4962,6 +4963,7 @@
     <Content Include="obj\Debug\AAMod.dll" />
     <Content Include="obj\Debug\AAMod.pdb" />
     <Content Include="OldChaosGen.txt" />
+    <Content Include="OtherModWork\FruitDragon.png" />
     <Content Include="Placeholder.png" />
     <Content Include="Projectiles\AcidBall.png" />
     <Content Include="Projectiles\Akuma\AkumaExp.png" />

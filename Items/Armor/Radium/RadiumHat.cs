@@ -46,6 +46,7 @@ Being hit causes stars from the heavans to fall around you and increases your mo
             player.maxMinions += 7;
             player.panic = true;
             player.starCloak = true;
+            player.GetModPlayer<AAPlayer>(mod).Radium = true;
         }
 
 		public override void AddRecipes()

@@ -76,10 +76,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.value = Item.buyPrice(0, 55, 0, 0);
             }
             npc.defense = 999999;
-            npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata");
+            musicPriority = MusicPriority.BossHigh;
             npc.noGravity = true;
             npc.netAlways = true;
             frameWidth = 162;

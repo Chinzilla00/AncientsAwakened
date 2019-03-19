@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -12,8 +13,8 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = false;
             Main.tileSpelunker[Type] = true;
-            Main.tileBlendAll[this.Type] = false;
-            Main.tileBlockLight[Type] = true;  //true for block to emit light
+            Main.tileBlendAll[Type] = false;
+            Main.tileBlockLight[Type] = true;  
             Main.tileLighted[Type] = true;
             soundType = 21;
             drop = mod.ItemType("RadiumOre");
@@ -21,8 +22,35 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(100, 90, 0));
 			minPick = 225;
         }
+        
 
-        public override void PostDraw(int i, int j, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+        {
+            if (Main.dayTime)
+            {
+                drop = mod.ItemType("RadiumOre");
+            }
+            else
+            {
+                drop = mod.ItemType("DarkmatterOre");
+            }
+        }
+
+        public override bool PreDraw(int x, int y, SpriteBatch spriteBatch)
+        {
+            if (Main.dayTime)
+            {
+                BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], x, y, true, false, false);
+            }
+            else
+            {
+                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/RadiumOreDark"), x, y, true, false, false);
+            }
+            return true;
+        }
+        
+
+        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -31,7 +59,18 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Tiles/RadiumOre"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.dayTime ? AAColor.Glow : Color.Transparent, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+
+            Texture2D glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
+
+            if (Main.dayTime)
+            {
+                BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, glowtex, i, j, true, false, false, null, AAGlobalTile.GetRadiumColorDim);
+            }
+            else
+            {
+                BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, glowtex, i, j, true, false, false, null, AAGlobalTile.GetDarkmatterColorDim);
+            }
+
         }
 
         public override bool CanExplode(int i, int j)
@@ -41,7 +80,15 @@ namespace AAMod.Tiles
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
-            return Main.dayTime;
+            if (Main.dayTime)
+            {
+                dustType = mod.DustType("RadiumDust");
+            }
+            else
+            {
+                dustType = mod.DustType<Dusts.DarkmatterDust>();
+            }
+            return true;
         }
 
 

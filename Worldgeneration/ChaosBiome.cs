@@ -102,7 +102,7 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceObject(genX + 162, genY + 215, mod.TileType<HydraPod>());
             WorldGen.PlaceObject(genX + 172, genY + 206, mod.TileType<HydraPod>());
 
-            WorldGen.PlaceObject(genX + 60, genY + 31, mod.TileType<DreadAltarS>());		   
+            WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -252,7 +252,7 @@ namespace AAMod.Worldgeneration
 			int genY = origin.Y - 80;
             gen.Generate(genX, genY, true, true);
 
-            WorldGen.PlaceObject(genX + 65, genY + 19, mod.TileType<DracoAltarS>());
+            WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
             WorldGen.PlaceObject(genX + 34, genY + 314, mod.TileType<DragonEgg>());
             WorldGen.PlaceObject(genX + 47, genY + 315, mod.TileType<DragonEgg>());
             WorldGen.PlaceObject(genX + 58, genY + 317, mod.TileType<DragonEgg>());
@@ -367,6 +367,10 @@ namespace AAMod.Worldgeneration
             int InfernoBiomeCount = dictionary[(ushort)mod.TileType<InfernoGrass>()] + dictionary[(ushort)mod.TileType<Torchstone>()] + dictionary[(ushort)mod.TileType<Torchsandstone>()] + dictionary[(ushort)mod.TileType<TorchsandHardened>()] + dictionary[(ushort)mod.TileType<Torchice>()];
             int MireBiomeCount = dictionary[(ushort)mod.TileType<MireGrass>()] + dictionary[(ushort)mod.TileType<Depthstone>()] + dictionary[(ushort)mod.TileType<Depthsandstone>()] + dictionary[(ushort)mod.TileType<DepthsandHardened>()] + dictionary[(ushort)mod.TileType<Depthice>()];
 
+            if (origin.X > Main.maxTilesX / 4 && origin.X < Main.maxTilesX / 6)
+            {
+                return false;
+            }
 
             if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || MireBiomeCount >= normalBiomeCount || InfernoBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
             {
