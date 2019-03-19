@@ -806,6 +806,7 @@
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
+    <Compile Include="Items\Materials\Prism.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\Hotshroom.cs" />
     <Compile Include="Items\Materials\DeactivatedDoomite.cs" />
@@ -1538,6 +1539,7 @@
     <Compile Include="Projectiles\GemShot\AmethystShot.cs" />
     <Compile Include="Projectiles\GemShot\DiamondShot.cs" />
     <Compile Include="Projectiles\GemShot\EmeraldShot.cs" />
+    <Compile Include="Projectiles\GemShot\PrismBolt.cs" />
     <Compile Include="Projectiles\GemShot\RubyShot.cs" />
     <Compile Include="Projectiles\GemShot\SapphireShot.cs" />
     <Compile Include="Projectiles\GemShot\TopazShot.cs" />
@@ -1690,7 +1692,6 @@
     <Compile Include="Projectiles\PerfectChaosE.cs" />
     <Compile Include="Projectiles\Petal_Kunai_Pro.cs" />
     <Compile Include="Projectiles\Platinum_Kunai_Pro.cs" />
-    <Compile Include="Projectiles\PrismBolt.cs" />
     <Compile Include="Projectiles\ProjectileDraw.cs" />
     <Compile Include="Projectiles\RadiumArrow.cs" />
     <Compile Include="Projectiles\RainbowCatPro.cs" />
@@ -1798,6 +1799,7 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\PrismOre.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
     <Compile Include="Tiles\ACS.cs" />
@@ -3993,6 +3995,7 @@
     <Content Include="Items\Materials\Nightmare_Ore.png" />
     <Content Include="Items\Materials\OrderBar.png" />
     <Content Include="Items\Materials\PlanteraPetal.png" />
+    <Content Include="Items\Materials\Prism.png" />
     <Content Include="Items\Materials\PureEvil.png" />
     <Content Include="Items\Materials\RadiantIncinerite.png" />
     <Content Include="Items\Materials\RadiumBar.png" />
@@ -5094,6 +5097,7 @@
     <Content Include="Projectiles\GemShot\AmethystShot.png" />
     <Content Include="Projectiles\GemShot\DiamondShot.png" />
     <Content Include="Projectiles\GemShot\EmeraldShot.png" />
+    <Content Include="Projectiles\GemShot\PrismBolt.png" />
     <Content Include="Projectiles\GemShot\RubyShot.png" />
     <Content Include="Projectiles\GemShot\SapphireShot.png" />
     <Content Include="Projectiles\GemShot\TopazShot.png" />

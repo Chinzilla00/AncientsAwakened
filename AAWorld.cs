@@ -484,6 +484,8 @@ namespace AAMod
                         {
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(2, 3), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                         }
+
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(4, 5), WorldGen.genRand.Next(5, 6), (ushort)mod.TileType("PrismOre"));
                     }
                     OresGenerated = true;
                 }));

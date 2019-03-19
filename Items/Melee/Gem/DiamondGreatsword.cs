@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 39;            //Sword damage
+            item.damage = 35;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 58;              //Sword width
             item.height = 60;             //Sword height
@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.autoReuse = false;   //if it's capable of autoswing.
             item.useTurn = true;
             item.shoot = mod.ProjectileType<Projectiles.GemShot.DiamondShot>();
-            item.shootSpeed = 15f;
+            item.shootSpeed = 11f;
         }
 
     public override void SetStaticDefaults()
