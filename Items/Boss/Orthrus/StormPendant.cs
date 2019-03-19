@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Orthrus
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Storm Pendant");
-            Tooltip.SetDefault(@"30% Increased damage
+            Tooltip.SetDefault(@"18% Increased damage
 10% Increased melee speed");
         }
         public override void SetDefaults()
@@ -22,12 +22,12 @@ namespace AAMod.Items.Boss.Orthrus
         }
         public override void UpdateEquip(Player player)
         {
-            player.meleeSpeed *= 1.1f;
-            player.meleeDamage *= 1.3f;
-            player.rangedDamage *= 1.3f;
-            player.magicDamage *= 1.3f;
-            player.minionDamage *= 1.3f;
-            player.thrownDamage *= 1.3f;
+            player.meleeSpeed += .1f;
+            player.meleeDamage += .18f;
+            player.rangedDamage += .18f;
+            player.magicDamage += .18f;
+            player.minionDamage += .18f;
+            player.thrownDamage += .18f;
         }
     }
 }

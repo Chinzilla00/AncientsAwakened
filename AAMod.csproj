@@ -238,7 +238,6 @@
     <Compile Include="Dusts\YamataDustLight.cs" />
     <Compile Include="Dusts\YtriumDust.cs" />
     <Compile Include="Dusts\ZeroDust.cs" />
-    <Compile Include="Globals\AAAI.cs" />
     <Compile Include="Globals\AAColor.cs" />
     <Compile Include="Globals\AAGlobalTile.cs" />
     <Compile Include="Globals\AAModGlobalItem.cs" />
@@ -436,6 +435,7 @@
     <Compile Include="Items\Armor\Ytrium\YtriumHelm.cs" />
     <Compile Include="Items\Armor\Ytrium\YtriumMask.cs" />
     <Compile Include="Items\Armor\Ytrium\YtriumPlate.cs" />
+    <Compile Include="Items\Banners\Banners.cs" />
     <Compile Include="Items\Banners\FatPixieBanner.cs" />
     <Compile Include="Items\Banners\ThixxieBanner.cs" />
     <Compile Include="Items\Blocks\Abyssium.cs" />
@@ -858,6 +858,7 @@
     <Compile Include="Items\Melee\IchorSpear.cs" />
     <Compile Include="Items\Melee\MadnessSword.cs" />
     <Compile Include="Items\Melee\RustyCutlass.cs" />
+    <Compile Include="Items\Melee\ScourgeOfShadows.cs" />
     <Compile Include="Items\Melee\SlapBone.cs" />
     <Compile Include="Items\Melee\StarWrathEX.cs" />
     <Compile Include="Items\Melee\TerraShortsword.cs" />
@@ -1025,6 +1026,7 @@
     <Compile Include="Items\Ranged\TheVulcano.cs" />
     <Compile Include="Items\Ranged\Toxithrower.cs" />
     <Compile Include="Items\Ranged\TrueDeathlyLongbow.cs" />
+    <Compile Include="Items\Ranged\TrueTerraBallista.cs" />
     <Compile Include="Items\Ranged\UraniumRepeater.cs" />
     <Compile Include="Items\Ranged\UWAM.cs" />
     <Compile Include="Items\Ranged\YtriumCrossbow.cs" />
@@ -3563,6 +3565,7 @@
     <Content Include="Items\Blocks\Depthstone.png" />
     <Content Include="Items\Blocks\DiscordiumBrick.png" />
     <Content Include="Items\Blocks\DiscordiumOre.png" />
+    <Content Include="Items\Blocks\DjinnBox.png" />
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
     <Content Include="Items\Blocks\Doomstone.png" />
     <Content Include="Items\Blocks\DoomstoneB.png" />
@@ -3661,10 +3664,11 @@
     <Content Include="Items\BossSummons\DreadRune.png" />
     <Content Include="Items\BossSummons\DreadSigil.png" />
     <Content Include="Items\BossSummons\EquinoxWorm.png" />
+    <Content Include="Items\BossSummons\FlamesOfAnarchy.png" />
+    <Content Include="Items\BossSummons\FlamesOfAnarchy_Glow.png" />
     <Content Include="Items\BossSummons\HydraChow.png" />
     <Content Include="Items\BossSummons\InterestingClaw.png" />
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
-    <Content Include="Items\BossSummons\LifescannerInactive.png" />
     <Content Include="Items\BossSummons\PlanteraFlower.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
     <Content Include="Items\BossSummons\ShroomGrub.png" />
@@ -4034,6 +4038,7 @@
     <Content Include="Items\Melee\DraculaKnives.png" />
     <Content Include="Items\Melee\DragonBlade.png" />
     <Content Include="Items\Melee\DragonBreath.png" />
+    <Content Include="Items\Melee\ScourgeOfShadows.png" />
     <Content Include="Items\Melee\TheDragonfire.png" />
     <Content Include="Items\Melee\DragonGlove.png" />
     <Content Include="Items\Melee\Dragonkite.png" />
@@ -4186,6 +4191,7 @@
     <Content Include="Items\Ranged\TheVulcano.png" />
     <Content Include="Items\Ranged\Toxithrower.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow.png" />
+    <Content Include="Items\Ranged\TrueTerraBallista.png" />
     <Content Include="Items\Ranged\UnityBallista.png" />
     <Content Include="Items\Ranged\UraniumRepeater.png" />
     <Content Include="Items\Ranged\UWAM.png" />
@@ -4483,9 +4489,14 @@
     <Content Include="Mounts\MonochromeApple.png" />
     <Content Include="Mounts\PrinceFishron.png" />
     <Content Include="Mounts\PrinceFishron_Glow.png" />
-    <Content Include="NPCs\Bosses\AH\Ashe.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.gif" />
     <Content Include="NPCs\Bosses\AH\AsheAndHaruka.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\Ashe.gif" />
+    <Content Include="NPCs\Bosses\AH\Ashe\Ashe.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheBackAway.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheCast1.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheCast2.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheTeaser.gif" />
     <Content Include="NPCs\Bosses\AH\Haruka\Haruka.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaJump.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />

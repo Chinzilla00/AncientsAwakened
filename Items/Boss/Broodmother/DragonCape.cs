@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Broodmother
         {
             DisplayName.SetDefault("Dragontamer's Cloak");
             Tooltip.SetDefault(
-@"10% Increased Damage Resistance");
+@"7% Increased Damage Resistance");
         }
         public override void SetDefaults()
         {
@@ -48,7 +48,7 @@ namespace AAMod.Items.Boss.Broodmother
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.1f;
+            player.endurance += .07f;
         }
     }
     

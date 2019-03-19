@@ -74,6 +74,9 @@ namespace AAMod
         public static int Ashes = 0;
         public int CthulhuCountdown = 10800;
         public bool Leave = false;
+
+        public bool RadiumStars = false;
+        public bool Darkmatter = true;
         // Armor bools.
         public bool goblinSlayer;
         public bool IsGoblin;

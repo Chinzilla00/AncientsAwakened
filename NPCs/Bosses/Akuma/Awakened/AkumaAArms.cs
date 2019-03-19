@@ -23,6 +23,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
         }
 

@@ -110,10 +110,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
             }
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            for (int dust = 0; dust <= 10; dust++)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-            }
+            
         }
 
         private int HomeOnTarget()

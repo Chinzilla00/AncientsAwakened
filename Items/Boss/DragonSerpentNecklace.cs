@@ -10,8 +10,7 @@ namespace AAMod.Items.Boss
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Serpent Necklace");
-            Tooltip.SetDefault(@"10% Increased Damage Resistance
-12% Increased damage
+            Tooltip.SetDefault(@"7% increased damage and damage resistance
 Ignores 5 Enemy defense");
         }
         public override void SetDefaults()
@@ -37,12 +36,12 @@ Ignores 5 Enemy defense");
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.1f;
-            player.meleeDamage *= 1.12f;
-            player.rangedDamage *= 1.12f;
-            player.magicDamage *= 1.12f;
-            player.minionDamage *= 1.12f;
-            player.thrownDamage *= 1.12f;
+            player.endurance += .07f;
+            player.meleeDamage += .07f;
+            player.rangedDamage += .07f;
+            player.magicDamage += .07f;
+            player.minionDamage += .07f;
+            player.thrownDamage += .07f;
             player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
         }
     }

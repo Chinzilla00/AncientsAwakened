@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dayfire");     //The English name of the projectile
-            Main.projFrames[projectile.type] =5;     //The recording mode
+            Main.projFrames[projectile.type] = 5;     //The recording mode
         }
 
         public override void SetDefaults()
@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (++projectile.frameCounter >= 9)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 6)
+                if (++projectile.frame >= 5)
                 {
                     projectile.Kill();
 

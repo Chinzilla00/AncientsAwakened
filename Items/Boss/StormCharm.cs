@@ -10,8 +10,7 @@ namespace AAMod.Items.Boss
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Storm Charm");
-            Tooltip.SetDefault(@"20% Increased Damage Resistance
-20% Increased damage
+            Tooltip.SetDefault(@"15% increased damage and damage resistance
 10% Increased melee speed
 All attacks deal 20 True damage (damage unaffected by class)");
         }
@@ -41,12 +40,12 @@ All attacks deal 20 True damage (damage unaffected by class)");
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.1f;
-            player.meleeDamage *= 1.20f;
-            player.rangedDamage *= 1.20f;
-            player.magicDamage *= 1.20f;
-            player.minionDamage *= 1.20f;
-            player.thrownDamage *= 1.20f;
+            player.endurance += .15f;
+            player.meleeDamage += .15f;
+            player.rangedDamage += .15f;
+            player.magicDamage += .15f;
+            player.minionDamage += .15f;
+            player.thrownDamage += .15f;
             player.GetModPlayer<AAPlayer>(mod).StormClaw = true;
         }
     }

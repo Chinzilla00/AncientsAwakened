@@ -21,6 +21,7 @@ namespace AAMod.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
+            item.value = 16000;
             item.rare = 2;
             item.useStyle = 1;
             item.consumable = true;
