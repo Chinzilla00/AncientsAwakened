@@ -24,8 +24,8 @@ namespace AAMod.Items.Dev
 
         public override void SetDefaults()
         {
-            item.width = 40;
-            item.height = 32;
+            item.width = 74;
+            item.height = 34;
             item.ranged = true;
             item.damage = 400;
             item.shoot = mod.ProjectileType("FreedomStar");
@@ -35,7 +35,9 @@ namespace AAMod.Items.Dev
             item.channel = true;
             Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
-            item.noUseGraphic = true;
+			item.rare = 11;
+			item.shootSpeed = 12f;
+			item.noUseGraphic = true;
         }
     }
 }
