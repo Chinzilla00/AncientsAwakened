@@ -14,6 +14,7 @@ namespace AAMod.Items.Materials
 			item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
+            item.value = 16000;
             item.rare = 2;
             item.useTime = 10;
             item.useStyle = 1;

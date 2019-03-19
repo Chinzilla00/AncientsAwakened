@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Hydra
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hydra Pendant");
-            Tooltip.SetDefault(@"12% Increased damage");
+            Tooltip.SetDefault(@"7% Increased damage");
         }
         public override void SetDefaults()
         {
@@ -21,11 +21,11 @@ namespace AAMod.Items.Boss.Hydra
         }
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.12f;
-            player.rangedDamage *= 1.12f;
-            player.magicDamage *= 1.12f;
-            player.minionDamage *= 1.12f;
-            player.thrownDamage *= 1.12f;
+            player.meleeDamage += .07f;
+            player.rangedDamage += .07f;
+            player.magicDamage += .07f;
+            player.minionDamage += .07f;
+            player.thrownDamage += .07f;
         }
     }
 }

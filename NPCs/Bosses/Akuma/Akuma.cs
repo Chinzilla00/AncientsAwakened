@@ -652,8 +652,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 84;
-            npc.height = 84;
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
 
             npc.alpha = 255;
@@ -760,8 +760,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 84;
-            npc.height = 84;
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
 
             npc.alpha = 255;
@@ -869,8 +869,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 84;
-            npc.height = 84;
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
 
             npc.alpha = 255;
@@ -978,8 +978,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 84;
-            npc.height = 84;
+            npc.width = 60;
+            npc.height = 60;
             npc.dontCountMe = true;
 
             npc.alpha = 255;

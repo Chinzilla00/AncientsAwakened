@@ -43,10 +43,10 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.frameCounter >= 7)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 32;
+                npc.frame.Y += 52;
             }
 
-            if (npc.frame.Y > 32 * 5)
+            if (npc.frame.Y > 52 * 5)
             {
                 npc.frame.Y = 0;
             }

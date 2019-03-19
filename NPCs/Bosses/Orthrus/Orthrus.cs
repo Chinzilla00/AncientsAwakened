@@ -151,7 +151,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}
 						HeadsSpawned = true;
 					}
-					if (Math.Abs(playerTarget.Center.X - npc.Center.X) < 300f) 
+					if (Math.Abs(playerTarget.Center.X - npc.Center.X) < 380f) 
 					{
 						
 					}
@@ -171,7 +171,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 				{
 					npc.noGravity = true;	
 					npc.noTileCollide = true;
-					if (Math.Abs(playerTarget.Center.X - npc.Center.X) > 250f || Collision.SolidCollision(npc.position, npc.width, npc.height)) //make it less then what makes it rise so it doesn't keep locking between them
+					if (Math.Abs(playerTarget.Center.X - npc.Center.X) > 380f || Collision.SolidCollision(npc.position, npc.width, npc.height)) //make it less then what makes it rise so it doesn't keep locking between them
 					{
 						playerTarget.Center += new Vector2(0f, -32f);
 						for(int m = 0; m < 4; m++)
