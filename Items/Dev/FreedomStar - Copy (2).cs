@@ -16,8 +16,8 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Freedom Star");
             Tooltip.SetDefault("Tails' trusty blaster.\n" +
-                "Hold the use button to charge, and then release a powerful Charged Shot!\n" +
-                "\"For the Freedom Fighters!\" \n" +
+                "Hold the use button to charge, and then release a powerful Freedom Blast!\n" +
+                "\"You mess with me or my friends, and your ass is Stardust.\" \n" +
                 "- Tails\n" +
                 "Mobian Buster EX");
         }
