@@ -1494,7 +1494,7 @@
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
     <Compile Include="Projectiles\Akuma\Daycrusher.cs" />
     <Compile Include="Projectiles\Akuma\Dayser.cs" />
-    <Compile Include="Projectiles\Akuma\Daystorm.cs" />
+    <Compile Include="Projectiles\Akuma\DaystormP.cs" />
     <Compile Include="Projectiles\Akuma\FireProj.cs" />
     <Compile Include="Projectiles\Akuma\FireProjBoom.cs" />
     <Compile Include="Projectiles\Akuma\FireProjEX.cs" />
@@ -4970,7 +4970,7 @@
     <Content Include="Projectiles\Akuma\Daycrusher.png" />
     <Content Include="Projectiles\Akuma\Daycrusher_Chain.png" />
     <Content Include="Projectiles\Akuma\Dayser.png" />
-    <Content Include="Projectiles\Akuma\Daystorm.png" />
+    <Content Include="Projectiles\Akuma\DaystormP.png" />
     <Content Include="Projectiles\Akuma\FireProj.png" />
     <Content Include="Projectiles\Akuma\FireProjBoom.png" />
     <Content Include="Projectiles\Akuma\FireProjEX.png" />
