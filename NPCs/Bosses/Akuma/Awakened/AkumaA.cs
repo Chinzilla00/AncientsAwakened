@@ -55,6 +55,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             npc.buffImmune[103] = false;
             npc.alpha = 255;
+            musicPriority = MusicPriority.BossHigh;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

@@ -47,6 +47,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Sounds/Zerohit");
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/ZeroDeath");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Zero2");
+            musicPriority = MusicPriority.BossHigh;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
             for (int k = 0; k < npc.buffImmune.Length; k++)

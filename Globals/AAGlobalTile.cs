@@ -79,6 +79,14 @@ namespace AAMod
             return GetTimedColor(AAColor.Nightcrawler, color, min, max, clamp);
         }
 
+        public static Color GetRadiumColorBrightInvert(Color color) { return GetRadiumColor(color, 1f, 0.6f, true); }
+        public static Color GetRadiumColorDim(Color color) { return GetRadiumColor(color, 0.4f, 1f, false); }
+        public static Color GetRadiumColorBright(Color color) { return GetRadiumColor(color, 0.6f, 1f, false); }
+        public static Color GetRadiumColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAColor.Daybringer, color, min, max, clamp);
+        }
+
 
         public static Color GetYamataColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
         public static Color GetYamataColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }

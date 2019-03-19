@@ -48,6 +48,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             recipe.AddIngredient(ItemID.Amber, 1);
             recipe.AddIngredient(ItemID.Diamond, 1);
             recipe.AddIngredient(ItemID.Amethyst, 1);
+            recipe.AddIngredient(null, "Prism", 10);
             recipe.AddRecipeGroup("AAMod:Gold", 12);		//you need 1 DirtBlock
             recipe.AddTile(TileID.Anvils);   //at work bench
             recipe.SetResult(this);

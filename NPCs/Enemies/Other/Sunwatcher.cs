@@ -67,9 +67,9 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void NPCLoot()
         {
-            for (int Ammount = 0; Ammount < Main.rand.Next(5); Ammount++)
+            for (int Ammount = 0; Ammount < Main.rand.Next(3); Ammount++)
             {
-                npc.DropLoot(mod.ItemType<Items.Blocks.RadiumOre>());
+                npc.DropLoot(mod.ItemType<Items.Materials.Stardust>());
             }
         }
 

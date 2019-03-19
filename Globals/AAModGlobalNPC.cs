@@ -724,6 +724,19 @@ namespace AAMod
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
             Player player = Main.player[Main.myPlayer];
+            
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneStars)
+            {
+                if (Main.dayTime)
+                {
+                    pool.Add(mod.NPCType("Sunwatcher"), .2f);
+                }
+                else
+                {
+                    pool.Add(mod.NPCType("Nightguard"), .2f);
+                }
+            }
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {

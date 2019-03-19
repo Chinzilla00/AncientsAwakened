@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee.Gem
             item.autoReuse = false;   //if it's capable of autoswing.
             item.useTurn = true; 
 			item.shoot = mod.ProjectileType<Projectiles.GemShot.AmberShot>();
-			item.shootSpeed = 15f;
+			item.shootSpeed = 12f;
         }
 
         public override void SetStaticDefaults()

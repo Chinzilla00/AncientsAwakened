@@ -484,6 +484,8 @@ namespace AAMod
                         {
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(2, 3), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                         }
+
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(4, 5), WorldGen.genRand.Next(5, 6), (ushort)mod.TileType("PrismOre"));
                     }
                     OresGenerated = true;
                 }));
@@ -1058,12 +1060,12 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (downedDB == true)
+            if (downedEquinox == true)
             {
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    Main.NewText("Stars twinkle in the atmosphere...", Color.OrangeRed.R, Color.OrangeRed.G, Color.OrangeRed.B);
+                    Main.NewText("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 28; ++i) //Repeats 700 times for small world, 1050 times for medium world, and 1400 times for large world.
                     {
                         int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
@@ -1077,30 +1079,17 @@ namespace AAMod
                 }
             }
 
-            if (downedNC == true)
-            {
-                if (DarkMatter == false)
-                {
-                    DarkMatter = true;
-                }
-            }
-
-            if (downedEquinox == true)
-            {
-                
-            }
-
             if (NPC.downedMoonlord == true)
             {
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    Main.NewText("The Ancients have Awakened!", Color.ForestGreen.R, Color.ForestGreen.G, Color.ForestGreen.B);
+                    Main.NewText("The Ancients have Awakened!", Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B);
+                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1113,7 +1102,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The hallowed caves shine with light for a brief moment...", Color.Yellow.R, Color.Yellow.G, Color.Yellow.B);
+                    Main.NewText("The hallowed caves shine with light for a brief moment...", Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
@@ -1133,7 +1122,7 @@ namespace AAMod
                 if (DiscordOres == false)
                 {
                     DiscordOres = true;
-                    Main.NewText("Chaotic energy grows in the deepest parts of the world", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    Main.NewText("Chaotic energy grows in the deepest parts of the world", Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
@@ -1162,7 +1151,7 @@ namespace AAMod
                 {
                     Dynaskull = true;
                     Main.NewText("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    Main.NewText("The desert winds stir...", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B);
+                    Main.NewText("The desert winds stir...", Color.Orange);
                     Main.NewText("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
@@ -1188,7 +1177,6 @@ namespace AAMod
             if (downedRetriever || downedOrthrus || downedRaider)
             {
                 downedStormAny = true;
-                
             }
 
             if (downedStormAny)
@@ -1262,8 +1250,6 @@ namespace AAMod
             //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
-            Darkmatter = tileCounts[mod.TileType<Darkmatter>()];
-            DiscoBall = tileCounts[TileID.DiscoBall];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -1523,264 +1509,5 @@ namespace AAMod
                 Main.npc[npcID].netUpdate2 = true;
             }
         }
-
-        public static void SpawnDarkmatter()
-        {
-            Mod mod = AAMod.instance;
-            bool flag = true;
-            if (Main.netMode == 1)
-            {
-                return;
-            }
-            for (int i = 0; i < 255; i++)
-            {
-                if (Main.player[i].active)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            int num = 0;
-            float num2 = (float)(Main.maxTilesX / 4200);
-            int num3 = (int)(400f * num2);
-            for (int j = 5; j < Main.maxTilesX - 5; j++)
-            {
-                int num4 = 5;
-                while ((double)num4 < Main.worldSurface)
-                {
-                    if (Main.tile[j, num4].active() && Main.tile[j, num4].type == mod.TileType<Tiles.DarkmatterOre>())
-                    {
-                        num++;
-                        if (num > num3)
-                        {
-                            return;
-                        }
-                    }
-                    num4++;
-                }
-            }
-            float num5 = 600f;
-            while (!flag)
-            {
-                float num6 = (float)Main.maxTilesX * 0.08f;
-                int num7 = Main.rand.Next(150, Main.maxTilesX - 150);
-                while ((float)num7 > (float)Main.spawnTileX - num6 && (float)num7 < (float)Main.spawnTileX + num6)
-                {
-                    num7 = Main.rand.Next(150, Main.maxTilesX - 150);
-                }
-                int k = (int)(Main.worldSurface * 0.3);
-                while (k < Main.maxTilesY)
-                {
-                    if (Main.tile[num7, k].active() && Main.tileSolid[(int)Main.tile[num7, k].type])
-                    {
-                        int num8 = 0;
-                        int num9 = 15;
-                        for (int l = num7 - num9; l < num7 + num9; l++)
-                        {
-                            for (int m = k - num9; m < k + num9; m++)
-                            {
-                                if (WorldGen.SolidTile(l, m))
-                                {
-                                    num8++;
-                                    if (Main.tile[l, m].type == 189 || Main.tile[l, m].type == 202)
-                                    {
-                                        num8 -= 100;
-                                    }
-                                }
-                                else if (Main.tile[l, m].liquid > 0)
-                                {
-                                    num8--;
-                                }
-                            }
-                        }
-                        if (num8 < num5)
-                        {
-                            num5 -= 0.5f;
-                            break;
-                        }
-                        flag = DarkmatterMeteor(num7, k);
-                        if (flag)
-                        {
-                            break;
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        k++;
-                    }
-                }
-                if (num5 < 100f)
-                {
-                    return;
-                }
-            }
-        }
-
-        public static bool DarkmatterMeteor(int i, int j)
-        {
-            Mod mod = AAMod.instance;
-            if (i < 300 || i > Main.maxTilesX - 300)
-            {
-                return false;
-            }
-            if (j < 50 || j > Main.maxTilesY - 50)
-            {
-                return false;
-            }
-            int num = 35;
-            Rectangle rectangle = new Rectangle((i - num) * 16, (j - num) * 16, num * 2 * 16, num * 2 * 16);
-            for (int k = 0; k < 255; k++)
-            {
-                if (Main.player[k].active)
-                {
-                    Rectangle value = new Rectangle((int)(Main.player[k].position.X + (float)(Main.player[k].width / 2) - (float)(NPC.sWidth / 2) - (float)NPC.safeRangeX), (int)(Main.player[k].position.Y + (float)(Main.player[k].height / 2) - (float)(NPC.sHeight / 2) - (float)NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
-                    if (rectangle.Intersects(value))
-                    {
-                        return false;
-                    }
-                }
-            }
-            for (int l = 0; l < 200; l++)
-            {
-                if (Main.npc[l].active)
-                {
-                    Rectangle value2 = new Rectangle((int)Main.npc[l].position.X, (int)Main.npc[l].position.Y, Main.npc[l].width, Main.npc[l].height);
-                    if (rectangle.Intersects(value2))
-                    {
-                        return false;
-                    }
-                }
-            }
-            for (int m = i - num; m < i + num; m++)
-            {
-                for (int n = j - num; n < j + num; n++)
-                {
-                    if (Main.tile[m, n].active() && Main.tile[m, n].type == 21)
-                    {
-                        return false;
-                    }
-                }
-            }
-            num = WorldGen.genRand.Next(13, 20);
-            for (int num2 = i - num; num2 < i + num; num2++)
-            {
-                for (int num3 = j - num; num3 < j + num; num3++)
-                {
-                    if (num3 > j + Main.rand.Next(-2, 3) - 5)
-                    {
-                        float num4 = (float)Math.Abs(i - num2);
-                        float num5 = (float)Math.Abs(j - num3);
-                        float num6 = (float)Math.Sqrt((double)(num4 * num4 + num5 * num5));
-                        if ((double)num6 < (double)num * 0.9 + (double)Main.rand.Next(-4, 5))
-                        {
-                            if (!Main.tileSolid[(int)Main.tile[num2, num3].type])
-                            {
-                                Main.tile[num2, num3].active(false);
-                            }
-                            Main.tile[num2, num3].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
-                        }
-                    }
-                }
-            }
-            num = WorldGen.genRand.Next(6, 12);
-            for (int num7 = i - num; num7 < i + num; num7++)
-            {
-                for (int num8 = j - num; num8 < j + num; num8++)
-                {
-                    if (num8 > j + Main.rand.Next(-2, 3) - 4)
-                    {
-                        float num9 = (float)Math.Abs(i - num7);
-                        float num10 = (float)Math.Abs(j - num8);
-                        float num11 = (float)Math.Sqrt((double)(num9 * num9 + num10 * num10));
-                        if ((double)num11 < (double)num * 0.8 + (double)Main.rand.Next(-3, 4))
-                        {
-                            Main.tile[num7, num8].active(false);
-                        }
-                    }
-                }
-            }
-            num = WorldGen.genRand.Next(20, 30);
-            for (int num12 = i - num; num12 < i + num; num12++)
-            {
-                for (int num13 = j - num; num13 < j + num; num13++)
-                {
-                    float num14 = (float)Math.Abs(i - num12);
-                    float num15 = (float)Math.Abs(j - num13);
-                    float num16 = (float)Math.Sqrt((double)(num14 * num14 + num15 * num15));
-                    if ((double)num16 < (double)num * 0.7)
-                    {
-                        if (Main.tile[num12, num13].type == 5 || Main.tile[num12, num13].type == 32 || Main.tile[num12, num13].type == 352)
-                        {
-                            WorldGen.KillTile(num12, num13, false, false, false);
-                        }
-                        Main.tile[num12, num13].liquid = 0;
-                    }
-                    if (Main.tile[num12, num13].type == (ushort)mod.TileType<Tiles.DarkmatterOre>())
-                    {
-                        if (!WorldGen.SolidTile(num12 - 1, num13) && !WorldGen.SolidTile(num12 + 1, num13) && !WorldGen.SolidTile(num12, num13 - 1) && !WorldGen.SolidTile(num12, num13 + 1))
-                        {
-                            Main.tile[num12, num13].active(false);
-                        }
-                        else if ((Main.tile[num12, num13].halfBrick() || Main.tile[num12 - 1, num13].topSlope()) && !WorldGen.SolidTile(num12, num13 + 1))
-                        {
-                            Main.tile[num12, num13].active(false);
-                        }
-                    }
-                    WorldGen.SquareTileFrame(num12, num13, true);
-                    WorldGen.SquareWallFrame(num12, num13, true);
-                }
-            }
-            num = WorldGen.genRand.Next(19, 29);
-            for (int num17 = i - num; num17 < i + num; num17++)
-            {
-                for (int num18 = j - num; num18 < j + num; num18++)
-                {
-                    if (num18 > j + WorldGen.genRand.Next(-3, 4) - 3 && Main.tile[num17, num18].active() && Main.rand.Next(10) == 0)
-                    {
-                        float num19 = (float)Math.Abs(i - num17);
-                        float num20 = (float)Math.Abs(j - num18);
-                        float num21 = (float)Math.Sqrt((double)(num19 * num19 + num20 * num20));
-                        if ((double)num21 < (double)num * 0.8)
-                        {
-                            if (Main.tile[num17, num18].type == 5 || Main.tile[num17, num18].type == 32 || Main.tile[num17, num18].type == 352)
-                            {
-                                WorldGen.KillTile(num17, num18, false, false, false);
-                            }
-                            Main.tile[num17, num18].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
-                            WorldGen.SquareTileFrame(num17, num18, true);
-                        }
-                    }
-                }
-            }
-            num = WorldGen.genRand.Next(30, 38);
-            for (int num22 = i - num; num22 < i + num; num22++)
-            {
-                for (int num23 = j - num; num23 < j + num; num23++)
-                {
-                    if (num23 > j + WorldGen.genRand.Next(-2, 3) && Main.tile[num22, num23].active() && Main.rand.Next(20) == 0)
-                    {
-                        float num24 = (float)Math.Abs(i - num22);
-                        float num25 = (float)Math.Abs(j - num23);
-                        float num26 = (float)Math.Sqrt((double)(num24 * num24 + num25 * num25));
-                        if ((double)num26 < (double)num * 0.85)
-                        {
-                            if (Main.tile[num22, num23].type == 5 || Main.tile[num22, num23].type == 32 || Main.tile[num22, num23].type == 352)
-                            {
-                                WorldGen.KillTile(num22, num23, false, false, false);
-                            }
-                            Main.tile[num22, num23].type = (ushort)mod.TileType<Tiles.DarkmatterOre>();
-                            WorldGen.SquareTileFrame(num22, num23, true);
-                        }
-                    }
-                }
-            }
-            if (Main.netMode != 1)
-            {
-                NetMessage.SendTileSquare(-1, i, j, 40, TileChangeType.None);
-            }
-            return true;
-        }
     }
-    
 }

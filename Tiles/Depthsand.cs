@@ -15,7 +15,7 @@ namespace AAMod.Tiles
             Main.tileBlendAll[this.Type] = true;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthsand");   //put your CustomBlock name
-            AddMapEntry(new Color(0, 30, 127));
+            AddMapEntry(new Color(37, 33, 50));
         }
 
         public override int SaplingGrowthType(ref int style)

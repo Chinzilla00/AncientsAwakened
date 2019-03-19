@@ -1135,6 +1135,10 @@ namespace AAMod
                     return;
                 }
             }
+            if (Ancients.ZoneStars)
+            {
+
+            }
             if (Ancients.Terrarium)
             {
 
@@ -1148,8 +1152,7 @@ namespace AAMod
 
                 priority = MusicPriority.BiomeMedium;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom");
-
-
+                
                 return;
             }
             
