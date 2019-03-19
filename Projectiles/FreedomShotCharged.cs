@@ -12,6 +12,8 @@ namespace AAMod.Projectiles
 {
     public class FreedomShotCharged : ModProjectile
     {
+        private bool firstHit = false;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Freedom Charged Shot");
@@ -50,7 +52,11 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("Terrablaze"), 600);
+            if (!firstHit)
+            {
+                target.AddBuff(mod.BuffType("Terrablaze"), 600);
+                firstHit = true;
+            }
         }
 
         public override void Kill(int timeLeft)
