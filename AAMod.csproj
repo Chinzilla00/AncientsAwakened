@@ -1530,6 +1530,7 @@
     <Compile Include="Projectiles\DummyExplosionTerra.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
+    <Compile Include="Projectiles\FreedomShotCharged.cs" />
     <Compile Include="Projectiles\FreedomStar.cs" />
     <Compile Include="Projectiles\GemShot\AmberShot.cs" />
     <Compile Include="Projectiles\GemShot\AmethystShot.cs" />
@@ -3902,7 +3903,6 @@
     <Content Include="Items\Dev\Fluff.png" />
     <Content Include="Items\Dev\FluffEX.png" />
     <Content Include="Items\Dev\FreedomBlaster.png" />
-    <Content Include="Items\Dev\FreedomStar - Copy.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
     <Content Include="Items\Dev\GentlemansRapier.png" />
@@ -4458,10 +4458,11 @@
     <Content Include="Items\Vanity\Moon\MoonRobe_Female.png" />
     <Content Include="Items\Vanity\Tails\TailsBody.png" />
     <Content Include="Items\Vanity\Tails\TailsBody_Arms.png" />
-    <Content Include="Items\Vanity\Tails\TailsHead.png" />
-    <Content Include="Items\Vanity\Tails\TailsLegs.png" />
     <Content Include="Items\Vanity\Tails\TailsBody_Body.png" />
+    <Content Include="Items\Vanity\Tails\TailsBody_Female.png" />
+    <Content Include="Items\Vanity\Tails\TailsHead.png" />
     <Content Include="Items\Vanity\Tails\TailsHead_Head.png" />
+    <Content Include="Items\Vanity\Tails\TailsLegs.png" />
     <Content Include="Items\Vanity\Tails\TailsLegs_Legs.png" />
     <Content Include="Items\Vanity\Tied\TiedsLeggings.png" />
     <Content Include="Items\Vanity\Tied\TiedsLeggings_Legs.png" />
@@ -5075,6 +5076,7 @@
     <Content Include="Projectiles\Fluff.png" />
     <Content Include="Projectiles\FluffEX.png" />
     <Content Include="Projectiles\FreedomShot.png" />
+    <Content Include="Projectiles\FreedomShotCharged.png" />
     <Content Include="Projectiles\FreedomStar.png" />
     <Content Include="Projectiles\FulguritePhasesaber.png" />
     <Content Include="Projectiles\GemShot\AmberShot.png" />
