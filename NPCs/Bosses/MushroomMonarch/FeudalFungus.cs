@@ -78,15 +78,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void AI()
         {
             Player player = Main.player[npc.target];
-
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
-                npc.noTileCollide = true;
-            }
-            else
-            {
-                npc.noTileCollide = false;
-            }
              
             if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)
             {
@@ -125,25 +116,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.frame.Y = 0;
                 }
             }
-            internalAI[2]++;
-            if (internalAI[2] > 8)
+
+            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
-                internalAI[3] += 1;
-                internalAI[2] = 0;
-            }
-            if (internalAI[3] == 3)
-            {
-                int attack = Main.rand.Next(4);
-                FungusAttack(attack);
-                npc.netUpdate = true;
-            }
-            if (internalAI[3] > 4)
-            {
-                internalAI[3] = 0;
-                internalAI[0] = 0;
-                internalAI[1] = Main.rand.Next(3);
-                HasStopped = false;
-                npc.netUpdate = true;
+                internalAI[0]++;
+                MoveToPoint(new Vector2(player.Center.X, player.Center.Y - 170f));
             }
 
             if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
@@ -159,15 +136,30 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 			if(internalAI[1] == AISTATE_HOVER) 
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 200, 56f, FireMagic);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 170, 56f, FireMagic);
             }
             else if (internalAI[1] == AISTATE_FLIER) 
             {
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f,0.04f, 5f, 3f, false, 1);
             }
-            else 
+            else if (internalAI[1] == AISTATE_SHOOT)
             {
-                npc.velocity *= 0;
+
+                if (HasStopped)
+                {
+                    internalAI[0]++;
+                    npc.rotation = 0;
+                }
+                if (internalAI[0] >= 60)
+                {
+                    int attack = Main.rand.Next(4);
+                    internalAI[1] = Main.rand.Next(3);
+                    internalAI[0] = 0;
+                    FungusAttack(attack);
+                    npc.netUpdate = true;
+                }
+
+                npc.velocity *= 0.7f;
 
                 if (npc.velocity.X <= .1f && npc.velocity.X >= -.1f)
                 {
@@ -231,7 +223,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
             else if (Attack == 1)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusFlier>());
                 }
@@ -252,9 +244,37 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusSpore>(), 255, i);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FungusSpore>(), 0, i);
                 }
             }
+        }
+
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        {
+            float moveSpeed = 4f;
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)

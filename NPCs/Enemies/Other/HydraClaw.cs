@@ -32,6 +32,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
+            npc.rotation = (float)System.Math.Atan2(npc.velocity.Y, npc.velocity.X);
 
             npc.frameCounter++;
             if (npc.frameCounter >= 8)

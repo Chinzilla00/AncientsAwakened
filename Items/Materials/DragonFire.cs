@@ -9,7 +9,7 @@ namespace AAMod.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DragonFire");
+            DisplayName.SetDefault("Dragon's Fire");
             Tooltip.SetDefault("It's really really hot.");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }

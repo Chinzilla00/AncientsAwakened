@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,35 +12,60 @@ namespace AAMod.Projectiles   //The directory for your .cs and .png; Example: Tu
         public override void SetDefaults()
         {
             projectile.extraUpdates = 0;
-            projectile.width = 14;//Set the projectile hitbox width
-            projectile.height = 14; //Set the projectile hitbox height            
-            projectile.aiStyle = 99; // aiStyle 99 is used for all yoyos, and is Extremely suggested, as yoyo are extremely difficult without them
-            projectile.friendly = true;  //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1; //Tells the game how many enemies it can hit before being destroyed. -1 = never
-            projectile.melee = true; //Tells the game whether it is a melee projectile or not        
-            // The following sets are only applicable to yoyo that use aiStyle 99.
-            // YoyosLifeTimeMultiplier is how long in seconds the yoyo will stay out before automatically returning to the player.
-            // Vanilla values range from 3f(Wood) to 16f(Chik), and defaults to -1f. Leaving as -1 will make the time infinite.
+            projectile.width = 14;
+            projectile.height = 14;
+            projectile.aiStyle = 99;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.melee = true;
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = -1f;
-            // YoyosMaximumRange is the maximum distance the yoyo sleep away from the player.
-            // Vanilla values range from 130f(Wood) to 400f(Terrarian), and defaults to 200f
-            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 360f;
-            // YoyosTopSpeed is top speed of the yoyo projectile.
-            // Vanilla values range from 9f(Wood) to 17.5f(Terrarian), and defaults to 10f
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 15f;
+            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 400f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 17.5f;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void PostAI()
         {
-            target.AddBuff(BuffID.Chilled, 1000);
-            target.AddBuff(mod.BuffType("TimeFrozen"), 300);
+            projectile.localAI[1] += 1f;
+            if (projectile.localAI[1] >= 25f)
+            {
+                float num3 = 400f;
+                Vector2 vector = projectile.velocity;
+                Vector2 vector2 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                vector2.Normalize();
+                vector2 *= (float)Main.rand.Next(10, 41) * 0.1f;
+                if (Main.rand.Next(3) == 0)
+                {
+                    vector2 *= 2f;
+                }
+                vector *= 0.25f;
+                vector += vector2;
+                for (int j = 0; j < 200; j++)
+                {
+                    if (Main.npc[j].CanBeChasedBy(this, false))
+                    {
+                        float num4 = Main.npc[j].position.X + (float)(Main.npc[j].width / 2);
+                        float num5 = Main.npc[j].position.Y + (float)(Main.npc[j].height / 2);
+                        float num6 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num4) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num5);
+                        if (num6 < num3 && Collision.CanHit(projectile.position, projectile.width, projectile.height, Main.npc[j].position, Main.npc[j].width, Main.npc[j].height))
+                        {
+                            num3 = num6;
+                            vector.X = num4;
+                            vector.Y = num5;
+                            vector -= projectile.Center;
+                            vector.Normalize();
+                            vector *= 8f;
+                        }
+                    }
+                }
+                vector *= 0.8f;
+                Projectile.NewProjectile(projectile.Center.X - vector.X, projectile.Center.Y - vector.Y, vector.X, vector.Y, 604, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                projectile.localAI[1] = 0f;
+            }
         }
-        
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Time Teller");
         }
-                //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
-
     }
 }

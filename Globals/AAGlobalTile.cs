@@ -71,6 +71,15 @@ namespace AAMod
             return GetTimedColor(Color.DeepSkyBlue, color, min, max, clamp);
         }
 
+        public static Color GetDarkmatterColorBrightInvert(Color color) { return GetDarkmatterColor(color, 1f, 0.6f, true); }
+        public static Color GetDarkmatterColorDim(Color color) { return GetDarkmatterColor(color, 0.4f, 1f, false); }
+        public static Color GetDarkmatterColorBright(Color color) { return GetDarkmatterColor(color, 0.6f, 1f, false); }
+        public static Color GetDarkmatterColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAColor.Nightcrawler, color, min, max, clamp);
+        }
+
+
         public static Color GetYamataColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
         public static Color GetYamataColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
         public static Color GetYamataColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }

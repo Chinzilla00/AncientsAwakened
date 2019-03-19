@@ -61,9 +61,14 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			
-			player.setBonus = @"Increases max number of minions by 6
-Your minions electrocute enemies";
+
+            player.setBonus = @"Increases max number of minions by 6
+Your minions electrocute enemies
+8% increased damage resistance at night";
+            if (!Main.dayTime)
+            {
+                player.endurance += .08f;
+            }
             player.maxMinions += 6;
             player.GetModPlayer<AAPlayer>(mod).darkmatterSetSu = true;
             player.armorEffectDrawShadowLokis = true;

@@ -114,6 +114,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
+                    Main.NewText("PHYSICAL ZER0 B0DY IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)

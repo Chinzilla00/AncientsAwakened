@@ -63,8 +63,12 @@ Dark, yet still barely visible");
 		{
 			
 			player.setBonus = @"30% throwing crit chance and velocity
-Your thrown weapons electrocute enemies";
-            
+Your thrown weapons electrocute enemies
+8% increased damage resistance at night";
+            if (!Main.dayTime)
+            {
+                player.endurance += .08f;
+            }
             player.meleeSpeed += 0.30f;
             player.thrownCrit += 30;
             player.GetModPlayer<AAPlayer>(mod).darkmatterSetTh = true;

@@ -14,7 +14,8 @@ namespace AAMod.Items.Blocks
         {
             
             DisplayName.SetDefault("Chaos Crucible");
-            Tooltip.SetDefault("Even chaos requires a steady hand and a gigantic forge to work with");
+            Tooltip.SetDefault(@"Even chaos requires a steady hand and a gigantic forge to work with
+also acts as all vanilla crafting stations");
         }
 
         public override void SetDefaults()
@@ -73,10 +74,9 @@ namespace AAMod.Items.Blocks
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "QuantumFusionAccelerator", 1);
-                recipe.AddRecipeGroup("AAMod:AstralStations", 1);
-                recipe.AddIngredient(null, "DeepAbyssium", 5);
-                recipe.AddIngredient(null, "RadiantIncinerite", 5);
+                recipe.AddIngredient(null, "TerraCore", 1);
+                recipe.AddIngredient(null, "DaybreakIncineriteOre", 15);
+                recipe.AddIngredient(null, "EventideAbyssiumOre", 15);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

@@ -20,6 +20,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
+            projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
         }

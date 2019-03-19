@@ -26,20 +26,22 @@ namespace AAMod.Projectiles
 			projectile.scale = 1f;
 		}
 
-		public override void PostAI()
+
+        private int latestProjectile = -1;
+
+        public override void PostAI()
 		{
 			if (Main.rand.Next(2) == 0)
 			{
 				Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, DustID.Electric);
 				dust.noGravity = true;
 				dust.scale = 1.6f;
-			}
-            if (projectile.ai[3] == 0)
-            {
-                int latestProjectile= projectile.whoAmI;
+            }
 
+            if (latestProjectile == -1)
+            {
                 latestProjectile = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
-                Main.projectile[latestProjectile].ai[3] = projectile.whoAmI;
+                Main.projectile[latestProjectile].ai[0] = projectile.whoAmI;
                 Main.projectile[latestProjectile].Center = projectile.Center;
             }
         }

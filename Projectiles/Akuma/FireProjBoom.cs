@@ -19,6 +19,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;
+            projectile.melee = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;

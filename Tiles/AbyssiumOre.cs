@@ -25,6 +25,12 @@ namespace AAMod.Tiles
 			minPick = 65;
         }
 
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];

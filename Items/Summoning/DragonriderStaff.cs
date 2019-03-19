@@ -12,7 +12,7 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon's Pike");
-            Tooltip.SetDefault(@"Summons Fiery dragon to fight for you");
+            Tooltip.SetDefault(@"Summons a fire dragon to fight for you");
         }
 
         public override void SetDefaults()

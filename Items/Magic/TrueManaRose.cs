@@ -34,10 +34,6 @@ namespace AAMod.Items.Magic
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("TrueManaShot");
 			item.shootSpeed = 10f;
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
-            glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 
         public override void AddRecipes()

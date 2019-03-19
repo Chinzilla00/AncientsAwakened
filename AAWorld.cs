@@ -485,6 +485,7 @@ namespace AAMod
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                         }
                     }
+                    OresGenerated = true;
                 }));
             }
             tasks.Insert(shiniesIndex1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)

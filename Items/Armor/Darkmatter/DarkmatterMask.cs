@@ -63,7 +63,12 @@ Dark, yet still barely visible");
 		{
 			player.setBonus = @"200 increased maximum mana
 20% reduced mana usage
-Your Magic spells electrocute enemies";
+Your Magic spells electrocute enemies
+8% increased damage resistance at night";
+            if (!Main.dayTime)
+            {
+                player.endurance += .08f;
+            }
             player.statManaMax2 += 200;
             player.manaCost *= 0.80f;
             player.GetModPlayer<AAPlayer>(mod).darkmatterSetMa = true;

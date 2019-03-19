@@ -12,7 +12,7 @@ namespace AAMod.Items.Blocks
             DisplayName.SetDefault("Quantum Fusion Accelerator");
             Tooltip.SetDefault(
 @"Launching particles at the speed of sound
-Allows you to work with DarkMatter and Radium");
+Allows you to work with Dark Matter and Radium");
         }
 
         public override void SetDefaults()

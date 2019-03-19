@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return Main.dayTime ? .2f : 0f;
+            return Main.dayTime && spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach ? .2f : 0f;
         }
 
         public float[] shootAI = new float[4];

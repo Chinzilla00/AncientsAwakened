@@ -478,7 +478,7 @@ namespace AAMod
                 || npc.type == NPCID.GoblinTinkerer) 
                 && NPC.downedGoblins)
             {
-                    Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(0, 1));
+                    Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(2,3));
                 
             }
 
@@ -807,10 +807,14 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
+                pool.Add(mod.NPCType("Searcher1"), .1f);
+                if (Main.hardMode)
+                {
+                    pool.Add(mod.NPCType("Scout"), .05f);
+                }
                 if (NPC.downedMoonlord)
                 {
-                    pool.Add(mod.NPCType("Searcher"), .1f);
-                    pool.Add(mod.NPCType("Searcher1"), .05f);
+                    pool.Add(mod.NPCType("Searcher"), .05f);
                     if (AAWorld.downedSag)
                     {
                         pool.Add(mod.NPCType("SagittariusMini"), .05f);
@@ -819,10 +823,6 @@ namespace AAMod
                     {
                         pool.Add(mod.NPCType("Null"), .05f);
                     }
-                }
-                else
-                {
-                    pool.Add(mod.NPCType("Searcher1"), .1f);
                 }
             }
 

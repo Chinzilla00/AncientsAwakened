@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.GlowingMushium
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("GlowingMushium Shirt");
+			DisplayName.SetDefault("Glowing Mushium Shirt");
             Tooltip.SetDefault("2% increased mana regeneration");
         }
 

@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 20;
-                if (npc.frame.Y > 60)
+                if (npc.frame.Y > 40)
                 {
                     npc.frame.Y = 0;
                 }

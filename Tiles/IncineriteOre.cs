@@ -25,6 +25,12 @@ namespace AAMod.Tiles
 			minPick = 65;
         }
 
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
             if (!glow) return;
