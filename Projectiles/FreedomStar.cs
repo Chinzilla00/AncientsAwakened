@@ -39,15 +39,15 @@ namespace AAMod.Projectiles
 			Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
 			projectile.ai[0] += 1f;
 			int num2 = 0;
+			if (projectile.ai[0] >= 15f)
+			{
+				num2++;
+			}
+			if (projectile.ai[0] >= 30f)
+			{
+				num2++;
+			}
 			if (projectile.ai[0] >= 60f)
-			{
-				num2++;
-			}
-			if (projectile.ai[0] >= 90f)
-			{
-				num2++;
-			}
-			if (projectile.ai[0] >= 120f)
 			{
 				num2++;
 			}
@@ -121,25 +121,25 @@ namespace AAMod.Projectiles
 
 			counter++;
 
-            if (counter >= 120)
+            if (counter >= 60)
             {
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 93);
                 chargeLevel = 3;
             }
 
-            else if (counter >= 90)
+            else if (counter >= 30)
             {
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 101);
                 chargeLevel = 2;
             }
 			
-			 else if (counter >= 60)
+			 else if (counter >= 15)
             {
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 1;
             }
 
-            else if (counter >= 30)
+            else if(counter >= 15)
             {
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 0;
