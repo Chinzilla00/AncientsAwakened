@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             soundType = 21;
             Main.tileLighted[Type] = true;
             dustType = 107;
-            AddMapEntry(new Color(0, 200, 51));
+            AddMapEntry(new Color(39, 125, 37));
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
