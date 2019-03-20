@@ -1069,6 +1069,7 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            #region Worlgenners
             if ((!AAWorld.InfernoGenerated || !AAWorld.MireGenerated || !AAWorld.TerrariumGenerated || !AAWorld.VoidGenerated || !AAWorld.OresGenerated) && !WorldGenner)
             {
                 for (int num66 = 0; num66 < 58; num66++)
@@ -1159,6 +1160,7 @@ namespace AAMod
                     }
                 }
             }
+            #endregion
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
             if (!Main.expertMode)

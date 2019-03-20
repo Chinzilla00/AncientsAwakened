@@ -26,7 +26,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 4;
+            item.rare = 8;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("DevilMinion");
             item.shootSpeed = 10f;

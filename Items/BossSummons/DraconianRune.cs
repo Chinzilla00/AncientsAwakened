@@ -53,6 +53,11 @@ Only craftable in expert mode");
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
+                if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !AAWorld.downedYamata)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("An image of the scorched tower at the peak of the inferno flashes through your mind", Color.Indigo, false);
+                    return false;
+                }
                 if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(180, 41, 32), false);

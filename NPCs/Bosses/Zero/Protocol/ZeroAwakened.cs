@@ -60,6 +60,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.expertMode)
             {
+                Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 if (Main.rand.NextFloat() < 0.1f)

@@ -133,6 +133,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
+                Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
                 npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
                 string[] lootTable =

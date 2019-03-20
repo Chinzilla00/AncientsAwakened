@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,7 +30,24 @@ namespace AAMod.Items.Throwing
 			Tooltip.SetDefault("Ignores enemy defense");
 		}
 
-		public override void AddRecipes()
+        public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
+        {
+            int num16 = 0;
+            for (int num17 = 0; num17 < 1000; num17++)
+            {
+                if (Main.projectile[num17].active && Main.projectile[num17].owner == Main.myPlayer && Main.projectile[num17].type == item.shoot)
+                {
+                    num16++;
+                }
+            }
+            if (num16 >= item.stack)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OrderBar"), 15);

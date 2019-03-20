@@ -823,15 +823,12 @@ namespace AAMod
                 pool.Add(mod.NPCType("Searcher1"), .1f);
                 if (Main.hardMode)
                 {
+                    pool.Add(mod.NPCType("SagittariusMini"), .05f);
                     pool.Add(mod.NPCType("Scout"), .05f);
                 }
                 if (NPC.downedMoonlord)
                 {
                     pool.Add(mod.NPCType("Searcher"), .05f);
-                    if (AAWorld.downedSag)
-                    {
-                        pool.Add(mod.NPCType("SagittariusMini"), .05f);
-                    }
                     if (AAWorld.downedZero)
                     {
                         pool.Add(mod.NPCType("Null"), .05f);

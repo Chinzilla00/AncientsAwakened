@@ -49,6 +49,7 @@ Summons the Equinox Worms");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MechanicalWorm, 2);
+            recipe.AddIngredient(ItemID.LunarBar, 10);
             recipe.AddIngredient(ItemID.FragmentSolar, 5);
             recipe.AddIngredient(ItemID.FragmentStardust, 5);
             recipe.AddTile(TileID.LunarCraftingStation);

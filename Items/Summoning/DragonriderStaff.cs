@@ -25,6 +25,7 @@ namespace AAMod.Items.Summoning
             item.width = 64;
             item.height = 64;
             item.UseSound = SoundID.Item44;
+            item.rare = 8;
             item.useAnimation = 24;
             item.useTime = 24;
             item.noMelee = true;

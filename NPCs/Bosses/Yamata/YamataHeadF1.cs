@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using BaseMod;
 using System.IO;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -115,6 +116,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+
+
             float playerDistance = (targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center));
             if (!Body.npc.active)
             {
@@ -271,6 +274,29 @@ namespace AAMod.NPCs.Bosses.Yamata
                 return false;
             }
             return true;
+        }
+
+        private int HomeOnTarget()
+        {
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.type == NPCID.Bunny)
+                {
+                    float distance = npc.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            npc.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
         }
     }
 }

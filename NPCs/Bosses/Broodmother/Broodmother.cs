@@ -255,11 +255,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.TargetClosest(true);
                 if (npc.Center.X < Main.player[npc.target].Center.X - 2f)
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
                 if (npc.Center.X > Main.player[npc.target].Center.X + 2f)
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
                 npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.4f)) / 10f;
                 if (npc.collideX)
