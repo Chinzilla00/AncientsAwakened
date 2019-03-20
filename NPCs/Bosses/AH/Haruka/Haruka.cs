@@ -5,6 +5,8 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.AH.Haruka
 {
@@ -15,11 +17,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Haruka Yamata");
+            Main.npcFrameCount[npc.type] = 29;
         }
 
         public override void SetDefaults()
         {
-            Main.npcFrameCount[npc.type] = 4;
             npc.width = 84;
             npc.height = 72;
             npc.friendly = false;
@@ -37,9 +39,38 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.boss = true;
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
-            npc.noGravity = true;
-            npc.noTileCollide = true;
+            npc.noGravity = false;
+            npc.noTileCollide = false;
         }
+
+
+        public float[] internalAI = new float[4];
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((float)internalAI[0]);
+                writer.Write((float)internalAI[1]);
+                writer.Write((float)internalAI[2]);
+                writer.Write((float)internalAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
+        }
+
+        public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_SLASH = 2, AISTATE_SPIN = 3;
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -74,116 +105,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 0.6f);  //boss damage increase in expermode
         }
-
-        public int attackMode = 0;
-
-        public int CurrentFrame = 0;
-
-        public void ResetFrame()
-        {
-            npc.frame.Y = 0;
-        }
-
-
-        public override void FindFrame(int frameHeight)
-        {
-            if (attackMode == 0)
-            {
-                Main.npcFrameCount[npc.type] = 4;
-            }
-            if (attackMode == 1)
-            {
-                Main.npcFrameCount[npc.type] = 4;
-            }
-            if (attackMode == 2)
-            {
-                Main.npcFrameCount[npc.type] = 8;
-            }
-            if (attackMode == 3)
-            {
-                Main.npcFrameCount[npc.type] = 17;
-            }
-            if (attackMode == 4)
-            {
-                Main.npcFrameCount[npc.type] = 7;
-            }
-        }
+        
 
         public override void AI()
         {
             npc.active = false;
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D jump = mod.GetTexture("NPCs/Bosses/AH/Haruka/HarukaJump");
-            Texture2D walk = mod.GetTexture("NPCs/Bosses/AH/Haruka/HarukaWalk");
-            Texture2D slash = mod.GetTexture("NPCs/Bosses/AH/Haruka/HarukaSlash");
-            Texture2D spin = mod.GetTexture("NPCs/Bosses/AH/Haruka/HarukaSpin");
-            Texture2D CurrentTex = texture;
-            int frameCount = 4;
-            if (attackMode == 0)
-            {
-                CurrentTex = texture;
-                frameCount = 4;
-            }
-            if (attackMode == 1)
-            {
-                CurrentTex = jump;
-                frameCount = 4;
-            }
-            if (attackMode == 2)
-            {
-                CurrentTex = walk;
-                frameCount = 8;
-            }
-            if (attackMode == 3)
-            {
-                CurrentTex = slash;
-                frameCount = 17;
-            }
-            if (attackMode == 4)
-            {
-                CurrentTex = spin;
-                frameCount = 7;
-            }
-
-            int num214 = CurrentTex.Height / frameCount;
-
-            int y6 = num214 * CurrentFrame;
-
-            Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y) - Main.screenPosition;
-
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
-            Rectangle? source = new Rectangle?(new Rectangle(0, y6, CurrentTex.Width, num214));
-
-            Vector2 Origin = new Vector2(CurrentTex.Width / 2f, num214 / 2f);
-
-
-            Main.spriteBatch.Draw(CurrentTex, drawCenter, source, drawColor, npc.rotation, Origin, npc.scale, effects, 0f);
-            
-            return false;
-        }
-        
-        private void DespawnHandler()
-        {
-            Player player = Main.player[npc.target];
-            if (!player.active || player.dead)
-            {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)
-                {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if (npc.timeLeft > 10)
-                    {
-                        npc.timeLeft = 10;
-                    }
-                    return;
-                }
-            }
         }
     }
 }

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.OtherModWork
+/*namespace AAMod.OtherModWork
 {
 	public class DragonFire : ModProjectile
 	{
@@ -59,4 +59,4 @@ namespace AAMod.OtherModWork
 		}
 
     }
-}
+}*/

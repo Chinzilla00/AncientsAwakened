@@ -43,7 +43,7 @@ namespace AAMod.Tiles.Banners
 		{
 			switch(name)
 			{
-				case "ShroomGrub": return 1;
+				case "Scout": return 1;
 				case "FeralMonster": return 2;
 				case "MiniDjinn": return 3;
 				case "BlazePhoenix": return 4;
@@ -83,7 +83,8 @@ namespace AAMod.Tiles.Banners
 				case "Null": return 38;
 				case "Searcher": return 39;
 				case "Toxitoad": return 40;
-			}
+                case "SagittariusMini": return 40;
+            }
 			return 0; //broken banner
 		}
 
@@ -93,7 +94,7 @@ namespace AAMod.Tiles.Banners
 			int style = frameX / 16;
 			switch (style)
 			{
-				case 1: dropName = "Shroom Grub"; break;
+				case 1: dropName = "Void Scout"; break;
 				case 2: dropName = "Feral Monster"; break;		
 				case 3: dropName = "Mini Djinn"; break;	
 				case 4: dropName = "Blaze Phoenix"; break;		
@@ -132,8 +133,9 @@ namespace AAMod.Tiles.Banners
 				case 37: dropName = "Terra Wizard"; break;	
 				case 38: dropName = "Null"; break;					
 				case 39: dropName = "Searcher"; break;
-				case 40: dropName = "Toxitoad"; break;			
-			}
+				case 40: dropName = "Toxitoad"; break;
+                case 41: dropName = "Shadow Scout"; break;
+            }
 			if(spaces) //fix for display names
 			{
 				switch (style)
@@ -157,14 +159,14 @@ namespace AAMod.Tiles.Banners
 					case 34: dropName = "Terra Knight"; break;		
 				}				
 			}
-			if(!String.IsNullOrEmpty(dropName) && !spaces) dropName = dropName.Replace(" ", null);
+			if(!string.IsNullOrEmpty(dropName) && !spaces) dropName = dropName.Replace(" ", null);
 			return dropName;
         }
 
         public override void KillMultiTile(int x, int y, int frameX, int frameY)
         {
             string dropName = GetBannerName(frameX);
-            if (!String.IsNullOrEmpty(dropName))
+            if (!string.IsNullOrEmpty(dropName))
             {
                 Item.NewItem(x * 16, y * 16, 16, 16, mod.ItemType(dropName + "Banner"), 1, false, -1, false);
             }

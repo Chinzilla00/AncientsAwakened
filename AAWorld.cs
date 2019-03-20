@@ -1351,7 +1351,7 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            int WorldSize = GetWorldSize();
+            int WorldSize = GetWorldSize() + 1;
             for (int biomes = 0; biomes < WorldSize; biomes++)
             {
                 Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow);
