@@ -28,6 +28,7 @@ namespace AAMod.Projectiles
             projectile.ranged = true;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
+            projectile.extraUpdates = 2;
         }
 
         public override void AI()
