@@ -8,8 +8,8 @@ namespace AAMod.Walls
 		public override void SetDefaults()
 		{
 			dustType = mod.DustType("AbyssiumDust");
-			AddMapEntry(new Color(0, 0, 150));
-		}
+            AddMapEntry(new Color(17, 9, 40));
+        }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
 		{

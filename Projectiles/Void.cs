@@ -26,8 +26,10 @@ namespace AAMod.Projectiles
 			projectile.scale = 1f;
 		}
 
-
-        private int latestProjectile = -1;
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
+        }
 
         public override void PostAI()
 		{
@@ -35,14 +37,6 @@ namespace AAMod.Projectiles
 			{
 				Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, DustID.Electric);
 				dust.noGravity = true;
-				dust.scale = 1.6f;
-            }
-
-            if (latestProjectile == -1)
-            {
-                latestProjectile = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
-                Main.projectile[latestProjectile].ai[0] = projectile.whoAmI;
-                Main.projectile[latestProjectile].Center = projectile.Center;
             }
         }
 	}

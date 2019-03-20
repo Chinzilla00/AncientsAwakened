@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("Doomstone");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
-            AddMapEntry(new Color(40, 20, 20));
+            AddMapEntry(new Color(21, 21, 31));
 			minPick = 225;
         }
 

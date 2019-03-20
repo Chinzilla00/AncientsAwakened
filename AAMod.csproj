@@ -5673,6 +5673,8 @@
     <Content Include="Worldgeneration\TerrariumMedWalls.png" />
     <Content Include="Worldgeneration\TerrariumWalls.png" />
     <Content Include="Worldgeneration\Throne.png" />
+    <Content Include="Worldgeneration\VoidIsland.png" />
+    <Content Include="Worldgeneration\VoidIslandWall.png" />
     <Content Include="Worldgeneration\Volcano.png" />
     <Content Include="Worldgeneration\VolcanoLava.png" />
     <Content Include="Worldgeneration\VolcanoWalls.png" />

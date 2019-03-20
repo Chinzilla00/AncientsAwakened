@@ -46,6 +46,7 @@ namespace AAMod.Backgrounds
 			}else
 			{
 				dayTimeOpacity = (Main.dayTime ? BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f) : 0.3f);
+                dayTimeOpacity *= Main.dayTime ? 2f : 1f;
 			}
         }
 

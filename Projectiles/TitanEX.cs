@@ -16,7 +16,7 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 132;
+            projectile.width = 64;
             projectile.height = 66;
             projectile.friendly = true;
             projectile.penetrate = -1;

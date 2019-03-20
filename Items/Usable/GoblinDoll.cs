@@ -40,12 +40,12 @@ namespace AAMod.Items.Usable
         {
             if (item.lavaWet)
             {
-                for (int i = 0; i < 255; ++i)
+                for (int i = 0; i < 200; ++i)
                 {
-                    if (Main.npc[i].type == NPCID.GoblinTinkerer)
+                    if (Main.npc[i].type == NPCID.GoblinTinkerer && Main.npc[i].active)
                     {
                         Player player = Main.player[item.owner];
-                        Item.NewItem(player.position, mod.ItemType<Accessories.SoulStone>(), 1, false, 0, true, false);
+                        player.QuickSpawnItem(mod.ItemType<Accessories.SoulStone>());
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
                         Main.NewText("The soul stone materializes in your hand", 180, 120, 0);
                     }
