@@ -649,7 +649,7 @@ namespace AAMod
             }
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day");
+                bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day in the Surface Mushroom Biome");
                 bossChecklist.Call("AddBossWithInfo", "Feudal Fungus", 0f, (Func<bool>)(() => AAWorld.downedFungus), "Use a [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
