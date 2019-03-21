@@ -12,7 +12,7 @@ namespace AAMod.Projectiles
 {
     public class FreedomShotCharged : ModProjectile
     {
-        private bool firstHit = false;
+        private bool firstHit = true;
 
         public override void SetStaticDefaults()
         {
@@ -53,10 +53,10 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (!firstHit)
+            if (firstHit && projectile.owner == Main.myPlayer)
             {
-                target.AddBuff(mod.BuffType("Terrablaze"), 600);
-                firstHit = true;
+                Projectile.NewProjectile(projectile.position, new Vector2(0, 0), mod.ProjectileType("FreedomBall"), projectile.damage / 5, 0f, projectile.owner);
+                firstHit = false;
             }
         }
 

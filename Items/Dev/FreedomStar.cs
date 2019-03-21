@@ -39,5 +39,16 @@ namespace AAMod.Items.Dev
 			item.shootSpeed = 12f;
 			item.noUseGraphic = true;
         }
+
+        public override void AddRecipes()
+        {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "MobianBuster");
+                recipe.AddIngredient(null, "EXSoul");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+        }
     }
 }

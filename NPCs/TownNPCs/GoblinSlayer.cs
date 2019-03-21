@@ -23,19 +23,20 @@ namespace AAMod.NPCs.TownNPCs
 			return mod.Properties.Autoload;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			Main.npcFrameCount[npc.type] = 26;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
-			NPCID.Sets.AttackFrameCount[npc.type] = 5;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 40;
-			NPCID.Sets.AttackAverageChance[npc.type] = 20;
-			NPCID.Sets.HatOffsetY[npc.type] = 4;
-		}
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Goblin Slayer");
+            Main.npcFrameCount[npc.type] = 26;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 10;
+            NPCID.Sets.AttackFrameCount[npc.type] = 5;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 40;
+            NPCID.Sets.AttackAverageChance[npc.type] = 20;
+            NPCID.Sets.HatOffsetY[npc.type] = 4;
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
