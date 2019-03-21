@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[npc.type] = 24;
         }
 
         public override void SetDefaults()
@@ -400,7 +400,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 if (alpha >= 255)
                 {
-                    npc.alpha = 255;
+                    alpha = 255;
                     scale = 0;
                 }
                 if (alpha < 255)

@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
 			if(Body == null) return;
             npc.timeLeft = 50;
-            if (!Body.npc.active || Body.npc.life <= 0)
+            if (!Body.npc.active || Body.npc.life <= 0 || !NPC.AnyNPCs(mod.NPCType<Hydra>()))
             {
                 npc.life = 0;
 				npc.checkDead();

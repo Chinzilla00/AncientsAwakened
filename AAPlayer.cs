@@ -76,6 +76,8 @@ namespace AAMod
         public int CthulhuCountdown = 10800;
         public bool Leave = false;
 
+        public bool ZoneTower;
+
         public bool RadiumStars = false;
         public bool Darkmatter = true;
         // Armor bools.
@@ -366,6 +368,7 @@ namespace AAMod
             ZoneRisingMoonLake = false;
             ZoneRisingSunPagoda = false;
             ZoneShip = false;
+            ZoneTower = false;
             InfernoSpawner = false;
             MireSpawner = false;
             VoidSpawner = false;
@@ -463,6 +466,7 @@ namespace AAMod
 
         public override void UpdateBiomes()
         {
+            ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
             ZoneMire = (AAWorld.mireTiles > 100) || NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>());
             ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<Akuma>()) || NPC.AnyNPCs(mod.NPCType<AkumaA>()));
             ZoneMush = (AAWorld.mushTiles > 100);
