@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.EFish
+namespace AAMod.Projectiles
 {
     public class SoulSiphon : ModProjectile
     {
