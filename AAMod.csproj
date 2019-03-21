@@ -4722,6 +4722,7 @@
     <Content Include="NPCs\Bosses\Shen\FuryAshe.png" />
     <Content Include="NPCs\Bosses\Shen\SeekingFlame.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenAwakened.png" />
     <Content Include="NPCs\Bosses\Shen\ShenAWings.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Head_Boss.png" />
