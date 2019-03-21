@@ -767,7 +767,11 @@
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
     <Compile Include="Items\Dev\UmbreonSPEX.cs" />
+    <Compile Include="Items\Dyes\AbyssalDye.cs" />
     <Compile Include="Items\Dyes\AbyssalWrathDye.cs" />
+    <Compile Include="Items\Dyes\BlazingDye.cs" />
+    <Compile Include="Items\Dyes\DiscordianInfernoDye.cs" />
+    <Compile Include="Items\Dyes\DiscordianDye.cs" />
     <Compile Include="Items\Dyes\BlazingFuryDye.cs" />
     <Compile Include="Items\Dyes\DoomsdayDye.cs" />
     <Compile Include="Items\Hooks\DragonsGrip.cs" />
@@ -1228,6 +1232,8 @@
     <Compile Include="Mounts\MonochromeApple.cs" />
     <Compile Include="Mounts\PrinceFishron.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\Ashe.cs" />
+    <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
+    <Compile Include="NPCs\Bosses\AH\Ashe\AsheShot.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
@@ -3934,8 +3940,12 @@
     <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
+    <Content Include="Items\Dyes\AbyssalDye.png" />
     <Content Include="Items\Dyes\AbyssalWrathDye.png" />
+    <Content Include="Items\Dyes\BlazingDye.png" />
     <Content Include="Items\Dyes\BlazingFuryDye.png" />
+    <Content Include="Items\Dyes\DiscordianDye.png" />
+    <Content Include="Items\Dyes\DiscordianInfernoDye.png" />
     <Content Include="Items\Dyes\DoomsdayDye.png" />
     <Content Include="Items\Hooks\DragonsGrip.png" />
     <Content Include="Items\Hooks\DragonsGripP.png" />
@@ -4506,6 +4516,7 @@
     <Content Include="NPCs\Bosses\AH\Ashe\Ashe.gif" />
     <Content Include="NPCs\Bosses\AH\Ashe\Ashe.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheBackAway.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheBoom.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheCast1.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheCast2.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheDragon.png" />
