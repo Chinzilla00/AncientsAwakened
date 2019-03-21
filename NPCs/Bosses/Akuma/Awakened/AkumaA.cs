@@ -442,7 +442,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", new Color(45, 46, 70));
+                    Main.NewText((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -467,7 +467,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 int Fireballs = Main.expertMode ? 12 : 14;
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", new Color(45, 46, 70));
+                    Main.NewText((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -496,7 +496,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", new Color(45, 46, 70));
+                    Main.NewText((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote1 = true;
                 }

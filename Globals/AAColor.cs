@@ -286,7 +286,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(47, 31, 108), new Color(42, 7, 74), new Color(47, 31, 108));
+                return new Color(47, 31, 108);
             }
         }
 
@@ -294,7 +294,30 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Blue, Color.DarkBlue, Color.Blue);
+                return new Color(42, 7, 74);
+            }
+        }
+
+        public static Color Celestial
+        {
+            get
+            {
+                if (Main.dayTime && Celestial != Daybringer)
+                {
+                    return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Nightcrawler, Daybringer);
+                }
+                else if (!Main.dayTime && Celestial != Nightcrawler)
+                {
+                    return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Daybringer, Nightcrawler);
+                }
+                if (Main.dayTime)
+                {
+                    return Daybringer;
+                }
+                else
+                {
+                    return Nightcrawler;
+                }
             }
         }
 

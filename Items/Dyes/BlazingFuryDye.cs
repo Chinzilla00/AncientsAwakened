@@ -19,7 +19,7 @@ namespace AAMod.Items.Dyes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.AkumaA;
                 }
             }
         }
@@ -37,8 +37,7 @@ namespace AAMod.Items.Dyes
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "CrucibleScale", 3);
-            recipe.AddIngredient(Terraria.ID.ItemID.BottledWater);
+            recipe.AddIngredient(null, "BlazingDye", 2);
             recipe.AddTile(Terraria.ID.TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();

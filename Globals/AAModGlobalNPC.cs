@@ -458,7 +458,7 @@ namespace AAMod
             }
             if (npc.type == NPCID.SkeletronHead)
             {
-                Item.NewItem(npc.getRect(), ItemID.ChlorophyteOre, Main.rand.Next(30, 45));
+                Item.NewItem(npc.getRect(), ItemID.Bone, Main.rand.Next(30, 45));
             }
             
             if ((npc.type == NPCID.GoblinArcher
