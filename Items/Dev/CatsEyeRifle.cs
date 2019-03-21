@@ -30,7 +30,7 @@ Doesn't require ammo
 
         public override void SetDefaults()
         {
-            item.damage = 530;
+            item.damage = 430;
             item.noMelee = true;
             item.ranged = true; 
             item.width = 72; 
@@ -43,7 +43,7 @@ Doesn't require ammo
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 9; 
             item.UseSound = new LegacySoundStyle(2, 40, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true; 
+            item.autoReuse = false; 
             item.shootSpeed = 20f;
             item.crit = 0;
 

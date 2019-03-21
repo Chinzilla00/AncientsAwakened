@@ -45,7 +45,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
         }
 
-        public static int AISTATE_HOVER = 0, AISTATE_MELEE = 1, AISTATE_CAST1 = 2, AISTATE_CAST2 = 3;
         public float[] internalAI = new float[4];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -73,116 +72,244 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         }
 
         bool HasStopped = false;
-		
+        bool FlyingBack = false;
+        bool FlyingPositive = false;
+        bool FlyingNegative = false;
+        public float MeleeSpeed;
+
+        public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
+
         public override void AI()
         {
-            npc.active = false;
             Player player = Main.player[npc.target];
-             
-            if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)
-            {
-                npc.velocity *= 0;
 
-                if (npc.velocity.X <= .1f && npc.velocity.X >= -.1f)
-                {
-                    npc.velocity.X = 0;
-                }
-                if (npc.velocity.Y <= .1f && npc.velocity.Y >= -.1f)
-                {
-                    npc.velocity.Y = 0;
-                }
+            npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
-                npc.alpha += 10;
+            RingEffects();
 
-                if (npc.alpha >= 255)
-                {
-                    npc.active = false;
-                }
-                return;
-            }
-            npc.alpha -= 10;
-            if (npc.alpha < 0)
+            if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
-                npc.alpha = 0;
-            }
-            npc.frameCounter++;
-            if (npc.frameCounter >= 10)
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y += 90;
-                if (npc.frame.Y > (90 * 7))
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y = 0;
-                }
+                internalAI[1] = 0;
+                internalAI[2]++;
             }
 
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
-                internalAI[0]++;
-                MoveToPoint(new Vector2(player.Center.X, player.Center.Y - 170f));
+                if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
+                {
+                    internalAI[3]++;
+                    if (internalAI[3] >= 180)
+                    {
+                        internalAI[3] = 0;
+                        internalAI[0] = Main.rand.Next(6);
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
+                }
+
+                if ((int)internalAI[2] > 3 && !FlyingBack) //If not flying backwards
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 4;
+                }
+                if (((int)internalAI[2] >  7 || (int)internalAI[2] < 4) && FlyingBack) //If flying backwards
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 4;
+                }
+            }
+            else
+            {
+                if(internalAI[0] != AISTATE_CAST4 || internalAI[0] != AISTATE_MELEE) //Weak magic cast frame
+                {
+                    if (internalAI[2] == 12)
+                    {
+                        FireMagic(npc, npc.velocity);
+                    }
+                    if ((int)internalAI[2] < 8)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 8;
+                        if ((int)internalAI[2] > 15)
+                        {
+                            internalAI[0] = 0;
+                            internalAI[1] = 0;
+                            internalAI[2] = 0;
+                            internalAI[3] = 0;
+                            npc.ai = new float[4];
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+                else //Strong magic cast frame
+                {
+                    if (internalAI[2] == 20 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                    {
+                        FireMagic(npc, npc.velocity);
+                    }
+                    if ( (int)internalAI[2] < 16) //Sets to frame 16
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 16;
+                        if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
+                        {
+                            internalAI[0] = 0;
+                            internalAI[1] = 0;
+                            internalAI[2] = 0;
+                            internalAI[3] = 0;
+                            npc.ai = new float[4];
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
             }
 
-            /*if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
-			{
-                internalAI[0]++;
-                if (internalAI[0] >= 180)
+
+            if (npc.velocity.X > 0) //Flying in the positive X direction
+            {
+                FlyingPositive = true;
+                FlyingNegative = false;
+            }
+            else //Flying in the nagative X direction
+            {
+                FlyingPositive = false;
+                FlyingNegative = true;
+            }
+            if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+            {
+                npc.spriteDirection = -1;
+                if (FlyingPositive)
                 {
+                    FlyingBack = true;
+                }
+                else
+                {
+                    FlyingBack = false;
+                }
+            }
+            else //If NPC's X position is lower than the player's
+            {
+                npc.spriteDirection = 1;
+
+                if (FlyingNegative)
+                {
+                    FlyingBack = true;
+                }
+                else
+                {
+                    FlyingBack = false;
+                }
+            }
+
+            if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost
+            {
+                npc.damage++;
+                if (npc.damage > 160)
+                {
+                    npc.damage = 160;
+                }
+                if (internalAI[2] < 21)
+                {
+                    MeleeSpeed += .005f;
+                }
+                if (MeleeSpeed > .06f)
+                {
+                    MeleeSpeed = .06f;
+                }
+                if (internalAI[2] > 21)
+                {
+                    MeleeSpeed -= .005f;
+                    npc.damage = 100;
+                }
+            }
+            else //Reset Stats
+            {
+                npc.damage = 100;
+                MeleeSpeed = 0;
+            }
+
+
+            if (internalAI[0] == AISTATE_MELEE) //When charging the player
+            {
+                BaseAI.AIFlier(npc, ref npc.ai, true, MeleeSpeed, MeleeSpeed, 6f, 6f, false, 1);
+            }
+            else if (internalAI[0] == AISTATE_DRAGON) //When summoning a noodle
+            {
+                npc.velocity *= .8f;
+            }
+            else //Anything else
+            {
+                BaseAI.AISkull(npc, ref npc.ai, false, 4f, 350f, .033f, .029f);
+            }
+
+            if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
+            {
+                internalAI[3]++;
+                if (internalAI[3] > 240)
+                {
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheDragon>(), 0); 
                     internalAI[0] = 0;
-                    internalAI[1] = Main.rand.Next(3);
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
-			if(internalAI[1] == AISTATE_HOVER) 
-            {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 170, 56f, FireMagic);
-            }
-            else if (internalAI[1] == AISTATE_FLIER) 
-            {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f,0.04f, 5f, 3f, false, 1);
-            }
-            else if (internalAI[1] == AISTATE_SHOOT)
-            {
-
-                if (HasStopped)
-                {
-                    internalAI[0]++;
-                    npc.rotation = 0;
-                }
-                if (internalAI[0] >= 60)
-                {
-                    int attack = Main.rand.Next(4);
-                    internalAI[1] = Main.rand.Next(3);
-                    internalAI[0] = 0;
-                    FungusAttack(attack);
-                    npc.netUpdate = true;
-                }
-
-                npc.velocity *= 0.7f;
-
-                if (npc.velocity.X <= .1f && npc.velocity.X >= -.1f)
-                {
-                    npc.velocity.X = 0;
-                }
-                if (npc.velocity.Y <= .1f && npc.velocity.Y >= -.1f)
-                {
-                    npc.velocity.Y = 0;
-                }
-                if (npc.velocity == new Vector2(0, 0))
-                {
-                    HasStopped = true;
-                }
-            }*/
+            npc.rotation = 0; //No ugly rotation.
         }
-
 
         public float[] shootAI = new float[4];
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("Mushshot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
+            if (internalAI[0] == 1)
+            {
+                int speedX = 8;
+                int speedY = 8;
+                float spread = 45f * 0.0174f;
+                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                double deltaAngle = spread / 6f;
+                double offsetAngle;
+                for (int i = 0; i < 5; i++)
+                {
+                    offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
+                }
+            }
+            if (internalAI[0] == 2)
+            {
+                int speedX = 6;
+                int speedY = 6;
+                float spread = 45f * 0.0174f;
+                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                double deltaAngle = spread / 6f;
+                double offsetAngle;
+                for (int i = 0; i < 3; i++)
+                {
+                    offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheFlameRing>(), npc.damage / 2, 4);
+                }
+            }
+            if (internalAI[0] == 3)
+            {
+                float spread = 12f * 0.0174f;
+                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                double deltaAngle = spread / (Main.expertMode ? 5 : 4);
+                double offsetAngle;
+                for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 4f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                }
+            }
+            if (internalAI[0] == 4)
+            {
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 2f, 0, 0, -1);
+            }
         }
 
 
@@ -208,29 +335,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
-        }
-
-        public void FungusAttack(int Attack)
-        {
-            Player player = Main.player[npc.target];
-
-            if (Attack == 0)
-            {
-
-            }
-            else if (Attack == 1)
-            {
-
-            }
-            else if (Attack == 2)
-            {
-
-            }
-            else
-            {
-
-            }
+            npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
         }
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
@@ -268,6 +373,44 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public float scale = 0;
         public float RingRotation = 0;
 
+        private void RingEffects()
+        {
+            RingRotation += 0.0149599658f;
+
+            if (internalAI[0] == AISTATE_DRAGON) //If summoning noodle
+            {
+                if (alpha > 0)
+                {
+                    alpha -= 8; //Lower Alpha
+                }
+                if (alpha <= 0)
+                {
+                    alpha = 0; 
+                }
+                if (scale < 1f)
+                {
+                    scale += .05f; //Raise Scale
+                }
+                if (scale >= 1f)
+                {
+                    scale = 1f;
+                }
+            }
+            else
+            {
+                if (alpha >= 255)
+                {
+                    npc.alpha = 255;
+                    scale = 0;
+                }
+                if (alpha < 255)
+                {
+                    scale -= .05f;
+                    alpha += 8;
+                }
+            }
+        }
+
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Ashe_Glow");
@@ -279,14 +422,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Rectangle RingFrame = new Rectangle(0, 0, RingTex.Width, RingTex.Height);
             Rectangle RitualFrame = new Rectangle(0, 0, RitualTex.Width, RitualTex.Height);
 
+
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
 
-            if (Summon)
+            Color alphaColor = new Color(Color.White.R, Color.White.G, Color.White.B, alpha);
+
+            if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
             {
-                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, npc.GetAlpha(Color.White), true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, npc.GetAlpha(Color.White), true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, npc.GetAlpha(Color.White), true);
+                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, npc.GetAlpha(alphaColor), true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, npc.GetAlpha(alphaColor), true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, npc.GetAlpha(alphaColor), true);
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, npc.GetAlpha(dColor), true);

@@ -820,8 +820,7 @@ namespace AAMod
                 YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
                 YamataSky.SkyTex = GetTexture("Backgrounds/StarTex");
                 YamataSky.BeamTexture = GetTexture("Backgrounds/YamataBeam");
-
-                Main.itemTexture[1291] = GetTexture("Resprites/LifeFruit");
+                
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
             }

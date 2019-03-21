@@ -4,19 +4,14 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-    internal class YamataBomb : ModProjectile
+    internal class AsheMagic : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;
-            DisplayName.SetDefault("Abyssal Bomb");
-        }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
+            DisplayName.SetDefault("Inferno Magic");
         }
 
         public override void SetDefaults()
@@ -28,12 +23,18 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 60;
-            projectile.timeLeft = 300;
         }
 
         public override void AI()
         {
+
+            for (int num468 = 0; num468 < 10; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
+                Main.dust[num469].velocity *= 2f;
+            }
+
             if (projectile.timeLeft > 0)
             {
                 projectile.timeLeft--;
@@ -53,11 +54,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
             const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
@@ -102,19 +103,24 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("HydraToxin"), 600);
+            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
+
             Kill(0);
         }
 
-        public override void Kill(int timeleft)
+        public override void Kill(int timeLeft)
         {
-            for (int num468 = 0; num468 < 20; num468++)
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 2;
+            double offsetAngle;
+            int i;
+            for (i = 0; i < 2; i++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].velocity *= 2f;
+                offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

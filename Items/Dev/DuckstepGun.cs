@@ -25,8 +25,8 @@ namespace AAMod.Items.Dev
             item.mana = 9;
             item.width = 74;
 			item.height = 36;
-			item.useTime = 14;
-			item.useAnimation = 14;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;

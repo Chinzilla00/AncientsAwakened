@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-    public class AkumaMeteor : ModProjectile
+    public class AsheShot : ModProjectile
     {
     	
     	public override void SetStaticDefaults()

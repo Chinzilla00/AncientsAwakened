@@ -4,19 +4,14 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Yamata
+namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-    internal class YamataBomb : ModProjectile
+    internal class AsheFlameRing : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;
-            DisplayName.SetDefault("Abyssal Bomb");
-        }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
+            Main.projFrames[projectile.type] = 3;
+            DisplayName.SetDefault("Inferno Ring");
         }
 
         public override void SetDefaults()
@@ -28,15 +23,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 60;
-            projectile.timeLeft = 300;
         }
 
         public override void AI()
         {
-            if (projectile.timeLeft > 0)
+            if (projectile.alpha < 255)
             {
-                projectile.timeLeft--;
+                projectile.alpha++;
             }
             if (projectile.timeLeft == 0)
             {
@@ -48,12 +41,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 3)
+                if (projectile.frame > 2)
                 {
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
             const float desiredFlySpeedInPixelsPerFrame = 10;
@@ -102,19 +95,15 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("HydraToxin"), 600);
-            Kill(0);
-        }
+            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
 
-        public override void Kill(int timeleft)
-        {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Kill(0);
         }
     }
 }
