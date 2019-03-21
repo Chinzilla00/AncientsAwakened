@@ -5,11 +5,11 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-	public class AbyssalWrathDye : ModItem
+	public class AbyssalDye : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Abyssal Wrath Dye");	
+            DisplayName.SetDefault("Abyssal Dye");	
             BaseMod.BaseUtility.AddTooltips(item, new string[] { "Gives an abyssal touch to whatever this dye is applied to" });		
 		}
 
@@ -19,7 +19,7 @@ namespace AAMod.Items.Dyes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.YamataA;
+                    line2.overrideColor = AAColor.Yamata;
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace AAMod.Items.Dyes
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "AbyssalDye", 2);
+            recipe.AddIngredient(null, "DreadScale", 3);
             recipe.AddIngredient(Terraria.ID.ItemID.BottledWater);
             recipe.AddTile(Terraria.ID.TileID.DyeVat);
             recipe.SetResult(this);
