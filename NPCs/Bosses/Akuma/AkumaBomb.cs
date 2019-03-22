@@ -1,7 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Akuma
@@ -144,6 +147,16 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
 
             return selectedTarget;
+        }
+
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
+            Vector2 Drawpos = projectile.Center - Main.screenPosition + new Vector2(0, projectile.gfxOffY);
+
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile, Color.White, true);
+            return false;
         }
     }
 }

@@ -101,6 +101,17 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
         }
 
+
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Microsoft.Xna.Framework.Color lightColor)
+        {
+            int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingFlameDye);
+            Microsoft.Xna.Framework.Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile, Microsoft.Xna.Framework.Color.White, true);
+            return false;
+        }
+
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;

@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.aiStyle = 1;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.alpha = 255;
+            projectile.alpha = 50;
             projectile.scale = 1f;
             projectile.timeLeft = 100;
             projectile.magic = true;
@@ -75,5 +75,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("Flare"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
+
+        
     }
 }

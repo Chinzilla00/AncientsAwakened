@@ -9,12 +9,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     public class AkumaAMeteor : ModProjectile
     {
-    	
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dayfire");
-		}
-    	
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dayfire");
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 10;
@@ -63,6 +63,16 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 200);
+        }
+
+
+        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.Color lightColor)
+        {
+            int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingOceanDye);
+            Microsoft.Xna.Framework.Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile, Microsoft.Xna.Framework.Color.White, true);
+            return false;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace AAMod.Tiles
             {
                 BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/RadiumOreDark"), x, y, true, false, false);
             }
-            return true;
+            return false;
         }
         
 

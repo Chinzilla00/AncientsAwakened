@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 
-namespace AAMod.NPCs.Bosses.AH.Ashe
+/*namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     [AutoloadBossHead]
     public class Ashe : ModNPC
@@ -86,6 +86,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
             RingEffects();
+            internalAI[1]++;
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
@@ -444,6 +445,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     }
 
     
-}
+}*/
 
 

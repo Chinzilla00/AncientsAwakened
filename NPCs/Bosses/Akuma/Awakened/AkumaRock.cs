@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.tileCollide = false;
             projectile.penetrate = 1;
             projectile.extraUpdates = 2;
-            projectile.alpha = 255;
         }
 
         public override void AI()
