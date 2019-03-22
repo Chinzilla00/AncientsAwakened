@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         }
 
 
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[5];
 
         public override void SendExtraAI(BinaryWriter writer)
         {

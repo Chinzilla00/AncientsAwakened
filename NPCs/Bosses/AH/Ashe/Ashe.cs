@@ -154,7 +154,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         FireMagic(npc, npc.velocity);
                     }
-                    if ( (int)internalAI[2] < 16) //Sets to frame 16
+                    if ((int)internalAI[2] < 16) //Sets to frame 16
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 16;
