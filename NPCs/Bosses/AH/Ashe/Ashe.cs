@@ -108,7 +108,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
 
-                if ((int)internalAI[2] > 3 && !FlyingBack) //If not flying backwards
+                if ((int)internalAI[2] > 3) 
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                }
+
+                /*if ((int)internalAI[2] > 3 && !FlyingBack) //If not flying backwards
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 4;
@@ -117,13 +123,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 4;
-                }
+                }*/
             }
             else
             {
                 if(internalAI[0] != AISTATE_CAST4 || internalAI[0] != AISTATE_MELEE) //Weak magic cast frame
                 {
-                    if (internalAI[2] == 12)
+                    if (internalAI[2] == 12 && internalAI[1] == 4)
                     {
                         FireMagic(npc, npc.velocity);
                     }
@@ -144,7 +150,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 else //Strong magic cast frame
                 {
-                    if (internalAI[2] == 20 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                    if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
                     {
                         FireMagic(npc, npc.velocity);
                     }
@@ -240,7 +246,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //Anything else
             {
-                BaseAI.AISkull(npc, ref npc.ai, false, 4f, 350f, .033f, .029f);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, .3f, 7, 300);
             }
 
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
@@ -316,10 +322,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void NPCLoot()
         {
-            int Ashe = NPC.CountNPCS(mod.NPCType("Haruka"));
-            if (Ashe == 0)
+            int Haruka = NPC.CountNPCS(mod.NPCType("Haruka"));
+            if (Haruka == 0)
             {
-
+                AAWorld.downedSisters = true;
             }
             if (!Main.expertMode)
             {
@@ -439,7 +445,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
             BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, blue, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
+            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, blue, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
     }

@@ -557,6 +557,7 @@
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
+    <Compile Include="Items\Boss\AH\HarukaKunai.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
@@ -1246,6 +1247,8 @@
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheSpark.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheStrike.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\HarukaProj.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody.cs" />
@@ -1551,6 +1554,7 @@
     <Compile Include="Projectiles\DragonfireDart.cs" />
     <Compile Include="Projectiles\DummyExplosionTerra.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
+    <Compile Include="Projectiles\HarukaKunaiF.cs" />
     <Compile Include="Projectiles\MobianShotCharged.cs" />
     <Compile Include="Projectiles\MobianShot.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
@@ -3703,6 +3707,7 @@
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
+    <Content Include="Items\Boss\AH\HarukaKunai.png" />
     <Content Include="Items\Boss\AH\Masamune.png" />
     <Content Include="Items\Boss\Akuma\AkumaATrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaBag.png" />
@@ -5152,6 +5157,7 @@
     <Content Include="Projectiles\Glass_Kunai_Pro.png" />
     <Content Include="Projectiles\Gold_Kunai_Pro.png" />
     <Content Include="Projectiles\GSP.png" />
+    <Content Include="Projectiles\HarukaKunaiF.png" />
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraFangP.png" />
     <Content Include="Projectiles\HydraSpear.png" />

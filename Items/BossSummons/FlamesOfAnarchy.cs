@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using AAMod.NPCs.Bosses.AH;
 using AAMod.NPCs.Bosses.AH.Ashe;
 using AAMod.NPCs.Bosses.AH.Haruka;
 using System.Collections.Generic;
@@ -24,17 +25,18 @@ Calls upon the Sisters of Discord");
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 28;
+            item.width = 36;
+            item.height = 46;
             item.rare = 2;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
             item.rare = 11;
+            item.noUseGraphic = true;
         }
 
-        public override bool PreDrawInWorld(SpriteBatch sb, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Items/BossSummons/FlamesOfAnarchy_Glow");
             Vector2 pos = new Vector2
@@ -42,24 +44,21 @@ Calls upon the Sisters of Discord");
                     item.position.X - Main.screenPosition.X + item.width * 0.5f,
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 );
-            BaseDrawing.DrawTexture(sb, Main.itemTexture[item.type], 0, pos, item.width, item.height, scale, rotation, 0, 4, new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height), lightColor);
-            BaseDrawing.DrawTexture(sb, texture, 0, pos, item.width, item.height, scale, rotation, 0, 4, new Rectangle(0, 0, texture.Width, texture.Height), AAColor.Shen2);
-            return false;
+            BaseDrawing.DrawTexture(spriteBatch, texture, 0, pos, item.width, item.height, scale, rotation, 0, 4, new Rectangle(0, 0, item.width, item.height), AAColor.Shen2);
+            
         }
 
-        public override bool PreDrawInInventory(SpriteBatch sb, Vector2 pos, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        public override void PostDrawInInventory(SpriteBatch sb, Vector2 pos, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = mod.GetTexture("Items/BossSummons/FlamesOfAnarchy_Glow");
-            BaseDrawing.DrawTexture(sb, Main.itemTexture[item.type], 0, pos, item.width, item.height, scale, 0, 0, 4, new Rectangle(0, 0, texture.Width, texture.Height), drawColor);
-            BaseDrawing.DrawTexture(sb, texture, 0, pos, item.width, item.height, scale, 0, 0, 4, new Rectangle(0, 0, texture.Width, texture.Height), AAColor.Shen2);
-            return false;
+            BaseDrawing.DrawTexture(sb, texture, 0, pos, item.width, item.height, scale, 0, 0, 4, frame, AAColor.Shen2);
         }
 
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<Ashe>()) && !NPC.AnyNPCs(mod.NPCType<Haruka>());
+            return !NPC.AnyNPCs(mod.NPCType<Ashe>()) && !NPC.AnyNPCs(mod.NPCType<Haruka>()) && !NPC.AnyNPCs(mod.NPCType<AHSpawn>());
         }
 
         public override bool UseItem(Player player)
@@ -113,7 +112,7 @@ Calls upon the Sisters of Discord");
             recipe.AddIngredient(null, "SoulOfSmite", 5);
             recipe.AddIngredient(null, "SoulOfSpite", 5);
             recipe.AddIngredient(null, "BroodScale", 3);
-            recipe.AddIngredient(null, "HydraHyde", 3);
+            recipe.AddIngredient(null, "HydraHide", 3);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

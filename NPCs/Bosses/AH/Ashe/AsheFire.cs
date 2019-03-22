@@ -55,14 +55,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     projectile.frame = 0;
                 }
             }
-            for (int num189 = 0; num189 < 1; num189++)
-            {
-                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f);
-
-                Main.dust[num190].scale *= 1.3f;
-                Main.dust[num190].fadeIn = 1f;
-                Main.dust[num190].noGravity = true;
-            }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
@@ -74,10 +66,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            for (int dust = 0; dust <= 10; dust++)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-            }
         }
     }
 }

@@ -193,6 +193,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.noTileCollide = true;
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                npc.rotation = 0;
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     npc.rotation = 0;

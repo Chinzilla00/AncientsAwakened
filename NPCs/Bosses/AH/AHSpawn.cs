@@ -25,6 +25,7 @@ namespace AAMod.NPCs.Bosses.AH
                 npc.noGravity = true;
                 npc.aiStyle = -1;
                 npc.timeLeft = 10;
+                
                 for (int k = 0; k < npc.buffImmune.Length; k++)
                 {
                     npc.buffImmune[k] = true;
@@ -49,10 +50,10 @@ namespace AAMod.NPCs.Bosses.AH
 
             npc.Center = player.Center;
 
-            if (npc.ai[1] == 120)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
+            if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Well hello there, what a surprise to see YOU here~!", new Color(102, 20, 48));
-                AAMod.AkumaMusic = true;
+                AAMod.AHIntro = true;
             }
 
             if (npc.ai[1] == 240)
@@ -67,7 +68,7 @@ namespace AAMod.NPCs.Bosses.AH
                 }
             }
 
-            if (npc.ai[1] == 360)
+            if (npc.ai[1] == 440)
             {
                 if (AAWorld.downedHydra)
                 {
@@ -87,18 +88,23 @@ namespace AAMod.NPCs.Bosses.AH
             }
 
             
-            if (npc.ai[1] == 480)
+            if (npc.ai[1] == 660)
             {
                 Main.NewText("So now..! Heh...", new Color(102, 20, 48));
             }
 
-            if (npc.ai[1] == 600)
+            if (npc.ai[1] > 720)
+            {
+                AAMod.AHIntro = false;
+            }
+
+            if (npc.ai[1] == 820)
             {
                 Main.NewText("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }
 
-            if (npc.ai[1] >= 660)
+            if (npc.ai[1] >= 960)
             {
                 Main.NewText("Please don't call me Hakie again...ever.", new Color(72, 78, 117));
                 SpawnBoss(player, "Haruka");

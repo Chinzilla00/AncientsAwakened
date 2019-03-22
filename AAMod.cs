@@ -32,6 +32,7 @@ namespace AAMod
         internal UserInterface UserInterface;
         public static bool AkumaMusic = false;
         public static bool YamataMusic = false;
+        public static bool AHIntro = false;
         public static bool Slayer = false;
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
@@ -1069,6 +1070,13 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
                 priority = MusicPriority.BossHigh;
+                return;
+            }
+            if (AHIntro)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
+
+                priority = (MusicPriority)10;
                 return;
             }
             if (zoneIZ && AAWorld.downedZero && NPC.downedMoonlord)
