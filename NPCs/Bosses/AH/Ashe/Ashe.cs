@@ -102,7 +102,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (internalAI[3] >= 240)
                     {
                         internalAI[3] = 0;
-                        internalAI[0] = Main.rand.Next(7);
+                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) > 1)
+                        {
+                            internalAI[0] = Main.rand.Next(7);
+                        }
+                        else
+                        {
+                            internalAI[0] = Main.rand.Next(6);
+                        }
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -235,7 +242,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //Anything else
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, .3f, 7, 300);
+                MoveAI(player, ref npc.ai);
             }
 
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
@@ -338,10 +345,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
         }
+        
+        private float moveSpeed = 15f;
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
-            float moveSpeed = 4f;
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
@@ -384,15 +392,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     alpha -= 8; //Lower Alpha
                 }
-                if (alpha <= 0)
+                if (alpha < 0)
                 {
                     alpha = 0; 
                 }
                 if (scale < 1f)
                 {
-                    scale += .05f; //Raise Scale
+                    scale += .02f; //Raise Scale
                 }
-                if (scale >= 1f)
+                if (scale > 1f)
                 {
                     scale = 1f;
                 }
@@ -431,9 +439,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
             {
-                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, npc.GetAlpha(alphaColor), true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, npc.GetAlpha(alphaColor), true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, npc.GetAlpha(alphaColor), true);
+                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, alphaColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, alphaColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, alphaColor, true);
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
@@ -442,9 +450,51 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
-    }
 
-    
+
+
+
+
+
+
+        public void MoveAI(Player targetPlayer, ref float[] AI)
+        {
+            AI[1]++;
+            if (AI[1] > 180)
+            {
+                AI[0] = Main.rand.Next(5);
+                npc.netUpdate = true;
+            }
+            if (AI[0] == 0) //move to starting charge position
+            {
+                Vector2 point = targetPlayer.Center + new Vector2(-250f, -250f);
+                MoveToPoint(point);
+            }
+            else
+            if (AI[0] == 1) //move to starting charge position
+            {
+                Vector2 point = targetPlayer.Center + new Vector2(0, -250f);
+                MoveToPoint(point);
+            }
+            else
+            if (AI[0] == 2) //move to starting charge position
+            {
+                Vector2 point = targetPlayer.Center + new Vector2(-250, 250f);
+                MoveToPoint(point);
+            }
+            else
+            if (AI[0] == 3) //move to starting charge position
+            {
+                Vector2 point = targetPlayer.Center + new Vector2(-250f, 0);
+                MoveToPoint(point);
+            }
+            else //standard movement
+            {
+                Vector2 point = targetPlayer.Center + new Vector2(250f, 0);
+                MoveToPoint(point);
+            }
+        }
+    }
 }
 
 
