@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.width = 10;
             projectile.height = 10;
             projectile.damage *= 0;
-            projectile.friendly = true;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             projectile.velocity *= 0.98f;
 
+            projectile.ai[0]++;
 
             if (projectile.ai[0] >= 60)
             {

@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.AH
                 AAMod.AHIntro = true;
             }
 
-            if (npc.ai[1] == 240)
+            if (npc.ai[1] == 3000)
             {
                 if (AAWorld.downedBrood)
                 {
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.AH
                 }
             }
 
-            if (npc.ai[1] == 440)
+            if (npc.ai[1] == 500)
             {
                 if (AAWorld.downedHydra)
                 {
@@ -88,18 +88,14 @@ namespace AAMod.NPCs.Bosses.AH
             }
 
             
-            if (npc.ai[1] == 660)
+            if (npc.ai[1] == 700)
             {
                 Main.NewText("So now..! Heh...", new Color(102, 20, 48));
             }
 
-            if (npc.ai[1] > 720)
-            {
-                AAMod.AHIntro = false;
-            }
-
             if (npc.ai[1] == 820)
             {
+                AAMod.AHIntro = false;
                 Main.NewText("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }

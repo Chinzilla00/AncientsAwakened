@@ -20,9 +20,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.height = 10;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.scale = 1.1f;
+            projectile.scale = 1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
+            projectile.timeLeft = 180;
         }
 
         public override void AI()

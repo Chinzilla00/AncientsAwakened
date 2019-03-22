@@ -99,10 +99,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 180)
+                    if (internalAI[3] >= 240)
                     {
                         internalAI[3] = 0;
-                        internalAI[0] = Main.rand.Next(6);
+                        internalAI[0] = Main.rand.Next(7);
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -113,17 +113,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                 }
-
-                /*if ((int)internalAI[2] > 3 && !FlyingBack) //If not flying backwards
-                {
-                    internalAI[1] = 0;
-                    internalAI[2] = 4;
-                }
-                if (((int)internalAI[2] >  7 || (int)internalAI[2] < 4) && FlyingBack) //If flying backwards
-                {
-                    internalAI[1] = 0;
-                    internalAI[2] = 4;
-                }*/
             }
             else
             {
@@ -219,7 +208,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     MeleeSpeed += .01f;
                 }
-                if (MeleeSpeed > .06f)
+                if (MeleeSpeed > .08f)
                 {
                     MeleeSpeed = .08f;
                 }

@@ -28,16 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
-            {
-                projectile.tileCollide = true;
-            }
-            if ((double)projectile.position.Y < Main.worldSurface * 16.0)
-            {
-                projectile.tileCollide = true;
-            }
-            projectile.scale = projectile.ai[1];
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
         }
 
         public override void Kill(int timeLeft)
