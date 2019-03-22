@@ -217,15 +217,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if (internalAI[2] < 21)
                 {
-                    MeleeSpeed += .005f;
+                    MeleeSpeed += .01f;
                 }
                 if (MeleeSpeed > .06f)
                 {
-                    MeleeSpeed = .06f;
+                    MeleeSpeed = .08f;
                 }
                 if (internalAI[2] > 21)
                 {
-                    MeleeSpeed -= .005f;
+                    MeleeSpeed -= .01f;
                     npc.damage = 100;
                 }
             }
@@ -275,7 +275,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 int speedX = 8;
                 int speedY = 8;
-                float spread = 45f * 0.0174f;
+                float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
@@ -290,7 +290,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 int speedX = 6;
                 int speedY = 6;
-                float spread = 45f * 0.0174f;
+                float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
@@ -303,7 +303,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (internalAI[0] == 3)
             {
-                float spread = 12f * 0.0174f;
+                float spread = 60f * 0.0174f;
                 double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
                 double deltaAngle = spread / (Main.expertMode ? 5 : 4);
                 double offsetAngle;
@@ -315,7 +315,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (internalAI[0] == 4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 2f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 5f, 0, 0, -1);
             }
         }
 
@@ -333,10 +333,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 string[] lootTable = { "" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(179, 74, 39));
             }
+            Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = 0;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -443,9 +448,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, blue, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
     }

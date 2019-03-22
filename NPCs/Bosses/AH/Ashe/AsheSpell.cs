@@ -21,7 +21,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.damage *= 0;
             projectile.friendly = true;
             projectile.hostile = true;
-            projectile.scale = .1f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
         }
@@ -30,23 +29,20 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             projectile.velocity *= 0.98f;
 
-            if (projectile.ai[0] == 0)
+
+            if (projectile.ai[0] >= 60)
             {
-                projectile.scale *= 1.2f;
+                projectile.alpha += 1;
             }
             else
             {
-                projectile.scale *= 0.8f;
-                if (projectile.scale < .1f)
-                {
-                    projectile.Kill();
-                }
+                projectile.ai[0]++;
             }
 
-            if (projectile.scale > 1 && projectile.ai[0] == 0)
+            if (projectile.alpha > 0 && projectile.ai[1] == 0)
             {
                 Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<AsheSpark>(), 50, 0, projectile.owner);
-                projectile.ai[0] = 1;
+                projectile.ai[1] = 1;
                 projectile.scale = 1;
             }
 
@@ -121,21 +117,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
 
             Kill(0);
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 2;
-            double offsetAngle;
-            int i;
-            for (i = 0; i < 2; i++)
-            {
-                offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            }
         }
     }
 }

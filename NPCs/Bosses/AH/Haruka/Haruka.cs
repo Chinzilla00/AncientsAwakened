@@ -78,12 +78,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, mod.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
         }
-
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = ItemID.SuperHealingPotion;
-            AAWorld.downedHaruka = true;
-        }
         public override void NPCLoot()
         {
             int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
@@ -97,8 +91,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 string[] lootTable = { "Masamune" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                Main.NewText("Rgh..! Ow...", new Color(45, 46, 70));
             }
+            Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
         }
@@ -403,6 +397,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.velocity *= velMultiplier;
         }
 
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = 0;
+        }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {

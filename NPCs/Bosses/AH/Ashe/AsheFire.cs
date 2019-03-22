@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
             projectile.frameCounter++;
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             if (projectile.frameCounter > 6)
             {
                 projectile.frame++;
