@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
 
-/*namespace AAMod.NPCs.Bosses.AH.Haruka
+namespace AAMod.NPCs.Bosses.AH.Haruka
 {
     [AutoloadBossHead]
     public class Haruka : ModNPC
@@ -112,4 +112,4 @@ using BaseMod;
             npc.active = false;
         }
     }
-}*/
+}

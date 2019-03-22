@@ -1251,6 +1251,14 @@ namespace AAMod
             {
                 VoidGrav = (Main.rand.Next(0, 5) + 1);
             }
+            if (NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
+            {
+                if (!Filters.Scene["MoonLordShake"].IsActive())
+                {
+                    Filters.Scene.Activate("MoonLordShake", player.position, new object[0]);
+                }
+                Filters.Scene["MoonLordShake"].GetShader().UseIntensity(1f);
+            }
             if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (!BrokenCode)

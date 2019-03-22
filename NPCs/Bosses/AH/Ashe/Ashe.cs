@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 
-/*namespace AAMod.NPCs.Bosses.AH.Ashe
+namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     [AutoloadBossHead]
     public class Ashe : ModNPC
@@ -131,15 +131,15 @@ using Terraria.Graphics.Shaders;
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 8;
-                        if ((int)internalAI[2] > 15)
-                        {
-                            internalAI[0] = 0;
-                            internalAI[1] = 0;
-                            internalAI[2] = 0;
-                            internalAI[3] = 0;
-                            npc.ai = new float[4];
-                            npc.netUpdate = true;
-                        }
+                    }
+                    if ((int)internalAI[2] > 15)
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
                     }
                 }
                 else //Strong magic cast frame
@@ -152,15 +152,15 @@ using Terraria.Graphics.Shaders;
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 16;
-                        if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
-                        {
-                            internalAI[0] = 0;
-                            internalAI[1] = 0;
-                            internalAI[2] = 0;
-                            internalAI[3] = 0;
-                            npc.ai = new float[4];
-                            npc.netUpdate = true;
-                        }
+                    }
+                    if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
                     }
                 }
             }
@@ -436,15 +436,15 @@ using Terraria.Graphics.Shaders;
                 BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, npc.GetAlpha(alphaColor), true);
             }
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, eyeTex, blue, npc, 0.8f, 1f, 4, false, 0f, 0f, Color.White);
             return false;
         }
     }
 
     
-}*/
+}
 
 

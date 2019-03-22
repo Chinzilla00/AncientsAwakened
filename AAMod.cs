@@ -661,6 +661,7 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 9.5f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("ScrapHeap") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 16f, (Func<bool>)(() => AAWorld.downedGrips), "Use an [i:" + ItemType("AbyssClaw") + "] or [i:" + ItemType("BlazeClaw") + "] at night");
+                bossChecklist.Call("AddBossWithInfo", "Sisters of Discord", 16.1f, (Func<bool>)(() => AAWorld.downedSisters), "Use the [i:" + ItemType("FlamesOfAnarchy") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
@@ -681,7 +682,7 @@ namespace AAMod
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
             }
-            if (DradonIsDum != null)
+            /*if (DradonIsDum != null)
             {
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", instance.GetTexture("BlankTex"), AAWorld.downedMonarch);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", instance.GetTexture("Achievements/Grips"), AAWorld.downedGrips);
@@ -702,7 +703,7 @@ namespace AAMod
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", instance.GetTexture("BlankTex"), AAWorld.downedShen);
                 DradonIsDum.Call("AddAchievementWithoutReward", this, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
-            }
+            }*/
         }
 
         public static void PremultiplyTexture(Texture2D texture)

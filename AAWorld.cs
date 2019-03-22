@@ -103,6 +103,7 @@ namespace AAMod
         public static bool downedHaruka;
         public static bool downedSisters;
         public static bool downedSag;
+        public static bool SistersSummoned;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -151,7 +152,8 @@ namespace AAMod
             downedHaruka = false;
             downedSisters = false;
             downedSag = false;
-        //World Changes
+            SistersSummoned = false;
+            //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedStormAny;
@@ -245,6 +247,7 @@ namespace AAMod
             if (TerrariumGenerated) downed.Add("TerraGen");
             if (VoidGenerated) downed.Add("VoidGen");
             if (OresGenerated) downed.Add("OreGen");
+            if (SistersSummoned) downed.Add("Summoned");
 
             return new TagCompound {
                 {"downed", downed},
@@ -295,7 +298,7 @@ namespace AAMod
             flags4[4] = downedToad;
             flags4[5] = downedGripsS;
             flags4[6] = downedStormAny;
-            //Slot open here
+            flags4[7] = SistersSummoned;
             writer.Write(flags4);
 
             BitsByte flags5 = new BitsByte();
@@ -361,6 +364,7 @@ namespace AAMod
             downedToad = flags4[4];
             downedGripsS = flags4[5];
             downedStormAny = flags4[6];
+            SistersSummoned = flags4[7];
 
             BitsByte flags5 = reader.ReadByte();
             downedSoC = flags5[0];
@@ -425,6 +429,7 @@ namespace AAMod
             downedHaruka = downed.Contains("Haruka");
             downedSisters = downed.Contains("Sisters");
             downedSag = downed.Contains("Sag");
+            SistersSummoned = downed.Contains("Summoned");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
