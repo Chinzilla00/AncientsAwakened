@@ -535,6 +535,7 @@
     <Compile Include="Items\Blocks\ZeroBox.cs" />
     <Compile Include="Items\BossSummons\AbyssClaw.cs" />
     <Compile Include="Items\BossSummons\BlazeClaw.cs" />
+    <Compile Include="Items\BossSummons\FlamesOfAnarchy.cs" />
     <Compile Include="Items\BossSummons\PlanteraFlower.cs" />
     <Compile Include="Items\BossSummons\CursedSkull.cs" />
     <Compile Include="Items\BossSummons\CuriousClaw.cs" />
@@ -1232,6 +1233,7 @@
     <Compile Include="Mounts\BegPony.cs" />
     <Compile Include="Mounts\MonochromeApple.cs" />
     <Compile Include="Mounts\PrinceFishron.cs" />
+    <Compile Include="NPCs\Bosses\AH\AHSpawn.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\Ashe.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheDragon.cs" />
@@ -4541,17 +4543,11 @@
     <Content Include="NPCs\Bosses\AH\Ashe\AsheSpell.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheStrike.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\Ashe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\AH\AHSpawn.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\Haruka.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaFull.gif" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaJump.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaKunai.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaProj.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaSpin.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaTeaser.gif" />
-    <Content Include="NPCs\Bosses\AH\Haruka\HarukaWalk.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\Haruka_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\AH\Haruka\Surasshu.png" />
     <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA.png" />
