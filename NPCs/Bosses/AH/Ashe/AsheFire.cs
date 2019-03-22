@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center - new Vector2(0, 115), 0, mod.ProjectileType<AsheBoom>(), projectile.damage, 5);
+            Projectile.NewProjectile(projectile.Center - new Vector2(0, 115), new Vector2(0, 0), mod.ProjectileType<AsheBoom>(), projectile.damage, 5);
         }
     }
 }
