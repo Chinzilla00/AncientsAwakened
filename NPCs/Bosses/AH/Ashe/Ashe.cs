@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 
-namespace AAMod.NPCs.Bosses.AH.Ashe
+/*namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     [AutoloadBossHead]
     public class Ashe : ModNPC
@@ -495,6 +495,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
     }
-}
+}*/
 
 

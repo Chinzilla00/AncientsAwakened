@@ -46,7 +46,7 @@ Only craftable in expert mode");
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            RuneRecipe recipe = new RuneRecipe(mod);
             recipe.AddIngredient(null, "DreadScale", 20);
             recipe.AddIngredient(null, "DreadSigil");
             recipe.AddTile(null, "ACS");

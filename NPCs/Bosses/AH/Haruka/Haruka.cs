@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.AH.Haruka
+/*namespace AAMod.NPCs.Bosses.AH.Haruka
 {
     [AutoloadBossHead]
     public class Haruka : ModNPC
@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         {
                             Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                             Vector2 fireTarget = npc.Center;
-                            int projType = mod.ProjectileType<HarukaProj>();
+                            int projType = *mod.ProjectileType<HarukaProj>();
                             BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                         }
 
@@ -499,4 +499,4 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
         }
     }
-}
+}*/

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -84,33 +86,24 @@ namespace AAMod.Tiles
             b = 0.50f;
         }
 
-        /*public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+        public Color White(Color color)
         {
-            Tile tile = Main.tile[i, j];
-            Texture2D texture;
-            if (Main.canDrawColorTile(i, j))
+            return Color.White;
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            Texture2D glowTex = mod.GetTexture("Tiles/ChaosCrucible_Glow");
+            Texture2D Sphere = mod.GetTexture("Tiles/ChaosCrucible_Sphere");
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, White);
+            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetShenColorDim);
+            for (int m = 0; m < 3; m++)
             {
-                texture = Main.tileAltTexture[Type, tile.color()];
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, White, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
+                BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetShenColorDim, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
             }
-            else
-            {
-                texture = Main.tileTexture[Type];
-            }
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
-            {
-                zero = Vector2.Zero;
-            }
-            int height = tile.frameY == 36 ? 18 : 16;
-            int animate = 0;
-            if (tile.frameY >= 56)
-            {
-                animate = Main.tileFrame[Type] * animationFrameHeight;
-            }
-            Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ChaosCrucible_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            return false;
-        }*/
+        }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

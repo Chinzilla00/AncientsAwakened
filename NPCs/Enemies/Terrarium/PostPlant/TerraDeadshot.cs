@@ -458,6 +458,13 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 Main.dust[dust2].noGravity = true;
             }
         }
-    }
 
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(100) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            }
+        }
+    }
 }

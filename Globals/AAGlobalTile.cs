@@ -88,21 +88,124 @@ namespace AAMod
         }
 
 
-        public static Color GetYamataColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
-        public static Color GetYamataColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
-        public static Color GetYamataColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetYamataColorBrightInvert(Color color) { return GetYamataColor(color, 1f, 0.6f, true); }
+        public static Color GetYamataColorDim(Color color) { return GetYamataColor(color, 0.4f, 1f, false); }
+        public static Color GetYamataColorBright(Color color) { return GetYamataColor(color, 0.6f, 1f, false); }
         public static Color GetYamataColor(Color color, float min, float max, bool clamp)
         {
             return GetTimedColor(Color.Maroon, color, min, max, clamp);
         }
 
-        public static Color GetCthulhuColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
-        public static Color GetCthulhuColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
-        public static Color GetCthulhuColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetCthulhuColorBrightInvert(Color color) { return GetCthulhuColor(color, 1f, 0.6f, true); }
+        public static Color GetCthulhuColorDim(Color color) { return GetCthulhuColor(color, 0.4f, 1f, false); }
+        public static Color GetCthulhuColorBright(Color color) { return GetCthulhuColor(color, 0.6f, 1f, false); }
         public static Color GetCthulhuColor(Color color, float min, float max, bool clamp)
         {
             return GetTimedColor(Color.DarkCyan, color, min, max, clamp);
         }
+
+        public static Color GetShenColorBrightInvert(Color color) { return GetShenColor(color, 1f, 0.6f, true); }
+        public static Color GetShenColorDim(Color color) { return GetShenColor(color, 0.4f, 1f, false); }
+        public static Color GetShenColorBright(Color color) { return GetShenColor(color, 0.6f, 1f, false); }
+        public static Color GetShenColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
+        }
+
+        public static Color GetPrismColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
+        public static Color GetPrismColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
+        public static Color GetPrismColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
+        public static Color GetPrismColor(Color color, float min, float max, bool clamp)
+        {
+            Player player = Main.player[Main.myPlayer];
+            Mod mod = AAMod.instance;
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+
+            Color currentColor = AAColor.TerraGlow;
+
+            if (modPlayer.Terrarium)
+            {
+                currentColor = AAColor.TerraGlow;
+            }
+            else if (player.ZoneCorrupt)
+            {
+                currentColor = AAColor.Corruption;
+            }
+            else if (player.ZoneCrimson)
+            {
+                currentColor = AAColor.Crimson;
+            }
+            else if (player.ZoneHoly)
+            {
+                currentColor = AAColor.Hallow;
+            }
+            else if (player.ZoneSnow)
+            {
+                currentColor = AAColor.Snow;
+            }
+            else if (player.ZoneDesert || player.ZoneUndergroundDesert)
+            {
+                currentColor = AAColor.Desert;
+            }
+            else if (player.ZoneJungle)
+            {
+                currentColor = AAColor.Jungle;
+            }
+            else if (player.ZoneDungeon)
+            {
+                currentColor = AAColor.Dungeon;
+            }
+            else if (player.ZoneBeach)
+            {
+                currentColor = AAColor.Ocean;
+            }
+            else if (player.ZoneGlowshroom)
+            {
+                currentColor = AAColor.TODE;
+            }
+            else if (player.ZoneUnderworldHeight)
+            {
+                currentColor = AAColor.Hell;
+            }
+            else if (player.ZoneRockLayerHeight)
+            {
+                currentColor = AAColor.Cavern;
+            }
+            else if (modPlayer.ZoneInferno)
+            {
+                currentColor = AAColor.Inferno;
+            }
+            else if (modPlayer.ZoneMire)
+            {
+                currentColor = AAColor.Mire;
+            }
+            else if (modPlayer.ZoneMush)
+            {
+                currentColor = AAColor.Mushroom;
+            }
+            else if (modPlayer.ZoneVoid)
+            {
+                currentColor = AAColor.ZeroShield;
+            }
+            else if (modPlayer.ZoneStorm)
+            {
+                currentColor = AAColor.Storm;
+            }
+            else if (modPlayer.ZoneStorm)
+            {
+                currentColor = AAColor.Storm;
+            }
+            else if (player.ZoneSkyHeight)
+            {
+                currentColor = AAColor.Sky;
+            }
+            else
+            {
+                currentColor = AAColor.TerraGlow;
+            }
+            return GetTimedColor(currentColor, color, min, max, clamp);
+        }
+        
 
         public override bool Drop(int i, int j, int type)
         {

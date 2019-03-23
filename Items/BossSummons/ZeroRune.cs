@@ -95,7 +95,7 @@ Only craftable in expert mode");
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            RuneRecipe recipe = new RuneRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 10);
             recipe.AddIngredient(null, "UnstableSingularity", 20);
             recipe.AddTile(null, "ACS");

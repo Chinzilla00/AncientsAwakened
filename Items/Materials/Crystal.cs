@@ -8,16 +8,14 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class CrimsonCrystal : ModItem
+    public class Crystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
-        
+
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crimson Prism");
-            Tooltip.SetDefault("Imbued with the carnal energy of the flesh-ridden wasteland");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
+            DisplayName.SetDefault("Biome Prism");
+            Tooltip.SetDefault("A magical prism that can be enhanced with the power of a biome.");
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -41,6 +39,58 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Crimson.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Prism", 5);
+            recipe.AddTile(null, "TerraPrism");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
+
+    public class CrimsonCrystal : ModItem
+    {
+        public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
+        
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Crimson Prism");
+            Tooltip.SetDefault("Imbued with the carnal energy of the flesh-ridden wasteland");
+        }
+
+        // TODO -- Velocity Y smaller, post NewItem?
+        public override void SetDefaults()
+        {
+            Item refItem = new Item();
+            refItem.SetDefaults(ItemID.SoulofSight);
+            item.width = refItem.width;
+            item.height = refItem.height;
+            item.maxStack = 999;
+            item.value = 10000;
+            item.rare = 8;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return AAColor.Crimson;
+        }
+
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, AAColor.Crimson.ToVector3() * 0.55f * Main.essScale);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.FleshGrass);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class CorruptionCrystal : ModItem
@@ -51,8 +101,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Corruption Prism");
             Tooltip.SetDefault("Imbued with the shadowy essence of the decaying woodlands");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -76,6 +124,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Corruption.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.CorruptGrass);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class DungeonCrystal : ModItem
@@ -86,8 +144,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Dungeon Prism");
             Tooltip.SetDefault("Imbued with the ghastly spirits of the ancient crypt");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -111,6 +167,34 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Dungeon.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.AddTile(TileID.BlueDungeonBrick);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.AddTile(TileID.PinkDungeonBrick);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.AddTile(TileID.GreenDungeonBrick);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+        }
     }
 
     public class HallowCrystal : ModItem
@@ -121,11 +205,8 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Hallow Prism");
             Tooltip.SetDefault("Imbued with the holy light of the blessed plains");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
-        // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
             Item refItem = new Item();
@@ -146,6 +227,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Hallow.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.HallowedGrass);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class HellCrystal : ModItem
@@ -156,8 +247,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Hell Prism");
             Tooltip.SetDefault("Imbued with the sinful influence of the unholy caverns");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -181,6 +270,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Hell.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.Ash);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     /*public class SkyCrystal : ModItem
@@ -191,8 +290,8 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Sky Prism");
             Tooltip.SetDefault("Imbued with the celestial wonder of the expansive ozone");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
+            
+           
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -226,6 +325,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Sky.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.Cloud);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }*/
 
     public class OceanCrystal : ModItem
@@ -236,8 +345,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Ocean Prism");
             Tooltip.SetDefault("Imbued with the calming sounds of the seven seas");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -261,6 +368,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Ocean.ToVector3() * 0.55f * Main.essScale);
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.Sand);
+            recipe.needWater = true;
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class IceCrystal : ModItem
@@ -271,8 +388,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Snow Prism");
             Tooltip.SetDefault("Imbued with the chilling winds of the frozen mountains");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -296,6 +411,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Snow.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.SnowBlock);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class DesertCrystal : ModItem
@@ -306,8 +431,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Desert Prism");
             Tooltip.SetDefault("Imbued with the heated rays of the sandy wastes");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -331,6 +454,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Desert.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.Sand);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class JungleCrystal : ModItem
@@ -341,8 +474,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Jungle Prism");
             Tooltip.SetDefault("Imbued with the rythmic beat of the tribal rainforest");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -366,6 +497,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Jungle.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.JungleGrass);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class InfernoCrystal : ModItem
@@ -376,8 +517,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Inferno Prism");
             Tooltip.SetDefault("Imbued with the blazing fury of the fire-ravaged mountains");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -401,6 +540,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Inferno.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(null, "InfernoGrass");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class MireCrystal : ModItem
@@ -411,8 +560,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Mire Prism");
             Tooltip.SetDefault("Imbued with the abyssal wrath of the dark bogs");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -436,6 +583,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Mire.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(null, "MireGrass");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class TerraCrystal : ModItem
@@ -446,8 +603,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Terra Prism");
             Tooltip.SetDefault("Imbued with the unified harmony of the land of Terraria");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -471,6 +626,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.TerraGlow.ToVector3() * 0.55f * Main.essScale);
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(TileID.Grass);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class ChaosCrystal : ModItem
@@ -481,8 +646,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Chaos Prism");
             Tooltip.SetDefault("Imbued with the discordian flames of chaos");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -506,6 +669,16 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Shen3.ToVector3() * 0.55f * Main.essScale);
         }
+        
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "MireCrystal");
+            recipe.AddIngredient(null, "InfernoCrystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 
     public class VoidCrystal : ModItem
@@ -516,8 +689,6 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Void Prism");
             Tooltip.SetDefault("Imbued with the echoes of unyielding malice");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6,4));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
@@ -541,113 +712,15 @@ namespace AAMod.Items.Materials
         {
             Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
         }
-    }
 
-    public class CrystalDrop : GlobalNPC
-    {
-        public override void NPCLoot(NPC npc)
+        public override void AddRecipes()
         {
-            if (NPC.downedPlantBoss)
-            {
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<MireCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<InfernoCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneVoid)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<VoidCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<SnowCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDesert || Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<DesertCrystal>(), 1);
-                    }
-                }
-                if (BaseExtensions.InZone(Main.player[Player.FindClosest(npc.position, npc.width, npc.height)], "Ocean", null))
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<OceanCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneHoly)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<HallowCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<DungeonCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<JungleCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<HellCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).Terrarium)
-                {
-                    if (Main.rand.Next(0, 100) >= 99)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<TerraCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno || Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire)
-                {
-                    if (Main.rand.Next(0, 100) >= 99.5f)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<ChaosCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)
-                {
-                    if (Main.rand.Next(0, 100) >= 99f)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<CorruptionCrystal>(), 1);
-                    }
-                }
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)
-                {
-                    if (Main.rand.Next(0, 100) >= 99f)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<CrimsonCrystal>(), 1);
-                    }
-                }
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Crystal");
+            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(null, "Doomstone");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
