@@ -161,7 +161,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
-				for(int m = 0; m < 8; m++)
+				for(int m = 0; m < 12; m++)
 				{
 					Vector2 offset = new Vector2(Main.rand.Next(npc.width), Main.rand.Next(npc.height));
 					Gore.NewGore(npc.position + offset, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore3"), 1f + (float)Main.rand.NextDouble() * 0.5f);

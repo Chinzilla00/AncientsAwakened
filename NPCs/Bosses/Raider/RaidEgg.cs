@@ -39,6 +39,12 @@ namespace AAMod.NPCs.Bosses.Raider
         public static Texture2D glowTex = null;
         public Color color;
 
+        public override void NPCLoot()
+        {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidEggGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidEggGore2"), 1f);
+        }
+
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             if (glowTex == null)

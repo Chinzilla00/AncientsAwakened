@@ -478,7 +478,10 @@ namespace AAMod
                 || npc.type == NPCID.GoblinTinkerer) 
                 && NPC.downedGoblins)
             {
-                    Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(2,3));
+                if (Main.rand.Next(20) == 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(1, 2));
+                }
                 
             }
 

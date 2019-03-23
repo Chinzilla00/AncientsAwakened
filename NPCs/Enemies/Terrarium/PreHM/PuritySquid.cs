@@ -30,6 +30,11 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.noTileCollide = false;
             npc.noGravity = true;
         }
+        
+        public override Color? GetAlpha(Color drawColor)
+        {
+            return Color.White;
+        }
 
         public override void AI()
         {

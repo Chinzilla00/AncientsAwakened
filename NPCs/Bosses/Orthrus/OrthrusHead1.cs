@@ -38,6 +38,22 @@ namespace AAMod.NPCs.Bosses.Orthrus
             return 0f;
         }
 
+        public override void NPCLoot()
+        {
+            if (npc.type == mod.NPCType("OrthrusHead2"))
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGoreB"), 1f);
+            }
+            else
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGoreR"), 1f);
+            }
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore4"), 1f);
+        }
+
         public Orthrus Body
 		{
 			get

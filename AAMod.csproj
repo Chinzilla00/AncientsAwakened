@@ -4738,7 +4738,6 @@
     <Content Include="NPCs\Bosses\Raider\RaidBoom.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Raider\Raider1.png" />
     <Content Include="NPCs\Bosses\Raider\Raider.png" />
     <Content Include="NPCs\Bosses\Raider\Raider_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Raider\Raidmini.png" />

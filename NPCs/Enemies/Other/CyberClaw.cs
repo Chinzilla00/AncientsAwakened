@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
+using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,7 +34,16 @@ namespace AAMod.NPCs.Enemies.Other
         {
             npc.noGravity = true;
             BaseMod.BaseAI.AIEye(npc, ref npc.ai, false, true, 0.13f, 0.08f, 2f, 1.1f, 1.2f, 1.2f);
-            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
+            if (npc.velocity.X > 0f)
+            {
+                npc.spriteDirection = 1;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+            }
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = -1;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 3.14f;
+            }
             npc.frameCounter++;
             if (npc.frameCounter >= 8)
             {

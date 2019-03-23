@@ -92,6 +92,13 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public override void NPCLoot()
         {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore4"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore5"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RetrieverGore6"), 1f);
+
             if (Main.rand.Next(10) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RetrieverTrophy"));

@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             projectile.extraUpdates = 1;
         }
 
+
+
         public override void AI()
         {
             if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)

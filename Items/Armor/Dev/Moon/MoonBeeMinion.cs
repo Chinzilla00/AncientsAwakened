@@ -250,22 +250,13 @@ namespace AAMod.Items.Armor.Dev.Moon
 
         public override bool PreAI()
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 16)
+            if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-            }
-            projectile.frame = projectile.frameCounter / 4;
-            if (projectile.ai[1] > 0f && projectile.ai[1] < 16f)
-            {
-                projectile.frame += 4;
-            }
-            if (Main.rand.Next(6) == 0)
-            {
-                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
-                Main.dust[num25].velocity *= 0.3f;
-                Main.dust[num25].noGravity = true;
-                Main.dust[num25].noLight = true;
+                if (++projectile.frame > 2)
+                {
+                    projectile.frame = 0;
+                }
             }
             return true;
         }

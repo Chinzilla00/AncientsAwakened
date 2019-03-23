@@ -10,6 +10,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 {
     public class RetrieverShot : ModProjectile
     {
+       
 
         public override void SetDefaults()
         {
@@ -41,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57;
 
             if (Main.rand.Next(1) == 0)
             {
