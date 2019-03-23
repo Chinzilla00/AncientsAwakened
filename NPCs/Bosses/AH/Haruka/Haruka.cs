@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void SetDefaults()
         {
             npc.width = 84;
-            npc.height = 72;
+            npc.height = 70;
             npc.friendly = false;
             npc.damage = 80;
             npc.defense = 50;
@@ -216,19 +216,19 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     throwing = false;
                     npc.netUpdate = true;
                 }
-                if (internalAI[2] < 7 && (int)internalAI[1] == 4) //Throwing
+                if (internalAI[2] < 7 && internalAI[1] == 4) //Throwing
                 {
                     Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                     Vector2 fireTarget = npc.Center;
                     int projType = mod.ProjectileType<HarukaKunai>();
                     BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                 }
-                if ((internalAI[2] < 3 || (int)internalAI[2] > 5) && !throwing) //Not throwing yet
+                if ((internalAI[2] < 3 || internalAI[2] > 5) && !throwing) //Not throwing yet
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 3;
                 }
-                if ((internalAI[2] < 6 || (int)internalAI[2] > 8) && throwing) //Throwing
+                if ((internalAI[2] < 6 ||  internalAI[2] > 8) && throwing) //Throwing
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 6;
@@ -370,7 +370,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_JUMP || internalAI[0] == AISTATE_THROW) //When jumping/throwing stuff at the player
             {
-                BaseAI.AISlime(npc, ref npc.ai, false, 60, 18f, -18f, 20f, -20f);
+                BaseAI.AISlime(npc, ref npc.ai, false, 60, 20f, -18f, 15f, -20f);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When Turning invisible and slashing
             {
@@ -383,7 +383,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else //When spinning
             {
-                BaseAI.AIPounce(npc, player.Center, 5f, 9f, -5.2f, 0, 200);
+                if (spin)
+                {
+                    SelenianSpin(ref npc.ai);
+                }
             }
         }
 
@@ -429,6 +432,71 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
+        }
+
+
+        public void SelenianSpin(ref float[] AI)
+        {
+            npc.reflectingProjectiles = false;
+            npc.takenDamageMultiplier = 1f;
+            if (AI[2] > 0f)
+            {
+                AI[2] -= 1f;
+            }
+            if (AI[2] == 0f)
+            {
+                if (((Main.player[npc.target].Center.X < npc.Center.X && npc.direction < 0) || (Main.player[npc.target].Center.X > npc.Center.X && npc.direction > 0)) && Collision.CanHit(npc.Center, 1, 1, Main.player[npc.target].Center, 1, 1))
+                {
+                    AI[2] = -1f;
+                    npc.netUpdate = true;
+                    npc.TargetClosest(true);
+                }
+            }
+            else
+            {
+                if (AI[2] < 0f && AI[2] > -6)
+                {
+                    AI[2] -= 1f;
+                    npc.velocity.X = npc.velocity.X * 0.9f;
+                    return;
+                }
+                if (AI[2] == -6)
+                {
+                    AI[2] -= 1f;
+                    npc.TargetClosest(true);
+                    Vector2 vec = npc.DirectionTo(Main.player[npc.target].Top + new Vector2(0f, -30f));
+                    if (vec.HasNaNs())
+                    {
+                        vec = Vector2.Normalize(new Vector2(npc.spriteDirection, -1f));
+                    }
+                    npc.velocity = vec * 16f;
+                    npc.netUpdate = true;
+                    return;
+                }
+                if (AI[2] < -6)
+                {
+                    AI[2] -= 1f;
+                    if (npc.velocity.Y == 0f)
+                    {
+                        AI[2] = 60f;
+                    }
+                    else if (AI[2] < (-16))
+                    {
+                        npc.velocity.Y = npc.velocity.Y + 0.15f;
+                        if (npc.velocity.Y > 24f)
+                        {
+                            npc.velocity.Y = 24f;
+                        }
+                    }
+                    npc.reflectingProjectiles = true;
+                    npc.takenDamageMultiplier = 3f;
+                    if (npc.justHit)
+                    {
+                        AI[2] = 60f;
+                        npc.netUpdate = true;
+                    }
+                }
+            }
         }
     }
 }

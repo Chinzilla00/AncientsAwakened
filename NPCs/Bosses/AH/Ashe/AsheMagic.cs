@@ -28,13 +28,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (projectile.timeLeft > 0)
-            {
-                projectile.timeLeft--;
-            }
+            projectile.timeLeft--;
             if (projectile.timeLeft == 0)
             {
-                projectile.Kill();
+                Kill(projectile.timeLeft);
             }
 
             projectile.frameCounter++;
@@ -69,6 +66,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("AsheMagicSpark"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }
+            projectile.active = false;
         }
     }
 }

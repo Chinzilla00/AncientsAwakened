@@ -467,13 +467,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (AI[0] == 0) //move to starting charge position
             {
-                Vector2 point = targetPlayer.Center + new Vector2(-250f, -250f);
+                Vector2 point = targetPlayer.Center + new Vector2(250f, 250f);
                 MoveToPoint(point);
             }
             else
             if (AI[0] == 1) //move to starting charge position
             {
-                Vector2 point = targetPlayer.Center + new Vector2(0, -250f);
+                Vector2 point = targetPlayer.Center + new Vector2(0, 250f);
                 MoveToPoint(point);
             }
             else
