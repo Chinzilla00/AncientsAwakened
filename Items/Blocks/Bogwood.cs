@@ -16,8 +16,7 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("Bogwood"); //put your CustomBlock Tile name
-            item.ammo = item.type;
+            item.createTile = mod.TileType("Bogwood");
         }
 
         public override void SetStaticDefaults()

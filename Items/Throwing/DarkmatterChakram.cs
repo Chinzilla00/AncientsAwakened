@@ -25,7 +25,7 @@ namespace AAMod.Items.Throwing
             item.useStyle = 1;
 			item.knockBack = 0;
 			item.value = 100000;
-			item.rare = 6;
+			item.rare = 11;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("DMC");
 			item.UseSound = SoundID.Item1;
@@ -66,8 +66,8 @@ namespace AAMod.Items.Throwing
         }
         public override void AddRecipes()
         {
-                ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddIngredient(null, "DarkMatter", 15);
+            ModRecipe recipe = new ModRecipe(mod);
+		    recipe.AddIngredient(null, "DarkMatter", 15);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

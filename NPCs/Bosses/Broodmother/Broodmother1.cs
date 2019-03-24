@@ -11,7 +11,7 @@ using System.IO;
 namespace AAMod.NPCs.Bosses.Broodmother
 {
     [AutoloadBossHead]
-    public class Broodmother : ModNPC
+    public class Broodmother1 : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -78,18 +78,13 @@ namespace AAMod.NPCs.Bosses.Broodmother
             return null;
         }
 
-        public float[] internalAI = new float[6];
+        public float[] internalAI = new float[1];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
                 writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
-                writer.Write((float)internalAI[4]);
-                writer.Write((float)internalAI[5]);
             }
         }
 
@@ -99,14 +94,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
-                internalAI[4] = reader.ReadFloat();
-                internalAI[5] = reader.ReadFloat();
             }
         }
-
 
         public override void NPCLoot()
         {
@@ -194,7 +183,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public int projectileInterval = 300; //how long until you fire projectiles
         private int projectileTimer = 0;
-        private float[] FireTimer = new float[1];
 		public const float AISTATE_RUNAWAY = -1f; //run awaaaaay
 		public const float AISTATE_FLYABOVEPLAYER = 0f; //fly above the player
 		public const float AISTATE_FLYBACKTOPLAYER = 1f; //uses this to fly back to the player after laying eggs, no idea why it's the second state lol
@@ -202,50 +190,21 @@ namespace AAMod.NPCs.Bosses.Broodmother
 		public const float AISTATE_CHARGEATPLAYER = 3f; //charge the player from the side
 		public const float AISTATE_SPAWNEGGS = 4f; //spawn eggs
 
-
-
         public override void AI()
         {
 			if(Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
 			{
-                if (internalAI[5] == -1)
-                {
-                    internalAI[5] = Main.rand.Next(2);
-                }
-                if (internalAI[5] == 0)
-                {
-                    projectileTimer++;
-                    if (projectileTimer >= projectileInterval)
-                    {
-                        if (projectileTimer > (projectileInterval + 120))
-                        {
-                            projectileTimer = 0;
-                            internalAI[5] = -1;
-                        }
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
-                        firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType<BroodBreath>(), ref FireTimer[0], 5, npc.damage / 2, 12);
-                        Main.projectile[projID].netUpdate = true;
-                    }
-                }
-                else
-                {
-                    projectileTimer++;
-                    if (projectileTimer >= projectileInterval && projectileTimer % 10 == 0)
-                    {
-                        if (projectileTimer > (projectileInterval + 50))
-                        {
-                            projectileTimer = 0;
-                            internalAI[5] = -1;
-                        }
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
-                        firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);
-                        Main.projectile[projID].netUpdate = true;
-                    }
-                }
+				projectileTimer++;
+				if (projectileTimer >= projectileInterval && projectileTimer % 10 == 0)
+				{
+					if(projectileTimer > (projectileInterval + 50))
+						projectileTimer = 0;
+					Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+					Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
+					firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
+					int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);
+					Main.projectile[projID].netUpdate = true;
+				}
 			}
             int numberOfMinions = 7; //max number of eggs/broodminis to spawn
             bool DespawnAttempt = false;
@@ -256,7 +215,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active || Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 npc.TargetClosest(true);
-                internalAI[4] = 0;
+                internalAI[0] = 0;
                 Vector2 vector204 = Main.player[npc.target].Center - npc.Center;
                 if (Main.player[npc.target].dead || vector204.Length() > 3000f)
                 {
@@ -276,13 +235,13 @@ namespace AAMod.NPCs.Bosses.Broodmother
 				npc.ai[1] = 0;
 				npc.ai[2] = 0;
 				npc.ai[3] = 0;
-                internalAI[4]++;
+                internalAI[0]++;
 
 				if(npc.timeLeft < 10) 
 					npc.timeLeft = 10;
 				npc.velocity.X *= 0.9f;
 
-                if (internalAI[4] > 300)
+                if (internalAI[0] > 300)
                 {
                     npc.velocity.Y -= 0.1f;
                     if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
@@ -294,7 +253,64 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (npc.ai[0] == AISTATE_FLYABOVEPLAYER)
             {
                 npc.TargetClosest(true);
-                BaseAI.AISpaceOctopus(npc, ref internalAI, .15f, 4, 250);
+                if (npc.Center.X < Main.player[npc.target].Center.X - 2f)
+                {
+                    npc.direction = -1;
+                }
+                if (npc.Center.X > Main.player[npc.target].Center.X + 2f)
+                {
+                    npc.direction = 1;
+                }
+                npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.4f)) / 10f;
+                if (npc.collideX)
+                {
+                    npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.6f);
+                    if (npc.velocity.X > 5f)
+                    {
+                        npc.velocity.X = 5f;
+                    }
+                    if (npc.velocity.X < -5f)
+                    {
+                        npc.velocity.X = -5f;
+                    }
+                }
+                if (npc.collideY)
+                {
+                    npc.velocity.Y = npc.velocity.Y * (-npc.oldVelocity.Y * 0.6f);
+                    if (npc.velocity.Y > 5f)
+                    {
+                        npc.velocity.Y = 5f;
+                    }
+                    if (npc.velocity.Y < -5f)
+                    {
+                        npc.velocity.Y = -5f;
+                    }
+                }
+                Vector2 value51 = Main.player[npc.target].Center - npc.Center;
+                value51.Y -= 200f;
+                if (value51.Length() > 800f)
+                {
+                    npc.ai[0] = 1f;
+                    npc.ai[1] = 0f;
+                    npc.ai[2] = 0f;
+                    npc.ai[3] = 0f;
+                }
+                else if (value51.Length() > 80f)
+                {
+                    float scaleFactor15 = 6f;
+                    float num1306 = 30f;
+                    value51.Normalize();
+                    value51 *= scaleFactor15;
+                    npc.velocity = ((npc.velocity * (num1306 - 1f)) + value51) / num1306;
+                }
+                else if (npc.velocity.Length() > 2f)
+                {
+                    npc.velocity *= 0.99f;
+                }
+                else if (npc.velocity.Length() < 1f)
+                {
+                    npc.velocity *= 1.11f;
+                }
                 npc.ai[1] += 1f;
                 if (npc.ai[1] >= 180f && Main.netMode != 1)
                 {

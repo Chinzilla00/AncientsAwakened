@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
             {
                 Dust dust1;
                 Dust dust2;
-                Vector2 position = projectile.position;
+                Vector2 position = projectile.Center;
                 dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.VoidDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
                 dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.ZeroDust>(), 4.736842f, 0f, 46, default(Color), 1f)];
                 dust1.noGravity = true;

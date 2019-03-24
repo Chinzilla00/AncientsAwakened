@@ -20,7 +20,7 @@ namespace AAMod.Items.Tools
             item.tileBoost += 3;
             item.knockBack = 3;
             item.value = 1000000;
-            item.rare = 11;
+            item.rare = 8;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
