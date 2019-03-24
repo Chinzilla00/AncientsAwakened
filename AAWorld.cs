@@ -1003,44 +1003,6 @@ namespace AAMod
                 }
             }
 
-            int[] itemsToPlaceInInfernoChest = new int[] { mod.ItemType("DragonriderStaff") };
-            int itemsToPlaceInInfernoChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("InfernoChest")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInInfernoChestsChoice = Main.rand.Next(itemsToPlaceInInfernoChest.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInInfernoChest[itemsToPlaceInInfernoChestsChoice]);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            int[] itemsToPlaceInMireChest = new int[] { mod.ItemType("BogBomb") };
-            int itemsToPlaceInMireChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("MireChest")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInMireChestsChoice = Main.rand.Next(itemsToPlaceInMireChest.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInMireChest[itemsToPlaceInMireChestsChoice]);
-                            break;
-                        }
-                    }
-                }
-            }
-
             int[] itemsToPlaceInSunkenChest = new int[] { mod.ItemType("CursedCompass") };
             int itemsToPlaceInSunkenChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
@@ -1074,12 +1036,18 @@ namespace AAMod
                     for (int i = 0; i < Main.maxTilesX / 28; ++i) //Repeats 700 times for small world, 1050 times for medium world, and 1400 times for large world.
                     {
                         int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
-                        int Y = WorldGen.genRand.Next(80); //Y position, centre.
+                        int Y = WorldGen.genRand.Next(70); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
+                        {
                             for (int y = Y - radius; y <= Y + radius; y++)
+                            {
                                 if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
+                                {
                                     WorldGen.PlaceTile(x, y, mod.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                }
+                            }
+                        }
                     }
                 }
             }

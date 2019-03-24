@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 3f, 1.5f, true, 300);
+            BaseAI.AIEye(npc, ref npc.ai, false, true, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
 
             if (npc.wet)
             {
