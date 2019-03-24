@@ -366,7 +366,10 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            if (Main.rand.Next(100) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+            }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

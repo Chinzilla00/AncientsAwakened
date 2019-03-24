@@ -28,16 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
-            {
-                projectile.tileCollide = true;
-            }
-            if ((double)projectile.position.Y < Main.worldSurface * 16.0)
-            {
-                projectile.tileCollide = true;
-            }
-            projectile.scale = projectile.ai[1];
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
         }
 
         public override void Kill(int timeLeft)
@@ -47,16 +38,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
             double deltaAngle = spread / 8f;
             Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<AsheBoom>(), projectile.damage, 2);
-            for (int num468 = 0; num468 < 20; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].velocity *= 2f;
-            }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

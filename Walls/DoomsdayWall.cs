@@ -12,7 +12,8 @@ namespace AAMod.Walls
 			dustType = mod.DustType("DoomDust");
 			AddMapEntry(new Color(30, 30, 30));
             soundType = 21;
-            drop = mod.ItemType("DoomsdayWall");   //put your CustomBlock name
+            drop = mod.ItemType("DoomsdayWall");
+            Main.wallHouse[Type] = true;
         }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

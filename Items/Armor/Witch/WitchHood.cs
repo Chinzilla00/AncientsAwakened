@@ -55,9 +55,6 @@ The Fire spirit becomes more powerful the less mana you have";
             player.minionDamage += .2f;
             player.maxMinions += 4;
         }
-
-		public override void AddRecipes()
-		{
-		}
+        
 	}
 }

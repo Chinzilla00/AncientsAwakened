@@ -96,13 +96,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
-
-            for (int num468 = 0; num468 < 20; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].velocity *= 2f;
-            }
+            
             Kill(0);
         }
     }

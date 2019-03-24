@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using System;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Other
@@ -32,7 +33,16 @@ namespace AAMod.NPCs.Enemies.Other
         public override void AI()
         {
             AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
-            npc.rotation = (float)System.Math.Atan2(npc.velocity.Y, npc.velocity.X);
+            if (npc.velocity.X > 0f)
+            {
+                npc.spriteDirection = 1;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+            }
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = -1;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 3.14f;
+            }
 
             npc.frameCounter++;
             if (npc.frameCounter >= 8)

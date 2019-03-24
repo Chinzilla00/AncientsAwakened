@@ -44,16 +44,6 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
                 }
             }
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "EventideAbyssium", 18);
-            recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddIngredient(null, "DepthHakama", 1);
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        
     }
 }

@@ -1,27 +1,26 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee     //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
+namespace AAMod.Items.Melee
 {
     public class DarkShredders : ModItem
     {
         public override void SetDefaults()
         {
 
-            item.damage = 115;    //The damage stat for the Weapon.
-            item.melee = true;     //This defines if it does Melee damage and if its effected by Melee increasing Armor/Accessories.
-            item.width = 80;    //The size of the width of the hitbox in pixels.
-            item.height = 80;    //The size of the height of the hitbox in pixels.
-
-            item.useTime = 6;   //How fast the Weapon is used.
-            item.useAnimation = 6;     //How long the Weapon is used for.
+            item.damage = 115;
+            item.melee = true;
+            item.width = 80;
+            item.height = 80;
+            item.useTime = 6;
+            item.useAnimation = 6;
             item.channel = true;
-            item.useStyle = 100;    //The way your Weapon will be used, 1 is the regular sword swing for example
-            item.knockBack = 3f;    //The knockback stat of your Weapon.
-            item.value = Item.buyPrice(1, 0, 0, 0); // How much the item is worth, in copper coins, when you sell it to a merchant. It costs 1/5th of this to buy it back from them. An easy way to remember the value is platinum, gold, silver, copper or PPGGSSCC (so this item price is 10gold)
-            item.rare = 9;   //The color the title of your Weapon when hovering over it ingame                    
-            item.shoot = mod.ProjectileType("DarkShredders");  //This defines what type of projectile this weapon will shoot  
-            item.noUseGraphic = true; // this defines if it does not use graphic
+            item.useStyle = 100;
+            item.knockBack = 3f;
+            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.rare = 11;      
+            item.shoot = mod.ProjectileType("DarkShredders");
+            item.noUseGraphic = true;
         }
         public override void AddRecipes()
         {
@@ -39,7 +38,7 @@ namespace AAMod.Items.Melee     //We need this to basically indicate the folder 
         }
 
  
-        public override bool UseItemFrame(Player player)     //this defines what frame the player use when this weapon is used
+        public override bool UseItemFrame(Player player)
         {
             player.bodyFrame.Y = 3 * player.bodyFrame.Height;
             return true;

@@ -35,6 +35,11 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.noGravity = true;
             npc.noTileCollide = true;
         }
+
+        public override Color? GetAlpha(Color drawColor)
+        {
+            return Color.White ;
+        }
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
@@ -112,7 +117,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 					}
 				}
 			}
-			float speed = 4f;
+			float speed = 3f;
 			float acceleration = 0.1f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -341,6 +346,12 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             }
             return false;
         }
+
+
+        public override Color? GetAlpha(Color drawColor)
+        {
+            return Color.White;
+        }
     }
 
     public class TerraWeaverTail : TerraWeaver
@@ -437,6 +448,11 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
+        }
+
+        public override Color? GetAlpha(Color drawColor)
+        {
+            return Color.White;
         }
     }
     

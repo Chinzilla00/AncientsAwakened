@@ -97,6 +97,7 @@
     <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
+    <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
     <Compile Include="Buffs\DemonBuff.cs" />
@@ -292,6 +293,11 @@
     <Compile Include="Items\Armor\Depth\DepthFukumen.cs" />
     <Compile Include="Items\Armor\Depth\DepthGi.cs" />
     <Compile Include="Items\Armor\Depth\DepthHakama.cs" />
+    <Compile Include="Items\Armor\Dev\Moon\MoonBeeMinion.cs" />
+    <Compile Include="Items\Armor\Dev\Moon\MoonBootsA.cs" />
+    <Compile Include="Items\Armor\Dev\Moon\MoonHoodA.cs" />
+    <Compile Include="Items\Armor\Dev\Moon\MoonRobeA.cs" />
+    <Compile Include="Items\Armor\Dev\Moon\MoonProjectile.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteBreastplate.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteGreaves.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteVisor.cs" />
@@ -445,6 +451,7 @@
     <Compile Include="Items\Blocks\PagodaBox.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
+    <Compile Include="Items\Blocks\TerraPrismStation.cs" />
     <Compile Include="Items\Blocks\Transmuter.cs" />
     <Compile Include="Items\Blocks\AncientForge.cs" />
     <Compile Include="Items\Blocks\Apocalyptite.cs" />
@@ -557,6 +564,7 @@
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
+    <Compile Include="Items\Boss\AH\HarukaKunai.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
@@ -986,12 +994,18 @@
     <Compile Include="Items\Potions\HydratoxinFlask.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
     <Compile Include="Items\Ranged\Alien_Rifle.cs" />
+    <Compile Include="Items\Ranged\Ammo\ChaosArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\DarkmatterArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\DragonArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\DragonfireArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\DragonfireBullet.cs" />
     <Compile Include="Items\Ranged\Ammo\DragonfireDart.cs" />
     <Compile Include="Items\Ranged\Ammo\Energy_Cell.cs" />
+    <Compile Include="Items\Ranged\Ammo\HydratoxinArrow.cs" />
+    <Compile Include="Items\Ranged\Ammo\HydratoxinBullet.cs" />
+    <Compile Include="Items\Ranged\Ammo\HydratoxinDart.cs" />
+    <Compile Include="Items\Ranged\Ammo\M79Round.cs" />
+    <Compile Include="Items\Ranged\Ammo\OrderArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\RadiumArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\ReaperArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\TerraArrow.cs" />
@@ -1246,6 +1260,8 @@
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheSpark.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheStrike.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\HarukaProj.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody.cs" />
@@ -1277,8 +1293,10 @@
     <Compile Include="NPCs\Bosses\Akuma\HomingBoom.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBall.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBoom.cs" />
+    <Compile Include="NPCs\Bosses\Broodmother\BroodBreath.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
+    <Compile Include="NPCs\Bosses\Broodmother\Broodmother1.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
     <Compile Include="NPCs\Bosses\Djinn\Djinnado.cs" />
     <Compile Include="NPCs\Bosses\Djinn\Djinn.cs" />
@@ -1551,6 +1569,8 @@
     <Compile Include="Projectiles\DragonfireDart.cs" />
     <Compile Include="Projectiles\DummyExplosionTerra.cs" />
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
+    <Compile Include="Projectiles\FreedomBall.cs" />
+    <Compile Include="Projectiles\HarukaKunaiF.cs" />
     <Compile Include="Projectiles\MobianShotCharged.cs" />
     <Compile Include="Projectiles\MobianShot.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
@@ -1822,6 +1842,7 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\TerraPrism.cs" />
     <Compile Include="Tiles\PrismOre.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
     <Compile Include="Tiles\AbyssWoodSolid.cs" />
@@ -2171,6 +2192,7 @@
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\EXBuffTemplate.png" />
+    <Content Include="Buffs\Fishnado.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
@@ -2180,6 +2202,7 @@
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\Irradiated.png" />
     <Content Include="Buffs\LungMinion.png" />
+    <Content Include="Buffs\MB.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Moonraze.png" />
     <Content Include="Buffs\Mudkip.png" />
@@ -2328,6 +2351,8 @@
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
     <Content Include="Glowmasks\Apocalyptite_Glow.png" />
     <Content Include="Glowmasks\ApollosWrath_Glow.png" />
+    <Content Include="Glowmasks\AsheEyes.png" />
+    <Content Include="Glowmasks\Ashe_Glow.png" />
     <Content Include="Glowmasks\Battery_Glow.png" />
     <Content Include="Glowmasks\Battlestar_Glow.png" />
     <Content Include="Glowmasks\BinaryReassemblerTile_Glow.png" />
@@ -2542,6 +2567,7 @@
     <Content Include="Glowmasks\HallamDevWeapon_Glow.png" />
     <Content Include="Glowmasks\HallowedForge_Glow.png" />
     <Content Include="Glowmasks\HaphestusForge_Glow.png" />
+    <Content Include="Glowmasks\Haruka_Glow.png" />
     <Content Include="Glowmasks\HeartstoneChestguard_Arms_Glow.png" />
     <Content Include="Glowmasks\HeartstoneChestguard_Body_Glow.png" />
     <Content Include="Glowmasks\HeartstoneChestguard_Female_Glow.png" />
@@ -2660,6 +2686,7 @@
     <Content Include="Glowmasks\PowerStone_Face_Glow.png" />
     <Content Include="Glowmasks\PowerStone_Glow.png" />
     <Content Include="Glowmasks\PrinceFishron_Glow.png" />
+    <Content Include="Glowmasks\PrismOre_Glow.png" />
     <Content Include="Glowmasks\QuantumFusionAccelerator_Glow.png" />
     <Content Include="Glowmasks\RadiantArcanum_Glow.png" />
     <Content Include="Glowmasks\RadiantDawn_Glow.png" />
@@ -2722,6 +2749,7 @@
     <Content Include="Glowmasks\SagittariusMini_Glow.png" />
     <Content Include="Glowmasks\SagittariusOrbiter_Glow.png" />
     <Content Include="Glowmasks\Sagittarius_Glow.png" />
+    <Content Include="Glowmasks\Scout_Glow.png" />
     <Content Include="Glowmasks\ScrapHeap_Glow.png" />
     <Content Include="Glowmasks\ScytheOfDecay_Glow.png" />
     <Content Include="Glowmasks\SearcherMinion_Glow.png" />
@@ -2786,6 +2814,7 @@
     <Content Include="Glowmasks\TerraCore_Glow.png" />
     <Content Include="Glowmasks\TerraCrystal_Glow.png" />
     <Content Include="Glowmasks\TerraPrism_Glow.png" />
+    <Content Include="Glowmasks\TerraPrism_Prism.png" />
     <Content Include="Glowmasks\TerraRoseShotEX_Glow.png" />
     <Content Include="Glowmasks\TerraRoseShot_Glow.png" />
     <Content Include="Glowmasks\TerraRose_Glow.png" />
@@ -3216,6 +3245,16 @@
     <Content Include="Items\Armor\Depth\DepthHakama.png" />
     <Content Include="Items\Armor\Depth\DepthHakama_Legs.png" />
     <Content Include="Items\Armor\Depth\DepthZugaikotso.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonBeeMinion.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonBootsA.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonBootsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonHoodA.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonHoodA_Head.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonProjectile.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonRobeA.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Body.png" />
+    <Content Include="Items\Armor\Dev\Moon\MoonRobeAFemale.png" />
     <Content Include="Items\Armor\Djinn\DjinnLegs.png" />
     <Content Include="Items\Armor\Djinn\DjinnTurban.png" />
     <Content Include="Items\Armor\Doomite\DoomiteBreastplate.png" />
@@ -3660,6 +3699,7 @@
     <Content Include="Items\Blocks\TechneciumForge.png" />
     <Content Include="Items\Blocks\TechneciumOre.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
+    <Content Include="Items\Blocks\TerraPrismStation.png" />
     <Content Include="Items\Blocks\TerrariumBox.png" />
     <Content Include="Items\Blocks\Torchice.png" />
     <Content Include="Items\Blocks\Torchsand.png" />
@@ -3703,6 +3743,7 @@
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
+    <Content Include="Items\Boss\AH\HarukaKunai.png" />
     <Content Include="Items\Boss\AH\Masamune.png" />
     <Content Include="Items\Boss\Akuma\AkumaATrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaBag.png" />
@@ -4174,13 +4215,17 @@
     <Content Include="Items\Potions\HydratoxinFlask.png" />
     <Content Include="Items\Potions\TheBigOne.png" />
     <Content Include="Items\Ranged\Alien_Rifle.png" />
-    <Content Include="Items\Ranged\Ammo\DarkArrow.png" />
+    <Content Include="Items\Ranged\Ammo\ChaosArrow.png" />
     <Content Include="Items\Ranged\Ammo\DarkmatterArrow.png" />
     <Content Include="Items\Ranged\Ammo\DragonArrow.png" />
     <Content Include="Items\Ranged\Ammo\DragonfireArrow.png" />
     <Content Include="Items\Ranged\Ammo\DragonfireBullet.png" />
     <Content Include="Items\Ranged\Ammo\DragonfireDart.png" />
     <Content Include="Items\Ranged\Ammo\Energy_Cell.png" />
+    <Content Include="Items\Ranged\Ammo\HydratoxinArrow.png" />
+    <Content Include="Items\Ranged\Ammo\HydratoxinBullet.png" />
+    <Content Include="Items\Ranged\Ammo\HydratoxinDart.png" />
+    <Content Include="Items\Ranged\Ammo\M79Round.png" />
     <Content Include="Items\Ranged\Ammo\OrderArrow.png" />
     <Content Include="Items\Ranged\Ammo\RadiumArrow.png" />
     <Content Include="Items\Ranged\Ammo\ReaperArrow.png" />
@@ -4225,7 +4270,6 @@
     <Content Include="Items\Ranged\Toxithrower.png" />
     <Content Include="Items\Ranged\TrueDeathlyLongbow.png" />
     <Content Include="Items\Ranged\TrueTerraBallista.png" />
-    <Content Include="Items\Ranged\UnityBallista.png" />
     <Content Include="Items\Ranged\UraniumRepeater.png" />
     <Content Include="Items\Ranged\UWAM.png" />
     <Content Include="Items\Ranged\YtriumCrossbow.png" />
@@ -4604,11 +4648,12 @@
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingFireballA.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodBall.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodBoom.png" />
+    <Content Include="NPCs\Bosses\Broodmother\BroodBreath.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />
-    <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodmotherBody.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodWingBack.png" />
@@ -4705,7 +4750,6 @@
     <Content Include="NPCs\Bosses\Raider\RaidBoom.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg.png" />
     <Content Include="NPCs\Bosses\Raider\RaidEgg_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Raider\Raider1.png" />
     <Content Include="NPCs\Bosses\Raider\Raider.png" />
     <Content Include="NPCs\Bosses\Raider\Raider_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Raider\Raidmini.png" />
@@ -5137,6 +5181,7 @@
     <Content Include="Projectiles\FireblastP.png" />
     <Content Include="Projectiles\Fluff.png" />
     <Content Include="Projectiles\FluffEX.png" />
+    <Content Include="Projectiles\FreedomBall.png" />
     <Content Include="Projectiles\FreedomShot.png" />
     <Content Include="Projectiles\FreedomShotCharged.png" />
     <Content Include="Projectiles\FreedomStar.png" />
@@ -5152,6 +5197,7 @@
     <Content Include="Projectiles\Glass_Kunai_Pro.png" />
     <Content Include="Projectiles\Gold_Kunai_Pro.png" />
     <Content Include="Projectiles\GSP.png" />
+    <Content Include="Projectiles\HarukaKunaiF.png" />
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraFangP.png" />
     <Content Include="Projectiles\HydraSpear.png" />
@@ -5480,6 +5526,7 @@
     <Content Include="Tiles\OroborosChestC4.png" />
     <Content Include="Tiles\OroborosChestC4_Highlight.png" />
     <Content Include="Tiles\PagodaBox.png" />
+    <Content Include="Tiles\RadiumOreDark.png" />
     <Content Include="Tiles\RazePalmSapling.png" />
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />
@@ -5614,6 +5661,7 @@
     <Content Include="Tiles\TerraCore.png" />
     <Content Include="Tiles\TerraCrystal.png" />
     <Content Include="Tiles\TerraLeaves.png" />
+    <Content Include="Tiles\TerraPrism.png" />
     <Content Include="Tiles\TerrariumBox.png" />
     <Content Include="Tiles\TerraWood.png" />
     <Content Include="Tiles\Torchice.png" />

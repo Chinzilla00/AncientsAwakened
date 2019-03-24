@@ -7,7 +7,6 @@ namespace AAMod.Items.Magic
     {
         public override void SetDefaults()
         {
-
             item.width = 35;
             item.height = 54;
             item.maxStack = 1;
@@ -17,7 +16,7 @@ namespace AAMod.Items.Magic
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 5;        //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 8;             //mana use

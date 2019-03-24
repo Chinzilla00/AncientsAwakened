@@ -13,6 +13,7 @@ namespace AAMod.Walls
 			AddMapEntry(new Color(10, 10, 10));
             soundType = 21;
             drop = mod.ItemType("DoomstoneBrickWall");
+            Main.wallHouse[Type] = true;
         }
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

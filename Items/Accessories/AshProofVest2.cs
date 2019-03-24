@@ -37,7 +37,7 @@ namespace AAMod.Items.Accessories
             }
             if (item.accessory)
             {
-                player.GetModPlayer<AAPlayer>().AshRemover = true;
+                player.buffImmune[mod.BuffType("BurningAsh")] = true;
                 if (player.GetModPlayer<AAPlayer>().ZoneInferno && !Main.dayTime && !AAWorld.downedAkuma)
                 {
                     if (Main.rand.Next(3600) == 0)
@@ -68,10 +68,6 @@ namespace AAMod.Items.Accessories
                         }
                     }
                 }
-            }
-            else
-            {
-                player.GetModPlayer<AAPlayer>().AshRemover = false;
             }
         }
 

@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.AH
+/*namespace AAMod.NPCs.Bosses.AH
 {
     public class AHSpawn : ModNPC
     {
@@ -25,6 +25,7 @@ namespace AAMod.NPCs.Bosses.AH
                 npc.noGravity = true;
                 npc.aiStyle = -1;
                 npc.timeLeft = 10;
+                
                 for (int k = 0; k < npc.buffImmune.Length; k++)
                 {
                     npc.buffImmune[k] = true;
@@ -49,13 +50,13 @@ namespace AAMod.NPCs.Bosses.AH
 
             npc.Center = player.Center;
 
-            if (npc.ai[1] == 120)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
+            if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Well hello there, what a surprise to see YOU here~!", new Color(102, 20, 48));
-                AAMod.AkumaMusic = true;
+                AAMod.AHIntro = true;
             }
 
-            if (npc.ai[1] == 240)
+            if (npc.ai[1] == 3000)
             {
                 if (AAWorld.downedBrood)
                 {
@@ -67,7 +68,7 @@ namespace AAMod.NPCs.Bosses.AH
                 }
             }
 
-            if (npc.ai[1] == 360)
+            if (npc.ai[1] == 500)
             {
                 if (AAWorld.downedHydra)
                 {
@@ -87,18 +88,19 @@ namespace AAMod.NPCs.Bosses.AH
             }
 
             
-            if (npc.ai[1] == 480)
+            if (npc.ai[1] == 700)
             {
                 Main.NewText("So now..! Heh...", new Color(102, 20, 48));
             }
 
-            if (npc.ai[1] == 600)
+            if (npc.ai[1] == 820)
             {
+                AAMod.AHIntro = false;
                 Main.NewText("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }
 
-            if (npc.ai[1] >= 660)
+            if (npc.ai[1] >= 960)
             {
                 Main.NewText("Please don't call me Hakie again...ever.", new Color(72, 78, 117));
                 SpawnBoss(player, "Haruka");
@@ -123,3 +125,4 @@ namespace AAMod.NPCs.Bosses.AH
 }
 
 
+*/

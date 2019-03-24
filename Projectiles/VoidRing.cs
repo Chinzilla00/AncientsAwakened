@@ -19,6 +19,8 @@ namespace AAMod.Projectiles
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.Electrosphere);
+            projectile.ranged = false;
+            projectile.melee = true;
             projectile.timeLeft = 120;
         }
 

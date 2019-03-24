@@ -24,11 +24,7 @@ namespace AAMod.Items.Accessories
         {
             if (item.accessory)
             {
-                player.GetModPlayer<AAPlayer>().FogRemover = true;
-            }
-            else
-            {
-                player.GetModPlayer<AAPlayer>().FogRemover = false;
+                player.buffImmune[mod.BuffType<Buffs.Clueless>()] = true;
             }
         }
 

@@ -20,7 +20,7 @@ namespace AAMod.Items.Magic
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 5;        //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 13;             //mana use

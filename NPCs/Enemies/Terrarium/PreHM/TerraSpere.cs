@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
 		public override void SetDefaults()
 		{
+            npc.width = 10;
+            npc.height = 10;
             npc.lifeMax =  80;
             npc.defense = 20;
             npc.damage = 10;
@@ -27,6 +29,10 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.noTileCollide = false;
         }
 
+        public override Color? GetAlpha(Color drawColor)
+        {
+            return Color.White;
+        }
 
         public float[] shootAI = new float[4];
 
@@ -49,6 +55,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.alpha = 0;
             }
+
+            npc.noTileCollide = false;
         }
 
         public override void HitEffect(int hitDirection, double damage)

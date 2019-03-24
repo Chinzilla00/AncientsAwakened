@@ -71,6 +71,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override void NPCLoot()
         {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore4"), 1f);
             if (Main.expertMode)
             {
                 npc.DropBossBags();

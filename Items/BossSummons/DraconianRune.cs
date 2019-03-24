@@ -100,7 +100,7 @@ Only craftable in expert mode");
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            RuneRecipe recipe = new RuneRecipe(mod);
             recipe.AddIngredient(null, "CrucibleScale", 20);
             recipe.AddIngredient(null, "DraconianSigil");
             recipe.AddTile(null, "ACS");

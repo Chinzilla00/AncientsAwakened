@@ -32,6 +32,7 @@ namespace AAMod
         //Minions
         public bool ImpServant = false;
         public bool ImpSlave = false;
+        public bool MoonBee = false;
         public bool Searcher = false;
         public bool enderMinion = false;
         public bool enderMinionEX = false;
@@ -81,6 +82,7 @@ namespace AAMod
         public bool RadiumStars = false;
         public bool Darkmatter = true;
         // Armor bools.
+        public bool MoonSet;
         public bool goblinSlayer;
         public bool IsGoblin;
         public bool leatherSet;
@@ -232,6 +234,7 @@ namespace AAMod
             //Minions
             ImpServant = false;
             ImpSlave = false;
+            MoonBee = false;
             Searcher = false;
             enderMinion = false;
             enderMinionEX = false;
@@ -255,6 +258,7 @@ namespace AAMod
             KrakenMinion = false;
             Fishnado = false;
             //Armor
+            MoonSet = false;
             valkyrieSet = false;
             kindledSet = false;
             depthSet = false;
@@ -694,15 +698,6 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useZero = NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Zero.Protocol.ZeroAwakened>());
-            if (useZero)
-            {
-                if (!Filters.Scene["MoonLordShake"].IsActive())
-                {
-                    Filters.Scene.Activate("MoonLordShake", Main.player[Main.myPlayer].position, new object[0]);
-                }
-                Filters.Scene["MoonLordShake"].GetShader().UseIntensity(Math.Min(1f, 0.01f + Intensity));
-            }
             bool useVoid = (ZoneVoid || VoidUnit);
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
             bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
@@ -1166,34 +1161,6 @@ namespace AAMod
             }
             #endregion
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
-            DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
-            if (!Main.expertMode)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<DraconianRune>() && player.inventory[num66].stack > 0)
-                    {
-                        player.inventory[num66].TurnToAir();
-                        player.QuickSpawnItem(mod.ItemType("CrucibleScale"), 20);
-                        player.QuickSpawnItem(mod.ItemType("DraconianSigil"));
-                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", Color.DeepSkyBlue);
-                    }
-                    if (player.inventory[num66].type == mod.ItemType<DreadRune>() && player.inventory[num66].stack > 0)
-                    {
-                        player.inventory[num66].TurnToAir();
-                        player.QuickSpawnItem(mod.ItemType("DreadScale"), 20);
-                        player.QuickSpawnItem(mod.ItemType("DreadSigil"));
-                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", new Color(146, 30, 68));
-                    }
-                    if (player.inventory[num66].type == mod.ItemType<ZeroRune>() && player.inventory[num66].stack > 0)
-                    {
-                        player.inventory[num66].TurnToAir();
-                        player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), 20);
-                        player.QuickSpawnItem(mod.ItemType("ApocalyptitePlate"), 10);
-                        Main.NewText("The Sigil becomes unstable and breaks apart into the materials used to craft it", Color.Red);
-                    }
-                }
-            }
             for (int num66 = 0; num66 < 58; num66++)
             {
                 if ((player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.Astroid>() ||
@@ -2222,12 +2189,18 @@ namespace AAMod
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 
-            if (trueFlesh && proj.melee && Main.rand.Next(2) == 0)
+
+            if (MoonSet && proj.magic)
+            {
+                target.AddBuff(mod.BuffType<Moonraze>(), 300);
+            }
+
+            if (trueFlesh && proj.melee)
             {
                 target.AddBuff(BuffID.Ichor, 300);
             }
 
-            if (trueNights && proj.melee && Main.rand.Next(2) == 0)
+            if (trueNights && proj.melee)
             {
                 target.AddBuff(BuffID.CursedInferno, 300);
             }
@@ -2240,7 +2213,7 @@ namespace AAMod
                 }
             }
 
-            if (Baolei && (proj.melee || proj.magic) && Main.rand.Next(2) == 0)
+            if (Baolei && (proj.melee || proj.magic))
             {
                 if (!Main.dayTime)
                 {
@@ -2252,7 +2225,7 @@ namespace AAMod
                 }
             }
 
-            if (Naitokurosu && (proj.ranged || proj.minion) && Main.rand.Next(2) == 0)
+            if (Naitokurosu && (proj.ranged || proj.minion))
             {
                 if (Main.dayTime)
                 {
@@ -2263,43 +2236,43 @@ namespace AAMod
                     target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
             }
-            if (zeroSet && (proj.melee || proj.ranged) && Main.rand.Next(2) == 0)
+            if (zeroSet && (proj.melee || proj.ranged))
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
             }
 
-            if (dracoSet && (proj.melee || proj.magic) && Main.rand.Next(2) == 0)
+            if (dracoSet && (proj.melee || proj.magic))
             {
                 target.AddBuff(BuffID.Daybreak, 600);
             }
 
-            if (dreadSet && (proj.ranged || proj.thrown) && Main.rand.Next(2) == 0)
+            if (dreadSet && (proj.ranged || proj.thrown))
             {
                 target.AddBuff(mod.BuffType<Moonraze>(), 600);
             }
 
-            if (Time && Main.rand.Next(2) == 0)
+            if (Time)
             {
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (DynaskullSet && proj.thrown && Main.rand.Next(2) == 0)
+            if (DynaskullSet && proj.thrown)
             {
                 target.AddBuff(BuffID.Confused, 180);
             }
 
-            if (valkyrieSet && (proj.melee || proj.thrown) && Main.rand.Next(2) == 0)
+            if (valkyrieSet && (proj.melee || proj.thrown))
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (depthSet && proj.ranged && Main.rand.Next(2) == 0)
+            if (depthSet && proj.ranged)
             {
                 target.AddBuff(BuffID.Poisoned, 180);
             }
 
-            if (impSet && proj.minion && Main.rand.Next(2) == 0)
+            if (impSet && proj.minion)
             {
                 target.AddBuff(BuffID.OnFire, 180);
             }
@@ -2320,32 +2293,32 @@ namespace AAMod
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
-            if (trueDemon && proj.minion && Main.rand.Next(2) == 0)
+            if (trueDemon && proj.minion)
             {
                 target.AddBuff(BuffID.ShadowFlame, 300);
             }
 
-            if (darkmatterSetMe && proj.melee && Main.rand.Next(2) == 0)
+            if (darkmatterSetMe && proj.melee)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
-            if (darkmatterSetRa && proj.ranged && Main.rand.Next(2) == 0)
+            if (darkmatterSetRa && proj.ranged)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
-            if (darkmatterSetMa && proj.magic && Main.rand.Next(2) == 0)
+            if (darkmatterSetMa && proj.magic)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
-            if (darkmatterSetSu && proj.minion && Main.rand.Next(2) == 0)
+            if (darkmatterSetSu && proj.minion)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
-            if (darkmatterSetTh && proj.thrown && Main.rand.Next(2) == 0)
+            if (darkmatterSetTh && proj.thrown)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
@@ -2355,7 +2328,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Wet, 500);
             }
 
-            if (demonGauntlet && proj.melee && Main.rand.Next(2) == 0)
+            if (demonGauntlet && proj.melee)
             {
                 if (WorldGen.crimson == false)
                 {

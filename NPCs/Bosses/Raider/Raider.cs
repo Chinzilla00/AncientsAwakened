@@ -50,6 +50,15 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void NPCLoot()
         {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore4"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore5"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore6"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGore7"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGoreJaw"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaiderGoreHorn"), 1f);
             if (Main.rand.Next(10) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaiderTrophy"));

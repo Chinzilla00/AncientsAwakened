@@ -34,6 +34,13 @@ namespace AAMod.NPCs.Bosses.Raider
             animationType = NPCID.MothronSpawn;
         }
 
+        public override void NPCLoot()
+        {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidMiniGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidMiniGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidMiniGore3"), 1f);
+        }
+
         /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             {

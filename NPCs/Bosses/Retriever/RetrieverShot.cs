@@ -10,13 +10,15 @@ namespace AAMod.NPCs.Bosses.Retriever
 {
     public class RetrieverShot : ModProjectile
     {
+       
 
         public override void SetDefaults()
         {
             projectile.width = 18;
             projectile.height = 42;
             projectile.damage = 10;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.penetrate = 1;
             projectile.aiStyle = -1;
             projectile.timeLeft = 600;
@@ -41,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
 
             if (Main.rand.Next(1) == 0)
             {

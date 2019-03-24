@@ -75,20 +75,26 @@ Can only be used in the underground jungle");
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.JungleSpores, 10);
-            recipe.AddIngredient(ItemID.SoulofFright, 5);
-            recipe.AddIngredient(ItemID.SoulofMight, 5);
-            recipe.AddIngredient(ItemID.SoulofSight, 5);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
-            
-            recipe.AddIngredient(mod, "PlanteraPetal", 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.JungleSpores, 10);
+                recipe.AddIngredient(ItemID.SoulofFright, 5);
+                recipe.AddIngredient(ItemID.SoulofMight, 5);
+                recipe.AddIngredient(ItemID.SoulofSight, 5);
+                recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this, 1);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+
+                recipe.AddIngredient(mod, "PlanteraPetal", 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this, 1);
+                recipe.AddRecipe();
+            }
         }
     }
 }

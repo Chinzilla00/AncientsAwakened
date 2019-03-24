@@ -32,6 +32,7 @@ namespace AAMod
         internal UserInterface UserInterface;
         public static bool AkumaMusic = false;
         public static bool YamataMusic = false;
+        public static bool AHIntro = false;
         public static bool Slayer = false;
         public static AAMod self = null;
         public static IDictionary<string, Texture2D> Textures = null;
@@ -660,8 +661,8 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Raider Ultima", 9.5f, (Func<bool>)(() => AAWorld.downedRaider), "Use a [i:" + ItemType("CyberneticBell") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Orthrus X", 9.5f, (Func<bool>)(() => AAWorld.downedOrthrus), "Use a [i:" + ItemType("ScrapHeap") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 16f, (Func<bool>)(() => AAWorld.downedGrips), "Use an [i:" + ItemType("AbyssClaw") + "] or [i:" + ItemType("BlazeClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Sisters of Discord", 16.1f, (Func<bool>)(() => AAWorld.downedSisters), "Use the [i:" + ItemType("FlamesOfAnarchy") + "]");
+                bossChecklist.Call("AddBossWithInfo", "Discordian Grips", 16f, (Func<bool>)(() => AAWorld.downedGripsS), "Use an [i:" + ItemType("AbyssClaw") + "] or [i:" + ItemType("BlazeClaw") + "] at night");
+                //bossChecklist.Call("AddBossWithInfo", "Sisters of Discord", 16.1f, (Func<bool>)(() => AAWorld.downedSisters), "Use the [i:" + ItemType("FlamesOfAnarchy") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Yamata", 16.2f, (Func<bool>)(() => AAWorld.downedYamata), "Use a [i:" + ItemType("DreadSigil") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + ItemType("ZeroTesseract") + "] in the Void");
@@ -1069,6 +1070,13 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
                 priority = MusicPriority.BossHigh;
+                return;
+            }
+            if (AHIntro)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
+
+                priority = (MusicPriority)10;
                 return;
             }
             if (zoneIZ && AAWorld.downedZero && NPC.downedMoonlord)
@@ -2551,6 +2559,29 @@ namespace AAMod
                 return inZone;
             }
             return new Exception("ANCIENTS AWAKENED CALL ERROR: NO METHOD FOUND: " + methodName);
+        }
+    }
+
+    public class RuneRecipe : ModRecipe
+    {
+        public bool IsExpert;
+
+        public RuneRecipe(Mod mod) : base(mod)
+        {
+            IsExpert = Main.expertMode;
+        }
+
+        public override bool RecipeAvailable()
+        {
+
+            if (!IsExpert)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

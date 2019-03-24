@@ -40,6 +40,20 @@ namespace AAMod.NPCs.Enemies.Inferno
         private int biteCounter;
         private int biteTimer;
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life >= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore1"), 1f);
+            }
+        }
+
         public override void AI()
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
