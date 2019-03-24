@@ -18,6 +18,7 @@ namespace AAMod.Items.Blocks
             item.consumable = true;
             item.createTile = mod.TileType("Razewood"); //put your CustomBlock Tile name
             item.ammo = item.type;
+            item.notAmmo = true;
         }
 
         public override void SetStaticDefaults()

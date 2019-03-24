@@ -113,7 +113,7 @@ Calls upon the Sisters of Discord");
             recipe.AddIngredient(null, "SoulOfSmite", 5);
             recipe.AddIngredient(null, "SoulOfSpite", 5);
             recipe.AddIngredient(null, "BroodScale", 3);
-            recipe.AddIngredient(null, "HydraHyde", 3);
+            recipe.AddIngredient(null, "HydraHide", 3);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
