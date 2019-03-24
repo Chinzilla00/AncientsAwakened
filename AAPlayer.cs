@@ -700,7 +700,7 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             bool useVoid = (ZoneVoid || VoidUnit);
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
-            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire;
+            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire && player.position.Y > Main.worldSurface;
         }
 
         public override bool CustomBiomesMatch(Player other)
@@ -1203,7 +1203,7 @@ namespace AAMod
             {
                 if (Main.dayTime && !AAWorld.downedYamata)
                 {
-                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
+                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
                     {
                         player.AddBuff(mod.BuffType<Clueless>(), 5);
                     }

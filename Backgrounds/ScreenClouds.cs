@@ -44,7 +44,8 @@ namespace AAMod.Backgrounds
 			}else
 			{
 				dayTimeOpacity = (BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f));
-			}
+                dayTimeOpacity *= Main.dayTime ? 2f : 1f;
+            }
         }
 
         public void Draw(Texture2D texture, bool dir, Color defaultColor, bool setSB = false)

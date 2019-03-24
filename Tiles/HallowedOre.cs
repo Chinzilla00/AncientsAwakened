@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -15,15 +16,15 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("HallowedOre");   //put your CustomBlock name
-            dustType = mod.DustType("DaybreakIncineriteDust");
-            AddMapEntry(new Color(160, 160, 160));
+            dustType = DustID.Gold;
+            AddMapEntry(new Color(160, 160, 100));
 			minPick = 190;
         }
       
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
-            r = 0.100f;
-            g = 0.100f;
+            r = 0.5f;
+            g = 0.5f;
             b = 0;
         }
 

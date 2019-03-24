@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Enemies.Void
 		    BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.6f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-		    BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);		
+		    BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 3);		
 			if(Main.netMode != 1 && playerActive)
 			{
 				shootAI++;
