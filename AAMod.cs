@@ -569,7 +569,7 @@ namespace AAMod
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("Yamata")));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("YamataHead")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -584,7 +584,7 @@ namespace AAMod
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("YamataA")));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("YamataAHead")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",

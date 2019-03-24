@@ -33,7 +33,7 @@ Despite the name, it's not actually made of flesh");
 			item.shoot = mod.ProjectileType("TrueFleshClaymoreShot");
             item.shootSpeed = 12f;
 
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }

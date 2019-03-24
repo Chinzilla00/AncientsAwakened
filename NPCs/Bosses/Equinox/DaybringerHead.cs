@@ -152,8 +152,8 @@ namespace AAMod.NPCs.Bosses.Equinox
 				npc.damage = 300;		
 				npc.defense = (!nightcrawler ? 120 : 150); 
 			}
-			if(!isHead)
-			{
+            if (!isHead && NPC.CountNPCS(mod.NPCType<Equiprobe>()) < 15)
+            {
 				SpawnProbe();
 			}
 			for(int m = 0; m < aiCount; m++)

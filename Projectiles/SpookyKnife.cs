@@ -13,9 +13,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.width = 16;
 			projectile.height = 16;
-			projectile.ranged = false;
-			projectile.thrown = true;
-			projectile.friendly = true;
+            projectile.ranged = true;
+            projectile.friendly = true;
 			projectile.timeLeft = 300;
 			projectile.alpha = 0;
 			projectile.aiStyle = 1;

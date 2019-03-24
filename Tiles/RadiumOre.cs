@@ -38,39 +38,27 @@ namespace AAMod.Tiles
 
         public override bool PreDraw(int x, int y, SpriteBatch spriteBatch)
         {
+            Texture2D glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
             if (Main.dayTime)
             {
                 BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], x, y, true, false, false);
+                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetRadiumColorBright);
             }
             else
             {
                 BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/RadiumOreDark"), x, y, true, false, false);
+                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetDarkmatterColorBright);
             }
-            return false;
-        }
-        
-
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
-        {
-            Tile tile = Main.tile[i, j];
+            Tile tile = Main.tile[x, y];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
             if (Main.drawToScreen)
             {
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
+            Main.spriteBatch.Draw(glowtex, new Vector2((x * 16) - (int)Main.screenPosition.X, (y * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Main.dayTime ? Color.Yellow : Color.DeepSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 
-            Texture2D glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
-
-            if (Main.dayTime)
-            {
-                BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, glowtex, i, j, true, false, false, null, AAGlobalTile.GetRadiumColorDim);
-            }
-            else
-            {
-                BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, glowtex, i, j, true, false, false, null, AAGlobalTile.GetDarkmatterColorDim);
-            }
-
+            return false;
         }
 
         public override bool CanExplode(int i, int j)
@@ -95,8 +83,8 @@ namespace AAMod.Tiles
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
             r = Main.dayTime ? 0.5f : 0f ;
-            g = Main.dayTime ? .2f : 0f;
-            b = 0f;
+            g = .2f;
+            b = Main.dayTime ? 0f : 0.5f;
         }
     }
 }

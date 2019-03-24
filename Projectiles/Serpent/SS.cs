@@ -20,8 +20,7 @@ namespace AAMod.Projectiles.Serpent
 			projectile.width = 15;
 			projectile.height = 15;
             projectile.ranged = true;
-            projectile.thrown = false;
-		}
+        }
         
 
 		public override void Kill(int timeLeft)

@@ -84,6 +84,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.netAlways = true;
             frameWidth = 162;
             frameHeight = 118;
+            npc.dontTakeDamage = true;
             npc.alpha = 255;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
@@ -289,7 +290,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.oldPos[0] = npc.position;
 
             bool foundTarget = TargetClosest();
-            if (foundTarget)
+            if (foundTarget || (NPC.AnyNPCs(mod.NPCType<YamataHead>()) || NPC.AnyNPCs(mod.NPCType<YamataAHead>())))
             {
                 NoFlyCountDown--;
                 if (!NoFly4U && NoFlyCountDown <= 0 && !AAWorld.downedYamata)

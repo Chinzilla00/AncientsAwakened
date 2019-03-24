@@ -10,8 +10,8 @@ namespace AAMod.Projectiles
 			projectile.height = 40;
 			projectile.aiStyle = 3;
 			projectile.friendly = true;
-			projectile.thrown = true;
-			projectile.penetrate = 6;
+            projectile.ranged = true;
+            projectile.penetrate = 6;
 			projectile.timeLeft = 550;
 			projectile.light = 0.9f;
 			projectile.extraUpdates = 2;
@@ -19,12 +19,9 @@ namespace AAMod.Projectiles
 			
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("yBoomerangP");
-    }
-
-       
-
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("yBoomerangP");
+        }
     }
 }

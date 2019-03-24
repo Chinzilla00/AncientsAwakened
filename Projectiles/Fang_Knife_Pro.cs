@@ -13,7 +13,7 @@ namespace AAMod.Projectiles
 			projectile.height = 42;
 			projectile.friendly = true;
 			projectile.timeLeft = 1200;
-			projectile.thrown = true;
+			projectile.ranged = true;
 			projectile.penetrate = 4;
 			projectile.friendly = true;
 			aiType = ProjectileID.ThrowingKnife;

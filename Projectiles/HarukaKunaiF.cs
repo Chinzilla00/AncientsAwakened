@@ -15,6 +15,8 @@ namespace AAMod.Projectiles
             projectile.hostile = false;
 			projectile.timeLeft = 1200;
 			projectile.penetrate = 1;
+            projectile.thrown = false;
+            projectile.ranged = true;
 			aiType = ProjectileID.ShadowFlameKnife;
 		}
 		

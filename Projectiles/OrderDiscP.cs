@@ -13,7 +13,7 @@ namespace AAMod.Projectiles
         {
             projectile.CloneDefaults(106);
 			projectile.melee = false;
-			projectile.thrown = true;
+            projectile.ranged = true;
             projectile.penetrate = -1;  
             projectile.width = 22;
             projectile.height = 32;

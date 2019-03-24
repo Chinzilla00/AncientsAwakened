@@ -20,9 +20,8 @@ namespace AAMod.Projectiles
 			aiType = 261;
 			projectile.width = 20;
 			projectile.height = 18;
-			projectile.ranged = false;
-			projectile.thrown = true;
-			projectile.penetrate = 1;
+            projectile.ranged = true;
+            projectile.penetrate = 1;
 			projectile.hostile = false;
 			projectile.friendly = true;
 			projectile.tileCollide = true;

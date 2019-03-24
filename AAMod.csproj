@@ -5526,6 +5526,7 @@
     <Content Include="Tiles\OroborosChestC4.png" />
     <Content Include="Tiles\OroborosChestC4_Highlight.png" />
     <Content Include="Tiles\PagodaBox.png" />
+    <Content Include="Tiles\PrismOre.png" />
     <Content Include="Tiles\RadiumOreDark.png" />
     <Content Include="Tiles\RazePalmSapling.png" />
     <Content Include="Tiles\RazePalmTree.png" />

@@ -2666,7 +2666,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DaybringerMask")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/Daybringer_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DaybringerMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.headFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("NightcrawlerMask")))
             {

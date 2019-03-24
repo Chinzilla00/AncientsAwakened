@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
             projectile.height = 24;
             projectile.friendly = true;
             projectile.aiStyle = 1;
-            projectile.thrown = true;
+            projectile.ranged = true;
             projectile.penetrate = -1;      //this is how many enemy this projectile penetrate before desapear
             projectile.extraUpdates = 1;
             aiType = ProjectileID.BoneJavelin;

@@ -19,7 +19,7 @@ namespace AAMod.Tiles
             dustType = mod.DustType("AbyssiumDust");
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
@@ -96,16 +96,10 @@ namespace AAMod.Tiles
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = mod.GetTexture("Glowmasks/ChaosCrucible_Glow");
             Texture2D Sphere = mod.GetTexture("Glowmasks/ChaosCrucible_Sphere");
-            int width = 16, height = 16;
-            int frameX = (tile != null && tile.active() ? tile.frameX : 0);
-            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 50) : 0);
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, White);
-            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, width, height, frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorDim);
-            for (int m = 0; m < 3; m++)
-            {
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, White, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
-                BaseDrawing.DrawTileTexture(sb, Sphere, x, y, width, height, frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorBright, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
-            }
+            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0);
+
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
+            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorBright);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
