@@ -472,7 +472,7 @@ namespace AAMod
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if (shiniesIndex != -1)
             {
-                tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex2, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
                 {
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
