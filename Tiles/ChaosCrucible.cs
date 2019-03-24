@@ -94,14 +94,17 @@ namespace AAMod.Tiles
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            Texture2D glowTex = mod.GetTexture("Tiles/ChaosCrucible_Glow");
-            Texture2D Sphere = mod.GetTexture("Tiles/ChaosCrucible_Sphere");
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, White);
-            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetShenColorDim);
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ChaosCrucible_Glow");
+            Texture2D Sphere = mod.GetTexture("Glowmasks/ChaosCrucible_Sphere");
+            int width = 16, height = 16;
+            int frameX = (tile != null && tile.active() ? tile.frameX : 0);
+            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 50) : 0);
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, White);
+            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, width, height, frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorDim);
             for (int m = 0; m < 3; m++)
             {
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, White, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
-                BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetShenColorDim, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, White, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
+                BaseDrawing.DrawTileTexture(sb, Sphere, x, y, width, height, frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorBright, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
             }
         }
 
