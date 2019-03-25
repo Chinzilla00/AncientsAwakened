@@ -79,6 +79,10 @@
     <Compile Include="Backgrounds\InfernoDesertBGStyle.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\ScreenClouds.cs" />
+    <Compile Include="Backgrounds\ShenSky.cs" />
+    <Compile Include="Backgrounds\ShenASky.cs" />
+    <Compile Include="Backgrounds\ShenSkyData.cs" />
+    <Compile Include="Backgrounds\ShenASkyData.cs" />
     <Compile Include="Backgrounds\SnowSky.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\VoidUGBG.cs" />
@@ -1360,8 +1364,6 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
-    <Compile Include="NPCs\Bosses\Shen\AbyssGripS.cs" />
-    <Compile Include="NPCs\Bosses\Shen\BlazeGripS.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
@@ -2144,6 +2146,8 @@
     <Content Include="Backgrounds\Rock_0.png" />
     <Content Include="Backgrounds\Rock_1.png" />
     <Content Include="Backgrounds\Rock_2.png" />
+    <Content Include="Backgrounds\ShenEclipse.png" />
+    <Content Include="Backgrounds\ShenMeteor.png" />
     <Content Include="Backgrounds\Sky.png" />
     <Content Include="Backgrounds\StarTex.png" />
     <Content Include="Backgrounds\Sun.png" />
@@ -4778,10 +4782,6 @@
     <Content Include="NPCs\Bosses\Serpent\SnowBreath.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentBody.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentTail.png" />
-    <Content Include="NPCs\Bosses\Shen\AbyssGripS.png" />
-    <Content Include="NPCs\Bosses\Shen\AbyssGripS_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Shen\BlazeGripS.png" />
-    <Content Include="NPCs\Bosses\Shen\BlazeGripS_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianFlare.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />

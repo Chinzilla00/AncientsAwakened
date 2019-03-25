@@ -32,19 +32,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public int Speechtimer = 0;
 
-        public int chargeWidth = 50;
-        public int normalWidth = 250;
-
-        public static bool NOTRELEASED = true;
-
         public override void AI()
         {
-
-            if (NOTRELEASED)
-            {
-                Main.NewText("Patience, child...our battle will come in due time...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                BaseAI.KillNPC(npc); return;
-            }
+            Player player = Main.player[npc.target];
+            npc.Center = player.Center - new Vector2(0, 300f);
             if (npc.timeLeft <= 10)
             {
                 npc.timeLeft = 10;
@@ -112,8 +103,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 40, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 40, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + 35, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.X - 35, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
@@ -129,8 +120,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 20, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 20, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + 30, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.X - 30, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
@@ -146,8 +137,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 20, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 20, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + 25, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.X - 25, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
@@ -163,8 +154,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 20, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 20, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + 15, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.X - 15, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
@@ -194,8 +185,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.Y, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + 5, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.Y - 5, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
@@ -205,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer > 1100 && Speechtimer < 1640)
+            if (Speechtimer > 1070 && Speechtimer < 1640)
             {
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
@@ -233,7 +224,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.NewText("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer >= 1410)
+            if (Speechtimer >= 1640)
             {
                 npc.alpha -= 5;
             }

@@ -18,7 +18,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 100;
             npc.friendly = false;
             npc.alpha = 255;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
@@ -34,23 +33,18 @@ namespace AAMod.NPCs.Bosses.Shen
         public int chargeWidth = 50;
         public int normalWidth = 250;
 
-        public static bool NOTRELEASED = true;
-
         public override void AI()
         {
-
-            if (NOTRELEASED)
-            {
-                Main.NewText("Patience, child...our battle will come in due time...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                BaseAI.KillNPC(npc); return;
-            }
+            Player player = Main.player[npc.target];
+            npc.Center = player.Center - new Vector2(0, 300f); ;
             timer++;
             if (npc.timeLeft <= 10)
             {
                 npc.timeLeft = 10;
             }
-            if (timer < 1100)
+            if (timer < 1100 && timer > 345)
             {
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
                     Dust dust1;

@@ -1161,28 +1161,6 @@ namespace AAMod
             }
             #endregion
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
-            for (int num66 = 0; num66 < 58; num66++)
-            {
-                if ((player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.Astroid>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ChaosScale>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ChaosSlayerEX>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ChaosSlayer>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ChaosSoul>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.DraconicRipper>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.FlamingTwilight>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.MeteorStrike>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenATrophy>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenCache>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenTerratool>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenTerratool_Axe>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenTerratool_Hammer>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.ShenTrophy>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.Skyfall>() ||
-                    player.inventory[num66].type == mod.ItemType<Items.Boss.Shen.Timesplitter>()) && player.inventory[num66].stack > 0 && player.name != "Alphakip")
-                {
-                    player.inventory[num66].TurnToAir();
-                }
-            }
             if (RStar)
             {
                 Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, 1f, 0.95f, 0.8f);

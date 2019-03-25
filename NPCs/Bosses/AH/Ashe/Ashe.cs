@@ -76,6 +76,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         bool FlyingPositive = false;
         bool FlyingNegative = false;
         public float MeleeSpeed;
+        public float pos = 0f;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -102,7 +103,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (internalAI[3] >= 240)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) > 1)
+                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -231,7 +232,26 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //Anything else
             {
-                AISpaceOctopus(npc, ref npc.ai, player.Center, 0.3f, 7f, 250f);
+                npc.ai[0]++;
+                if (npc.ai[0] > 180)
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[1] = Main.rand.Next(3);
+                    if (npc.ai[1] == 0)
+                    {
+                        pos = -250;
+                    }
+                    else if (npc.ai[1] == 1)
+                    {
+                        pos = 250;
+                    }
+                    else
+                    {
+                        pos = 0f;
+                    }
+                }
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+                MoveToPoint(wantedVelocity);
             }
 
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
@@ -434,55 +454,37 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
 
-        public static void AISpaceOctopus(NPC npc, ref float[] ai, Vector2 targetCenter = default(Vector2), float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f)
+        public void MoveToPoint(Vector2 point)
         {
-            ai[0]++;
-            float pos = 0f;
-            if (ai[0] > 180)
+            float moveSpeed = 13f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
             {
-                ai[0] = 0;
-                ai[1] = Main.rand.Next(3);
-                if (ai[1] == 0)
-                {
-                    pos = -hoverDistance;
-                }
-                else if (ai[1] == 1)
-                {
-                    pos = hoverDistance;
-                }
-                else
-                {
-                    pos = 0f;
-                }
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-            Vector2 wantedVelocity = targetCenter - npc.Center + new Vector2(pos, -hoverDistance);
-            float dist = wantedVelocity.Length();
-            if (dist < 20f)
+            if (length < 200f)
             {
-                wantedVelocity = npc.velocity;
+                moveSpeed *= 0.5f;
             }
-            else if (dist < 40f)
+            if (length < 100f)
             {
-                wantedVelocity.Normalize();
-                wantedVelocity *= velMax * 0.35f;
+                moveSpeed *= 0.5f;
             }
-            else if (dist < 80f)
+            if (length < 50f)
             {
-                wantedVelocity.Normalize();
-                wantedVelocity *= velMax * 0.65f;
+                moveSpeed *= 0.5f;
             }
-            else
-            {
-                wantedVelocity.Normalize();
-                wantedVelocity *= velMax;
-            }
-            npc.SimpleFlyMovement(wantedVelocity, moveSpeed);
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
 }
