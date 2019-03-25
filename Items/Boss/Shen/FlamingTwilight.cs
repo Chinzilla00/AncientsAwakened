@@ -34,7 +34,6 @@ namespace AAMod.Items.Boss.Shen
 			Tooltip.SetDefault("Releases a wide arc of blue and red flames"
 			+"\nConsumes gel as ammo"
 			+"\n33% chance not to consume gel");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
 		public override bool ConsumeAmmo(Player player)
@@ -84,7 +83,6 @@ namespace AAMod.Items.Boss.Shen
 		
 		public override void AddRecipes()
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Discordium"), 5);
             recipe.AddIngredient(mod.ItemType("ChaosScale"), 5);

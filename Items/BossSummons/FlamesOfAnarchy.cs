@@ -11,7 +11,7 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
-/*namespace AAMod.Items.BossSummons
+namespace AAMod.Items.BossSummons
 {
     public class FlamesOfAnarchy : ModItem
     {
@@ -20,7 +20,7 @@ using Terraria.DataStructures;
             DisplayName.SetDefault("Flames of Anarchy");
             Tooltip.SetDefault(@"The flames of chaos burn in this antique china
 Calls upon the Sisters of Discord");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
         }
 
         public override void SetDefaults()
@@ -36,25 +36,6 @@ Calls upon the Sisters of Discord");
             item.noUseGraphic = true;
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Items/BossSummons/FlamesOfAnarchy_Glow");
-            Vector2 pos = new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                );
-            BaseDrawing.DrawTexture(spriteBatch, texture, 0, pos, item.width, item.height, scale, rotation, 0, 4, new Rectangle(0, 0, item.width, item.height), AAColor.Shen2);
-            
-        }
-
-        public override void PostDrawInInventory(SpriteBatch sb, Vector2 pos, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            Texture2D texture = mod.GetTexture("Items/BossSummons/FlamesOfAnarchy_Glow");
-            BaseDrawing.DrawTexture(sb, texture, 0, pos, item.width, item.height, scale, 0, 0, 4, frame, AAColor.Shen2);
-        }
-
-
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
@@ -64,6 +45,7 @@ Calls upon the Sisters of Discord");
         public override bool UseItem(Player player)
         {
             Main.PlaySound(SoundID.Roar, player.position, 0);
+            AAWorld.SistersSummoned = true;
 
             if (AAWorld.SistersSummoned && !AAWorld.downedSisters)
             {
@@ -118,4 +100,4 @@ Calls upon the Sisters of Discord");
             recipe.AddRecipe();
         }
     }
-}*/
+}

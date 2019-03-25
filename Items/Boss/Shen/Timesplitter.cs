@@ -48,7 +48,6 @@ UNRELEASED");
 
         public override void AddRecipes()
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("RealityBar"), 5);
             recipe.AddIngredient(mod.ItemType("AbyssalYari"));

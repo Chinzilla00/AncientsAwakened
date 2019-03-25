@@ -25,16 +25,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 9)
-            {
-                projectile.frameCounter = 0;
-                if (++projectile.frame >= 3)
-                {
-                    projectile.Kill();
-
-                }
-            }
-
             projectile.timeLeft--;
             if (projectile.timeLeft < 256)
             {

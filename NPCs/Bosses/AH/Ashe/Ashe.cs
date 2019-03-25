@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 
-/*namespace AAMod.NPCs.Bosses.AH.Ashe
+namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     [AutoloadBossHead]
     public class Ashe : ModNPC
@@ -76,6 +76,7 @@ using Terraria.Graphics.Shaders;
         bool FlyingPositive = false;
         bool FlyingNegative = false;
         public float MeleeSpeed;
+        public float pos = 0f;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -102,7 +103,7 @@ using Terraria.Graphics.Shaders;
                     if (internalAI[3] >= 240)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) > 1)
+                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -121,49 +122,46 @@ using Terraria.Graphics.Shaders;
                     internalAI[2] = 0;
                 }
             }
+            else if(internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
+            {
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                {
+                    FireMagic(npc, npc.velocity);
+                }
+                if ((int)internalAI[2] < 16) //Sets to frame 16
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 16;
+                }
+                if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }
             else
             {
-                if(internalAI[0] != AISTATE_CAST4 || internalAI[0] != AISTATE_MELEE) //Weak magic cast frame
+                if (internalAI[2] == 12 && internalAI[1] == 4)
                 {
-                    if (internalAI[2] == 12 && internalAI[1] == 4)
-                    {
-                        FireMagic(npc, npc.velocity);
-                    }
-                    if ((int)internalAI[2] < 8)
-                    {
-                        internalAI[1] = 0;
-                        internalAI[2] = 8;
-                    }
-                    if ((int)internalAI[2] > 15)
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
-                    }
+                    FireMagic(npc, npc.velocity);
                 }
-                else //Strong magic cast frame
+                if ((int)internalAI[2] < 8)
                 {
-                    if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
-                    {
-                        FireMagic(npc, npc.velocity);
-                    }
-                    if ((int)internalAI[2] < 16) //Sets to frame 16
-                    {
-                        internalAI[1] = 0;
-                        internalAI[2] = 16;
-                    }
-                    if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
-                    }
+                    internalAI[1] = 0;
+                    internalAI[2] = 8;
+                }
+                if ((int)internalAI[2] > 15)
+                {
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
                 }
             }
 
@@ -211,14 +209,6 @@ using Terraria.Graphics.Shaders;
                 {
                     npc.damage = 160;
                 }
-                if (internalAI[2] < 21)
-                {
-                    MeleeSpeed += .01f;
-                }
-                if (MeleeSpeed > .08f)
-                {
-                    MeleeSpeed = .08f;
-                }
                 if (internalAI[2] > 21)
                 {
                     MeleeSpeed -= .01f;
@@ -234,7 +224,7 @@ using Terraria.Graphics.Shaders;
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, MeleeSpeed, MeleeSpeed, 6f, 6f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
             }
             else if (internalAI[0] == AISTATE_DRAGON) //When summoning a noodle
             {
@@ -242,7 +232,26 @@ using Terraria.Graphics.Shaders;
             }
             else //Anything else
             {
-                MoveAI(player, ref npc.ai);
+                npc.ai[0]++;
+                if (npc.ai[0] > 180)
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[1] = Main.rand.Next(3);
+                    if (npc.ai[1] == 0)
+                    {
+                        pos = -250;
+                    }
+                    else if (npc.ai[1] == 1)
+                    {
+                        pos = 250;
+                    }
+                    else
+                    {
+                        pos = 0f;
+                    }
+                }
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+                MoveToPoint(wantedVelocity);
             }
 
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
@@ -306,7 +315,7 @@ using Terraria.Graphics.Shaders;
                 for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 4f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             if (internalAI[0] == 4)
@@ -445,56 +454,39 @@ using Terraria.Graphics.Shaders;
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
 
-
-
-
-
-
-
-        public void MoveAI(Player targetPlayer, ref float[] AI)
+        public void MoveToPoint(Vector2 point)
         {
-            AI[1]++;
-            if (AI[1] > 180)
+            float moveSpeed = 13f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
             {
-                AI[0] = Main.rand.Next(5);
-                npc.netUpdate = true;
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-            if (AI[0] == 0) //move to starting charge position
+            if (length < 200f)
             {
-                Vector2 point = targetPlayer.Center + new Vector2(250f, 250f);
-                MoveToPoint(point);
+                moveSpeed *= 0.5f;
             }
-            else
-            if (AI[0] == 1) //move to starting charge position
+            if (length < 100f)
             {
-                Vector2 point = targetPlayer.Center + new Vector2(0, 250f);
-                MoveToPoint(point);
+                moveSpeed *= 0.5f;
             }
-            else
-            if (AI[0] == 2) //move to starting charge position
+            if (length < 50f)
             {
-                Vector2 point = targetPlayer.Center + new Vector2(-250, 250f);
-                MoveToPoint(point);
+                moveSpeed *= 0.5f;
             }
-            else
-            if (AI[0] == 3) //move to starting charge position
-            {
-                Vector2 point = targetPlayer.Center + new Vector2(-250f, 0);
-                MoveToPoint(point);
-            }
-            else //standard movement
-            {
-                Vector2 point = targetPlayer.Center + new Vector2(250f, 0);
-                MoveToPoint(point);
-            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
-}*/
+}
 
 

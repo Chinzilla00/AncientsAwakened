@@ -191,12 +191,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-
-            if (NOTRELEASED)
-            {
-                Main.NewText("Patience, child...our battle will come in due time...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                BaseAI.KillNPC(npc); return;
-            }
             #region preamble stuff
             if (isAwakened) //set awakened stats
             {
@@ -595,9 +589,18 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 SpawnGrips = true;
                 Main.NewText("Grips! Assist me!", Color.Magenta);
-                SpawnBoss(player, "AbyssGripS", "GripOfChaosBlue");
-                SpawnBoss(player, "BlazeGripS", "GripOfChaosRed");
+                SpawnBoss(player, "AbyssGrip", "");
+                SpawnBoss(player, "BlazeGrip", "");
                 Main.PlaySound(SoundID.Roar, player.position, 0);
+            }
+            if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
+            {
+                SpawnGrips = true;
+                Main.NewText("Girls..? Help your father with this insignificant mortal.", Color.Magenta);
+                Main.NewText("With pleasure, Papa~!", new Color(102, 20, 48));
+                Main.NewText("Yes, father.", new Color(72, 78, 117));
+                SpawnBoss(player, "FuryAshe", "");
+                SpawnBoss(player, "WrathHaruka", "");
             }
         }
 
@@ -612,7 +615,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.DropBossBags();
 					AAWorld.downedShen = true;
 				}
-			}else
+			}
+            else
 			{
 				if (!Main.expertMode)
 				{
@@ -625,7 +629,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
                     Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 				}
-				if (Main.expertMode)
+				else
 				{
 					NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
 				}

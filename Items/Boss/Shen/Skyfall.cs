@@ -134,7 +134,6 @@ namespace AAMod.Items.Boss.Shen
 
         public override void AddRecipes()
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "RadiantDawn", 1);
             recipe.AddIngredient(null, "FallingTwilight", 1);

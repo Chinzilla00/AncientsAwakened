@@ -79,6 +79,10 @@
     <Compile Include="Backgrounds\InfernoDesertBGStyle.cs" />
     <Compile Include="Backgrounds\InfernoSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\ScreenClouds.cs" />
+    <Compile Include="Backgrounds\ShenSky.cs" />
+    <Compile Include="Backgrounds\ShenASky.cs" />
+    <Compile Include="Backgrounds\ShenSkyData.cs" />
+    <Compile Include="Backgrounds\ShenASkyData.cs" />
     <Compile Include="Backgrounds\SnowSky.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\VoidUGBG.cs" />
@@ -377,6 +381,9 @@
     <Compile Include="Items\Armor\Paladin\Paladin_Boots.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Chestplate.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Helmet.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
     <Compile Include="Items\Armor\Radium\RadiumCuisses.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHat.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHeadgear.cs" />
@@ -1360,8 +1367,6 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
-    <Compile Include="NPCs\Bosses\Shen\AbyssGripS.cs" />
-    <Compile Include="NPCs\Bosses\Shen\BlazeGripS.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
@@ -1527,6 +1532,7 @@
     <Compile Include="OtherModWork\DragonFire.cs" />
     <Compile Include="OtherModWork\FruitDragon.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
+    <Compile Include="Projectiles\AH\Surasshu.cs" />
     <Compile Include="Projectiles\Akuma\AkumaExp.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
@@ -1724,7 +1730,6 @@
     <Compile Include="Projectiles\Shen\SkyfallB.cs" />
     <Compile Include="Projectiles\Shen\SkyfallR.cs" />
     <Compile Include="Projectiles\Shen\TimesplitterP.cs" />
-    <Compile Include="Projectiles\Sisters\Surasshu.cs" />
     <Compile Include="Projectiles\SludgeShotP.cs" />
     <Compile Include="Projectiles\Spectrum.cs" />
     <Compile Include="Projectiles\SpectrumBeam.cs" />
@@ -2145,6 +2150,8 @@
     <Content Include="Backgrounds\Rock_0.png" />
     <Content Include="Backgrounds\Rock_1.png" />
     <Content Include="Backgrounds\Rock_2.png" />
+    <Content Include="Backgrounds\ShenEclipse.png" />
+    <Content Include="Backgrounds\ShenMeteor.png" />
     <Content Include="Backgrounds\Sky.png" />
     <Content Include="Backgrounds\StarTex.png" />
     <Content Include="Backgrounds\Sun.png" />
@@ -3455,6 +3462,20 @@
     <Content Include="Items\Armor\Paladin\Paladin_Crown_Head.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreavesBlue_Legs.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves_Legs.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabutoBlue_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Arms.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Body.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Female.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Arms.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Body.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Female.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaos_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses_Legs.png" />
     <Content Include="Items\Armor\Radium\RadiumHat.png" />
@@ -3744,8 +3765,18 @@
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
+    <Content Include="Projectiles\AH\Ash.png" />
+    <Content Include="Projectiles\AH\FireMagic.png" />
+    <Content Include="Projectiles\AH\FireSpirit.png" />
+    <Content Include="Projectiles\AH\Mizu.png" />
+    <Content Include="Projectiles\AH\SpiritFlame.png" />
+    <Content Include="Projectiles\AH\Surasshu.png" />
+    <Content Include="Items\Boss\AH\AshRain.png" />
+    <Content Include="Items\Boss\AH\FireSpiritStaff.png" />
+    <Content Include="Items\Boss\AH\FuryFlame.png" />
     <Content Include="Items\Boss\AH\HarukaKunai.png" />
     <Content Include="Items\Boss\AH\Masamune.png" />
+    <Content Include="Items\Boss\AH\MizuArashi.png" />
     <Content Include="Items\Boss\Akuma\AkumaATrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaBag.png" />
     <Content Include="Items\Boss\Akuma\AkumaTerratool.png" />
@@ -4769,10 +4800,6 @@
     <Content Include="NPCs\Bosses\Serpent\SnowBreath.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentBody.png" />
     <Content Include="NPCs\Bosses\Serpent\SerpentTail.png" />
-    <Content Include="NPCs\Bosses\Shen\AbyssGripS.png" />
-    <Content Include="NPCs\Bosses\Shen\AbyssGripS_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Shen\BlazeGripS.png" />
-    <Content Include="NPCs\Bosses\Shen\BlazeGripS_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianBreath.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianFlare.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
@@ -4799,8 +4826,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenlingTail.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor1.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenMeteor2.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenMeteor3.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\Shensplosion.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
@@ -5277,8 +5302,6 @@
     <Content Include="Projectiles\Shen\SkyfallB.png" />
     <Content Include="Projectiles\Shen\SkyfallR.png" />
     <Content Include="Projectiles\Shen\TimesplitterP.png" />
-    <Content Include="Projectiles\Sisters\FlameSpirit.png" />
-    <Content Include="Projectiles\Sisters\Surasshu.png" />
     <Content Include="Projectiles\SludgeShotP.png" />
     <Content Include="Projectiles\SoulSiphon.png" />
     <Content Include="Projectiles\Spectrum.png" />
@@ -5797,7 +5820,6 @@
   <ItemGroup>
     <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Armor\PerfectChaos\" />
     <Folder Include="Items\Armor\Shinobi\" />
     <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
     <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />

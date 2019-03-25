@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Sounds.Sounds
 {
-    public class IZRoar : ModSound
+    public class ShenRoar : ModSound
     {
         public override SoundEffectInstance PlaySound(ref SoundEffectInstance soundInstance, float volume, float pan, SoundType type)
         {

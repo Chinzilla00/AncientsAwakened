@@ -25,7 +25,6 @@ namespace AAMod.Items.Boss.Shen
             }
             DisplayName.SetDefault("Chaos Scale");
             Tooltip.SetDefault("Chaos radiates from this blazing scale");
-            Tooltip.SetDefault("UNRELEASED");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 6));
         }
 

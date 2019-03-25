@@ -1082,7 +1082,10 @@ namespace AAMod
                     {
                         int tilesX = WorldGen.genRand.Next(0, x);
                         int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
-                        if (Main.tile[tilesX, tilesY].type == TileID.Pearlstone)
+                        if (Main.tile[tilesX, tilesY].type == TileID.Pearlstone || 
+                            Main.tile[tilesX, tilesY].type == TileID.HallowedIce || 
+                            Main.tile[tilesX, tilesY].type == TileID.HallowHardenedSand || 
+                            Main.tile[tilesX, tilesY].type == TileID.HallowSandstone)
                         {
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(4, 9), (ushort)mod.TileType<HallowedOre>());
                         }

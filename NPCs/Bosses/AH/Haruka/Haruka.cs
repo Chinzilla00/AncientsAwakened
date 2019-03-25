@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
 
-/*namespace AAMod.NPCs.Bosses.AH.Haruka
+namespace AAMod.NPCs.Bosses.AH.Haruka
 {
     [AutoloadBossHead]
     public class Haruka : ModNPC
@@ -22,8 +22,8 @@ using BaseMod;
 
         public override void SetDefaults()
         {
-            npc.width = 84;
-            npc.height = 70;
+            npc.width = 80;
+            npc.height = 60;
             npc.friendly = false;
             npc.damage = 80;
             npc.defense = 50;
@@ -98,8 +98,8 @@ using BaseMod;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale); 
-            npc.damage = (int)(npc.damage * 0.6f); 
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
         public bool SetMovePos = false;
@@ -116,9 +116,7 @@ using BaseMod;
             npc.frame.Y = 70 * internalAI[2]; //IAI[2] Is the current frame
 
             bool throwing = false;
-            bool startSpin = false;
-            bool spin = false;
-            
+
             internalAI[1]++;
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
@@ -164,7 +162,6 @@ using BaseMod;
                 {
                     if (internalAI[2] > 2)
                     {
-                        internalAI[1] = 0;
                         internalAI[2] = 0;
                     }
                 }
@@ -179,13 +176,12 @@ using BaseMod;
                         {
                             Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                             Vector2 fireTarget = npc.Center;
-                            int projType = *mod.ProjectileType<HarukaProj>();
+                            int projType = mod.ProjectileType<HarukaProj>();
                             BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                         }
 
                         if (internalAI[2] < 9 || internalAI[2] > 11)
                         {
-                            internalAI[1] = 0;
                             internalAI[2] = 9;
                         }
                     }
@@ -193,7 +189,6 @@ using BaseMod;
                     {
                         if (internalAI[2] < 3 || internalAI[2] > 5)
                         {
-                            internalAI[1] = 0;
                             internalAI[2] = 3;
                         }
                     }
@@ -216,7 +211,7 @@ using BaseMod;
                     throwing = false;
                     npc.netUpdate = true;
                 }
-                if (internalAI[2] < 7 && internalAI[1] == 4) //Throwing
+                if (internalAI[2] == 7 && internalAI[1] == 4) //Throwing
                 {
                     Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                     Vector2 fireTarget = npc.Center;
@@ -225,17 +220,14 @@ using BaseMod;
                 }
                 if ((internalAI[2] < 3 || internalAI[2] > 5) && !throwing) //Not throwing yet
                 {
-                    internalAI[1] = 0;
                     internalAI[2] = 3;
                 }
-                if ((internalAI[2] < 6 ||  internalAI[2] > 8) && throwing) //Throwing
+                if ((internalAI[2] < 6 || internalAI[2] > 8) && throwing) //Throwing
                 {
-                    internalAI[1] = 0;
                     internalAI[2] = 6;
                 }
                 if (npc.velocity.Y == 0) // Once she hits the ground, reset back to neutral AI
                 {
-                    internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
@@ -249,7 +241,6 @@ using BaseMod;
                     {
                         if (internalAI[2] > 2)
                         {
-                            internalAI[1] = 0;
                             internalAI[2] = 0;
                         }
                     }
@@ -257,7 +248,6 @@ using BaseMod;
                     {
                         if (internalAI[2] < 3 || (int)internalAI[2] > 5)
                         {
-                            internalAI[1] = 0;
                             internalAI[2] = 3;
                         }
                     }
@@ -275,22 +265,9 @@ using BaseMod;
                     }
                 }
 
-                if (SetMovePos) //Set the position to move to
-                {
-                    SetMovePos = false;
-                    XPos = Main.rand.Next(2) == 0 ? 20 : -20f;
-                    npc.netUpdate = true;
-                }
-
-                Vector2 point = player.Center + new Vector2(XPos, 0); //Position to move to
-
                 if (internalAI[4] == 1 || npc.ai[3] < 240) //Move to point 
                 {
-                    npc.ai[3]++;
-                    MoveToPoint(point);
-                }
-                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || npc.ai[3] > 240) && CanHit) //If close enough or timer exceeds 4 seconds, and isn't in a block/can see the player, turn visible
-                {
+                    npc.Center = player.Center - (Main.rand.Next(2) == 0 ? new Vector2(20, 0) : new Vector2(-20, 0));
                     internalAI[4] = 2;
                 }
                 if (internalAI[4] == 2) //Turn Visible
@@ -299,7 +276,6 @@ using BaseMod;
                     if (npc.alpha <= 0)
                     {
                         npc.alpha = 0;
-                        internalAI[1] = 0;
                         internalAI[2] = 19; //Set frame to start of slash animation
                         internalAI[4] = 3; //Set To Slash AI
                         npc.netUpdate = true;
@@ -309,7 +285,6 @@ using BaseMod;
                 {
                     if (npc.ai[2] > 28) //Reset to regular AI
                     {
-                        internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         internalAI[4] = 0;
@@ -322,47 +297,42 @@ using BaseMod;
             {
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
-                    internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
-                    npc.ai[3] = 0;
                     npc.ai = new float[4];
                 }
                 npc.alpha += 15; //Turn Invisible
-                if (npc.alpha > 255)
+                if (npc.alpha >= 255)
                 {
                     npc.alpha = 255;
+                    int Xint = Main.rand.Next(-200, 200);
+                    int Yint = Main.rand.Next(0, 200);
+                    if ((Xint < -100 || Xint > 100) && Yint > 90)
+                    {
+                        Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                        npc.Center = tele;
+                    }
                 }
             }
             else
             {
-                if ((internalAI[2] < 3 && internalAI[2] > 5) && !startSpin) //Set up initial jump frames
+                if (internalAI[2] > 18 && internalAI[2] < 12) //Spin Animation
                 {
-                    internalAI[1] = 0;
-                    internalAI[2] = 3;
-                    startSpin = true;
-                    npc.netUpdate = true;
-                }
-                else if (internalAI[2] > 5 && startSpin && !spin) //Initial Jump Animation
-                {
-                    internalAI[2] = 12; //Set frame to beginning of Spin animation
-                    spin = true;
-                    npc.netUpdate = true;
-                }
-                if (internalAI[2] > 18 && spin) //Spin Animation
-                {
-                    internalAI[1] = 0;
-                    internalAI[2] = 16; //Set frame back to first frame of spin instead of starting frame
-                    internalAI[4]++;
-                    if (npc.velocity.Y == 0 || internalAI[4] > 240) //Reset AI again once she hits the ground
+                    if (internalAI[4] < 1)
                     {
-                        internalAI[1] = 0;
+                        internalAI[2] = 12;
+                    }
+                    internalAI[4]++;
+                    if (internalAI[2] > 18)
+                    {
+                        internalAI[2] = 15;
+                    }
+                    if (internalAI[4] > 240) //Reset AI again once timer runs out
+                    {
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         internalAI[4] = 0;
-                        npc.ai[3] = 0;
-                        spin = false;
                         npc.ai = new float[4];
                     }
                 }
@@ -370,7 +340,7 @@ using BaseMod;
 
             if (internalAI[0] == AISTATE_JUMP || internalAI[0] == AISTATE_THROW) //When jumping/throwing stuff at the player
             {
-                BaseAI.AISlime(npc, ref npc.ai, false, 60, 20f, -18f, 15f, -20f);
+                BaseAI.AISlime(npc, ref npc.ai, false, 60, 20f, -12f, 22f, -15f);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When Turning invisible and slashing
             {
@@ -378,22 +348,18 @@ using BaseMod;
             }
             else if (internalAI[0] == AISTATE_CATCHUP) //When Turning invisible to keep up w/ player
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, .3f, 7, 300);
-                npc.rotation = 0;
+
             }
             else //When spinning
             {
-                if (spin)
-                {
-                    SelenianSpin(ref npc.ai);
-                }
+                BaseAI.AIPounce(npc, player, 3.3f, 12 * 2f, -5.2f, 70, 70);
             }
         }
 
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 13f;
-            if (moveSpeed == 0f || npc.Center == point) return; 
+            if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
@@ -427,76 +393,11 @@ using BaseMod;
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Haruka_Glow");
-            
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, new Vector2(npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), false);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, new Vector2 (npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, false);
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
-
-
-        public void SelenianSpin(ref float[] AI)
-        {
-            npc.reflectingProjectiles = false;
-            npc.takenDamageMultiplier = 1f;
-            if (AI[2] > 0f)
-            {
-                AI[2] -= 1f;
-            }
-            if (AI[2] == 0f)
-            {
-                if (((Main.player[npc.target].Center.X < npc.Center.X && npc.direction < 0) || (Main.player[npc.target].Center.X > npc.Center.X && npc.direction > 0)) && Collision.CanHit(npc.Center, 1, 1, Main.player[npc.target].Center, 1, 1))
-                {
-                    AI[2] = -1f;
-                    npc.netUpdate = true;
-                    npc.TargetClosest(true);
-                }
-            }
-            else
-            {
-                if (AI[2] < 0f && AI[2] > -6)
-                {
-                    AI[2] -= 1f;
-                    npc.velocity.X = npc.velocity.X * 0.9f;
-                    return;
-                }
-                if (AI[2] == -6)
-                {
-                    AI[2] -= 1f;
-                    npc.TargetClosest(true);
-                    Vector2 vec = npc.DirectionTo(Main.player[npc.target].Top + new Vector2(0f, -30f));
-                    if (vec.HasNaNs())
-                    {
-                        vec = Vector2.Normalize(new Vector2(npc.spriteDirection, -1f));
-                    }
-                    npc.velocity = vec * 16f;
-                    npc.netUpdate = true;
-                    return;
-                }
-                if (AI[2] < -6)
-                {
-                    AI[2] -= 1f;
-                    if (npc.velocity.Y == 0f)
-                    {
-                        AI[2] = 60f;
-                    }
-                    else if (AI[2] < (-16))
-                    {
-                        npc.velocity.Y = npc.velocity.Y + 0.15f;
-                        if (npc.velocity.Y > 24f)
-                        {
-                            npc.velocity.Y = 24f;
-                        }
-                    }
-                    npc.reflectingProjectiles = true;
-                    npc.takenDamageMultiplier = 3f;
-                    if (npc.justHit)
-                    {
-                        AI[2] = 60f;
-                        npc.netUpdate = true;
-                    }
-                }
-            }
-        }
     }
-}*/
+}

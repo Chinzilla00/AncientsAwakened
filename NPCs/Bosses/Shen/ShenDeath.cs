@@ -32,19 +32,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public int Speechtimer = 0;
 
-        public int chargeWidth = 50;
-        public int normalWidth = 250;
-
-        public static bool NOTRELEASED = true;
-
         public override void AI()
         {
-
-            if (NOTRELEASED)
-            {
-                Main.NewText("Patience, child...our battle will come in due time...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                BaseAI.KillNPC(npc); return;
-            }
             Speechtimer++;
             if (Speechtimer < 780)
             {

@@ -22,7 +22,6 @@ While in the Inferno, your defense is increased by 10
 While in the Mire, your speed is increased by 50%
 Grants a strong dash that shreds through enemies
 Grants effects of the Discordian Rampart");
-            Tooltip.SetDefault("UNRELEASED");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
         }
 
@@ -117,7 +116,6 @@ Grants effects of the Discordian Rampart");
 
         public override void AddRecipes()  //How to craft this sword
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "TaiyangBaolei", 1);
             recipe.AddIngredient(null, "Naitokurosu", 1);

@@ -19,7 +19,6 @@ namespace AAMod.Items.Boss.Shen
             DisplayName.SetDefault("Asteroid");
             Tooltip.SetDefault(@"Crashes into enemies with the force of an astroid crashing into earth
 Inflicts Discordian Inferno");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -55,7 +54,6 @@ Inflicts Discordian Inferno");
 
         public override void AddRecipes()  //How to craft this sword
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Daycrusher", 1);
             recipe.AddIngredient(null, "Flairdra", 1);

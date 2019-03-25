@@ -41,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Health8 = false;
         public bool Health7 = false;
         public bool Health6 = false;
-        public bool Health5 = false;
         public bool Health4 = false;
         public bool Health3 = false;
         public bool Health2 = false;
@@ -55,51 +54,55 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Face it, child! You’ll never defeat the living embodiment of disarray itself!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health9 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.8f && !Health8)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health8 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.7f && !Health7)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health7 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.6f && !Health6)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health6 = true;
-            }
-            if (npc.life <= npc.lifeMax * 0.5f && !Health5)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("This is getting real obnoxious chasing you around, you know!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                Health5 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.4f && !Health4)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health4 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health3 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.2f && !Health2)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health2 = true;
+                npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.1f && !Health1)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON! EMPEROR OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Health1 = true;
+                npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.05f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.05f && !HealthOneHalf)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON! BRINGER OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE! PREPARE FOR YOUR DEMISE!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 HealthOneHalf = true;
+                npc.netUpdate = true;
             }
             if (Health3)
             {

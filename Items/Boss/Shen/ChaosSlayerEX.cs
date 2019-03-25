@@ -17,7 +17,6 @@ namespace AAMod.Items.Boss.Shen
 			DisplayName.SetDefault("Ikari");
             Tooltip.SetDefault(@"Unleashes explosive piercing blades of chaos to smite your foes
 Chaos Slayer EX");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void SetDefaults()
@@ -62,7 +61,6 @@ Chaos Slayer EX");
 
         public override void AddRecipes()  //How to craft this sword
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ChaosSlayer");
             recipe.AddIngredient(null, "PerfectChaos");

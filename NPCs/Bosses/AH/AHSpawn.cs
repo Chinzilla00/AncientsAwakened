@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-/*namespace AAMod.NPCs.Bosses.AH
+namespace AAMod.NPCs.Bosses.AH
 {
     public class AHSpawn : ModNPC
     {
@@ -123,6 +123,3 @@ using Terraria.ModLoader;
 
     }
 }
-
-
-*/

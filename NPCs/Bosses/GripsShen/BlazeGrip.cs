@@ -25,8 +25,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 			npc.lifeMax = 80000;
             npc.damage = 200;
             npc.defense = 110;
-            npc.buffImmune[BuffID.OnFire] = true;	
-            bossBag = mod.ItemType("GripSBag");
+            npc.buffImmune[BuffID.OnFire] = true;
 
             offsetBasePoint = new Vector2(-280f, 0f);		
         }	
@@ -88,31 +87,10 @@ namespace AAMod.NPCs.Bosses.GripsShen
             return false;
         }
 
-        public override void NPCLoot()
+        public override bool PreNPCLoot()
         {
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlazeGripTrophy"));
-            }
-            int GripRed = NPC.CountNPCS(mod.NPCType("AbyssGrip"));
-            if (GripRed == 0)
-            {
-                AAWorld.downedGripsS = true;
-                if (Main.expertMode)
-                {
-                    npc.DropBossBags();
-                }
-            }
-            if (!Main.expertMode)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DaybreakIncineriteOre"), Main.rand.Next(30, 44));
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GripMaskBlaze"), 1);
-                }
-            }
+            return false;
         }
-
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {

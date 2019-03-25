@@ -8,7 +8,7 @@ namespace AAMod
 {
     public class AAGlobalTile : GlobalTile
 	{
-		public static int glowTick = 0;
+        public static int glowTick = 0;
 		public static int glowMax = 100;
 
         public override void AnimateTile()

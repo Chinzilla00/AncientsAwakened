@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Shen
         {
             DisplayName.SetDefault("Chaos Soul");
             Tooltip.SetDefault("Solid discord, symbolizing unrest and Anarchy itself");
-            Tooltip.SetDefault("UNRELEASED");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
             ItemID.Sets.ItemNoGravity[item.type] = true;
