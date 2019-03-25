@@ -1527,6 +1527,7 @@
     <Compile Include="OtherModWork\DragonFire.cs" />
     <Compile Include="OtherModWork\FruitDragon.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
+    <Compile Include="Projectiles\AH\Surasshu.cs" />
     <Compile Include="Projectiles\Akuma\AkumaExp.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
     <Compile Include="Projectiles\Akuma\DaybreakArrow.cs" />
@@ -1723,7 +1724,6 @@
     <Compile Include="Projectiles\Shen\SkyfallB.cs" />
     <Compile Include="Projectiles\Shen\SkyfallR.cs" />
     <Compile Include="Projectiles\Shen\TimesplitterP.cs" />
-    <Compile Include="Projectiles\Sisters\Surasshu.cs" />
     <Compile Include="Projectiles\SludgeShotP.cs" />
     <Compile Include="Projectiles\Spectrum.cs" />
     <Compile Include="Projectiles\SpectrumBeam.cs" />
@@ -3743,8 +3743,18 @@
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
+    <Content Include="Projectiles\AH\Ash.png" />
+    <Content Include="Projectiles\AH\FireMagic.png" />
+    <Content Include="Projectiles\AH\FireSpirit.png" />
+    <Content Include="Projectiles\AH\Mizu.png" />
+    <Content Include="Projectiles\AH\SpiritFlame.png" />
+    <Content Include="Projectiles\AH\Surasshu.png" />
+    <Content Include="Items\Boss\AH\AshRain.png" />
+    <Content Include="Items\Boss\AH\FireSpiritStaff.png" />
+    <Content Include="Items\Boss\AH\FuryFlame.png" />
     <Content Include="Items\Boss\AH\HarukaKunai.png" />
     <Content Include="Items\Boss\AH\Masamune.png" />
+    <Content Include="Items\Boss\AH\MizuArashi.png" />
     <Content Include="Items\Boss\Akuma\AkumaATrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaBag.png" />
     <Content Include="Items\Boss\Akuma\AkumaTerratool.png" />
@@ -5275,8 +5285,6 @@
     <Content Include="Projectiles\Shen\SkyfallB.png" />
     <Content Include="Projectiles\Shen\SkyfallR.png" />
     <Content Include="Projectiles\Shen\TimesplitterP.png" />
-    <Content Include="Projectiles\Sisters\FlameSpirit.png" />
-    <Content Include="Projectiles\Sisters\Surasshu.png" />
     <Content Include="Projectiles\SludgeShotP.png" />
     <Content Include="Projectiles\SoulSiphon.png" />
     <Content Include="Projectiles\Spectrum.png" />

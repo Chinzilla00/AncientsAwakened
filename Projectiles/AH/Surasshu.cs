@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Sisters
+namespace AAMod.Projectiles.AH
 {
     public class Surasshu : ModProjectile
     {
