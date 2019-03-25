@@ -1571,6 +1571,7 @@
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
     <Compile Include="Projectiles\FreedomBall.cs" />
     <Compile Include="Projectiles\HarukaKunaiF.cs" />
+    <Compile Include="Projectiles\HydraShot.cs" />
     <Compile Include="Projectiles\MobianShotCharged.cs" />
     <Compile Include="Projectiles\MobianShot.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
@@ -5200,6 +5201,7 @@
     <Content Include="Projectiles\HarukaKunaiF.png" />
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraFangP.png" />
+    <Content Include="Projectiles\HydraShot.png" />
     <Content Include="Projectiles\HydraSpear.png" />
     <Content Include="Projectiles\HydratoxinArrow.png" />
     <Content Include="Projectiles\HydratoxinBullet.png" />
