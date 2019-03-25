@@ -98,8 +98,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale); 
-            npc.damage = (int)(npc.damage * 0.6f); 
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
         public bool SetMovePos = false;
@@ -118,7 +118,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             bool throwing = false;
             bool startSpin = false;
             bool spin = false;
-            
+
             internalAI[1]++;
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
@@ -224,7 +224,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     internalAI[2] = 3;
                 }
-                if ((internalAI[2] < 6 ||  internalAI[2] > 8) && throwing) //Throwing
+                if ((internalAI[2] < 6 || internalAI[2] > 8) && throwing) //Throwing
                 {
                     internalAI[2] = 6;
                 }
@@ -377,7 +377,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 13f;
-            if (moveSpeed == 0f || npc.Center == point) return; 
+            if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
@@ -411,10 +411,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Haruka_Glow");
-            
+
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, false);
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }
     }
+}
