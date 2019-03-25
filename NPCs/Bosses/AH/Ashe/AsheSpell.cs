@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            projectile.velocity *= 0.98f;
+            projectile.velocity *= 0.8f;
 
             projectile.ai[0]++;
 
@@ -40,8 +40,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 projectile.ai[0]++;
             }
 
-            if (projectile.ai[0] == 60)
+            if (projectile.velocity == new Vector2(0, 0) && projectile.ai[1] == 0)
             {
+                projectile.ai[1] = 1;
                 Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<AsheSpark>(), 50, 0, projectile.owner);
             }
 

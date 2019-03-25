@@ -7,8 +7,6 @@ namespace AAMod.Tiles
 {
     public class Doomstone : ModTile
     {
-
-
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -16,6 +14,7 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             SetModTree(new OroborosTree());
             soundType = 21;
+            Main.tileBlockLight[Type] = true;
             drop = mod.ItemType("Doomstone");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(21, 21, 31));

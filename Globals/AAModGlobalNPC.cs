@@ -444,7 +444,7 @@ namespace AAMod
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("BugSwatter"));
                 }
-                Item.NewItem(npc.getRect(), mod.ItemType("Stinger"), Main.rand.Next(14, 20));
+                Item.NewItem(npc.getRect(), ItemID.Stinger, Main.rand.Next(14, 20));
             }
 
             if (npc.type == NPCID.Plantera)
@@ -459,6 +459,11 @@ namespace AAMod
             if (npc.type == NPCID.SkeletronHead)
             {
                 Item.NewItem(npc.getRect(), ItemID.Bone, Main.rand.Next(30, 45));
+            }
+
+            if (Main.player[Main.myPlayer].ZoneJungle && Main.rand.Next(30) == 0)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Everleaf"), Main.rand.Next(1, 2));
             }
             
             if ((npc.type == NPCID.GoblinArcher

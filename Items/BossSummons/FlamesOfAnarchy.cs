@@ -11,7 +11,7 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
-/*namespace AAMod.Items.BossSummons
+namespace AAMod.Items.BossSummons
 {
     public class FlamesOfAnarchy : ModItem
     {
@@ -118,4 +118,4 @@ Calls upon the Sisters of Discord");
             recipe.AddRecipe();
         }
     }
-}*/
+}

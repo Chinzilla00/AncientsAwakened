@@ -13,8 +13,7 @@ namespace AAMod.Tiles
 			Main.tileMergeDirt[Type] = false;
             Main.tileMerge[Type][TileID.Mud] = true;
             Main.tileSpelunker[Type] = true;
-            Main.tileBlendAll[this.Type] = true;
-            Main.tileBlockLight[Type] = true;  //true for block to emit light
+            Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
             soundType = 21;
             dustType = mod.DustType("EverleafDust");

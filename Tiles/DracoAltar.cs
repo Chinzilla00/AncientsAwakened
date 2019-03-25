@@ -85,9 +85,6 @@ namespace AAMod.Tiles
             {
                 int num302 = Main.specX[num301];
                 int num303 = Main.specY[num301];
-                Tile tile6 = Main.tile[num302, num303];
-                ushort type4 = tile6.type;
-                short frameX = tile6.frameX;
                 Vector2 SunVector1 = new Vector2((num302 * 16) - (int)Main.screenPosition.X + (num8 / 2f), (num303 * 16) - (int)Main.screenPosition.Y - 36) + zero;
                 Rectangle source = new Rectangle(0, 0, SunTexture.Width, SunTexture.Height);
                 Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, 0);
