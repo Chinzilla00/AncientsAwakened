@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Shen
 		{
 			DisplayName.SetDefault("Chaos Slayer");
             Tooltip.SetDefault("Unleashes blades of chaos to smite your foes\n'Shatter all sanity'");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void SetDefaults()
@@ -82,7 +81,6 @@ namespace AAMod.Items.Boss.Shen
 
         public override void AddRecipes()  //How to craft this sword
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ReignOfFire", 1);
             recipe.AddIngredient(null, "Hydraslayer", 1);

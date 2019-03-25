@@ -4808,8 +4808,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenlingTail.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor1.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenMeteor2.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenMeteor3.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\Shensplosion.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />

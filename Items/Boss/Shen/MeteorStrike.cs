@@ -20,7 +20,6 @@ namespace AAMod.Items.Boss.Shen   //where is located
 Hitting enemies causes a smaller, but more damaging explosion
 Hitting a tile causes a larger, but less damaging projectile
 Inflicts Discordian Inferno");
-            Tooltip.SetDefault("UNRELEASED");
 
         }
 
@@ -107,7 +106,6 @@ Inflicts Discordian Inferno");
 
         public override void AddRecipes()  //How to craft this sword
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "SunStorm", 1);
             recipe.AddIngredient(null, "Toxibomb", 1);

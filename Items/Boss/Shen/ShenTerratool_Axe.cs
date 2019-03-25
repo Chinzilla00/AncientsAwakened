@@ -36,7 +36,6 @@ namespace AAMod.Items.Boss.Shen
         {
             DisplayName.SetDefault("Terratool");
             Tooltip.SetDefault("Right Click to change tool types");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
