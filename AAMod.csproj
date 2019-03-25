@@ -381,6 +381,9 @@
     <Compile Include="Items\Armor\Paladin\Paladin_Boots.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Chestplate.cs" />
     <Compile Include="Items\Armor\Paladin\Paladin_Helmet.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
     <Compile Include="Items\Armor\Radium\RadiumCuisses.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHat.cs" />
     <Compile Include="Items\Armor\Radium\RadiumHeadgear.cs" />
@@ -3458,6 +3461,20 @@
     <Content Include="Items\Armor\Paladin\Paladin_Crown_Head.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet.png" />
     <Content Include="Items\Armor\Paladin\Paladin_Helmet_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreavesBlue_Legs.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosGreaves_Legs.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabutoBlue_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosKabuto_Head.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Arms.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Body.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlateBlue_Female.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Arms.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Body.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaosPlate_Female.png" />
+    <Content Include="Items\Armor\PerfectChaos\PerfectChaos_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses.png" />
     <Content Include="Items\Armor\Radium\RadiumCuisses_Legs.png" />
     <Content Include="Items\Armor\Radium\RadiumHat.png" />
@@ -5801,7 +5818,6 @@
   <ItemGroup>
     <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Armor\PerfectChaos\" />
     <Folder Include="Items\Armor\Shinobi\" />
     <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
     <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />

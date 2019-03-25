@@ -125,6 +125,7 @@ namespace AAMod
         public bool fulgurite;
         public bool doomite;
         public bool Radium;
+        public bool perfectChaos;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -292,6 +293,7 @@ namespace AAMod
             fulgurite = false;
             doomite = false;
             DarkmatterSet = false;
+            perfectChaos = false;
             //Accessory
             SnapCD = 0;
             AbilityCD = 0;
@@ -1749,28 +1751,34 @@ namespace AAMod
                 }
             }
 
-            if (trueFlesh && Main.rand.Next(2) == 0)
+
+            if (perfectChaos)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+            }
+
+            if (trueFlesh)
             {
                 target.AddBuff(BuffID.Ichor, 300);
             }
 
-            if (trueNights && Main.rand.Next(2) == 0)
+            if (trueNights)
             {
                 target.AddBuff(BuffID.CursedInferno, 300);
             }
 
-            if (valkyrieSet && Main.rand.Next(2) == 0)
+            if (valkyrieSet)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (darkmatterSetMe && Main.rand.Next(2) == 0)
+            if (darkmatterSetMe)
             {
                 target.AddBuff(mod.BuffType("Electrified"), 500);
             }
 
-            if (kindledSet && Main.rand.Next(2) == 0)
+            if (kindledSet)
             {
                 player.magmaStone = true;
             }
@@ -1791,7 +1799,7 @@ namespace AAMod
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
-            if (demonGauntlet && Main.rand.Next(2) == 0)
+            if (demonGauntlet)
             {
                 if (WorldGen.crimson == false)
                 {
@@ -1802,7 +1810,7 @@ namespace AAMod
                     target.AddBuff(BuffID.Ichor, 180);
                 }
             }
-            if (Time && Main.rand.Next(2) == 0)
+            if (Time)
             {
                 for (int i = 0; i < 255; i++)
                 {
@@ -1811,17 +1819,17 @@ namespace AAMod
                 }
             }
 
-            if (zeroSet && Main.rand.Next(2) == 0)
+            if (zeroSet)
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
             }
 
-            if (dracoSet && Main.rand.Next(2) == 0)
+            if (dracoSet)
             {
                 target.AddBuff(BuffID.Daybreak, 600);
             }
 
-            if (Alpha && Main.rand.Next(2) == 0 && !target.boss)
+            if (Alpha && !target.boss)
             {
                 target.AddBuff(BuffID.Wet, 600);
             }
@@ -2217,6 +2225,10 @@ namespace AAMod
             if (zeroSet && (proj.melee || proj.ranged))
             {
                 target.AddBuff(BuffID.WitheredArmor, 1000);
+            }
+            if (perfectChaos && proj.melee)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
             if (dracoSet && (proj.melee || proj.magic))
@@ -2690,6 +2702,14 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DoomiteVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.headFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosKabuto")))
+            {
+                if (drawPlayer.direction == -1)
+                {
+                    BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosKabutoBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.headFrame, scale);
+                }
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/PerfectChaosKabuto_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.headFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -2760,6 +2780,25 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_" + (drawPlayer.Male ? "Body" : "Female") + "_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
+            {
+                if (drawPlayer.Male)
+                {
+                    if (drawPlayer.direction == -1)
+                    {
+                        BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                    }
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+                }
+                else
+                {
+                    if (drawPlayer.direction == -1)
+                    {
+                        BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_Female"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                    }
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+                }
+            }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
@@ -2810,6 +2849,14 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
+            {
+                if (drawPlayer.direction == -1)
+                {
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                }
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
         {
@@ -2859,6 +2906,14 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteGreaves")) && modPlayer.doomite)
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
+            {
+                if (drawPlayer.direction == -1)
+                {
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosGreavesBlue_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.legFrame);
+                }
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/PerfectChaosGreaves_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Shen3, edi.shadow), drawPlayer.legFrame);
             }
         });
     }
