@@ -12,8 +12,8 @@ namespace AAMod.Mounts
 			mountData.spawnDust = 15;
 			mountData.buff = mod.BuffType("PrinceFishron");
 			mountData.heightBoost = 14;
-			mountData.flightTimeMax = Int32.MaxValue;
-			mountData.fatigueMax = Int32.MaxValue;
+			mountData.flightTimeMax = int.MaxValue;
+			mountData.fatigueMax = int.MaxValue;
 			mountData.fallDamage = 0f;
 			mountData.usesHover = true;
 			mountData.runSpeed = 2f;

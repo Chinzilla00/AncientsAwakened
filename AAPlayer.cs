@@ -1185,6 +1185,10 @@ namespace AAMod
             {
                 Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, AAColor.Lantern.R / 255, (AAColor.Lantern.G / 255) * 0.95f, (AAColor.Lantern.B / 255) * 0.8f);
             }
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.AH.Haruka.Haruka>()))
+            {
+                player.AddBuff(mod.BuffType<Buffs.Gravity>(), 10, true);
+            }
             if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
             {
                 player.AddBuff(mod.BuffType<Buffs.YamataGravity>(), 10, true);
@@ -1915,6 +1919,10 @@ namespace AAMod
 
             if (YamataGravity || YamataAGravity)
             {
+                if (player.mount.CanFly)
+                {
+                    player.mount.Dismount(player);
+                }
                 if (player.wingTimeMax > 30)
                 {
                     player.wingTimeMax = 30;

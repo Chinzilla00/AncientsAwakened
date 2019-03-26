@@ -158,6 +158,7 @@
     <Compile Include="Buffs\DestinedToDie.cs" />
     <Compile Include="Buffs\YamataAGravity.cs" />
     <Compile Include="Buffs\Hunted.cs" />
+    <Compile Include="Buffs\Gravity.cs" />
     <Compile Include="Buffs\YamataGravity.cs" />
     <Compile Include="Buffs\Yanked.cs" />
     <Compile Include="ConversionHandler.cs" />
@@ -3685,6 +3686,7 @@
     <Content Include="Items\Blocks\DepthsandHardened.png" />
     <Content Include="Items\Blocks\Depthsandstone.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
+    <Content Include="Items\Blocks\DevStatues.png" />
     <Content Include="Items\Blocks\DiscordiumBrick.png" />
     <Content Include="Items\Blocks\DiscordiumOre.png" />
     <Content Include="Items\Blocks\DjinnBox.png" />
