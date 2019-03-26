@@ -886,6 +886,14 @@ namespace AAMod
                 YamataSky.PlanetTexture = null;
                 YamataSky.BGTexture = null;
                 YamataSky.SkyTex = null;
+                ShenSky.MeteorTexture = null;
+                ShenSky.SkyTex = null;
+                ShenSky.Sun = null;
+                ShenSky.Moon = null;
+                ShenSky.BGTexture = null;
+                ShenASky.MeteorTexture = null;
+                ShenASky.PlanetTexture = null;
+                ShenASky.SkyTex = null;
                 Items.Accessories.SoulStone._glow = null;
                 Items.Pets.Mudkip.glowTex = null;
                 Items.Pets.MudkipS.glowTex = null;
