@@ -7,7 +7,7 @@ namespace AAMod.Items.Boss.AH
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Heart of Passion");
+            DisplayName.SetDefault("Heart of Sorrow");
             Tooltip.SetDefault(@"Your melee and ranged attacks grow stronger the less health you have
 Melee and Ranged inflict venom
 Below 2/3 of your maximum life, Your movement speed is doubled

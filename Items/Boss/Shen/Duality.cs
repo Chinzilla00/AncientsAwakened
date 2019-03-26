@@ -30,7 +30,6 @@ Grants effects of the Discordian Rampart");
         {
             item.width = 32;
             item.height = 34;
-            item.maxStack = 999;
             item.value = 10000;
             item.rare = 1;
             item.expert = true;

@@ -34,11 +34,15 @@ namespace AAMod.NPCs.Bosses.GripsShen
             npc.DeathSound = SoundID.NPCDeath1;
             npc.netAlways = true;
             npc.scale *= 1.4f;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GripsTheme");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
         }
         
         public override void FindFrame(int frameHeight)
         {
+            if (!NPC.AnyNPCs(mod.NPCType("ShenDoragon")))
+            {
+                npc.life = 0;
+            }
             npc.frameCounter++;
             if (npc.frameCounter > 9)
             {

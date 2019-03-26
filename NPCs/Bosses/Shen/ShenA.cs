@@ -26,7 +26,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.value = Item.buyPrice(40, 0, 0, 0);
             bossBag = mod.ItemType("ShenCache");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");
-			isAwakened = true;
+            musicPriority = (MusicPriority)11;
+            isAwakened = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

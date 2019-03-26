@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.alpha = 255;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
-            musicPriority = MusicPriority.BossHigh;
+            musicPriority = (MusicPriority)11;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

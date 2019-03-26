@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.netAlways = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
         }
 
         public float[] internalAI = new float[4];
