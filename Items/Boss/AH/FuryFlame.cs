@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 2;
             item.useAnimation = 15;
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType("Dawnstrike");
+            item.shoot = mod.ProjectileType("FuryFlame");
             item.knockBack = 0;
             item.value = Item.buyPrice( 1, 0, 0, 0);
             item.rare = 11;

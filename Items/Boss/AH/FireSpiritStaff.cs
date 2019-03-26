@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("FireSpirit");
-            item.damage = 80;
+            item.damage = 120;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;

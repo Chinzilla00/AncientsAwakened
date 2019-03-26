@@ -10,6 +10,7 @@ namespace AAMod.Projectiles.AH
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fury Fire");
+			Main.projFrames[projectile.type] = 7;
         }
 
         public override void SetDefaults()
@@ -23,6 +24,7 @@ namespace AAMod.Projectiles.AH
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
+			projectile.ranged = true;
             projectile.penetrate = 100;
         }
         
@@ -96,7 +98,7 @@ namespace AAMod.Projectiles.AH
                     }
                 }
             }
-            projectile.rotation += 0.3f * (float)projectile.direction;
+            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

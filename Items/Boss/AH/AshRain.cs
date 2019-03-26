@@ -10,6 +10,7 @@ namespace AAMod.Items.Boss.AH
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ash Rain");
+			Tooltip.SetDefault(@"Shoots fireball which explodes on hit or after some time");
         }
 
         public override void SetDefaults()

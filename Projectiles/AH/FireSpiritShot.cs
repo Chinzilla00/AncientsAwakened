@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.AH
 			projectile.aiStyle = 1;
 			projectile.friendly = true; 
 			projectile.hostile = false;
-			projectile.magic = true;
+			projectile.minion = true;
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.alpha = 20;
