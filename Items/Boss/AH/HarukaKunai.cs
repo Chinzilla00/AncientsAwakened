@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.AH
 			item.useStyle = 1;
 			item.knockBack = 0;
 			item.value = Item.sellPrice(0, 0, 0, 0);
-			item.rare = 0;
+			item.rare = 11;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

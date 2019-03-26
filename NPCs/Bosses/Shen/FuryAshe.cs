@@ -230,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, .13f, .13f, 13f, 13f, false, 1);
             }
             else if (internalAI[0] == AISTATE_DRAGON) //When summoning a noodle
             {

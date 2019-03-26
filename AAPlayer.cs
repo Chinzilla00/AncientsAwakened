@@ -31,6 +31,7 @@ namespace AAMod
     public class AAPlayer : ModPlayer
     {
         //Minions
+        public bool FireSpirit = false;
         public bool ImpServant = false;
         public bool ImpSlave = false;
         public bool MoonBee = false;
@@ -234,6 +235,7 @@ namespace AAMod
         public override void ResetEffects()
         {
             //Minions
+            FireSpirit = false;
             ImpServant = false;
             ImpSlave = false;
             MoonBee = false;

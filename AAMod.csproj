@@ -101,6 +101,7 @@
     <Compile Include="Backgrounds\YamataSkyData.cs" />
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
+    <Compile Include="Buffs\FireSpirit.cs" />
     <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
@@ -571,6 +572,9 @@
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
+    <Compile Include="Items\Boss\AH\AshRain.cs" />
+    <Compile Include="Items\Boss\AH\FireSpiritStaff.cs" />
+    <Compile Include="Items\Boss\AH\FuryFlame.cs" />
     <Compile Include="Items\Boss\AH\HarukaKunai.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
@@ -1367,6 +1371,7 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\Shenling.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoom.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenMeteor1.cs" />
@@ -1537,6 +1542,11 @@
     <Compile Include="OtherModWork\DragonFire.cs" />
     <Compile Include="OtherModWork\FruitDragon.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
+    <Compile Include="Projectiles\AH\Ash.cs" />
+    <Compile Include="Projectiles\AH\FireMagic.cs" />
+    <Compile Include="Projectiles\AH\FireSpirit.cs" />
+    <Compile Include="Projectiles\AH\FireSpiritShot.cs" />
+    <Compile Include="Projectiles\AH\FuryFlame.cs" />
     <Compile Include="Projectiles\AH\Surasshu.cs" />
     <Compile Include="Projectiles\Akuma\AkumaExp.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
@@ -2205,6 +2215,7 @@
     <Content Include="Buffs\EnderMinionBuff.png" />
     <Content Include="Buffs\EnderMinionBuffEX.png" />
     <Content Include="Buffs\EXBuffTemplate.png" />
+    <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
@@ -3770,14 +3781,19 @@
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
+    <Content Include="Items\Boss\AH\AHBag.png" />
+    <Content Include="Items\Boss\AH\HeartOfAnarchy.png" />
+    <Content Include="Items\Boss\AH\HeartOfPassion.png" />
+    <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
     <Content Include="Projectiles\AH\FireSpirit.png" />
+    <Content Include="Projectiles\AH\FireSpiritShot.png" />
+    <Content Include="Projectiles\AH\FuryFlame.png" />
     <Content Include="Projectiles\AH\Mizu.png" />
-    <Content Include="Projectiles\AH\SpiritFlame.png" />
     <Content Include="Projectiles\AH\Surasshu.png" />
     <Content Include="Items\Boss\AH\AshRain.png" />
     <Content Include="Items\Boss\AH\FireSpiritStaff.png" />

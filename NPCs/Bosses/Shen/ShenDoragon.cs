@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Shen
     [AutoloadBossHead]
     public class ShenDoragon : ModNPC
     {
-        public float[] customAI = new float[4];
+        public float[] customAI = new float[6];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -22,7 +22,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 writer.Write((short)customAI[0]);
                 writer.Write((short)customAI[1]);
                 writer.Write((short)customAI[2]);
-                writer.Write((short)customAI[3]);				
+                writer.Write((short)customAI[3]);
+                writer.Write((short)customAI[4]);
+                writer.Write((short)customAI[5]);
             }
         }
 
@@ -34,7 +36,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 customAI[0] = reader.ReadFloat();
                 customAI[1] = reader.ReadFloat();
                 customAI[2] = reader.ReadFloat();
-                customAI[3] = reader.ReadFloat();				
+                customAI[3] = reader.ReadFloat();
+                customAI[4] = reader.ReadFloat();
+                customAI[5] = reader.ReadFloat();
             }
         }
 
@@ -348,6 +352,10 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                         }
                     }
+                    if (customAI[2] == -1 && isAwakened)
+                    {
+                        customAI[2] = Main.rand.Next(2);
+                    }
                     npc.ai[0] = aiChoice;
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
@@ -440,6 +448,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
             {
+                int shootThis = mod.ProjectileType("ShenFirebomb");
+                if (customAI[2] == 0)
+                {
+                    shootThis = mod.ProjectileType("ShenStorm");
+                }
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
@@ -465,6 +478,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 infernoPos.Y -= 50;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
+
                             int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("ShenFirebomb"), damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
@@ -488,6 +502,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void SwitchToAI(float ai0, float ai1, float ai2, float ai3)
 		{
+            customAI[2] = -1;
 			customAI[3] = npc.ai[0]; //last AI
 			npc.ai[0] = ai0; //handles AI state (charging, prep, fire, etc.)
 			npc.ai[1] = ai1; //handles X movement for some AI states
@@ -504,7 +519,7 @@ namespace AAMod.NPCs.Bosses.Shen
 				Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
 			}else
 			{
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Sounds/ShenRoar");
+                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Item, "Sounds/Sounds/ShenRoar");
                 Main.PlaySound(roarSound, npc.Center);
             }
 		}
@@ -601,6 +616,55 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.NewText("Yes, father.", new Color(72, 78, 117));
                 SpawnBoss(player, "FuryAshe", "");
                 SpawnBoss(player, "WrathHaruka", "");
+            }
+        }
+
+        public float[] Shoot = new float[1];
+
+        public void Attack(NPC npc, Vector2 velocity)
+        {
+            Player player = Main.player[npc.target];
+            if (customAI[4] == 1 || customAI[4] == 5 || customAI[4] == 9 || customAI[4] == 16 || customAI[4] == 18)
+            {
+                if (customAI[5] == 370 || customAI[5] == 390 || customAI[5] == 410 || customAI[5] == 430)
+                {
+                    int Fireballs = Main.expertMode ? 5 : 4;
+                    for (int Loops = 0; Loops < Fireballs; Loops++)
+                    {
+                        ShenAttacks.Dragonfire(npc, mod, false);
+                    }
+                }
+
+            }
+            else if (customAI[4] == 3 || customAI[4] == 8 || customAI[4] == 11 || customAI[4] == 13 || customAI[4] == 20)
+            {
+                if (customAI[5] == 400)
+                {
+                    if (NPC.CountNPCS(mod.NPCType<Shenling>()) < (Main.expertMode ? 3 : 4))
+                    {
+                        ShenAttacks.SpawnLung(player, mod);
+                    }
+                }
+            }
+            else if (customAI[4] == 2 || customAI[4] == 7 || customAI[4] == 10 || customAI[4] == 11 || customAI[4] == 14)
+            {
+                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<ShenStorm>(), ref Shoot[0], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
+            }
+            else
+            {
+                if (customAI[5] == 370 || customAI[5] == 390 || customAI[5] == 410 || customAI[5] == 430)
+                {
+                    int Fireballs = Main.expertMode ? 7 : 6;
+                    for (int Loops = 0; Loops < Fireballs; Loops++)
+                    {
+                        ShenAttacks.Eruption(npc, mod);
+                    }
+                }
+            }
+
+            if (customAI[4] > 20)
+            {
+                customAI[4] = 0;
             }
         }
 
