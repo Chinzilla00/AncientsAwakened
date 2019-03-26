@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-            npc.lifeMax = 140000;
+            npc.lifeMax = 180000;
             npc.value = Item.buyPrice(20, 0, 0, 0);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");

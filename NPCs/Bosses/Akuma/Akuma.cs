@@ -39,9 +39,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            npc.damage = 100;
-            npc.defense = 150;
-            npc.lifeMax = 170000;
+            npc.damage = 90;
+            npc.defense = 120;
+            npc.lifeMax = 190000;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(0, 0, 0, 0);
