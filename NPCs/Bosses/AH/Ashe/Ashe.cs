@@ -43,6 +43,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.noGravity = true;
             npc.noTileCollide = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
+            bossBag = mod.ItemType("AHBag");
         }
 
         public float[] internalAI = new float[4];
@@ -331,13 +332,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (Haruka == 0)
             {
                 AAWorld.downedSisters = true;
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
             }
             if (!Main.expertMode)
             {
-                npc.DropLoot(mod.ItemType("DaybreakIncinerite"), 5, 10);
-                string[] lootTable = { "" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
+                string[] lootTableA = { "AshRain", "FuryFlame", "FireSpiritStaff" };
+                int lootA = Main.rand.Next(lootTableA.Length);
+                npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
             Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;

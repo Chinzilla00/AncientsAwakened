@@ -87,8 +87,8 @@ Calls upon the Sisters of Discord");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "EventideAbyssiumOre", 20);
-            recipe.AddIngredient(null, "DaybreakIncineriteOre", 20);
+            recipe.AddIngredient(null, "RadiantIncinerite", 10);
+            recipe.AddIngredient(null, "DeepAbyssium", 10);
             recipe.AddIngredient(null, "DragonFire", 5);
             recipe.AddIngredient(null, "HydraToxin", 5);
             recipe.AddIngredient(null, "SoulOfSmite", 5);

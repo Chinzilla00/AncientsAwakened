@@ -1093,7 +1093,7 @@ namespace AAMod
                 }
             }
 
-            if (downedGripsS == true)
+            if (downedSisters == true)
             {
                 if (DiscordOres == false)
                 {

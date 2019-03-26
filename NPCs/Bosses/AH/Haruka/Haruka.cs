@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
             npc.noGravity = false;
             npc.noTileCollide = false;
+            bossBag = mod.ItemType("AHBag");
         }
 
 
@@ -84,13 +85,17 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (Ashe == 0)
             {
                 AAWorld.downedSisters = true;
+                if (Main.expertMode)
+                {
+                    npc.DropBossBags();
+                }
             }
             if (!Main.expertMode)
             {
-                npc.DropLoot(mod.ItemType("EventideAbyssium"), 5, 10);
-                string[] lootTable = { "Masamune" };
-                int loot = Main.rand.Next(lootTable.Length);
-                npc.DropLoot(mod.ItemType(lootTable[loot]));
+
+                string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi" };
+                int lootH = Main.rand.Next(lootTableH.Length);
+                npc.DropLoot(mod.ItemType(lootTableH[lootH]));
             }
             Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;

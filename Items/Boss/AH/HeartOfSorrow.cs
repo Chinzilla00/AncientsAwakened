@@ -1,7 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Broodmother
+namespace AAMod.Items.Boss.AH
 {
     public class HeartOfSorrow: ModItem
     {

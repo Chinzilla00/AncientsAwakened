@@ -47,10 +47,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 			
-			if (Main.rand.NextBool(3) && !HitPlayer)
-			{
-				Item.NewItem((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height, mod.ItemType("HarukaKunai"));
-			};
 		}
 	}
 }

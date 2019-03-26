@@ -566,8 +566,8 @@
     <Compile Include="Items\Blocks\YtriumOre.cs" />
     <Compile Include="Items\Blocks\Zero2Box.cs" />
     <Compile Include="Items\Blocks\ZeroBox.cs" />
-    <Compile Include="Items\BossSummons\AbyssClaw.cs" />
-    <Compile Include="Items\BossSummons\BlazeClaw.cs" />
+    <Compile Include="Items\BossSummons\ChaosRune.cs" />
+    <Compile Include="Items\BossSummons\ChaosSigil.cs" />
     <Compile Include="Items\BossSummons\FlamesOfAnarchy.cs" />
     <Compile Include="Items\BossSummons\PlanteraFlower.cs" />
     <Compile Include="Items\BossSummons\CursedSkull.cs" />
@@ -590,6 +590,7 @@
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
+    <Compile Include="Items\Boss\AH\AHBag.cs" />
     <Compile Include="Items\Boss\AH\AshRain.cs" />
     <Compile Include="Items\Boss\AH\HeartOfPassion.cs" />
     <Compile Include="Items\Boss\AH\FireSpiritStaff.cs" />
@@ -1568,6 +1569,7 @@
     <Compile Include="Projectiles\AH\FireSpirit.cs" />
     <Compile Include="Projectiles\AH\FireSpiritShot.cs" />
     <Compile Include="Projectiles\AH\FuryFlame.cs" />
+    <Compile Include="Projectiles\AH\Mizu.cs" />
     <Compile Include="Projectiles\AH\Surasshu.cs" />
     <Compile Include="Projectiles\Akuma\AkumaExp.cs" />
     <Compile Include="Projectiles\Akuma\Dawnstrike.cs" />
@@ -3796,8 +3798,8 @@
     <Content Include="Items\Blocks\YtriumOre.png" />
     <Content Include="Items\Blocks\Zero2Box.png" />
     <Content Include="Items\Blocks\ZeroBox.png" />
-    <Content Include="Items\BossSummons\AbyssClaw.png" />
-    <Content Include="Items\BossSummons\BlazeClaw.png" />
+    <Content Include="Items\BossSummons\ChaosRune.png" />
+    <Content Include="Items\BossSummons\ChaosSigil.png" />
     <Content Include="Items\BossSummons\ConfusingMushroom.png" />
     <Content Include="Items\BossSummons\CuriousClaw.png" />
     <Content Include="Items\BossSummons\CursedSkull.png" />
@@ -3811,7 +3813,6 @@
     <Content Include="Items\BossSummons\DreadSigil.png" />
     <Content Include="Items\BossSummons\EquinoxWorm.png" />
     <Content Include="Items\BossSummons\FlamesOfAnarchy.png" />
-    <Content Include="Items\BossSummons\FlamesOfAnarchy_Glow.png" />
     <Content Include="Items\BossSummons\HydraChow.png" />
     <Content Include="Items\BossSummons\InterestingClaw.png" />
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
