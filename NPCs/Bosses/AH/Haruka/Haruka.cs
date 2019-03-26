@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.friendly = false;
             npc.damage = 80;
             npc.defense = 50;
-            npc.lifeMax = 120000;
+            npc.lifeMax = 130000;
             npc.HitSound = SoundID.NPCHit1;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
             if (Ashe == 0)
             {
-                AAWorld.downedSisters = true;
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AHDeath>());
                 if (Main.expertMode)
                 {
                     npc.DropBossBags();

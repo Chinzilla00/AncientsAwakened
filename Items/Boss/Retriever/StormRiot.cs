@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Retriever
             item.expert = true;
             item.accessory = true;
             item.defense = 6;
-            item.shieldSlot = -1;
         }
         
         public override void SetStaticDefaults()

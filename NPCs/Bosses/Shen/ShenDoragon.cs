@@ -60,14 +60,14 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.knockBackResist = 0f;
             npc.damage = 180;
             npc.defense = 210;
-            npc.lifeMax = 800000;
+            npc.lifeMax = 400000;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(0, 0, 0, 0);
             }
             else
             {
-                npc.value = Item.buyPrice(0, 55, 0, 0);
+                npc.value = Item.buyPrice(10, 0, 0, 0);
             }
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -75,7 +75,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            //npc.behindTiles = true;
             npc.alpha = 255;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");

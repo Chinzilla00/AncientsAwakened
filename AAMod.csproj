@@ -653,10 +653,6 @@
     <Compile Include="Items\Boss\EXArmor.cs" />
     <Compile Include="Items\Boss\EXSoul.cs" />
     <Compile Include="Items\Boss\FireFrostMedallion.cs" />
-    <Compile Include="Items\Boss\GripsShen\DiscordianBurst.cs" />
-    <Compile Include="Items\Boss\GripsShen\DiscordianRampart.cs" />
-    <Compile Include="Items\Boss\GripsShen\DiscordianShredder.cs" />
-    <Compile Include="Items\Boss\GripsShen\GripSBag.cs" />
     <Compile Include="Items\Boss\GripsShen\AbyssGripTrophy.cs" />
     <Compile Include="Items\Boss\GripsShen\BlazeGripTrophy.cs" />
     <Compile Include="Items\Boss\Grips\BulwarkOfChaos.cs" />
@@ -1280,6 +1276,7 @@
     <Compile Include="Mounts\BegPony.cs" />
     <Compile Include="Mounts\MonochromeApple.cs" />
     <Compile Include="Mounts\PrinceFishron.cs" />
+    <Compile Include="NPCs\Bosses\AH\AHDeath.cs" />
     <Compile Include="NPCs\Bosses\AH\AHSpawn.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\Ashe.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
@@ -3825,6 +3822,8 @@
     <Content Include="Items\Boss\AH\AHBag.png" />
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
+    <Content Include="NPCs\Bosses\AH\AHDeath.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
@@ -3907,12 +3906,6 @@
     <Content Include="Items\Boss\FireFrostMedallion.png" />
     <Content Include="Items\Boss\GripsShen\AbyssGripTrophy.png" />
     <Content Include="Items\Boss\GripsShen\BlazeGripTrophy.png" />
-    <Content Include="Items\Boss\GripsShen\DiscordianBurst.png" />
-    <Content Include="Items\Boss\GripsShen\DiscordianRampart.png" />
-    <Content Include="Items\Boss\GripsShen\DiscordianRampart_Shield.png" />
-    <Content Include="Items\Boss\GripsShen\DiscordianShredder.png" />
-    <Content Include="Items\Boss\GripsShen\DiscordianShredder_HandsOn.png" />
-    <Content Include="Items\Boss\GripsShen\GripSBag.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos.png" />
     <Content Include="Items\Boss\Grips\BulwarkOfChaos_Shield.png" />
     <Content Include="Items\Boss\Grips\ClawBaton.png" />

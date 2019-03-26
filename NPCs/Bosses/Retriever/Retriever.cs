@@ -16,20 +16,20 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Retriever");
-            Main.npcFrameCount[npc.type] = 14;    //boss frame/animation 
-
+            Main.npcFrameCount[npc.type] = 14;
         }
         public override void SetDefaults()
         {
-            npc.aiStyle = 5;  //5 is the flying AI
-            npc.lifeMax = 30000;   //boss life
-            npc.damage = 80;  //boss damage
-            npc.defense = 30;    //boss defense
+            npc.aiStyle = -1;
+            npc.lifeMax = 30000;
+            npc.damage = 80;
+            npc.defense = 30;
+            npc.buffImmune[BuffID.Ichor] = true;
+            npc.value = Item.buyPrice(0, 10, 50, 0);
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;
             npc.friendly = false;
-            npc.value = Item.buyPrice(0, 10, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -37,7 +37,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.noTileCollide = true;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
-            npc.buffImmune[BuffID.Ichor] = true;
             npc.netAlways = true;
             bossBag = mod.ItemType("RetrieverBag");
 

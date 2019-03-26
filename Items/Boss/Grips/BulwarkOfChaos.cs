@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Grips
             item.expert = true;
             item.accessory = true;
             item.defense = 3;
-            item.shieldSlot = -1;
         }
         public override void SetStaticDefaults()
         {            DisplayName.SetDefault("Bulwark Of Chaos");

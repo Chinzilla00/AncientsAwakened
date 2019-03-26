@@ -162,7 +162,7 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
-            DiscordOres = downedGripsS;
+            DiscordOres = downedSisters;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
             DarkmatterMeteorBool = false;
@@ -474,23 +474,34 @@ namespace AAMod
             {
                 tasks.Insert(shiniesIndex2, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
                 {
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+                    int x = Main.maxTilesX;
+                    int y = Main.maxTilesY;
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
-                        int x = Main.maxTilesX;
-                        int y = Main.maxTilesY;
+                        int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
+                        int tilesY = WorldGen.genRand.Next((int)(Main.maxTilesY * .4f), (int)(Main.maxTilesY * .8f));
+                        if (Main.tile[tilesX, tilesY].type == 1)
+                        {
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("IncineriteOre"));
+                        }
+                    }
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
+                    {
                         int tilesX = WorldGen.genRand.Next(0, x);
                         int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
                         if (Main.tile[tilesX, tilesY].type == 59)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(2, 3), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("EverleafRoot"));
                         }
-                        if (Main.tile[tilesX, tilesY].type == 1)
+                    }
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
+                    {
+                        int tilesX = WorldGen.genRand.Next(0, x);
+                        int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
+                        if (Main.tile[tilesX, tilesY].type == 59)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(2, 3), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("AbyssiumOre"));
                         }
-
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(4, 5), WorldGen.genRand.Next(5, 6), (ushort)mod.TileType("PrismOre"));
                     }
                     OresGenerated = true;
                 }));

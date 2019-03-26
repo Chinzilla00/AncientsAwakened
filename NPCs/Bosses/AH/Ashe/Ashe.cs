@@ -27,16 +27,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
-            npc.damage = 100;
+            npc.damage = 80;
             npc.defense = 40;
-            npc.lifeMax = 120000;
-            npc.knockBackResist = 0f;
+            npc.lifeMax = 140000;
             npc.value = Item.buyPrice(0, 0, 75, 45);
-            npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+            npc.knockBackResist = 0f;
+            npc.knockBackResist = 0f;
             npc.lavaImmune = true;
             npc.boss = true;
             npc.netAlways = true;
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int Haruka = NPC.CountNPCS(mod.NPCType("Haruka"));
             if (Haruka == 0)
             {
-                AAWorld.downedSisters = true;
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AHDeath>());
                 if (Main.expertMode)
                 {
                     npc.DropBossBags();

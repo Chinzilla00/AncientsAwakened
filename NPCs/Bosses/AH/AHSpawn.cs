@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.AH
                 AAMod.AHIntro = true;
             }
 
-            if (npc.ai[1] == 3000)
+            if (npc.ai[1] == 300)
             {
                 if (AAWorld.downedBrood)
                 {

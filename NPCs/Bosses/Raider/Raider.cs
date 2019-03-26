@@ -30,12 +30,13 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.chaseable = true;
             npc.damage = 70;
             npc.defense = 30;
+            npc.lifeMax = 30000;
+            npc.value = Item.buyPrice(0, 10, 50, 0);
+            npc.buffImmune[BuffID.Ichor] = true;
             npc.lavaImmune = true;
             npc.boss = true;
             npc.netAlways = true;
             npc.friendly = false;
-            npc.lifeMax = 30000;
-            npc.value = 100000;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("RaiderBag");

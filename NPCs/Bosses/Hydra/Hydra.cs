@@ -41,9 +41,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.noGravity = false;
             npc.netAlways = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
-            for (int m = 0; m < npc.buffImmune.Length; m++) npc.buffImmune[m] = true;
-			
-			frameWidth = 94;
+            npc.buffImmune[BuffID.Poisoned] = true;
+            frameWidth = 94;
 			frameHeight = 76;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);

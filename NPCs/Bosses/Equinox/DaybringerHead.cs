@@ -27,10 +27,14 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.lifeMax = 130000;
             npc.damage = 200;
             npc.defense = 100;
+            npc.value = Item.buyPrice(0, 55, 0, 0);
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
             npc.knockBackResist = 0f;
             npc.width = 68;
             npc.height = 68;
-            npc.value = Item.buyPrice(0, 55, 0, 0);
             npc.boss = true;
             npc.aiStyle = -1;
 			npc.timeLeft = 500;
@@ -42,10 +46,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 			npc.DeathSound = SoundID.NPCDeath14;
             music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
-            for (int k = 0; k < npc.buffImmune.Length; k++)
-            {
-                npc.buffImmune[k] = true;
-            }
             bossBag = mod.ItemType("DBBag");			
 		}
 		

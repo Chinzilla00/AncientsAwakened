@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Items.Boss.Akuma;
+using AAMod.Items.Boss.Retriever;
+using AAMod.Items.Boss.Grips;
+using AAMod.Items.Dev;
 
 namespace AAMod
 {
@@ -53,6 +57,57 @@ namespace AAMod
                 }
                 tooltips.Insert(index + 1, new TooltipLine(mod, "AnkhShield", "7% melee speed"));
             }
+        }
+
+        public override bool CanEquipAccessory(Item item, Player player, int slot)
+        {
+            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield|| item.type == mod.ItemType<TaiyangBaolei>())
+            {
+                if (slot < 10)
+                {
+                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    {
+                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
+                        if (slot != i && player.armor[i].type == ItemID.AnkhShield)
+                        {
+                            return false;
+                        }
+                        if (slot != i && player.armor[i].type == ItemID.ObsidianShield)
+                        {
+                            return false;
+                        }
+                        if (slot != i && player.armor[i].type == item.type == mod.ItemType<TaiyangBaolei>())
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            if (item.type == ItemID.EoCShield || item.type == mod.ItemType<StormRiot>() || item.type == mod.ItemType<BulwarkOfChaos>())
+            {
+                if (slot < 10)
+                {
+                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    {
+                        // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
+                        if (slot != i && player.armor[i].type == ItemID.EoCShield)
+                        {
+                            return false;
+                        }
+                        if (slot != i && player.armor[i].type == mod.ItemType<StormRiot>())
+                        {
+                            return false;
+                        }
+                        if (slot != i && player.armor[i].type == mod.ItemType<BulwarkOfChaos>())
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

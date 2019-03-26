@@ -26,7 +26,6 @@ Enemies that hit you take full damage
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.accessory = true;
             item.defense = 15;
-            item.shieldSlot = -1;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
