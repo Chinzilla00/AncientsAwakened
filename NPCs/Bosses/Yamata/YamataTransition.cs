@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void AI()
         {
 
-
+            Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
             timer++;
