@@ -595,6 +595,7 @@
     <Compile Include="Items\Boss\AH\FuryFlame.cs" />
     <Compile Include="Items\Boss\AH\HarukaKunai.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
+    <Compile Include="Items\Boss\AH\MizuArashi.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool_Axe.cs" />
@@ -2235,6 +2236,7 @@
     <Content Include="Buffs\EXBuffTemplate.png" />
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
+    <Content Include="Buffs\Gravity.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
