@@ -314,6 +314,20 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_CATCHUP) //Catching up to the player
             {
+                if (npc.velocity.Y == 0)
+                {
+                    if (internalAI[2] > 2)
+                    {
+                        internalAI[2] = 0;
+                    }
+                }
+                else
+                {
+                    if (internalAI[2] < 3 || internalAI[2] > 5)
+                    {
+                        internalAI[2] = 3;
+                    }
+                }
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     internalAI[0] = 0;

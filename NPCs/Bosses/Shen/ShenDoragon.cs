@@ -618,54 +618,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public float[] Shoot = new float[1];
-
-        public void Attack(NPC npc, Vector2 velocity)
-        {
-            Player player = Main.player[npc.target];
-            if (customAI[4] == 1 || customAI[4] == 5 || customAI[4] == 9 || customAI[4] == 16 || customAI[4] == 18)
-            {
-                if (customAI[5] == 370 || customAI[5] == 390 || customAI[5] == 410 || customAI[5] == 430)
-                {
-                    int Fireballs = Main.expertMode ? 5 : 4;
-                    for (int Loops = 0; Loops < Fireballs; Loops++)
-                    {
-                        ShenAttacks.Dragonfire(npc, mod, false);
-                    }
-                }
-
-            }
-            else if (customAI[4] == 3 || customAI[4] == 8 || customAI[4] == 11 || customAI[4] == 13 || customAI[4] == 20)
-            {
-                if (customAI[5] == 400)
-                {
-                    if (NPC.CountNPCS(mod.NPCType<Shenling>()) < (Main.expertMode ? 3 : 4))
-                    {
-                        ShenAttacks.SpawnLung(player, mod);
-                    }
-                }
-            }
-            else if (customAI[4] == 2 || customAI[4] == 7 || customAI[4] == 10 || customAI[4] == 11 || customAI[4] == 14)
-            {
-                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<ShenStorm>(), ref Shoot[0], 40, (int)(npc.damage * (Main.expertMode ? 0.5f : 0.25f)), 10f, true, new Vector2(20f, 15f));
-            }
-            else
-            {
-                if (customAI[5] == 370 || customAI[5] == 390 || customAI[5] == 410 || customAI[5] == 430)
-                {
-                    int Fireballs = Main.expertMode ? 7 : 6;
-                    for (int Loops = 0; Loops < Fireballs; Loops++)
-                    {
-                        ShenAttacks.Eruption(npc, mod);
-                    }
-                }
-            }
-
-            if (customAI[4] > 20)
-            {
-                customAI[4] = 0;
-            }
-        }
+        
 
         public override void NPCLoot()
         {
