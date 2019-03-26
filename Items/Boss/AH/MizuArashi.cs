@@ -33,9 +33,9 @@ namespace AAMod.Items.Boss.AH
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mizu Arashi");
-            Tooltip.SetDefault("Occasionally shoots Mizu spirits"
-			+"\nSpirits deal 2x damage, pierce up to 10 enemies and go through tiles"
-			+"\n77% not to consume arrow");
+            Tooltip.SetDefault(@"Occasionally shoots Mizu spirit
+Spirits deal 2x damage, pierce up to 10 enemies and go through tiles
+77% not to consume arrows");
         }
 		
 		public override bool ConsumeAmmo(Player player)
