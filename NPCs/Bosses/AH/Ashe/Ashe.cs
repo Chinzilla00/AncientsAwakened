@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
             {
-                npc.spriteDirection = -1;
+                npc.spriteDirection = 1;
                 if (FlyingPositive)
                 {
                     FlyingBack = true;
@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //If NPC's X position is lower than the player's
             {
-                npc.spriteDirection = 1;
+                npc.spriteDirection = -1;
 
                 if (FlyingNegative)
                 {
