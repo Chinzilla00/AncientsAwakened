@@ -38,6 +38,10 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void AI()
         {
+
+            Player player = Main.player[npc.target];
+            MoveToPoint(player.Center - new Vector2(0, 300f));
+
             timer++;
             npc.frameCounter++;
             if (npc.frameCounter >= 7)
@@ -92,6 +96,34 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
 
         }
-        
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 14f;
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using AAMod.Buffs;
 using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
+using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using Microsoft.Xna.Framework;
@@ -690,19 +691,30 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar); //&& !useIZ;
+            bool useShen = (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()));
+            bool useShenA = (NPC.AnyNPCs(mod.NPCType<ShenA>()));
+            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
+            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+            bool useVoid = (ZoneVoid || VoidUnit);
+            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire && player.position.Y > Main.worldSurface;
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
+
+            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
+
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
-            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
+
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+
             player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
-            bool useVoid = (ZoneVoid || VoidUnit);
+
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
-            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire && player.position.Y > Main.worldSurface;
         }
 
         public override bool CustomBiomesMatch(Player other)

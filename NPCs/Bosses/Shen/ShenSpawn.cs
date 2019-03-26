@@ -19,11 +19,11 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 100;
             npc.alpha = 255;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
-            npc.lifeMax = 1;
+            npc.lifeMax = 1000000000;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
-            npc.timeLeft = 10;
+            npc.timeLeft = 10000000;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -34,12 +34,9 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f);
-            if (npc.timeLeft <= 10)
-            {
-                npc.timeLeft = 10;
-            }
             Speechtimer++;
             if (Speechtimer < 780)
             {
@@ -241,7 +238,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             }
 
-            if (Speechtimer == 2000)
+            if (Speechtimer >= 2000)
             {
                 Main.NewText("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
@@ -274,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Shen
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             if (npc.alpha <= 0)
             {
-                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+                BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
                 BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, GetColorAlpha());
                 BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, GetColorAlpha());
                 return false;

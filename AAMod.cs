@@ -755,6 +755,9 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
                 PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
+                PremultiplyTexture(GetTexture("Backgrounds/ShenSun"));
+                PremultiplyTexture(GetTexture("Backgrounds/ShenMoon"));
+                PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
 
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
@@ -828,8 +831,8 @@ namespace AAMod
 
                 Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
                 SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-                ShenSky.Sun = GetTexture("Backgrounds/Sun");
-                ShenSky.Moon = GetTexture("Backgrounds/Moon");
+                ShenSky.Sun = GetTexture("Backgrounds/ShenSun");
+                ShenSky.Moon = GetTexture("Backgrounds/ShenMoon");
                 ShenSky.SkyTex = GetTexture("Backgrounds/Sky");
 
                 Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);

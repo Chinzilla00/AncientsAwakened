@@ -36,8 +36,8 @@ namespace AAMod.Backgrounds
         {
             MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
             SkyTex = TextureManager.Load("Backgrounds/Sky");
-            Sun = TextureManager.Load("Backgrounds/Sun");
-            Moon = TextureManager.Load("Backgrounds/Moon");
+            Sun = TextureManager.Load("Backgrounds/ShenSun");
+            Moon = TextureManager.Load("Backgrounds/ShenMoon");
         }
 
         float num = 1200f;

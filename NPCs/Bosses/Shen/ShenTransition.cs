@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 100;
             npc.friendly = false;
             npc.alpha = 255;
-            npc.lifeMax = 1;
+            npc.lifeMax = 10000000;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f); ;
             timer++;
