@@ -24,5 +24,24 @@ namespace AAMod.Items.Boss.Grips
         {
 			player.GetModPlayer<AAPlayer>().clawsOfChaos = true;
         }
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<Retriever.StormClaw>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Retriever.StormRiot>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

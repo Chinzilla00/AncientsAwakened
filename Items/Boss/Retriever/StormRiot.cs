@@ -16,6 +16,7 @@ namespace AAMod.Items.Boss.Retriever
             item.expert = true;
             item.accessory = true;
             item.defense = 6;
+            item.shieldSlot = -1;
         }
         
         public override void SetStaticDefaults()
@@ -63,6 +64,26 @@ Non-autoswing weapons can be swung faster");
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<StormClaw>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Grips.ClawOfChaos>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

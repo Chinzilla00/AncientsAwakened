@@ -160,6 +160,9 @@ namespace AAMod
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
         public bool lantern = false;
+        public bool HeartP = false;
+        public bool HeartS = false;
+        public bool HeartA = false;
 
         public bool BegAccessoryPrevious;
         public bool BegAccessory;
@@ -325,6 +328,9 @@ namespace AAMod
             RStar = false;
             DVoid = false;
             lantern = false;
+            HeartP = false;
+            HeartS = false;
+            HeartA = false;
 
             BegAccessoryPrevious = BegAccessory;
             BegAccessory = BegHideVanity = BegForceVanity = HorseBuff = false;
@@ -1836,6 +1842,25 @@ namespace AAMod
                     target.AddBuff(BuffID.Chilled, 1200);
                 }
             }
+
+            if (HeartP && player.statLife > (player.statLifeMax / 3))
+            {
+                target.AddBuff(BuffID.OnFire, 600);
+            }
+            else if (HeartP && player.statLife < (player.statLifeMax / 3))
+            {
+                target.AddBuff(BuffID.Daybreak, 600);
+            }
+
+            if (HeartS && player.statLife > (player.statLifeMax / 3))
+            {
+                target.AddBuff(BuffID.Venom, 600);
+            }
+            else if (HeartS && player.statLife < (player.statLifeMax / 3))
+            {
+                target.AddBuff(mod.BuffType<Buffs.Moonraze>(), 600);
+            }
+
 
             if (zeroSet)
             {

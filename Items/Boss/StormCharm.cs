@@ -48,6 +48,38 @@ All attacks deal 20 True damage (damage unaffected by class)");
             player.thrownDamage += .15f;
             player.GetModPlayer<AAPlayer>(mod).StormClaw = true;
         }
+
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<Broodmother.DragonCape>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Hydra.HydraPendant>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<DragonSerpentNecklace>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Raider.HoloCape>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Orthrus.StormPendant>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
     
 }

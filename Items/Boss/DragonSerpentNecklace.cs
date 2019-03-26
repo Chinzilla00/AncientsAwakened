@@ -44,6 +44,38 @@ Ignores 5 Enemy defense");
             player.thrownDamage += .07f;
             player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
         }
+
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<Broodmother.DragonCape>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Hydra.HydraPendant>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<StormCharm>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Raider.HoloCape>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Orthrus.StormPendant>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
     
 }

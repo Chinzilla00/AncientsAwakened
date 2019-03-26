@@ -49,6 +49,30 @@ namespace AAMod.Items.Boss.Raider
         {
             player.endurance *= 1.15f;
         }
+
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<DragonSerpentNecklace>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<StormCharm>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<Broodmother.DragonCape>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
     
 }

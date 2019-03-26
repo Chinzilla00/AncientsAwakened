@@ -591,9 +591,11 @@
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
     <Compile Include="Items\Boss\AH\AshRain.cs" />
+    <Compile Include="Items\Boss\AH\HeartOfPassion.cs" />
     <Compile Include="Items\Boss\AH\FireSpiritStaff.cs" />
     <Compile Include="Items\Boss\AH\FuryFlame.cs" />
     <Compile Include="Items\Boss\AH\HarukaKunai.cs" />
+    <Compile Include="Items\Boss\AH\HeartOfSorrow.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
     <Compile Include="Items\Boss\AH\MizuArashi.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
@@ -3820,7 +3822,6 @@
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
     <Content Include="Items\Boss\AH\AHBag.png" />
-    <Content Include="Items\Boss\AH\HeartOfAnarchy.png" />
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />

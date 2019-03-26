@@ -12,10 +12,11 @@ namespace AAMod.Items.Boss.Grips
             item.width = 30;
             item.height = 32;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = -12;
+            item.rare = 2;
             item.expert = true;
             item.accessory = true;
             item.defense = 3;
+            item.shieldSlot = -1;
         }
         public override void SetStaticDefaults()
         {            DisplayName.SetDefault("Bulwark Of Chaos");
@@ -36,6 +37,25 @@ Allows you to dash into enemies, damaging them");
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+        public override bool CanEquipAccessory(Player player, int slot)
+        {
+            if (slot < 10)
+            {
+                int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                {
+                    if (slot != i && player.armor[i].type == mod.ItemType<Retriever.StormClaw>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType<ClawOfChaos>())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

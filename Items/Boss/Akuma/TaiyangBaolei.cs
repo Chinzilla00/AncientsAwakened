@@ -26,6 +26,7 @@ During the day, you gain 20% damage resistance and your melee & magic attacks in
             item.expert = true;
             item.accessory = true;
             item.defense = 8;
+            item.shieldSlot = -1;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
