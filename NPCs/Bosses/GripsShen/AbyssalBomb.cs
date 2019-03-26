@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
+            projectile.scale *= 1.4f;
             projectile.alpha = 60;
             projectile.timeLeft = 300;
         }

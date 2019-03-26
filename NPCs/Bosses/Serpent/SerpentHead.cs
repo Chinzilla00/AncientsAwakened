@@ -22,13 +22,13 @@ namespace AAMod.NPCs.Bosses.Serpent
 
 		public override void SetDefaults()
 		{
-			npc.damage = 40;
 			npc.npcSlots = 5f;
-            npc.damage = 35;
             npc.width = 38;
             npc.height = 38;
+            npc.damage = 35;
             npc.defense = 25;
             npc.lifeMax = 6000;
+            npc.value = Item.buyPrice(0, 8, 0, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             animationType = 10;
@@ -39,7 +39,6 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.boss = true;
-            npc.value = Item.buyPrice(0, 0, 10, 0);
             bossBag = mod.ItemType<Items.Boss.Serpent.SerpentBag>();
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
         }

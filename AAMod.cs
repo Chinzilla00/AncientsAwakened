@@ -108,7 +108,7 @@ namespace AAMod
 
         public static void SetupBannerNPCs()
         {
-            Mod mod = AAMod.instance;
+            Mod mod = instance;
             try
             {
                 IDictionary<int, int> bannerToItem = bannerToItemDict;
@@ -1083,6 +1083,12 @@ namespace AAMod
             bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
             bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
+            if (zoneShen && AAWorld.downedAllAncients)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
+                return;
+            }
             if (AkumaMusic == true)
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");

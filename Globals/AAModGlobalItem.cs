@@ -77,7 +77,7 @@ namespace AAMod
                         {
                             return false;
                         }
-                        if (slot != i && player.armor[i].type == item.type == mod.ItemType<TaiyangBaolei>())
+                        if (slot != i && player.armor[i].type == mod.ItemType<TaiyangBaolei>())
                         {
                             return false;
                         }

@@ -1197,6 +1197,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
+                    Main.NewText("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }

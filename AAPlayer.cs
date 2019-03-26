@@ -149,6 +149,7 @@ namespace AAMod
         public bool FogRemover;
         public bool Baolei;
         public bool Naitokurosu;
+        public bool Duality;
         public bool DragonShell;
         public bool ammo20percentdown = false;
         public int AADash;
@@ -320,6 +321,7 @@ namespace AAMod
             Space = false;
             TrueInfinityGauntlet = false;
             Baolei = false;
+            Duality = false;
             Naitokurosu = false;
             ammo20percentdown = false;
             AshCurse = !Main.dayTime && !AAWorld.downedAkuma;
@@ -1578,6 +1580,88 @@ namespace AAMod
                 }
             }
         }
+
+        public static void EmberRain(Player player, Mod mod)
+        {
+            if (Main.gamePaused)
+            {
+                return;
+            }
+            if ((player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda || player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake) && AAWorld.downedAllAncients && !AAWorld.downedShen)
+            {
+                if (Main.player[Main.myPlayer].position.Y < Main.worldSurface * 16.0)
+                {
+                    int maxValue = 8;
+                    float num = Main.screenWidth / (float)Main.maxScreenW;
+                    int num2 = (int)(500f * num);
+                    num2 = (int)(num2 * (1f + 2f * Main.cloudAlpha));
+                    float num3 = 1f + 50f * Main.cloudAlpha;
+                    int num4 = 0;
+                    while (num4 < num3)
+                    {
+                        try
+                        {
+                            if (Ashes >= num2 * (Main.gfxQuality / 2f + 0.5f) + num2 * 0.1f)
+                            {
+                                break;
+                            }
+                            if (Main.rand.Next(maxValue) == 0)
+                            {
+                                int num5 = Main.rand.Next(Main.screenWidth + 1000) - 500;
+                                int num6 = (int)Main.screenPosition.Y - Main.rand.Next(50);
+                                if (Main.player[Main.myPlayer].velocity.Y > 0f)
+                                {
+                                    num6 -= (int)Main.player[Main.myPlayer].velocity.Y;
+                                }
+                                if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) - 500;
+                                }
+                                else if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) + Main.screenWidth;
+                                }
+                                if (num5 < 0 || num5 > Main.screenWidth)
+                                {
+                                    num6 += Main.rand.Next((int)(Main.screenHeight * 0.8)) + (int)(Main.screenHeight * 0.1);
+                                }
+                                num5 += (int)Main.screenPosition.X;
+                                int num7 = num5 / 16;
+                                int num8 = num6 / 16;
+                                if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
+                                {
+                                    int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f);
+                                    Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
+                                    Dust expr_292_cp_0 = Main.dust[num9];
+                                    expr_292_cp_0.velocity.Y = expr_292_cp_0.velocity.Y * Main.dust[num9].scale;
+                                    if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
+                                    {
+                                        Main.dust[num9].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
+                                        Dust expr_2EC_cp_0 = Main.dust[num9];
+                                        expr_2EC_cp_0.velocity.X = expr_2EC_cp_0.velocity.X + Main.windSpeed * Main.cloudAlpha * 10f;
+                                    }
+                                    else
+                                    {
+                                        Main.dust[num9].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+                                        Dust expr_370_cp_0 = Main.dust[num9];
+                                        expr_370_cp_0.velocity.Y = expr_370_cp_0.velocity.Y * 0.5f;
+                                    }
+                                    Dust expr_38E_cp_0 = Main.dust[num9];
+                                    expr_38E_cp_0.velocity.Y = expr_38E_cp_0.velocity.Y * (1f + 0.3f * Main.cloudAlpha);
+                                    Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
+                                    Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                        }
+                        num4++;
+                    }
+                }
+            }
+        }
+
         public override void GetWeaponKnockback(Item item, ref float knockback)
         {
             if (demonGauntlet == true)
@@ -1795,6 +1879,42 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
+            }
+
+            if (Baolei)
+            {
+                if (!Main.dayTime)
+                {
+                    target.AddBuff(BuffID.OnFire, 1000);
+                }
+                else
+                {
+                    target.AddBuff(BuffID.Daybreak, 1000);
+                }
+            }
+
+            if (Naitokurosu)
+            {
+                if (Main.dayTime)
+                {
+                    target.AddBuff(BuffID.Venom, 1000);
+                }
+                else
+                {
+                    target.AddBuff(mod.BuffType<Moonraze>(), 1000);
+                }
+            }
+
+            if (Duality)
+            {
+                if (!Main.dayTime)
+                {
+                    target.AddBuff(mod.BuffType<Moonraze>(), 1000);
+                }
+                else
+                {
+                    target.AddBuff(BuffID.Daybreak, 1000);
+                }
             }
 
             if (darkmatterSetMe)
@@ -2243,6 +2363,18 @@ namespace AAMod
                 if (target.life <= 0)
                 {
                     Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType("CursedFireball"), damage, 0);
+                }
+            }
+
+            if (Duality)
+            {
+                if (!Main.dayTime)
+                {
+                    target.AddBuff(mod.BuffType<Moonraze>(), 1000);
+                }
+                else
+                {
+                    target.AddBuff(BuffID.Daybreak, 1000);
                 }
             }
 

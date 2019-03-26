@@ -85,6 +85,7 @@ Grants effects of the Discordian Rampart");
             modPlayer.AADash = 1;
             player.moveSpeed += 2f;
             player.endurance += 0.2f;
+            player.dash = 3;
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
                 player.moveSpeed *= 1.5f;
@@ -119,7 +120,6 @@ Grants effects of the Discordian Rampart");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "TaiyangBaolei", 1);
             recipe.AddIngredient(null, "Naitokurosu", 1);
-            recipe.AddIngredient(null, "DiscordianRampart", 1);
             recipe.AddIngredient(null, "ChaosSoul", 1);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
