@@ -264,7 +264,7 @@ namespace AAMod.Projectiles.AH
                             Vector2 value4 = vector - projectile.Center;
                             value4.Normalize();
                             value4 *= scaleFactor4;
-                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X, value4.Y, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X*1.5f, value4.Y*1.5f, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num33].timeLeft = 300;
                             Main.projectile[num33].netUpdate = true;
                             projectile.netUpdate = true;
@@ -273,12 +273,12 @@ namespace AAMod.Projectiles.AH
                 }
             }
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 7)
+            if (projectile.frameCounter >= 15)
             {
                 projectile.frame += 1;
                 projectile.frameCounter = 0;
             }
-            if (projectile.frame >= 6)
+            if (projectile.frame >= 3)
             {
                 projectile.frame = 0;
             }

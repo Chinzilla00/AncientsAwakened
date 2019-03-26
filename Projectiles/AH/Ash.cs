@@ -17,8 +17,8 @@ namespace AAMod.Projectiles.AH
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 28;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -26,6 +26,7 @@ namespace AAMod.Projectiles.AH
             projectile.alpha = 0;
             projectile.timeLeft = 255;
             projectile.tileCollide = true;
+			projectile.magic = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -47,7 +48,7 @@ namespace AAMod.Projectiles.AH
 
             projectile.frameCounter++;
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
-            if (projectile.frameCounter > 6)
+            if (projectile.frameCounter > 10)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
@@ -75,19 +76,6 @@ namespace AAMod.Projectiles.AH
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-        }
-
-
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Microsoft.Xna.Framework.Color lightColor)
-        {
-            int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingFlameDye);
-            Microsoft.Xna.Framework.Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
-
-            Rectangle frame = BaseDrawing.GetFrame(3, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
-
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, Color.White, true);
-            return false;
         }
     }
 }

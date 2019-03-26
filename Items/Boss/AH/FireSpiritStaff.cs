@@ -19,18 +19,18 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("FireSpirit");
-            item.damage = 80;
+            item.damage = 222;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.buyPrice(0, 25, 0, 0);
             item.knockBack = 5f;
             item.rare = 11;
             item.summon = true;
-            item.mana = 5;
+            item.mana = 15;
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

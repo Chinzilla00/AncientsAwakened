@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.AH
 
         public override void SetDefaults()
         {
-            item.damage = 80;
+            item.damage = 140;
             item.noMelee = true;
             item.ranged = true;
             item.width = 64;
@@ -25,9 +25,9 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 2;
             item.useAnimation = 15;
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType("Dawnstrike");
+            item.shoot = mod.ProjectileType("FuryFlame");
             item.knockBack = 0;
-            item.value = Item.buyPrice( 1, 0, 0, 0);
+            item.value = Item.buyPrice(0, 25, 0, 0);
             item.rare = 11;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
