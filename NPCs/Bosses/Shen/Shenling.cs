@@ -18,14 +18,9 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Discordian Serpent");
-
+            Main.npcFrameCount[npc.type] = 2;
         }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
-        }
+        
 
         public override void SetDefaults()
 		{

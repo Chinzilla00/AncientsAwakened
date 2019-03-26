@@ -439,7 +439,7 @@ namespace AAMod
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
-            DiscordOres = downedGripsS;
+            DiscordOres = downedSisters;
             InfernoStripe = downed.Contains("IStripe");
             MireStripe = downed.Contains("MStripe");
             var mirePosX = tag.GetFloat("mirePosX");

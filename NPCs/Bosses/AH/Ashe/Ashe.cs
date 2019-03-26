@@ -413,7 +413,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     scale += .02f; //Raise Scale
                 }
-                if (scale > 1f)
+                if (scale >= 1f)
                 {
                     scale = 1f;
                 }
@@ -443,8 +443,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Texture2D RitualTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRitual");
             Rectangle RingFrame = new Rectangle(0, 0, RingTex.Width, RingTex.Height);
             Rectangle RitualFrame = new Rectangle(0, 0, RitualTex.Width, RitualTex.Height);
-
-
+            
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
 

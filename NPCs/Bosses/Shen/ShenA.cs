@@ -2,9 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -15,6 +17,29 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             DisplayName.SetDefault("Shen Doragon Awakened; Unyieldng Chaos Incarnate");
             Main.npcFrameCount[npc.type] = 2;
+        }
+
+        public float[] InternalAI = new float[3];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)InternalAI[0]);
+                writer.Write((short)InternalAI[1]);
+                writer.Write((short)InternalAI[2]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                InternalAI[0] = reader.ReadFloat();
+                InternalAI[1] = reader.ReadFloat();
+                InternalAI[2] = reader.ReadFloat();
+            }
         }
 
         public override void SetDefaults()
@@ -36,6 +61,57 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
+        }
+
+        public override void PostAI()
+        {
+            Player player = Main.player[npc.target];
+            InternalAI[0]++;
+            if (InternalAI[0] > 240)
+            {
+                if (InternalAI[2] == 0)
+                {
+                    InternalAI[1] = Main.rand.Next(3);
+                    InternalAI[2] = 1;
+                }
+                if (InternalAI[1] == 0)
+                {
+                    if (InternalAI[0] == 280 || InternalAI[0] == 320 || InternalAI[0] == 360 || InternalAI[0] == 400)
+                    {
+                        int Fireballs = Main.expertMode ? 10 : 7;
+                        for (int Loops = 0; Loops < Fireballs; Loops++)
+                        {
+                            ShenAttacks.Dragonfire(npc, mod);
+                        }
+                    }
+                }
+                if (InternalAI[1] == 1)
+                {
+                    int Fireballs = Main.expertMode ? 12 : 14;
+                    if (InternalAI[0] == 280 || InternalAI[0] == 340 || InternalAI[0] == 400)
+                    {
+                        for (int Loops = 0; Loops < Fireballs; Loops++)
+                        {
+                            ShenAttacks.Eruption(npc, mod);
+                        }
+                    }
+                }
+                if (InternalAI[1] == 2)
+                {
+                    if (InternalAI[0] == 330)
+                    {
+                        if (NPC.CountNPCS(mod.NPCType<Shenling>()) < (Main.expertMode ? 3 : 4))
+                        {
+                            ShenAttacks.SpawnLung(player, mod);
+                        }
+                    }
+                }
+                if (InternalAI[0] > 400)
+                {
+                    InternalAI[0] = 0;
+                    InternalAI[2] = 0;
+                }
+            }
         }
 
         public bool Health9 = false;

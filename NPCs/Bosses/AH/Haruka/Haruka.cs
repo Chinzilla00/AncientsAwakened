@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void SetDefaults()
         {
-            npc.width = 80;
+            npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
             npc.damage = 80;
@@ -120,15 +120,32 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             npc.frame.Y = 70 * internalAI[2]; //IAI[2] Is the current frame
 
-            bool throwing = false;
+            if (internalAI[0] == AISTATE_JUMP || internalAI[0] == AISTATE_THROW) //When jumping/throwing stuff at the player
+            {
+                BaseAI.AISlime(npc, ref npc.ai, false, 60, 20f, -12f, 22f, -15f);
+            }
+            else if (internalAI[0] == AISTATE_SLASH) //When Turning invisible and slashing
+            {
+
+            }
+            else if (internalAI[0] == AISTATE_CATCHUP) //When Turning invisible to keep up w/ player
+            {
+
+            }
+            else //When spinning
+            {
+                BaseAI.AIPounce(npc, player, 3.3f, 12 * 2f, -5.2f, 70, 70);
+            }
 
             if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
             {
                 npc.spriteDirection = -1;
+                npc.direction = -1;
             }
             else //If NPC's X position is lower than the player's
             {
                 npc.spriteDirection = 1;
+                npc.direction = 1;
             }
 
             internalAI[1]++;
@@ -213,11 +230,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (!npc.collideY)
                 {
                     internalAI[4] = 0;
-                    if (internalAI[2] < 10 && internalAI[1] == 4) //Slash Projectile if she isn't close to the player
+                    if (internalAI[2] < 10 && internalAI[1] == 4) 
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaProj>();
+                        int projType = mod.ProjectileType<HarukaKunai>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                     }
 
@@ -235,6 +252,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 if (npc.velocity.Y == 0) // Once she hits the ground, reset back to neutral AI
                 {
+                    internalAI[0] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
@@ -253,7 +271,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     }
                     else
                     {
-                        if (internalAI[2] < 3 || (int)internalAI[2] > 5)
+                        if (internalAI[2] < 3 || internalAI[2] > 5)
                         {
                             internalAI[2] = 3;
                         }
@@ -286,6 +304,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     if (npc.ai[2] > 28) //Reset to regular AI
                     {
+                        internalAI[0] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         internalAI[4] = 0;
@@ -297,6 +316,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
+                    internalAI[0] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
@@ -330,6 +350,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     }
                     if (internalAI[4] > 240) //Reset AI again once timer runs out
                     {
+                        internalAI[0] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         internalAI[4] = 0;
@@ -338,22 +359,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
             }
 
-            if (internalAI[0] == AISTATE_JUMP || internalAI[0] == AISTATE_THROW) //When jumping/throwing stuff at the player
-            {
-                BaseAI.AISlime(npc, ref npc.ai, false, 60, 20f, -12f, 22f, -15f);
-            }
-            else if (internalAI[0] == AISTATE_SLASH) //When Turning invisible and slashing
-            {
-
-            }
-            else if (internalAI[0] == AISTATE_CATCHUP) //When Turning invisible to keep up w/ player
-            {
-
-            }
-            else //When spinning
-            {
-                BaseAI.AIPounce(npc, player, 3.3f, 12 * 2f, -5.2f, 70, 70);
-            }
+            
             npc.noGravity = false;
         }
 

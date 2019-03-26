@@ -11,7 +11,7 @@ namespace AAMod
 	{
         static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
         
-        public static void Dragonfire(NPC npc, Mod mod, bool Awakened = false)
+        public static void Dragonfire(NPC npc, Mod mod)
         {
             Player player = Main.player[npc.target];
             float num72 = 24;
