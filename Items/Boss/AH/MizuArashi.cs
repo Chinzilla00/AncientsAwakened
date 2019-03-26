@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.AH
         public override void SetDefaults()
         {
 
-            item.damage = 60;
+            item.damage = 105;
             item.noMelee = true;
             item.ranged = true;
             item.width = 52;
@@ -22,8 +22,8 @@ namespace AAMod.Items.Boss.AH
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 4;
-            item.value = 50000;
-            item.rare = 9;
+            item.value = Item.buyPrice(0, 25, 0, 0);
+            item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 12f;

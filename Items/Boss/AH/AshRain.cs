@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.AH
 
         public override void SetDefaults()
         {
-            item.damage = 120;                        
+            item.damage = 150;                        
             item.magic = true;            
             item.width = 24;
             item.height = 28;
@@ -24,8 +24,8 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 5;    
             item.noMelee = true;
             item.knockBack = 4;
-            item.value = Item.buyPrice(0, 5, 0, 0);
-            item.rare = 3;
+            item.value = Item.buyPrice(0, 25, 0, 0);
+            item.rare = 11;
             item.mana = 5;          
             item.UseSound = SoundID.Item21;      
             item.autoReuse = true;
