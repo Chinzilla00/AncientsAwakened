@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class Dawnstrike : ModItem
+    public class FuryFlame : ModItem
     {
         public override void SetStaticDefaults()
         {
