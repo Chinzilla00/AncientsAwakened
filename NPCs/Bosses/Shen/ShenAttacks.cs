@@ -14,7 +14,7 @@ namespace AAMod
         public static void Dragonfire(NPC npc, Mod mod, bool Awakened = false)
         {
             Player player = Main.player[npc.target];
-            float num72 = 18;
+            float num72 = 24;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = player.Center.X + Main.screenPosition.X - vector2.X;
             float num79 = player.Center.Y + Main.screenPosition.Y - vector2.Y;
@@ -55,9 +55,10 @@ namespace AAMod
             num79 *= num80;
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-            int projType = Awakened ? mod.ProjectileType("AkumaMeteor") : mod.ProjectileType("AkumaAMeteor");
+            int projType = Awakened ? mod.ProjectileType("DiscordianInferno");
             Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, projType, npc.damage / 2, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
+
         public static void SpawnLung(Player player, Mod mod)
         {
             if (Main.netMode != 1)
@@ -113,7 +114,7 @@ namespace AAMod
             num79 *= num80;
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-            Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, mod.ProjectileType("ShenMeteor1"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
         public static void DraconianFury(Player player, Mod mod, NPC npc)
