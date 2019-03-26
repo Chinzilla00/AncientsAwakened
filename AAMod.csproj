@@ -1577,6 +1577,7 @@
     <Compile Include="Projectiles\EFish\Fishnado.cs" />
     <Compile Include="Projectiles\FreedomBall.cs" />
     <Compile Include="Projectiles\HarukaKunaiF.cs" />
+    <Compile Include="Projectiles\HydraShot.cs" />
     <Compile Include="Projectiles\MobianShotCharged.cs" />
     <Compile Include="Projectiles\MobianShot.cs" />
     <Compile Include="Projectiles\FreedomShot.cs" />
@@ -1839,9 +1840,9 @@
     <Compile Include="Sounds\Sounds\FerretNote.cs" />
     <Compile Include="Sounds\Sounds\Glitch.cs" />
     <Compile Include="Sounds\Sounds\GONG.cs" />
-    <Compile Include="Sounds\Sounds\IZRoar.cs" />
     <Compile Include="Sounds\Sounds\MOARGONG.cs" />
     <Compile Include="Sounds\Sounds\QUAK.cs" />
+    <Compile Include="Sounds\Sounds\ShenRoar.cs" />
     <Compile Include="Sounds\Sounds\YamataRoar.cs" />
     <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
@@ -5225,6 +5226,7 @@
     <Content Include="Projectiles\HarukaKunaiF.png" />
     <Content Include="Projectiles\HellBallP.png" />
     <Content Include="Projectiles\HydraFangP.png" />
+    <Content Include="Projectiles\HydraShot.png" />
     <Content Include="Projectiles\HydraSpear.png" />
     <Content Include="Projectiles\HydratoxinArrow.png" />
     <Content Include="Projectiles\HydratoxinBullet.png" />
@@ -5455,9 +5457,9 @@
     <Content Include="Sounds\Sounds\FerretNote.mp3" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
     <Content Include="Sounds\Sounds\GONG.mp3" />
-    <Content Include="Sounds\Sounds\IZRoar.mp3" />
     <Content Include="Sounds\Sounds\MOARGONG.mp3" />
     <Content Include="Sounds\Sounds\QUAK.wav" />
+    <Content Include="Sounds\Sounds\ShenRoar.mp3" />
     <Content Include="Sounds\Sounds\YamataRoar.mp3" />
     <Content Include="Sounds\Sounds\ZeroDeath.wav" />
     <Content Include="Sounds\Sounds\Zerohit.wav" />

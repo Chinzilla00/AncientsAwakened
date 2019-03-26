@@ -16,16 +16,15 @@ namespace AAMod.Items.Ranged
             item.ranged = true;
             item.width = 50;
             item.height = 20;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 45;
+            item.useAnimation = 45;
             item.useStyle = 5;
-            item.shoot = 10;
+            item.shoot = mod.ProjectileType("HydraShot");
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
             item.value = 2000;
             item.rare = 2;
             item.UseSound = SoundID.Item11;
-            item.autoReuse = true;
             item.shootSpeed = 12f;
 
         }
