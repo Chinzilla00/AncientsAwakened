@@ -36,7 +36,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
             npc.lavaImmune = true;
-            npc.boss = true;
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
             npc.noGravity = false;
@@ -248,7 +247,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[3]++;
 
-                if (internalAI[2] < 17 || internalAI[2] > 26) 
+                if (internalAI[2] < 17) 
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 17;
@@ -325,24 +324,59 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[0]++;
                 if (npc.ai[0] > 180)
                 {
-                    npc.ai[0] = 0;
-                    npc.ai[1] = Main.rand.Next(2);
-                    if (npc.ai[1] == 0)
+                    if (npc.ai[1] == 0 && Main.rand.Next(2) == 0)
                     {
-                        pos = -250;
+                        npc.ai[0] = 0;
                     }
                     else
                     {
-                        pos = 250;
+                        npc.ai[1] = 1;
+                    }
+                    if (npc.ai[2] != 1)
+                    {
+                        if (npc.alpha > 0)
+                        {
+                            npc.alpha += 5;
+                        }
+                    }
+                    else
+                    {
+                        if (npc.alpha > 0)
+                        {
+                            npc.alpha -= 5;
+                        }
+                        if (npc.alpha <= 0)
+                        {
+                            npc.alpha = 0;
+                        }
+                    }
+                    if (npc.alpha >= 255)
+                    {
+                        if (pos == -250)
+                        {
+                            pos = 250;
+                        }
+                        else
+                        {
+                            pos = -250;
+                        }
+                        Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
+                        MoveToPoint(wantedVelocity);
+                        if (Vector2.Distance(npc.Center, wantedVelocity) < 20)
+                        {
+                            npc.ai[0] = 0;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                        }
                     }
                 }
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-                MoveToPoint(wantedVelocity);
             }
+
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
                 BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
             }
+
             npc.rotation = 0; //No ugly rotation.
         }
 

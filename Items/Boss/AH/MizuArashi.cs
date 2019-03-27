@@ -16,8 +16,8 @@ namespace AAMod.Items.Boss.AH
             item.ranged = true;
             item.width = 52;
             item.height = 20;
-            item.useTime = 5;
-            item.useAnimation = 5;
+            item.useTime = 4;
+            item.reuseDelay = 15;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
@@ -47,15 +47,8 @@ Spirits deal 2x damage, pierce up to 10 enemies and go through tiles
         {
 			if (Main.rand.NextBool(15))
 			{
-				float numberProjectiles = 3;
-				float rotation = MathHelper.ToRadians(5);
-				position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
-				for (int i = 0; i < numberProjectiles; i++)
-				{
-					Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X*1.5f, perturbedSpeed.Y*1.5f, mod.ProjectileType("Mizu"), damage*2, knockBack, player.whoAmI);
-				}
-			}
+                Projectile.NewProjectile(position.X, position.Y, speedX * 1.5f, speedY * 1.5f, mod.ProjectileType("Mizu"), damage * 2, knockBack, player.whoAmI);
+            }
 			else
 			{
 				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);

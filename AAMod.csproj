@@ -5169,7 +5169,6 @@
     <Content Include="Projectiles\Akuma\SunSpearRain.png" />
     <Content Include="Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Projectiles\Akuma\Sunstorm.png" />
-    <Content Include="Projectiles\Akuma\SunstormStrike.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />
     <Content Include="Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Projectiles\AmphibiousProjectileEXSplit.png" />
@@ -5326,6 +5325,7 @@
     <Content Include="Projectiles\OrderArrow.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\AmphibiousBoom.png" />
+    <Content Include="Projectiles\OrderSpark.png" />
     <Content Include="Projectiles\PonyBoom.png" />
     <Content Include="Projectiles\PonyShot.png" />
     <Content Include="Projectiles\PonyBoomEX2.png" />

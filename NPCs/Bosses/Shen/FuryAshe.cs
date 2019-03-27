@@ -38,7 +38,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
             npc.lavaImmune = true;
-            npc.boss = true;
             npc.netAlways = true;
             npc.noGravity = true;
             npc.noTileCollide = true;

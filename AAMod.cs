@@ -403,38 +403,21 @@ namespace AAMod
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", (instance.NPCType("NightcrawlerHead")));
-
-
+                
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
-                    GetTexture("Healthbars/BGBarHead"),
-                    GetTexture("Healthbars/BGBarBody"),
-                    GetTexture("Healthbars/BGBarTail"),
+                    GetTexture("Healthbars/HarukaBarHead"),
+                    GetTexture("Healthbars/HarukaBarBody"),
+                    GetTexture("Healthbars/HarukaBarTail"),
                     GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
-                    Color.OrangeRed,
-                    Color.OrangeRed,
-                    Color.OrangeRed);
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("BlazeGrip")));
-
-
-                yabhb.Call("hbStart");
-                yabhb.Call("hbSetTexture",
-                    GetTexture("Healthbars/AGBarHead"),
-                    GetTexture("Healthbars/AGBarBody"),
-                    GetTexture("Healthbars/AGBarTail"),
-                    GetTexture("Healthbars/BarFill"));
-                yabhb.Call("hbSetColours",
-                    Color.Navy,
-                    Color.Navy,
-                    Color.Navy);
-                yabhb.Call("hbSetMidBarOffset", -30, 10);
-                yabhb.Call("hbSetBossHeadCentre", 50, 32);
-                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", (instance.NPCType("AbyssGrip")));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("Haruka")));
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",

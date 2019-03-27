@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Bosses.GripsShen
 			npc.knockBackResist = 0f;	
             npc.value = Item.buyPrice(0, 4, 50, 0);
             npc.npcSlots = 1f;
-            npc.boss = true;  
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;

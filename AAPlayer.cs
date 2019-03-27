@@ -302,7 +302,6 @@ namespace AAMod
             DarkmatterSet = false;
             perfectChaos = false;
             //Accessory
-            SnapCD = 0;
             AbilityCD = 0;
             AshRemover = false;
             FogRemover = false;
@@ -1781,10 +1780,10 @@ namespace AAMod
         {
             if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
             {
-                if (AAMod.InfinityHotKey.JustPressed && SnapCD == 0)
+                if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
                 {
-                    Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
                     SnapCD = 18000;
+                    Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() /*&& x.type != mod.NPCType<IZHand1>() && x.type != mod.NPCType<IZHand2>()*/ && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);

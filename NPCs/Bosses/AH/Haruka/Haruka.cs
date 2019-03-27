@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.friendly = false;
             npc.damage = 80;
             npc.defense = 50;
-            npc.lifeMax = 130000;
+            npc.lifeMax = 90000;
             npc.HitSound = SoundID.NPCHit1;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.boss = true;
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
-            npc.noGravity = false;
+            npc.noGravity = true;
             npc.noTileCollide = false;
             bossBag = mod.ItemType("AHBag");
             npc.alpha = 255;
@@ -128,14 +128,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             
             internalAI[1]++;
 
-            if (npc.alpha > 0)
-            {
-                npc.alpha -= 5;
-            }
-            if (npc.alpha <= 0)
-            {
-                npc.alpha = 0;
-            }
 
             if (internalAI[1] >= (ProjectileShoot == 0 ? 6 : 8))
             {
@@ -249,7 +241,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 internalAI[3]++;
 
-                if (internalAI[2] < 17 || internalAI[2] > 26) 
+                if (internalAI[2] < 17)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 17;
@@ -282,7 +274,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     MoveToPoint(point);
                 }
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) < 200f)
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) < 300f)
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;
@@ -326,19 +318,52 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.ai[0]++;
                 if (npc.ai[0] > 180)
                 {
-                    npc.ai[0] = 0;
-                    npc.ai[1] = Main.rand.Next(2);
-                    if (npc.ai[1] == 0)
+                    if (npc.ai[1] == 0 && Main.rand.Next(2) == 0)
                     {
-                        pos = -250;
+                        npc.ai[0] = 0;
                     }
                     else
                     {
-                        pos = 250;
+                        npc.ai[1] = 1;
+                    }
+                    if (npc.ai[2] != 1)
+                    {
+                        if (npc.alpha > 0)
+                        {
+                            npc.alpha += 5;
+                        }
+                    }
+                    else
+                    {
+                        if (npc.alpha > 0)
+                        {
+                            npc.alpha -= 5;
+                        }
+                        if (npc.alpha <= 0)
+                        {
+                            npc.alpha = 0;
+                        }
+                    }
+                    if (npc.alpha >= 255)
+                    {
+                        if (pos == -250)
+                        {
+                            pos = 250;
+                        }
+                        else
+                        {
+                            pos = -250;
+                        }
+                        Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
+                        MoveToPoint(wantedVelocity);
+                        if (Vector2.Distance(npc.Center, wantedVelocity) < 20)
+                        {
+                            npc.ai[0] = 0;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                        }
                     }
                 }
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-                MoveToPoint(wantedVelocity);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
