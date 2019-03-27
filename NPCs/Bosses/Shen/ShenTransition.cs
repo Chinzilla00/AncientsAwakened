@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (timer < 1100 && timer > 345)
+            if (npc.alpha > 0)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -60,17 +60,25 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Main.NewText("Heh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 650)
+            if (timer == 475)
             {
                 Main.NewText("Heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 900)
+            if (timer == 600)
             {
                 Main.NewText("HAHAHAHAHAHAHA", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
+            if (timer == 820)
+            {
+                Main.NewText("Have you forgotten about our last battles...?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            }
+            if (timer == 960)
+            {
+                Main.NewText("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            }
             if (timer == 1100)
             {
-                Main.NewText("You have no clue who you’re dealing with, do you, child…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("Heh...You have no clue who you’re dealing with, do you, child…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (timer >= 1100)
@@ -80,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (timer == 1300)
             {
-                Main.NewText("For you see...I have only been using a fraction of my true power...and now...heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("I have only been using a fraction of my true power...and now...heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
             if (timer == 1455)
             {

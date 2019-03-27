@@ -60,53 +60,6 @@ namespace AAMod
                              Color.White, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
         }
 
-        public static void DrawArmorGlowMask(EquipType type, Texture2D texture, PlayerDrawInfo info)
-        {
-            switch (type)
-            {
-                case EquipType.Head:
-                    {
-                        //Add if(!drawPlayer.invis) ?
-                        DrawData drawData = new DrawData(texture, new Vector2((int)(info.position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4) + info.drawPlayer.headPosition + info.headOrigin, info.drawPlayer.bodyFrame, info.headGlowMaskColor, info.drawPlayer.headRotation, info.headOrigin, 1f, info.spriteEffects, 0);
-                        drawData.shader = info.headArmorShader;
-                        Main.playerDrawData.Add(drawData);
-                    }
-                    return;
-                case EquipType.Body:
-                    {
-                        int num2 = 0;//Add in backAcc stuff later
-                        Rectangle bodyFrame = info.drawPlayer.bodyFrame;
-                        int num123 = num2;
-                        bodyFrame.X += num123;
-                        bodyFrame.Width -= num123;
-                        if (info.drawPlayer.direction == -1)
-                        {
-                            num123 = 0;
-                        }
-                        if (!info.drawPlayer.invis)
-                        {
-                            DrawData drawData = new DrawData(texture, new Vector2((int)(info.position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2) + num123), ((int)(info.position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4))) + info.drawPlayer.bodyPosition + new Vector2(info.drawPlayer.bodyFrame.Width / 2, info.drawPlayer.bodyFrame.Height / 2), bodyFrame, info.bodyGlowMaskColor, info.drawPlayer.bodyRotation, info.bodyOrigin, 1f, info.spriteEffects, 0);
-                            drawData.shader = info.bodyArmorShader;
-                            Main.playerDrawData.Add(drawData);
-                        }
-                    }
-                    return;
-                case EquipType.Legs:
-                    {
-                        if (info.drawPlayer.shoe != 15 || info.drawPlayer.wearsRobe)
-                        {
-                            if (!info.drawPlayer.invis)
-                            {
-                                DrawData drawData = new DrawData(texture, new Vector2((int)(info.position.X - Main.screenPosition.X - (info.drawPlayer.legFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.legFrame.Height + 4)) + info.drawPlayer.legPosition + info.legOrigin, info.drawPlayer.legFrame, info.legGlowMaskColor, info.drawPlayer.legRotation, info.legOrigin, 1f, info.spriteEffects, 0);
-                                drawData.shader = info.legArmorShader;
-                                Main.playerDrawData.Add(drawData);
-                            }
-                        }
-                    }
-                    return;
-            }
-        }
-
         public static void DrawItemGlowMask(Texture2D texture, PlayerDrawInfo info)
         {
             Item item = info.drawPlayer.HeldItem;

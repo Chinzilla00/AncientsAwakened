@@ -503,7 +503,6 @@
     <Compile Include="Items\Blocks\DracoAltar.cs" />
     <Compile Include="Items\Blocks\DreadAltar.cs" />
     <Compile Include="Items\Blocks\MushroomBlock.cs" />
-    <Compile Include="Items\Blocks\Riftstone.cs" />
     <Compile Include="Items\Blocks\TechneciumForge.cs" />
     <Compile Include="Items\Blocks\Uranium.cs" />
     <Compile Include="Items\Blocks\DynaskullOre.cs" />
@@ -1390,6 +1389,7 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\WrathHaruka.cs" />
     <Compile Include="NPCs\Bosses\Shen\Shenling.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoom.cs" />
@@ -3825,8 +3825,10 @@
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
+    <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
     <Content Include="Projectiles\AH\FireSpirit.png" />

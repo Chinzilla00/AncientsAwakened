@@ -30,15 +30,13 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public int Speechtimer = 0;
-
         public override void AI()
         {
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f);
-            Speechtimer++;
-            if (Speechtimer < 780)
+            npc.ai[0]++;
+            if (npc.ai[0] < 900)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -55,27 +53,27 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
             
-            if (Speechtimer == 180)
+            if (npc.ai[0] == 180)
             {
                 Main.NewText("Surprised to see us again, Kid?", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 360)
+            if (npc.ai[0] == 360)
             {
                 Main.NewText("NYEHEHEHEHEH..! Yes..! Must be shocking to see us here..! But this time, we have a little tricksie up our sleeves..!", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 540)
+            if (npc.ai[0] == 540)
             {
                 Main.NewText("That Sigil you just used gave us back our full power, which will let us reach our true, powerful form..!", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 720)
+            if (npc.ai[0] == 720)
             {
                 Main.NewText("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh…", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 900)
+            if (npc.ai[0] == 900)
             {
                 Main.NewText("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
                 Main.NewText("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
@@ -94,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer <= 930 && Speechtimer >= 900)
+            if (npc.ai[0] <= 930 && npc.ai[0] >= 900)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -111,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer <= 960 && Speechtimer >= 930)
+            if (npc.ai[0] <= 960 && npc.ai[0] >= 930)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -128,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer <= 990 && Speechtimer >= 960)
+            if (npc.ai[0] <= 990 && npc.ai[0] >= 960)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -145,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer <= 1010 && Speechtimer >= 990)
+            if (npc.ai[0] <= 1010 && npc.ai[0] >= 990)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -162,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer <= 1040 && Speechtimer >= 1010)
+            if (npc.ai[0] <= 1040 && npc.ai[0] >= 1010)
             {
                 Dust dust1;
                 Dust dust2;
@@ -176,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 dust2.velocity.Y -= 6;
             }
 
-            if (Speechtimer <= 1070 && Speechtimer >= 1040)
+            if (npc.ai[0] <= 1070 && npc.ai[0] >= 1040)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
@@ -193,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer > 1070 && Speechtimer < 1640)
+            if (npc.ai[0] > 1070 && npc.ai[0] < 1640)
             {
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
@@ -206,39 +204,39 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (Speechtimer == 1280)
+            if (npc.ai[0] == 1280)
             {
                 Main.NewText("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer == 1460)
+            if (npc.ai[0] == 1460)
             {
                 Main.NewText("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer == 1640)
+            if (npc.ai[0] == 1640)
             {
                 Main.NewText("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (Speechtimer >= 1640)
+            if (npc.ai[0] >= 1640)
             {
                 npc.alpha -= 5;
             }
 
-            if (Speechtimer == 1640)
+            if (npc.ai[0] == 1640)
             {
                 Main.NewText("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (Speechtimer == 1820)
+            if (npc.ai[0] == 1820)
             {
                 Main.NewText("And you, my child, will face the wrath and fury of chaos itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (Speechtimer >= 2000)
+            if (npc.ai[0] >= 2000)
             {
                 Main.NewText("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();

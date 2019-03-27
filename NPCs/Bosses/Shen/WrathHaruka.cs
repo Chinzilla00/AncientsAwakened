@@ -8,15 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.AH.Haruka
+namespace AAMod.NPCs.Bosses.Shen
 {
     [AutoloadBossHead]
-    public class Haruka : ModNPC
+    public class WrathHaruka : ModNPC
     {
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Haruka Yamata");
+            DisplayName.SetDefault("Wrath Haruka");
             Main.npcFrameCount[npc.type] = 27;
         }
 
@@ -74,35 +74,27 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
         }
 
-
         public override void HitEffect(int hitDirection, double damage)
         {
             Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, mod.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
         }
 
+        private bool DontSayDeathLine = false;
 
         public override void NPCLoot()
         {
-            int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
-            if (Ashe == 0)
+            if (DontSayDeathLine)
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AHDeath>());
-                if (Main.expertMode)
-                {
-                    npc.DropBossBags();
-                }
+                Main.NewText("Father! Rrgh..! Next time we meet, I'll strike you down!", new Color(72, 78, 117));
             }
-            if (!Main.expertMode)
+            else
             {
-
-                string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi" };
-                int lootH = Main.rand.Next(lootTableH.Length);
-                npc.DropLoot(mod.ItemType(lootTableH[lootH]));
+                Main.NewText("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
             }
-            Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
         }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
@@ -135,6 +127,13 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (npc.alpha <= 0)
             {
                 npc.alpha = 0;
+            }
+
+            if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))
+            {
+                DontSayDeathLine = true;
+                npc.life = 0;
+                npc.netUpdate = true;
             }
 
             if (internalAI[1] >= (ProjectileShoot == 0 ? 6 : 8))
@@ -177,7 +176,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         repeat -= 1;
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaProj>();
+                        int projType = mod.ProjectileType<AH.Haruka.HarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                         npc.netUpdate = true;
                     }
@@ -225,7 +224,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaProj>();
+                        int projType = mod.ProjectileType<AH.Haruka.HarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                     }
                     if (isSlashing && internalAI[2] > 9)

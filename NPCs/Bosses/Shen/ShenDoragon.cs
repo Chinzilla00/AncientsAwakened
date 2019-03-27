@@ -83,6 +83,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.buffImmune[k] = true;
             }
+            npc.buffImmune[mod.BuffType<Buffs.Terrablaze>()] = false;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -106,6 +107,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        public bool Weakness = false;
         public bool spawnalpha = false;
 		public bool isAwakened = false;
 		public float _normalSpeed = 15f; //base for normal movement
@@ -192,6 +194,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public static bool NOTRELEASED = true;
 
+
+        public bool Health4 = false;
+        public bool Health3 = false;
+        public bool Health2 = false;
+        public bool Health1 = false;
+
         public override void AI()
         {
             #region preamble stuff
@@ -235,6 +243,12 @@ namespace AAMod.NPCs.Bosses.Shen
             #endregion
 
             Player player = Main.player[npc.target];
+
+            if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen)
+            {
+                BaseUtility.Chat("TERRA MAGIC?! NO! I THOUGHT IT WAS WIPED FROM THE EARTH!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Weakness = true;
+            }
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
                 npc.TargetClosest(true);
@@ -610,11 +624,62 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
             {
                 SpawnGrips = true;
-                Main.NewText("Girls..? Help your father with this insignificant mortal.", Color.Magenta);
-                Main.NewText("With pleasure, Papa~!", new Color(102, 20, 48));
-                Main.NewText("Yes, father.", new Color(72, 78, 117));
+
+                if (AAWorld.downedShen)
+                {
+                    Main.NewText("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
+                    Main.NewText("On it, Papa~!", new Color(102, 20, 48));
+                    Main.NewText("Again..?", new Color(72, 78, 117));
+                }
+                else
+                {
+                    Main.NewText("Girls..? Help your father with this insignificant mortal.", Color.DarkMagenta);
+                    Main.NewText("With pleasure, Papa~!", new Color(102, 20, 48));
+                    Main.NewText("Yes, father.", new Color(72, 78, 117));
+                }
+
                 SpawnBoss(player, "FuryAshe", "");
                 SpawnBoss(player, "WrathHaruka", "");
+            }
+            
+            if (npc.life <= npc.lifeMax * 0.75f && !Health4)
+            {
+                if (AAWorld.downedShen)
+                {
+                    BaseUtility.Chat("You are quite persistent, Child. I like that.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                else
+                {
+                    BaseUtility.Chat("What's this? Competence? I would have never expected...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                Health4 = true;
+                npc.netUpdate = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.5f && !Health3)
+            {
+                if (AAWorld.downedShen)
+                {
+                    BaseUtility.Chat("True warriors don't show mercy! I won't and neither will you!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                else
+                {
+                    BaseUtility.Chat("Give up, child. The world will always fall into chaos!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                Health3 = true;
+                npc.netUpdate = true;
+            }
+            if (npc.life <= npc.lifeMax * 0.10f && !Health1)
+            {
+                if (AAWorld.downedShen)
+                {
+                    BaseUtility.Chat("SHOW NO MERCY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                else
+                {
+                    BaseUtility.Chat("What? You're still fighting? Why?!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                }
+                Health1 = true;
+                npc.netUpdate = true;
             }
         }
 

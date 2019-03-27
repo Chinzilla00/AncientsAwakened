@@ -24,7 +24,7 @@ namespace AAMod.Items.Melee
 			item.shootSpeed = 16f;
 			item.knockBack = 2.5f;
 			item.damage = 400;
-			item.rare = 0;
+			item.rare = 10;
 			item.melee = true;
 			item.channel = true;
 			item.noMelee = true;

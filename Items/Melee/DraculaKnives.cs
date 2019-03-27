@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee
             item.useStyle = 1;
             item.shootSpeed = 15f;
             item.shoot = 304;
-            item.damage = 29;
+            item.damage = 60;
             item.width = 18;
             item.height = 20;
             item.UseSound = SoundID.Item39;

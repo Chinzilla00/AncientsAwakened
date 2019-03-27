@@ -40,6 +40,18 @@ UNRELEASED");
             item.shootSpeed = 7f;
         }
 
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Shen;
+                }
+            }
+        }
+
+
 
         public override bool CanUseItem(Player player)
 		{

@@ -79,7 +79,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public float pos = 0f;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
-        private bool DontSayDeathLine = false;
 
         public override void AI()
         {
@@ -331,6 +330,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        private bool DontSayDeathLine = false;
 
         public override void NPCLoot()
         {
