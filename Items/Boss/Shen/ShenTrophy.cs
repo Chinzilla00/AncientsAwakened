@@ -11,7 +11,6 @@ namespace AAMod.Items.Boss.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shen Trophy");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

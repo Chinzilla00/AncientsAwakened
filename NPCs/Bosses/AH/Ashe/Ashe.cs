@@ -116,12 +116,23 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-
-                if ((int)internalAI[2] > 3) 
+                if (!FlyingBack)
                 {
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
+                    if ((int)internalAI[2] > 3)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                    }
                 }
+                else
+                {
+                    if ((int)internalAI[2] > 7 || (int)internalAI[2] < 4)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 4;
+                    }
+                }
+
             }
             else if(internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
@@ -179,7 +190,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
             {
-                npc.spriteDirection = 1;
+                npc.spriteDirection = -1;
                 if (FlyingPositive)
                 {
                     FlyingBack = true;
@@ -191,7 +202,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //If NPC's X position is lower than the player's
             {
-                npc.spriteDirection = -1;
+                npc.spriteDirection = 1;
 
                 if (FlyingNegative)
                 {

@@ -15,7 +15,6 @@ namespace AAMod.Items.Boss.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Skyfall");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
         public override void SetDefaults()

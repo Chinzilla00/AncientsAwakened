@@ -281,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     MoveToPoint(point);
                 }
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) < 200f)
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;
@@ -382,11 +382,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/Haruka_Glow");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/WrathHaruka_Glow");
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, new Vector2(npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 24, npc.frame, npc.GetAlpha(dColor), false);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, new Vector2 (npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 24, npc.frame, Color.White, false);
-            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, new Vector2(npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, new Vector2 (npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, false);
+            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 27);
             return false;
         }
     }

@@ -50,6 +50,7 @@ Inflicts Discordian Inferno");
             item.shootSpeed = 20F;
             item.UseSound = SoundID.Item20;
             item.melee = true;
+            item.autoReuse = true;
         }
 
         public override void AddRecipes()  //How to craft this sword

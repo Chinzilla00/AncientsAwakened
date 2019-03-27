@@ -11,7 +11,6 @@ namespace AAMod.Items.Boss.Shen
             
             DisplayName.SetDefault("Treasure Cache");
 			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-            Tooltip.SetDefault("UNRELEASED");
         }
 
 		public override void SetDefaults()
