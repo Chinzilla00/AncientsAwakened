@@ -488,7 +488,7 @@ namespace AAMod
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
                         int tilesX = WorldGen.genRand.Next(0, x);
-                        int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
+                        int tilesY = WorldGen.genRand.Next(0, y);
                         if (Main.tile[tilesX, tilesY].type == 59)
                         {
                             WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("EverleafRoot"));
@@ -506,7 +506,7 @@ namespace AAMod
                     OresGenerated = true;
                 }));
             }
-            tasks.Insert(shiniesIndex1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
             }));
@@ -519,7 +519,7 @@ namespace AAMod
                 VoidIslands(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Mush", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex1, new PassLegacy("Mush", delegate (GenerationProgress progress)
             {
                 Mush(progress);
             }));
@@ -1340,8 +1340,7 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            int WorldSize = GetWorldSize() + 1;
-            for (int biomes = 0; biomes < WorldSize; biomes++)
+            for (int biomes = 0; biomes < 2; biomes++)
             {
                 Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow);
                 origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);

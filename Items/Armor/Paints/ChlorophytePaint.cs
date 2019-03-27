@@ -46,7 +46,7 @@ namespace AAMod.Items.Armor.Paints
 		{
             player.setBonus = @"+6 Minion slots
 Shoots crystal leaves at nearby enemies";
-            player.crystalLeaf = true;
+            player.AddBuff(BuffID.LeafCrystal, 2);
             player.maxMinions += 6;
         }
 

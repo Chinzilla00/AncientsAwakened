@@ -322,53 +322,33 @@ namespace AAMod.NPCs.Bosses.Shen
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
                 npc.ai[0]++;
-                if (npc.ai[0] > 180)
+                if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
                 {
-                    if (npc.ai[1] == 0 && Main.rand.Next(2) == 0)
+                    Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
+                    npc.ai[0]++;
+                    if (npc.ai[0] > 180)
                     {
-                        npc.ai[0] = 0;
-                    }
-                    else
-                    {
-                        npc.ai[1] = 1;
-                    }
-                    if (npc.ai[2] != 1)
-                    {
-                        if (npc.alpha > 0)
+                        npc.alpha -= 5;
+                        if (npc.alpha >= 255)
                         {
-                            npc.alpha += 5;
+                            pos = pos * -1;
+                            wantedVelocity = player.Center - new Vector2(pos, 0);
+                            npc.Center = wantedVelocity;
+                            npc.ai[0] = 0;
                         }
                     }
                     else
                     {
                         if (npc.alpha > 0)
                         {
-                            npc.alpha -= 5;
+                            npc.alpha += 5;
                         }
                         if (npc.alpha <= 0)
                         {
                             npc.alpha = 0;
                         }
                     }
-                    if (npc.alpha >= 255)
-                    {
-                        if (pos == -250)
-                        {
-                            pos = 250;
-                        }
-                        else
-                        {
-                            pos = -250;
-                        }
-                        Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-                        MoveToPoint(wantedVelocity);
-                        if (Vector2.Distance(npc.Center, wantedVelocity) < 20)
-                        {
-                            npc.ai[0] = 0;
-                            npc.ai[1] = 0;
-                            npc.ai[2] = 0;
-                        }
-                    }
+                    MoveToPoint(wantedVelocity);
                 }
             }
 

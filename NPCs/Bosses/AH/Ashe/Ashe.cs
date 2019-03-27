@@ -332,6 +332,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (internalAI[0] == 4)
             {
+                for (int m = 0; m < Main.maxProjectiles; m++)
+                {
+                    Projectile p = Main.projectile[m];
+                    if (p != null && p.active && p.type == mod.ProjectileType("AsheFire"))
+                    {
+                        return;
+                    }
+                }
                 BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 5f, 0, 0, -1);
             }
         }

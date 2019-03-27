@@ -70,17 +70,6 @@ namespace AAMod.Items.Boss.Equinox
             player.thrownDamage += 0.35f;
             player.thrownCrit += 5;
         }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Cyan, Color.Gold, Color.Gold, Color.Cyan);
-                }
-            }
-        }
         
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

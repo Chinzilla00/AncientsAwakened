@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha > 0)
+            if (npc.alpha > 0 && timer < 375)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (timer == 600)
             {
-                Main.NewText("HAHAHAHAHAHAHA", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("HAHAHAHAHAHAHA!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
             if (timer == 820)
             {
@@ -76,21 +76,16 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Main.NewText("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 1100)
-            {
-                Main.NewText("Heh...You have no clue who you’re dealing with, do you, child…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-
             if (timer >= 1100)
             {
                 npc.alpha -= 5;
             }
-
-            if (timer == 1300)
+            if (timer == 1100)
             {
                 Main.NewText("I have only been using a fraction of my true power...and now...heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 1455)
+
+            if (timer == 1300)
             {
                 SummonShen();
                 npc.active = false;

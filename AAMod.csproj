@@ -846,6 +846,7 @@
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
+    <Compile Include="Items\Materials\Discordium.cs" />
     <Compile Include="Items\Materials\Prism.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\Hotshroom.cs" />
@@ -3822,6 +3823,7 @@
     <Content Include="Items\Boss\AH\AHBag.png" />
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
+    <Content Include="Items\Materials\Discordium.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
@@ -5482,11 +5484,14 @@
     <Content Include="Resprites\ManaGreen.png" />
     <Content Include="Resprites\SoulOfNight.png" />
     <Content Include="Resprites\TEoCHead.png" />
+    <Content Include="Sounds\Music\AH.mp3" />
     <Content Include="Sounds\Music\Akuma.mp3" />
     <Content Include="Sounds\Music\Akuma2.mp3" />
     <Content Include="Sounds\Music\AkumaShrine.mp3" />
+    <Content Include="Sounds\Music\ChaosSissy.mp3" />
     <Content Include="Sounds\Music\Djinn.mp3" />
     <Content Include="Sounds\Music\Fungus.mp3" />
+    <Content Include="Sounds\Music\LastStand.mp3" />
     <Content Include="Sounds\Music\Monarch.mp3" />
     <Content Include="Sounds\Music\Boss6.mp3" />
     <Content Include="Sounds\Music\BroodTheme.mp3" />
@@ -5498,6 +5503,8 @@
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
     <Content Include="Sounds\Music\RayOfHope.mp3" />
+    <Content Include="Sounds\Music\Shen.mp3" />
+    <Content Include="Sounds\Music\ShenA.mp3" />
     <Content Include="Sounds\Music\ShenIntro.mp3" />
     <Content Include="Sounds\Music\Shrines.mp3" />
     <Content Include="Sounds\Music\Shroom.mp3" />

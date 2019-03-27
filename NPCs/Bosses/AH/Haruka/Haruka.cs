@@ -42,7 +42,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.noGravity = true;
             npc.noTileCollide = false;
             bossBag = mod.ItemType("AHBag");
-            npc.alpha = 255;
         }
 
 
@@ -119,7 +118,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public int ProjectileShoot = -1;
         public int repeat = 4;
         public bool isSlashing = false;
-
+        
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -268,7 +267,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[1] = 0;
                     internalAI[2] = 13;
                 }
-                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
+                Vector2 targetCenter = player.Center;
                 Vector2 point = targetCenter - npc.Center + new Vector2(0f, 250f);
                 if (internalAI[2] >= 13)
                 {
@@ -315,61 +314,37 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
                 npc.ai[0]++;
                 if (npc.ai[0] > 180)
                 {
-                    if (npc.ai[1] == 0 && Main.rand.Next(2) == 0)
-                    {
-                        npc.ai[0] = 0;
-                    }
-                    else
-                    {
-                        npc.ai[1] = 1;
-                    }
-                    if (npc.ai[2] != 1)
-                    {
-                        if (npc.alpha > 0)
-                        {
-                            npc.alpha += 5;
-                        }
-                    }
-                    else
-                    {
-                        if (npc.alpha > 0)
-                        {
-                            npc.alpha -= 5;
-                        }
-                        if (npc.alpha <= 0)
-                        {
-                            npc.alpha = 0;
-                        }
-                    }
+                    npc.alpha -= 5;
                     if (npc.alpha >= 255)
                     {
-                        if (pos == -250)
-                        {
-                            pos = 250;
-                        }
-                        else
-                        {
-                            pos = -250;
-                        }
-                        Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-                        MoveToPoint(wantedVelocity);
-                        if (Vector2.Distance(npc.Center, wantedVelocity) < 20)
-                        {
-                            npc.ai[0] = 0;
-                            npc.ai[1] = 0;
-                            npc.ai[2] = 0;
-                        }
+                        pos = pos * -1;
+                        wantedVelocity = player.Center - new Vector2(pos, 0);
+                        npc.Center = wantedVelocity;
+                        npc.ai[0] = 0;
                     }
                 }
+                else
+                {
+                    if (npc.alpha > 0)
+                    {
+                        npc.alpha += 5;
+                    }
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+                MoveToPoint(wantedVelocity);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
                 BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
             }
-            npc.rotation = 0; //No ugly rotation.
+            npc.rotation = 0;
         }
 
         public void MoveToPoint(Vector2 point)

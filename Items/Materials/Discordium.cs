@@ -51,10 +51,10 @@ namespace AAMod.Items.Materials
         }
 
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 1);
-            recipe.AddIngredient(null, "EventideAbyssium", 1);              //example of how to craft with a modded item
+            recipe.AddIngredient(null, "EventideAbyssium", 1);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();

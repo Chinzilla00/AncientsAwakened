@@ -329,7 +329,7 @@ namespace AAMod.Worldgeneration
             ushort tileGrass = (ushort)mod.TileType("Mycelium");
 
             int worldSize = GetWorldSize();
-            int biomeRadius = (worldSize == 3 ? 100 : 80), biomeRadiusHalf = biomeRadius / 2;	
+            int biomeRadius = 100;	
 			
 
             Point newOrigin = new Point(origin.X, origin.Y - 30);
@@ -385,7 +385,7 @@ namespace AAMod.Worldgeneration
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
-				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
+				new SetModTile(tileGrass, true, true) //actually place the tile
 			}));
 
             return true;

@@ -27,7 +27,7 @@ Inflicts Discordian Inferno");
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("Meteor");
-            item.damage = 250;            //Sword damage
+            item.damage = 350;            //Sword damage
             item.magic = true;            //if it's magic
             item.width = 32;              //Sword width
             item.height = 36;             //Sword height

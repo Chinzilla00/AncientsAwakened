@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.TrueHallowed
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HallowedChest, 1);
+            recipe.AddIngredient(ItemID.HallowedPlateMail, 1);
             recipe.AddIngredient(null, "HallowCrystal", 1);
             recipe.AddTile(null, "PaladinsSmeltery");
             recipe.SetResult(this);

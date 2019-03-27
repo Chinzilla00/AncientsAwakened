@@ -192,7 +192,16 @@ namespace AAMod.NPCs.Bosses.Shen
         public int chargeWidth = 50;
         public int normalWidth = 250;
 
-        public static bool NOTRELEASED = true;
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            if (Main.expertMode && !isAwakened)
+            {
+                potionType = 0;
+                return;
+            }
+            potionType = mod.ItemType<Items.Potions.GrandHealingPotion>();
+        }
 
 
         public bool Health4 = false;
@@ -244,7 +253,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             Player player = Main.player[npc.target];
 
-            if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen)
+            if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen && !isAwakened)
             {
                 BaseUtility.Chat("TERRA MAGIC?! NO! I THOUGHT IT WAS WIPED FROM THE EARTH!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 Weakness = true;
@@ -419,7 +428,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -300);
                 MoveToPoint(playerPoint);
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
@@ -616,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
-                Main.NewText("Grips! Assist me!", Color.Magenta);
+                Main.NewText("Grips! Assist me!", Color.DarkMagenta);
                 SpawnBoss(player, "AbyssGrip", "");
                 SpawnBoss(player, "BlazeGrip", "");
                 Main.PlaySound(SoundID.Roar, player.position, 0);
