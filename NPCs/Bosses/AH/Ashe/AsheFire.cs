@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.White;
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
         }
 
         public override void AI()

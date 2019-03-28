@@ -63,7 +63,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
         }
-        
+
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
+
         private int attackFrame;
         private int attackCounter;
         private int attackTimer;

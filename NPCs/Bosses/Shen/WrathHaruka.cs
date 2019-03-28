@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public static int AISTATE_IDLE = 0, AISTATE_PROJ = 1, AISTATE_SLASH = 2, AISTATE_SPIN = 3;
 
         public int ProjectileShoot = -1;
-        public int repeat = 4;
+        public int repeat = 15;
         public bool isSlashing = false;
 
         public override void AI()
@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         ProjectileShoot -= 1;
-                        repeat = 4;
+                        repeat = 15;
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -274,13 +274,15 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[1] = 0;
                     internalAI[2] = 13;
                 }
-                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
-                Vector2 point = targetCenter - npc.Center + new Vector2(0f, 250f);
+                float Point = 500 * npc.direction;
+                npc.netUpdate = true;
+                Vector2 point = player.Center + new Vector2(Point, 0);
+
                 if (internalAI[2] >= 13)
                 {
                     MoveToPoint(point);
                 }
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) < 200f)
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) > 300f)
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;
@@ -299,14 +301,16 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
-
-            if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+            if (internalAI[0] != AISTATE_SPIN)
             {
-                npc.spriteDirection = 1;
-            }
-            else //If NPC's X position is lower than the player's
-            {
-                npc.spriteDirection = -1;
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                {
+                    npc.direction = 1;
+                }
+                else //If NPC's X position is lower than the player's
+                {
+                    npc.direction = -1;
+                }
             }
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
@@ -321,48 +325,42 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
                 npc.ai[0]++;
-                if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
+                if (npc.ai[0] > 180)
                 {
-                    Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-                    npc.ai[0]++;
-                    if (npc.ai[0] > 180)
+                    npc.alpha -= 5;
+                    if (npc.alpha >= 255)
                     {
-                        npc.alpha -= 5;
-                        if (npc.alpha >= 255)
-                        {
-                            pos = pos * -1;
-                            wantedVelocity = player.Center - new Vector2(pos, 0);
-                            npc.Center = wantedVelocity;
-                            npc.ai[0] = 0;
-                        }
+                        pos = pos * -1;
+                        wantedVelocity = player.Center - new Vector2(pos, 0);
+                        npc.Center = wantedVelocity;
+                        npc.ai[0] = 0;
                     }
-                    else
-                    {
-                        if (npc.alpha > 0)
-                        {
-                            npc.alpha += 5;
-                        }
-                        if (npc.alpha <= 0)
-                        {
-                            npc.alpha = 0;
-                        }
-                    }
-                    MoveToPoint(wantedVelocity);
                 }
+                else
+                {
+                    if (npc.alpha > 0)
+                    {
+                        npc.alpha += 5;
+                    }
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+                MoveToPoint(wantedVelocity);
             }
-
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
+                MoveToPoint(npc.Center);
             }
-
             npc.rotation = 0; //No ugly rotation.
         }
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 30f;
+            float moveSpeed = 18f;
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

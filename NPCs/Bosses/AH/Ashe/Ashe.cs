@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
+            npc.width = 40;
+            npc.height = 80;
             npc.damage = 80;
             npc.defense = 40;
             npc.lifeMax = 100000;
@@ -70,6 +72,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
             }
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
         }
 
         bool HasStopped = false;
@@ -116,7 +124,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-                if (!FlyingBack)
+                if (FlyingBack)
                 {
                     if ((int)internalAI[2] > 3)
                     {
@@ -188,29 +196,32 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingPositive = false;
                 FlyingNegative = true;
             }
-            if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+            if (internalAI[0] != AISTATE_MELEE)
             {
-                npc.spriteDirection = -1;
-                if (FlyingPositive)
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
                 {
-                    FlyingBack = true;
+                    npc.direction = -1;
+                    if (FlyingPositive)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
                 }
-                else
+                else //If NPC's X position is lower than the player's
                 {
-                    FlyingBack = false;
-                }
-            }
-            else //If NPC's X position is lower than the player's
-            {
-                npc.spriteDirection = 1;
+                    npc.direction = 1;
 
-                if (FlyingNegative)
-                {
-                    FlyingBack = true;
-                }
-                else
-                {
-                    FlyingBack = false;
+                    if (FlyingNegative)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
                 }
             }
 
@@ -236,11 +247,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
-            }
-            else if (internalAI[0] == AISTATE_DRAGON) //When summoning a noodle
-            {
-                npc.velocity *= .8f;
+                float Point = 500 * npc.direction;
+                npc.netUpdate = true;
+                Vector2 point = player.Center + new Vector2(Point , 500f);
+                MoveToPoint(point);
             }
             else //Anything else
             {
@@ -248,18 +258,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (npc.ai[0] > 180)
                 {
                     npc.ai[0] = 0;
-                    npc.ai[1] = Main.rand.Next(3);
+                    npc.ai[1] = Main.rand.Next(2);
                     if (npc.ai[1] == 0)
                     {
                         pos = -250;
                     }
-                    else if (npc.ai[1] == 1)
-                    {
-                        pos = 250;
-                    }
                     else
                     {
-                        pos = 0f;
+                        pos = 250;
                     }
                 }
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
@@ -321,7 +327,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (internalAI[0] == 3)
             {
                 float spread = 60f * 0.0174f;
-                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                double startAngle = Math.Atan2(npc.velocity.X, -npc.velocity.Y) - spread / 2;
                 double deltaAngle = spread / (Main.expertMode ? 5 : 4);
                 double offsetAngle;
                 for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
@@ -332,15 +338,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (internalAI[0] == 4)
             {
-                for (int m = 0; m < Main.maxProjectiles; m++)
-                {
-                    Projectile p = Main.projectile[m];
-                    if (p != null && p.active && p.type == mod.ProjectileType("AsheFire"))
-                    {
-                        return;
-                    }
-                }
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 5f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 10f, 0, 0, -1);
             }
         }
 
@@ -377,57 +375,19 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
         }
-        
-        private float moveSpeed = 15f;
-
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
-        {
-            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            if (length < moveSpeed)
-            {
-                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
-            }
-            if (length < 200f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 100f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 50f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
-        }
 
 
         public bool Summon = false;
         
-        public float alpha = 255;
         public float scale = 0;
         public float RingRotation = 0;
 
         private void RingEffects()
         {
-            RingRotation += 0.0149599658f;
 
             if (internalAI[0] == AISTATE_DRAGON) //If summoning noodle
             {
-                if (alpha > 0)
-                {
-                    alpha -= 8; //Lower Alpha
-                }
-                if (alpha < 0)
-                {
-                    alpha = 0; 
-                }
+                RingRotation += 0.02f;
                 if (scale < 1f)
                 {
                     scale += .02f; //Raise Scale
@@ -439,15 +399,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                if (alpha >= 255)
+                RingRotation -= 0.02f;
+                if (scale < .1f)
                 {
-                    alpha = 255;
                     scale = 0;
                 }
-                if (alpha < 255)
+                if (scale > 0)
                 {
-                    scale -= .05f;
-                    alpha += 8;
+                    scale -= .02f;
                 }
             }
         }
@@ -466,18 +425,18 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
 
-            Color alphaColor = new Color(Color.White.R, Color.White.G, Color.White.B, alpha);
+            Color alphaColor = new Color(Color.White.R, Color.White.G, Color.White.B);
 
             if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
             {
-                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, alphaColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RitualFrame, alphaColor, true);
                 BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, alphaColor, true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, alphaColor, true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex1, blue, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, alphaColor, true);
             }
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
             return false;
         }

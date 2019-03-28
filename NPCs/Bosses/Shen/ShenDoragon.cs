@@ -203,6 +203,12 @@ namespace AAMod.NPCs.Bosses.Shen
             potionType = mod.ItemType<Items.Potions.GrandHealingPotion>();
         }
 
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
 
         public bool Health4 = false;
         public bool Health3 = false;

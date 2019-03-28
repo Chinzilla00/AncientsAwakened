@@ -24,14 +24,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.timeLeft = 60;
+            projectile.timeLeft = 180;
         }
 
         public override void AI()
         {
             projectile.timeLeft--;
-            if (projectile.timeLeft == 0)
+            if (projectile.timeLeft >= 0)
             {
-                Kill(projectile.timeLeft);
+                Kill(0);
             }
 
             projectile.frameCounter++;
@@ -44,6 +45,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     projectile.frame = 0;
                 }
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

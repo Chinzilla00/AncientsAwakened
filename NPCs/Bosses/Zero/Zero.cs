@@ -133,7 +133,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                if (!AAWorld.downedZero)
+                {
+                    Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                }
+                AAWorld.downedZero = true;
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
                 npc.DropLoot(mod.ItemType("UnstableSingularity"), 25, 35);
                 string[] lootTable =
@@ -168,7 +172,6 @@ namespace AAMod.NPCs.Bosses.Zero
             if (!Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedZero = true;
             }
         }
 

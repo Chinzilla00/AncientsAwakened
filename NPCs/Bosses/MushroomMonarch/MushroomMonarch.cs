@@ -65,8 +65,14 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
 
         }
-      
-		public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2, AISTATE_FLY = 3;
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
+        public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2, AISTATE_FLY = 3;
 		public float[] internalAI = new float[2];
 		
         public override void AI()

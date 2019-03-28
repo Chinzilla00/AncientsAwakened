@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.AH
             if (npc.ai[1] >= 960)
             {
                 Main.NewText("Please don't call me Hakie again...ever.", new Color(72, 78, 117));
-                SpawnBoss(player, "Haruka");
+                SpawnBoss2(player, "Haruka");
                 npc.active = false;
             }
         }
@@ -116,6 +116,18 @@ namespace AAMod.NPCs.Bosses.AH
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
+
+        public void SpawnBoss2(Player player, string name)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(800f, 0);
                 Main.npc[npcID].netUpdate2 = true;
             }
         }

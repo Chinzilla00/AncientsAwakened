@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -30,6 +31,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 projectile.alpha++;
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

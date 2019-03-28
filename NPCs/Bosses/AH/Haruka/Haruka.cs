@@ -78,7 +78,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, mod.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
         }
-
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
 
         public override void NPCLoot()
         {
@@ -116,7 +120,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public static int AISTATE_IDLE = 0, AISTATE_PROJ = 1, AISTATE_SLASH = 2, AISTATE_SPIN = 3;
 
         public int ProjectileShoot = -1;
-        public int repeat = 4;
+        public int repeat = 12;
         public bool isSlashing = false;
         
         public override void AI()
@@ -168,7 +172,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         repeat -= 1;
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaProj>();
+                        int projType = mod.ProjectileType<HarukaKunai>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                         npc.netUpdate = true;
                     }
@@ -184,7 +188,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         ProjectileShoot -= 1;
-                        repeat = 4;
+                        repeat = 12;
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -267,13 +271,15 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[1] = 0;
                     internalAI[2] = 13;
                 }
-                Vector2 targetCenter = player.Center;
-                Vector2 point = targetCenter - npc.Center + new Vector2(0f, 250f);
+                float Point = 500 * npc.direction;
+                npc.netUpdate = true;
+                Vector2 point = player.Center + new Vector2(Point, 0);
+
                 if (internalAI[2] >= 13)
                 {
                     MoveToPoint(point);
                 }
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) < 300f)
+                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) > 300f)
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;
@@ -292,14 +298,16 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
-
-            if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+            if (internalAI[0] != AISTATE_SPIN)
             {
-                npc.spriteDirection = 1;
-            }
-            else //If NPC's X position is lower than the player's
-            {
-                npc.spriteDirection = -1;
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                {
+                    npc.direction = 1;
+                }
+                else //If NPC's X position is lower than the player's
+                {
+                    npc.direction = -1;
+                }
             }
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
@@ -342,14 +350,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, .09f, .09f, 9f, 9f, false, 1);
+                MoveToPoint(npc.Center);
             }
             npc.rotation = 0;
         }
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 30f;
+            float moveSpeed = 14f;
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

@@ -19,7 +19,7 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
 		{
 			item.width = 14;
 			item.height = 14;
-            item.rare = 2;
+            item.rare = 11;
             item.value = 300000;
             item.defense = 26;
 		}

@@ -24,6 +24,7 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
 			item.height = 16;
 			item.value = 300000;
 			item.defense = 20;
+            item.rare = 11;
 		}
 
 		public override void UpdateEquip(Player player)

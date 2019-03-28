@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[2] = 0;
                 }
             }
-            else if(internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
+            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
                 if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
                 {
@@ -171,39 +171,32 @@ namespace AAMod.NPCs.Bosses.Shen
             }
 
 
-            if (npc.velocity.X > 0) //Flying in the positive X direction
+            if (internalAI[0] != AISTATE_MELEE)
             {
-                FlyingPositive = true;
-                FlyingNegative = false;
-            }
-            else //Flying in the nagative X direction
-            {
-                FlyingPositive = false;
-                FlyingNegative = true;
-            }
-            if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
-            {
-                npc.spriteDirection = -1;
-                if (FlyingPositive)
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
                 {
-                    FlyingBack = true;
+                    npc.direction = -1;
+                    if (FlyingPositive)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
                 }
-                else
+                else //If NPC's X position is lower than the player's
                 {
-                    FlyingBack = false;
-                }
-            }
-            else //If NPC's X position is lower than the player's
-            {
-                npc.spriteDirection = 1;
+                    npc.direction = 1;
 
-                if (FlyingNegative)
-                {
-                    FlyingBack = true;
-                }
-                else
-                {
-                    FlyingBack = false;
+                    if (FlyingNegative)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
                 }
             }
 
@@ -229,11 +222,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, .13f, .13f, 13f, 13f, false, 1);
-            }
-            else if (internalAI[0] == AISTATE_DRAGON) //When summoning a noodle
-            {
-                npc.velocity *= .8f;
+                float Point = 500 * npc.direction;
+                npc.netUpdate = true;
+                Vector2 point = player.Center + new Vector2(Point, 500f);
+                MoveToPoint(point);
             }
             else //Anything else
             {
@@ -264,7 +256,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AH.Ashe.AsheDragon>(), 0); 
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AH.Ashe.AsheDragon>(), 0);
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;

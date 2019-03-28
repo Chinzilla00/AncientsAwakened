@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -21,6 +22,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
         }
 
         public override void AI()

@@ -255,7 +255,11 @@ namespace AAMod.NPCs.Bosses.Serpent
             potionType = ItemID.HealingPotion;   //boss drops
             AAWorld.downedSerpent = true;
         }
-
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{

@@ -28,11 +28,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.timeLeft = 180;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
         public override void AI()
         {
             if (projectile.alpha < 255)
@@ -56,6 +51,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     projectile.frame = 0;
                 }
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

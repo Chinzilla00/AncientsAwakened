@@ -27,11 +27,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (projectile.alpha < 255)
-            {
-                projectile.alpha++;
-            }
-            if (projectile.timeLeft == 0)
+            projectile.alpha++;
+            if (projectile.alpha > 255)
             {
                 projectile.Kill();
             }
@@ -67,7 +64,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
+        }
 
         private int HomeOnTarget()
         {

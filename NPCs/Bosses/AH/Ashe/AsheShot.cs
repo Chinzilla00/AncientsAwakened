@@ -30,6 +30,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
+        }
 
         public override void Kill(int timeLeft)
         {

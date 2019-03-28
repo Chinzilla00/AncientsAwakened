@@ -27,25 +27,23 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            projectile.velocity *= 0.96f;
-
-            projectile.ai[0]++;
-
-            if (projectile.ai[0] >= 61)
+            projectile.velocity *= .98f;
+            if (projectile.timeLeft > 0 && projectile.velocity == new Vector2(0, 0))
             {
-                projectile.alpha += 1;
+                projectile.ai[0] = 1;
             }
-            else
+            if (projectile.ai[0] == 1)
             {
-                projectile.ai[0]++;
+                projectile.Kill();
             }
-
-            if (projectile.velocity == new Vector2(0, 0) && projectile.ai[1] != 1)
+            if (projectile.ai[0] == 1)
             {
-                projectile.ai[1] = 1;
-                Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<AsheSpark>(), 50, 0, projectile.owner);
+                projectile.alpha += 5;
             }
-
+            if (projectile.alpha >= 255)
+            {
+                projectile.Kill();
+            }
             projectile.frameCounter++;
             if (projectile.frameCounter > 6)
             {
@@ -56,9 +54,29 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     projectile.frame = 0;
                 }
             }
-            
+            for (int num189 = 0; num189 < 1; num189++)
+            {
+                int num190 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f);
+
+                Main.dust[num190].scale *= 1.3f;
+                Main.dust[num190].fadeIn = 1f;
+                Main.dust[num190].noGravity = true;
+            }
         }
-        
+
+        public override void Kill(int timeLeft)
+        {
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 4;
+            for (int i = 0; i < 4; i++)
+            {
+                double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f), (float)(Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f), (float)(-Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            }
+        }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {

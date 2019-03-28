@@ -53,13 +53,13 @@ Calls upon the Sisters of Discord");
                 SpawnBoss(player, "Ashe");
 
                 Main.NewText("Whatever, let's just get this overwith.", new Color(72, 78, 117));
-                SpawnBoss(player, "Haruka");
+                SpawnBoss2(player, "Haruka");
                 return true;
             }
             else if (AAWorld.SistersSummoned && AAWorld.downedSisters)
             {
                 Main.NewText("Sigh...here we go again...", new Color(72, 78, 117));
-                SpawnBoss(player, "Haruka");
+                SpawnBoss2(player, "Haruka");
 
                 Main.NewText("THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");

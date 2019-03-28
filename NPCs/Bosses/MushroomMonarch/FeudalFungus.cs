@@ -71,6 +71,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.alpha = 255;
         }
 
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2;
 		public float[] internalAI = new float[4];
         bool HasStopped = false;
