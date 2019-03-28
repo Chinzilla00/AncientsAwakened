@@ -158,7 +158,6 @@
     <Compile Include="Buffs\DestinedToDie.cs" />
     <Compile Include="Buffs\YamataAGravity.cs" />
     <Compile Include="Buffs\Hunted.cs" />
-    <Compile Include="Buffs\Gravity.cs" />
     <Compile Include="Buffs\YamataGravity.cs" />
     <Compile Include="Buffs\Yanked.cs" />
     <Compile Include="ConversionHandler.cs" />
@@ -407,6 +406,10 @@
     <Compile Include="Items\Armor\Tribal\TribalCloak.cs" />
     <Compile Include="Items\Armor\Tribal\TribalHat.cs" />
     <Compile Include="Items\Armor\Tribal\TribalKilt.cs" />
+    <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperPlate.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlyRibguard.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlySkull.cs" />
@@ -1885,6 +1888,8 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\DevStatues.cs" />
+    <Compile Include="Tiles\ShenABox.cs" />
+    <Compile Include="Tiles\ShenBox.cs" />
     <Compile Include="Tiles\TerraPrism.cs" />
     <Compile Include="Tiles\PrismOre.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
@@ -2239,7 +2244,6 @@
     <Content Include="Buffs\EXBuffTemplate.png" />
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
-    <Content Include="Buffs\Gravity.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
@@ -3567,6 +3571,15 @@
     <Content Include="Items\Armor\Tribal\TribalHat_Head.png" />
     <Content Include="Items\Armor\Tribal\TribalKilt.png" />
     <Content Include="Items\Armor\Tribal\TribalKilt_Legs.png" />
+    <Content Include="Items\Armor\TrueCopper\CopperSoul.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperHelm.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperHelm_Head.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperLeggings.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperLeggings_Legs.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Arms.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Body.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Female.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves_Legs.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyRibguard.png" />
@@ -5739,6 +5752,8 @@
     <Content Include="Tiles\RottedShingles.png" />
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
+    <Content Include="Tiles\ShenABox.png" />
+    <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\Sticker.png" />

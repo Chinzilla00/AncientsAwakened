@@ -12,6 +12,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileBlendAll[this.Type] = false;
             Main.tileMerge[TileID.SnowBlock][Type] = true;
+            Main.tileBlockLight[Type] = true;
             soundType = 21;
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchice");   //put your CustomBlock name
