@@ -1884,6 +1884,7 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\DevStatues.cs" />
     <Compile Include="Tiles\TerraPrism.cs" />
     <Compile Include="Tiles\PrismOre.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
@@ -5565,6 +5566,7 @@
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
+    <Content Include="Tiles\DevStatues.png" />
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />

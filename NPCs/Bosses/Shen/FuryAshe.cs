@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
+            npc.width = 40;
+            npc.height = 80;
             npc.damage = 100;
             npc.defense = 40;
             npc.lifeMax = 120000;
@@ -77,6 +79,11 @@ namespace AAMod.NPCs.Bosses.Shen
         public float MeleeSpeed;
         public float pos = 0f;
 
+        public override bool CheckActive()
+        {
+            return !NPC.AnyNPCs(mod.NPCType<ShenA>());
+        }
+
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
         public override void AI()
@@ -92,6 +99,25 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[1] = 0;
                 internalAI[2]++;
+            }
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                }
+
+                if ((int)internalAI[2] > 3)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                }
+                return;
             }
 
             if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))

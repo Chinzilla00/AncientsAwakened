@@ -49,12 +49,8 @@ namespace AAMod.Tiles
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            Texture2D glowTex = mod.GetTexture("Tiles/TerraPrism_Glow");
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetPrismColorDim);
-            for (int m = 0; m < 3; m++)
-            {
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, AAGlobalTile.GetPrismColorDim, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/TerraPrism_Glow");
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 54), false, false, false, null, AAGlobalTile.GetPrismColorDim);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

@@ -100,6 +100,11 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.damage = (int)(npc.damage * 0.6f);
         }
 
+        public override bool CheckActive()
+        {
+            return !NPC.AnyNPCs(mod.NPCType<ShenA>());
+        }
+
         public bool SetMovePos = false;
         public float XPos = 20f;
 
@@ -139,6 +144,34 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[1] = 0;
                 internalAI[2]++;
+            }
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    if (internalAI[2] > 3)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                    }
+                    npc.alpha += 4;
+                    if (npc.alpha > 255)
+                    {
+                        npc.active = false;
+                    }
+                    return;
+                }
+
+            }
+            else
+            {
+                npc.alpha -= 4;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
             }
 
             if (internalAI[0] == AISTATE_IDLE)

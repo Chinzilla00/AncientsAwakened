@@ -40,7 +40,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
             npc.noGravity = true;
-            npc.noTileCollide = false;
             bossBag = mod.ItemType("AHBag");
         }
 
@@ -128,9 +127,35 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             Player player = Main.player[npc.target];
 
             npc.frame.Y = 74 * internalAI[2];
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    if (internalAI[2] > 3)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                    }
+                    npc.alpha += 4;
+                    if (npc.alpha > 255)
+                    {
+                        npc.active = false;
+                    }
+                    return;
+                }
+            }
+            else
+            {
+                npc.alpha -= 4;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
             
             internalAI[1]++;
-
 
             if (internalAI[1] >= (ProjectileShoot == 0 ? 6 : 8))
             {
@@ -353,6 +378,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 MoveToPoint(npc.Center);
             }
             npc.rotation = 0;
+
+            npc.noTileCollide = true;
         }
 
         public void MoveToPoint(Vector2 point)

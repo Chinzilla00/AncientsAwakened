@@ -1783,7 +1783,7 @@ namespace AAMod
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
                 {
                     SnapCD = 18000;
-                    Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
+                    Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() /*&& x.type != mod.NPCType<IZHand1>() && x.type != mod.NPCType<IZHand2>()*/ && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
