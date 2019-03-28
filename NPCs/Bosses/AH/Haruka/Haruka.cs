@@ -297,8 +297,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[2] = 13;
                 }
                 float Point = 500 * npc.direction;
+                Vector2 point = player.Center + new Vector2(Point, 0); //Move to 500 pixels AWAY from the player. 
                 npc.netUpdate = true;
-                Vector2 point = player.Center + new Vector2(Point, 0);
 
                 if (internalAI[2] >= 13)
                 {
@@ -323,6 +323,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
+
+
             if (internalAI[0] != AISTATE_SPIN)
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's

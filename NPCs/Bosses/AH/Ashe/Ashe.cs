@@ -446,7 +446,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             Color alphaColor = new Color(Color.White.R, Color.White.G, Color.White.B);
 
-            if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
+            if (scale > 0) //Only draw if summoning a noodle
             {
                 BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RitualFrame, alphaColor, true);
                 BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, alphaColor, true);

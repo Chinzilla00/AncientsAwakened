@@ -20,6 +20,18 @@ namespace AAMod.Items.Armor.TrueCopper
 
 		}
 
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture2 = Main.itemTexture[item.type];
+            spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            for (int i = 0; i < 4; i++)
+            {
+                spriteBatch.Draw(texture, position, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
+            }
+            return false;
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
