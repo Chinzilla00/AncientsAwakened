@@ -158,7 +158,6 @@
     <Compile Include="Buffs\DestinedToDie.cs" />
     <Compile Include="Buffs\YamataAGravity.cs" />
     <Compile Include="Buffs\Hunted.cs" />
-    <Compile Include="Buffs\Gravity.cs" />
     <Compile Include="Buffs\YamataGravity.cs" />
     <Compile Include="Buffs\Yanked.cs" />
     <Compile Include="ConversionHandler.cs" />
@@ -2239,7 +2238,6 @@
     <Content Include="Buffs\EXBuffTemplate.png" />
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
-    <Content Include="Buffs\Gravity.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
@@ -2597,6 +2595,8 @@
     <Content Include="Glowmasks\FulguriteShard_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazerblaster_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazesaber_Glow.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow1.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow2.png" />
     <Content Include="Glowmasks\GalaxyBreastplate_Glow.png" />
     <Content Include="Glowmasks\GalaxyGreaves_Glow.png" />
     <Content Include="Glowmasks\GalaxyHelmet_Glow.png" />
