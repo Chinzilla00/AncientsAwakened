@@ -32,8 +32,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             npc.lavaImmune = true;
             aiType = NPCID.GraniteGolem;  //npc behavior
             animationType = NPCID.GraniteGolem;
-            banner = npc.type;
-            bannerItem = mod.ItemType("MoltenGolemBanner"); //this defines what banner this npc will drop
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -54,18 +52,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.LimeGreen, BaseDrawing.GetLightColor(npc.position), Color.LimeGreen, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, npc.dontTakeDamage ? color : dColor);
             return false;
-        }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return SpawnCondition.Underworld.Chance * (NPC.downedBoss3 ? 0.05f : 0f);
-        }
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))
-            {
-                target.AddBuff(BuffID.OnFire, 200);
-            }
         }
     }
 }
