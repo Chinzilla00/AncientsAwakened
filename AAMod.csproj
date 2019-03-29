@@ -102,6 +102,7 @@
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
     <Compile Include="Buffs\FireSpirit.cs" />
+    <Compile Include="Buffs\BrokenArmor.cs" />
     <Compile Include="Buffs\MadnessElemental.cs" />
     <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
@@ -279,6 +280,9 @@
     <Compile Include="Items\Accessories\Wings\RadiumWings.cs" />
     <Compile Include="Items\Accessories\Wings\VultureWings.cs" />
     <Compile Include="Items\Accessories\Wings\ZeroWings.cs" />
+    <Compile Include="Items\Armor\Assassin\AssassinBoots.cs" />
+    <Compile Include="Items\Armor\Assassin\AssassinHood.cs" />
+    <Compile Include="Items\Armor\Assassin\AssassinShirt.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterBreastplate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterGreaves.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterHeaddress.cs" />
@@ -593,6 +597,7 @@
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
     <Compile Include="Items\Boss\AH\AHBag.cs" />
+    <Compile Include="Items\Boss\AH\HarukaBox.cs" />
     <Compile Include="Items\Boss\AH\AshRain.cs" />
     <Compile Include="Items\Boss\AH\HeartOfPassion.cs" />
     <Compile Include="Items\Boss\AH\FireSpiritStaff.cs" />
@@ -601,6 +606,7 @@
     <Compile Include="Items\Boss\AH\HeartOfSorrow.cs" />
     <Compile Include="Items\Boss\AH\Masamune.cs" />
     <Compile Include="Items\Boss\AH\MizuArashi.cs" />
+    <Compile Include="Items\Boss\AH\AsheSatchel.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool_Axe.cs" />
@@ -2260,6 +2266,7 @@
     <Content Include="Buffs\HydraToxin.png" />
     <Content Include="Buffs\HydratoxinFlaskBuff.png" />
     <Content Include="Buffs\InfinityOverload.png" />
+    <Content Include="Buffs\BrokenArmor.png" />
     <Content Include="Buffs\Irradiated.png" />
     <Content Include="Buffs\LungMinion.png" />
     <Content Include="Buffs\MadnessElemental.png" />
@@ -3277,8 +3284,8 @@
     <Content Include="Items\Accessories\Wings\WingsofChaos_Wings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings_Wings.png" />
-    <Content Include="Items\Armor\Assassin\AssassinGreaves.png" />
-    <Content Include="Items\Armor\Assassin\AssassinGreaves_Legs.png" />
+    <Content Include="Items\Armor\Assassin\AssassinBoots.png" />
+    <Content Include="Items\Armor\Assassin\AssassinBoots_Legs.png" />
     <Content Include="Items\Armor\Assassin\AssassinHood.png" />
     <Content Include="Items\Armor\Assassin\AssassinHood_Head.png" />
     <Content Include="Items\Armor\Assassin\AssassinShirt.png" />
@@ -3868,6 +3875,8 @@
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
     <Content Include="Items\Boss\AH\AHBag.png" />
+    <Content Include="Items\Boss\AH\AsheSatchel.png" />
+    <Content Include="Items\Boss\AH\HarukaBox.png" />
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
     <Content Include="Items\Materials\Discordium.png" />

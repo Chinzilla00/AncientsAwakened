@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (!Main.expertMode)
             {
 
-                string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi" };
+                string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi", "HarukaBox" };
                 int lootH = Main.rand.Next(lootTableH.Length);
                 npc.DropLoot(mod.ItemType(lootTableH[lootH]));
             }

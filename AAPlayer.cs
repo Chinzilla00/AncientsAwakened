@@ -130,6 +130,8 @@ namespace AAMod
         public bool doomite;
         public bool Radium;
         public bool perfectChaos;
+        public bool Assassin;
+        public bool AssassinStealth;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -305,6 +307,8 @@ namespace AAMod
             doomite = false;
             DarkmatterSet = false;
             perfectChaos = false;
+            Assassin = false;
+            AssassinStealth = false;
             //Accessory
             AbilityCD = 0;
             AshRemover = false;
@@ -909,74 +913,6 @@ namespace AAMod
             }
         }
 
-        public override void PostUpdateMiscEffects()
-        {
-            if (player.pulley)
-            {
-                AADashMovement();
-            }
-            else if (player.grappling[0] == -1 && !player.tongued)
-            {
-                AAHorizontalMovement();
-                AADashMovement();
-            }
-            if (Main.hasFocus)
-            {
-                for (int k = 0; k < AADoubleTapKeyTimer.Length; k++)
-                {
-                    AADoubleTapKeyTimer[k]--;
-                    if (AADoubleTapKeyTimer[k] < 0)
-                    {
-                        AADoubleTapKeyTimer[k] = 0;
-                    }
-                }
-                for (int l = 0; l < 4; l++)
-                {
-                    bool flag5 = false;
-                    bool flag6 = false;
-                    switch (l)
-                    {
-                        case 0:
-                            flag5 = (player.controlDown && player.releaseDown);
-                            flag6 = player.controlDown;
-                            break;
-                        case 1:
-                            flag5 = (player.controlUp && player.releaseUp);
-                            flag6 = player.controlUp;
-                            break;
-                        case 2:
-                            flag5 = (player.controlRight && player.releaseRight);
-                            flag6 = player.controlRight;
-                            break;
-                        case 3:
-                            flag5 = (player.controlLeft && player.releaseLeft);
-                            flag6 = player.controlLeft;
-                            break;
-                    }
-                    if (flag5)
-                    {
-                        if (AADoubleTapKeyTimer[l] > 0)
-                        {
-                            ModKeyDoubleTap(l);
-                        }
-                        else
-                        {
-                            AADoubleTapKeyTimer[l] = 15;
-                        }
-                    }
-                    if (flag6)
-                    {
-                        AAHoldDownKeyTimer[l]++;
-                        player.KeyHoldDown(l, AAHoldDownKeyTimer[l]);
-                    }
-                    else
-                    {
-                        AAHoldDownKeyTimer[l] = 0;
-                    }
-                }
-            }
-        }
-
         public void AAHorizontalMovement()
         {
             float num = (player.accRunSpeed + player.maxRunSpeed) / 2f;
@@ -1086,113 +1022,8 @@ namespace AAMod
             }
         }
 
-        public void ModKeyDoubleTap(int keyDir)
-        {
-            int num = 0;
-            if (Main.ReversedUpDownArmorSetBonuses)
-            {
-                num = 1;
-            }
-            if (keyDir == num)
-            {
-
-            }
-        }
-
         public override void PostUpdate()
         {
-            #region Worlgenners
-            if ((!AAWorld.InfernoGenerated || !AAWorld.MireGenerated || !AAWorld.TerrariumGenerated || !AAWorld.VoidGenerated || !AAWorld.OresGenerated) && !WorldGenner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<AAWorldgenner>() && player.inventory[num66].stack > 0)
-                    {
-                        WorldGenner = true;
-                    }
-                    if (num66 >= 56 && !WorldGenner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<AAWorldgenner>());
-                        WorldGenner = true;
-                    }
-                }
-            }
-            if (!AAWorld.InfernoGenerated && !InfernoSpawner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<Smallcano>() && player.inventory[num66].stack > 0)
-                    {
-                        InfernoSpawner = true;
-                    }
-                    if (num66 >= 56 && !InfernoSpawner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<Smallcano>());
-                        InfernoSpawner = true;
-                    }
-                }
-            }
-            if (!AAWorld.MireGenerated && !MireSpawner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<Minilake>() && player.inventory[num66].stack > 0)
-                    {
-                        MireSpawner = true;
-                    }
-                    if (num66 >= 56 && !MireSpawner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<Minilake>());
-                        MireSpawner = true;
-                    }
-                }
-            }
-            if (!AAWorld.VoidGenerated && !VoidSpawner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<VoidSpawner>() && player.inventory[num66].stack > 0)
-                    {
-                        VoidSpawner = true;
-                    }
-                    if (num66 >= 56 && !VoidSpawner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<VoidSpawner>());
-                        VoidSpawner = true;
-                    }
-                }
-            }
-            if (!AAWorld.TerrariumGenerated && !TerrariumSpawner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<TerrariumGenerator>() && player.inventory[num66].stack > 0)
-                    {
-                        TerrariumSpawner = true;
-                    }
-                    if (num66 >= 56 && !TerrariumSpawner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<TerrariumGenerator>());
-                        TerrariumSpawner = true;
-                    }
-                }
-            }
-            if (!AAWorld.OresGenerated && !OreSpawner)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
-                {
-                    if (player.inventory[num66].type == mod.ItemType<OreGenerator>() && player.inventory[num66].stack > 0)
-                    {
-                        OreSpawner = true;
-                    }
-                    if (num66 >= 56 && !OreSpawner)
-                    {
-                        player.QuickSpawnItem(mod.ItemType<OreGenerator>());
-                        OreSpawner = true;
-                    }
-                }
-            }
-            #endregion
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
             if (RStar)
             {
@@ -1278,7 +1109,163 @@ namespace AAMod
                     AshRain(player, mod);
                 }
             }
+
+            if (Assassin)
+            {
+                bool flag14 = false;
+                if (AssassinStealth)
+                {
+                    float num29 = player.stealth;
+                    player.stealth -= 0.04f;
+                    if (player.stealth < 0f)
+                    {
+                        player.stealth = 0f;
+                    }
+                    else
+                    {
+                        flag14 = true;
+                    }
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    {
+                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                    player.rangedDamage += (1f - player.stealth) * 0.8f;
+                    player.meleeDamage += (1f - player.stealth) * 0.8f;
+                    player.rangedCrit += (int)((1f - player.stealth) * 20f);
+                    player.meleeCrit += (int)((1f - player.stealth) * 20f);
+                    player.aggro -= (int)((1f - player.stealth) * 1200f);
+                    if (player.mount.Active)
+                    {
+                        AssassinStealth = false;
+                    }
+                }
+                else
+                {
+                    float num30 = player.stealth;
+                    player.stealth += 0.04f;
+                    if (player.stealth > 1f)
+                    {
+                        player.stealth = 1f;
+                    }
+                    else
+                    {
+                        flag14 = true;
+                    }
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    {
+                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                }
+                if (flag14)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Vector2 vector = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
+                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default(Color), 1f)];
+                        dust.noGravity = true;
+                        dust.position = player.Center - vector * (float)Main.rand.Next(5, 11);
+                        dust.velocity = vector.RotatedBy(1.5707963705062866, default(Vector2)) * 4f;
+                        dust.scale = 0.5f + Main.rand.NextFloat();
+                        dust.fadeIn = 0.5f;
+                    }
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
+                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default(Color), 1f)];
+                        dust2.noGravity = true;
+                        dust2.position = player.Center - vector2 * 12f;
+                        dust2.velocity = vector2.RotatedBy(-1.5707963705062866, default(Vector2)) * 2f;
+                        dust2.scale = 0.5f + Main.rand.NextFloat();
+                        dust2.fadeIn = 0.5f;
+                    }
+                }
+            }
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (Main.hasFocus)
+                {
+                    for (int k = 0; k < AADoubleTapKeyTimer.Length; k++)
+                    {
+                        AADoubleTapKeyTimer[k]--;
+                        if (AADoubleTapKeyTimer[k] < 0)
+                        {
+                            AADoubleTapKeyTimer[k] = 0;
+                        }
+                    }
+                    for (int l = 0; l < 4; l++)
+                    {
+                        bool flag5 = false;
+                        bool flag6 = false;
+                        switch (l)
+                        {
+                            case 0:
+                                flag5 = (player.controlDown && player.releaseDown);
+                                flag6 = player.controlDown;
+                                break;
+                            case 1:
+                                flag5 = (player.controlUp && player.releaseUp);
+                                flag6 = player.controlUp;
+                                break;
+                            case 2:
+                                flag5 = (player.controlRight && player.releaseRight);
+                                flag6 = player.controlRight;
+                                break;
+                            case 3:
+                                flag5 = (player.controlLeft && player.releaseLeft);
+                                flag6 = player.controlLeft;
+                                break;
+                        }
+                        if (flag5)
+                        {
+                            if (player.doubleTapCardinalTimer[l] > 0)
+                            {
+                                ModKeyDoubleTap(l);
+                            }
+                            else
+                            {
+                                AADoubleTapKeyTimer[l] = 15;
+                            }
+                        }
+                        if (flag6)
+                        {
+                            AAHoldDownKeyTimer[l]++;
+                            ModKeyHoldDown(l, player.holdDownCardinalTimer[l]);
+                        }
+                        else
+                        {
+                            AAHoldDownKeyTimer[l] = 0;
+                        }
+                    }
+                }
+            }
         }
+
+        public void ModKeyDoubleTap(int keyDir)
+        {
+            int num = 0;
+            if (Main.ReversedUpDownArmorSetBonuses)
+            {
+                num = 1;
+            }
+            if (keyDir == num)
+            {
+                if (Assassin && !player.mount.Active)
+                {
+                    AssassinStealth = !AssassinStealth;
+                }
+            }
+        }
+
+        public void ModKeyHoldDown(int keyDir, int holdTime)
+        {
+            /*int num = 0;
+            if (Main.ReversedUpDownArmorSetBonuses)
+            {
+                num = 1;
+            }*/
+        }
+
+
 
         public void DropDevArmor(int dropType)
         {
@@ -1986,12 +1973,6 @@ namespace AAMod
                 target.AddBuff(mod.BuffType<Buffs.Moonraze>(), 600);
             }
 
-
-            if (zeroSet)
-            {
-                target.AddBuff(BuffID.WitheredArmor, 1000);
-            }
-
             if (dracoSet)
             {
                 target.AddBuff(BuffID.Daybreak, 600);
@@ -2406,21 +2387,21 @@ namespace AAMod
                     target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
             }
-            if (zeroSet && (proj.melee || proj.ranged))
+            if (zeroSet && proj.ranged)
             {
-                target.AddBuff(BuffID.WitheredArmor, 1000);
+                target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
             }
             if (perfectChaos && proj.melee)
             {
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
 
-            if (dracoSet && (proj.melee || proj.magic))
+            if (dracoSet && proj.melee)
             {
                 target.AddBuff(BuffID.Daybreak, 600);
             }
 
-            if (dreadSet && (proj.ranged || proj.thrown))
+            if (dreadSet && proj.minion)
             {
                 target.AddBuff(mod.BuffType<Moonraze>(), 600);
             }

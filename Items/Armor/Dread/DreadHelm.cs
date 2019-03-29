@@ -13,8 +13,7 @@ namespace AAMod.Items.Armor.Dread
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dread Moon Fukumen");
-			Tooltip.SetDefault(@"22% increased ranged critical strike chance
-+2 max minions
+			Tooltip.SetDefault(@"+2 max minions
 20% increased movement speed
 The abyssal wrath of the Mire rests in this armor");
 
@@ -30,7 +29,6 @@ The abyssal wrath of the Mire rests in this armor");
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedCrit += 22;
             player.maxMinions += 2;
 			player.moveSpeed *= 1.2f;
 		}
@@ -57,7 +55,7 @@ The abyssal wrath of the Mire rests in this armor");
 			player.setBonus = @"'Abyssal Wrath enrages you'
 You are immune to all fire-related debuffs
 You glow like the dread moon in the sky
-Your ranged and thrown attacks inflict Moonraze on your target";
+Your minions inflict Moonraze on your target";
 
             player.buffImmune[24] = true;
             player.buffImmune[39] = true;

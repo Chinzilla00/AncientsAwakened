@@ -14,8 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Doomsday Assault Armor");
-			Tooltip.SetDefault(@"25% increased melee and ranged damage
-7% increased damage
+			Tooltip.SetDefault(@"25% increased ranged damage
 The power to destroy entire planets rests in this armor");
 		}
 
@@ -61,13 +60,7 @@ The power to destroy entire planets rests in this armor");
 
         public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.25f;
-			player.rangedDamage *= 1.25f;
-            player.meleeDamage *= 1.07f;
-            player.rangedDamage *= 1.07f;
-            player.magicDamage *= 1.07f;
-            player.minionDamage *= 1.07f;
-            player.thrownDamage *= 1.07f;
+			player.rangedDamage += 25f;
         }
 
 		public override void AddRecipes()

@@ -37,11 +37,11 @@ namespace AAMod.Items.Boss.AH
                 modPlayer.PMLDevArmor();
             }
 
-            string[] lootTableA = { "AshRain", "FuryFlame", "FireSpiritStaff" };
+            string[] lootTableA = { "AshRain", "FuryFlame", "FireSpiritStaff", "AsheSatchel" };
             int lootA = Main.rand.Next(lootTableA.Length);
             player.QuickSpawnItem(mod.ItemType(lootTableA[lootA]));
 
-            string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi" };
+            string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi", "HarukaBox" };
             int lootH = Main.rand.Next(lootTableH.Length);
             player.QuickSpawnItem(mod.ItemType(lootTableH[lootH]));
 

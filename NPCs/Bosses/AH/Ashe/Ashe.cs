@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (!Main.expertMode)
             {
-                string[] lootTableA = { "AshRain", "FuryFlame", "FireSpiritStaff" };
+                string[] lootTableA = { "AshRain", "FuryFlame", "FireSpiritStaff", "AsheSatchel" };
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
