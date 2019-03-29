@@ -72,7 +72,7 @@ All effects of the infinity stones
             player.iceSkate = true;
             player.waterWalk = true;
             player.fireWalk = true;
-            player.lavaMax += 420;
+            player.lavaImmune = true;
         }
 
         
@@ -122,14 +122,14 @@ All effects of the infinity stones
             ascentWhenFalling = 1f;
             ascentWhenRising = 0.4f;
             maxCanAscendMultiplier = 1f;
-            maxAscentMultiplier = 5f;
+            maxAscentMultiplier = 4f;
             constantAscend = 0.3f;
         }
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 25f;
-            acceleration *= 5f;
+            speed = 20f;
+            acceleration *= 3f;
         }
 
         public override void AddRecipes()

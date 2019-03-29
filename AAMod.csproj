@@ -1891,6 +1891,7 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\DevStatues.cs" />
+    <Compile Include="Tiles\Mushroom.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
@@ -5632,6 +5633,7 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
+    <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
     <Content Include="Tiles\OroborosChestC1_Highlight.png" />

@@ -86,6 +86,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         bool FlyingNegative = false;
         public float MeleeSpeed;
         public float pos = 0f;
+        private bool HasFiredProj = false;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -163,9 +164,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if(internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFiredProj = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 16) //Sets to frame 16
                 {
@@ -174,6 +177,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -184,9 +188,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4)
+                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFiredProj) 
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFiredProj = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 8)
                 {
@@ -195,6 +201,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if ((int)internalAI[2] > 15)
                 {
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;

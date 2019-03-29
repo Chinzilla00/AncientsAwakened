@@ -78,6 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
         bool FlyingNegative = false;
         public float MeleeSpeed;
         public float pos = 0f;
+        private bool HasFired = false;
 
         public override bool CheckActive()
         {
@@ -155,9 +156,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFired) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFired = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 16) //Sets to frame 16
                 {
@@ -166,6 +169,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    HasFired = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -176,9 +180,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4)
+                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFired) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFired = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 8)
                 {
@@ -187,6 +193,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 15)
                 {
+                    HasFired = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -15,7 +16,7 @@ namespace AAMod.Tiles
 
         public override int DropWood()
         {
-            return mod.ItemType("MushroomBlock");
+            return ItemID.Mushroom;
         }
 
         public override Texture2D GetTexture()
