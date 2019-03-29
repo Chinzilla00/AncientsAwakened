@@ -5,52 +5,49 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using BaseMod;
+using Terraria.Graphics.Shaders;
 
-namespace AAMod.NPCs.Bosses.Wyrmling
+namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 {
-    public class Wyrmling : ModNPC
+    public class TerraSerpent : ModNPC
 	{
         
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingHead"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpent"; } }
         
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wyrmling");
-
+			DisplayName.SetDefault("Terra Serpent");
         }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
 		{
-			npc.noTileCollide = true;
-			npc.height = 16;
-			npc.width = 30;
-			npc.aiStyle = -1;
-			npc.netAlways = true;
-            npc.damage = 6;
-            npc.defense = 7;
-            npc.lifeMax = 80;
-            npc.value = Item.buyPrice(0, 0, 3, 50);
-            npc.knockBackResist = 0f;
+            npc.lifeMax = 2000;
+            npc.defense = 40;
+            npc.damage = 50;
+            npc.width = 28;
+            npc.height = 28;
             npc.aiStyle = -1;
-            npc.lavaImmune = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0f;
+            npc.alpha = 255;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.behindTiles = true;
-            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
-            npc.buffImmune[BuffID.OnFire] = true;
-            npc.alpha = 255;
         }
+        
         public override bool PreAI()
         {
-            
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
+
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaDust"), 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 100, default(Color), 2f);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = true;
                 }
@@ -67,27 +64,15 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
-                    int segment = 0;
-                    int WyrmlingLength = 3;
-                    for (int i = 0; i < WyrmlingLength; ++i)
+                    int WormLength = 9;
+                    for (int i = 0; i < WormLength; ++i)
                     {
-                        if (segment == 0 || segment == 1)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingBody"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
-                        if (segment == 2)
-                        {
-                            latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingTail1"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
-                            segment += 1;
-                        }
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<TerraSerpentBody>(), npc.whoAmI, 0, latestNPC);
+                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     }
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingTail2"), npc.whoAmI, 0, latestNPC);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<TerraSerpentTail>(), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
@@ -205,8 +190,9 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 						npc.velocity.X = npc.velocity.X - acceleration;
 				}
 			}
-            if (Main.player[npc.target].dead)
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
+                
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if ((double)npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -225,17 +211,6 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                 }
             }
 
-            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
-            if (npc.velocity.X < 0f)
-            {
-                npc.spriteDirection = 1;
-
-            }
-            else
-            {
-                npc.spriteDirection = -1;
-            }
-
             if (collision)
 			{
 				if (npc.localAI[0] != 1)
@@ -250,55 +225,154 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D texture = Main.npcTexture[npc.type];
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            Texture2D BodyTex = Main.npcTexture[npc.type];
+
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow1");
+            Texture2D glowTex2 = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow2");
+
+            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
+            int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
+
+            spriteBatch.Draw(BodyTex, Drawpos, npc.frame, npc.GetAlpha(drawColor), npc.rotation, npc.frame.Size() / 2, npc.scale, SpriteEffects.None, 0);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex1, shader, npc, npc.GetAlpha(Color.White), true, npc.frame.Size() / 2);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex2, 0, npc, npc.GetAlpha(Color.White), true, npc.frame.Size() / 2);
+            BaseDrawing.DrawAfterimage(spriteBatch, glowTex1, shader, npc, 1f, 1f, 10, true, 0, 0, Color.White);
             return false;
+        }
+    }
+
+    public class TerraSerpentBody : TerraSerpent
+    {
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentBody"; } }
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terra Weaver");
+        }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.dontCountMe = true;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
+                npc.position.X = npc.position.X + (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.width = 44;
+                npc.height = 78;
+                npc.position.X = npc.position.X - (float)(npc.width / 2);
+                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                int dust1 = mod.DustType<Dusts.SummonDust>();
+                int dust2 = mod.DustType<Dusts.SummonDust>();
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+            }
+        }
+
+        public override bool PreAI()
+        {
+            if (npc.ai[3] > 0)
+                npc.realLife = (int)npc.ai[3];
+            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
+                npc.TargetClosest(true);
+            if (Main.player[npc.target].dead && npc.timeLeft > 300)
+                npc.timeLeft = 300;
+
+            if (Main.netMode != 1)
+            {
+                if (!Main.npc[(int)npc.ai[1]].active)
+                {
+                    npc.life = 0;
+                    npc.HitEffect(0, 10.0);
+                    npc.active = false;
+                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                }
+            }
+
+            if (Main.npc[(int)npc.ai[1]].alpha < 128)
+            {
+                if (npc.alpha != 0)
+                {
+                    for (int num934 = 0; num934 < 2; num934++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("SummonDust"), 0f, 0f, 100, default(Color), 2f);
+                        Main.dust[num935].noGravity = false;
+                        Main.dust[num935].noLight = false;
+                    }
+                }
+                npc.alpha -= 42;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+
+
+            if (npc.ai[1] < (double)Main.npc.Length)
+            {
+                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
+                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
+                float dist = (length - (float)npc.width) / length;
+                float posX = dirX * dist;
+                float posY = dirY * dist;
+
+                if (dirX < 0f)
+                {
+                    npc.spriteDirection = 1;
+
+                }
+                else
+                {
+                    npc.spriteDirection = -1;
+                }
+                npc.position.X = npc.position.X + posX;
+                npc.position.Y = npc.position.Y + posY;
+            }
+            return false;
+        }
+    }
+
+    public class TerraSerpentTail : TerraSerpent
+    {
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentTail"; } }
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terra Weaver");
+        }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.dontCountMe = true;
         }
         
-        public override void NPCLoot()
-        {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonScale"));
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WyrmlingGore1"), 1f);
-            }
-        }
-    }
-
-    public class WyrmlingTail1 : Wyrmling
-    {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingTail1"; } }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Wyrmling");
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.dontCountMe = true;
-            npc.alpha = 255;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WyrmlingGore2"), 1f);
-            }
-        }
-
         public override bool PreAI()
         {
             if (npc.ai[3] > 0)
@@ -315,7 +389,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
 
@@ -325,113 +399,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmlingADust"), 0f, 0f, 100, default(Color), 2f);
-                        Main.dust[num935].noGravity = false;
-                        Main.dust[num935].noLight = false;
-                    }
-                }
-                npc.alpha -= 42;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-            }
-
-
-            if (npc.ai[1] < (double)Main.npc.Length)
-            {
-                // We're getting the center of this NPC.
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
-                // We then use Atan2 to get a correct rotation towards that parent NPC.
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                // We also get the length of the direction vector.
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                // We calculate a new, correct distance.
-                float dist = (length - (float)npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
-
-                // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
-
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
-                // And set this NPCs position accordingly to that of this NPCs parent NPC.
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
-            }
-            return false;
-        }
-        
-    }
-
-    public class WyrmlingBody : Wyrmling
-    {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingBody"; } }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Wyrmling");
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.dontCountMe = true;
-
-            npc.alpha = 255;
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WyrmlingGore3"), 1f);
-            }
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-
-
-        public override bool PreAI()
-        {
-            if (npc.ai[3] > 0)
-                npc.realLife = (int)npc.ai[3];
-            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
-                npc.TargetClosest(true);
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
-                npc.timeLeft = 300;
-
-            if (Main.netMode != 1)
-            {
-                if (!Main.npc[(int)npc.ai[1]].active)
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
-                }
-            }
-
-            if (Main.npc[(int)npc.ai[1]].alpha < 128)
-            {
-                if (npc.alpha != 0)
-                {
-                    for (int num934 = 0; num934 < 2; num934++)
-                    {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmlingADust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("SummonDust"), 0f, 0f, 100, default(Color), 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -445,21 +413,15 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
-                // We're getting the center of this NPC.
                 Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
                 float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
                 float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
-                // We then use Atan2 to get a correct rotation towards that parent NPC.
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                // We also get the length of the direction vector.
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                // We calculate a new, correct distance.
                 float dist = (length - (float)npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
-
-                // Reset the velocity of this NPC, because we don't want it to move on its own
+                
                 if (dirX < 0f)
                 {
                     npc.spriteDirection = 1;
@@ -469,112 +431,14 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                 {
                     npc.spriteDirection = -1;
                 }
-                // And set this NPCs position accordingly to that of this NPCs parent NPC.
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
         }
-    }
 
-    public class WyrmlingTail2 : Wyrmling
-    {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmlingTail2"; } }
-
-        public override void SetStaticDefaults()
+        public override bool PreNPCLoot()
         {
-            DisplayName.SetDefault("Wyrmling");
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.dontCountMe = true;
-
-            npc.alpha = 255;
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life <= 0)
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WyrmlingGore4"), 1f);
-            }
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool PreAI()
-        {
-            if (npc.ai[3] > 0)
-                npc.realLife = (int)npc.ai[3];
-            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
-                npc.TargetClosest(true);
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
-                npc.timeLeft = 300;
-
-            if (Main.netMode != 1)
-            {
-                if (!Main.npc[(int)npc.ai[1]].active)
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
-                }
-            }
-
-            if (Main.npc[(int)npc.ai[1]].alpha < 128)
-            {
-                if (npc.alpha != 0)
-                {
-                    for (int num934 = 0; num934 < 2; num934++)
-                    {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmlingADust"), 0f, 0f, 100, default(Color), 2f);
-                        Main.dust[num935].noGravity = false;
-                        Main.dust[num935].noLight = false;
-                    }
-                }
-                npc.alpha -= 42;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-            }
-
-            if (npc.ai[1] < (double)Main.npc.Length)
-            {
-                // We're getting the center of this NPC.
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
-                // We then use Atan2 to get a correct rotation towards that parent NPC.
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                // We also get the length of the direction vector.
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                // We calculate a new, correct distance.
-                float dist = (length - (float)npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
-
-                // Reset the velocity of this NPC, because we don't want it to move on its own
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
-
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
-                // And set this NPCs position accordingly to that of this NPCs parent NPC.
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
-            }
             return false;
         }
     }

@@ -170,10 +170,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (Main.netMode != 1) 
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 240)
+                    if (internalAI[3] >= 180)
                     {
                         internalAI[3] = 0;
-                        internalAI[0] = Main.rand.Next(4);
+                        internalAI[0] = Main.rand.Next(1,3);
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -307,6 +307,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     MoveToPoint(point);
                 }*/
+
+                internalAI[4]++;
                 
                 float maxSpeed = 10f;
                 Vector2 vector2 = npc.Center;
@@ -321,7 +323,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
                 if (npc.velocity.Y < -maxSpeed) { npc.velocity.Y = -maxSpeed; }
 
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) > 300f)
+                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;

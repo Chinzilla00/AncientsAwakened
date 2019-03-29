@@ -316,6 +316,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     MoveToPoint(point);
                 }*/
 
+                internalAI[4]++;
+
                 float maxSpeed = 10f;
                 Vector2 vector2 = npc.Center;
                 float distX = player.Center.X - vector2.X;
@@ -328,8 +330,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.velocity.X < -maxSpeed) { npc.velocity.X = -maxSpeed; }
                 if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
                 if (npc.velocity.Y < -maxSpeed) { npc.velocity.Y = -maxSpeed; }
-                
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, player.Center) > 300f)
+
+                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
                     internalAI[0] = 0;
                     internalAI[1] = 0;

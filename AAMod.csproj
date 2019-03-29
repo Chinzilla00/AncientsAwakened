@@ -1303,6 +1303,7 @@
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody1.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaATail.cs" />
@@ -1312,13 +1313,13 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AwakenedLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FireshotA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FlareA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Fireshot.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Flare.cs" />
     <Compile Include="NPCs\Bosses\Akuma\HomingFireball.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\HomingFireballA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABomb.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaAttacks.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABreath.cs" />
@@ -1329,7 +1330,6 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaRock.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Flameburst.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\HomingBoom.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBall.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBoom.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBreath.cs" />
@@ -1534,6 +1534,8 @@
     <Compile Include="NPCs\Enemies\Snow\SnakeBody2.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeHead.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeTail.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\MagicBlast.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Minion1.cs" />
@@ -2886,6 +2888,12 @@
     <Content Include="Glowmasks\TerraRoseShotEX_Glow.png" />
     <Content Include="Glowmasks\TerraRoseShot_Glow.png" />
     <Content Include="Glowmasks\TerraRose_Glow.png" />
+    <Content Include="Glowmasks\TerraSerpentBody_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpentBody_Glow2.png" />
+    <Content Include="Glowmasks\TerraSerpentTail_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpentTail_Glow2.png" />
+    <Content Include="Glowmasks\TerraSerpent_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpent_Glow2.png" />
     <Content Include="Glowmasks\TerraShotEX_Glow.png" />
     <Content Include="Glowmasks\Terratool_Glow.png" />
     <Content Include="Glowmasks\TerraWood_Glow.png" />
@@ -3280,6 +3288,14 @@
     <Content Include="Items\Accessories\Wings\WingsofChaos_Wings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings_Wings.png" />
+    <Content Include="Items\Armor\Assassin\AssassinGreaves.png" />
+    <Content Include="Items\Armor\Assassin\AssassinGreaves_Legs.png" />
+    <Content Include="Items\Armor\Assassin\AssassinHood.png" />
+    <Content Include="Items\Armor\Assassin\AssassinHood_Head.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Arms.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Body.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Female.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Arms.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Body.png" />
@@ -3870,12 +3886,18 @@
     <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
     <Content Include="Items\Summoning\Minions\MadnessLaser.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentBody.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentTail.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
     <Content Include="Projectiles\AH\FireSpirit.png" />
@@ -4730,7 +4752,6 @@
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaKunai.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaProj.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\Haruka_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA1.png" />
@@ -4781,7 +4802,6 @@
     <Content Include="NPCs\Bosses\Akuma\FireShot.png" />
     <Content Include="NPCs\Bosses\Akuma\Flameburst.png" />
     <Content Include="NPCs\Bosses\Akuma\Flare.png" />
-    <Content Include="NPCs\Bosses\Akuma\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Akuma\HomingFireball.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingFireballA.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodBall.png" />
@@ -5935,9 +5955,6 @@
   <ItemGroup>
     <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Armor\Shinobi\" />
-    <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
-    <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Properties\" />
   </ItemGroup>
