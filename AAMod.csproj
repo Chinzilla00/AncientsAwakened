@@ -463,6 +463,9 @@
     <Compile Include="Items\Blocks\PagodaBox.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
+    <Compile Include="Items\Blocks\SABox.cs" />
+    <Compile Include="Items\Blocks\ShenABox.cs" />
+    <Compile Include="Items\Blocks\ShenBox.cs" />
     <Compile Include="Items\Blocks\Statues\AlphakipStatue.cs" />
     <Compile Include="Items\Blocks\Statues\AvesStatue.cs" />
     <Compile Include="Items\Blocks\Statues\BegStatue.cs" />
@@ -1888,6 +1891,7 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\DevStatues.cs" />
+    <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
     <Compile Include="Tiles\TerraPrism.cs" />
@@ -2194,6 +2198,8 @@
     <Content Include="Backgrounds\Rock_2.png" />
     <Content Include="Backgrounds\ShenEclipse.png" />
     <Content Include="Backgrounds\ShenMeteor.png" />
+    <Content Include="Backgrounds\ShenMoon.png" />
+    <Content Include="Backgrounds\ShenSun.png" />
     <Content Include="Backgrounds\Sky.png" />
     <Content Include="Backgrounds\StarTex.png" />
     <Content Include="Backgrounds\Sun.png" />
@@ -2601,6 +2607,8 @@
     <Content Include="Glowmasks\FulguriteShard_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazerblaster_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazesaber_Glow.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow1.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow2.png" />
     <Content Include="Glowmasks\GalaxyBreastplate_Glow.png" />
     <Content Include="Glowmasks\GalaxyGreaves_Glow.png" />
     <Content Include="Glowmasks\GalaxyHelmet_Glow.png" />
@@ -3761,10 +3769,13 @@
     <Content Include="Items\Blocks\RottedDynastyWood.png" />
     <Content Include="Items\Blocks\RottedShingles.png" />
     <Content Include="Items\Blocks\RRBox.png" />
+    <Content Include="Items\Blocks\SABox.png" />
     <Content Include="Items\Blocks\ScorchedDynastyWood.png" />
     <Content Include="Items\Blocks\ScorchedShingles.png" />
     <Content Include="Items\Blocks\SerpentBox.png" />
     <Content Include="Items\Blocks\SGBox.png" />
+    <Content Include="Items\Blocks\ShenABox.png" />
+    <Content Include="Items\Blocks\ShenBox.png" />
     <Content Include="Items\Blocks\SiegeBox.png" />
     <Content Include="Items\Blocks\Soul_Forge.png" />
     <Content Include="Items\Blocks\Statues\AlphakipStatue.png" />
@@ -5639,6 +5650,7 @@
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\RottedDynastyWoodS.png" />
     <Content Include="Tiles\RottedPlatform.png" />
+    <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ScorchedDynastyWoodS.png" />
     <Content Include="Tiles\ScorchedPlatform.png" />
     <Content Include="Tiles\ScorchedShinglesS.png" />
