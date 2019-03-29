@@ -102,6 +102,7 @@
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
     <Compile Include="Buffs\FireSpirit.cs" />
+    <Compile Include="Buffs\MadnessElemental.cs" />
     <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
@@ -590,7 +591,6 @@
     <Compile Include="Items\BossSummons\ConfusingMushroom.cs" />
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
     <Compile Include="Items\BossSummons\ScrapHeap.cs" />
-    <Compile Include="Items\BossSummons\ShroomGrub.cs" />
     <Compile Include="Items\BossSummons\DjinnLamp.cs" />
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
@@ -1116,6 +1116,7 @@
     <Compile Include="Items\Summoning\Minions\HoverShooter.cs" />
     <Compile Include="Items\Summoning\Minions\HydraProj.cs" />
     <Compile Include="Items\Summoning\Minions\IceBall.cs" />
+    <Compile Include="Items\Summoning\Minions\MadnessLaser.cs" />
     <Compile Include="Items\Summoning\Minions\Minion1.cs" />
     <Compile Include="Items\Summoning\Minions\Prismshot.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeINFO.cs" />
@@ -1129,9 +1130,11 @@
     <Compile Include="Items\Summoning\Minions\Minion2.cs" />
     <Compile Include="Items\Summoning\Minions\TDevilShot.cs" />
     <Compile Include="Items\Summoning\Minions\TerraDemon.cs" />
+    <Compile Include="Items\Summoning\Minions\MadnessElemental.cs" />
     <Compile Include="Items\Summoning\Minions\TrueHallowedPrism.cs" />
     <Compile Include="Items\Summoning\Minions\TruePrismshot.cs" />
     <Compile Include="Items\Summoning\ProbeControlUnit.cs" />
+    <Compile Include="Items\Summoning\MadnessCane.cs" />
     <Compile Include="Items\Summoning\SkullStaff.cs" />
     <Compile Include="Items\Summoning\TerraStaff.cs" />
     <Compile Include="Items\Summoning\TrueHallowStaff.cs" />
@@ -2260,6 +2263,7 @@
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\Irradiated.png" />
     <Content Include="Buffs\LungMinion.png" />
+    <Content Include="Buffs\MadnessElemental.png" />
     <Content Include="Buffs\MB.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Moonraze.png" />
@@ -2436,7 +2440,9 @@
     <Content Include="Glowmasks\CatsEye_Glow.png" />
     <Content Include="Glowmasks\ChaosAltarNatural_Glow.png" />
     <Content Include="Glowmasks\ChaosAltar_Glow.png" />
+    <Content Include="Glowmasks\ChaosCrucibleBloc_Glow.png" />
     <Content Include="Glowmasks\ChaosCrucible_Glow.png" />
+    <Content Include="Glowmasks\ChaosCrucible_Sphere.png" />
     <Content Include="Glowmasks\ChaosRune_Glow.png" />
     <Content Include="Glowmasks\ChaosScale_Glow.png" />
     <Content Include="Glowmasks\ChaosShot_Glow.png" />
@@ -2683,6 +2689,7 @@
     <Content Include="Glowmasks\LungHead_Glow.png" />
     <Content Include="Glowmasks\LungStaff_Glow.png" />
     <Content Include="Glowmasks\LungTail_Glow.png" />
+    <Content Include="Glowmasks\MadnessElemental_Glow.png" />
     <Content Include="Glowmasks\ManaLantern_Glow.png" />
     <Content Include="Glowmasks\ManaShot_Glow.png" />
     <Content Include="Glowmasks\Masamune_Glow.png" />
@@ -2873,6 +2880,7 @@
     <Content Include="Glowmasks\TerraBladeEX_Glow.png" />
     <Content Include="Glowmasks\TerraCore_Glow.png" />
     <Content Include="Glowmasks\TerraCrystal_Glow.png" />
+    <Content Include="Glowmasks\TerraPrism.png" />
     <Content Include="Glowmasks\TerraPrism_Glow.png" />
     <Content Include="Glowmasks\TerraPrism_Prism.png" />
     <Content Include="Glowmasks\TerraRoseShotEX_Glow.png" />
@@ -2901,6 +2909,14 @@
     <Content Include="Glowmasks\TrueAbyssalTwilightShot_Glow.png" />
     <Content Include="Glowmasks\TrueBlazingDawnShot_Glow.png" />
     <Content Include="Glowmasks\TrueBlazingDawn_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperHelm_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperHelm_Head_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperLeggings_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperLeggings_Legs_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Arms_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Body_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Female_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortswordEX_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortsword_glow.png" />
     <Content Include="Glowmasks\TrueCopperShot_Glow.png" />
@@ -2947,6 +2963,7 @@
     <Content Include="Glowmasks\VoidUnit_Glow.png" />
     <Content Include="Glowmasks\Void_Glow.png" />
     <Content Include="Glowmasks\Vortex_Glow.png" />
+    <Content Include="Glowmasks\WrathHaruka_Glow.png" />
     <Content Include="Glowmasks\WyrmStaff_GLOW.png" />
     <Content Include="Glowmasks\YamataABox_Glow.png" />
     <Content Include="Glowmasks\YamataAHeadF1_Glow.png" />
@@ -3842,7 +3859,6 @@
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
     <Content Include="Items\BossSummons\PlanteraFlower.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
-    <Content Include="Items\BossSummons\ShroomGrub.png" />
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
@@ -3850,6 +3866,9 @@
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
     <Content Include="Items\Materials\Discordium.png" />
+    <Content Include="Items\Summoning\MadnessCane.png" />
+    <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
+    <Content Include="Items\Summoning\Minions\MadnessLaser.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />

@@ -46,7 +46,7 @@ namespace AAMod.Backgrounds
 			}else
 			{
 				dayTimeOpacity = (Main.dayTime ? BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f) : 0.3f);
-                dayTimeOpacity *= Main.dayTime ? 2f : 1f;
+                dayTimeOpacity *= Main.dayTime ? 3f : 1f;
 			}
         }
 
@@ -64,12 +64,13 @@ namespace AAMod.Backgrounds
 
             Color bgColor = GetAlpha(defaultColor, 0.2f * fadeOpacity * dayTimeOpacity);
 			Color fogColor = GetAlpha(YamataA ? YamataFog : DefaultFog, 0.4f * fadeOpacity * dayTimeOpacity);
-			
-			//ensure we cover the whole screen first
-           // Main.spriteBatch.Draw(texture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), null, bgColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);	
 
-			//overlap a little so you cannot see edges
-			int minX = -texture.Width;
+            //ensure we cover the whole screen first
+            // Main.spriteBatch.Draw(texture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), null, bgColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);	
+
+            //overlap a little so you cannot see edges
+
+            int minX = -texture.Width;
 			int minY = -texture.Height;
 			int maxX = Main.screenWidth + texture.Width;
 			int maxY = Main.screenHeight + texture.Height;

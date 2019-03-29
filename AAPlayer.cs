@@ -53,11 +53,11 @@ namespace AAMod
         public bool TerraMinion = false;
         public bool HallowedPrism = false;
         public bool TrueHallowedPrism = false;
-        public bool trueCopper = false;
         public bool SnakeMinion = false;
         public bool dustDevil = false;
         public bool KrakenMinion = false;
         public bool Fishnado = false;
+        public bool MadnessElemental = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -102,6 +102,7 @@ namespace AAMod
         public bool demonBonus;
         public bool uraniumSet;
         public bool techneciumSet;
+        public bool trueCopper;
         public bool trueHallow;
         public bool trueNights;
         public bool trueFlesh;
@@ -266,6 +267,7 @@ namespace AAMod
             dustDevil = false;
             KrakenMinion = false;
             Fishnado = false;
+            MadnessElemental = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
