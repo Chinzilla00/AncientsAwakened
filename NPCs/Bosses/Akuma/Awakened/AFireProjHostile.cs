@@ -3,7 +3,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Akuma
+namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     internal class AFireProjHostile : ModProjectile
     {
@@ -68,6 +68,17 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             target.AddBuff(mod.BuffType("DragonFire"), 600);
             Kill(0);
+        }
+
+        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.Color lightColor)
+        {
+            int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingOceanDye);
+            Microsoft.Xna.Framework.Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
+
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, Color.White, true);
+            return false;
         }
 
         public override void Kill(int timeLeft)

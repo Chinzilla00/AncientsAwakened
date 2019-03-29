@@ -51,8 +51,13 @@ namespace AAMod.NPCs.Enemies.Void
 		    BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.6f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-		    BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 3);		
-			if(Main.netMode != 1 && playerActive)
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+            float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
+            float NewRotation = (float)Math.Atan2(num2, num1);
+            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
+            if (Main.netMode != 1 && playerActive)
 			{
 				shootAI++;
 				if(shootAI >= 90)

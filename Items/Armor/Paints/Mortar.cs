@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Armor.Paints
 {
-    public class Mortar : ModItem
+    /*public class Mortar : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -28,6 +28,6 @@ Functons as a bottle");
             item.value = 10000;
             item.accessory = false;
         }
-    }
+    }*/
 }
 

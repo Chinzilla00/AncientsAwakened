@@ -88,7 +88,7 @@ namespace AAMod.Items.Boss.Shen
             recipe.AddIngredient(mod.ItemType("ChaosScale"), 5);
             recipe.AddIngredient(mod.ItemType("Dawnstrike"));
             recipe.AddIngredient(mod.ItemType("Darksprayer"));
-            recipe.AddTile(mod.TileType("ASC"));
+            recipe.AddTile(mod.TileType("AncientForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -102,6 +102,7 @@
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
     <Compile Include="Buffs\FireSpirit.cs" />
+    <Compile Include="Buffs\MadnessElemental.cs" />
     <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
     <Compile Include="Buffs\CrimeraMinion.cs" />
@@ -158,7 +159,6 @@
     <Compile Include="Buffs\DestinedToDie.cs" />
     <Compile Include="Buffs\YamataAGravity.cs" />
     <Compile Include="Buffs\Hunted.cs" />
-    <Compile Include="Buffs\Gravity.cs" />
     <Compile Include="Buffs\YamataGravity.cs" />
     <Compile Include="Buffs\Yanked.cs" />
     <Compile Include="ConversionHandler.cs" />
@@ -404,6 +404,10 @@
     <Compile Include="Items\Armor\Tribal\TribalCloak.cs" />
     <Compile Include="Items\Armor\Tribal\TribalHat.cs" />
     <Compile Include="Items\Armor\Tribal\TribalKilt.cs" />
+    <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />
+    <Compile Include="Items\Armor\TrueCopper\TrueCopperPlate.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlyRibguard.cs" />
     <Compile Include="Items\Armor\TrueDeathly\TrueDeathlySkull.cs" />
@@ -457,6 +461,9 @@
     <Compile Include="Items\Blocks\PagodaBox.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
+    <Compile Include="Items\Blocks\SABox.cs" />
+    <Compile Include="Items\Blocks\ShenABox.cs" />
+    <Compile Include="Items\Blocks\ShenBox.cs" />
     <Compile Include="Items\Blocks\Statues\AlphakipStatue.cs" />
     <Compile Include="Items\Blocks\Statues\AvesStatue.cs" />
     <Compile Include="Items\Blocks\Statues\BegStatue.cs" />
@@ -581,7 +588,6 @@
     <Compile Include="Items\BossSummons\ConfusingMushroom.cs" />
     <Compile Include="Items\BossSummons\IntimidatingMushroom.cs" />
     <Compile Include="Items\BossSummons\ScrapHeap.cs" />
-    <Compile Include="Items\BossSummons\ShroomGrub.cs" />
     <Compile Include="Items\BossSummons\DjinnLamp.cs" />
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
@@ -1107,6 +1113,7 @@
     <Compile Include="Items\Summoning\Minions\HoverShooter.cs" />
     <Compile Include="Items\Summoning\Minions\HydraProj.cs" />
     <Compile Include="Items\Summoning\Minions\IceBall.cs" />
+    <Compile Include="Items\Summoning\Minions\MadnessLaser.cs" />
     <Compile Include="Items\Summoning\Minions\Minion1.cs" />
     <Compile Include="Items\Summoning\Minions\Prismshot.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeINFO.cs" />
@@ -1120,9 +1127,11 @@
     <Compile Include="Items\Summoning\Minions\Minion2.cs" />
     <Compile Include="Items\Summoning\Minions\TDevilShot.cs" />
     <Compile Include="Items\Summoning\Minions\TerraDemon.cs" />
+    <Compile Include="Items\Summoning\Minions\MadnessElemental.cs" />
     <Compile Include="Items\Summoning\Minions\TrueHallowedPrism.cs" />
     <Compile Include="Items\Summoning\Minions\TruePrismshot.cs" />
     <Compile Include="Items\Summoning\ProbeControlUnit.cs" />
+    <Compile Include="Items\Summoning\MadnessCane.cs" />
     <Compile Include="Items\Summoning\SkullStaff.cs" />
     <Compile Include="Items\Summoning\TerraStaff.cs" />
     <Compile Include="Items\Summoning\TrueHallowStaff.cs" />
@@ -1291,6 +1300,7 @@
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABody1.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaATail.cs" />
@@ -1300,13 +1310,13 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AwakenedLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FireshotA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FlareA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Fireshot.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Flare.cs" />
     <Compile Include="NPCs\Bosses\Akuma\HomingFireball.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\HomingFireballA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABomb.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaAttacks.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\AFireProjHostile.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Akuma.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABreath.cs" />
@@ -1317,7 +1327,6 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaRock.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaTransition.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Flameburst.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\HomingBoom.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBall.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBoom.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodBreath.cs" />
@@ -1522,6 +1531,8 @@
     <Compile Include="NPCs\Enemies\Snow\SnakeBody2.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeHead.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeTail.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\MagicBlast.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Minion1.cs" />
@@ -1881,6 +1892,11 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\DevStatues.cs" />
+    <Compile Include="Tiles\Mushroom.cs" />
+    <Compile Include="Tiles\SABox.cs" />
+    <Compile Include="Tiles\ShenABox.cs" />
+    <Compile Include="Tiles\ShenBox.cs" />
     <Compile Include="Tiles\TerraPrism.cs" />
     <Compile Include="Tiles\PrismOre.cs" />
     <Compile Include="Tiles\AbyssiumOre.cs" />
@@ -2185,6 +2201,8 @@
     <Content Include="Backgrounds\Rock_2.png" />
     <Content Include="Backgrounds\ShenEclipse.png" />
     <Content Include="Backgrounds\ShenMeteor.png" />
+    <Content Include="Backgrounds\ShenMoon.png" />
+    <Content Include="Backgrounds\ShenSun.png" />
     <Content Include="Backgrounds\Sky.png" />
     <Content Include="Backgrounds\StarTex.png" />
     <Content Include="Backgrounds\Sun.png" />
@@ -2235,7 +2253,6 @@
     <Content Include="Buffs\EXBuffTemplate.png" />
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
-    <Content Include="Buffs\Gravity.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
@@ -2245,6 +2262,7 @@
     <Content Include="Buffs\InfinityOverload.png" />
     <Content Include="Buffs\Irradiated.png" />
     <Content Include="Buffs\LungMinion.png" />
+    <Content Include="Buffs\MadnessElemental.png" />
     <Content Include="Buffs\MB.png" />
     <Content Include="Buffs\MiniProbe.png" />
     <Content Include="Buffs\Moonraze.png" />
@@ -2421,7 +2439,9 @@
     <Content Include="Glowmasks\CatsEye_Glow.png" />
     <Content Include="Glowmasks\ChaosAltarNatural_Glow.png" />
     <Content Include="Glowmasks\ChaosAltar_Glow.png" />
+    <Content Include="Glowmasks\ChaosCrucibleBloc_Glow.png" />
     <Content Include="Glowmasks\ChaosCrucible_Glow.png" />
+    <Content Include="Glowmasks\ChaosCrucible_Sphere.png" />
     <Content Include="Glowmasks\ChaosRune_Glow.png" />
     <Content Include="Glowmasks\ChaosScale_Glow.png" />
     <Content Include="Glowmasks\ChaosShot_Glow.png" />
@@ -2593,6 +2613,8 @@
     <Content Include="Glowmasks\FulguriteShard_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazerblaster_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazesaber_Glow.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow1.png" />
+    <Content Include="Glowmasks\FuryAshe_Glow2.png" />
     <Content Include="Glowmasks\GalaxyBreastplate_Glow.png" />
     <Content Include="Glowmasks\GalaxyGreaves_Glow.png" />
     <Content Include="Glowmasks\GalaxyHelmet_Glow.png" />
@@ -2666,6 +2688,7 @@
     <Content Include="Glowmasks\LungHead_Glow.png" />
     <Content Include="Glowmasks\LungStaff_Glow.png" />
     <Content Include="Glowmasks\LungTail_Glow.png" />
+    <Content Include="Glowmasks\MadnessElemental_Glow.png" />
     <Content Include="Glowmasks\ManaLantern_Glow.png" />
     <Content Include="Glowmasks\ManaShot_Glow.png" />
     <Content Include="Glowmasks\Masamune_Glow.png" />
@@ -2856,11 +2879,18 @@
     <Content Include="Glowmasks\TerraBladeEX_Glow.png" />
     <Content Include="Glowmasks\TerraCore_Glow.png" />
     <Content Include="Glowmasks\TerraCrystal_Glow.png" />
+    <Content Include="Glowmasks\TerraPrism.png" />
     <Content Include="Glowmasks\TerraPrism_Glow.png" />
     <Content Include="Glowmasks\TerraPrism_Prism.png" />
     <Content Include="Glowmasks\TerraRoseShotEX_Glow.png" />
     <Content Include="Glowmasks\TerraRoseShot_Glow.png" />
     <Content Include="Glowmasks\TerraRose_Glow.png" />
+    <Content Include="Glowmasks\TerraSerpentBody_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpentBody_Glow2.png" />
+    <Content Include="Glowmasks\TerraSerpentTail_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpentTail_Glow2.png" />
+    <Content Include="Glowmasks\TerraSerpent_Glow1.png" />
+    <Content Include="Glowmasks\TerraSerpent_Glow2.png" />
     <Content Include="Glowmasks\TerraShotEX_Glow.png" />
     <Content Include="Glowmasks\Terratool_Glow.png" />
     <Content Include="Glowmasks\TerraWood_Glow.png" />
@@ -2884,6 +2914,14 @@
     <Content Include="Glowmasks\TrueAbyssalTwilightShot_Glow.png" />
     <Content Include="Glowmasks\TrueBlazingDawnShot_Glow.png" />
     <Content Include="Glowmasks\TrueBlazingDawn_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperHelm_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperHelm_Head_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperLeggings_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperLeggings_Legs_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Arms_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Body_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Female_Glow.png" />
+    <Content Include="Glowmasks\TrueCopperPlate_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortswordEX_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortsword_glow.png" />
     <Content Include="Glowmasks\TrueCopperShot_Glow.png" />
@@ -2930,6 +2968,7 @@
     <Content Include="Glowmasks\VoidUnit_Glow.png" />
     <Content Include="Glowmasks\Void_Glow.png" />
     <Content Include="Glowmasks\Vortex_Glow.png" />
+    <Content Include="Glowmasks\WrathHaruka_Glow.png" />
     <Content Include="Glowmasks\WyrmStaff_GLOW.png" />
     <Content Include="Glowmasks\YamataABox_Glow.png" />
     <Content Include="Glowmasks\YamataAHeadF1_Glow.png" />
@@ -3238,6 +3277,14 @@
     <Content Include="Items\Accessories\Wings\WingsofChaos_Wings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings.png" />
     <Content Include="Items\Accessories\Wings\ZeroWings_Wings.png" />
+    <Content Include="Items\Armor\Assassin\AssassinGreaves.png" />
+    <Content Include="Items\Armor\Assassin\AssassinGreaves_Legs.png" />
+    <Content Include="Items\Armor\Assassin\AssassinHood.png" />
+    <Content Include="Items\Armor\Assassin\AssassinHood_Head.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Arms.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Body.png" />
+    <Content Include="Items\Armor\Assassin\AssassinShirt_Female.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Arms.png" />
     <Content Include="Items\Armor\Darkmatter\DarkmatterBreastplate_Body.png" />
@@ -3555,6 +3602,15 @@
     <Content Include="Items\Armor\Tribal\TribalHat_Head.png" />
     <Content Include="Items\Armor\Tribal\TribalKilt.png" />
     <Content Include="Items\Armor\Tribal\TribalKilt_Legs.png" />
+    <Content Include="Items\Armor\TrueCopper\CopperSoul.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperHelm.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperHelm_Head.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperLeggings.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperLeggings_Legs.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Arms.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Body.png" />
+    <Content Include="Items\Armor\TrueCopper\TrueCopperPlate_Female.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyGreaves_Legs.png" />
     <Content Include="Items\Armor\TrueDeathly\TrueDeathlyRibguard.png" />
@@ -3736,10 +3792,13 @@
     <Content Include="Items\Blocks\RottedDynastyWood.png" />
     <Content Include="Items\Blocks\RottedShingles.png" />
     <Content Include="Items\Blocks\RRBox.png" />
+    <Content Include="Items\Blocks\SABox.png" />
     <Content Include="Items\Blocks\ScorchedDynastyWood.png" />
     <Content Include="Items\Blocks\ScorchedShingles.png" />
     <Content Include="Items\Blocks\SerpentBox.png" />
     <Content Include="Items\Blocks\SGBox.png" />
+    <Content Include="Items\Blocks\ShenABox.png" />
+    <Content Include="Items\Blocks\ShenBox.png" />
     <Content Include="Items\Blocks\SiegeBox.png" />
     <Content Include="Items\Blocks\Soul_Forge.png" />
     <Content Include="Items\Blocks\Statues\AlphakipStatue.png" />
@@ -3805,7 +3864,6 @@
     <Content Include="Items\BossSummons\IntimidatingMushroom.png" />
     <Content Include="Items\BossSummons\PlanteraFlower.png" />
     <Content Include="Items\BossSummons\ScrapHeap.png" />
-    <Content Include="Items\BossSummons\ShroomGrub.png" />
     <Content Include="Items\BossSummons\SubzeroCrystal.png" />
     <Content Include="Items\BossSummons\ZeroRune.png" />
     <Content Include="Items\BossSummons\ZeroTesseract.png" />
@@ -3813,13 +3871,22 @@
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
     <Content Include="Items\Materials\Discordium.png" />
+    <Content Include="Items\Summoning\MadnessCane.png" />
+    <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
+    <Content Include="Items\Summoning\Minions\MadnessLaser.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentBody.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentTail.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
     <Content Include="Projectiles\AH\FireSpirit.png" />
@@ -4674,7 +4741,6 @@
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaKunai.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaProj.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\Haruka_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Akuma\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Akuma.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AkumaA1.png" />
@@ -4725,7 +4791,6 @@
     <Content Include="NPCs\Bosses\Akuma\FireShot.png" />
     <Content Include="NPCs\Bosses\Akuma\Flameburst.png" />
     <Content Include="NPCs\Bosses\Akuma\Flare.png" />
-    <Content Include="NPCs\Bosses\Akuma\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Akuma\HomingFireball.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingFireballA.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodBall.png" />
@@ -5554,6 +5619,7 @@
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
+    <Content Include="Tiles\DevStatues.png" />
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
@@ -5595,6 +5661,7 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
+    <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
     <Content Include="Tiles\OroborosChestC1_Highlight.png" />
@@ -5613,6 +5680,7 @@
     <Content Include="Tiles\Razetus.png" />
     <Content Include="Tiles\RottedDynastyWoodS.png" />
     <Content Include="Tiles\RottedPlatform.png" />
+    <Content Include="Tiles\SABox.png" />
     <Content Include="Tiles\ScorchedDynastyWoodS.png" />
     <Content Include="Tiles\ScorchedPlatform.png" />
     <Content Include="Tiles\ScorchedShinglesS.png" />
@@ -5726,6 +5794,8 @@
     <Content Include="Tiles\RottedShingles.png" />
     <Content Include="Tiles\ScorchedDynastyWood.png" />
     <Content Include="Tiles\ScorchedShingles.png" />
+    <Content Include="Tiles\ShenABox.png" />
+    <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\Sticker.png" />
@@ -5874,9 +5944,6 @@
   <ItemGroup>
     <Folder Include=".vs\AAMod\DesignTimeBuild\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Armor\Shinobi\" />
-    <Folder Include="NPCs\Enemies\Terrarium\Hardmode\" />
-    <Folder Include="NPCs\Enemies\Terrarium\PostEquinox\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Properties\" />
   </ItemGroup>

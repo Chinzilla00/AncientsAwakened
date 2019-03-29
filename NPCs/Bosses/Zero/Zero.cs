@@ -290,7 +290,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].netUpdate = true;
                 Main.npc[index4].ai[3] = 150f;
             }
-            UnitRotation = npc.velocity.X / 15f;
+            npc.rotation = npc.velocity.X / 15f;
 
             if (npc.type == mod.NPCType<Zero>() && 
                 (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&

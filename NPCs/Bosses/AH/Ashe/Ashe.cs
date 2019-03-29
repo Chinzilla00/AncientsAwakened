@@ -86,6 +86,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         bool FlyingNegative = false;
         public float MeleeSpeed;
         public float pos = 0f;
+        private bool HasFiredProj = false;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -102,6 +103,25 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 internalAI[1] = 0;
                 internalAI[2]++;
+            }
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                }
+
+                if ((int)internalAI[2] > 3)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                }
+                return;
             }
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
@@ -144,9 +164,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if(internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFiredProj = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 16) //Sets to frame 16
                 {
@@ -155,6 +177,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -165,9 +188,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4)
+                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFiredProj) 
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFiredProj = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 8)
                 {
@@ -176,6 +201,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if ((int)internalAI[2] > 15)
                 {
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -427,7 +453,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             Color alphaColor = new Color(Color.White.R, Color.White.G, Color.White.B);
 
-            if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
+            if (scale > 0) //Only draw if summoning a noodle
             {
                 BaseDrawing.DrawTexture(spritebatch, RitualTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RitualFrame, alphaColor, true);
                 BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, alphaColor, true);

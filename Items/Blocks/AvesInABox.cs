@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class AvesInABox : ModItem
+    /*public class AvesInABox : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -35,6 +35,6 @@ namespace AAMod.Items.Blocks
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }
+    }*/
 }
 

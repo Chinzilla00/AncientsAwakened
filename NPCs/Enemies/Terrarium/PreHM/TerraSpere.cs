@@ -16,8 +16,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
 		public override void SetDefaults()
 		{
-            npc.width = 10;
-            npc.height = 10;
+            npc.width = 26;
+            npc.height = 26;
             npc.lifeMax =  80;
             npc.defense = 20;
             npc.damage = 10;
@@ -56,7 +56,15 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                 npc.alpha = 0;
             }
 
-            npc.noTileCollide = false;
+            if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            {
+                npc.noTileCollide = true;
+            }
+            else
+            {
+                npc.noTileCollide = false;
+            }
+
         }
 
         public override void HitEffect(int hitDirection, double damage)

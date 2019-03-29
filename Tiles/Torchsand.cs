@@ -13,6 +13,7 @@ namespace AAMod.Tiles
             SetModCactus(new Razetus());
             SetModPalmTree(new RazePalmTree());
             Main.tileMergeDirt[Type] = true;
+            Main.tileBlockLight[Type] = true;
             Main.tileBlendAll[this.Type] = true;
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchsand");   //put your CustomBlock name

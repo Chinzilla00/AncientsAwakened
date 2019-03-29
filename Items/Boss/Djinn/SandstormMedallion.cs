@@ -25,14 +25,14 @@ namespace AAMod.Items.Boss.Djinn
         {
 			if(p.ZoneSandstorm)
 			{
-				p.meleeDamage *= 2f;
-				p.rangedDamage *= 2f;
-				p.magicDamage *= 2f;
-				p.minionDamage *= 2f;
-				p.thrownDamage *= 2f;
+				p.meleeDamage += 1f;
+				p.rangedDamage += 1f;
+				p.magicDamage += 1f;
+				p.minionDamage += 1f;
+				p.thrownDamage += 1f;
 				p.meleeCrit *= 2;
 				p.rangedCrit *= 2;
-				p.magicCrit += 2;
+				p.magicCrit *= 2;
 				p.thrownCrit *= 2;
 			}
         }

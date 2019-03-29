@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class DevStatues : ModTile
+	public class DevStatue : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -27,9 +27,9 @@ namespace AAMod.NPCs.Bosses.Wyrm
 			npc.width = 44;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-            npc.damage = 60;
-            npc.defense = 30;
-            npc.lifeMax = 5000;
+            npc.damage = 40;
+            npc.defense = 20;
+            npc.lifeMax = 4000;
             npc.value = Item.buyPrice(0, 0, 90, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -34,7 +35,23 @@ namespace AAMod.Tiles
 			return false;
 		}
 
-		public override int SaplingGrowthType(ref int style)
+        public override void RandomUpdate(int i, int j)
+        {
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(50) == 0)
+            {
+                PlaceObject(i, j - 1, mod.TileType<Mushroom>());
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);
+            }
+
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(200) == 0)
+            {
+                WorldGen.PlaceObject(i, j, mod.TileType("MushroomTree"));
+                WorldGen.GrowTree(i, j);
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("MushroomTree"), 0, 0, -1, -1);
+            }
+        }
+
+        public override int SaplingGrowthType(ref int style)
 		{
 			style = 0;
 			return mod.TileType("MushroomTree");

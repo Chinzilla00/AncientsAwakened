@@ -71,7 +71,7 @@ namespace AAMod.Items.Boss.Shen
 			recipe.AddIngredient(mod.ItemType("Discordium"), 5);
             recipe.AddIngredient(mod.ItemType("ChaosScale"), 5);
 			recipe.AddIngredient(ItemID.ChainGun);
-            recipe.AddTile(mod.TileType("ASC"));
+            recipe.AddTile(mod.TileType("AncientForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

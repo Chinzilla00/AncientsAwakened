@@ -23,10 +23,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
+            projectile.timeLeft = 240;
         }
 
         public override void AI()
         {
+            projectile.timeLeft--;
             projectile.velocity *= .98f;
             if (projectile.timeLeft > 0 && projectile.velocity == new Vector2(0, 0))
             {

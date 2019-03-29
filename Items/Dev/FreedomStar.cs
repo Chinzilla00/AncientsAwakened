@@ -15,11 +15,11 @@ namespace AAMod.Items.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Freedom Star");
-            Tooltip.SetDefault("Tails' trusty blaster.\n" +
-                "Hold the use button to charge, and then release a powerful Charged Shot!\n" +
-                "\"Kept you waiting, huh?\" \n" +
-                "- Tails\n" +
-                "Mobian Buster EX");
+            Tooltip.SetDefault(@"Tails' trusty blaster.
+Hold the use button to charge, and then release a powerful Charged Shot!
+Kept you waiting, huh?
+Tails
+Mobian Buster EX");
         }
 
         public override void SetDefaults()

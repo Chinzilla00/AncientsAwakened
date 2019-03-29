@@ -396,7 +396,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        Main.NewText((!Quote6) ? "I'M GONNA RIP YOU TO PIECES YOU LITTLE WRETCH!!!" : "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!", new Color(45, 46, 70));
+                        Main.NewText((!Quote6) ? "I'M GONNA RIP YOU TO PIECES YOU LITTLE WRETCH!!!" : "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!", new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote6 = true;
                     }

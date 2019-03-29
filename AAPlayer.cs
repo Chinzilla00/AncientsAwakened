@@ -57,6 +57,7 @@ namespace AAMod
         public bool dustDevil = false;
         public bool KrakenMinion = false;
         public bool Fishnado = false;
+        public bool MadnessElemental = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -101,6 +102,7 @@ namespace AAMod
         public bool demonBonus;
         public bool uraniumSet;
         public bool techneciumSet;
+        public bool trueCopper;
         public bool trueHallow;
         public bool trueNights;
         public bool trueFlesh;
@@ -265,6 +267,7 @@ namespace AAMod
             dustDevil = false;
             KrakenMinion = false;
             Fishnado = false;
+            MadnessElemental = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -282,6 +285,7 @@ namespace AAMod
             trueDemonBonus = false;
             trueDeathly = false;
             trueDynaskull = false;
+            trueCopper = false;
             terraSet = false;
             chaosSet = false;
             DynaskullSet = false;
@@ -823,13 +827,19 @@ namespace AAMod
                     for (int i = 0; i < Main.maxNPCs; i++)
                     {
                         NPC target = Main.npc[i];
-                        if (target.active && !target.dontTakeDamage && !target.friendly && target.immune[player.whoAmI] == 0)
+                        float dist = npc.Distance(player.Center);
+                        if (target.active && !target.dontTakeDamage && !target.friendly && target.immune[player.whoAmI] == 0 && dist < 100f)
                         {
                             player.ApplyDamageToNPC(target, 30, 0, 0, false); // target , damage, knockback, direction, crit
                         }
 
                     }
                 }
+            }
+
+            if (trueCopper)
+            {
+                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.TrueCopper.CopperSoul>(), 40, 10, Main.myPlayer, 0, 0);
             }
 
             if (fulgurite)
@@ -1783,7 +1793,7 @@ namespace AAMod
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
                 {
                     SnapCD = 18000;
-                    Main.NewText("Perfectly Balanced, as all things should be", Color.Purple);
+                    Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() /*&& x.type != mod.NPCType<IZHand1>() && x.type != mod.NPCType<IZHand2>()*/ && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
@@ -2876,6 +2886,10 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/DoomiteVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.headFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TrueCopperHelm")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueCopperHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Main.DiscoColor, edi.shadow), drawPlayer.headFrame, scale);
+            }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosKabuto")))
             {
                 if (drawPlayer.direction == -1)
@@ -2954,6 +2968,17 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_" + (drawPlayer.Male ? "Body" : "Female") + "_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueCopperPlate")))
+            {
+                if (drawPlayer.Male)
+                {
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueCopperPlate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Main.DiscoColor, edi.shadow), drawPlayer.bodyFrame);
+                }
+                else
+                {
+                    BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueCopperPlate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Main.DiscoColor, edi.shadow), drawPlayer.bodyFrame);
+                }
+            }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
             {
                 if (drawPlayer.Male)
@@ -3023,6 +3048,10 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteBreastplate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueCopperPlate")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueCopperPlate_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Main.DiscoColor, edi.shadow), drawPlayer.bodyFrame);
+            }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
             {
                 if (drawPlayer.direction == -1)
@@ -3063,23 +3092,27 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("StarcrystalBoots")) && drawPlayer.statMana > drawPlayer.statMana * .2f)
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/StarcrystalBoots_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Starcrystal, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/StarcrystalBoots_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Starcrystal, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("HeartstoneLeggings")) && drawPlayer.statLife < 40)
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/HeartstoneLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Heartstone, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/HeartstoneLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Heartstone, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueHallowedGreaves")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueHallowedGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Hallow, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomPants")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteGreaves")) && modPlayer.doomite)
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.legFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueCopperLeggings")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueCopperLeggings_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Main.DiscoColor, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
             {

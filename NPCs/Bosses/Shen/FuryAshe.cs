@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
+            npc.width = 40;
+            npc.height = 80;
             npc.damage = 100;
             npc.defense = 40;
             npc.lifeMax = 120000;
@@ -76,6 +78,12 @@ namespace AAMod.NPCs.Bosses.Shen
         bool FlyingNegative = false;
         public float MeleeSpeed;
         public float pos = 0f;
+        private bool HasFired = false;
+
+        public override bool CheckActive()
+        {
+            return !NPC.AnyNPCs(mod.NPCType<ShenA>());
+        }
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -92,6 +100,25 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[1] = 0;
                 internalAI[2]++;
+            }
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                }
+
+                if ((int)internalAI[2] > 3)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                }
+                return;
             }
 
             if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))
@@ -129,9 +156,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE) //Only Shoot if not in melee mode
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFired) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFired = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 16) //Sets to frame 16
                 {
@@ -140,6 +169,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    HasFired = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -150,9 +180,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4)
+                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFired) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
+                    HasFired = true;
+                    npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 8)
                 {
@@ -161,6 +193,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 15)
                 {
+                    HasFired = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;

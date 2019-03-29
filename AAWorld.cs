@@ -15,6 +15,7 @@ using AAMod.Worldgeneration;
 using AAMod.NPCs.Enemies.Other;
 using AAMod.Worldgen;
 using Terraria.Utilities;
+using AAMod.Backgrounds;
 
 namespace AAMod
 {
