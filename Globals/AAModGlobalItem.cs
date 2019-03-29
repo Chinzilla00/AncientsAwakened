@@ -41,24 +41,6 @@ namespace AAMod
             }
         }
 
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (item.type == ItemID.AnkhShield)
-            {
-                int index = 1;
-                for (int m = 0; m < tooltips.Count; m++)
-                {
-                    TooltipLine line = tooltips[m];
-                    if (line.mod == "Terraria" && line.text == "Grants immunity to most debuffs")
-                    {
-                        index = m;
-                        break;
-                    }
-                }
-                tooltips.Insert(index + 1, new TooltipLine(mod, "AnkhShield", "7% melee speed"));
-            }
-        }
-
         public override bool CanEquipAccessory(Item item, Player player, int slot)
         {
             if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield|| item.type == mod.ItemType<TaiyangBaolei>())

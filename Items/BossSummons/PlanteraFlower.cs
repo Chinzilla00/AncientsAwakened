@@ -41,7 +41,7 @@ Can only be used in the underground jungle");
 
         public override bool CanUseItem(Player player)
         {
-            if (!player.ZoneJungle && player.Center.Y >= (Main.worldSurface * 16) + 800f && !NPC.AnyNPCs(NPCID.Plantera))
+            if (player.ZoneJungle && player.Center.Y >= (Main.worldSurface * 16) + 800f && !NPC.AnyNPCs(NPCID.Plantera))
             {
                 return true;
             }

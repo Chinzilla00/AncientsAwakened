@@ -251,9 +251,6 @@
     <Compile Include="Globals\AANet.cs" />
     <Compile Include="Globals\AAProjectile.cs" />
     <Compile Include="Globals\ModCrossoverContent.cs" />
-    <Compile Include="Items\Accessories\Ankh\AnkhNecklace.cs" />
-    <Compile Include="Items\Accessories\Ankh\AnkhScarf.cs" />
-    <Compile Include="Items\Accessories\Ankh\AnkhTablet.cs" />
     <Compile Include="Items\Accessories\AshProofVest0.cs" />
     <Compile Include="Items\Accessories\AshProofVest1.cs" />
     <Compile Include="Items\Accessories\AshProofVest2.cs" />
@@ -3185,14 +3182,6 @@
     <Content Include="Healthbars\ZeroBarTail.png" />
     <Content Include="icon.png" />
     <Content Include="IMPORTANTREADME.txt" />
-    <Content Include="Items\Accessories\Ankh\AnkhNecklace.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhNecklace_Neck.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhScarf.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhScarf_Neck.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhStone.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhStone_HandsOn.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhTablet.png" />
-    <Content Include="Items\Accessories\Ankh\AnkhTablet_Back.png" />
     <Content Include="Items\Accessories\AshProofVest0.png" />
     <Content Include="Items\Accessories\AshProofVest1.png" />
     <Content Include="Items\Accessories\AshProofVest2.png" />
