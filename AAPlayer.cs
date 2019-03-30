@@ -838,25 +838,37 @@ namespace AAMod
             }
             if (!WorldgenReminder)
             {
-                if (Main.rand.Next(5) == 0)
+                if (Main.rand.Next(8) == 0)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey uh...kid? Correct me if I'm wrong, but I think your world didn't generate with Ancients Awakened stuff in it. I'd make a new one if I were you.", new Color(180, 41, 32), false);
                 }
-                else if (Main.rand.Next(5) == 1)
+                else if (Main.rand.Next(8) == 1)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("YOU IMBECILE! YOU DIDN'T GENERATE ANCIENTS AWAKENED CONTENT! MAKE A NEW WORLD NOW! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(45, 46, 70), false);
                 }
-                else if (Main.rand.Next(5) == 2)
+                else if (Main.rand.Next(8) == 2)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. W0RLD D0ES N0T APPEAR T0 C0NTAIN AAM0D.TM0D C0NTENT. PLEASE GENERATE A NEW W0RLD.", new Color(255, 0, 0), false);
                 }
-                else if (Main.rand.Next(5) == 3)
+                else if (Main.rand.Next(8) == 3)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HEY! You didn't generate Ancients Awakened stuff in this world! Generate a new world before I blast you to mars!", new Color(102, 20, 48), false);
                 }
-                else
+                else if (Main.rand.Next(8) == 4)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey, uh...I don't see any Ancients Awakened content in this world. Might be smart to make a new world or whatever...", new Color(72, 78, 117), false);
+                }
+                else if (Main.rand.Next(8) == 5)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey. You. Interdimensional being. You might have forgotten to make a new world after downloading the mod. Make a new world if you want all the mod's content.", new Color(128, 0, 0), false);
+                }
+                else if (Main.rand.Next(8) == 6)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Make...new world....or mushmad...will squish...little terrarian...", new Color(216, 110, 40), false);
+                }
+                else if (Main.rand.Next(8) == 7)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("...Mortal. Your world doesn't have Ancients Awakened content if my old eyes are not lying to me. Generating a new world would be optimal.", new Color(43, 46, 61), false);
                 }
                 WorldgenReminder = true;
             }
