@@ -949,6 +949,12 @@ namespace AAMod
             if (zoneShen && AAWorld.downedAllAncients)
             {
                 priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon");
+                return;
+            }
+            if (zoneIZ && AAWorld.downedZero)
+            {
+                priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
             }
@@ -971,12 +977,6 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
 
                 priority = (MusicPriority)10;
-                return;
-            }
-            if (zoneIZ && AAWorld.downedZero && NPC.downedMoonlord)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
             }
             if (Ancients.ZoneVoid)
