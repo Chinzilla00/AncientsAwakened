@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 if (ProjectileShoot == 0)
                 {
-                    if (internalAI[2] == 5 && internalAI[1] == 4)
+                    if (internalAI[2] == 5 && internalAI[1] == 3)
                     {
                         repeat -= 1;
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
