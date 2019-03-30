@@ -58,11 +58,6 @@ namespace AAMod
         private Vector2 TerraPos = new Vector2(0, 0);
         public string nums = "1234567890";
         public static bool ModContentGenerated;
-        public static bool InfernoGenerated;
-        public static bool MireGenerated;
-        public static bool TerrariumGenerated;
-        public static bool VoidGenerated;
-        public static bool OresGenerated;
         //Messages
         public static bool Evil;
         public static bool Compass;
@@ -243,11 +238,6 @@ namespace AAMod
             if (downedSisters) downed.Add("Sisters");
             if (downedSag) downed.Add("Sag");
             if (ModContentGenerated) downed.Add("WorldGenned");
-            if (InfernoGenerated) downed.Add("InfernoGen");
-            if (MireGenerated) downed.Add("MireGen");
-            if (TerrariumGenerated) downed.Add("TerraGen");
-            if (VoidGenerated) downed.Add("VoidGen");
-            if (OresGenerated) downed.Add("OreGen");
             if (SistersSummoned) downed.Add("Summoned");
 
             return new TagCompound {
@@ -318,11 +308,6 @@ namespace AAMod
             flags6[0] = downedSisters;
             flags6[1] = downedSag;
             flags6[2] = ModContentGenerated;
-            flags6[3] = InfernoGenerated;
-            flags6[4] = MireGenerated;
-            flags6[5] = TerrariumGenerated;
-            flags6[6] = VoidGenerated;
-            flags6[7] = OresGenerated;
             writer.Write(flags6);
         }
 
@@ -381,11 +366,6 @@ namespace AAMod
             downedSisters = flags6[0];
             downedSag = flags6[1];
             ModContentGenerated = flags6[2];
-            InfernoGenerated = flags6[3];
-            MireGenerated = flags6[4];
-            TerrariumGenerated = flags6[5];
-            VoidGenerated = flags6[6];
-            OresGenerated = flags6[7];
         }
 
         public override void Load(TagCompound tag)
@@ -448,11 +428,6 @@ namespace AAMod
             mirePos = new Vector2(mirePosX, 150);
             infernoPos = new Vector2(infernoPosX, 150);
             ModContentGenerated = downed.Contains("WorldGenned");
-            InfernoGenerated = downed.Contains("InfernoGen");
-            MireGenerated = downed.Contains("MireGen");
-            TerrariumGenerated = downed.Contains("TerraGen");
-            VoidGenerated = downed.Contains("VoidGen");
-            OresGenerated = downed.Contains("OreGen");
         }
 
 
@@ -471,6 +446,7 @@ namespace AAMod
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
+            ModContentGenerated = true;
             if (shiniesIndex != -1)
             {
                 tasks.Insert(shiniesIndex2, new PassLegacy("Generating AA Ores", delegate (GenerationProgress progress)
@@ -504,7 +480,6 @@ namespace AAMod
                             WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("AbyssiumOre"));
                         }
                     }
-                    OresGenerated = true;
                 }));
             }
             tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
@@ -709,7 +684,6 @@ namespace AAMod
                 position.Y -= 11;
                 VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
             }
-            VoidGenerated = true;
             progress.Set(1f);
         }
         public int BlockLining(double x, double y, int repeats, int tileType, bool random, int max, int min = 3)
@@ -1334,7 +1308,6 @@ namespace AAMod
             InfernoDelete delete = new InfernoDelete();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-            InfernoGenerated = true;
         }
 
         public void Mushroom()
@@ -1366,7 +1339,6 @@ namespace AAMod
             MireBiome biome = new MireBiome();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-            MireGenerated = true;
         }
 
         public void SunkenShip()
@@ -1385,8 +1357,6 @@ namespace AAMod
             TerrariumSphere biome = new TerrariumSphere();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-
-            TerrariumGenerated = true;
         }
 
         public void Parthenan()

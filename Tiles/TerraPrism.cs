@@ -50,7 +50,7 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = mod.GetTexture("Glowmasks/TerraPrism_Glow");
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 54), false, false, false, null, AAGlobalTile.GetPrismColorDim);
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 54), false, false, false, null, AAGlobalTile.GetTerraColorBright);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

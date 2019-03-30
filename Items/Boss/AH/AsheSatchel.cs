@@ -15,6 +15,7 @@ namespace AAMod.Items.Boss.AH
             item.consumable = true;
             item.width = 16;
             item.height = 16;
+            item.rare = 11;
         }
 
         public override void SetStaticDefaults()

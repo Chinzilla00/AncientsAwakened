@@ -233,12 +233,7 @@ namespace AAMod
         //Misc
         public bool Compass = false;
 
-        public bool InfernoSpawner = false;
-        public bool MireSpawner = false;
-        public bool VoidSpawner = false;
-        public bool TerrariumSpawner = false;
-        public bool OreSpawner = false;
-        public bool WorldGenner = false;
+        public bool WorldgenReminder = false;
 
         public override void ResetEffects()
         {
@@ -393,13 +388,8 @@ namespace AAMod
             ZoneRisingSunPagoda = false;
             ZoneShip = false;
             ZoneTower = false;
-            InfernoSpawner = false;
-            MireSpawner = false;
-            VoidSpawner = false;
-            TerrariumSpawner = false;
-            OreSpawner = false;
-            WorldGenner = false;
             ZoneStars = false;
+            WorldgenReminder = false;
         }
 
         public override TagCompound Save()
@@ -501,189 +491,6 @@ namespace AAMod
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
-        }
-
-        public void AADashMovement()
-        {
-            if (AADash == 1 && dashDelayAA < 0 && player.whoAmI == Main.myPlayer)
-            {
-                Rectangle rectangle = new Rectangle((int)((double)player.position.X + (double)player.velocity.X * 0.5 - 4.0), (int)((double)player.position.Y + (double)player.velocity.Y * 0.5 - 4.0), player.width + 8, player.height + 8);
-                for (int i = 0; i < 200; i++)
-                {
-                    if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly && Main.npc[i].immune[player.whoAmI] <= 0)
-                    {
-                        NPC nPC = Main.npc[i];
-                        Rectangle rect = nPC.getRect();
-                        if (rectangle.Intersects(rect) && (nPC.noTileCollide || player.CanHit(nPC)))
-                        {
-                            float num = 1500f * player.meleeDamage;
-                            float num2 = 15f;
-                            bool crit = false;
-                            if (player.kbGlove)
-                            {
-                                num2 *= 2f;
-                            }
-                            if (player.kbBuff)
-                            {
-                                num2 *= 1.5f;
-                            }
-                            if (Main.rand.Next(100) < player.meleeCrit)
-                            {
-                                crit = true;
-                            }
-                            int direction = player.direction;
-                            if (player.velocity.X < 0f)
-                            {
-                                direction = -1;
-                            }
-                            if (player.velocity.X > 0f)
-                            {
-                                direction = 1;
-                            }
-                            if (player.whoAmI == Main.myPlayer)
-                            {
-                                player.ApplyDamageToNPC(nPC, (int)num, num2, direction, crit);
-                            }
-                            nPC.immune[player.whoAmI] = 6;
-                            player.immune = true;
-                            player.immuneNoBlink = true;
-                            player.immuneTime = 4;
-                        }
-                    }
-                }
-            }
-
-            if (dashDelayAA > 0)
-            {
-                if (player.eocDash > 0)
-                {
-                    player.eocDash--;
-                }
-                if (player.eocDash == 0)
-                {
-                    player.eocHit = -1;
-                }
-                dashDelayAA--;
-                return;
-            }
-            if (dashDelayAA < 0)
-            {
-                float num7 = 12f;
-                float num8 = 0.992f;
-                float num9 = Math.Max(player.accRunSpeed, player.maxRunSpeed);
-                float num10 = 0.96f;
-                int num11 = 20;
-                if (AADash == 1)
-                {
-                    for (int m = 0; m < 24; m++)
-                    {
-                        int num14 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + 4f), player.width, player.height - 8, 244, 0f, 0f, 100, default(Color), 2.75f);
-                        Main.dust[num14].velocity *= 0.1f;
-                        Main.dust[num14].scale *= 1f + (float)Main.rand.Next(20) * 0.01f;
-                        Main.dust[num14].shader = GameShaders.Armor.GetSecondaryShader(player.ArmorSetDye(), player);
-                        Main.dust[num14].noGravity = true;
-                        if (Main.rand.Next(2) == 0)
-                        {
-                            Main.dust[num14].fadeIn = 0.5f;
-                        }
-                    }
-                    num7 = 18f;
-                    num8 = 0.976f;
-                    num10 = 0.9f;
-                    num11 = 20;
-                }
-                if (AADash > 0)
-                {
-                    player.vortexStealthActive = false;
-                    if (player.velocity.X > num7 || player.velocity.X < -num7)
-                    {
-                        player.velocity.X = player.velocity.X * num8;
-                        return;
-                    }
-                    if (player.velocity.X > num9 || player.velocity.X < -num9)
-                    {
-                        player.velocity.X = player.velocity.X * num10;
-                        return;
-                    }
-                    dashDelayAA = num11;
-                    if (player.velocity.X < 0f)
-                    {
-                        player.velocity.X = -num9;
-                        return;
-                    }
-                    if (player.velocity.X > 0f)
-                    {
-                        player.velocity.X = num9;
-                        return;
-                    }
-                }
-            }
-            else if (AADash > 0 && !player.mount.Active)
-            {
-                if (AADash == 4)
-                {
-                    int num23 = 0;
-                    bool flag3 = false;
-                    if (dashTimeAA > 0)
-                    {
-                        dashTimeAA--;
-                    }
-                    if (dashTimeAA < 0)
-                    {
-                        dashTimeAA++;
-                    }
-                    if (player.controlRight && player.releaseRight)
-                    {
-                        if (dashTimeAA > 0)
-                        {
-                            num23 = 1;
-                            flag3 = true;
-                            dashTimeAA = 0;
-                        }
-                        else
-                        {
-                            dashTimeAA = 15;
-                        }
-                    }
-                    else if (player.controlLeft && player.releaseLeft)
-                    {
-                        if (dashTimeAA < 0)
-                        {
-                            num23 = -1;
-                            flag3 = true;
-                            dashTimeAA = 0;
-                        }
-                        else
-                        {
-                            dashTimeAA = -15;
-                        }
-                    }
-                    if (flag3)
-                    {
-                        player.velocity.X = 31.9f * (float)num23;
-                        Point point5 = (player.Center + new Vector2((float)(num23 * player.width / 2 + 2), player.gravDir * (float)(-(float)player.height) / 2f + player.gravDir * 2f)).ToTileCoordinates();
-                        Point point6 = (player.Center + new Vector2((float)(num23 * player.width / 2 + 2), 0f)).ToTileCoordinates();
-                        if (WorldGen.SolidOrSlopedTile(point5.X, point5.Y) || WorldGen.SolidOrSlopedTile(point6.X, point6.Y))
-                        {
-                            player.velocity.X = player.velocity.X / 2f;
-                        }
-                        dashDelayAA = -1;
-                        for (int num24 = 0; num24 < 60; num24++)
-                        {
-                            int num25 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 244, 0f, 0f, 100, default(Color), 3f);
-                            Dust expr_13AF_cp_0 = Main.dust[num25];
-                            expr_13AF_cp_0.position.X = expr_13AF_cp_0.position.X + (float)Main.rand.Next(-5, 6);
-                            Dust expr_13D6_cp_0 = Main.dust[num25];
-                            expr_13D6_cp_0.position.Y = expr_13D6_cp_0.position.Y + (float)Main.rand.Next(-5, 6);
-                            Main.dust[num25].velocity *= 0.2f;
-                            Main.dust[num25].scale *= 1f + (float)Main.rand.Next(20) * 0.01f;
-                            Main.dust[num25].shader = GameShaders.Armor.GetSecondaryShader(player.ArmorSetDye(), player);
-                            Main.dust[num25].noGravity = true;
-                            Main.dust[num25].fadeIn = 0.5f;
-                        }
-                    }
-                }
-            }
         }
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
@@ -1024,6 +831,35 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (AAWorld.ModContentGenerated || ZoneInferno || ZoneMire || ZoneVoid || Terrarium || ZoneMush)
+            {
+                AAWorld.ModContentGenerated = true;
+                WorldgenReminder = true;
+            }
+            if (!WorldgenReminder)
+            {
+                if (Main.rand.Next(5) == 0)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey uh...kid? Correct me if I'm wrong, but I think your world didn't generate with Ancients Awakened stuff in it. I'd make a new one if I were you.", new Color(180, 41, 32), false);
+                }
+                else if (Main.rand.Next(5) == 1)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("YOU IMBECILE! YOU DIDN'T GENERATE ANCIENTS AWAKENED CONTENT! MAKE A NEW WORLD NOW! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(45, 46, 70), false);
+                }
+                else if (Main.rand.Next(5) == 2)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. W0RLD D0ES N0T APPEAR T0 C0NTAIN AAM0D.TM0D C0NTENT. PLEASE GENERATE A NEW W0RLD.", new Color(255, 0, 0), false);
+                }
+                else if (Main.rand.Next(5) == 3)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HEY! You didn't generate Ancients Awakened stuff in this world! Generate a new world before I blast you to mars!", new Color(102, 20, 48), false);
+                }
+                else
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey, uh...I don't see any Ancients Awakened content in this world. Might be smart to make a new world or whatever...", new Color(72, 78, 117), false);
+                }
+                WorldgenReminder = true;
+            }
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
             if (RStar)
             {

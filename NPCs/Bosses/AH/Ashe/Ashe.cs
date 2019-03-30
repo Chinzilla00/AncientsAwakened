@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 240)
+                    if (internalAI[3] >= 120)
                     {
                         internalAI[3] = 0;
                         if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
@@ -332,7 +332,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < 5; i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
                 }
             }
             if (internalAI[0] == 2)
