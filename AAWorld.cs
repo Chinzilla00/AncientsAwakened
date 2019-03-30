@@ -462,6 +462,17 @@ namespace AAMod
                             WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("IncineriteOre"));
                         }
                     }
+
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
+                    {
+                        int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
+                        int tilesY = WorldGen.genRand.Next((int)(Main.maxTilesY * .4f), (int)(Main.maxTilesY * .8f));
+                        if (Main.tile[tilesX, tilesY].type == 1)
+                        {
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("PrismOre"));
+                        }
+                    }
+
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
                         int tilesX = WorldGen.genRand.Next(0, x);

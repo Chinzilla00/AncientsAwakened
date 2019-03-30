@@ -769,7 +769,6 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\OreGenerator.cs" />
-    <Compile Include="Items\DevTools\AAWorldgenner.cs" />
     <Compile Include="Items\DevTools\Smallcano.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
     <Compile Include="Items\DevTools\TerrariumGenerator.cs" />

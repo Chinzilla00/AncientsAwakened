@@ -91,7 +91,6 @@ Careful though, this may lag your game for a few moments.");
                 position.Y -= 11;
                 VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
             }
-            AAWorld.VoidGenerated = true;
             return true;
 		}
 

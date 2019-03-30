@@ -57,7 +57,6 @@ Careful though, this may lag your game for a few moments.");
                     WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
                 }
             }
-            AAWorld.OresGenerated = true;
             return true;
 		}
 

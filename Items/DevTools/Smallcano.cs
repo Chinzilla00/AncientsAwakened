@@ -78,7 +78,6 @@ Careful though, this may lag your game for a few moments.");
             InfernoDelete delete = new InfernoDelete();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-            AAWorld.InfernoGenerated = true;
             return true;
 		}
 

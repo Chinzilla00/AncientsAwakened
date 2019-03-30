@@ -79,7 +79,6 @@ Careful though, this may lag your game for a few moments.");
             MireBiome biome = new MireBiome();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-            AAWorld.MireGenerated = true;
             return true;
         }
 

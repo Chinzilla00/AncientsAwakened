@@ -47,8 +47,7 @@ Careful though, this may lag your game for a few moments.");
             TerrariumSphere biome = new TerrariumSphere();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
-
-            AAWorld.TerrariumGenerated = true;
+            
             return true;
         }
 
