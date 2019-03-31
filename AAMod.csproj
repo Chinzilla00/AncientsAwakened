@@ -1618,6 +1618,7 @@
     <Compile Include="Projectiles\BloodyFlare.cs" />
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
+    <Compile Include="Projectiles\SoulSiphonHeal.cs" />
     <Compile Include="Projectiles\Depthsprayer.cs" />
     <Compile Include="Projectiles\AmphibiousBoom.cs" />
     <Compile Include="Projectiles\Djinn\DevilGust.cs" />
@@ -1899,7 +1900,7 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
-    <Compile Include="Tiles\DevStatues.cs" />
+    <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\Mushroom.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
@@ -2020,7 +2021,6 @@
     <Compile Include="Tiles\ChaosAltar.cs" />
     <Compile Include="Tiles\ChaosCrucible.cs" />
     <Compile Include="Tiles\Darkmatter.cs" />
-    <Compile Include="Tiles\DarkmatterOre.cs" />
     <Compile Include="Tiles\DaybreakIncineriteBar.cs" />
     <Compile Include="Tiles\DeepAbyssium.cs" />
     <Compile Include="Tiles\Depthstone.cs" />
@@ -5278,6 +5278,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\SoulSiphonHeal.png" />
     <Content Include="Projectiles\DeathDaggerHeal.png" />
     <Content Include="Projectiles\DecayScythe.png" />
     <Content Include="Projectiles\DecayScytheProj.png" />
@@ -5633,7 +5634,7 @@
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
     <Content Include="Tiles\Depthsand.png" />
-    <Content Include="Tiles\DevStatues.png" />
+    <Content Include="Tiles\DevStatue.png" />
     <Content Include="Tiles\DiscordianEclipse.png" />
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
