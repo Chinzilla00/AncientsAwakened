@@ -54,7 +54,6 @@ namespace AAMod.Items.Armor.Dev.Moon
         {
 
             player.setBonus = @"'Stings, doesn't it?'
-Your magic attacks inflict Moonraze
 You glow like the moon in the sky
 Magic attacks inflict Moonraze on your target
 You have a lunar friend to assist you";

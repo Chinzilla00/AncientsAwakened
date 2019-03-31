@@ -57,13 +57,13 @@ The Fire spirit becomes more powerful the less mana you have";
 
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(mod.BuffType("FireSpirit")) == -1)
+                if (player.FindBuffIndex(mod.BuffType("FlameSoul")) == -1)
                 {
-                    player.AddBuff(mod.BuffType("FireSpirit"), 3600, true);
+                    player.AddBuff(mod.BuffType("FlameSoul"), 3600, true);
                 }
-                if (player.ownedProjectileCounts[mod.ProjectileType("FireSpirit")] < 5)
+                if (player.ownedProjectileCounts[mod.ProjectileType("FlameSoul")] < 1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Spirit"), 20, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("FlameSoul"), 60, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }

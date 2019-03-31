@@ -10,7 +10,9 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shen Doragon Awakened Music Box");
-		}
+            
+            Tooltip.SetDefault(@"Plays 'Champion Battle (Fanmade)' by Emdasche");
+        }
 
 		public override void SetDefaults()
 		{

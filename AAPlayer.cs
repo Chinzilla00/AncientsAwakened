@@ -58,6 +58,7 @@ namespace AAMod
         public bool KrakenMinion = false;
         public bool Fishnado = false;
         public bool MadnessElemental = false;
+        public bool FlameSoul = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -265,6 +266,7 @@ namespace AAMod
             KrakenMinion = false;
             Fishnado = false;
             MadnessElemental = false;
+            FlameSoul = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;

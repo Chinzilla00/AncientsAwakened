@@ -9,7 +9,6 @@ namespace AAMod.Items.Boss.Serpent
     {
         public override void SetDefaults()
         {
-
             item.damage = 23;    
             item.magic = true;
             item.width = 24;
@@ -30,7 +29,7 @@ namespace AAMod.Items.Boss.Serpent
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crystal Tome");
+			DisplayName.SetDefault("Sickle");
 			Tooltip.SetDefault("Casts crystals that shatter in pieces.");
 		}
     }

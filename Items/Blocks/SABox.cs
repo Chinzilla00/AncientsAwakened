@@ -10,7 +10,9 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unyielding Ancient Music Box");
-		}
+
+            Tooltip.SetDefault(@"Plays 'Dark Matter 02' from Pokemon Super Mystery Dungeon");
+        }
 
 		public override void SetDefaults()
 		{
