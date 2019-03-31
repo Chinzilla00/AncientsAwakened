@@ -79,8 +79,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             scale = 1.5f;
             return null;
         }
-
-        bool HasStopped = false;
+        
         bool FlyingBack = false;
         bool FlyingPositive = false;
         bool FlyingNegative = false;
@@ -107,7 +106,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.TargetClosest();
+                npc.TargetClosest(false);
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
                     npc.velocity.Y -= 0.1f;
@@ -362,7 +361,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
-            if (internalAI[0] == 4)
+            if (internalAI[0] == AISTATE_CAST4)
             {
                 BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 10f, 0, 0, -1);
             }
@@ -386,6 +385,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+            Main.npc[DeathAnim].velocity = npc.velocity;
             Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
@@ -410,7 +411,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         private void RingEffects()
         {
-
             if (internalAI[0] == AISTATE_DRAGON) //If summoning noodle
             {
                 RingRotation += 0.02f;
@@ -469,7 +469,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 13f;
+            float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());

@@ -112,7 +112,7 @@ namespace AAMod.NPCs.Bosses.Shen
 		public bool isAwakened = false;
 		public float _normalSpeed = 15f; //base for normal movement
 		public float _chargeSpeed = 40f; //base for charge movement
-		public float moveSpeed
+		public float MoveSpeed
 		{
 			get
 			{
@@ -455,7 +455,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
                             int dir = (npc.Center.X < player.Center.X ? 1 : -1);
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                                 infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                                 vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                                vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+                                vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
                                 int dir = (npc.Center.X < player.Center.X ? 1 : -1);
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
@@ -557,12 +557,12 @@ namespace AAMod.NPCs.Bosses.Shen
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
 			float length = dist.Length();
-			if(length < moveSpeed)
+			if(length < MoveSpeed)
 			{
-				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / moveSpeed);
+				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / MoveSpeed);
 			}
 			npc.velocity = Vector2.Normalize(point - npc.Center);
-			npc.velocity *= moveSpeed;
+			npc.velocity *= MoveSpeed;
 			npc.velocity *= velMultiplier;	
 			if(!Charging)
 			{

@@ -60,7 +60,7 @@ The power to destroy entire planets rests in this armor");
 
         public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage += 25f;
+			player.rangedDamage += .25f;
         }
 
 		public override void AddRecipes()

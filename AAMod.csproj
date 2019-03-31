@@ -467,6 +467,8 @@
     <Compile Include="Items\Blocks\PagodaBox.cs" />
     <Compile Include="Items\Blocks\AkumaABox.cs" />
     <Compile Include="Items\Blocks\AkumaBox.cs" />
+    <Compile Include="Items\Blocks\SDBox.cs" />
+    <Compile Include="Items\Blocks\SGBox.cs" />
     <Compile Include="Items\Blocks\SABox.cs" />
     <Compile Include="Items\Blocks\ShenABox.cs" />
     <Compile Include="Items\Blocks\ShenBox.cs" />
@@ -1292,6 +1294,7 @@
     <Compile Include="NPCs\Bosses\AH\AHDeath.cs" />
     <Compile Include="NPCs\Bosses\AH\AHSpawn.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\Ashe.cs" />
+    <Compile Include="NPCs\Bosses\AH\Ashe\AsheVanish.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheDragon.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheFire.cs" />
@@ -1305,6 +1308,7 @@
     <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaProj.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
+    <Compile Include="NPCs\Bosses\AH\Haruka\HarukaVanish.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AncientLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\AkumaFireProj.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.cs" />
@@ -1403,6 +1407,8 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
+    <Compile Include="NPCs\Bosses\Shen\WrathHarukaVanish.cs" />
     <Compile Include="NPCs\Bosses\Shen\WrathHaruka.cs" />
     <Compile Include="NPCs\Bosses\Shen\Shenling.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
@@ -1903,6 +1909,8 @@
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\Mushroom.cs" />
     <Compile Include="Tiles\SABox.cs" />
+    <Compile Include="Tiles\SGBox.cs" />
+    <Compile Include="Tiles\SDBox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
     <Compile Include="Tiles\TerraPrism.cs" />
@@ -3805,6 +3813,7 @@
     <Content Include="Items\Blocks\SABox.png" />
     <Content Include="Items\Blocks\ScorchedDynastyWood.png" />
     <Content Include="Items\Blocks\ScorchedShingles.png" />
+    <Content Include="Items\Blocks\SDBox.png" />
     <Content Include="Items\Blocks\SerpentBox.png" />
     <Content Include="Items\Blocks\SGBox.png" />
     <Content Include="Items\Blocks\ShenABox.png" />
@@ -3889,10 +3898,14 @@
     <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
     <Content Include="Items\Summoning\Minions\MadnessLaser.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheVanish.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaVanish.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
@@ -5699,6 +5712,7 @@
     <Content Include="Tiles\ScorchedDynastyWoodS.png" />
     <Content Include="Tiles\ScorchedPlatform.png" />
     <Content Include="Tiles\ScorchedShinglesS.png" />
+    <Content Include="Tiles\SDBox.png" />
     <Content Include="Tiles\SerpentBox.png" />
     <Content Include="Tiles\SGBox.png" />
     <Content Include="Tiles\Apocalyptite.png" />

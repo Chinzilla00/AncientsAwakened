@@ -4,14 +4,14 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class SABox : ModItem
+	public class SGBox : ModItem
 	{
         
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unyielding Ancient Music Box");
+			DisplayName.SetDefault("Sleeping Giant Music Box");
 
-            Tooltip.SetDefault(@"Plays 'Dark Matter 02' from Pokemon Super Mystery Dungeon");
+            Tooltip.SetDefault(@"Plays 'Sleeping Giant' by LordCakeSpy");
         }
 
 		public override void SetDefaults()
@@ -22,20 +22,18 @@ namespace AAMod.Items.Blocks
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("SABox");
+			item.createTile = mod.TileType("SGBox");
             item.width = 72;
 			item.height = 36;
 			item.rare = 4;
 			item.value = 10000;
 			item.accessory = true;
-            
-
         }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
+            Texture2D texture = mod.GetTexture("Glowmasks/IZBox_Glow1");
             spriteBatch.Draw
             (
                 texture,
@@ -58,8 +56,8 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "ShenABox");
-            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddIngredient(null, "VoidBox");
+            recipe.AddIngredient(null, "UnstableSingularity", 10);
             recipe.AddTile(ItemID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();

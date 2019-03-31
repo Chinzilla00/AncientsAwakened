@@ -228,8 +228,6 @@ namespace AAMod
 
         //Stat Boosts
         public int ManaLantern = 0;
-        private static int UI_ScreenAnchorX = Main.screenWidth - 800;
-        public static SpriteFont fontMouseText;
 
         //Misc
         public bool Compass = false;

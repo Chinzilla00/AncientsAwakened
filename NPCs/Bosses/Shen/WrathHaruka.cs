@@ -121,34 +121,12 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
 
             npc.frame.Y = 74 * internalAI[2];
-            
-            internalAI[1]++;
 
-            if (npc.alpha > 0)
-            {
-                npc.alpha -= 5;
-            }
-            if (npc.alpha <= 0)
-            {
-                npc.alpha = 0;
-            }
-
-            if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))
-            {
-                DontSayDeathLine = true;
-                npc.life = 0;
-                npc.netUpdate = true;
-            }
-
-            if (internalAI[1] >= (ProjectileShoot == 0 ? 6 : 8))
-            {
-                internalAI[1] = 0;
-                internalAI[2]++;
-            }
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.TargetClosest();
+                npc.TargetClosest(false);
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
                     if (internalAI[2] > 3)
@@ -163,7 +141,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     return;
                 }
-
             }
             else
             {
@@ -174,12 +151,32 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
+            internalAI[1]++;
+
+            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
+            {
+                if (internalAI[1] >= 3)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2]++;
+                }
+            }
+            else
+            {
+                if (internalAI[1] >= 8)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2]++;
+                }
+            }
+
+
             if (internalAI[0] == AISTATE_IDLE)
             {
-                if (Main.netMode != 1) 
+                if (Main.netMode != 1)
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 240)
+                    if (internalAI[3] >= 120)
                     {
                         internalAI[3] = 0;
                         internalAI[0] = Main.rand.Next(4);
@@ -203,13 +200,13 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (ProjectileShoot == 0)
                 {
-                    if (internalAI[2] == 5 && internalAI[1] == 4)
+                    if (internalAI[2] == 5 && internalAI[1] == 3)
                     {
                         repeat -= 1;
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<AH.Haruka.HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
+                        int projType = mod.ProjectileType<AH.Haruka.HarukaKunai>();
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 20f);
                         npc.netUpdate = true;
                     }
                     if (internalAI[2] < 4 || internalAI[2] > 6)
@@ -224,7 +221,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         ProjectileShoot -= 1;
-                        repeat = 15;
+                        repeat = 12;
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -280,17 +277,24 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[3]++;
 
-                if (internalAI[2] < 17) 
+                MoveToPoint(player.Center);
+
+                if (internalAI[2] < 17)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 17;
                 }
                 if (internalAI[2] > 26)
                 {
+                    internalAI[4] += 1;
+                }
+                if (internalAI[4] > 3)
+                {
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
+                    internalAI[4] = 0;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -307,6 +311,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[1] = 0;
                     internalAI[2] = 13;
                 }
+
                 /*float Point = 500 * npc.direction;
                 Vector2 point = player.Center + new Vector2(Point, 0); //Move to 500 pixels AWAY from the player. 
                 npc.netUpdate = true;
@@ -351,6 +356,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
+
+
             if (internalAI[0] != AISTATE_SPIN)
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
@@ -375,7 +382,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
                 npc.ai[0]++;
                 if (npc.ai[0] > 180)
                 {
@@ -405,7 +411,9 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 MoveToPoint(npc.Center);
             }
-            npc.rotation = 0; //No ugly rotation.
+            npc.rotation = 0;
+
+            npc.noTileCollide = true;
         }
 
         public void MoveToPoint(Vector2 point)
