@@ -101,8 +101,8 @@ namespace AAMod.Items.Pets
                 glowTex = mod.GetTexture("Glowmasks/Mudkip_Glow");
             }
             frame = BaseDrawing.GetFrame(Main.projFrames[projectile.type], frameWidth, frameHeight, 0, 2);
-            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 3, frame, lightColor);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 3, frame, GetGlowAlpha(player));
+            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 11, frame, lightColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 11, frame, GetGlowAlpha(player));
             return false;
         }
     }
