@@ -43,17 +43,6 @@ Only craftable in expert mode");
             }
         }
 
-
-        public override void AddRecipes()
-        {
-            RuneRecipe recipe = new RuneRecipe(mod);
-            recipe.AddIngredient(null, "DreadScale", 20);
-            recipe.AddIngredient(null, "DreadSigil");
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
-        }
-
         public override bool UseItem(Player player)
 		{
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);

@@ -98,14 +98,5 @@ Only craftable in expert mode");
                 Main.npc[npcID].netUpdate2 = true;
             }
         }
-        public override void AddRecipes()
-        {
-            RuneRecipe recipe = new RuneRecipe(mod);
-            recipe.AddIngredient(null, "CrucibleScale", 20);
-            recipe.AddIngredient(null, "DraconianSigil");
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
-        }
     }
 }

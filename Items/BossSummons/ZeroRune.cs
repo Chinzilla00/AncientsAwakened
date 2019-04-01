@@ -92,15 +92,5 @@ Only craftable in expert mode");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;
         }
-
-        public override void AddRecipes()
-        {
-            RuneRecipe recipe = new RuneRecipe(mod);
-            recipe.AddIngredient(null, "ApocalyptitePlate", 10);
-            recipe.AddIngredient(null, "UnstableSingularity", 20);
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
-        }
     }
 }

@@ -78,6 +78,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (Main.expertMode)
             {
+
+                if (!AAWorld.downedYamata)
+                {
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DreadRune"));
+                }
+
                 BaseAI.DropItem(npc, mod.ItemType("YamataATrophy"), 1, 1, 15, true);
                 
                 npc.DropBossBags();
