@@ -38,7 +38,16 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.buffImmune[k] = true;
             }
         }
-        
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Zero>()))
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         public override void FindFrame(int frameHeight)
         {

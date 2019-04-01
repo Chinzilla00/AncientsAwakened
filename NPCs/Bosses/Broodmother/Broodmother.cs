@@ -133,12 +133,24 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
         }
 
-
+        public static Vector2 GetDrawPosition(Vector2 position, Vector2 origin, int width, int height, int texWidth, int texHeight, int framecount, float scale, bool drawCentered = false)
+        {
+            Vector2 screenPos = new Vector2((int)Main.screenPosition.X, (int)Main.screenPosition.Y);
+            if (drawCentered)
+            {
+                Vector2 texHalf = new Vector2(texWidth / 2, texHeight / framecount / 2);
+                return (position + new Vector2(width * 0.5f, height * 0.5f)) - (texHalf * scale) + (origin * scale) - screenPos;
+            }
+            return position - screenPos + new Vector2(width * 0.5f, height) - new Vector2(texWidth * scale / 2f, texHeight * scale / (float)framecount) + (origin * scale) + new Vector2(0f, 5f);
+        }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            Texture2D tex = Main.npcTexture[npc.type];
             Vector2 Source = new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y);
             Vector2 Origin = new Vector2(npc.width * 0.5f, npc.height * 0.5f);
+
+            Vector2 Drawpos = GetDrawPosition(npc.position, Origin, npc.width, npc.height, tex.Width, tex.Height, 6, 1f, true);
 
             SpriteEffects flipSprite = SpriteEffects.None;
             if (npc.direction == 1)
@@ -146,8 +158,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 flipSprite = SpriteEffects.FlipHorizontally;
             }
             
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother"), Source, npc.frame, drawColor, npc.rotation, Origin, 1f, flipSprite, 0f);
-            spriteBatch.Draw(mod.GetTexture("Glowmasks/Broodmother_Glow"), Source, npc.frame, Color.White, npc.rotation, Origin, 1f, flipSprite, 0f);
+            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother"), Drawpos, npc.frame, drawColor, npc.rotation, Origin, 1f, flipSprite, 0f);
+            spriteBatch.Draw(mod.GetTexture("Glowmasks/Broodmother_Glow"), Drawpos, npc.frame, Color.White, npc.rotation, Origin, 1f, flipSprite, 0f);
             return false;
         }
 
@@ -208,46 +220,22 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
 			if(Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
 			{
-                if (internalAI[5] == -1)
+                projectileTimer++;
+                if (projectileTimer >= projectileInterval)
                 {
-                    internalAI[5] = Main.rand.Next(2);
-                }
-                if (internalAI[5] == 0)
-                {
-                    projectileTimer++;
-                    if (projectileTimer >= projectileInterval)
+                    if (projectileTimer > (projectileInterval + 120))
                     {
-                        if (projectileTimer > (projectileInterval + 120))
-                        {
-                            projectileTimer = 0;
-                            internalAI[5] = -1;
-                        }
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
-                        firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType<BroodBreath>(), ref FireTimer[0], 5, npc.damage / 2, 12);
-                        Main.projectile[projID].netUpdate = true;
+                        projectileTimer = 0;
+                        internalAI[5] = -1;
                     }
+                    Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                    Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
+                    firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
+                    int projID = BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType<BroodBreath>(), ref FireTimer[0], 5, npc.damage / 2, 12);
+                    Main.projectile[projID].netUpdate = true;
                 }
-                else
-                {
-                    projectileTimer++;
-                    if (projectileTimer >= projectileInterval && projectileTimer % 10 == 0)
-                    {
-                        if (projectileTimer > (projectileInterval + 50))
-                        {
-                            projectileTimer = 0;
-                            internalAI[5] = -1;
-                        }
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
-                        firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);
-                        Main.projectile[projID].netUpdate = true;
-                    }
-                }
-			}
-            int numberOfMinions = 7; //max number of eggs/broodminis to spawn
+            }
+            int numberOfMinions = 3; //max number of eggs/broodminis to spawn
             bool DespawnAttempt = false;
             npc.noTileCollide = false;
             npc.noGravity = true;

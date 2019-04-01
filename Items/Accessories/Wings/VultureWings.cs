@@ -9,8 +9,9 @@ namespace AAMod.Items.Accessories.Wings
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("");
-		}
+            DisplayName.SetDefault("Vulture Wings");
+            Tooltip.SetDefault("Allows slow fall");
+        }
 
 		public override void SetDefaults()
 		{
@@ -19,11 +20,6 @@ namespace AAMod.Items.Accessories.Wings
 			item.value = Item.sellPrice(0, 1, 50, 0);
 			item.rare = 1;
 			item.accessory = true;
-		}
-		
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.wingTimeMax = 25;
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,

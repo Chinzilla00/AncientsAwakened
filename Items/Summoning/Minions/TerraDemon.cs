@@ -14,6 +14,9 @@ namespace AAMod.Items.Summoning.Minions
         {
             DisplayName.SetDefault("Terra Guardian");
             Main.projFrames[projectile.type] = 5;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 
         }
 
@@ -30,8 +33,6 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft = 18000;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
 

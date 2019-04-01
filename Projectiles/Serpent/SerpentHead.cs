@@ -13,6 +13,9 @@ namespace AAMod.Projectiles.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Snow Serpent");
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetDefaults()

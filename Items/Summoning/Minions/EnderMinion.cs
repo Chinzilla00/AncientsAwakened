@@ -20,12 +20,14 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft = 300;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ender Minion");
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 
         }
         public override bool OnTileCollide(Vector2 oldVelocity)

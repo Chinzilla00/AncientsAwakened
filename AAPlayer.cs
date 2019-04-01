@@ -112,6 +112,7 @@ namespace AAMod
         public bool trueDemon;
         public bool trueDemonBonus;
         public bool trueDynaskull;
+        public int DynaskullCooldown = 0;
         public bool terraSet;
         public bool chaosSet;
         public bool darkmatterSetMe;
@@ -231,6 +232,8 @@ namespace AAMod
 
         //Misc
         public bool Compass = false;
+        
+        public int PrismCooldown = 0;
 
         public bool WorldgenReminder = false;
 
@@ -305,7 +308,6 @@ namespace AAMod
             Assassin = false;
             AssassinStealth = false;
             //Accessory
-            AbilityCD = 0;
             AshRemover = false;
             FogRemover = false;
             clawsOfChaos = false;
@@ -378,6 +380,7 @@ namespace AAMod
 
         public override void Initialize()
         {
+            AbilityCD = 0;
             ManaLantern = 0;
             ZoneInferno = false;
             ZoneMire = false;
@@ -831,6 +834,11 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (PrismCooldown > 0)
+            {
+                PrismCooldown--;
+            }
+
             if (AAWorld.ModContentGenerated || ZoneInferno || ZoneMire || ZoneVoid || Terrarium || ZoneMush)
             {
                 AAWorld.ModContentGenerated = true;

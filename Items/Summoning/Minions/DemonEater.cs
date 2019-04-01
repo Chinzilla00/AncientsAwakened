@@ -13,9 +13,10 @@ namespace AAMod.Items.Summoning.Minions
 		{
 			DisplayName.SetDefault("Demon Eater");
 			Main.projFrames[projectile.type] = 2;
-			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-		}
+        }
     	
         public override void SetDefaults()
         {

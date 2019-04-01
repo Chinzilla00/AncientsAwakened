@@ -28,6 +28,7 @@ namespace AAMod.Projectiles.AH
             projectile.penetrate = 1;
             projectile.alpha = 0;
             projectile.timeLeft = 255;
+            projectile.tileCollide = false;
         }
 
         public override Color? GetAlpha(Color lightColor)

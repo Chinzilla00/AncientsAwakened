@@ -30,7 +30,6 @@ namespace AAMod.Projectiles.Akuma.Lung
 
             projectile.penetrate = -1;
             projectile.timeLeft = 18000;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
@@ -45,6 +44,8 @@ namespace AAMod.Projectiles.Akuma.Lung
         {
             DisplayName.SetDefault("Ancient Lung");
             Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {

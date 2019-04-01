@@ -11,6 +11,7 @@ namespace AAMod.Items.Accessories.Wings
 		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Draconian Sun Wings");
+            Tooltip.SetDefault("Allows flight and slow fall");
         }
 
 		public override void SetDefaults()
@@ -25,7 +26,7 @@ namespace AAMod.Items.Accessories.Wings
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.wingTimeMax = 180;
+			player.wingTimeMax = 220;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)

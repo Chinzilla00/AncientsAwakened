@@ -14,7 +14,9 @@ namespace AAMod.Items.Summoning.Minions
         {
             DisplayName.SetDefault("Baby Phoenix");
             Main.projFrames[projectile.type] = 8;
-
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         } 
         public override void SetDefaults()
         {

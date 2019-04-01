@@ -39,6 +39,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Zero>()))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public override void FindFrame(int frameHeight)
         {
             if (npc.velocity.Y == 0.0)

@@ -24,9 +24,10 @@ namespace AAMod.Projectiles.Djinn
 		{
 			DisplayName.SetDefault("Dust Devil");
 			Main.projFrames[projectile.type] = 6;
-			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-		}
+        }
     	
         public override void SetDefaults()
         {
@@ -41,8 +42,6 @@ namespace AAMod.Projectiles.Djinn
             projectile.minionSlots = 1f;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
         public int FrameTimer = 0;

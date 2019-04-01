@@ -170,6 +170,7 @@
     <Compile Include="Dusts\HallowedDustT.cs" />
     <Compile Include="Dusts\HallowedDust.cs" />
     <Compile Include="Dusts\JudgementDust.cs" />
+    <Compile Include="Dusts\PrismDust.cs" />
     <Compile Include="Dusts\YamataAuraDust.cs" />
     <Compile Include="Dusts\DaybringerDust.cs" />
     <Compile Include="Dusts\FluffEXDust.cs" />
@@ -268,7 +269,6 @@
     <Compile Include="Items\Accessories\OrnateBand.cs" />
     <Compile Include="Items\Accessories\PowerStone.cs" />
     <Compile Include="Items\Accessories\RealityStone.cs" />
-    <Compile Include="Items\Accessories\Shadow_Orb.cs" />
     <Compile Include="Items\Accessories\SoulStone.cs" />
     <Compile Include="Items\Accessories\SpaceStone.cs" />
     <Compile Include="Items\Accessories\TimeStone.cs" />
@@ -1827,6 +1827,10 @@
     <Compile Include="Projectiles\TFGWP.cs" />
     <Compile Include="Projectiles\TheIlluminatiP.cs" />
     <Compile Include="Projectiles\The_Plague_Pro.cs" />
+    <Compile Include="Projectiles\Thorium\AuroraScythe.cs" />
+    <Compile Include="Projectiles\Thorium\AuroraScytheDamage.cs" />
+    <Compile Include="Projectiles\Thorium\AuroraScytheDamage2.cs" />
+    <Compile Include="Projectiles\Thorium\AuroraScytheEffect.cs" />
     <Compile Include="Projectiles\Thorium\DragonsClaw.cs" />
     <Compile Include="Projectiles\Thorium\DragonsClawDamage.cs" />
     <Compile Include="Projectiles\Thorium\DragonsClawDamage2.cs" />
@@ -1888,6 +1892,7 @@
     <Compile Include="Projectiles\Zero\EventHorizon.cs" />
     <Compile Include="Projectiles\Zero\Neutralizer.cs" />
     <Compile Include="Projectiles\Zero\RealityLaser.cs" />
+    <Compile Include="Projectiles\Zero\Horizon.cs" />
     <Compile Include="Projectiles\Zero\Rift.cs" />
     <Compile Include="Projectiles\Zero\Teslashock.cs" />
     <Compile Include="Projectiles\Zero\VoidStarPF.cs" />
@@ -2367,6 +2372,7 @@
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
     <Content Include="Dusts\PowerDust.png" />
+    <Content Include="Dusts\PrismDusts.png" />
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RadiumDust.png" />
     <Content Include="Dusts\RangedDust.png" />
@@ -3267,7 +3273,6 @@
     <Content Include="Items\Accessories\RealityStone.png" />
     <Content Include="Items\Accessories\RealityStone_Face.png" />
     <Content Include="Items\Accessories\RealityStone_Wings.png" />
-    <Content Include="Items\Accessories\Shadow_Orb.png" />
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
@@ -5488,6 +5493,10 @@
     <Content Include="Projectiles\TFGWP.png" />
     <Content Include="Projectiles\TheIlluminatiP.png" />
     <Content Include="Projectiles\The_Plague_Pro.png" />
+    <Content Include="Projectiles\Thorium\AuroraScythe.png" />
+    <Content Include="Projectiles\Thorium\AuroraScytheDamage.png" />
+    <Content Include="Projectiles\Thorium\AuroraScytheDamage2.png" />
+    <Content Include="Projectiles\Thorium\AuroraScytheEffect.png" />
     <Content Include="Projectiles\Thorium\DragonsClaw.png" />
     <Content Include="Projectiles\Thorium\DragonsClawDamage.png" />
     <Content Include="Projectiles\Thorium\DragonsClawDamage2.png" />
@@ -5553,6 +5562,7 @@
     <Content Include="Projectiles\Zero\EventHorizon.png" />
     <Content Include="Projectiles\Zero\Neutralizer.png" />
     <Content Include="Projectiles\Zero\RealityLaser.png" />
+    <Content Include="Projectiles\Zero\Horizon.png" />
     <Content Include="Projectiles\Zero\Rift.png" />
     <Content Include="Projectiles\Zero\Teslashock.png" />
     <Content Include="Projectiles\Zero\VoidStarPF.png" />

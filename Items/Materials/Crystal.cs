@@ -84,12 +84,30 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.FleshGrass);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Vertebrae, 10);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Ichor, 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Ichor, 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -127,12 +145,30 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.CorruptGrass);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.RottenChunk, 10);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.CursedFlame, 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.CursedFlame, 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -172,25 +208,17 @@ namespace AAMod.Items.Materials
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Bone, 15);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
-                recipe.AddTile(TileID.BlueDungeonBrick);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Ectoplasm, 5);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
-                recipe.AddTile(TileID.PinkDungeonBrick);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "Crystal");
-                recipe.AddTile(null, "TerraPrism");
-                recipe.AddTile(TileID.GreenDungeonBrick);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
@@ -230,12 +258,22 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.HallowedGrass);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.SoulofLight, 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.CrystalShard, 10);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -273,12 +311,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.Ash);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "PureEvil", 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -337,7 +377,7 @@ namespace AAMod.Items.Materials
         }
     }*/
 
-    public class OceanCrystal : ModItem
+    /*public class OceanCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -378,9 +418,9 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }
+    }*/
 
-    public class IceCrystal : ModItem
+    /*public class IceCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -421,7 +461,7 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }
+    }*/
 
     public class DesertCrystal : ModItem
     {
@@ -457,12 +497,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.Sand);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -500,12 +542,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.JungleGrass);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "PlanteraPetal", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -543,12 +587,22 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(null, "InfernoGrass");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "SoulOfSmite", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "DragonScale", 15);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -586,12 +640,22 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(null, "MireGrass");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "SoulOfSpite", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "MirePod", 15);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -629,12 +693,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.Grass);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "DragonSpirit", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -681,7 +747,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class VoidCrystal : ModItem
+    /*public class VoidCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -722,5 +788,5 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }
+    }*/
 }

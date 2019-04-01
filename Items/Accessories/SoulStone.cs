@@ -19,7 +19,7 @@ namespace AAMod.Items.Accessories
         {
             DisplayName.SetDefault("Soul Stone");
             Tooltip.SetDefault(
-@"+10 max minions
+@"+6 max minions
 Allows you to detect the souls of creatures, detect valuable resources, and see traps
 'I have lost more than you can imagine'");
         }
@@ -56,7 +56,7 @@ Allows you to detect the souls of creatures, detect valuable resources, and see 
             player.AddBuff(BuffID.Spelunker, 2);
             player.AddBuff(BuffID.Hunter, 2);
             player.AddBuff(BuffID.Dangersense, 2);
-            player.maxMinions += 10;
+            player.maxMinions += 6;
         }
 
         public override bool CanEquipAccessory(Player player, int slot)
