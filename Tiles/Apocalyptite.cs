@@ -18,7 +18,9 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("Apocalyptite");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
-            AddMapEntry(new Color(70, 20, 20));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Apocalyptite Ore");
+            AddMapEntry(new Color(70, 20, 20), name);
 			minPick = 225;
         }
 

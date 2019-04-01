@@ -15,9 +15,11 @@ namespace AAMod.Tiles
             Main.tileBlendAll[this.Type] = false;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("HallowedOre");   //put your CustomBlock name
+            drop = mod.ItemType("HallowedOre"); 
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Hallowed Ore");
             dustType = DustID.Gold;
-            AddMapEntry(new Color(160, 160, 100));
+            AddMapEntry(new Color(160, 160, 50), name);
 			minPick = 190;
         }
       

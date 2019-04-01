@@ -13,8 +13,10 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = false;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("YtriumOre");
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Yttrium Ore");
+            AddMapEntry(new Color(160, 150, 0), name);
             dustType = mod.DustType<Dusts.YtriumDust>();
-            AddMapEntry(new Color(160, 150, 0));
 			minPick = 100;
         }
       

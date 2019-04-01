@@ -17,7 +17,7 @@ namespace AAMod.Items.ReforgeSouls
         {
             DisplayName.SetDefault("Legendary Soul");
             Tooltip.SetDefault(
-@"Makes melee weapon to get ''Legendary'' prefix if it is possible
+@"Gives a weapon the ''Legendary'' prefix if it is possible
 Right-click weapon with the soul to set prefix
 Consumes in process");
         }

@@ -18,7 +18,9 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("DynaskullOre");
             dustType = mod.DustType("InfinityOverloadY");
-            AddMapEntry(new Color(100, 100, 0));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Dynaskull Ore");
+            AddMapEntry(new Color(100, 100, 0), name);
 			minPick = 65;
         }
 

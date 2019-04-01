@@ -17,7 +17,7 @@ namespace AAMod.Items.ReforgeSouls
         {
             DisplayName.SetDefault("Unreal Soul");
             Tooltip.SetDefault(
-@"Makes ranged/thrown weapon to get ''Unreal'' prefix if it is possible
+@"Gives a weapon the ''Unreal'' prefix if it is possible
 Right-click weapon with the soul to set prefix
 Consumes in process");
         }

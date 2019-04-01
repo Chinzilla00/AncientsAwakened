@@ -16,8 +16,10 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("Uranium");   //put your CustomBlock name
             dustType = mod.DustType("InfinityOverloadG");
-            AddMapEntry(new Color(20, 70, 20));
-			minPick = 110;
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Uranium Ore");
+            AddMapEntry(new Color(2, 150, 0), name);
+            minPick = 110;
         }
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)

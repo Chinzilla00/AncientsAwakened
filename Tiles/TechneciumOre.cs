@@ -13,7 +13,9 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("TechneciumOre");   //put your CustomBlock name
-            AddMapEntry(new Color(100, 200, 200));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Technecium Ore");
+            AddMapEntry(new Color(100, 200, 200), name);
 			minPick = 150;
         }
       

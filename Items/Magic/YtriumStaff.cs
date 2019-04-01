@@ -34,6 +34,14 @@ namespace AAMod.Items.Magic
             DisplayName.SetDefault("Yttrium Staff");
             Item.staff[item.type] = true;
         }
-
+        
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod, "YtriumBar", 24);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

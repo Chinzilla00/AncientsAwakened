@@ -18,7 +18,9 @@ namespace AAMod.Tiles
             soundType = 21;
             dustType = mod.DustType("EverleafDust");
             drop = mod.ItemType("Everleaf");
-            AddMapEntry(new Color(10, 80, 15));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Everleaf Root");
+            AddMapEntry(new Color(10, 80, 15), name);
 			minPick = 225;
         }
       

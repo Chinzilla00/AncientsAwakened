@@ -16,7 +16,9 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("DiscordiumOre");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");
-            AddMapEntry(new Color(70, 20, 20));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Discordium Ore");
+            AddMapEntry(new Color(70, 20, 90), name);
 			minPick = 225;
         }
 

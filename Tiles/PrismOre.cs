@@ -18,7 +18,9 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Prism");   //put your CustomBlock name
             dustType = DustID.Stone;
-            AddMapEntry(new Color(100, 100, 100));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Yttrium Ore");
+            AddMapEntry(new Color(100, 100, 100), name);
 			minPick = 65;
         }
 
