@@ -25,8 +25,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
-			npc.height = 24;
-			npc.width = 24;
+			npc.height = 20;
+			npc.width = 20;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;

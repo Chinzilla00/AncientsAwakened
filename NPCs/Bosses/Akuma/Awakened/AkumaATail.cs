@@ -23,9 +23,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 60;
-            npc.height = 60;
+            npc.width = 80;
+            npc.height = 80;
             npc.dontCountMe = true;
+
+            npc.alpha = 255;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

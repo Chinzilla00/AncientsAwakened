@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingOceanDye);
             Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
 
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(4, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 2);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 2);
 
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, frame, Color.White, true);
             return false;

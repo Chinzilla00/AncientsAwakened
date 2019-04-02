@@ -261,7 +261,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             bool collision = true;
             
-            float speed = 10f;
+            float speed = 15f;
             float acceleration = 0.16f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);

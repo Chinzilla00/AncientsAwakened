@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void AI()
         {
+            projectile.velocity.Y += .02f;
             if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
             {
                 projectile.tileCollide = true;

@@ -41,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noGravity = false;
             npc.noTileCollide = false;
             bossBag = mod.ItemType("AHBag");
-            npc.alpha = 255;
         }
 
 
