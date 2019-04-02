@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class EnderMinion : Minion2
+    public class EnderMinion : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -43,7 +44,7 @@ namespace AAMod.Items.Summoning.Minions
             return false;
         }
 
-        public override void CheckActive()
+        public override bool PreAI()
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
@@ -55,6 +56,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 projectile.timeLeft = 2;
             }
+            return true;
         }
     }
 }

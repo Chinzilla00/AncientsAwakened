@@ -301,10 +301,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
             {
+                npc.dontTakeDamage = true;
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AH.Ashe.AsheDragon>(), 0);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Shenling>(), 0);
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -312,6 +313,10 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
             }
             npc.rotation = 0; //No ugly rotation.
         }
@@ -414,7 +419,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        private bool DontSayDeathLine = false;
+        private readonly bool DontSayDeathLine = false;
 
         public override void NPCLoot()
         {
@@ -475,11 +480,11 @@ namespace AAMod.NPCs.Bosses.Shen
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             int purple = GameShaders.Armor.GetShaderIdFromItemId(mod.ItemType<Items.Dyes.DiscordianDye>());
 
-            if (internalAI[0] == AISTATE_DRAGON) //Only draw if summoning a noodle
+            if (scale > 0) //Only draw if summoning a noodle
             {
-                BaseDrawing.DrawTexture(spritebatch, RitualTex, purple, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RingFrame, Color.White, true);
+                BaseDrawing.DrawTexture(spritebatch, RitualTex, purple, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, RitualFrame, Color.White, true);
                 BaseDrawing.DrawTexture(spritebatch, RingTex, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, Color.White, true);
-                BaseDrawing.DrawTexture(spritebatch, RingTex1, purple, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RitualFrame, Color.White, true);
+                BaseDrawing.DrawTexture(spritebatch, RingTex1, purple, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, Color.White, true);
             }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);

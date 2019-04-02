@@ -462,23 +462,7 @@ namespace AAMod
 
         public override void PreUpdateBuffs()
         {
-            if (uraniumSet)
-            {
-                Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
-                Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
-                float RadiationDistance = 32f;
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    for (int l = 0; l < 200; l++)
-                    {
-                        NPC nPC = Main.npc[l];
-                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance)
-                        {
-                            player.ApplyDamageToNPC(nPC, 1, 0f, 0, false);
-                        }
-                    }
-                }
-            }
+            
         }
 
         public override void UpdateBiomes()
@@ -834,9 +818,22 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (PrismCooldown > 0)
+            if (uraniumSet)
             {
-                PrismCooldown--;
+                Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
+                Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
+                float RadiationDistance = 32f;
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    for (int l = 0; l < 200; l++)
+                    {
+                        NPC nPC = Main.npc[l];
+                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance)
+                        {
+                            player.ApplyDamageToNPC(nPC, 1, 0f, 0, false);
+                        }
+                    }
+                }
             }
 
             if (AAWorld.ModContentGenerated || ZoneInferno || ZoneMire || ZoneVoid || Terrarium || ZoneMush)

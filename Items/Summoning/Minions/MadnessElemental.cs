@@ -9,7 +9,6 @@ namespace AAMod.Items.Summoning.Minions
 {
     public class MadnessElemental : ModProjectile
 	{
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Madness Elemental");

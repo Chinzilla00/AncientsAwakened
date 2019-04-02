@@ -787,11 +787,7 @@
     <Compile Include="Items\Dev\AmphibianLongswordS.cs" />
     <Compile Include="Items\Dev\CatsEyeRifle.cs" />
     <Compile Include="Items\Dev\CatsEyeRifleEX.cs" />
-    <Compile Include="Items\Dev\ChairMinion.cs" />
-    <Compile Include="Items\Dev\ChairMinionEX.cs" />
     <Compile Include="Items\Dev\CharlieShell.cs" />
-    <Compile Include="Items\Dev\ChinStaff.cs" />
-    <Compile Include="Items\Dev\ChinStaffEX.cs" />
     <Compile Include="Items\Dev\Chronos.cs" />
     <Compile Include="Items\Dev\CordesDuFuret_Axe.cs" />
     <Compile Include="Items\Dev\CordesDuFuret_Notes.cs" />
@@ -1109,8 +1105,6 @@
     <Compile Include="Items\Summoning\DragonriderStaff.cs" />
     <Compile Include="Items\Summoning\Minions\BabyPhoenix.cs" />
     <Compile Include="Items\Summoning\Minions\BlizzardDragon.cs" />
-    <Compile Include="Items\Summoning\Minions\Chair.cs" />
-    <Compile Include="Items\Summoning\Minions\ChairEX.cs" />
     <Compile Include="Items\Summoning\Minions\CrimeraMinion.cs" />
     <Compile Include="Items\Summoning\Minions\DemonEater.cs" />
     <Compile Include="Items\Summoning\Minions\DemonMinion.cs" />
@@ -1122,13 +1116,10 @@
     <Compile Include="Items\Summoning\Minions\DragonHead.cs" />
     <Compile Include="Items\Summoning\Minions\DragonTail.cs" />
     <Compile Include="Items\Summoning\Minions\HallowedPrism.cs" />
-    <Compile Include="Items\Summoning\Minions\HoverShooter.cs" />
     <Compile Include="Items\Summoning\Minions\HydraProj.cs" />
     <Compile Include="Items\Summoning\Minions\IceBall.cs" />
     <Compile Include="Items\Summoning\Minions\MadnessLaser.cs" />
-    <Compile Include="Items\Summoning\Minions\Minion1.cs" />
     <Compile Include="Items\Summoning\Minions\Prismshot.cs" />
-    <Compile Include="Items\Summoning\Minions\ProbeINFO.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeMinion.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeShot.cs" />
     <Compile Include="Items\Summoning\Minions\SkullMinion.cs" />
@@ -1136,7 +1127,6 @@
     <Compile Include="Items\Summoning\Minions\StoneHydra.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinion.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
-    <Compile Include="Items\Summoning\Minions\Minion2.cs" />
     <Compile Include="Items\Summoning\Minions\TDevilShot.cs" />
     <Compile Include="Items\Summoning\Minions\TerraDemon.cs" />
     <Compile Include="Items\Summoning\Minions\MadnessElemental.cs" />
@@ -4142,12 +4132,8 @@
     <Content Include="Items\Dev\AmphibianLongswordS.png" />
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\CatsEyeRifleEX.png" />
-    <Content Include="Items\Dev\ChairMinion.png" />
-    <Content Include="Items\Dev\ChairMinionEX.png" />
     <Content Include="Items\Dev\CharlieShell.png" />
     <Content Include="Items\Dev\CharlieShell_Shield.png" />
-    <Content Include="Items\Dev\ChinStaff.png" />
-    <Content Include="Items\Dev\ChinStaffEX.png" />
     <Content Include="Items\Dev\Chronos.png" />
     <Content Include="Items\Dev\ChronosOld.png" />
     <Content Include="Items\Dev\CordesDuFuret_Axe.png" />
@@ -4978,8 +4964,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenDoragon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\Shenling.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenlingBody.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingTail.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor1.png" />
