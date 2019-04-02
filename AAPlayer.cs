@@ -1145,11 +1145,36 @@ namespace AAMod
                         break;
                     case 1:
                         string addonA = (dropType == 3 ? "A" : "");
+                        if (Main.rand.Next(4000) == 0)
+                        {
+                            if (dropType < 2)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverMask" + addonA));
+                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverJacket" + addonA));
+                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverBoots" + addonA));
+                            }
+                            if (dropType >= 1)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("MudkipBall"));
+                                player.QuickSpawnItem(mod.ItemType("ShinyKipronWings"));
+                            }
+                            if (dropType >= 2)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("SFishDiverMaskA"));
+                                player.QuickSpawnItem(mod.ItemType("SFishDiverJacketA"));
+                                player.QuickSpawnItem(mod.ItemType("SFishDiverBootsA"));
+                                player.QuickSpawnItem(mod.ItemType("AmphibianLongsword" + addonEX + "S"));
+                            }
+
+                            spawnedDevItems = true;
+                            break;
+                        }
                         player.QuickSpawnItem(mod.ItemType("FishDiverMask" + addonA));
                         player.QuickSpawnItem(mod.ItemType("FishDiverJacket" + addonA));
                         player.QuickSpawnItem(mod.ItemType("FishDiverBoots" + addonA));
                         if (dropType >= 1)
                         {
+                            player.QuickSpawnItem(mod.ItemType("MudkipBall"));
                             player.QuickSpawnItem(mod.ItemType("KipronWings"));
                         }
                         if (dropType >= 2)
@@ -1185,16 +1210,17 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 5:
-                        player.QuickSpawnItem(mod.ItemType("ChinMask"));
-                        player.QuickSpawnItem(mod.ItemType("ChinSuit"));
-                        player.QuickSpawnItem(mod.ItemType("ChinPants"));
+
+                        player.QuickSpawnItem(mod.ItemType("FazerHood"));
+                        player.QuickSpawnItem(mod.ItemType("FazerShirt"));
+                        player.QuickSpawnItem(mod.ItemType("FazerPants"));
                         if (dropType >= 1)
                         {
-                            player.QuickSpawnItem(mod.ItemType("ChinsMagicCoin"));
+                            player.QuickSpawnItem(mod.ItemType("FazerPaws"));
                         }
                         if (dropType >= 2)
                         {
-                            player.QuickSpawnItem(mod.ItemType("ChinStaff" + addonEX));
+                            player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
                         }
                         spawnedDevItems = true;
                         break;
@@ -1235,6 +1261,15 @@ namespace AAMod
                         }
                         break;
                     case 11:
+                        player.QuickSpawnItem(mod.ItemType("LizEars"));
+                        player.QuickSpawnItem(mod.ItemType("LizShirt"));
+                        player.QuickSpawnItem(mod.ItemType("LizBoots"));
+                        player.QuickSpawnItem(mod.ItemType("LizScarf"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("RoyalStar"));
+                            player.QuickSpawnItem(mod.ItemType("NightingaleWings"));
+                        }
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("CatsEyeRifle" + addonEX));
@@ -1276,18 +1311,6 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 15:
-                        player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                        player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                        player.QuickSpawnItem(mod.ItemType("FazerPants"));
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("FazerPaws"));
-                        }
-                        if (dropType >= 2)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
-                        }
-                        spawnedDevItems = true;
                         break;
                 }
             }
@@ -1637,7 +1660,7 @@ namespace AAMod
                 {
                     SnapCD = 18000;
                     Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<CrabGuardian>() /*&& x.type != mod.NPCType<IZHand1>() && x.type != mod.NPCType<IZHand2>()*/ && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
+                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
                     });

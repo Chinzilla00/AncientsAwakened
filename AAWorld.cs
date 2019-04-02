@@ -1095,7 +1095,7 @@ namespace AAMod
                 if (DiscordOres == false)
                 {
                     DiscordOres = true;
-                    Main.NewText("Chaotic energy grows in the deepest parts of the world", Color.Magenta);
+                    Main.NewText("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)

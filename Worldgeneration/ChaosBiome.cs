@@ -25,7 +25,7 @@ namespace AAMod.Worldgeneration
 			tileIce = (ushort)mod.TileType("Depthice"), tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone");
 
 			int worldSize = GetWorldSize();
-			int biomeRadius = (worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+			int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 			
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
@@ -177,7 +177,7 @@ namespace AAMod.Worldgeneration
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
 
             int worldSize = GetWorldSize();
-            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 180 : 150), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180), biomeRadiusHalf = biomeRadius / 2;  //how deep the biome is (scaled by world size)	
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");

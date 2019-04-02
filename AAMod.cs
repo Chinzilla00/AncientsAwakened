@@ -760,8 +760,6 @@ namespace AAMod
                 ShenASky.PlanetTexture = null;
                 ShenASky.SkyTex = null;
                 Items.Accessories.SoulStone._glow = null;
-                Items.Pets.Mudkip.glowTex = null;
-                Items.Pets.MudkipS.glowTex = null;
                 NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
                 NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
                 NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;

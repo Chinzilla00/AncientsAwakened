@@ -30,7 +30,6 @@ namespace AAMod.Items.Pets
 			return true;
 		}
 
-
         public override void AI()
 		{
 			Player player = Main.player[projectile.owner];

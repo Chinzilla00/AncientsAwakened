@@ -301,6 +301,9 @@
     <Compile Include="Items\Armor\Depth\DepthFukumen.cs" />
     <Compile Include="Items\Armor\Depth\DepthGi.cs" />
     <Compile Include="Items\Armor\Depth\DepthHakama.cs" />
+    <Compile Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverBootsA.cs" />
+    <Compile Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA.cs" />
+    <Compile Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA.cs" />
     <Compile Include="Items\Armor\Dev\Moon\MoonBeeMinion.cs" />
     <Compile Include="Items\Armor\Dev\Moon\MoonBootsA.cs" />
     <Compile Include="Items\Armor\Dev\Moon\MoonHoodA.cs" />
@@ -2372,7 +2375,7 @@
     <Content Include="Dusts\OrangeSolution.png" />
     <Content Include="Dusts\OrderSolution.png" />
     <Content Include="Dusts\PowerDust.png" />
-    <Content Include="Dusts\PrismDusts.png" />
+    <Content Include="Dusts\PrismDust.png" />
     <Content Include="Dusts\RadiantIncineriteDust.png" />
     <Content Include="Dusts\RadiumDust.png" />
     <Content Include="Dusts\RangedDust.png" />
@@ -3349,6 +3352,14 @@
     <Content Include="Items\Armor\Depth\DepthHakama.png" />
     <Content Include="Items\Armor\Depth\DepthHakama_Legs.png" />
     <Content Include="Items\Armor\Depth\DepthZugaikotso.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverBootsA.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverBootsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA_Body.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA_Female.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA.png" />
+    <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA_Head.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBeeMinion.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA_Legs.png" />
