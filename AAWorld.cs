@@ -1335,7 +1335,7 @@ namespace AAMod
                 }).Output(dictionary));
 
                 int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
-                int EvilBlockCount = dictionary[TileID.CorruptGrass] + dictionary[TileID.Ebonstone] + dictionary[TileID.FleshGrass] + dictionary[TileID.Crimstone] + dictionary[(ushort)mod.TileType("InfernoGrass")] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("MireGrass")] + dictionary[(ushort)mod.TileType("Depthstone")]);
+                int EvilBlockCount = dictionary[TileID.CorruptGrass] + dictionary[TileID.Ebonstone] + dictionary[TileID.FleshGrass] + dictionary[TileID.Crimstone] + dictionary[(ushort)mod.TileType("InfernoGrass")] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("MireGrass")] + dictionary[(ushort)mod.TileType("Depthstone")];
                 int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock] + dictionary[TileID.CorruptIce] + dictionary[TileID.FleshIce] + dictionary[(ushort)mod.TileType("Torchice")] + dictionary[(ushort)mod.TileType("Depthice")];
                 int sandBiomeCount = dictionary[TileID.Sand] + +dictionary[TileID.Ebonsand] + dictionary[TileID.Crimsand] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("Depthsand")]; ;
                 int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
