@@ -1289,6 +1289,7 @@
     <Compile Include="Mounts\PrinceFishron.cs" />
     <Compile Include="NPCs\Bosses\AH\AHDeath.cs" />
     <Compile Include="NPCs\Bosses\AH\AHSpawn.cs" />
+    <Compile Include="NPCs\Bosses\AH\Ashe\AsheFlamethrower.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\Ashe.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheVanish.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
@@ -3919,6 +3920,9 @@
     <Content Include="Items\Usable\Antifungus.png" />
     <Content Include="Items\Usable\VoidCrate.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheBarrier.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheFlamethrower.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheShield.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheVanish.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaVanish.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
@@ -3942,6 +3946,8 @@
     <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentBody.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentTail.png" />
+    <Content Include="NPCs\Enemies\Void\Vortex.png" />
+    <Content Include="NPCs\Enemies\Void\VortexBlades.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
     <Content Include="Projectiles\AH\FireSpirit.png" />

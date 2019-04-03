@@ -545,10 +545,10 @@ namespace AAMod.NPCs.Bosses.Shen
 			if (fireSound)
 			{
 				Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
-			}else
+			}
+            else
 			{
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Item, "Sounds/Sounds/ShenRoar");
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar"), npc.Center);
             }
 		}
 
@@ -745,11 +745,11 @@ namespace AAMod.NPCs.Bosses.Shen
 			//draw body/charge afterimage
 			if(Charging)
 			{
-				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));	
+				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));	
 			}
-			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
-			//draw wings
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor, true);
+            //draw wings
+            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor, true);
 			
 			//deoffset
 			npc.position.Y -= 130f; // offsetVec;

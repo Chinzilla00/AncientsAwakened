@@ -1288,12 +1288,71 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            for (int biomes = 0; biomes < 2; biomes++)
+            bool HasGenned = false;
+            while (!HasGenned)
             {
                 Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow);
                 origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-                SurfaceMushroom biome = new SurfaceMushroom();
-                biome.Place(origin, WorldGen.structures);
+                ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
+
+                int worldSize = GetWorldSize();
+                int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+                int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
+
+                //ok time to check to see if this spot is actually a good place to gen
+                Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
+                Point newOrigin = new Point(origin.X - biomeWidthHalf, origin.Y - 10);
+                WorldUtils.Gen(newOrigin, new Shapes.Rectangle(biomeWidth, biomeHeight), new Actions.TileScanner(new ushort[]
+                {
+                    TileID.Grass,
+                    TileID.Dirt,
+                    TileID.Stone,
+                    TileID.Sand,
+                    TileID.Ebonsand,
+                    TileID.Crimsand,
+                    (ushort)mod.TileType("Torchsand"),
+                    (ushort)mod.TileType("Depthsand"),
+                    TileID.SnowBlock,
+                    TileID.IceBlock,
+                    TileID.CorruptIce,
+                    TileID.FleshIce,
+                    (ushort)mod.TileType("Torchice"),
+                    (ushort)mod.TileType("Depthice"),
+                    TileID.BlueDungeonBrick,
+                    TileID.PinkDungeonBrick,
+                    TileID.GreenDungeonBrick,
+                    TileID.CorruptGrass,
+                    TileID.Ebonstone,
+                    TileID.FleshGrass,
+                    TileID.Crimstone,
+                    (ushort)mod.TileType("InfernoGrass"),
+                    (ushort)mod.TileType("Torchstone"),
+                    (ushort)mod.TileType("MireGrass"),
+                    (ushort)mod.TileType("DepthStone"),
+                    TileID.JungleGrass,
+                    TileID.Mud
+
+                }).Output(dictionary));
+
+                int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
+                int EvilBlockCount = dictionary[TileID.CorruptGrass] + dictionary[TileID.Ebonstone] + dictionary[TileID.FleshGrass] + dictionary[TileID.Crimstone] + dictionary[(ushort)mod.TileType("InfernoGrass")] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("MireGrass")] + dictionary[(ushort)mod.TileType("Depthstone")]);
+                int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock] + dictionary[TileID.CorruptIce] + dictionary[TileID.FleshIce] + dictionary[(ushort)mod.TileType("Torchice")] + dictionary[(ushort)mod.TileType("Depthice")];
+                int sandBiomeCount = dictionary[TileID.Sand] + +dictionary[TileID.Ebonsand] + dictionary[TileID.Crimsand] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("Depthsand")]; ;
+                int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
+                int JungleCount = dictionary[TileID.JungleGrass] + dictionary[TileID.Mud];
+
+                if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount || EvilBlockCount >= normalBiomeCount || JungleCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+                {
+                    return;
+                }
+                WorldUtils.Gen(newOrigin, new Shapes.Rectangle(biomeWidth, biomeHeight), Actions.Chain(new GenAction[] //gen grass...
+                {
+                    new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass }), //ensure we only replace the intended tile (in this case, grass)
+                    new RadialDitherTopMiddle(biomeWidth, biomeHeight, biomeWidthHalf - 10, biomeWidthHalf + 10), //this provides the 'blending' on the edges (except the top)
+                    new SetModTile(tileGrass, true, true) //actually place the tile
+                }));
+
+                HasGenned = true;
             }
         }
 

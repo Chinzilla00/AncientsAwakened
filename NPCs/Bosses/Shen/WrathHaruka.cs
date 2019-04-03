@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
+using AAMod.NPCs.Bosses.AH.Haruka;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -115,6 +116,10 @@ namespace AAMod.NPCs.Bosses.Shen
         public int repeat = 15;
         public bool isSlashing = false;
 
+
+        public Vector2 MovePoint;
+        public bool SelectPoint = false;
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -154,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
-                if (internalAI[1] >= 3)
+                if (internalAI[1] > 4)
                 {
                     internalAI[1] = 0;
                     internalAI[2]++;
@@ -162,7 +167,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (internalAI[1] >= 8)
+                if (internalAI[1] > 8)
                 {
                     internalAI[1] = 0;
                     internalAI[2]++;
@@ -175,10 +180,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (Main.netMode != 1)
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 120)
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        internalAI[0] = Main.rand.Next(4);
+                        internalAI[0] = Main.rand.Next(3);
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -204,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         repeat -= 1;
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<AH.Haruka.HarukaKunai>();
+                        int projType = mod.ProjectileType<HarukaKunai>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 20f);
                         npc.netUpdate = true;
                     }
@@ -215,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     if (repeat <= 0)
                     {
-                        internalAI[0] = 0;
+                        internalAI[0] = 3;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
@@ -252,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<AH.Haruka.HarukaProj>();
+                        int projType = mod.ProjectileType<HarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
                     }
                     if (isSlashing && internalAI[2] > 9)
@@ -262,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     if (internalAI[3] > 300)
                     {
-                        internalAI[0] = 0;
+                        internalAI[0] = 3;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
@@ -287,9 +292,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     internalAI[4] += 1;
                 }
-                if (internalAI[4] > 3)
+                if (internalAI[4] > 5)
                 {
-                    internalAI[0] = 0;
+                    internalAI[0] = 3;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
@@ -311,36 +316,25 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[2] = 13;
                 }
 
-                /*float Point = 500 * npc.direction;
-                Vector2 point = player.Center + new Vector2(Point, 0); //Move to 500 pixels AWAY from the player. 
-                npc.netUpdate = true;
-
-                if (internalAI[2] >= 13)
-                {
-                    MoveToPoint(point);
-                }*/
-
                 internalAI[4]++;
 
-                float maxSpeed = 10f;
-                Vector2 vector2 = npc.Center;
-                float distX = player.Center.X - vector2.X;
-                float distY = player.Center.Y - vector2.Y;
-                float dist = (float)Math.Sqrt(distX * distX + distY * distY);
-                float distMult = 9f / dist;
-                npc.velocity.X = distX * distMult * 10;
-                npc.velocity.Y = distY * distMult * 10;
-                if (npc.velocity.X > maxSpeed) { npc.velocity.X = maxSpeed; }
-                if (npc.velocity.X < -maxSpeed) { npc.velocity.X = -maxSpeed; }
-                if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
-                if (npc.velocity.Y < -maxSpeed) { npc.velocity.Y = -maxSpeed; }
+                if (SelectPoint)
+                {
+                    float Point = 500 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 0);
+                    SelectPoint = false;
+                    npc.netUpdate = true;
+                }
+
+                MoveToPoint(MovePoint);
 
                 if (Main.netMode != 1 && (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
-                    internalAI[0] = 0;
+                    internalAI[0] = 3;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
+                    internalAI[4] = 0;
                     pos = pos * -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
@@ -348,25 +342,12 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                internalAI[0] = 0;
+                internalAI[0] = 3;
                 internalAI[1] = 0;
                 internalAI[2] = 0;
                 internalAI[3] = 0;
                 npc.ai = new float[4];
                 npc.netUpdate = true;
-            }
-
-
-            if (internalAI[0] != AISTATE_SPIN)
-            {
-                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
-                {
-                    npc.direction = 1;
-                }
-                else //If NPC's X position is lower than the player's
-                {
-                    npc.direction = -1;
-                }
             }
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
@@ -381,29 +362,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
-                npc.ai[0]++;
-                if (npc.ai[0] > 180)
-                {
-                    npc.alpha -= 5;
-                    if (npc.alpha >= 255)
-                    {
-                        pos = pos * -1;
-                        wantedVelocity = player.Center - new Vector2(pos, 0);
-                        npc.Center = wantedVelocity;
-                        npc.ai[0] = 0;
-                    }
-                }
-                else
-                {
-                    if (npc.alpha > 0)
-                    {
-                        npc.alpha += 5;
-                    }
-                    if (npc.alpha <= 0)
-                    {
-                        npc.alpha = 0;
-                    }
-                }
                 MoveToPoint(wantedVelocity);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
@@ -415,9 +373,36 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noTileCollide = true;
         }
 
+        public override void PostAI()
+        {
+            Player player = Main.player[npc.target];
+            if (internalAI[0] != AISTATE_SPIN)
+            {
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                {
+                    npc.direction = 1;
+                }
+                else //If NPC's X position is lower than the player's
+                {
+                    npc.direction = -1;
+                }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
+            }
+        }
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 18f;
+            float moveSpeed = 6f;
+            if (Vector2.Distance(npc.Center, point) > 500)
+            {
+                moveSpeed = 14;
+            }
+            if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
+            {
+                moveSpeed = 18f;
+            }
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
@@ -444,6 +429,7 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
 
+
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = 0;
@@ -452,6 +438,11 @@ namespace AAMod.NPCs.Bosses.Shen
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/WrathHaruka_Glow");
+
+            if (internalAI[0] == AISTATE_SPIN)
+            {
+                BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Red);
+            }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, new Vector2(npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, new Vector2 (npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, false);

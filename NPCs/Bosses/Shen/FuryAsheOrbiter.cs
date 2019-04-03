@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.width = 42;
             npc.height = 38;
             npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 0);
-            npc.npcSlots = 1;
+            npc.npcSlots = 0;
             npc.aiStyle = -1;
             npc.lifeMax = 5000;
             npc.defense = 130;
@@ -36,11 +36,23 @@ namespace AAMod.NPCs.Bosses.Shen
 
 		public int body = -1;
 		public float rotValue = -1f;
-        int NPCLife = 0;
+        public override void AI()
+        {
+            npc.ai[3]++;
+            if (npc.ai[3] > 600)
+            {
+                npc.life = 0;
+            }
 
-		public override void AI()
-		{
-            
+            if (npc.scale > 1f)
+            {
+                npc.scale = 1f;
+            }
+            else
+            {
+                npc.scale += .02f;
+            }
+
             if (npc.alpha < 0)
             {
                 npc.alpha = 0;
@@ -49,61 +61,27 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.alpha -= 4;
             }
-			npc.noGravity = true;
-			if(body == -1)
-			{
-				int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("FuryAshe"), 120f, null);	
-				if(npcID >= 0) body = npcID;
-			}
-			if(body == -1) return;
-            
-			NPC ashe = Main.npc[body];
-			if(ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")){ BaseAI.KillNPCWithLoot(npc); return; }
-
-
-            npc.ai[2] = AIchange;
-
-            if (npc.ai[2] > 300)
+            npc.noGravity = true;
+            if (body == -1)
             {
-                npc.ai[0] = 0;
-                npc.ai[1] = 1;
-                npc.ai = new float[4];
-                npc.netUpdate = true;
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Ashe"), 120f, null);
+                if (npcID >= 0) body = npcID;
             }
+            if (body == -1) return;
 
-            if (npc.ai[1] != 1)
-            {
-                for (int m = npc.oldPos.Length - 1; m > 0; m--)
-                {
-                    npc.oldPos[m] = npc.oldPos[m - 1];
-                }
-                npc.oldPos[0] = npc.position;
+            NPC ashe = Main.npc[body];
+            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("Ashe")) { BaseAI.KillNPCWithLoot(npc); return; }
 
-                if (rotValue == -1f) rotValue = (npc.ai[0] % OrbiterCount) * ((float)Math.PI * 2f / OrbiterCount);
-                rotValue += 0.05f;
-                while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-                npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(OrbiterDistance, 0f), rotValue);
-            }
-            else
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
-                NPCLife++;
-                if (NPCLife > 240)
-                {
-                    npc.life = 0;
-                    npc.netUpdate = true;
-                }
-                BaseAI.AIElemental(npc, ref npc.ai, null, 1, false, false, 0, 0, 0, 5);
-                npc.noGravity = true;
-                npc.noTileCollide = true;
+                npc.oldPos[m] = npc.oldPos[m - 1];
             }
-		}
+            npc.oldPos[0] = npc.position;
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
-        {
-            if (npc.ai[1] == 1)
-            {
-                npc.life = 0;
-            }
+            if (rotValue == -1f) rotValue = (npc.ai[0] % OrbiterCount) * ((float)Math.PI * 2f / OrbiterCount);
+            rotValue += 0.05f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+            npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);
         }
 
         public override void NPCLoot()
@@ -120,10 +98,10 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
-		{
-			Color lightColor = BaseDrawing.GetNPCColor(npc, null);
+        {
+            Color lightColor = BaseDrawing.GetNPCColor(npc, null);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
-			return false;
-		}		
-	}
+            return false;
+        }
+    }
 }

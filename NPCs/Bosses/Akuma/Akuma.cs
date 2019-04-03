@@ -628,8 +628,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar");
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
             }
         }
         

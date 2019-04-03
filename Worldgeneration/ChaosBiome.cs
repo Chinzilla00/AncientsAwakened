@@ -327,7 +327,7 @@ namespace AAMod.Worldgeneration
             ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
 
             int worldSize = GetWorldSize();
-            int biomeWidth = (worldSize == 3 ? 170 : worldSize == 2 ? 140 : 120), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+            int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
             int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
 
             //ok time to check to see if this spot is actually a good place to gen

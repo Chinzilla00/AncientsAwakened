@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Void
                     int projType = mod.ProjType("NeutralizerP");
 
                     if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-						BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
+						BaseAI.FireProjectile(npc.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
 				}
 			}
 		}

@@ -622,6 +622,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/ShenMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
 
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {

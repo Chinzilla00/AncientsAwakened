@@ -18,20 +18,22 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
-            npc.width = 42;
-            npc.height = 38;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 0);
-            npc.npcSlots = 1;
-            npc.aiStyle = -1;
-            npc.lifeMax = 5000;
-            npc.defense = 130;
-            npc.damage = 5;
-            npc.DeathSound = SoundID.DD2_BetsyFireballImpact;
-            npc.knockBackResist = 0f;	
-			npc.noTileCollide = true;
             npc.dontTakeDamage = true;
+            npc.lifeMax = 1;
+            npc.width = 100;
+            npc.height = 100;
+            npc.friendly = false;
+            npc.lifeMax = 1000;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
             npc.alpha = 255;
-            npc.dontCountMe = true;
+            npc.scale = .02f;
+            npc.chaseable = false;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
 		public int body = -1;
@@ -39,6 +41,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
 		public override void AI()
 		{
+            if (npc.scale > 1f)
+            {
+                npc.scale = 1f;
+            }
+            else
+            {
+                npc.scale += .02f;
+            }
+
             if (npc.alpha < 0)
             {
                 npc.alpha = 0;
@@ -57,50 +68,27 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             
 			NPC ashe = Main.npc[body];
 			if(ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("Ashe")){ BaseAI.KillNPCWithLoot(npc); return; }
-
-
-            npc.ai[2] = AIchange;
-
-            if (npc.ai[2] > 300)
+            
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
-                npc.ai[0] = 0;
-                npc.ai[1] = 1;
-                npc.ai = new float[4];
-                npc.netUpdate = true;
+                npc.oldPos[m] = npc.oldPos[m - 1];
             }
+            npc.oldPos[0] = npc.position;
 
-            if (npc.ai[1] != 1)
-            {
-                for (int m = npc.oldPos.Length - 1; m > 0; m--)
-                {
-                    npc.oldPos[m] = npc.oldPos[m - 1];
-                }
-                npc.oldPos[0] = npc.position;
+            if (rotValue == -1f) rotValue = (npc.ai[0] % OrbiterCount) * ((float)Math.PI * 2f / OrbiterCount);
+            rotValue += 0.05f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+            npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);
+        }
 
-                if (rotValue == -1f) rotValue = (npc.ai[0] % OrbiterCount) * ((float)Math.PI * 2f / OrbiterCount);
-                rotValue += 0.05f;
-                while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-                npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(OrbiterDistance, 0f), rotValue);
-            }
-            else
-            {
-                npc.ai[3]++;
-                if (npc.ai[3] > 240)
-                {
-                    npc.life = 0;
-                }
-                BaseAI.AIElemental(npc, ref npc.ai, null, 1, false, false, 0, 0, 0, 5);
-                npc.noGravity = true;
-                npc.noTileCollide = true;
-            }
-		}
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
-            if (npc.ai[1] == 1)
-            {
-                npc.life = 0;
-            }
+            damage = 0;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
         }
 
         public override void NPCLoot()
