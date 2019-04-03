@@ -4,18 +4,19 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.AH.Ashe
+namespace AAMod.NPCs.Bosses.Shen
 {
-    internal class AsheFire : ModProjectile
+    internal class FuryAsheSpark : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fire Bomb");
+            DisplayName.SetDefault("Fury Flame");
             Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
         {
+
             projectile.width = 10;
             projectile.height = 10;
             projectile.friendly = false;
@@ -27,21 +28,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.timeLeft = 180;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
-        }
-
         public override void AI()
         {
-            if (projectile.timeLeft > 0)
+            if (projectile.alpha < 255)
             {
-                projectile.timeLeft--;
+                projectile.alpha++;
             }
             if (projectile.timeLeft == 0)
             {
                 projectile.Kill();
             }
+
 
             projectile.frameCounter++;
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
@@ -56,16 +53,20 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return GetAlpha(Color.White);
+        }
+
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
+            target.AddBuff(mod.BuffType("Discord"), 600);
             Kill(0);
         }
 
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center - new Vector2(0, 115), new Vector2(0, 0), mod.ProjectileType<AsheStrike>(), projectile.damage, 5);
         }
     }
 }

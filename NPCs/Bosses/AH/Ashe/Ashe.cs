@@ -89,6 +89,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         float moveSpeed = 16f;
 
+
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
         public override void AI()
@@ -104,6 +105,25 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 internalAI[1] = 0;
                 internalAI[2]++;
+            }
+
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            {
+                AIchange++;
+                if (OrbiterDistance > 140)
+                {
+                    OrbiterDistance = 140;
+                }
+                else
+                {
+                    OrbiterDistance++;
+                }
+            }
+            else
+            {
+                AIchange = 0;
+                OrbiterDistance = 0;
+                npc.netUpdate = true;
             }
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -229,38 +249,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingPositive = false;
                 FlyingNegative = true;
             }
-            if (internalAI[0] != AISTATE_MELEE)
-            {
-                if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
-                {
-                    npc.direction = -1;
-                    if (FlyingPositive)
-                    {
-                        FlyingBack = true;
-                    }
-                    else
-                    {
-                        FlyingBack = false;
-                    }
-                }
-                else //If NPC's X position is higher than the player's
-                {
-                    npc.direction = 1;
-
-                    if (FlyingNegative)
-                    {
-                        FlyingBack = true;
-                    }
-                    else
-                    {
-                        FlyingBack = false;
-                    }
-                }
-            }
-            else
-            {
-                npc.direction = npc.velocity.X > 0 ? -1 : 1;
-            }
 
             if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost
             {
@@ -287,7 +275,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (SelectPoint)
                 {
                     float Point = 500 * npc.direction;
-                    MovePoint = player.Center + new Vector2(Point, 500f);
+                    MovePoint = player.Center + new Vector2(-Point, 500f);
                     SelectPoint = false;
                     npc.netUpdate = true;
                 }
@@ -337,24 +325,83 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.rotation = 0; //No ugly rotation.
         }
 
+        public override void PostAI()
+        {
+            Player player = Main.player[npc.target];
+            if (internalAI[0] != AISTATE_MELEE)
+            {
+                if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
+                {
+                    npc.direction = -1;
+                    if (FlyingPositive)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
+                }
+                else //If NPC's X position is higher than the player's
+                {
+                    npc.direction = 1;
+
+                    if (FlyingNegative)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
+                }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? -1 : 1;
+            }
+        }
+
         public float[] shootAI = new float[4];
+
+        public int OrbiterCount = Main.expertMode ? 10 : 8;
+        public float OrbiterDistance = 0;
+        public static int AIchange = 0;
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
             if (internalAI[0] == 1)
             {
-                int speedX = 8;
-                int speedY = 8;
-                float spread = 75f * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                double deltaAngle = spread / 6f;
-                double offsetAngle;
-                for (int i = 0; i < 5; i++)
+                if (Main.rand.Next(2) == 0)
                 {
-                    offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
+                    if (Main.netMode != 1)
+                    {
+                        for (int m = 0; m < OrbiterCount; m++)
+                        {
+                            int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbitter"), 0);
+                            Main.npc[npcID].Center = npc.Center;
+                            Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                            Main.npc[npcID].velocity *= 8f;
+                            Main.npc[npcID].ai[0] = m;
+                            Main.npc[npcID].netUpdate2 = true;
+                        }
+                    }
+                }
+                else
+                {
+                    int speedX = 8;
+                    int speedY = 8;
+                    float spread = 75f * 0.0174f;
+                    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                    double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                    double deltaAngle = spread / 6f;
+                    double offsetAngle;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        offsetAngle = startAngle + (deltaAngle * i);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
+                    }
                 }
             }
             if (internalAI[0] == 2)
@@ -376,9 +423,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 float spread = 60f * 0.0174f;
                 double startAngle = Math.Atan2(npc.velocity.X, -npc.velocity.Y) - spread / 2;
-                double deltaAngle = spread / (Main.expertMode ? 5 : 4);
+                double deltaAngle = spread / (Main.expertMode ? 6 : 4);
                 double offsetAngle;
-                for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
+                for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);

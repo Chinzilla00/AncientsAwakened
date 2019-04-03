@@ -1296,11 +1296,11 @@
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheFire.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheFlameRing.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheSpell.cs" />
-    <Compile Include="NPCs\Bosses\AH\Ashe\AsheMagic.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheMagicSpark.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheShot.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheSpark.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheStrike.cs" />
+    <Compile Include="NPCs\Bosses\AH\Ashe\AsheOrbiter.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\Haruka.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaProj.cs" />
     <Compile Include="NPCs\Bosses\AH\Haruka\HarukaKunai.cs" />
@@ -1403,6 +1403,8 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\FuryAsheOrbiter.cs" />
+    <Compile Include="NPCs\Bosses\Shen\FuryAsheSpark.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
     <Compile Include="NPCs\Bosses\Shen\WrathHarukaVanish.cs" />
     <Compile Include="NPCs\Bosses\Shen\WrathHaruka.cs" />
@@ -3922,8 +3924,12 @@
     <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\FuryAsheOrbiter.png" />
+    <Content Include="NPCs\Bosses\Shen\FuryAsheSpark.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDive.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonNew.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody2.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
@@ -4771,7 +4777,7 @@
     <Content Include="NPCs\Bosses\AH\Ashe\AsheDragonTail.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheFire.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheFlameRing.png" />
-    <Content Include="NPCs\Bosses\AH\Ashe\AsheMagic.png" />
+    <Content Include="NPCs\Bosses\AH\Ashe\AsheOrbiter.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheMagicSpark.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheRing1.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheRing2.png" />

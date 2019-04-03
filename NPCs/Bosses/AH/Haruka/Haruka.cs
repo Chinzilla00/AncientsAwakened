@@ -299,7 +299,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     internalAI[4] += 1;
                 }
-                if (internalAI[4] > 3)
+                if (internalAI[4] > 5)
                 {
                     internalAI[0] = 3;
                     internalAI[1] = 0;
@@ -366,23 +366,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.netUpdate = true;
             }
 
-
-            if (internalAI[0] != AISTATE_SPIN)
-            {
-                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
-                {
-                    npc.direction = 1;
-                }
-                else //If NPC's X position is lower than the player's
-                {
-                    npc.direction = -1;
-                }
-            }
-            else
-            {
-                npc.direction = npc.velocity.X > 0 ? 1 : -1;
-            }
-
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
                 npc.damage = 120;
@@ -429,9 +412,33 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.noTileCollide = true;
         }
 
+        public override void PostAI()
+        {
+            Player player = Main.player[npc.target];
+            if (internalAI[0] != AISTATE_SPIN)
+            {
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                {
+                    npc.direction = 1;
+                }
+                else //If NPC's X position is lower than the player's
+                {
+                    npc.direction = -1;
+                }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
+            }
+        }
+
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 6f;
+            if (Vector2.Distance(npc.Center, point) > 500)
+            {
+                moveSpeed = 14;
+            }
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 18f;
