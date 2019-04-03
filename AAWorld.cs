@@ -459,7 +459,7 @@ namespace AAMod
                         int tilesY = WorldGen.genRand.Next((int)(Main.maxTilesY * .4f), (int)(Main.maxTilesY * .8f));
                         if (Main.tile[tilesX, tilesY].type == 1)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("IncineriteOre"));
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), (ushort)mod.TileType("IncineriteOre"));
                         }
                     }
 
@@ -469,7 +469,16 @@ namespace AAMod
                         int tilesY = WorldGen.genRand.Next((int)(Main.maxTilesY * .4f), (int)(Main.maxTilesY * .8f));
                         if (Main.tile[tilesX, tilesY].type == 1)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("PrismOre"));
+                            float num = (float)Main.maxTilesX * 0.3f;
+                            num *= 0.2f;
+                            int num2 = 0;
+                            while (num2 < num)
+                            {
+                                int num3 = WorldGen.genRand.Next(0, Main.maxTilesX);
+                                int num4 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
+                                WorldGen.OreRunner(num3, num4, (double)WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), (ushort)mod.TileType("PrismOre"));
+                                num2++;
+                            }
                         }
                     }
 
@@ -488,7 +497,7 @@ namespace AAMod
                         int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
                         if (Main.tile[tilesX, tilesY].type == 59)
                         {
-                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("AbyssiumOre"));
+                            WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), (ushort)mod.TileType("AbyssiumOre"));
                         }
                     }
                 }));
