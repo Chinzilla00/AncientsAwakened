@@ -1288,8 +1288,8 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            bool HasGenned = false;
-            while (!HasGenned)
+            int Attempts = 0;
+            while (Attempts < 1000)
             {
                 Point origin = new Point(WorldGen.genRand.Next(0, x), (int)WorldGen.worldSurfaceLow);
                 origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
@@ -1352,7 +1352,7 @@ namespace AAMod
                     new SetModTile(tileGrass, true, true) //actually place the tile
                 }));
 
-                HasGenned = true;
+                Attempts += 1000;
             }
         }
 
