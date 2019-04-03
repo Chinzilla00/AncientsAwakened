@@ -84,7 +84,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.netAlways = true;
             frameWidth = 162;
             frameHeight = 118;
-            npc.dontTakeDamage = true;
             npc.alpha = 255;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);

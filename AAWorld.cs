@@ -862,19 +862,95 @@ namespace AAMod
                 ChestNumber = Main.rand.Next(4);
                 if (ChestNumber == 0)
                 {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
+                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
+                    if (PlacementSuccess >= 0)
+                    {
+                        Chest chest = Main.chest[PlacementSuccess];
+                        chest.item[0].SetDefaults(mod.ItemType("Voidsaber"), false);
+                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
+                        Item item = chest.item[2];
+                        UnifiedRandom genRand = WorldGen.genRand;
+                        int[] array2 = new int[]
+                        { 302, 2327, 2351, 304, 2329 };
+                        item.SetDefaults(Utils.Next(genRand, array2), false);
+                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { 282, 286 }), false);
+                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
+                        chest.item[4].SetDefaults(73, false);
+                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
+                    }
                 }
                 else if (ChestNumber == 1)
                 {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC2"), true);
+                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC2"), true);
+                    if (PlacementSuccess >= 0)
+                    {
+                        Chest chest = Main.chest[PlacementSuccess];
+                        chest.item[0].SetDefaults(mod.ItemType("DoomStaff"), false);
+                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
+                        Item item = chest.item[2];
+                        UnifiedRandom genRand = WorldGen.genRand;
+                        int[] array2 = new int[]
+                        { 302, 2327, 2351, 304, 2329 };
+                        item.SetDefaults(Utils.Next(genRand, array2), false);
+                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { 282, 286 }), false);
+                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
+                        chest.item[4].SetDefaults(73, false);
+                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
+                    }
                 }
                 else if (ChestNumber == 2)
                 {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC3"), true);
+                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC3"), true);
+                    if (PlacementSuccess >= 0)
+                    {
+                        Chest chest = Main.chest[PlacementSuccess];
+                        chest.item[0].SetDefaults(mod.ItemType("DoomGun"), false);
+                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
+                        Item item = chest.item[2];
+                        UnifiedRandom genRand = WorldGen.genRand;
+                        int[] array2 = new int[]
+                        { 302, 2327, 2351, 304, 2329 };
+                        item.SetDefaults(Utils.Next(genRand, array2), false);
+                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { 282, 286 }), false);
+                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
+                        chest.item[4].SetDefaults(72, false);
+                        chest.item[4].stack = WorldGen.genRand.Next(14, 19);
+                    }
                 }
                 else
                 {
-                    WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
+                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
+                    if (PlacementSuccess >= 0)
+                    {
+                        Chest chest = Main.chest[PlacementSuccess];
+                        chest.item[0].SetDefaults(mod.ItemType("ProbeControlUnit"), false);
+                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
+                        Item item = chest.item[2];
+                        UnifiedRandom genRand = WorldGen.genRand;
+                        int[] array2 = new int[]
+                        { 302, 2327, 2351, 304, 2329 };
+                        item.SetDefaults(Utils.Next(genRand, array2), false);
+                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                        { 282, 286 }), false);
+                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
+                        chest.item[4].SetDefaults(73, false);
+                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
+                    }
                 }
             }
             //Side holes
@@ -884,82 +960,6 @@ namespace AAMod
 
         public override void PostWorldGen()
         {
-            int[] itemsToPlaceInVoidChests1 = new int[] { mod.ItemType("Voidsaber") };
-            int itemsToPlaceInVoidChestsChoice1 = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type/*.frameX == 47 * 36*/ == mod.TileType("OroborosChestC1")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInVoidChestsChoice1 = Main.rand.Next(itemsToPlaceInVoidChests1.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInVoidChests1[itemsToPlaceInVoidChestsChoice1]);
-                            //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
-                            break;
-                        }
-                    }
-                }
-            }
-            int[] itemsToPlaceInVoidChests2 = new int[] { mod.ItemType("DoomStaff") };
-            int itemsToPlaceInVoidChestsChoice2 = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type/*.frameX == 47 * 36*/ == mod.TileType("OroborosChestC2")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInVoidChestsChoice2 = Main.rand.Next(itemsToPlaceInVoidChests2.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInVoidChests2[itemsToPlaceInVoidChestsChoice2]);
-                            //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
-                            break;
-                        }
-                    }
-                }
-            }
-            int[] itemsToPlaceInVoidChests3 = new int[] { mod.ItemType("DoomGun") };
-            int itemsToPlaceInVoidChestsChoice3 = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type/*.frameX == 47 * 36*/ == mod.TileType("OroborosChestC3")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInVoidChestsChoice3 = Main.rand.Next(itemsToPlaceInVoidChests3.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInVoidChests3[itemsToPlaceInVoidChestsChoice3]);
-                            //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
-                            break;
-                        }
-                    }
-                }
-            }
-            int[] itemsToPlaceInVoidChests4 = new int[] { mod.ItemType("ProbeControlUnit") };
-            int itemsToPlaceInVoidChestsChoice4 = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type/*.frameX == 47 * 36*/ == mod.TileType("OroborosChestC4")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInVoidChestsChoice4 = Main.rand.Next(itemsToPlaceInVoidChests4.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInVoidChests4[itemsToPlaceInVoidChestsChoice4]);
-                            //itemsToPlaceInGlassChestsChoice = (itemsToPlaceInGlassChestsChoice + 1) % itemsToPlaceInGlassChests.Length;
-                            break;
-                        }
-                    }
-                }
-            }
             int[] itemsToPlaceInDungeonChests = new int[] { mod.ItemType("SkullStaff") };
             int itemsToPlaceInDungeonChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
@@ -977,43 +977,6 @@ namespace AAMod
                                 itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
                                 break;
                             }
-                        }
-                    }
-                }
-            }
-            int[] itemsToPlaceInStormChest = new int[] { mod.ItemType("LoreTablet") };
-            int itemsToPlaceInStormChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("StormChest")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInStormChestsChoice = Main.rand.Next(itemsToPlaceInStormChest.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInStormChest[itemsToPlaceInStormChestsChoice]);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            int[] itemsToPlaceInSunkenChest = new int[] { mod.ItemType("CursedCompass") };
-            int itemsToPlaceInSunkenChestsChoice = 0;
-            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
-            {
-                Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].type == mod.TileType("SunkenChest")) // if glass chest
-                {
-                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
-                    {
-                        if (chest.item[inventoryIndex].type == 0)
-                        {
-                            itemsToPlaceInSunkenChestsChoice = Main.rand.Next(itemsToPlaceInSunkenChest.Length);
-                            chest.item[0].SetDefaults(itemsToPlaceInSunkenChest[itemsToPlaceInSunkenChestsChoice]);
-                            break;
                         }
                     }
                 }

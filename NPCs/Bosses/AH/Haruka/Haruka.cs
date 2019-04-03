@@ -35,6 +35,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 npc.buffImmune[k] = true;
             }
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.lavaImmune = true;
             npc.boss = true;
             npc.netAlways = true;

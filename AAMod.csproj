@@ -3911,6 +3911,8 @@
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenlingBody2.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />

@@ -657,7 +657,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 SpawnBoss(player, "WrathHaruka", "");
             }
             
-            if (npc.life <= npc.lifeMax * 0.75f && !Health4)
+            if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
@@ -670,7 +670,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health4 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.5f && !Health3)
+            if (npc.life <= npc.lifeMax * 0.66f && !Health3 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
@@ -683,7 +683,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health3 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.10f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.30f && !Health1 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
