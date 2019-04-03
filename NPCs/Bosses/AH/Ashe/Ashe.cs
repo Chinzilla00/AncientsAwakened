@@ -1,14 +1,9 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
@@ -225,7 +220,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (internalAI[0] != AISTATE_MELEE)
             {
-                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
                     npc.direction = -1;
                     if (FlyingPositive)
@@ -237,7 +232,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         FlyingBack = false;
                     }
                 }
-                else //If NPC's X position is lower than the player's
+                else //If NPC's X position is higher than the player's
                 {
                     npc.direction = 1;
 
@@ -250,6 +245,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         FlyingBack = false;
                     }
                 }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? -1 : 1;
             }
 
             if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost

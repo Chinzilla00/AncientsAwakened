@@ -171,6 +171,7 @@
     <Compile Include="Dusts\HallowedDust.cs" />
     <Compile Include="Dusts\JudgementDust.cs" />
     <Compile Include="Dusts\PrismDust.cs" />
+    <Compile Include="Dusts\SwarmDust.cs" />
     <Compile Include="Dusts\YamataAuraDust.cs" />
     <Compile Include="Dusts\DaybringerDust.cs" />
     <Compile Include="Dusts\FluffEXDust.cs" />
@@ -1203,6 +1204,7 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\Antifungus.cs" />
     <Compile Include="Items\Usable\CodeMagnet.cs" />
     <Compile Include="Items\Usable\OrderBottle.cs" />
     <Compile Include="Items\Usable\DesertCrate.cs" />
@@ -1231,6 +1233,7 @@
     <Compile Include="Items\Usable\OrderSolution.cs" />
     <Compile Include="Items\Usable\TreasureRadar.cs" />
     <Compile Include="Items\Usable\VoidBomb.cs" />
+    <Compile Include="Items\Usable\VoidCrate.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverMask.cs" />
@@ -1509,6 +1512,7 @@
     <Compile Include="NPCs\Enemies\Mire\DreadHydra.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Miregron.cs" />
+    <Compile Include="NPCs\Enemies\Mire\MireSkulker.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSlime.cs" />
     <Compile Include="NPCs\Enemies\Mire\Newt.cs" />
     <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
@@ -1617,6 +1621,7 @@
     <Compile Include="Projectiles\BloodyFlare.cs" />
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
+    <Compile Include="Projectiles\Antifungus.cs" />
     <Compile Include="Projectiles\SoulSiphonHeal.cs" />
     <Compile Include="Projectiles\Depthsprayer.cs" />
     <Compile Include="Projectiles\AmphibiousBoom.cs" />
@@ -1905,6 +1910,8 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
+    <Compile Include="Tiles\Mycelium.cs" />
+    <Compile Include="Tiles\MireGrass.cs" />
     <Compile Include="Tiles\Mushroom.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\SGBox.cs" />
@@ -2059,8 +2066,6 @@
     <Compile Include="Tiles\MireBox.cs" />
     <Compile Include="Tiles\MireChest.cs" />
     <Compile Include="Tiles\MushroomTree.cs" />
-    <Compile Include="Tiles\Mycelium.cs" />
-    <Compile Include="Tiles\MireGrass.cs" />
     <Compile Include="Tiles\MireUBox.cs" />
     <Compile Include="Tiles\MoonAltar.cs" />
     <Compile Include="Tiles\MushiumBar.cs" />
@@ -2132,6 +2137,7 @@
     <Compile Include="Walls\LivingBogleafWall.cs" />
     <Compile Include="Walls\MireGrassWall.cs" />
     <Compile Include="Walls\MireJungleWall.cs" />
+    <Compile Include="Walls\Mushwall.cs" />
     <Compile Include="Walls\RottedWall.cs" />
     <Compile Include="Walls\TorchsandHardenedWall.cs" />
     <Compile Include="Walls\TorchsandstoneWall.cs" />
@@ -2148,6 +2154,10 @@
     <Compile Include="Water\StormWaterfallStyle.cs" />
     <Compile Include="Water\StormWaterSplash.cs" />
     <Compile Include="Water\StormWaterStyle.cs" />
+    <Compile Include="Water\TerraDroplet.cs" />
+    <Compile Include="Water\TerraWaterfallStyle.cs" />
+    <Compile Include="Water\TerraWaterSplash.cs" />
+    <Compile Include="Water\TerraWaterStyle.cs" />
     <Compile Include="Water\VoidDroplet.cs" />
     <Compile Include="Water\VoidWaterfallStyle.cs" />
     <Compile Include="Water\VoidWaterSplash.cs" />
@@ -2381,6 +2391,7 @@
     <Content Include="Dusts\SpaceDust.png" />
     <Content Include="Dusts\StarDust.png" />
     <Content Include="Dusts\SummonDust.png" />
+    <Content Include="Dusts\SwarmDust.png" />
     <Content Include="Dusts\TimeDust.png" />
     <Content Include="Dusts\TMagicDust.png" />
     <Content Include="Dusts\UmbreonSPDust.png" />
@@ -3903,6 +3914,8 @@
     <Content Include="Items\Summoning\MadnessCane.png" />
     <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
     <Content Include="Items\Summoning\Minions\MadnessLaser.png" />
+    <Content Include="Items\Usable\Antifungus.png" />
+    <Content Include="Items\Usable\VoidCrate.png" />
     <Content Include="NPCs\Bosses\AH\AHDeath.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheVanish.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaVanish.png" />
@@ -3918,6 +3931,7 @@
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
+    <Content Include="NPCs\Enemies\Mire\MireSkulker.png" />
     <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpentBody.png" />
@@ -5268,6 +5282,7 @@
     <Content Include="Projectiles\AxisShot.png" />
     <Content Include="Projectiles\AxisSnow.png" />
     <Content Include="Projectiles\BigCrystal.png" />
+    <Content Include="Projectiles\Antifungus.png" />
     <Content Include="Projectiles\BloodyFlare.png" />
     <Content Include="Projectiles\BogBomb.png" />
     <Content Include="Projectiles\BogBoom.png" />
@@ -5873,6 +5888,7 @@
     <Content Include="Tiles\Trophy\YamataTrophy.png" />
     <Content Include="Tiles\Trophy\ZeroTrophy.png" />
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
+    <Content Include="Tiles\UnifiedMycelium.png" />
     <Content Include="Tiles\Uranium.png" />
     <Content Include="Tiles\UraniumAnvil.png" />
     <Content Include="Tiles\VoidBox.png" />
@@ -5899,6 +5915,7 @@
     <Content Include="Walls\LivingBogleafWall.png" />
     <Content Include="Walls\MireGrassWall.png" />
     <Content Include="Walls\MireJungleWall.png" />
+    <Content Include="Walls\Mushwall.png" />
     <Content Include="Walls\RottedWall.png" />
     <Content Include="Walls\TorchsandHardenedWall.png" />
     <Content Include="Walls\TorchsandstoneWall.png" />
@@ -5918,6 +5935,11 @@
     <Content Include="Water\StormWaterSplash.png" />
     <Content Include="Water\StormWaterStyle.png" />
     <Content Include="Water\StormWaterStyle_Block.png" />
+    <Content Include="Water\TerraDroplet.png" />
+    <Content Include="Water\TerraWaterfallStyle.png" />
+    <Content Include="Water\TerraWaterSplash.png" />
+    <Content Include="Water\TerraWaterStyle.png" />
+    <Content Include="Water\TerraWaterStyle_Block.png" />
     <Content Include="Water\VoidDroplet.png" />
     <Content Include="Water\VoidWaterfallStyle.png" />
     <Content Include="Water\VoidWaterSplash.png" />

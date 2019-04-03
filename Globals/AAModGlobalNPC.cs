@@ -818,6 +818,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("Mosster"), .5f);
                     pool.Add(mod.NPCType("Newt"), 1f);
                     pool.Add(mod.NPCType("HydraClaw"), 1f);
+                    pool.Add(mod.NPCType("MireSkulker"), .7f);
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("Toxitoad"), .2f);
@@ -829,6 +830,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("Mosster"), .5f);
                     pool.Add(mod.NPCType("Newt"), 1f);
                     pool.Add(mod.NPCType("HydraClaw"), 1f);
+                    pool.Add(mod.NPCType("MireSkulker"), .5f);
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("Kappa"), .4f);

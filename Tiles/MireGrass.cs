@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,30 +7,30 @@ using Terraria.ModLoader;
 namespace AAMod.Tiles
 {
     public class MireGrass : ModTile
-	{
-		public static int _type;
+    {
+        public static int _type;
 
-		public override void SetDefaults()
-		{
-			Main.tileSolid[Type] = true;
-			SetModTree(new BogwoodTree());
-            Main.tileMergeDirt[Type] = false;
-			Main.tileBlendAll[this.Type] = true;
-            Main.tileMerge[TileID.Mud][Type] = true;
+        public override void SetDefaults()
+        {
+            Main.tileSolid[Type] = true;
+            SetModTree(new BogwoodTree());
+            Main.tileBlendAll[this.Type] = true;
+            Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
-            dustType = mod.DustType("DeepAbyssiumDust");
-            drop = ItemID.MudBlock;
-			AddMapEntry(new Color(0, 20, 100));
-		}
+            Main.tileLighted[Type] = true;
+            dustType = mod.DustType("AbyssiumDust");
+            AddMapEntry(new Color(0, 50, 140));
+            drop = ItemID.DirtBlock;
+        }
 
         public override void RandomUpdate(int i, int j)
         {
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(100) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Darkshroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Darkshroom"), 0, 0, -1, -1);
-            }
 
+            }
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
             {
                 switch (Main.rand.Next(5))
@@ -70,15 +71,14 @@ namespace AAMod.Tiles
             if (TileObject.Place(toBePlaced) && !mute)
             {
                 WorldGen.SquareTileFrame(x, y, true);
-                //   Main.PlaySound(0, x * 16, y * 16, 1, 1f, 0f);
             }
             return false;
         }
 
         public override int SaplingGrowthType(ref int style)
-		{
-			style = 0;
-			return mod.TileType("BogwoodSapling");
-		}
-	}
+        {
+            style = 0;
+            return mod.TileType("BogwoodSapling");
+        }
+    }
 }

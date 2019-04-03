@@ -1,22 +1,23 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
     public class InfernoGrass : ModTile
-	{
-		public static int _type;
+    {
+        public static int _type;
 
-		public override void SetDefaults()
-		{
-			Main.tileSolid[Type] = true;
-			SetModTree(new RazewoodTree());
-			Main.tileBlendAll[this.Type] = true;
-			Main.tileMergeDirt[Type] = true;
-			Main.tileBlockLight[Type] = true;
-			Main.tileLighted[Type] = true;
+        public override void SetDefaults()
+        {
+            Main.tileSolid[Type] = true;
+            SetModTree(new RazewoodTree());
+            Main.tileBlendAll[this.Type] = true;
+            Main.tileMergeDirt[Type] = true;
+            Main.tileBlockLight[Type] = true;
+            Main.tileLighted[Type] = true;
             dustType = mod.DustType("RazeleafDust");
             AddMapEntry(new Color(255, 153, 51));
             drop = ItemID.DirtBlock;
@@ -24,7 +25,7 @@ namespace AAMod.Tiles
 
         public override void RandomUpdate(int i, int j)
         {
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(100) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Hotshroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Hotshroom"), 0, 0, -1, -1);
@@ -75,9 +76,9 @@ namespace AAMod.Tiles
         }
 
         public override int SaplingGrowthType(ref int style)
-		{
-			style = 0;
-			return mod.TileType("RazewoodSapling");
-		}
-	}
+        {
+            style = 0;
+            return mod.TileType("RazewoodSapling");
+        }
+    }
 }

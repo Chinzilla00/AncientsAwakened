@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
-                if (internalAI[1] >= 3)
+                if (internalAI[1] >= 4)
                 {
                     internalAI[1] = 0;
                     internalAI[2]++;
@@ -376,6 +376,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     npc.direction = -1;
                 }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost

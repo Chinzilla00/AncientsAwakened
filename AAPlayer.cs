@@ -515,13 +515,15 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
 
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma);
 
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
 
             player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
 
-            player.ManageSpecialBiomeVisuals("HeatDistortion", useInferno);
+            if (Main.UseHeatDistortion)
+            {
+                player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma || useInferno);
+            }
 
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
 

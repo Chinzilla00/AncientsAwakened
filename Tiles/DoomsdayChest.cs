@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -88,27 +89,43 @@ namespace AAMod.Tiles
 			return Chest.CanDestroyChest(left, top);
 		}
 
+        private int LockFrame = 0;
+
+        public override void AnimateTile(ref int frame, ref int frameCounter)
+        {
+            if (++frameCounter >= 6)
+            {
+                frameCounter = 0;
+                if (++LockFrame >= 8)
+                {
+                    LockFrame = 0;
+                }
+            }
+        }
+        
         public Color GetColor(Color color)
         {
             Color glowColor = AAColor.ZeroShield;
             return glowColor;
         }
 
-        private int LockFrame = 0;
-
-        public override void AnimateTile(ref int frame, ref int frameCounter)
-        {
-            if (++frameCounter >= 4)
-            {
-                frameCounter = 0;
-                if (++LockFrame >= 4) LockFrame = 0;
-            }
-        }
-
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 50), false, false, false, null, GetColor);
+            Texture2D LockTex = mod.GetTexture("Tiles/DoomsdayChestLockedFrame");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/DoomsdayChest_Glow");
+
+            int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0);
+            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 38) : 0);
+
+            BaseDrawing.DrawTileTexture(sb, LockTex, x, y, 16, 16, frameX, frameY, false, false, false, null, GetColor);
+
+            int LockframeY = (tile != null && tile.active() ? tile.frameY + (LockFrame * 38) : 0);
+
+            if (Chest.isLocked(x, y))
+            {
+                BaseDrawing.DrawTileTexture(sb, LockTex, x, y, 16, 16, 36, LockframeY, false, false, false, null, GetColor);
+            }
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
