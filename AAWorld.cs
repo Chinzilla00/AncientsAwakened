@@ -1308,40 +1308,19 @@ namespace AAMod
                     TileID.Dirt,
                     TileID.Stone,
                     TileID.Sand,
-                    TileID.Ebonsand,
-                    TileID.Crimsand,
-                    (ushort)mod.TileType("Torchsand"),
-                    (ushort)mod.TileType("Depthsand"),
                     TileID.SnowBlock,
                     TileID.IceBlock,
-                    TileID.CorruptIce,
-                    TileID.FleshIce,
-                    (ushort)mod.TileType("Torchice"),
-                    (ushort)mod.TileType("Depthice"),
                     TileID.BlueDungeonBrick,
                     TileID.PinkDungeonBrick,
-                    TileID.GreenDungeonBrick,
-                    TileID.CorruptGrass,
-                    TileID.Ebonstone,
-                    TileID.FleshGrass,
-                    TileID.Crimstone,
-                    (ushort)mod.TileType("InfernoGrass"),
-                    (ushort)mod.TileType("Torchstone"),
-                    (ushort)mod.TileType("MireGrass"),
-                    (ushort)mod.TileType("DepthStone"),
-                    TileID.JungleGrass,
-                    TileID.Mud
-
+                    TileID.GreenDungeonBrick
                 }).Output(dictionary));
 
                 int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
-                int EvilBlockCount = dictionary[TileID.CorruptGrass] + dictionary[TileID.Ebonstone] + dictionary[TileID.FleshGrass] + dictionary[TileID.Crimstone] + dictionary[(ushort)mod.TileType("InfernoGrass")] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("MireGrass")] + dictionary[(ushort)mod.TileType("Depthstone")];
-                int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock] + dictionary[TileID.CorruptIce] + dictionary[TileID.FleshIce] + dictionary[(ushort)mod.TileType("Torchice")] + dictionary[(ushort)mod.TileType("Depthice")];
-                int sandBiomeCount = dictionary[TileID.Sand] + +dictionary[TileID.Ebonsand] + dictionary[TileID.Crimsand] + dictionary[(ushort)mod.TileType("Torchsand")] + dictionary[(ushort)mod.TileType("Depthsand")]; ;
+                int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock];
+                int sandBiomeCount = dictionary[TileID.Sand];
                 int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
-                int JungleCount = dictionary[TileID.JungleGrass] + dictionary[TileID.Mud];
 
-                if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount || EvilBlockCount >= normalBiomeCount || JungleCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+                if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
                 {
                     return;
                 }
