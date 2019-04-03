@@ -118,12 +118,15 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public float pos = 250f;
 
-        public static int AISTATE_IDLE = 0, AISTATE_PROJ = 1, AISTATE_SLASH = 2, AISTATE_SPIN = 3;
+        public static int AISTATE_PROJ = 0, AISTATE_SLASH = 1, AISTATE_SPIN = 2, AISTATE_IDLE = 3;
 
         public int ProjectileShoot = -1;
-        public int repeat = 15;
+        public int repeat = 10;
         public bool isSlashing = false;
         
+        public Vector2 MovePoint;
+        public bool SelectPoint = false;
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -184,10 +187,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (Main.netMode != 1) 
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 120)
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        internalAI[0] = Main.rand.Next(4);
+                        internalAI[0] = Main.rand.Next(3);
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -224,7 +227,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     }
                     if (repeat <= 0)
                     {
-                        internalAI[0] = 0;
+                        internalAI[0] = 3;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
@@ -271,7 +274,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     }
                     if (internalAI[3] > 300)
                     {
-                        internalAI[0] = 0;
+                        internalAI[0] = 3;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
@@ -298,7 +301,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 if (internalAI[4] > 3)
                 {
-                    internalAI[0] = 0;
+                    internalAI[0] = 3;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
@@ -330,26 +333,24 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }*/
 
                 internalAI[4]++;
-                
-                float maxSpeed = 10f;
-                Vector2 vector2 = npc.Center;
-                float distX = player.Center.X - vector2.X;
-                float distY = player.Center.Y - vector2.Y;
-                float dist = (float)Math.Sqrt(distX * distX + distY * distY);
-                float distMult = 9f / dist;
-                npc.velocity.X = distX * distMult * 10;
-                npc.velocity.Y = distY * distMult * 10;
-                if (npc.velocity.X > maxSpeed) { npc.velocity.X = maxSpeed; }
-                if (npc.velocity.X < -maxSpeed) { npc.velocity.X = -maxSpeed; }
-                if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
-                if (npc.velocity.Y < -maxSpeed) { npc.velocity.Y = -maxSpeed; }
+
+                if (SelectPoint)
+                {
+                    float Point = 500 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 0);
+                    SelectPoint = false;
+                    npc.netUpdate = true;
+                }
+
+                MoveToPoint(MovePoint);
 
                 if (Main.netMode != 1 && (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
-                    internalAI[0] = 0;
+                    internalAI[0] = 3;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
+                    internalAI[4] = 0;
                     pos = pos * -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
@@ -357,7 +358,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else
             {
-                internalAI[0] = 0;
+                internalAI[0] = 3;
                 internalAI[1] = 0;
                 internalAI[2] = 0;
                 internalAI[3] = 0;
@@ -431,7 +432,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 6f;
-            if (internalAI[0] == AISTATE_SLASH)
+            if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 18f;
             }

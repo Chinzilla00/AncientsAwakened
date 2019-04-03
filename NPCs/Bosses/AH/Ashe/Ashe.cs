@@ -80,9 +80,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         bool FlyingBack = false;
         bool FlyingPositive = false;
         bool FlyingNegative = false;
-        public float MeleeSpeed;
-        public float pos = 0f;
+        public float MeleeSpeed = 6f;
+        public float pos = 250f;
         private bool HasFiredProj = false;
+
+        public Vector2 MovePoint;
+        public bool SelectPoint = false;
+
+        float moveSpeed = 16f;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_FIRESPELL = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
@@ -125,7 +130,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 120)
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
                         if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
@@ -135,6 +140,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         else
                         {
                             internalAI[0] = Main.rand.Next(6);
+                        }
+                        if (internalAI[0] == AISTATE_MELEE)
+                        {
+                            moveSpeed = 6f;
+                            SelectPoint = true;
                         }
                         npc.ai = new float[4];
                         npc.netUpdate = true;
@@ -178,6 +188,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
+                    moveSpeed = 16f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -273,10 +284,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                float Point = 500 * npc.direction;
+                if (SelectPoint)
+                {
+                    float Point = 500 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 500f);
+                    SelectPoint = false;
+                    npc.netUpdate = true;
+                }
+                MeleeMovement(MovePoint);
                 npc.netUpdate = true;
-                Vector2 point = player.Center + new Vector2(Point , 500f);
-                MoveToPoint(point);
             }
             else //Anything else
             {
@@ -293,6 +309,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         pos = 250;
                     }
+                    npc.netUpdate = false;
                 }
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
@@ -497,6 +514,36 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
+        public void MeleeMovement(Vector2 point)
+        {
+            if (MeleeSpeed < 16f)
+            {
+                MeleeSpeed += .5f;
+            }
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < MeleeSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
+            }
+            if (length < 200f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= MeleeSpeed;
             npc.velocity *= velMultiplier;
         }
     }

@@ -5713,6 +5713,7 @@
     <Content Include="Tiles\MushBox.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
+    <Content Include="Tiles\NightmareOre.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
     <Content Include="Tiles\OroborosChestC1_Highlight.png" />
     <Content Include="Tiles\OroborosChestC2.png" />
