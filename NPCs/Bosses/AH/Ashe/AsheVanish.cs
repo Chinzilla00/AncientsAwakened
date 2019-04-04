@@ -44,21 +44,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 92;
-                if (npc.velocity != Vector2.Zero)
+                if (npc.frame.Y > (92 * 13))
                 {
-                    if (npc.frame.Y > (92 * 2))
-                    {
-                        npc.frame.Y = 0;
-
-                    }
-                }
-                else
-                {
-                    if (npc.frame.Y > (92 * 13))
-                    {
-                        npc.active = false;
-
-                    }
+                    npc.active = false;
+                    npc.netUpdate = true;
                 }
             }
 
@@ -72,10 +61,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, dColor, true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 24);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
+            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 17);
             return false;
         }
     }

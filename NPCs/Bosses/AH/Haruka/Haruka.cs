@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         }
 
 
-        public int[] internalAI = new int[5];
+        public int[] internalAI = new int[6];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -58,6 +58,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[2]); //Used for current frame
                 writer.Write(internalAI[3]); //Used to count down to AI change
                 writer.Write(internalAI[4]); //Used as an AI Timer
+                writer.Write(internalAI[5]);
             }
         }
 
@@ -71,6 +72,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[2] = reader.ReadInt();
                 internalAI[3] = reader.ReadInt();
                 internalAI[4] = reader.ReadInt();
+                internalAI[5] = reader.ReadInt();
             }
         }
 
@@ -127,6 +129,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public Vector2 MovePoint;
         public bool SelectPoint = false;
 
+        public bool Invisible = false;
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -153,16 +157,49 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     return;
                 }
             }
+            if (Invisible)
+            {
+                if (npc.alpha < 255)
+                {
+                    npc.alpha += 5;
+                }
+                else
+                {
+                    npc.alpha = 255;
+                }
+            }
             else
             {
-                npc.alpha -= 4;
-                if (npc.alpha < 0)
+                if (npc.alpha > 0)
+                {
+                    npc.alpha -= 8;
+                }
+                else
                 {
                     npc.alpha = 0;
                 }
             }
-            
+
             internalAI[1]++;
+
+            internalAI[5]++;
+
+            if (internalAI[5] > 1000)
+            {
+                if (!Invisible)
+                {
+                    Invisible = true;
+                    npc.netUpdate = true;
+                }
+            }
+            if (internalAI[5] > 1300)
+            {
+                Invisible = false;
+                internalAI[5] = 0;
+                npc.netUpdate = true;
+            }
+
+            
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {

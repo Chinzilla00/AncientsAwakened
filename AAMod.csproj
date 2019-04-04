@@ -3927,6 +3927,7 @@
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaVanish.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
+    <Content Include="NPCs\Bosses\Broodmother\Broodmother0.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheOrbiter.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheSpark.png" />

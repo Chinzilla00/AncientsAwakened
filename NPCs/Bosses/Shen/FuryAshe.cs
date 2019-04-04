@@ -152,18 +152,17 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-
-            if (npc.life == (int)(npc.lifeMax * .75f) && !Health3)
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life == (int)(npc.lifeMax * .5f) && !Health2)
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life == (int)(npc.lifeMax * .25f) && !Health1)
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;
@@ -222,6 +221,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    if (internalAI[0] == AISTATE_MELEE)
+                    {
+                        pos = -pos;
+                    }
                     Fired = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;

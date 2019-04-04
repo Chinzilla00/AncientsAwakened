@@ -45,30 +45,37 @@ namespace AAMod.NPCs.Bosses.Broodmother
         }
 
         public int frame = 0;
+
+        public int FrameTex = 0;
+
+        public Texture2D Tex = null;
+        public Texture2D Glow = null;
+
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter++;
-
-            if (npc.frameCounter > 6)
+            if (npc.frameCounter++ > 4)
             {
-                frame++;
-                if (frame >= 11)
-                {
-                    frame = 0;
-                }
+                npc.frame.Y += 296;
                 npc.frameCounter = 0;
+                if (npc.frame.Y >= 1776)
+                {
+                    npc.frame.Y = 0;
+                    FrameTex += 1;
+                    if (FrameTex > 1)
+                    {
+                        FrameTex = 0;
+                    }
+                }
             }
-            if (frame > 5)
+            if (FrameTex == 0)
             {
-                npc.frame.Y = (frame - 6) * frameHeight;
-                npc.frame.X = 352;
-                npc.frame.Width = 352;
+                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother");
+                Glow = mod.GetTexture("Glowmasks/Broodmother_Glow");
             }
             else
             {
-                npc.frame.Y = frame * frameHeight;
-                npc.frame.X = 0;
-                npc.frame.Width = 352;
+                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother0");
+                Glow = mod.GetTexture("Glowmasks/Broodmother0_Glow");
             }
         }
 
@@ -132,34 +139,22 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("BroodScale"), 50, 75);
             }
         }
-
-        public static Vector2 GetDrawPosition(Vector2 position, Vector2 origin, int width, int height, int texWidth, int texHeight, int framecount, float scale, bool drawCentered = false)
-        {
-            Vector2 screenPos = new Vector2((int)Main.screenPosition.X, (int)Main.screenPosition.Y);
-            if (drawCentered)
-            {
-                Vector2 texHalf = new Vector2(texWidth / 2, texHeight / framecount / 2);
-                return (position + new Vector2(width * 0.5f, height * 0.5f)) - (texHalf * scale) + (origin * scale) - screenPos;
-            }
-            return position - screenPos + new Vector2(width * 0.5f, height) - new Vector2(texWidth * scale / 2f, texHeight * scale / (float)framecount) + (origin * scale) + new Vector2(0f, 5f);
-        }
+        
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D tex = Main.npcTexture[npc.type];
-            Vector2 Source = new Vector2(npc.Center.X - Main.screenPosition.X, npc.Center.Y - Main.screenPosition.Y);
-            Vector2 Origin = new Vector2(npc.width * 0.5f, npc.height * 0.5f);
-
-            Vector2 Drawpos = GetDrawPosition(npc.position, Origin, npc.width, npc.height, tex.Width, tex.Height, 6, 1f, true);
-
-            SpriteEffects flipSprite = SpriteEffects.None;
-            if (npc.direction == 1)
+            if (Tex == null)
             {
-                flipSprite = SpriteEffects.FlipHorizontally;
+                Tex = Main.npcTexture[npc.type];
             }
-            
-            spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother"), Drawpos, npc.frame, drawColor, npc.rotation, Origin, 1f, flipSprite, 0f);
-            spriteBatch.Draw(mod.GetTexture("Glowmasks/Broodmother_Glow"), Drawpos, npc.frame, Color.White, npc.rotation, Origin, 1f, flipSprite, 0f);
+            if (Glow == null)
+            {
+                Glow = mod.GetTexture("Glowmasks/Broodmother_Glow");
+            }
+            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
+
+            BaseDrawing.DrawTexture(spriteBatch, Tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, drawColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, GenericUtils.COLOR_GLOWPULSE, true);
             return false;
         }
 
@@ -206,435 +201,180 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public int projectileInterval = 300; //how long until you fire projectiles
         private int projectileTimer = 0;
+        private float pos = 250;
         private float[] FireTimer = new float[1];
-		public const float AISTATE_RUNAWAY = -1f; //run awaaaaay
-		public const float AISTATE_FLYABOVEPLAYER = 0f; //fly above the player
-		public const float AISTATE_FLYBACKTOPLAYER = 1f; //uses this to fly back to the player after laying eggs, no idea why it's the second state lol
-		public const float AISTATE_FLYTOPLAYER = 2f; //fly at the player slowly
-		public const float AISTATE_CHARGEATPLAYER = 3f; //charge the player from the side
-		public const float AISTATE_SPAWNEGGS = 4f; //spawn eggs
-
-
-
+        private int MaxMinions = Main.hardMode ? 8 : 6;
+		public const float AISTATE_RUNAWAY = -1f, AISTATE_FLYABOVEPLAYER = 0f, AISTATE_FIREBREATH = 1f, AISTATE_FIREBOMB = 2f, AISTATE_SPAWNEGGS = 3f;
+        
         public override void AI()
         {
-			if(Main.netMode != 1 && npc.ai[0] == AISTATE_FLYABOVEPLAYER) //only fire bombs when (attempting to) fly above the player
-			{
-                projectileTimer++;
-                if (projectileTimer >= projectileInterval)
-                {
-                    if (projectileTimer > (projectileInterval + 120))
-                    {
-                        projectileTimer = 0;
-                        internalAI[5] = -1;
-                    }
-                    Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                    Vector2 firePos = new Vector2(npc.Center.X + (71 * npc.direction), npc.Center.Y - 30f);
-                    firePos = BaseMod.BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                    int projID = BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, mod.ProjectileType<BroodBreath>(), ref FireTimer[0], 5, npc.damage / 2, 12);
-                    Main.projectile[projID].netUpdate = true;
-                }
-            }
-            int numberOfMinions = 3; //max number of eggs/broodminis to spawn
-            bool DespawnAttempt = false;
-            npc.noTileCollide = false;
-            npc.noGravity = true;
-            npc.knockBackResist = 0.2f * Main.expertKnockBack;
-            npc.damage = npc.defDamage;
-            if (npc.target < 0 || Main.player[npc.target].dead || !Main.player[npc.target].active || Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
+            Player player = Main.player[npc.target];
+
+            int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
+
+            if (internalAI[0]++ >= 180)
             {
-                npc.TargetClosest(true);
-                internalAI[4] = 0;
-                Vector2 vector204 = Main.player[npc.target].Center - npc.Center;
-                if (Main.player[npc.target].dead || vector204.Length() > 3000f)
+                internalAI[0] = 0;
+                internalAI[1] = Minions < MaxMinions ? Main.rand.Next(4) : Main.rand.Next(3);
+                npc.ai = new float[4];
+                if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
                 {
-                    DespawnAttempt = true;
+                    ChangePos();
+                }
+                if (internalAI[1] == AISTATE_SPAWNEGGS)
+                {
+                    pos = -pos;
+                }
+                npc.netUpdate = true;
+            }
+            
+            if (Main.player[npc.target].dead || !Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            {
+                npc.ai = new float[4];
+                internalAI[1] = AISTATE_RUNAWAY;
+            }
+
+            if (internalAI[1] == AISTATE_RUNAWAY)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.TargetClosest(true);
+                    int num765 = 6000;
+                    if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > (float)num765)
+                    {
+                        npc.active = false;
+                        npc.life = 0;
+                        if (Main.netMode == 2)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, npc.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                if (npc.ai[3] < 120f)
+                {
+                    npc.ai[3] += 1f;
+                }
+                if (npc.ai[3] > 60f)
+                {
+                    npc.velocity.Y = npc.velocity.Y + (npc.ai[3] - 60f) * 0.25f;
+                }
+                npc.ai[0] = 2f;
+
+                return;
+            }
+
+            else
+            {
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+                MoveToPoint(wantedVelocity);
+            }
+
+            if (internalAI[1] == AISTATE_FIREBREATH)
+            {
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+                MoveToPoint(wantedVelocity);
+                npc.localAI[2] += 1f;
+                if (npc.localAI[2] > 22f)
+                {
+                    npc.localAI[2] = 0f;
+                    Main.PlaySound(SoundID.Item34, npc.position);
+                }
+                if (Main.netMode != 1)
+                {
+                    internalAI[2]++;
+                    if (internalAI[2] > 30f)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12);
+                    }
+                    if (internalAI[2] > 90)
+                    {
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
-			if(Main.netMode != 1 && DespawnAttempt)
-			{
-				if(npc.ai[0] != AISTATE_RUNAWAY)
-					npc.netUpdate = true;	
-				npc.ai[0] = AISTATE_RUNAWAY;
-			}
-			
-			if(npc.ai[0] == AISTATE_RUNAWAY)
-			{
-				npc.noTileCollide = true;
-				npc.ai[1] = 0;
-				npc.ai[2] = 0;
-				npc.ai[3] = 0;
-                internalAI[4]++;
+            else if (internalAI[1] == AISTATE_SPAWNEGGS)
+            {
 
-				if(npc.timeLeft < 10) 
-					npc.timeLeft = 10;
-				npc.velocity.X *= 0.9f;
-
-                if (internalAI[4] > 300)
+                if (Main.netMode != 1)
                 {
-                    npc.velocity.Y -= 0.1f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    projectileTimer++;
+                    if (projectileTimer >= projectileInterval && projectileTimer % 20 == 0)
+                    {
+                        if (projectileTimer > (projectileInterval + 60))
+                            projectileTimer = 0;
+                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y - 60f);
+                        firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
+                        if (Minions < MaxMinions)
+                        {
+                            int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<BroodEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                            Main.npc[NPCID].netUpdate = true;
+                        }
+                    }
                 }
+            }
+            else if (internalAI[1] == AISTATE_FIREBOMB)
+            {
+                if (Main.netMode != 1) //only fire bombs when (attempting to) fly above the player
+                {
+                    projectileTimer++;
+                    if (projectileTimer >= projectileInterval && projectileTimer % 10 == 0)
+                    {
+                        if (projectileTimer > (projectileInterval + 50))
+                            projectileTimer = 0;
+                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 firePos = new Vector2(npc.Center.X - (64 * npc.direction), npc.Center.Y + 28f);
+                        firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
+                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);
+                        Main.projectile[projID].netUpdate = true;
+                    }
+                }
+            }
+        }
+
+        public void ChangePos()
+        {
+            npc.ai[1] = Main.rand.Next(2);
+            if (npc.ai[1] == 0)
+            {
+                pos = -250;
             }
             else
-            if (npc.ai[0] == AISTATE_FLYABOVEPLAYER)
             {
-                npc.TargetClosest(true);
-                BaseAI.AISpaceOctopus(npc, ref internalAI, .15f, 4, 250);
-                npc.ai[1] += 1f;
-                if (npc.ai[1] >= 180f && Main.netMode != 1)
-                {
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] = 0f;
-                    npc.netUpdate = true;
-                    while (npc.ai[0] == 0f)
-                    {
-                        int num1307 = Main.rand.Next(3);
-                        if (num1307 == 0 && Collision.CanHit(npc.Center, 1, 1, Main.player[npc.target].Center, 1, 1))
-                        {
-                            npc.ai[0] = 2f;
-                        }
-                        else if (num1307 == 1)
-                        {
-                            npc.ai[0] = 3f;
-                        }
-                        else if (num1307 == 2 && NPC.CountNPCS(mod.NPCType("BroodEgg")) + NPC.CountNPCS(mod.NPCType("Broodmini")) < numberOfMinions)
-                        {
-                            npc.ai[0] = AISTATE_SPAWNEGGS;
-                        }
-                    }
-                    return;
-                }
-            }else
-			if (npc.ai[0] == AISTATE_FLYBACKTOPLAYER)
-			{
-				npc.collideX = false;
-				npc.collideY = false;
-				npc.noTileCollide = true;
-				npc.knockBackResist = 0f;
-				if (npc.target < 0 || !Main.player[npc.target].active || Main.player[npc.target].dead)
-				{
-					npc.TargetClosest(true);
-				}
-				if (npc.velocity.X < 0f)
-				{
-					npc.direction = -1;
-				}
-				else if (npc.velocity.X > 0f)
-				{
-					npc.direction = 1;
-				}
-				npc.spriteDirection = npc.direction;
-				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.10f)) / 10f;
-				Vector2 value52 = Main.player[npc.target].Center - npc.Center;
-				if (value52.Length() < 300f && !Collision.SolidCollision(npc.position, npc.width, npc.height))
-				{
-					npc.ai[0] = 0f;
-					npc.ai[1] = 0f;
-					npc.ai[2] = 0f;
-					npc.ai[3] = 0f;
-				}
-				float scaleFactor16 = 7f + (value52.Length() / 100f);
-				float num1308 = 25f;
-				value52.Normalize();
-				value52 *= scaleFactor16;
-				npc.velocity = ((npc.velocity * (num1308 - 1f)) + value52) / num1308;
-				return;
-			}else
-			if (npc.ai[0] == AISTATE_FLYTOPLAYER)
-			{
-				npc.damage = (int)((double)npc.defDamage * 0.5);
-				npc.knockBackResist = 0f;
-				if (npc.target < 0 || !Main.player[npc.target].active || Main.player[npc.target].dead)
-				{
-					npc.TargetClosest(true);
-					npc.ai[0] = 0f;
-					npc.ai[1] = 0f;
-					npc.ai[2] = 0f;
-					npc.ai[3] = 0f;
-				}
-				if (Main.player[npc.target].Center.X - 10f < npc.Center.X)
-				{
-					npc.direction = -1;
-				}
-				else if (Main.player[npc.target].Center.X + 10f > npc.Center.X)
-				{
-					npc.direction = 1;
-				}
-				npc.spriteDirection = npc.direction;
-				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.1f)) / 5f;
-				if (npc.collideX)
-				{
-					npc.velocity.X = npc.velocity.X * (-npc.oldVelocity.X * 0.5f);
-					if (npc.velocity.X > 5f)
-					{
-						npc.velocity.X = 5f;
-					}
-					if (npc.velocity.X < -5f)
-					{
-						npc.velocity.X = -5f;
-					}
-				}
-				if (npc.collideY)
-				{
-					npc.velocity.Y = npc.velocity.Y * (-npc.oldVelocity.Y * 0.5f);
-					if (npc.velocity.Y > 5f)
-					{
-						npc.velocity.Y = 5f;
-					}
-					if (npc.velocity.Y < -5f)
-					{
-						npc.velocity.Y = -5f;
-					}
-				}
-				Vector2 value53 = Main.player[npc.target].Center - npc.Center;
-				value53.Y -= 20f;
-				npc.ai[2] += 0.0222222228f;
-				if (Main.expertMode)
-				{
-					npc.ai[2] += 0.0166666675f;
-				}
-				float scaleFactor17 = 4f + npc.ai[2] + (value53.Length() / 120f);
-				float num1309 = 20f;
-				value53.Normalize();
-				value53 *= scaleFactor17;
-				npc.velocity = ((npc.velocity * (num1309 - 1f)) + value53) / num1309;
-				npc.ai[1] += 1f;
-				if (npc.ai[1] > 240f || !Collision.CanHit(npc.Center, 1, 1, Main.player[npc.target].Center, 1, 1))
-				{
-					npc.ai[0] = 0f;
-					npc.ai[1] = 0f;
-					npc.ai[2] = 0f;
-					npc.ai[3] = 0f;
-					return;
-				}
-			}else
-			if (npc.ai[0] == AISTATE_CHARGEATPLAYER)
-			{
-				npc.knockBackResist = 0f;
-				npc.noTileCollide = true;
-				if (npc.velocity.X < 0f)
-				{
-					npc.direction = -1;
-				}
-				else
-				{
-					npc.direction = 1;
-				}
-				npc.spriteDirection = npc.direction;
-				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
-				Vector2 value54 = Main.player[npc.target].Center - npc.Center;
-				value54.Y -= 12f;
-				if (npc.Center.X > Main.player[npc.target].Center.X)
-				{
-					value54.X += 400f;
-				}
-				else
-				{
-					value54.X -= 400f;
-				}
-				if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) > 350f && Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) < 20f)
-				{
-					npc.ai[0] = 3.1f;
-					npc.ai[1] = 0f;
-				}
-				npc.ai[1] += 0.0333333351f;
-				float scaleFactor18 = 8f + npc.ai[1];
-				float num1310 = 4f;
-				value54.Normalize();
-				value54 *= scaleFactor18;
-				npc.velocity = ((npc.velocity * (num1310 - 1f)) + value54) / num1310;
-				return;
-			}else
-			if (npc.ai[0] == 3.1f) //sub charge
-			{
-				npc.knockBackResist = 0f;
-				npc.noTileCollide = true;
-				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
-				Vector2 vector206 = Main.player[npc.target].Center - npc.Center;
-				vector206.Y -= 12f;
-				float scaleFactor19 = 16f;
-				float num1311 = 8f;
-				vector206.Normalize();
-				vector206 *= scaleFactor19;
-				npc.velocity = ((npc.velocity * (num1311 - 1f)) + vector206) / num1311;
-				if (npc.velocity.X < 0f)
-				{
-					npc.direction = -1;
-				}
-				else
-				{
-					npc.direction = 1;
-				}
-				npc.spriteDirection = npc.direction;
-				npc.ai[1] += 1f;
-				if (npc.ai[1] > 10f)
-				{
-					npc.velocity = vector206;
-					if (npc.velocity.X < 0f)
-					{
-						npc.direction = -1;
-					}
-					else
-					{
-						npc.direction = 1;
-					}
-					npc.ai[0] = 3.2f;
-					npc.ai[1] = 0f;
-					npc.ai[1] = (float)npc.direction;
-					return;
-				}
-			}else
-			if (npc.ai[0] == 3.2f) //sub charge
-			{
-				npc.damage = (int)((double)npc.defDamage * 1.3);
-				npc.collideX = false;
-				npc.collideY = false;
-				npc.knockBackResist = 0f;
-				npc.noTileCollide = true;
-				npc.ai[2] += 0.0333333351f;
-				npc.velocity.X = (16f + npc.ai[2]) * npc.ai[1];
-				if ((npc.ai[1] > 0f && npc.Center.X > Main.player[npc.target].Center.X + 260f) || (npc.ai[1] < 0f && npc.Center.X < Main.player[npc.target].Center.X - 260f))
-				{
-					if (!Collision.SolidCollision(npc.position, npc.width, npc.height))
-					{
-						npc.ai[0] = 0f;
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.ai[3] = 0f;
-					}
-					else if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) > 800f)
-					{
-						npc.ai[0] = 1f;
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.ai[3] = 0f;
-					}
-				}
-				npc.rotation = ((npc.rotation * 4f) + (npc.velocity.X * 0.09f)) / 5f;
-				return;
-			}else
-			if (npc.ai[0] == AISTATE_SPAWNEGGS)
-			{
-				npc.ai[0] = 0f;
-				npc.TargetClosest(true);
-				if (Main.netMode != 1)
-				{
-					npc.ai[1] = -1f;
-					npc.ai[2] = -1f;
-					for (int num1312 = 0; num1312 < 1000; num1312++)
-					{
-						int num1313 = (int)Main.player[npc.target].Center.X / 16;
-						int num1314 = (int)Main.player[npc.target].Center.Y / 16;
-						int num1315 = 30 + (num1312 / 50);
-						int num1316 = 20 + (num1312 / 75);
-						num1313 += Main.rand.Next(-num1315, num1315 + 1);
-						num1314 += Main.rand.Next(-num1316, num1316 + 1);
-						if (!WorldGen.SolidTile(num1313, num1314))
-						{
-							while (!WorldGen.SolidTile(num1313, num1314) && (double)num1314 < Main.worldSurface)
-							{
-								num1314++;
-							}
-							if ((new Vector2((float)((num1313 * 16) + 8), (float)((num1314 * 16) + 8)) - Main.player[npc.target].Center).Length() < 600f)
-							{
-								npc.ai[0] = 4.1f;
-								npc.ai[1] = (float)num1313;
-								npc.ai[2] = (float)num1314;
-								break;
-							}
-						}
-					}
-				}
-				npc.netUpdate = true;
-				return;
-			}else
-			if (npc.ai[0] == 4.1f) //sub spawning eggs
-			{
-				if (npc.velocity.X < -2f)
-				{
-					npc.direction = -1;
-				}
-				else if (npc.velocity.X > 2f)
-				{
-					npc.direction = 1;
-				}
-				npc.spriteDirection = npc.direction;
-				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
-				npc.noTileCollide = true;
-				int num1317 = (int)npc.ai[1];
-				int num1318 = (int)npc.ai[2];
-				float x2 = (float)((num1317 * 16) + 8);
-				float y2 = (float)((num1318 * 16) - 20);
-				Vector2 vector207 = new Vector2(x2, y2);
-				vector207 -= npc.Center;
-				float num1319 = 6f + (vector207.Length() / 150f);
-				if (num1319 > 10f)
-				{
-					num1319 = 10f;
-				}
-				float num1320 = 10f;
-				if (vector207.Length() < 10f)
-				{
-					npc.ai[0] = 4.2f;
-				}
-				vector207.Normalize();
-				vector207 *= num1319;
-				npc.velocity = ((npc.velocity * (num1320 - 1f)) + vector207) / num1320;
-				return;
-			}else
-			if (npc.ai[0] == 4.2f) //sub spawning eggs
-			{
-				npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
-				npc.knockBackResist = 0f;
-				npc.noTileCollide = true;
-				int num1321 = (int)npc.ai[1];
-				int num1322 = (int)npc.ai[2];
-				float x3 = (float)((num1321 * 16) + 8);
-				float y3 = (float)((num1322 * 16) - 20);
-				Vector2 vector208 = new Vector2(x3, y3);
-				vector208 -= npc.Center;
-				float num1323 = 4f;
-				float num1324 = 2f;
-				if (Main.netMode != 1 && vector208.Length() < 4f)
-				{
-					int num1325 = 70;
-					if (Main.expertMode)
-					{
-						num1325 = (int)((double)num1325 * 0.75);
-					}
-					npc.ai[3] += 1f;
-					if (npc.ai[3] == (float)num1325)
-					{
-						NPC.NewNPC((num1321 * 16) + 8, num1322 * 16, mod.NPCType("BroodEgg"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-					}
-					else if (npc.ai[3] == (float)(num1325 * 2))
-					{
-						npc.ai[0] = 0f;
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.ai[3] = 0f;
-						if (NPC.CountNPCS(mod.NPCType("BroodEgg")) + NPC.CountNPCS(mod.NPCType("Broodmini")) < numberOfMinions && Main.rand.Next(3) != 0)
-						{
-							npc.ai[0] = 4f;
-						}
-						else if (Collision.SolidCollision(npc.position, npc.width, npc.height))
-						{
-							npc.ai[0] = 1f;
-						}
-					}
-				}
-				if (vector208.Length() > num1323)
-				{
-					vector208.Normalize();
-					vector208 *= num1323;
-				}
-				npc.velocity = ((npc.velocity * (num1324 - 1f)) + vector208) / num1324;
-				return;
-			}
+                pos = 250;
+            }
+            npc.netUpdate = false;
+        }
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 9f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
 }

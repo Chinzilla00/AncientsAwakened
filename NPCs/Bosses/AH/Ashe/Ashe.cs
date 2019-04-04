@@ -133,17 +133,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 return;
             }
 
-            if (npc.life == (int)(npc.lifeMax * .75f) && !Health3)
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life == (int)(npc.lifeMax * .5f) && !Health2)
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life == (int)(npc.lifeMax * .25f) && !Health1)
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
 
             }
-            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
+            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
             {
                 if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
@@ -232,6 +232,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
                 {
+                    if (internalAI[0] == AISTATE_MELEE)
+                    {
+                        pos = -pos;
+                    }
                     HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
@@ -261,53 +265,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
-                }
-            }
-            else if (internalAI[0] == AISTATE_VORTEX) //Weak magic cast frame
-            {
-                npc.velocity *= .9f;
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
-                {
-                    FireMagic(npc, npc.velocity);
-                    HasFiredProj = true;
-                    npc.netUpdate = true;
-                }
-
-                if ((int)internalAI[2] < 16 && npc.velocity == new Vector2(0, 0)) //Sets to frame 16
-                {
-                    internalAI[1] = 0;
-                    internalAI[2] = 16;
-                }
-                else
-                {
-                    if (FlyingBack)
-                    {
-                        if ((int)internalAI[2] > 3)
-                        {
-                            internalAI[1] = 0;
-                            internalAI[2] = 0;
-                        }
-                    }
-                    else
-                    {
-                        if ((int)internalAI[2] > 7 || (int)internalAI[2] < 4)
-                        {
-                            internalAI[1] = 0;
-                            internalAI[2] = 4;
-                        }
-                    }
-                }
-
-                if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
-                {
-                    HasFiredProj = false;
-                    internalAI[0] = 0;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    moveSpeed = 16f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
