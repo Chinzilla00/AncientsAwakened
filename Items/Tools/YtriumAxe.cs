@@ -35,7 +35,7 @@ namespace AAMod.Items.Tools
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "YtriumBar", 13);
-            recipe.AddTile(TileID.MythrilAnvil);   //at work bench
+            recipe.AddTile(TileID.Anvils);   //at work bench
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

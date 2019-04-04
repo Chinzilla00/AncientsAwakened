@@ -48,7 +48,7 @@ namespace AAMod.Items.Ranged
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "YtriumBar", 10);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -17,7 +17,7 @@ namespace AAMod.Projectiles.Serpent
         public override void SetDefaults()
         {
             projectile.width = 32;
-            projectile.height = 28;
+            projectile.height = 32;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;

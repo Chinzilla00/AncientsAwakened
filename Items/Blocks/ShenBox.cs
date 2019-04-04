@@ -13,7 +13,8 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shen Doragon Music Box");
-		}
+            Tooltip.SetDefault(@"Plays 'Unyielding Discord' by Charlie Debnam");
+        }
 
 		public override void SetDefaults()
 		{

@@ -15,7 +15,7 @@ namespace AAMod.Items.Armor.Witch
 			Tooltip.SetDefault(@"12% increased magic/minion damage
 12% increased movement speed
 +2 max minions
-A robe enchanted with the firey spirit of a supreme dragon acolyte");
+Boots enchanted with the firey spirit of a supreme dragon acolyte");
 		}
 
 		public override void SetDefaults()
@@ -34,17 +34,6 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
             player.moveSpeed += .1f;
             player.maxMinions += 2;
 		}
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Yamata;;
-                }
-            }
-        }
         
     }
 }

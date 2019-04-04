@@ -42,7 +42,7 @@ namespace AAMod.Items.Ranged
         {
             float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
-            Projectile.NewProjectile(position.X, position.Y, speedX + 5, speedY, mod.ProjectileType("TerraArrow"), damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("TerraArrow"), damage, knockBack, player.whoAmI, 0f, 0f);
         
             return false;
         }

@@ -41,6 +41,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Zero>()))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public float[] shootAI = new float[4];
         public float[] internalAI = new float[1];
         public override void SendExtraAI(BinaryWriter writer)

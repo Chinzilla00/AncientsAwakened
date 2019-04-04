@@ -7,7 +7,7 @@ namespace AAMod.Items.Blocks
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Shorm Chest");
+            DisplayName.SetDefault("Storm Chest");
 		}
 
 		public override void SetDefaults()

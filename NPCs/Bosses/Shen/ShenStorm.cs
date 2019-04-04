@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.Shen
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Storm");
+            Main.projFrames[projectile.type] = 4;
 		}
     	
         public override void SetDefaults()

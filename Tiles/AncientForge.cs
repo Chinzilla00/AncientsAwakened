@@ -20,12 +20,12 @@ namespace AAMod.Tiles
             dustType = mod.DustType("DoomDust");
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Binary Reassembler");
+            name.SetDefault("AncientForge");
             AddMapEntry(new Color(40, 40, 40), name);
             disableSmartCursor = true;
             adjTiles = new int[]

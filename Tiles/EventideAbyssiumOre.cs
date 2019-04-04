@@ -22,7 +22,9 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("EventideAbyssiumOre");   //put your CustomBlock name
             dustType = mod.DustType("YamataADust");
-            AddMapEntry(new Color(0, 0, 30));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Eventide Abyssium Ore");
+            AddMapEntry(new Color(0, 0, 30), name);
 			minPick = 225;
         }
 

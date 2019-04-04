@@ -9,6 +9,7 @@ namespace AAMod.Items.Accessories.Wings
 		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dread Moon Wings");
+            Tooltip.SetDefault("Allows flight and slow fall");
         }
 
 		public override void SetDefaults()
@@ -22,7 +23,7 @@ namespace AAMod.Items.Accessories.Wings
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.wingTimeMax = 180;
+			player.wingTimeMax = 220;
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,

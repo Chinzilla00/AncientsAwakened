@@ -622,6 +622,7 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/ShenMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
+                PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
 
                 if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
                 {
@@ -651,6 +652,8 @@ namespace AAMod
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2"), ItemType("YamataABox"), TileType("YamataABox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope"), ItemType("RoHBox"), TileType("RoHBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
@@ -758,8 +761,6 @@ namespace AAMod
                 ShenASky.PlanetTexture = null;
                 ShenASky.SkyTex = null;
                 Items.Accessories.SoulStone._glow = null;
-                Items.Pets.Mudkip.glowTex = null;
-                Items.Pets.MudkipS.glowTex = null;
                 NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
                 NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
                 NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;
@@ -949,6 +950,12 @@ namespace AAMod
             if (zoneShen && AAWorld.downedAllAncients)
             {
                 priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon");
+                return;
+            }
+            if (zoneIZ && AAWorld.downedZero)
+            {
+                priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
             }
@@ -971,12 +978,6 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
 
                 priority = (MusicPriority)10;
-                return;
-            }
-            if (zoneIZ && AAWorld.downedZero && NPC.downedMoonlord)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
                 return;
             }
             if (Ancients.ZoneVoid)

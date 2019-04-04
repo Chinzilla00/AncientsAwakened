@@ -17,7 +17,7 @@ namespace AAMod.Items.ReforgeSouls
         {
             DisplayName.SetDefault("Godly Soul");
             Tooltip.SetDefault(
-@"Makes any weapon to get ''Godly'' prefix if it is possible
+@"Gives a weapon the ''Godly'' prefix if it is possible
 Right-click weapon with the soul to set prefix
 Consumes in process");
         }

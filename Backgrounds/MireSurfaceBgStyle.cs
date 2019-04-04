@@ -10,6 +10,7 @@ namespace AAMod.Backgrounds
     public class MireSurfaceBgStyle : ModSurfaceBgStyle
     {
 		ScreenFog mireBGFog = new ScreenFog(true);
+
         public override bool ChooseBgStyle()
         {
             return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.LocalPlayer.ZoneSnow && !Main.LocalPlayer.ZoneDesert;
@@ -53,7 +54,6 @@ namespace AAMod.Backgrounds
 		
 		public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
 		{
-
             Color DefaultFog = new Color(120, 120, 200);
             Color YamataFog = new Color(200, 100, 100);
             

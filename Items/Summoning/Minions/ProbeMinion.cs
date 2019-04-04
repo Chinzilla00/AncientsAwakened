@@ -13,6 +13,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             DisplayName.SetDefault("Mini Probe");
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 

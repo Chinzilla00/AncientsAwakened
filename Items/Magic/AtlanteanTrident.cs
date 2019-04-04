@@ -10,7 +10,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Atlantean Trident");
-			Tooltip.SetDefault("It contains power of the Ocean");
+			Tooltip.SetDefault("Fires off magical tridents");
 			Item.staff[item.type] = true;
 		}
 

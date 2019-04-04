@@ -14,9 +14,10 @@ namespace AAMod.Projectiles.AH
 		{
 			DisplayName.SetDefault("Fire Spirit");
 			Main.projFrames[projectile.type] = 4;
-			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-		}
+        }
     	
         public override void SetDefaults()
         {
@@ -31,8 +32,6 @@ namespace AAMod.Projectiles.AH
             projectile.minionSlots = 1f;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
         public int FrameTimer = 0;

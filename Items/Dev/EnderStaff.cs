@@ -21,7 +21,7 @@ I thought the sky was purple
 
 		public override void SetDefaults()
 		{
-			item.damage = 130;
+			item.damage = 180;
 			item.summon = true;
 			item.mana = 20;
 			item.width = 64;

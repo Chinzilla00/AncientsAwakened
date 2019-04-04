@@ -23,12 +23,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
+            projectile.alpha = 255;
         }
 
         public override void AI()
         {
-            projectile.alpha++;
-            if (projectile.alpha > 255)
+            projectile.alpha--;
+            if (projectile.alpha < 0)
             {
                 projectile.Kill();
             }
@@ -46,8 +47,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            const float desiredFlySpeedInPixelsPerFrame = 20;
+            const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)

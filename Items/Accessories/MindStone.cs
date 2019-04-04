@@ -18,7 +18,8 @@ namespace AAMod.Items.Accessories
         {
             DisplayName.SetDefault("Mind Stone");
             Tooltip.SetDefault(
-@"Gives you infinite mana
+@"Reduces mana consumption by 50%
++200 Mana
 'It's simple Calculus'");
         }
         public override void SetDefaults()
@@ -48,8 +49,8 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.statManaMax2 += 1000;
-            player.manaCost *= 0.0f;
+            player.statManaMax2 += 200;
+            player.manaCost *= 0.5f;
         }
 
         public override bool CanEquipAccessory(Player player, int slot)

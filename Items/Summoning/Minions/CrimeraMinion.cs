@@ -13,6 +13,8 @@ namespace AAMod.Items.Summoning.Minions
         {
             DisplayName.SetDefault("Crimtane Crimera");
             Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
         }
         public override void SetDefaults()
         {

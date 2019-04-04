@@ -6,7 +6,6 @@ namespace AAMod.Items.Pets
 {
     public class Sharkron : ModProjectile
     {
-        
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sharkron"); // Automatic from .lang files

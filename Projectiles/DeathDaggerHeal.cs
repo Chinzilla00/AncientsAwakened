@@ -48,8 +48,37 @@ namespace AAMod.Projectiles
 					NetMessage.SendData(66, -1, -1, null, num487, 1, 0f, 0f, 0, 0, 0);
 				}
 				projectile.Kill();
-			}
-			return;
+            }
+            float num488 = 5.5f;
+            num491 = num488 / num491;
+            num489 *= num491;
+            num490 *= num491;
+            projectile.velocity.X = (projectile.velocity.X * 15f + num489) / 16f;
+            projectile.velocity.Y = (projectile.velocity.Y * 15f + num490) / 16f;
+            for (int num493 = 0; num493 < 3; num493++)
+            {
+                float num494 = projectile.velocity.X * 0.334f * (float)num493;
+                float num495 = -(projectile.velocity.Y * 0.334f) * (float)num493;
+                int num496 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default(Color), 1.1f);
+                Main.dust[num496].noGravity = true;
+                Main.dust[num496].velocity *= 0f;
+                Dust expr_153E2_cp_0 = Main.dust[num496];
+                expr_153E2_cp_0.position.X = expr_153E2_cp_0.position.X - num494;
+                Dust expr_15401_cp_0 = Main.dust[num496];
+                expr_15401_cp_0.position.Y = expr_15401_cp_0.position.Y - num495;
+            }
+            for (int num497 = 0; num497 < 5; num497++)
+            {
+                float num498 = projectile.velocity.X * 0.2f * (float)num497;
+                float num499 = -(projectile.velocity.Y * 0.2f) * (float)num497;
+                int num500 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default(Color), 1.3f);
+                Main.dust[num500].noGravity = true;
+                Main.dust[num500].velocity *= 0f;
+                Dust expr_154F9_cp_0 = Main.dust[num500];
+                expr_154F9_cp_0.position.X = expr_154F9_cp_0.position.X - num498;
+                Dust expr_15518_cp_0 = Main.dust[num500];
+                expr_15518_cp_0.position.Y = expr_15518_cp_0.position.Y - num499;
+            }
         }
 
         public override void Kill(int timeLeft)

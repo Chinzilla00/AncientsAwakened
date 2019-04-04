@@ -156,17 +156,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.active = false;
                     return;
                 }
-                if (!player.GetModPlayer<AAPlayer>(mod).ZoneMush)
-                {
-                    internalAI[0] = 0;
-                    internalAI[1] = AISTATE_JUMP;
-                    npc.dontTakeDamage = true;
-                    npc.netUpdate = true;
-                }
-                else
-                {
-                    npc.dontTakeDamage = false;
-                }
                 if (internalAI[1] != AISTATE_FLY)
                 {
                     internalAI[0]++;

@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class EnderMinionEX : Minion2
+    public class EnderMinionEX : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -20,12 +21,14 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft = 300;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ender Minion");
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 
         }
 
@@ -49,18 +52,19 @@ namespace AAMod.Items.Summoning.Minions
             return false;
         }
 
-        public override void CheckActive()
+        public override bool PreAI()
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
             if (player.dead)
             {
-                modPlayer.enderMinionEX = false;
+                modPlayer.enderMinion = false;
             }
-            if (modPlayer.enderMinionEX)
+            if (modPlayer.enderMinion)
             {
                 projectile.timeLeft = 2;
             }
+            return true;
         }
     }
 }

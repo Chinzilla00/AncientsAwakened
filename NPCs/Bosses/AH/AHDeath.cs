@@ -16,20 +16,18 @@ namespace AAMod.NPCs.Bosses.AH
         {
             npc.dontTakeDamage = true;
             npc.lifeMax = 1;
+            npc.width = 100;
+            npc.height = 100;
+            npc.friendly = false;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+
+            for (int k = 0; k < npc.buffImmune.Length; k++)
             {
-                npc.width = 100;
-                npc.height = 100;
-                npc.friendly = false;
-                npc.lifeMax = 1;
-                npc.dontTakeDamage = true;
-                npc.noGravity = true;
-                npc.aiStyle = -1;
-                npc.timeLeft = 10;
-                
-                for (int k = 0; k < npc.buffImmune.Length; k++)
-                {
-                    npc.buffImmune[k] = true;
-                }
+                npc.buffImmune[k] = true;
             }
         }
         public override void AI()

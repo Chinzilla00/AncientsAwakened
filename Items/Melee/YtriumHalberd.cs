@@ -43,7 +43,7 @@ namespace AAMod.Items.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "YtriumBar", 12);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

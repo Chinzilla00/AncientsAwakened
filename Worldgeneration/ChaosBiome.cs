@@ -25,7 +25,7 @@ namespace AAMod.Worldgeneration
 			tileIce = (ushort)mod.TileType("Depthice"), tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone");
 
 			int worldSize = GetWorldSize();
-			int biomeRadius = (worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+			int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 			
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
@@ -177,7 +177,7 @@ namespace AAMod.Worldgeneration
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone");
 
             int worldSize = GetWorldSize();
-            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 180 : 150), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180), biomeRadiusHalf = biomeRadius / 2;  //how deep the biome is (scaled by world size)	
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
@@ -322,20 +322,18 @@ namespace AAMod.Worldgeneration
     {
         public override bool Place(Point origin, StructureMap structures)
         {
-            //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
-
             Mod mod = AAMod.instance;
-            //--- Initial variable creation
-            ushort tileGrass = (ushort)mod.TileType("Mycelium");
+
+            ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
 
             int worldSize = GetWorldSize();
-            int biomeRadius = 100;	
-			
+            int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+            int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
 
-            Point newOrigin = new Point(origin.X, origin.Y - 30);
-
+            //ok time to check to see if this spot is actually a good place to gen
             Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), new Actions.TileScanner(new ushort[]
+            Point newOrigin = new Point(origin.X - biomeWidthHalf, origin.Y - 10);
+            WorldUtils.Gen(newOrigin, new Shapes.Rectangle(biomeWidth, biomeHeight), new Actions.TileScanner(new ushort[]
             {
                 TileID.Grass,
                 TileID.Dirt,
@@ -345,55 +343,31 @@ namespace AAMod.Worldgeneration
                 TileID.IceBlock,
                 TileID.BlueDungeonBrick,
                 TileID.PinkDungeonBrick,
-                TileID.GreenDungeonBrick,
-                (ushort)mod.TileType<Torchstone>(),
-                (ushort)mod.TileType<Torchsand>(),
-                (ushort)mod.TileType<Torchsandstone>(),
-                (ushort)mod.TileType<TorchsandHardened>(),
-                (ushort)mod.TileType<Torchice>(),
-                (ushort)mod.TileType<InfernoGrass>(),
-                (ushort)mod.TileType<Depthstone>(),
-                (ushort)mod.TileType<Depthsand>(),
-                (ushort)mod.TileType<Depthsandstone>(),
-                (ushort)mod.TileType<DepthsandHardened>(),
-                (ushort)mod.TileType<Depthice>(),
-                (ushort)mod.TileType<MireGrass>(),
+                TileID.GreenDungeonBrick
             }).Output(dictionary));
 
             int normalBiomeCount = dictionary[TileID.Grass] + dictionary[TileID.Dirt] + dictionary[TileID.Stone];
             int IceBlockBiomeCount = dictionary[TileID.SnowBlock] + dictionary[TileID.IceBlock];
             int sandBiomeCount = dictionary[TileID.Sand];
             int dungeonCount = dictionary[TileID.BlueDungeonBrick] + dictionary[TileID.PinkDungeonBrick] + dictionary[TileID.GreenDungeonBrick];
-            int InfernoBiomeCount = dictionary[(ushort)mod.TileType<InfernoGrass>()] + dictionary[(ushort)mod.TileType<Torchstone>()] + dictionary[(ushort)mod.TileType<Torchsandstone>()] + dictionary[(ushort)mod.TileType<TorchsandHardened>()] + dictionary[(ushort)mod.TileType<Torchice>()];
-            int MireBiomeCount = dictionary[(ushort)mod.TileType<MireGrass>()] + dictionary[(ushort)mod.TileType<Depthstone>()] + dictionary[(ushort)mod.TileType<Depthsandstone>()] + dictionary[(ushort)mod.TileType<DepthsandHardened>()] + dictionary[(ushort)mod.TileType<Depthice>()];
 
-            if (origin.X > (Main.maxTilesX * 0.40f) && origin.X < (Main.maxTilesY * 0.60f))
+            if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
             {
                 return false;
             }
-
-            if (dungeonCount > 0 || IceBlockBiomeCount >= normalBiomeCount || MireBiomeCount >= normalBiomeCount || InfernoBiomeCount >= normalBiomeCount || sandBiomeCount >= normalBiomeCount) //don't gen if you're in the Dungeon at all or if the Ice count (Snow) or the Sand count (desert) is too high
+            WorldUtils.Gen(newOrigin, new Shapes.Rectangle(biomeWidth, biomeHeight), Actions.Chain(new GenAction[] //gen grass...
             {
-                return false;
-            }
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
-			{
-                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new Actions.SetLiquid(0, 0)
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass }), //ensure we only replace the intended tile (in this case, grass)
+                new RadialDitherTopMiddle(biomeWidth, biomeHeight, biomeWidthHalf - 10, biomeWidthHalf + 10), //this provides the 'blending' on the edges (except the top)
+                new SetModTile(tileGrass, true, true) //actually place the tile
             }));
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //gen grass...
-			{
-                new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
-				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
-				new SetModTile(tileGrass, true, true) //actually place the tile
-			}));
-
             return true;
         }
+
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 6300) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }

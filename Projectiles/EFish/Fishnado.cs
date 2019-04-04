@@ -13,6 +13,9 @@ namespace AAMod.Projectiles.EFish
         {
             DisplayName.SetDefault("Fishnado");
 			Main.projFrames[projectile.type] = 6;
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 		
         public override void SetDefaults()

@@ -23,7 +23,9 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("DaybreakIncineriteOre");   //put your CustomBlock name
             dustType = mod.DustType("AkumaADust");
-            AddMapEntry(new Color(100, 30, 0));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Daybreak Incinerite Ore");
+            AddMapEntry(new Color(100, 30, 0), name);
 			minPick = 225;
         }
 

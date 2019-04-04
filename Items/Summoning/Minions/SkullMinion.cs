@@ -25,6 +25,7 @@ namespace AAMod.Items.Summoning.Minions
             DisplayName.SetDefault("Skull Minion");
             Main.projFrames[projectile.type] = 2;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 

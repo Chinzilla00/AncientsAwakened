@@ -31,6 +31,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 projectile.alpha++;
             }
+
+            if (projectile.frameCounter++ > 8)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -14,7 +14,6 @@ namespace AAMod.Items.Armor.Dread
 			DisplayName.SetDefault("Dread Moon Hakama");
 			Tooltip.SetDefault(@"50% increased movement speed
 +3 Max minions
-25% decreased ammo consumption
 5% increased damage resistance
 The abyssal wrath of the Mire rests in this armor");
 		}
@@ -31,7 +30,6 @@ The abyssal wrath of the Mire rests in this armor");
 		{
 			player.moveSpeed *= 1.5f;
             player.maxMinions += 3;
-			player.ammoCost75 = true;
 			player.endurance *= 1.05f;
 		}
 

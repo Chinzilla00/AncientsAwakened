@@ -21,7 +21,9 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("Incinerite");   //put your CustomBlock name
             dustType = mod.DustType("IncineriteDust");
-            AddMapEntry(new Color(204, 102, 0));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Incinerite Ore");
+            AddMapEntry(new Color(204, 102, 0), name);
 			minPick = 65;
         }
 

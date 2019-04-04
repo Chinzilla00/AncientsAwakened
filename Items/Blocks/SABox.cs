@@ -10,7 +10,9 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unyielding Ancient Music Box");
-		}
+
+            Tooltip.SetDefault(@"Plays 'Dark Matter 02' from Pokemon Super Mystery Dungeon");
+        }
 
 		public override void SetDefaults()
 		{
@@ -55,15 +57,12 @@ namespace AAMod.Items.Blocks
 
         public override void AddRecipes()
         {
-            if (Main.expertMode == true)
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "ShenABox");
-                recipe.AddIngredient(null, "EXSoul");
-                recipe.AddTile(ItemID.Sawmill);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ShenABox");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(ItemID.Sawmill);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

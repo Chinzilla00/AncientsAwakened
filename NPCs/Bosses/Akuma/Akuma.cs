@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         private int attackFrame;
         private int attackCounter; 
         private int attackTimer;
-        private int speed = 8;
+        private int speed = 10;
         public static int MinionCount = 0;
         public int MaxMinons = Main.expertMode ? 3 : 4;
 
@@ -249,7 +249,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             bool collision = true;
 
 
-            float speed = 8f;
+            float speed = 12f;
             float acceleration = 0.13f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -628,8 +628,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar");
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
             }
         }
         
@@ -984,8 +983,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.width = 60;
-            npc.height = 60;
+            npc.width = 80;
+            npc.height = 80;
             npc.dontCountMe = true;
 
             npc.alpha = 255;

@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 50;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             Microsoft.Xna.Framework.Vector2 Drawpos = projectile.Center - Main.screenPosition + new Microsoft.Xna.Framework.Vector2(0, projectile.gfxOffY);
 
 
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(3, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
 
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, Color.White, true);
             return false;

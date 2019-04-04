@@ -155,7 +155,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             Vector2 Drawpos = projectile.Center - Main.screenPosition + new Vector2(0, projectile.gfxOffY);
 
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile, Color.White, true);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 2);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, frame, Color.White, true);
             return false;
         }
     }

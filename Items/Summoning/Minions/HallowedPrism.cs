@@ -14,7 +14,9 @@ namespace AAMod.Items.Summoning.Minions
         {
             DisplayName.SetDefault("Hallowed Prism");
             Main.projFrames[projectile.type] = 5;
-
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetDefaults()
@@ -30,8 +32,6 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft = 18000;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
 

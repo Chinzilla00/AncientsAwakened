@@ -58,15 +58,15 @@ All effects of the infinity stones
         {
             player.meleeSpeed += 0.18f;
             player.aggro += 8;
-            player.meleeDamage += .5f;
-            player.rangedDamage += .5f;
-            player.magicDamage += .5f;
-            player.thrownDamage += .5f;
-            player.minionDamage += .5f;
-            player.statManaMax2 += 1000;
+            player.meleeDamage += .4f;
+            player.rangedDamage += .4f;
+            player.magicDamage += .4f;
+            player.thrownDamage += .4f;
+            player.minionDamage += .4f;
+            player.statManaMax2 += 300;
             player.buffImmune[88] = true;
-            player.maxMinions += 10;
-            player.manaCost *= 0.0f;
+            player.maxMinions += 6;
+            player.manaCost *= 0.5f;
             player.accRunSpeed = 10;
             player.moveSpeed += 1f;
             player.iceSkate = true;
@@ -79,7 +79,7 @@ All effects of the infinity stones
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.wingTimeMax = 1000;
+            player.wingTimeMax = 500;
             player.GetModPlayer<AAPlayer>().dwarvenGauntlet = true;
             player.GetModPlayer<AAPlayer>().Power = true;
             player.GetModPlayer<AAPlayer>().Time = true;
@@ -106,7 +106,7 @@ All effects of the infinity stones
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
-                        rodCD = 30;
+                        rodCD = 180;
                     }
                 }
             }

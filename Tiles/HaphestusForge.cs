@@ -33,7 +33,6 @@ namespace AAMod.Tiles
               TileID.TinkerersWorkbench,
               TileID.AlchemyTable,
               TileID.Bottles,
-              TileID.MythrilAnvil,
               TileID.Tables,
               TileID.DemonAltar,
               TileID.Chairs,

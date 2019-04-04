@@ -194,7 +194,7 @@ namespace AAMod.Projectiles.Zero
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Daybreak, 300);
+            Projectile.NewProjectile(target.Center, Vector2.Zero, mod.ProjectileType<Horizon>(), projectile.damage, 0, projectile.owner, 0, 0);
         }
     }
 }

@@ -41,12 +41,10 @@ namespace AAMod
         public bool irradiated = false;
         public bool DiscordInferno = false;
         public bool riftBent = false;
+        public bool BrokenArmor = false;
         public static int Toad = -1;
         public static int Rose = -1;
         public static int Brain = -1;
-
-
-
 
         public override bool InstancePerEntity
 		{
@@ -55,6 +53,7 @@ namespace AAMod
 				return true;
 			}
 		}
+
 		public override void ResetEffects(NPC npc)
 		{
             infinityOverload = false;
@@ -68,6 +67,7 @@ namespace AAMod
             DiscordInferno = false;
             irradiated = false;
             riftBent = false;
+            BrokenArmor = false;
         }
         
         public int RiftTimer;
@@ -216,10 +216,16 @@ namespace AAMod
                 }
             }
 
+            if (BrokenArmor)
+            {
+               npc.defense *= (int).8f;
+            }
+
             if (Dragonfire)
             {
                 npc.damage -= 10;
             }
+
             if (Hydratoxin)
             {
                 drain = true;
@@ -812,6 +818,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("Mosster"), .5f);
                     pool.Add(mod.NPCType("Newt"), 1f);
                     pool.Add(mod.NPCType("HydraClaw"), 1f);
+                    pool.Add(mod.NPCType("MireSkulker"), .7f);
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("Toxitoad"), .2f);
@@ -823,6 +830,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("Mosster"), .5f);
                     pool.Add(mod.NPCType("Newt"), 1f);
                     pool.Add(mod.NPCType("HydraClaw"), 1f);
+                    pool.Add(mod.NPCType("MireSkulker"), .5f);
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("Kappa"), .4f);

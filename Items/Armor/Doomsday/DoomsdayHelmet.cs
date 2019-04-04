@@ -14,11 +14,8 @@ namespace AAMod.Items.Armor.Doomsday
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Doomsday Assault Visor");
-			Tooltip.SetDefault(@"15% increased melee critical chance
-20% increased ranged critical chance
-7% increased damage
+			Tooltip.SetDefault(@"20% increased ranged damage and critical strike chance
 The power to destroy entire planets rests in this armor");
-
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -52,13 +49,8 @@ The power to destroy entire planets rests in this armor");
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeCrit += 15;
 			player.rangedCrit += 20;
-			player.meleeDamage *= 1.07f;
-            player.rangedDamage *= 1.07f;
-            player.magicDamage *= 1.07f;
-            player.minionDamage *= 1.07f;
-            player.thrownDamage *= 1.07f;
+            player.rangedDamage += .2f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -83,7 +75,7 @@ The power to destroy entire planets rests in this armor");
 			player.setBonus = @"Life termination systems activated
 You detect all hostile life around you
 you can see in the dark much more easily
-Your ranged and melee attacks are strong enough to weaken your enemies defense for a time";
+Your ranged attacks are strong enough to weaken your enemies defense for a time";
 
 
             player.AddBuff(BuffID.Hunter, 2);

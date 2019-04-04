@@ -112,7 +112,7 @@ namespace AAMod.NPCs.Bosses.Shen
 		public bool isAwakened = false;
 		public float _normalSpeed = 15f; //base for normal movement
 		public float _chargeSpeed = 40f; //base for charge movement
-		public float moveSpeed
+		public float MoveSpeed
 		{
 			get
 			{
@@ -455,7 +455,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
                             int dir = (npc.Center.X < player.Center.X ? 1 : -1);
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                                 infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                                 vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                                vel *= (moveSpeed / _normalSpeed); //to compensate for players running away
+                                vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
                                 int dir = (npc.Center.X < player.Center.X ? 1 : -1);
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
@@ -545,10 +545,10 @@ namespace AAMod.NPCs.Bosses.Shen
 			if (fireSound)
 			{
 				Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
-			}else
+			}
+            else
 			{
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Item, "Sounds/Sounds/ShenRoar");
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar"), npc.Center);
             }
 		}
 
@@ -557,12 +557,12 @@ namespace AAMod.NPCs.Bosses.Shen
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
 			float length = dist.Length();
-			if(length < moveSpeed)
+			if(length < MoveSpeed)
 			{
-				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / moveSpeed);
+				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / MoveSpeed);
 			}
 			npc.velocity = Vector2.Normalize(point - npc.Center);
-			npc.velocity *= moveSpeed;
+			npc.velocity *= MoveSpeed;
 			npc.velocity *= velMultiplier;	
 			if(!Charging)
 			{
@@ -657,7 +657,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 SpawnBoss(player, "WrathHaruka", "");
             }
             
-            if (npc.life <= npc.lifeMax * 0.75f && !Health4)
+            if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
@@ -670,7 +670,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health4 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.5f && !Health3)
+            if (npc.life <= npc.lifeMax * 0.66f && !Health3 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
@@ -683,7 +683,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health3 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.10f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.30f && !Health1 && !isAwakened)
             {
                 if (AAWorld.downedShen)
                 {
@@ -745,11 +745,11 @@ namespace AAMod.NPCs.Bosses.Shen
 			//draw body/charge afterimage
 			if(Charging)
 			{
-				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));	
+				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));	
 			}
-			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
-			//draw wings
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor, true);
+            //draw wings
+            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor, true);
 			
 			//deoffset
 			npc.position.Y -= 130f; // offsetVec;

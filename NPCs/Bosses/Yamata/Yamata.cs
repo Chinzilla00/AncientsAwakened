@@ -84,7 +84,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.netAlways = true;
             frameWidth = 162;
             frameHeight = 118;
-            npc.dontTakeDamage = true;
             npc.alpha = 255;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
@@ -352,7 +351,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();
         }
-        
 
         public void AIMovementRunAway()
         {
@@ -682,10 +680,6 @@ namespace AAMod.NPCs.Bosses.Yamata
     public class AnimationInfo
     {
         public int animType = 0;
-        Vector2[] leftPos = null, left2Pos = null;
-        Vector2[] rightPos = null, right2Pos = null;
-        float[] leftRotations = null, left2Rotations = null;
-        float[] rightRotations = null, right2Rotations = null;
         public float movementRatio = 0f, movementRate = 0.01f, animMult = 1f;
         public float halfPI = (float)Math.PI / 2f;
         public bool[] fired = new bool[4];
@@ -717,8 +711,10 @@ namespace AAMod.NPCs.Bosses.Yamata
     public class LegInfo : LimbInfo
     {
         Vector2 velocity, oldVelocity, legOrigin;
-        float velOffsetY = 0f, distanceToMove = 120f, distanceToMoveX = 50f;
-        bool flying = false, leftLeg = false;
+        private float velOffsetY = 0f;
+        private readonly float distanceToMove = 120f, distanceToMoveX = 50f;
+        private readonly bool flying = false;
+        private bool leftLeg = false;
 
         Vector2 pointToStandOn = default(Vector2);
         Vector2 legJoint = default(Vector2);

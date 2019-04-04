@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.width = 96;
             npc.height = 78;
             npc.aiStyle = -1;
-            npc.damage = 40;
+            npc.damage = 0;
             npc.defense = 99999999;
             npc.lifeMax = 28000;
             npc.value = Item.buyPrice(0, 10, 0, 0);
@@ -106,7 +106,13 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
 			npc.TargetClosest();
 			Player playerTarget = Main.player[npc.target];
-			if(!playerTarget.active || playerTarget.dead) //fleeing
+            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
+            {
+                npc.NPCLoot();
+                npc.active = false;
+            }
+
+            if (!playerTarget.active || playerTarget.dead) //fleeing
 			{
 	            npc.noGravity = true;	
 				npc.noTileCollide = true;				

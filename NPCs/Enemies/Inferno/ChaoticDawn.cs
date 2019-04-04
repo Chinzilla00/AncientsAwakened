@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using BaseMod;
+using System;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
@@ -32,9 +33,72 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void AI()
         {
-            BaseAI.AIWeapon(npc, ref npc.ai, 100, 100, 9f, 1f, 1f);
+            npc.noGravity = true;
+            npc.noTileCollide = true;
+
+            Lighting.AddLight((int)((npc.position.X + (float)(npc.width / 2)) / 16f), (int)((npc.position.Y + (float)(npc.height / 2)) / 16f), 0.3f, 0.2f, 0.05f);
+
+            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
+            {
+                npc.TargetClosest(true);
+            }
             if (npc.ai[0] == 0f)
-                npc.rotation += 0.785f;
+            {
+                float num312 = 9f;
+                Vector2 vector32 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                float num313 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector32.X;
+                float num314 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector32.Y;
+                float num315 = (float)Math.Sqrt(num313 * num313 + num314 * num314);
+                num315 = num312 / num315;
+                num313 *= num315;
+                num314 *= num315;
+                npc.velocity.X = num313;
+                npc.velocity.Y = num314;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 0.785f;
+                npc.ai[0] = 1f;
+                npc.ai[1] = 0f;
+                npc.netUpdate = true;
+                return;
+            }
+            if (npc.ai[0] == 1f)
+            {
+                if (npc.justHit)
+                {
+                    npc.ai[0] = 2f;
+                    npc.ai[1] = 0f;
+                }
+                npc.velocity *= 0.99f;
+                npc.ai[1] += 1f;
+                if (npc.ai[1] >= 100f)
+                {
+                    npc.netUpdate = true;
+                    npc.ai[0] = 2f;
+                    npc.ai[1] = 0f;
+                    npc.velocity.X = 0f;
+                    npc.velocity.Y = 0f;
+                    return;
+                }
+            }
+            else
+            {
+                if (npc.justHit)
+                {
+                    npc.ai[0] = 2f;
+                    npc.ai[1] = 0f;
+                }
+                npc.velocity *= 0.96f;
+                npc.ai[1] += 1f;
+                float num316 = npc.ai[1] / 120f;
+                num316 = 0.1f + num316 * 0.4f;
+                npc.rotation += num316 * (float)npc.direction;
+                if (npc.ai[1] >= 120f)
+                {
+                    npc.netUpdate = true;
+                    npc.ai[0] = 0f;
+                    npc.ai[1] = 0f;
+                    return;
+                }
+            }
         }
 
         /*public override void FindFrame(int frameHeight)

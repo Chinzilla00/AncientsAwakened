@@ -51,8 +51,12 @@ namespace AAMod.NPCs.Enemies.Void
 		    BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.6f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-		    BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 3);		
-			if(Main.netMode != 1 && playerActive)
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            if (shootAI < 60)
+            {
+                BaseAI.LookAt(player.Center, npc, 3, 0, .1f, false);
+            }
+            if (Main.netMode != 1 && playerActive)
 			{
 				shootAI++;
 				if(shootAI >= 90)
@@ -61,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Void
                     int projType = mod.ProjType("NeutralizerP");
 
                     if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-						BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
+						BaseAI.FireProjectile(npc.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
 				}
 			}
 		}

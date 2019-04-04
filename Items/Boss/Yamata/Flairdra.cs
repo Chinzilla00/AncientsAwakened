@@ -42,7 +42,7 @@ Inflicts Moonraze");
             item.damage = 200;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Flairdra");
-            item.shootSpeed = 20f;
+            item.shootSpeed = 24f;
             item.UseSound = SoundID.Item21;
             item.melee = true;
         }

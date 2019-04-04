@@ -34,24 +34,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            Speechtimer++;
-            if (Speechtimer < 780)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 50, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 50, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-            
             if (Speechtimer == 180)
             {
                 Main.NewText("Split again…", new Color(180, 41, 32));
@@ -88,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha += 20;
             }
 
-            if (Speechtimer <= 960 && npc.alpha >= 255)
+            if (Speechtimer >= 960 && npc.alpha >= 255)
             {
                 npc.active = false;
             }

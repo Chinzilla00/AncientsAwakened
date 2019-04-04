@@ -96,10 +96,11 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Orthrus = false;
         public static bool Equinox = false;
         public static bool AnubisB = false;
-        public static bool GripsS = false;
+        public static bool Sisters = false;
         public static bool Akuma = false;
         public static bool Yamata = false;
         public static bool Zero = false;
+        public static bool Shen = false;
         public static bool BaseChat = false;
         public static int ChatNumber = 0;
 
@@ -119,10 +120,11 @@ namespace AAMod.NPCs.TownNPCs
             Orthrus = false;
             Equinox = false;
             AnubisB = false;
-            GripsS = false;
+            Sisters = false;
             Akuma = false;
             Yamata = false;
             Zero = false;
+            Shen = false;
         }
         
         public override void SetChatButtons(ref string button, ref string button2)
@@ -155,13 +157,15 @@ namespace AAMod.NPCs.TownNPCs
 
             string AnubisT = "Ancient of Judgement";
 
-            string GripsST = "Gotcha Again!";
+            string SistersT = "Terrible Twins";
 
             string AkumaT = "Ancient of Fury";
 
             string YamataT = "Ancient of Wrath";
 
             string ZeroT = "Ancient of Null";
+
+            string ShenT = "Discordian Death";
 
             Player player = Main.player[Main.myPlayer];
 
@@ -232,17 +236,17 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = AnubisT;
                 AnubisB = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord && (AAWorld.downedDB || AAWorld.downedNC))
+            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedEquinox)
             {
-                button2 = GripsST;
-                GripsS = true;
+                button2 = SistersT;
+                Sisters = true;
             }
-            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedGripsS)
+            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = YamataT;
                 Yamata = true;
@@ -250,6 +254,11 @@ namespace AAMod.NPCs.TownNPCs
             else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
+                Zero = true;
+            }
+            else if (ChatNumber == 17 && AAWorld.downedAllAncients)
+            {
+                button2 = SistersT;
                 Zero = true;
             }
             else
@@ -274,10 +283,11 @@ namespace AAMod.NPCs.TownNPCs
             Orthrus = false;
             Equinox = false;
             DoNext = false;
+            Sisters = false;
             Akuma = false;
             Yamata = false;
             Zero = false;
-            GripsS = false;
+            Shen = false;
         }
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -347,37 +357,42 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Orthrus)
             {
-                return AAWorld.downedOrthrus ? "You actually did it, how surprising. I thought that you would just die. Well, happens..." : 
-                    "Can you even imagine that one of Greek myths was true? The one about Cerberus, guardian of Netherworld. Well, not exactly, but about his brother, Twin-Headed Orthus. He was created by alien race, Fulgarians. Turn him into scrap.";
+                return AAWorld.downedOrthrus ? "I guess orthrus is what it eats, now." : 
+                    "Remeber the Hydra? There's a bigger one out there. And it's a robot. And it shoots Electricity. So uh...good luck!";
             }
             else if (Equinox)
             {
-                return AAWorld.downedEquinox ? "Nice job taking out the Equinox worms. I could tell you did because the sky lit up with those weird balls of light." : 
+                return AAWorld.downedEquinox ? "Nice job taking out the Equinox worms. I could tell you did because it's like a week later now. I hope I didn't miss my nurse's appointment..." : 
                     "Like worms? Me neither, but guess what? There are 2 big ones that control the flow of day and night, and they're tough buggers. Good luck.";
             }
             else if (AnubisB)
             {
                 return "I hear there’s this Anubis guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
             }
-            else if (GripsS)
+            else if (Sisters)
             {
-                return AAWorld.downedGripsS ? "You managed to do it? I am impressed! Hope that others will finally leave me alone..." : 
-                    "I thought I was afraid of big ones, but how I was wrong... I saw even bigger ones not long ago. Maybe if you defeat them, the others will never show up again?";
+                return AAWorld.downedSisters ? "Nice, you taught those two spoiled brats a lesson! Those two didn't see it coming!" : 
+                    "Remember ol' Brood and Hydra? Well, those two have daughters. And MAN they're annoying..! Every time I go into the chaoses, those two are just waiting to ruin my day! Can you go give em' the ol' one-two?";
             }
             else if (Akuma)
             {
-                return AAWorld.downedAkuma ? "That wasn't that hard after all, was it? Also, you may need to visit our Stylist. Even helmet didn't save your hair." : 
-                    "Why would anyone call east dragon a Demon? I have no idea personally... Hey, you, go here quick. You better get rid of this ''Akuma'' before it will come and destroy our living places.";
+                return AAWorld.downedAkuma ? "Akuma thinks he's edgy. To me, he just comes across as trying to be way too cool and failing. Anyways, might wanna run some water through your hair. You got a little singed up there." : 
+                    "Why would anyone call a sun serpent a demon? I have no idea personally...but Akuma has got to go. He always glasses my deserts with his fire and it pisses me off.";
             }
             else if (Yamata)
             {
-                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my hair out." :
-                    "Yamata, the whiny baby! He complains about everything, and he WONT SHUT UP! LIKE SERIOUSLY, YOU try and deal with seven obnoxiously loud dragon heads that chatter constantly and talk over eachother!";
+                return AAWorld.downedYamata ? "Thanks for shutting up that 7-headed sissy. He makes me want to tear my fur out." :
+                    "Yamata, the whiny nit! He complains about everything, and he WONT SHUT UP! LIKE SERIOUSLY, YOU try and deal with seven obnoxiously loud dragon heads that chatter constantly and talk over eachother!";
             }
             else if (Zero)
             {
-                return AAWorld.downedZero ? "Thank gods, you are alive! And this thing finally shut up. Hope it will never return here..." : 
-                    "Once I woke up from a strange sound. And when I look at the windows I saw something... Something was in it. Something which made me tremble in fear... Go, find and destroy this thing. It is too fearsome.";
+                return AAWorld.downedZero ? "...I'll be honest. I don't like what that thing said after it died." : 
+                    "You know the void? Those spooky floating islands to the east? There's a BIG scary machine there that's always just floating there. Anyways, after you slammed the moon lord, I heard a massive shockwave come from the void. Could you check it out for me?";
+            }
+            else if (Shen)
+            {
+                return AAWorld.downedShen ? "Holy-- You BEAT Shen Doragon?! ...I'm suddenly a lot more intimidated by you, kid." :
+                    "Akuma and Yamata...you know, those two were once one being. And hot dang, that guy was powerful. He leveled 2 civilizations one time. Anyways, so what was it that you needed?";
             }
             else
             {

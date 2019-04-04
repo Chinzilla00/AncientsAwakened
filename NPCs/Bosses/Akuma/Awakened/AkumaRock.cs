@@ -28,7 +28,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void AI()
         {
-        	if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
+            projectile.velocity.Y += .03f;
+            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
 			{
 				projectile.tileCollide = true;
 			}
@@ -36,33 +37,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			{
 				projectile.tileCollide = true;
 			}
-			projectile.scale = projectile.ai[1];
-			projectile.rotation += projectile.velocity.X * 2f;
-			Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
-			Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, new Color(255, Main.DiscoG, 0), 1f)];
-			dust20.position = position;
-			dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
-			dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
-			dust20.fadeIn = 0.5f;
-			dust20.noGravity = true;
-			dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, new Color(255, Main.DiscoG, 0), 1f)];
-			dust20.position = position;
-			dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
-			dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
-			dust20.fadeIn = 0.5f;
-			dust20.noGravity = true;
-			for (int num189 = 0; num189 < 1; num189++)
-			{
-				int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, new Color(255, Main.DiscoG, 0), 1f);
-				Main.dust[num190].velocity *= 0.5f;
-				Main.dust[num190].scale *= 1.3f;
-				Main.dust[num190].fadeIn = 1f;
-				Main.dust[num190].noGravity = true;
-			}
         }
 
         public override void Kill(int timeLeft)
         {
+            projectile.velocity.Y *= 1.01f;
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
 			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);

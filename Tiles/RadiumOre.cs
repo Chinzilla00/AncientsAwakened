@@ -19,7 +19,9 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("RadiumOre");
             dustType = mod.DustType("RadiumDust");
-            AddMapEntry(new Color(100, 90, 0));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Celestial Ore");
+            AddMapEntry(new Color(160, 150, 0), name);
 			minPick = 225;
         }
         
@@ -70,10 +72,14 @@ namespace AAMod.Tiles
         {
             if (Main.dayTime)
             {
+                ModTranslation name = CreateMapEntryName();
+                AddMapEntry(new Color(160, 150, 0), name);
                 dustType = mod.DustType("RadiumDust");
             }
             else
             {
+                ModTranslation name = CreateMapEntryName();
+                AddMapEntry(new Color(0, 30, 100), name);
                 dustType = mod.DustType<Dusts.DarkmatterDust>();
             }
             return true;

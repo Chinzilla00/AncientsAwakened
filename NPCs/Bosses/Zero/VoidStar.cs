@@ -40,6 +40,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Zero>()))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write((short)npc.localAI[0]);

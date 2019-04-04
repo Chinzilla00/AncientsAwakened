@@ -261,7 +261,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             bool collision = true;
             
-            float speed = 10f;
+            float speed = 15f;
             float acceleration = 0.16f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -396,19 +396,22 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 		{
             if (Main.expertMode)
             {
-
-                Main.NewText(AAWorld.downedAkuma ? "Heh, not to shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Heere's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                if (!AAWorld.downedAkuma)
+                {
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DraconianRune"));
+                }
+                Main.NewText(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Heere's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Akuma.AkumaATrophy.type, 1f / 10);
                 if (Main.rand.NextFloat() < 0.1f)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
                 npc.DropBossBags();
                 if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                     AAWorld.PowerDropped = true;
                 }
                 return;
@@ -607,8 +610,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else
             {
-                int roarSound = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar");
-                Main.PlaySound(roarSound, npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
             }
         }
 

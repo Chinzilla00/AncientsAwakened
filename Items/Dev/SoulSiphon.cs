@@ -17,6 +17,7 @@ namespace AAMod.Items.Dev
 		public override void SetDefaults()
 		{
 			item.damage = 220;
+            item.useStyle = 1;
 			item.melee = true;
             item.useAnimation = 25;
             item.useTime = 25;

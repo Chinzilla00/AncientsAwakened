@@ -8,7 +8,6 @@ namespace AAMod.Items.Pets
 {
     public class MudkipBallS : ModItem
 	{
-        
         public override void SetStaticDefaults()
 		{
 			// DisplayName and Tooltip are automatically set from the .lang files, but below is how it is done normally.

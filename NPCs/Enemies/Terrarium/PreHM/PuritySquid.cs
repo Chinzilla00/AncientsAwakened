@@ -53,7 +53,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                 npc.alpha = 0;
             }
             BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, true, 800, 400, 180, 2);
-            
+
+            npc.rotation = npc.velocity.X / 15f;
+
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {

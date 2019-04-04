@@ -14,9 +14,8 @@ namespace AAMod.Items.Armor.Draco
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Draconian Sun Kabuto");
-			Tooltip.SetDefault(@"18% increased melee and magic critical chance
+			Tooltip.SetDefault(@"20% increased melee critical chance
 10% increased damage resistance
-120 increased maximum mana
 The blazing fury of the Inferno rests in this armor");
 
 		}
@@ -52,9 +51,7 @@ The blazing fury of the Inferno rests in this armor");
 
         public override void UpdateEquip(Player player)
 		{
-			player.meleeCrit += 18;
-			player.magicCrit += 18;
-            player.statManaMax2 += 120;
+			player.meleeCrit += 20;
             player.endurance *= 1.1f;
 		}
 
@@ -80,7 +77,7 @@ The blazing fury of the Inferno rests in this armor");
 			player.setBonus = @"'Blazing fury consumes you'
 You are immune to all ice-related debuffs
 You glow like the blazing fire in your soul
-Your Melee and Magic attacks inflict Daybreak on your target";
+Your Melee attacks inflict Daybreak on your target";
 
             player.buffImmune[46] = true;
             player.buffImmune[47] = true;

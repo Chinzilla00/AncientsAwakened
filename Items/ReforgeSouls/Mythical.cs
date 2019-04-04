@@ -17,7 +17,7 @@ namespace AAMod.Items.ReforgeSouls
         {
             DisplayName.SetDefault("Mythical Soul");
             Tooltip.SetDefault(
-@"Makes magic/summoner weapon to get ''Mythical'' prefix if it is possible
+@"Gives a weapon the ''Mythical'' prefix if it is possible
 Right-click weapon with the soul to set prefix
 Consumes in process");
         }

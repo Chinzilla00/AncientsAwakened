@@ -10,8 +10,8 @@ namespace AAMod.Items.Accessories.Wings
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightmare Wings");
-			Tooltip.SetDefault("");
-		}
+            Tooltip.SetDefault("Allows flight and slow fall");
+        }
 
 		public override void SetDefaults()
 		{
