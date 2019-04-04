@@ -190,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
         public int chargeWidth = 50;
-        public int normalWidth = 250;
+        public int normalWidth = 444;
 
 
         public override void BossLoot(ref string name, ref int potionType)
