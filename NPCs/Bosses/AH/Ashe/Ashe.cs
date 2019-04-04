@@ -133,17 +133,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 return;
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;
@@ -599,7 +599,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
-                BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, .5f, 1f, 7, false, 0f, 0f, Color.DeepSkyBlue);
+                BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 1f, 1f, 7, false, 0f, 0f, Color.DeepSkyBlue);
             }
             if (scale > 0)
             {

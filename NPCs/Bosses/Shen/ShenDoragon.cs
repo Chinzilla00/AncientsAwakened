@@ -53,8 +53,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 50;
-            npc.width = 250;
+            npc.height = 100;
+            npc.width = 444;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
@@ -728,8 +728,9 @@ namespace AAMod.NPCs.Bosses.Shen
 				else
 				{
 					NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
-				}
-				npc.value = 0f;
+                }
+                BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
+                npc.value = 0f;
 				npc.boss = false;
 			}
         }
@@ -745,11 +746,11 @@ namespace AAMod.NPCs.Bosses.Shen
 			//draw body/charge afterimage
 			if(Charging)
 			{
-				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));	
-			}
-			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor, true);
+				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));
+            }
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor, false);
             //draw wings
-            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor, true);
+            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor, false);
 			
 			//deoffset
 			npc.position.Y -= 130f; // offsetVec;

@@ -29,48 +29,49 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
         }
-
-        public int Speechtimer = 0;
-
         public override void AI()
         {
-            if (Speechtimer == 180)
+            npc.ai[1]++;
+            Player player = Main.player[npc.target];
+            npc.TargetClosest();
+            npc.Center = player.Center;
+            if (npc.ai[1] == 180)
             {
                 Main.NewText("Split again…", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 360)
+            if (npc.ai[1] == 360)
             {
                 Main.NewText("This is YOUR fault you idiotic worm..! I knew we should have been more aggressive at the beginning..!", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 540)
+            if (npc.ai[1] == 540)
             {
                 Main.NewText("id, you will know our wrath again one day...when we gain enough power again…", new Color(180, 41, 32));
             }
 
-            if (Speechtimer == 720)
+            if (npc.ai[1] == 720)
             {
                 Main.NewText("...or you decide to use that Sigil again..!", new Color(45, 46, 70));
             }
 
-            if (Speechtimer == 900)
+            if (npc.ai[1] == 900)
             {
                 Main.NewText("Your choice, child.", new Color(180, 41, 32));
                 Main.NewText("Your choice, child.", new Color(45, 46, 70));
             }
 
-            if (Speechtimer >= 900 && Speechtimer <= 960)
+            if (npc.ai[1] >= 900 && npc.ai[1] <= 960)
             {
                 npc.alpha -= 20;
             }
 
-            if (Speechtimer <= 960)
+            if (npc.ai[1] <= 960)
             {
                 npc.alpha += 20;
             }
 
-            if (Speechtimer >= 960 && npc.alpha >= 255)
+            if (npc.ai[1] >= 960 && npc.alpha >= 255)
             {
                 npc.active = false;
             }

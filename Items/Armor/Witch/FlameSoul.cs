@@ -57,12 +57,8 @@ namespace AAMod.Items.Armor.Witch
 					projectile.timeLeft = 2;
 				}
 			}
-            
-            projectile.damage = 120 / (1 - (player.statLife / player.statLifeMax));
-            if (projectile.damage < 60)
-            {
-                projectile.damage = 60;
-            }
+
+            projectile.damage = FireDamage(player);
 
             float num637 = 0.05f;
 			for (int num638 = 0; num638 < 1000; num638++)
@@ -216,7 +212,6 @@ namespace AAMod.Items.Armor.Witch
 					projectile.velocity.Y = -0.05f;
 				}
 			}
-			projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
 			projectile.frameCounter++;
 			if (projectile.frameCounter > 3)
 			{
@@ -252,6 +247,47 @@ namespace AAMod.Items.Armor.Witch
 					}
 				}
 			}
+        }
+
+        public int FireDamage(Player player)
+        {
+            if (player.statLife > (player.statLifeMax * .9f))
+            {
+                 return projectile.damage = 60 + 0;
+            }
+            if (player.statLife > (player.statLifeMax * .8f))
+            {
+                return projectile.damage = 60 + 5;
+            }
+            if (player.statLife > (player.statLifeMax * .7f))
+            {
+                return projectile.damage = 60 + 10;
+            }
+            if (player.statLife > (player.statLifeMax * .6f))
+            {
+                return projectile.damage = 60 + 15;
+            }
+            if (player.statLife > (player.statLifeMax * .5f))
+            {
+                return projectile.damage = 60 + 20;
+            }
+            if (player.statLife > (player.statLifeMax * .4f))
+            {
+                return projectile.damage = 60 + 25;
+            }
+            if (player.statLife > (player.statLifeMax * .3f))
+            {
+                return projectile.damage = 60 + 30;
+            }
+            if (player.statLife > (player.statLifeMax * .2f))
+            {
+                return projectile.damage = 60 + 35;
+            }
+            if (player.statLife > (player.statLifeMax * .1f))
+            {
+                return projectile.damage = 60 + 40;
+            }
+            return projectile.damage = 60 + 60;
         }
     }
 }

@@ -43,8 +43,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (++npc.frameCounter >= 5)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 92;
-                if (npc.frame.Y > (92 * 13))
+                npc.frame.Y += 88;
+                if (npc.frame.Y > (88 * 13))
                 {
                     npc.active = false;
                     npc.netUpdate = true;
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, dColor, true);
             BaseDrawing.DrawTexture(spritebatch, glowTex, red, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
             BaseDrawing.DrawTexture(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 17);
+            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White);
             return false;
         }
     }

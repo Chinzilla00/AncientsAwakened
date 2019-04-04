@@ -152,17 +152,17 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;

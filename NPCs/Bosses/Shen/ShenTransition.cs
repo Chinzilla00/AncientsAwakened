@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha > 0 && timer < 375)
+            if (npc.alpha > 0 && timer > 375)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenTransition");
                 for (int LOOP = 0; LOOP < 8; LOOP++)

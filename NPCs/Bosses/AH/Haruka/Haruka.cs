@@ -184,7 +184,23 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             internalAI[5]++;
 
-            if (internalAI[5] > 1000)
+            int InvisTimer1 = 1000;
+
+            int InvisTimer2 = 1300;
+
+            if (npc.life < npc.lifeMax * .66f)
+            {
+                InvisTimer1 = 800;
+
+                InvisTimer2 = 1100;
+            }
+            if (npc.life < npc.lifeMax * .33f)
+            {
+                InvisTimer1 = 600;
+
+                InvisTimer2 = 900;
+            }
+            if (internalAI[5] > InvisTimer1)
             {
                 if (!Invisible)
                 {
@@ -192,7 +208,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[5] > 1300)
+            if (internalAI[5] > InvisTimer2)
             {
                 Invisible = false;
                 internalAI[5] = 0;
@@ -334,6 +350,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 if (internalAI[2] > 26)
                 {
+                    internalAI[1] = 0;
+                    internalAI[2] = 17;
                     internalAI[4] += 1;
                 }
                 if (internalAI[4] > 5)
@@ -488,7 +506,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, false);
-            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 27);
+
+            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 1f, 1f, 7, true, 0f, 0f, AAColor.YamataA);
             return false;
         }
     }

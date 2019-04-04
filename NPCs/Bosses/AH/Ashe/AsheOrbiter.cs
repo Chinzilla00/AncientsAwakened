@@ -20,8 +20,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             npc.dontTakeDamage = true;
             npc.lifeMax = 1;
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 50;
+            npc.height = 50;
             npc.friendly = false;
             npc.lifeMax = 1000;
             npc.noGravity = true;
@@ -41,6 +41,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
 		public override void AI()
 		{
+            if (npc.frameCounter++ > 5)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 46;
+                if (npc.frame.Y >= 46 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
             if (npc.scale > 1f)
             {
                 npc.scale = 1f;
