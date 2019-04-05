@@ -80,6 +80,15 @@ namespace AAMod.NPCs.Bosses.Shen
         public float pos = 0f;
         private bool Fired = false;
 
+
+        public Vector2 MovePoint;
+        public bool SelectPoint = false;
+
+
+        public bool Health3 = false;
+        public bool Health2 = false;
+        public bool Health1 = false;
+
         public override bool CheckActive()
         {
             if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))
@@ -90,13 +99,24 @@ namespace AAMod.NPCs.Bosses.Shen
             return true;
         }
         
-        public bool Health3 = false;
-        public bool Health2 = false;
-        public bool Health1 = false;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6, AISTATE_VORTEX = 7;
 
         public int[] Vortexes = null;
+        
+        public void ChangePos()
+        {
+            npc.ai[1] = Main.rand.Next(2);
+            if (npc.ai[1] == 0)
+            {
+                pos = -250;
+            }
+            else
+            {
+                pos = 250;
+            }
+            npc.netUpdate = false;
+        }
 
         public override void AI()
         {
@@ -135,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("FuryAsheOrbiter"), 1500f);
             if (Vortexes != null && Vortexes.Length > 0)
             {
-                npc.defense = Ashe.VortexDamage(mod);
+                npc.damage = Ashe.VortexDamage(mod);
                 if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Vortexes.Length; m++)
@@ -143,8 +163,9 @@ namespace AAMod.NPCs.Bosses.Shen
                         NPC npc2 = Main.npc[Vortexes[m]];
                         if (npc2 != null && npc2.active)
                         {
-                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.DiscordLight>());
-                            Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.05f;
+                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.AkumaDustLight>());
+                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
+                            Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].alpha = 100;
                             Main.dust[dustID].noGravity = true;
                         }
@@ -184,6 +205,15 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             internalAI[0] = Main.rand.Next(6);
                         }
+                        if (internalAI[0] == AISTATE_MELEE)
+                        {
+                            moveSpeed = 6f;
+                            SelectPoint = true;
+                        }
+                        if (internalAI[0] == AISTATE_HOVER)
+                        {
+                            ChangePos();
+                        }
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                     }
@@ -206,7 +236,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
 
             }
-            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Weak magic cast frame
+            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
             {
                 if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !Fired) //Only Shoot if not in melee mode
                 {
@@ -230,11 +260,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
+                    moveSpeed = 16f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
-
             else
             {
                 if (internalAI[2] == 12 && internalAI[1] == 4 && !Fired)
@@ -282,10 +312,15 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                float Point = 500 * npc.direction;
+                if (SelectPoint)
+                {
+                    float Point = 500 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 500f);
+                    SelectPoint = false;
+                    npc.netUpdate = true;
+                }
+                MeleeMovement(MovePoint);
                 npc.netUpdate = true;
-                Vector2 point = player.Center + new Vector2(Point, 500f);
-                MoveToPoint(point);
             }
             else //Anything else
             {
@@ -326,6 +361,15 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.dontTakeDamage = false;
             }
+
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
             npc.rotation = 0; //No ugly rotation.
         }
 
@@ -336,7 +380,13 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
+
                     npc.direction = -1;
+
                     if (FlyingPositive)
                     {
                         FlyingBack = true;
@@ -348,6 +398,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else //If NPC's X position is higher than the player's
                 {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
+
                     npc.direction = 1;
 
                     if (FlyingNegative)
@@ -364,6 +419,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.direction = npc.velocity.X > 0 ? -1 : 1;
             }
+
+
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -382,6 +439,9 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public float scale = 0;
         public float RingRotation = 0;
+
+        public float scale2 = 0;
+        public float RingRotation2 = 0;
 
         private void RingEffects()
         {
@@ -407,6 +467,34 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (scale > 0)
                 {
                     scale -= .02f;
+                }
+            }
+        }
+
+        private void RingEffects2()
+        {
+            if (internalAI[0] == AISTATE_DRAGON || NPC.AnyNPCs(mod.NPCType<AsheOrbiter>())) //If summoning noodle
+            {
+                RingRotation2 += 0.02f;
+                if (scale2 < 1f)
+                {
+                    scale2 += .02f; //Raise Scale
+                }
+                if (scale2 >= 1f)
+                {
+                    scale2 = 1f;
+                }
+            }
+            else
+            {
+                RingRotation2 -= 0.02f;
+                if (scale2 < .1f)
+                {
+                    scale2 = 0;
+                }
+                if (scale2 > 0)
+                {
+                    scale2 -= .02f;
                 }
             }
         }
@@ -502,9 +590,9 @@ namespace AAMod.NPCs.Bosses.Shen
 
         private float moveSpeed = 15f;
 
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        public void MoveToPoint(Vector2 point)
         {
-            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
@@ -526,6 +614,36 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
+        public void MeleeMovement(Vector2 point)
+        {
+            if (MeleeSpeed < 16f)
+            {
+                MeleeSpeed += .5f;
+            }
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < MeleeSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
+            }
+            if (length < 200f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                MeleeSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= MeleeSpeed;
             npc.velocity *= velMultiplier;
         }
 
@@ -581,37 +699,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (scale > 0)
             {
-                BaseDrawing.DrawTexture(spritebatch, Barrier, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, BarrierFrame, dColor, true);
-                BaseDrawing.DrawTexture(spritebatch, ShieldTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, ShieldFrame, dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, Barrier, purple, npc.position, npc.width, npc.height, scale2, -RingRotation2, 0, 1, BarrierFrame, dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, ShieldTex, red, npc.position, npc.width, npc.height, scale2, RingRotation2, 0, 1, ShieldFrame, dColor, true);
             }
             return false;
-        }
-
-        public void MoveToPoint(Vector2 point)
-        {
-            float moveSpeed = 13f;
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            if (length < moveSpeed)
-            {
-                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
-            }
-            if (length < 200f)
-            {
-                moveSpeed *= 0.8f;
-            }
-            if (length < 100f)
-            {
-                moveSpeed *= 0.8f;
-            }
-            if (length < 50f)
-            {
-                moveSpeed *= 0.8f;
-            }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
         }
     }
 }

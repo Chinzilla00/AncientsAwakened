@@ -13,7 +13,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     [AutoloadBossHead]
     public class Ashe : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
@@ -152,7 +151,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("AsheOrbiter"), 1500f);
             if (Vortexes != null && Vortexes.Length > 0)
             {
-                npc.defense = VortexDamage(mod);
+                npc.damage = VortexDamage(mod);
                 if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Vortexes.Length; m++)
@@ -161,6 +160,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         if (npc2 != null && npc2.active)
                         {
                             int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.AkumaDustLight>());
+                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].alpha = 100;
                             Main.dust[dustID].noGravity = true;
@@ -363,6 +363,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.dontTakeDamage = false;
             }
+
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
             npc.rotation = 0; //No ugly rotation.
         }
 
@@ -387,7 +396,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
+
                     npc.direction = -1;
+
                     if (FlyingPositive)
                     {
                         FlyingBack = true;
@@ -399,6 +414,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 else //If NPC's X position is higher than the player's
                 {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
+
                     npc.direction = 1;
 
                     if (FlyingNegative)
@@ -415,6 +435,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.direction = npc.velocity.X > 0 ? -1 : 1;
             }
+
+            
         }
 
         public static int VortexDamage(Mod mod)
@@ -524,6 +546,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         
         public float scale = 0;
         public float RingRotation = 0;
+        
+        public float scale2 = 0;
+        public float RingRotation2 = 0;
 
         private void RingEffects()
         {
@@ -549,6 +574,34 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (scale > 0)
                 {
                     scale -= .02f;
+                }
+            }
+        }
+
+        private void RingEffects2()
+        {
+            if (internalAI[0] == AISTATE_DRAGON || NPC.AnyNPCs(mod.NPCType<AsheOrbiter>())) //If summoning noodle
+            {
+                RingRotation2 += 0.02f;
+                if (scale2 < 1f)
+                {
+                    scale2 += .02f; //Raise Scale
+                }
+                if (scale2 >= 1f)
+                {
+                    scale2 = 1f;
+                }
+            }
+            else
+            {
+                RingRotation2 -= 0.02f;
+                if (scale2 < .1f)
+                {
+                    scale2 = 0;
+                }
+                if (scale2 > 0)
+                {
+                    scale2 -= .02f;
                 }
             }
         }
@@ -599,14 +652,44 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
             {
-                BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 1f, 1f, 7, false, 0f, 0f, Color.DeepSkyBlue);
+                DrawAfterimage(spritebatch, eyeTex, 0, npc.position, npc.width, npc.height, npc.oldPos, 1f, 0f, npc.direction, 24, npc.frame, 1f, 1f, 7, true, 0f, 0f, true, Color.DeepSkyBlue);
+                //BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, 1f, 1f, 7, false, 0f, 0f, Color.DeepSkyBlue);
             }
-            if (scale > 0)
+            if (scale2 > 0)
             {
-                BaseDrawing.DrawTexture(spritebatch, Barrier, red, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, BarrierFrame, dColor, true);
-                BaseDrawing.DrawTexture(spritebatch, ShieldTex, blue, npc.position, npc.width, npc.height, scale, RingRotation, 0, 1, ShieldFrame, dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, Barrier, red, npc.position, npc.width, npc.height, scale2, -RingRotation2, 0, 1, BarrierFrame, dColor, true);
+                BaseDrawing.DrawTexture(spritebatch, ShieldTex, blue, npc.position, npc.width, npc.height, scale2, RingRotation2, 0, 1, ShieldFrame, dColor, true);
             }
             return false;
+        }
+
+        public static void DrawAfterimage(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, Vector2[] oldPoints, float scale = 1f, float rotation = 0f, int direction = 0, int framecount = 1, Rectangle frame = default(Rectangle), float distanceScalar = 1.0F, float sizeScalar = 1f, int imageCount = 7, bool useOldPos = true, float offsetX = 0f, float offsetY = 0f, bool drawCentered = false, Color? overrideColor = null)
+        {
+            Vector2 origin = new Vector2((float)(texture.Width / 2), (float)(texture.Height / framecount / 2));
+            Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
+            Vector2 velAddon = default(Vector2);
+            Vector2 originalpos = position;
+            Vector2 offset = new Vector2(offsetX, offsetY);
+            for (int m = 1; m <= imageCount; m++)
+            {
+                scale *= sizeScalar;
+                Color newLightColor = lightColor;
+                newLightColor.R = (byte)(newLightColor.R * (imageCount + 3 - m) / (imageCount + 9));
+                newLightColor.G = (byte)(newLightColor.G * (imageCount + 3 - m) / (imageCount + 9));
+                newLightColor.B = (byte)(newLightColor.B * (imageCount + 3 - m) / (imageCount + 9));
+                newLightColor.A = (byte)(newLightColor.A * (imageCount + 3 - m) / (imageCount + 9));
+                if (useOldPos)
+                {
+                    position = Vector2.Lerp(originalpos, (m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1]), distanceScalar);
+                    BaseDrawing.DrawTexture(sb, texture, shader, position + offset, width, height, scale, rotation, direction, framecount, frame, newLightColor, drawCentered ? true : false);
+                }
+                else
+                {
+                    Vector2 velocity = (m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1]);
+                    velAddon += velocity * distanceScalar;
+                    BaseDrawing.DrawTexture(sb, texture, shader, position + offset - velAddon, width, height, scale, rotation, direction, framecount, frame, newLightColor, drawCentered ? true : false);
+                }
+            }
         }
 
         public void MoveToPoint(Vector2 point)

@@ -509,7 +509,6 @@ namespace AAMod
             bool useMire = (ZoneMire || MoonAltar) && !useYamata;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
             bool useVoid = (ZoneVoid || VoidUnit);
-            bool useFog = !FogRemover && (Main.dayTime && !AAWorld.downedYamata) && ZoneMire && player.position.Y > Main.worldSurface;
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
 
             player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);

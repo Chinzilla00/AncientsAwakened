@@ -165,6 +165,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 else
                 {
+                    npc.chaseable = false;
                     npc.alpha = 255;
                 }
             }
@@ -176,6 +177,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 else
                 {
+                    npc.chaseable = true;
                     npc.alpha = 0;
                 }
             }
@@ -442,10 +444,18 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
                 {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
                     npc.direction = 1;
                 }
                 else //If NPC's X position is lower than the player's
                 {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
                     npc.direction = -1;
                 }
             }

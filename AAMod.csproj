@@ -451,7 +451,6 @@
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverBootsA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverJacketA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverMaskA.cs" />
-    <Compile Include="Items\Armor\Witch\FlameSoul.cs" />
     <Compile Include="Items\Armor\Witch\WitchBoots.cs" />
     <Compile Include="Items\Armor\Witch\WitchHood.cs" />
     <Compile Include="Items\Armor\Witch\WitchRobe.cs" />
@@ -1585,9 +1584,10 @@
     <Compile Include="OtherModWork\FruitDragon.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\AH\Ash.cs" />
+    <Compile Include="Projectiles\AH\FireOrbiter.cs" />
     <Compile Include="Projectiles\AH\FireMagic.cs" />
-    <Compile Include="Projectiles\AH\FireSpirit.cs" />
-    <Compile Include="Projectiles\AH\FireSpiritShot.cs" />
+    <Compile Include="Items\Armor\Witch\FlameSoul.cs" />
+    <Compile Include="Items\Armor\Witch\FlameSoulShot.cs" />
     <Compile Include="Projectiles\AH\FuryFlame.cs" />
     <Compile Include="Projectiles\AH\Mizu.cs" />
     <Compile Include="Projectiles\AH\Surasshu.cs" />
@@ -3734,6 +3734,8 @@
     <Content Include="Items\Armor\Dev\Alphakip\FishDiverMaskA.png" />
     <Content Include="Items\Armor\Dev\Alphakip\FishDiverMaskA_Head.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
+    <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Projectiles\AH\FireOrbiter.png" />
     <Content Include="Items\Armor\Witch\WitchBoots.png" />
     <Content Include="Items\Armor\Witch\WitchBoots_Legs.png" />
     <Content Include="Items\Armor\Witch\WitchHood.png" />
@@ -3956,8 +3958,6 @@
     <Content Include="NPCs\Enemies\Void\VortexBlades.png" />
     <Content Include="Projectiles\AH\Ash.png" />
     <Content Include="Projectiles\AH\FireMagic.png" />
-    <Content Include="Projectiles\AH\FireSpirit.png" />
-    <Content Include="Projectiles\AH\FireSpiritShot.png" />
     <Content Include="Projectiles\AH\FuryFlame.png" />
     <Content Include="Projectiles\AH\Mizu.png" />
     <Content Include="Projectiles\AH\Surasshu.png" />
