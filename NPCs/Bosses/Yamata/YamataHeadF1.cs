@@ -33,6 +33,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.noGravity = true;
             npc.chaseable = false;
             npc.damage = 100;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {

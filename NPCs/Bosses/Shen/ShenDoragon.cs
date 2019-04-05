@@ -214,6 +214,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Health3 = false;
         public bool Health2 = false;
         public bool Health1 = false;
+        public bool Invisible = false;
 
         public override void AI()
         {
@@ -258,6 +259,75 @@ namespace AAMod.NPCs.Bosses.Shen
             #endregion
 
             Player player = Main.player[npc.target];
+
+            bool Minions = NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()) || NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>());
+            bool isInvisible = Invisible && npc.ai[0] == 0f;
+
+            if (Minions && !isInvisible)
+            {
+                npc.chaseable = false;
+                npc.dontTakeDamage = true;
+                if (npc.alpha < 100)
+                {
+                    npc.alpha += 5;
+                }
+                else if (npc.alpha > 100)
+                {
+                    npc.alpha -= 5;
+                }
+                else
+                {
+                    npc.alpha = 100;
+                }
+            }
+            else if (isInvisible)
+            {
+                if (npc.alpha < 255)
+                {
+                    npc.alpha += 10;
+                }
+                else
+                {
+                    npc.chaseable = false;
+                    npc.alpha = 255;
+                }
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                if (npc.alpha > 0)
+                {
+                    npc.alpha -= 10;
+                }
+                else
+                {
+                    npc.chaseable = true;
+                    npc.alpha = 0;
+                    npc.alpha = 0;
+                }
+            }
+
+            customAI[5]++;
+
+            int InvisTimer1 = 1000;
+
+            int InvisTimer2 = 1200;
+
+            if (customAI[5] > InvisTimer1)
+            {
+                if (!Invisible)
+                {
+                    Invisible = true;
+                    npc.netUpdate = true;
+                }
+            }
+            if (customAI[5] > InvisTimer2)
+            {
+                Invisible = false;
+                customAI[5] = 0;
+                npc.netUpdate = true;
+            }
+
 
             if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen && !isAwakened)
             {
@@ -499,7 +569,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 50;
+                                infernoPos.Y -= 60;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
 

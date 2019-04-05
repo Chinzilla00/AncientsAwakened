@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 int num297 = mod.DustType<Dusts.AkumaDust>();
                 if (Main.rand.Next(2) == 0)
                 {
-                    for (int num298 = 0; num298 < 4; num298++)
+                    for (int num298 = 0; num298 < 6; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                         if (Main.rand.Next(3) == 0)
@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             Dust expr_DD7D_cp_0 = Main.dust[num299];
                             expr_DD7D_cp_0.velocity.Y = expr_DD7D_cp_0.velocity.Y * 2f;
                         }
-                        Main.dust[num299].scale *= 1f;
+                        Main.dust[num299].scale *= 1.5f;
                         Dust expr_DDE2_cp_0 = Main.dust[num299];
                         expr_DDE2_cp_0.velocity.X = expr_DDE2_cp_0.velocity.X * 1.2f;
                         Dust expr_DE02_cp_0 = Main.dust[num299];

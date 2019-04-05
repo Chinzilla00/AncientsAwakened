@@ -1295,7 +1295,6 @@
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheBoom.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheDragon.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheFire.cs" />
-    <Compile Include="NPCs\Bosses\AH\Ashe\AsheFlameRing.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheSpell.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheMagicSpark.cs" />
     <Compile Include="NPCs\Bosses\AH\Ashe\AsheShot.cs" />
@@ -4788,7 +4787,6 @@
     <Content Include="NPCs\Bosses\AH\Ashe\AsheDragonBody2.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheDragonTail.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheFire.png" />
-    <Content Include="NPCs\Bosses\AH\Ashe\AsheFlameRing.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheOrbiter.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheMagicSpark.png" />
     <Content Include="NPCs\Bosses\AH\Ashe\AsheRing1.png" />

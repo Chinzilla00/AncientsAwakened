@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.width = 100;
             npc.height = 100;
             npc.alpha = 255;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenIntro");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;

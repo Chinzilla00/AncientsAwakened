@@ -75,7 +75,6 @@ namespace AAMod
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-
             int before = npc.lifeRegen;
             bool drain = false;
             bool noDamage = damage <= 1;

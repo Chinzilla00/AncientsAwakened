@@ -59,6 +59,7 @@ namespace AAMod
         public bool Fishnado = false;
         public bool MadnessElemental = false;
         public bool FlameSoul = false;
+        public bool Orbiters = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -268,6 +269,7 @@ namespace AAMod
             Fishnado = false;
             MadnessElemental = false;
             FlameSoul = false;
+            Orbiters = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -817,21 +819,47 @@ namespace AAMod
             }
         }
 
+        public int[] Spheres = null;
+
         public override void PostUpdate()
         {
             if (uraniumSet)
             {
                 Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
                 Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
-                float RadiationDistance = 32f;
+                float RadiationDistance = 64f;
                 if (player.whoAmI == Main.myPlayer)
                 {
                     for (int l = 0; l < 200; l++)
                     {
                         NPC nPC = Main.npc[l];
-                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance)
+                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance && Collision.CanHit(nPC.position, nPC.width, nPC.height, Main.player[Main.myPlayer].position, Main.player[Main.myPlayer].width, Main.player[Main.myPlayer].height))
                         {
                             player.ApplyDamageToNPC(nPC, 1, 0f, 0, false);
+                        }
+                    }
+                }
+            }
+
+            if (Orbiters)
+            {
+                Spheres = BaseAI.GetProjectiles(player.Center, mod.NPCType("FireOrbiter"), Main.myPlayer, 48);
+                if (Spheres != null && Spheres.Length > 0)
+                {
+                    player.minionDamage += AAGlobalProjectile.CountProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
+                    if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 3 == 0)
+                    {
+                        for (int m = 0; m < Spheres.Length; m++)
+                        {
+                            Projectile projectile = Main.projectile[Spheres[m]];
+                            if (projectile != null && projectile.active)
+                            {
+                                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDustLight>());
+                                Main.dust[dustID].position += (player.position - player.oldPosition);
+                                Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
+                                Main.dust[dustID].alpha = 100;
+                                Main.dust[dustID].noGravity = true;
+                            }
                         }
                     }
                 }

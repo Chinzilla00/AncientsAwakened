@@ -1,70 +1,55 @@
+using System; using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using System;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class FireSpiritStaff : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Fire Spirit Staff");
-            Tooltip.SetDefault(@"Summons a fire spirit to fight with you");
-        }
+	public class FireSpiritStaff : ModItem
+	{
+		int SphereCount = 0;
+
+		public override void SetStaticDefaults()
+		{
+            DisplayName.SetDefault("Flame Vortex Staff");	
+            BaseUtility.AddTooltips(item, new string[] { "Conjures flaming spheres that increase your minion damage", "Each sphere takes up 1 minion slot", "You must have at least 2 open slots for the first summon" });			
+		}		
 
         public override void SetDefaults()
         {
+            item.width = 45;
+            item.height = 18;
+            item.maxStack = 1;
+            item.rare = 4;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 20, 0, 0);
             item.useStyle = 1;
-            item.shootSpeed = 14f;
-            item.shoot = mod.ProjectileType("FireSpirit");
-            item.damage = 222;
-            item.width = 52;
-            item.height = 52;
-            item.UseSound = SoundID.Item44;
-            item.useAnimation = 30;
-            item.useTime = 30;
+            item.useAnimation = 35;
+            item.useTime = 35;
+            item.UseSound = SoundID.Item8;
+            item.autoReuse = true;
             item.noMelee = true;
-            item.value = Item.buyPrice(0, 25, 0, 0);
-            item.knockBack = 5f;
-            item.rare = 11;
             item.summon = true;
-            item.mana = 15;
+            item.shoot = mod.ProjType("FireOrbiter");
+            item.shootSpeed = 5;			
         }
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int i = Main.myPlayer;
-            float num72 = item.shootSpeed;
-            int num73 = damage;
-            float num74 = knockBack;
-            num74 = player.GetWeaponKnockback(item, num74);
-            player.itemTime = item.useTime;
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-            float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
-            if (player.gravDir == -1f)
+            bool AnyOrbiters = AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Projectiles.AH.FireOrbiter>());
+            int SummonCount = 2;
+            if (AnyOrbiters)
             {
-                num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                SummonCount = 1;
             }
-            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
-            float num81 = num80;
-            if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
+            for (int Loops = 0; Loops < SummonCount; Loops++)
             {
-                num78 = (float)player.direction;
-                num79 = 0f;
-                num80 = num72;
+                Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, Main.myPlayer, 0, 0);
             }
-            else
-            {
-                num80 = num72 / num80;
-            }
-            num78 = 0f;
-            num79 = 0f;
-            vector2.X = (float)Main.mouseX + Main.screenPosition.X;
-            vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("FireSpirit"), num73, num74, i, 0f, 0f);
+
             return false;
         }
     }

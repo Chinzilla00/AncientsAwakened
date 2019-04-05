@@ -9,15 +9,11 @@ using Terraria.ModLoader;
 using BaseMod;
 using AAMod;
 
-namespace GRealm.Projectiles.Misc
+namespace AAMod.Projectiles.AH
 {
-	public class BookBarrier : AAProjectile
+	public class FireOrbiter : AAProjectile
 	{
-		bool setRot = false;
 		float rot = 0f;
-		float alphaTimer = 0f;
-		float alphaRate = 0.05f;
-		bool flipAlpha = false;
 		float rotInit = -1f;
 		
 		public override void SetStaticDefaults()
@@ -34,9 +30,10 @@ namespace GRealm.Projectiles.Misc
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
-            projectile.damage = 1;
+            projectile.damage = 0;
             projectile.penetrate = -1;
-            projectile.magic = true;
+            projectile.minion = true;
+            projectile.minionSlots = 1;
             projectile.ignoreWater = true;			
         }
 
@@ -57,7 +54,7 @@ namespace GRealm.Projectiles.Misc
 			}
 		}
 
-		public override void AI()
+        public override void AI()
 		{
 			Player owner = Main.player[projectile.owner];
 			if (owner == null || !owner.active || owner.dead) { projectile.Kill(); return; }
@@ -67,21 +64,14 @@ namespace GRealm.Projectiles.Misc
 				if(id == -1){ projectile.Kill(); return; }
 				owner.AddBuff(mod.BuffType("Orbiters"), 100, false); 
 			}
-			if (projectile.active) { SetRot(); }
+            
+            if (projectile.active) { SetRot(); }
 			if (projectile.timeLeft <= 50 && projectile.timeLeft >= 20) { projectile.timeLeft = 100; }
 			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, owner.Center, true, 40f, 20f, 0.07f, true);
-			if (Main.netMode != 2 && projectile.timeLeft % 3 == 0)
-			{
-				
-			}
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			if (Main.netMode != 2)
-			{
-
-			}
 			if (Main.myPlayer == projectile.owner)
 			{
 				int[] projs = BaseAI.GetProjectiles(projectile.Center, projectile.type, projectile.owner, 200f);

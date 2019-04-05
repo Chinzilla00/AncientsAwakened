@@ -358,18 +358,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
-            for (int k = 0; k < npc.oldPos.Length; k++)
-            {
-                Texture2D Trail = Main.npcTexture[npc.type];
-                Color lightColor = drawColor;
-                Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
-                Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
-                spriteBatch.Draw(Trail, drawPos, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
-            }
-            return true;
+            bool IsHead = npc.type == mod.NPCType<AsheDragon>();
+
+            int Frames = IsHead ? 3 : 1;
+
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Frames, npc.frame, dColor, true);
+
+            BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 5, false, 0f, 0f, Color.OrangeRed);
+
+            return false;
         }
     }
 

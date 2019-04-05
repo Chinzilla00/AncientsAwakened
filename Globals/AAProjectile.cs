@@ -64,6 +64,8 @@ namespace AAMod
             return (!hurtsTiles ? (bool?)false : (bool?)null);
         }
 
+        
+
         public override bool PreAI()
         {
             if (!firstTick)
