@@ -72,7 +72,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         private int attackFrame;
         private int attackCounter; 
         private int attackTimer;
-        private int speed = 10;
         public static int MinionCount = 0;
         public int MaxMinons = Main.expertMode ? 3 : 4;
 

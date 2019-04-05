@@ -117,6 +117,7 @@
     <Compile Include="Buffs\Abducted.cs" />
     <Compile Include="Buffs\DragonfireFlaskBuff.cs" />
     <Compile Include="Buffs\Horse.cs" />
+    <Compile Include="Buffs\Orbiters.cs" />
     <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
     <Compile Include="Buffs\HydratoxinFlaskBuff.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="Globals\AAColor.cs" />
     <Compile Include="Globals\AAGlobalTile.cs" />
     <Compile Include="Globals\AAModGlobalItem.cs" />
+    <Compile Include="Globals\AAGlobalProjectile.cs" />
     <Compile Include="Globals\AAModGlobalNPC.cs" />
     <Compile Include="Globals\AAModReforgeSouls.cs" />
     <Compile Include="Globals\AANet.cs" />
@@ -2300,6 +2302,7 @@
     <Content Include="Buffs\Moonraze.png" />
     <Content Include="Buffs\Mudkip.png" />
     <Content Include="Buffs\MudkipS.png" />
+    <Content Include="Buffs\Orbiters.png" />
     <Content Include="Buffs\PrettyPony.png" />
     <Content Include="Buffs\ProbeMinion.png" />
     <Content Include="Buffs\Raidmini.png" />

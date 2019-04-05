@@ -29,15 +29,15 @@ namespace AAMod
             }
         }
 
-        public string displayName
+        public string DisplayName
         {
             get
             {
-                return DisplayName.GetDefault();
+                return base.DisplayName.GetDefault();
             }
             set
             {
-                DisplayName.SetDefault(value);
+                base.DisplayName.SetDefault(value);
             }
         }
 

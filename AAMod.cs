@@ -87,7 +87,7 @@ namespace AAMod
         }
 
         public static FieldInfo _bannerField = null;
-        public static IDictionary<int, int> bannerToItemDict
+        public static IDictionary<int, int> BannerToItemDict
         {
             get
             {
@@ -111,7 +111,7 @@ namespace AAMod
             Mod mod = instance;
             try
             {
-                IDictionary<int, int> bannerToItem = bannerToItemDict;
+                IDictionary<int, int> bannerToItem = BannerToItemDict;
                 int fx = 16;
                 while (Tiles.Banners.Banners.GetBannerName(fx) != null)
                 {
@@ -170,7 +170,7 @@ namespace AAMod
                     }
                     fx += 16;
                 }
-                bannerToItemDict = bannerToItem;
+                BannerToItemDict = bannerToItem;
             }
             catch (Exception e) { ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); }
         }
@@ -595,7 +595,8 @@ namespace AAMod
             GameShaders.Armor.BindShader(ItemType("BlazingDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
             GameShaders.Armor.BindShader(ItemType("AbyssalDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("DoomsdayDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorVortex")).UseImage("Images/Misc/noise").UseColor(0f, 0f, 0f).UseSecondaryColor(1f, 0f, 0f).UseSaturation(1f);
-            GameShaders.Armor.BindShader(ItemType("DiscordianDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(0.66f, 0f, 1f).UseSecondaryColor(0.66f, 0f, 1f);
+            GameShaders.Armor.BindShader(ItemType("DiscordianDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame").UseColor(0.66f, 0f, 1f).UseSecondaryColor(0.66f, 0f, 1f));
+            GameShaders.Armor.BindShader(ItemType("DiscordianInfernoDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(0.88f, 0f, 1f).UseSecondaryColor(0.66f, 0f, 1f);
             GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
 

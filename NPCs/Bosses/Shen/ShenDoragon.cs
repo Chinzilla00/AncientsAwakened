@@ -303,15 +303,14 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.chaseable = true;
                     npc.alpha = 0;
-                    npc.alpha = 0;
                 }
             }
 
             customAI[5]++;
 
-            int InvisTimer1 = 1000;
+            float InvisTimer1 = 1000;
 
-            int InvisTimer2 = 1200;
+            float InvisTimer2 = 1200;
 
             if (customAI[5] > InvisTimer1)
             {
@@ -814,9 +813,9 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
 				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));
             }
-            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor, false);
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, npc.GetAlpha(drawColor), false);
             //draw wings
-            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor, false);
+            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, npc.GetAlpha(drawColor), false);
 			
 			//deoffset
 			npc.position.Y -= 130f; // offsetVec;

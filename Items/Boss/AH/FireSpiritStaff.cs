@@ -11,8 +11,6 @@ namespace AAMod.Items.Boss.AH
 {
 	public class FireSpiritStaff : ModItem
 	{
-		int SphereCount = 0;
-
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Flame Vortex Staff");	

@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.AH
 		
 		public override void SetStaticDefaults()
 		{
-            displayName = "Oribiters";
+            DisplayName = "Oribiters";
 		}
 
         public override void SetDefaults()
