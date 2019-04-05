@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
-            npc.damage = 80;
+            npc.damage = 90;
             npc.defense = 50;
             npc.lifeMax = 130000;
             npc.HitSound = SoundID.NPCHit1;
@@ -150,24 +150,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     return;
                 }
             }
-
-            internalAI[5]++;
-
-            if (internalAI[5] > 1000)
-            {
-                if (!Invisible)
-                {
-                    Invisible = true;
-                    npc.netUpdate = true;
-                }
-            }
-            if (internalAI[5] > 1300)
-            {
-                Invisible = false;
-                internalAI[5] = 0;
-                npc.netUpdate = true;
-            }
-
             if (Invisible)
             {
                 if (npc.alpha < 255)
@@ -176,6 +158,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else
                 {
+                    npc.chaseable = false;
                     npc.alpha = 255;
                 }
             }
@@ -187,11 +170,47 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else
                 {
+                    npc.chaseable = true;
                     npc.alpha = 0;
                 }
             }
 
             internalAI[1]++;
+
+            internalAI[5]++;
+
+            int InvisTimer1 = 1000;
+
+            int InvisTimer2 = 1300;
+
+            if (npc.life < npc.lifeMax * .66f)
+            {
+                InvisTimer1 = 800;
+
+                InvisTimer2 = 1100;
+            }
+            if (npc.life < npc.lifeMax * .33f)
+            {
+                InvisTimer1 = 600;
+
+                InvisTimer2 = 900;
+            }
+            if (internalAI[5] > InvisTimer1)
+            {
+                if (!Invisible)
+                {
+                    Invisible = true;
+                    npc.netUpdate = true;
+                }
+            }
+            if (internalAI[5] > InvisTimer2)
+            {
+                Invisible = false;
+                internalAI[5] = 0;
+                npc.netUpdate = true;
+            }
+
+
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
@@ -326,6 +345,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (internalAI[2] > 26)
                 {
+                    internalAI[1] = 0;
+                    internalAI[2] = 17;
                     internalAI[4] += 1;
                 }
                 if (internalAI[4] > 5)
@@ -388,11 +409,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 140;
             }
             else //Reset Stats
             {
-                npc.damage = 80;
+                npc.damage = 90;
             }
 
 
@@ -480,7 +501,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Red);
             }
 
+            Texture2D Slash = mod.GetTexture("NPCs/Bosses/AH/Haruka/HarukaSlash");
+
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, new Vector2(npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
+            BaseDrawing.DrawTexture(spritebatch, Slash, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, dColor, false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, new Vector2 (npc.position.X, npc.position.Y + 10), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, false);
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 27);
             return false;

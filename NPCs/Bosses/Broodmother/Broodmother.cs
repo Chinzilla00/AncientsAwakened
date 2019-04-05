@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.frameCounter++ > 4)
+            if (npc.frameCounter++ > 3)
             {
                 npc.frame.Y += 296;
                 npc.frameCounter = 0;
@@ -227,39 +227,47 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 npc.netUpdate = true;
             }
-            
-            if (Main.player[npc.target].dead || !Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
+
+            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
-                npc.ai = new float[4];
-                internalAI[1] = AISTATE_RUNAWAY;
+                npc.TargetClosest();
+                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+                {
+                    internalAI[1] = AISTATE_RUNAWAY;
+                    npc.ai = new float[4];
+                }
+            }
+            
+            if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            {
+                npc.dontTakeDamage = true;
+                npc.damage = 130;
+            }
+            else
+            {
+                npc.dontTakeDamage = true;
+                npc.damage = npc.defDamage;
             }
 
             if (internalAI[1] == AISTATE_RUNAWAY)
             {
-                if (Main.netMode != 1)
-                {
-                    npc.TargetClosest(true);
-                    int num765 = 6000;
-                    if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > (float)num765)
-                    {
-                        npc.active = false;
-                        npc.life = 0;
-                        if (Main.netMode == 2)
-                        {
-                            NetMessage.SendData(23, -1, -1, null, npc.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                        }
-                    }
-                }
-                if (npc.ai[3] < 120f)
-                {
-                    npc.ai[3] += 1f;
-                }
-                if (npc.ai[3] > 60f)
-                {
-                    npc.velocity.Y = npc.velocity.Y + (npc.ai[3] - 60f) * 0.25f;
-                }
-                npc.ai[0] = 2f;
+                npc.noTileCollide = true;
+                npc.ai[1] = 0;
+                npc.ai[2] = 0;
+                npc.ai[3] = 0;
+                internalAI[0]++;
 
+                if (npc.timeLeft < 10)
+                    npc.timeLeft = 10;
+                npc.velocity.X *= 0.9f;
+
+                if (internalAI[0] > 300)
+                {
+                    npc.velocity.Y += 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                }
                 return;
             }
 

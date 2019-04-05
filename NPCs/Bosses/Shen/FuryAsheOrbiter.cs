@@ -38,12 +38,15 @@ namespace AAMod.NPCs.Bosses.Shen
 		public float rotValue = -1f;
         public override void AI()
         {
-            npc.ai[3]++;
-            if (npc.ai[3] > 600)
+            if (npc.frameCounter++ > 5)
             {
-                npc.life = 0;
+                npc.frameCounter = 0;
+                npc.frame.Y += 46;
+                if (npc.frame.Y >= 46 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
             }
-
             if (npc.scale > 1f)
             {
                 npc.scale = 1f;
@@ -64,13 +67,13 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noGravity = true;
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Ashe"), 120f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("FuryAshe"), 120f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;
 
             NPC ashe = Main.npc[body];
-            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("Ashe")) { BaseAI.KillNPCWithLoot(npc); return; }
+            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")) { BaseAI.KillNPCWithLoot(npc); return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {

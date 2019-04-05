@@ -66,7 +66,34 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 npc.spriteDirection = 1;
             }
-            
+
+            if (!player.InZone("Desert"))
+            {
+                npc.TargetClosest(true);
+                if (!player.InZone("Desert") || player.dead || !Main.dayTime)
+                {
+                    FuriousFlexing();
+                    return;
+                }
+            }
+            else if (player.dead || !Main.dayTime)
+            {
+                npc.alpha += 6;
+                if (npc.alpha > 255)
+                {
+                    npc.active = false;
+                }
+            }
+            else
+            {
+                Sandstorm.TimeLeft = 10;
+                npc.alpha -= 2;
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+
             npc.ai[3]++;
             if (npc.ai[3] <= 300)
             {
@@ -139,32 +166,29 @@ namespace AAMod.NPCs.Bosses.Djinn
                     npc.ai[3] = 0;
                 }
             }
+        }
 
-            if (!player.InZone("Desert") || player.dead || !Main.dayTime)
-            {
-                npc.TargetClosest(true);
-                if (!player.InZone("Desert") || player.dead || !Main.dayTime)
-                {
-                    npc.alpha += 2;
-                }
-            }
-            else
-            {
-                Sandstorm.TimeLeft = 10;
-                npc.alpha -= 2;
-                if (npc.alpha <= 0)
-                {
-                    npc.alpha = 0;
-                }
-            }
-
+        public void FuriousFlexing()
+        {
+            npc.velocity.X *= .85f;
+            npc.velocity.Y *= .85f;
+            npc.alpha += 2;
             if (npc.alpha >= 255)
             {
                 npc.active = false;
             }
-            if (npc.alpha < 0)
+            if (npc.ai[3] < 300)
             {
-                npc.alpha = 0;
+                npc.ai[3] = 300;
+            }
+            if (npc.frameCounter > 5)
+            {
+                npc.frame.Y += 130;
+                npc.frameCounter = 0;
+                if (npc.ai[3] > 381)
+                {
+                    npc.ai[3] = 300;
+                }
             }
         }
 

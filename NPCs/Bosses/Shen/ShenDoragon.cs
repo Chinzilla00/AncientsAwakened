@@ -363,20 +363,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
-            if (npc.ai[0] != -1f && npc.ai[0] < 9f)
-            {
-                bool colliding = Collision.SolidCollision(npc.position, npc.width, npc.height);
-                if (colliding)
-                {
-                    npc.alpha += 15;
-                }
-                else
-                {
-                    npc.alpha -= 15;
-                }
-                if (npc.alpha < 0) npc.alpha = 0;
-                if (npc.alpha > 150) npc.alpha = 150;
-            }
             if (npc.ai[0] == -1f) //initial spawn effects
             {
                 npc.chaseable = false;

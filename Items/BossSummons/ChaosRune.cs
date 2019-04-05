@@ -117,8 +117,8 @@ Summons Shen Doragon's true awakened form");
         public override bool UseItem(Player player)
         {
             Main.NewText("Time to face true, uniyielding chaos, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            SpawnBoss(player, "ShenA", "Shen Doragon Awakened; Unyielding Chaos Incarnate");
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            NPC.SpawnOnPlayer(item.owner, mod.NPCType<ShenA>());
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
         }
 

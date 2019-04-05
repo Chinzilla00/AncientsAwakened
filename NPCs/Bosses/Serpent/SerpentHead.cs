@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -53,8 +54,71 @@ namespace AAMod.NPCs.Bosses.Serpent
         private int RunOnce = 0;
         private int StopSnow = 0;
 
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
+            Player player = Main.player[Main.myPlayer];
+            if (Main.dayTime || !player.ZoneSnow)
+            {
+                npc.alpha += 4;
+                for (int loop = 0; loop < 3; loop++)
+                {
+                    Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Smoke);
+                }
+                if (npc.alpha > 255)
+                {
+                    npc.alpha = 4;
+                }
+            }
+            else
+            {
+                if (npc.alpha > 0)
+                {
+                    npc.alpha -= 4;
+                }
+                else
+                {
+                    npc.alpha = 0;
+                }
+            }
+            if (player.dead || !player.active)
+            {
+                if (!Main.player[npc.target].active || Main.player[npc.target].dead)
+                {
+                    npc.TargetClosest(true);
+                    if (!Main.player[npc.target].active || Main.player[npc.target].dead)
+                    {
+                        internalAI[0]++;
+                        npc.velocity.Y = npc.velocity.Y + 0.8f;
+                        if (internalAI[0] >= 300)
+                        {
+                            npc.active = false;
+                        }
+                    }
+                    else
+                    {
+                        internalAI[0] = 0;
+                    }
+                }
+            }
             if (RunOnce == 0)
             {
                 RainStart();

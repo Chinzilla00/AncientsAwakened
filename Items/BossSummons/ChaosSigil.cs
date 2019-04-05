@@ -81,8 +81,7 @@ Summons the chaos emperor");
             if (AAWorld.ShenSummoned)
             {
                 Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-
-                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+                NPC.SpawnOnPlayer(item.owner, mod.NPCType<ShenDoragon>());
             }
             if (!AAWorld.ShenSummoned)
             {
