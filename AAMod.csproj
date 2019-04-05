@@ -72,6 +72,7 @@
     <Compile Include="AAWorld.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\AkumaSkyData.cs" />
+    <Compile Include="Backgrounds\FogOverlay.cs" />
     <Compile Include="Backgrounds\FogHandler.cs" />
     <Compile Include="Backgrounds\MireDesertBGStyle.cs" />
     <Compile Include="Backgrounds\InfernoSky.cs" />
@@ -2149,9 +2150,13 @@
     <Compile Include="Water\InfernoWaterfallStyle .cs" />
     <Compile Include="Water\InfernoWaterSplash.cs" />
     <Compile Include="Water\InfernoWaterStyle.cs" />
+    <Compile Include="Water\FogDroplet.cs" />
     <Compile Include="Water\MireDroplet.cs" />
+    <Compile Include="Water\FogWaterfallStyle.cs" />
     <Compile Include="Water\MireWaterfallStyle.cs" />
+    <Compile Include="Water\FogWaterSplash.cs" />
     <Compile Include="Water\MireWaterSplash.cs" />
+    <Compile Include="Water\FogWaterStyle.cs" />
     <Compile Include="Water\MireWaterStyle.cs" />
     <Compile Include="Water\StormDroplet.cs" />
     <Compile Include="Water\StormWaterfallStyle.cs" />
@@ -5934,6 +5939,10 @@
     <Content Include="Walls\TorchsandHardenedWall.png" />
     <Content Include="Walls\TorchsandstoneWall.png" />
     <Content Include="Walls\TorchstoneWall.png" />
+    <Content Include="Water\FogDroplet.png" />
+    <Content Include="Water\FogWaterfallStyle.png" />
+    <Content Include="Water\FogWaterSplash.png" />
+    <Content Include="Water\FogWaterStyle_Block.png" />
     <Content Include="Water\InfernoDroplet.png" />
     <Content Include="Water\InfernoWaterfallStyle.png" />
     <Content Include="Water\InfernoWaterSplash.png" />

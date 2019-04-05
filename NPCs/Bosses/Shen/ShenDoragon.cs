@@ -380,10 +380,6 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                         }
                     }
-                    if (customAI[2] == -1 && isAwakened)
-                    {
-                        customAI[2] = Main.rand.Next(2);
-                    }
                     npc.ai[0] = aiChoice;
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;

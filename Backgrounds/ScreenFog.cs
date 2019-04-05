@@ -55,6 +55,7 @@ namespace AAMod.Backgrounds
 			if(fadeOpacity == 0f) return; //don't draw if no fog
             if(setSB) Main.spriteBatch.Begin();
             Mod mod = AAMod.instance;
+            Player player = Main.player[Main.myPlayer];
 
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);
@@ -80,7 +81,10 @@ namespace AAMod.Backgrounds
             {
                 for (int j = minY; j < maxY; j += texture.Height)
                 {
-                    Main.spriteBatch.Draw(texture, new Rectangle(i + (dir ? -fogOffsetX : fogOffsetX), j, texture.Width, texture.Height), null, fogColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                    if (player.position.Y < Main.worldSurface * 16.0)
+                    {
+                        Main.spriteBatch.Draw(texture, new Rectangle(i + (dir ? -fogOffsetX : fogOffsetX), j, texture.Width, texture.Height), null, fogColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                    }
                 }
             }
             if(setSB) Main.spriteBatch.End();
