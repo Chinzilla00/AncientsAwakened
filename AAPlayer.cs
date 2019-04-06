@@ -844,8 +844,8 @@ namespace AAMod
             if (Orbiters)
             {
                 Spheres = BaseAI.GetProjectiles(player.Center, mod.NPCType("FireOrbiter"), Main.myPlayer, 48);
-                if (Spheres != null && Spheres.Length > 0)
-                {
+                if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
+				{
                     player.minionDamage += AAGlobalProjectile.CountProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
                     if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 3 == 0)
                     {

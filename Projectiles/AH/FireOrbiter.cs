@@ -19,13 +19,13 @@ namespace AAMod.Projectiles.AH
 		public override void SetStaticDefaults()
 		{
             DisplayName = "Oribiters";
+			Main.projFrames[projectile.type] = 4;
 		}
 
         public override void SetDefaults()
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
             projectile.hostile = false;
@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.AH
             projectile.penetrate = -1;
             projectile.minion = true;
             projectile.minionSlots = 1;
-            projectile.ignoreWater = true;			
+            projectile.ignoreWater = true;		
         }
 
 		public void SetRot()
@@ -56,40 +56,31 @@ namespace AAMod.Projectiles.AH
 
         public override void AI()
 		{
-			Player owner = Main.player[projectile.owner];
-			if (owner == null || !owner.active || owner.dead) { projectile.Kill(); return; }
-			if (Main.myPlayer == owner.whoAmI) 
-			{
-				int id = owner.FindBuffIndex(mod.BuffType("Orbiters"));
-				if(id == -1){ projectile.Kill(); return; }
-				owner.AddBuff(mod.BuffType("Orbiters"), 100, false); 
-			}
-            
+			projectile.frameCounter++;
+            if (projectile.frameCounter >= 8)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame += 1;
+            }
+            if (projectile.frame > 3)
+            {
+                projectile.frame = 0;
+            }
+			
+			Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            if (player.dead || !player.HasBuff(mod.BuffType("Orbiters"))) projectile.Kill();
+            if (modPlayer.Orbiters){
+				projectile.timeLeft = 2;
+				player.AddBuff(mod.BuffType("Orbiters"), 2, true);}
+			
             if (projectile.active) { SetRot(); }
-			if (projectile.timeLeft <= 50 && projectile.timeLeft >= 20) { projectile.timeLeft = 100; }
-			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, owner.Center, true, 40f, 20f, 0.07f, true);
+			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 40f, 20f, 0.07f, true);
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			if (Main.myPlayer == projectile.owner)
-			{
-				int[] projs = BaseAI.GetProjectiles(projectile.Center, projectile.type, projectile.owner, 200f);
-				Player p = Main.player[projectile.owner];
-				if (projs.Length <= 1)
-				{
-					if (p.FindBuffIndex(mod.BuffType("Orbiters")) != -1) { p.ClearBuff(mod.BuffType("Orbiters")); }
-					p.AddBuff(mod.BuffType("Orbiters"), 300, false);
-				}
-			}
-		}
-
-		public override bool PreDraw(SpriteBatch sb, Color drawColor)
-		{
-			byte a = (byte)(255 - projectile.alpha);
-			Color lightColor = new Color(a, a, a, a);			
-			BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile, lightColor);
-			return false;
+			int[] projs = BaseAI.GetProjectiles(projectile.Center, projectile.type, projectile.owner, 200f);
 		}
 	}
 }

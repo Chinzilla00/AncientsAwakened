@@ -21,17 +21,20 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0) modPlayer.Orbiters = true;
-            if (!modPlayer.Orbiters)
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
-            else
-            {
-                player.buffTime[buffIndex] = 18000;
-            }
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+			if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
+			{
+				modPlayer.Orbiters = true;
+			}
+			if (!modPlayer.Orbiters)
+			{
+				player.DelBuff(buffIndex);
+				buffIndex--;
+			}
+			else
+			{
+				player.buffTime[buffIndex] = 2;
+			}
         }
     }
 }
