@@ -2253,7 +2253,7 @@ namespace AAMod
             {
                 if (target.life <= 0)
                 {
-                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType("CursedFireball"), damage, 0, Main.myPlayer);
+                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
                 }
             }
 

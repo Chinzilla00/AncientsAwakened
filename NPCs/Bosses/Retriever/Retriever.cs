@@ -72,9 +72,6 @@ namespace AAMod.NPCs.Bosses.Retriever
         public static Texture2D glowTex1 = null;
         public Color color;
 
-        int LaserTime = 0;
-        Projectile laser;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             if (glowTex == null)
@@ -157,12 +154,16 @@ namespace AAMod.NPCs.Bosses.Retriever
 
         public override void AI()
         {
-            npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
 
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
-                npc.velocity.Y -= 5;
+                npc.TargetClosest();
+                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    npc.active = false;
+                    return;
+                }
             }
             
             customAI[0]--;
@@ -171,6 +172,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             {
                 npc.velocity.Y -= 4;
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                return;
             }
 
             if (customAI[0] <= 300)

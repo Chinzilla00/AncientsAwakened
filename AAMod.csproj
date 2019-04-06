@@ -1569,6 +1569,7 @@
     <Compile Include="NPCs\Enemies\Void\Searcher1.cs" />
     <Compile Include="NPCs\Enemies\Void\Null.cs" />
     <Compile Include="NPCs\Enemies\Void\Searcher.cs" />
+    <Compile Include="NPCs\Enemies\Void\Vortex.cs" />
     <Compile Include="NPCs\MimicSummon.cs" />
     <Compile Include="NPCs\Minibosses\Exterminator.cs" />
     <Compile Include="NPCs\TownNPCs\Eyeshot.cs" />
@@ -3737,6 +3738,9 @@
     <Content Include="Items\Armor\Dev\Alphakip\FishDiverMaskA_Head.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
+    <Content Include="NPCs\Enemies\Void\NullNew.png" />
+    <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
     <Content Include="Items\Armor\Witch\WitchBoots.png" />
     <Content Include="Items\Armor\Witch\WitchBoots_Legs.png" />
