@@ -285,9 +285,9 @@
     <Compile Include="Items\Accessories\Wings\RadiumWings.cs" />
     <Compile Include="Items\Accessories\Wings\VultureWings.cs" />
     <Compile Include="Items\Accessories\Wings\ZeroWings.cs" />
-    <Compile Include="Items\Armor\Abyssal\DepthFukumen.cs" />
-    <Compile Include="Items\Armor\Abyssal\DepthGi.cs" />
-    <Compile Include="Items\Armor\Abyssal\DepthHakama.cs" />
+    <Compile Include="Items\Armor\Abyssal\AbyssalFukumen.cs" />
+    <Compile Include="Items\Armor\Abyssal\AbyssalGi.cs" />
+    <Compile Include="Items\Armor\Abyssal\AbyssalHakama.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinBoots.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinHood.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinShirt.cs" />
