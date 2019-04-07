@@ -2327,7 +2327,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (depthSet && proj.ranged)
+            if (depthSet && proj.minion)
             {
                 target.AddBuff(BuffID.Poisoned, 180);
             }

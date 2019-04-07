@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Depth
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Depth Gi");
-			Tooltip.SetDefault(@"+40% movement speed
+			Tooltip.SetDefault(@"30% increased movement speed
 Weightless as shadow itself");
 		}
 
@@ -21,12 +21,12 @@ Weightless as shadow itself");
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 2;
-			item.defense = 5;
+			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-            player.moveSpeed *= 1.40f;
+            player.moveSpeed += .30f;
 		}
 
 		public override void AddRecipes()

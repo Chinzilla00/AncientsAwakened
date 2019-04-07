@@ -1,0 +1,63 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace AAMod.Items.Armor.Abyssal
+{
+    [AutoloadEquip(EquipType.Head)]
+	public class AbyssalFukumen : ModItem
+	{
+		public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            DisplayName.SetDefault("Abyssal Fukumen");
+            Tooltip.SetDefault(@"35% increased movement speed
+15% increased ranged damage
+Weightless as shadow itself");
+        }
+
+		public override void SetDefaults()
+		{
+			item.width = 20;
+			item.height = 20;
+			item.value = 10000;
+			item.rare = 3;
+			item.defense = 5;
+		}
+
+        public override void UpdateEquip(Player player)
+        {
+            player.minionDamage += .15f;
+            player.moveSpeed += .35f;
+        }
+
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+		{
+			return body.type == mod.ItemType("AbyssalGi") && legs.type == mod.ItemType("AbyssalHakama");
+		}
+
+		public override void UpdateArmorSet(Player player)
+		{
+            player.setBonus = @"Your minions are imbued with the poisonous properties of hydra venom
+Enemies are less likely to target you
++2 Minion Slot
+Nightvision";
+            player.aggro -= 3;
+            player.GetModPlayer<AAPlayer>(mod).depthSet = true;
+            player.maxMinions += 2;
+            player.nightVision = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DepthFukumen", 1);
+            recipe.AddIngredient(null, "DoomiteUHelm", 1);
+            recipe.AddIngredient(null, "VikingHelm", 1);
+            recipe.AddIngredient(null, "OceanHelm", 1);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
+}

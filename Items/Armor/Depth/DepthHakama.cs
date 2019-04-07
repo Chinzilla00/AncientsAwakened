@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Depth
 		{
             base.SetStaticDefaults();
             DisplayName.SetDefault("Depth Hakama");
-            Tooltip.SetDefault(@"15% increased movement speed
+            Tooltip.SetDefault(@"20% increased movement speed
 Weightless as shadow itself");
 		}
 
@@ -21,12 +21,12 @@ Weightless as shadow itself");
 			item.height = 18;
 			item.value = 5000;
 			item.rare = 2;
-			item.defense = 5;
+			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.moveSpeed += 0.15f;
+			player.moveSpeed += 0.20f;
 		}
 
 		public override void AddRecipes()

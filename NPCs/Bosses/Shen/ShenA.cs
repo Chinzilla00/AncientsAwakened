@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (InternalAI[2] == 0)
                 {
-                    InternalAI[1] = Main.rand.Next(3);
+                    InternalAI[1] = Main.rand.Next(2);
                     InternalAI[2] = 1;
                 }
                 if (InternalAI[1] == 0)
@@ -96,16 +96,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                     }
                 }
-                if (InternalAI[1] == 2)
-                {
-                    if (InternalAI[0] == 330)
-                    {
-                        if (NPC.CountNPCS(mod.NPCType<Shenling>()) < (Main.expertMode ? 3 : 4))
-                        {
-                            ShenAttacks.SpawnLung(player, mod);
-                        }
-                    }
-                }
                 if (InternalAI[0] > 400)
                 {
                     InternalAI[0] = 0;
@@ -118,10 +108,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Health8 = false;
         public bool Health7 = false;
         public bool Health6 = false;
-        public bool Health4 = false;
-        public bool Health3 = false;
-        public bool Health2 = false;
-        public bool Health1 = false;
         public bool HealthOneHalf = false;
 
         public override void HitEffect(int hitDirection, double damage)
