@@ -675,7 +675,7 @@ namespace AAMod
                 VoidSky.LB = GetTexture("Backgrounds/LB");
                 VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
                 VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
-                VoidSky.Stars = GetTexture("Backgrounds/StarTex");
+                VoidSky.Stars = GetTexture("Backgrounds/Void_Starfield");
                 VoidSky.SkyTexture = GetTexture("Backgrounds/Sky");
 
                 Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
