@@ -70,6 +70,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("FuryAshe"), 120f, null);
                 if (npcID >= 0) body = npcID;
             }
+
             if (body == -1) return;
 
             NPC ashe = Main.npc[body];

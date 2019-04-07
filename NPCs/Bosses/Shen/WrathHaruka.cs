@@ -124,6 +124,7 @@ namespace AAMod.NPCs.Bosses.Shen
         
         public bool Invisible = false;
 
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -409,11 +410,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 140;
+                npc.damage = 120;
             }
             else //Reset Stats
             {
-                npc.damage = 90;
+                npc.damage = 80;
             }
 
 
@@ -437,10 +438,18 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
                 {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
                     npc.direction = 1;
                 }
                 else //If NPC's X position is lower than the player's
                 {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
                     npc.direction = -1;
                 }
             }
@@ -449,6 +458,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
         }
+
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 6f;
@@ -484,8 +494,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
-
-
 
         public override void BossLoot(ref string name, ref int potionType)
         {

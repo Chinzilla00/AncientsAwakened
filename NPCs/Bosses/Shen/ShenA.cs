@@ -192,7 +192,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health4 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.3f && !Health3)
+            if (npc.life <= npc.lifeMax * 0.2f && !Health3)
             {
                 if (AAWorld.downedShen)
                 {
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health3 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.2f && !Health2)
+            if (npc.life <= npc.lifeMax * 0.1f && !Health2)
             {
                 if (AAWorld.downedShen)
                 {
@@ -218,7 +218,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health2 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.1f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.05f && !Health1)
             {
                 if (AAWorld.downedShen)
                 {
@@ -226,21 +226,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else
                 {
-                    BaseUtility.Chat("I AM SHEN DORAGON! EMPEROR OF DEATH AND DISASTER, AND I WILL NOT BE OUTDONE BY A HAIRLESS APE!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                }
-                Health1 = true;
-                npc.netUpdate = true;
-            }
-            if (npc.life <= npc.lifeMax * 0.05f && !HealthOneHalf)
-            {
-                if (AAWorld.downedShen)
-                {
-                }
-                else
-                {
                     BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
-                HealthOneHalf = true;
+                Health1 = true;
                 npc.netUpdate = true;
             }
             if (Health3)

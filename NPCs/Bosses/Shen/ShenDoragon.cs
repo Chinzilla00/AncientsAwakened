@@ -219,13 +219,21 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             #region preamble stuff
-            if (isAwakened) //set awakened stats
+            if (isAwakened && npc.life > npc.lifeMax * 0.2f) //set awakened stats
             {
-                _normalSpeed = 20f;
-                _chargeSpeed = 50f;
-                discordianInfernoPercent = 5;
-                discordianFirebombPercent = 20;
+                _normalSpeed = 17f;
+                _chargeSpeed = 45f;
+                discordianInfernoPercent = 7;
+                discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
+            }
+            else if (isAwakened && npc.life <= npc.lifeMax * 0.2f)
+            {
+                _normalSpeed = 23f;
+                _chargeSpeed = 55f;
+                discordianInfernoPercent = 4;
+                discordianFirebombPercent = 17;
+                aiTooLongCheck = 45;
             }
             if (npc.alpha > 0 && !spawnalpha)
             {
@@ -260,73 +268,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             Player player = Main.player[npc.target];
 
-            bool Minions = NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()) || NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>());
-            bool isInvisible = Invisible && npc.ai[0] == 0f;
-
-            if (Minions && !isInvisible)
-            {
-                npc.chaseable = false;
-                npc.dontTakeDamage = true;
-                if (npc.alpha < 100)
-                {
-                    npc.alpha += 5;
-                }
-                else if (npc.alpha > 100)
-                {
-                    npc.alpha -= 5;
-                }
-                else
-                {
-                    npc.alpha = 100;
-                }
-            }
-            else if (isInvisible)
-            {
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 10;
-                }
-                else
-                {
-                    npc.chaseable = false;
-                    npc.alpha = 255;
-                }
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-                if (npc.alpha > 0)
-                {
-                    npc.alpha -= 10;
-                }
-                else
-                {
-                    npc.chaseable = true;
-                    npc.alpha = 0;
-                }
-            }
-
             customAI[5]++;
-
-            float InvisTimer1 = 1000;
-
-            float InvisTimer2 = 1200;
-
-            if (customAI[5] > InvisTimer1)
-            {
-                if (!Invisible)
-                {
-                    Invisible = true;
-                    npc.netUpdate = true;
-                }
-            }
-            if (customAI[5] > InvisTimer2)
-            {
-                Invisible = false;
-                customAI[5] = 0;
-                npc.netUpdate = true;
-            }
-
 
             if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen && !isAwakened)
             {
@@ -421,14 +363,14 @@ namespace AAMod.NPCs.Bosses.Shen
                             case 2:
                             case 3:
                             case 4:
-                            case 5:
-                            case 6:
                                 aiChoice = 0.5f;
                                 break;
-                            case 7:
+                            case 5:
+                            case 6:
                                 npc.ai[3] = 1f;
                                 aiChoice = 2f;
                                 break;
+                            case 7:
                             case 8:
                                 npc.ai[3] = 0f;
                                 aiChoice = 3f;
@@ -485,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -300);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
                 MoveToPoint(playerPoint);
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
@@ -532,7 +474,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     shootThis = mod.ProjectileType("ShenStorm");
                 }
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -130);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
@@ -672,7 +614,7 @@ namespace AAMod.NPCs.Bosses.Shen
 				BaseAI.LookAt(npc.Center - npc.velocity, npc, 0, 0f, 0f, false);			
 			}else
 			{
-				BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 3, 0f, 0.05f, false);
+				BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 0, 0f, 0.05f, false);
 			}
 		}
     
@@ -804,8 +746,7 @@ namespace AAMod.NPCs.Bosses.Shen
             BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, npc.GetAlpha(drawColor), false);
 			
 			//deoffset
-			npc.position.Y -= 130f; // offsetVec;
-			//BaseDrawing.DrawHitbox(sb, npc.Hitbox, Color.Red); //ENABLE THIS TO SEE HITBOX
+			npc.position.Y -= 130f; 
             return false;
         }
 

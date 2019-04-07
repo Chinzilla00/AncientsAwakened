@@ -249,6 +249,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (Main.netMode != 1)
             {
                 int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenDoragon"));
+                Main.npc[npcID].ai[0] = -1;
                 Main.npc[npcID].Center = npc.Center;
                 Main.npc[npcID].netUpdate = true;
             }

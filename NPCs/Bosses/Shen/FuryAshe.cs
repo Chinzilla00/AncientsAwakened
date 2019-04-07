@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
         bool FlyingNegative = false;
         public float MeleeSpeed;
         public float pos = 0f;
-        private bool Fired = false;
+        private bool HasFiredProj = false;
 
 
         public Vector2 MovePoint;
@@ -127,6 +127,7 @@ namespace AAMod.NPCs.Bosses.Shen
             RingEffects();
             internalAI[1]++;
 
+
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
                 internalAI[1] = 0;
@@ -152,10 +153,26 @@ namespace AAMod.NPCs.Bosses.Shen
                 return;
             }
 
-            Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("FuryAsheOrbiter"), 1500f);
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
+            {
+                Health3 = true;
+                internalAI[0] = AISTATE_VORTEX;
+            }
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
+            {
+                Health2 = true;
+                internalAI[0] = AISTATE_VORTEX;
+            }
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
+            {
+                Health1 = true;
+                internalAI[0] = AISTATE_VORTEX;
+            }
+
+            Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("AsheOrbiter"), 1500f);
             if (Vortexes != null && Vortexes.Length > 0)
             {
-                npc.damage = Ashe.VortexDamage(mod);
+                npc.damage = VortexDamage(mod);
                 if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Vortexes.Length; m++)
@@ -173,31 +190,16 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                Health3 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                Health2 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                Health1 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 120)
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<AH.Ashe.AsheDragon>()) < 1)
+                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -238,10 +240,10 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !Fired) //Only Shoot if not in melee mode
+                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
                     FireMagic(npc, npc.velocity);
-                    Fired = true;
+                    HasFiredProj = true;
                     npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 16) //Sets to frame 16
@@ -255,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         pos = -pos;
                     }
-                    Fired = false;
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -265,12 +267,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
-            else
+            else if (internalAI[0] == AISTATE_CAST2)
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4 && !Fired)
+                if (internalAI[2] > 11)
                 {
                     FireMagic(npc, npc.velocity);
-                    Fired = true;
                     npc.netUpdate = true;
                 }
                 if ((int)internalAI[2] < 8)
@@ -280,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if ((int)internalAI[2] > 15)
                 {
-                    Fired = false;
+                    HasFiredProj = false;
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -288,6 +289,42 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
+            }
+            else
+            {
+                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFiredProj)
+                {
+                    FireMagic(npc, npc.velocity);
+                    HasFiredProj = true;
+                    npc.netUpdate = true;
+                }
+                if ((int)internalAI[2] < 8)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = 8;
+                }
+                if ((int)internalAI[2] > 15)
+                {
+                    HasFiredProj = false;
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }
+
+
+            if (npc.velocity.X > 0) //Flying in the positive X direction
+            {
+                FlyingPositive = true;
+                FlyingNegative = false;
+            }
+            else //Flying in the nagative X direction
+            {
+                FlyingPositive = false;
+                FlyingNegative = true;
             }
 
             if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost
@@ -324,20 +361,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else //Anything else
             {
-                npc.ai[0]++;
-                if (npc.ai[0] > 180)
-                {
-                    npc.ai[0] = 0;
-                    npc.ai[1] = Main.rand.Next(2);
-                    if (npc.ai[1] == 0)
-                    {
-                        pos = -250;
-                    }
-                    else
-                    {
-                        pos = 250;
-                    }
-                }
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
             }
@@ -348,7 +371,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Shenling>(), 0);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheDragon>(), 0);
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -362,7 +385,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.dontTakeDamage = false;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            if (NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
             {
                 npc.dontTakeDamage = true;
             }
@@ -371,6 +394,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.dontTakeDamage = false;
             }
             npc.rotation = 0; //No ugly rotation.
+        }
+
+        public static int VortexDamage(Mod mod)
+        {
+            return 1 + (NPC.CountNPCS(mod.NPCType<AsheOrbiter>()) / 15);
         }
 
         public override void PostAI()

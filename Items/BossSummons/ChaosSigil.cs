@@ -81,7 +81,8 @@ Summons the chaos emperor");
             if (AAWorld.ShenSummoned)
             {
                 Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                NPC.SpawnOnPlayer(item.owner, mod.NPCType<ShenDoragon>());
+
+                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
             }
             if (!AAWorld.ShenSummoned)
             {
@@ -112,7 +113,8 @@ Summons the chaos emperor");
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
+                Main.npc[npcID].ai[0] = -1;
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 600);
                 Main.npc[npcID].netUpdate2 = true;
             }
         }

@@ -1628,6 +1628,8 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\Singularity.cs" />
+    <Compile Include="Projectiles\SingularityVortex.cs" />
     <Compile Include="Projectiles\SoulSiphonHeal.cs" />
     <Compile Include="Projectiles\Depthsprayer.cs" />
     <Compile Include="Projectiles\AmphibiousBoom.cs" />
@@ -5331,6 +5333,9 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\Singularity.png" />
+    <Content Include="Projectiles\SingularityVortex.png" />
+    <Content Include="Projectiles\SingularityVortex1.png" />
     <Content Include="Projectiles\SoulSiphonHeal.png" />
     <Content Include="Projectiles\DeathDaggerHeal.png" />
     <Content Include="Projectiles\DecayScythe.png" />
@@ -5605,7 +5610,6 @@
     <Content Include="Projectiles\Zero\ZeroArrow.png" />
     <Content Include="Projectiles\Zero\ZeroStarP.png" />
     <Content Include="Items\Dev\SoulSiphon.png" />
-    <Content Include="Resprites\LifeFruit.png" />
     <Content Include="Resprites\Luminite.png" />
     <Content Include="Resprites\Mana.png" />
     <Content Include="Resprites\ManaGreen.png" />
