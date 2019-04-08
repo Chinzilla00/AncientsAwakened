@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+
 namespace AAMod.Buffs
 {
     public class AtlanteanBuff : ModBuff
