@@ -30,8 +30,9 @@ Weightless as shadow itself");
 		}
 
 		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
+        {
+            return;
+            ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthHakama", 1);
             recipe.AddIngredient(null, "DoomiteUGreaves", 1);
             recipe.AddIngredient(null, "VikingBoots", 1);
