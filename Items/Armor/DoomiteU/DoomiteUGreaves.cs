@@ -13,7 +13,6 @@ namespace AAMod.Items.Armor.DoomiteU
 			DisplayName.SetDefault("Dark Doomite Greaves");
             Tooltip.SetDefault(@"Increases minion damage by 4%
 Increases movement speed by 15%");
-
         }
 
 		public override void SetDefaults()
