@@ -11,8 +11,6 @@ namespace AAMod.Items.Armor.Viking
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Viking Helmet");
-            Tooltip.SetDefault(@"Increases melee speed by 7%
-Even if it weights a ton, it defends well");
         }
 
 		public override void SetDefaults()
@@ -21,13 +19,8 @@ Even if it weights a ton, it defends well");
 			item.height = 24;
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 3;
-            item.defense = 5;
+            item.defense = 6;
         }
-		
-		public override void UpdateEquip(Player player)
-		{
-           player.meleeSpeed += 0.07f;
-		}
 		
 		public override void AddRecipes()
 		{

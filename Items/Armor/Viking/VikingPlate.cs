@@ -14,9 +14,6 @@ namespace AAMod.Items.Armor.Viking
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Viking Platemail");
-			Tooltip.SetDefault(@"Increases melee damage by 7%
-Solid");
-
 		}
 
 		public override void SetDefaults()
@@ -40,22 +37,8 @@ Solid");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"You are immune to Chilled debuff
-You quickly regenerate your HP while staying";
-			player.buffImmune[46] = true;
-			if (player.velocity.X == 0f && player.velocity.Y == 0f)
-			{
-				if (player.statLife < player.statLifeMax2)
-				{
-					if (counter >= 6)
-					{
-						counter = 0;
-						player.statLife += 1;
-						player.HealEffect(1, true);
-					}
-					counter++;
-				}
-			}
+			player.setBonus = @"4% Increased damage resistance";
+            player.endurance += .04f;
         }
 		
 		public override void AddRecipes()
