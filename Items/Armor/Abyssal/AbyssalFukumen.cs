@@ -50,6 +50,7 @@ Nightvision";
 
         public override void AddRecipes()
         {
+            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthFukumen", 1);
             recipe.AddIngredient(null, "DoomiteUHelm", 1);

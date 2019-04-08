@@ -849,7 +849,10 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
-                pool.Add(mod.NPCType("Searcher1"), .1f);
+                if (AAWorld.downedSag)
+                {
+                    pool.Add(mod.NPCType("Searcher1"), .1f);
+                }
                 if (Main.hardMode)
                 {
                     pool.Add(mod.NPCType("Vortex"), 0.3f);

@@ -261,7 +261,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void NPCLoot()
         {
-            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(20, 30));
+            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.DeactivatedDoomite>(), Main.rand.Next(20, 30));
         }
 
         public float ShieldScale = 0f;

@@ -2184,6 +2184,7 @@
     <Compile Include="Water\VoidWaterSplash.cs" />
     <Compile Include="Water\VoidWaterStyle.cs" />
     <Compile Include="Worldgeneration\ChaosBiome.cs" />
+    <Compile Include="Worldgeneration\VoidIslands\Void.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Achievements\Akuma.png" />
@@ -3427,6 +3428,14 @@
     <Content Include="Items\Armor\Dev\Moon\MoonRobeAFemale.png" />
     <Content Include="Items\Armor\Djinn\DjinnLegs.png" />
     <Content Include="Items\Armor\Djinn\DjinnTurban.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUGreaves.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUGreaves_Legs.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUHelm.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUHelm_Head.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUPlate.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUPlate_Arms.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUPlate_Body.png" />
+    <Content Include="Items\Armor\DoomiteU\DoomiteUPlate_Female.png" />
     <Content Include="Items\Armor\Doomite\DoomiteBreastplate.png" />
     <Content Include="Items\Armor\Doomite\DoomiteBreastplate_Arms.png" />
     <Content Include="Items\Armor\Doomite\DoomiteBreastplate_Body.png" />
@@ -6125,6 +6134,29 @@
     <Content Include="Worldgeneration\TerrariumWalls.png" />
     <Content Include="Worldgeneration\Throne.png" />
     <Content Include="Worldgeneration\VoidIsland.png" />
+    <Content Include="Worldgeneration\VoidIslands\AllIsland.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large1.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large10.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large11.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large1_Wall.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large2.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large3.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large4.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large5.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large6.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large7.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large8.png" />
+    <Content Include="Worldgeneration\VoidIslands\Large9.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small1.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small10.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small2.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small3.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small4.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small5.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small6.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small7.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small8.png" />
+    <Content Include="Worldgeneration\VoidIslands\Small9.png" />
     <Content Include="Worldgeneration\VoidIslandWall.png" />
     <Content Include="Worldgeneration\Volcano.png" />
     <Content Include="Worldgeneration\VolcanoLava.png" />

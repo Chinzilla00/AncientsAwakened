@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
             {
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.VoidEnergy>(), Main.rand.Next(2));
+                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.DeactivatedDoomite>(), Main.rand.Next(2));
             }
         }
 
