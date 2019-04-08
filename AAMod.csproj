@@ -588,6 +588,7 @@
     <Compile Include="Items\BossSummons\ChaosRune.cs" />
     <Compile Include="Items\BossSummons\ChaosSigil.cs" />
     <Compile Include="Items\BossSummons\FlamesOfAnarchy.cs" />
+    <Compile Include="Items\BossSummons\Lifescanner.cs" />
     <Compile Include="Items\BossSummons\PlanteraFlower.cs" />
     <Compile Include="Items\BossSummons\CursedSkull.cs" />
     <Compile Include="Items\BossSummons\CuriousClaw.cs" />
@@ -3858,6 +3859,7 @@
     <Content Include="Items\Armor\Viking\VikingPlate_Female.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\Materials\TerraShard.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />

@@ -849,7 +849,7 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
-                if (AAWorld.downedSag)
+                if (NPC.downedBoss2)
                 {
                     pool.Add(mod.NPCType("Searcher1"), .1f);
                 }
