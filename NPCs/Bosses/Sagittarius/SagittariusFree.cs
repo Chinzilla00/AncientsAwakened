@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 BaseAI.AIEater(npc, ref npc.ai, 0.05f, 4f, 0, false, true);
                 npc.rotation = 0;
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], 15, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DeathLaser"), ref shootAI[0], 15, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
             else if (internalAI[2] == 2) //Shield Mode
             {
@@ -234,7 +234,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 for (int i = 0; i < Main.rand.Next(1, 3); i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<DoomLaser>(), npc.damage / 2, 2, Main.myPlayer);
+                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("DeathLaser"), npc.damage / 2, 2, Main.myPlayer);
                 }
             }
         }

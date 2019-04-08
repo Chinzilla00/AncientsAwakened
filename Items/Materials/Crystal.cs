@@ -377,7 +377,7 @@ namespace AAMod.Items.Materials
         }
     }*/
 
-    /*public class OceanCrystal : ModItem
+    public class OceanCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -418,9 +418,9 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }*/
+    }
 
-    /*public class IceCrystal : ModItem
+    public class IceCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -461,7 +461,7 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }*/
+    }
 
     public class DesertCrystal : ModItem
     {
@@ -747,7 +747,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    /*public class VoidCrystal : ModItem
+    public class VoidCrystal : ModItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -788,5 +788,5 @@ namespace AAMod.Items.Materials
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }*/
+    }
 }
