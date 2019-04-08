@@ -245,7 +245,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             else
             {
-                npc.dontTakeDamage = true;
+                npc.dontTakeDamage = false;
                 npc.damage = npc.defDamage;
             }
 

@@ -488,6 +488,16 @@ namespace AAMod
                             WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), (ushort)mod.TileType("AbyssiumOre"));
                         }
                     }
+
+                    for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
+                    {
+                        int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
+                        int tilesY = WorldGen.genRand.Next(Main.maxTilesX, Main.maxTilesY);
+                        if (Main.tile[tilesX, tilesY].type == TileID.IceBlock)
+                        {
+                            WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), (ushort)mod.TileType("RelicOre"));
+                        }
+                    }
                 }));
             }
             tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
@@ -1032,20 +1042,14 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The hallowed caves shine with light for a brief moment...", Color.Goldenrod);
+                    Main.NewText("The caves shine with light for a brief moment...", Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
                         int tilesX = WorldGen.genRand.Next(0, x);
                         int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
-                        if (Main.tile[tilesX, tilesY].type == TileID.Pearlstone || 
-                            Main.tile[tilesX, tilesY].type == TileID.HallowedIce || 
-                            Main.tile[tilesX, tilesY].type == TileID.HallowHardenedSand || 
-                            Main.tile[tilesX, tilesY].type == TileID.HallowSandstone)
-                        {
-                            WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(4, 9), (ushort)mod.TileType<HallowedOre>());
-                        }
+                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(4, 9), (ushort)mod.TileType<HallowedOre>());
                     }
                 }
             }

@@ -849,14 +849,14 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
-                if (NPC.downedBoss2)
+                pool.Add(mod.NPCType("Searcher1"), .1f);
+                if (AAWorld.downedSag)
                 {
-                    pool.Add(mod.NPCType("Searcher1"), .1f);
+                    pool.Add(mod.NPCType("SagittariusMini"), .05f);
                 }
                 if (Main.hardMode)
                 {
                     pool.Add(mod.NPCType("Vortex"), 0.3f);
-                    pool.Add(mod.NPCType("SagittariusMini"), .05f);
                     pool.Add(mod.NPCType("Scout"), .05f);
                 }
                 if (NPC.downedMoonlord)
@@ -902,84 +902,6 @@ namespace AAMod
                 shop.item[nextSlot].SetDefaults(mod.ItemType("Mortar"));
                 nextSlot++;
             }
-        }
-
-        public override bool PreAI(NPC npc)
-        {
-
-            if (!npc.boss ||
-                npc.type != NPCID.WallofFlesh ||
-                npc.type != NPCID.SkeletronHand ||
-                npc.type != NPCID.DungeonGuardian ||
-                npc.type != NPCID.WallofFlesh ||
-                npc.type != NPCID.WallofFleshEye ||
-                npc.type != NPCID.PrimeCannon ||
-                npc.type != NPCID.PrimeLaser ||
-                npc.type != NPCID.PrimeSaw ||
-                npc.type != NPCID.PrimeVice ||
-                npc.type != NPCID.EaterofWorldsBody ||
-                npc.type != NPCID.EaterofWorldsTail ||
-                npc.type != NPCID.EaterofWorldsHead ||
-                npc.type != NPCID.TheDestroyerBody ||
-                npc.type != NPCID.TheDestroyerTail ||
-                npc.type != NPCID.GolemFistLeft ||
-                npc.type != NPCID.GolemFistRight ||
-                npc.type != NPCID.GolemHead ||
-                npc.type != NPCID.GolemHeadFree ||
-                npc.type != NPCID.PlanterasHook ||
-                npc.type != NPCID.PlanterasTentacle ||
-                npc.type != NPCID.Creeper ||
-                npc.type != NPCID.PumpkingBlade ||
-                npc.type != NPCID.MartianSaucerCannon ||
-                npc.type != NPCID.MartianSaucerCore ||
-                npc.type != NPCID.MartianSaucerTurret ||
-                npc.type != NPCID.MoonLordCore ||
-                npc.type != NPCID.MoonLordFreeEye ||
-                npc.type != NPCID.MoonLordHand ||
-                npc.type != NPCID.MoonLordHead ||
-                npc.type != NPCID.MoonLordLeechBlob ||
-                npc.type != NPCID.AncientCultistSquidhead ||
-                npc.type != NPCID.CultistBossClone ||
-                npc.type != NPCID.CultistDragonBody1 ||
-                npc.type != NPCID.CultistDragonBody2 ||
-                npc.type != NPCID.CultistDragonBody3 ||
-                npc.type != NPCID.CultistDragonBody4 ||
-                npc.type != NPCID.CultistDragonHead ||
-                npc.type != NPCID.CultistDragonTail ||
-                npc.type != NPCID.CultistTablet ||
-                npc.type != NPCID.MothronEgg ||
-                npc.type != NPCID.MothronSpawn ||
-                npc.type != NPCID.Mothron ||
-                npc.type != NPCID.PirateShipCannon ||
-                npc.type != NPCID.LunarTowerSolar ||
-                npc.type != NPCID.LunarTowerNebula ||
-                npc.type != NPCID.LunarTowerVortex ||
-                npc.type != NPCID.LunarTowerStardust ||
-                npc.type != NPCID.AncientLight ||
-                npc.type != NPCID.AncientDoom ||
-                npc.type != NPCID.SandElemental ||
-                npc.type != NPCID.ShadowFlameApparition)
-            {
-                if (TimeFrozen)
-                {
-                    npc.position = npc.oldPosition;
-                    npc.frameCounter--;
-                    return false;
-                }
-            }
-            Player targetPlayer = (npc.target <= 0 || npc.target >= 255 ? null : Main.player[npc.target]);
-            try
-            {
-                if (npc.type == NPCID.Harpy || npc.type == NPCID.WyvernHead || npc.type == NPCID.MartianProbe)
-                {
-                    if (targetPlayer != null && (npc.timeLeft > 10 && targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneVoid == true))
-                    {
-                        npc.timeLeft = 10;
-                    }
-                }
-            }
-            catch (Exception e) { BaseUtility.LogFancy("MNPC PREAI ERROR: ", e); }
-            return true;
         }
 
         public const string HeadTex = "AAMod/Resprites/TEoCHead";

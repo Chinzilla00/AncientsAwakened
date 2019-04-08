@@ -61,10 +61,8 @@ You quickly regenerate your HP while staying";
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("IronBar", 16);
-			recipe.AddIngredient(ItemID.SnowBlock, 30);
-			recipe.AddIngredient(ItemID.IceBlock, 15);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddRecipeGroup("RelicBar", 14);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

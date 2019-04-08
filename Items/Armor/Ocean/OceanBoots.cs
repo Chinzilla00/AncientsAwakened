@@ -10,8 +10,8 @@ namespace AAMod.Items.Armor.Ocean
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ocean Greaves");
-            Tooltip.SetDefault(@"Allows to freely move in liquids");
-
+            Tooltip.SetDefault(@"Increases maximum mana by 20
+2% increased magic damage");
         }
 
 		public override void SetDefaults()
@@ -20,15 +20,15 @@ namespace AAMod.Items.Armor.Ocean
 			item.height = 24;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 3;
-			item.defense = 3;
+			item.defense = 5;
 		}
-        
-		public override void UpdateEquip(Player player)
-		{
-            player.accFlipper = true;
-			player.ignoreWater = true;
-		}
-		
+
+        public override void UpdateEquip(Player player)
+        {
+            player.statManaMax2 += 20;
+            player.magicDamage += 0.02f;
+        }
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

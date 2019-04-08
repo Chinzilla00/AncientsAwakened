@@ -375,6 +375,9 @@
     <Compile Include="Items\Armor\Nights\NightsGreaves.cs" />
     <Compile Include="Items\Armor\Nights\NightsHelm.cs" />
     <Compile Include="Items\Armor\Nights\NightsPlate.cs" />
+    <Compile Include="Items\Armor\Ocean\OceanBoots.cs" />
+    <Compile Include="Items\Armor\Ocean\OceanHelm.cs" />
+    <Compile Include="Items\Armor\Ocean\OceanShirt.cs" />
     <Compile Include="Items\Armor\Oroboros\OroborosBoots.cs" />
     <Compile Include="Items\Armor\Oroboros\OroborosChestplate.cs" />
     <Compile Include="Items\Armor\Oroboros\OroborosHelmet.cs" />
@@ -430,6 +433,9 @@
     <Compile Include="Items\Armor\TrueDemon\TrueDemonBoots.cs" />
     <Compile Include="Items\Armor\TrueDemon\TrueDemonGarb.cs" />
     <Compile Include="Items\Armor\TrueDemon\TrueDemonHood.cs" />
+    <Compile Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate.cs" />
+    <Compile Include="Items\Armor\TrueDoomite\TrueDoomiteGreaves.cs" />
+    <Compile Include="Items\Armor\TrueDoomite\TrueDoomiteVisor.cs" />
     <Compile Include="Items\Armor\TrueDynaskull\Dynabomb.cs" />
     <Compile Include="Items\Armor\TrueDynaskull\TrueDynaskull.cs" />
     <Compile Include="Items\Armor\TrueDynaskull\TrueDynaskullGreaves.cs" />
@@ -455,6 +461,9 @@
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverBootsA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverJacketA.cs" />
     <Compile Include="Items\Armor\Dev\Alphakip\FishDiverMaskA.cs" />
+    <Compile Include="Items\Armor\Viking\VikingBoots.cs" />
+    <Compile Include="Items\Armor\Viking\VikingHelm.cs" />
+    <Compile Include="Items\Armor\Viking\VikingPlate.cs" />
     <Compile Include="Items\Armor\Witch\WitchBoots.cs" />
     <Compile Include="Items\Armor\Witch\WitchHood.cs" />
     <Compile Include="Items\Armor\Witch\WitchRobe.cs" />
@@ -864,6 +873,7 @@
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
     <Compile Include="Items\Materials\Discordium.cs" />
+    <Compile Include="Items\Materials\DoomiteScrap.cs" />
     <Compile Include="Items\Materials\Prism.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\Hotshroom.cs" />
@@ -873,6 +883,7 @@
     <Compile Include="Items\Materials\M79Parts.cs" />
     <Compile Include="Items\Materials\MadnessFragment.cs" />
     <Compile Include="Items\Materials\OrderBar.cs" />
+    <Compile Include="Items\Materials\RelicBar.cs" />
     <Compile Include="Items\Materials\TerraShard.cs" />
     <Compile Include="Items\Materials\UraniumBar.cs" />
     <Compile Include="Items\Materials\DarkMatter.cs" />
@@ -899,6 +910,7 @@
     <Compile Include="Items\Materials\RadiumBar.cs" />
     <Compile Include="Items\Materials\ShinyCharm.cs" />
     <Compile Include="Items\Materials\DesertMana.cs" />
+    <Compile Include="Items\Materials\VikingRelic.cs" />
     <Compile Include="Items\Materials\VoidEnergy.cs" />
     <Compile Include="Items\Materials\SoulOfSmite.cs" />
     <Compile Include="Items\Materials\SnowMana.cs" />
@@ -1928,9 +1940,11 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
+    <Compile Include="Tiles\DoomitePlate.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
     <Compile Include="Tiles\Mushroom.cs" />
+    <Compile Include="Tiles\RelicOre.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\SGBox.cs" />
     <Compile Include="Tiles\SDBox.cs" />
@@ -3591,10 +3605,10 @@
     <Content Include="Items\Armor\Nights\NightsPlate_Arms.png" />
     <Content Include="Items\Armor\Nights\NightsPlate_Body.png" />
     <Content Include="Items\Armor\Nights\NightsPlate_Female.png" />
+    <Content Include="Items\Armor\Ocean\OceanHelm_Head.png" />
     <Content Include="Items\Armor\Ocean\OceanShirt_Arms.png" />
     <Content Include="Items\Armor\Ocean\OceanShirt_Body.png" />
     <Content Include="Items\Armor\Ocean\OceanShirt_Female.png" />
-    <Content Include="Items\Armor\Ocean\OceanArmor_Head.png" />
     <Content Include="Items\Armor\Ocean\OceanBoots_Legs.png" />
     <Content Include="Items\Armor\Ocean\OceanBoots.png" />
     <Content Include="Items\Armor\Ocean\OceanShirt.png" />
@@ -3779,6 +3793,14 @@
     <Content Include="Items\Armor\TrueDemon\TrueDemonGarb_Female.png" />
     <Content Include="Items\Armor\TrueDemon\TrueDemonHood.png" />
     <Content Include="Items\Armor\TrueDemon\TrueDemonHood_Head.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate_Arms.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate_Body.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate_Female.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteGreaves.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteGreaves_Legs.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteVisor.png" />
+    <Content Include="Items\Armor\TrueDoomite\TrueDoomiteVisor_Head.png" />
     <Content Include="Items\Armor\TrueDynaskull\Dynabomb.png" />
     <Content Include="Items\Armor\TrueDynaskull\TrueDynaskullRibguard.png" />
     <Content Include="Items\Armor\TrueDynaskull\TrueDynaskull.png" />
@@ -3860,7 +3882,12 @@
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
+    <Content Include="Items\Materials\DoomiteScrap.png" />
+    <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
+    <Content Include="Items\Materials\VikingRelic0.png" />
+    <Content Include="Items\Materials\VikingRelic1.png" />
+    <Content Include="Items\Materials\VikingRelic.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
@@ -5834,6 +5861,7 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DoomitePlate.png" />
     <Content Include="Tiles\DoomsdayChest.png" />
     <Content Include="Tiles\DoomsdayChestLockedFrame.png" />
     <Content Include="Tiles\DoomstoneB.png" />
@@ -5889,6 +5917,7 @@
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />
     <Content Include="Tiles\Razetus.png" />
+    <Content Include="Tiles\RelicOre.png" />
     <Content Include="Tiles\RottedDynastyWoodS.png" />
     <Content Include="Tiles\RottedPlatform.png" />
     <Content Include="Tiles\SABox.png" />

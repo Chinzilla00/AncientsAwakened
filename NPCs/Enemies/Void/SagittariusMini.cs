@@ -17,14 +17,13 @@ namespace AAMod.NPCs.Enemies.Void
 		
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.Poltergeist);
             npc.noGravity = true;
             npc.noTileCollide = true;
 			npc.aiStyle = -1;
             npc.width = 24;
             npc.height = 40;
-            npc.damage = 50;
-            npc.defense = 9999999;
+            npc.damage = 20;
+            npc.defense = 10;
             npc.lifeMax = 100;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
@@ -88,7 +87,7 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Doomite"), 1);
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DeactivatedDoomite"), 1);
         }
 
         

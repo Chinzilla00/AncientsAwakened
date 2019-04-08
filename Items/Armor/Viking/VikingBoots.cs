@@ -33,9 +33,7 @@ Reduces movement speed by 15%");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("IronBar", 14);
-			recipe.AddIngredient(ItemID.SnowBlock, 20);
-			recipe.AddIngredient(ItemID.IceBlock, 10);
+			recipe.AddRecipeGroup("RelicBar", 14);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

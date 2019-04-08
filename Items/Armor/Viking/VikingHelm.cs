@@ -32,10 +32,8 @@ Even if it weights a ton, it defends well");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("IronBar", 12);
-			recipe.AddIngredient(ItemID.SnowBlock, 15);
-			recipe.AddIngredient(ItemID.IceBlock, 5);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddRecipeGroup("RelicBar", 14);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
