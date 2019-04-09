@@ -1453,6 +1453,10 @@
     <Compile Include="NPCs\Bosses\Shen\ShenTransition.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenRain.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenStorm.cs" />
+    <Compile Include="NPCs\Bosses\Toad\ToadBomb.cs" />
+    <Compile Include="NPCs\Bosses\Toad\ToadBoom.cs" />
+    <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
+    <Compile Include="NPCs\Bosses\Toad\TruffleToadTongue.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataAVenom.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Shock.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBlast.cs" />
@@ -3910,6 +3914,12 @@
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
+    <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
+    <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
+    <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
