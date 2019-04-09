@@ -152,7 +152,8 @@ namespace AAMod.NPCs.Bosses.Zero
                     "TeslaHand",
                     "ZeroStar",
                     "Neutralizer",
-                    "ZeroTerratool"
+                    "ZeroTerratool",
+                    "DoomPortal"
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));

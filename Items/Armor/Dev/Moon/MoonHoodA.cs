@@ -59,8 +59,7 @@ Magic attacks inflict Moonraze on your target
 You have a lunar friend to assist you";
             
             player.GetModPlayer<AAPlayer>(mod).MoonSet = true;
-
-
+            
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(mod.BuffType("MB")) == -1)

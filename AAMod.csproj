@@ -119,6 +119,7 @@
     <Compile Include="Buffs\DragonfireFlaskBuff.cs" />
     <Compile Include="Buffs\Horse.cs" />
     <Compile Include="Buffs\Orbiters.cs" />
+    <Compile Include="Buffs\Protocol.cs" />
     <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
     <Compile Include="Buffs\HydratoxinFlaskBuff.cs" />
@@ -426,6 +427,9 @@
     <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalFukumen.cs" />
     <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalGi.cs" />
     <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalHakama.cs" />
+    <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanBoots.cs" />
+    <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanHelm.cs" />
+    <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanPlate.cs" />
     <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />
@@ -455,6 +459,9 @@
     <Compile Include="Items\Armor\TrueNights\TrueNightsGreaves.cs" />
     <Compile Include="Items\Armor\TrueNights\TrueNightsHelm.cs" />
     <Compile Include="Items\Armor\TrueNights\TrueNightsPlate.cs" />
+    <Compile Include="Items\Armor\TrueRaider\TrueRaiderBoots.cs" />
+    <Compile Include="Items\Armor\TrueRaider\TrueRaiderHelm.cs" />
+    <Compile Include="Items\Armor\TrueRaider\TrueRaiderPlate.cs" />
     <Compile Include="Items\Armor\TrueTribal\TrueTribalCloak.cs" />
     <Compile Include="Items\Armor\TrueTribal\TrueTribalHat.cs" />
     <Compile Include="Items\Armor\TrueTribal\TrueTribalKilt.cs" />
@@ -771,6 +778,7 @@
     <Compile Include="Items\Boss\Yamata\YamataTrophy.cs" />
     <Compile Include="Items\Boss\Zero\AMR.cs" />
     <Compile Include="Items\Boss\Zero\Battery.cs" />
+    <Compile Include="Items\Boss\Zero\DoomPortal.cs" />
     <Compile Include="Items\Boss\Zero\BrokenCode.cs" />
     <Compile Include="Items\Boss\Zero\DoomRay.cs" />
     <Compile Include="Items\Boss\Zero\EventHorizon.cs" />
@@ -1651,6 +1659,7 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
     <Compile Include="Projectiles\SingularityVortex.cs" />
     <Compile Include="Projectiles\SoulSiphonHeal.cs" />
@@ -2334,6 +2343,7 @@
     <Content Include="Buffs\Orbiters.png" />
     <Content Include="Buffs\PrettyPony.png" />
     <Content Include="Buffs\ProbeMinion.png" />
+    <Content Include="Buffs\Protocol.png" />
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
     <Content Include="Buffs\RoyalKitten.png" />
@@ -3794,6 +3804,7 @@
     <Content Include="Items\Armor\TrueDemon\TrueDemonGarb_Female.png" />
     <Content Include="Items\Armor\TrueDemon\TrueDemonHood.png" />
     <Content Include="Items\Armor\TrueDemon\TrueDemonHood_Head.png" />
+    <Content Include="Items\Armor\TrueDoomite\ScoutMinion.png" />
     <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate.png" />
     <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate_Arms.png" />
     <Content Include="Items\Armor\TrueDoomite\TrueDoomiteBreastplate_Body.png" />
@@ -3883,6 +3894,8 @@
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
+    <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
+    <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
@@ -5751,6 +5764,7 @@
     <Content Include="Projectiles\Zero\DoomRayHandle.png" />
     <Content Include="Projectiles\Zero\EventHorizon.png" />
     <Content Include="Projectiles\Zero\Neutralizer.png" />
+    <Content Include="Projectiles\Zero\Protocol.png" />
     <Content Include="Projectiles\Zero\RealityLaser.png" />
     <Content Include="Projectiles\Zero\Horizon.png" />
     <Content Include="Projectiles\Zero\Rift.png" />

@@ -12,6 +12,7 @@ namespace AAMod.Items.Armor.Dev.Moon
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Twilight Ray");
+            Main.projFrames[projectile.type] = 5;
         }
         public override void SetDefaults()
         {

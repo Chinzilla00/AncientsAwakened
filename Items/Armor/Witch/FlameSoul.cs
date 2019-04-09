@@ -45,7 +45,7 @@ namespace AAMod.Items.Armor.Witch
             player.AddBuff(mod.BuffType("FlameSoul"), 3600);
             if (flag64)
             {
-                if (player.dead)
+                if (player.dead || !modPlayer.Witch)
                 {
                     modPlayer.FlameSoul = false;
                 }

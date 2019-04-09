@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
@@ -10,7 +11,7 @@ namespace AAMod.Items.Boss.Yamata
 		{
 
             item.damage = 130;            
-            item.thrown = true;
+            item.ranged = true;
             item.width = 20;
             item.height = 20;
 			item.useTime = 8;
@@ -31,6 +32,17 @@ namespace AAMod.Items.Boss.Yamata
             Tooltip.SetDefault("Non-consumable");
         }
 
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Yamata; ;
+                }
+            }
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
