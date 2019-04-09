@@ -1271,6 +1271,7 @@
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckPants.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckShirt.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckHead.cs" />
@@ -3902,6 +3903,8 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
+    <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />

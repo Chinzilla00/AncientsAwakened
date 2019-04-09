@@ -33,6 +33,21 @@ namespace AAMod.Items.Summoning.Minions
             projectile.ignoreWater = true;
         }
 
+        public override bool PreAI()
+        {
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
+            if (player.dead)
+            {
+                modPlayer.MadnessElemental = false;
+            }
+            if (modPlayer.MadnessElemental)
+            {
+                projectile.timeLeft = 2;
+            }
+            return true;
+        }
+
         int dust = 3;
 
         public override void AI()

@@ -48,7 +48,7 @@ Allows for underwater breathing");
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("FishDiverJacketA") && legs.type == mod.ItemType("FishDiverBootsA");
+            return body.type == mod.ItemType("SFishDiverJacketA") && legs.type == mod.ItemType("SFishDiverBootsA");
         }
 
         public override void UpdateArmorSet(Player player)
@@ -59,7 +59,7 @@ Grants uninhibited liquid movement
 The Infinity Gauntlet is now at it's max potential
 You gain a fishy companion";
             player.GetModPlayer<AAPlayer>(mod).Alpha = true;
-            player.GetModPlayer<AAPlayer>(mod).MudkipS = true;
+            player.AddBuff(mod.BuffType("MudkipS"), 18000);
             player.ignoreWater = true;
         }
 

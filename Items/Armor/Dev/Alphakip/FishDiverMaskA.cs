@@ -60,7 +60,7 @@ Grants uninhibited liquid movement
 The Infinity Gauntlet is now at it's max potential
 You gain a fishy companion";
             player.GetModPlayer<AAPlayer>(mod).Alpha = true;
-            player.GetModPlayer<AAPlayer>(mod).Mudkip = true;
+            player.AddBuff(mod.BuffType("Mudkip"), 18000);
             player.ignoreWater = true;
         }
 
