@@ -1268,10 +1268,6 @@
     <Compile Include="Items\Vanity\Aves\DJDuckHead.cs" />
     <Compile Include="Items\Vanity\Aves\DuckstepWings.cs" />
     <Compile Include="Items\Vanity\Beg\Pony.cs" />
-    <Compile Include="Items\Vanity\Chinzilla\ChinMask.cs" />
-    <Compile Include="Items\Vanity\Chinzilla\ChinPants.cs" />
-    <Compile Include="Items\Vanity\Chinzilla\ChinsMagicCoin.cs" />
-    <Compile Include="Items\Vanity\Chinzilla\ChinSuit.cs" />
     <Compile Include="Items\Vanity\Dallin\FezLordsBag.cs" />
     <Compile Include="Items\Vanity\Eliza\LizBoots.cs" />
     <Compile Include="Items\Vanity\Eliza\LizEars.cs" />
@@ -1519,7 +1515,6 @@
     <Compile Include="NPCs\Bosses\Zero\VoidStarP.cs" />
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeactivated.cs" />
-    <Compile Include="NPCs\Critters\ShroomGrub.cs" />
     <Compile Include="NPCs\Enemies\Corruption\FeralMonster.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst1.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst2.cs" />
@@ -1547,7 +1542,6 @@
     <Compile Include="NPCs\Enemies\Mire\DreadHydra.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Miregron.cs" />
-    <Compile Include="NPCs\Enemies\Mire\MireSkulker.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSlime.cs" />
     <Compile Include="NPCs\Enemies\Mire\Newt.cs" />
     <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
@@ -1613,8 +1607,6 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="OtherModWork\DragonFire.cs" />
-    <Compile Include="OtherModWork\FruitDragon.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\AH\Ash.cs" />
     <Compile Include="Projectiles\AH\FireOrbiter.cs" />
@@ -3918,6 +3910,9 @@
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
+    <Content Include="NPCs\Enemies\Mire\MireAngler.png" />
+    <Content Include="NPCs\Enemies\Mire\MireSkulker.gif" />
+    <Content Include="NPCs\Enemies\Mire\MireTurtle.png" />
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
@@ -4857,20 +4852,6 @@
     <Content Include="Items\Vanity\Beg\Pony_Body.png" />
     <Content Include="Items\Vanity\Beg\Pony_Head.png" />
     <Content Include="Items\Vanity\Beg\Pony_Legs.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinMask.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinMask_Head.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinPants.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinPants_Legs.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinsMagicCoin_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinSuit.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Arms.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Body.png" />
-    <Content Include="Items\Vanity\Chinzilla\ChinSuit_Female.png" />
-    <Content Include="Items\Vanity\Chinzilla\Copper_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Gold_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Platinum_Wings.png" />
-    <Content Include="Items\Vanity\Chinzilla\Silver_Wings.png" />
     <Content Include="Items\Vanity\Dallin\FezLordsBag.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots_Legs.png" />
@@ -5295,8 +5276,6 @@
     <Content Include="NPCs\Bosses\Zero\ZeroShield.png" />
     <Content Include="NPCs\Bosses\Zero\ZeroShieldRing.png" />
     <Content Include="NPCs\Bosses\Zero\Zero_Head_Boss.png" />
-    <Content Include="NPCs\Critters\ShroomGrub.png" />
-    <Content Include="NPCs\Critters\ShroomGrub_Dig.png" />
     <Content Include="NPCs\Enemies\Corruption\FeralMonster.png" />
     <Content Include="NPCs\Enemies\Desert\DjinnBurst1.png" />
     <Content Include="NPCs\Enemies\Desert\DjinnBurst2.png" />
@@ -5437,10 +5416,6 @@
     <Content Include="obj\Debug\AAMod.dll" />
     <Content Include="obj\Debug\AAMod.pdb" />
     <Content Include="OldChaosGen.txt" />
-    <Content Include="OtherModWork\BambooShoot.png" />
-    <Content Include="OtherModWork\Bamboo_shot.png" />
-    <Content Include="OtherModWork\DragonFire.png" />
-    <Content Include="OtherModWork\FruitDragon.png" />
     <Content Include="Placeholder.png" />
     <Content Include="Projectiles\AcidBall.png" />
     <Content Include="Projectiles\Akuma\AkumaExp.png" />

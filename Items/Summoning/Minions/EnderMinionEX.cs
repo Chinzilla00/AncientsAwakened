@@ -25,7 +25,7 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ender Minion");
+            DisplayName.SetDefault("Ender Minion EX");
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -58,9 +58,9 @@ namespace AAMod.Items.Summoning.Minions
             AAPlayer modPlayer = (AAPlayer)player.GetModPlayer(mod, "AAPlayer");
             if (player.dead)
             {
-                modPlayer.enderMinion = false;
+                modPlayer.enderMinionEX = false;
             }
-            if (modPlayer.enderMinion)
+            if (modPlayer.enderMinionEX)
             {
                 projectile.timeLeft = 2;
             }
