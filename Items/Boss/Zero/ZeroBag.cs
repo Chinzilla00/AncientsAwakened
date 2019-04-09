@@ -75,7 +75,8 @@ namespace AAMod.Items.Boss.Zero
                 "TeslaHand",
                 "ZeroStar",
                 "Neutralizer",
-                "ZeroTerratool"
+                "ZeroTerratool",
+                "DoomPortal"
             };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

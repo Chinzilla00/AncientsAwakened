@@ -60,6 +60,7 @@ namespace AAMod
         public bool MadnessElemental = false;
         public bool FlameSoul = false;
         public bool Orbiters = false;
+        public bool Protocol = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -272,6 +273,7 @@ namespace AAMod
             MadnessElemental = false;
             FlameSoul = false;
             Orbiters = false;
+            Protocol = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -2365,7 +2367,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Daybreak, 600);
             }
 
-            if (dreadSet && proj.minion)
+            if (dreadSet && proj.ranged)
             {
                 target.AddBuff(mod.BuffType<Moonraze>(), 600);
             }
