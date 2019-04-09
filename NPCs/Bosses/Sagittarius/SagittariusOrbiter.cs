@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 800;
             npc.defense = 20;
             npc.damage = 10;
             npc.HitSound = SoundID.NPCHit4;

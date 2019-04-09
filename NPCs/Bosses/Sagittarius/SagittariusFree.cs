@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
 		public override void SetDefaults()
         {
-            npc.lifeMax = 22000;
+            npc.lifeMax = 8000;
             npc.boss = true;
             npc.defense = 0;
             npc.damage = 70;
