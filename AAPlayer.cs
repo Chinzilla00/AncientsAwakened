@@ -138,6 +138,7 @@ namespace AAMod
         public bool Assassin;
         public bool AbyssalStealth;
         public bool AssassinStealth;
+        public bool Witch;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -315,6 +316,7 @@ namespace AAMod
             Assassin = false;
             AssassinStealth = false;
             AbyssalStealth = false;
+            Witch = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;

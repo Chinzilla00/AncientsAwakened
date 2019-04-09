@@ -33,7 +33,7 @@ namespace AAMod.Items.Armor.Dev.Moon
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
-            if (player.dead)
+            if (player.dead || !modPlayer.MoonSet)
             {
                 modPlayer.MoonBee = false;
             }
