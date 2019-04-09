@@ -212,7 +212,7 @@ namespace AAMod.Projectiles.Zero
                 if (num651 > 2000f)
                 {
                     projectile.position.X = Main.player[projectile.owner].Center.X - (projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2);
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (projectile.height / 2);
                     projectile.netUpdate = true;
                 }
                 if (num651 > 70f)
