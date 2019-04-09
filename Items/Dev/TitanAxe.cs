@@ -11,7 +11,7 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Titan Axe");
-            Tooltip.SetDefault("Right clicking throws the axe for throwing damage \n" + "Left clicking swings the axe for melee damage \n" + "'Oof this isn't google' \n'" + "-Welox");
+            Tooltip.SetDefault("Right clicking throws the axe. \n" + "Left clicking swings the axe. \n" + "'Oof this isn't google' \n'" + "-Welox");
 		}
 
 		public override void SetDefaults()
@@ -54,8 +54,7 @@ namespace AAMod.Items.Dev
                 item.useStyle = 1;
                 item.useTime = 26;
                 item.useAnimation = 26;
-                item.thrown = true;
-                item.melee = false;
+                item.melee = true;
                 item.damage = 200;
                 item.shoot = mod.ProjectileType("TitanAxe");
                 item.shootSpeed = 12f;

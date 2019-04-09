@@ -139,8 +139,6 @@
     <Compile Include="Buffs\Broodmini.cs" />
     <Compile Include="Buffs\BurningAsh.cs" />
     <Compile Include="Buffs\BabyPhoenix.cs" />
-    <Compile Include="Buffs\ChairMinionBuff.cs" />
-    <Compile Include="Buffs\ChairMinionBuffEX.cs" />
     <Compile Include="Buffs\SkullMinion.cs" />
     <Compile Include="Buffs\Clueless.cs" />
     <Compile Include="Buffs\DragonFire.cs" />
@@ -2314,8 +2312,6 @@
     <Content Include="Buffs\BoomBoi.png" />
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\BurningAsh.png" />
-    <Content Include="Buffs\ChairMinionBuff.png" />
-    <Content Include="Buffs\ChairMinionBuffEX.png" />
     <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\CrimeraMinion.png" />
     <Content Include="Buffs\DemonBuff.png" />
@@ -5525,6 +5521,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\Singularity.png" />
     <Content Include="Projectiles\SingularityVortex.png" />
     <Content Include="Projectiles\SingularityVortex1.png" />
@@ -5644,7 +5641,6 @@
     <Content Include="Projectiles\BlackSolution.png" />
     <Content Include="Projectiles\OceanicArrow.png" />
     <Content Include="Projectiles\OrderArrow.png" />
-    <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\AmphibiousBoom.png" />
     <Content Include="Projectiles\OrderSpark.png" />
     <Content Include="Projectiles\PonyBoom.png" />

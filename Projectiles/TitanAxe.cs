@@ -15,12 +15,11 @@ namespace AAMod.Projectiles
             projectile.hostile = false;
             projectile.tileCollide = false;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 300;
+            projectile.timeLeft = 300;
             projectile.CloneDefaults(ProjectileID.PaladinsHammerFriendly);
             aiType = ProjectileID.PaladinsHammerFriendly;
             drawOffsetX = 5;
 			drawOriginOffsetY = 5;
-            projectile.melee = true;
 		}
 	}
 }

@@ -38,8 +38,6 @@ namespace AAMod
         public bool Searcher = false;
         public bool enderMinion = false;
         public bool enderMinionEX = false;
-        public bool ChairMinion = false;
-        public bool ChairMinionEX = false;
         public bool LungMinion = false;
         public bool DragonMinion = false;
         public bool BabyPhoenix = false;
@@ -252,8 +250,6 @@ namespace AAMod
             Searcher = false;
             enderMinion = false;
             enderMinionEX = false;
-            ChairMinion = false;
-            ChairMinionEX = false;
             BabyPhoenix = false;
             LungMinion = false;
             DragonMinion = false;
@@ -1396,6 +1392,13 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 15:
+                        player.QuickSpawnItem(mod.ItemType("TailsHead"));
+                        player.QuickSpawnItem(mod.ItemType("TailsBody"));
+                        player.QuickSpawnItem(mod.ItemType("TailsLegs"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "FreedomStar" : "MobianBuster"));
+                        }
                         break;
                 }
             }

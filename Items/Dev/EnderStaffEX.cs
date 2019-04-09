@@ -16,6 +16,8 @@ namespace AAMod.Items.Dev
             DisplayName.SetDefault("Conflagrate Scythe");
             Tooltip.SetDefault(@"Summons a spinning construct that shreds through enemies
 Conflagrate Staff EX");
+
+            Item.staff[item.type] = true;
         }
 
 		public override void SetDefaults()
