@@ -316,6 +316,9 @@
     <Compile Include="Items\Armor\Dev\Moon\MoonHoodA.cs" />
     <Compile Include="Items\Armor\Dev\Moon\MoonRobeA.cs" />
     <Compile Include="Items\Armor\Dev\Moon\MoonProjectile.cs" />
+    <Compile Include="Items\Armor\DoomiteU\DoomiteUGreaves.cs" />
+    <Compile Include="Items\Armor\DoomiteU\DoomiteUHelm.cs" />
+    <Compile Include="Items\Armor\DoomiteU\DoomiteUPlate.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteBreastplate.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteGreaves.cs" />
     <Compile Include="Items\Armor\Doomite\DoomiteVisor.cs" />
@@ -421,6 +424,9 @@
     <Compile Include="Items\Armor\Tribal\TribalCloak.cs" />
     <Compile Include="Items\Armor\Tribal\TribalHat.cs" />
     <Compile Include="Items\Armor\Tribal\TribalKilt.cs" />
+    <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalFukumen.cs" />
+    <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalGi.cs" />
+    <Compile Include="Items\Armor\TrueAbyssal\TrueAbyssalHakama.cs" />
     <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />
@@ -877,7 +883,6 @@
     <Compile Include="Items\Materials\Prism.cs" />
     <Compile Include="Items\Materials\DarkEnergy.cs" />
     <Compile Include="Items\Materials\Hotshroom.cs" />
-    <Compile Include="Items\Materials\DeactivatedDoomite.cs" />
     <Compile Include="Items\Materials\Darkshroom.cs" />
     <Compile Include="Items\Materials\Doomite.cs" />
     <Compile Include="Items\Materials\M79Parts.cs" />
@@ -1300,6 +1305,7 @@
     <Compile Include="Items\Vanity\Tied\TiedsLeggings.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsMask.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsSuit.cs" />
+    <Compile Include="Items\Walls\DoomiteWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
     <Compile Include="Mounts\BegPony.cs" />
@@ -2156,6 +2162,7 @@
     <Compile Include="Tiles\YtriumOre.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
+    <Compile Include="Walls\DoomiteWall.cs" />
     <Compile Include="Walls\BurnedDynastyWall.cs" />
     <Compile Include="Walls\DepthsandHardenedWall.cs" />
     <Compile Include="Walls\DepthsandstoneWall.cs" />
@@ -3888,6 +3895,7 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
@@ -4421,7 +4429,6 @@
     <Content Include="Items\Materials\DarkMatter.png" />
     <Content Include="Items\Materials\Darkshroom.png" />
     <Content Include="Items\Materials\DaybreakIncinerite.png" />
-    <Content Include="Items\Materials\DeactivatedDoomite.png" />
     <Content Include="Items\Materials\DeepAbyssium.png" />
     <Content Include="Items\Materials\DesertMana.png" />
     <Content Include="Items\Materials\DevilSilk.png" />
@@ -5951,7 +5958,6 @@
     <Content Include="Tiles\DaybreakIncineriteBar.png" />
     <Content Include="Tiles\DeepAbyssium.png" />
     <Content Include="Tiles\Depthstone.png" />
-    <Content Include="Tiles\DiscordianOreTile.png" />
     <Content Include="Tiles\DoomsdayPlating.png" />
     <Content Include="Tiles\Doomstone.png" />
     <Content Include="Tiles\DoomstoneBrick.png" />
@@ -6095,6 +6101,7 @@
     <Content Include="Walls\DepthsandstoneWall.png" />
     <Content Include="Walls\DepthstoneWall.png" />
     <Content Include="Walls\DepthstoneWall2.png" />
+    <Content Include="Walls\DoomiteWall.png" />
     <Content Include="Walls\DoomsdayWall.png" />
     <Content Include="Walls\DoomstoneBrickWall.png" />
     <Content Include="Walls\FulgurglassWall.png" />

@@ -73,7 +73,7 @@ namespace AAMod.Items.Blocks
 		{
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "ApocalyptitePlate", 2);
+                recipe.AddIngredient(null, "DoomiteScrap", 2);
                 recipe.AddIngredient(null, "OroborosWood", 12);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this);

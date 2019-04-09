@@ -854,7 +854,7 @@ namespace AAMod
                 {
                     pool.Add(mod.NPCType("SagittariusMini"), .05f);
                 }
-                if (Main.hardMode)
+                if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType("Vortex"), 0.3f);
                     pool.Add(mod.NPCType("Scout"), .05f);

@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Doomite
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Doomite Plate");
-            Tooltip.SetDefault(@"Increases your max number of minions");
+            Tooltip.SetDefault(@"+1 Minion slot");
 		}
 
 		public override void SetDefaults()
@@ -18,8 +18,8 @@ namespace AAMod.Items.Armor.Doomite
 			item.width = 26;
 			item.height = 20;
 			item.rare = 4;
-            item.defense = 15;
-            item.value = 20000;
+            item.defense = 7;
+            item.value = 9000;
 		}
 
         public override void UpdateEquip(Player player)

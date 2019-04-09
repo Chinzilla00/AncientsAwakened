@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Depth
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Depth Gi");
-            Tooltip.SetDefault(@"+40% movement speed
+            Tooltip.SetDefault(@"40% increased movement speed
 Weightless as shadow itself");
         }
 

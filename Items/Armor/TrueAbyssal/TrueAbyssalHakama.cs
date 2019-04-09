@@ -12,8 +12,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("True Abyssal Hakama");
             Tooltip.SetDefault(@"40% increased movement speed
-15% increased minion damage
-Weightless as shadow itself");
+15% increased ranged damage");
 		}
 
 		public override void SetDefaults()
@@ -27,7 +26,7 @@ Weightless as shadow itself");
 
 		public override void UpdateEquip(Player player)
 		{
-			player.minionDamage += .15f;
+			player.rangedDamage += .15f;
 			player.moveSpeed += 0.40f;
 		}
 

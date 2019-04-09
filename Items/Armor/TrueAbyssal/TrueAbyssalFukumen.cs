@@ -12,8 +12,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("True Abyssal Fukumen");
             Tooltip.SetDefault(@"35% increased movement speed
-20% increased minion damage
-Weightless as shadow itself");
+20% increased ranged damage");
         }
 
 		public override void SetDefaults()
@@ -27,7 +26,7 @@ Weightless as shadow itself");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage += .2f;
+            player.rangedDamage += .2f;
             player.moveSpeed += .35f;
         }
 
@@ -38,13 +37,12 @@ Weightless as shadow itself");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Your minions are imbued with the poisonous properties of hydra venom
+            player.setBonus = @"Your minions are imbued with the venomous properties of bogtoxin
 Enemies are less likely to target you
-+4 Minion Slot
-Nightvision and Hunter potions effects";
-            player.aggro -= 5;
-            player.GetModPlayer<AAPlayer>(mod).depthSet = true;
-            player.maxMinions += 4;
+7% reduced ammo consumption
+When hiding in shadow, you enter stealth mode";
+            player.GetModPlayer<AAPlayer>(mod).trueAbyssal = true;
+            player.ammoCost75 = true;
             player.nightVision = true;
 			player.detectCreature = true;
         }

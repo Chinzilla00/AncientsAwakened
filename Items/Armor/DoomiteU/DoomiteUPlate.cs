@@ -34,16 +34,9 @@ namespace AAMod.Items.Armor.DoomiteU
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DemoniteBar, 10);
-			recipe.AddIngredient(ItemID.MeteoriteBar, 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrimtaneBar, 10);
-			recipe.AddIngredient(ItemID.MeteoriteBar, 10);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(null, "DoomiteScrap", 10);
+            recipe.AddIngredient(null, "Doomite", 2);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

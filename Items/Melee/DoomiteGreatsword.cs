@@ -46,7 +46,7 @@ namespace AAMod.Items.Melee
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "DoomiteSaber");
-            recipe.AddIngredient(mod, "Doomite", 10);
+            recipe.AddIngredient(mod, "VoidEnergy", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

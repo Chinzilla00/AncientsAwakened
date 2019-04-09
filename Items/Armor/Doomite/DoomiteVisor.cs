@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Doomite
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Doomite Visor");
-            Tooltip.SetDefault(@"22% increased minion damage");
+            Tooltip.SetDefault(@"+1 Minion slot");
         }
 
         public override void SetDefaults()
@@ -18,13 +18,13 @@ namespace AAMod.Items.Armor.Doomite
             item.width = 26;
             item.height = 20;
             item.rare = 4;
-            item.defense = 10;
-            item.value = 20000;
+            item.defense = 6;
+            item.value = 9000;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage += 0.22f;
+            player.maxMinions += 1;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -34,9 +34,9 @@ namespace AAMod.Items.Armor.Doomite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"+3 Minion slots
+            player.setBonus = @"+1 Max Minion
 A void searcher fights by your side";
-            player.maxMinions += 3;
+            player.maxMinions += 1;
             player.GetModPlayer<AAPlayer>(mod).doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {

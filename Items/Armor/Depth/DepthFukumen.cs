@@ -38,12 +38,10 @@ Weightless as shadow itself");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Your ranged attacks are imbued with the poisonous properties of hydra venom
-Enemies are less likely to target you
+            player.setBonus = @"Enemies are less likely to target you
 20% decreased ammo consumption
 Nightvision";
             player.aggro -= 3;
-            player.GetModPlayer<AAPlayer>(mod).depthSet = true;
             player.ammoCost80 = true;
             player.nightVision = true;
         }

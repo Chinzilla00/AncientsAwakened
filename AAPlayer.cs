@@ -110,6 +110,7 @@ namespace AAMod
         public bool trueFlesh;
         public bool trueTribal;
         public bool trueDeathly;
+        public bool trueAbyssal;
         public bool trueDemon;
         public bool trueDemonBonus;
         public bool trueDynaskull;
@@ -134,6 +135,7 @@ namespace AAMod
         public bool Radium;
         public bool perfectChaos;
         public bool Assassin;
+        public bool AbyssalStealth;
         public bool AssassinStealth;
         // Accessory bools.
         public bool clawsOfChaos;
@@ -282,6 +284,7 @@ namespace AAMod
             tribalSet = false;
             techneciumSet = false;
             trueTribal = false;
+            trueAbyssal = false;
             impSet = false;
             trueDemon = false;
             trueDemonBonus = false;
@@ -309,6 +312,7 @@ namespace AAMod
             perfectChaos = false;
             Assassin = false;
             AssassinStealth = false;
+            AbyssalStealth = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -823,6 +827,18 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (trueAbyssal)
+            {
+                Color light = BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y));
+                if (light.R < 40 && light.G < 40 && light.B < 40)
+                {
+                    AbyssalStealth = true;
+                }
+                else
+                {
+                    AbyssalStealth = false;
+                }
+            }
             if (uraniumSet)
             {
                 Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
@@ -1062,6 +1078,45 @@ namespace AAMod
                     }
                 }
             }
+
+
+            if (trueAbyssal)
+            {
+                if (AbyssalStealth)
+                {
+                    float num29 = player.stealth;
+                    player.stealth -= 0.04f;
+                    if (player.stealth < 0f)
+                    {
+                        player.stealth = 0f;
+                    }
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    {
+                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                    player.rangedDamage += (1f - player.stealth) * 0.6f;
+                    player.rangedCrit += (int)((1f - player.stealth) * 16f);
+                    player.aggro -= 50;
+                    if (player.mount.Active)
+                    {
+                        AbyssalStealth = false;
+                    }
+                }
+                else
+                {
+                    float num30 = player.stealth;
+                    player.stealth += 0.04f;
+                    if (player.stealth > 1f)
+                    {
+                        player.stealth = 1f;
+                    }
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    {
+                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                }
+            }
+
             if (player.whoAmI == Main.myPlayer)
             {
                 if (Main.hasFocus)
@@ -1875,7 +1930,7 @@ namespace AAMod
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
-                target.AddBuff(mod.BuffType<Buffs.Moonraze>(), 600);
+                target.AddBuff(mod.BuffType<Moonraze>(), 600);
             }
 
             if (dracoSet)
@@ -2233,6 +2288,10 @@ namespace AAMod
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 
+            if (trueAbyssal && proj.ranged)
+            {
+                target.AddBuff(mod.BuffType<HydratoxinFlaskBuff>(), 300);
+            }
 
             if (MoonSet && proj.magic)
             {

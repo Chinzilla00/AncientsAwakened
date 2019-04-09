@@ -700,7 +700,7 @@ namespace AAMod
                 Point position = posIslands[j];
                 position.X -= 4;
                 position.Y -= 11;
-                VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomstoneBrick"), 10, 7);
+                VoidHouses(position.X, position.Y, (ushort)mod.TileType("DoomitePlate"), 10, 7);
             }
             progress.Set(1f);
         }
@@ -829,7 +829,7 @@ namespace AAMod
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
         {
-            int wallID = (ushort)mod.WallType("DoomstoneBrickWall");
+            int wallID = (ushort)mod.WallType("DoomiteWall");
             //Clear area
             for (int i = X; i < X + sizeX - 1; ++i)
             {
@@ -855,15 +855,15 @@ namespace AAMod
             for (int i = Y; i < Y + sizeY - 1; ++i)
             {
                 WorldGen.PlaceTile(X, i, type);
-                WorldGen.PlaceTile(X + (sizeX - 2), i, (ushort)mod.TileType("DoomstoneBrick"));
+                WorldGen.PlaceTile(X + (sizeX - 2), i, (ushort)mod.TileType("DoomitePlate"));
             }
             //Roof-floor placements
             for (int i = X; i < X + sizeX - 2; ++i)
             {
                 WorldGen.PlaceTile(i, Y, type);
-                WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("Doomstone"));
+                WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("DoomitePlate"));
             }
-            WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("Doomstone"));
+            WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("DoomitePlate"));
             if (chestType == 1)
             {
                 ChestNumber = Main.rand.Next(4);
@@ -875,7 +875,7 @@ namespace AAMod
                         Chest chest = Main.chest[PlacementSuccess];
                         chest.item[0].SetDefaults(mod.ItemType("Voidsaber"), false);
                         chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        { mod.ItemType("DoomiteScrap") }), false);
                         chest.item[1].stack = WorldGen.genRand.Next(4, 6);
                         Item item = chest.item[2];
                         UnifiedRandom genRand = WorldGen.genRand;
@@ -898,7 +898,7 @@ namespace AAMod
                         Chest chest = Main.chest[PlacementSuccess];
                         chest.item[0].SetDefaults(mod.ItemType("DoomStaff"), false);
                         chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        { mod.ItemType("DoomiteScrap") }), false);
                         chest.item[1].stack = WorldGen.genRand.Next(4, 6);
                         Item item = chest.item[2];
                         UnifiedRandom genRand = WorldGen.genRand;
@@ -921,7 +921,7 @@ namespace AAMod
                         Chest chest = Main.chest[PlacementSuccess];
                         chest.item[0].SetDefaults(mod.ItemType("DoomGun"), false);
                         chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        { mod.ItemType("DoomiteScrap") }), false);
                         chest.item[1].stack = WorldGen.genRand.Next(4, 6);
                         Item item = chest.item[2];
                         UnifiedRandom genRand = WorldGen.genRand;
@@ -944,7 +944,7 @@ namespace AAMod
                         Chest chest = Main.chest[PlacementSuccess];
                         chest.item[0].SetDefaults(mod.ItemType("ProbeControlUnit"), false);
                         chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DeactivatedDoomite") }), false);
+                        { mod.ItemType("DoomiteScrap") }), false);
                         chest.item[1].stack = WorldGen.genRand.Next(4, 6);
                         Item item = chest.item[2];
                         UnifiedRandom genRand = WorldGen.genRand;
@@ -1108,7 +1108,9 @@ namespace AAMod
                 if (Evil == false)
                 {
                     Evil = true;
-                    Main.NewText("Devils in the underworld begin to plot...", Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    Main.NewText("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    Main.NewText("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    Main.NewText("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)

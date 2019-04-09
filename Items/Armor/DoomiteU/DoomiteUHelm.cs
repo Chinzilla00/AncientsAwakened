@@ -44,16 +44,9 @@ Increases your minions knockback by 100%";
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DemoniteBar, 6);
-			recipe.AddIngredient(ItemID.MeteoriteBar, 6);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrimtaneBar, 6);
-			recipe.AddIngredient(ItemID.MeteoriteBar, 6);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(null, "DoomiteScrap", 6);
+            recipe.AddIngredient(null, "Doomite", 2);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

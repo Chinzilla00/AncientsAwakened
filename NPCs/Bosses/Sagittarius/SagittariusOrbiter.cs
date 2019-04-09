@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
             {
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.DeactivatedDoomite>(), Main.rand.Next(2));
+                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(2));
             }
         }
 
@@ -197,7 +197,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, lightColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, AAColor.ZeroShield);
-            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, 2f, 0.9f, 4, false, 0f, 0f, Color.Red);
             return false;
 		}		
 	}

@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Abyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("Abyssal Fukumen");
             Tooltip.SetDefault(@"35% increased movement speed
-15% increased ranged damage
+12% increased ranged damage
 Weightless as shadow itself");
         }
 
@@ -27,7 +27,7 @@ Weightless as shadow itself");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage += .15f;
+            player.rangedDamage += .12f;
             player.moveSpeed += .35f;
         }
 
@@ -38,19 +38,16 @@ Weightless as shadow itself");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Your minions are imbued with the poisonous properties of hydra venom
-Enemies are less likely to target you
-+2 Minion Slot
-Nightvision";
-            player.aggro -= 3;
+            player.setBonus = @"Your ranged attacks are imbued with the poisonous properties of hydra venom
+20% decreased ammo consumption
+Enemies are less likely to target you";
             player.GetModPlayer<AAPlayer>(mod).depthSet = true;
-            player.maxMinions += 2;
-            player.nightVision = true;
+            player.aggro -= 3;
+            player.ammoCost80 = true;
         }
 
         public override void AddRecipes()
         {
-            return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthFukumen", 1);
             recipe.AddIngredient(null, "DoomiteUHelm", 1);

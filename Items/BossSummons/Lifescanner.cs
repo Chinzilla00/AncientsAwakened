@@ -11,7 +11,6 @@ namespace AAMod.Items.BossSummons
 {
     public class Lifescanner : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lifescanner");
@@ -33,7 +32,7 @@ Can only be used in the Void");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "Sagittarius", "The Mushroom Monarch");
+            SpawnBoss(player, "Sagittarius", "Sagittarius");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
