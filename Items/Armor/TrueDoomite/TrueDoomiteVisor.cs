@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueDoomite
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueDoomiteHelm : ModItem
+	public class TrueDoomiteVisor : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

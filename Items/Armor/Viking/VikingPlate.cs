@@ -44,7 +44,7 @@ namespace AAMod.Items.Armor.Viking
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("RelicBar", 14);
+            recipe.AddIngredient(null,"RelicBar", 14);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

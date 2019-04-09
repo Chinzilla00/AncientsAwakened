@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueDoomite
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueDoomiteBoots : ModItem
+	public class TrueDoomiteGreaves : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

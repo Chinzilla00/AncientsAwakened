@@ -20,7 +20,7 @@ namespace AAMod.Projectiles
             aiType = ProjectileID.PaladinsHammerFriendly;
             drawOffsetX = 5;
 			drawOriginOffsetY = 5;
-		
+            projectile.melee = true;
 		}
 	}
 }
