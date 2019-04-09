@@ -25,6 +25,7 @@ namespace AAMod.Projectiles
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.alpha = 130;
+            projectile.tileCollide = false;
         }
 
         public override void AI()

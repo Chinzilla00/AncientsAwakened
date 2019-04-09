@@ -55,7 +55,7 @@ namespace AAMod.Projectiles
         {
             if (firstHit && projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(projectile.position, new Vector2(0, 0), mod.ProjectileType("FreedomBall"), projectile.damage / 5, 0f, projectile.owner);
+                Projectile.NewProjectile(projectile.position, new Vector2(0, 0), mod.ProjectileType("FreedomBall"), projectile.damage / 6, 0f, projectile.owner);
                 firstHit = false;
             }
         }
