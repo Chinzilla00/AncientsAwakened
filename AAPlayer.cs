@@ -112,6 +112,9 @@ namespace AAMod
         public bool trueAbyssal;
         public bool trueDemon;
         public bool trueDemonBonus;
+        public bool trueBlazing;
+        public bool trueRaider;
+        public bool trueAtlantean;
         public bool trueDynaskull;
         public int DynaskullCooldown = 0;
         public bool terraSet;
@@ -290,6 +293,9 @@ namespace AAMod
             trueDeathly = false;
             trueDynaskull = false;
             trueCopper = false;
+            trueBlazing = false;
+            trueRaider = false;
+            trueAtlantean = false;
             terraSet = false;
             chaosSet = false;
             DynaskullSet = false;
@@ -651,6 +657,12 @@ namespace AAMod
             {
                 Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
             }
+
+            if (trueBlazing)
+            {
+                npc.AddBuff(mod.BuffType<Electrified>(), 180);
+            }
+
 
             if (techneciumSet)
             {

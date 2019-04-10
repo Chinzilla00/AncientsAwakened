@@ -492,7 +492,7 @@ namespace AAMod
                     for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
                     {
                         int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
-                        int tilesY = WorldGen.genRand.Next(Main.maxTilesX, Main.maxTilesY);
+                        int tilesY = WorldGen.genRand.Next(0, Main.maxTilesY);
                         if (Main.tile[tilesX, tilesY].type == TileID.IceBlock)
                         {
                             WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(3, 6), (ushort)mod.TileType("RelicOre"));

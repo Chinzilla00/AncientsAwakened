@@ -10,7 +10,6 @@ namespace AAMod.Items.Armor.TrueFleshrend
 	{
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
 			DisplayName.SetDefault("True Fleshrend Plate");
 			Tooltip.SetDefault("13% Increased melee damage");
 		}

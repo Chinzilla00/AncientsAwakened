@@ -436,6 +436,9 @@
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanBoots.cs" />
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanHelm.cs" />
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanPlate.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingDou.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingKabuto.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingSuneate.cs" />
     <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />

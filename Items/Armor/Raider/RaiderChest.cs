@@ -39,31 +39,20 @@ namespace AAMod.Items.Armor.Raider
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"You are immune to Chilled, Frozen and Frostburn debuffs
-You quickly regenerate your HP while staying";
-			player.buffImmune[44] = true;
-			player.buffImmune[46] = true;
-			player.buffImmune[47] = true;
-			if (player.velocity.X == 0f && player.velocity.Y == 0f)
-			{
-				if (player.statLife < player.statLifeMax2)
-				{
-					if (counter >= 5)
-					{
-						counter = 0;
-						player.statLife += 1;
-						player.HealEffect(1, true);
-					}
-					counter++;
-				}
-			}
+            player.setBonus = @"You cannot be knocked back
+As your health goes down, your damage resistance goes up";
+            player.noKnockback = true;
+            player.endurance += (1 - (player.statLife / player.statLifeMax)) * .1f;
         }
 		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("VikingPlate"));
-			recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(mod.ItemType("DepthGi"));
+            recipe.AddIngredient(mod.ItemType("OceanShirt"));
+            recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
+            recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
