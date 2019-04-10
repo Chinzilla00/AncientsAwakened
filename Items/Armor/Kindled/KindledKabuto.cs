@@ -11,8 +11,7 @@ namespace AAMod.Items.Armor.Kindled
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Kindled Kabuto");
-			Tooltip.SetDefault(@"The headgear glows with the intensity of a burning flame
-Forged in the flames of the blazing sun");
+			Tooltip.SetDefault(@"Forged in the flames of the blazing sun");
         }
 
 		public override void SetDefaults()
@@ -24,11 +23,6 @@ Forged in the flames of the blazing sun");
 			item.defense = 7;
 		}
 
-        public override void UpdateEquip(Player player)
-        {
-            player.AddBuff(BuffID.Shine, 2);
-        }
-
         public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
             return body.type == mod.ItemType("KindledDou") && legs.type == mod.ItemType("KindledSuneate");
@@ -37,12 +31,8 @@ Forged in the flames of the blazing sun");
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = @"5% increased damage resistance
-you cannot be knocked back
-Your Swung weapons set your enemies ablaze
-Enemies are more likely to target you";
+Your Swung weapons set your enemies ablaze";
             player.endurance *= 1.05f;
-            player.noKnockback = true;
-            player.aggro += 2;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
         }
 

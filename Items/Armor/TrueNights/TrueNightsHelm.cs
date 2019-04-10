@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.TrueNights
 			item.width = 26;
 			item.height = 28;
 			item.value = 90000;
-			item.rare = 4;
+			item.rare = 7;
 			item.defense = 27;
 		}
 		

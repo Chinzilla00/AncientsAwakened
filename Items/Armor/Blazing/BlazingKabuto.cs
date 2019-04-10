@@ -11,8 +11,7 @@ namespace AAMod.Items.Armor.Blazing
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blazing Kabuto");
-			Tooltip.SetDefault(@"Increases melee speed/critical strike chance by 7%
-The headgear glows with the intensity of a burning flame
+			Tooltip.SetDefault(@"2% increased Damage Resistance
 Forged in the flames of the blazing sun");
         }
 
@@ -27,11 +26,7 @@ Forged in the flames of the blazing sun");
 
         public override void UpdateEquip(Player player)
         {
-			player.meleeSpeed += 0.07f;
-			player.meleeCrit += 7;
-            player.AddBuff(BuffID.Shine, 2);
-			player.AddBuff(BuffID.Hunter, 2);
-			player.AddBuff(BuffID.Dangersense, 2);
+            player.endurance += .02f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -41,12 +36,10 @@ Forged in the flames of the blazing sun");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"10% increased damage resistance
-you cannot be knocked back
-Your Swung weapons set your enemies ablaze
-Enemies are more likely to target you";
-            player.endurance *= 1.1f;
-            player.noKnockback = true;
+			player.setBonus = @"5% increased damage resistance
+Enemies are more likely to target you
+Your Swung weapons set your enemies ablaze";
+            player.endurance = .05f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
         }
@@ -56,6 +49,8 @@ Enemies are more likely to target you";
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KindledKabuto"));
             recipe.AddIngredient(mod.ItemType("OceanHelm"));
+            recipe.AddIngredient(ItemID.FossilHelm);
+            recipe.AddIngredient(mod.ItemType("DoomiteUHelm"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

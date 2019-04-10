@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Blazing
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Blazing Dao");
-			Tooltip.SetDefault(@"Increases melee damage by 10%
+			Tooltip.SetDefault(@"2% increased damage resistance
 Forged in the flames of the blazing sun");
 		}
 
@@ -27,8 +27,7 @@ Forged in the flames of the blazing sun");
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage += 0.1f;
-			player.buffImmune[BuffID.OnFire] = true;
+			player.endurance += 0.02f;
         }
 
 		public override void AddRecipes()
@@ -36,6 +35,8 @@ Forged in the flames of the blazing sun");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KindledDou"));
             recipe.AddIngredient(mod.ItemType("OceanShirt"));
+            recipe.AddIngredient(ItemID.FossilHelm);
+            recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

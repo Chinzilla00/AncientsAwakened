@@ -291,6 +291,9 @@
     <Compile Include="Items\Armor\Assassin\AssassinBoots.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinHood.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinShirt.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingDou.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingKabuto.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingSuneate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterBreastplate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterGreaves.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterHeaddress.cs" />
@@ -410,6 +413,9 @@
     <Compile Include="Items\Armor\Radium\RadiumHelmet.cs" />
     <Compile Include="Items\Armor\Radium\RadiumMask.cs" />
     <Compile Include="Items\Armor\Radium\RadiumPlatemail.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderChest.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderHelm.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderLegs.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudChainmail.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudHeadgear.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudLeggings.cs" />
@@ -3702,12 +3708,14 @@
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Body.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Female.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Arms.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Body.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Female.png" />
     <Content Include="Items\Armor\Raider\RaiderHelm.png" />
-    <Content Include="Items\Armor\Raider\Raider_Arms.png" />
-    <Content Include="Items\Armor\Raider\Raider_Body.png" />
-    <Content Include="Items\Armor\Raider\Raider_Female.png" />
-    <Content Include="Items\Armor\Raider\Raider_Head.png" />
-    <Content Include="Items\Armor\Raider\Raider_Legs.png" />
+    <Content Include="Items\Armor\Raider\RaiderHelm_Head.png" />
+    <Content Include="Items\Armor\Raider\RaiderLegs.png" />
+    <Content Include="Items\Armor\Raider\RaiderLegs_Legs.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Arms.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Body.png" />
@@ -3899,6 +3907,7 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
+    <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
@@ -3922,7 +3931,6 @@
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonBlueNew.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
@@ -4140,7 +4148,6 @@
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDive.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonNew.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody2.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />

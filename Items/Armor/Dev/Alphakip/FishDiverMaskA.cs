@@ -57,7 +57,7 @@ Allows for underwater breathing");
             player.setBonus = @"'Hosing time.'
 All of your attacks inflict wet to non-boss enemies
 Grants uninhibited liquid movement
-The Infinity Gauntlet is now at it's max potential
+The Infinity Gauntlet is now at its max potential
 You gain a fishy companion";
             player.GetModPlayer<AAPlayer>(mod).Alpha = true;
             player.AddBuff(mod.BuffType("Mudkip"), 18000);
