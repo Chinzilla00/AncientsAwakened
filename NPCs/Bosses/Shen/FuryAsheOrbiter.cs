@@ -18,20 +18,21 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
-            npc.width = 42;
-            npc.height = 38;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 0);
-            npc.npcSlots = 0;
+            npc.lifeMax = 1;
+            npc.width = 50;
+            npc.height = 50;
+            npc.friendly = false;
+            npc.lifeMax = 1000;
+            npc.noGravity = true;
             npc.aiStyle = -1;
-            npc.lifeMax = 5000;
-            npc.defense = 130;
-            npc.damage = 5;
-            npc.DeathSound = SoundID.DD2_BetsyFireballImpact;
-            npc.knockBackResist = 0f;	
-			npc.noTileCollide = true;
-            npc.dontTakeDamage = true;
+            npc.timeLeft = 10;
             npc.alpha = 255;
-            npc.dontCountMe = true;
+            npc.scale = .02f;
+            npc.chaseable = false;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
 		public int body = -1;
@@ -74,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (body == -1) return;
 
             NPC ashe = Main.npc[body];
-            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")) { BaseAI.KillNPCWithLoot(npc); return; }
+            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")) { npc.active = false; return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {

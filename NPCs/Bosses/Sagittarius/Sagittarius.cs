@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.lifeMax = 8000;
             npc.boss = true;
             npc.defense = 300;
-            npc.damage = 45;
+            npc.damage = 35;
             npc.width = 92;
             npc.height = 92;
             npc.aiStyle = -1;

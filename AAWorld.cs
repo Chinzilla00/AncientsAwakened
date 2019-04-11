@@ -1417,7 +1417,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    BaseUtility.Chat("Your world bursts with Ytrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                    BaseUtility.Chat("Your world bursts with Yttrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
                 }
                 num = Ore1;
                 num3 *= 1.05f;

@@ -3934,6 +3934,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
@@ -5420,9 +5421,6 @@
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\ExterminatorCharge.png" />
-    <Content Include="NPCs\Minibosses\Huo.png" />
-    <Content Include="NPCs\Minibosses\Shin%27en.png" />
-    <Content Include="NPCs\Minibosses\Shin_en.png" />
     <Content Include="NPCs\TownNPCs\Anubis.gif" />
     <Content Include="NPCs\TownNPCs\Anubis.png" />
     <Content Include="NPCs\TownNPCs\Anubis_Hat.png" />

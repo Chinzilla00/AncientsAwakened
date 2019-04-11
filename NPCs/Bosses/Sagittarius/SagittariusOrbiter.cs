@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.aiStyle = -1;
             npc.lifeMax = 800;
             npc.defense = 20;
-            npc.damage = 30;
+            npc.damage = 20;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0f;	
