@@ -26,7 +26,9 @@ namespace AAMod.Tiles
             disableSmartCursor = true;
             dustType = mod.DustType("DarkmatterDust");
             adjTiles = new int[]
-            { TileID.LunarCraftingStation};
+            {
+                TileID.LunarCraftingStation
+            };
             animationFrameHeight = 54;
         }
 

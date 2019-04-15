@@ -13,10 +13,10 @@ namespace AAMod.Tiles
 		{
 			Main.tileSolid[Type] = true;
 			SetModTree(new BogwoodTree());
-            Main.tileMergeDirt[Type] = false;
-			Main.tileBlendAll[this.Type] = true;
+			Main.tileBlendAll[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
-            Main.tileBlockLight[Type] = true;
+            TileID.Sets.NeedsGrassFraming[Type] = true;
+            TileID.Sets.JungleSpecial[Type] = true;
             dustType = mod.DustType("YamataADust");
 			AddMapEntry(new Color(100, 0, 30));
 		}

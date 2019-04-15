@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
 		public override void SetDefaults()
         {
-            npc.lifeMax = 8000;
+            npc.lifeMax = 6000;
             npc.boss = true;
             npc.defense = 0;
             npc.damage = 70;
@@ -234,7 +234,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 for (int i = 0; i < Main.rand.Next(1, 3); i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Zero.DeathLaser>(), npc.damage / 2, 2, Main.myPlayer);
+                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Zero.DeathLaser>(), npc.damage / 4, 2, Main.myPlayer);
                 }
             }
         }
@@ -261,6 +261,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void NPCLoot()
         {
+            AAWorld.downedSag = true;
             Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
         }
 

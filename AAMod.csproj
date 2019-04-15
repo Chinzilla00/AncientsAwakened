@@ -6058,6 +6058,7 @@
     <Content Include="Tiles\TerraPrism.png" />
     <Content Include="Tiles\TerrariumBox.png" />
     <Content Include="Tiles\TerraWood.png" />
+    <Content Include="Tiles\ToadBox.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />
     <Content Include="Tiles\TorchsandBall.png" />

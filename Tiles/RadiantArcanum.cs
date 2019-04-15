@@ -26,8 +26,11 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(200, 160, 0), name);
             disableSmartCursor = true;
             adjTiles = new int[]
-            { TileID.LunarCraftingStation,
-            mod.TileType("QuantumFusionAccelerator"),};
+            {
+                TileID.LunarCraftingStation,
+                mod.TileType("QuantumFusionAccelerator")
+
+            };
             animationFrameHeight = 54;
         }
 

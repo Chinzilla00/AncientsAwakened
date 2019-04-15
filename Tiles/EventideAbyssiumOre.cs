@@ -17,8 +17,8 @@ namespace AAMod.Tiles
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
-            //true for block to emit light
             soundType = 21;
+            TileID.Sets.JungleSpecial[Type] = true;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("EventideAbyssiumOre");   //put your CustomBlock name
             dustType = mod.DustType("YamataADust");

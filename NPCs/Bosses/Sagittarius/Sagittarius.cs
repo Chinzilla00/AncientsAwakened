@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
 		public override void SetDefaults()
         {
-            npc.lifeMax = 8000;
+            npc.lifeMax = 6000;
             npc.boss = true;
             npc.defense = 300;
             npc.damage = 45;
@@ -285,6 +285,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void NPCLoot()
         {
+            AAWorld.downedSag = true;
             Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
         }
         
