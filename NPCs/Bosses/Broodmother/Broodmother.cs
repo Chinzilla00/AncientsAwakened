@@ -22,8 +22,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void SetDefaults()
         {
             npc.aiStyle = 0;
-            npc.width = 160;
-            npc.height = 160;
+            npc.width = 352;
+            npc.height = 296;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;

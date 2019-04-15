@@ -12,7 +12,6 @@ namespace AAMod.Items.Armor.TrueFleshrend
 		{
 			DisplayName.SetDefault("True Fleshrend Helm");
 			Tooltip.SetDefault("13% increased melee damage");
-
 		}
 
 		public override void SetDefaults()

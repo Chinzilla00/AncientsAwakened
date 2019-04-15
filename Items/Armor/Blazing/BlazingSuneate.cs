@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Blazing
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blazing Suneate");
-            Tooltip.SetDefault(@"Increases movement speed by 20%
+            Tooltip.SetDefault(@"2% increased Damage Resistance
 Forged in the flames of the blazing sun");
 		}
 
@@ -26,7 +26,7 @@ Forged in the flames of the blazing sun");
 		
 		public override void UpdateEquip(Player player)
         {
-            player.moveSpeed += 0.2f;
+            player.endurance += 0.2f;
         }
 
         public override void AddRecipes()
@@ -34,6 +34,8 @@ Forged in the flames of the blazing sun");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KindledSuneate"));
             recipe.AddIngredient(mod.ItemType("OceanBoots"));
+            recipe.AddIngredient(ItemID.FossilPants);
+            recipe.AddIngredient(mod.ItemType("DoomiteUGreaves"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

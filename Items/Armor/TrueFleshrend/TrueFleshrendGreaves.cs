@@ -12,8 +12,7 @@ namespace AAMod.Items.Armor.TrueFleshrend
 		{
 			DisplayName.SetDefault("True Fleshrend Greaves");
 			Tooltip.SetDefault(@"13% increased melee damage
-+9% increased movement speed");
-
+9% increased movement speed");
 		}
 
 		public override void SetDefaults()

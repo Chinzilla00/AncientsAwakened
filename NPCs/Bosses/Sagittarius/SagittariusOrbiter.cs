@@ -21,14 +21,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void SetDefaults()
         {
-            npc.width = 42;
+            npc.width = 38;
             npc.height = 38;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 800;
             npc.defense = 20;
-            npc.damage = 10;
+            npc.damage = 20;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0f;	

@@ -74,8 +74,8 @@ namespace AAMod.NPCs.Bosses.Toad
         public bool tonguespawned = false;
         public bool TongueAttack = false;
         
-        private float JumpX = 8;
-        private float JumpY = -8;
+        private float JumpX = 5;
+        private float JumpY = -5;
         private float HighX = 13;
         private float HighY = -13;
 
@@ -83,7 +83,17 @@ namespace AAMod.NPCs.Bosses.Toad
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
-            
+
+
+            if (npc.velocity.X < 0)
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+
             if (internalAI[0] == AISTATE_JUMP)
             {
                 BaseAI.AISlime(npc, ref npc.ai, false, 60, JumpX, JumpY, HighX, HighY);
@@ -119,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         }
                     }
                 }
-                if (internalAI[2] >= 100)
+                if (internalAI[1] >= 100)
                 {
                     internalAI[0] = AISTATE_JUMP;
                     internalAI[1] = 0;
@@ -158,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Toad
         }
 
         public override void BossLoot(ref string name, ref int potionType)
-        {   //boss drops
+        {
             AAWorld.downedToad = true;
             if (Main.expertMode == true)
             {
@@ -166,6 +176,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else
             {
+
             }
         }
 

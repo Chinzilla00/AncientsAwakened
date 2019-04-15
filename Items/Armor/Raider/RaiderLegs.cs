@@ -23,20 +23,17 @@ Reduces movement speed by 10%");
 			item.rare = 4;
 			item.defense = 8;
 		}
-        
-		public override void UpdateEquip(Player player)
-		{
-			player.meleeCrit += 10;
-			player.moveSpeed -= 0.1f;
-		}
-		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("VikingBoots"));
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("VikingBoots"));
+            recipe.AddIngredient(mod.ItemType("DepthHakama"));
+            recipe.AddIngredient(mod.ItemType("OceanBoots"));
+            recipe.AddIngredient(mod.ItemType("DoomiteUGreaves"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

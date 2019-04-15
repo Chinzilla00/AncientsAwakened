@@ -74,7 +74,7 @@ The power to destroy entire planets rests in this armor");
 			
 			player.setBonus = @"Life termination systems activated
 You detect all hostile life around you
-you can see in the dark much more easily
+You can see in the dark much more easily
 Your ranged attacks are strong enough to weaken your enemies defense for a time";
 
 

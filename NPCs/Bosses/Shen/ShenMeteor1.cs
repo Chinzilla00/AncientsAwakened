@@ -28,7 +28,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-        	if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
+            projectile.damage = 100;
+            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
 			{
 				projectile.tileCollide = true;
 			}

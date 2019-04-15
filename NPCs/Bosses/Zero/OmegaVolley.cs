@@ -98,14 +98,22 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
+            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
+            {
+                npc.defense = 999999999;
+            }
+            else
+            {
+                npc.defense = 70;
+            }
             if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
                     npc.timeLeft = 10;
                 if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
                 {
-                    npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
+                    internalAI[0] += 3f;
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -113,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 6.0)
                             npc.velocity.Y = 6f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -147,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[3] = 0.0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -155,7 +163,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 3.0)
                             npc.velocity.Y = 3f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -188,18 +196,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.rotation = (float)Math.Atan2(num2, num1) - 1.57f;
                 if (Main.netMode == 1)
                     return;
-                ++npc.localAI[0];
-                if (npc.localAI[0] <= 200.0)
-                {
+                ++internalAI[0];
+                if (internalAI[0] <= 200.0)
                     return;
-                }
-                if (npc.localAI[0] >= 300.0)
-                {
-                    npc.localAI[0] = 0.0f;
-                }
+                internalAI[0] = 0.0f;
                 float num4 = 8f;
                 int Damage = npc.damage;
-                int Type = mod.ProjectileType<OmegaBullet>();
+                int Type = 100;
                 float num5 = num4 / num3;
                 float num6 = num1 * num5;
                 float num7 = num2 * num5;
@@ -207,16 +210,16 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                BaseAI.ShootPeriodic(npc, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height, Type, ref internalAI[1], 5, Damage, 12, true);
+                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
             }
             else
             {
                 if (npc.ai[2] != 1.0)
                     return;
                 ++npc.ai[3];
-                if (npc.ai[3] >= 300.0)
+                if (npc.ai[3] >= 200.0)
                 {
-                    npc.localAI[0] = 0.0f;
+                    internalAI[0] = 0.0f;
                     npc.ai[2] = 0.0f;
                     npc.ai[3] = 0.0f;
                     npc.netUpdate = true;
@@ -259,16 +262,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.rotation = (float)Math.Atan2(num7, num6) - 1.57f;
                 if (Main.netMode != 1)
                     return;
-                ++npc.localAI[0];
-                if (npc.localAI[0] <= 200.0)
-                {
+                ++internalAI[0];
+                if (internalAI[0] <= 80.0)
                     return;
-                }
-                if (npc.localAI[0] >= 300.0)
-                {
-                    npc.localAI[0] = 0.0f;
-                }
-                npc.localAI[0] = 0.0f;
+                internalAI[0] = 0.0f;
                 float num9 = 10f;
                 int Damage = npc.damage;
                 int Type = mod.ProjectileType<OmegaBullet>();

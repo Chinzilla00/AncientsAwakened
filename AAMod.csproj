@@ -291,6 +291,9 @@
     <Compile Include="Items\Armor\Assassin\AssassinBoots.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinHood.cs" />
     <Compile Include="Items\Armor\Assassin\AssassinShirt.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingDou.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingKabuto.cs" />
+    <Compile Include="Items\Armor\Blazing\BlazingSuneate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterBreastplate.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterGreaves.cs" />
     <Compile Include="Items\Armor\Darkmatter\DarkmatterHeaddress.cs" />
@@ -410,6 +413,9 @@
     <Compile Include="Items\Armor\Radium\RadiumHelmet.cs" />
     <Compile Include="Items\Armor\Radium\RadiumMask.cs" />
     <Compile Include="Items\Armor\Radium\RadiumPlatemail.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderChest.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderHelm.cs" />
+    <Compile Include="Items\Armor\Raider\RaiderLegs.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudChainmail.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudHeadgear.cs" />
     <Compile Include="Items\Armor\Starcloud\StarcloudLeggings.cs" />
@@ -430,6 +436,9 @@
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanBoots.cs" />
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanHelm.cs" />
     <Compile Include="Items\Armor\TrueAtlantean\TrueAtlanteanPlate.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingDou.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingKabuto.cs" />
+    <Compile Include="Items\Armor\TrueBlazing\TrueBlazingSuneate.cs" />
     <Compile Include="Items\Armor\TrueCopper\CopperSoul.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperHelm.cs" />
     <Compile Include="Items\Armor\TrueCopper\TrueCopperLeggings.cs" />
@@ -1271,6 +1280,7 @@
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverJacket.cs" />
     <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyFishDiverMask.cs" />
+    <Compile Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckPants.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckShirt.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckHead.cs" />
@@ -1949,6 +1959,7 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
@@ -2504,6 +2515,7 @@
     <Content Include="Glowmasks\BroodBox_Glow.png" />
     <Content Include="Glowmasks\BroodEgg_Glow.png" />
     <Content Include="Glowmasks\Broodmini_Glow.png" />
+    <Content Include="Glowmasks\Broodmother0_Glow.png" />
     <Content Include="Glowmasks\BroodmotherTrophy_Glow.png" />
     <Content Include="Glowmasks\Broodmother_Glow.png" />
     <Content Include="Glowmasks\BroodScale_Glow.png" />
@@ -3699,12 +3711,14 @@
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Arms.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Body.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail_Female.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Arms.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Body.png" />
+    <Content Include="Items\Armor\Raider\RaiderChest_Female.png" />
     <Content Include="Items\Armor\Raider\RaiderHelm.png" />
-    <Content Include="Items\Armor\Raider\Raider_Arms.png" />
-    <Content Include="Items\Armor\Raider\Raider_Body.png" />
-    <Content Include="Items\Armor\Raider\Raider_Female.png" />
-    <Content Include="Items\Armor\Raider\Raider_Head.png" />
-    <Content Include="Items\Armor\Raider\Raider_Legs.png" />
+    <Content Include="Items\Armor\Raider\RaiderHelm_Head.png" />
+    <Content Include="Items\Armor\Raider\RaiderLegs.png" />
+    <Content Include="Items\Armor\Raider\RaiderLegs_Legs.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Arms.png" />
     <Content Include="Items\Armor\Starcloud\StarcloudChainmail_Body.png" />
@@ -3896,12 +3910,15 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
+    <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
+    <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
@@ -3917,6 +3934,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
@@ -4134,7 +4152,6 @@
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDive.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonNew.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody2.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
@@ -5169,8 +5186,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenDoragon.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlue.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonBlueWings.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonSheet.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\ShenFirebomb.png" />
     <Content Include="NPCs\Bosses\Shen\Shenling.png" />
@@ -5406,9 +5421,6 @@
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Minibosses\ExterminatorCharge.png" />
-    <Content Include="NPCs\Minibosses\Huo.png" />
-    <Content Include="NPCs\Minibosses\Shin%27en.png" />
-    <Content Include="NPCs\Minibosses\Shin_en.png" />
     <Content Include="NPCs\TownNPCs\Anubis.gif" />
     <Content Include="NPCs\TownNPCs\Anubis.png" />
     <Content Include="NPCs\TownNPCs\Anubis_Hat.png" />
@@ -5851,6 +5863,7 @@
     <Content Include="Tiles\Crates\IceCrate.png" />
     <Content Include="Tiles\Crates\InfernoCrate.png" />
     <Content Include="Tiles\Crates\MireCrate.png" />
+    <Content Include="Tiles\Crates\VoidCrate.png" />
     <Content Include="Tiles\CrimstoneNoSpread.png" />
     <Content Include="Tiles\Darkshroom.png" />
     <Content Include="Tiles\DataBank.png" />
@@ -6193,6 +6206,7 @@
     <Content Include="Worldgeneration\VoidIslands\Small7.png" />
     <Content Include="Worldgeneration\VoidIslands\Small8.png" />
     <Content Include="Worldgeneration\VoidIslands\Small9.png" />
+    <Content Include="Worldgeneration\VoidIslands\Void1.png" />
     <Content Include="Worldgeneration\VoidIslandWall.png" />
     <Content Include="Worldgeneration\Volcano.png" />
     <Content Include="Worldgeneration\VolcanoLava.png" />

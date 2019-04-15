@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[4] = Main.rand.Next(2);
                 if (internalAI[2] == 2)
                 {
-                    Main.NewText("initializing repair program", Color.PaleVioletRed);
+                    Main.NewText("initializing repair program.", Color.PaleVioletRed);
                 }
                 npc.ai = new float[4];
                 npc.netUpdate = true;
