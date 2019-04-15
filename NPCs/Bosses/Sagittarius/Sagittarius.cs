@@ -103,6 +103,12 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 internalAI[6]++;
 
+                MovementType[1] -= 5;
+                if (MovementType[1] <= 0)
+                {
+                    MovementType[1] = 0;
+                }
+
                 if (internalAI[6] > 200)
                 {
                     internalAI[6] = 0f;

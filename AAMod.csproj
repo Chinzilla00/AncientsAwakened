@@ -1300,6 +1300,8 @@
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
     <Compile Include="Items\Vanity\Mask\DaybringerMask.cs" />
+    <Compile Include="Items\Vanity\Mask\AkumaMask.cs" />
+    <Compile Include="Items\Vanity\Mask\DjinnMask.cs" />
     <Compile Include="Items\Vanity\Mask\FungusMask.cs" />
     <Compile Include="Items\Vanity\Mask\GripMaskAbyss.cs" />
     <Compile Include="Items\Vanity\Mask\GripMaskBlue.cs" />
@@ -1308,6 +1310,8 @@
     <Compile Include="Items\Vanity\Mask\MonarchMask.cs" />
     <Compile Include="Items\Vanity\Mask\NightcrawlerMask.cs" />
     <Compile Include="Items\Vanity\Mask\RetrieverMask.cs" />
+    <Compile Include="Items\Vanity\Mask\SerpentMask.cs" />
+    <Compile Include="Items\Vanity\Mask\YamataMask.cs" />
     <Compile Include="Items\Vanity\Mask\ZeroMask.cs" />
     <Compile Include="Items\Vanity\Moon\MoonBoots.cs" />
     <Compile Include="Items\Vanity\Moon\MoonHood.cs" />
@@ -1376,7 +1380,6 @@
     <Compile Include="NPCs\Bosses\Broodmother\BroodBreath.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\BroodEgg.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmini.cs" />
-    <Compile Include="NPCs\Bosses\Broodmother\Broodmother1.cs" />
     <Compile Include="NPCs\Bosses\Broodmother\Broodmother.cs" />
     <Compile Include="NPCs\Bosses\Djinn\Djinnado.cs" />
     <Compile Include="NPCs\Bosses\Djinn\Djinn.cs" />
@@ -1440,7 +1443,6 @@
     <Compile Include="NPCs\Bosses\Sagittarius\Sagittarius.cs" />
     <Compile Include="NPCs\Bosses\Sagittarius\SagittariusFree.cs" />
     <Compile Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.cs" />
-    <Compile Include="NPCs\Bosses\Sagittarius\VoidReturn.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
@@ -3919,6 +3921,16 @@
     <Content Include="Items\Materials\VikingRelic.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
+    <Content Include="Items\Vanity\Mask\AkumaMask.png" />
+    <Content Include="Items\Vanity\Mask\AkumaMask_Head.png" />
+    <Content Include="Items\Vanity\Mask\DjinnMask.png" />
+    <Content Include="Items\Vanity\Mask\DjinnMask_Head.png" />
+    <Content Include="Items\Vanity\Mask\SerpentMask.png" />
+    <Content Include="Items\Vanity\Mask\SerpentMask_Head.png" />
+    <Content Include="Items\Vanity\Mask\YamataMask.png" />
+    <Content Include="Items\Vanity\Mask\YamataMask_Head.png" />
+    <Content Include="Items\Vanity\Mask\ZeroMask.png" />
+    <Content Include="Items\Vanity\Mask\ZeroMask_Head.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
@@ -3932,8 +3944,6 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Sagittarius\VoidOrbiter.gif" />
-    <Content Include="NPCs\Bosses\Sagittarius\VoidReturn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
@@ -4146,7 +4156,6 @@
     <Content Include="NPCs\Bosses\Akuma\Awakened\AFireProjHostile.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\HomingBoom.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother0.png" />
-    <Content Include="NPCs\Bosses\Broodmother\Broodmother1_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheOrbiter.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheSpark.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
@@ -4935,8 +4944,6 @@
     <Content Include="Items\Vanity\Mask\NightcrawlerMask_Head.png" />
     <Content Include="Items\Vanity\Mask\RetrieverMask.png" />
     <Content Include="Items\Vanity\Mask\RetrieverMask_Head.png" />
-    <Content Include="Items\Vanity\Mask\ZeroMask.png" />
-    <Content Include="Items\Vanity\Mask\ZeroMask_Head.png" />
     <Content Include="Items\Vanity\Moon\MoonBoots.png" />
     <Content Include="Items\Vanity\Moon\MoonBoots_Legs.png" />
     <Content Include="Items\Vanity\Moon\MoonHood.png" />
@@ -5055,13 +5062,8 @@
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg.png" />
     <Content Include="NPCs\Bosses\Broodmother\BroodEgg_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />
-    <Content Include="NPCs\Bosses\Broodmother\Broodmother1.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
-    <Content Include="NPCs\Bosses\Broodmother\BroodmotherBody.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Broodmother\BroodWingBack.png" />
-    <Content Include="NPCs\Bosses\Broodmother\BroodWingFront.png" />
-    <Content Include="NPCs\Bosses\Broodmother\FullBroodmother2.png" />
     <Content Include="NPCs\Bosses\Djinn\Djinn.gif" />
     <Content Include="NPCs\Bosses\Djinn\Djinn.png" />
     <Content Include="NPCs\Bosses\Djinn\Djinnado.png" />

@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
-	public class TruffleToadTongue : TruffleToad
+	public class TruffleToadTongue : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -18,256 +18,134 @@ namespace AAMod.NPCs.Bosses.Toad
 		
 		public override void SetDefaults()
 		{
-			npc.aiStyle = -1;
-			npc.damage = 50;
-			npc.width = 20;
-			npc.height = 20;
-			npc.defense = 50;
-			npc.lifeMax = 1;
-            npc.dontTakeDamage = true;
-			npc.knockBackResist = 0f;
-			aiType = -1;
-			for (int k = 0; k < npc.buffImmune.Length; k++)
-			{
-				npc.buffImmune[k] = true;
-			}
-			npc.noGravity = true;
-			npc.alpha = 255;
-			npc.value = Item.buyPrice(0, 0, 0, 0);
+			projectile.aiStyle = -1;
+            projectile.alpha = 255;
+            projectile.timeLeft = 600;
+            projectile.damage = 50;
+			projectile.width = 20;
+			projectile.height = 20;
 		}
 		
 		public override void AI()
-		{
-			if (AAModGlobalNPC.Toad < 0) 
-			{
-                npc.active = false;
-				return;
-			}
-			if (npc.timeLeft > 1800)
-			{
-				npc.timeLeft = 1800;
-			}
-			
-			if (npc.ai[0] == 0f) 
-			{
-				npc.noTileCollide = true;
-				float num659 = 14f;
-				if (npc.life < npc.lifeMax / 2) 
-				{
-					num659 += 3f;
-				}
-				if (npc.life < npc.lifeMax / 3) 
-				{
-					num659 += 3f;
-				}
-				if (npc.life < npc.lifeMax / 5) 
-				{
-					num659 += 8f;
-				}
-				Vector2 Center = new Vector2(npc.Center.X, npc.Center.Y);
-				float num660 = Main.npc[AAModGlobalNPC.Toad].Center.X - Center.X;
-				float num661 = Main.npc[AAModGlobalNPC.Toad].Center.Y - Center.Y;
-				num661 += 50f;
-				num660 -= 120f;
-				float num662 = (float)Math.Sqrt((double)(num660 * num660 + num661 * num661));
-				if (num662 < 12f + num659) 
-				{
-					npc.rotation = 0f;
-					npc.velocity.X = num660;
-					npc.velocity.Y = num661;
-					npc.ai[1] += 1f;
-					if (npc.life < npc.lifeMax / 2) 
-					{
-						npc.ai[1] += 1f;
-					}
-					if (npc.life < npc.lifeMax / 3) 
-					{
-						npc.ai[1] += 1f;
-					}
-					if (npc.life < npc.lifeMax / 5) 
-					{
-						npc.ai[1] += 10f;
-					}
-					if (npc.ai[1] >= 60f) 
-					{
-						npc.TargetClosest(true);
-						if ((npc.Center.X + 100f > Main.player[npc.target].Center.X)) 
-						{
-							npc.ai[1] = 0f;
-							npc.ai[0] = 1f;
-							return;
-						}
-						npc.ai[1] = 0f;
-						return;
-					}
-				} 
-				else
-				{
-					num662 = num659 / num662;
-					npc.velocity.X = num660 * num662;
-					npc.velocity.Y = num661 * num662;
-					npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
-				}
-			} 
-			else if (npc.ai[0] == 1f)
-			{
-				npc.noTileCollide = true;
-				npc.collideX = false;
-				npc.collideY = false;
-				float num663 = 12f;
-				if (npc.life < npc.lifeMax / 2) 
-				{
-					num663 += 4f;
-				}
-				if (npc.life < npc.lifeMax / 3) 
-				{
-					num663 += 4f;
-				}
-				if (npc.life < npc.lifeMax / 5) 
-				{
-					num663 += 10f;
-				}
-				Vector2 vector80 = new Vector2(npc.Center.X, npc.Center.Y);
-				float num664 = Main.player[npc.target].Center.X - vector80.X;
-				float num665 = Main.player[npc.target].Center.Y - vector80.Y;
-				float num666 = (float)Math.Sqrt((double)(num664 * num664 + num665 * num665));
-				num666 = num663 / num666;
-				npc.velocity.X = num664 * num666;
-				npc.velocity.Y = num665 * num666;
-				npc.ai[0] = 2f;
-				npc.rotation = (float)Math.Atan2((double)(-(double)npc.velocity.Y), (double)(-(double)npc.velocity.X));
-			} 
-			else if (npc.ai[0] == 2f)
-			{
-				if (Math.Abs(npc.velocity.X) > Math.Abs(npc.velocity.Y)) 
-				{
-					if (npc.velocity.X > 0f && npc.Center.X > Main.player[npc.target].Center.X) 
-					{
-						npc.noTileCollide = false;
-					}
-					if (npc.velocity.X < 0f && npc.Center.X < Main.player[npc.target].Center.X) 
-					{
-						npc.noTileCollide = false;
-					}
-				} 
-				else
-				{
-					if (npc.velocity.Y > 0f && npc.Center.Y > Main.player[npc.target].Center.Y) 
-					{
-						npc.noTileCollide = false;
-					}
-					if (npc.velocity.Y < 0f && npc.Center.Y < Main.player[npc.target].Center.Y) 
-					{
-						npc.noTileCollide = false;
-					}
-				}
-				Vector2 vector81 = new Vector2(npc.Center.X, npc.Center.Y);
-				float num667 = Main.npc[AAModGlobalNPC.Toad].Center.X - vector81.X;
-				float num668 = Main.npc[AAModGlobalNPC.Toad].Center.Y - vector81.Y;
-				num667 += Main.npc[AAModGlobalNPC.Toad].velocity.X;
-				num668 += Main.npc[AAModGlobalNPC.Toad].velocity.Y;
-				num668 += 40f;
-				num667 -= 110f;
-				float num669 = (float)Math.Sqrt((double)(num667 * num667 + num668 * num668));
-				if (num669 > 700f || npc.collideX || npc.collideY) 
-				{
-					npc.noTileCollide = true;
-					npc.ai[0] = 0f;
-					return;
-				}
-			} 
-			else if (npc.ai[0] == 3f)
-			{
-				npc.noTileCollide = true;
-				float num671 = 12f;
-				float num672 = 0.4f;
-				Vector2 vector82 = new Vector2(npc.Center.X, npc.Center.Y);
-				float num673 = Main.player[npc.target].Center.X - vector82.X;
-				float num674 = Main.player[npc.target].Center.Y - vector82.Y;
-				float num675 = (float)Math.Sqrt((double)(num673 * num673 + num674 * num674));
-				num675 = num671 / num675;
-				num673 *= num675;
-				num674 *= num675;
-				if (npc.velocity.X < num673) 
-				{
-					npc.velocity.X = npc.velocity.X + num672;
-					if (npc.velocity.X < 0f && num673 > 0f) 
-					{
-						npc.velocity.X = npc.velocity.X + num672 * 2f;
-					}
-				} 
-				else if (npc.velocity.X > num673)
-				{
-					npc.velocity.X = npc.velocity.X - num672;
-					if (npc.velocity.X > 0f && num673 < 0f) 
-					{
-						npc.velocity.X = npc.velocity.X - num672 * 2f;
-					}
-				}
-				if (npc.velocity.Y < num674) 
-				{
-					npc.velocity.Y = npc.velocity.Y + num672;
-					if (npc.velocity.Y < 0f && num674 > 0f) 
-					{
-						npc.velocity.Y = npc.velocity.Y + num672 * 2f;
-					}
-				} 
-				else if (npc.velocity.Y > num674)
-				{
-					npc.velocity.Y = npc.velocity.Y - num672;
-					if (npc.velocity.Y > 0f && num674 < 0f) 
-					{
-						npc.velocity.Y = npc.velocity.Y - num672 * 2f;
-					}
-				}
-				npc.rotation = (float)Math.Atan2((double)(-(double)npc.velocity.Y), (double)(-(double)npc.velocity.X));
-			}
-		}
-		
-		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-		{
-			Vector2 center = new Vector2(npc.Center.X, npc.Center.Y);
-			float drawPositionX = Main.npc[AAModGlobalNPC.Toad].Center.X - center.X;
-			float drawPositionY = Main.npc[AAModGlobalNPC.Toad].Center.Y - center.Y;
-			drawPositionY += 30f;
-			drawPositionX -= 70f;
-			float rotation = (float)Math.Atan2((double)drawPositionY, (double)drawPositionX) - 1.57f;
-			bool draw = true;
-			while (draw)
-			{
-				float totalDrawDistance = (float)Math.Sqrt((double)(drawPositionX * drawPositionX + drawPositionY * drawPositionY));
-				if (totalDrawDistance < 16f)
-				{
-					draw = false;
-				}
-				else
-				{
-					totalDrawDistance = 16f / totalDrawDistance;
-					drawPositionX *= totalDrawDistance;
-					drawPositionY *= totalDrawDistance;
-					center.X += drawPositionX;
-					center.Y += drawPositionY;
-					drawPositionX = Main.npc[AAModGlobalNPC.Toad].Center.X - center.X;
-					drawPositionY = Main.npc[AAModGlobalNPC.Toad].Center.Y - center.Y;
-					drawPositionY += 30f;
-					drawPositionX -= 70f;
-					Color color = Lighting.GetColor((int)center.X / 16, (int)(center.Y / 16f));
+        {
+            Vector2 value43 = new Vector2(0f, 216f);
+            projectile.alpha -= 15;
+            if (projectile.alpha < 0)
+            {
+                projectile.alpha = 0;
+            }
+            int num829 = (int)Math.Abs(projectile.ai[0]) - 1;
+            int num830 = (int)projectile.ai[1];
+            if (!Main.npc[num829].active || Main.npc[num829].type != 396)
+            {
+                projectile.Kill();
+                return;
+            }
+            projectile.localAI[0] += 1f;
+            if (projectile.localAI[0] >= 330f && projectile.ai[0] > 0f && Main.netMode != 1)
+            {
+                projectile.ai[0] *= -1f;
+                projectile.netUpdate = true;
+            }
+            if (Main.netMode != 1 && projectile.ai[0] > 0f && (!Main.player[(int)projectile.ai[1]].active || Main.player[(int)projectile.ai[1]].dead))
+            {
+                projectile.ai[0] *= -1f;
+                projectile.netUpdate = true;
+            }
+            projectile.rotation = (Main.npc[(int)Math.Abs(projectile.ai[0]) - 1].Center - Main.player[(int)projectile.ai[1]].Center + value43).ToRotation() + 1.57079637f;
+            if (projectile.ai[0] > 0f)
+            {
+                Vector2 value44 = Main.player[(int)projectile.ai[1]].Center - projectile.Center;
+                if (value44.X != 0f || value44.Y != 0f)
+                {
+                    projectile.velocity = Vector2.Normalize(value44) * Math.Min(16f, value44.Length());
+                }
+                else
+                {
+                    projectile.velocity = Vector2.Zero;
+                }
+                if (value44.Length() < 20f && projectile.localAI[1] == 0f)
+                {
+                    projectile.localAI[1] = 1f;
+                    int time = 840;
+                    if (Main.expertMode)
+                    {
+                        time = 960;
+                    }
+                    Main.player[num830].AddBuff(145, time, true);
+                    return;
+                }
+            }
+            else
+            {
+                Vector2 value45 = Main.npc[(int)Math.Abs(projectile.ai[0]) - 1].Center - projectile.Center + value43;
+                if (value45.X != 0f || value45.Y != 0f)
+                {
+                    projectile.velocity = Vector2.Normalize(value45) * Math.Min(16f, value45.Length());
+                }
+                else
+                {
+                    projectile.velocity = Vector2.Zero;
+                }
+                if (value45.Length() < 20f)
+                {
+                    projectile.Kill();
+                    return;
+                }
+            }
+        }
 
-                    Texture2D Chain = mod.GetTexture("NPCs/Bosses/Toad/TruffleToadTongueChain");
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            
+        }
 
-                    Main.spriteBatch.Draw(Chain, new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y), 
-						new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, Chain.Width, Chain.Height)), 
-                        color, 
-                        rotation, 
-						new Vector2(Chain.Width * 0.5f, Chain.Height * 0.5f), 1f, SpriteEffects.None, 0f);
-				}
-			}
-			return true;
-		}
-		
-		public override bool PreNPCLoot()
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
-			return false;
+            Texture2D texture2D24 = Main.projectileTexture[projectile.type];
+            Texture2D texture2D25 = mod.GetTexture("NPCs/Bosses/Toad/TruffleToadTongueChain");
+            Texture2D texture2D26 = mod.GetTexture("NPCs/Bosses/Toad/TruffleToadTongueChain");
+            Vector2 value33 = new Vector2(0f, 216f);
+            Vector2 value34 = Main.npc[(int)Math.Abs(projectile.ai[0]) - 1].Center - projectile.Center + value33;
+            float num240 = value34.Length();
+            Vector2 value35 = Vector2.Normalize(value34);
+            Rectangle rectangle10 = texture2D24.Frame(1, 1, 0, 0);
+            rectangle10.Height /= 4;
+            rectangle10.Y += projectile.frame * rectangle10.Height;
+            Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
+            color25 = Color.Lerp(color25, Color.White, 0.3f);
+            Main.spriteBatch.Draw(texture2D24, projectile.Center - Main.screenPosition, new Rectangle?(rectangle10), projectile.GetAlpha(color25), projectile.rotation, rectangle10.Size() / 2f, projectile.scale, SpriteEffects.None, 0f);
+            num240 -= (rectangle10.Height / 2 + texture2D26.Height) * projectile.scale;
+            Vector2 vector32 = projectile.Center;
+            vector32 += value35 * projectile.scale * rectangle10.Height / 2f;
+            if (num240 > 0f)
+            {
+                float num241 = 0f;
+                Rectangle rectangle11 = new Rectangle(0, 0, texture2D25.Width, texture2D25.Height);
+                while (num241 + 1f < num240)
+                {
+                    if (num240 - num241 < rectangle11.Height)
+                    {
+                        rectangle11.Height = (int)(num240 - num241);
+                    }
+                    Point point3 = vector32.ToTileCoordinates();
+                    Color color47 = Lighting.GetColor(point3.X, point3.Y);
+                    color47 = Color.Lerp(color47, Color.White, 0.3f);
+                    Main.spriteBatch.Draw(texture2D25, vector32 - Main.screenPosition, new Rectangle?(rectangle11), projectile.GetAlpha(color47), projectile.rotation, rectangle11.Bottom(), projectile.scale, SpriteEffects.None, 0f);
+                    num241 += rectangle11.Height * projectile.scale;
+                    vector32 += value35 * rectangle11.Height * projectile.scale;
+                }
+            }
+            Point point4 = vector32.ToTileCoordinates();
+            Color color48 = Lighting.GetColor(point4.X, point4.Y);
+            color48 = Color.Lerp(color48, Color.White, 0.3f);
+            Rectangle value36 = texture2D26.Frame(1, 1, 0, 0);
+            if (num240 < 0f)
+            {
+                value36.Height += (int)num240;
+            }
+            Main.spriteBatch.Draw(texture2D26, vector32 - Main.screenPosition, new Rectangle?(value36), color48, projectile.rotation, new Vector2(value36.Width / 2f, value36.Height), projectile.scale, SpriteEffects.None, 0f);
+            return false;
 		}
 	}
 }
