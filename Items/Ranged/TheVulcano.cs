@@ -27,6 +27,7 @@ namespace AAMod.Items.Ranged
             item.autoReuse = false;
             item.shootSpeed = 14f;
             item.value = 10000;
+            item.ammo = AmmoID.Gel;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
@@ -36,7 +37,7 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Vulcan");
-            Tooltip.SetDefault("Doesnt use ammo");
+            Tooltip.SetDefault("Consumes Gel");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

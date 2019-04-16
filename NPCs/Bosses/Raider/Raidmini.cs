@@ -10,8 +10,6 @@ namespace AAMod.NPCs.Bosses.Raider
 {
     public class Raidmini : ModNPC
     {
-        private Player player;
-        private float speed;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Raidmini");

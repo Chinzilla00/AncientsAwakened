@@ -608,10 +608,6 @@ namespace AAMod
 
             if (!Main.dedServ)
             {
-                AddEquipTexture(new Pony_Head(), null, EquipType.Head, "Pony_Head", "AAMod/Items/Vanity/Beg/Pony_Head");
-                AddEquipTexture(new Pony_Body(), null, EquipType.Body, "Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Body", "AAMod/Items/Vanity/Beg/Pony_Arms");
-                AddEquipTexture(new Pony_Legs(), null, EquipType.Legs, "Pony_Legs", "AAMod/Items/Vanity/Beg/Pony_Legs");
-
                 PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
                 PremultiplyTexture(GetTexture("Backgrounds/Moon"));
                 PremultiplyTexture(GetTexture("Backgrounds/Sun"));

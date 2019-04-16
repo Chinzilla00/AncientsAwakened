@@ -1285,7 +1285,9 @@
     <Compile Include="Items\Vanity\Aves\DJDuckShirt.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckHead.cs" />
     <Compile Include="Items\Vanity\Aves\DuckstepWings.cs" />
-    <Compile Include="Items\Vanity\Beg\Pony.cs" />
+    <Compile Include="Items\Vanity\Beg\PonyBody.cs" />
+    <Compile Include="Items\Vanity\Beg\PonyHoofs.cs" />
+    <Compile Include="Items\Vanity\Beg\PonyMask.cs" />
     <Compile Include="Items\Vanity\Dallin\FezLordsBag.cs" />
     <Compile Include="Items\Vanity\Eliza\LizBoots.cs" />
     <Compile Include="Items\Vanity\Eliza\LizEars.cs" />
@@ -3907,6 +3909,7 @@
     <Content Include="Items\Armor\Viking\VikingPlate_Female.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Items\Blocks\ToadBox.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
@@ -3919,6 +3922,13 @@
     <Content Include="Items\Materials\VikingRelic.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
+    <Content Include="Items\Vanity\Beg\PonyBody.png" />
+    <Content Include="Items\Vanity\Beg\PonyBody_Arms.png" />
+    <Content Include="Items\Vanity\Beg\PonyBody_Body.png" />
+    <Content Include="Items\Vanity\Beg\PonyHoofs.png" />
+    <Content Include="Items\Vanity\Beg\PonyHoofs_Legs.png" />
+    <Content Include="Items\Vanity\Beg\PonyMask.png" />
+    <Content Include="Items\Vanity\Beg\PonyMask_Head.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
@@ -4878,10 +4888,6 @@
     <Content Include="Items\Vanity\Aves\DuckstepWings.gif" />
     <Content Include="Items\Vanity\Aves\DuckstepWings.png" />
     <Content Include="Items\Vanity\Beg\Pony.png" />
-    <Content Include="Items\Vanity\Beg\Pony_Arms.png" />
-    <Content Include="Items\Vanity\Beg\Pony_Body.png" />
-    <Content Include="Items\Vanity\Beg\Pony_Head.png" />
-    <Content Include="Items\Vanity\Beg\Pony_Legs.png" />
     <Content Include="Items\Vanity\Dallin\FezLordsBag.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots.png" />
     <Content Include="Items\Vanity\Eliza\LizBoots_Legs.png" />

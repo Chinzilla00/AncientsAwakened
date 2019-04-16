@@ -30,6 +30,7 @@ namespace AAMod.Items.Blocks
             item.useAnimation = 10;
             item.useTime = 10;
             item.useStyle = 1;
+            item.rare = 2;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.expert = true;

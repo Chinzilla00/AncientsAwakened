@@ -349,9 +349,6 @@ namespace AAMod
             HeartP = false;
             HeartS = false;
             HeartA = false;
-
-            BegAccessoryPrevious = BegAccessory;
-            BegAccessory = BegHideVanity = BegForceVanity = HorseBuff = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -440,35 +437,12 @@ namespace AAMod
             }
         }
 
-        public override void UpdateVanityAccessories()
-        {
-            for (int n = 13; n < 18 + player.extraAccessorySlots; n++)
-            {
-                Item item = player.armor[n];
-                if (item.type == mod.ItemType<Items.Vanity.Beg.Pony>())
-                {
-                    BegHideVanity = false;
-                    BegForceVanity = true;
-                }
-            }
-        }
-
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
             // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
             if (BegAccessory)
             {
                 player.AddBuff(mod.BuffType<Buffs.Horse>(), 60, true);
-            }
-        }
-
-        public override void FrameEffects()
-        {
-            if ((HorseBuff || BegForceVanity) && !BegHideVanity)
-            {
-                player.legs = mod.GetEquipSlot("Pony_Legs", EquipType.Legs);
-                player.body = mod.GetEquipSlot("Pony_Body", EquipType.Body);
-                player.head = mod.GetEquipSlot("Pony_Head", EquipType.Head);
             }
         }
 
@@ -722,115 +696,6 @@ namespace AAMod
                 else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("HellCrate");
-                }
-            }
-        }
-
-        public void AAHorizontalMovement()
-        {
-            float num = (player.accRunSpeed + player.maxRunSpeed) / 2f;
-            if (player.controlLeft && player.velocity.X > -player.accRunSpeed && dashDelayAA >= 0)
-            {
-                if (player.mount.Active && player.mount.Cart)
-                {
-                    if (player.velocity.X < 0f)
-                    {
-                        player.direction = -1;
-                    }
-                }
-                else if ((player.itemAnimation == 0 || player.inventory[player.selectedItem].useTurn) && player.mount.AllowDirectionChange)
-                {
-                    player.direction = -1;
-                }
-                if (player.velocity.Y == 0f || player.wingsLogic > 0 || player.mount.CanFly)
-                {
-                    if (player.velocity.X > player.runSlowdown)
-                    {
-                        player.velocity.X = player.velocity.X - player.runSlowdown;
-                    }
-                    player.velocity.X = player.velocity.X - player.runAcceleration * 0.2f;
-                    if (player.wingsLogic > 0)
-                    {
-                        player.velocity.X = player.velocity.X - player.runAcceleration * 0.2f;
-                    }
-                }
-                if (player.onWrongGround)
-                {
-                    if (player.velocity.X < player.runSlowdown)
-                    {
-                        player.velocity.X = player.velocity.X + player.runSlowdown;
-                    }
-                    else
-                    {
-                        player.velocity.X = 0f;
-                    }
-                }
-                if (player.velocity.X < -num && player.velocity.Y == 0f && !player.mount.Active)
-                {
-                    int num3 = 0;
-                    if (player.gravDir == -1f)
-                    {
-                        num3 -= player.height;
-                    }
-                    else if (AADash == 4)
-                    {
-                        int num7 = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y + (float)player.height + (float)num3), player.width + 8, 4, 244, -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default(Color), 3f);
-                        Main.dust[num7].velocity.X = Main.dust[num7].velocity.X * 0.2f;
-                        Main.dust[num7].velocity.Y = Main.dust[num7].velocity.Y * 0.2f;
-                        Main.dust[num7].shader = GameShaders.Armor.GetSecondaryShader(player.cShoe, player);
-                    }
-                }
-            }
-            else if (player.controlRight && player.velocity.X < player.accRunSpeed && dashDelayAA >= 0)
-            {
-                if (player.mount.Active && player.mount.Cart)
-                {
-                    if (player.velocity.X > 0f)
-                    {
-                        player.direction = -1;
-                    }
-                }
-                else if ((player.itemAnimation == 0 || player.inventory[player.selectedItem].useTurn) && player.mount.AllowDirectionChange)
-                {
-                    player.direction = 1;
-                }
-                if (player.velocity.Y == 0f || player.wingsLogic > 0 || player.mount.CanFly)
-                {
-                    if (player.velocity.X < -player.runSlowdown)
-                    {
-                        player.velocity.X = player.velocity.X + player.runSlowdown;
-                    }
-                    player.velocity.X = player.velocity.X + player.runAcceleration * 0.2f;
-                    if (player.wingsLogic > 0)
-                    {
-                        player.velocity.X = player.velocity.X + player.runAcceleration * 0.2f;
-                    }
-                }
-                if (player.onWrongGround)
-                {
-                    if (player.velocity.X > player.runSlowdown)
-                    {
-                        player.velocity.X = player.velocity.X - player.runSlowdown;
-                    }
-                    else
-                    {
-                        player.velocity.X = 0f;
-                    }
-                }
-                if (player.velocity.X > num && player.velocity.Y == 0f && !player.mount.Active)
-                {
-                    int num8 = 0;
-                    if (player.gravDir == -1f)
-                    {
-                        num8 -= player.height;
-                    }
-                    else if (AADash == 4)
-                    {
-                        int num12 = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y + (float)player.height + (float)num8), player.width + 8, 4, 244, -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default(Color), 3f);
-                        Main.dust[num12].velocity.X = Main.dust[num12].velocity.X * 0.2f;
-                        Main.dust[num12].velocity.Y = Main.dust[num12].velocity.Y * 0.2f;
-                        Main.dust[num12].shader = GameShaders.Armor.GetSecondaryShader(player.cShoe, player);
-                    }
                 }
             }
         }
@@ -1277,7 +1142,9 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 2:
-                        player.QuickSpawnItem(mod.ItemType("Pony"));
+                        player.QuickSpawnItem(mod.ItemType("PonyHead"));
+                        player.QuickSpawnItem(mod.ItemType("PonyBody"));
+                        player.QuickSpawnItem(mod.ItemType("PonyHoofs"));
                         if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("MonochromeApple"));

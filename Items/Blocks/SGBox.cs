@@ -28,6 +28,7 @@ namespace AAMod.Items.Blocks
 			item.rare = 4;
 			item.value = 10000;
 			item.accessory = true;
+            item.rare = 11;
         }
 
 
