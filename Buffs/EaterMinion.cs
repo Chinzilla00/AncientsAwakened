@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Demon Eater");
-			Description.SetDefault("As opposed to a normal eater");
+			Description.SetDefault("Summons a demonite eater to fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

@@ -69,7 +69,22 @@ namespace AAMod
             riftBent = false;
             BrokenArmor = false;
         }
-        
+
+        public override void SetDefaults(NPC npc)
+        {
+            if (AAWorld.downedShen == true)
+            {
+                if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want
+                {
+                    npc.damage = 130;
+                    npc.defense = 70;
+                    npc.lifeMax = 10000;
+                    npc.knockBackResist = 0.05f;
+                    npc.value = 50000f;
+                }
+            }
+        }
+
         public int RiftTimer;
         public int RiftDamage = 10;
 
@@ -315,7 +330,7 @@ namespace AAMod
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShinyCharm")); //Item spawn
             }
 
-            if (NPC.downedMoonlord == true)
+            if (AAWorld.downedShen == true)
             {
                 if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want
                 {

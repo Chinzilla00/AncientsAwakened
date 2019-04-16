@@ -139,14 +139,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 num32 = Main.maxTilesY;
             }
-            if (npc.velocity.X < 0f)
-            {
-                npc.spriteDirection = 1;
-            }
-            else if (npc.velocity.X > 0f)
-            {
-                npc.spriteDirection = -1;
-            }
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
             float num37 = 10f;
             float num38 = 0.07f;
             num37 = 20f;
@@ -185,16 +178,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.velocity = Vector2.Zero;
                 npc.position.X = npc.position.X + num40;
                 npc.position.Y = npc.position.Y + num41;
-                if (num40 < 0f)
-                {
-                    npc.spriteDirection = 1;
-                    return;
-                }
-                if (num40 > 0f)
-                {
-                    npc.spriteDirection = -1;
-                    return;
-                }
             }
             else
             {
@@ -466,15 +449,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
 
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -601,15 +577,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
 
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -736,15 +705,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
 
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -871,15 +833,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
 
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -1006,15 +961,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
 
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }

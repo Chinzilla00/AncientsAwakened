@@ -211,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Raider
             }
             int numberOfMinions = 9; //max number of eggs/broodminis to spawn
             bool DespawnAttempt = false;
-            npc.noTileCollide = false;
+            npc.noTileCollide = true;
             npc.noGravity = true;
             npc.knockBackResist = 0.2f * Main.expertKnockBack;
             npc.damage = npc.defDamage;
@@ -312,7 +312,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     npc.velocity *= 1.11f;
                 }
                 npc.ai[1] += 1f;
-                if (npc.ai[1] >= 180f && Main.netMode != 1)
+                if (npc.ai[1] >= 120f && Main.netMode != 1)
                 {
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;

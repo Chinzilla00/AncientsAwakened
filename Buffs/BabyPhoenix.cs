@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Baby Phoenix");
-			Description.SetDefault("It's small but has a fiery temper");
+			Description.SetDefault("Summons a baby phoenix to fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

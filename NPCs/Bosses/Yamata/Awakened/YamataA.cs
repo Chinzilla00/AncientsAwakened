@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-            npc.lifeMax = 180000;
             npc.value = Item.buyPrice(20, 0, 0, 0);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
@@ -92,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false)
+                if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                     AAWorld.SpaceDropped = true;

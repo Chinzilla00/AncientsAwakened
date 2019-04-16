@@ -36,6 +36,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
+            if (AAWorld.downedShen)
+            {
+                npc.damage = 160;
+            }
         }
 
         public int varTime = 0;

@@ -93,6 +93,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
+            if (AAWorld.downedShen)
+            {
+                npc.lifeMax = 250000;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -125,11 +129,12 @@ namespace AAMod.NPCs.Bosses.Yamata
                     //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                     npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                     Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
+                    npc.DropLoot(Items.Vanity.Mask.YamataMask.type, 1f / 7);
                     if (!AAWorld.downedYamata)
                     {
                         Main.NewText("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
                     }
-                    if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false)
+                    if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false && AAWorld.downedShen)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                         AAWorld.SpaceDropped = true;

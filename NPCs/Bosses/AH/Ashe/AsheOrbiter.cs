@@ -89,16 +89,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);
         }
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
-        {
-            damage = 0;
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            damage = 0;
-        }
-
         public override void NPCLoot()
         {
             float spread = 60f * 0.0174f;
@@ -114,7 +104,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
-			Color lightColor = BaseDrawing.GetNPCColor(npc, null);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
 			return false;
 		}		

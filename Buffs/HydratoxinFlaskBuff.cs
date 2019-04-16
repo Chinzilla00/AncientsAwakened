@@ -9,7 +9,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Weapon Imbue: Hydratoxin");
-			Description.SetDefault("Melee attacks harden movement of enemies");
+			Description.SetDefault("Melee attacks inflict hydratoxin");
 			Main.persistentBuff[Type] = true;
 			Main.meleeBuff[Type] = true;
 			canBeCleared = true;

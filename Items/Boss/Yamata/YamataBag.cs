@@ -54,13 +54,14 @@ namespace AAMod.Items.Boss.Yamata
         {
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("ZeroMask"));
+                player.QuickSpawnItem(mod.ItemType("YamataMask"));
             }
             if (Main.rand.NextFloat() < 0.01f)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();
             }
+            player.QuickSpawnItem(mod.ItemType("YamataMask"));
             player.QuickSpawnItem(mod.ItemType("DreadScale"), Main.rand.Next(30, 40));
             player.QuickSpawnItem(mod.ItemType("Naitokurosu"));
             string[] lootTable = { "Flairdra", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };

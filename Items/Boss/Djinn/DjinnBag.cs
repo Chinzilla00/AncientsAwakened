@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Djinn
         {
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("ZeroMask"));
+                player.QuickSpawnItem(mod.ItemType("DjinnMask"));
             }
             if (Main.rand.NextFloat() < 0.01f)
             {

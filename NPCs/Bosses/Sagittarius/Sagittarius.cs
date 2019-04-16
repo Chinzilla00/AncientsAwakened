@@ -285,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, AAColor.ZeroShield);
-            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, AAColor.ZeroShield);
+            BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, 2f, 0.9f, 5, true, 0f, 0f, GenericUtils.COLOR_GLOWPULSE);
             return false;
         }
 

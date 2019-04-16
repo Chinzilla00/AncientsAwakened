@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TerraSquire");
+            DisplayName.SetDefault("Terra Squire");
             Main.npcFrameCount[npc.type] = 20;
         }
         public override void SetDefaults()

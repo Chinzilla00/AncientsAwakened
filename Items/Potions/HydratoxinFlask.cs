@@ -10,7 +10,7 @@ namespace AAMod.Items.Potions
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flask of Hydratoxin");
-			Tooltip.SetDefault("Melee attacks harden movement of enemies");
+			Tooltip.SetDefault("Melee attacks inflict hydratoxin");
 		}    
 
 		public override void SetDefaults()

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Djinn
             item.magic = true;            
             item.width = 24;
             item.height = 28;
-            item.useTime = 13;
+            item.useTime = 10;
             item.useAnimation = 18;
             item.useStyle = 5;    
             item.noMelee = true;
@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Djinn
             item.UseSound = SoundID.Item21;      
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("SandSpray"); 
-            item.shootSpeed = 11f; 
+            item.shootSpeed = 6f; 
         }
         
     }

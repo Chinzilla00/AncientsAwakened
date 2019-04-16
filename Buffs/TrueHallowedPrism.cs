@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("True Hallow Prism");
-			Description.SetDefault("Taste the rainbow");
+			Description.SetDefault("Summons a holy prism to fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

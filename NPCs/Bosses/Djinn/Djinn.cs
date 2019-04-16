@@ -274,6 +274,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
                 string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
                 int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(Items.Vanity.Mask.DjinnMask.type, 1f / 7);
                 if (Main.rand.Next(6) == 0)
                 {
                     npc.DropLoot(mod.ItemType("Sandagger"), 90, 120);

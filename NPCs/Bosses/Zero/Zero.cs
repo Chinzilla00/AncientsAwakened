@@ -20,10 +20,9 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-
             npc.damage = 100;
             npc.defense = 90;
-            npc.lifeMax = 95000;
+            npc.lifeMax = 150000;
             if (Main.expertMode)
             {
                 npc.value = 0;
@@ -52,6 +51,13 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.netAlways = true;
             musicPriority = MusicPriority.BossHigh;
+
+            if (AAWorld.downedShen)
+            {
+                npc.lifeMax = 200000;
+                npc.damage = 140;
+                npc.defense = 120;
+            }
         }
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -160,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
-                if (Main.rand.Next(20) == 0 && AAWorld.RealityDropped == false)
+                if (Main.rand.Next(20) == 0 && AAWorld.RealityDropped == false && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                     AAWorld.RealityDropped = true;

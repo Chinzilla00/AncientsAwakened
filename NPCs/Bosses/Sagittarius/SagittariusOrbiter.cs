@@ -196,7 +196,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, npc.GetAlpha(AAColor.Oblivion));
             }
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, lightColor);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, AAColor.ZeroShield);
+            if(npc.alpha < 0)
+            {
+                BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            }
             return false;
 		}		
 	}

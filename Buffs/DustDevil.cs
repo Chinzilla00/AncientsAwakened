@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Dust Devil");
-			Description.SetDefault("Spinning around at the speed of...err...sand.");
+			Description.SetDefault("Summons a dust devil to fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

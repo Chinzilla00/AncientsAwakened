@@ -47,6 +47,11 @@ namespace AAMod.NPCs.Bosses.Equinox
             music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("DBBag");			
+            if (AAWorld.downedShen)
+            {
+                npc.lifeMax = 200000;
+                npc.defense = 150;
+            }
 		}
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -151,13 +156,23 @@ namespace AAMod.NPCs.Bosses.Equinox
 			float moveSpeedMax = 16f;	
 			npc.damage = 200;
 			npc.defense = 100;
-			if(wormStronger)
+            if (AAWorld.downedShen)
+            {
+                npc.defense = 150;
+            }
+            if (wormStronger)
 			{
 				aiCount = (!nightcrawler ? 6 : 4); 
 				moveSpeedMax = (!nightcrawler ? 20f : 16f);
 				npc.damage = 300;		
-				npc.defense = (!nightcrawler ? 120 : 150); 
-			}
+				npc.defense = (!nightcrawler ? 120 : 150);
+                if (AAWorld.downedShen)
+                {
+                    moveSpeedMax = (!nightcrawler ? 25f : 16f);
+                    npc.damage = 300;
+                    npc.defense = (!nightcrawler ? 120 : 200);
+                }
+            }
             if (!isHead && NPC.CountNPCS(mod.NPCType<Equiprobe>()) < 15)
             {
 				SpawnProbe();
@@ -279,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
-                if (Main.rand.Next(20) == 0 && AAWorld.MindDropped == false)
+                if (Main.rand.Next(20) == 0 && AAWorld.MindDropped == false && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MindStone"));
                     AAWorld.MindDropped = true;

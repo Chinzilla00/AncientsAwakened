@@ -8,7 +8,7 @@ namespace AAMod.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Searcher Scout");
-            Description.SetDefault("A searcher scout assists you in your travels");
+            Description.SetDefault("Summons a searcher to fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }

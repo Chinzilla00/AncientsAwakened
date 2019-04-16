@@ -283,7 +283,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 BaseDrawing.DrawTexture(sb, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), Color.Red, true);
             }
             BaseDrawing.DrawTexture(sb, Ring, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
-            BaseDrawing.DrawTexture(sb, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), AAColor.ZeroShield, true);
+            BaseDrawing.DrawTexture(sb, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);
             return false;
         }
     }

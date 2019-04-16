@@ -354,6 +354,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 npc.DropLoot(mod.ItemType("SnowMana"), 10, 15);
                 string[] lootTable = { "BlizardBuster", "SerpentSpike", "Icepick", "SerpentSting", "Sickle", "SickleShot", "SnakeStaff", "SubzeroSlasher" };
                 int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(Items.Vanity.Mask.SerpentMask.type, 1f / 7);
                 if (Main.rand.Next(9) == 0)
                 {
                     npc.DropLoot(mod.ItemType("SnowflakeShuriken"), 90, 120);

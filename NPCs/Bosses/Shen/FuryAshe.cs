@@ -169,7 +169,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[0] = AISTATE_VORTEX;
             }
 
-            Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("AsheOrbiter"), 1500f);
+            Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("FuryAsheOrbiter"), 1500f);
             if (Vortexes != null && Vortexes.Length > 0)
             {
                 npc.damage = VortexDamage(mod);
@@ -180,7 +180,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         NPC npc2 = Main.npc[Vortexes[m]];
                         if (npc2 != null && npc2.active)
                         {
-                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.AkumaDustLight>());
+                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.DiscordLight>());
                             Main.dust[dustID].position += (npc.position - npc.oldPosition);
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].alpha = 100;

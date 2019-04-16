@@ -16,8 +16,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 32;
+            projectile.height = 32;
             projectile.damage *= 0;
             projectile.friendly = false;
             projectile.hostile = true;

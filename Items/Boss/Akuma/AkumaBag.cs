@@ -52,7 +52,7 @@ namespace AAMod.Items.Boss.Akuma
         {
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("ZeroMask"));
+                player.QuickSpawnItem(mod.ItemType("AkumaMask"));
             }
             if (Main.rand.NextFloat() < 0.01f)
             {

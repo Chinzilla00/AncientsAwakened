@@ -61,6 +61,7 @@ namespace AAMod
         //Messages
         public static bool Evil;
         public static bool Compass;
+        public static bool Empowered;
         //Boss Bools
         public static bool Chairlol;
         public static bool Ancients;
@@ -165,6 +166,7 @@ namespace AAMod
             Anticheat = true;
             Compass = false;
             ModContentGenerated = false;
+            Empowered = downedShen;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -1111,6 +1113,14 @@ namespace AAMod
                     Main.NewText("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     Main.NewText("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                     Main.NewText("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+            }
+            if (AAWorld.downedShen)
+            {
+                if (Empowered == false)
+                {
+                    Empowered = true;
+                    Main.NewText("The defeat of a superancient empowers the stonekeepers", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)

@@ -39,6 +39,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
+            if (AAWorld.downedShen)
+            {
+                npc.lifeMax = 50000;
+                npc.damage = 1400;
+            }
         }
 
         public float[] customAI = new float[4];

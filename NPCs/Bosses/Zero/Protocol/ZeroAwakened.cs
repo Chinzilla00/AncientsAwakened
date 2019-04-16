@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 120000;
+            npc.lifeMax = 160000;
             npc.damage = 140;
             npc.defense = 110;
             npc.knockBackResist = 0f;
@@ -54,6 +54,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.buffImmune[k] = true;
             }
+
+            if (AAWorld.downedShen)
+            {
+                npc.lifeMax = 220000;
+                npc.damage = 160;
+                npc.defense = 140;
+            }
         }
 
         public override void NPCLoot()
@@ -73,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false)
+                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                     AAWorld.RealityDropped = true;

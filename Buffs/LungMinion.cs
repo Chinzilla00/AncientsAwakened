@@ -8,7 +8,7 @@ namespace AAMod.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Ancient Lung");
-            Description.SetDefault("An ancient lung born in the radiant sun fights for you");
+            Description.SetDefault("Summons an ancient dragon to fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }

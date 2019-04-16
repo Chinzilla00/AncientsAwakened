@@ -8,7 +8,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("D00M PR0T0C0L");
-			Description.SetDefault("0.0");
+			Description.SetDefault("Summons a baby ZER0 PR0T0C0L to fight for you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
