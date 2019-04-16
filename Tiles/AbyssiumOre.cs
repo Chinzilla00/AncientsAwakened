@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             Main.tileMerge[Type][mod.TileType("Depthstone")] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
-            //true for block to emit light
+            TileID.Sets.JungleSpecial[Type] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Abyssium");   //put your CustomBlock name

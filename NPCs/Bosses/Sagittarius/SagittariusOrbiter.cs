@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
             if (Sagittarius.MovementType[0] == 1)
             {
-                BaseAI.AIWeapon(npc, ref InternalAI, ref npc.rotation, player.Center, false, 20, 130, 8, 2, 0);
+                BaseAI.AIWeapon(npc, ref InternalAI, ref npc.rotation, player.Center, false, 20, 130, 10, 3, 1);
             }
             else if (Sagittarius.MovementType[0] == 2)
             {
@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 chainTex = mod.GetTexture("NPCs/Bosses/Sagittarius/OrbiterChain3");
             }
             Vector2 endPoint = BaseUtility.RotateVector(npc.Center, npc.Center + new Vector2(-2f, 0), npc.rotation + (npc.spriteDirection == -1 ? (float)Math.PI : 0));
-            if (Sagittarius.MovementType[0] == 0 || Sagittarius.MovementType[0] == 2)
+            if ((Sagittarius.MovementType[0] == 0 || Sagittarius.MovementType[0] == 2) && npc.alpha > 0)
             {
                 BaseDrawing.DrawChain(sb, chainTex, 0, endPoint, pos, 0, npc.GetAlpha(AAColor.Oblivion));
             }

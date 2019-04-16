@@ -15,6 +15,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             SetModTree(new RazewoodTree());
             Main.tileBlendAll[this.Type] = true;
+            TileID.Sets.NeedsGrassFraming[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
@@ -25,7 +26,7 @@ namespace AAMod.Tiles
 
         public override void RandomUpdate(int i, int j)
         {
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(500) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Hotshroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Hotshroom"), 0, 0, -1, -1);

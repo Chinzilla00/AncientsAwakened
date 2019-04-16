@@ -73,11 +73,6 @@ namespace AAMod.NPCs.Bosses.Toad
         public int NOM = 0;
         public bool tonguespawned = false;
         public bool TongueAttack = false;
-        
-        private float JumpX = 5;
-        private float JumpY = -5;
-        private float HighX = 13;
-        private float HighY = -13;
 
         public override void AI()
         {
@@ -87,16 +82,16 @@ namespace AAMod.NPCs.Bosses.Toad
 
             if (npc.velocity.X < 0)
             {
-                npc.spriteDirection = -1;
+                npc.spriteDirection = 1;
             }
             else
             {
-                npc.spriteDirection = 1;
+                npc.spriteDirection = -1;
             }
 
             if (internalAI[0] == AISTATE_JUMP)
             {
-                BaseAI.AISlime(npc, ref npc.ai, false, 60, JumpX, JumpY, HighX, HighY);
+                BaseAI.AISlime(npc, ref npc.ai, false, 60, 5, -5, 13, -13);
                 if (npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
@@ -109,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Toad
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[0] == AISTATE_BARF)
+            else if (internalAI[0] == AISTATE_BARF)
             {
                 internalAI[1]++;
                 npc.velocity.X = 0;
@@ -135,6 +130,50 @@ namespace AAMod.NPCs.Bosses.Toad
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                 }
+            }
+            else if (internalAI[0] == AISTATE_TONGUE)
+            {
+                /*if (npc.ai[2] >= 120f)
+                {
+                    num1160 = npc.ai[2] - 120f;
+                    num1161 = 555f;
+                    num1162 = 2;
+                    if (num1160 == 0f && Main.netMode != 1)
+                    {
+                        Vector2 value25 = new Vector2(36f, 0f);
+                        value25.X = value25.X * npc.direction;
+                        Vector2 value26 = npc.Center + value25;
+                        for (int num1169 = 0; num1169 < 255; num1169++)
+                        {
+                            Player player5 = Main.player[num1169];
+                            if (player5.active && !player5.dead && Vector2.Distance(player5.Center, value26) <= 2000f)
+                            {
+                                Vector2 value27 = Main.player[npc.target].Center - value26;
+                                if (value27 != Vector2.Zero)
+                                {
+                                    value27.Normalize();
+                                }
+                                Projectile.NewProjectile(value26.X, value26.Y, value27.X, value27.Y, mod.ProjectileType<TruffleToadTongue>(), 0, 0f, Main.myPlayer, (npc.whoAmI + 1), num1169);
+                            }
+                        }
+                    }
+                    if ((num1160 == 120f || num1160 == 180f || num1160 == 240f) && Main.netMode != 1)
+                    {
+                        for (int num1170 = 0; num1170 < 1000; num1170++)
+                        {
+                            Projectile projectile5 = Main.projectile[num1170];
+                            if (projectile5.active && projectile5.type == 456 && Main.player[(int)projectile5.ai[1]].FindBuffIndex(145) != -1)
+                            {
+                                Vector2 center19 = Main.player[npc.target].Center;
+                                int num1171 = NPC.NewNPC((int)center19.X, (int)center19.Y, 401, 0, 0f, 0f, 0f, 0f, 255);
+                                Main.npc[num1171].netUpdate = true;
+                                Main.npc[num1171].ai[0] = (float)(npc.whoAmI + 1);
+                                Main.npc[num1171].ai[1] = (float)num1170;
+                            }
+                        }
+                    }
+                }*/
+                
             }
         }
 

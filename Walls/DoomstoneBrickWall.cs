@@ -14,6 +14,7 @@ namespace AAMod.Walls
             soundType = 21;
             drop = mod.ItemType("DoomstoneBrickWall");
             Main.wallHouse[Type] = true;
+            Main.wallLargeFrames[Type] = 2;
         }
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

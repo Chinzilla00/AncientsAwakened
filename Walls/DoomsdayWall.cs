@@ -14,6 +14,7 @@ namespace AAMod.Walls
             soundType = 21;
             drop = mod.ItemType("DoomsdayWall");
             Main.wallHouse[Type] = true;
+            Main.wallLargeFrames[Type] = 2;
         }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
