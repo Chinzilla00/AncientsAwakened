@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
             if (Sagittarius.MovementType[0] == 1)
             {
-                BaseAI.AIWeapon(npc, ref InternalAI, ref npc.rotation, player.Center, false, 20, 130, 10, 3, 1);
+                BaseAI.AIWeapon(npc, ref InternalAI, ref npc.rotation, player.Center, false, 0, 130, 10, 3, 0);
             }
             else if (Sagittarius.MovementType[0] == 2)
             {

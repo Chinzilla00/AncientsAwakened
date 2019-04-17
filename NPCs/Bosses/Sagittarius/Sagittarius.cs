@@ -148,9 +148,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
                 if (internalAI[6] > 360)
                 {
-
                     internalAI[6] = 0;
-                    MovementType[0] = 3;
+                    MovementType[0] = 5;
                     npc.netUpdate = true;
                 }
 

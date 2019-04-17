@@ -60,7 +60,6 @@ namespace AAMod.Backgrounds
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);
 
-            bool Yamata = NPC.AnyNPCs(mod.NPCType<Yamata>());
             bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
 
             Color bgColor = GetAlpha(defaultColor, 0.2f * fadeOpacity * dayTimeOpacity);

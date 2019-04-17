@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds
 {
     public class VoidSky : CustomSky
     {
-        private UnifiedRandom random = new UnifiedRandom();
+        private readonly UnifiedRandom random = new UnifiedRandom();
 
         private struct Bolt
         {
@@ -40,6 +40,7 @@ namespace AAMod.Backgrounds
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
+        public float Alpha = 0;
 
         public override void OnLoad()
         {
@@ -56,6 +57,12 @@ namespace AAMod.Backgrounds
 
         public override void Update(GameTime gameTime)
         {
+            if (AAWorld.downedZero)
+            {
+                Alpha += 0.05f;
+                if (Alpha > 1f) Alpha = 1f;
+            }
+
             if (Active)
             {
                 Intensity = Math.Min(1f, 0.01f + Intensity);
@@ -117,6 +124,19 @@ namespace AAMod.Backgrounds
             return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
         }
 
+        public Color GetAlpha(Color newColor, float alph)
+        {
+            int alpha = 255 - (int)(255 * alph);
+            float alphaDiff = (float)(255 - alpha) / 255f;
+            int newR = (int)((float)newColor.R * alphaDiff);
+            int newG = (int)((float)newColor.G * alphaDiff);
+            int newB = (int)((float)newColor.B * alphaDiff);
+            int newA = (int)newColor.A - alpha;
+            if (newA < 0) newA = 0;
+            if (newA > 255) newA = 255;
+            return new Color(newR, newG, newB, newA);
+        }
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
 
@@ -138,12 +158,13 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
                 Asteroidpos2.Y += (float)Math.Sin(asteroidPercent2) * -30f;
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
-                if (!NPC.downedMoonlord)
+                if (!AAWorld.downedZero)
                 {
                     spriteBatch.Draw(Stars, planetPos, null, Color.White, 0, new Vector2(Stars.Width >> 1, Stars.Height >> 1), 1f, SpriteEffects.None, 1f);
                 }
                 else
                 {
+                    Color VortexColor = GetAlpha(Color.White, Alpha);
                     spriteBatch.Draw(SkyTexture, planetPos, null, Color.Black, 0, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);

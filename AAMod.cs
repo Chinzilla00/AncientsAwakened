@@ -514,7 +514,7 @@ namespace AAMod
             if (bossChecklist != null)
             {
                 bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day in the Surface Mushroom Biome");
-                bossChecklist.Call("AddBossWithInfo", "Feudal Fungus", 0f, (Func<bool>)(() => AAWorld.downedFungus), "Use a [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
+                bossChecklist.Call("AddBossWithInfo", "Feudal Fungus", 0.1f, (Func<bool>)(() => AAWorld.downedFungus), "Use a [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2.00000000001f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Broodmother", 4.00000000001f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 4.00000000001f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
@@ -770,12 +770,6 @@ namespace AAMod
                 NPCs.Bosses.Raider.Raidmini.glowTex1 = null;
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
-                NPCs.Bosses.Zero.Zero.glowTex = null;
-                NPCs.Bosses.Zero.VoidStar.glowTex = null;
-                NPCs.Bosses.Zero.RealityCannon.glowTex = null;
-                NPCs.Bosses.Zero.RiftShredder.glowTex = null;
-                NPCs.Bosses.Zero.Taser.glowTex = null;
-                NPCs.Bosses.Zero.TeslaHand.glowTex = null;
                 NPCs.Bosses.Zero.SearcherZero.glowTex = null;
                 NPCs.Bosses.Zero.Protocol.ZeroAwakened.glowTex = null;
                 NPCs.Enemies.Void.Searcher.glowTex = null;

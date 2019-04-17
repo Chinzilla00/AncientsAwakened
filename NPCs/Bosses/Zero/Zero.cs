@@ -187,9 +187,6 @@ namespace AAMod.NPCs.Bosses.Zero
             return AAColor.ZeroShield * (Main.mouseTextColor / 255f);
         }
 
-        public static Texture2D glowTex = null;
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
         public bool saythelinezero = false;
         public bool ArmsGone = false;
         public float ShieldScale = 0.5f;
@@ -197,12 +194,8 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/Zero_Glow");
-            }
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Zero_Glow");
+
             if (npc.ai[0] != 0)
             {
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(dColor.R, dColor.G, dColor.B, (byte)150));
@@ -213,7 +206,6 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, GetGlowAlpha());
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
 
             if (ShieldScale > 0)
@@ -240,7 +232,6 @@ namespace AAMod.NPCs.Bosses.Zero
             
             npc.damage = npc.defDamage;
             npc.defense = npc.defDefense;
-            bool expert = Main.expertMode;
             if (npc.ai[0] == 0 && Main.netMode != 1)
             {
                 npc.TargetClosest(true);
@@ -544,9 +535,56 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        
+        public static void DrawArm(Mod mod, NPC npc, SpriteBatch spriteBatch, Color drawColor)
+        {
+            Vector2 vector7 = new Vector2(npc.position.X + ((float)npc.width * 0.5f) - (5f * npc.ai[0]), npc.position.Y + 20f);
+            for (int l = 0; l < 2; l++)
+            {
+                float num21 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - vector7.X;
+                float num22 = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - vector7.Y;
+                float num23;
+                if (l == 0)
+                {
+                    num21 -= 200f * npc.ai[0];
+                    num22 += 130f;
+                    num23 = (float)Math.Sqrt((double)((num21 * num21) + (num22 * num22)));
+                    num23 = 92f / num23;
+                    vector7.X += num21 * num23;
+                    vector7.Y += num22 * num23;
+                }
+                else
+                {
+                    num21 -= 50f * npc.ai[0];
+                    num22 += 80f;
+                    num23 = (float)Math.Sqrt((double)((num21 * num21) + (num22 * num22)));
+                    num23 = 60f / num23;
+                    vector7.X += num21 * num23;
+                    vector7.Y += num22 * num23;
+                }
+                float rotation7 = (float)Math.Atan2((double)num22, (double)num21) - 1.57f;
+                Texture2D Arm = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
+                Texture2D ArmGlow = mod.GetTexture("Glowmasks/ZeroArm_Glow");
+                spriteBatch.Draw(Arm, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, Arm.Width, Arm.Height)), drawColor, rotation7, new Vector2(Arm.Width * 0.5f, Arm.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(ArmGlow, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, Arm.Width, Arm.Height)), GenericUtils.COLOR_GLOWPULSE, rotation7, new Vector2(Arm.Width * 0.5f, Arm.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                if (l == 0)
+                {
+                    vector7.X += num21 * num23 / 2f;
+                    vector7.Y += num22 * num23 / 2f;
+                }
+                else if (Main.rand.Next(2) == 0)
+                {
 
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+                    vector7.X += (num21 * num23) - 16f;
+                    vector7.Y += (num22 * num23) - 6f;
+                    int num24 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, mod.DustType<Dusts.VoidDust>(), num21 * 0.02f, num22 * 0.02f, 0, default, 2.5f);
+                    Main.dust[num24].noGravity = false;
+                }
+            }
+        }
+
+
+
+        public void MoveToPoint(Vector2 point)
         {
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
