@@ -110,18 +110,17 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool SetMovePos = false;
         public float XPos = 20f;
 
-        public float pos = 0f;
+        public float pos = 250f;
 
-        public static int AISTATE_IDLE = 0, AISTATE_PROJ = 1, AISTATE_SLASH = 2, AISTATE_SPIN = 3;
+        public static int AISTATE_PROJ = 0, AISTATE_SLASH = 1, AISTATE_SPIN = 2, AISTATE_IDLE = 3;
 
         public int ProjectileShoot = -1;
-        public int repeat = 15;
+        public int repeat = 10;
         public bool isSlashing = false;
-
 
         public Vector2 MovePoint;
         public bool SelectPoint = false;
-        
+
         public bool Invisible = false;
 
 

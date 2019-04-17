@@ -366,12 +366,10 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 5:
-                            case 6:
                                 npc.ai[3] = 1f;
                                 aiChoice = 2f;
                                 break;
-                            case 7:
-                            case 8:
+                            case 6:
                                 npc.ai[3] = 0f;
                                 aiChoice = 3f;
                                 break;
@@ -427,7 +425,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -250);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -250);
                 MoveToPoint(playerPoint);
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;

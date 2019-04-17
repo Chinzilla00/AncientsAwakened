@@ -408,6 +408,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
+
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+
             if (Main.netMode != 1)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
@@ -450,7 +453,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posY = dirY * dist;
 
 
-                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -565,6 +567,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -578,7 +581,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posY = dirY * dist;
 
 
-                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -693,6 +695,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -706,7 +709,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posY = dirY * dist;
 
 
-                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -822,6 +824,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
 
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
@@ -834,7 +838,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posY = dirY * dist;
 
 
-                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
@@ -950,6 +953,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
 
+            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
@@ -962,7 +967,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float posY = dirY * dist;
 
 
-                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }

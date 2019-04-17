@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -53,15 +54,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return new Color(Color.White.R, Color.White.G, Color.White.B, projectile.alpha);
-        }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("DragonFire"), 600);
             Kill(0);
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, projectile.GetAlpha(Color.White), true);
+            return false;
         }
 
         public override void Kill(int timeLeft)

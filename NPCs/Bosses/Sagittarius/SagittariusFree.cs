@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             AAPlayer modplayer = player.GetModPlayer<AAPlayer>(mod);
-            RingRoatation += .3f;
+            RingRoatation += .2f;
             npc.ai[1]++;
             if (internalAI[3] > 0)
             {
@@ -79,9 +79,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.frameCounter++;
             if (npc.frameCounter > 7)
             {
-                npc.frame.Y += 70;
+                npc.frame.Y += 72;
                 npc.frameCounter = 0;
-                if (npc.frame.Y > 70 * 5)
+                if (npc.frame.Y > 72 * 4)
                 {
                     npc.frame.Y = 0;
                 }
@@ -276,11 +276,11 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             Texture2D GlowTex = mod.GetTexture("Glowmasks/SagittariusFree_Glow");
 
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, AAColor.ZeroShield);
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
 
             if (ShieldScale > 0)
             {
-                BaseDrawing.DrawTexture(sb, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), Color.Red, true);
+                BaseDrawing.DrawTexture(sb, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GenericUtils.COLOR_GLOWPULSE, true);
             }
             BaseDrawing.DrawTexture(sb, Ring, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
             BaseDrawing.DrawTexture(sb, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);
