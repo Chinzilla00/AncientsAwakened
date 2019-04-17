@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Dev.Moon
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lunar Wasp");
-            Main.projFrames[projectile.type] = 3;
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -253,7 +253,7 @@ namespace AAMod.Items.Armor.Dev.Moon
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame > 2)
+                if (++projectile.frame > 3)
                 {
                     projectile.frame = 0;
                 }

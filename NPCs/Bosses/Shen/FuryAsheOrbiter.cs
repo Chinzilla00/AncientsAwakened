@@ -66,16 +66,15 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha -= 4;
             }
             npc.noGravity = true;
-            if (body == -1)
+            if(body == -1)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("FuryAshe"), 120f, null);
-                if (npcID >= 0) body = npcID;
+                if(npcID >= 0) body = npcID;
             }
-
-            if (body == -1) return;
+            if(body == -1) return;
 
             NPC ashe = Main.npc[body];
-            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")) { npc.active = false; return; }
+            if(ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("FuryAshe")) { npc.active = false; return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
@@ -104,7 +103,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            Color lightColor = BaseDrawing.GetNPCColor(npc, null);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
             return false;
         }

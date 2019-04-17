@@ -67,6 +67,12 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
             musicPriority = MusicPriority.BossHigh;
+            if (AAWorld.downedShen)
+            {
+                npc.damage = 120;
+                npc.defense = 160;
+                npc.lifeMax = 260000;
+            }
         }
         private bool fireAttack;
         private int attackFrame;
@@ -555,6 +561,11 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (!AAWorld.downedAkuma)
                 {
                     BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                }
+                if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false && AAWorld.downedShen)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
+                    AAWorld.PowerDropped = true;
                 }
                 npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };

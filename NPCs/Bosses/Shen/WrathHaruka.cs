@@ -495,6 +495,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.velocity *= velMultiplier;
         }
 
+
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = 0;

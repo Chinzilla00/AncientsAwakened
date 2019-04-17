@@ -37,7 +37,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
 		public int body = -1;
 		public float rotValue = -1f;
-
 		public override void AI()
 		{
             if (npc.frameCounter++ > 5)

@@ -1,14 +1,9 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
@@ -32,18 +27,19 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.height = 80;
             npc.damage = 100;
             npc.defense = 40;
-            npc.lifeMax = 120000;
-            npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 0, 75, 45);
-            npc.knockBackResist = 0f;
+            npc.lifeMax = 100000;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+            npc.knockBackResist = 0f;
+            npc.knockBackResist = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
         }
 
@@ -153,17 +149,17 @@ namespace AAMod.NPCs.Bosses.Shen
                 return;
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3)
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2)
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1)
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;
@@ -529,9 +525,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public float[] shootAI = new float[4];
 
-        public int OrbiterCount = Main.expertMode ? 10 : 8;
-        public float OrbiterDistance = 0;
-        public static int AIchange = 0;
+        public int OrbiterCount = 12;
 
 
         public void FireMagic(NPC npc, Vector2 velocity)

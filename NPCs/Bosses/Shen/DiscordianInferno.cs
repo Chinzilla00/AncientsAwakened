@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
-                Main.PlayTrackedSound(SoundID.DD2_BetsyFireballShot, projectile.Center);
+                Main.PlaySound(SoundID.DD2_BetsyFireballShot, projectile.Center);
             }
             if (projectile.ai[0] >= 2f)
             {
