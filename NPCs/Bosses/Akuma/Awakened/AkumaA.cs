@@ -606,7 +606,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     return;
                 }
                 Main.NewText("Hey! Hands off my papa!", new Color(102, 20, 48));
-                Main.NewText("Atta-girl..!", Color.SkyBlue);
+                Main.NewText("Atta-girl..!", Color.DeepSkyBlue);
                 SpawnBoss(Main.player[npc.target], "AsheA", "");
             }
         }

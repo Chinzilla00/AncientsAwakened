@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.buffImmune[k] = true;
             }
         }
-        public int timer;
 
         public int chargeWidth = 50;
         public int normalWidth = 250;
@@ -38,12 +37,12 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f); ;
-            timer++;
+            npc.ai[0]++;
             if (npc.timeLeft <= 10)
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha > 0 && timer > 375)
+            if (npc.alpha > 0 && npc.ai[0] > 375)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenTransition");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -56,47 +55,46 @@ namespace AAMod.NPCs.Bosses.Shen
                     dust1.velocity.Y -= 6;
                 }
             }
-            if (timer == 375)    
+            if (npc.ai[0] == 375)    
             {
                 Main.NewText("Heh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 475)
+            if (npc.ai[0] == 475)
             {
                 Main.NewText("Heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 600)
+            if (npc.ai[0] == 600)
             {
                 Main.NewText("HAHAHAHAHAHAHA!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 820)
+            if (npc.ai[0] == 820)
             {
                 Main.NewText("Have you forgotten about our last battles...?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer == 960)
+            if (npc.ai[0] == 960)
             {
                 Main.NewText("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
-            if (timer >= 1100)
+            if (npc.ai[0] >= 1100)
             {
                 npc.alpha -= 5;
             }
-            if (timer == 1100)
+            if (npc.ai[0] == 1100)
             {
                 Main.NewText("I have only been using a fraction of my true power...and now...heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (timer == 1300)
+            if (npc.ai[0] >= 1400)
             {
                 SummonShen();
-                npc.active = false;
-                npc.life = 0;               
+                npc.active = false;        
             }
         }
 
         public void SummonShen()
         {
-            Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             if (Main.netMode != 1)
             {
                 int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenA"));

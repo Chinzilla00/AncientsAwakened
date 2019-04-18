@@ -32,7 +32,6 @@ namespace AAMod.NPCs.Bosses.AH
                 }
             }
         }
-        public int timer;
         public bool ATransitionActive = false;
         public int RVal = 255;
         public int BVal = 0;

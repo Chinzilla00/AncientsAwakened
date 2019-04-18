@@ -16,15 +16,32 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashe Akuma");
+            DisplayName.SetDefault("Haruka Yamata");
             Main.npcFrameCount[npc.type] = 27;
         }
 
         public override void SetDefaults()
         {
+            npc.width = 50;
+            npc.height = 60;
+            npc.friendly = false;
+            npc.damage = 80;
+            npc.defense = 50;
+            npc.lifeMax = 90000;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.knockBackResist = 0f;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.lavaImmune = true;
+            npc.netAlways = true;
+            npc.noGravity = true;
             npc.boss = false;
             npc.value = Item.buyPrice(0, 0, 0, 0);
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
         }
 
         public override void PostAI()
@@ -33,6 +50,15 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 npc.life = 0;
             }
+        }
+
+        public override bool CheckActive()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            {
+                return true;
+            }
+            return false;
         }
 
         public override void NPCLoot()

@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -26,23 +28,23 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.buffImmune[k] = true;
             }
         }
-        public int timer;
         public bool ATransitionActive = false;
         public int RVal = 255;
         public int BVal = 0;
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return new Color(RVal, 125, BVal);
-        }
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, npc.GetAlpha(new Color(RVal, 125, BVal)), true);
+            return false;
+        }
         public override void AI()
         {
 
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
-            timer++;
+            npc.ai[0]++;
             npc.frameCounter++;
             if (npc.frameCounter >= 7)
             {
@@ -55,17 +57,25 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.frame.Y = 0;
             }
 
-            if (timer == 375)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
+            if (npc.ai[0] > 375)
+            {
+                npc.alpha -= 5;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+            if (npc.ai[0] == 375)          //if the npc.ai[0] has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Heh...", new Color(180, 41, 32));
                 AAMod.AkumaMusic = true;
             }
-            if (timer == 750)
+            if (npc.ai[0] == 750)
             {
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
 
-            if (timer >= 750)
+            if (npc.ai[0] >= 750)
             {
                 RVal -= 5;
                 BVal += 5;
@@ -79,12 +89,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            if (timer == 900)
+            if (npc.ai[0] == 900)
             {
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (timer >= 1165)
+            if (npc.ai[0] >= 1165)
             {
                 Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
@@ -92,6 +102,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 AAMod.AkumaMusic = false;
 
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+                npc.netUpdate = true;
                 npc.active = false;
             }
 

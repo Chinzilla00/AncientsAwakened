@@ -20,11 +20,29 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Main.npcFrameCount[npc.type] = 24;
         }
 
+
         public override void SetDefaults()
         {
-            npc.boss = false;
+            npc.width = 40;
+            npc.height = 80;
+            npc.damage = 80;
+            npc.defense = 40;
+            npc.lifeMax = 100000;
             npc.value = Item.buyPrice(0, 0, 0, 0);
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+            npc.knockBackResist = 0f;
+            npc.knockBackResist = 0f;
+            npc.lavaImmune = true;
+            npc.boss = false;
+            npc.netAlways = true;
+            npc.noGravity = true;
+            npc.noTileCollide = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
         }
 
         public override void PostAI()
@@ -33,6 +51,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 npc.life = 0;
             }
+        }
+
+        public override bool CheckActive()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            {
+                return true;
+            }
+            return false;
         }
 
         public override void NPCLoot()

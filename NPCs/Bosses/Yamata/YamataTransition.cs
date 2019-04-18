@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -27,14 +29,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.buffImmune[k] = true;
             }
         }
-        public int timer;
-        
+
         public int RVal = 125;
         public int BVal = 255;
 
-        public override Color? GetAlpha(Color lightColor)
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            return new Color(RVal, 0, BVal);
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, npc.GetAlpha(new Color(RVal, 0, BVal)), true);
+            return false;
         }
 
         public override void AI()
@@ -43,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
-            timer++;
+            npc.ai[0]++;
             npc.frameCounter++;
             if (npc.frameCounter >= 7)
             {
@@ -55,21 +58,31 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.frame.Y = 0 ;
             }
-            if (timer == 375)    
+
+            if (npc.ai[0] > 375)
+            {
+                npc.alpha -= 5;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
+
+            if (npc.ai[0] == 375)    
             {
                 Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
                 AAMod.YamataMusic = true;
             }
-            if (timer == 650)
+            if (npc.ai[0] == 650)
             {
                 Main.NewText("You thought I was DONE..?!", new Color(45, 46, 70));
             }
-            if (timer == 900)
+            if (npc.ai[0] == 900)
             {
                 Main.NewText("HAH! AS IF!", new Color(45, 46, 70));
             }
 
-            if (timer >= 900)
+            if (npc.ai[0] >= 900)
             {
                 RVal += 5;
                 BVal -= 5;
@@ -83,15 +96,15 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
 
-            if (timer == 1100)
+            if (npc.ai[0] == 1100)
             {
-                Main.NewText("I HOPE YOU ARE READY...", new Color(146, 30, 68));
+                Main.NewText("The abyss hungers...", new Color(146, 30, 68));
             }
-            if (timer == 1455)
+            if (npc.ai[0] >= 1455)
             {
                 SpawnBoss(npc.Center, "YamataA", "Yamata Awakened");
                 Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                Main.NewText("...TO FACE MY TRUE ABYSSAL WRATH, YOU LITTLE WRETCH!!!", new Color(146, 30, 68));
+                Main.NewText("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
                 AAMod.YamataMusic = false;
                 npc.active = false;
             }
