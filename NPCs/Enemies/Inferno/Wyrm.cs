@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
         }
         public override bool PreAI()
         {
-            
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
             Player player = Main.player[npc.target];
             float dist = npc.Distance(player.Center);
             if (npc.alpha != 0)
@@ -349,6 +349,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (Main.netMode != 1)
             {
@@ -473,6 +474,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (Main.netMode != 1)
             {
@@ -592,6 +594,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (Main.netMode != 1)
             {
@@ -714,6 +717,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (Main.netMode != 1)
             {

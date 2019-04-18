@@ -61,6 +61,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             bossBag = mod.ItemType("MonarchBag");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch");
 

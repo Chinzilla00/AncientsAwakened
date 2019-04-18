@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = Item.buyPrice(0, 0, 6, 45);
             aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.aiStyle = 3;
             npc.width = 72;
             npc.height = 78;

@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = Item.buyPrice(0, 0, 6, 45);
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.width = 104;
             npc.height = 28;
             npc.npcSlots = 1f;
@@ -56,7 +58,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void AI()
         {
-            Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
+            Player player = Main.player[npc.target];
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
             if (biteAttack == false)
             {
                 npc.frameCounter++;

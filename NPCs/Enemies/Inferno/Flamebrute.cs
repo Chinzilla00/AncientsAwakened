@@ -41,8 +41,9 @@ namespace AAMod.NPCs.Enemies.Inferno
 			float playerDistX = Math.Abs(player.Center.X - npc.Center.X);
 			float playerDistY = Math.Abs(player.Center.Y - npc.Center.Y);
 			bool smashAttack = playerDistX < 35f && playerDistY < 40f;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
-			if(smashAttack) //Stop moving to smash players
+            if (smashAttack) //Stop moving to smash players
 			{
 				npc.velocity.X *= 0.9f;
 				if(npc.velocity.X < 0.2f) npc.velocity.X = 0;

@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Grips
 			base.SetDefaults();
 			npc.lifeMax = 1400;
             npc.damage = 30;
-            npc.defense = 15;		
+            npc.defense = 10;		
             npc.buffImmune[BuffID.Poisoned] = true;	
 
 			offsetBasePoint = new Vector2(240f, 0f);

@@ -33,6 +33,12 @@ namespace AAMod.NPCs.Enemies.Inferno
             animationType = 81;
         }
 
+        public override bool PreAI()
+        {
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
+            return true;
+        }
+
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;

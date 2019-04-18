@@ -120,6 +120,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void AI()
 		{
             internalAI[0]++;
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
             shootTimer--;
             if (shootTimer < 0)
             {

@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.noGravity = true;
             npc.noTileCollide = true;
 
-            Lighting.AddLight((int)((npc.position.X + (float)(npc.width / 2)) / 16f), (int)((npc.position.Y + (float)(npc.height / 2)) / 16f), 0.3f, 0.2f, 0.05f);
+            Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
             {

@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.knockBackResist = 0.55f;
             npc.value = 100f;
             npc.aiStyle = 3;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             aiType = NPCID.Crawdad;
         }
         

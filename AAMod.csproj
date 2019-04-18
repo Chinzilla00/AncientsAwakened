@@ -1416,7 +1416,6 @@
     <Compile Include="NPCs\Bosses\Hydra\HydraHead1.cs" />
     <Compile Include="NPCs\Bosses\Hydra\HydraHead2.cs" />
     <Compile Include="NPCs\Bosses\Hydra\HydraHead3.cs" />
-    <Compile Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusCloud.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusFlier.cs" />
     <Compile Include="NPCs\Bosses\MushroomMonarch\FungusIGoNow.cs" />
@@ -1565,6 +1564,7 @@
     <Compile Include="NPCs\Enemies\Mire\AcidProj.cs" />
     <Compile Include="NPCs\Enemies\Mire\DreadHydraHandler.cs" />
     <Compile Include="NPCs\Enemies\Mire\DreadHydra.cs" />
+    <Compile Include="NPCs\Enemies\Mire\InfernoSalamander.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Miregron.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSlime.cs" />
@@ -3964,9 +3964,15 @@
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
+    <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernoFish.png" />
+    <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
+    <Content Include="NPCs\Enemies\Inferno\MagmaSwimmer.png" />
+    <Content Include="NPCs\Enemies\Mire\FogAngler.png" />
     <Content Include="NPCs\Enemies\Mire\MireAngler.png" />
     <Content Include="NPCs\Enemies\Mire\MireSkulker.gif" />
     <Content Include="NPCs\Enemies\Mire\MireTurtle.png" />
+    <Content Include="NPCs\Enemies\Mire\Nibbler.png" />
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
@@ -5134,8 +5140,6 @@
     <Content Include="NPCs\Bosses\Hydra\HydraNeck.png" />
     <Content Include="NPCs\Bosses\Hydra\HydraTail.png" />
     <Content Include="NPCs\Bosses\Hydra\Hydra_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA.png" />
-    <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungusA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FeudalFungus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FungusCloud.png" />
     <Content Include="NPCs\Bosses\MushroomMonarch\FungusFlier.png" />

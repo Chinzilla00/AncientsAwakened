@@ -12,7 +12,6 @@ namespace AAMod.Items.Usable
 			Tooltip.SetDefault("'Charged with carnal energy'");
 		}
 
-
         public override void SetDefaults()
         {
             item.width = item.height = 16;
@@ -23,17 +22,5 @@ namespace AAMod.Items.Usable
             item.useTime = item.useAnimation = 19;
             item.noMelee = true;
         }
-        public override void AddRecipes()
-        {
-            if (WorldGen.crimson == true)
-            { 
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.SoulofNight, 15);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
-
-
     }
 }

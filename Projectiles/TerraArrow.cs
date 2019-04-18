@@ -23,7 +23,6 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-
             int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 107, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
             Main.dust[dustId].noGravity = true;
@@ -63,10 +62,10 @@ namespace AAMod.Projectiles
                 if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
                 {
                     float distance = projectile.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    if (distance <= homingMaximumRangeInPixels && Collision.CanHit(projectile.position, projectile.width, projectile.height, n.position, n.width, n.height) &&
+                    (
+                        selectedTarget == -1 || //there is no selected target
+                        projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
                     )
                         selectedTarget = i;
                 }

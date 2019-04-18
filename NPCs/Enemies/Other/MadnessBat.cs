@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Other
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void AI()

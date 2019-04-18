@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.width = 28;
             npc.height = 24;
             npc.friendly = false;
-            npc.damage = 25;
-            npc.defense = 15;
+            npc.damage = 14;
+            npc.defense = 6;
             npc.lifeMax = 45;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
