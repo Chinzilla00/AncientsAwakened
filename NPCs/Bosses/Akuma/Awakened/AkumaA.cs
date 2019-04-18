@@ -594,8 +594,37 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 Main.dust[dust2].noGravity = true;
 
             }
+
+            if (npc.life <= npc.lifeMax / 2 && !spawnAshe)
+            {
+                spawnAshe = true;
+                if (AAWorld.downedAkuma)
+                {
+                    Main.NewText("Ashe? Help your dear old dad with this kid again!", Color.SkyBlue);
+                    Main.NewText("You got it, daddy..!", new Color(102, 20, 48));
+                    SpawnBoss(Main.player[npc.target], "AsheA", "");
+                    return;
+                }
+                Main.NewText("Hey! Hands off my papa!", new Color(102, 20, 48));
+                Main.NewText("Atta-girl..!", Color.SkyBlue);
+                SpawnBoss(Main.player[npc.target], "AsheA", "");
+            }
         }
-        
+
+        public bool spawnAshe = false;
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
+
 
         public int roarTimer = 0;
         public int roarTimerMax = 120;

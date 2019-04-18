@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
+using AAMod.NPCs.Bosses.Akuma.Awakened;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
@@ -100,10 +101,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void AI()
         {
             Player player = Main.player[npc.target];
+            bool AsheType = npc.type == mod.NPCType<Ashe>();
 
             npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
             RingEffects();
+            RingEffects2();
             internalAI[1]++;
             
 
@@ -132,17 +135,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 return;
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
             {
                 Health3 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
             {
                 Health2 = true;
                 internalAI[0] = AISTATE_VORTEX;
             }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
             {
                 Health1 = true;
                 internalAI[0] = AISTATE_VORTEX;
@@ -451,6 +454,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
+            int VortexType = mod.NPCType("AsheOrbiter");
             if (internalAI[0] == 1)
             {
                 Vector2 targetCenter = player.Center;
@@ -494,7 +498,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     for (int m = 0; m < OrbiterCount; m++)
                     {
-                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0);
+                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, VortexType, 0);
                         Main.npc[npcID].Center = npc.Center;
                         Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                         Main.npc[npcID].velocity *= 8f;

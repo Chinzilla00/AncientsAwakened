@@ -420,6 +420,54 @@ namespace AAMod
                 yabhb.Call("hbFinishSingle", (instance.NPCType("Haruka")));
 
                 yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    GetTexture("Healthbars/HarukaBar2Head"),
+                    GetTexture("Healthbars/HarukaBar2Body"),
+                    GetTexture("Healthbars/HarukaBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
+                yabhb.Call("hbFinishSingle", (instance.NPCType("HarukaY")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    GetTexture("Healthbars/HarukaBar2Head"),
+                    GetTexture("Healthbars/HarukaBar2Body"),
+                    GetTexture("Healthbars/HarukaBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
+                yabhb.Call("hbFinishSingle", instance.NPCType("WrathHaruka"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    GetTexture("Healthbars/AsheBar2Head"),
+                    GetTexture("Healthbars/AsheBar2Body"),
+                    GetTexture("Healthbars/AsheBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    Color.OrangeRed,
+                    Color.OrangeRed,
+                    Color.OrangeRed);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("AsheA")));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    GetTexture("Healthbars/AsheBar2Head"),
+                    GetTexture("Healthbars/AsheBar2Body"),
+                    GetTexture("Healthbars/AsheBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    Color.OrangeRed,
+                    Color.OrangeRed,
+                    Color.OrangeRed);
+                yabhb.Call("hbFinishSingle", (instance.NPCType("FuryAshe")));
+
+                yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     GetTexture("Healthbars/YamataBarHead"),
                     GetTexture("Healthbars/YamataBarBody"),

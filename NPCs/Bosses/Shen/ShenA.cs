@@ -78,8 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (InternalAI[0] == 280 || InternalAI[0] == 320 || InternalAI[0] == 360 || InternalAI[0] == 400)
                     {
-                        int Fireballs = Main.expertMode ? 10 : 7;
-                        for (int Loops = 0; Loops < Fireballs; Loops++)
+                        for (int Loops = 0; Loops < 3; Loops++)
                         {
                             ShenAttacks.Dragonfire(npc, mod);
                         }
@@ -87,10 +86,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (InternalAI[1] == 1)
                 {
-                    int Fireballs = Main.expertMode ? 12 : 14;
                     if (InternalAI[0] == 280 || InternalAI[0] == 340 || InternalAI[0] == 400)
                     {
-                        for (int Loops = 0; Loops < Fireballs; Loops++)
+                        for (int Loops = 0; Loops < 8; Loops++)
                         {
                             ShenAttacks.Eruption(npc, mod);
                         }

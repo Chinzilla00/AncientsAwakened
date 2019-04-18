@@ -425,7 +425,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -250);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -350);
                 MoveToPoint(playerPoint);
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
@@ -472,7 +472,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     shootThis = mod.ProjectileType("ShenStorm");
                 }
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 300, -130);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -50);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
@@ -689,7 +689,19 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        
+
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
+        }
 
         public override void NPCLoot()
         {
@@ -745,18 +757,6 @@ namespace AAMod.NPCs.Bosses.Shen
 			//deoffset
 			npc.position.Y -= 130f; 
             return false;
-        }
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
         }
     }
     

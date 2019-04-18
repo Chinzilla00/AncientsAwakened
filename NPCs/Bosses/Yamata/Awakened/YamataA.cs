@@ -167,6 +167,36 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Panic = true;
                 Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
             }
+
+
+            if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
+            {
+                spawnHaruka = true;
+                if (AAWorld.downedYamata)
+                {
+                    Main.NewText("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
+                    Main.NewText("That's my girl..!", new Color(146, 30, 68));
+                    SpawnBoss(Main.player[npc.target], "HarukaY", "");
+                    return;
+                }
+                Main.NewText("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
+                Main.NewText("Sigh...yes dad.", new Color(72, 78, 117));
+                SpawnBoss(Main.player[npc.target], "HarukaY", "");
+            }
+        }
+
+        public bool spawnHaruka = false;
+
+        public void SpawnBoss(Player player, string name, string displayName)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(name);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
+                Main.npc[npcID].netUpdate2 = true;
+            }
         }
 
         public override void FindFrame(int frameHeight)

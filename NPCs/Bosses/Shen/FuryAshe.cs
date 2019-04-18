@@ -94,9 +94,9 @@ namespace AAMod.NPCs.Bosses.Shen
 
             return true;
         }
-        
 
-        public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6, AISTATE_VORTEX = 7;
+
+        public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
         public int[] Vortexes = null;
         
@@ -121,6 +121,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
             RingEffects();
+            RingEffects2();
             internalAI[1]++;
 
 
@@ -148,44 +149,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 return;
             }
-
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
-            {
-                Health3 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
-            {
-                Health2 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
-            {
-                Health1 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-
-            Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("FuryAsheOrbiter"), 1500f);
-            if (Vortexes != null && Vortexes.Length > 0)
-            {
-                npc.damage = VortexDamage(mod);
-                if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
-                {
-                    for (int m = 0; m < Vortexes.Length; m++)
-                    {
-                        NPC npc2 = Main.npc[Vortexes[m]];
-                        if (npc2 != null && npc2.active)
-                        {
-                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.DiscordLight>());
-                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
-                            Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
-                            Main.dust[dustID].alpha = 100;
-                            Main.dust[dustID].noGravity = true;
-                        }
-                    }
-                }
-            }
-
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
@@ -234,7 +197,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
 
             }
-            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
+            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE) //Strong
             {
                 if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
@@ -381,14 +344,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.dontTakeDamage = false;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<FuryAsheOrbiter>()))
-            {
-                npc.dontTakeDamage = true;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }
             npc.rotation = 0; //No ugly rotation.
         }
 
@@ -576,21 +531,6 @@ namespace AAMod.NPCs.Bosses.Shen
             else if (internalAI[0] == 4)
             {
                 BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenStorm>(), npc.damage, 3, 5f, 0, 0, -1);
-            }
-            else if (internalAI[0] == AISTATE_VORTEX)
-            {
-                if (Main.netMode != 1)
-                {
-                    for (int m = 0; m < OrbiterCount; m++)
-                    {
-                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FuryAsheOrbiter"), 0);
-                        Main.npc[npcID].Center = npc.Center;
-                        Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                        Main.npc[npcID].velocity *= 8f;
-                        Main.npc[npcID].ai[0] = m;
-                        Main.npc[npcID].netUpdate2 = true;
-                    }
-                }
             }
         }
 

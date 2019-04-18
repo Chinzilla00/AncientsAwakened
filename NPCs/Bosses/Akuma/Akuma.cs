@@ -516,7 +516,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (internalAI[0] == 400)
                 {
                     int Fireballs = Main.expertMode ? 3 : 5;
-                    float spread = 45f * 0.0174f;
+                    float spread = 70f * 0.0174f;
                     float baseSpeed = (float)Math.Sqrt((npc.velocity.X * npc.velocity.X) + (npc.velocity.Y * npc.velocity.Y));
                     double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - .1d;
                     double deltaAngle = spread / 6f;

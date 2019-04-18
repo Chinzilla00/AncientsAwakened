@@ -1360,6 +1360,8 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaAArms.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABoom.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaAMeteor.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\AsheA.cs" />
+    <Compile Include="NPCs\Bosses\Akuma\Awakened\AsheAOrbiter.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AwakenedLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FireshotA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FlareA.cs" />
@@ -1450,8 +1452,6 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
-    <Compile Include="NPCs\Bosses\Shen\FuryAsheOrbiter.cs" />
-    <Compile Include="NPCs\Bosses\Shen\FuryAsheSpark.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
     <Compile Include="NPCs\Bosses\Shen\SeekingFlame.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianFlare.cs" />
@@ -1476,6 +1476,7 @@
     <Compile Include="NPCs\Bosses\Toad\ToadBoom.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToadTongue.cs" />
+    <Compile Include="NPCs\Bosses\Yamata\Awakened\HarukaY.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataAVenom.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Shock.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataBlast.cs" />
@@ -3944,6 +3945,9 @@
     <Content Include="Items\Vanity\Mask\YamataMask_Head.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Akuma\Awakened\AsheAOrbiter.png" />
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
@@ -3964,6 +3968,8 @@
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY.png" />
+    <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoFish.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
@@ -5526,6 +5532,7 @@
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
+    <Content Include="Projectiles\ScourgeOfShadowsP2.png" />
     <Content Include="Projectiles\Singularity.png" />
     <Content Include="Projectiles\SingularityVortex.png" />
     <Content Include="Projectiles\SingularityVortex1.png" />

@@ -547,7 +547,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     num21 -= 200f * npc.ai[0];
                     num22 += 130f;
-                    num23 = (float)Math.Sqrt((double)((num21 * num21) + (num22 * num22)));
+                    num23 = (float)Math.Sqrt(((num21 * num21) + (num22 * num22)));
                     num23 = 92f / num23;
                     vector7.X += num21 * num23;
                     vector7.Y += num22 * num23;
@@ -561,7 +561,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     vector7.X += num21 * num23;
                     vector7.Y += num22 * num23;
                 }
-                float rotation7 = (float)Math.Atan2((double)num22, (double)num21) - 1.57f;
+                float rotation7 = (float)Math.Atan2(num22, (double)num21) - 1.57f;
                 Texture2D Arm = mod.GetTexture("NPCs/Bosses/Zero/ZeroArm");
                 Texture2D ArmGlow = mod.GetTexture("Glowmasks/ZeroArm_Glow");
                 spriteBatch.Draw(Arm, new Vector2(vector7.X - Main.screenPosition.X, vector7.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, Arm.Width, Arm.Height)), drawColor, rotation7, new Vector2(Arm.Width * 0.5f, Arm.Height * 0.5f), 1f, SpriteEffects.None, 0f);
@@ -573,11 +573,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else if (Main.rand.Next(2) == 0)
                 {
-
                     vector7.X += (num21 * num23) - 16f;
                     vector7.Y += (num22 * num23) - 6f;
-                    int num24 = Dust.NewDust(new Vector2(vector7.X, vector7.Y), 30, 10, mod.DustType<Dusts.VoidDust>(), num21 * 0.02f, num22 * 0.02f, 0, default, 2.5f);
-                    Main.dust[num24].noGravity = false;
                 }
             }
         }
