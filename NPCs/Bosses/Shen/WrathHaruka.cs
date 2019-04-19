@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             npc.lavaImmune = true;
             npc.netAlways = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
             npc.noGravity = false;
             npc.noTileCollide = false;
             bossBag = mod.ItemType("AHBag");

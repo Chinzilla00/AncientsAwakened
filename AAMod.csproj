@@ -640,6 +640,7 @@
     <Compile Include="Items\BossSummons\ScrapHeap.cs" />
     <Compile Include="Items\BossSummons\DjinnLamp.cs" />
     <Compile Include="Items\BossSummons\SubzeroCrystal.cs" />
+    <Compile Include="Items\BossSummons\Toadstool.cs" />
     <Compile Include="Items\BossSummons\ZeroRune.cs" />
     <Compile Include="Items\BossSummons\ZeroTesseract.cs" />
     <Compile Include="Items\Boss\AH\AHBag.cs" />
@@ -3917,6 +3918,7 @@
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\Blocks\ToadBox.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
+    <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />

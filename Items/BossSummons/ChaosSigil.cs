@@ -90,7 +90,7 @@ Summons the chaos emperor");
                 AAWorld.ShenSummoned = true;
             }
 
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
         }
 

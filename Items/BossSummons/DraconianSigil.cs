@@ -96,7 +96,7 @@ Only Usable during the day");
             }
 
             SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");
-            Main.PlaySound(mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/AkumaRoar"));
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }
 
