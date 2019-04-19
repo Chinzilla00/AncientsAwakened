@@ -409,7 +409,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.timeLeft = 300;
 
 
-            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+            npc.direction = npc.velocity.X > 0 ? -1 : 1;
 
             if (Main.netMode != 1)
             {
@@ -567,7 +567,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+            npc.direction = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -695,7 +695,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+            npc.direction = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -824,7 +824,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
 
-            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+            npc.direction = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -953,7 +953,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
 
 
-            npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+            npc.direction = npc.velocity.X > 0 ? -1 : 1;
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {

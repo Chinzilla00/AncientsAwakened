@@ -1120,7 +1120,7 @@ namespace AAMod
                 if (Empowered == false)
                 {
                     Empowered = true;
-                    Main.NewText("The defeat of a superancient empowers the stonekeepers", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)

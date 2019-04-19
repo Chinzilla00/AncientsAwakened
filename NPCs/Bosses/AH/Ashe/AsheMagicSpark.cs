@@ -40,10 +40,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 projectile.Kill();
             }
 
-
-            projectile.frameCounter++;
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            if (projectile.frameCounter > 6)
+            if (projectile.frameCounter++ > 6)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
@@ -63,7 +61,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, projectile.GetAlpha(Color.White), true);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
 

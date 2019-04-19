@@ -1453,6 +1453,8 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenABreath.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenBreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
     <Compile Include="NPCs\Bosses\Shen\SeekingFlame.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianFlare.cs" />
@@ -3928,6 +3930,7 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Vanity\Beg\PonyBody.png" />
@@ -3963,6 +3966,8 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenABreath.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenBreath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDoragonWings.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
@@ -6160,6 +6165,7 @@
     <Content Include="Water\FogDroplet.png" />
     <Content Include="Water\FogWaterfallStyle.png" />
     <Content Include="Water\FogWaterSplash.png" />
+    <Content Include="Water\FogWaterStyle.png" />
     <Content Include="Water\FogWaterStyle_Block.png" />
     <Content Include="Water\InfernoDroplet.png" />
     <Content Include="Water\InfernoWaterfallStyle.png" />

@@ -275,8 +275,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             Texture2D RingGlow = mod.GetTexture("Glowmasks/SagittariusFreeRing_Glow");
             Texture2D GlowTex = mod.GetTexture("Glowmasks/SagittariusFree_Glow");
 
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE, true);
 
             if (ShieldScale > 0)
             {

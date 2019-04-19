@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] += 1;
-                    if (npc.velocity.Y != 0)
+                    if (!npc.collideY)
                     {
                         if (npc.ai[1] > 3)
                         {

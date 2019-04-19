@@ -404,7 +404,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         pos = 250;
                     }
 
-                    npc.direction = -1;
+                    npc.direction = 1;
 
                     if (FlyingPositive)
                     {
@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         pos = -250;
                     }
 
-                    npc.direction = 1;
+                    npc.direction = -1;
 
                     if (FlyingNegative)
                     {
