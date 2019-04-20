@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.width = 104;
             npc.height = 28;
             npc.npcSlots = 1f;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.lavaImmune = true;
             npc.noGravity = false;
             npc.noTileCollide = false;

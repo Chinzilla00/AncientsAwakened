@@ -1568,7 +1568,7 @@
     <Compile Include="NPCs\Enemies\Mire\AcidProj.cs" />
     <Compile Include="NPCs\Enemies\Mire\DreadHydraHandler.cs" />
     <Compile Include="NPCs\Enemies\Mire\DreadHydra.cs" />
-    <Compile Include="NPCs\Enemies\Mire\InfernoSalamander.cs" />
+    <Compile Include="NPCs\Enemies\Mire\MireSkulker.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Miregron.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSlime.cs" />
@@ -3918,6 +3918,7 @@
     <Content Include="Items\Armor\Viking\VikingPlate_Female.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
     <Content Include="Items\Blocks\ToadBox.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
@@ -3983,9 +3984,9 @@
     <Content Include="NPCs\Enemies\Inferno\MagmaSwimmer.png" />
     <Content Include="NPCs\Enemies\Mire\FogAngler.png" />
     <Content Include="NPCs\Enemies\Mire\MireAngler.png" />
-    <Content Include="NPCs\Enemies\Mire\MireSkulker.gif" />
     <Content Include="NPCs\Enemies\Mire\MireTurtle.png" />
     <Content Include="NPCs\Enemies\Mire\Nibbler.png" />
+    <Content Include="NPCs\Enemies\Mire\Snapper.png" />
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />

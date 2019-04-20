@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 npc.spriteDirection = 1;
             }
-            else
+            else if (npc.velocity.X > 0)
             {
                 npc.spriteDirection = -1;
             }

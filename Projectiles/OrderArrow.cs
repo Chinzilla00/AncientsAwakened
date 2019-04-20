@@ -38,8 +38,7 @@ namespace AAMod.Projectiles
 
 		public override void ModifyHitNPC (NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			defense = target.defense;
-			target.defense -= 30;
+			target.defense = target.defDefense - 30;
 		}
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
