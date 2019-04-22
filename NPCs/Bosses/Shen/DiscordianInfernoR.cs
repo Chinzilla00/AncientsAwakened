@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    public class DiscordianInferno : ModProjectile
+    public class DiscordianInfernoR : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-			int dustType = mod.DustType<Dusts.DiscordLight>();			
+            int dustType = mod.DustType<Dusts.YamataADust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Shen
         }
         public override void Kill(int timeLeft)
         {
-            int dustType = mod.DustType<Dusts.DiscordLight>();
+            int dustType = mod.DustType<Dusts.YamataADust>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{
