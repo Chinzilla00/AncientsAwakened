@@ -819,7 +819,6 @@ namespace AAMod
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
                 NPCs.Bosses.Zero.SearcherZero.glowTex = null;
-                NPCs.Bosses.Zero.Protocol.ZeroAwakened.glowTex = null;
                 NPCs.Enemies.Void.Searcher.glowTex = null;
             }
         }

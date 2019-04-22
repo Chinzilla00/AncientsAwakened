@@ -139,16 +139,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
         }
 
-        public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/ZeroAwakened_Glow");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroAwakened_Glow");
             float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);

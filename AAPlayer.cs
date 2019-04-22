@@ -59,6 +59,7 @@ namespace AAMod
         public bool FlameSoul = false;
         public bool Orbiters = false;
         public bool Protocol = false;
+        public bool ScoutMinion = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -274,6 +275,7 @@ namespace AAMod
             FlameSoul = false;
             Orbiters = false;
             Protocol = false;
+            ScoutMinion = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
