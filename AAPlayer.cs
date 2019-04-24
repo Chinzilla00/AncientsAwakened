@@ -494,9 +494,13 @@ namespace AAMod
             bool useShenA = (NPC.AnyNPCs(mod.NPCType<ShenA>()));
             bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
             bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
-            bool useVoid = (ZoneVoid || VoidUnit);
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
+            bool useVoid = (ZoneVoid || VoidUnit) && !useShen;
+            bool useStars = ZoneStars && !useShen;
+
+            //player.ManageSpecialBiomeVisuals("AAMod:StarSky", useStars);
+
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
 
             player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
@@ -526,7 +530,8 @@ namespace AAMod
                 ZoneMush == modOther.ZoneMush &&
                 Terrarium == modOther.Terrarium &&
                 ZoneStorm == modOther.ZoneStorm &&
-                ZoneShip == modOther.ZoneShip);
+                ZoneShip == modOther.ZoneShip &&
+                ZoneStars == modOther.ZoneStars);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -541,6 +546,7 @@ namespace AAMod
             modOther.ZoneRisingMoonLake = ZoneRisingMoonLake;
             modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
             modOther.ZoneShip = ZoneShip;
+            modOther.ZoneStars = ZoneStars;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
@@ -564,6 +570,8 @@ namespace AAMod
                 flags |= 8;
             if (ZoneShip)
                 flags |= 9;
+            if (ZoneStars)
+                flags |= 10;
             writer.Write(flags);
         }
 
@@ -579,6 +587,7 @@ namespace AAMod
             ZoneRisingSunPagoda = ((flags & 7) == 7);
             ZoneRisingMoonLake = ((flags & 8) == 8);
             ZoneShip = ((flags & 9) == 9);
+            ZoneStars = ((flags & 10) == 10);
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)

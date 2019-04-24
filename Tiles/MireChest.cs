@@ -94,22 +94,33 @@ namespace AAMod.Tiles
 		public override void RightClick(int i, int j)
 		{
 			Player player = Main.player[Main.myPlayer];
-			for (int num66 = 0; num66 < 58; num66++)
-			{
-				if (player.inventory[num66].type == mod.ItemType("MireKey") && player.inventory[num66].stack > 0)
-				{
-					/* player.inventory[num66].stack--; */
-					Chest.Unlock(i, j);
-					Chest.Unlock(i - 1, j - 1);
-					Chest.Unlock(i, j - 1);
-					Chest.Unlock(i - 1, j);
-					/*     if (player.inventory[num66].stack <= 0)
-						 {
-							 player.inventory[num66] = new Item();
-						 } */
-
-				}
-			}
+            Tile tile2 = Main.tile[i, j];
+            if (tile2.frameX == 72 || tile2.frameX == 90)
+            {
+                for (int num66 = 0; num66 < 58; num66++)
+                {
+                    if (player.inventory[num66].type == mod.ItemType("MireKey") && player.inventory[num66].stack > 0)
+                    {
+                        player.inventory[num66].stack--;
+                        int left = i;
+                        int top = j;
+                        if (tile2.frameX % 36 != 0)
+                        {
+                            left--;
+                        }
+                        if (tile2.frameY != 0)
+                        {
+                            top--;
+                        }
+                        Main.tile[left, top].frameX = 0;
+                        Main.tile[left, top + 1].frameX = 0;
+                        Main.tile[left + 1, top].frameX = 18;
+                        Main.tile[left + 1, top + 1].frameX = 18;
+                        NetMessage.SendTileSquare(-1, left, top, 2, TileChangeType.None);
+                        Main.PlaySound(22, left * 16, top * 16);
+                    }
+                }
+            }
 
 			Tile tile = Main.tile[i, j];
 			if (tile.frameX != 72 && tile.frameX != 90)

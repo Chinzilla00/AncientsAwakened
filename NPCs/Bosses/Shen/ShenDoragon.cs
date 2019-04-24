@@ -514,7 +514,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianInfernoTimerMax)
                 {
-                    SwitchToAI(0f, 0f, -40f, 0f);
+                    SwitchToAI(0f, 0f, -40f, 1f);
                 }
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
@@ -579,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 1f);
+                    SwitchToAI(0f, 0f, 0f, 2f);
                 }
             }
             else if (npc.ai[0] == 4f) //Flame Breath
@@ -595,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 2f);
+                    SwitchToAI(0f, 0f, 0f, 3f);
                 }
             }
 

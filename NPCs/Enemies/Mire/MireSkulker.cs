@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Enemies.Mire
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life >= 0)
+            if (npc.life <= 0)
             {
             }
         }

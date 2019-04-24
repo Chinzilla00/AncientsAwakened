@@ -85,6 +85,7 @@
     <Compile Include="Backgrounds\ShenSkyData.cs" />
     <Compile Include="Backgrounds\ShenASkyData.cs" />
     <Compile Include="Backgrounds\SnowSky.cs" />
+    <Compile Include="Backgrounds\StarSky.cs" />
     <Compile Include="Backgrounds\VoidSurfaceBgStyle.cs" />
     <Compile Include="Backgrounds\VoidUGBG.cs" />
     <Compile Include="Backgrounds\InfernoUgBgStyle.cs" />
@@ -514,6 +515,7 @@
     <Compile Include="Items\Blocks\SABox.cs" />
     <Compile Include="Items\Blocks\ShenABox.cs" />
     <Compile Include="Items\Blocks\ShenBox.cs" />
+    <Compile Include="Items\Blocks\StarBox.cs" />
     <Compile Include="Items\Blocks\Statues\AlphakipStatue.cs" />
     <Compile Include="Items\Blocks\Statues\AvesStatue.cs" />
     <Compile Include="Items\Blocks\Statues\BegStatue.cs" />
@@ -1118,6 +1120,7 @@
     <Compile Include="Items\Ranged\Scourge.cs" />
     <Compile Include="Items\Ranged\SharkLauncher.cs" />
     <Compile Include="Items\Ranged\ShootingStar.cs" />
+    <Compile Include="Items\Ranged\SingularityCannon.cs" />
     <Compile Include="Items\Ranged\Skystrike.cs" />
     <Compile Include="Items\Ranged\TechneciumRepeater.cs" />
     <Compile Include="Items\Ranged\TerraBallista.cs" />
@@ -1976,6 +1979,7 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
+    <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
     <Compile Include="Tiles\Mushroom.cs" />
@@ -2300,6 +2304,8 @@
     <Content Include="Backgrounds\ShenMoon.png" />
     <Content Include="Backgrounds\ShenSun.png" />
     <Content Include="Backgrounds\Sky.png" />
+    <Content Include="Backgrounds\Star 0.png" />
+    <Content Include="Backgrounds\Star 1.png" />
     <Content Include="Backgrounds\StarTex.png" />
     <Content Include="Backgrounds\Sun.png" />
     <Content Include="Backgrounds\TerrariumBG.png" />
@@ -3922,6 +3928,8 @@
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
+    <Content Include="Items\Blocks\StarBox.png" />
+    <Content Include="Items\Blocks\StarBoxN.png" />
     <Content Include="Items\Blocks\ToadBox.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
@@ -3934,6 +3942,15 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Mushrooms\Ammo.png" />
+    <Content Include="Items\Mushrooms\Archery.png" />
+    <Content Include="Items\Mushrooms\Battle.png" />
+    <Content Include="Items\Mushrooms\Builder.png" />
+    <Content Include="Items\Mushrooms\Calming.png" />
+    <Content Include="Items\Mushrooms\Crate.png" />
+    <Content Include="Items\Mushrooms\Hunter.png" />
+    <Content Include="Items\Ranged\Firebuster.png" />
+    <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
@@ -3967,6 +3984,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusFree.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusFreeRing.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusFree_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Sagittarius\SagittariusHorse.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
@@ -4745,7 +4763,6 @@
     <Content Include="Items\Ranged\Skystrike.png" />
     <Content Include="Items\Ranged\TechneciumRepeater.png" />
     <Content Include="Items\Ranged\TerraBallista.png" />
-    <Content Include="Items\Ranged\TheReaper.png" />
     <Content Include="Items\Ranged\TheSquirter.png" />
     <Content Include="Items\Ranged\TheVulcano.png" />
     <Content Include="Items\Ranged\Toxithrower.png" />
@@ -6111,6 +6128,8 @@
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
+    <Content Include="Tiles\StarBox.png" />
+    <Content Include="Tiles\StarBoxN.png" />
     <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\StormChest.png" />
     <Content Include="Tiles\StormChestS.png" />

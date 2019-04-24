@@ -639,6 +639,63 @@ namespace AAMod
                         }
                     }
                 }));
+
+
+                tasks.Insert(DungeonChests + 3, new PassLegacy("VoidChest", delegate (GenerationProgress progress)
+                {
+                    bool placed = false;
+                    int Minimum = 50;
+                    int Maximum = Main.maxTilesX / 2;
+                    if (Main.dungeonX > Maximum)
+                    {
+                        Minimum = Maximum;
+                        Maximum = Main.maxTilesX - 50;
+                    }
+                    while (!placed)
+                    {
+                        int PlaceHere = WorldGen.genRand.Next(Minimum, Maximum);
+                        int PlacementHeight = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 200);
+                        if (Main.wallDungeon[Main.tile[PlaceHere, PlacementHeight].wall] && !Main.tile[PlaceHere, PlacementHeight].active())
+                        {
+                            while (PlacementHeight < Main.maxTilesY - 200)
+                            {
+                                PlacementHeight++;
+                                if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
+                                {
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("DoomsdayChest"), false, 2);
+                                    if (PlacementSuccess >= 0)
+                                    {
+                                        Chest chest = Main.chest[PlacementSuccess];
+                                        chest.item[0].SetDefaults(mod.ItemType("SingularityCannon"), false);
+                                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { mod.ItemType("VoidEnergy") }), false);
+                                        chest.item[1].stack = WorldGen.genRand.Next(11, 20);
+                                        Item item = chest.item[2];
+                                        UnifiedRandom genRand = WorldGen.genRand;
+                                        int[] array = new int[]
+                                        { mod.ItemType("Doomite") };
+                                        item.SetDefaults(Utils.Next(genRand, array), false);
+                                        chest.item[2].stack = WorldGen.genRand.Next(1, 4);
+                                        Item item2 = chest.item[3];
+                                        UnifiedRandom genRand2 = WorldGen.genRand;
+                                        int[] array2 = new int[]
+                                        { 302, 2327, 2351, 304, 2329 };
+                                        item2.SetDefaults(Utils.Next(genRand2, array2), false);
+                                        chest.item[3].stack = WorldGen.genRand.Next(1, 3);
+                                        chest.item[4].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+                                        { 282, 286 }), false);
+                                        chest.item[4].stack = WorldGen.genRand.Next(15, 31);
+                                        chest.item[5].SetDefaults(73, false);
+                                        chest.item[5].stack = WorldGen.genRand.Next(1, 3);
+                                        placed = true;
+                                        break;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }));
             }
         }
         
@@ -1002,10 +1059,10 @@ namespace AAMod
                 {
                     RadiumOre = true;
                     Main.NewText("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
-                    for (int i = 0; i < Main.maxTilesX / 28; ++i) //Repeats 700 times for small world, 1050 times for medium world, and 1400 times for large world.
+                    for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
-                        int Y = WorldGen.genRand.Next(70); //Y position, centre.
+                        int Y = WorldGen.genRand.Next(10, 100); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
                         {

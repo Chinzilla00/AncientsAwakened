@@ -221,7 +221,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = mod.ProjectileType("BrimstoneLaserSummon");
+				int num658 = mod.ProjectileType("Neutralizer");
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;
