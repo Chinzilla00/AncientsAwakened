@@ -3939,6 +3939,7 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Melee\SwampSlasher.png" />
     <Content Include="Items\Mushrooms\Ammo.png" />
     <Content Include="Items\Mushrooms\Archery.png" />
     <Content Include="Items\Mushrooms\Battle.png" />
@@ -3949,6 +3950,7 @@
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Usable\PurityStar.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Vanity\Beg\PonyBody.png" />
@@ -6138,6 +6140,7 @@
     <Content Include="Tiles\TerraPrism.png" />
     <Content Include="Tiles\TerrariumBox.png" />
     <Content Include="Tiles\TerraWood.png" />
+    <Content Include="Tiles\ToadBox.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />
     <Content Include="Tiles\TorchsandBall.png" />

@@ -24,7 +24,7 @@ namespace AAMod.Items.Melee   //where is located
             item.value = 3000;        
             item.rare = 2;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.useTurn = true;
         }
 
