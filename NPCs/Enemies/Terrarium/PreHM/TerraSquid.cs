@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
-    public class PuritySquid : ModNPC
+    public class TerraSquid : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax =  100;
+            npc.lifeMax =  60;
             npc.defense = 20;
             npc.damage = 10;
             npc.width = 26;

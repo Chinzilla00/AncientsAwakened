@@ -1619,7 +1619,7 @@
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\TerrariumArrow.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\TerraWarlock.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\TerraWizard.cs" />
-    <Compile Include="NPCs\Enemies\Terrarium\PreHM\PuritySquid.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraSquid.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraShot.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraCrawler.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PreHM\TerraSpere.cs" />
@@ -5461,7 +5461,7 @@
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\Minion4Head.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\Minion4Tail.png" />
     <Content Include="NPCs\Enemies\Terrarium\PostPlant\Peacekeeper.png" />
-    <Content Include="NPCs\Enemies\Terrarium\PreHM\PuritySquid.png" />
+    <Content Include="NPCs\Enemies\Terrarium\PreHM\TerraSquid.png" />
     <Content Include="NPCs\Enemies\Terrarium\PreHM\TerraCrawlerCrawling.png" />
     <Content Include="NPCs\Enemies\Terrarium\PreHM\TerraCrawler.png" />
     <Content Include="NPCs\Enemies\Terrarium\PreHM\TerraShot.png" />
