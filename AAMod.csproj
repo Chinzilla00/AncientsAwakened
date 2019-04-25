@@ -1307,9 +1307,7 @@
     <Compile Include="Items\Vanity\Mask\DaybringerMask.cs" />
     <Compile Include="Items\Vanity\Mask\DjinnMask.cs" />
     <Compile Include="Items\Vanity\Mask\FungusMask.cs" />
-    <Compile Include="Items\Vanity\Mask\GripMaskAbyss.cs" />
     <Compile Include="Items\Vanity\Mask\GripMaskBlue.cs" />
-    <Compile Include="Items\Vanity\Mask\GripMaskBlaze.cs" />
     <Compile Include="Items\Vanity\Mask\GripMaskRed.cs" />
     <Compile Include="Items\Vanity\Mask\MonarchMask.cs" />
     <Compile Include="Items\Vanity\Mask\NightcrawlerMask.cs" />
@@ -1922,7 +1920,6 @@
     <Compile Include="Projectiles\TopHat.cs" />
     <Compile Include="Projectiles\Toxifang.cs" />
     <Compile Include="Projectiles\Toxifire.cs" />
-    <Compile Include="Projectiles\Toxin.cs" />
     <Compile Include="Projectiles\TrueAbyssalTwilightShot.cs" />
     <Compile Include="Projectiles\TrueBlazingDawnShot.cs" />
     <Compile Include="Projectiles\TrueCopperShot.cs" />
@@ -4995,10 +4992,6 @@
     <Content Include="Items\Vanity\Mask\DaybringerMask_Head.png" />
     <Content Include="Items\Vanity\Mask\FungusMask.png" />
     <Content Include="Items\Vanity\Mask\FungusMask_Head.png" />
-    <Content Include="Items\Vanity\Mask\GripMaskAbyss.png" />
-    <Content Include="Items\Vanity\Mask\GripMaskAbyss_Head.png" />
-    <Content Include="Items\Vanity\Mask\GripMaskBlaze.png" />
-    <Content Include="Items\Vanity\Mask\GripMaskBlaze_Head.png" />
     <Content Include="Items\Vanity\Mask\GripMaskBlue.png" />
     <Content Include="Items\Vanity\Mask\GripMaskBlue_Head.png" />
     <Content Include="Items\Vanity\Mask\GripMaskRed.png" />
@@ -5807,7 +5800,6 @@
     <Content Include="Projectiles\Toxifang.png" />
     <Content Include="Projectiles\Venom.png" />
     <Content Include="Projectiles\Toxifire.png" />
-    <Content Include="Projectiles\Toxin.png" />
     <Content Include="Projectiles\TridentShot.png" />
     <Content Include="Projectiles\TrueAbyssalTwilightShot.png" />
     <Content Include="Projectiles\TrueBlazingDawnShot.png" />
