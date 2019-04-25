@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.tileCollide = false;
             projectile.penetrate = 1;
             projectile.extraUpdates = 2;
-            projectile.scale *= Main.rand.NextFloat(1f, 1.5f);
         }
 
         public override void AI()

@@ -10,7 +10,7 @@ namespace AAMod.Items.Ranged
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Coral Bow");
-			Tooltip.SetDefault("Somehow better than just metallic bow");
+			Tooltip.SetDefault("Somehow better than a metallic bow");
         }
 
 		public override void SetDefaults()

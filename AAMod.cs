@@ -668,6 +668,8 @@ namespace AAMod
                 PremultiplyTexture(GetTexture("Backgrounds/ShenSun"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenMoon"));
                 PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
+                PremultiplyTexture(GetTexture("Backgrounds/Star 0"));
+                PremultiplyTexture(GetTexture("Backgrounds/Star 1"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
                 PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
 
@@ -687,6 +689,7 @@ namespace AAMod
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Siege"), ItemType("SiegeBox"), TileType("SiegeBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
+                    AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky"), ItemType("FateBox"), TileType("FateBox"));
                     AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines"), ItemType("LakeBox"), TileType("LakeBox"));
@@ -752,6 +755,13 @@ namespace AAMod
                 SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
                 ShenASky.PlanetTexture = GetTexture("Backgrounds/ShenEclipse");
                 ShenASky.SkyTex = GetTexture("Backgrounds/StarTex");
+
+                SkyManager.Instance["AAMod:StarSky"] = new StarSky();
+                StarSky.starTextures = new Texture2D[2];
+                for (int i = 0; i < StarSky.starTextures.Length; i++)
+                {
+                    StarSky.starTextures[i] = GetTexture("Backgrounds/Star " + i);
+                }
 
                 Main.itemTexture[3460] = GetTexture("Resprites/Luminite");
                 Main.itemTexture[512] = GetTexture("Resprites/SoulOfNight");
@@ -819,7 +829,6 @@ namespace AAMod
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
                 NPCs.Bosses.Retriever.Retriever.glowTex = null;
                 NPCs.Bosses.Zero.SearcherZero.glowTex = null;
-                NPCs.Bosses.Zero.Protocol.ZeroAwakened.glowTex = null;
                 NPCs.Enemies.Void.Searcher.glowTex = null;
             }
         }
@@ -987,7 +996,7 @@ namespace AAMod
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
             bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
-            bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
+            //bool zoneSoC = player.ZoneBeach && !AAWorld.downedSoC;
             if (zoneShen && AAWorld.downedAllAncients)
             {
                 priority = MusicPriority.Event;
@@ -1084,7 +1093,10 @@ namespace AAMod
             }
             if (Ancients.ZoneStars)
             {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Stars");
 
+                return;
             }
             if (Ancients.Terrarium)
             {

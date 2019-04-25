@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Oroboros
 {
     public class OroborosDoorOpen : ModTile
 	{

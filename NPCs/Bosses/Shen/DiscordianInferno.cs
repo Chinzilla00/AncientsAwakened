@@ -26,8 +26,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-			int dustType = Main.rand.Next(3);
-			dustType = (dustType == 0 ? mod.DustType<Dusts.DiscordLight>() : dustType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>());			
+			int dustType = mod.DustType<Dusts.DiscordLight>();			
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -58,9 +57,8 @@ namespace AAMod.NPCs.Bosses.Shen
         }
         public override void Kill(int timeLeft)
         {
-			int dustType = Main.rand.Next(3);
-			dustType = (dustType == 0 ? mod.DustType<Dusts.DiscordLight>() : dustType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>());	
-			int pieCut = 20;
+            int dustType = mod.DustType<Dusts.DiscordLight>();
+            int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{
 				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.White, 1.6f);

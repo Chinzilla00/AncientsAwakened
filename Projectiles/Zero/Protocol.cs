@@ -35,38 +35,7 @@ namespace AAMod.Projectiles.Zero
             projectile.netImportant = true;
         }
 
-        public float[] internalAI = new float[1];
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write(internalAI[0]);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                internalAI[0] = reader.ReadFloat();
-            }
-        }
-        
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
-
-        private float num633 = 700f;
-        private float num634 = 800f;
-        private float num635 = 1200f;
-        private float num636 = 150f;
-        
-        private bool flag25 = false;
 
         public override void AI()
         {
@@ -84,10 +53,13 @@ namespace AAMod.Projectiles.Zero
                 }
                 projectile.localAI[0] += 1f;
             }
+            float num633 = 700f;
+            float num634 = 800f;
+            float num635 = 1200f;
+            float num636 = 150f;
             bool flag64 = projectile.type == mod.ProjectileType("Protocol");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("Protocol"), 3600);
             if (flag64)
             {
                 if (player.dead)
@@ -123,30 +95,41 @@ namespace AAMod.Projectiles.Zero
                     }
                 }
             }
-
-            for (int num645 = 0; num645 < 200; num645++)
+            bool flag24 = false;
+            if (projectile.ai[0] == 2f)
             {
-                NPC nPC2 = Main.npc[num645];
-                if (nPC2.CanBeChasedBy(projectile, false))
+                projectile.ai[1] += 1f;
+                projectile.extraUpdates = 1;
+                projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
+                projectile.frameCounter++;
+                if (projectile.frameCounter > 1)
                 {
-                    float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
-                    if (((Vector2.Distance(projectile.Center, projectile.position) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
-                    {
-                        num633 = num646;
-                        projectile.position = nPC2.Center;
-                        flag25 = true;
-                    }
+                    projectile.frame++;
+                    projectile.frameCounter = 0;
                 }
-                if (Vector2.Distance(projectile.Center, nPC2.Center) < 300)
+                if (projectile.frame > 2)
                 {
-                    internalAI[0] = 0;
+                    projectile.frame = 0;
+                }
+                if (projectile.ai[1] > 40f)
+                {
+                    projectile.ai[1] = 1f;
+                    projectile.ai[0] = 0f;
+                    projectile.extraUpdates = 0;
+                    projectile.numUpdates = 0;
+                    projectile.netUpdate = true;
                 }
                 else
                 {
-                    internalAI[0] = 1;
+                    flag24 = true;
                 }
             }
-
+            if (flag24)
+            {
+                return;
+            }
+            Vector2 vector46 = projectile.position;
+            bool flag25 = false;
             if (projectile.ai[0] != 1f)
             {
                 projectile.tileCollide = false;
@@ -155,7 +138,20 @@ namespace AAMod.Projectiles.Zero
             {
                 projectile.tileCollide = false;
             }
-
+            for (int num645 = 0; num645 < 200; num645++)
+            {
+                NPC nPC2 = Main.npc[num645];
+                if (nPC2.CanBeChasedBy(projectile, false))
+                {
+                    float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
+                    if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
+                    {
+                        num633 = num646;
+                        vector46 = nPC2.Center;
+                        flag25 = true;
+                    }
+                }
+            }
             float num647 = num634;
             if (flag25)
             {
@@ -167,15 +163,14 @@ namespace AAMod.Projectiles.Zero
                 projectile.tileCollide = false;
                 projectile.netUpdate = true;
             }
-
             if (flag25 && projectile.ai[0] == 0f)
             {
-                Vector2 vector47 = projectile.position - projectile.Center;
+                Vector2 vector47 = vector46 - projectile.Center;
                 float num648 = vector47.Length();
                 vector47.Normalize();
                 if (num648 > 200f)
                 {
-                    float scaleFactor2 = 6f;
+                    float scaleFactor2 = 8f;
                     vector47 *= scaleFactor2;
                     projectile.velocity = (projectile.velocity * 40f + vector47) / 41f;
                 }
@@ -212,8 +207,8 @@ namespace AAMod.Projectiles.Zero
                 }
                 if (num651 > 2000f)
                 {
-                    projectile.position.X = Main.player[projectile.owner].Center.X - (projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (projectile.height / 2);
+                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
                     projectile.netUpdate = true;
                 }
                 if (num651 > 70f)
@@ -227,93 +222,6 @@ namespace AAMod.Projectiles.Zero
                     projectile.velocity.X = -0.15f;
                     projectile.velocity.Y = -0.05f;
                 }
-            }
-
-            if (internalAI[0] == 0)
-            {
-                AI2(projectile, player);
-            }
-            else
-            {
-                AI1(projectile, player);
-            }
-        }
-
-        public void AI1(Projectile projectile, Player player)
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter > 3)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-            }
-            if (projectile.frame > 3)
-            {
-                projectile.frame = 0;
-            }
-            if (projectile.ai[1] > 0f)
-            {
-                projectile.ai[1] += (float)Main.rand.Next(1, 4);
-            }
-            if (projectile.ai[1] > 90f)
-            {
-                projectile.ai[1] = 0f;
-                projectile.netUpdate = true;
-            }
-            if (projectile.ai[0] == 0f)
-            {
-                float scaleFactor3 = 8f;
-                int num658 = mod.ProjectileType<RealityLaser>();
-                if (flag25 && projectile.ai[1] == 0f)
-                {
-                    projectile.ai[1] += 1f;
-                    if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, projectile.position, 0, 0))
-                    {
-                        Vector2 value19 = projectile.position - projectile.Center;
-                        value19.Normalize();
-                        value19 *= scaleFactor3;
-                        int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)((float)projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
-                        Main.projectile[num659].timeLeft = 300;
-                        projectile.netUpdate = true;
-                    }
-                }
-            }
-        }
-
-        public void AI2(Projectile projectile, Player player)
-        {
-            bool flag24 = false;
-            if (projectile.ai[0] == 2f)
-            {
-                projectile.ai[1] += 1f;
-                projectile.extraUpdates = 1;
-                projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-                projectile.frameCounter++;
-                if (projectile.frameCounter > 1)
-                {
-                    projectile.frame++;
-                    projectile.frameCounter = 0;
-                }
-                if (projectile.frame > 3)
-                {
-                    projectile.frame = 0;
-                }
-                if (projectile.ai[1] > 40f)
-                {
-                    projectile.ai[1] = 1f;
-                    projectile.ai[0] = 0f;
-                    projectile.extraUpdates = 0;
-                    projectile.numUpdates = 0;
-                    projectile.netUpdate = true;
-                }
-                else
-                {
-                    flag24 = true;
-                }
-            }
-            if (flag24)
-            {
-                return;
             }
             projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
             projectile.frameCounter++;
@@ -343,7 +251,7 @@ namespace AAMod.Projectiles.Zero
                     if (Main.myPlayer == projectile.owner)
                     {
                         projectile.ai[0] = 2f;
-                        Vector2 value20 = projectile.position - projectile.Center;
+                        Vector2 value20 = vector46 - projectile.Center;
                         value20.Normalize();
                         projectile.velocity = value20 * 8f;
                         projectile.netUpdate = true;
@@ -351,6 +259,23 @@ namespace AAMod.Projectiles.Zero
                     }
                 }
             }
+        }
+
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Protocol_Glow");
+            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
+            float Pie = 1f * (float)Math.Sin(Eggroll);
+            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile, dColor);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, projectile, auraPercent, 1f, 0f, 0f, color1);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, color1);
+            return false;
         }
     }
 }

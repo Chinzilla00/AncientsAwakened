@@ -41,9 +41,8 @@ namespace AAMod.NPCs.Bosses.Shen
 		
         public override void Kill(int timeLeft)
         {
-			int dustType = Main.rand.Next(3);
-			dustType = (dustType == 0 ? mod.DustType<Dusts.DiscordLight>() : dustType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>());	
-			int pieCut = 20;
+            int dustType = mod.DustType<Dusts.DiscordLight>();
+            int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{
 				dustType = Main.rand.Next(3);

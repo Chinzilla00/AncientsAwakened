@@ -229,10 +229,10 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (isAwakened && npc.life <= npc.lifeMax * 0.2f)
             {
-                _normalSpeed = 23f;
-                _chargeSpeed = 55f;
-                discordianInfernoPercent = 4;
-                discordianFirebombPercent = 17;
+                _normalSpeed = 20f;
+                _chargeSpeed = 50f;
+                discordianInfernoPercent = 5;
+                discordianFirebombPercent = 20;
                 aiTooLongCheck = 45;
             }
             if (npc.alpha > 0 && !spawnalpha)
@@ -267,6 +267,20 @@ namespace AAMod.NPCs.Bosses.Shen
             #endregion
 
             Player player = Main.player[npc.target];
+
+            int Inferno = mod.ProjectileType<DiscordianInferno>();
+            int Bomb = mod.ProjectileType<ShenFirebomb>();
+            int Storm = mod.ProjectileType<ShenStorm>();
+
+            int InfernoB = mod.ProjectileType<DiscordianInfernoB>();
+            int BombB = mod.ProjectileType<ShenFirebombB>();
+            int StormB = mod.ProjectileType<ShenStormB>();
+
+            int InfernoR = mod.ProjectileType<DiscordianInfernoR>();
+            int BombR = mod.ProjectileType<ShenFirebombR>();
+            int StormR = mod.ProjectileType<ShenStormR>();
+
+            int InfernoCount = 0;
 
             customAI[5]++;
 
@@ -459,7 +473,40 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, mod.ProjectileType("DiscordianInferno"), damageDiscordianInferno / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int InfernoType = mod.ProjectileType<DiscordianInferno>();
+                        if (!isAwakened)
+                        {
+                            if (npc.spriteDirection == 1)
+                            {
+                                InfernoType = mod.ProjectileType<DiscordianInfernoR>();
+                            }
+                            else
+                            {
+                                InfernoType = mod.ProjectileType<DiscordianInfernoB>();
+                            }
+                        }
+                        else
+                        {
+                            InfernoCount++;
+
+                            if (InfernoCount == 0)
+                            {
+                                InfernoType = mod.ProjectileType<DiscordianInferno>();
+                            }
+                            else if (InfernoCount == 1)
+                            {
+                                InfernoType = mod.ProjectileType<DiscordianInfernoR>();
+                            }
+                            else if (InfernoCount == 2)
+                            {
+                                InfernoType = mod.ProjectileType<DiscordianInfernoB>();
+                            }
+                            else
+                            {
+                                InfernoCount = 0;
+                            }
+                        }
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, InfernoType, damageDiscordianInferno / 2, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -467,16 +514,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianInfernoTimerMax)
                 {
-                    SwitchToAI(0f, 0f, -40f, 0f);
+                    SwitchToAI(0f, 0f, -40f, 1f);
                 }
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
             {
-                int shootThis = mod.ProjectileType("ShenFirebomb");
-                if (customAI[2] == 0)
-                {
-                    shootThis = mod.ProjectileType("ShenStorm");
-                }
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -50);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
@@ -499,10 +541,35 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 60;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-
+                            int shootThis = mod.ProjectileType("ShenFirebomb");
+                            if (!isAwakened)
+                            {
+                                if (npc.spriteDirection == 1)
+                                {
+                                    shootThis = mod.ProjectileType("ShenFirebombR");
+                                }
+                                else
+                                {
+                                    shootThis = mod.ProjectileType("ShenFirebombB");
+                                }
+                            }
+                            else
+                            {
+                                if (m == 0)
+                                {
+                                    shootThis = mod.ProjectileType("ShenFirebombR");
+                                }
+                                else if (m == 1)
+                                {
+                                    shootThis = mod.ProjectileType("ShenFirebomb");
+                                }
+                                else
+                                {
+                                    shootThis = mod.ProjectileType("ShenFirebombB");
+                                }
+                            }
                             int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
@@ -512,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 1f);
+                    SwitchToAI(0f, 0f, 0f, 2f);
                 }
             }
             else if (npc.ai[0] == 4f) //Flame Breath
@@ -528,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 2f);
+                    SwitchToAI(0f, 0f, 0f, 3f);
                 }
             }
 
