@@ -38,7 +38,7 @@ namespace AAMod.Items.Tools
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "MadnessFragment", 6);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(item);
+            recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }
