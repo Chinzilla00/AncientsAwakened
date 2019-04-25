@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 		{
             npc.width = 26;
             npc.height = 26;
-            npc.lifeMax =  80;
+            npc.lifeMax =  60;
             npc.defense = 5;
             npc.damage = 10;
             npc.HitSound = SoundID.NPCHit1;
