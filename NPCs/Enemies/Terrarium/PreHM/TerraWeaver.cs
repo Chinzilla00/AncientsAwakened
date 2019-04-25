@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         public override void SetDefaults()
 		{
             npc.lifeMax = 120;
-            npc.defense = 20;
+            npc.defense = 5;
             npc.damage = 10;
             npc.width = 20;
             npc.height = 18;

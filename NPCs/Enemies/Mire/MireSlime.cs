@@ -22,9 +22,9 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.noTileCollide = false;
             npc.width = 32;
 			npc.height = 26;
-			npc.damage = 14;
+			npc.damage = 5;
 			npc.defense = 2;
-			npc.lifeMax = 100;
+			npc.lifeMax = 20;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 60f;
