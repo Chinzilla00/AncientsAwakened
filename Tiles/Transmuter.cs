@@ -62,11 +62,11 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/Transmuter_Glow");
-            if (glowTex != null && tile != null && tile.active() && tile.type == this.Type)
+            if (glowTex != null && tile != null && tile.active() && tile.type == Type)
             {
                 int width = 16, height = 16;
                 int frameX = (tile != null && tile.active() ? tile.frameX : 0);
-                int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[this.Type] * 50) : 0);
+                int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
                 BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, GetColor);
                 for (int m = 0; m < 3; m++)
                 {
