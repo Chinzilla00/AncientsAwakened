@@ -22,7 +22,7 @@ namespace AAMod.Items.Vanity.Tails
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(39, 115, 189);
+                    line2.overrideColor = new Color(255, 216, 0);
                 }
             }
         }
