@@ -596,6 +596,13 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
+	    if (trueNights && Main.rand.Next(4) == 0)
+            {
+                if (target.life <= 0)
+                {
+                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
+                }
+            }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -2366,16 +2373,6 @@ namespace AAMod
 				target.AddBuff(mod.BuffType("Hydratoxin"), 900);
 			}
         }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
-	{
-	    if (trueNights && Main.rand.Next(4) == 0)
-            {
-                if (target.life <= 0)
-                {
-                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
-                }
-            }
-	}
         public override Texture2D GetMapBackgroundImage()
         {
             if (ZoneMire || ZoneRisingMoonLake)
