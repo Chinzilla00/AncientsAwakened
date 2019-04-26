@@ -47,12 +47,24 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     Main.dust[num935].noLight = true;
                 }
             }
-            npc.alpha -= 12;
-            if (npc.alpha < 0)
-            {
-                npc.alpha = 0;
-            }
             BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, true, 800, 400, 180, 2);
+
+            if (npc.ai[0] == 2f)
+            {
+                npc.alpha += 12;
+                if (npc.alpha > 255)
+                {
+                    npc.alpha = 255;
+                }
+            }
+            else
+            {
+                npc.alpha -= 12;
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+            }
 
             npc.rotation = npc.velocity.X / 15f;
 
@@ -66,6 +78,14 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
                 }
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraShard>());
             }
         }
 

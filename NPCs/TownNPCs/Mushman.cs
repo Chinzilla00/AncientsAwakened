@@ -7,26 +7,24 @@ using Terraria.Utilities;
 namespace AAMod.NPCs.TownNPCs
 {
     [AutoloadHead]
-	public class Mushman : ModNPC
-	{
+    public class Mushman : ModNPC
+    {
         public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/Mushman";
-			}
-		}
+        {
+            get
+            {
+                return "AAMod/NPCs/TownNPCs/Mushman";
+            }
+        }
 
-        
+        public override bool Autoload(ref string name)
+        {
+            name = "Mushman";
+            return mod.Properties.Autoload;
+        }
 
-		public override bool Autoload(ref string name)
-		{
-			name = "Mushman";
-			return mod.Properties.Autoload;
-		}
-
-		public override void SetStaticDefaults()
-		{
+        public override void SetStaticDefaults()
+        {
             Main.npcFrameCount[npc.type] = 23;
             NPCID.Sets.ExtraFramesCount[npc.type] = 7;
             NPCID.Sets.AttackFrameCount[npc.type] = 3;
@@ -37,8 +35,8 @@ namespace AAMod.NPCs.TownNPCs
             NPCID.Sets.HatOffsetY[npc.type] = 2;
         }
 
-		public override void SetDefaults()
-		{
+        public override void SetDefaults()
+        {
             npc.townNPC = true;
             npc.friendly = true;
             npc.width = 18;
@@ -52,40 +50,40 @@ namespace AAMod.NPCs.TownNPCs
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Truffle;
         }
-        
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
+
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            for (int k = 0; k < 255; k++)
+            {
+                Player player = Main.player[k];
+                if (player.active)
+                {
                     if (AAWorld.downedMonarch == true)
                     {
                         return true;
                     }
                 }
-			}
-			return false;
-		}
+            }
+            return false;
+        }
 
-		public override string TownNPCName()
-		{
-			switch (WorldGen.genRand.Next(4))
-			{
+        public override string TownNPCName()
+        {
+            switch (WorldGen.genRand.Next(4))
+            {
                 default:
-					return "Mushman";
-			}
-		}
+                    return "Mushman";
+            }
+        }
 
         public override string GetChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             int Truffle = NPC.FindFirstNPC(NPCID.Truffle);
-			if (Truffle >= 0 && Main.rand.Next(4) == 0)
-			{
+            if (Truffle >= 0 && Main.rand.Next(4) == 0)
+            {
                 chat.Add("Those glowing truffles are all just such downers.");
             }
             int WitchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
@@ -104,20 +102,114 @@ namespace AAMod.NPCs.TownNPCs
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Language.GetTextValue("LegacyInterface.28");
-		}
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+            button = "Shop";
+            button2 = "Strange Plants";
+        }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-		{
-			if (firstButton)
-			{
-				shop = true;
-			}
-		}
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                shop = true;
+            }
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+            if (!firstButton)
+            {
+                Main.PlaySound(12, -1, -1, 1);
+
+                Player player = Main.LocalPlayer;
+                AAPlayer p = player.GetModPlayer<AAPlayer>(mod);
+
+                int Item = player.FindItem(ItemID.StrangePlant1);
+                int Item2 = player.FindItem(ItemID.StrangePlant2);
+                int Item3 = player.FindItem(ItemID.StrangePlant3);
+                int Item4 = player.FindItem(ItemID.StrangePlant4);
+
+                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Brown", "Gray", "Pink" };
+                int loot = Main.rand.Next(lootTable.Length);
+
+                if (Item >= 0) //Item 1: 3 Blueberries
+                {
+                    player.inventory[Item].stack--;
+                    if (player.inventory[Item].stack <= 0)
+                    {
+                        player.inventory[Item] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item2 >= 0)
+                {
+                    player.inventory[Item2].stack--;
+                    if (player.inventory[Item2].stack <= 0)
+                    {
+                        player.inventory[Item2] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item3 >= 0)
+                {
+                    player.inventory[Item3].stack--;
+                    if (player.inventory[Item3].stack <= 0)
+                    {
+                        player.inventory[Item3] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item4 >= 0)
+                {
+                    player.inventory[Item4].stack--;
+                    if (player.inventory[Item4].stack <= 0)
+                    {
+                        player.inventory[Item4] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else
+                {
+                    Main.npcChatText = "Hmm...nothing? I need stuff to study. I'd like some important materials from biomes. Monster pieces, plants, etc.";
+                    Main.npcChatCornerItem = 0;
+                    Main.PlaySound(12, -1, -1, 1);
+                }
+            }
+        }
+
+        public string NoMushroomChat()
+        {
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+            chat.Add("I need strange plants for something. Bring me some and I'll give you some special alchemical mushrooms. Good for making potions.");
+            chat.Add("...no plants?");
+            chat.Add("Plants please. I won't give you mushrooms without them.");
+            return chat;
+        }
+
+        public string MushroomChat()
+        {
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+            chat.Add("Thank you. These mushrooms are way more useful than worthless dyes, right?");
+            chat.Add("Here. More colored mushrooms for all your brewing needs");
+            chat.Add("What do I use these plants for? Uh...things.");
+            return chat;
+        }
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
 		{
             shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
             nextSlot++;

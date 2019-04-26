@@ -34,7 +34,15 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
         }
-        
+
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraShard>());
+            }
+        }
+
         public override Color? GetAlpha(Color drawColor)
         {
             return Color.White;

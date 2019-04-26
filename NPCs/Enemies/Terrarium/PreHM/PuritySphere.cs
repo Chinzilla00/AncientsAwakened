@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            BaseAI.AISkull(npc, ref npc.ai, false, 4, 300, .011f, .020f);
+            BaseAI.AISkull(npc, ref npc.ai, true, 4, 300, .011f, .020f);
             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TerraShot"), ref shootAI[0], 120, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 3f, true, new Vector2(20f, 15f));
             if (npc.alpha != 0)
             {
@@ -64,7 +64,14 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.noTileCollide = false;
             }
+        }
 
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraShard>());
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)

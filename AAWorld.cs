@@ -112,6 +112,25 @@ namespace AAMod
 
         public static bool Anticheat = true;
 
+        //Squid Lady
+
+        public static int squid1 = 0;
+        public static int squid2 = 0;
+        public static int squid3 = 0;
+        public static int squid4 = 0;
+        public static int squid5 = 0;
+        public static int squid6 = 0;
+        public static int squid7 = 0;
+        public static int squid8 = 0;
+        public static int squid9 = 0;
+        public static int squid10 = 0;
+        public static int squid11 = 0;
+        public static int squid12 = 0;
+        public static int squid13 = 0;
+        public static int squid14 = 0;
+        public static int squid15 = 0;
+        public static int squid16 = 0;
+
         public override void Initialize()
         {
             //Bosses
@@ -173,6 +192,25 @@ namespace AAMod
             TimeDropped = false;
             MindDropped = false;
             PowerDropped = false;
+
+            //Squid Lady
+
+            squid1 = 0;
+            squid2 = 0;
+            squid3 = 0;
+            squid4 = 0;
+            squid5 = 0;
+            squid6 = 0;
+            squid7 = 0;
+            squid8 = 0;
+            squid9 = 0;
+            squid10 = 0;
+            squid11 = 0;
+            squid12 = 0;
+            squid13 = 0;
+            squid14 = 0;
+            squid15 = 0;
+            squid16 = 0;
         }
 
         public static int Raycast(int x, int y)
@@ -245,7 +283,23 @@ namespace AAMod
             return new TagCompound {
                 {"downed", downed},
 				{"mirePosX", mirePos.X },
-				{"infernoPosX", infernoPos.X }			
+				{"infernoPosX", infernoPos.X },
+                {"squid1", squid1},
+                {"squid2", squid2},
+                {"squid3", squid3},
+                {"squid4", squid4},
+                {"squid5", squid5},
+                {"squid6", squid6},
+                {"squid7", squid7},
+                {"squid8", squid8},
+                {"squid9", squid9},
+                {"squid10", squid10},
+                {"squid11", squid11},
+                {"squid12", squid12},
+                {"squid13", squid13},
+                {"squid14", squid14},
+                {"squid15", squid15},
+                {"squid16", squid16}
             };
         }
         public override void NetSend(BinaryWriter writer)
@@ -311,6 +365,25 @@ namespace AAMod
             flags6[1] = downedSag;
             flags6[2] = ModContentGenerated;
             writer.Write(flags6);
+
+
+            //Squid Lady
+            writer.Write(squid1);
+            writer.Write(squid2);
+            writer.Write(squid3);
+            writer.Write(squid4);
+            writer.Write(squid5);
+            writer.Write(squid6);
+            writer.Write(squid7);
+            writer.Write(squid8);
+            writer.Write(squid9);
+            writer.Write(squid10);
+            writer.Write(squid11);
+            writer.Write(squid12);
+            writer.Write(squid13);
+            writer.Write(squid14);
+            writer.Write(squid15);
+            writer.Write(squid16);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -368,6 +441,24 @@ namespace AAMod
             downedSisters = flags6[0];
             downedSag = flags6[1];
             ModContentGenerated = flags6[2];
+
+            //Squid Lady
+            squid1 = reader.ReadInt32();
+            squid2 = reader.ReadInt32();
+            squid3 = reader.ReadInt32();
+            squid4 = reader.ReadInt32();
+            squid5 = reader.ReadInt32();
+            squid6 = reader.ReadInt32();
+            squid7 = reader.ReadInt32();
+            squid8 = reader.ReadInt32();
+            squid9 = reader.ReadInt32();
+            squid10 = reader.ReadInt32();
+            squid11 = reader.ReadInt32();
+            squid12 = reader.ReadInt32();
+            squid13 = reader.ReadInt32();
+            squid14 = reader.ReadInt32();
+            squid15 = reader.ReadInt32();
+            squid16 = reader.ReadInt32();
         }
 
         public override void Load(TagCompound tag)
@@ -430,6 +521,24 @@ namespace AAMod
             mirePos = new Vector2(mirePosX, 150);
             infernoPos = new Vector2(infernoPosX, 150);
             ModContentGenerated = downed.Contains("WorldGenned");
+            //Squid Lady
+
+            squid1 = tag.GetInt("squid1");
+            squid2 = tag.GetInt("squid2");
+            squid3 = tag.GetInt("squid3");
+            squid4 = tag.GetInt("squid4");
+            squid5 = tag.GetInt("squid5");
+            squid6 = tag.GetInt("squid6");
+            squid7 = tag.GetInt("squid7");
+            squid8 = tag.GetInt("squid8");
+            squid9 = tag.GetInt("squid9");
+            squid10 = tag.GetInt("squid10");
+            squid11 = tag.GetInt("squid11");
+            squid12 = tag.GetInt("squid12");
+            squid13 = tag.GetInt("squid13");
+            squid14 = tag.GetInt("squid14");
+            squid15 = tag.GetInt("squid15");
+            squid16 = tag.GetInt("squid16");
         }
 
 

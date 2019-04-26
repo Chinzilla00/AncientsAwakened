@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.Flasks
 {
     public class DarkwaterFlask : ModItem
 	{

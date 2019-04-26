@@ -40,6 +40,15 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         {
             return Color.White ;
         }
+
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraShard>());
+            }
+        }
+
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
@@ -226,6 +235,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 			return false;
 		}
     }
+
+
 
     public class TerraWeaverBody : PurityWeaver
     {

@@ -2,9 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.Flasks
 {
-    public class Antifungus : ModItem
+    public class Fungicide : ModItem
 	{
         public override void SetDefaults()
         {
@@ -25,8 +25,8 @@ namespace AAMod.Items.Usable
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Antifungus");
-            Tooltip.SetDefault(@"Made by the Swarm to combat the ever-expending mushroom menace.");
+            DisplayName.SetDefault("Fungicide");
+            Tooltip.SetDefault(@"Originally concocted by the Swarm to combat the ever-expending mushroom menace.");
         }
     }
 }

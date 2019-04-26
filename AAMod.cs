@@ -1121,7 +1121,6 @@ namespace AAMod
         {
             RecipeFinder finder = new RecipeFinder();
             {
-                finder = new RecipeFinder();
                 finder.AddIngredient(ItemID.BloodButcherer, 1);
                 finder.AddIngredient(ItemID.FieryGreatsword, 1);
                 finder.AddIngredient(ItemID.BladeofGrass, 1);
@@ -1166,6 +1165,8 @@ namespace AAMod
                 recipe.SetResult(ItemID.TerraBlade, 1);
                 recipe.AddRecipe();
             }
+
+            #region Music Boxes
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.Wood, 30);
@@ -1607,6 +1608,8 @@ namespace AAMod
                 recipe.SetResult(ItemID.MusicBoxDD2, 1);
                 recipe.AddRecipe();
             }
+            #endregion
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.Glass, 10);
@@ -1616,6 +1619,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.SnowGlobe, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.SnowGlobe, 1);
@@ -1626,6 +1630,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.GravityGlobe, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "MushiumBar", 1);
@@ -1634,6 +1639,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.ShroomiteBar, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
@@ -1644,6 +1650,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.RagePotion, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
@@ -1654,6 +1661,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.WrathPotion, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
@@ -1663,6 +1671,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.WaterWalkingPotion, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
@@ -1672,6 +1681,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.ObsidianSkinPotion, 1);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.Glass, 10);
@@ -1689,6 +1699,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.IceMirror);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.IceBlock, 30);
@@ -1698,6 +1709,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.IceBlade);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "MushroomBlock");
@@ -1705,6 +1717,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.Mushroom, 3);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.PlatinumBroadsword);
@@ -1714,6 +1727,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.Starfury);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.GoldBroadsword);
@@ -1723,6 +1737,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.Starfury);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.PlatinumBroadsword);
@@ -1731,6 +1746,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.EnchantedSword);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.GoldBroadsword);
@@ -1739,6 +1755,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.EnchantedSword);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.EnchantedSword);
@@ -1747,6 +1764,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.Arkhalis);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.CobaltBar, 5);
@@ -1754,6 +1772,7 @@ namespace AAMod
                 recipe.SetResult(ItemID.CobaltShield);
                 recipe.AddRecipe();
             }
+
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(null, "PalladiumShield");
@@ -1762,6 +1781,8 @@ namespace AAMod
                 recipe.SetResult(ItemID.ObsidianShield);
                 recipe.AddRecipe();
             }
+
+            #region Transmuter
 
             {
                 ModRecipe recipe = new ModRecipe(this);
@@ -2432,9 +2453,409 @@ namespace AAMod
                 recipe.SetResult(ItemID.TitaniumOre);
                 recipe.AddRecipe();
             }
-                #endregion
+            #endregion
 
-        }   
+            #endregion
+
+            #region Mushroom Potions
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.AmmoReservationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Orange");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ArcheryPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.BattlePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Brown");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.BuilderPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.AmmoReservationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.CalmingPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Brown");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.CratePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Orange");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.TrapsightPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.EndurancePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.EndurancePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.FeatherfallPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.FishingPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.FlipperPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.GillsPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.GravitationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Pink");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.HeartreachPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Orange");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.HunterPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.InfernoPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.InvisibilityPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Yellow");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.IronskinPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.LifeforcePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.MagicPowerPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Pink");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ManaRegenerationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.MiningPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.NightOwlPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ObsidianSkinPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.RagePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Pink");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.RegenerationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Yellow");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ShinePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.SonarPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Yellow");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.SpelunkerPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.SummoningPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.SwiftnessPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.ThornsPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.TitanPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Yellow");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WarmthPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WaterWalkingBoots);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WrathPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(null, "Orange");
+                recipe.AddIngredient(null, "Yellow");
+                recipe.AddIngredient(null, "Green");
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(null, "Gray");
+                recipe.AddIngredient(null, "Brown");
+                recipe.AddIngredient(null, "Pink");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.GenderChangePotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Red");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WrathPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.RecallPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Purple");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.TeleportationPotion);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Blue");
+                recipe.AddIngredient(ItemID.BottledWater);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.WormholePotion);
+                recipe.AddRecipe();
+            }
+            #endregion
+
+        }
 
         //Stuff 4 Grox
         public override object Call(params object[] args)
@@ -2531,5 +2952,10 @@ namespace AAMod
                 return true;
             }
         }
+    }
+
+    public enum MPMessageType : byte
+    {
+        RequestUpdateSquidLady
     }
 }
