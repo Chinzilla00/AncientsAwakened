@@ -12,6 +12,7 @@ namespace AAMod.Tiles.Crates
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Inferno Crate");
             Main.tileFrameImportant[Type] = true;
+            Main.tileTable[Type] = true;
             Main.tileSolidTop[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
