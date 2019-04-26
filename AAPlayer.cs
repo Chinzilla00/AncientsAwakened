@@ -596,7 +596,7 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
-	    if (trueNights && Main.rand.Next(4) == 0)
+	    if (trueNights && item.melee && Main.rand.Next(4) == 0)
             {
                 if (target.life <= 0)
                 {
@@ -2212,7 +2212,7 @@ namespace AAMod
                 target.AddBuff(BuffID.CursedInferno, 300);
             }
 
-            if (trueNights && Main.rand.Next(4) == 0)
+            if (trueNights && proj.melee && Main.rand.Next(4) == 0)
             {
                 if (target.life <= 0)
                 {
