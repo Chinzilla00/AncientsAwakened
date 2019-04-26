@@ -1003,7 +1003,7 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon");
                 return;
             }
-            if (zoneIZ && AAWorld.downedZero)
+            if (zoneIZ && AAWorld.downedZero && !player.ZoneRockLayerHeight)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
@@ -1033,6 +1033,14 @@ namespace AAMod
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;
+
+                if (player.ZoneRockLayerHeight)
+                {
+                    priority = MusicPriority.BiomeMedium;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/UGVoid");
+
+                    return;
+                }
                 if (NPC.downedMoonlord && !AAWorld.downedZero)
                 {
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky");

@@ -864,14 +864,14 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
                 pool.Clear();
-                pool.Add(mod.NPCType("Searcher1"), .1f);
+                pool.Add(mod.NPCType("Searcher1"), .05f);
                 if (AAWorld.downedSag)
                 {
-                    pool.Add(mod.NPCType("SagittariusMini"), .05f);
+                    pool.Add(mod.NPCType("SagittariusMini"), .025f);
                 }
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Vortex"), 0.3f);
+                    pool.Add(mod.NPCType("Vortex"), 0.05f);
                     pool.Add(mod.NPCType("Scout"), .05f);
                 }
                 if (NPC.downedMoonlord)
