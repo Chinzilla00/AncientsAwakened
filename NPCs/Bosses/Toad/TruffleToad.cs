@@ -183,6 +183,23 @@ namespace AAMod.NPCs.Bosses.Toad
             if (npc.velocity.Y == 0)
             {
                 npc.frame.Y = 0;
+		if (internalAI[0] == AISTATE_BARF)
+		{
+		    if (npc.frameCounter < 648)
+		    {
+		        npc.frameCounter = 648;
+		    }
+		    if (npc.frameCounter >= 10)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += 72;
+                        if (npc.frame.Y > 864)
+                        {
+                            npc.frameCounter = 0;
+                            npc.frame.Y = 864;
+                        }
+                    }
+		}
             }
             else
             {
