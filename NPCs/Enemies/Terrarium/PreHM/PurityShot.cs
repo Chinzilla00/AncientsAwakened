@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
-    public class TerraShot : ModProjectile
+    public class PurityShot : ModProjectile
     {
     	
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Blast");
+			DisplayName.SetDefault("Purity Blast");
             Main.projFrames[projectile.type] = 4;
 		}
     	

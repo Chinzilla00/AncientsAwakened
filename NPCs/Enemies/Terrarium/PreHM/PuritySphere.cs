@@ -7,42 +7,45 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
-    public class TerraSquid : ModNPC
+    public class PuritySphere : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Squid");
-			Main.npcFrameCount[npc.type] = 4;
+			DisplayName.SetDefault("Purity Sphere");
 		}
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax =  60;
-            npc.defense = 20;
-            npc.damage = 10;
             npc.width = 26;
-            npc.height = 20;
-            npc.aiStyle = -1;
+            npc.height = 26;
+            npc.lifeMax =  60;
+            npc.defense = 5;
+            npc.damage = 10;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
-            npc.noTileCollide = false;
             npc.noGravity = true;
+            npc.noTileCollide = false;
         }
-        
+
         public override Color? GetAlpha(Color drawColor)
         {
             return Color.White;
         }
 
+        public float[] shootAI = new float[4];
+
         public override void AI()
         {
+            Player player = Main.player[npc.target];
+            BaseAI.AISkull(npc, ref npc.ai, false, 4, 300, .011f, .020f);
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TerraShot"), ref shootAI[0], 120, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 3f, true, new Vector2(20f, 15f));
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 100, default(Color), .8f);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = true;
                 }
@@ -52,21 +55,16 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.alpha = 0;
             }
-            BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, true, 800, 400, 180, 2);
 
-            npc.rotation = npc.velocity.X / 15f;
-
-            npc.frameCounter++;
-            if (npc.frameCounter >= 10)
+            if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                npc.frameCounter = 0;
-                npc.frame.Y += 36;
-                if (npc.frame.Y > (36 * 3))
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y = 0;
-                }
+                npc.noTileCollide = true;
             }
+            else
+            {
+                npc.noTileCollide = false;
+            }
+
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
-    public class TerraWeaver : ModNPC
+    public class PurityWeaver : ModNPC
 	{
         
         public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaver"; } }
@@ -227,7 +227,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 		}
     }
 
-    public class TerraWeaverBody : TerraWeaver
+    public class TerraWeaverBody : PurityWeaver
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaverBody"; } }
 
@@ -354,7 +354,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         }
     }
 
-    public class TerraWeaverTail : TerraWeaver
+    public class TerraWeaverTail : PurityWeaver
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaverTail"; } }
 

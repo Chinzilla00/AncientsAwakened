@@ -8,12 +8,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
-    public class TerraCrawler : ModNPC
+    public class PurityCrawler : ModNPC
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraCrawler"; } }
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Crawler");
+			DisplayName.SetDefault("Purity Crawler");
 			Main.npcFrameCount[npc.type] = 5;
 		}
 

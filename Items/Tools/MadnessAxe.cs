@@ -13,12 +13,12 @@ namespace AAMod.Items.Tools
             item.useStyle = 1;
             item.useTurn = true;
             item.useAnimation = 20;
-            item.useTime = 16;
+            item.useTime = 20;
             item.autoReuse = true;
             item.width = 24;
             item.height = 28;
             item.damage = 7;
-            item.axe = 55;
+            item.axe = 10;
             item.UseSound = SoundID.Item1;
             item.knockBack = 2.5f;
             item.value = 10000;
