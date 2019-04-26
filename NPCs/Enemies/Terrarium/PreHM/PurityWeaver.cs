@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
     public class PurityWeaver : ModNPC
 	{
         
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaver"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaver"; } }
         
 
         public override void SetStaticDefaults()
@@ -79,12 +79,12 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     int WormLength = 9;
                     for (int i = 0; i < WormLength; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<TerraWeaverBody>(), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<PurityWeaverBody>(), npc.whoAmI, 0, latestNPC);
                         Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                         Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
                     }
 
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<TerraWeaverTail>(), npc.whoAmI, 0, latestNPC);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<PurityWeaverTail>(), npc.whoAmI, 0, latestNPC);
                     Main.npc[(int)latestNPC].realLife = npc.whoAmI;
                     Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 
@@ -238,9 +238,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
 
 
-    public class TerraWeaverBody : PurityWeaver
+    public class PurityWeaverBody : PurityWeaver
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaverBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverBody"; } }
 
         public override void SetStaticDefaults()
         {
@@ -365,9 +365,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         }
     }
 
-    public class TerraWeaverTail : PurityWeaver
+    public class PurityWeaverTail : PurityWeaver
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraWeaverTail"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverTail"; } }
 
         public override void SetStaticDefaults()
         {

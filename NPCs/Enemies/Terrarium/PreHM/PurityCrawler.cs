@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
     public class PurityCrawler : ModNPC
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/TerraCrawler"; } }
+        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityCrawler"; } }
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Purity Crawler");
