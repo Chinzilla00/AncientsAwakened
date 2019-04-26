@@ -1162,7 +1162,7 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (downedEquinox == true)
+            if (downedEquinox)
             {
                 if (RadiumOre == false)
                 {
@@ -1187,7 +1187,7 @@ namespace AAMod
                 }
             }
 
-            if (NPC.downedMoonlord == true)
+            if (NPC.downedMoonlord)
             {
                 if (Ancients == false)
                 {
@@ -1205,7 +1205,7 @@ namespace AAMod
                     return;
                 }
             }
-            if (NPC.downedMechBossAny == true)
+            if (NPC.downedMechBossAny)
             {
                 if (HallowedOre == false)
                 {
@@ -1222,9 +1222,9 @@ namespace AAMod
                 }
             }
 
-            if (downedSisters == true)
+            if (downedSisters)
             {
-                if (DiscordOres == false)
+                if (!DiscordOres)
                 {
                     DiscordOres = true;
                     Main.NewText("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
@@ -1250,9 +1250,9 @@ namespace AAMod
                     }
                 }
             }
-            if (NPC.downedBoss3 == true)
+            if (NPC.downedBoss3)
             {
-                if (Dynaskull == false)
+                if (!Dynaskull)
                 {
                     Dynaskull = true;
                     Main.NewText("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
@@ -1271,22 +1271,14 @@ namespace AAMod
                     }
                 }
             }
-            if (NPC.downedPlantBoss == true)
+            if (NPC.downedPlantBoss)
             {
-                if (Evil == false)
+                if (!Evil)
                 {
                     Evil = true;
                     Main.NewText("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     Main.NewText("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
                     Main.NewText("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
-                }
-            }
-            if (AAWorld.downedShen)
-            {
-                if (Empowered == false)
-                {
-                    Empowered = true;
-                    Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)
@@ -1329,7 +1321,7 @@ namespace AAMod
                     downedAllAncients = true;
                 }
             }
-            if (Main.hardMode == true)
+            if (Main.hardMode)
             {
                 if (InfernoStripe == false)
                 {

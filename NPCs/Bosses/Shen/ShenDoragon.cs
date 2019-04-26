@@ -797,6 +797,10 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
 				if (Main.expertMode)
                 {
+                    if (!AAWorld.downedShen)
+                    {
+                        Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDeath>());
                     npc.DropBossBags();
@@ -806,14 +810,19 @@ namespace AAMod.NPCs.Bosses.Shen
             else
 			{
 				if (!Main.expertMode)
-				{
+                {
+                    Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (!AAWorld.downedShen)
+                    {
+                        Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    }
 					AAWorld.downedShen = true;
 					npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
 					string[] lootTable = { "ChaosSlayer", "MeteorStrike", "Skyfall" };
 					int loot = Main.rand.Next(lootTable.Length);
 					npc.DropLoot(mod.ItemType(lootTable[loot]));
                     BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
-                    Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
 				}
 				else
 				{
