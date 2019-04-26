@@ -210,6 +210,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "Oh! Are those purity shards? Perfect! Here, take this. You can purify most biomes with this special flask I made.";
                         player.QuickSpawnItem(mod.ItemType("PurityFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("PurityFlask");
                     }
 
                     if (Main.netMode == 1)
@@ -234,6 +235,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "Dragons, eh? I've seen scarier. Anyways, here's a new flask. Careful, it's hot.";
                         player.QuickSpawnItem(mod.ItemType("AshJar"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("AshJar");
                     }
 
                     if (Main.netMode == 1)
@@ -258,6 +260,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "What is this..? It's literally a ball of...something. I'm gonna look into it. Here, new flask. Go crazy.";
                         player.QuickSpawnItem(mod.ItemType("DarkwaterFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("DarkwaterFlask");
                     }
 
                     if (Main.netMode == 1)
@@ -281,7 +284,8 @@ namespace AAMod.NPCs.TownNPCs
                     if (AAWorld.squid4 == 4)
                     {
                         Main.npcChatText = "Why are you gagging? There are things that smell way worse than this. It's only decomposing flesh.";
-                        player.QuickSpawnItem(mod.ItemType("CorruptiionFlask"), 5);
+                        player.QuickSpawnItem(mod.ItemType("CorruptionFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("CorruptionFlask");
                     }
 
                     if (Main.netMode == 1)
@@ -306,6 +310,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "Hm...bones? I've seen ones like these before. Similar to ones from where I came.";
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("CrimsonFlask");
                     }
                     if (Main.netMode == 1)
                     {
@@ -327,10 +332,9 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid6 == 4)
                     {
-                        
-
                         Main.npcChatText = "What is this stuff? It's...sparkly..? Whatever, I'll research it a bit more. Here's a new flask.";
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
                     }
                     if (Main.netMode == 1)
                     {
@@ -353,7 +357,8 @@ namespace AAMod.NPCs.TownNPCs
                     if (AAWorld.squid7 == 4)
                     {
                         Main.npcChatText = "Wow this is heavy! What is this? I've never seen this kind of metal before. Oh right. New flask. Here.";
-                        player.QuickSpawnItem(mod.ItemType("SeaSpaghetti"), 5);
+                        player.QuickSpawnItem(mod.ItemType("VoidFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("VoidFlask");
                     }
                     if (Main.netMode == 1)
                     {
@@ -374,8 +379,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.inventory[Item8] = new Item();
                     }
                     if (AAWorld.squid8 == 4)
-                    {Main.npcChatText = "Hmm...glowing spores? I've never seen something like this aside from glowing mushrooms. Speaking of mushrooms, here, I found a recipe for some really good fungicide. I made it into a flask.";
+                    {
+                        Main.npcChatText = "Hmm...glowing spores? I've never seen something like this aside from glowing mushrooms. Speaking of mushrooms, here, I found a recipe for some really good fungicide. I made it into a flask.";
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("Fungicide");
                     }
                     if(Main.netMode == 1)
                         {
@@ -399,6 +406,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "What is this stuff? It's so squishy...I'll make it work I guess. Oh by the way, " + Main.npc[Mushman].GivenName + " showed me how to make mushroom spores. Feel free to use it how you see fit.";
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("SporeSac");
                     }
                     if (Main.netMode == 1)
                     {
@@ -422,6 +430,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "Hm, this stuff is pretty glowy. *Sniff* Yowza that burns my nostrils. Anyways, here, I made a glowing version of  " + Main.npc[Mushman].GivenName + "'s spores.";
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("GlowingSporeSac");
                     }
                     if (Main.netMode == 1)
                     {
