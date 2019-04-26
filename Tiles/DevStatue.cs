@@ -11,7 +11,7 @@ namespace AAMod.Tiles
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.StyleWrapLimit = 36;
 			TileObjectData.addTile(Type);
@@ -81,7 +81,7 @@ namespace AAMod.Tiles
             }
 			if (item > 0)
 			{
-				Item.NewItem(i * 16, j * 16, 48, 48, item);
+				Item.NewItem(i * 16, j * 16, 36, 36, item);
 			}
 		}
 	}

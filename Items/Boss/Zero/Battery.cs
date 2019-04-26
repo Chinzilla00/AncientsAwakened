@@ -42,7 +42,7 @@ Non-consumable");
 			item.knockBack = 7f;
 			item.value = Item.buyPrice(1, 0, 0, 0); ;
 			item.rare = 6;
-			item.shoot = mod.ProjectileType("Antimatter");   //The projectile shoot when your weapon using this ammo
+			item.shoot = mod.ProjectileType("RealityLaser");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 1f;                  //The speed of the projectile
 			item.ammo = AmmoID.Bullet;              //The ammo class this ammo belongs to.
 		}

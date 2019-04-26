@@ -206,7 +206,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item] = new Item();
                     }
-                    if (AAWorld.squid1 == 2)
+                    if (AAWorld.squid1 == 4)
                     {
                         Main.npcChatText = "Oh! Are those purity shards? Perfect! Here, take this. You can purify most biomes with this special flask I made.";
                         player.QuickSpawnItem(mod.ItemType("PurityFlask"), 5);
@@ -230,7 +230,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item2] = new Item();
                     }
-                    if (AAWorld.squid2 == 2)
+                    if (AAWorld.squid2 == 4)
                     {
                         Main.npcChatText = "Dragons, eh? I've seen scarier. Anyways, here's a new flask. Careful, it's hot.";
                         player.QuickSpawnItem(mod.ItemType("AshJar"), 5);
@@ -254,7 +254,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item3] = new Item();
                     }
-                    if (AAWorld.squid3 == 2)
+                    if (AAWorld.squid3 == 4)
                     {
                         Main.npcChatText = "What is this..? It's literally a ball of...something. I'm gonna look into it. Here, new flask. Go crazy.";
                         player.QuickSpawnItem(mod.ItemType("DarkwaterFlask"), 5);
@@ -278,7 +278,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item4] = new Item();
                     }
-                    if (AAWorld.squid4 == 7)
+                    if (AAWorld.squid4 == 4)
                     {
                         Main.npcChatText = "Why are you gagging? There are things that smell way worse than this. It's only decomposing flesh.";
                         player.QuickSpawnItem(mod.ItemType("CorruptiionFlask"), 5);
@@ -302,32 +302,19 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item5] = new Item();
                     }
-                    if (AAWorld.squid5 == 7)
+                    if (AAWorld.squid5 == 4)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(5);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid5++;
-
                         Main.npcChatText = "Hm...bones? I've seen ones like these before. Similar to ones from where I came.";
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
                     }
-                    else if (AAWorld.squid5 < 8)
+                    if (Main.netMode == 1)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(5);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid5++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(5);
+                        netMessage.Send();
                     }
+                    AAWorld.squid5++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else if (Item6 >= 0 && AAWorld.squid6 < 5)
@@ -338,32 +325,21 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item6] = new Item();
                     }
-                    if (AAWorld.squid6 == 2)
+                    if (AAWorld.squid6 == 4)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(6);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid6++;
+                        
 
                         Main.npcChatText = "What is this stuff? It's...sparkly..? Whatever, I'll research it a bit more. Here's a new flask.";
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
                     }
-                    else if (AAWorld.squid6 < 3)
+                    if (Main.netMode == 1)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(6);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid6++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(6);
+                        netMessage.Send();
                     }
+                    AAWorld.squid6++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else if (Item7 >= 0 && AAWorld.squid7 < 5)
@@ -374,32 +350,19 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item7] = new Item();
                     }
-                    if (AAWorld.squid7 == 2)
+                    if (AAWorld.squid7 == 4)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid7++;
-
                         Main.npcChatText = "Wow this is heavy! What is this? I've never seen this kind of metal before. Oh right. New flask. Here.";
                         player.QuickSpawnItem(mod.ItemType("SeaSpaghetti"), 5);
                     }
-                    else if (AAWorld.squid7 < 3)
+                    if (Main.netMode == 1)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid7++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(7);
+                        netMessage.Send();
                     }
+                    AAWorld.squid7++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else if (Item8 >= 0 && AAWorld.squid8 < 5)
@@ -410,32 +373,18 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item8] = new Item();
                     }
-                    if (AAWorld.squid8 == 2)
-                    {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid8++;
-
-                        Main.npcChatText = "Hmm...glowing spores? I've never seen something like this aside from glowing mushrooms. Speaking of mushrooms, here, I found a recipe for some really good fungicide. I made it into a flask.";
+                    if (AAWorld.squid8 == 4)
+                    {Main.npcChatText = "Hmm...glowing spores? I've never seen something like this aside from glowing mushrooms. Speaking of mushrooms, here, I found a recipe for some really good fungicide. I made it into a flask.";
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
                     }
-                    else if (AAWorld.squid8 < 3)
-                    {
-                        if (Main.netMode == 1)
+                    if(Main.netMode == 1)
                         {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid8++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(8);
+                        netMessage.Send();
                     }
+                    AAWorld.squid8++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else if (Item9 >= 0 && AAWorld.squid9 < 5 && Mushman >= 0)
@@ -446,32 +395,19 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item9] = new Item();
                     }
-                    if (AAWorld.squid9 == 2)
+                    if (AAWorld.squid9 == 4)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid9++;
-
                         Main.npcChatText = "What is this stuff? It's so squishy...I'll make it work I guess. Oh by the way, " + Main.npc[Mushman].GivenName + " showed me how to make mushroom spores. Feel free to use it how you see fit.";
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
                     }
-                    else if (AAWorld.squid9 < 3)
+                    if (Main.netMode == 1)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid9++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(9);
+                        netMessage.Send();
                     }
+                    AAWorld.squid9++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else if (Item10 >= 0 && AAWorld.squid10 < 5 && Mushman >= 0)
@@ -482,32 +418,19 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         player.inventory[Item10] = new Item();
                     }
-                    if (AAWorld.squid10 == 2)
+                    if (AAWorld.squid10 == 4)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid10++;
-
                         Main.npcChatText = "Hm, this stuff is pretty glowy. *Sniff* Yowza that burns my nostrils. Anyways, here, I made a glowing version of  " + Main.npc[Mushman].GivenName + "'s spores.";
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
                     }
-                    else if (AAWorld.squid10 < 3)
+                    if (Main.netMode == 1)
                     {
-                        if (Main.netMode == 1)
-                        {
-                            var netMessage = mod.GetPacket();
-                            netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                            netMessage.Write(7);
-                            netMessage.Send();
-                        }
-                        AAWorld.squid10++;
-
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
+                        netMessage.Write(10);
+                        netMessage.Send();
                     }
+                    AAWorld.squid10++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else

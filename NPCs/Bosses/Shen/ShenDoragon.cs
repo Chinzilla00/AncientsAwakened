@@ -185,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             get
             {
-                return ChargePrep || npc.ai[0] == 2;
+                return ChargePrep || npc.ai[0] == 2 || npc.ai[0] == 3;
             }
         }
 
@@ -377,20 +377,15 @@ namespace AAMod.NPCs.Bosses.Shen
                             case 2:
                             case 3:
                             case 4:
-                            case 5:
                                 aiChoice = 0.5f;
                                 break;
-                            case 6:
+                            case 5:
                                 npc.ai[3] = 1f;
                                 aiChoice = 2f;
                                 break;
-                            case 7:
+                            case 6:
                                 npc.ai[3] = 0f;
                                 aiChoice = 3f;
-                                break;
-                            case 8:
-                                npc.ai[3] = 0f;
-                                aiChoice = 4f;
                                 break;
                         }
                     }
@@ -439,7 +434,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (Main.netMode != 1 && (point - npc.Center).Length() < 100f)
                 {
-                    SwitchToAI(0f, 0f, 40f, npc.ai[3] + 3f);
+                    SwitchToAI(0f, 0f, 40f, npc.ai[3] + 2f);
                 }
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
@@ -514,12 +509,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianInfernoTimerMax)
                 {
-                    SwitchToAI(0f, 0f, -40f, 1f);
+                    SwitchToAI(0f, 0f, -40f, 0f);
                 }
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -50);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -350);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
@@ -541,6 +536,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
+                                infernoPos.Y -= 60;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
                             int shootThis = mod.ProjectileType("ShenFirebomb");
@@ -579,10 +575,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 2f);
+                    SwitchToAI(0f, 0f, 0f, 1f);
                 }
             }
-            else if (npc.ai[0] == 4f) //Flame Breath
+            /*else if (npc.ai[0] == 4f) //Flame Breath
             {
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -350);
                 MoveToPoint(playerPoint);
@@ -597,7 +593,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     SwitchToAI(0f, 0f, 0f, 3f);
                 }
-            }
+            }*/
 
             if (SnapToPlayer)
             {

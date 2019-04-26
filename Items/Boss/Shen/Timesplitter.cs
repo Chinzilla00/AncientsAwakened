@@ -60,10 +60,11 @@ Inflicts Daybroken and Moonraze");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("RealityBar"), 5);
-            recipe.AddIngredient(mod.ItemType("AbyssalYari"));
-			recipe.AddIngredient(mod.ItemType("SunSpear"));
-            recipe.AddTile(mod.TileType("ACS"));
+            recipe.AddIngredient(null, "Discordium", 5);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddIngredient(null, "AbyssalYari");
+			recipe.AddIngredient(null, "SunSpear");
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

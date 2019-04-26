@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                     npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
-                        Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 80 : -80), playerTarget.Center.Y);
+                        Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 120 : -120), playerTarget.Center.Y - 16);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
                         TeleportMe3 = true;

@@ -3947,6 +3947,9 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
+    <Content Include="Items\Boss\Toad\MushrockStaff.png" />
+    <Content Include="Items\Boss\Toad\ToadTongue.png" />
+    <Content Include="Items\Boss\Toad\Todegun.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
