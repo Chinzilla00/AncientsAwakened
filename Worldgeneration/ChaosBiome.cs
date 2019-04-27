@@ -92,15 +92,24 @@ namespace AAMod.Worldgeneration
             gen.Generate(genX, genY, true, true);
 
 
-            WorldGen.PlaceObject(genX + 25, genY + 204, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 44, genY + 212, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 50, genY + 222, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 82, genY + 224, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 104, genY + 232, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 125, genY + 223, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 144, genY + 217, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 162, genY + 215, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 172, genY + 206, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 24, genY + 203, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 43, genY + 211, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 59, genY + 221, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 81, genY + 223, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 103, genY + 231, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 124, genY + 222, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 143, genY + 216, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 161, genY + 214, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 171, genY + 205, mod.TileType<HydraPod>());
+            NetMessage.SendObjectPlacment(-1, genX + 25, genY + 204, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 43, genY + 211, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 59, genY + 221, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 81, genY + 223, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 103, genY + 231, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 124, genY + 222, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 143, genY + 216, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 161, genY + 214, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 171, genY + 205, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
 
             //WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
 
@@ -253,15 +262,24 @@ namespace AAMod.Worldgeneration
             gen.Generate(genX, genY, true, true);
 
             //WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
-            WorldGen.PlaceObject(genX + 34, genY + 314, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 47, genY + 315, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 58, genY + 317, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 68, genY + 317, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 79, genY + 318, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 88, genY + 316, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 97, genY + 313, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 104, genY + 308, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 25, genY + 308, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 24, genY + 307, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 33, genY + 313, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 46, genY + 314, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 57, genY + 316, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 67, genY + 316, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 78, genY + 317, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 87, genY + 315, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 96, genY + 312, mod.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 103, genY + 307, mod.TileType<DragonEgg>());
+            NetMessage.SendObjectPlacment(-1, genX + 24, genY + 307, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 33, genY + 313, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 46, genY + 314, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 57, genY + 316, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 67, genY + 316, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 78, genY + 317, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 87, genY + 315, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 96, genY + 312, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 103, genY + 307, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
