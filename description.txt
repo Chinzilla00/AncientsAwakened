@@ -12,7 +12,7 @@ This mod adds:
 
 100+ NPCs
 
-16 Bosses (7 Pre-Hardmode, 3 Hardmode, and 6 Post-Moon Lord)
+18 Bosses (7 Pre-Hardmode, 4 Hardmode, and 5 Post-Moon Lord)
 
 4 New Biomes.
 
