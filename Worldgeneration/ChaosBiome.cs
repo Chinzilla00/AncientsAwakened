@@ -87,9 +87,9 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
-			int genX = origin.X;
-			int genY = origin.Y;
-			gen.Generate(genX, genY, true, true);
+            int genX = origin.X - (gen.width / 2);
+            int genY = origin.Y - 30;
+            gen.Generate(genX, genY, true, true);
 
 
             WorldGen.PlaceObject(genX + 25, genY + 204, mod.TileType<HydraPod>());
@@ -248,8 +248,8 @@ namespace AAMod.Worldgeneration
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
-			int genX = origin.X;
-			int genY = origin.Y;
+			int genX = origin.X - (gen.width / 2);
+            int genY = origin.Y - 80;
             gen.Generate(genX, genY, true, true);
 
             //WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
