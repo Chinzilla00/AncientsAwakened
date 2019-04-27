@@ -47,7 +47,7 @@ Only craftable in expert mode");
 		{
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-            SpawnBoss(player, "YamataA", "Yamata Awakened");
+            SpawnBoss(player, "YamataA");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             return true;
 		}
@@ -86,17 +86,15 @@ Only craftable in expert mode");
             return false;
         }
 
-        public void SpawnBoss(Player player, string name, string displayName)
+        public void SpawnBoss(Player player, string name)
 		{
-			if (Main.netMode != 1)
-			{
-				int bossType = mod.NPCType(name);
-				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
-				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-				Main.npc[npcID].Center = player.Center - new Vector2(0f, 100f);
-				Main.npc[npcID].netUpdate2 = true;
-			}
-		}	
+            int SpawnX = (int)MathHelper.Lerp(-1000, 1000, (float)Main.rand.NextDouble());
+            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 50), mod.NPCType(name), 0, 0f, 0f, 0f, 0f, 255);
+            if (Main.netMode == 2 && num < 200)
+            {
+                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
+            }
+        }	
 
 		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
 		public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }		

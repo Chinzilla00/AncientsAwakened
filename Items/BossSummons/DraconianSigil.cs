@@ -94,8 +94,7 @@ Only Usable during the day");
             {
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
-
-            SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Akuma"));
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }
@@ -108,7 +107,7 @@ Only Usable during the day");
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 

@@ -34,7 +34,7 @@ Can Only be used at night");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, NPCID.SkeletronHead, "Skeletron");
+            NPC.SpawnOnPlayer(player.whoAmI, NPCID.SkeletronHead);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
@@ -56,7 +56,7 @@ Can Only be used at night");
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
                 if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                 else

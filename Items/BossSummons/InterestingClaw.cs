@@ -56,9 +56,8 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("The Grips of Chaos have Awoken!", new Color(175, 75, 255));
-            SpawnBoss(player, "GripOfChaosBlue", "GripOfChaosBlue");
-            SpawnBoss(player, "GripOfChaosRed", "GripOfChaosRed");
+            AAPlayer.SilentBossSpawn(mod, player, "GripOfChaosBlue");
+            AAPlayer.SilentBossSpawn(mod, player, "GripOfChaosRed");
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
@@ -71,7 +70,7 @@ Only usable at night");
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 

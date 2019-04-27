@@ -34,7 +34,7 @@ Can only be used in a glowing mushroom biome");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, NPC.downedPlantBoss ? "FeudalFungusA" : "FeudalFungus", "The Feudal Fungus");
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("FeudalFungus"));
             if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Feudal Fungus appears!", Color.SkyBlue, false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
@@ -58,21 +58,6 @@ Can only be used in a glowing mushroom biome");
             }
             return false;
         }
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
-        }
-
-        public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
 
         public override void AddRecipes()
         {

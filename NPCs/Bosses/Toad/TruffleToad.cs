@@ -66,6 +66,7 @@ namespace AAMod.NPCs.Bosses.Toad
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");
             npc.netAlways = true;
             bossBag = mod.ItemType("ToadBag");
+            npc.alpha = 255;
         }
       
 		public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_TONGUE = 2;
@@ -79,6 +80,28 @@ namespace AAMod.NPCs.Bosses.Toad
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
 
+            if (player != null)
+            {
+                float dist = npc.Distance(player.Center);
+                if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                {
+                    npc.alpha += 5;
+                    if (npc.alpha >= 255)
+                    {
+                        Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(2) == 0 ? 400 : -400), player.Center.Y - 16);
+                        npc.Center = tele;
+                        npc.netUpdate = true;
+                    }
+                }
+                else
+                {
+                    npc.alpha -= 3;
+                    if (npc.alpha <= 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+            }
 
             if (npc.velocity.X < 0)
             {

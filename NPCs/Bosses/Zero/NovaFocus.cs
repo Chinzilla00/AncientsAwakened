@@ -197,11 +197,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
                 float NewRotation = (float)Math.Atan2(num2, num1);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
                 ++npc.localAI[0];
                 if (npc.localAI[0] <= 200.0)
                     return;
-                if (npc.localAI[0] > 300)
+                if (npc.localAI[0] > 360)
                 {
                     npc.localAI[0] = 0.0f;
                     LaserTime = 0;
@@ -281,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float num8 = (float)Math.Sqrt((num6 * (double)num6) + (num7 * (double)num7));
                 float NewRotation = (float)Math.Atan2(num7, num6);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
                 if (Main.netMode != 1)
                     return;
                 ++npc.localAI[0];

@@ -87,7 +87,9 @@ Only craftable in expert mode");
             Main.NewText("D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER", Color.Red.R, Color.Red.G, Color.Red.B);
             if (Main.netMode != 1)
             {
-                NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y + 1200, mod.NPCType("ZeroAwakened"));
+                AAWorld.zeroUS = true;
+                if (!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
+                    AAPlayer.SilentBossSpawn(mod, player, "ZeroAwakened");
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;

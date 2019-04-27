@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.aiStyle = -1;
             npc.timeLeft = 10;
             npc.scale *= 1.3f;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -146,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)center.X, (int)center.Y, bossType, 0, 0, 0, 0, 0, npc.target);
                 Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true;			
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;			
             }
         }
 

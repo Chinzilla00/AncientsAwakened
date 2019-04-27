@@ -45,56 +45,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
         }
 
-        public override void PostAI()
+        public override bool PreAI()
         {
             if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
                 npc.life = 0;
             }
-            Player player = Main.player[npc.target];
-            if (internalAI[0] != AISTATE_MELEE)
-            {
-                if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
-                {
-                    if (pos == -250)
-                    {
-                        pos = 250;
-                    }
-
-                    npc.direction = 1;
-
-                    if (FlyingPositive)
-                    {
-                        FlyingBack = true;
-                    }
-                    else
-                    {
-                        FlyingBack = false;
-                    }
-                }
-                else //If NPC's X position is higher than the player's
-                {
-                    if (pos == 250)
-                    {
-                        pos = -250;
-                    }
-
-                    npc.direction = -1;
-
-                    if (FlyingNegative)
-                    {
-                        FlyingBack = true;
-                    }
-                    else
-                    {
-                        FlyingBack = false;
-                    }
-                }
-            }
-            else
-            {
-                npc.direction = npc.velocity.X > 0 ? -1 : 1;
-            }
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+            Main.npc[DeathAnim].velocity = npc.velocity;
+            return true;
         }
 
         public override bool CheckActive()

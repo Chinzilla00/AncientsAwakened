@@ -41,7 +41,7 @@ namespace AAMod.Tiles
             {
                 int width = 16, height = 16;
                 int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0);
-                int frameY = (tile != null && tile.active() ? tile.frameY : 0);
+                int frameY = (tile != null && tile.active() ? tile.frameY + 1 : 0);
                 BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, GetColor);
             }
         }
