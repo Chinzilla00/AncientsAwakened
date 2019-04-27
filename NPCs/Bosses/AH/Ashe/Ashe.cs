@@ -77,9 +77,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             return null;
         }
 
-        bool FlyingBack = false;
-        bool FlyingPositive = false;
-        bool FlyingNegative = false;
+        public bool FlyingBack = false;
+        public bool FlyingPositive = false;
+        public bool FlyingNegative = false;
         public float MeleeSpeed = 6f;
         public float pos = 250f;
         private bool HasFiredProj = false;
