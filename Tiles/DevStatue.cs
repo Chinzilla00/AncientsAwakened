@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -11,8 +12,11 @@ namespace AAMod.Tiles
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-			TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
+            TileObjectData.newTile.Height = 3;
+            TileObjectData.newTile.Origin = new Point16(1, 2);
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+            TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.StyleWrapLimit = 36;
 			TileObjectData.addTile(Type);
 			dustType = 2;
