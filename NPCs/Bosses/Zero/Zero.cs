@@ -401,7 +401,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.ai[2] >= 600f)
                 {
                     npc.ai[2] = 0f;
-                    npc.ai[1] = 1f;
+                    if (NPC.CountNPCS(mod.NPCType<SearcherZero>()) < 1)
+                    {
+                        npc.ai[1] = Main.rand.Next(2) == 0 ? 1f : 6f;
+                    }
+                    else
+                    {
+                        npc.ai[1] = 1f;
+                    }
                     npc.TargetClosest(true);
                     npc.netUpdate = true;
                 }
@@ -460,7 +467,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = true;
                 npc.damage = 200;
-                npc.rotation += (float)npc.direction * 0.7f;
+                npc.rotation += (float)npc.direction * 0.4f;
                 Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                 float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                 float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;

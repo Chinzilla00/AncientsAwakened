@@ -59,8 +59,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            const float desiredFlySpeedInPixelsPerFrame = 5;
+            const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
@@ -87,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            for (int dust = 0; dust <= 10; dust++)
+            for (int dust = 0; dust <= 4; dust++)
             {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
             }

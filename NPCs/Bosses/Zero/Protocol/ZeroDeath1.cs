@@ -26,12 +26,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.expertMode && !AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
             {
-                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
             if (Main.expertMode && AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
             {
-                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN", Color.Red.R, Color.Red.G, Color.Red.B);
+                Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN.", Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
             if (!AAWorld.downedIZ)

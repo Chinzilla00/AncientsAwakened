@@ -2796,7 +2796,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WaterWalkingBoots);
+                recipe.SetResult(ItemID.WaterWalkingPotion);
                 recipe.AddRecipe();
             }
 

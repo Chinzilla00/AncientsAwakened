@@ -51,6 +51,50 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 npc.life = 0;
             }
+            Player player = Main.player[npc.target];
+            if (internalAI[0] != AISTATE_MELEE)
+            {
+                if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
+                {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
+
+                    npc.direction = 1;
+
+                    if (FlyingPositive)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
+                }
+                else //If NPC's X position is higher than the player's
+                {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
+
+                    npc.direction = -1;
+
+                    if (FlyingNegative)
+                    {
+                        FlyingBack = true;
+                    }
+                    else
+                    {
+                        FlyingBack = false;
+                    }
+                }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? -1 : 1;
+            }
         }
 
         public override bool CheckActive()
@@ -61,6 +105,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             return false;
         }
+        
 
         public override void NPCLoot()
         {

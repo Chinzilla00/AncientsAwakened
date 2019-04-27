@@ -24,7 +24,26 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 			}
 		}
 
-		public override void ReceiveExtraAI(BinaryReader reader)
+        public override void PostAI()
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            {
+                npc.life = 0;
+            }
+        }
+
+        public override bool PreNPCLoot()
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
 		{
 			base.ReceiveExtraAI(reader);
 			if(Main.netMode == 1)

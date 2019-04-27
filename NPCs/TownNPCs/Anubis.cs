@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -32,7 +33,7 @@ namespace AAMod.NPCs.TownNPCs
 			NPCID.Sets.AttackType[npc.type] = 0;
 			NPCID.Sets.AttackTime[npc.type] = 40;
 			NPCID.Sets.AttackAverageChance[npc.type] = 20;
-			NPCID.Sets.HatOffsetY[npc.type] = 2;
+			NPCID.Sets.HatOffsetY[npc.type] = 3;
 		}
 
 		public override void SetDefaults()
@@ -450,6 +451,11 @@ namespace AAMod.NPCs.TownNPCs
             if (player.head == 200 && player.body == 198 && player.legs == 142)
             {
                 chat.Add("Hey, nice outfit.");
+            }
+
+            if (BirthdayParty.GenuineParty || BirthdayParty.ManualParty)
+            {
+                chat.Add("Hey, like my floating party hat? Magic is fun.");
             }
 
             if (AAWorld.DiscoBall > 0)

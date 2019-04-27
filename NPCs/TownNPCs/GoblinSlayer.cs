@@ -33,7 +33,7 @@ namespace AAMod.NPCs.TownNPCs
             NPCID.Sets.AttackType[npc.type] = 0;
             NPCID.Sets.AttackTime[npc.type] = 40;
             NPCID.Sets.AttackAverageChance[npc.type] = 20;
-            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            NPCID.Sets.HatOffsetY[npc.type] = 0;
         }
 
         public override void SetDefaults()

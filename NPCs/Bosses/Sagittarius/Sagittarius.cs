@@ -82,6 +82,15 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.direction = -1;
+            }
+            else
+            {
+                npc.direction = 1;
+            }
+
             if (internalAI[0] == 0)
             {
                 if (Main.netMode != 1)

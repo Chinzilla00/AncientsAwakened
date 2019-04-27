@@ -438,8 +438,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.direction = npc.velocity.X > 0 ? -1 : 1;
             }
-
-            
         }
 
         public static int VortexDamage(Mod mod)

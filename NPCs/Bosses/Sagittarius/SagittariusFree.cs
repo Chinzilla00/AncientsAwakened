@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sagittarius-A");
-            Main.npcFrameCount[npc.type] = 6;
+            Main.npcFrameCount[npc.type] = 5;
 		}
 
 		public override void SetDefaults()
