@@ -501,7 +501,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                         Main.npc[npcID].velocity *= 8f;
                         Main.npc[npcID].ai[0] = m;
-                        Main.npc[npcID].netUpdate2 = true;
+                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                     }
                 }
             }

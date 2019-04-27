@@ -135,7 +135,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)center.X, (int)center.Y, bossType, 0);
                 Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true;			
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;			
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
             }
         }

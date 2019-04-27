@@ -34,7 +34,7 @@ Can only be used in a surface glowing mushroom biome");
         
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "TruffleToad", "The Truffle Toad");
+            SpawnBoss(player, "TruffleToad");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
@@ -54,25 +54,13 @@ Can only be used in a surface glowing mushroom biome");
             return true;
         }
 
-        public void SpawnBoss(Player player, string name, string displayName)
+        public void SpawnBoss(Player player, string name)
         {
-            if (Main.netMode != 1)
+            int SpawnX = (int)MathHelper.Lerp(-500, 500, (float)Main.rand.NextDouble());
+            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 50), mod.NPCType(name), 0, 0f, 0f, 0f, 0f, 255);
+            if (Main.netMode == 2 && num < 200)
             {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(60f, 60f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true;
-                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
-                else
-                if (Main.netMode == 2)
-                {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
-                    {
-                        NetworkText.FromLiteral(npcName)
-                    }), new Color(175, 75, 255), -1);
-                }
+                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
             }
         }
 

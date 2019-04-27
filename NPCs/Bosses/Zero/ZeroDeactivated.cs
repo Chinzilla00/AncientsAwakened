@@ -44,7 +44,6 @@ namespace AAMod.NPCs.Bosses.Zero
             RingRoatation += .01f;
             if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
-				AAWorld.zeroUS = false;
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Zero"));
                 npc.active = false;
 				npc.netUpdate = true;

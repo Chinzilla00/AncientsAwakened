@@ -82,21 +82,9 @@ Only craftable in expert mode");
         {
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            SpawnBoss(player, "AkumaA", "Akuma Awakened; Blazing Fury Incarnate");
+            AAPlayer.SilentBossSpawn(mod, player, "AkumaA");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
-        }
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
         }
     }
 }

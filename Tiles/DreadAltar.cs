@@ -49,7 +49,7 @@ namespace AAMod.Tiles
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 400f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
 
             }
         }

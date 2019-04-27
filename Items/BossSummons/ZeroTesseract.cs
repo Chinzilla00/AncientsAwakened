@@ -85,20 +85,11 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
 
         public override bool UseItem(Player player)
         {
-            if (!AAWorld.downedZero && !Main.expertMode)
+            if (!AAWorld.downedZero)
             {
                 Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-
-            if (!AAWorld.downedZero && Main.expertMode)
-            {
-                Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
-            }
-            if (!Main.expertMode && AAWorld.downedZero)
-            {
-                Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
-            }
-            if (Main.expertMode && AAWorld.downedZero)
+            if (AAWorld.downedZero)
             {
                 Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
@@ -107,7 +98,7 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
             {
 				AAWorld.zeroUS = true;
 				if(!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-					NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y + 1200, mod.NPCType("Zero"));
+                    AAPlayer.SilentBossSpawn(mod, player, "Zero");
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;

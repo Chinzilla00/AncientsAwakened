@@ -56,11 +56,11 @@ Summons the chaos emperor");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            /*if (!AAWorld.downedShen)
+            if (!AAWorld.downedShen && !(player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake || player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos shrines flash through your mind", Color.DarkMagenta, false);
                 return false;
-            }*/
+            }
             for (int m = 0; m < Main.maxProjectiles; m++)
             {
                 Projectile p = Main.projectile[m];
@@ -82,11 +82,11 @@ Summons the chaos emperor");
             {
                 Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("ShenDoragon"));
             }
             if (!AAWorld.ShenSummoned)
             {
-                SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
+                AAPlayer.SilentBossSpawn(mod, player, "ShenSpawn");
                 AAWorld.ShenSummoned = true;
             }
 
@@ -102,20 +102,7 @@ Summons the chaos emperor");
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
-        }
-
-        public void SpawnBoss2(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].ai[0] = -1;
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 600);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 
