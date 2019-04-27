@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.ToadRock
+namespace AAMod.Projectiles.Toad
 {
-    public class BigCrystal : ModProjectile
+    public class ToadRock : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -31,7 +31,7 @@ namespace AAMod.Projectiles.ToadRock
 
         public override bool PreKill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<AmphibiousBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<Toadsplosion>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

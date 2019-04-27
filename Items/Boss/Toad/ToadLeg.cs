@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 
 
-namespace AAMod.Items.Accessories
+namespace AAMod.Items.Boss.Toad
 {
     [AutoloadEquip(EquipType.Shoes)]
     public class ToadLeg : ModItem

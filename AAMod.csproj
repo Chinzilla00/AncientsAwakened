@@ -1704,7 +1704,7 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
-    <Compile Include="Projectiles\Toad\ToadBoom.cs" />
+    <Compile Include="Projectiles\Toad\Toadsplosion.cs" />
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
     <Compile Include="Projectiles\Toad\ToadTongue.cs" />
@@ -5833,7 +5833,7 @@
     <Content Include="Projectiles\TitanAxe.png" />
     <Content Include="Projectiles\TitanAxeEX.png" />
     <Content Include="Projectiles\TitanEX.png" />
-    <Content Include="Projectiles\Toad\ToadBoom.png" />
+    <Content Include="Projectiles\Toad\Toadsplosion.png" />
     <Content Include="Projectiles\Toad\ToadRock.png" />
     <Content Include="Projectiles\Toad\ToadShot.png" />
     <Content Include="Projectiles\Toad\ToadTongue.png" />

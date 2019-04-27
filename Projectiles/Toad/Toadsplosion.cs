@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Toad
 {
-    public class ToadBoom : ModProjectile
+    public class Toadsplosion : ModProjectile
     {
         public override void SetStaticDefaults()
         {
