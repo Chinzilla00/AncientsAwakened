@@ -771,6 +771,11 @@
     <Compile Include="Items\Boss\Shen\Skyfall.cs" />
     <Compile Include="Items\Boss\Shen\Timesplitter.cs" />
     <Compile Include="Items\Boss\StormCharm.cs" />
+    <Compile Include="Items\Boss\Toad\ToadBag.cs" />
+    <Compile Include="Items\Boss\Toad\MushrockStaff.cs" />
+    <Compile Include="Items\Boss\Toad\ToadLeg.cs" />
+    <Compile Include="Items\Boss\Toad\ToadTongue.cs" />
+    <Compile Include="Items\Boss\Toad\Todegun.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssalYari.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssArrow.cs" />
     <Compile Include="Items\Boss\Yamata\YamataATrophy.cs" />
@@ -1699,6 +1704,10 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\Toad\ToadBoom.cs" />
+    <Compile Include="Projectiles\Toad\ToadRock.cs" />
+    <Compile Include="Projectiles\Toad\ToadShot.cs" />
+    <Compile Include="Projectiles\Toad\ToadTongue.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
     <Compile Include="Projectiles\SingularityVortex.cs" />
@@ -3948,8 +3957,12 @@
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
+    <Content Include="Items\Boss\Toad\ToadBag.png" />
+    <Content Include="Items\Boss\Toad\ToadLeg.png" />
+    <Content Include="Items\Boss\Toad\ToadLeg_Shoes.png" />
     <Content Include="Items\Boss\Toad\ToadTongue.png" />
     <Content Include="Items\Boss\Toad\Todegun.png" />
+    <Content Include="Items\Boss\Toad\TodegunFrame.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
@@ -4770,7 +4783,6 @@
     <Content Include="Items\Ranged\BoneBow.png" />
     <Content Include="Items\Ranged\Bonesaw.png" />
     <Content Include="Items\Ranged\Bubbleshot.png" />
-    <Content Include="Items\Ranged\Bunnyzooka.png" />
     <Content Include="Items\Ranged\CoinPistol.png" />
     <Content Include="Items\Ranged\CoralBow.png" />
     <Content Include="Items\Ranged\CosmicCarbine.png" />
@@ -5821,6 +5833,11 @@
     <Content Include="Projectiles\TitanAxe.png" />
     <Content Include="Projectiles\TitanAxeEX.png" />
     <Content Include="Projectiles\TitanEX.png" />
+    <Content Include="Projectiles\Toad\ToadBoom.png" />
+    <Content Include="Projectiles\Toad\ToadRock.png" />
+    <Content Include="Projectiles\Toad\ToadShot.png" />
+    <Content Include="Projectiles\Toad\ToadTongue.png" />
+    <Content Include="Projectiles\Toad\ToadTongue_Chain.png" />
     <Content Include="Projectiles\Tools\DarkmatterJackhammerPro.png" />
     <Content Include="Projectiles\Tools\DMChainsaw.png" />
     <Content Include="Projectiles\Tools\HydraTuneller.png" />

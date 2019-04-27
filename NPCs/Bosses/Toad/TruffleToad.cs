@@ -183,13 +183,13 @@ namespace AAMod.NPCs.Bosses.Toad
             if (npc.velocity.Y == 0)
             {
                 npc.frame.Y = 0;
-		if (internalAI[0] == AISTATE_BARF)
-		{
-		    if (npc.frameCounter < 648)
-		    {
-		        npc.frameCounter = 648;
-		    }
-		    if (npc.frameCounter >= 10)
+		        if (internalAI[0] == AISTATE_BARF)
+		        {
+		            if (npc.frameCounter < 648)
+		            {
+		                npc.frameCounter = 648;
+		            }
+		            if (npc.frameCounter >= 10)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y += 72;
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Toad
                             npc.frame.Y = 864;
                         }
                     }
-		}
+		        }
             }
             else
             {
@@ -232,14 +232,16 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else
             {
-
+                string[] lootTable = { "MushrockStaff", "ToadTongue", "Todegun" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
+            npc.damage = (int)(npc.damage * 1.4f);  //boss damage increase in expermode
         }
     }
 }
