@@ -87,8 +87,8 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
 				new BaseMod.SetModTile(tileSandstone, true, true)
 			}));
-			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 30;
+			int genX = origin.X;
+			int genY = origin.Y;
 			gen.Generate(genX, genY, true, true);
 
 
@@ -102,7 +102,7 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceObject(genX + 162, genY + 215, mod.TileType<HydraPod>());
             WorldGen.PlaceObject(genX + 172, genY + 206, mod.TileType<HydraPod>());
 
-            WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
+            //WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -248,11 +248,11 @@ namespace AAMod.Worldgeneration
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileSandstone, true, true)
             }));
-			int genX = origin.X - (gen.width / 2);
-			int genY = origin.Y - 80;
+			int genX = origin.X;
+			int genY = origin.Y;
             gen.Generate(genX, genY, true, true);
 
-            WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
+            //WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
             WorldGen.PlaceObject(genX + 34, genY + 314, mod.TileType<DragonEgg>());
             WorldGen.PlaceObject(genX + 47, genY + 315, mod.TileType<DragonEgg>());
             WorldGen.PlaceObject(genX + 58, genY + 317, mod.TileType<DragonEgg>());
