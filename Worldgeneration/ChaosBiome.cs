@@ -102,7 +102,7 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceObject(genX + 162, genY + 215, mod.TileType<HydraPod>());
             WorldGen.PlaceObject(genX + 172, genY + 206, mod.TileType<HydraPod>());
 
-            WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
+            //WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
