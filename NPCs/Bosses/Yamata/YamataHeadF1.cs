@@ -260,8 +260,16 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 projectile.damage *= (int).2;
             }
+            else if (projectile.type == ProjectileID.LastPrismLaser)
+            {
+                damage = (int)(damage * .05f);
+            }
         }
 
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            
+        }
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
