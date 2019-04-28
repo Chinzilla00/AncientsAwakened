@@ -33,7 +33,7 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Serpent"));
+            AAModGlobalNPC.SpawnBoss(mod, player, "Serpent");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

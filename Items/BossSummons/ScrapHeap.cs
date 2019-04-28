@@ -36,7 +36,7 @@ Can only be used at night");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Orthrus"));
+            AAModGlobalNPC.SpawnBoss(mod, player, "Orthrus");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

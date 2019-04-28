@@ -32,8 +32,7 @@ Can only be used in the Void");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("Sagittarius has Awoken!", new Color(175, 75, 255));
-            AAPlayer.SilentBossSpawn(mod, player, "Sagittarius");
+            AAModGlobalNPC.SpawnBoss(mod, player, "Sagittarius");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

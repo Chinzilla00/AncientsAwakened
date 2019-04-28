@@ -41,8 +41,8 @@ Only Usable at night");
         }
 
         public override bool UseItem(Player player)
-		{
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Hydra"));
+        {
+            AAModGlobalNPC.SpawnBoss(mod, player, "Hydra");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
 		}

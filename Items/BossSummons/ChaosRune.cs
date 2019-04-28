@@ -13,7 +13,6 @@ namespace AAMod.Items.BossSummons
 {
     public class ChaosRune : ModItem
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Rune");
@@ -80,7 +79,6 @@ Summons Shen Doragon's true awakened form");
             return false;
         }
 
-
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
@@ -117,7 +115,7 @@ Summons Shen Doragon's true awakened form");
         public override bool UseItem(Player player)
         {
             Main.NewText("Time to face true, uniyielding chaos, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            NPC.SpawnOnPlayer(item.owner, mod.NPCType<ShenA>());
+            AAModGlobalNPC.SpawnBoss(mod, player, "ShenA");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
         }

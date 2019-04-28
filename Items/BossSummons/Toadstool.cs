@@ -34,7 +34,7 @@ Can only be used in a surface glowing mushroom biome");
         
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "TruffleToad");
+            AAModGlobalNPC.SpawnBoss(mod, player, "TruffleToad");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

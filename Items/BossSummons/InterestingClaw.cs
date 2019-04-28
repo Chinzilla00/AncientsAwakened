@@ -56,8 +56,8 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            AAPlayer.SilentBossSpawn(mod, player, "GripOfChaosBlue");
-            AAPlayer.SilentBossSpawn(mod, player, "GripOfChaosRed");
+            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosBlue");
+            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosRed");
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

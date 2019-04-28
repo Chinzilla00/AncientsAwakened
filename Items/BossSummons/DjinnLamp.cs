@@ -32,7 +32,7 @@ Only usable during the day");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Djinn"));
+            AAModGlobalNPC.SpawnBoss(mod, player, "Djinn");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

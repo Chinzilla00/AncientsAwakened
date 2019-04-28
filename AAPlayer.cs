@@ -2392,7 +2392,7 @@ namespace AAMod
 
         public static void SilentBossSpawn(Mod mod, Player player, string BossType)
         {
-            int SpawnX = (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
+            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
             int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), mod.NPCType(BossType), 0, 0f, 0f, 0f, 0f, 255);
             if (Main.netMode == 2 && num < 200)
             {
@@ -2402,7 +2402,7 @@ namespace AAMod
 
         public static void SilentBossSpawn(Mod mod, Player player, int BossType)
         {
-            int SpawnX = (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
+            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
             int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), BossType, 0, 0f, 0f, 0f, 0f, 255);
             if (Main.netMode == 2 && num < 200)
             {

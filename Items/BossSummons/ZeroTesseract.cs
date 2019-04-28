@@ -98,7 +98,7 @@ UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
             {
 				AAWorld.zeroUS = true;
 				if(!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-                    AAPlayer.SilentBossSpawn(mod, player, "Zero");
+                    AAModGlobalNPC.SpawnBoss(mod, player, "Zero", false);
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;

@@ -33,7 +33,7 @@ Only useable during the day");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Broodmother"));
+            AAModGlobalNPC.SpawnBoss(mod, player, "Broodmother");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
@@ -58,8 +58,6 @@ Only useable during the day");
             return false;
         }
 
-        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
-        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

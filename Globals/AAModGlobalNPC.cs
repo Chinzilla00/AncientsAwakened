@@ -24,6 +24,7 @@ using AAMod.NPCs.Bosses.Shen;
 using System;
 using BaseMod;
 using AAMod.NPCs.Bosses.Yamata;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -928,6 +929,57 @@ namespace AAMod
                 index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
             }
         }
+
+        public static void SpawnBoss(Mod mod, Player player, string type, bool SpawnMessage = true)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(type);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center + new Vector2(MathHelper.Lerp(-1200f, 1200f, (float)Main.rand.NextDouble()), 1200f);
+                Main.npc[npcID].netUpdate2 = true;
+                string npcName = Main.npc[npcID].GivenName;
+                if (SpawnMessage)
+                {
+                    if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                    else
+                    if (Main.netMode == 2)
+                    {
+                        NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                        {
+                        NetworkText.FromLiteral(npcName)
+                        }), new Color(175, 75, 255), -1);
+                    }
+                }
+            }
+        }
+
+        public static void SpawnBoss(Mod mod, Player player, int name, bool SpawnMessage = true)
+        {
+            if (Main.netMode != 1)
+            {
+                int bossType = name;
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center + new Vector2(MathHelper.Lerp(-1200f, 1200f, (float)Main.rand.NextDouble()), 1200f);
+                Main.npc[npcID].netUpdate2 = true;
+                string npcName = Main.npc[npcID].GivenName;
+                if (SpawnMessage)
+                {
+                    if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                    else
+                    if (Main.netMode == 2)
+                    {
+                        NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                        {
+                        NetworkText.FromLiteral(npcName)
+                        }), new Color(175, 75, 255), -1);
+                    }
+                }
+            }
+        }
+
     }
     public abstract class AANPC : ParentNPC
     {

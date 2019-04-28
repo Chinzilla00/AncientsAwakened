@@ -89,7 +89,7 @@ Only craftable in expert mode");
             {
                 AAWorld.zeroUS = true;
                 if (!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-                    AAPlayer.SilentBossSpawn(mod, player, "ZeroAwakened");
+                    AAModGlobalNPC.SpawnBoss(mod, player, "ZeroAwakened", false);
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;

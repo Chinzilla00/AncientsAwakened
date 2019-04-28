@@ -108,13 +108,10 @@ Only Usable at night");
 		{
             int SpawnX = (int)MathHelper.Lerp(-1000, 1000, (float)Main.rand.NextDouble());
             int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 50), mod.NPCType(name), 0, 0f, 0f, 0f, 0f, 255);
-            if (Main.netMode == 2 && num < 200)
+            if (Main.netMode == 2)
             {
                 NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
             }
-        }	
-
-		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-		public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }		
+        }
 	}
 }

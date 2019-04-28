@@ -49,9 +49,8 @@ Calls upon the Sisters of Discord");
 
             if (AAWorld.SistersSummoned && !AAWorld.downedSisters)
             {
-
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<Ashe>());
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<Haruka>());
+                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false);
+                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false);
                 Main.NewText("Again..!? Didin't you learn from last time? Oh well, I'm gonna have a ball blasting you to shreds!", new Color(102, 20, 48));
 
                 Main.NewText("Whatever, let's just get this overwith.", new Color(72, 78, 117));
@@ -59,8 +58,8 @@ Calls upon the Sisters of Discord");
             }
             else if (AAWorld.SistersSummoned && AAWorld.downedSisters)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<Ashe>());
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<Haruka>());
+                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false);
+                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false);
                 Main.NewText("Sigh...here we go again...", new Color(72, 78, 117));
                 Main.NewText("THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!", new Color(102, 20, 48));
                 return true;

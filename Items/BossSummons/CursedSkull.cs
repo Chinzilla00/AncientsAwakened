@@ -34,7 +34,7 @@ Can Only be used at night");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, NPCID.SkeletronHead);
+            AAModGlobalNPC.SpawnBoss(mod, player, NPCID.SkeletronHead);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
