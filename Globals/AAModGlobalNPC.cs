@@ -95,7 +95,6 @@ namespace AAMod
             bool drain = false;
             bool noDamage = damage <= 1;
             int damageBefore = damage;
-            int num = npc.lifeRegenExpectedLossPerSecond;
 
             if (infinityOverload)
             {
@@ -192,16 +191,11 @@ namespace AAMod
                     npc.lifeRegen = 0;
                 }
                 int num7 = 0;
-                int num8 = 4;
                 if (num7 == 0)
                 {
                     num7 = 1;
                 }
                 npc.lifeRegen -= num7 * 2 * 100;
-                if (num < num7 * 100 / num8)
-                {
-                    num = num7 * 100 / num8;
-                }
             }
 
             if (Electrified)
@@ -243,7 +237,6 @@ namespace AAMod
 
             if (Hydratoxin)
             {
-                drain = true;
                 if (npc.lifeRegen > 0)
                 {
                     npc.lifeRegen = 0;
