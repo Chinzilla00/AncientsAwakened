@@ -11,7 +11,7 @@ namespace AAMod
 {
     public class AAAI
 	{
-        static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
+        public static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
         public static void InfernoFighterAI(NPC npc, ref float[] ai, bool fleeWhenNight = true, bool allowBoredom = true, int openDoors = 1, float moveInterval = 0.07f, float velMax = 1f, int maxJumpTilesX = 3, int maxJumpTilesY = 4, int ticksUntilBoredom = 60, bool targetPlayers = true, int doorBeatCounterMax = 10, int doorCounterMax = 60, bool jumpUpPlatforms = false, Action<bool, bool, Vector2, Vector2> onTileCollide = null, bool ignoreJumpTiles = false)
         {
             bool xVelocityChanged = false;
@@ -328,12 +328,12 @@ namespace AAMod
             }
             else if (npc.ai[0] == 3f)
             {
-                npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalXTurn;
+                npc.velocity.X += npc.ai[1] * velIntervalXTurn;
 
                 if (npc.Center.Y > Main.player[npc.target].Center.Y)
-                    npc.velocity.Y = npc.velocity.Y - velIntervalY;
+                    npc.velocity.Y -= velIntervalY;
                 else
-                    npc.velocity.Y = npc.velocity.Y + velIntervalY;
+                    npc.velocity.Y += velIntervalY;
 
                 if (npc.velocity.Length() > velIntervalMaxTurn)
                     npc.velocity *= velIntervalScalar;

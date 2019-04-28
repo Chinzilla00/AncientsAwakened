@@ -51,13 +51,12 @@ namespace AAMod
         public static bool InfernoStripe;
         public static bool MireStripe;
         private int infernoSide = 0;
-        private int shipSide = 0;
+        //private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
         private Vector2 InfernoCenter = -Vector2.One;
         private Vector2 MireCenter = -Vector2.One;
         public static Vector2 shipPos = new Vector2(0, 0);
-        private Vector2 TerraPos = new Vector2(0, 0);
         public string nums = "1234567890";
         public static bool ModContentGenerated;
         //Messages
@@ -913,38 +912,7 @@ namespace AAMod
             }
         }
 
-        private void ChaosChests(GenerationProgress progress)
-        {
-            for (int num78 = 0; num78 < 2; num78++)
-            {
-                bool flag5 = false;
-                int success = -1;
-                while (!flag5)
-                {
-                    int num79 = WorldGen.genRand.Next(0, Main.maxTilesX);
-                    int num80 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
-                    if (Main.wallDungeon[Main.tile[num79, num80].wall] && !Main.tile[num79, num80].active())
-                    {
-                        int Style = 0;
-                        if (num78 == 0)
-                        {
-                            Style = (ushort)mod.TileType("InfernoChest");
-                        }
-                        else if (num78 == 1)
-                        {
-                            Style = (ushort)mod.TileType("MireChest");
-                        }
-                        success = WorldGen.PlaceChest(num79, num80, (ushort)Style, false, 2);
-                        if (success > -1)
-                        {
-                            flag5 = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void Altars (GenerationProgress progress)
+        private void Altars(GenerationProgress progress)
         {
             progress.Message = "Placing Chaos Altars";
             for (int num = 0; num < Main.maxTilesX / 390; num++)
@@ -1342,14 +1310,14 @@ namespace AAMod
 
         public override void TileCountsAvailable(int[] tileCounts)
         {
-            Main.sandTiles = Main.sandTiles + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
-            Main.snowTiles = Main.snowTiles + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()];
+            Main.sandTiles += tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
+            Main.snowTiles += tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()];
             //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
-            Main.jungleTiles = Main.jungleTiles + mireTiles;
+            Main.jungleTiles +=  mireTiles;
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
             //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
@@ -1430,7 +1398,7 @@ namespace AAMod
             Mushroom();
         }
 
-        private void ParthenanIsland(GenerationProgress progress)
+        /*private void ParthenanIsland(GenerationProgress progress)
         {
             progress.Message = "Storming the Parthenan";
             Parthenan();
@@ -1443,7 +1411,7 @@ namespace AAMod
 			shipPos.Y = BaseWorldGen.GetFirstTileFloor((int)shipPos.X, 10, true);
             progress.Message = "Sinking the ship";
             SunkenShip();
-        }
+        }*/
 
         public void InfernoVolcano()
         {
@@ -1458,7 +1426,6 @@ namespace AAMod
         public void Mushroom()
         {
             int x = Main.maxTilesX;
-            int y = Main.maxTilesY;
             int Attempts = 0;
             while (Attempts < 1000)
             {
@@ -1468,7 +1435,7 @@ namespace AAMod
 
                 int worldSize = GetWorldSize();
                 int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
-                int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
+                int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150); //how deep the biome is (scaled by world size)   
 
                 //ok time to check to see if this spot is actually a good place to gen
                 Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
@@ -1542,14 +1509,14 @@ namespace AAMod
             biome.Place(origin, WorldGen.structures);
         }
 
-        public void Parthenan()
+        /*public void Parthenan()
         {
             int ParthenanHeight = 0;
             ParthenanHeight = 120;
             Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
             Parthenan biome = new Parthenan();
             biome.Place(center, WorldGen.structures);
-        }
+        }*/
         
         public override void ResetNearbyTileEffects()
         {
@@ -1574,12 +1541,13 @@ namespace AAMod
             int num = 0;
             int num2 = ChaosAltarsSmashed / 3 + 1;
             float num3 = (float)(Main.maxTilesX / 4200);
-            int num4 = 0;
             num3 = ((num3 * 310f - (float)(85 * num)) * 0.85f) / num2;
             if (OreCount >= 3)
             {
                 OreCount = 0;
             }
+
+            int num4;
             if (OreCount == 0)
             {
                 if (Main.netMode == 0)
