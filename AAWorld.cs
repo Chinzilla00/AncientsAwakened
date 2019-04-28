@@ -440,16 +440,7 @@ namespace AAMod
             downedHaruka = flags5[7];
             
             BitsByte flags6 = reader.ReadByte();
-<<<<<<< HEAD
             ModContentGenerated = flags6[0];
-=======
-            downedSisters = flags6[0];
-            downedSag = flags6[1];
-            ModContentGenerated = flags6[2];
-            
-            InfernoCenter = reader.ReadVector2();
-            MireCenter = reader.ReadVector2();
->>>>>>> 5510a4f4902a68b8633b128d0a2895a2f2f5dd2d
 
             //Squid Lady
             squid1 = reader.ReadInt32();
