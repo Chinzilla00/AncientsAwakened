@@ -182,6 +182,21 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreNPCLoot()
         {
+            if (Main.rand.Next(7) == 0)
+            {
+                if (npc.type == mod.NPCType<HydraHead1>())
+                {
+                    npc.DropLoot(Items.Vanity.Mask.HydraMask1.type, 1f / 7);
+                }
+                else if (npc.type == mod.NPCType<HydraHead2>())
+                {
+                    npc.DropLoot(Items.Vanity.Mask.HydraMask3.type, 1f / 7);
+                }
+                else if (npc.type == mod.NPCType<HydraHead3>())
+                {
+                    npc.DropLoot(Items.Vanity.Mask.HydraMask2.type, 1f / 7);
+                }
+            }
             return false;
         }
 

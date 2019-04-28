@@ -50,49 +50,26 @@ Calls upon the Sisters of Discord");
             if (AAWorld.SistersSummoned && !AAWorld.downedSisters)
             {
                 Main.NewText("Again..!? Didin't you learn from last time? Oh well, I'm gonna have a ball blasting you to shreds!", new Color(102, 20, 48));
-                SpawnBoss(player, "Ashe");
+
+                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false, -1, 0);
 
                 Main.NewText("Whatever, let's just get this overwith.", new Color(72, 78, 117));
-                SpawnBoss2(player, "Haruka");
+                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false, 1, 0);
                 return true;
             }
             else if (AAWorld.SistersSummoned && AAWorld.downedSisters)
             {
                 Main.NewText("Sigh...here we go again...", new Color(72, 78, 117));
-                SpawnBoss2(player, "Haruka");
 
                 Main.NewText("THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!", new Color(102, 20, 48));
-                SpawnBoss(player, "Ashe");
+                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false, -1, 0);
+                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false, 1, 0);
                 return true;
             }
             else
             {
-                SpawnBoss(player, "AHSpawn");
+                AAModGlobalNPC.SpawnBoss(mod, player, "AHSpawn", false);
                 return true;
-            }
-        }
-
-        public void SpawnBoss(Player player, string name)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
-        }
-
-        public void SpawnBoss2(Player player, string name)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 0);
-                Main.npc[npcID].netUpdate2 = true;
             }
         }
 

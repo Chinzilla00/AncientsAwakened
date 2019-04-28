@@ -47,7 +47,7 @@ Only craftable in expert mode");
 		{
             Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-            SpawnBoss(player, "YamataA", "Yamata Awakened");
+            DreadSigil.SpawnBoss(mod, player, "YamataA", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             return true;
 		}
@@ -85,20 +85,6 @@ Only craftable in expert mode");
             if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);
             return false;
         }
-
-        public void SpawnBoss(Player player, string name, string displayName)
-		{
-			if (Main.netMode != 1)
-			{
-				int bossType = mod.NPCType(name);
-				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
-				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-				Main.npc[npcID].Center = player.Center - new Vector2(0f, 100f);
-				Main.npc[npcID].netUpdate2 = true;
-			}
-		}	
-
-		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-		public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }		
+		
 	}
 }

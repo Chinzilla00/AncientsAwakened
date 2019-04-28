@@ -52,7 +52,7 @@ Only Usable at night");
 
         public override bool UseItem(Player player)
 		{
-			SpawnBoss(player, "Yamata", "Yamata; Dread Nightmare");
+            SpawnBoss(mod, player, "Yamata");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
@@ -104,20 +104,52 @@ Only Usable at night");
 			return false;
 		}
 
-		public void SpawnBoss(Player player, string name, string displayName)
-		{
-			if (Main.netMode != 1)
-			{
-				int bossType = mod.NPCType(name);
-				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
-				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(0f, 100f);
+        public static void SpawnBoss(Mod mod, Player player, string type, bool SpawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        {
+            //if the direction is not overriden (ie is 0), pick left/right at random
+            if (overrideDirection == 0)
+                overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
+            //if the direction is not overriden (ie is 0), default to above			
+            if (overrideDirectionY == 0)
+                overrideDirectionY = -1;
+            if (Main.netMode != 1)
+            {
+                int bossType = mod.NPCType(type);
+                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+                Main.npc[npcID].Center = player.Center + new Vector2(0, -120f);
                 Main.npc[npcID].netUpdate2 = true;
-				
-			}
-		}	
+                if (SpawnMessage)
+                {
+                    //check if the npc has a 'given name' (not usually for modded) and if not use the display name given
+                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    //if npcName is still blank ("") then default to the npc's display name if it's modded
+                    if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
+                        npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
+                    if (namePlural)
+                    {
+                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        else
+                        if (Main.netMode == 2)
+                        {
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
+                        }
+                    }
+                    else
+                    {
+                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        else
+                        if (Main.netMode == 2)
+                        {
+                            NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                            {
+                            NetworkText.FromLiteral(npcName)
+                            }), new Color(175, 75, 255), -1);
+                        }
+                    }
+                }
+            }
+        }
 
-		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-		public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }		
-	}
+    }
 }

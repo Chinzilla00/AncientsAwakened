@@ -39,8 +39,8 @@ Summons the Equinox Worms");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<NightcrawlerHead>());
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType<DaybringerHead>());
+            AAModGlobalNPC.SpawnBoss(mod, player, "NightcrawlerHead", true, 1, 0, "The Equinox Worms", true);
+            AAModGlobalNPC.SpawnBoss(mod, player, "DaybringerHead", false, -1, 0);
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

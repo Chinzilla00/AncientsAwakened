@@ -116,8 +116,8 @@ Summons Shen Doragon's true awakened form");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("Time to face true, uniyielding chaos, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            NPC.SpawnOnPlayer(item.owner, mod.NPCType<ShenA>());
+            Main.NewText("Skipping to the good part, I see? I like you, child.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            AAModGlobalNPC.SpawnBoss(mod, player, "ShenA", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
         }
@@ -132,17 +132,6 @@ Summons Shen Doragon's true awakened form");
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
                 Main.npc[npcID].netUpdate2 = true;
             }
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DraconianRune", 1);
-            recipe.AddIngredient(null, "DreadRune", 1);
-            recipe.AddIngredient(null, "ChaosSigil", 10);
-            recipe.AddTile(null, "AncientForge");
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
         }
     }
 }

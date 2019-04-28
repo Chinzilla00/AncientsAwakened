@@ -119,6 +119,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             Dead = true;
             if (!Tag)
             {
+                npc.DropLoot(Items.Vanity.Mask.YamataMask.type, 1f / 7f);
                 if (!Main.expertMode)
                 {
                     AAWorld.downedYamata = true;
@@ -126,7 +127,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     string[] lootTable = { "Flairdra", "Crescent", "Hydraslayer", "AbyssArrow", "HydraStabber", "MidnightWrath", "YamataTerratool" };
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
-                    //npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                     npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
                     Main.NewText("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
                     npc.DropLoot(Items.Vanity.Mask.YamataMask.type, 1f / 7);

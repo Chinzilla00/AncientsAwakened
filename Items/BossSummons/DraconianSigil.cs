@@ -94,8 +94,7 @@ Only Usable during the day");
             {
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
-
-            SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");
+            AAModGlobalNPC.SpawnBoss(mod, player, "Akuma", true);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

@@ -34,7 +34,7 @@ Can only be used in the underground jungle");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, NPCID.Plantera, "Plantera");
+            AAModGlobalNPC.SpawnBoss(mod, player, NPCID.Plantera, true);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

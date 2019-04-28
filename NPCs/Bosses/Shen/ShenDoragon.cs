@@ -790,11 +790,13 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void NPCLoot()
         {
 			if(isAwakened)
-			{
-				if (Main.expertMode)
+            {
+                if (Main.expertMode)
                 {
+                    npc.DropLoot(Items.Vanity.Mask.ShenAMask.type, 1f / 7);
                     if (!AAWorld.downedShen)
                     {
+                        npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
                         Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
@@ -805,7 +807,9 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
             else
 			{
-				if (!Main.expertMode)
+
+                npc.DropLoot(Items.Vanity.Mask.ShenMask.type, 1f / 7);
+                if (!Main.expertMode)
                 {
                     Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     if (!AAWorld.downedShen)

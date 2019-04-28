@@ -83,6 +83,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DreadRune"));
                 }
 
+                npc.DropLoot(Items.Vanity.Mask.YamataAMask.type, 1f / 7);
+
                 BaseAI.DropItem(npc, mod.ItemType("YamataATrophy"), 1, 1, 15, true);
                 
                 npc.DropBossBags();

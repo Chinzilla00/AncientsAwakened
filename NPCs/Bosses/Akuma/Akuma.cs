@@ -555,7 +555,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
 
         public override void NPCLoot()
-		{
+        {
+            npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
             if (!Main.expertMode)
             {
                 if (!AAWorld.downedAkuma)
@@ -567,7 +568,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                     AAWorld.PowerDropped = true;
                 }
-                npc.DropLoot(Items.Vanity.Mask.AkumaMask.type, 1f / 7);
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
                 Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));

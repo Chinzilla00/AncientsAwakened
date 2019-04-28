@@ -43,8 +43,8 @@ Only Usable at night");
         public override bool UseItem(Player player)
 		{
             Main.NewText("The Hydra slithers from her dark den!", new Color(175, 75, 255));
-            SpawnBoss(player, "Hydra", "The Hydra");
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            AAModGlobalNPC.SpawnBoss(mod, player, "Hydra", false);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
 		}
 
@@ -66,21 +66,6 @@ Only Usable at night");
 			}
 			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Nothing is coming. Now you look dumb holding out this smelly ball of gunk.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);			
 			return false;
-		}
-
-		public void SpawnBoss(Player player, string name, string displayName)
-		{
-			if (Main.netMode != 1)
-			{
-				int bossType = mod.NPCType(name);
-				if(NPC.AnyNPCs(bossType)){ return; } //don't spawn if there's already a boss!
-				int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-				Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 400f);
-				Main.npc[npcID].netUpdate2 = true;
-			}
 		}	
-
-		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-		public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }		
 	}
 }

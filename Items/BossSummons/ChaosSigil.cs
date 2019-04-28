@@ -82,41 +82,16 @@ Summons the chaos emperor");
             {
                 Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                SpawnBoss(player, "ShenDoragon", "Shen Doragon; Draconian Doomsayer");
+                AAModGlobalNPC.SpawnBoss(mod, player, "ShenDoragon", true, 0, 0, "Shen Doragon; Discordian Doomsayer");
             }
             if (!AAWorld.ShenSummoned)
             {
-                SpawnBoss(player, "ShenSpawn", "Shen Doragon; Draconian Doomsayer");
+                AAModGlobalNPC.SpawnBoss(mod, player, "ShenSpawn", false);
                 AAWorld.ShenSummoned = true;
             }
 
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
-        }
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 100f);
-                Main.npc[npcID].netUpdate2 = true;
-            }
-        }
-
-        public void SpawnBoss2(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].ai[0] = -1;
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 600);
-                Main.npc[npcID].netUpdate2 = true;
-            }
         }
 
         public override void AddRecipes()

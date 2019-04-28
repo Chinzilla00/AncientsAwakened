@@ -142,8 +142,6 @@ namespace AAMod
             downedRaider = false;
             downedStormAny = false;
             downedStormAll = false;
-            downedDB = false;
-            downedNC = false;
             downedEquinox = false;
             downedSAncient = false;
             downedAkuma = false;
@@ -249,8 +247,6 @@ namespace AAMod
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
             if (NPC.downedPlantBoss) downed.Add("Evil");
             if (NPC.downedMoonlord) downed.Add("MoonLord");
-            if (downedNC) downed.Add("NC");
-            if (downedDB) downed.Add("DB");
             if (downedEquinox) downed.Add("Equinox");
             if (Ancients) downed.Add("AA");
             if (downedAncient) downed.Add("A");
@@ -320,8 +316,8 @@ namespace AAMod
             flags2[1] = NPC.downedMechBossAny;
             flags2[2] = NPC.downedPlantBoss;
             flags2[3] = NPC.downedMoonlord;
-            flags2[4] = downedDB;
-            flags2[5] = downedNC;
+            flags2[4] = downedSisters;
+            flags2[5] = downedSag;
             flags2[6] = downedEquinox;
             flags2[7] = downedAkuma;
             writer.Write(flags2);
@@ -361,9 +357,7 @@ namespace AAMod
 
 
             BitsByte flags6 = new BitsByte();
-            flags6[0] = downedSisters;
-            flags6[1] = downedSag;
-            flags6[2] = ModContentGenerated;
+            flags6[0] = ModContentGenerated;
             writer.Write(flags6);
 
 
@@ -403,8 +397,8 @@ namespace AAMod
             NPC.downedMechBossAny = flags2[1];
             NPC.downedPlantBoss = flags2[2];
             NPC.downedMoonlord = flags2[3];
-            downedDB = flags2[4];
-            downedNC = flags2[5];
+            downedSisters = flags2[4];
+            downedSag = flags2[5];
             downedEquinox = flags2[6];
             downedAkuma = flags2[7];
 
@@ -438,9 +432,7 @@ namespace AAMod
             downedHaruka = flags5[7];
             
             BitsByte flags6 = reader.ReadByte();
-            downedSisters = flags6[0];
-            downedSag = flags6[1];
-            ModContentGenerated = flags6[2];
+            ModContentGenerated = flags6[0];
 
             //Squid Lady
             squid1 = reader.ReadInt32();
@@ -477,8 +469,6 @@ namespace AAMod
             NPC.downedMechBossAny = downed.Contains("MechBoss");
             NPC.downedPlantBoss = downed.Contains("Evil");
             NPC.downedMoonlord = downed.Contains("MoonLord");
-            downedDB = downed.Contains("DB");
-            downedNC = downed.Contains("NC");
             downedEquinox = downed.Contains("Equinox");
             downedAncient = downed.Contains("A");
             downedSAncient = downed.Contains("SA");
@@ -511,8 +501,7 @@ namespace AAMod
             HallowedOre = NPC.downedMechBossAny;
             Evil = NPC.downedPlantBoss;
             Luminite = NPC.downedMoonlord;
-            DarkMatter = downedNC;
-            RadiumOre = downedDB;
+            RadiumOre = downedEquinox;
             DiscordOres = downedSisters;
             InfernoStripe = downed.Contains("IStripe");
             MireStripe = downed.Contains("MStripe");

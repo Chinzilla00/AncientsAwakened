@@ -32,7 +32,7 @@ Can only be used in the Void");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, "Sagittarius", "Sagittarius");
+            AAModGlobalNPC.SpawnBoss(mod, player, "Sagittarius", true);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

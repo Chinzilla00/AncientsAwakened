@@ -56,9 +56,8 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("The Grips of Chaos have Awoken!", new Color(175, 75, 255));
-            SpawnBoss(player, "GripOfChaosBlue", "GripOfChaosBlue");
-            SpawnBoss(player, "GripOfChaosRed", "GripOfChaosRed");
+            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosBlue", true, 1, 0, "The Grips of Chaos", true);
+            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosRed", false, -1, 0);
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
