@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             AAPlayer modplayer = player.GetModPlayer<AAPlayer>(mod);
-            RingRoatation += .2f;
+            RingRoatation += .05f;
             npc.ai[1]++;
             if (internalAI[3] > 0)
             {
@@ -217,8 +217,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.noTileCollide = true;
         }
 
-
-
         public void ShootLaser(NPC npc, Vector2 velocity)
         {
             float spread = 45f * 0.0174f;
@@ -258,7 +256,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
         }
 
-
         public override void NPCLoot()
         {
             AAWorld.downedSag = true;
@@ -280,7 +277,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
             if (ShieldScale > 0)
             {
-                BaseDrawing.DrawTexture(sb, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GenericUtils.COLOR_GLOWPULSE, true);
+                BaseDrawing.DrawTexture(sb, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
             }
             BaseDrawing.DrawTexture(sb, Ring, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
             BaseDrawing.DrawTexture(sb, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);

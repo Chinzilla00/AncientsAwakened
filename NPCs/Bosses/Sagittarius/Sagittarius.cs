@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 MovementType[1] += 5;
                 if (MovementType[1] >= 255)
                 {
-                    MovementType[0] = 2;
+                    MovementType[0] = 3;
                     npc.netUpdate = true;
                 }
             }
@@ -291,8 +291,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, GenericUtils.COLOR_GLOWPULSE, true);
             return false;
         }
 

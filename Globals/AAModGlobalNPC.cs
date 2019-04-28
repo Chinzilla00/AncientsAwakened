@@ -729,31 +729,13 @@ namespace AAMod
 
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
-            if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) ||
-                NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()) ||
-                NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()) ||
-                NPC.AnyNPCs(mod.NPCType<Broodmother>()) ||
-                NPC.AnyNPCs(mod.NPCType<Hydra>()) ||
-                NPC.AnyNPCs(mod.NPCType<Djinn>()) ||
-                NPC.AnyNPCs(mod.NPCType<SerpentHead>()) ||
-                NPC.AnyNPCs(mod.NPCType<Raider>()) ||
-                NPC.AnyNPCs(mod.NPCType<Retriever>()) ||
-                NPC.AnyNPCs(mod.NPCType<Orthrus>()) ||
-                NPC.AnyNPCs(mod.NPCType<DaybringerHead>()) ||
-                NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()) ||
-                NPC.AnyNPCs(mod.NPCType<Akuma>()) ||
-                NPC.AnyNPCs(mod.NPCType<AkumaA>()) ||
-                NPC.AnyNPCs(mod.NPCType<Yamata>()) ||
-                NPC.AnyNPCs(mod.NPCType<YamataA>()) ||
-                NPC.AnyNPCs(mod.NPCType<Zero>()) ||
-                NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()) ||
-                NPC.AnyNPCs(mod.NPCType<Ashe>()) ||
-                NPC.AnyNPCs(mod.NPCType<Haruka>()) ||
-                NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) ||
-                NPC.AnyNPCs(mod.NPCType<ShenA>())) 
+            for (int i = 0; i < 200; ++i)
             {
-                spawnRate = 0;
-                maxSpawns = 0;
+                if (Main.npc[i].boss && Main.npc[i].active)
+                {
+                    spawnRate = 0;
+                    maxSpawns = 0;
+                }
             }
         }
 
@@ -883,17 +865,17 @@ namespace AAMod
                 pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .2f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .2f);
-                    pool.Add(mod.NPCType("TerraWizard"), .2f);
-                    pool.Add(mod.NPCType("TerraWarlock"), .2f);
+                    pool.Add(mod.NPCType("Bladon"), .1f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), .1f);
+                    pool.Add(mod.NPCType("TerraWizard"), .1f);
+                    pool.Add(mod.NPCType("TerraWarlock"), .1f);
                 }
                 else
                 {
-                    pool.Add(mod.NPCType("TerraWeaver"), .2f);
-                    pool.Add(mod.NPCType("TerraSphere"), .2f);
-                    pool.Add(mod.NPCType("TerraCrawler"), .2f);
-                    pool.Add(mod.NPCType("PuritySquid"), .2f);
+                    pool.Add(mod.NPCType("PurityWeaver"), .1f);
+                    pool.Add(mod.NPCType("PuritySphere"), .1f);
+                    pool.Add(mod.NPCType("PurityCrawler"), .1f);
+                    pool.Add(mod.NPCType("PuritySquid"), .1f);
                 }
             }
         }
@@ -948,7 +930,7 @@ namespace AAMod
                 if (SpawnMessage)
                 {
 					//check if the npc has a 'given name' (not usually for modded) and if not use the display name given
-					string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);	
+					string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);	
 					//if npcName is still blank ("") then default to the npc's display name if it's modded
 					if((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
 						npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();					
@@ -965,12 +947,9 @@ namespace AAMod
 						if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
 						else
 						if (Main.netMode == 2)
-						{
-							NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
-							{
-							NetworkText.FromLiteral(npcName)
-							}), new Color(175, 75, 255), -1);
-						}
+                        {
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " has awoken!"), new Color(175, 75, 255), -1);
+                        }
 					}
                 }
             }

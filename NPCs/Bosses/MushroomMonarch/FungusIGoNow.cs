@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
         public override void AI()
         {
-            projectile.scale = projectile.ai[0];
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
@@ -50,7 +49,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungusIGoNow_Glow");
             Texture2D tex = mod.GetTexture("NPCs/Bosses/MushroomMonarch/FungusIGoNow");
             BaseDrawing.DrawTexture(spritebatch, tex, 0, projectile, projectile.GetAlpha(dColor));
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, new Rectangle(0, 0, glowTex.Width, glowTex.Height), projectile.GetAlpha(AAColor.Glow), true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile, projectile.GetAlpha(AAColor.Glow));
             return false;
         }
     }

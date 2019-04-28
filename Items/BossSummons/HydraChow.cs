@@ -43,7 +43,7 @@ Only Usable at night");
         public override bool UseItem(Player player)
 		{
             Main.NewText("The Hydra slithers from her dark den!", new Color(175, 75, 255));
-            AAModGlobalNPC.SpawnBoss(mod, player, "Hydra", false);
+            AAModGlobalNPC.SpawnBoss(mod, player, "Hydra", true, 0, 0, "The Hydra");
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
 		}
