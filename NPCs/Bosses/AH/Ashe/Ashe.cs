@@ -77,9 +77,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             return null;
         }
 
-        bool FlyingBack = false;
-        bool FlyingPositive = false;
-        bool FlyingNegative = false;
+        public bool FlyingBack = false;
+        public bool FlyingPositive = false;
+        public bool FlyingNegative = false;
         public float MeleeSpeed = 6f;
         public float pos = 250f;
         private bool HasFiredProj = false;
@@ -438,8 +438,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.direction = npc.velocity.X > 0 ? -1 : 1;
             }
-
-            
         }
 
         public static int VortexDamage(Mod mod)
@@ -503,7 +501,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                         Main.npc[npcID].velocity *= 8f;
                         Main.npc[npcID].ai[0] = m;
-                        Main.npc[npcID].netUpdate2 = true;
+                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                     }
                 }
             }

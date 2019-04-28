@@ -16,44 +16,30 @@ namespace AAMod.Items.Armor.Fulgurite
 
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 102;
+            projectile.height = 102;
             projectile.aiStyle = 1;
             projectile.friendly = true;
-            projectile.alpha = 255;
-            projectile.scale = .1f;
-            projectile.timeLeft = 600;
-            projectile.ranged = true;
+            projectile.timeLeft = 180;
             projectile.knockBack = 10;
+            projectile.penetrate = -1;
+            projectile.tileCollide = false;
         }
 
         public override void AI()
         {
+
             Player player = Main.player[projectile.owner];
+            player.GetModPlayer<AAPlayer>(mod).ringActive = true;
             projectile.Center = player.Center;
-            projectile.scale = 1 - (projectile.alpha / 255);
-            if (projectile.ai[0] == 0)
-            {
-                projectile.alpha -= 15;
-                if (projectile.alpha <= 0)
-                {
-                    projectile.alpha = 0;
-                    projectile.ai[0] = 1;
-                }
-            }
-            else
-            {
-                projectile.alpha += 5;
-                if (projectile.alpha >= 255)
-                {
-                    projectile.active = false;
-                }
-            }
+            projectile.direction = player.direction;
         }
         
 
         public override void Kill(int timeLeft)
         {
+            Player player = Main.player[projectile.owner];
+            player.GetModPlayer<AAPlayer>(mod).ringActive = false;
             Main.PlaySound(SoundID.Item94, projectile.position);
         }
 

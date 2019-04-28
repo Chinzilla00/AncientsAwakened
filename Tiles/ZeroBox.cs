@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using BaseMod;
 
 namespace AAMod.Tiles
 {
@@ -25,16 +26,24 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 
-        public override void PostDraw(int i, int j, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public Texture2D glowTex = null;
+
+        public Color GetColor(Color color)
         {
-            Tile tile = Main.tile[i, j];
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
+            return AAColor.ZeroShield;
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/ZeroBox_Glow");
+            if (glowTex != null && tile != null && tile.active() && tile.type == Type)
             {
-                zero = Vector2.Zero;
+                int width = 16, height = 16;
+                int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0);
+                int frameY = (tile != null && tile.active() ? tile.frameY : 0);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, GetColor);
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ZeroBox_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

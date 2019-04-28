@@ -45,12 +45,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
         }
 
-        public override void PostAI()
+        public override bool PreAI()
         {
             if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
                 npc.life = 0;
             }
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+            Main.npc[DeathAnim].velocity = npc.velocity;
+            return true;
         }
 
         public override bool CheckActive()
@@ -61,6 +64,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             return false;
         }
+        
 
         public override void NPCLoot()
         {

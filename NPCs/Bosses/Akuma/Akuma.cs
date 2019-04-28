@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
             npc.damage = 90;
-            npc.defense = 120;
+            npc.defense = 150;
             npc.lifeMax = 190000;
             if (Main.expertMode)
             {
@@ -577,7 +577,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTransition"), 0, 0, 0, 0, 0, npc.target);
                 Main.npc[npcID].Center = npc.Center;
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
             npc.value = 0f;
             npc.boss = false;

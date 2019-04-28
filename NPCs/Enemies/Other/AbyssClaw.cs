@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (AAWorld.downedGripsS)
+            if (AAWorld.downedSisters)
             {
                 return SpawnCondition.OverworldNightMonster.Chance * 0.04f;
             }
@@ -68,10 +68,10 @@ namespace AAMod.NPCs.Enemies.Other
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraClawGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraClawGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraClawGore3"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraClawGore4"), 1f);
+                for (int i = 0; i < 5; i++)
+                {
+                    Dust.NewDust(npc.Center, npc.width, npc.height, mod.DustType<Dusts.YamataAuraDust>());
+                }
             }
         }
 

@@ -134,6 +134,7 @@ namespace AAMod
         public bool Alpha;
         public bool Palladium;
         public bool fulgurite;
+        public bool ringActive = false;
         public bool doomite;
         public bool Radium;
         public bool perfectChaos;
@@ -647,7 +648,10 @@ namespace AAMod
 
             if (fulgurite)
             {
-                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                if (!ringActive)
+                {
+                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                }
             }
 
             if (trueBlazing)
@@ -1866,7 +1870,7 @@ namespace AAMod
                 if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 1f);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 
@@ -2389,7 +2393,27 @@ namespace AAMod
             }
             return null;
         }
-        
+
+        public static void SilentBossSpawn(Mod mod, Player player, string BossType)
+        {
+            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
+            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), mod.NPCType(BossType), 0, 0f, 0f, 0f, 0f, 255);
+            if (Main.netMode == 2 && num < 200)
+            {
+                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
+            }
+        }
+
+        public static void SilentBossSpawn(Mod mod, Player player, int BossType)
+        {
+            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
+            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), BossType, 0, 0f, 0f, 0f, 0f, 255);
+            if (Main.netMode == 2 && num < 200)
+            {
+                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
+            }
+        }
+
 
         #region Draw Methods
         public static bool HasAndCanDraw(Player player, int type)

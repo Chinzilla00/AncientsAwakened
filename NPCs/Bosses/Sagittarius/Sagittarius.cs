@@ -82,6 +82,15 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.direction = -1;
+            }
+            else
+            {
+                npc.direction = 1;
+            }
+
             if (internalAI[0] == 0)
             {
                 if (Main.netMode != 1)
@@ -93,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                         Main.npc[npcID].velocity *= 8f;
                         Main.npc[npcID].ai[0] = m;
-                        Main.npc[npcID].netUpdate2 = true;
+                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                     }
                 }
                 internalAI[0] = 1;

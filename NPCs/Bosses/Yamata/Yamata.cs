@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataTransition"), 0, 0, 0, 0, 0, npc.target);
                     Main.npc[npcID].Center = npc.Center;
-                    Main.npc[npcID].netUpdate2 = true;
+                    Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                 }
                 npc.value = 0f;
                 npc.boss = false;

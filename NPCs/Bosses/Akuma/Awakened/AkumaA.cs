@@ -34,8 +34,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.lifeMax = 190000;
-            npc.damage = 100;
-            npc.defense = 150;
+            npc.damage = 90;
+            npc.defense = 190;
             npc.value = Item.buyPrice(20, 0, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -625,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 2000);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 

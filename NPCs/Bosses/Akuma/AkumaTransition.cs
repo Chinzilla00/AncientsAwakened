@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

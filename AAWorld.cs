@@ -54,6 +54,8 @@ namespace AAMod
         private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
+        private Vector2 InfernoCenter = -Vector2.One;
+        private Vector2 MireCenter = -Vector2.One;
         public static Vector2 shipPos = new Vector2(0, 0);
         private Vector2 TerraPos = new Vector2(0, 0);
         public string nums = "1234567890";
@@ -184,6 +186,10 @@ namespace AAMod
             Compass = false;
             ModContentGenerated = false;
             Empowered = downedShen;
+            mirePos = new Vector2(0, 0);
+            infernoPos = new Vector2(0, 0);
+            InfernoCenter = -Vector2.One;
+            MireCenter = -Vector2.One;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -278,8 +284,8 @@ namespace AAMod
 
             return new TagCompound {
                 {"downed", downed},
-				{"mirePosX", mirePos.X },
-				{"infernoPosX", infernoPos.X },
+				{"MCenter", MireCenter },
+				{"ICenter", InfernoCenter },
                 {"squid1", squid1},
                 {"squid2", squid2},
                 {"squid3", squid3},
@@ -360,6 +366,8 @@ namespace AAMod
             flags6[0] = ModContentGenerated;
             writer.Write(flags6);
 
+            writer.WriteVector2(MireCenter);
+            writer.WriteVector2(InfernoCenter);
 
             //Squid Lady
             writer.Write(squid1);
@@ -432,7 +440,16 @@ namespace AAMod
             downedHaruka = flags5[7];
             
             BitsByte flags6 = reader.ReadByte();
+<<<<<<< HEAD
             ModContentGenerated = flags6[0];
+=======
+            downedSisters = flags6[0];
+            downedSag = flags6[1];
+            ModContentGenerated = flags6[2];
+            
+            InfernoCenter = reader.ReadVector2();
+            MireCenter = reader.ReadVector2();
+>>>>>>> 5510a4f4902a68b8633b128d0a2895a2f2f5dd2d
 
             //Squid Lady
             squid1 = reader.ReadInt32();
@@ -505,11 +522,16 @@ namespace AAMod
             DiscordOres = downedSisters;
             InfernoStripe = downed.Contains("IStripe");
             MireStripe = downed.Contains("MStripe");
-            var mirePosX = tag.GetFloat("mirePosX");
-			var infernoPosX = tag.GetFloat("infernoPosX");
-            mirePos = new Vector2(mirePosX, 150);
-            infernoPos = new Vector2(infernoPosX, 150);
             ModContentGenerated = downed.Contains("WorldGenned");
+
+            if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
+            {
+                MireCenter = tag.Get<Vector2>("MCenter");
+            }
+            if (tag.ContainsKey("ICenter")) // check if the altar coordinates exist in the save file
+            {
+                InfernoCenter = tag.Get<Vector2>("ICenter");
+            }
             //Squid Lady
 
             squid1 = tag.GetInt("squid1");
@@ -797,8 +819,7 @@ namespace AAMod
             }
         }
         
-
-        public void VoidIslands(GenerationProgress progress) //method line
+        public void VoidIslands(GenerationProgress progress)
         {
             progress.Message = ("0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0");
 
@@ -861,6 +882,7 @@ namespace AAMod
             }
             progress.Set(1f);
         }
+
         public int BlockLining(double x, double y, int repeats, int tileType, bool random, int max, int min = 3)
         {
             for (double i = x; i < x + repeats; i++)
@@ -882,6 +904,7 @@ namespace AAMod
             }
             return repeats;
         }
+
         private void MiniIsland(Point position, int size)
         {
             for (int i = -size / 2; i < size / 2; ++i)
@@ -1147,8 +1170,6 @@ namespace AAMod
             }
         }
 
-        
-
         public override void PostUpdate()
         {
             if (downedEquinox)
@@ -1315,20 +1336,15 @@ namespace AAMod
                 if (InfernoStripe == false)
                 {
                     InfernoStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-                    if (infernoPos.X == 0)
-                        infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? 2000 : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
 
                     Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)infernoPos.X, 0, 120, 1);
+                    ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, 1);
                 }
                 if (MireStripe == false)
                 {
                     MireStripe = true;
-                    infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-                    if (mirePos.X == 0)
-                        mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-                    ConversionHandler.ConvertDown((int)mirePos.X, 0, 120, 0);
+
+                    ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, 0);
                 }
             }
         }
@@ -1399,6 +1415,10 @@ namespace AAMod
                 }
             }
             mirePos.Y = q;
+
+            InfernoCenter = infernoPos;
+
+            MireCenter = mirePos;
 
             progress.Message = "Spreading Chaos";
             progress.Message = "Scorching the Inferno";
@@ -1539,8 +1559,7 @@ namespace AAMod
             Parthenan biome = new Parthenan();
             biome.Place(center, WorldGen.structures);
         }
-
-
+        
         public override void ResetNearbyTileEffects()
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod);
@@ -1637,7 +1656,7 @@ namespace AAMod
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-200f, 200f, (float)Main.rand.NextDouble()), 100f);
-                Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
     }

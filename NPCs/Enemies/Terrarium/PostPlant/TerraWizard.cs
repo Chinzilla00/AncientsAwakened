@@ -30,6 +30,25 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.noGravity = true;
         }
 
+        public override void PostAI()
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            {
+                npc.life = 0;
+            }
+        }
+
+        public override bool PreNPCLoot()
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public float[] shootAI = new float[4];
 
         public override void AI()
