@@ -134,6 +134,7 @@ namespace AAMod
         public bool Alpha;
         public bool Palladium;
         public bool fulgurite;
+        public bool ringActive = false;
         public bool doomite;
         public bool Radium;
         public bool perfectChaos;
@@ -647,7 +648,10 @@ namespace AAMod
 
             if (fulgurite)
             {
-                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                if (!ringActive)
+                {
+                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                }
             }
 
             if (trueBlazing)
