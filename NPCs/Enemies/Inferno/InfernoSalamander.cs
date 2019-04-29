@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life >= 0)
+            if (npc.life <= 0)
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore2"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ISGore3"), 1f);
