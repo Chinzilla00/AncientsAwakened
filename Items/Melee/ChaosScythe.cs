@@ -18,7 +18,7 @@ namespace AAMod.Items.Melee   //where is located
             item.width = 56;              
             item.height = 56;          
             item.knockBack = 6;
-            item.value = 10;
+            item.value = 300000;
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = false;
             item.expert = true;
