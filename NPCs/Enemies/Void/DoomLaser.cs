@@ -37,11 +37,6 @@ namespace AAMod.NPCs.Enemies.Void
                 Main.PlaySound(SoundID.Item12, (int)projectile.Center.X, (int)projectile.Center.Y);
             }
             Effects();
-            if (projectile.velocity.Length() < 12f)
-            {
-                projectile.velocity.X *= 1.05f;
-                projectile.velocity.Y *= 1.05f;
-            }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
         }
 

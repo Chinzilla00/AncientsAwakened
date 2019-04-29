@@ -1926,6 +1926,10 @@ namespace AAMod
                 {
                     player.wingTimeMax = 30;
                 }
+                if (YamataAGravity)
+                {
+                    player.moveSpeed *= .75f;
+                }
             }
 
             if (Hunted)
@@ -1999,11 +2003,24 @@ namespace AAMod
             }
         }
 
-        
-
         public override void UpdateDead()
         {
             infinityOverload = false;
+            discordInferno = false;
+            dragonFire = false;
+            hydraToxin = false;
+            terraBlaze = false;
+            Yanked = false;
+            InfinityScorch = false;
+            LockedOn = false;
+            shroomed = false;
+            riftbent = false;
+            DestinedToDie = false;
+            YamataGravity = false;
+            YamataAGravity = false;
+            Hunted = false;
+            Unstable = false;
+            Abducted = false;
         }
 
         public override void MeleeEffects(Item item, Rectangle hitbox)

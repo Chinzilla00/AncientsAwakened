@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             npc.dontTakeDamage = true;
             npc.lifeMax = 1;
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 90;
+            npc.height = 78;
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;

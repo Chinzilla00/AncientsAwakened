@@ -147,8 +147,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             else if (Sagittarius.MovementType[0] == 3)
             {
                 npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(260, 0f), rotValue);
-                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+                int aiTimerFire = npc.whoAmI % 2 == 0 ? 50 : 100;
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 5f, true, new Vector2(20f, 15f));
             }
             else if (Sagittarius.MovementType[0] == 4)
             {
