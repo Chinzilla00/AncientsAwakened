@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoldCoin);       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
                 }
             }
-            if (npc.life >= 0)
+            if (npc.life <= 0)
             {
 
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ToxitoadGoreHead"), 1f);
