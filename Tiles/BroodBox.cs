@@ -36,7 +36,7 @@ namespace AAMod.Tiles
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/ZeroBox_Glow");
+            if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/BroodBox_Glow");
             if (glowTex != null && tile != null && tile.active() && tile.type == Type)
             {
                 int width = 16, height = 16;

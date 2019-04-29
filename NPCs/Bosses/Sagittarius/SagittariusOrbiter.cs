@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
             if (Sagittarius.MovementType[0] == 1)
             {
-                BaseAI.AIWeapon(npc, ref InternalAI, ref npc.rotation, player.Center, false, 0, 130, 10, 3, 0);
+                BaseAI.AIEye(npc, ref npc.ai, false, true, .2f, .1f, 6, 6, 0, 0);
             }
             else if (Sagittarius.MovementType[0] == 2)
             {
@@ -146,8 +146,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
             else if (Sagittarius.MovementType[0] == 3)
             {
-                npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(140, 0f), rotValue);
-                int aiTimerFire = npc.whoAmI % 5 == 0 ? 50 : npc.whoAmI % 4 == 0 ? 100 : npc.whoAmI % 3 == 0 ? 150 : npc.whoAmI % 2 == 0 ? 200 : 250;
+                npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(260, 0f), rotValue);
+                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
                 BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], aiTimerFire, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
             }
             else if (Sagittarius.MovementType[0] == 4)
@@ -163,6 +163,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             else if (Sagittarius.MovementType[0] == 5)
             {
                 npc.velocity *= .8f;
+            }
+            if (Sagittarius.MovementType[0] != 1)
+            {
+                npc.rotation = 0;
             }
         }
 
