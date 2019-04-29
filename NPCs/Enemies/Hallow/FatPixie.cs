@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Enemies.Hallow
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.player.ZoneHoly && Main.hardMode ? .5f : 0f;
+            return spawnInfo.player.ZoneHoly && Main.hardMode ? .2f : 0f;
         }
 
 		int frameCounter = 0;
