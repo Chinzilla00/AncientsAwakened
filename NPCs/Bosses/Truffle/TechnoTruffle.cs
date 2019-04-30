@@ -101,11 +101,16 @@ namespace AAMod.NPCs.Bosses.Truffle
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 90;
-                if (npc.frame.Y > (90 * 7))
+                npc.frame.Y += 104;
+                if (npc.frame.Y > (104 * 7) && internalAI[1] != AISTATE_ROCKET)
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
+                }
+                else if (npc.frame.Y > (104 * 11) && npc.frame.Y < (104 * 8) && internalAI[1] == AISTATE_ROCKET)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 104 * 8;
                 }
             }
 
@@ -121,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (internalAI[0] >= 180)
                 {
                     internalAI[0] = 0;
-                    internalAI[1] = Main.rand.Next(3);
+                    internalAI[1] = Main.rand.Next(4);
                     if (internalAI[1] == AISTATE_ROCKET)
                     {
                         SelectPoint = true;
@@ -148,8 +153,8 @@ namespace AAMod.NPCs.Bosses.Truffle
                 }
                 if (internalAI[0] >= 60)
                 {
-                    int attack = Main.rand.Next(3);
-                    internalAI[1] = Main.rand.Next(3);
+                    int attack = Main.rand.Next(2);
+                    internalAI[1] = Main.rand.Next(4);
                     internalAI[0] = 0;
                     FungusAttack(attack);
                     npc.netUpdate = true;
@@ -229,33 +234,52 @@ namespace AAMod.NPCs.Bosses.Truffle
 
             if (Attack == 0)
             {
-                if (NPC.CountNPCS(mod.NPCType<Truffling>()) < 4)
+                if (NPC.CountNPCS(mod.NPCType<Truffling>()) < 1)
                 {
-                    for (int i = 0; i < (Main.expertMode ? 3 : 2); i++)
+                    for (int i = 0; i < 4; i++)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Truffling>());
+                        if (i == 1)
+                        {
+                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<Truffling>());
+                        }
+                        if (i == 2)
+                        {
+                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<Truffling>());
+                        }
+                        if (i == 3)
+                        {
+                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<Truffling>());
+                        }
+                        else
+                        {
+                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<Truffling>());
+                        }
                     }
                 }
                 else
-                { Attack = 2; }
+                { Attack = 1; }
             }
             else if (Attack == 1)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<TruffleProbe>());
-                }
-            }
-            else if (Attack == 2)
-            {
-                float spread = 12f * 0.0174f;
-                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
-                double deltaAngle = spread / (Main.expertMode ? 5 : 4);
-                double offsetAngle;
-                for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
-                {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FungusCloud"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+
+                    if (i == 1)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
+                    }
+                    if (i == 2)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
+                    }
+                    if (i == 3)
+                    {
+                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
+                    }
+                    else
+                    {
+                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
+                    }
                 }
             }
         }
