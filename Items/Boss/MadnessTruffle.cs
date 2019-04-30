@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Truffle
+namespace AAMod.Items.Boss
 {
     public class MadnessTruffle : ModItem
     {

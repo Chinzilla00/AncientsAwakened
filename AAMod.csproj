@@ -777,6 +777,8 @@
     <Compile Include="Items\Boss\Toad\ToadLeg.cs" />
     <Compile Include="Items\Boss\Toad\ToadTongue.cs" />
     <Compile Include="Items\Boss\Toad\Todegun.cs" />
+    <Compile Include="Items\Boss\Truffle\MetallicTruffle.cs" />
+    <Compile Include="Items\Boss\Truffle\TruffleBag.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssalYari.cs" />
     <Compile Include="Items\Boss\Yamata\AbyssArrow.cs" />
     <Compile Include="Items\Boss\Yamata\YamataATrophy.cs" />
@@ -867,6 +869,7 @@
     <Compile Include="Items\Dyes\DiscordianDye.cs" />
     <Compile Include="Items\Dyes\BlazingFuryDye.cs" />
     <Compile Include="Items\Dyes\DoomsdayDye.cs" />
+    <Compile Include="Items\Flasks\SquidList.cs" />
     <Compile Include="Items\Flasks\CorruptionFlask.cs" />
     <Compile Include="Items\Flasks\CrimsonFlask.cs" />
     <Compile Include="Items\Flasks\Fungicide.cs" />
@@ -1069,6 +1072,7 @@
     <Compile Include="Items\Melee\Xiphos.cs" />
     <Compile Include="Items\Melee\YtriumHalberd.cs" />
     <Compile Include="Items\Melee\YtriumSword.cs" />
+    <Compile Include="Items\Boss\MadnessTruffle.cs" />
     <Compile Include="Items\Mushrooms\Green.cs" />
     <Compile Include="Items\Mushrooms\Red.cs" />
     <Compile Include="Items\Mushrooms\Purple.cs" />
@@ -3973,6 +3977,7 @@
     <Content Include="Items\BossSummons\CyberneticShroom.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
+    <Content Include="Items\Boss\MadnessTruffle.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
     <Content Include="Items\Boss\Toad\ToadBag.png" />
@@ -3981,6 +3986,8 @@
     <Content Include="Items\Boss\Toad\ToadTongue.png" />
     <Content Include="Items\Boss\Toad\Todegun.png" />
     <Content Include="Items\Boss\Toad\TodegunFrame.png" />
+    <Content Include="Items\Boss\Truffle\MetallicTruffle.png" />
+    <Content Include="Items\Boss\Truffle\TruffleBag.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
@@ -3990,6 +3997,7 @@
     <Content Include="Items\Flasks\ForestFlask.png" />
     <Content Include="Items\Flasks\Fungicide.png" />
     <Content Include="Items\Flasks\GlowingSporeSac.png" />
+    <Content Include="Items\Flasks\SquidList.png" />
     <Content Include="Items\Flasks\HallowFlask.png" />
     <Content Include="Items\Flasks\HellFlask.png" />
     <Content Include="Items\Flasks\IceFlask.png" />
