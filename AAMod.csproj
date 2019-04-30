@@ -623,6 +623,7 @@
     <Compile Include="Items\Blocks\ZeroBox.cs" />
     <Compile Include="Items\BossSummons\ChaosRune.cs" />
     <Compile Include="Items\BossSummons\ChaosSigil.cs" />
+    <Compile Include="Items\BossSummons\CyberneticShroom.cs" />
     <Compile Include="Items\BossSummons\FlamesOfAnarchy.cs" />
     <Compile Include="Items\BossSummons\Lifescanner.cs" />
     <Compile Include="Items\BossSummons\PlanteraFlower.cs" />
@@ -1517,6 +1518,11 @@
     <Compile Include="NPCs\Bosses\Toad\ToadBoom.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToadTongue.cs" />
+    <Compile Include="NPCs\Bosses\Truffle\TechnoTruffle.cs" />
+    <Compile Include="NPCs\Bosses\Truffle\TruffleBookIt.cs" />
+    <Compile Include="NPCs\Bosses\Truffle\Truffling.cs" />
+    <Compile Include="NPCs\Bosses\Truffle\TruffleProbe.cs" />
+    <Compile Include="NPCs\Bosses\Truffle\TruffleShot.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\HarukaY.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Awakened\YamataAVenom.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Shock.cs" />
@@ -3964,6 +3970,7 @@
     <Content Include="Items\Blocks\StarBox.png" />
     <Content Include="Items\Blocks\StarBoxN.png" />
     <Content Include="Items\Blocks\ToadBox.png" />
+    <Content Include="Items\BossSummons\CyberneticShroom.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
@@ -4093,6 +4100,12 @@
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Truffle\TechnoTruffle.png" />
+    <Content Include="NPCs\Bosses\Truffle\TechnoTruffle_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Truffle\TruffleBookIt.png" />
+    <Content Include="NPCs\Bosses\Truffle\TruffleProbe.png" />
+    <Content Include="NPCs\Bosses\Truffle\TruffleShot.png" />
+    <Content Include="NPCs\Bosses\Truffle\Truffling.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Head_Boss.png" />

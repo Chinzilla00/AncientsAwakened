@@ -20,14 +20,19 @@ namespace AAMod.Items.Accessories.Wings
 			item.value = Item.sellPrice(0, 1, 50, 0);
 			item.rare = 1;
 			item.accessory = true;
-		}
+        }
 
-		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.wingTimeMax = 60;
+        }
+
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
 			ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 		{
 			ascentWhenFalling = 0.85f;
 			ascentWhenRising = 0.15f;
-			maxCanAscendMultiplier = 1f;
+			maxCanAscendMultiplier = 5f;
 			maxAscentMultiplier = 3f;
 			constantAscend = 0.135f;
 		}

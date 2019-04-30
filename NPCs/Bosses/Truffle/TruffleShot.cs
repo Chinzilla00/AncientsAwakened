@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Orthrus
+namespace AAMod.NPCs.Bosses.Truffle
 {
-    class OrthrusSpark : ModProjectile
+    class TruffleShot : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -55,6 +55,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 projectile.spriteDirection = 1;
                 projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
+
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

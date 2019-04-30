@@ -102,6 +102,7 @@ namespace AAMod
         public static bool downedSisters;
         public static bool downedSag;
         public static bool SistersSummoned;
+        public static bool downedTruffle;
         //Stones
         public static bool RealityDropped;
         public static bool SpaceDropped;
@@ -168,6 +169,7 @@ namespace AAMod
             downedSisters = false;
             downedSag = false;
             SistersSummoned = false;
+            downedTruffle = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -280,6 +282,7 @@ namespace AAMod
             if (downedSag) downed.Add("Sag");
             if (ModContentGenerated) downed.Add("WorldGenned");
             if (SistersSummoned) downed.Add("Summoned");
+            if (downedTruffle) downed.Add("Truffle");
 
             return new TagCompound {
                 {"downed", downed},
@@ -363,6 +366,7 @@ namespace AAMod
 
             BitsByte flags6 = new BitsByte();
             flags6[0] = ModContentGenerated;
+            flags6[1] = downedTruffle;
             writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
@@ -440,6 +444,7 @@ namespace AAMod
             
             BitsByte flags6 = reader.ReadByte();
             ModContentGenerated = flags6[0];
+            downedTruffle = flags6[1];
 
             //Squid Lady
             squid1 = reader.ReadInt32();
@@ -501,6 +506,7 @@ namespace AAMod
             downedSisters = downed.Contains("Sisters");
             downedSag = downed.Contains("Sag");
             SistersSummoned = downed.Contains("Summoned");
+            downedTruffle = downed.Contains("Truffle");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
