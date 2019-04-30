@@ -27,12 +27,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.width = 74;
             npc.height = 70;
             npc.aiStyle = -1;
-            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Sounds/Zerohit");
-            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/ZeroDeath");
+            npc.HitSound = SoundID.NPCHit4;
+            npc.DeathSound = SoundID.NPCDeath14;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Sagittarius");
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.alpha = 255;
+            bossBag = mod.ItemType("SagBag");
         }
         
         public override void SendExtraAI(BinaryWriter writer)
@@ -137,6 +138,15 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
             internalAI[1]++;
+
+            if (internalAI[2] == 2)
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
 
             if (internalAI[1] >= 300)
             {
@@ -259,7 +269,18 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void NPCLoot()
         {
             AAWorld.downedSag = true;
-            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
+            if (Main.rand.Next(10) == 0)
+            {
+                npc.DropLoot(mod.ItemType("SagTrophy"));
+            }
+            if (!Main.expertMode)
+            {
+                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
+            }
+            else
+            {
+                npc.DropBossBags();
+            }
         }
 
         public float ShieldScale = 0f;

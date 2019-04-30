@@ -32,6 +32,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            bossBag = mod.ItemType("SagBag");
         }
 
         public static float[] MovementType = new float[2];
@@ -299,7 +300,18 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void NPCLoot()
         {
             AAWorld.downedSag = true;
-            Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
+            if (Main.rand.Next(10) == 0)
+            {
+                npc.DropLoot(mod.ItemType("SagTrophy"));
+            }
+            if (!Main.expertMode)
+            {
+                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
+            }
+            else
+            {
+                npc.DropBossBags();
+            }
         }
         
     }

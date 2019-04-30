@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Enemies.Snow
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default(Color), 1f);
             }
-            if (npc.life <= 0)
+            if (npc.life == 0)
             {
                 for (int k = 0; k < 5; k++)
                 {

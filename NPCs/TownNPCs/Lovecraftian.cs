@@ -187,7 +187,7 @@ namespace AAMod.NPCs.TownNPCs
 
                 int Mushman = NPC.FindFirstNPC(mod.NPCType("Mushman"));
 
-                int Item = player.FindItem(mod.ItemType<Items.Materials.TerraShard>());
+                int Item1 = player.FindItem(mod.ItemType<Items.Materials.TerraShard>());
                 int Item2 = player.FindItem(mod.ItemType<Items.Materials.DragonScale>());
                 int Item3 = player.FindItem(mod.ItemType<Items.Materials.MirePod>());
                 int Item4 = player.FindItem(ItemID.RottenChunk);
@@ -198,13 +198,13 @@ namespace AAMod.NPCs.TownNPCs
                 int Item9 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.Mushium>());
                 int Item10 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>());
 
-                if (Item >= 0 && AAWorld.squid1 < 5) //Item 1: 3 Blueberries
+                if (Item1 >= 0 && AAWorld.squid1 < 5) //Item 1: 3 Blueberries
                 {
                     Main.npcChatCornerItem = mod.ItemType<Items.Materials.TerraShard>();
-                    player.inventory[Item].stack--;
-                    if (player.inventory[Item].stack <= 0)
+                    player.inventory[Item1].stack--;
+                    if (player.inventory[Item1].stack <= 0)
                     {
-                        player.inventory[Item] = new Item();
+                        player.inventory[Item1] = new Item();
                     }
                     if (AAWorld.squid1 == 4)
                     {
@@ -444,7 +444,19 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else
                 {
-                    Main.npcChatText = "Hmm...nothing? I need stuff to study. I'd like some important materials from biomes. Monster pieces, plants, etc.";
+                    if (!BaseMod.BasePlayer.HasItem(player, mod.ItemType<Items.Flasks.SquidList>()))
+                    {
+                        Main.npcChatText = "Here's a list of some things I need for my research. If you lose it, I'll happily write up a new one for you";
+                        int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                    else
+                    {
+                        Main.npcChatText = "Hmm...nothing? I need stuff to study. I'd like some important materials from biomes. Monster pieces, plants, etc.";
+                    }
                     Main.npcChatCornerItem = 0;
                     Main.PlaySound(12, -1, -1, 1);
                 }

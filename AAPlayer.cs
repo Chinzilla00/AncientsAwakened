@@ -179,6 +179,10 @@ namespace AAMod
         public bool HeartS = false;
         public bool HeartA = false;
 
+        public bool SagShield = false;
+        public bool ShieldUp = false;
+        public int SagCooldown = 0;
+
         public bool BegAccessoryPrevious;
         public bool BegAccessory;
         public bool BegHideVanity;
@@ -352,6 +356,8 @@ namespace AAMod
             HeartP = false;
             HeartS = false;
             HeartA = false;
+            SagShield = false;
+            ShieldUp = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -723,9 +729,43 @@ namespace AAMod
         }
 
         public int[] Spheres = null;
+        public float ShieldScale = 0;
+        public float RingRoatation = 0;
 
         public override void PostUpdate()
         {
+            if (SagCooldown > 0)
+            {
+                player.noItems = true;
+                SagCooldown--;
+            }
+            else
+            {
+                player.noItems = false;
+                SagCooldown = 0;
+            }
+            if (ShieldUp)
+            {
+                RingRoatation += .05f;
+                ShieldScale += .02f;
+                if (ShieldScale >= 1f)
+                {
+                    ShieldScale = 1f;
+                }
+            }
+            else
+            {
+                ShieldScale -= .02f;
+                if (ShieldScale <= 0f)
+                {
+                    ShieldScale = 0f;
+                }
+            }
+
+            if (ShieldScale > 0)
+            {
+                RingRoatation += .05f;
+            }
             if (trueAbyssal)
             {
                 Color light = BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y));
@@ -1015,93 +1055,7 @@ namespace AAMod
                     }
                 }
             }
-
-            if (player.whoAmI == Main.myPlayer)
-            {
-                if (Main.hasFocus)
-                {
-                    for (int k = 0; k < AADoubleTapKeyTimer.Length; k++)
-                    {
-                        AADoubleTapKeyTimer[k]--;
-                        if (AADoubleTapKeyTimer[k] < 0)
-                        {
-                            AADoubleTapKeyTimer[k] = 0;
-                        }
-                    }
-                    for (int l = 0; l < 4; l++)
-                    {
-                        bool flag5 = false;
-                        bool flag6 = false;
-                        switch (l)
-                        {
-                            case 0:
-                                flag5 = (player.controlDown && player.releaseDown);
-                                flag6 = player.controlDown;
-                                break;
-                            case 1:
-                                flag5 = (player.controlUp && player.releaseUp);
-                                flag6 = player.controlUp;
-                                break;
-                            case 2:
-                                flag5 = (player.controlRight && player.releaseRight);
-                                flag6 = player.controlRight;
-                                break;
-                            case 3:
-                                flag5 = (player.controlLeft && player.releaseLeft);
-                                flag6 = player.controlLeft;
-                                break;
-                        }
-                        if (flag5)
-                        {
-                            if (player.doubleTapCardinalTimer[l] > 0)
-                            {
-                                ModKeyDoubleTap(l);
-                            }
-                            else
-                            {
-                                AADoubleTapKeyTimer[l] = 15;
-                            }
-                        }
-                        if (flag6)
-                        {
-                            AAHoldDownKeyTimer[l]++;
-                            ModKeyHoldDown(l, player.holdDownCardinalTimer[l]);
-                        }
-                        else
-                        {
-                            AAHoldDownKeyTimer[l] = 0;
-                        }
-                    }
-                }
-            }
         }
-
-        public void ModKeyDoubleTap(int keyDir)
-        {
-            int num = 0;
-            if (Main.ReversedUpDownArmorSetBonuses)
-            {
-                num = 1;
-            }
-            if (keyDir == num)
-            {
-                if (Assassin && !player.mount.Active)
-                {
-                    AssassinStealth = !AssassinStealth;
-                }
-            }
-        }
-
-        public void ModKeyHoldDown(int keyDir, int holdTime)
-        {
-            /*int num = 0;
-            if (Main.ReversedUpDownArmorSetBonuses)
-            {
-                num = 1;
-            }*/
-        }
-
-
 
         public void DropDevArmor(int dropType)
         {
@@ -1653,6 +1607,21 @@ namespace AAMod
                     {
                         player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
                     });
+                }
+            }
+            if (Assassin)
+            {
+                if (!player.mount.Active)
+                {
+                    AssassinStealth = !AssassinStealth;
+                }
+            }
+            if (SagShield)
+            {
+                if (AAMod.AbilityKey.JustPressed && SagCooldown == 0)
+                {
+                    player.AddBuff(mod.BuffType<SagShield>(), 300);
+                    SagCooldown = 18000;
                 }
             }
             if (trueDynaskull)
@@ -2501,6 +2470,7 @@ namespace AAMod
             BaseDrawing.AddPlayerLayer(list, glAfterShield, PlayerLayer.ShieldAcc, false);
             BaseDrawing.AddPlayerLayer(list, glAfterNeck, PlayerLayer.NeckAcc, false);
             BaseDrawing.AddPlayerLayer(list, glAfterFace, PlayerLayer.FaceAcc, false);
+            BaseDrawing.AddPlayerLayer(list, glAfterAll, list[list.Count - 1], false);
         }
 
         public PlayerLayer glAfterWep = new PlayerLayer("AAMod", "glAfterWep", PlayerLayer.HeldItem, delegate (PlayerDrawInfo edi)
@@ -3013,4 +2983,26 @@ namespace AAMod
             }
         });
     }
+
+
+
+    public PlayerLayer glAfterAll = new PlayerLayer("GRealm", "glAfterAll", delegate (PlayerDrawInfo edi)
+    {
+        Mod mod = AAMod.instance;
+        Player drawPlayer = edi.drawPlayer;
+        if (drawPlayer.mount.Active) return;
+        if (drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldUp)
+        {
+            Texture2D Shield = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield");
+            Texture2D Ring = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusFreeRing");
+            Texture2D RingGlow = mod.GetTexture("Glowmasks/SagittariusFreeRing_Glow");
+
+            if (drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale > 0)
+            {
+                BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);
+            }
+        }
+    });
 }
