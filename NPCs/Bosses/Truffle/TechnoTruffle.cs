@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Feudal Fungus");
+            DisplayName.SetDefault("Techno Truffle");
             Main.npcFrameCount[npc.type] = 12;
         }
 
@@ -68,9 +68,8 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            bossBag = mod.ItemType("FungusBag");
+            bossBag = mod.ItemType("TruffleBag");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Siege");
-            npc.alpha = 255;
             npc.netAlways = true;
         }
 
@@ -137,11 +136,11 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
 			if(internalAI[1] == AISTATE_HOVER) 
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 8f, 170, 56f, FireMagic);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.2f, 6f, 170, 40f, FireMagic);
             }
             else if (internalAI[1] == AISTATE_FLIER) 
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.2f, 0.1f, 8f, 6f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.2f, 0.2f, 6f, 6f, false, 1);
             }
             else if (internalAI[1] == AISTATE_SHOOT)
             {
@@ -179,17 +178,31 @@ namespace AAMod.NPCs.Bosses.Truffle
             {
                 if (SelectPoint)
                 {
-                    float Point = 500 * npc.direction;
-                    MovePoint = player.Center + new Vector2(Point, 500f);
+                    float Point = 200 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 200f);
                     SelectPoint = false;
                     npc.netUpdate = true;
                 }
-                MoveToPoint(MovePoint);
-                if (Vector2.Distance(npc.Center, MovePoint) <= 0)
+
+                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+                float NewRotation = (float)Math.Atan2(num2, num1);
+
+                internalAI[0]++;
+                if (internalAI[0] < 120)
                 {
-                    internalAI[1] = Main.rand.Next(3);
-                    internalAI[0] = 0;
-                    npc.netUpdate = true;
+                    npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f) + 1.57f;
+                }
+                else
+                {
+                    MoveToPoint(MovePoint);
+                    if (Vector2.Distance(npc.Center, MovePoint) <= 0)
+                    {
+                        internalAI[1] = Main.rand.Next(3);
+                        internalAI[0] = 0;
+                        npc.netUpdate = true;
+                    }
                 }
                 npc.netUpdate = true;
             }
@@ -240,19 +253,19 @@ namespace AAMod.NPCs.Bosses.Truffle
                     {
                         if (i == 1)
                         {
-                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<Truffling>());
+                            NPC.NewNPC((int)npc.Center.X + 40, (int)npc.Center.Y - 40, mod.NPCType<Truffling>());
                         }
                         if (i == 2)
                         {
-                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<Truffling>());
+                            NPC.NewNPC((int)npc.Center.X + 40, (int)npc.Center.Y + 40, mod.NPCType<Truffling>());
                         }
                         if (i == 3)
                         {
-                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<Truffling>());
+                            NPC.NewNPC((int)npc.Center.X - 40, (int)npc.Center.Y - 40, mod.NPCType<Truffling>());
                         }
                         else
                         {
-                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<Truffling>());
+                            NPC.NewNPC((int)npc.Center.X - 40, (int)npc.Center.Y + 40, mod.NPCType<Truffling>());
                         }
                     }
                 }
@@ -286,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
-            float moveSpeed = 14f;
+            float moveSpeed = 10f;
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

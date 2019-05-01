@@ -102,6 +102,7 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Yamata = false;
         public static bool Zero = false;
         public static bool Shen = false;
+        public static bool Stones = false;
         public static bool BaseChat = false;
         public static int ChatNumber = 0;
 
@@ -126,6 +127,7 @@ namespace AAMod.NPCs.TownNPCs
             Yamata = false;
             Zero = false;
             Shen = false;
+            Stones = false;
         }
         
         public override void SetChatButtons(ref string button, ref string button2)
@@ -164,11 +166,11 @@ namespace AAMod.NPCs.TownNPCs
 
             string YamataT = "Ancient of Wrath";
 
-            string ZeroT = "Ancient of Null";
+            string ZeroT = "Ancient of Doom";
 
-            string ShenT = "Discordian Death";
+            string ShenT = "Discordian Doomsayer";
 
-            Player player = Main.player[Main.myPlayer];
+            string StonesT = "The Stonekeepers";
 
             button = SwitchInfoT;
 
@@ -259,8 +261,13 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (ChatNumber == 17 && AAWorld.downedAllAncients)
             {
-                button2 = SistersT;
-                Zero = true;
+                button2 = ShenT;
+                Shen = true;
+            }
+            else if (ChatNumber == 18 && AAWorld.downedShen)
+            {
+                button2 = StonesT;
+                Stones = true;
             }
             else
             {
@@ -289,6 +296,7 @@ namespace AAMod.NPCs.TownNPCs
             Yamata = false;
             Zero = false;
             Shen = false;
+            Stones = true;
         }
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -304,7 +312,6 @@ namespace AAMod.NPCs.TownNPCs
 			}
 			else
 			{
-				Player player = Main.player[Main.myPlayer];
 				Main.npcChatText = BossChat();
 			}
 		}
@@ -333,33 +340,33 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Hydra)
             {
-                return AAWorld.downedHydra ? "Good thing is that those Hydras are not like in Greek mythology. They are not totally immortal like Lernean Hydra." : 
-                    "Mire is a native place for creatures, named Hydras. They are 3 headed, very poisonous reptiles. And they also laying a lot of eggs. Go and kill some. Maybe Mire will become a bit friendlier after that.";
+                return AAWorld.downedHydra ? "Good riddance. That hydra can't seem to lay off. At least her daughter is a bit more mellow...huh? Who? I'll explain later, good job." : 
+                    "The Mire has always been a gathering spot for all the nastiest lizards, but there's a really big one there, and it's got 3 heads. She's really grouchy all the time, and any time I try to go into her den, she tries to EAT me!";
             }
             else if (Djinn)
             {
-                return AAWorld.downedDjinn ? "You actually found and defeated one? And you even didn't try to make a wish? What a shame..." : 
-                    "I am sure you heard some Arabian fairy tales before. Often, they have a character, named Djinn or Genie. It mostly showed there like almighty and kind spirit, which may present 3 wishes to his liberator. In reality, however, they are smart and evil creatures, whos only purpose is to create chaos. If you will see one, do not try to talk, just kill it.";
+                return AAWorld.downedDjinn ? "Hah! Who's tough now you sandy sadsack!" : 
+                    "THAT SON OF A-- Oh hi. Sorry, I was just a bit angry about a little tussle I had with desert djinn. That magical meathead and his goons to stop flexing their muscles on me. Could you go teach em' a thing or two?";
             }
             else if (Serpent)
             {
-                return AAWorld.downedSerpent ? "How are your frostbites? I hope that they are not as deep as they look." : 
-                    "Normal serpents are usually hibernate while it is cold around. But this exact kind of serpents behaves diffirently. They are very active during cold times. But the strangest thing is that they are capable to fly and breathe subzero frost. I am sure you can find something useful in their lair, so go and kill one.";
+                return AAWorld.downedSerpent ? "Hope you didn't get any 'FROSTBITES'! *buh-dum-tish* ...yeah I know that was lame." : 
+                    "Snakes, why does it always have to be snakes? I hate 'em! Whatever, in the tundra recently, there have been these snow snerpents that won't leave me alone. Could ya play exterminator and find out what they're doing?";
             }
             else if (Retriever)
             {
-                return AAWorld.downedRetriever ? "My only hope is that Fulgarians will not send another one and cause time paradox." : 
-                    "You heard about the probe which floats somewhere in night time? Nobody knows what it is doing here. It also looks pretty dangerous. It would be better if you will stop it forever.";
+                return AAWorld.downedRetriever ? "Did you get my 3rd edition of 'The Life and Epic Adventures of Anubis the Wonder Dog!' back by any chance?" : 
+                    "Remember the Grips of Chaos? Those nasty grabby hands? There's a robotic one and it keeps stealing my stuff. Can you do me a favor and go throw a wrench at it or something?";
             }
             else if (Raider)
             {
-                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. Also, maybe you should show you wounds to Nurse?" : 
+                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. That thing was almost as fat as the Broodmother." : 
                     "People said that they saw strange shade in one of the nights. It was so big that it even closed the moon for a moment. You should discover this mystery and do something.";
             }
             else if (Orthrus)
             {
                 return AAWorld.downedOrthrus ? "I guess orthrus is what it eats, now." : 
-                    "Remeber the Hydra? There's a bigger one out there. And it's a robot. And it shoots Electricity. So uh...good luck!";
+                    "Remeber the Hydra? There's a bigger one out there. And it's a robot. And it uh...shoots lightning. So uh...good luck!";
             }
             else if (Equinox)
             {
@@ -368,17 +375,17 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (AnubisB)
             {
-                return "I hear there’s this Anubis guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
+                return "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
             }
             else if (Sisters)
             {
                 return AAWorld.downedSisters ? "Nice, you taught those two spoiled brats a lesson! Those two didn't see it coming!" : 
-                    "Remember ol' Brood and Hydra? Well, those two have daughters. And MAN they're annoying..! Every time I go into the chaoses, those two are just waiting to ruin my day! Can you go give em' the ol' one-two?";
+                    "Remember ol' Brood and Hydra? Well, those two have daughters. And MAN they're annoying..! Every time I go into the chaos biomes, those two are just waiting to ruin my day! Can you go give em' the ol' one-two?";
             }
             else if (Akuma)
             {
                 return AAWorld.downedAkuma ? "Akuma thinks he's edgy. To me, he just comes across as trying to be way too cool and failing. Anyways, might wanna run some water through your hair. You got a little singed up there." : 
-                    "Why would anyone call a sun serpent a demon? I have no idea personally...but Akuma has got to go. He always glasses my deserts with his fire and it pisses me off.";
+                    "Why would anyone call a sun serpent a demon? I have no idea personally...but Akuma has got to go. He always glasses my deserts with his flame breath and it pisses me off.";
             }
             else if (Yamata)
             {
@@ -387,13 +394,17 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Zero)
             {
-                return AAWorld.downedZero ? "...I'll be honest. I don't like what that thing said after it died." : 
+                return AAWorld.downedZero ? "...I'll be honest. I don't like what that thing said after it died one bit." : 
                     "You know the void? Those spooky floating islands to the east? There's a BIG scary machine there that's always just floating there. Anyways, after you slammed the moon lord, I heard a massive shockwave come from the void. Could you check it out for me?";
             }
             else if (Shen)
             {
-                return AAWorld.downedShen ? "Holy-- You BEAT Shen Doragon?! ...I'm suddenly a lot more intimidated by you, kid." :
+                return AAWorld.downedShen ? "Holy-- I knew you had it in you, man! Awesome job! Although...he seemed pretty angry when you beat him...almost as angry as when he got beat by-- er, nevermind that." :
                     "Akuma and Yamata...you know, those two were once one being. And hot dang, that guy was powerful. He leveled 2 civilizations one time. Anyways, so what was it that you needed?";
+            }
+            else if (Stones)
+            {
+                return "You know...after you whooped ol' Shen, I felt some...very old magic activate. Maybe you should pay a visit to some of the tougher bosses you've come across? By the way, have you seen the Goblin Summoner recently? Jeeze she got tough. Wonder what her deal is.";
             }
             else
             {
@@ -405,8 +416,6 @@ namespace AAMod.NPCs.TownNPCs
         {
             Mod GRealm = ModLoader.GetMod("Grealm");
             Mod Fargos = ModLoader.GetMod("Fargowiltas");
-            Mod Alchemist = ModLoader.GetMod("AlchemistNPC");
-            Mod AlchemistLite = ModLoader.GetMod("AlchemistNPCLite");
             Mod Redemption = ModLoader.GetMod("Redemption");
             Mod Thorium = ModLoader.GetMod("ThoriumMod");
 
@@ -427,7 +436,10 @@ namespace AAMod.NPCs.TownNPCs
 *Scratch Scratch*");
             chat.Add("Everyone asks me who's a good boy, but I'm upset because they never tell me who it is.");
             chat.Add("Have you seen my tail? I need to teach it a thing or two.");
-            chat.Add("The Desert Djinn may be ripped but he's got nothing on me! Check it!");
+            if (AAWorld.downedDjinn)
+            {
+                chat.Add("The Desert Djinn may be ripped but he's got nothing on me! Check it!");
+            }
             chat.Add("Thanks for letting me crash here by the way. Walking around the desert for a couple thousand years really tuckers ya out.");
             chat.Add("I wrote the Terraria Historia, yes. But I also wrote another great book. 'The Life and Epic Adventures of Anubis the Wonder Dog!' Want a copy?");
             chat.Add("Don't you hate it when " + (WorldGen.crimson ? "red fleshy crap" : "purple muggy crap") + " takes over your biome? it's disgusting.");
@@ -480,7 +492,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Cobbler >= 0)
             {
-                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. It'snot my fault he makes them with gourmet lether.");
+                chat.Add(Main.npc[Cobbler].GivenName + " keeps yelling at me for eating all the shoes he makes. It's not my fault he makes them with quality lether.");
             }
 
             if (ConfusedZombie >= 0)

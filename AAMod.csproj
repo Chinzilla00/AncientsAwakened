@@ -121,6 +121,7 @@
     <Compile Include="Buffs\Horse.cs" />
     <Compile Include="Buffs\Orbiters.cs" />
     <Compile Include="Buffs\Protocol.cs" />
+    <Compile Include="Buffs\SagShield.cs" />
     <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
     <Compile Include="Buffs\HydratoxinFlaskBuff.cs" />
@@ -966,15 +967,18 @@
     <Compile Include="Items\Melee\CarnalCrusher.cs" />
     <Compile Include="Items\Melee\DoomiteGreatsword.cs" />
     <Compile Include="Items\Melee\DoomiteSaber.cs" />
+    <Compile Include="Items\Melee\HeatCleaver.cs" />
     <Compile Include="Items\Melee\HydraGlove.cs" />
     <Compile Include="Items\Melee\DragonGlove.cs" />
     <Compile Include="Items\Melee\Firestorm.cs" />
     <Compile Include="Items\Melee\IchorSpear.cs" />
     <Compile Include="Items\Melee\MadnessSword.cs" />
+    <Compile Include="Items\Melee\Pyrosphere.cs" />
     <Compile Include="Items\Melee\RustyCutlass.cs" />
     <Compile Include="Items\Melee\ScourgeOfShadows.cs" />
     <Compile Include="Items\Melee\SlapBone.cs" />
     <Compile Include="Items\Melee\StarWrathEX.cs" />
+    <Compile Include="Items\Melee\SwampSlasher.cs" />
     <Compile Include="Items\Melee\TerraShortsword.cs" />
     <Compile Include="Items\Melee\TrueTinShortsword.cs" />
     <Compile Include="Items\Melee\UraniumSword.cs" />
@@ -1274,6 +1278,9 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\Timecaller.cs" />
+    <Compile Include="Items\Usable\Mooncaller.cs" />
+    <Compile Include="Items\Usable\Suncaller.cs" />
     <Compile Include="Items\Usable\CodeMagnet.cs" />
     <Compile Include="Items\Usable\DesertCrate.cs" />
     <Compile Include="Items\Usable\DoomstopperKey.cs" />
@@ -2421,6 +2428,7 @@
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
     <Content Include="Buffs\RoyalKitten.png" />
+    <Content Include="Buffs\SagShield.png" />
     <Content Include="Buffs\Searcher.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Shroomed.png" />
@@ -4012,6 +4020,8 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Melee\HeatCleaver.png" />
+    <Content Include="Items\Melee\Pyrosphere.png" />
     <Content Include="Items\Melee\SwampSlasher.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
@@ -4025,7 +4035,10 @@
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Usable\Mooncaller.png" />
     <Content Include="Items\Usable\PurityStar.png" />
+    <Content Include="Items\Usable\Suncaller.png" />
+    <Content Include="Items\Usable\Timecaller.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Vanity\Beg\PonyBody.png" />

@@ -946,6 +946,13 @@ namespace AAMod
                     AshRain(player, mod);
                 }
             }
+            if (player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
+            {
+                if (AAWorld.downedAllAncients && !AAWorld.downedShen)
+                {
+                    EmberRain(player, mod);
+                }
+            }
 
             if (Assassin)
             {

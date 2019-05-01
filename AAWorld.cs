@@ -133,6 +133,10 @@ namespace AAMod
         public static int squid15 = 0;
         public static int squid16 = 0;
 
+        //Other
+        public static bool Suncaller = false;
+        public static bool Mooncaller = false;
+
         public override void Initialize()
         {
             //Bosses
@@ -1137,6 +1141,30 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (Suncaller)
+            {
+                if (!Main.dayTime)
+                {
+                    Main.fastForwardTime = true;
+                    Main.dayRate = 15;
+                }
+                else
+                {
+                    Suncaller = false;
+                }
+            }
+            if (Mooncaller)
+            {
+                if (Main.dayTime)
+                {
+                    Main.fastForwardTime = true;
+                    Main.dayRate = 15;
+                }
+                else
+                {
+                    Suncaller = false;
+                }
+            }
             if (downedEquinox)
             {
                 if (RadiumOre == false)
