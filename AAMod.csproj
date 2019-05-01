@@ -121,6 +121,7 @@
     <Compile Include="Buffs\Horse.cs" />
     <Compile Include="Buffs\Orbiters.cs" />
     <Compile Include="Buffs\Protocol.cs" />
+    <Compile Include="Buffs\SagShield.cs" />
     <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
     <Compile Include="Buffs\HydratoxinFlaskBuff.cs" />
@@ -743,6 +744,9 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagBag.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagShield.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagTrophy.cs" />
     <Compile Include="Items\Boss\Serpent\ArcticMedallion.cs" />
     <Compile Include="Items\Boss\Serpent\SerpentBag.cs" />
     <Compile Include="Items\Boss\Serpent\SubzeroSlasher.cs" />
@@ -2421,6 +2425,7 @@
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
     <Content Include="Buffs\RoyalKitten.png" />
+    <Content Include="Buffs\SagShield.png" />
     <Content Include="Buffs\Searcher.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Shroomed.png" />
@@ -3978,6 +3983,8 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\MadnessTruffle.png" />
+    <Content Include="Items\Boss\Sagittarius\SagBag.png" />
+    <Content Include="Items\Boss\Sagittarius\SagShield.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
     <Content Include="Items\Boss\Toad\ToadBag.png" />

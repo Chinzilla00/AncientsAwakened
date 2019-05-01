@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,6 +28,7 @@ namespace AAMod.Items.Flasks
         {
             DisplayName.SetDefault("Void Flask");
             Tooltip.SetDefault(@"Spreads the Void");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(1, 4));
         }
     }
 }
