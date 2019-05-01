@@ -106,9 +106,17 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            if (!Tag)
+            if (Main.expertMode && isAwakened)
             {
                 potionType = ItemID.SuperHealingPotion;
+            }
+            else if (!Main.expertMode && !isAwakened)
+            {
+                potionType = ItemID.SuperHealingPotion;
+            }
+            else
+            {
+                potionType = 0;
             }
         }
 
@@ -294,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.oldPos[0] = npc.position;
 
             bool foundTarget = TargetClosest();
-            if (foundTarget || (NPC.AnyNPCs(mod.NPCType<YamataHead>()) || NPC.AnyNPCs(mod.NPCType<YamataAHead>())))
+            if (foundTarget)
             {
                 NoFlyCountDown--;
                 if (!NoFly4U && NoFlyCountDown <= 0 && !AAWorld.downedYamata)

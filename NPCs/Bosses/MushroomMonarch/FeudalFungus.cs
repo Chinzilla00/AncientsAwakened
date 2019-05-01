@@ -195,6 +195,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
+            potionType = ItemID.ManaPotion;
             AAWorld.downedFungus = true;
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0, 255, npc.scale);
             if (Main.expertMode == true)

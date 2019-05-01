@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 0;
             npc.aiStyle = -1;
-            npc.lifeMax = 500;
+            npc.lifeMax = 300;
             npc.defense = 0;
             npc.damage = 20;
             npc.HitSound = SoundID.NPCHit1;

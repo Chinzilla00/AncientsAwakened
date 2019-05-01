@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -41,6 +42,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void AI()
         {
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             if (NPC.downedMoonlord)
             {
                 projectile.damage = 200;

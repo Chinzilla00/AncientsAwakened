@@ -44,11 +44,13 @@ namespace AAMod.Items.Usable
         {
             if (!Main.dayTime)
             {
-                AAWorld.Mooncaller = true;
+                Main.dayTime = true;
+                Main.time = 0;
             }
             else
             {
-                AAWorld.Suncaller = true;
+                Main.dayTime = false;
+                Main.time = 0;
             }
             return true;
         }

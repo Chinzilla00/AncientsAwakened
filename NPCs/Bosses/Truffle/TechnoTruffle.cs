@@ -96,20 +96,35 @@ namespace AAMod.NPCs.Bosses.Truffle
                 Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
                 return;
             }
+            if (Main.player[npc.target].dead)
+            {
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
+                {
+                    npc.active = false;
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
+                }
+            }
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 104;
-                if (npc.frame.Y > (104 * 7) && internalAI[1] != AISTATE_ROCKET)
+                if (internalAI[1] != AISTATE_ROCKET)
                 {
-                    npc.frameCounter = 0;
-                    npc.frame.Y = 0;
+                    if (npc.frame.Y > (104 * 7))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
                 }
-                else if (npc.frame.Y > (104 * 11) && npc.frame.Y < (104 * 8) && internalAI[1] == AISTATE_ROCKET)
+                else
                 {
-                    npc.frameCounter = 0;
-                    npc.frame.Y = 104 * 8;
+                    if (npc.frame.Y > (104 * 11) && npc.frame.Y < (104 * 8))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 104 * 8;
+                    }
                 }
             }
 

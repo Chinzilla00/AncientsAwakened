@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.value = Item.buyPrice(20, 0, 0, 0);
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
+            npc.defense = 999999;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

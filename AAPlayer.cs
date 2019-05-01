@@ -1801,7 +1801,7 @@ namespace AAMod
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(BuffID.OnFire, 600);
+                target.AddBuff(mod.BuffType<DragonFire>(), 600);
             }
             else if (HeartP && player.statLife < (player.statLifeMax / 3))
             {
@@ -1810,7 +1810,7 @@ namespace AAMod
 
             if (HeartS && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(BuffID.Venom, 600);
+                target.AddBuff(mod.BuffType<HydraToxin>(), 600);
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
@@ -1975,7 +1975,11 @@ namespace AAMod
             }
             if (hydraToxin)
             {
-                player.moveSpeed *= player.statLife / player.statLifeMax;
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegen -= Math.Abs((int)(player.velocity.X));
             }
         }
 

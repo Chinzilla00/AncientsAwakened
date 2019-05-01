@@ -42,7 +42,8 @@ namespace AAMod.Items.Usable
 
         public override bool UseItem(Player player)
         {
-            AAWorld.Mooncaller = true;
+            Main.dayTime = false;
+            Main.time = 0;
             return true;
         }
 

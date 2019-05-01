@@ -180,6 +180,10 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 potionType = ItemID.SuperHealingPotion;   //boss drops
             }
+            else
+            {
+                potionType = 0;
+            }
         }
 
         public Color GetGlowAlpha()
@@ -467,7 +471,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = true;
                 npc.damage = 200;
-                npc.rotation += 0.4f;
+                npc.rotation += npc.velocity.X * .08f;
                 Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                 float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                 float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;

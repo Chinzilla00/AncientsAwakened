@@ -585,10 +585,14 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            if (!Main.expertMode)
+            AAWorld.downedAkuma = true;
+            if (Main.expertMode)
             {
-                potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedAkuma = true;
+                potionType = 0;
+            }
+            else
+            {
+                potionType = ItemID.SuperHealingPotion;
             }
         }
 

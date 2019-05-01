@@ -110,8 +110,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Weakness = false;
         public bool spawnalpha = false;
 		public bool isAwakened = false;
-		public float _normalSpeed = 15f; //base for normal movement
-		public float _chargeSpeed = 40f; //base for charge movement
+		public float _normalSpeed = 15f;
+		public float _chargeSpeed = 40f;
 		public float MoveSpeed
 		{
 			get
@@ -191,7 +191,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public int chargeWidth = 50;
         public int normalWidth = 444;
-
 
         public override void BossLoot(ref string name, ref int potionType)
         {
@@ -283,6 +282,39 @@ namespace AAMod.NPCs.Bosses.Shen
             int InfernoCount = 0;
 
             customAI[5]++;
+
+            if (npc.localAI[0] != 0f && npc.localAI[0] != -1f)
+            {
+                if (NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()) ||
+                    NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) ||
+                    NPC.AnyNPCs(mod.NPCType<FuryAshe>()) ||
+                    NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
+                {
+                    npc.chaseable = false;
+                    npc.dontTakeDamage = true;
+                    if (npc.alpha < 100)
+                    {
+                        npc.alpha += 5;
+                    }
+                    else
+                    {
+                        npc.alpha = 100;
+                    }
+                }
+                else
+                {
+                    npc.chaseable = true;
+                    npc.dontTakeDamage = false;
+                    if (npc.alpha > 0)
+                    {
+                        npc.alpha -= 5;
+                    }
+                    else
+                    {
+                        npc.alpha = 0;
+                    }
+                }
+            }
 
             if (npc.HasBuff(mod.BuffType<Buffs.Terrablaze>()) && !Weakness && !AAWorld.downedShen && !isAwakened)
             {
@@ -468,37 +500,38 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-                        int InfernoType = mod.ProjectileType<DiscordianInferno>();
+                        int InfernoType = Inferno;
                         if (!isAwakened)
                         {
                             if (npc.spriteDirection == 1)
                             {
-                                InfernoType = mod.ProjectileType<DiscordianInfernoR>();
+                                InfernoType = InfernoR;
                             }
                             else
                             {
-                                InfernoType = mod.ProjectileType<DiscordianInfernoB>();
+                                InfernoType = InfernoB;
                             }
                         }
                         else
                         {
+                            if (InfernoCount > 3)
+                            {
+                                InfernoCount = 0;
+                            }
+
                             InfernoCount++;
 
-                            if (InfernoCount == 0)
+                            if (InfernoCount == 1)
                             {
-                                InfernoType = mod.ProjectileType<DiscordianInferno>();
-                            }
-                            else if (InfernoCount == 1)
-                            {
-                                InfernoType = mod.ProjectileType<DiscordianInfernoR>();
+                                InfernoType = Inferno;
                             }
                             else if (InfernoCount == 2)
                             {
-                                InfernoType = mod.ProjectileType<DiscordianInfernoB>();
+                                InfernoType = InfernoR;
                             }
-                            else
+                            else if (InfernoCount == 3)
                             {
-                                InfernoCount = 0;
+                                InfernoType = InfernoB;
                             }
                         }
                         int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, InfernoType, damageDiscordianInferno / 2, 0f, Main.myPlayer, 0f, 0f);
@@ -539,31 +572,31 @@ namespace AAMod.NPCs.Bosses.Shen
                                 infernoPos.Y -= 60;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-                            int shootThis = mod.ProjectileType("ShenFirebomb");
+                            int shootThis;
                             if (!isAwakened)
                             {
                                 if (npc.spriteDirection == 1)
                                 {
-                                    shootThis = mod.ProjectileType("ShenFirebombR");
+                                    shootThis = BombR;
                                 }
                                 else
                                 {
-                                    shootThis = mod.ProjectileType("ShenFirebombB");
+                                    shootThis = BombB;
                                 }
                             }
                             else
                             {
                                 if (m == 0)
                                 {
-                                    shootThis = mod.ProjectileType("ShenFirebombR");
+                                    shootThis = BombR;
                                 }
                                 else if (m == 1)
                                 {
-                                    shootThis = mod.ProjectileType("ShenFirebomb");
+                                    shootThis = Bomb;
                                 }
                                 else
                                 {
-                                    shootThis = mod.ProjectileType("ShenFirebombB");
+                                    shootThis = BombB;
                                 }
                             }
                             int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, 0f, 0f, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
@@ -749,7 +782,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("True warriors don't show mercy! I won't and neither will you!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    BaseUtility.Chat("True warriors don't show mercy! I won't and I doubt you will either..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
@@ -811,12 +844,16 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.DropLoot(Items.Vanity.Mask.ShenMask.type, 1f / 7);
                 if (!Main.expertMode)
                 {
-                    Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     if (!AAWorld.downedShen)
                     {
+                        Main.NewText("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                         Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
-					AAWorld.downedShen = true;
+                    else
+                    {
+                        Main.NewText("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    }
+                    AAWorld.downedShen = true;
 					npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
 					string[] lootTable = { "ChaosSlayer", "MeteorStrike", "Skyfall" };
 					int loot = Main.rand.Next(lootTable.Length);

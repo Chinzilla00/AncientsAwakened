@@ -77,6 +77,17 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return null;
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            if (Main.expertMode)
+            {
+                potionType = ItemID.SuperHealingPotion;
+            }
+            else
+            {
+                potionType = 0;
+            }
+        }
 
         private int attackFrame;
         private int attackCounter;

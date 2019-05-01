@@ -91,9 +91,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;   //boss drops
-            AAWorld.downedZero = true;
-            Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+            if (Main.expertMode)
+            {
+                potionType = ItemID.SuperHealingPotion;
+                AAWorld.downedZero = true;
+                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+            }
+            else
+            {
+                potionType = 0;
+            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

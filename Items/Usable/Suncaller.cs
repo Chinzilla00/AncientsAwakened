@@ -43,7 +43,8 @@ namespace AAMod.Items.Usable
 
         public override bool UseItem(Player player)
         {
-            AAWorld.Suncaller = true;
+            Main.dayTime = true;
+            Main.time = 0;
             return true;
         }
 

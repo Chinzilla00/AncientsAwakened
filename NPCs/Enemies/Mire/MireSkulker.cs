@@ -23,7 +23,6 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.lifeMax = 140;
             npc.damage = 8;
             npc.defense = 14;
-            npc.knockBackResist = 1f;
             npc.value = Item.buyPrice(0, 0, 6, 45);
             npc.aiStyle = -1;
             npc.width = 104;
@@ -34,7 +33,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.lavaImmune = true;
             npc.noGravity = false;
             npc.noTileCollide = false;
-
+            npc.knockBackResist = .2f;
         }
 
         private bool Shell = false;
@@ -44,6 +43,7 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             if (npc.life <= 0)
             {
+
             }
         }
 
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 ShellTimer++;
                 if (ShellTimer > 500)
                 {
-                    npc.frame.Y = 240 * 6;
+                    npc.frame.Y = 40 * 6;
                     ShellTimer = 0;
                     Shell = true;
                     npc.netUpdate = true;
@@ -87,9 +87,10 @@ namespace AAMod.NPCs.Enemies.Mire
             else
             {
                 npc.defense = 999;
+                npc.knockBackResist = 0;
                 npc.reflectingProjectiles = true;
                 ShellTimer++;
-                if (ShellTimer < 120)
+                if (ShellTimer < 180)
                 {
                     if (npc.frame.Y < 240 * 6)
                     {

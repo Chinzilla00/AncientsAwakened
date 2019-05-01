@@ -44,6 +44,24 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
         }
 
+        public int body = -1;
+
+        public override bool PreAI()
+        {
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("YamataA"), 400f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            NPC Yamata = Main.npc[body];
+            if (Yamata.life <= Yamata.lifeMax / 5)
+            {
+                int musicType = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+            }
+            return true;
+        }
+
         public override void PostAI()
         {
             if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
@@ -69,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             Main.npc[DeathAnim].velocity = npc.velocity;
             if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
             {
-                Main.NewText("Dad, you idiot..! Whatever, Can't really say I didn't see it coming.", new Color(72, 78, 117));
+                Main.NewText("Dad, you moron..! Whatever, Can't really say I didn't see it coming.", new Color(72, 78, 117));
                 return;
             }
             npc.DropLoot(mod.ItemType<Items.Blocks.EventideAbyssiumOre>(), Main.rand.Next(10, 25));

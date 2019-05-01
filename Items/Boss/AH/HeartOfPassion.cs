@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.AH
         {
             DisplayName.SetDefault("Heart of Passion");
             Tooltip.SetDefault(@"Your magic attacks and minions grow stronger the less health you have
-Magic attacks and Minions inflict 'On Fire!'
+Magic attacks and Minions inflict dragonfire
 Below 2/3 of your maximum life, Your mana regenerates much faster
 Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken instead of 'On Fire'");
         }

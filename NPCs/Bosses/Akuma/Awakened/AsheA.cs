@@ -44,6 +44,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.DeathSound = SoundID.NPCDeath1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
         }
+        public int body = -1;
 
         public override bool PreAI()
         {
@@ -53,6 +54,19 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
                 Main.npc[DeathAnim].velocity = npc.velocity;
             }
+
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("AkumaA"), 400f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            NPC Akuma = Main.npc[body];
+            if (Akuma.life <= Akuma.lifeMax / 3)
+            {
+                int musicType = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
+            }
+
             return true;
         }
 

@@ -241,7 +241,7 @@ namespace AAMod
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= (int)(npc.velocity.X);
+                npc.lifeRegen -= Math.Abs((int)(npc.velocity.X));
             }
 
         }
