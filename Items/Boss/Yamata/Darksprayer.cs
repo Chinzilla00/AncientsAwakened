@@ -24,9 +24,9 @@ Inflicts Moonrazed");
             item.width = 44;
             item.height = 34;
             item.useTime = 20;
-            item.useAnimation = 20;     
+            item.useAnimation = 20;
             item.useStyle = 5;
-            item.useAmmo = AmmoID.Rocket;
+            item.useAmmo = 771;
             item.knockBack = 8f;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item38;      //1 is the sound of the sword

@@ -744,6 +744,9 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagBag.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagShield.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagTrophy.cs" />
     <Compile Include="Items\Boss\Serpent\ArcticMedallion.cs" />
     <Compile Include="Items\Boss\Serpent\SerpentBag.cs" />
     <Compile Include="Items\Boss\Serpent\SubzeroSlasher.cs" />
@@ -3986,6 +3989,8 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\MadnessTruffle.png" />
+    <Content Include="Items\Boss\Sagittarius\SagBag.png" />
+    <Content Include="Items\Boss\Sagittarius\SagShield.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
     <Content Include="Items\Boss\Toad\ToadBag.png" />

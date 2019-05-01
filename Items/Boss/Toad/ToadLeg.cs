@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Toad
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Demon Gauntlet");
+            DisplayName.SetDefault("Truffle Legs");
             Tooltip.SetDefault(@"Increased jump speed and allows auto-jump
 You are immune to fall damage
 Increased jump height");
