@@ -24,7 +24,7 @@ Inflicts Moonrazed");
             item.width = 44;
             item.height = 34;
             item.useTime = 20;
-            item.useAnimation = 20;
+            item.useAnimation = AmmoID.Rocket;
             item.useStyle = 5;
             item.useAmmo = 771;
             item.knockBack = 8f;
