@@ -564,11 +564,11 @@ namespace AAMod
                 bossChecklist.Call("AddBossWithInfo", "Mushroom Monarch", 0f, (Func<bool>)(() => AAWorld.downedMonarch), "Use an [i:" + ItemType("IntimidatingMushroom") + "] during the day in the Surface Mushroom Biome");
                 bossChecklist.Call("AddBossWithInfo", "Feudal Fungus", 0.1f, (Func<bool>)(() => AAWorld.downedFungus), "Use a [i:" + ItemType("ConfusingMushroom") + "] in a Glowing Mushroom Biome or at night");
                 bossChecklist.Call("AddBossWithInfo", "Grips of Chaos", 2f, (Func<bool>)(() => AAWorld.downedGrips), "Use a [i:" + ItemType("CuriousClaw") + "] or [i:" + ItemType("InterestingClaw") + "] at night");
-                bossChecklist.Call("AddBossWithInfo", "Broodmother", 4f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
-                bossChecklist.Call("AddBossWithInfo", "Hydra", 4f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
+                bossChecklist.Call("AddBossWithInfo", "Broodmother", 3.5f, (Func<bool>)(() => AAWorld.downedBrood), "Use a [i:" + ItemType("DragonBell") + "] in the Inferno during the day");
+                bossChecklist.Call("AddBossWithInfo", "Hydra", 3.5f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + ItemType("HydraChow") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + ItemType("SubzeroCrystal") + "] in the Snow biome at night");
                 bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + ItemType("DjinnLamp") + "] in the Desert during the day");
-                bossChecklist.Call("AddBossWithInfo", "Sagittarius", 5f, (Func<bool>)(() => AAWorld.downedSag), "Use a [i:" + ItemType("Lifescanner") + "] in the Void");
+                bossChecklist.Call("AddBossWithInfo", "Sagittarius", 5.5f, (Func<bool>)(() => AAWorld.downedSag), "Use a [i:" + ItemType("Lifescanner") + "] in the Void");
                 bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 6.5f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + ItemType("Toadstool") + "] in a glowing mushroom biome");
                 bossChecklist.Call("AddBossWithInfo", "Retriever", 9.5f, (Func<bool>)(() => AAWorld.downedRetriever), "Use a [i:" + ItemType("CyberneticClaw") + "] at night");
                 bossChecklist.Call("AddBossWithInfo", "Techno Truffle", 9.5f, (Func<bool>)(() => AAWorld.downedTruffle), "Use a [i:" + ItemType("CyberneticShroom") + "] at night");

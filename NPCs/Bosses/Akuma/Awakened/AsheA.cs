@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("AkumaA"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("AkumaA"), -1, null);
                 if (npcID >= 0) body = npcID;
             }
             NPC Akuma = Main.npc[body];

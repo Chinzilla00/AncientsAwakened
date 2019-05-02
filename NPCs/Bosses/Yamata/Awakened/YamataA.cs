@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			base.SetDefaults();
 			isAwakened = true;
             npc.value = Item.buyPrice(20, 0, 0, 0);
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -194,7 +194,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 Main.NewText("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
                 Main.NewText("Sigh...yes dad.", new Color(72, 78, 117));
-                AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaA", true, 0, 0, "Haruka");
+                AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaY", false, 0, 0, "Haruka");
             }
         }
 
