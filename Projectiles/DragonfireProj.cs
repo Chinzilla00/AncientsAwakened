@@ -29,18 +29,18 @@ namespace AAMod.Projectiles
             {
                 projectile.timeLeft = 60;
             }
-            if (projectile.ai[0] > 7f)
+            if (projectile.ai[0] > .5f)
             {
                 float num296 = 1f;
-                if (projectile.ai[0] == 8f)
+                if (projectile.ai[0] == 1f)
                 {
                     num296 = 0.25f;
                 }
-                else if (projectile.ai[0] == 9f)
+                else if (projectile.ai[0] == 1.5f)
                 {
                     num296 = 0.5f;
                 }
-                else if (projectile.ai[0] == 10f)
+                else if (projectile.ai[0] == 2f)
                 {
                     num296 = 0.75f;
                 }
