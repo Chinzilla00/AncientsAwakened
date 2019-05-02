@@ -891,6 +891,7 @@
     <Compile Include="Items\Magic\CrystalTome.cs" />
     <Compile Include="Items\Magic\Depthsprayer.cs" />
     <Compile Include="Items\Magic\Fireblast.cs" />
+    <Compile Include="Items\Magic\GunkWand.cs" />
     <Compile Include="Items\Magic\HiveArtillery.cs" />
     <Compile Include="Items\Magic\MadnessStaff.cs" />
     <Compile Include="Items\Magic\DoomStaff.cs" />
@@ -1735,6 +1736,7 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\Gunk.cs" />
     <Compile Include="Projectiles\Toad\Toadsplosion.cs" />
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
@@ -4020,6 +4022,8 @@
     <Content Include="Items\Flasks\OrderBottle.png" />
     <Content Include="Items\Flasks\PurityFlask.png" />
     <Content Include="Items\Flasks\VoidFlask.png" />
+    <Content Include="Items\Magic\GunkStaff.png" />
+    <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
@@ -5692,6 +5696,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\ScourgeOfShadowsP2.png" />
     <Content Include="Projectiles\Singularity.png" />
