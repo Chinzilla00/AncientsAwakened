@@ -52,6 +52,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return false;
         }
 
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
         public override void BossLoot(ref string name, ref int potionType)
         {
             if (Main.expertMode)
@@ -179,28 +189,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     Main.NewText("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
                     Main.NewText("That's my girl..!", new Color(146, 30, 68));
-                    SpawnBoss(Main.player[npc.target], "HarukaY", "");
+                    AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaA", false, 0, 0, "Haruka");
                     return;
                 }
                 Main.NewText("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
                 Main.NewText("Sigh...yes dad.", new Color(72, 78, 117));
-                SpawnBoss(Main.player[npc.target], "HarukaY", "");
+                AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaA", true, 0, 0, "Haruka");
             }
         }
 
         public bool spawnHaruka = false;
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(0, 2000);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-            }
-        }
 
         public override void FindFrame(int frameHeight)
         {

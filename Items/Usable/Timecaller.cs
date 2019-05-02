@@ -16,7 +16,8 @@ namespace AAMod.Items.Usable
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Timecaller");
-            Tooltip.SetDefault(@"Brings forth the next light.");
+            Tooltip.SetDefault(@"Brings forth the next light.
+Non-Consumable");
         }
 
         public override void SetDefaults()

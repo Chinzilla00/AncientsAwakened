@@ -166,13 +166,13 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Main.NewText("Ashe? Help your dear old dad with this kid again!", Color.SkyBlue);
                     Main.NewText("You got it, daddy..!", new Color(102, 20, 48));
-                    SpawnBoss(Main.player[npc.target], "AsheA", "");
+                    AAModGlobalNPC.SpawnBoss(mod, player, "HarukaA", false, 0, 0, "Ashe");
                 }
                 else
                 {
                     Main.NewText("Hey! Hands off my papa!", new Color(102, 20, 48));
                     Main.NewText("Atta-girl..!", Color.DeepSkyBlue);
-                    SpawnBoss(Main.player[npc.target], "AsheA", "");
+                    AAModGlobalNPC.SpawnBoss(mod, player, "AsheA", false, 0, 0, "Ashe");
                 }
             }
 

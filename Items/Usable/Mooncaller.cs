@@ -16,7 +16,8 @@ namespace AAMod.Items.Usable
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mooncaller");
-            Tooltip.SetDefault(@"Brings forth the shimmering moon.");
+            Tooltip.SetDefault(@"Brings forth the shimmering moon.
+Non-Consumable");
         }
 
         public override void SetDefaults()

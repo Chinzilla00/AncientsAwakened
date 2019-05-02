@@ -105,6 +105,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 int lootH = Main.rand.Next(lootTableH.Length);
                 npc.DropLoot(mod.ItemType(lootTableH[lootH]));
             }
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>());
             Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
@@ -500,7 +501,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
-
 
         public override void BossLoot(ref string name, ref int potionType)
         {

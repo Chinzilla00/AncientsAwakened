@@ -283,6 +283,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
             customAI[5]++;
 
+            
+            if (npc.ai[0] == -1f) //initial spawn effects
+            {
+                npc.chaseable = false;
+            }
+
             if (npc.localAI[0] != 0f && npc.localAI[0] != -1f)
             {
                 if (NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()) ||
@@ -353,7 +359,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.ai[0] == -1f) //initial spawn effects
             {
-                npc.chaseable = false;
                 npc.velocity *= 0.98f;
                 if (npc.ai[2] > 20f)
                 {
@@ -366,6 +371,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= spawnTimerMax)
                 {
+                    npc.chaseable = true;
                     npc.ai[0] = 0f;
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
@@ -375,7 +381,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 0f && !player.dead) //move to default point / pick new AI
             {
-                npc.chaseable = true;
                 bool playerPointInRange = false;
                 if (customAI[3] != 0.5f) //be sure we aren't waiting on a prep state!
                 {
@@ -438,7 +443,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 0.5f) //charge attack prep
             {
-                npc.chaseable = true;
                 float chargePrepSpot = 550;
                 if (npc.ai[1] == 0f)
                 {
@@ -454,8 +458,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 1f) //charge attack
             {
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
                 if (npc.ai[1] == 0f)
                 {
                     npc.ai[1] = 500 * -Math.Sign((npc.Center - player.Center).X);
@@ -473,8 +475,6 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -350);
                 MoveToPoint(playerPoint);
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
                 if (npc.ai[2] == 0f)
                 {
                     Roar(roarTimerMax, false);

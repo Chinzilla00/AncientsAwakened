@@ -80,7 +80,19 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 npc.life = 0;
             }
+
             npc.noGravity = true;
+
+            if (npc.alpha > 0)
+            {
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+            }
 
             ChainTimer++;
             if (ChainTimer > 4)

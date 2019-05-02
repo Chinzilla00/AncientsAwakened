@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 				{
 					if(npc.position.Y + npc.height + npc.velocity.Y < 0) //if out of map, kill boss
 					{
-						BaseAI.KillNPC(npc); 
+                        npc.active = false; 
 						npc.netUpdate = true;
 					}else
 					{

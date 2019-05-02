@@ -120,6 +120,16 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
         public bool Dead = false;
 
         public override void NPCLoot()

@@ -19,7 +19,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Flames of Anarchy");
             Tooltip.SetDefault(@"The flames of chaos burn in this antique china
-Calls upon the Sisters of Discord");
+Calls upon the Sisters of Discord
+Non-Consumable");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
         }
 

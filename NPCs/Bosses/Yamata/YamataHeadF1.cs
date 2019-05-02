@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             float dist = Vector2.Distance(nextTarget, npc.Center);
             if (YamataHead.EATTHELITTLEMAGGOT && playerDistance < 300f)
             {
-                BaseAI.AIFlier(npc, ref customAI, true, .1f, .8f, 5, 5, false, 300);
+                BaseAI.AIFlier(npc, ref customAI, true, .5f, .8f, 5, 5, false, 300);
             }
             else
             if (dist < 40f)
@@ -266,10 +266,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            
-        }
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
@@ -277,7 +273,10 @@ namespace AAMod.NPCs.Bosses.Yamata
         
 		public override bool PreNPCLoot()
         {
-            BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+            if (!Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) < 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) < 6000f)
+            {
+                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+            }
             return false;
         }
 

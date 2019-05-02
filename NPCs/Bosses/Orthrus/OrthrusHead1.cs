@@ -80,10 +80,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             }
             if (!bodyNPC.active)
             {
-                if (npc.timeLeft > 10)
-                {
-                    npc.timeLeft = 10;
-                }
+                npc.active = false;
                 return;
             }
             npc.realLife = bodyNPC.whoAmI;

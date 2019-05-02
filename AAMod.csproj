@@ -1134,6 +1134,7 @@
     <Compile Include="Items\Ranged\CoinPistol.cs" />
     <Compile Include="Items\Ranged\CoralBow.cs" />
     <Compile Include="Items\Ranged\Festivity.cs" />
+    <Compile Include="Items\Ranged\Firebuster.cs" />
     <Compile Include="Items\Ranged\Flare_Minigun.cs" />
     <Compile Include="Items\Ranged\M79.cs" />
     <Compile Include="Items\Ranged\MadnessBow.cs" />
@@ -1152,6 +1153,7 @@
     <Compile Include="Items\Ranged\HydraTrishot.cs" />
     <Compile Include="Items\Ranged\L85A2.cs" />
     <Compile Include="Items\Ranged\Laser_Rifle.cs" />
+    <Compile Include="Items\Ranged\Mossket.cs" />
     <Compile Include="Items\Ranged\Railjaw.cs" />
     <Compile Include="Items\Ranged\RustyCrossbow.cs" />
     <Compile Include="Items\Ranged\Scourge.cs" />

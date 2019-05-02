@@ -101,12 +101,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Main.NewText("The abyss hungers...", new Color(146, 30, 68));
             }
-            if (npc.ai[0] >= 1455)
+            if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
             {
-                SpawnBoss(npc.Center, "YamataA", "Yamata Awakened");
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataA"));
+            }
+
+            if (NPC.AnyNPCs(mod.NPCType("YamataA")))
+            {
                 Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
-                AAMod.YamataMusic = false;
+                AAMod.AkumaMusic = false;
+                npc.netUpdate = true;
                 npc.active = false;
             }
         }
