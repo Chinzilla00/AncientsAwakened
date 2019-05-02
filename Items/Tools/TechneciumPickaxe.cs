@@ -16,8 +16,8 @@ namespace AAMod.Items.Tools
 			item.pick = 180;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = 10;
-			item.rare = 9;
+            item.value = 108000;
+            item.rare = 9;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.useTurn = true;

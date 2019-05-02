@@ -15,8 +15,8 @@ namespace AAMod.Projectiles
         public override void SetDefaults()
         {
             projectile.penetrate = 1;  
-            projectile.width = 18;
-            projectile.height = 18;
+            projectile.width = 28;
+            projectile.height = 28;
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.timeLeft = 300;
@@ -70,7 +70,7 @@ namespace AAMod.Projectiles
             int width = Main.projectileTexture[projectile.type].Width;
             int height = Main.projectileTexture[projectile.type].Height;
 
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, width, height / 3, 0, 2);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, width, height / 3, 0, 0);
 
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, 1f, projectile.rotation, 0, 3, frame, lightColor, true);
             return false;

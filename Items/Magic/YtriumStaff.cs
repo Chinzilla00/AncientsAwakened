@@ -13,7 +13,7 @@ namespace AAMod.Items.Magic
             item.height = 44;
             item.maxStack = 1;
 
-            item.value = 1000;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
             item.rare = 3;
 			item.damage = 30;                        
             item.magic = true;
