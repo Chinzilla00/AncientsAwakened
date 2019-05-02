@@ -15,8 +15,8 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 24;     
 			item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
 			item.knockBack = 4;      //Sword knockback
-			item.value = 100000;        
-			item.rare = 4;
+            item.value = 108000;
+            item.rare = 4;
 			item.UseSound = SoundID.Item1;       //1 is the sound of the sword
 			item.autoReuse = true;   //if it's capable of autoswing.
 			item.useTurn = true;               

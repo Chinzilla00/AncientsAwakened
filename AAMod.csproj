@@ -3036,6 +3036,8 @@
     <Content Include="Glowmasks\Taserblast_Glow.png" />
     <Content Include="Glowmasks\TaserZ.png" />
     <Content Include="Glowmasks\Taser_Glow.png" />
+    <Content Include="Glowmasks\TechnoTruffle_Glow1.png" />
+    <Content Include="Glowmasks\TechnoTruffle_Glow2.png" />
     <Content Include="Glowmasks\TerraArrow_Glow.png" />
     <Content Include="Glowmasks\TerraBallista_Glow.png" />
     <Content Include="Glowmasks\TerraBladeEX_Glow.png" />
