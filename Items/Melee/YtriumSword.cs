@@ -20,14 +20,16 @@ namespace AAMod.Items.Melee   //where is located
             item.rare = 4;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
-            item.useTurn = true;               
+            item.useTurn = true;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
+
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Yttrium Blade");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Yttrium Blade");
+          Tooltip.SetDefault("");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

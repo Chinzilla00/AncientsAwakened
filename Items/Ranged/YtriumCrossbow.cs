@@ -25,8 +25,8 @@ namespace AAMod.Items.Ranged
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
-			item.value = 20000;
-			item.rare = 4;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
+            item.rare = 4;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
 			item.shoot = 10;

@@ -18,7 +18,7 @@ namespace AAMod.Items.Tools
             item.pick = 110;    //pickaxe power
             item.useStyle = 1;
             item.knockBack = 1;
-            item.value = 10;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
             item.rare = 9;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

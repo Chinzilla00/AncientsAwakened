@@ -26,7 +26,7 @@ namespace AAMod.Items.Tools
             item.UseSound = SoundID.Item23;
             item.shoot = mod.ProjectileType("YtriumDrill");
             item.rare = 4;
-            item.value = 54000;
+            item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
             item.melee = true;
