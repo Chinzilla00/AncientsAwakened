@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Doomsday Assault Visor");
-			Tooltip.SetDefault(@"20% increased ranged damage and critical strike chance
+			Tooltip.SetDefault(@"25% increased minion damage strike chance
 The power to destroy entire planets rests in this armor");
 		}
 
@@ -49,8 +49,7 @@ The power to destroy entire planets rests in this armor");
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedCrit += 20;
-            player.rangedDamage += .2f;
+            player.minionDamage += .25f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -75,9 +74,10 @@ The power to destroy entire planets rests in this armor");
 			player.setBonus = @"Life termination systems activated
 You detect all hostile life around you
 You can see in the dark much more easily
-Your ranged attacks are strong enough to weaken your enemies defense for a time";
+Your minion's attacks are strong enough to weaken your enemies defense for a time
++5 Minion slots";
 
-
+            player.maxMinions += 5;
             player.AddBuff(BuffID.Hunter, 2);
             player.AddBuff(BuffID.NightOwl, 2);
             player.GetModPlayer<AAPlayer>(mod).zeroSet = true;

@@ -14,8 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		{
 			DisplayName.SetDefault("Doomsday Assault Greaves");
 			Tooltip.SetDefault(@"18% increased movement speed
-25% decreased ammo consumption
-12% increased ranged damage
+20% increased Minion damage
 The power to destroy entire planets rests in this armor");
 
 		}
@@ -52,8 +51,7 @@ The power to destroy entire planets rests in this armor");
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.18f;
-			player.ammoCost75 = true;
-            player.rangedDamage += .12f;
+            player.minionDamage += .20f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
