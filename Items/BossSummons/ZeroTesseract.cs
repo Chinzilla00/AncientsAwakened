@@ -13,9 +13,10 @@ namespace AAMod.Items.BossSummons
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ERR0R:NULL");
+            DisplayName.SetDefault("Doomsday Tesseract");
             Tooltip.SetDefault(@"DESCRIPTI0NHERE
-UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH");
+UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH
+N0N-C0NSUMABLE");
         }
 
         public override void SetDefaults()

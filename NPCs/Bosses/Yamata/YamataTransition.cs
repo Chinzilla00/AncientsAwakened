@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (npc.ai[0] == 375)    
             {
                 Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
-                AAMod.YamataMusic = true;
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
             }
             if (npc.ai[0] == 650)
             {
@@ -110,7 +110,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
-                AAMod.AkumaMusic = false;
                 npc.netUpdate = true;
                 npc.active = false;
             }

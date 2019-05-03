@@ -1,16 +1,12 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Truffle
 {
@@ -66,10 +62,10 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.netAlways = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("TruffleBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Siege");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
             npc.netAlways = true;
         }
 

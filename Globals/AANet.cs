@@ -36,39 +36,6 @@ namespace AAMod
         public static void HandlePacket(BinaryReader reader, int fromWho)
         {
             MPMessageType messageType = (MPMessageType)reader.ReadByte();
-            byte msg = reader.ReadByte();
-            if (DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "HANDING MESSAGE: " + msg);
-            try
-            {
-                if (msg == SyncShock) //Electric Shock master and stats setting
-                {
-                    int projID = reader.ReadShort();
-                    int masterType = reader.ReadByte();
-                    int masterID = reader.ReadShort();
-                    int maxTargets = reader.ReadByte();
-                    float minRange = reader.ReadFloat();
-                    float maxRange = reader.ReadFloat();
-                    if (Main.projectile[projID] != null && Main.projectile[projID].active && Main.projectile[projID].modProjectile is AAProjectile)
-                    {
-                        ((AAProjectile)Main.projectile[projID].modProjectile).SetMaster(masterType, masterID, maxTargets, minRange, maxRange, false);
-                    }
-                    if (Main.netMode == 2) SendNetMessage(SyncShock, (short)projID, (byte)masterType, (short)masterID, (byte)maxTargets, minRange, maxRange);
-                }
-                else
-                if (msg == GenOre) //generate ore (client-to-server)
-                {
-                    if (Main.netMode == 2)
-                    {
-                        int oreType = (int)reader.ReadByte();
-                        switch (oreType)
-                        {
-                            default: break;
-                            case 0: AAGlobalTile.GenAAOres(true); break;
-                        }
-                    }
-                }
-            }
-            catch (Exception e) { ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
             if (_packetActions != null && _packetActions.ContainsKey(messageType))
             {
                 _packetActions[messageType].Invoke(reader, fromWho);
@@ -147,8 +114,6 @@ namespace AAMod
         }
 
         public static bool DEBUG = true;
-
-        public const byte GenOre = 14;
 
         public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {

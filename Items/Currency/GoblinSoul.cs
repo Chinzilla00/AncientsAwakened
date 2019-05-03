@@ -5,6 +5,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.GameContent.UI;
+using Terraria.Localization;
 
 namespace AAMod.Items.Currency
 {
@@ -51,7 +52,7 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Lang.tip[50],
+                Language.GetText("Buy price:"),
                 price,
                 ("Goblin Soul" + (price == 1 ? "" : "s"))
             });

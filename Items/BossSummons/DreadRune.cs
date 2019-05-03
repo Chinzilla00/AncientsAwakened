@@ -19,7 +19,7 @@ namespace AAMod.Items.BossSummons
             Tooltip.SetDefault(@"An enchanted tablet eminating with dark chaotic energy
 Summons Yamata Awakened
 Only Usable at night in the mire
-Only craftable in expert mode");
+Non-Consumable");
         }
         public override void SetDefaults()
         {

@@ -2895,22 +2895,6 @@ namespace AAMod
                 }
                 {
                     ModRecipe recipe = new ModRecipe(this);
-                    recipe.AddIngredient(null, "CosmicArcheryPotion", 2);
-                    recipe.AddIngredient(GRealm, "CosmicContainer");
-                    recipe.AddTile(TileID.Bottles);
-                    recipe.SetResult(GRealm, "ChitinPotion");
-                    recipe.AddRecipe();
-                }
-                {
-                    ModRecipe recipe = new ModRecipe(this);
-                    recipe.AddIngredient(null, "CosmicArcheryPotion", 2);
-                    recipe.AddIngredient(GRealm, "CosmicContainer");
-                    recipe.AddTile(TileID.Bottles);
-                    recipe.SetResult(GRealm, "ChitinPotion");
-                    recipe.AddRecipe();
-                }
-                {
-                    ModRecipe recipe = new ModRecipe(this);
                     recipe.AddIngredient(null, "Orange", 2);
                     recipe.AddIngredient(GRealm, "CosmicContainer");
                     recipe.AddTile(TileID.Bottles);
@@ -2925,14 +2909,14 @@ namespace AAMod
                     recipe.SetResult(GRealm, "CosmicChitinPotion");
                     recipe.AddRecipe();
                 }
-                {
+                /*{
                     ModRecipe recipe = new ModRecipe(this);
                     recipe.AddIngredient(null, "Brown", 2);
                     recipe.AddIngredient(GRealm, "CosmicContainer");
                     recipe.AddTile(TileID.Bottles);
                     recipe.SetResult(GRealm, "CosmicCratePotion");
                     recipe.AddRecipe();
-                }
+                }*/
                 {
                     ModRecipe recipe = new ModRecipe(this);
                     recipe.AddIngredient(null, "Gray", 2);
