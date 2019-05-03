@@ -244,6 +244,8 @@ namespace AAMod
 
         //Misc
         public bool Compass = false;
+
+        public Vector2 RiftPos = new Vector2(0, 0);
         
         public int PrismCooldown = 0;
 
@@ -656,7 +658,7 @@ namespace AAMod
             {
                 if (!ringActive)
                 {
-                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 6, Main.myPlayer, 0, 0);
                 }
             }
 
@@ -1606,14 +1608,24 @@ namespace AAMod
         {
             if (AAMod.Rift.JustPressed)
             {
-                for (int m = 0; m < 54; m++)
+                RiftPos = player.position;
+                for (int m = 0; m < 58; m++)
                 {
-
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    {
+                        player.Spawn();
+                    }
                 }
             }
-            if (AAMod.RiftReturn.JustPressed)
+            if (AAMod.RiftReturn.JustPressed && RiftPos != new Vector2(0, 0))
             {
-
+                for (int m = 0; m < 58; m++)
+                {
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    {
+                        player.position = RiftPos;
+                    }
+                }
             }
             if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
             {

@@ -1082,6 +1082,7 @@
     <Compile Include="Items\Melee\YtriumSword.cs" />
     <Compile Include="Items\Boss\MadnessTruffle.cs" />
     <Compile Include="Items\Mushrooms\Green.cs" />
+    <Compile Include="Items\Mushrooms\Rainbow.cs" />
     <Compile Include="Items\Mushrooms\Red.cs" />
     <Compile Include="Items\Mushrooms\Purple.cs" />
     <Compile Include="Items\Mushrooms\Pink.cs" />
@@ -1284,6 +1285,8 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\MyceliumSeeds.cs" />
+    <Compile Include="Items\Usable\RiftMirror.cs" />
     <Compile Include="Items\Usable\Timecaller.cs" />
     <Compile Include="Items\Usable\Mooncaller.cs" />
     <Compile Include="Items\Usable\Suncaller.cs" />
@@ -3398,6 +3401,7 @@
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />
+    <Content Include="Items\Accessories\DragonsGuard.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\Energy_Conduit.png" />
@@ -4039,6 +4043,7 @@
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
     <Content Include="Items\Mushrooms\Pink.png" />
+    <Content Include="Items\Mushrooms\Rainbow.png" />
     <Content Include="Items\Mushrooms\Red.png" />
     <Content Include="Items\Mushrooms\Yellow.png" />
     <Content Include="Items\Mushrooms\Orange.png" />
@@ -4048,9 +4053,15 @@
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Usable\CavernCrate.png" />
+    <Content Include="Items\Usable\MirrorRift.png" />
     <Content Include="Items\Usable\Mooncaller.png" />
+    <Content Include="Items\Usable\MyceliumSeeds.png" />
     <Content Include="Items\Usable\PurityStar.png" />
+    <Content Include="Items\Usable\RiftMirror.png" />
     <Content Include="Items\Usable\Suncaller.png" />
+    <Content Include="Items\Usable\SupremeRiftMirror.png" />
+    <Content Include="Items\Usable\SurfaceCrate.png" />
     <Content Include="Items\Usable\Timecaller.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
@@ -6310,6 +6321,16 @@
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
+    <Content Include="UI\Rift1.png" />
+    <Content Include="UI\Rift2.png" />
+    <Content Include="UI\Rift3.png" />
+    <Content Include="UI\RiftDungeon.png" />
+    <Content Include="UI\RiftHell.png" />
+    <Content Include="UI\RiftInferno.png" />
+    <Content Include="UI\RiftJungle.png" />
+    <Content Include="UI\RiftMire.png" />
+    <Content Include="UI\RiftOceanLeft.png" />
+    <Content Include="UI\RiftOceanRight.png" />
     <Content Include="Walls\BurnedDynastyWall.png" />
     <Content Include="Walls\DepthsandHardenedWall.png" />
     <Content Include="Walls\DepthsandstoneWall.png" />

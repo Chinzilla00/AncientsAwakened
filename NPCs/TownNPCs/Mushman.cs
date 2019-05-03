@@ -215,6 +215,10 @@ namespace AAMod.NPCs.TownNPCs
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("SporeSac"));
             nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.RecallPotion);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
+            nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
             nextSlot++;
 			shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);

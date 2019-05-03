@@ -34,7 +34,7 @@ namespace AAMod.Items.Usable
 
         public override void RightClick(Player player)
         {
-            if(Main.rand.Next(6) == 0)
+            if(Main.rand.Next(3) == 0)
             {
                 int item = Main.rand.Next(4);
 

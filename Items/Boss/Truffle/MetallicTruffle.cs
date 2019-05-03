@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Truffle
         {
             DisplayName.SetDefault("Metallic Truffle");
             Tooltip.SetDefault(@"Don't bite it.");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(1, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
 

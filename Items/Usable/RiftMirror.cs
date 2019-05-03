@@ -9,7 +9,7 @@ using Terraria.Localization;
  
 namespace AAMod.Items.Usable
 {
-    public class EnchantedMirror : ModItem
+    public class RiftMirror : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -30,8 +30,9 @@ Pressing the rift return hotkey brings you back to your most recent rift locatio
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            
-			recipe.AddTile(null, "HellstoneAnvil");
+            recipe.AddIngredient(ItemID.MagicMirror);
+            recipe.AddIngredient(ItemID.IceMirror);
+            recipe.AddTile(null, "HellstoneAnvil");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
