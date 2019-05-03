@@ -1604,6 +1604,17 @@ namespace AAMod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            if (AAMod.Rift.JustPressed)
+            {
+                for (int m = 0; m < 54; m++)
+                {
+
+                }
+            }
+            if (AAMod.RiftReturn.JustPressed)
+            {
+
+            }
             if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
             {
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)

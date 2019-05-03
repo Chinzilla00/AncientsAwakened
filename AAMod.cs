@@ -28,6 +28,8 @@ namespace AAMod
         public static int GoblinSoul;
         public static ModHotKey InfinityHotKey;
         public static ModHotKey AbilityKey;
+        public static ModHotKey Rift;
+        public static ModHotKey RiftReturn;
         internal static AAMod instance;
         internal UserInterface UserInterface;
         public static bool AkumaMusic = false;
@@ -653,7 +655,10 @@ namespace AAMod
 
             InfinityHotKey = RegisterHotKey("Snap", "G");
 
-            AbilityKey = RegisterHotKey("Armor Ability", "Y");
+            Rift = RegisterHotKey("Rift Home", "C");
+            RiftReturn = RegisterHotKey("Rift Back", "X");
+
+            AbilityKey = RegisterHotKey("AA Ability", "Y");
 
             if (!Main.dedServ)
             {
@@ -774,6 +779,8 @@ namespace AAMod
             CleanupStaticArrays();
             instance = null;
             InfinityHotKey = null;
+            Rift = null;
+            RiftReturn = null;
             AbilityKey = null;
         }
 
