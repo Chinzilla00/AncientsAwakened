@@ -60,6 +60,7 @@ namespace AAMod
         public bool Orbiters = false;
         public bool Protocol = false;
         public bool ScoutMinion = false;
+        public bool SagOrbiter = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -283,6 +284,7 @@ namespace AAMod
             Orbiters = false;
             Protocol = false;
             ScoutMinion = false;
+            SagOrbiter = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -415,7 +417,7 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
-        public override TagCompound Save()
+        /*public override TagCompound Save()
         {
             var PlayerBool = new List<string>();
 
@@ -446,7 +448,7 @@ namespace AAMod
             {
                 ManaLantern = 0;
             }
-        }
+        }*/
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
