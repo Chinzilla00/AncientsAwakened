@@ -1284,6 +1284,7 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\RiftMirror.cs" />
     <Compile Include="Items\Usable\Timecaller.cs" />
     <Compile Include="Items\Usable\Mooncaller.cs" />
     <Compile Include="Items\Usable\Suncaller.cs" />
@@ -4050,6 +4051,7 @@
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Usable\Mooncaller.png" />
     <Content Include="Items\Usable\PurityStar.png" />
+    <Content Include="Items\Usable\RiftMirror.png" />
     <Content Include="Items\Usable\Suncaller.png" />
     <Content Include="Items\Usable\Timecaller.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
