@@ -18,7 +18,7 @@ namespace AAMod.Items.BossSummons
             Tooltip.SetDefault(@"An enchanted tablet bursting with flaming chaotic energy
 Summons Akuma Awakened
 Only Usable during the day in the inferno
-Only craftable in expert mode");
+Non-Consumable");
         }
 
         public override void SetDefaults()

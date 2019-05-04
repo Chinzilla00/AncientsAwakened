@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     Main.NewText("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
                     Main.NewText("That's my girl..!", new Color(146, 30, 68));
-                    AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaA", false, 0, 0, "Haruka");
+                    AAModGlobalNPC.SpawnBoss(mod, playerTarget, "HarukaY", false, 0, 0, "Haruka");
                     return;
                 }
                 Main.NewText("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));

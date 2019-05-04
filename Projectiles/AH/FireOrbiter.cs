@@ -18,7 +18,6 @@ namespace AAMod.Projectiles.AH
 		
 		public override void SetStaticDefaults()
 		{
-            DisplayName = "Oribiters";
 			Main.projFrames[projectile.type] = 4;
 		}
 

@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.Dread
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dread Moon Fukumen");
-			Tooltip.SetDefault(@"+24% increased ranged critical chance
+			Tooltip.SetDefault(@"24% increased ranged critical chance
 20% increased movement speed
 The abyssal wrath of the Mire rests in this armor");
 
@@ -29,7 +29,7 @@ The abyssal wrath of the Mire rests in this armor");
 		
 		public override void UpdateEquip(Player player)
         {
-            player.meleeCrit += 24;
+            player.rangedCrit += 24;
             player.moveSpeed *= 1.2f;
 		}
 

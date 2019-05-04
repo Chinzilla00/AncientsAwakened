@@ -698,6 +698,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
         }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            damage = 0;
+        }
+
+        public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            damage = 0;
+        }
     }
 
     public class AnimationInfo

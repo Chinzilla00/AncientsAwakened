@@ -54,7 +54,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.defense = 99999999;
             npc.lifeMax = 28000;
             npc.value = Item.buyPrice(0, 10, 0, 0);
-            npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;
             npc.netAlways = true;

@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
 
-            if (npc.ai[0] >= 750)
+            if (npc.ai[0] >= 675)
             {
                 RVal -= 5;
                 BVal += 5;
@@ -91,12 +91,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            if (npc.ai[0] == 900)
+            if (npc.ai[0] == 975)
             {
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (npc.ai[0] >= 1165 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            if (npc.ai[0] >= 1250 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
             }

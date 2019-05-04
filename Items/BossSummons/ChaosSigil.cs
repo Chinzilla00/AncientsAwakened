@@ -16,7 +16,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Chaos Sigil");
             Tooltip.SetDefault(@"A cursed tablet filled with unstable magic
-Summons the chaos emperor");
+Summons the chaos emperor
+Non-Consumable");
         }
 
         public override void SetDefaults()

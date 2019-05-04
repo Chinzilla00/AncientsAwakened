@@ -13,9 +13,9 @@ namespace AAMod.Items.BossSummons
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("0");
+            DisplayName.SetDefault("ERR0R_NULL");
             Tooltip.SetDefault(@"ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT
-Only craftable in expert mode");
+N0N-C0NSUMABLE");
         }
 
         public override void SetDefaults()

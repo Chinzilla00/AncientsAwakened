@@ -15,7 +15,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Equinox Worm");
             Tooltip.SetDefault(@"A worm created using celestial materials
-Summons the Equinox Worms");
+Summons the Equinox Worms
+Non-Consumable");
         }
 
         public override void SetDefaults()

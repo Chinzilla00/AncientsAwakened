@@ -18,7 +18,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Chaos Rune");
             Tooltip.SetDefault(@"A cursed tablet bursting with chaotic energy
-Summons Shen Doragon's true awakened form");
+Summons Shen Doragon's true awakened form
+Non-Consumable");
         }
 
         public override void SetDefaults()

@@ -18,7 +18,8 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Draconian Sun Sigil");
             Tooltip.SetDefault(@"An ornate tablet said to contain the radiant power of a thousand suns
 Summons Akuma
-Only Usable during the day");
+Only Usable during the day
+Non-Consumable");
         }
 
         public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace AAMod.Items.Vanity.Mask
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Akumka Awakened Mask");
+            DisplayName.SetDefault("Akuma Awakened Mask");
 		}
 
         public override void SetDefaults()
