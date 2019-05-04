@@ -281,6 +281,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 npc.DropBossBags();
             }
+            string[] lootTable = { "SagCore" };
+            int loot = Main.rand.Next(lootTable.Length);
+            npc.DropLoot(mod.ItemType(lootTable[loot]));
         }
 
         public float ShieldScale = 0f;

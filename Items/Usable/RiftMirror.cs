@@ -28,7 +28,7 @@ Pressing the rift return hotkey brings you back to your most recent rift locatio
         }
 
         public override void AddRecipes()
-		{
+        {
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MagicMirror);
             recipe.AddIngredient(ItemID.IceMirror);
@@ -36,6 +36,5 @@ Pressing the rift return hotkey brings you back to your most recent rift locatio
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-		
     }
 }

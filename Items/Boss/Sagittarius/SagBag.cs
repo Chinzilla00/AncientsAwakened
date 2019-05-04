@@ -37,6 +37,9 @@ namespace AAMod.Items.Boss.Sagittarius
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();
             }
+            string[] lootTable = { "SagCore" };
+            int loot = Main.rand.Next(lootTable.Length);
+            player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             player.QuickSpawnItem(mod.ItemType("Doomite"), Main.rand.Next(35, 45));
 			player.QuickSpawnItem(mod.ItemType("SagShield"));			
         }

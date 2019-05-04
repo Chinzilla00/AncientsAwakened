@@ -121,6 +121,7 @@
     <Compile Include="Buffs\Horse.cs" />
     <Compile Include="Buffs\Orbiters.cs" />
     <Compile Include="Buffs\Protocol.cs" />
+    <Compile Include="Buffs\SagOrbiter.cs" />
     <Compile Include="Buffs\SagShield.cs" />
     <Compile Include="Buffs\Searcher.cs" />
     <Compile Include="Buffs\Unstable.cs" />
@@ -745,6 +746,7 @@
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagBag.cs" />
+    <Compile Include="Items\Boss\Sagittarius\SagCore.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagShield.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagTrophy.cs" />
     <Compile Include="Items\Boss\Serpent\ArcticMedallion.cs" />
@@ -1285,7 +1287,6 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
-    <Compile Include="Items\Usable\MyceliumSeeds.cs" />
     <Compile Include="Items\Usable\RiftMirror.cs" />
     <Compile Include="Items\Usable\Timecaller.cs" />
     <Compile Include="Items\Usable\Mooncaller.cs" />
@@ -1742,6 +1743,7 @@
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
     <Compile Include="Projectiles\Gunk.cs" />
+    <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
     <Compile Include="Projectiles\Toad\Toadsplosion.cs" />
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
@@ -2438,6 +2440,7 @@
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
     <Content Include="Buffs\RoyalKitten.png" />
+    <Content Include="Buffs\SagOrbiter.png" />
     <Content Include="Buffs\SagShield.png" />
     <Content Include="Buffs\Searcher.png" />
     <Content Include="Buffs\Sharkron.png" />
@@ -4000,6 +4003,7 @@
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\MadnessTruffle.png" />
     <Content Include="Items\Boss\Sagittarius\SagBag.png" />
+    <Content Include="Items\Boss\Sagittarius\SagCore.png" />
     <Content Include="Items\Boss\Sagittarius\SagShield.png" />
     <Content Include="Items\Boss\Sagittarius\SagTrophy.png" />
     <Content Include="Items\Boss\Toad\MushrockStaff.png" />
@@ -5711,6 +5715,7 @@
     <Content Include="Projectiles\DeathDagger.png" />
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
+    <Content Include="Projectiles\Sag\OrbiterMinion.png" />
     <Content Include="Projectiles\ScourgeOfShadowsP2.png" />
     <Content Include="Projectiles\Singularity.png" />
     <Content Include="Projectiles\SingularityVortex.png" />
