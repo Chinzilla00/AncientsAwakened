@@ -740,8 +740,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 SpawnGrips = true;
                 Main.NewText("Grips! Assist me!", Color.DarkMagenta);
-                SpawnBoss(player, "AbyssGrip", "");
-                SpawnBoss(player, "BlazeGrip", "");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
             }
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
@@ -761,8 +761,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     Main.NewText("Yes, father.", new Color(72, 78, 117));
                 }
 
-                SpawnBoss(player, "FuryAshe", "");
-                SpawnBoss(player, "WrathHaruka", "");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("WrathHaruka"), false, 0, 0);
             }
             
             if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)

@@ -55,7 +55,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Raider"));
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Raider"), true, 0, 0, "The Raider Ultima", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

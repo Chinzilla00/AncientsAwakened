@@ -56,9 +56,9 @@ Only usable at night");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosBlue", true, 1, 0, "The Grips of Chaos", true);
-            AAModGlobalNPC.SpawnBoss(mod, player, "GripOfChaosRed", false, -1, 0);
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), true, 0, 0, "The Grips of Chaos", true);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), false, 0, 0, "The Grips of Chaos", false);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
