@@ -917,6 +917,7 @@
     <Compile Include="Items\Magic\TrueManaRose.cs" />
     <Compile Include="Items\Magic\TrueTerraRose.cs" />
     <Compile Include="Items\Magic\VenomSpray.cs" />
+    <Compile Include="Items\Magic\Volley.cs" />
     <Compile Include="Items\Magic\YtriumStaff.cs" />
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
@@ -1748,6 +1749,7 @@
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
     <Compile Include="Projectiles\Toad\ToadTongue.cs" />
+    <Compile Include="Projectiles\Volley.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
     <Compile Include="Projectiles\SingularityVortex.cs" />
@@ -4035,6 +4037,7 @@
     <Content Include="Items\Magic\GunkStaff.png" />
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
+    <Content Include="Items\Magic\Volley.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
@@ -5962,6 +5965,7 @@
     <Content Include="Projectiles\ValkyrieLance.png" />
     <Content Include="Projectiles\Void.png" />
     <Content Include="Projectiles\VoidRing.png" />
+    <Content Include="Projectiles\Volley.png" />
     <Content Include="Projectiles\Yamata\AbyssalYariP.png" />
     <Content Include="Projectiles\Yamata\AbyssArrow.png" />
     <Content Include="Projectiles\Yamata\BabyYamata\BabyYamataHead.png" />

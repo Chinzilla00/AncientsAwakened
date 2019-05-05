@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = npc.lifeMax;
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
 			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
@@ -159,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Shen
 		}
         public int spawnTimerMax = 100; //time to sit when you spawn
         public int discordianInfernoTimerMax = 105; //shoot fireballs timer
-        public int discordianInfernoPercent = 10; //the % amount to shoot fireballs
+        public int discordianInfernoPercent = 20; //the % amount to shoot fireballs
         public int discordianFirebombTimerMax = 105; //shoot firebombs timer
         public int discordianFirebombPercent = 30; //the % amount to shoot firebombs
         public int aiChangeRate = 100; //the rate to jump to another ai. (in truth this is ai[2], this is what it is checked against by default.)
@@ -222,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 _normalSpeed = 17f;
                 _chargeSpeed = 45f;
-                discordianInfernoPercent = 7;
+                discordianInfernoPercent = 10;
                 discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
             }
@@ -230,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 _normalSpeed = 20f;
                 _chargeSpeed = 50f;
-                discordianInfernoPercent = 5;
+                discordianInfernoPercent = 7;
                 discordianFirebombPercent = 20;
                 aiTooLongCheck = 45;
             }

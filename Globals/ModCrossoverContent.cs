@@ -15,12 +15,33 @@ namespace AAMod
 {
     public class ModSupport
     {
-        public static Mod thorium = null;
+        public static Mod thorium = null, calamity = null;
+
+        public static FieldInfo Revengance = null, Death = null, Defiled = null;
+
+        public static bool Calamity_Revengence(bool? value = null)
+        {
+            if (value != null && Revengance != null) { Revengance.SetValue(null, (bool)value); return (bool)value; }
+            return (Revengance == null ? false : (bool)Revengance.GetValue(null));
+        }
+
+        public static bool Calamity_Death(bool? value = null)
+        {
+            if (value != null && Death != null) { Death.SetValue(null, (bool)value); return (bool)value; }
+            return (Death == null ? false : (bool)Death.GetValue(null));
+        }
+
+        public static bool Calamity_Defiled(bool? value = null)
+        {
+            if (value != null && Defiled != null) { Defiled.SetValue(null, (bool)value); return (bool)value; }
+            return (Defiled == null ? false : (bool)Defiled.GetValue(null));
+        }
 
         public static bool ModInstalled(string name)
         {
             switch (name)
             {
+                case "Calamity": return calamity != null;
                 case "Thorium": return thorium != null;
                 default: return false;
             }
@@ -38,6 +59,30 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             thorium = ModLoader.GetMod("ThoriumMod");
+            calamity = ModLoader.GetMod("CalamityMod");
+
+            #region Calamity
+            if (calamity != null)
+            {
+                #region world fields
+                FieldInfo worldList = calamity.GetType().GetField("worlds", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                Dictionary<string, ModWorld> worldDict = (Dictionary<string, ModWorld>)worldList.GetValue(calamity);
+                FieldInfo[] finfo = worldDict["CalamityWorld"].GetType().GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                for (int m = 0; m < finfo.Length; m++)
+                {
+                    FieldInfo info = finfo[m];
+                    string fname = info.Name.ToLower();
+                    switch (fname)
+                    {
+                        default: break;
+                        case "revenge": Revengance = info; break;
+                        case "death": Death = info; break;
+                        case "defiled": Defiled = info; break;
+                    }
+                }
+                #endregion
+            }
+            #endregion
         }
     }
 
@@ -118,4 +163,6 @@ namespace AAMod
         }
         #endregion
     }
+
+
 }

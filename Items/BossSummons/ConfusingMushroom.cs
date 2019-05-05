@@ -34,8 +34,7 @@ Can only be used in a glowing mushroom biome");
 
         public override bool UseItem(Player player)
         {
-            SpawnBoss(player, NPC.downedPlantBoss ? "FeudalFungusA" : "FeudalFungus", "The Feudal Fungus");
-            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Feudal Fungus appears!", Color.SkyBlue, false);
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("FeudalFungus"));
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
