@@ -1412,7 +1412,6 @@
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaABoom.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AkumaAMeteor.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AsheA.cs" />
-    <Compile Include="NPCs\Bosses\Akuma\Awakened\AsheAOrbiter.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\AwakenedLung.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FireshotA.cs" />
     <Compile Include="NPCs\Bosses\Akuma\Awakened\FlareA.cs" />
@@ -1497,6 +1496,7 @@
     <Compile Include="NPCs\Bosses\Retriever\RetrieverShot.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverMinion.cs" />
+    <Compile Include="NPCs\Bosses\Sagittarius\SagProj.cs" />
     <Compile Include="NPCs\Bosses\Sagittarius\Sagittarius.cs" />
     <Compile Include="NPCs\Bosses\Sagittarius\SagittariusFree.cs" />
     <Compile Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.cs" />
@@ -4117,7 +4117,6 @@
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Akuma\Awakened\AsheAOrbiter.png" />
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
@@ -4132,6 +4131,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Sagittarius\SagProj.png" />
     <Content Include="NPCs\Bosses\Shen\ChaosBlast.png" />
     <Content Include="NPCs\Bosses\Shen\ChaosBlastBlue.png" />
     <Content Include="NPCs\Bosses\Shen\ChaosBlastRed.png" />
