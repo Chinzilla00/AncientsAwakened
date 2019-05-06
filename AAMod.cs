@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
@@ -7,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.UI;
+using Terraria.Utilities;
 using AAMod.Backgrounds;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
@@ -3433,6 +3435,11 @@ namespace AAMod
             }
             return new Exception("ANCIENTS AWAKENED CALL ERROR: NO METHOD FOUND: " + methodName);
         }
+		
+        public override void HandlePacket(BinaryReader bb, int whoAmI)
+        {
+            AANet.HandlePacket(bb, whoAmI);
+        }		
     }
 
     public class RuneRecipe : ModRecipe
@@ -3446,7 +3453,6 @@ namespace AAMod
 
         public override bool RecipeAvailable()
         {
-
             if (!IsExpert)
             {
                 return false;

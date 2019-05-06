@@ -451,6 +451,9 @@ namespace AAMod
             ModContentGenerated = flags6[0];
             downedTruffle = flags6[1];
 
+            MireCenter = reader.ReadVector2();
+			InfernoCenter = reader.ReadVector2();		
+
             //Squid Lady
             squid1 = reader.ReadInt32();
             squid2 = reader.ReadInt32();

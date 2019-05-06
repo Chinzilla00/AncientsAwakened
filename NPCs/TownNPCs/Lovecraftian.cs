@@ -215,10 +215,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == 1)
                     {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(1);
-                        netMessage.Send();
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)1);
                     }
                     AAWorld.squid1++;
                     Main.PlaySound(24, -1, -1, 1);
@@ -240,10 +237,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == 1)
                     {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(2);
-                        netMessage.Send();
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)2);
                     }
                     AAWorld.squid2++;
                     Main.PlaySound(24, -1, -1, 1);
@@ -263,13 +257,10 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("DarkwaterFlask");
                     }
 
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(3);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)3);
+					}
                     AAWorld.squid3++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -288,13 +279,10 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("CorruptionFlask");
                     }
 
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(4);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)4);
+					}
                     AAWorld.squid4++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -312,13 +300,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("CrimsonFlask");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(5);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)5);
+					}
                     AAWorld.squid5++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -336,13 +321,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
                         Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(6);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)6);
+					}
                     AAWorld.squid6++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -360,13 +342,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("VoidFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("VoidFlask");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(7);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)7);
+					}
                     AAWorld.squid7++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -384,13 +363,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Fungicide");
                     }
-                    if(Main.netMode == 1)
-                        {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(8);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)8);
+					}
                     AAWorld.squid8++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -408,13 +384,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("SporeSac");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(9);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)9);
+					}
                     AAWorld.squid9++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -432,13 +405,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("GlowingSporeSac");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(10);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
+					}
                     AAWorld.squid10++;
                     Main.PlaySound(24, -1, -1, 1);
                 }

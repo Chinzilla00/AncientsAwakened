@@ -128,21 +128,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.DropLoot(mod.ItemType("Incinerite"), 75, 100);
                 npc.DropLoot(mod.ItemType("BroodScale"), 50, 75);
             }
-        }
-        
+        }      
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (Tex == null)
-            {
-                Tex = Main.npcTexture[npc.type];
-            }
-            if (Glow == null)
-            {
-                Glow = mod.GetTexture("Glowmasks/Broodmother_Glow");
-            }
-            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
-
             if (FrameTex == 0)
             {
                 Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother");
@@ -152,7 +141,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother0");
                 Glow = mod.GetTexture("Glowmasks/Broodmother0_Glow");
-            }
+            }			
+            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
 
             BaseDrawing.DrawTexture(spriteBatch, Tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, GenericUtils.COLOR_GLOWPULSE, true);
@@ -206,14 +196,44 @@ namespace AAMod.NPCs.Bosses.Broodmother
         private float[] FireTimer = new float[1];
         private int MaxMinions = Main.hardMode ? 8 : 6;
 		public const float AISTATE_RUNAWAY = -1f, AISTATE_FLYABOVEPLAYER = 0f, AISTATE_FIREBREATH = 1f, AISTATE_FIREBOMB = 2f, AISTATE_SPAWNEGGS = 3f;
-        
-        public override void AI()
+
+		public override void AI()
+		{
+			//this should catch any more problems and write them to errorlogger (ie logs)
+			try
+			{
+				AI2();
+			}catch(Exception e)
+			{
+				ErrorLogger.Log(e.Message); 
+				ErrorLogger.Log(e.StackTrace);
+			}
+		}
+		
+        public void AI2()
         {
             Player player = Main.player[npc.target];
 
             int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
 
-            npc.TargetClosest();
+            if (Main.netMode != 1 && internalAI[0]++ >= 180)
+            {
+                internalAI[0] = 0;
+                internalAI[1] = Minions < MaxMinions ? Main.rand.Next(4) : Main.rand.Next(3);
+                npc.ai = new float[4];
+                if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
+                {
+					npc.ai[1] = 1 + Main.rand.Next(2);
+                }else
+                if (internalAI[1] == AISTATE_SPAWNEGGS)
+                {
+                    npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
+                }
+                npc.netUpdate = true;
+            }
+			pos = (npc.ai[1] == 0 ? -250 : 250);
+
+            npc.TargetClosest();			
             if (Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest();
@@ -222,22 +242,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[1] = AISTATE_RUNAWAY;
                     npc.ai = new float[4];
                 }
-            }
-
-            if (internalAI[0]++ >= 180)
-            {
-                internalAI[0] = 0;
-                internalAI[1] = Minions < MaxMinions ? Main.rand.Next(4) : Main.rand.Next(3);
-                npc.ai = new float[4];
-                if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
-                {
-                    ChangePos();
-                }
-                if (internalAI[1] == AISTATE_SPAWNEGGS)
-                {
-                    pos = -pos;
-                }
-                npc.netUpdate = true;
             }
             
             if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
@@ -272,6 +276,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 return;
             }
+
             else
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
@@ -293,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[2]++;
                     if (internalAI[2] > 30f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12);
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12, true, new Vector2(0, -40f));					
                     }
                     if (internalAI[2] > 90)
                     {
@@ -307,7 +312,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             else if (internalAI[1] == AISTATE_SPAWNEGGS)
             {
-
                 if (Main.netMode != 1)
                 {
                     projectileTimer++;
@@ -316,11 +320,12 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         if (projectileTimer > (projectileInterval + 60))
                             projectileTimer = 0;
                         Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y - 60f);
+                        Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y + 40f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         if (Minions < MaxMinions)
                         {
                             int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<BroodEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+							Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }
                     }
@@ -343,20 +348,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     }
                 }
             }
-        }
-
-        public void ChangePos()
-        {
-            npc.ai[1] = Main.rand.Next(2);
-            if (npc.ai[1] == 0)
-            {
-                pos = -250;
-            }
-            else
-            {
-                pos = 250;
-            }
-            npc.netUpdate = false;
         }
 
         public void MoveToPoint(Vector2 point)
