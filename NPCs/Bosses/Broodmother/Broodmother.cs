@@ -67,16 +67,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     }
                 }
             }
-            if (FrameTex == 0)
-            {
-                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother");
-                Glow = mod.GetTexture("Glowmasks/Broodmother_Glow");
-            }
-            else
-            {
-                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother0");
-                Glow = mod.GetTexture("Glowmasks/Broodmother0_Glow");
-            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -153,6 +143,17 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
 
+            if (FrameTex == 0)
+            {
+                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother");
+                Glow = mod.GetTexture("Glowmasks/Broodmother_Glow");
+            }
+            else
+            {
+                Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother0");
+                Glow = mod.GetTexture("Glowmasks/Broodmother0_Glow");
+            }
+
             BaseDrawing.DrawTexture(spriteBatch, Tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, GenericUtils.COLOR_GLOWPULSE, true);
             return false;
@@ -212,6 +213,17 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
             int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
 
+            npc.TargetClosest();
+            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+            {
+                npc.TargetClosest();
+                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+                {
+                    internalAI[1] = AISTATE_RUNAWAY;
+                    npc.ai = new float[4];
+                }
+            }
+
             if (internalAI[0]++ >= 180)
             {
                 internalAI[0] = 0;
@@ -226,16 +238,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     pos = -pos;
                 }
                 npc.netUpdate = true;
-            }
-
-            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest();
-                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-                {
-                    internalAI[1] = AISTATE_RUNAWAY;
-                    npc.ai = new float[4];
-                }
             }
             
             if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
@@ -270,7 +272,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 return;
             }
-
             else
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
