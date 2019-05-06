@@ -54,7 +54,7 @@ Only useable at night");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(mod, player, "Retriever", true, 0, 0, "Retriever");
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Retriever"), true, 0, 0, "The Retriever", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

@@ -32,7 +32,7 @@ Only usable during the day");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(mod, player, "Djinn", true, 0, 0, "The Desert Djinn");
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Djinn"), true, 0, 0, "The Desert Djinn", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

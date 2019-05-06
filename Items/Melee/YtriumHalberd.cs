@@ -26,8 +26,8 @@ namespace AAMod.Items.Melee
             item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
 
             item.useStyle = 5;
-            item.useAnimation = 35;
-            item.useTime = 35;
+            item.useAnimation = 55;
+            item.useTime = 55;
             item.UseSound = SoundID.Item1;
             item.damage = 29;
             item.knockBack = 5;

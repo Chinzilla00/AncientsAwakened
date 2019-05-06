@@ -52,10 +52,10 @@ Non-Consumable");
             {
                 Main.NewText("Again..!? Didin't you learn from last time? Oh well, I'm gonna have a ball blasting you to shreds!", new Color(102, 20, 48));
 
-                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false, -1, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Ashe"), false, -1, 0, "Ashe Akuma", false);
 
                 Main.NewText("Whatever, let's just get this overwith.", new Color(72, 78, 117));
-                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false, 1, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Haruka"), false, 1, 0, "Haruka Yamata", false);
                 return true;
             }
             else if (AAWorld.SistersSummoned && AAWorld.downedSisters)
@@ -63,13 +63,13 @@ Non-Consumable");
                 Main.NewText("Sigh...here we go again...", new Color(72, 78, 117));
 
                 Main.NewText("THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!", new Color(102, 20, 48));
-                AAModGlobalNPC.SpawnBoss(mod, player, "Ashe", false, -1, 0);
-                AAModGlobalNPC.SpawnBoss(mod, player, "Haruka", false, 1, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Ashe"), false, -1, 0, "Ashe Akuma", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Haruka"), false, 1, 0, "Haruka Yamata", false);
                 return true;
             }
             else
             {
-                AAModGlobalNPC.SpawnBoss(mod, player, "AHSpawn", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AHSpawn"), false, 0, 0);
                 return true;
             }
         }

@@ -34,7 +34,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("TechnoTruffle"));
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("TechnoTruffle"), true, 0, 0, "The Techno Truffle", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

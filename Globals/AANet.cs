@@ -15,6 +15,8 @@ namespace AAMod
     {
         private static Dictionary<MPMessageType, Action<BinaryReader, int>> _packetActions;
 
+        public const byte SummonNPCFromClient = 0;
+
         private static ModPacket GetPacket(int capacity = 256)
         {
             return AAMod.instance.GetPacket(capacity);
@@ -36,9 +38,26 @@ namespace AAMod
         public static void HandlePacket(BinaryReader reader, int fromWho)
         {
             MPMessageType messageType = (MPMessageType)reader.ReadByte();
+            byte msg = reader.ReadByte();
             if (_packetActions != null && _packetActions.ContainsKey(messageType))
             {
                 _packetActions[messageType].Invoke(reader, fromWho);
+            }
+            if (msg == SummonNPCFromClient)
+            {
+                //note some of these methods only exist because of BaseMod
+                if (Main.netMode == 2)
+                {
+                    int playerID = (int)reader.ReadByte();
+                    int bossType = reader.ReadShort();
+                    bool spawnMessage = reader.ReadBool();
+                    int npcCenterX = reader.ReadInt();
+                    int npcCenterY = reader.ReadInt();
+                    string overrideDisplayName = reader.ReadString();
+                    bool namePlural = reader.ReadBool();
+
+                    AAModGlobalNPC.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
+                }
             }
         }
 
@@ -47,67 +66,67 @@ namespace AAMod
             int whichCookX = reader.ReadInt32();
             if (whichCookX == 1)
             {
-                AAWorld.squid1 = AAWorld.squid1 + 1;
+                AAWorld.squid1 += 1;
             }
             else if (whichCookX == 2)
             {
-                AAWorld.squid2 = AAWorld.squid2 + 1;
+                AAWorld.squid2 += 1;
             }
             else if (whichCookX == 3)
             {
-                AAWorld.squid3 = AAWorld.squid3 + 1;
+                AAWorld.squid3 += 1;
             }
             else if (whichCookX == 4)
             {
-                AAWorld.squid4 = AAWorld.squid4 + 1;
+                AAWorld.squid4 += 1;
             }
             else if (whichCookX == 5)
             {
-                AAWorld.squid5 = AAWorld.squid5 + 1;
+                AAWorld.squid5 += 1;
             }
             else if (whichCookX == 6)
             {
-                AAWorld.squid6 = AAWorld.squid6 + 1;
+                AAWorld.squid6 += 1;
             }
             else if (whichCookX == 7)
             {
-                AAWorld.squid7 = AAWorld.squid7 + 1;
+                AAWorld.squid7 += 1;
             }
             else if (whichCookX == 8)
             {
-                AAWorld.squid8 = AAWorld.squid8 + 1;
+                AAWorld.squid8 += 1;
             }
             else if (whichCookX == 9)
             {
-                AAWorld.squid9 = AAWorld.squid9 + 1;
+                AAWorld.squid9 += 1;
             }
             else if (whichCookX == 10)
             {
-                AAWorld.squid10 = AAWorld.squid10 + 1;
+                AAWorld.squid10 += 1;
             }
             else if (whichCookX == 11)
             {
-                AAWorld.squid11 = AAWorld.squid11 + 1;
+                AAWorld.squid11 += 1;
             }
             else if (whichCookX == 12)
             {
-                AAWorld.squid12 = AAWorld.squid12 + 1;
+                AAWorld.squid12 += 1;
             }
             else if (whichCookX == 13)
             {
-                AAWorld.squid13 = AAWorld.squid13 + 1;
+                AAWorld.squid13 += 1;
             }
             else if (whichCookX == 14)
             {
-                AAWorld.squid14 = AAWorld.squid14 + 1;
+                AAWorld.squid14 += 1;
             }
             else if (whichCookX == 16)
             {
-                AAWorld.squid15 = AAWorld.squid15 + 1;
+                AAWorld.squid15 += 1;
             }
             else if (whichCookX == 17)
             {
-                AAWorld.squid16 = AAWorld.squid16 + 1;
+                AAWorld.squid16 += 1;
             }
 
             NetMessage.SendData(MessageID.WorldData);
@@ -140,7 +159,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0) { return; }
 
-                BaseMod.BaseNet.WriteToPacket(AAMod.instance.GetPacket(), (byte)msg, param).Send(client);
+                BaseNet.WriteToPacket(AAMod.instance.GetPacket(), (byte)msg, param).Send(client);
             }
             catch (Exception e)
             {

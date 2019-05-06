@@ -95,7 +95,7 @@ Non-Consumable");
             {
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
-            AAModGlobalNPC.SpawnBoss(mod, player, "Akuma", true, 0, 0, "Akuma, Draconian Demon");
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

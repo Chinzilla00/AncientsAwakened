@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = npc.lifeMax;
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
 			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
@@ -159,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Shen
 		}
         public int spawnTimerMax = 100; //time to sit when you spawn
         public int discordianInfernoTimerMax = 105; //shoot fireballs timer
-        public int discordianInfernoPercent = 10; //the % amount to shoot fireballs
+        public int discordianInfernoPercent = 20; //the % amount to shoot fireballs
         public int discordianFirebombTimerMax = 105; //shoot firebombs timer
         public int discordianFirebombPercent = 30; //the % amount to shoot firebombs
         public int aiChangeRate = 100; //the rate to jump to another ai. (in truth this is ai[2], this is what it is checked against by default.)
@@ -222,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 _normalSpeed = 17f;
                 _chargeSpeed = 45f;
-                discordianInfernoPercent = 7;
+                discordianInfernoPercent = 10;
                 discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
             }
@@ -230,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 _normalSpeed = 20f;
                 _chargeSpeed = 50f;
-                discordianInfernoPercent = 5;
+                discordianInfernoPercent = 7;
                 discordianFirebombPercent = 20;
                 aiTooLongCheck = 45;
             }
@@ -740,8 +740,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 SpawnGrips = true;
                 Main.NewText("Grips! Assist me!", Color.DarkMagenta);
-                SpawnBoss(player, "AbyssGrip", "");
-                SpawnBoss(player, "BlazeGrip", "");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
             }
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
@@ -761,8 +761,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     Main.NewText("Yes, father.", new Color(72, 78, 117));
                 }
 
-                SpawnBoss(player, "FuryAshe", "");
-                SpawnBoss(player, "WrathHaruka", "");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("WrathHaruka"), false, 0, 0);
             }
             
             if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)

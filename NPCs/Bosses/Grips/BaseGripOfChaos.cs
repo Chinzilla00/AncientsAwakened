@@ -114,10 +114,18 @@ namespace AAMod.NPCs.Bosses.Grips
 			npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 
+            if (Main.dayTime)
+            {
+                DespawnHandler();
+                return;
+            }
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.TargetClosest(false);
-                DespawnHandler();
+                if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    DespawnHandler();
+                }
                 return;
             }
 
@@ -230,7 +238,7 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.alpha += 5;
                 if (npc.alpha >= 50)
                 {
-                    npc.defense = 40;
+                    npc.defense = 20;
                     npc.alpha = 50;
                 }
             }
@@ -241,11 +249,11 @@ namespace AAMod.NPCs.Bosses.Grips
                 {
                     if (npc.type == mod.NPCType<GripOfChaosRed>())
                     {
-                        npc.defense = 20;
+                        npc.defense = 12;
                     }
                     if (npc.type == mod.NPCType<GripOfChaosBlue>())
                     {
-                        npc.defense = 12;
+                        npc.defense = 8;
                     }
                     npc.alpha = 0;
                 }
