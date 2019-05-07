@@ -113,7 +113,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
             color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
 
-            Lighting.AddLight(npc.Center, color.R, color.G, color.B);
+            Lighting.AddLight(npc.Center, color.R / 255, color.G / 255, color.B / 255);
 
             if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
             {

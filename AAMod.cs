@@ -26,7 +26,7 @@ using ReLogic.Graphics;
 
 namespace AAMod
 {
-    class AAMod : Mod
+    public class AAMod : Mod
     {
         public static int GoblinSoul = -1;
         public static ModHotKey InfinityHotKey;

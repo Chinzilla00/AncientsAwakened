@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Raider
 
             int Minions = NPC.CountNPCS(mod.NPCType<RaidEgg>()) + NPC.CountNPCS(mod.NPCType<Raidmini>());
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-            Lighting.AddLight(npc.Center, color.R, color.G, color.B);
+            Lighting.AddLight(npc.Center, color.R / 255, color.G / 255, color.B / 255);
 
             if (Main.netMode != 1 && internalAI[0]++ >= 180)
             {
@@ -242,17 +242,6 @@ namespace AAMod.NPCs.Bosses.Raider
                     internalAI[1] = AISTATE_RUNAWAY;
                     npc.ai = new float[4];
                 }
-            }
-
-            if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
-            {
-                npc.dontTakeDamage = true;
-                npc.damage = 130;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-                npc.damage = npc.defDamage;
             }
 
             if (internalAI[1] == AISTATE_RUNAWAY)
@@ -290,7 +279,6 @@ namespace AAMod.NPCs.Bosses.Raider
                     float spread = 12f * 0.0174f;
                     double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
                     double deltaAngle = spread / (Main.expertMode ? 5 : 4);
-                    double offsetAngle;
                     if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
                     {
                         for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)

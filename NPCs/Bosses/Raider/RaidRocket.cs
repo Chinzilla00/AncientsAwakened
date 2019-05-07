@@ -293,8 +293,8 @@ namespace AAMod.NPCs.Bosses.Raider
             if (npc.frameCounter >= 10)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 28;
-                if (npc.frame.Y > (28 * 3))
+                npc.frame.Y += 16;
+                if (npc.frame.Y > (16 * 3))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
