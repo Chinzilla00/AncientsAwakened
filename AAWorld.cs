@@ -197,6 +197,8 @@ namespace AAMod
             infernoPos = new Vector2(0, 0);
             InfernoCenter = -Vector2.One;
             MireCenter = -Vector2.One;
+            SmashDragonEgg = 0;
+            SmashHydraPod = 0;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
@@ -309,7 +311,9 @@ namespace AAMod
                 {"squid13", squid13},
                 {"squid14", squid14},
                 {"squid15", squid15},
-                {"squid16", squid16}
+                {"squid16", squid16},
+                {"Egg", SmashDragonEgg},
+                {"Pod", SmashHydraPod}
             };
         }
         public override void NetSend(BinaryWriter writer)
@@ -378,7 +382,6 @@ namespace AAMod
             writer.WriteVector2(MireCenter);
             writer.WriteVector2(InfernoCenter);
 
-            //Squid Lady
             writer.Write(squid1);
             writer.Write(squid2);
             writer.Write(squid3);
@@ -395,6 +398,8 @@ namespace AAMod
             writer.Write(squid14);
             writer.Write(squid15);
             writer.Write(squid16);
+            writer.Write(SmashDragonEgg);
+            writer.Write(SmashHydraPod);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -455,7 +460,6 @@ namespace AAMod
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
 
-            //Squid Lady
             squid1 = reader.ReadInt32();
             squid2 = reader.ReadInt32();
             squid3 = reader.ReadInt32();
@@ -472,6 +476,8 @@ namespace AAMod
             squid14 = reader.ReadInt32();
             squid15 = reader.ReadInt32();
             squid16 = reader.ReadInt32();
+            SmashHydraPod = reader.ReadInt32();
+            SmashDragonEgg = reader.ReadInt32();
         }
 
         public override void Load(TagCompound tag)
@@ -555,6 +561,8 @@ namespace AAMod
             squid14 = tag.GetInt("squid14");
             squid15 = tag.GetInt("squid15");
             squid16 = tag.GetInt("squid16");
+            SmashDragonEgg = tag.GetInt("Egg");
+            SmashHydraPod = tag.GetInt("Pod");
         }
 
 

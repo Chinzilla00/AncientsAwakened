@@ -89,29 +89,10 @@ namespace AAMod.Tiles
             else
             {
                 AAWorld.SmashDragonEgg = 2;
-                SpawnBoss(player, "Broodmother", "The Broodmother");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, "The Broodmother");
             }
         }
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 800f);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
-                else
-                if (Main.netMode == 2)
-                {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
-                    {
-                        NetworkText.FromLiteral(npcName)
-                    }), new Color(175, 75, 255), -1);
-                }
-            }
-        }
+
+
     }
 }

@@ -22,6 +22,7 @@ using AAMod.Items.Blocks;
 using AAMod.Items.Vanity.Beg;
 using AAMod;
 using BaseMod;
+using ReLogic.Graphics;
 
 namespace AAMod
 {
@@ -3428,7 +3429,63 @@ namespace AAMod
         public override void HandlePacket(BinaryReader bb, int whoAmI)
         {
             AANet.HandlePacket(bb, whoAmI);
-        }		
+        }
+
+        private static int UI_ScreenAnchorX = Main.screenWidth - 800;
+
+        private static int UIDisplay_ManaPerStar = 20;
+
+        public static SpriteFont fontMouseText;
+
+        public static void DrawStars()
+        {
+            Mod mod = instance;
+            UIDisplay_ManaPerStar = 20;
+            Texture2D Stars = mod.GetTexture("UI/ManaGreen");
+            if (Main.player[Main.myPlayer].statManaMax > 200)
+            {
+                int arg_30_0 = Main.player[Main.myPlayer].statManaMax2 / 20;
+                Main.spriteBatch.DrawString(fontMouseText, "Mana", new Vector2((float)(750 + UI_ScreenAnchorX), 6f), new Color((int)Main.mouseTextColor, (int)Main.mouseTextColor, (int)Main.mouseTextColor, (int)Main.mouseTextColor), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+                for (int i = 1; i < Main.player[Main.myPlayer].statManaMax2 / UIDisplay_ManaPerStar + 1; i++)
+                {
+                    bool flag = false;
+                    float num = 1f;
+                    int num2;
+                    if (Main.player[Main.myPlayer].statMana >= i * UIDisplay_ManaPerStar)
+                    {
+                        num2 = 255;
+                        if (Main.player[Main.myPlayer].statMana == i * UIDisplay_ManaPerStar)
+                        {
+                            flag = true;
+                        }
+                    }
+                    else
+                    {
+                        float num3 = (float)(Main.player[Main.myPlayer].statMana - (i - 1) * UIDisplay_ManaPerStar) / (float)UIDisplay_ManaPerStar;
+                        num2 = (int)(30f + 225f * num3);
+                        if (num2 < 30)
+                        {
+                            num2 = 30;
+                        }
+                        num = num3 / 4f + 0.75f;
+                        if (num < 0.75)
+                        {
+                            num = 0.75f;
+                        }
+                        if (num3 > 0f)
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        num += Main.cursorScale - 1f;
+                    }
+                    int a = (int)((double)((float)num2) * 0.9);
+                    Main.spriteBatch.Draw(Stars, new Vector2((775 + UI_ScreenAnchorX), (30 + Stars.Height / 2) + (Stars.Height - Stars.Height * num) / 2f + (28 * (i - 1))), new Rectangle?(new Rectangle(0, 0, Stars.Width, Stars.Height)), new Color(num2, num2, num2, a), 0f, new Vector2((Stars.Width / 2), (Stars.Height / 2)), num, SpriteEffects.None, 0f);
+                }
+            }
+        }
     }
 
     public class RuneRecipe : ModRecipe

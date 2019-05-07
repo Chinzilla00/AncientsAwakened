@@ -473,7 +473,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -350);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] == 0f)
                 {
@@ -547,7 +547,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -350);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
