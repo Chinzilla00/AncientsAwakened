@@ -103,10 +103,18 @@ namespace AAMod.NPCs.Bosses.Orthrus
 		public int fWidth = 200;
 		public int fHeight = 102;
 
+        public Color color;
+
         public override void AI()
         {
 			npc.TargetClosest();
 			Player playerTarget = Main.player[npc.target];
+
+
+            color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
+            Lighting.AddLight(npc.Center, color.R, color.G, color.B);
+
             if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
             {
                 npc.NPCLoot();

@@ -168,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 npc.frameCounter = 0;
                 npc.frame.Y += 192;
                 bool isCharging = (internalAI[1] == AISTATE_CHARGEATPLAYER); //all ai states between charges
-                if (isCharging && npc.frame.Y >= 192 * 8)
+                if (isCharging && (npc.frame.Y >= 192 * 8 || npc.frame.Y < 192 * 5))
                 {
                     npc.frame.Y = 192 * 4;
                 }
@@ -208,6 +208,8 @@ namespace AAMod.NPCs.Bosses.Raider
             Player player = Main.player[npc.target];
 
             int Minions = NPC.CountNPCS(mod.NPCType<RaidEgg>()) + NPC.CountNPCS(mod.NPCType<Raidmini>());
+            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            Lighting.AddLight(npc.Center, color.R, color.G, color.B);
 
             if (Main.netMode != 1 && internalAI[0]++ >= 180)
             {
@@ -222,6 +224,10 @@ namespace AAMod.NPCs.Bosses.Raider
                 if (internalAI[1] == AISTATE_SPAWNEGGS)
                 {
                     npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
+                }
+                if (internalAI[1] == AISTATE_CHARGEATPLAYER)
+                {
+                    SelectPoint = true;
                 }
                 npc.netUpdate = true;
             }
@@ -278,25 +284,19 @@ namespace AAMod.NPCs.Bosses.Raider
 
             if (internalAI[1] == AISTATE_ROCKETS)
             {
-                npc.velocity *= .95f;
-                if (npc.velocity.X < 0.1f)
+                if (Main.netMode != 1)
                 {
-                    npc.velocity.X = 0;
-                }
-                if (npc.velocity.Y < 0.1f)
-                {
-                    npc.velocity.Y = 0;
-                }
-                if (Main.netMode != 1 && npc.velocity == new Vector2(0, 0))
-                {
+                    internalAI[2]++;
                     float spread = 12f * 0.0174f;
                     double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
                     double deltaAngle = spread / (Main.expertMode ? 5 : 4);
                     double offsetAngle;
-                    for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
+                    if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
                     {
-                        offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("RaidRocket"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                        for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
+                        {
+                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
+                        }
                     }
                     if (internalAI[2] > 90)
                     {
@@ -313,16 +313,19 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 if (Main.netMode != 1)
                 {
-                    if (projectileTimer > (projectileInterval + 60))
-                        projectileTimer = 0;
-                    Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                    Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y + 40f);
-                    firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                    if (Minions < MaxMinions)
+                    projectileTimer++;
+                    if (projectileTimer > 20)
                     {
-                        int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<RaidEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                        Main.npc[NPCID].velocity.Y = 4f;
-                        Main.npc[NPCID].netUpdate = true;
+                        projectileTimer = 0;
+                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y + 40f);
+                        firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
+                        if (Minions < MaxMinions)
+                        {
+                            int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<RaidEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                            Main.npc[NPCID].velocity.Y = 4f;
+                            Main.npc[NPCID].netUpdate = true;
+                        }
                     }
                 }
             }
