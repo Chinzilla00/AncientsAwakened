@@ -1682,6 +1682,26 @@ namespace AAMod
             {
                 ModRecipe recipe = new ModRecipe(this);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Deathweed, 1);
+                recipe.AddIngredient(null, "MirePod", 1);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.BattlePotion, 1);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
+                recipe.AddIngredient(ItemID.Deathweed, 1);
+                recipe.AddIngredient(null, "MirePod", 1);
+                recipe.AddTile(TileID.Bottles);
+                recipe.SetResult(ItemID.BattlePotion, 1);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BottledWater, 1);
                 recipe.AddIngredient(ItemID.Waterleaf, 1);
                 recipe.AddIngredient(null, "MirePod", 2);
                 recipe.AddTile(TileID.Bottles);
@@ -1963,6 +1983,40 @@ namespace AAMod
                 recipe.SetResult(null, "BroodScale");
                 recipe.AddRecipe();
             }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.VileMushroom, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.ViciousMushroom);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.ViciousMushroom, 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(ItemID.VileMushroom);
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Hotshroom", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Darkshroom");
+                recipe.AddRecipe();
+            }
+
+            {
+                ModRecipe recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, "Darkshroom", 2);
+                recipe.AddTile(this, "Transmuter");
+                recipe.SetResult(null, "Hotshroom");
+                recipe.AddRecipe();
+            }
+
+
             #region Cobalt
 
             {
