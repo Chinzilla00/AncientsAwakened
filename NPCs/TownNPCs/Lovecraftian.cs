@@ -486,11 +486,6 @@ namespace AAMod.NPCs.TownNPCs
                 shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.GlowingSporeSac>());
                 nextSlot++;
             }
-            if (AAWorld.squid2 >= 5 && AAWorld.squid3 >= 5)
-            {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.OrderBottle>());
-                nextSlot++;
-            }
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)

@@ -12,9 +12,10 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
+            Terraria.ID.TileID.Sets.NeedsGrassFraming[Type] = true;
             Main.tileMergeDirt[Type] = true;
             SetModTree(new OroborosTree());
-            soundType = 21;
+            Terraria.ID.TileID.Sets.Conversion.Grass[Type] = true;
             drop = mod.ItemType("Dirt");
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 40, 40));
@@ -24,11 +25,6 @@ namespace AAMod.Tiles
         {
             style = 0;
             return mod.TileType("OroborosSapling");
-        }
-
-        public override bool CanExplode(int i, int j)
-        {
-            return false;
         }
     }
 }

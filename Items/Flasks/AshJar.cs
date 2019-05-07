@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +28,37 @@ namespace AAMod.Items.Flasks
         {
             DisplayName.SetDefault("Ash Jar");
             Tooltip.SetDefault(@"Spreads the Inferno");
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+
+            if (player.altFunctionUse == 2)
+            {
+                item.shoot = mod.ProjectileType("Flask");
+                item.shootSpeed = 1f;
+            }
+            else
+            {
+                item.shoot = mod.ProjectileType("OrangeSolution");
+                item.shootSpeed = 4f;
+            }
+            return base.CanUseItem(player);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (type == mod.ProjectileType("Flask"))
+            {
+                Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, 0, 0, Main.myPlayer, 5);
+                return false;
+            }
+            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
     }
 }

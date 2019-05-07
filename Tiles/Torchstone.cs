@@ -10,6 +10,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("Incinerite")] = true;
+            Terraria.ID.TileID.Sets.Conversion.Stone[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             soundType = 21;

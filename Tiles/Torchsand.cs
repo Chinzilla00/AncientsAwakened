@@ -12,6 +12,8 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             SetModCactus(new Razetus());
             SetModPalmTree(new RazePalmTree());
+            TileID.Sets.Conversion.Sand[Type] = true;
+            Main.tileSand[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileBlendAll[this.Type] = true;

@@ -306,15 +306,19 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
             if (!Main.expertMode)
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("SagMask"));
+                }
+                string[] lootTable = { "SagCore" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
                 Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
             }
             else
             {
                 npc.DropBossBags();
             }
-            string[] lootTable = { "SagCore" };
-            int loot = Main.rand.Next(lootTable.Length);
-            npc.DropLoot (mod.ItemType(lootTable[loot]));
         }
         
     }

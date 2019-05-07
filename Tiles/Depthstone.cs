@@ -12,7 +12,8 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("AbyssiumOre")] = true;
             Main.tileMergeDirt[Type] = true;
-            Main.tileBlendAll[this.Type] = false;
+            TileID.Sets.Conversion.Stone[Type] = true;
+            Main.tileBlendAll[Type] = false;
 			Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileLighted[Type] = false;
             soundType = 21;

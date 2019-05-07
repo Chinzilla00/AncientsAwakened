@@ -12,7 +12,8 @@ namespace AAMod.Tiles
 		public override void SetDefaults()
 		{
 			Main.tileSolid[Type] = true;
-			SetModTree(new MushroomTree());
+            TileID.Sets.Conversion.Grass[Type] = true;
+            SetModTree(new MushroomTree());
             Main.tileBlendAll[this.Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;
             dustType = mod.DustType("Mushdust");

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -13,6 +14,8 @@ namespace AAMod.Tiles
             SetModPalmTree(new BogPalmTree());
             Main.tileMergeDirt[Type] = true;
             Main.tileBlendAll[this.Type] = true;
+            TileID.Sets.Conversion.Sand[Type] = true;
+            Main.tileSand[Type] = true;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthsand");   //put your CustomBlock name
             AddMapEntry(new Color(37, 33, 50));

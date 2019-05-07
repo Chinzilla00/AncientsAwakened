@@ -28,5 +28,36 @@ namespace AAMod.Items.Flasks
             DisplayName.SetDefault("Fungicide");
             Tooltip.SetDefault(@"Originally concocted by the Swarm to combat the ever-expending mushroom menace.");
         }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+
+            if (player.altFunctionUse == 2)
+            {
+                item.shoot = mod.ProjectileType("Flask");
+                item.shootSpeed = 1f;
+            }
+            else
+            {
+                item.shoot = mod.ProjectileType("Antifungus");
+                item.shootSpeed = 4f;
+            }
+            return base.CanUseItem(player);
+        }
+
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (type == mod.ProjectileType("Flask"))
+            {
+                Projectile.NewProjectile(position, new Microsoft.Xna.Framework.Vector2(speedX, speedY), type, 0, 0, Main.myPlayer, 10);
+                return false;
+            }
+            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+        }
     }
 }

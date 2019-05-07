@@ -184,7 +184,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else
                 {
-                    Main.npcChatText = "Hmm...nothing? I need stuff to study. I'd like some important materials from biomes. Monster pieces, plants, etc.";
+                    Main.npcChatText = NoMushroomChat();
                     Main.npcChatCornerItem = 0;
                     Main.PlaySound(12, -1, -1, 1);
                 }

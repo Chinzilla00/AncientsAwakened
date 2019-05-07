@@ -15,6 +15,7 @@ namespace AAMod.Walls
             Main.wallHouse[this.Type] = true;
             drop = mod.ItemType("TorchstoneWall");
             AddMapEntry(new Color(25, 12, 10));
+            Terraria.ID.WallID.Sets.Conversion.Stone[Type] = true;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)

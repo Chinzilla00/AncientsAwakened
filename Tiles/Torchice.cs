@@ -10,7 +10,8 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileBlendAll[this.Type] = false;
+            Main.tileBlendAll[Type] = false;
+            TileID.Sets.Conversion.Ice[Type] = true;
             Main.tileMerge[TileID.SnowBlock][Type] = true;
             Main.tileBlockLight[Type] = true;
             soundType = 21;
