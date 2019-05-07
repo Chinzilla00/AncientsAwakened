@@ -5728,6 +5728,7 @@
     <Content Include="Projectiles\Flasks\DesertFlask.png" />
     <Content Include="Projectiles\Flasks\Flask.png" />
     <Content Include="Projectiles\Flasks\ForestFlask.png" />
+    <Content Include="Projectiles\Flasks\Fungicide.png" />
     <Content Include="Projectiles\Flasks\GlowingSporeSac.png" />
     <Content Include="Projectiles\Flasks\HallowFlask.png" />
     <Content Include="Projectiles\Flasks\HellFlask.png" />
@@ -5735,6 +5736,7 @@
     <Content Include="Projectiles\Flasks\JungleFlask.png" />
     <Content Include="Projectiles\Flasks\OrderBottle.png" />
     <Content Include="Projectiles\Flasks\PurityFlask.png" />
+    <Content Include="Projectiles\Flasks\SporeSac.png" />
     <Content Include="Projectiles\Flasks\VoidFlask.png" />
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
