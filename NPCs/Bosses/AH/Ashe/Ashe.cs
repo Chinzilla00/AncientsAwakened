@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                npc.direction = npc.velocity.X > 0 ? -1 : 1;
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
         }
 

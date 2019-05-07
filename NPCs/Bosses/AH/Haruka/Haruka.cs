@@ -385,7 +385,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
                 if (SelectPoint)
                 {
-                    float Point = 500 * npc.direction;
+                    float Point = 500 * -npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 0);
                     SelectPoint = false;
                     npc.netUpdate = true;

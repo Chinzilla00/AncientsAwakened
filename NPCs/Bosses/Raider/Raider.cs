@@ -244,6 +244,11 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
             }
 
+            if (Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+            }
+
             if (internalAI[1] == AISTATE_RUNAWAY)
             {
                 npc.noTileCollide = true;
@@ -346,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     {
                         if (projectileTimer > (projectileInterval + 50))
                             projectileTimer = 0;
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 dir = new Vector2(npc.velocity.X * 2f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 28f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("RaidSphere"), npc.damage / 2, 1, 255);
@@ -362,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public void Charge(Vector2 point)
         {
-            float MeleeSpeed = 14f;
+            float MeleeSpeed = 18f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
