@@ -20,10 +20,9 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.height = 30;
             npc.damage = 10;
             npc.defense = 10;
-            npc.lifeMax = 200;
-            npc.damage = 45;
-            npc.defense = 14;
-            npc.lifeMax = 210;
+            npc.damage = 28;
+            npc.defense = 6;
+            npc.lifeMax = 60;
             npc.knockBackResist = 0.55f;
             npc.value = 100f;
             npc.aiStyle = 3;

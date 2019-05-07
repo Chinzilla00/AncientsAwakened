@@ -47,6 +47,50 @@ namespace AAMod.NPCs.Enemies.Mire
             }
         }
 
+        public override void FindFrame(int frameHeight)
+        {
+            if (!Shell)
+            {
+                if (npc.frameCounter++ > 9)
+                {
+                    npc.frame.Y += 40;
+                    npc.frameCounter = 0;
+                    if (npc.frame.Y > 200)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (ShellTimer < 180)
+                {
+                    if (npc.frame.Y < 40 * 6)
+                    {
+                        npc.frame.Y = 40 * 6;
+                    }
+
+                    if (npc.frameCounter++ > 9)
+                    {
+                        npc.frame.Y += 40;
+                        npc.frameCounter = 0;
+                        if (npc.frame.Y > 320)
+                        {
+                            npc.frame.Y = 320;
+                        }
+                    }
+                }
+                else
+                {
+                    if (npc.frameCounter++ > 9)
+                    {
+                        npc.frame.Y += 40;
+                        npc.frameCounter = 0;
+                    }
+                }
+            }
+        }
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -73,15 +117,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     Shell = true;
                     npc.netUpdate = true;
                 }
-                if (npc.frameCounter++ > 9)
-                {
-                    npc.frame.Y += 40;
-                    npc.frameCounter = 0;
-                    if (npc.frame.Y > 200)
-                    {
-                        npc.frame.Y = 0;
-                    }
-                }
+                
                 BaseAI.AIZombie(npc, ref npc.ai, true, true, -1, 0.08f, 1f, 2, 3, 120);
             }
             else
@@ -90,32 +126,13 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.knockBackResist = 0;
                 npc.reflectingProjectiles = true;
                 ShellTimer++;
-                if (ShellTimer < 180)
-                {
-                    if (npc.frame.Y < 240 * 6)
-                    {
-                        npc.frame.Y = 240 * 6;
-                    }
-
-                    if (npc.frameCounter++ > 9)
-                    {
-                        npc.frame.Y += 40;
-                        npc.frameCounter = 0;
-                        if (npc.frame.Y > 320)
-                        {
-                            npc.frame.Y = 320;
-                        }
-                    }
-                }
-                else
+                if (ShellTimer >= 180)
                 {
                     npc.defense = 14;
                     npc.reflectingProjectiles = false;
 
                     if (npc.frameCounter++ > 9)
                     {
-                        npc.frame.Y += 40;
-                        npc.frameCounter = 0;
                         if (npc.frame.Y > 400)
                         {
                             Shell = false;

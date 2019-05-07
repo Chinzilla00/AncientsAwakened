@@ -27,7 +27,7 @@ namespace AAMod
 {
     class AAMod : Mod
     {
-        public static int GoblinSoul;
+        public static int GoblinSoul = -1;
         public static ModHotKey InfinityHotKey;
         public static ModHotKey AbilityKey;
         public static ModHotKey Rift;
@@ -636,13 +636,11 @@ namespace AAMod
             }
             texture.SetData(buffer);
         }
-        
-        public static int GobSouls = -1;
 
         public override void Load()
         {
             instance = this;
-            GobSouls = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
+            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
             if (Main.rand == null)
                 Main.rand = new Terraria.Utilities.UnifiedRandom();
 
@@ -2482,7 +2480,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Gray");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.AmmoReservationPotion);
+                recipe.SetResult(ItemID.AmmoReservationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2491,7 +2489,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Orange");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.ArcheryPotion);
+                recipe.SetResult(ItemID.ArcheryPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2500,7 +2498,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Purple");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.BattlePotion);
+                recipe.SetResult(ItemID.BattlePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2509,7 +2507,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Brown");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.BuilderPotion);
+                recipe.SetResult(ItemID.BuilderPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2518,7 +2516,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Gray");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.AmmoReservationPotion);
+                recipe.SetResult(ItemID.AmmoReservationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2527,7 +2525,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.CalmingPotion);
+                recipe.SetResult(ItemID.CalmingPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2536,7 +2534,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Brown");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.CratePotion);
+                recipe.SetResult(ItemID.CratePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2545,7 +2543,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Orange");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.TrapsightPotion);
+                recipe.SetResult(ItemID.TrapsightPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2554,16 +2552,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Gray");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.EndurancePotion);
-                recipe.AddRecipe();
-            }
-
-            {
-                ModRecipe recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, "Gray");
-                recipe.AddIngredient(ItemID.BottledWater);
-                recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.EndurancePotion);
+                recipe.SetResult(ItemID.EndurancePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2572,7 +2561,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.FeatherfallPotion);
+                recipe.SetResult(ItemID.FeatherfallPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2581,7 +2570,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.FishingPotion);
+                recipe.SetResult(ItemID.FishingPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2590,7 +2579,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.FlipperPotion);
+                recipe.SetResult(ItemID.FlipperPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2599,7 +2588,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.GillsPotion);
+                recipe.SetResult(ItemID.GillsPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2608,7 +2597,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Purple");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.GravitationPotion);
+                recipe.SetResult(ItemID.GravitationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2617,7 +2606,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Pink");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.HeartreachPotion);
+                recipe.SetResult(ItemID.HeartreachPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2626,7 +2615,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Orange");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.HunterPotion);
+                recipe.SetResult(ItemID.HunterPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2644,7 +2633,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.InvisibilityPotion);
+                recipe.SetResult(ItemID.InvisibilityPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2653,7 +2642,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Yellow");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.IronskinPotion);
+                recipe.SetResult(ItemID.IronskinPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2671,7 +2660,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Purple");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.MagicPowerPotion);
+                recipe.SetResult(ItemID.MagicPowerPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2680,7 +2669,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Pink");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.ManaRegenerationPotion);
+                recipe.SetResult(ItemID.ManaRegenerationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2689,7 +2678,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Gray");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.MiningPotion);
+                recipe.SetResult(ItemID.MiningPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2698,7 +2687,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.NightOwlPotion);
+                recipe.SetResult(ItemID.NightOwlPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2707,7 +2696,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Purple");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.ObsidianSkinPotion);
+                recipe.SetResult(ItemID.ObsidianSkinPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2716,7 +2705,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Red");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.RagePotion);
+                recipe.SetResult(ItemID.RagePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2725,7 +2714,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Pink");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.RegenerationPotion);
+                recipe.SetResult(ItemID.RegenerationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2734,7 +2723,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Yellow");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.ShinePotion);
+                recipe.SetResult(ItemID.ShinePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2743,7 +2732,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.SonarPotion);
+                recipe.SetResult(ItemID.SonarPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2752,7 +2741,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Yellow");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.SpelunkerPotion);
+                recipe.SetResult(ItemID.SpelunkerPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2761,7 +2750,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.SummoningPotion);
+                recipe.SetResult(ItemID.SummoningPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2770,7 +2759,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.SwiftnessPotion);
+                recipe.SetResult(ItemID.SwiftnessPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2779,7 +2768,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.ThornsPotion);
+                recipe.SetResult(ItemID.ThornsPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2788,7 +2777,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Green");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.TitanPotion);
+                recipe.SetResult(ItemID.TitanPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2797,7 +2786,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Yellow");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WarmthPotion);
+                recipe.SetResult(ItemID.WarmthPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2806,7 +2795,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WaterWalkingPotion);
+                recipe.SetResult(ItemID.WaterWalkingPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2815,7 +2804,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Red");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WrathPotion);
+                recipe.SetResult(ItemID.WrathPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2832,7 +2821,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Pink");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.GenderChangePotion);
+                recipe.SetResult(ItemID.GenderChangePotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2841,7 +2830,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Red");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WrathPotion);
+                recipe.SetResult(ItemID.WrathPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2850,7 +2839,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.RecallPotion);
+                recipe.SetResult(ItemID.RecallPotion, 4);
                 recipe.AddRecipe();
             }
 
@@ -2859,7 +2848,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Purple");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.TeleportationPotion);
+                recipe.SetResult(ItemID.TeleportationPotion, 2);
                 recipe.AddRecipe();
             }
 
@@ -2868,7 +2857,7 @@ namespace AAMod
                 recipe.AddIngredient(null, "Blue");
                 recipe.AddIngredient(ItemID.BottledWater);
                 recipe.AddTile(TileID.Bottles);
-                recipe.SetResult(ItemID.WormholePotion);
+                recipe.SetResult(ItemID.WormholePotion, 2);
                 recipe.AddRecipe();
             }
             #endregion

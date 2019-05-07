@@ -19,9 +19,9 @@ namespace AAMod.NPCs.Enemies.Mire
 		{
 			npc.width = 18;
 			npc.height = 40;
-			npc.damage = 70;
+			npc.damage = 90;
 			npc.defense = 16;
-			npc.lifeMax = 200;
+			npc.lifeMax = 300;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = 450f;
@@ -31,13 +31,11 @@ namespace AAMod.NPCs.Enemies.Mire
 
         public override void NPCLoot()
         {
-
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"));
         }
 
         public override void AI()
         {
-            
             if (npc.wet)
             {
                 npc.knockBackResist = 0f;

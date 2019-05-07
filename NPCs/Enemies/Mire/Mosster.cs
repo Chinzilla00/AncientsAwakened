@@ -20,8 +20,8 @@ namespace AAMod.NPCs.Enemies.Mire
         public override void SetDefaults()
         {
             npc.lifeMax = 80;   //boss life
-            npc.damage = 18;  //boss damage
-            npc.defense = 10;    //boss defense
+            npc.damage = 30;  //boss damage
+            npc.defense = 8;    //boss defense
             npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 6, 45);
             aiType = NPCID.Crawdad;

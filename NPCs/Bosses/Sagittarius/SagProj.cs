@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
     {
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
+            projectile.width = 30;
+            projectile.height = 30;
             projectile.aiStyle = 0;
             projectile.friendly = false;
             projectile.hostile = true;
