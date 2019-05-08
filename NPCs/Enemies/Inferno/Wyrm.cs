@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.behindTiles = true;
+            npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
@@ -45,7 +46,6 @@ namespace AAMod.NPCs.Bosses.Wyrm
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
             Player player = Main.player[npc.target];
-            float dist = npc.Distance(player.Center);
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
