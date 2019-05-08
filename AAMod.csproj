@@ -1743,7 +1743,16 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
-    <Compile Include="Projectiles\Flasks\Flask.cs" />
+    <Compile Include="Projectiles\Flasks\AshJar.cs" />
+    <Compile Include="Projectiles\Flasks\CorruptionFlask.cs" />
+    <Compile Include="Projectiles\Flasks\CrimsonFlask.cs" />
+    <Compile Include="Projectiles\Flasks\DarkwaterFlask.cs" />
+    <Compile Include="Projectiles\Flasks\Fungicide.cs" />
+    <Compile Include="Projectiles\Flasks\GlowingSporeSac.cs" />
+    <Compile Include="Projectiles\Flasks\HallowFlask.cs" />
+    <Compile Include="Projectiles\Flasks\PurityFlask.cs" />
+    <Compile Include="Projectiles\Flasks\SporeSac.cs" />
+    <Compile Include="Projectiles\Flasks\VoidFlask.cs" />
     <Compile Include="Projectiles\Gunk.cs" />
     <Compile Include="Projectiles\Pyrosphere.cs" />
     <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
@@ -2044,7 +2053,7 @@
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
     <Compile Include="Tiles\Mushplants.cs" />
-    <Compile Include="Tiles\ShroomPlant.cs" />
+    <Compile Include="Tiles\Shroomplant.cs" />
     <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />

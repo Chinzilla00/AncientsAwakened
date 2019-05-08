@@ -39,13 +39,13 @@ namespace AAMod.Items.Flasks
 
             if (player.altFunctionUse == 2)
             {
-                item.shoot = mod.ProjectileType("Flask");
-                item.shootSpeed = 1f;
+                item.shoot = mod.ProjectileType("PurityFlask");
+                item.shootSpeed = 3f;
             }
             else
             {
                 item.shoot = ProjectileID.PureSpray;
-                item.shootSpeed = 4f;
+                item.shootSpeed = 2f;
             }
             return base.CanUseItem(player);
         }
