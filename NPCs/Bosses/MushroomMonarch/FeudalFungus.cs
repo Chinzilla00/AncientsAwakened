@@ -198,6 +198,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             potionType = ItemID.ManaPotion;
             AAWorld.downedFungus = true;
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0, 255, npc.scale);
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingSporeSac"), Main.rand.Next(30, 35));
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();

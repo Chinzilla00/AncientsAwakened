@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
                     int segment = 0;
-                    int WyrmLength = 7;
+                    int WyrmLength = Main.expertMode ? 5 : 3;
                     for (int i = 0; i < WyrmLength; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmBody1"), npc.whoAmI, 0, latestNPC);

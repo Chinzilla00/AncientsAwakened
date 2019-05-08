@@ -713,7 +713,7 @@ namespace AAMod
         {
             for (int i = 0; i < 200; ++i)
             {
-                if (Main.npc[i].boss && Main.npc[i].active)
+                if (Main.npc[i].boss && Main.npc[i].type != NPCID.WallofFlesh && Main.npc[i].active)
                 {
                     spawnRate = 0;
                     maxSpawns = 0;
@@ -721,8 +721,37 @@ namespace AAMod
             }
         }
 
+        public void ClearPoolWithExceptions(IDictionary<int, float> pool)
+        {
+            try
+            {
+                Dictionary<int, float> keepPool = new Dictionary<int, float>();
+                foreach (var kvp in pool)
+                {
+                    int npcID = kvp.Key;
+                    ModNPC mnpc = NPCLoader.GetNPC(npcID);
+                    if (mnpc != null && mnpc.mod != null) //splitting so you can add other exceptions if need be
+                    {
+                        if (mnpc.mod.Name.Equals("GRealm")) //do not remove GRealm spawns!
+                            keepPool.Add(npcID, kvp.Value);
+                    }
+                }
+                pool.Clear();
+
+                foreach (var newkvp in keepPool)
+                    pool.Add(newkvp.Key, newkvp.Value);
+
+                keepPool.Clear();
+            }
+            catch (Exception e)
+            {
+                Main.NewText(e.StackTrace);
+            }
+        }
+
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            Mod GRealm = ModLoader.GetMod("Grealm");
             Player player = Main.player[Main.myPlayer];
             
 
@@ -740,7 +769,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
                 {
                     pool.Add(mod.NPCType("Wyrmling"), .3f);
@@ -783,7 +812,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
                 {
                     pool.Add(mod.NPCType("MireSlime"), 1f);
@@ -805,7 +834,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("MireSkulker"), .5f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Kappa"), .4f);
+                        pool.Add(mod.NPCType("Miresquito"), .4f);
                         pool.Add(mod.NPCType("ChaoticTwilight"), .1f);
                         if (player.ZoneSnow)
                         {
@@ -821,7 +850,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 pool.Add(mod.NPCType("Searcher1"), .05f);
                 if (AAWorld.downedSag)
                 {
@@ -844,15 +873,16 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType("Bladon"), .1f);
                     pool.Add(mod.NPCType("TerraDeadshot"), .1f);
                     pool.Add(mod.NPCType("TerraWizard"), .1f);
                     pool.Add(mod.NPCType("TerraWarlock"), .1f);
+                    return;
                 }
-                else
+                if (NPC.downedBoss3)
                 {
                     pool.Add(mod.NPCType("PurityWeaver"), .1f);
                     pool.Add(mod.NPCType("PuritySphere"), .1f);

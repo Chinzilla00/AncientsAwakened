@@ -1636,6 +1636,7 @@
     <Compile Include="NPCs\Enemies\Mire\MireSkulker.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
     <Compile Include="NPCs\Enemies\Mire\Miregron.cs" />
+    <Compile Include="NPCs\Enemies\Mire\Miresquito.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSlime.cs" />
     <Compile Include="NPCs\Enemies\Mire\Newt.cs" />
     <Compile Include="NPCs\Enemies\Mire\ChaoticTwilight.cs" />
@@ -2042,6 +2043,8 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
+    <Compile Include="Tiles\Mushplants.cs" />
+    <Compile Include="Tiles\ShroomPlant.cs" />
     <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
@@ -6148,6 +6151,11 @@
     <Content Include="Tiles\InfernoFoliage5.png" />
     <Content Include="Tiles\InfernoGrassAsh.png" />
     <Content Include="Tiles\LakeBox.png" />
+    <Content Include="Tiles\ManaLanternB.png" />
+    <Content Include="Tiles\ManaLanternG.png" />
+    <Content Include="Tiles\ManaLanternP.png" />
+    <Content Include="Tiles\ManaLanternTile.png" />
+    <Content Include="Tiles\ManaLantern_Glow.png" />
     <Content Include="Tiles\MireFoliage1.png" />
     <Content Include="Tiles\MireFoliage2.png" />
     <Content Include="Tiles\MireFoliage3.png" />
@@ -6157,6 +6165,7 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
+    <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\NightmareOre.png" />
@@ -6295,6 +6304,7 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
+    <Content Include="Tiles\Shroomplant.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />

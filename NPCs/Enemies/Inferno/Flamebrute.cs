@@ -19,8 +19,8 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void SetDefaults()
         {
             npc.lifeMax = 120;
-            npc.damage = 12;
-            npc.defense = 6;
+            npc.damage = 25;
+            npc.defense = 10;
             npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 6, 45);
             npc.aiStyle = -1;

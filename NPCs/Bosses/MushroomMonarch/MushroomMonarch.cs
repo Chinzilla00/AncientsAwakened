@@ -211,6 +211,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {   //boss drops
             AAWorld.downedMonarch = true;
             Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SporeSac"), Main.rand.Next(30, 35));
             if (Main.expertMode == true)
             {
                 npc.DropBossBags();

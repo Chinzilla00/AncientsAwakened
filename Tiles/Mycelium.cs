@@ -25,5 +25,34 @@ namespace AAMod.Tiles
 			style = 0;
 			return mod.TileType("MushroomTree");
 		}
-	}
+
+        public override void RandomUpdate(int i, int j)
+        {
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(50) == 0)
+            {
+                PlaceObject(i, j - 1, mod.TileType("Mushroom"));
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);
+            }
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+            {
+                PlaceObject(i, j - 1, mod.TileType<Mushplants>());
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Mushplants>(), 0, 0, -1, -1);
+            }
+        }
+
+        public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
+        {
+            TileObject toBePlaced;
+            if (!TileObject.CanPlace(x, y, type, style, direction, out toBePlaced, false))
+            {
+                return false;
+            }
+            toBePlaced.random = random;
+            if (TileObject.Place(toBePlaced) && !mute)
+            {
+                WorldGen.SquareTileFrame(x, y, true);
+            }
+            return false;
+        }
+    }
 }

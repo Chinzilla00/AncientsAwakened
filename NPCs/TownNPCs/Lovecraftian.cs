@@ -10,19 +10,6 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
 	{
-
-        
-        private bool Purity = false;
-        private bool Snow = false;
-        private bool Desert = false;
-        private bool Corruption = false;
-        private bool Crimson = false;
-        private bool Inferno = false;
-        private bool Mire = false;
-        private bool Void = false;
-        private bool Hallow = false;
-
-
         public override string Texture
 		{
 			get
@@ -126,9 +113,7 @@ namespace AAMod.NPCs.TownNPCs
 
             chat.Add("Ever just find things in your tentacles that you don’t know how they got there? No? Just me?");
 
-            //chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
-
-            
+            chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
             
 
             //If Pirate is present
@@ -141,7 +126,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Mutant >= 0)
             {
-                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him without any effort.");
+                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him before he could even say *ech*.");
             }
 
             //If Horde Zombie is present
@@ -158,9 +143,6 @@ namespace AAMod.NPCs.TownNPCs
             }
 
             //Providing materials
-
-            //Purity
-            //chat.Add("Thanks. These forests are so green, reminds me of home... Except where I'm from, it's green everywhere.");
 
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }

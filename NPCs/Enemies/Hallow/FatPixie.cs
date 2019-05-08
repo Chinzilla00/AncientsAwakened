@@ -24,10 +24,10 @@ namespace AAMod.NPCs.Enemies.Hallow
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 500;   //boss life
-            npc.damage = 30;  //boss damage
-            npc.defense = 30;    //boss defense
-            npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
+            npc.lifeMax = 500;
+            npc.damage = 30;
+            npc.defense = 15;
+            npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 75, 45);
             npc.aiStyle = -1;
             npc.width = 60;
