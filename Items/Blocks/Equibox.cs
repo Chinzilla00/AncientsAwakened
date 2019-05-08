@@ -59,7 +59,7 @@ Remix by Charlie Debnam");
                 recipe.AddIngredient(ItemID.MusicBox);
                 recipe.AddIngredient(null, "DarkMatter", 5);
                 recipe.AddIngredient(null, "RadiumBar", 5);
-                recipe.AddTile(ItemID.Sawmill);
+                recipe.AddTile(TileID.Sawmill);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
