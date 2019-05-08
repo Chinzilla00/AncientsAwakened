@@ -59,7 +59,7 @@ namespace AAMod.Items.Blocks
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "VoidBox");
             recipe.AddIngredient(null, "UnstableSingularity", 10);
-            recipe.AddTile(ItemID.Sawmill);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
