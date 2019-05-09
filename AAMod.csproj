@@ -4151,6 +4151,10 @@
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
+    <Content Include="NPCs\Bosses\Equinox\Nc.png" />
+    <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArm.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahLeg.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain2.png" />
