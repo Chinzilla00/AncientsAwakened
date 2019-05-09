@@ -264,6 +264,7 @@
     <Compile Include="Globals\AANet.cs" />
     <Compile Include="Globals\AAProjectile.cs" />
     <Compile Include="Globals\ModCrossoverContent.cs" />
+    <Compile Include="Globals\WeakReferences.cs" />
     <Compile Include="Items\Accessories\AshProofVest0.cs" />
     <Compile Include="Items\Accessories\AshProofVest1.cs" />
     <Compile Include="Items\Accessories\AshProofVest2.cs" />

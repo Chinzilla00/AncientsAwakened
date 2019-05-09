@@ -21,19 +21,32 @@ namespace AAMod
 
         public static bool Calamity_Revengence(bool? value = null)
         {
-            if (value != null && Revengance != null) { Revengance.SetValue(null, (bool)value); return (bool)value; }
+            if (value != null && Revengance != null)
+            {
+                Revengance.SetValue(null, (bool)value);
+                return (bool)value;
+
+            }
             return (Revengance == null ? false : (bool)Revengance.GetValue(null));
         }
 
         public static bool Calamity_Death(bool? value = null)
         {
-            if (value != null && Death != null) { Death.SetValue(null, (bool)value); return (bool)value; }
+            if (value != null && Death != null)
+            {
+                Death.SetValue(null, (bool)value);
+                return (bool)value;
+            }
             return (Death == null ? false : (bool)Death.GetValue(null));
         }
 
         public static bool Calamity_Defiled(bool? value = null)
         {
-            if (value != null && Defiled != null) { Defiled.SetValue(null, (bool)value); return (bool)value; }
+            if (value != null && Defiled != null)
+            {
+                Defiled.SetValue(null, (bool)value);
+                return (bool)value;
+            }
             return (Defiled == null ? false : (bool)Defiled.GetValue(null));
         }
 
@@ -52,7 +65,7 @@ namespace AAMod
 
         public static Texture2D GetMapBackgroundImage()
         {
-            return (forceBlackMapBG ? Main.mapTexture : (Texture2D)null);
+            return (forceBlackMapBG ? Main.mapTexture : null);
         }
 
         public static void SetupSupport()
@@ -64,7 +77,6 @@ namespace AAMod
             #region Calamity
             if (calamity != null)
             {
-                #region world fields
                 FieldInfo worldList = calamity.GetType().GetField("worlds", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
                 Dictionary<string, ModWorld> worldDict = (Dictionary<string, ModWorld>)worldList.GetValue(calamity);
                 FieldInfo[] finfo = worldDict["CalamityWorld"].GetType().GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
@@ -80,7 +92,6 @@ namespace AAMod
                         case "defiled": Defiled = info; break;
                     }
                 }
-                #endregion
             }
             #endregion
         }
@@ -94,8 +105,10 @@ namespace AAMod
         {
             if (!ModSupport.ModInstalled(crossoverModName)) //this is to give a warning if they have the item and the mod is not enabled
             {
-                TooltipLine error = new TooltipLine(mod, "Error", "WARNING: ITEM WILL NOT FUNCTION WITHOUT " + crossoverModName.ToUpper() + " ENABLED!");
-                error.overrideColor = new Color(255, 50, 50);
+                TooltipLine error = new TooltipLine(mod, "Error", "WARNING: ITEM WILL NOT FUNCTION WITHOUT " + crossoverModName.ToUpper() + " ENABLED!")
+                {
+                    overrideColor = new Color(255, 50, 50)
+                };
                 list.Add(error);
             }
         }
@@ -103,8 +116,8 @@ namespace AAMod
 
     public class ModSupportPlayer : ModPlayer
     {
-        #region thorium variables
-        public float thorium_radiantBoost
+        #region Thorium
+        public float Thorium_radiantBoost
         {
             get
             {
@@ -123,7 +136,7 @@ namespace AAMod
                 }
             }
         }
-        public int thorium_radiantCrit
+        public int Thorium_radiantCrit
         {
             get
             {
@@ -142,7 +155,7 @@ namespace AAMod
                 }
             }
         }
-        public int thorium_healBonus
+        public int Thorium_healBonus
         {
             get
             {

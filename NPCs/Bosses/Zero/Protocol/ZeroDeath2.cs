@@ -42,10 +42,5 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.NewText("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
-        public override void Kill(int timeLeft)
-        {
-            AAMod.Slayer = false;
-            
-        }
     }
 }
