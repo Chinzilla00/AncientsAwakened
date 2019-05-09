@@ -217,7 +217,7 @@ namespace AAMod
         {
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
-            if (Main.rand is null)
+            if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
 
 
