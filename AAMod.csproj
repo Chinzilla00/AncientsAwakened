@@ -2016,7 +2016,6 @@
     <Compile Include="Projectiles\UmbreonSPProjectile.cs" />
     <Compile Include="Projectiles\Venom.cs" />
     <Compile Include="Projectiles\Void.cs" />
-    <Compile Include="Projectiles\VoidBomb.cs" />
     <Compile Include="Projectiles\VoidRing.cs" />
     <Compile Include="Projectiles\Yamata\AbyssalYariP.cs" />
     <Compile Include="Projectiles\Yamata\AbyssArrow.cs" />
