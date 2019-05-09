@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
             int dustType = mod.DustType<DragonflameDust>();
             if (projectile.owner == Main.myPlayer)
             {
-                Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16);
+                AAWorld.AAConvert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, 1);
             }
             if (projectile.timeLeft > 133)
             {
@@ -70,82 +70,6 @@ namespace AAMod.Projectiles
                 projectile.ai[0] += 1f;
             }
             projectile.rotation += 0.3f * (float)projectile.direction;
-        }
-
-        public void Convert(int i, int j, int Size = 4)
-        {
-            for (int k = i - Size; k <= i + Size; k++)
-            {
-                for (int l = j - Size; l <= j + Size; l++)
-                {
-                    if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(Size * Size + Size * Size))
-                    {
-                        bool sendNet = false;
-                        int type = Main.tile[k, l].type;
-                        int wall = Main.tile[k, l].wall;
-                        if (WallID.Sets.Conversion.Stone[wall] || wall == (ushort)mod.WallType<DepthstoneWall>())
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType<TorchstoneWall>();
-                            WorldGen.SquareWallFrame(k, l, true);
-                            sendNet = true;
-
-                        }
-                        else if (WallID.Sets.Conversion.Sandstone[wall] || wall == (ushort)mod.WallType<DepthsandstoneWall>())
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType<TorchsandstoneWall>();
-                            WorldGen.SquareWallFrame(k, l, true);
-                            sendNet = true;
-                        }
-                        else if (WallID.Sets.Conversion.HardenedSand[wall] || wall == (ushort)mod.WallType<DepthsandHardenedWall>())
-                        {
-                            Main.tile[k, l].wall = (ushort)mod.WallType<TorchsandHardenedWall>();
-                            WorldGen.SquareWallFrame(k, l, true);
-                            sendNet = true;
-                        }
-
-
-                        if (TileID.Sets.Conversion.Stone[type] || type == (ushort)mod.TileType<Depthstone>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Torchstone>();
-                            WorldGen.SquareTileFrame(k, l, true);
-                            sendNet = true;
-                        }
-                        else if (TileID.Sets.Conversion.Grass[type] || type == (ushort)mod.TileType<MireGrass>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<InfernoGrass>();
-                            WorldGen.SquareTileFrame(k, l, true);
-                            sendNet = true;
-                        }
-                        else if (TileID.Sets.Conversion.Ice[type] || type == (ushort)mod.TileType<Depthice>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Torchice>();
-                            WorldGen.SquareTileFrame(k, l, true);
-                            sendNet = true;
-                        }
-                        else if (TileID.Sets.Conversion.Sand[type] || type == (ushort)mod.TileType<Depthsand>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Torchsand>();
-                            WorldGen.SquareTileFrame(k, l);
-                            sendNet = true;
-                        }
-                        else if (TileID.Sets.Conversion.HardenedSand[type] || type == (ushort)mod.TileType<DepthsandHardened>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<TorchsandHardened>();
-                            WorldGen.SquareTileFrame(k, l);
-                            sendNet = true;
-                        }
-                        else if (TileID.Sets.Conversion.Sandstone[type] || type == (ushort)mod.TileType<Depthsandstone>())
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Torchsandstone>();
-                            WorldGen.SquareTileFrame(k, l);
-                            sendNet = true;
-                        }
-
-                        if (sendNet)
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                    }
-                }
-            }
         }
     }
 }

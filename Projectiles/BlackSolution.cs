@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
             int dustType = mod.DustType<VoidDust>();
             if (projectile.owner == Main.myPlayer)
             {
-                Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16);
+                AAWorld.AAConvert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, 3);
             }
             if (projectile.timeLeft > 133)
             {
@@ -70,32 +70,6 @@ namespace AAMod.Projectiles
                 projectile.ai[0] += 1f;
             }
             projectile.rotation += 0.3f * (float)projectile.direction;
-        }
-
-        public void Convert(int i, int j, int Size = 4)
-        {
-            for (int k = i - Size; k <= i + Size; k++)
-            {
-                for (int l = j - Size; l <= j + Size; l++)
-                {
-                    if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(Size * Size + Size * Size)) 
-                    {
-                        int type = Main.tile[k, l].type;
-                        if (TileID.Sets.Conversion.Stone[type])
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<DoomstoneB>();
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (TileID.Sets.Conversion.Grass[type])
-                        {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Doomgrass>();
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                    }
-                }
-            }
         }
     }
 }

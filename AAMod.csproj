@@ -105,9 +105,11 @@
     <Compile Include="BaseAAItem.cs" />
     <Compile Include="Buffs\AtlanteanBuff.cs" />
     <Compile Include="Buffs\BoomBoi.cs" />
+    <Compile Include="Buffs\DragonSoul.cs" />
     <Compile Include="Buffs\FireSpirit.cs" />
     <Compile Include="Buffs\BrokenArmor.cs" />
     <Compile Include="Buffs\FlameSoul.cs" />
+    <Compile Include="Buffs\Glowmoss.cs" />
     <Compile Include="Buffs\MadnessElemental.cs" />
     <Compile Include="Buffs\MB.cs" />
     <Compile Include="Buffs\Fishnado.cs" />
@@ -268,6 +270,8 @@
     <Compile Include="Items\Accessories\AshProofVest3.cs" />
     <Compile Include="Items\Accessories\BotchedBand.cs" />
     <Compile Include="Items\Accessories\DemonGauntet.cs" />
+    <Compile Include="Items\Accessories\DragonsGuard.cs" />
+    <Compile Include="Items\Accessories\ShadowBand.cs" />
     <Compile Include="Items\Accessories\DwarvenGauntlet.cs" />
     <Compile Include="Items\Accessories\Energy_Conduit.cs" />
     <Compile Include="Items\Accessories\InfinityGauntlet.cs" />
@@ -1098,6 +1102,10 @@
     <Compile Include="Items\Pets\BoomBoi.cs" />
     <Compile Include="Items\Pets\BroodEgg.cs" />
     <Compile Include="Items\Pets\Broodmini.cs" />
+    <Compile Include="Items\Pets\DragonsSoul.cs" />
+    <Compile Include="Items\Pets\DragonSoul.cs" />
+    <Compile Include="Items\Pets\Glowmoss.cs" />
+    <Compile Include="Items\Pets\GlowmossBall.cs" />
     <Compile Include="Items\Pets\MiniProbe.cs" />
     <Compile Include="Items\Pets\MudkipBall.cs" />
     <Compile Include="Items\Pets\MudkipBallS.cs" />
@@ -1744,7 +1752,16 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
-    <Compile Include="Projectiles\Flasks\Flask.cs" />
+    <Compile Include="Projectiles\Flasks\AshJar.cs" />
+    <Compile Include="Projectiles\Flasks\CorruptionFlask.cs" />
+    <Compile Include="Projectiles\Flasks\CrimsonFlask.cs" />
+    <Compile Include="Projectiles\Flasks\DarkwaterFlask.cs" />
+    <Compile Include="Projectiles\Flasks\Fungicide.cs" />
+    <Compile Include="Projectiles\Flasks\GlowingSporeSac.cs" />
+    <Compile Include="Projectiles\Flasks\HallowFlask.cs" />
+    <Compile Include="Projectiles\Flasks\PurityFlask.cs" />
+    <Compile Include="Projectiles\Flasks\SporeSac.cs" />
+    <Compile Include="Projectiles\Flasks\VoidFlask.cs" />
     <Compile Include="Projectiles\Gunk.cs" />
     <Compile Include="Projectiles\Pyrosphere.cs" />
     <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
@@ -2412,6 +2429,7 @@
     <Content Include="Buffs\DragonFire.png" />
     <Content Include="Buffs\DragonfireFlaskBuff.png" />
     <Content Include="Buffs\DragonMinion.png" />
+    <Content Include="Buffs\DragonSoul.png" />
     <Content Include="Buffs\DustDevil.png" />
     <Content Include="Buffs\EaterMinion.png" />
     <Content Include="Buffs\Electrified.png" />
@@ -2421,6 +2439,7 @@
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
     <Content Include="Buffs\FlameSoul.png" />
+    <Content Include="Buffs\Glowmoss.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
     <Content Include="Buffs\Horse.png" />
@@ -3409,6 +3428,7 @@
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\DragonsGuard.png" />
+    <Content Include="Items\Accessories\DragonsGuard_Shield.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet.png" />
     <Content Include="Items\Accessories\DwarvenGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\Energy_Conduit.png" />
@@ -3429,6 +3449,8 @@
     <Content Include="Items\Accessories\RealityStone.png" />
     <Content Include="Items\Accessories\RealityStone_Face.png" />
     <Content Include="Items\Accessories\RealityStone_Wings.png" />
+    <Content Include="Items\Accessories\ShadowBand.png" />
+    <Content Include="Items\Accessories\ShadowBand_HandsOn.png" />
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
@@ -4063,6 +4085,10 @@
     <Content Include="Items\Mushrooms\Purple.png" />
     <Content Include="Items\Mushrooms\Brown.png" />
     <Content Include="Items\Mushrooms\Blue.png" />
+    <Content Include="Items\Pets\DragonSoul.png" />
+    <Content Include="Items\Pets\DragonsSoul.png" />
+    <Content Include="Items\Pets\Glowmoss.png" />
+    <Content Include="Items\Pets\GlowmossBall.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
@@ -6100,6 +6126,7 @@
     <Content Include="Tiles\BogPalmTree.png" />
     <Content Include="Tiles\BogPalmTreetops.png" />
     <Content Include="Tiles\Bogtus.png" />
+    <Content Include="Tiles\Campfires.png" />
     <Content Include="Tiles\ChaosAltar1.png" />
     <Content Include="Tiles\ChaosAltar2.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />

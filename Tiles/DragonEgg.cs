@@ -17,7 +17,6 @@ namespace AAMod.Tiles
         public int drop3;
         public int drop4;
         public int drop5;
-        private Player player;
 
         public override void SetDefaults()
         {
@@ -37,10 +36,12 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Egg");
-            drop1 = mod.ItemType<Items.Melee.FlamingFury>(); //change me
-            drop2 = mod.ItemType<Items.Ranged.Railjaw>(); //change me
-            drop3 = mod.ItemType<Items.Magic.DragonsBreath>(); //change me
-            AddMapEntry(new Color(200, 200, 200), name);
+            drop1 = mod.ItemType<Pyrosphere>();
+            drop2 = mod.ItemType<Items.Ranged.Firebuster>();
+            drop3 = mod.ItemType<Items.Magic.Volley>();
+            drop4 = mod.ItemType<Items.Pets.DragonsSoul>();
+            drop5 = mod.ItemType<Items.Accessories.DragonsGuard>();
+            AddMapEntry(new Color(102, 45, 42), name);
             disableSmartCursor = true;
         }
 
@@ -88,6 +89,7 @@ namespace AAMod.Tiles
             }
             else
             {
+                Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.SmashDragonEgg = 2;
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, "The Broodmother");
             }

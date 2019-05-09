@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +10,7 @@ namespace AAMod.Projectiles.Toad
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Radium Arrow");
+            DisplayName.SetDefault("Toad Gunk");
 		}
 
 		public override void SetDefaults()
@@ -21,11 +22,21 @@ namespace AAMod.Projectiles.Toad
 			projectile.hostile = false;
             projectile.penetrate = 2;
             projectile.timeLeft = 600;
-			projectile.light = 2f;
 			projectile.ignoreWater = true;
-			projectile.tileCollide = false;
+			projectile.tileCollide = true;
 			projectile.extraUpdates = 1;
             aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.penetrate = 2; 
 		}
-	}
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
+        public override void PostAI()
+        {
+            Lighting.AddLight(projectile.Center, Color.DodgerBlue.R / 255, Color.DodgerBlue.G / 255, Color.DodgerBlue.B / 255);
+        }
+    }
 }

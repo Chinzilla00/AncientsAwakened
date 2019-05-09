@@ -17,8 +17,8 @@ namespace AAMod.Items.Ranged
             item.ranged = true;
             item.width = 62;
             item.height = 24;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 22;
+            item.useAnimation = 2;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType<Projectiles.DragonfireProj>();
             item.knockBack = 0;

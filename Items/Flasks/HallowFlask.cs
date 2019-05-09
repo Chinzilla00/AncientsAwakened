@@ -40,7 +40,7 @@ namespace AAMod.Items.Flasks
             if (player.altFunctionUse == 2)
             {
                 item.shoot = mod.ProjectileType("HallowFlask");
-                item.shootSpeed = 3f;
+                item.shootSpeed = 9f;
             }
             else
             {

@@ -41,7 +41,7 @@ namespace AAMod.Items.Flasks
             if (player.altFunctionUse != 2)
             {
                 item.shoot = mod.ProjectileType("AshJar");
-                item.shootSpeed = 3f;
+                item.shootSpeed = 9f;
             }
             else
             {

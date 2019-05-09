@@ -197,8 +197,8 @@ namespace AAMod
             infernoPos = new Vector2(0, 0);
             InfernoCenter = -Vector2.One;
             MireCenter = -Vector2.One;
-            SmashDragonEgg = 0;
-            SmashHydraPod = 0;
+            SmashDragonEgg = 2;
+            SmashHydraPod = 2;
             //Stones
             RealityDropped = false;
             SpaceDropped = false;
