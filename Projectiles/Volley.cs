@@ -10,6 +10,7 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Volley");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
