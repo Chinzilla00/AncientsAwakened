@@ -1501,6 +1501,7 @@
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\Rajah.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverLaser.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverShot.cs" />
