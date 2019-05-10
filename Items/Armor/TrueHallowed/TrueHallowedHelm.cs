@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.TrueHallowed
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Hallowed Helm");
+            DisplayName.SetDefault("Holy Hallowed Helm");
             Tooltip.SetDefault(@"15% increased damage and critical strike chance
 Increases maximum mana by 100
 10% increased melee speed");

@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDeathly
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Deathly Ribguard");
+            DisplayName.SetDefault("Deathly Ghast Ribguard");
             Tooltip.SetDefault("16% Increased ranged damage");
         }
 

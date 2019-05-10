@@ -61,7 +61,8 @@ namespace AAMod.Projectiles.Shen
 						Dust expr_DC94_cp_0 = Main.dust[num299];
 						expr_DC94_cp_0.velocity.Y = expr_DC94_cp_0.velocity.Y * 1.2f;
 						Main.dust[num299].scale *= num296;
-					}
+                        Main.dust[num299].noGravity = true;
+                    }
 				}
 			}
 			else

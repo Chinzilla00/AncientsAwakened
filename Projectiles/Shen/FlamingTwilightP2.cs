@@ -57,11 +57,13 @@ namespace AAMod.Projectiles.Shen
 						int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
 						Main.dust[num299].scale *= 1.5f;
 						Dust expr_DC74_cp_0 = Main.dust[num299];
-						expr_DC74_cp_0.velocity.X = expr_DC74_cp_0.velocity.X * 1.2f;
+						expr_DC74_cp_0.velocity.X *= 1.2f;
 						Dust expr_DC94_cp_0 = Main.dust[num299];
-						expr_DC94_cp_0.velocity.Y = expr_DC94_cp_0.velocity.Y * 1.2f;
+						expr_DC94_cp_0.velocity.Y *= 1.2f;
 						Main.dust[num299].scale *= num296;
-					}
+                        Main.dust[num299].noGravity = true;
+
+                    }
 				}
 			}
 			else

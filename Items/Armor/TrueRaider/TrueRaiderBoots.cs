@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.TrueRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Raider Greaves");
+			DisplayName.SetDefault("Asgardian Greaves");
             Tooltip.SetDefault(@"Increases melee critical strike chance by 10%");
 
         }

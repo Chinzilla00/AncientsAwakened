@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Toad
 
 		public override void SetDefaults()
 		{
-			item.damage = 29;
+			item.damage = 59;
             item.useStyle = 5;
             item.useAnimation = 25;
             item.useTime = 25;

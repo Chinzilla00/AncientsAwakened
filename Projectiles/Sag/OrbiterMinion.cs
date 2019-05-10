@@ -88,8 +88,10 @@ namespace AAMod.Projectiles.Sag
                     }
                 }
             }
-
-            BaseAI.ShootPeriodic(projectile, vector46, Width, Height, mod.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 7, true);
+            if (flag25)
+            {
+                BaseAI.ShootPeriodic(projectile, vector46, Width, Height, mod.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 7, true);
+            }
 			
             if (projectile.active) { SetRot(); }
 			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 80f, 20f, 0.07f, true);

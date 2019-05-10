@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueAtlantean
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("True Atlantean Helmet");
+			DisplayName.SetDefault("Triton Helmet");
             Tooltip.SetDefault(@"Decreases mana usage by 25%
 Allows to breath underwater");
         }

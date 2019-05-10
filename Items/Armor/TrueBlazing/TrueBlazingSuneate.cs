@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueBlazing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Blazing Suneate");
+			DisplayName.SetDefault("Perfect Blazing Suneate");
             Tooltip.SetDefault(@"5% increased Damage Resistance
 5% increased movement speed");
 		}

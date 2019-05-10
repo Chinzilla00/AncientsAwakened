@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.knockBackResist = 0f;
             npc.damage = 180;
             npc.defense = 210;
-            npc.lifeMax = 400000;
+            npc.lifeMax = 1000000;
             if (Main.expertMode)
             {
                 npc.value = Item.buyPrice(0, 0, 0, 0);

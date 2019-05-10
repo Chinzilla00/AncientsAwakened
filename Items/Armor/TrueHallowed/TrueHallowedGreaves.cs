@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.TrueHallowed
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Hallowed Greaves");
+			DisplayName.SetDefault("Holy Hallowed Greaves");
             Tooltip.SetDefault(@"10% increased damage
 12% increased movement speed");
         }
