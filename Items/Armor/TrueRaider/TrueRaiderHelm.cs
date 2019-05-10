@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("True Raider Helmet");
+			DisplayName.SetDefault("Asgardian Helmet");
             Tooltip.SetDefault(@"Increases melee speed by 15%");
         }
 

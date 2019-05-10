@@ -179,6 +179,8 @@ namespace AAMod
         public bool HeartP = false;
         public bool HeartS = false;
         public bool HeartA = false;
+        public bool DragonsGuard = false;
+        public bool ShadowBand = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -224,6 +226,8 @@ namespace AAMod
         public bool Mudkip = false;
         public bool MudkipS = false;
         public bool BoomBoi = false;
+        public bool DragonSoul = false;
+        public bool Glowmoss = false;
 
         //NPCcount
 
@@ -362,6 +366,8 @@ namespace AAMod
             HeartA = false;
             SagShield = false;
             ShieldUp = false;
+            DragonsGuard = false;
+            ShadowBand = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -390,6 +396,8 @@ namespace AAMod
             Mudkip = false;
             MudkipS = false;
             BoomBoi = false;
+            DragonSoul = false;
+            Glowmoss = false;
             //EnemyChecks
             IsGoblin = false;
 
@@ -626,17 +634,20 @@ namespace AAMod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
+            if (DragonsGuard)
+            {
+                npc.AddBuff(BuffID.OnFire, 120);
+            }
             if (fleshrendSet && Main.rand.Next(2) == 0)
             {
                 if (player.whoAmI == Main.myPlayer)
                 {
                     for (int i = 0; i < 40; i++)
                     {
-                        Dust dust;
                         Vector2 position;
                         position.X = player.Center.X - 40;
                         position.Y = player.Center.Y - 40;
-                        dust = Main.dust[Dust.NewDust(position, 80, 80, 108, 0f, 0f, 124, new Color(255, 50, 0), 1f)];
+                        Dust.NewDust(position, 80, 80, 108, 0f, 0f, 124, new Color(255, 50, 0), 1f);
                     }
                     for (int i = 0; i < Main.maxNPCs; i++)
                     {

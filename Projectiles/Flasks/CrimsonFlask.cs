@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Flasks
             projectile.aiStyle = 2;
             projectile.timeLeft = 600;
             projectile.tileCollide = true;
-            aiType = 48;
+            aiType = 510;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

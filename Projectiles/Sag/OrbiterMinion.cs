@@ -16,6 +16,11 @@ namespace AAMod.Projectiles.Sag
 		float rot = 0f;
 		float rotInit = -1f;
 
+        public override void SetStaticDefaults()
+        {
+
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 30;
@@ -48,9 +53,6 @@ namespace AAMod.Projectiles.Sag
 			}
 		}
 
-        NPC nPC2 = null;
-
-
         public override void AI()
 		{
 			Player player = Main.player[projectile.owner];
@@ -67,10 +69,12 @@ namespace AAMod.Projectiles.Sag
             Vector2 vector46 = projectile.position;
             bool flag25 = false;
             float num633 = 700f;
+            int Height = 0;
+            int Width = 0;
 
             for (int num645 = 0; num645 < 200; num645++)
             {
-                nPC2 = Main.npc[num645];
+                NPC nPC2 = Main.npc[num645];
                 if (nPC2.CanBeChasedBy(projectile, false))
                 {
                     float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
@@ -79,15 +83,15 @@ namespace AAMod.Projectiles.Sag
                         num633 = num646;
                         vector46 = nPC2.Center;
                         flag25 = true;
+                        Height = nPC2.height;
+                        Width = nPC2.width;
                     }
                 }
             }
-            if  (nPC2.life <= 0)
+            if (flag25)
             {
-                nPC2 = null;
+                BaseAI.ShootPeriodic(projectile, vector46, Width, Height, mod.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 7, true);
             }
-
-            BaseAI.ShootPeriodic(projectile, vector46, nPC2.width, nPC2.height, mod.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 7, true);
 			
             if (projectile.active) { SetRot(); }
 			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 80f, 20f, 0.07f, true);

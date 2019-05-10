@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Doomite Greaves");
+			DisplayName.SetDefault("Overload Doomite Greaves");
             Tooltip.SetDefault(@"25% increased movement speed");
 
         }

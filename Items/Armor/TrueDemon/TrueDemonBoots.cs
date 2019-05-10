@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.TrueDemon
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Demon Hoofs");
+            DisplayName.SetDefault("Devil Hoofs");
             Tooltip.SetDefault(@"13% Increased Minion damage
 Increases your max number of minions
 10% Increased Movement Speed");

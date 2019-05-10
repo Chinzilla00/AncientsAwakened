@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Doomite Chestplate");
+			DisplayName.SetDefault("Overload Doomite Chestplate");
 			Tooltip.SetDefault(@"15% increased minion damage
 Increases your max number of minions");
 

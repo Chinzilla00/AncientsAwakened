@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.TrueBlazing
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("True Blazing Dao");
+			DisplayName.SetDefault("Perfect Blazing Dao");
 			Tooltip.SetDefault(@"5% increased damage resistance");
 		}
 

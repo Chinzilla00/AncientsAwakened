@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.TrueRaider
 		public static int counter = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Raider Chestplate");
+			DisplayName.SetDefault("Asgardian Chestplate");
 			Tooltip.SetDefault(@"Increases melee damage by 15%");
 
 		}

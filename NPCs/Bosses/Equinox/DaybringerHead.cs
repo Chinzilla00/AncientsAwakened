@@ -179,8 +179,9 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			for(int m = 0; m < aiCount; m++)
 			{
+                int Length = nightcrawler ? 24 : 30;
 				int[] wormTypes = (nightcrawler ? new int[]{ mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[]{ mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") });
-				BaseMod.BaseAI.AIWorm(npc, wormTypes, 30, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);	
+				BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);	
 			}
 			npc.spriteDirection = 1;
 			prevWormStronger = wormStronger;

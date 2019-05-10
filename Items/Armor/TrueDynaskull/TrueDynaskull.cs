@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Dynaskull");
+			DisplayName.SetDefault("Primeval Dynaskull");
             Tooltip.SetDefault("25% decreased ammo consumption");
 
         }

@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,6 +10,7 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Volley");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -21,14 +23,23 @@ namespace AAMod.Projectiles
             projectile.penetrate = 2;
             projectile.timeLeft = 600;
             projectile.light = 2f;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = false;
+            projectile.ignoreWater = false;
+            projectile.tileCollide = true;
             projectile.extraUpdates = 1;
             aiType = ProjectileID.WoodenArrowFriendly;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override bool PreAI()
         {
+            Lighting.AddLight(projectile.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
+            if (projectile.wet)
+            {
+                projectile.Kill();
+            }
             if (projectile.frameCounter++ >= 9)
             {
                 projectile.frameCounter = 0;

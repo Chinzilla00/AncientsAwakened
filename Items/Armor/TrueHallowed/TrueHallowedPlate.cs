@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.TrueHallowed
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("True Hallowed Plate");
+            DisplayName.SetDefault("Holy Hallowed Plate");
             Tooltip.SetDefault(@"10% increased critical strike chance");
         }
 

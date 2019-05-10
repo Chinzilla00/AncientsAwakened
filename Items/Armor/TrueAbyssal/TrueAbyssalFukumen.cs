@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("True Abyssal Fukumen");
+            DisplayName.SetDefault("Perfect Abyssal Fukumen");
             Tooltip.SetDefault(@"35% increased movement speed
 20% increased ranged damage");
         }
