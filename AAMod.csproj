@@ -1501,6 +1501,7 @@
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverLaser.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverShot.cs" />
     <Compile Include="NPCs\Bosses\Retriever\Retriever.cs" />
@@ -4157,9 +4158,14 @@
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />
+    <Content Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahArm.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahLeg.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArmL.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArmR.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahCape.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahLegL.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahLegR.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain2.png" />
