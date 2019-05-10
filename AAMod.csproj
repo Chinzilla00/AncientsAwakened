@@ -1318,7 +1318,6 @@
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
     <Compile Include="Items\Usable\TreasureRadar.cs" />
-    <Compile Include="Items\Usable\VoidBomb.cs" />
     <Compile Include="Items\Usable\VoidCrate.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
@@ -1745,7 +1744,12 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
-    <Compile Include="Projectiles\Flasks\Flask.cs" />
+    <Compile Include="Projectiles\Flasks\CorruptionFlask.cs" />
+    <Compile Include="Projectiles\Flasks\CrimsonFlask.cs" />
+    <Compile Include="Projectiles\Flasks\DarkwaterFlask.cs" />
+    <Compile Include="Projectiles\Flasks\HallowFlask.cs" />
+    <Compile Include="Projectiles\Flasks\PurityFlask.cs" />
+    <Compile Include="Projectiles\Flasks\VoidFlask.cs" />
     <Compile Include="Projectiles\Gunk.cs" />
     <Compile Include="Projectiles\Pyrosphere.cs" />
     <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
@@ -1999,7 +2003,6 @@
     <Compile Include="Projectiles\UmbreonSPProjectile.cs" />
     <Compile Include="Projectiles\Venom.cs" />
     <Compile Include="Projectiles\Void.cs" />
-    <Compile Include="Projectiles\VoidBomb.cs" />
     <Compile Include="Projectiles\VoidRing.cs" />
     <Compile Include="Projectiles\Yamata\AbyssalYariP.cs" />
     <Compile Include="Projectiles\Yamata\AbyssArrow.cs" />
@@ -2046,6 +2049,8 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
+    <Compile Include="Tiles\Mushplants.cs" />
+    <Compile Include="Tiles\ShroomPlant.cs" />
     <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
@@ -3257,6 +3262,17 @@
     <Content Include="Gores\NewtGoreHead.png" />
     <Content Include="Gores\NewtGoreLeg.png" />
     <Content Include="Gores\NewtGoreTail.png" />
+    <Content Include="Gores\OrthrusBodyGore1.png" />
+    <Content Include="Gores\OrthrusBodyGore2.png" />
+    <Content Include="Gores\OrthrusBodyGore3.png" />
+    <Content Include="Gores\OrthrusBodyGore4.png" />
+    <Content Include="Gores\OrthrusHeadGore1.png" />
+    <Content Include="Gores\OrthrusHeadGore2.png" />
+    <Content Include="Gores\OrthrusHeadGore3.png" />
+    <Content Include="Gores\OrthrusHeadGore4.png" />
+    <Content Include="Gores\OrthrusHeadGoreB.png" />
+    <Content Include="Gores\OrthrusHeadGoreR.png" />
+    <Content Include="Gores\OrthrusNeckGore.png" />
     <Content Include="Gores\RetrieverGore3.png" />
     <Content Include="Gores\RetrieverGore5.png" />
     <Content Include="Gores\SearcherGore1.png" />
@@ -4073,6 +4089,7 @@
     <Content Include="Items\Usable\MyceliumSeeds.png" />
     <Content Include="Items\Usable\PurityStar.png" />
     <Content Include="Items\Usable\RiftMirror.png" />
+    <Content Include="Items\Usable\Shroomplant.png" />
     <Content Include="Items\Usable\Suncaller.png" />
     <Content Include="Items\Usable\SupremeRiftMirror.png" />
     <Content Include="Items\Usable\SurfaceCrate.png" />
@@ -5076,7 +5093,6 @@
     <Content Include="Items\Usable\SporeSac.png" />
     <Content Include="Items\Usable\Sunpowder.png" />
     <Content Include="Items\Usable\TreasureRadar.png" />
-    <Content Include="Items\Usable\VoidBomb.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
@@ -6101,6 +6117,7 @@
     <Content Include="Tiles\BogPalmTree.png" />
     <Content Include="Tiles\BogPalmTreetops.png" />
     <Content Include="Tiles\Bogtus.png" />
+    <Content Include="Tiles\Campfires.png" />
     <Content Include="Tiles\ChaosAltar1.png" />
     <Content Include="Tiles\ChaosAltar2.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />
@@ -6162,6 +6179,7 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
+    <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\NightmareOre.png" />
@@ -6300,6 +6318,7 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
+    <Content Include="Tiles\Shroomplant.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
