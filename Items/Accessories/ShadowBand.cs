@@ -24,7 +24,7 @@ namespace AAMod.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shadow Band");
-            Tooltip.SetDefault(@"15% increased movement speed'");
+            Tooltip.SetDefault(@"15% increased movement speed");
         }
     }
 }

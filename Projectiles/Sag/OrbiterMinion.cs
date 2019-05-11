@@ -97,7 +97,14 @@ namespace AAMod.Projectiles.Sag
 			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 80f, 20f, 0.07f, true);
 		}
 
-		public override void Kill(int timeLeft)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color dColor)
+        {
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, 0, 0, 4, frame, dColor, true);
+            return false;
+        }
+
+        public override void Kill(int timeLeft)
 		{
 			int[] projs = BaseAI.GetProjectiles(projectile.Center, projectile.type, projectile.owner, 200f);
 		}

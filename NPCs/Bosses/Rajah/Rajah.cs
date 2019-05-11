@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public class Rajah : ModNPC
+    public abstract class Rajah : ModNPC
     {
         public override void SetStaticDefaults()
         {

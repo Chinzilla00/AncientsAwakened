@@ -10,17 +10,18 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heat Cleaver");
+            Tooltip.SetDefault("Burning with the heat of the Inferno.");
         }
         public override void SetDefaults()
         {
-            item.damage = 36;
+            item.damage = 44;
             item.melee = true;
             item.width = 50;
-            item.height = 60;
+            item.height = 70;
             item.useTime = 40;
-            item.useAnimation = 21;
+            item.useAnimation = 38;
             item.useStyle = 1;
-            item.knockBack = 4;
+            item.knockBack = 40;
             item.value = 1000;
             item.rare = 3;
             item.UseSound = SoundID.Item1;

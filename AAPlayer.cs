@@ -215,6 +215,7 @@ namespace AAMod
         public bool Unstable = false;
         public bool Abducted = false;
         public Vector2 RingLocation;
+        public bool IB = false;
         //buffs
 
         //pets
@@ -385,6 +386,7 @@ namespace AAMod
             YamataAGravity = false;
             Hunted = false;
             Unstable = false;
+            IB = false;
             //Buffs
             //Weapons
             //Pets
@@ -403,9 +405,6 @@ namespace AAMod
 
             //Misc
             Compass = false;
-
-            //Biomes
-
         }
 
         public override void Initialize()
@@ -1645,6 +1644,7 @@ namespace AAMod
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
                 {
                     SnapCD = 18000;
+                    player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
                     Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
@@ -1663,8 +1663,8 @@ namespace AAMod
             {
                 if (AAMod.AbilityKey.JustPressed && SagCooldown == 0)
                 {
-                    player.AddBuff(mod.BuffType<SagShield>(), 300);
-                    SagCooldown = 18000;
+                    player.AddBuff(mod.BuffType<SagShield>(), 5400);
+                    SagCooldown = 5400;
                 }
             }
             if (trueDynaskull)
