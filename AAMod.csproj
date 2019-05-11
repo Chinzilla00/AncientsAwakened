@@ -1325,7 +1325,6 @@
     <Compile Include="Items\Usable\OrangeSolution.cs" />
     <Compile Include="Items\Usable\OrderSolution.cs" />
     <Compile Include="Items\Usable\TreasureRadar.cs" />
-    <Compile Include="Items\Usable\VoidBomb.cs" />
     <Compile Include="Items\Usable\VoidCrate.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverBoots.cs" />
     <Compile Include="Items\Vanity\Alphakip\FishDiverJacket.cs" />
@@ -2062,6 +2061,8 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
+    <Compile Include="Tiles\Mushplants.cs" />
+    <Compile Include="Tiles\ShroomPlant.cs" />
     <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
@@ -4101,9 +4102,11 @@
     <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\MirrorRift.png" />
     <Content Include="Items\Usable\Mooncaller.png" />
+    <Content Include="Items\Usable\Mushplant.png" />
     <Content Include="Items\Usable\MyceliumSeeds.png" />
     <Content Include="Items\Usable\PurityStar.png" />
     <Content Include="Items\Usable\RiftMirror.png" />
+    <Content Include="Items\Usable\Shroomplant.png" />
     <Content Include="Items\Usable\Suncaller.png" />
     <Content Include="Items\Usable\SupremeRiftMirror.png" />
     <Content Include="Items\Usable\SurfaceCrate.png" />
@@ -5116,7 +5119,6 @@
     <Content Include="Items\Usable\SporeSac.png" />
     <Content Include="Items\Usable\Sunpowder.png" />
     <Content Include="Items\Usable\TreasureRadar.png" />
-    <Content Include="Items\Usable\VoidBomb.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverBoots_Legs.png" />
     <Content Include="Items\Vanity\Alphakip\FishDiverJacket.png" />
@@ -6203,6 +6205,7 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
+    <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\NightmareOre.png" />
@@ -6341,6 +6344,7 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
+    <Content Include="Tiles\Shroomplant.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
