@@ -28,6 +28,7 @@ namespace AAMod
         public static int Toad = -1;
         public static int Rose = -1;
         public static int Brain = -1;
+        public static int Rajah = -1;
 
         public override bool InstancePerEntity
 		{
