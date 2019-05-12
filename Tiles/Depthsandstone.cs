@@ -9,7 +9,8 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileBlendAll[this.Type] = true;
+            Main.tileBlendAll[Type] = true;
+            Terraria.ID.TileID.Sets.Conversion.Sandstone[Type] = true;
             Main.tileLighted[Type] = false;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthsandstone");   //put your CustomBlock name

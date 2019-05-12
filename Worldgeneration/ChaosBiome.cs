@@ -34,7 +34,8 @@ namespace AAMod.Worldgeneration
             colorToTile[new Color(255, 0, 0)] = mod.TileType("AbyssWood");
             colorToTile[new Color(128, 0, 0)] = mod.TileType("AbyssWoodSolid");
             colorToTile[new Color(255, 255, 0)] = mod.TileType("AbyssVines");
-            colorToTile[new Color(255, 0, 255)] = mod.TileType("AbyssLeaves");
+            colorToTile[new Color(0, 255, 255)] = mod.TileType("MireGrass");
+            colorToTile[new Color(128, 0, 0)] = mod.TileType("AbyssWoodSolid");
             colorToTile[new Color(150, 150, 150)] = -2; //turn into air
             colorToTile[Color.Black] = -1; //don't touch when genning
 
@@ -219,14 +220,14 @@ namespace AAMod.Worldgeneration
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Grass, TileID.CorruptGrass, TileID.FleshGrass }), //ensure we only replace the intended tile (in this case, grass)
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
-				new BaseMod.SetModTile(tileGrass, true, true) //actually place the tile
+				new SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-            /* WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
-             {
-                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Dirt }),
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
+            {
+                new Modifiers.OnlyTiles(new ushort[] { TileID.SnowBlock }),
                  new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                 new BaseMod.SetModTile(tileDirt, true, true)
-             }));*/
+                new BaseMod.SetModTile(tileGrass, true, true)
+            }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone }),
@@ -237,7 +238,7 @@ namespace AAMod.Worldgeneration
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileIce, true, true)
+                new BaseMod.SetModTile(tileStone, true, true)
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //sand...
 			{
@@ -581,7 +582,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("RottedDynastyWoodS");
             colorToTile[new Color(0, 255, 0)] = mod.TileType("RottedPlatform");
-            colorToTile[new Color(0, 0, 255)] = TileID.Rope;
+            //colorToTile[new Color(0, 0, 255)] = TileID.Rope;
             colorToTile[new Color(0, 255, 255)] = mod.TileType("CthulhuPortal");
             colorToTile[new Color(255, 255, 0)] = TileID.Sand;			
             colorToTile[new Color(150, 150, 150)] = -2;
@@ -598,13 +599,13 @@ namespace AAMod.Worldgeneration
             colorToWall[new Color(150, 150, 150)] = -2;
             colorToWall[Color.Black] = -1; //don't touch when genning				
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/BOTE"), colorToTile, mod.GetTexture("Worldgeneration/BOTEWalls"), colorToWall, mod.GetTexture("Worldgeneration/BOTEWater"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Ship"), colorToTile, mod.GetTexture("Worldgeneration/ShipWalls"), colorToWall, mod.GetTexture("Worldgeneration/ShipWater"));
 
 			int newOriginX = origin.X - (gen.width / 2);
 			int newOriginY = origin.Y - (gen.height / 2) + 10;
             gen.Generate(newOriginX, newOriginY, true, true);
             
-            WorldGen.PlaceChest(newOriginX + 130, newOriginY + 102, (ushort)mod.TileType("SunkenChest"), true);
+            //WorldGen.PlaceChest(newOriginX + 130, newOriginY + 102, (ushort)mod.TileType("SunkenChest"), true);
             return true;
         }
     }

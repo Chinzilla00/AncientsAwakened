@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("True Doomite Visor");
+			DisplayName.SetDefault("Overload Doomite Visor");
             Tooltip.SetDefault(@"30% increased minion damage");
         }
 

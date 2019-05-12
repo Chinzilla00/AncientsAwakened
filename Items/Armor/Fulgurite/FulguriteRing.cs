@@ -28,7 +28,6 @@ namespace AAMod.Items.Armor.Fulgurite
 
         public override void AI()
         {
-
             Player player = Main.player[projectile.owner];
             player.GetModPlayer<AAPlayer>(mod).ringActive = true;
             projectile.Center = player.Center;

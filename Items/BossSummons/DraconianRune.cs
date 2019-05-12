@@ -18,7 +18,7 @@ namespace AAMod.Items.BossSummons
             Tooltip.SetDefault(@"An enchanted tablet bursting with flaming chaotic energy
 Summons Akuma Awakened
 Only Usable during the day in the inferno
-Only craftable in expert mode");
+Non-Consumable");
         }
 
         public override void SetDefaults()
@@ -82,7 +82,7 @@ Only craftable in expert mode");
         {
             Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            AAModGlobalNPC.SpawnBoss(mod, player, "AkumaA", false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

@@ -96,7 +96,6 @@ namespace AAMod.Projectiles
 						projectile.netUpdate = true;
 					}
 					projectile.velocity = vector4;
-					int num6 = 440;
 					float scaleFactor2 = 14f;
 					int num7 = 7;
 				

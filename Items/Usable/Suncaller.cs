@@ -17,7 +17,8 @@ namespace AAMod.Items.Usable
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Suncaller");
-            Tooltip.SetDefault(@"Brings forth the morning sun.");
+            Tooltip.SetDefault(@"Brings forth the morning sun.
+Non-Consumable");
         }
 
         public override void SetDefaults()

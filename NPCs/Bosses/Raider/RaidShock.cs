@@ -22,58 +22,55 @@ namespace AAMod.NPCs.Bosses.Raider
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.alpha = 255;
-            projectile.scale = 1f;
+            projectile.scale = .1f;
             projectile.timeLeft = 600;
             projectile.ranged = true;
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void AI()
         {
-            projectile.frame = 0;
-            if (projectile.alpha != 0)
+            if (projectile.frameCounter++ > 7)
             {
-                projectile.localAI[0] += 1f;
-                if (projectile.localAI[0] >= 4f)
+                projectile.frameCounter = 0;
+                projectile.frame += 1;
+                if (projectile.frame > 3)
                 {
-                    projectile.alpha -= 90;
-                    if (projectile.alpha < 0)
-                    {
-                        projectile.alpha = 0;
-                        projectile.localAI[0] = 2f;
-                    }
+                    projectile.frame = 0;
                 }
             }
-            if (Vector2.Distance(projectile.Center, new Vector2(projectile.ai[0], projectile.ai[1]) * 16f + Vector2.One * 8f) <= 16f)
+            projectile.ai[0]++;
+            if (projectile.ai[0]++ < 300)
             {
-                projectile.Kill();
-                return;
-            }
-            if (projectile.alpha == 0)
-            {
-                projectile.localAI[1] += 1f;
-                if (projectile.localAI[1] >= 120f)
+                if (projectile.scale < 1)
                 {
-                    projectile.Kill();
-                    return;
+                    projectile.scale += .05f;
                 }
-                Lighting.AddLight((int)projectile.Center.X / 16, (int)projectile.Center.Y / 16, 0.8f, 0.3f, 0.8f);
-                projectile.localAI[0] += 1f;
-                if (projectile.localAI[0] == 3f)
+                if (projectile.alpha > 0)
                 {
-                    projectile.localAI[0] = 0f;
-                    for (int num53 = 0; num53 < 8; num53++)
-                    {
-                        Vector2 vector7 = Vector2.UnitX * -8f;
-                        vector7 += -Vector2.UnitY.RotatedBy((double)((float)num53 * 3.14159274f / 4f), default(Vector2)) * new Vector2(2f, 4f);
-                        vector7 = vector7.RotatedBy((double)(projectile.rotation - 1.57079637f), default(Vector2));
-                        int num54 = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<Dusts.FulguriteDust>(), 0f, 0f, 0, default(Color), 1f);
-                        Main.dust[num54].scale = 1.5f;
-                        Main.dust[num54].noGravity = true;
-                        Main.dust[num54].position = projectile.Center + vector7;
-                        Main.dust[num54].velocity = projectile.velocity * 0.66f;
-                    }
+                    projectile.alpha -= 10;
                 }
             }
+            else
+            {
+                if (projectile.scale > 0)
+                {
+                    projectile.scale -= .1f;
+                }
+                else
+                {
+                    projectile.active = false;
+                }
+                if (projectile.alpha < 255)
+                {
+                    projectile.alpha += 5;
+                }
+            }
+
         }
         
 

@@ -11,144 +11,109 @@ using Terraria.ID;
 
 namespace AAMod
 {
-    internal class AANet
+    public class AANet
     {
-        private static Dictionary<MPMessageType, Action<BinaryReader, int>> _packetActions;
-
-        private static ModPacket GetPacket(int capacity = 256)
+        public const byte SummonNPCFromClient = 0;
+	    public const byte UpdateLovecraftianCount = 1;	
+		
+        public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
-            return AAMod.instance.GetPacket(capacity);
-        }
+			byte msg = bb.ReadByte();		
+			if(DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);				
+			try
+			{
+				if(msg == SummonNPCFromClient)
+				{
+					if(Main.netMode == 2)
+					{
+						int playerID = (int)bb.ReadByte();
+						int bossType = bb.ReadShort();
+						bool spawnMessage = bb.ReadBool();
+						int npcCenterX = bb.ReadInt();
+						int npcCenterY = bb.ReadInt();
+						string overrideDisplayName = bb.ReadString();
+						bool namePlural = bb.ReadBool();
 
-        public static void Load()
+						AAModGlobalNPC.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
+					}
+				}else
+				if(msg == UpdateLovecraftianCount)
+				{
+					LovecraftianCount(bb, whoAmI);
+				}
+			}catch(Exception e){ ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+		}
+
+        private static void LovecraftianCount(BinaryReader reader, int fromWho)
         {
-            _packetActions = new Dictionary<MPMessageType, Action<BinaryReader, int>>
+            int whichSquidX = (int)reader.ReadByte();
+            if (whichSquidX == 1)
             {
-                { MPMessageType.RequestUpdateSquidLady, RequestUpdateSquidLadyAction }
-            };
-        }
-
-        public static void Unload()
-        {
-            _packetActions = null;
-        }
-
-        public static void HandlePacket(BinaryReader reader, int fromWho)
-        {
-            MPMessageType messageType = (MPMessageType)reader.ReadByte();
-            byte msg = reader.ReadByte();
-            if (DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "HANDING MESSAGE: " + msg);
-            try
-            {
-                if (msg == SyncShock) //Electric Shock master and stats setting
-                {
-                    int projID = reader.ReadShort();
-                    int masterType = reader.ReadByte();
-                    int masterID = reader.ReadShort();
-                    int maxTargets = reader.ReadByte();
-                    float minRange = reader.ReadFloat();
-                    float maxRange = reader.ReadFloat();
-                    if (Main.projectile[projID] != null && Main.projectile[projID].active && Main.projectile[projID].modProjectile is AAProjectile)
-                    {
-                        ((AAProjectile)Main.projectile[projID].modProjectile).SetMaster(masterType, masterID, maxTargets, minRange, maxRange, false);
-                    }
-                    if (Main.netMode == 2) SendNetMessage(SyncShock, (short)projID, (byte)masterType, (short)masterID, (byte)maxTargets, minRange, maxRange);
-                }
-                else
-                if (msg == GenOre) //generate ore (client-to-server)
-                {
-                    if (Main.netMode == 2)
-                    {
-                        int oreType = (int)reader.ReadByte();
-                        switch (oreType)
-                        {
-                            default: break;
-                            case 0: AAGlobalTile.GenAAOres(true); break;
-                        }
-                    }
-                }
+                AAWorld.squid1 += 1;
             }
-            catch (Exception e) { ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
-            if (_packetActions != null && _packetActions.ContainsKey(messageType))
+            else if (whichSquidX == 2)
             {
-                _packetActions[messageType].Invoke(reader, fromWho);
+                AAWorld.squid2 += 1;
             }
-        }
-
-        private static void RequestUpdateSquidLadyAction(BinaryReader reader, int fromWho)
-        {
-            int whichCookX = reader.ReadInt32();
-            if (whichCookX == 1)
+            else if (whichSquidX == 3)
             {
-                AAWorld.squid1 = AAWorld.squid1 + 1;
+                AAWorld.squid3 += 1;
             }
-            else if (whichCookX == 2)
+            else if (whichSquidX == 4)
             {
-                AAWorld.squid2 = AAWorld.squid2 + 1;
+                AAWorld.squid4 += 1;
             }
-            else if (whichCookX == 3)
+            else if (whichSquidX == 5)
             {
-                AAWorld.squid3 = AAWorld.squid3 + 1;
+                AAWorld.squid5 += 1;
             }
-            else if (whichCookX == 4)
+            else if (whichSquidX == 6)
             {
-                AAWorld.squid4 = AAWorld.squid4 + 1;
+                AAWorld.squid6 += 1;
             }
-            else if (whichCookX == 5)
+            else if (whichSquidX == 7)
             {
-                AAWorld.squid5 = AAWorld.squid5 + 1;
+                AAWorld.squid7 += 1;
             }
-            else if (whichCookX == 6)
+            else if (whichSquidX == 8)
             {
-                AAWorld.squid6 = AAWorld.squid6 + 1;
+                AAWorld.squid8 += 1;
             }
-            else if (whichCookX == 7)
+            else if (whichSquidX == 9)
             {
-                AAWorld.squid7 = AAWorld.squid7 + 1;
+                AAWorld.squid9 += 1;
             }
-            else if (whichCookX == 8)
+            else if (whichSquidX == 10)
             {
-                AAWorld.squid8 = AAWorld.squid8 + 1;
+                AAWorld.squid10 += 1;
             }
-            else if (whichCookX == 9)
+            else if (whichSquidX == 11)
             {
-                AAWorld.squid9 = AAWorld.squid9 + 1;
+                AAWorld.squid11 += 1;
             }
-            else if (whichCookX == 10)
+            else if (whichSquidX == 12)
             {
-                AAWorld.squid10 = AAWorld.squid10 + 1;
+                AAWorld.squid12 += 1;
             }
-            else if (whichCookX == 11)
+            else if (whichSquidX == 13)
             {
-                AAWorld.squid11 = AAWorld.squid11 + 1;
+                AAWorld.squid13 += 1;
             }
-            else if (whichCookX == 12)
+            else if (whichSquidX == 14)
             {
-                AAWorld.squid12 = AAWorld.squid12 + 1;
+                AAWorld.squid14 += 1;
             }
-            else if (whichCookX == 13)
+            else if (whichSquidX == 16)
             {
-                AAWorld.squid13 = AAWorld.squid13 + 1;
+                AAWorld.squid15 += 1;
             }
-            else if (whichCookX == 14)
+            else if (whichSquidX == 17)
             {
-                AAWorld.squid14 = AAWorld.squid14 + 1;
+                AAWorld.squid16 += 1;
             }
-            else if (whichCookX == 16)
-            {
-                AAWorld.squid15 = AAWorld.squid15 + 1;
-            }
-            else if (whichCookX == 17)
-            {
-                AAWorld.squid16 = AAWorld.squid16 + 1;
-            }
-
-            NetMessage.SendData(MessageID.WorldData);
         }
 
         public static bool DEBUG = true;
-
-        public const byte GenOre = 14;
 
         public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
@@ -175,7 +140,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0) { return; }
 
-                BaseMod.BaseNet.WriteToPacket(AAMod.instance.GetPacket(), (byte)msg, param).Send(client);
+                BaseNet.WriteToPacket(AAMod.instance.GetPacket(), (byte)msg, param).Send(client);
             }
             catch (Exception e)
             {
@@ -189,7 +154,5 @@ namespace AAMod
                 ErrorLogger.Log("-------");
             }
         }
-
-        public const byte SyncShock = 4;
     }
 }

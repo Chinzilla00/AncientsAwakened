@@ -37,7 +37,7 @@ namespace AAMod.Items.Blocks
             recipe.AddIngredient(null, "InfernoBox");
             recipe.AddIngredient(null, "MireBox");
             recipe.AddIngredient(null, "ChaosScale", 10);
-            recipe.AddTile(ItemID.Sawmill);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("True Dynaskull Ribguard");
+			DisplayName.SetDefault("Primeval Dynaskull Ribguard");
             Tooltip.SetDefault("30% increased Ranged damage");
         }
 

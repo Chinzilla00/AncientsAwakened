@@ -111,102 +111,7 @@ namespace AAMod
         {
             return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
         }
-
-        public static Color GetPrismColorBrightInvert(Color color) { return GetstormColor(color, 1f, 0.6f, true); }
-        public static Color GetPrismColorDim(Color color) { return GetstormColor(color, 0.4f, 1f, false); }
-        public static Color GetPrismColorBright(Color color) { return GetstormColor(color, 0.6f, 1f, false); }
-        public static Color GetPrismColor(Color color, float min, float max, bool clamp)
-        {
-            Player player = Main.player[Main.myPlayer];
-            Mod mod = AAMod.instance;
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-
-            Color currentColor = AAColor.TerraGlow;
-
-            if (modPlayer.Terrarium)
-            {
-                currentColor = AAColor.TerraGlow;
-            }
-            else if (player.ZoneCorrupt)
-            {
-                currentColor = AAColor.Corruption;
-            }
-            else if (player.ZoneCrimson)
-            {
-                currentColor = AAColor.Crimson;
-            }
-            else if (player.ZoneHoly)
-            {
-                currentColor = AAColor.Hallow;
-            }
-            else if (player.ZoneSnow)
-            {
-                currentColor = AAColor.Snow;
-            }
-            else if (player.ZoneDesert || player.ZoneUndergroundDesert)
-            {
-                currentColor = AAColor.Desert;
-            }
-            else if (player.ZoneJungle)
-            {
-                currentColor = AAColor.Jungle;
-            }
-            else if (player.ZoneDungeon)
-            {
-                currentColor = AAColor.Dungeon;
-            }
-            else if (player.ZoneBeach)
-            {
-                currentColor = AAColor.Ocean;
-            }
-            else if (player.ZoneGlowshroom)
-            {
-                currentColor = AAColor.TODE;
-            }
-            else if (player.ZoneUnderworldHeight)
-            {
-                currentColor = AAColor.Hell;
-            }
-            else if (player.ZoneRockLayerHeight)
-            {
-                currentColor = AAColor.Cavern;
-            }
-            else if (modPlayer.ZoneInferno)
-            {
-                currentColor = AAColor.Inferno;
-            }
-            else if (modPlayer.ZoneMire)
-            {
-                currentColor = AAColor.Mire;
-            }
-            else if (modPlayer.ZoneMush)
-            {
-                currentColor = AAColor.Mushroom;
-            }
-            else if (modPlayer.ZoneVoid)
-            {
-                currentColor = AAColor.ZeroShield;
-            }
-            else if (modPlayer.ZoneStorm)
-            {
-                currentColor = AAColor.Storm;
-            }
-            else if (modPlayer.ZoneStorm)
-            {
-                currentColor = AAColor.Storm;
-            }
-            else if (player.ZoneSkyHeight)
-            {
-                currentColor = AAColor.Sky;
-            }
-            else
-            {
-                currentColor = AAColor.TerraGlow;
-            }
-            return GetTimedColor(currentColor, color, min, max, clamp);
-        }
         
-
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass
@@ -247,56 +152,51 @@ namespace AAMod
 			return glowColor;
 		}
 
-        public static void GenAAOres(bool itemSpawn)
+        public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
-            else
+            if (Main.tile[i, j - 1].active() && 
+                (Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
-                Mod mod = AAMod.instance;
-                float percent = (float)Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                if (itemSpawn) count = (int)(200f * percent);
-                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                {
-                    int x = Main.maxTilesX;
-                    int y = Main.maxTilesY;
-                    int tilesX = WorldGen.genRand.Next(0, x);
-                    int tilesY = WorldGen.genRand.Next((int)(y * .3f), (int)(y * .75f));
-                    if (Main.tile[tilesX, tilesY].type == TileID.Mud)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EverleafRoot"));
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("AbyssiumOre"));
-                    }
-                    if (Main.tile[tilesX, tilesY].type == TileID.Stone)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("IncineriteOre"));
-                    }
-                    if (Main.tile[tilesX, tilesY].type == 59)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("EventideAbyssiumOre"));
-                    }
-                    if (Main.tile[tilesX, tilesY].type == 1)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
-                    }
-                    if (Main.tile[tilesX, tilesY].type == 117)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, (double)WorldGen.genRand.Next(3, 8), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("HallowedOre"));
-                    }
-                    if (Main.tile[tilesX, tilesY].type == 397)
-                    {
-                        WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DynaskullOre"));
-                    }
-                    WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), (double)WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
-                    int i2 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
-                    double num9 = Main.worldSurface;
-                    int j2 = WorldGen.genRand.Next((int)((Main.rockLayer + Main.rockLayer + (double)Main.maxTilesY) / 3.0), Main.maxTilesY - 150);
+                return false;
+            }
+            return base.CanKillTile(i, j, type, ref blockDamaged);
+        }
 
-                    WorldGen.OreRunner(i2, WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150), (double)WorldGen.genRand.Next(5, 9 + 4), WorldGen.genRand.Next(5, 9 + 4), (ushort)mod.TileType("YtriumOre"));
-                    WorldGen.OreRunner(i2, WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 150), (double)WorldGen.genRand.Next(5, 9 + 3), WorldGen.genRand.Next(5, 9 + 3), (ushort)mod.TileType("UraniumOre"));
-                    WorldGen.OreRunner(i2, j2, (double)WorldGen.genRand.Next(5, 9 + 2), WorldGen.genRand.Next(5, 9 + 2), (ushort)mod.TileType("TechneciumOre"));
+        public override bool CanExplode(int i, int j, int type)
+        {
+            if (Main.tile[i, j - 1].active() &&
+                (Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar2>()))
+            {
+                return false;
+            }
+            return base.CanExplode(i, j, type);
+        }
+
+        public override void RandomUpdate(int i, int j, int type)
+        {
+            if (Main.tile[i, j].type == TileID.MushroomGrass)
+            {
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+                {
+                    PlaceObject(i, j - 1, mod.TileType<Tiles.Shroomplant>());
+                    NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Shroomplant>(), 0, 0, -1, -1);
                 }
             }
+        }
+
+        public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
+        {
+            TileObject toBePlaced;
+            if (!TileObject.CanPlace(x, y, type, style, direction, out toBePlaced, false))
+            {
+                return false;
+            }
+            toBePlaced.random = random;
+            if (TileObject.Place(toBePlaced) && !mute)
+            {
+                WorldGen.SquareTileFrame(x, y, true);
+            }
+            return false;
         }
     }
 }

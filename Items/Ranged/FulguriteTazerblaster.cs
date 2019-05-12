@@ -18,9 +18,8 @@ namespace AAMod.Items.Ranged
 
 		public override void SetDefaults()
 		{
-			item.damage = 38;
+			item.damage = 45;
 			item.ranged = true;
-			item.mana = 6;
 			item.width = 52;
 			item.height = 18;
             item.useAnimation = 12;

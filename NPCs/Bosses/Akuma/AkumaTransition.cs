@@ -39,6 +39,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, npc.GetAlpha(new Color(RVal, 125, BVal)), true);
             return false;
         }
+
         public override void AI()
         {
 
@@ -76,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
 
-            if (npc.ai[0] >= 750)
+            if (npc.ai[0] >= 675)
             {
                 RVal -= 5;
                 BVal += 5;
@@ -90,23 +91,24 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            if (npc.ai[0] == 900)
+            if (npc.ai[0] == 975)
             {
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (npc.ai[0] >= 1165)
+            if (npc.ai[0] >= 1250 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            {
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+            }
+
+            if (NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-
                 AAMod.AkumaMusic = false;
-
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
                 npc.netUpdate = true;
                 npc.active = false;
             }
-
         }
 
         public void MoveToPoint(Vector2 point)

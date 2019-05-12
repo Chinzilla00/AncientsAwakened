@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDeathly
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Deathly Greaves");
+            DisplayName.SetDefault("Deathly Ghast Greaves");
             Tooltip.SetDefault("12% Increased ranged damage and movement speed");
         }
 

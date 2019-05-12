@@ -14,7 +14,8 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             SetModTree(new RazewoodTree());
-            Main.tileBlendAll[this.Type] = true;
+            TileID.Sets.Conversion.Grass[Type] = true;
+            Main.tileBlendAll[Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;

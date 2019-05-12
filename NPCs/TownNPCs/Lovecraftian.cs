@@ -10,19 +10,6 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
 	{
-
-        
-        private bool Purity = false;
-        private bool Snow = false;
-        private bool Desert = false;
-        private bool Corruption = false;
-        private bool Crimson = false;
-        private bool Inferno = false;
-        private bool Mire = false;
-        private bool Void = false;
-        private bool Hallow = false;
-
-
         public override string Texture
 		{
 			get
@@ -46,7 +33,7 @@ namespace AAMod.NPCs.TownNPCs
             NPCID.Sets.AttackType[npc.type] = 0;
             NPCID.Sets.AttackTime[npc.type] = 40;
             NPCID.Sets.AttackAverageChance[npc.type] = 20;
-            NPCID.Sets.HatOffsetY[npc.type] = 0;
+            NPCID.Sets.HatOffsetY[npc.type] = 3;
         }
 
         public override void SetDefaults()
@@ -54,7 +41,7 @@ namespace AAMod.NPCs.TownNPCs
             npc.townNPC = true;
             npc.friendly = true;
             npc.width = 18;
-            npc.height = 56;
+            npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 40;
             npc.defense = 38;
@@ -126,9 +113,7 @@ namespace AAMod.NPCs.TownNPCs
 
             chat.Add("Ever just find things in your tentacles that you don’t know how they got there? No? Just me?");
 
-            //chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
-
-            
+            chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
             
 
             //If Pirate is present
@@ -141,7 +126,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (Mutant >= 0)
             {
-                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him without any effort.");
+                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him before he could even say *ech*.");
             }
 
             //If Horde Zombie is present
@@ -158,9 +143,6 @@ namespace AAMod.NPCs.TownNPCs
             }
 
             //Providing materials
-
-            //Purity
-            //chat.Add("Thanks. These forests are so green, reminds me of home... Except where I'm from, it's green everywhere.");
 
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
@@ -215,10 +197,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == 1)
                     {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(1);
-                        netMessage.Send();
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)1);
                     }
                     AAWorld.squid1++;
                     Main.PlaySound(24, -1, -1, 1);
@@ -240,10 +219,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == 1)
                     {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(2);
-                        netMessage.Send();
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)2);
                     }
                     AAWorld.squid2++;
                     Main.PlaySound(24, -1, -1, 1);
@@ -263,13 +239,10 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("DarkwaterFlask");
                     }
 
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(3);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)3);
+					}
                     AAWorld.squid3++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -288,13 +261,10 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("CorruptionFlask");
                     }
 
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(4);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)4);
+					}
                     AAWorld.squid4++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -312,13 +282,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("CrimsonFlask");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(5);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)5);
+					}
                     AAWorld.squid5++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -336,13 +303,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
                         Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(6);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)6);
+					}
                     AAWorld.squid6++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -358,15 +322,12 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = "Wow this is heavy! What is this? I've never seen this kind of metal before. Oh right. New flask. Here.";
                         player.QuickSpawnItem(mod.ItemType("VoidFlask"), 5);
-                        Main.npcChatCornerItem = mod.ItemType("VoidFlask");
+                        Main.npcChatCornerItem = mod.ItemType("Z");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(7);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)7);
+					}
                     AAWorld.squid7++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -384,13 +345,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Fungicide");
                     }
-                    if(Main.netMode == 1)
-                        {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(8);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)8);
+					}
                     AAWorld.squid8++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -408,13 +366,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("SporeSac");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(9);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)9);
+					}
                     AAWorld.squid9++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -432,13 +387,10 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("GlowingSporeSac");
                     }
-                    if (Main.netMode == 1)
-                    {
-                        var netMessage = mod.GetPacket();
-                        netMessage.Write((byte)MPMessageType.RequestUpdateSquidLady);
-                        netMessage.Write(10);
-                        netMessage.Send();
-                    }
+					if(Main.netMode == 1)
+					{
+						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
+					}
                     AAWorld.squid10++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
@@ -514,11 +466,6 @@ namespace AAMod.NPCs.TownNPCs
             if (AAWorld.squid10 >= 5)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.GlowingSporeSac>());
-                nextSlot++;
-            }
-            if (AAWorld.squid2 >= 5 && AAWorld.squid3 >= 5)
-            {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.OrderBottle>());
                 nextSlot++;
             }
         }

@@ -16,7 +16,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Chaos Sigil");
             Tooltip.SetDefault(@"A cursed tablet filled with unstable magic
-Summons the chaos emperor");
+Summons the chaos emperor
+Non-Consumable");
         }
 
         public override void SetDefaults()
@@ -82,11 +83,11 @@ Summons the chaos emperor");
             {
                 Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...Again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                AAModGlobalNPC.SpawnBoss(mod, player, "ShenDoragon", true, 0, 0, "Shen Doragon; Discordian Doomsayer");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenDoragon"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
             }
             if (!AAWorld.ShenSummoned)
             {
-                AAModGlobalNPC.SpawnBoss(mod, player, "ShenSpawn", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenSpawn"), false, 0, 0);
                 AAWorld.ShenSummoned = true;
             }
 

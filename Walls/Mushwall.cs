@@ -20,8 +20,9 @@ namespace AAMod.Walls
 		public override void SetDefaults()
 		{
             Main.wallHouse[this.Type] = true;
-			drop = mod.ItemType("RottedWall");
+			drop = mod.ItemType("Mushroom Wall");
 			AddMapEntry(new Color(60, 14, 14));
-		}
+            Terraria.ID.WallID.Sets.Conversion.Grass[Type] = true;
+        }
     }
 }

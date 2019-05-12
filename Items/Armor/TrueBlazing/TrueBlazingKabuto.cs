@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueBlazing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Blazing Kabuto");
+			DisplayName.SetDefault("Perfect Blazing Kabuto");
 			Tooltip.SetDefault(@"5% increased Damage Resistance");
         }
 

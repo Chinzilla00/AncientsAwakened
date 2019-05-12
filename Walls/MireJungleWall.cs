@@ -9,7 +9,8 @@ namespace AAMod.Walls
 		{
 			dustType = mod.DustType("AbyssiumDust");
 			AddMapEntry(new Color(0, 0, 120));
-		}
+            Terraria.ID.WallID.Sets.Conversion.Grass[Type] = true;
+        }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
 		{

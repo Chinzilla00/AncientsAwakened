@@ -457,7 +457,7 @@ namespace AAMod.Items.Materials
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Crystal");
             recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.SnowBlock);
+            recipe.needSnowBiome = true;
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

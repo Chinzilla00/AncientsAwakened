@@ -29,18 +29,6 @@ namespace AAMod
             }
         }
 
-        public string DisplayName
-        {
-            get
-            {
-                return base.DisplayName.GetDefault();
-            }
-            set
-            {
-                base.DisplayName.SetDefault(value);
-            }
-        }
-
         public int frameWidth = 0;
         public int frameHeight = 0;
         public int nextFrameCounter = 0;
@@ -61,7 +49,7 @@ namespace AAMod
 
         public override bool? CanCutTiles()
         {
-            return (!hurtsTiles ? (bool?)false : (bool?)null);
+            return (!hurtsTiles ? false : (bool?)null);
         }
 
         

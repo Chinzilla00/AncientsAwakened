@@ -364,7 +364,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         pos = 250;
                     }
 
-                    npc.direction = -1;
+                    npc.direction = 1;
 
                     if (FlyingPositive)
                     {
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         pos = -250;
                     }
 
-                    npc.direction = 1;
+                    npc.direction = -1;
 
                     if (FlyingNegative)
                     {

@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Raider
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidEggGore2"), 1f);
         }
 
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        /*public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             if (glowTex == null)
             {
@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Raider
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
             return false;
-        }
+        }*/
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
             }
             npc.ai[0] += 1f;
-            if (npc.ai[0] >= num1326)
+            if (npc.ai[0] >= num1326 || npc.collideX || npc.collideY)
             {
                 npc.Transform(mod.NPCType("Raidmini"));
             }

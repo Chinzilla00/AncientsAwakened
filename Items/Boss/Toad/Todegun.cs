@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,12 +15,12 @@ namespace AAMod.Items.Boss.Toad
 
 		public override void SetDefaults()
 		{
-			item.damage = 29;
+			item.damage = 59;
             item.useStyle = 5;
             item.useAnimation = 25;
             item.useTime = 25;
             item.reuseDelay = 10;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 8f;
             item.knockBack = 3f;
             item.width = 16;
             item.height = 16;
@@ -35,22 +36,15 @@ namespace AAMod.Items.Boss.Toad
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num81 = Main.mouseX + Main.screenPosition.X - vector2.X;
-            float num82 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-            Vector2 value12 = Vector2.Normalize(new Vector2(num81, num82)) * 40f * item.scale;
-            int num74 = item.shoot;
-            if (Collision.CanHit(vector2, 0, 0, vector2 + value12, 0, 0))
+            float spread = 45f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
             {
-                vector2 += value12;
-            }
-            Vector2 vector16 = new Vector2(num81, num82);
-            vector16 *= 0.8f;
-            Vector2 value13 = vector16.SafeNormalize(-Vector2.UnitY);
-            float num202 = 0.0174532924f * (float)(-(float)player.direction);
-            for (int num203 = 0; num203 <= 2; num203++)
-            {
-                Projectile.NewProjectile(vector2, (vector16 + value13 * (float)num203 * 1f).RotatedBy((double)((float)num203 * num202), default(Vector2)), num74,damage, knockBack, Main.myPlayer, 0f, 0f);
+                offsetAngle = startAngle + (deltaAngle * i);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
             }
             return false;
         }

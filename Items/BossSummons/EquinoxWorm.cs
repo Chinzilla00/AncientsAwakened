@@ -15,7 +15,8 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Equinox Worm");
             Tooltip.SetDefault(@"A worm created using celestial materials
-Summons the Equinox Worms");
+Summons the Equinox Worms
+Non-Consumable");
         }
 
         public override void SetDefaults()
@@ -39,8 +40,8 @@ Summons the Equinox Worms");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(mod, player, "NightcrawlerHead", true, 1, 0, "The Equinox Worms", true);
-            AAModGlobalNPC.SpawnBoss(mod, player, "DaybringerHead", false, -1, 0);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("DaybringerHead"), true, 0, 0, "The Equinox Worms", true);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("NightcrawlerHead"), false, 0, 0, "Nightcralwer", false);
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }

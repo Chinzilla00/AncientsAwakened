@@ -37,15 +37,6 @@ namespace AAMod.Tiles
             }
         }
 
-        public Color CurrentColor = AAGlobalTile.GetPrismColorDim(Color.White);
-
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-        {
-            r = CurrentColor.R / 255f;
-            g = CurrentColor.G / 255f;
-            b = CurrentColor.B / 255f;
-        }
-
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];

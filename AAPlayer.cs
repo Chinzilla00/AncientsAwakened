@@ -60,6 +60,7 @@ namespace AAMod
         public bool Orbiters = false;
         public bool Protocol = false;
         public bool ScoutMinion = false;
+        public bool SagOrbiter = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -178,6 +179,8 @@ namespace AAMod
         public bool HeartP = false;
         public bool HeartS = false;
         public bool HeartA = false;
+        public bool DragonsGuard = false;
+        public bool ShadowBand = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -212,6 +215,7 @@ namespace AAMod
         public bool Unstable = false;
         public bool Abducted = false;
         public Vector2 RingLocation;
+        public bool IB = false;
         //buffs
 
         //pets
@@ -223,6 +227,8 @@ namespace AAMod
         public bool Mudkip = false;
         public bool MudkipS = false;
         public bool BoomBoi = false;
+        public bool DragonSoul = false;
+        public bool Glowmoss = false;
 
         //NPCcount
 
@@ -244,7 +250,9 @@ namespace AAMod
 
         //Misc
         public bool Compass = false;
-        
+
+        public Vector2 RiftPos = new Vector2(0, 0);
+
         public int PrismCooldown = 0;
 
         public bool WorldgenReminder = false;
@@ -281,6 +289,7 @@ namespace AAMod
             Orbiters = false;
             Protocol = false;
             ScoutMinion = false;
+            SagOrbiter = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -358,6 +367,8 @@ namespace AAMod
             HeartA = false;
             SagShield = false;
             ShieldUp = false;
+            DragonsGuard = false;
+            ShadowBand = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -375,6 +386,7 @@ namespace AAMod
             YamataAGravity = false;
             Hunted = false;
             Unstable = false;
+            IB = false;
             //Buffs
             //Weapons
             //Pets
@@ -386,14 +398,13 @@ namespace AAMod
             Mudkip = false;
             MudkipS = false;
             BoomBoi = false;
+            DragonSoul = false;
+            Glowmoss = false;
             //EnemyChecks
             IsGoblin = false;
 
             //Misc
             Compass = false;
-
-            //Biomes
-
         }
 
         public override void Initialize()
@@ -413,7 +424,7 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
-        public override TagCompound Save()
+        /*public override TagCompound Save()
         {
             var PlayerBool = new List<string>();
 
@@ -444,7 +455,7 @@ namespace AAMod
             {
                 ManaLantern = 0;
             }
-        }
+        }*/
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
@@ -457,7 +468,7 @@ namespace AAMod
 
         public override void PreUpdateBuffs()
         {
-            
+
         }
 
         public override void UpdateBiomes()
@@ -494,6 +505,7 @@ namespace AAMod
         }
 
         public float Intensity;
+        
 
         public override void UpdateBiomeVisuals()
         {
@@ -556,45 +568,40 @@ namespace AAMod
             modOther.ZoneStars = ZoneStars;
         }
 
-        public override void SendCustomBiomes(BinaryWriter writer)
+        public override void SendCustomBiomes(BinaryWriter bb)
         {
-            byte flags = 0;
-            if (ZoneInferno)
-                flags |= 1;
-            if (ZoneMire)
-                flags |= 2;
-            if (ZoneVoid)
-                flags |= 3;
-            if (ZoneMush)
-                flags |= 4;
-            if (Terrarium)
-                flags |= 5;
-            if (ZoneStorm)
-                flags |= 6;
-            if (ZoneRisingSunPagoda)
-                flags |= 7;
-            if (ZoneRisingMoonLake)
-                flags |= 8;
-            if (ZoneShip)
-                flags |= 9;
-            if (ZoneStars)
-                flags |= 10;
-            writer.Write(flags);
+            BitsByte zoneByte = 0;
+            zoneByte[0] = ZoneInferno;
+            zoneByte[1] = ZoneMire;
+            zoneByte[2] = ZoneVoid;
+            zoneByte[3] = ZoneMush;
+            zoneByte[4] = Terrarium;
+            zoneByte[5] = ZoneStorm;
+            zoneByte[6] = ZoneRisingSunPagoda;
+            zoneByte[7] = ZoneRisingMoonLake;
+            bb.Write(zoneByte);
+
+            BitsByte zoneByte2 = 0;
+            zoneByte2[0] = ZoneShip;
+            zoneByte2[1] = ZoneStars;
+            bb.Write(zoneByte2);
         }
 
-        public override void ReceiveCustomBiomes(BinaryReader reader)
+        public override void ReceiveCustomBiomes(BinaryReader bb)
         {
-            byte flags = reader.ReadByte();
-            ZoneInferno = ((flags & 1) == 1);
-            ZoneMire = ((flags & 2) == 2);
-            ZoneVoid = ((flags & 3) == 3);
-            ZoneMush = ((flags & 4) == 4);
-            Terrarium = ((flags & 5) == 5);
-            ZoneStorm = ((flags & 6) == 6);
-            ZoneRisingSunPagoda = ((flags & 7) == 7);
-            ZoneRisingMoonLake = ((flags & 8) == 8);
-            ZoneShip = ((flags & 9) == 9);
-            ZoneStars = ((flags & 10) == 10);
+            BitsByte zoneByte = bb.ReadByte();
+            ZoneInferno = zoneByte[0];
+            ZoneMire = zoneByte[1];
+            ZoneVoid = zoneByte[2];
+            ZoneMush = zoneByte[3];
+            Terrarium = zoneByte[4];
+            ZoneStorm = zoneByte[5];
+            ZoneRisingSunPagoda = zoneByte[6];
+            ZoneRisingMoonLake = zoneByte[7];
+
+            BitsByte zoneByte2 = bb.ReadByte();
+            ZoneShip = zoneByte2[0];
+            ZoneStars = zoneByte2[1];
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -603,7 +610,7 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
-	    if (trueNights && item.melee && Main.rand.Next(4) == 0)
+            if (trueNights && item.melee && Main.rand.Next(4) == 0)
             {
                 if (target.life <= 0)
                 {
@@ -622,17 +629,20 @@ namespace AAMod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
+            if (DragonsGuard)
+            {
+                npc.AddBuff(BuffID.OnFire, 120);
+            }
             if (fleshrendSet && Main.rand.Next(2) == 0)
             {
                 if (player.whoAmI == Main.myPlayer)
                 {
                     for (int i = 0; i < 40; i++)
                     {
-                        Dust dust;
                         Vector2 position;
                         position.X = player.Center.X - 40;
                         position.Y = player.Center.Y - 40;
-                        dust = Main.dust[Dust.NewDust(position, 80, 80, 108, 0f, 0f, 124, new Color(255, 50, 0), 1f)];
+                        Dust.NewDust(position, 80, 80, 108, 0f, 0f, 124, new Color(255, 50, 0), 1f);
                     }
                     for (int i = 0; i < Main.maxNPCs; i++)
                     {
@@ -656,7 +666,7 @@ namespace AAMod
             {
                 if (!ringActive)
                 {
-                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 10, Main.myPlayer, 0, 0);
+                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 6, Main.myPlayer, 0, 0);
                 }
             }
 
@@ -800,7 +810,7 @@ namespace AAMod
             {
                 Spheres = BaseAI.GetProjectiles(player.Center, mod.NPCType("FireOrbiter"), Main.myPlayer, 48);
                 if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
-				{
+                {
                     player.minionDamage += AAGlobalProjectile.CountProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
                     if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 3 == 0)
                     {
@@ -1275,7 +1285,7 @@ namespace AAMod
         {
             DropDevArmor(1);
         }
-        
+
         public void PMLDevArmor()
         {
             DropDevArmor(2);
@@ -1604,11 +1614,33 @@ namespace AAMod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            if (AAMod.Rift.JustPressed)
+            {
+                RiftPos = player.position;
+                for (int m = 0; m < 58; m++)
+                {
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    {
+                        player.Spawn();
+                    }
+                }
+            }
+            if (AAMod.RiftReturn.JustPressed && RiftPos != new Vector2(0, 0))
+            {
+                for (int m = 0; m < 58; m++)
+                {
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    {
+                        player.position = RiftPos;
+                    }
+                }
+            }
             if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
             {
                 if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
                 {
                     SnapCD = 18000;
+                    player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
                     Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
                     {
@@ -1627,8 +1659,8 @@ namespace AAMod
             {
                 if (AAMod.AbilityKey.JustPressed && SagCooldown == 0)
                 {
-                    player.AddBuff(mod.BuffType<SagShield>(), 300);
-                    SagCooldown = 18000;
+                    player.AddBuff(mod.BuffType<SagShield>(), 5400);
+                    SagCooldown = 5400;
                 }
             }
             if (trueDynaskull)
@@ -1671,17 +1703,17 @@ namespace AAMod
 
         public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
         {
-            
+
             if (goblinSlayer)
             {
-                if (target.type == NPCID.GoblinArcher 
-                    || target.type == NPCID.GoblinPeon 
-                    || target.type == NPCID.GoblinScout 
-                    || target.type == NPCID.GoblinSorcerer 
-                    || target.type == NPCID.GoblinSummoner 
-                    || target.type == NPCID.GoblinThief 
-                    || target.type == NPCID.GoblinWarrior 
-                    || target.type == NPCID.DD2GoblinBomberT1 
+                if (target.type == NPCID.GoblinArcher
+                    || target.type == NPCID.GoblinPeon
+                    || target.type == NPCID.GoblinScout
+                    || target.type == NPCID.GoblinSorcerer
+                    || target.type == NPCID.GoblinSummoner
+                    || target.type == NPCID.GoblinThief
+                    || target.type == NPCID.GoblinWarrior
+                    || target.type == NPCID.DD2GoblinBomberT1
                     || target.type == NPCID.DD2GoblinBomberT2
                     || target.type == NPCID.DD2GoblinBomberT3
                     || target.type == NPCID.DD2GoblinT1
@@ -1826,13 +1858,13 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Wet, 600);
             }
-			
-			if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+
+            if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
             {
                 target.AddBuff(mod.BuffType("DragonFire"), 900);
             }
-			
-			if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+
+            if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
             {
                 target.AddBuff(mod.BuffType("Hydratoxin"), 900);
             }
@@ -1865,7 +1897,7 @@ namespace AAMod
                 player.lifeRegenTime++;
             }
         }
-        
+
         public Vector2 OldHeadPos;
         public Vector2 OldBodyPos;
         public Vector2 OldLegPos;
@@ -1924,7 +1956,7 @@ namespace AAMod
                     player.wingTimeMax = 0;
                 }
             }
-            
+
             if (drain && before > 0)
             {
                 player.lifeRegenTime = 0;
@@ -1948,7 +1980,7 @@ namespace AAMod
                 player.thrownDamage *= 0.8f;
                 player.rangedDamage *= 0.8f;
             }
-            
+
             if (riftbent)
             {
                 RiftTimer++;
@@ -2179,7 +2211,7 @@ namespace AAMod
             }
         }
 
-        
+
 
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
@@ -2363,16 +2395,16 @@ namespace AAMod
                     target.AddBuff(BuffID.Ichor, 180);
                 }
             }
-			
-			if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")) && proj.melee)
-			{
-				target.AddBuff(mod.BuffType("DragonFire"), 900);
-			}
 
-			if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")) && proj.melee)
-			{
-				target.AddBuff(mod.BuffType("Hydratoxin"), 900);
-			}
+            if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")) && proj.melee)
+            {
+                target.AddBuff(mod.BuffType("DragonFire"), 900);
+            }
+
+            if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")) && proj.melee)
+            {
+                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+            }
         }
         public override Texture2D GetMapBackgroundImage()
         {
@@ -2443,7 +2475,7 @@ namespace AAMod
             return BaseDrawing.GetFrame(count, width, height, 0, 2);
         }
         #endregion
-        
+
         public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
         {
             if (Clueless)
@@ -3014,3 +3046,4 @@ namespace AAMod
         });
     }
 }
+

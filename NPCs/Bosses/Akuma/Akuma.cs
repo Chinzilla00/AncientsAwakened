@@ -252,8 +252,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 maxTilePosY = Main.maxTilesY;
 
             bool collision = true;
-
-
+            
             float speed = 12f;
             float acceleration = 0.13f;
 
@@ -378,31 +377,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-            }
-
-            if (internalAI[3] != 0)
-            {
-                if (loludided == false)
-                {
-                    npc.NPCLoot();
-                    loludided = true;
-                }
-                npc.velocity.Y = npc.velocity.Y - 1f;
-                if (npc.position.Y < 0)
-                {
-                    npc.velocity.Y = npc.velocity.Y - 1f;
-                    speed = 30f;
-                }
-                if (npc.position.Y < 0)
-                {
-                    for (int num957 = 0; num957 < 200; num957++)
-                    {
-                        if (Main.npc[num957].aiStyle == npc.aiStyle)
-                        {
-                            Main.npc[num957].active = false;
-                        }
-                    }
-                }
             }
 
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -585,13 +559,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            AAWorld.downedAkuma = true;
             if (Main.expertMode)
             {
                 potionType = 0;
             }
             else
             {
+                AAWorld.downedAkuma = true;
                 potionType = ItemID.SuperHealingPotion;
             }
         }

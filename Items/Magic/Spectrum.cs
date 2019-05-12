@@ -13,7 +13,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spectrum");
-			Tooltip.SetDefault("Focusing devastating beam of the light");
+			Tooltip.SetDefault("Focuses a devastating beam of light");
 		}
 
 	    public override void SetDefaults()

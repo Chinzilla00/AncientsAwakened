@@ -47,6 +47,7 @@ All attacks deal 20 True damage (damage unaffected by class)");
             player.minionDamage += .15f;
             player.thrownDamage += .15f;
             player.GetModPlayer<AAPlayer>(mod).StormClaw = true;
+            player.dash = 1;
         }
 
         public override bool CanEquipAccessory(Player player, int slot)

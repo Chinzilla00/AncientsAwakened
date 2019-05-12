@@ -17,6 +17,7 @@ namespace AAMod.Tiles
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("Depthice");   //put your CustomBlock name
             AddMapEntry(new Color(0, 60, 127));
+            TileID.Sets.Conversion.Ice[Type] = true;
         }
     }
 }

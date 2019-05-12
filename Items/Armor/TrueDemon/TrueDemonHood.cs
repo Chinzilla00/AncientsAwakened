@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDemon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Demon Cowl");
+            DisplayName.SetDefault("Devil Cowl");
             Tooltip.SetDefault(@"13% Increased Minion damage
 Increases your max number of minions by 2");
         }

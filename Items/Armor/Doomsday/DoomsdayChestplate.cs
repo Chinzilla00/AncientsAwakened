@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Doomsday Assault Armor");
-			Tooltip.SetDefault(@"25% increased ranged damage
+			Tooltip.SetDefault(@"35% increased Minion damage
 The power to destroy entire planets rests in this armor");
 		}
 
@@ -60,7 +60,7 @@ The power to destroy entire planets rests in this armor");
 
         public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage += .25f;
+			player.minionDamage += .35f;
         }
 
 		public override void AddRecipes()

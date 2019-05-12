@@ -3,27 +3,9 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Grips;
-using AAMod.NPCs.Bosses.Broodmother;
-using AAMod.NPCs.Bosses.Hydra;
-using AAMod.NPCs.Bosses.Equinox;
-using AAMod.NPCs.Bosses.Orthrus;
-using AAMod.NPCs.Bosses.Raider;
-using AAMod.NPCs.Bosses.Retriever;
-using AAMod.NPCs.Bosses.Akuma;
-using AAMod.NPCs.Bosses.Akuma.Awakened;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
-using AAMod.NPCs.Bosses.Zero;
-using AAMod.NPCs.Bosses.Zero.Protocol;
-using AAMod.NPCs.Bosses.MushroomMonarch;
-using AAMod.NPCs.Bosses.Djinn;
-using AAMod.NPCs.Bosses.Serpent;
-using AAMod.NPCs.Bosses.AH.Ashe;
-using AAMod.NPCs.Bosses.AH.Haruka;
 using AAMod.NPCs.Bosses.Shen;
 using System;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata;
 using Terraria.Localization;
 
 namespace AAMod
@@ -46,6 +28,7 @@ namespace AAMod
         public static int Toad = -1;
         public static int Rose = -1;
         public static int Brain = -1;
+        public static int Rajah = -1;
 
         public override bool InstancePerEntity
 		{
@@ -731,7 +714,7 @@ namespace AAMod
         {
             for (int i = 0; i < 200; ++i)
             {
-                if (Main.npc[i].boss && Main.npc[i].active)
+                if (Main.npc[i].boss && Main.npc[i].type != NPCID.WallofFlesh && Main.npc[i].active)
                 {
                     spawnRate = 0;
                     maxSpawns = 0;
@@ -739,8 +722,37 @@ namespace AAMod
             }
         }
 
+        public void ClearPoolWithExceptions(IDictionary<int, float> pool)
+        {
+            try
+            {
+                Dictionary<int, float> keepPool = new Dictionary<int, float>();
+                foreach (var kvp in pool)
+                {
+                    int npcID = kvp.Key;
+                    ModNPC mnpc = NPCLoader.GetNPC(npcID);
+                    if (mnpc != null && mnpc.mod != null) //splitting so you can add other exceptions if need be
+                    {
+                        if (mnpc.mod.Name.Equals("GRealm")) //do not remove GRealm spawns!
+                            keepPool.Add(npcID, kvp.Value);
+                    }
+                }
+                pool.Clear();
+
+                foreach (var newkvp in keepPool)
+                    pool.Add(newkvp.Key, newkvp.Value);
+
+                keepPool.Clear();
+            }
+            catch (Exception e)
+            {
+                Main.NewText(e.StackTrace);
+            }
+        }
+
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            Mod GRealm = ModLoader.GetMod("Grealm");
             Player player = Main.player[Main.myPlayer];
             
 
@@ -758,7 +770,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
                 {
                     pool.Add(mod.NPCType("Wyrmling"), .3f);
@@ -801,7 +813,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if ((player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
                 {
                     pool.Add(mod.NPCType("MireSlime"), 1f);
@@ -823,7 +835,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("MireSkulker"), .5f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("Kappa"), .4f);
+                        pool.Add(mod.NPCType("Miresquito"), .4f);
                         pool.Add(mod.NPCType("ChaoticTwilight"), .1f);
                         if (player.ZoneSnow)
                         {
@@ -839,7 +851,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 pool.Add(mod.NPCType("Searcher1"), .05f);
                 if (AAWorld.downedSag)
                 {
@@ -862,15 +874,16 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType("Bladon"), .1f);
                     pool.Add(mod.NPCType("TerraDeadshot"), .1f);
                     pool.Add(mod.NPCType("TerraWizard"), .1f);
                     pool.Add(mod.NPCType("TerraWarlock"), .1f);
+                    return;
                 }
-                else
+                if (NPC.downedBoss3)
                 {
                     pool.Add(mod.NPCType("PurityWeaver"), .1f);
                     pool.Add(mod.NPCType("PuritySphere"), .1f);
@@ -905,76 +918,45 @@ namespace AAMod
             }
         }
 
-		//mod, player - self explanitory
-		//type - the internal name of the boss to summon
-		//SpawnMessage - wether or not to show a message when summoning (ie 'Has/Have Awoken!")
-		//overrideDirection - wether to force the boss to spawn left/right of the player
-		//overrideDirectionY - wether to force the boss to spawn above/below the player
-		//overrideDisplayName - the name to use instead of the npc's display name (ie 'The Grips of Chaos')
-		//namePlural - if true, puts 'Have Awoken' instead of 'Has Awoken'.
-        public static void SpawnBoss(Mod mod, Player player, string type, bool SpawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        // SpawnBoss(player, "MyBoss", true, 0, 0, "DerpyBoi", false);
+        public static void SpawnBoss(Player player, string type, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
-			//if the direction is not overriden (ie is 0), pick left/right at random
-			if(overrideDirection == 0)
-				overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
-			//if the direction is not overriden (ie is 0), default to above			
-			if(overrideDirectionY == 0)
-				overrideDirectionY = -1;
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(type);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
-                Main.npc[npcID].netUpdate2 = true;
-                if (SpawnMessage)
-                {
-					//check if the npc has a 'given name' (not usually for modded) and if not use the display name given
-					string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);	
-					//if npcName is still blank ("") then default to the npc's display name if it's modded
-					if((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
-						npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();					
-					if(namePlural)
-					{
-						if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
-						else
-						if (Main.netMode == 2)
-						{
-							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
-						}						
-					}else
-					{
-						if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
-						else
-						if (Main.netMode == 2)
-                        {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " has awoken!"), new Color(175, 75, 255), -1);
-                        }
-					}
-                }
-            }
+            Mod mod = AAMod.instance;
+            SpawnBoss(player, mod.NPCType(type), spawnMessage, overrideDirection, overrideDirectionY, overrideDisplayName, namePlural);
         }
 
-        public static void SpawnBoss(Mod mod, Player player, int type, bool SpawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
-            //if the direction is not overriden (ie is 0), pick left/right at random
             if (overrideDirection == 0)
                 overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
-            //if the direction is not overriden (ie is 0), default to above			
             if (overrideDirectionY == 0)
                 overrideDirectionY = -1;
+            Vector2 npcCenter = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
+        }
+
+        // SpawnBoss(player, "MyBoss", true, player.Center + new Vector2(0, -800f), "DerpFromAbove", false);
+        public static void SpawnBoss(Player player, string type, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        {
+            Mod mod = AAMod.instance;
+            SpawnBoss(player, mod.NPCType(type), spawnMessage, npcCenter, overrideDisplayName, namePlural);
+        }
+
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, player.Center + new Vector2(0, 800f), "DerpFromBelow", false);
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (npcCenter == default(Vector2))
+                npcCenter = player.Center;
             if (Main.netMode != 1)
             {
-                int bossType = type;
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
-                if (SpawnMessage)
+                if (spawnMessage)
                 {
-                    //check if the npc has a 'given name' (not usually for modded) and if not use the display name given
                     string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
-                    //if npcName is still blank ("") then default to the npc's display name if it's modded
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
@@ -999,6 +981,11 @@ namespace AAMod
                         }
                     }
                 }
+            }
+            else
+            {
+                //I have no idea how to convert this to the standard system so im gonna post this method too lol
+                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
             }
         }
 

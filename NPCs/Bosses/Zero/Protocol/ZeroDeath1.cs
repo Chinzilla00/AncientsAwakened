@@ -34,10 +34,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.NewText("MISSI0N FAILED. ATTEMPTING DISTRESS SIGNAL AGAIN.", Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
-            if (!AAWorld.downedIZ)
-            {
-                AAMod.Slayer = true;
-            }
             if (++projectile.frameCounter >= 7)
             {
                 projectile.frameCounter = 0;

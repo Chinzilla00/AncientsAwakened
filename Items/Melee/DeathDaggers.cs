@@ -56,7 +56,7 @@ namespace AAMod.Items.Melee
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "AbyssiumBar", 10);
             recipe.AddIngredient(null, "HydraToxin", 10);
-		    recipe.AddTile(TileID.Mythril);
+		    recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
 		}

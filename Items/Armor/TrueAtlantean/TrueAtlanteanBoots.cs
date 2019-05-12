@@ -9,7 +9,7 @@ namespace AAMod.Items.Armor.TrueAtlantean
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Atlantean Greaves");
+			DisplayName.SetDefault("Triton Greaves");
             Tooltip.SetDefault(@"Increases magic critical strike chance by 15%
 Allows to freely move in liquids");
 

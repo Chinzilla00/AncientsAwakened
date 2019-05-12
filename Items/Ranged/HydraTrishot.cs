@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
             item.useTime = 45;
             item.useAnimation = 45;
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType("HydraShot");
+            item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
             item.value = 2000;
@@ -45,7 +45,7 @@ namespace AAMod.Items.Ranged
 		    for (int i = 0; i < 3; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
 		    }
 		    return false;
 		}

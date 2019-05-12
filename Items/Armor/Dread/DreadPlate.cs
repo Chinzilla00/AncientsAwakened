@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.Dread
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Dread Moon Gi");
-			Tooltip.SetDefault(@"24% increased ranged damage
+			Tooltip.SetDefault(@"35% increased ranged damage
 20% increased movement speed
 The abyssal wrath of the Mire rests in this armor");
 		}
@@ -28,7 +28,7 @@ The abyssal wrath of the Mire rests in this armor");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage *= 1.24f;
+            player.rangedDamage *= 1.35f;
             player.moveSpeed *= 1.2f;
         }
 

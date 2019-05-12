@@ -16,7 +16,8 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Dread Moon Sigil");
             Tooltip.SetDefault(@"A ragged old tablet said to contain the dark magic of a new moon
 Summons Yamata
-Only Usable at night");
+Only Usable at night
+Non-Consumable");
         }
         public override void SetDefaults()
         {
@@ -52,7 +53,7 @@ Only Usable at night");
 
         public override bool UseItem(Player player)
 		{
-            SpawnBoss(mod, player, "Yamata");
+            SpawnBoss(player, mod.NPCType<NPCs.Bosses.Yamata.Yamata>(), true, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
@@ -104,26 +105,19 @@ Only Usable at night");
 			return false;
 		}
 
-        public static void SpawnBoss(Mod mod, Player player, string type, bool SpawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
-            //if the direction is not overriden (ie is 0), pick left/right at random
-            if (overrideDirection == 0)
-                overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
-            //if the direction is not overriden (ie is 0), default to above			
-            if (overrideDirectionY == 0)
-                overrideDirectionY = -1;
+            if (npcCenter == default(Vector2))
+                npcCenter = player.Center;
             if (Main.netMode != 1)
             {
-                int bossType = mod.NPCType(type);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center + new Vector2(0, -120f);
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
-                if (SpawnMessage)
+                if (spawnMessage)
                 {
-                    //check if the npc has a 'given name' (not usually for modded) and if not use the display name given
                     string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
-                    //if npcName is still blank ("") then default to the npc's display name if it's modded
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
@@ -148,6 +142,11 @@ Only Usable at night");
                         }
                     }
                 }
+            }
+            else
+            {
+                //I have no idea how to convert this to the standard system so im gonna post this method too lol
+                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
             }
         }
 

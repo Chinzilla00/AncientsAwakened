@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDeathly
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Deathly Skull");
+            DisplayName.SetDefault("Deathly Ghast Skull");
             Tooltip.SetDefault("14% Increased ranged damage and Critical Strike chance");
         }
 

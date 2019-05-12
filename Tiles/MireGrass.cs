@@ -14,7 +14,8 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             SetModTree(new BogwoodTree());
-            Main.tileBlendAll[this.Type] = true;
+            TileID.Sets.Conversion.Grass[Type] = true;
+            Main.tileBlendAll[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;

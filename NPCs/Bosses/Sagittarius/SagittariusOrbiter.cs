@@ -73,14 +73,28 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         private Color Glow = GenericUtils.COLOR_GLOWPULSE;
+        Vector2 PlayerPos = new Vector2(0, 0);
+        Vector2 OldPos = new Vector2(0, 0);
 
         public override void AI()
-		{
+        {
             if (!NPC.AnyNPCs(mod.NPCType<SagittariusOrbiter>()))
             {
                 npc.life = 0;
             }
+
             npc.noGravity = true;
+
+            if (npc.alpha > 0)
+            {
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+            }
 
             ChainTimer++;
             if (ChainTimer > 4)
@@ -91,14 +105,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     ChainFrame = 0;
                 }
             }
-			if(body == -1)
-			{
-				int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Sagittarius"), 400f, null);	
-				if(npcID >= 0) body = npcID;
-			}
-			if(body == -1) return;				
-			NPC sagittarius = Main.npc[body];
-			if(sagittarius == null || sagittarius.life <= 0 || !sagittarius.active || sagittarius.type != mod.NPCType("Sagittarius")){ BaseAI.KillNPCWithLoot(npc); return; }
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Sagittarius"), 400f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            if (body == -1) return;
+            NPC sagittarius = Main.npc[body];
+            if (sagittarius == null || sagittarius.life <= 0 || !sagittarius.active || sagittarius.type != mod.NPCType("Sagittarius")) { BaseAI.KillNPCWithLoot(npc); return; }
 
             Player player = Main.player[sagittarius.target];
 
@@ -184,7 +198,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("DoomLaser"), npc.damage / 2, 0f, 8f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / 2, 0f, 4f);
                     }
                 }
             }
@@ -212,7 +226,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("DoomLaser"), npc.damage / 2, 0f, 8f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / 2, 0f, 4f);
                     }
                 }
             }
@@ -236,6 +250,33 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
         }
 
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 8f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
         public override void NPCLoot()
         {
             if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
@@ -247,10 +288,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(dColor));
-            if(npc.alpha < 0)
-            {
-                BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, GenericUtils.COLOR_GLOWPULSE);
-            }
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, npc.GetAlpha(GenericUtils.COLOR_GLOWPULSE));
             return false;
 		}		
 	}

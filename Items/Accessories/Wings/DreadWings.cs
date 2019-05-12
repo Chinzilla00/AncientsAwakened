@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -36,7 +37,18 @@ namespace AAMod.Items.Accessories.Wings
 			constantAscend = 0.135f;
 		}
 
-		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Yamata;
+                }
+            }
+        }
+
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
 			speed = 14f;
 			acceleration *= 3.5f;

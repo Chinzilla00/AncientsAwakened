@@ -16,7 +16,7 @@ namespace AAMod.Items.Flasks
 4. Find whatever the creatures in the mire eat. Just kill them until one drops its food or something.
 5. A scale from something in the inferno. I'm trying to figure out how these things are so fire resistant.
 6. Spore Samples from the jungle. These mushrooms are really annoying, maybe I can make something to kill them off.
-7. A sample of whatever the Mushroom Monarch and Feudal FUngus are made of. I might need some help studying these, though...
+7. A sample of whatever the Mushroom Monarch and Feudal Fungus are made of. I might need some help studying these, though...
 8. A piece of scrap metal from those floating islands west of here. That stuff looks interesting to make equipment with.
 9. Something sparkly from the Hallow. I wonder if I can use it to make more potions...");
         }

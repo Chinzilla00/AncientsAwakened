@@ -44,8 +44,6 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override void AI()
         {
-            Player player = Main.player[npc.target];
-            AAPlayer modPlayer = Main.player[npc.target].GetModPlayer<AAPlayer>();
             BaseAI.AIElemental(npc, ref npc.ai, null, 1, false, false, 800f, 600f, 180, 3f);
 
             if (npc.velocity.X > 0)

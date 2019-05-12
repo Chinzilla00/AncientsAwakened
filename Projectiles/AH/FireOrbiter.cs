@@ -18,7 +18,6 @@ namespace AAMod.Projectiles.AH
 		
 		public override void SetStaticDefaults()
 		{
-            DisplayName = "Oribiters";
 			Main.projFrames[projectile.type] = 4;
 		}
 
@@ -70,9 +69,11 @@ namespace AAMod.Projectiles.AH
 			Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             if (player.dead || !player.HasBuff(mod.BuffType("Orbiters"))) projectile.Kill();
-            if (modPlayer.Orbiters){
+            if (modPlayer.Orbiters)
+            {
 				projectile.timeLeft = 2;
-				player.AddBuff(mod.BuffType("Orbiters"), 2, true);}
+				player.AddBuff(mod.BuffType("Orbiters"), 2, true);
+            }
 			
             if (projectile.active) { SetRot(); }
 			BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 40f, 20f, 0.07f, true);

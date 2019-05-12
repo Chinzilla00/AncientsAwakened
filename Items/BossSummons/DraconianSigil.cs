@@ -18,7 +18,8 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Draconian Sun Sigil");
             Tooltip.SetDefault(@"An ornate tablet said to contain the radiant power of a thousand suns
 Summons Akuma
-Only Usable during the day");
+Only Usable during the day
+Non-Consumable");
         }
 
         public override void SetDefaults()
@@ -94,7 +95,7 @@ Only Usable during the day");
             {
                 Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
-            AAModGlobalNPC.SpawnBoss(mod, player, "Akuma", true, 0, 0, "Akuma, Draconian Demon");
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

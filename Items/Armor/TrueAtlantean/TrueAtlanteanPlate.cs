@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueAtlantean
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Atlantean Chestplate");
+			DisplayName.SetDefault("Triton Chestplate");
 			Tooltip.SetDefault(@"Increases magic damage by 20%
 It vibrates with the powers of Atlantis");
 

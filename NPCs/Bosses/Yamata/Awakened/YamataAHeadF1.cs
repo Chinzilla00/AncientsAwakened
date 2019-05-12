@@ -76,11 +76,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 projectile.damage *= (int).2;
             }
         }
-
-		public override bool PreNPCLoot()
+        public override bool PreNPCLoot()
         {
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<YamataSoul>());
-            BaseUtility.Chat("OWIE!!!", new Color(146, 30, 68));
+            if (!Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) < 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) < 6000f)
+            {
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<YamataSoul>());
+                BaseUtility.Chat("OWIE!!!", new Color(146, 30, 68));
+            }
             return false;
         }
     }

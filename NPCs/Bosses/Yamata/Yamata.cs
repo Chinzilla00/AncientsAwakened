@@ -120,6 +120,16 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
         public bool Dead = false;
 
         public override void NPCLoot()
@@ -687,6 +697,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                     quarterHealth = true;
                 }
             }
+        }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            damage = 0;
+        }
+
+        public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            damage = 0;
         }
     }
 

@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("YamataA"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("YamataA"), -1, null);
                 if (npcID >= 0) body = npcID;
             }
             NPC Yamata = Main.npc[body];
@@ -64,6 +64,30 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void PostAI()
         {
+            Player player = Main.player[npc.target];
+            if (internalAI[0] != AISTATE_SPIN)
+            {
+                if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
+                {
+                    if (pos == -250)
+                    {
+                        pos = 250;
+                    }
+                    npc.direction = 1;
+                }
+                else //If NPC's X position is lower than the player's
+                {
+                    if (pos == 250)
+                    {
+                        pos = -250;
+                    }
+                    npc.direction = -1;
+                }
+            }
+            else
+            {
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
+            }
             if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
             {
                 npc.life = 0;

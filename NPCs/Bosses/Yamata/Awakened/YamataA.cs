@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			base.SetDefaults();
 			isAwakened = true;
             npc.value = Item.buyPrice(20, 0, 0, 0);
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");		
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -50,6 +50,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Main.NewText("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
             }
             return false;
+        }
+
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        {
+            damage = 0;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -179,28 +189,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     Main.NewText("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
                     Main.NewText("That's my girl..!", new Color(146, 30, 68));
-                    SpawnBoss(Main.player[npc.target], "HarukaY", "");
+                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
                     return;
                 }
                 Main.NewText("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
                 Main.NewText("Sigh...yes dad.", new Color(72, 78, 117));
-                SpawnBoss(Main.player[npc.target], "HarukaY", "");
+                AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
             }
         }
 
         public bool spawnHaruka = false;
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(0, 2000);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-            }
-        }
 
         public override void FindFrame(int frameHeight)
         {
