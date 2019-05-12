@@ -1504,6 +1504,9 @@
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BunnyBrawler.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BunnyBattler.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\CarrotHostile.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahBookIt.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahBunny.cs" />
     <Compile Include="NPCs\Bosses\Rajah\PunisherR.cs" />
@@ -4201,6 +4204,9 @@
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />
+    <Content Include="NPCs\Bosses\Rajah\BunnyBattler.png" />
+    <Content Include="NPCs\Bosses\Rajah\BunnyBrawler.png" />
+    <Content Include="NPCs\Bosses\Rajah\CarrotHostile.png" />
     <Content Include="NPCs\Bosses\Rajah\PunisherR.png" />
     <Content Include="NPCs\Bosses\Rajah\PunisherR_Chain.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.png" />

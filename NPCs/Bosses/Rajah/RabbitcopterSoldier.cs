@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public abstract class RabbitcopterSoldier : ModNPC
+    public class RabbitcopterSoldier : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -34,6 +34,11 @@ namespace AAMod.NPCs.Bosses.Rajah
             animationType = NPCID.MothronSpawn;
         }
 
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
 			bool isDead = npc.life <= 0;		
@@ -42,9 +47,36 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             }
 			for (int m = 0; m < (isDead ? 35 : 6); m++)
-			{
-				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead? 2f : 1.5f));
-			}			
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
+            }			
+        }
+
+        public override void PostAI()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Rajah>()))
+            {
+                if (npc.alpha > 0)
+                {
+                    npc.alpha -= 5;
+                }
+                else
+                {
+                    npc.alpha = 0;
+                }
+            }
+            else
+            {
+                npc.dontTakeDamage = true;
+                if (npc.alpha < 255)
+                {
+                    npc.alpha += 5;
+                }
+                else
+                {
+                    npc.active = false;
+                }
+            }
         }
 
         public override void AI()

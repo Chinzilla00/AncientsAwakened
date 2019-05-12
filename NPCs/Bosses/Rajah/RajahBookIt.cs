@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public abstract class RajahBookIt : ModProjectile
+    public class RajahBookIt : ModProjectile
     {
         public override void SetStaticDefaults()
         {

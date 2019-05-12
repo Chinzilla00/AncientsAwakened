@@ -10,7 +10,7 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public abstract class Rajah : ModNPC
+    public class Rajah : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -56,16 +56,18 @@ namespace AAMod.NPCs.Bosses.Rajah
             base.ReceiveExtraAI(reader);
             if (Main.netMode == 1)
             {
-                internalAI[0] = reader.ReadFloat();
+                internalAI[0] = reader.ReadFloat(); //SpaceOctopus AI stuff
                 internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat(); //Minion Timer
-                internalAI[3] = reader.ReadFloat(); //Arm Weapon Timer
+                internalAI[2] = reader.ReadFloat(); //Minion/Rocket Timer
+                internalAI[3] = reader.ReadFloat(); //Ground Minion Alternation
                 internalAI[4] = reader.ReadFloat(); //Is Flying
             }
         }
 
+        private Texture2D RajahTex;
         private Texture2D CapeTex;
         private Texture2D ArmTex;
+        public Vector2 WeaponPos;
 
         /*
          * npc.ai[0] = Jump Timer
@@ -77,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
-
+            WeaponPos = new Vector2(npc.Center.X + 78, npc.Center.Y - 9);
             if (!NPC.AnyNPCs(mod.NPCType<PunisherR>()))
             {
                 NPC.NewNPC((int)npc.Center.X + 78, (int)npc.Center.Y - 9, mod.NPCType<PunisherR>(), 0, -1f, 0f, 0f, 0f, 255);
@@ -106,15 +108,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 FlyAI();
                 internalAI[4] = 0;
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
             }
             else
             {
                 JumpAI();
                 internalAI[4] = 1;
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
             }
-            
+
             if (npc.target <= 0 || npc.target == 255 || Main.player[npc.target].dead)
             {
                 npc.TargetClosest(true);
@@ -131,12 +131,120 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
 
             npc.ai[2]++;
-            if (npc.ai[2] > 600)
+            internalAI[2]++;
+            if (npc.ai[3] != 0 && npc.ai[2] >= 500)
             {
-                npc.ai[3] = Main.rand.Next(4);
+                internalAI[2] = 0;
                 npc.ai[2] = 0;
+                npc.ai[3] = 0;
             }
-            if (npc.ai[3] == 0) //No Weapon
+            else if (npc.ai[3] == 0 && npc.ai[2] > 240)
+            {
+                internalAI[2] = 0;
+                npc.ai[2] = 0;
+                npc.ai[3] = Main.rand.Next(4);
+            }
+
+            WeaponTexture();
+
+            if (npc.ai[3] == 0) //Minion Phase
+            {
+                if (internalAI[2] >= 60)
+                {
+                    internalAI[2] = 0;
+                    if (internalAI[4] == 0)
+                    {
+                        NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>());
+                    }
+                    else
+                    {
+                        if (internalAI[3] > 2)
+                        {
+                            internalAI[3] = 0;
+                        }
+                        if (internalAI[3] == 0)
+                        {
+                            for (int i = 0; i < 3; i++)
+                            {
+                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>());
+                            }
+                        }
+                        else if (internalAI[3] == 1)
+                        {
+                            NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBrawler>());
+                        }
+                        else if (internalAI[3] == 2)
+                        {
+                            for (int i = 0; i < 4; i++)
+                            {
+                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBattler>());
+                            }
+                        }
+                        internalAI[3] += 1;
+                    }
+                }
+            }
+
+            if (npc.ai[3] == 1) //Bunzooka
+            {
+                BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, mod.ProjectileType<RajahRocket>(), ref internalAI[2], 45, npc.damage / 2, 9, true);
+            }
+
+            if (npc.ai[3] == 3) //Royal Scepter
+            {
+                float spread = 45f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                dir *= 5f;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                internalAI[2]++;
+                if (internalAI[2] > 40)
+                {
+                    internalAI[2] = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        double offsetAngle = startAngle + (deltaAngle * i);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                    }
+                }
+            }
+
+
+        }
+
+        public bool TileBelowEmpty()
+        {
+            int tileX = (int)(npc.Center.X / 16f) + npc.direction * 2;
+            int tileY = (int)((npc.position.Y + (float)npc.height) / 16f);
+
+            for (int tY = tileY; tY < tileY + 17; tY++)
+            {
+                if (Main.tile[tileX, tY] == null)
+                {
+                    Main.tile[tileX, tY] = new Tile();
+                }
+                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[(int)Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void WeaponTexture()
+        {
+            if (internalAI[4] == 0)
+            {
+                RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah_Fly");
+                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
+            }
+            else
+            {
+                ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah");
+                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
+            }
+            if (npc.ai[3] == 0 || npc.ai[3] == 2) //No Weapon/Punisher
             {
                 if (internalAI[4] == 0)
                 {
@@ -158,17 +266,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                     ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArmsB");
                 }
             }
-            else if (npc.ai[3] == 2) //Punisher
-            {
-                if (internalAI[4] == 0)
-                {
-                    ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArms_Fly");
-                }
-                else
-                {
-                    ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArms");
-                }
-            }
             else //Royal Scepter
             {
                 if (internalAI[4] == 0)
@@ -180,25 +277,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                     ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArmsR");
                 }
             }
-        }
-
-        public bool TileBelowEmpty()
-        {
-            int tileX = (int)(npc.Center.X / 16f) + npc.direction * 2;
-            int tileY = (int)((npc.position.Y + (float)npc.height) / 16f);
-
-            for (int tY = tileY; tY < tileY + 17; tY++)
-            {
-                if (Main.tile[tileX, tY] == null)
-                {
-                    Main.tile[tileX, tY] = new Tile();
-                }
-                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[(int)Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         public void JumpAI()
@@ -337,7 +415,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = 0;
+            potionType = ItemID.SuperHealingPotion;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -348,7 +426,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, ArmTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, CapeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             return false;

@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public abstract class PunisherR : ModNPC
+    public class PunisherR : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             NPC Rajah = Main.npc[Rabbit];
             if (Rabbit < 0)
             {
-                npc.StrikeNPCNoInteraction(9999, 0f, 0, false, false, false);
+                npc.active = false;
                 return;
             }
             if (Rajah.ai[3] != 2)
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 float num661 = Rajah.Center.Y - vector79.Y;
                 num661 -= 9f;
                 num660 += 78f;
-                float num662 = (float)Math.Sqrt((double)(num660 * num660 + num661 * num661));
+                float num662 = (float)Math.Sqrt(num660 * num660 + num661 * num661);
                 if (num662 < 12f + num659)
                 {
                     npc.rotation = 0f;
@@ -116,7 +116,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     num662 = num659 / num662;
                     npc.velocity.X = num660 * num662;
                     npc.velocity.Y = num661 * num662;
-                    npc.rotation = (float)Math.Atan2((double)(-(double)npc.velocity.Y), (double)(-(double)npc.velocity.X));
+                    npc.rotation = (float)Math.Atan2(-npc.velocity.Y, npc.velocity.X);
                 }
             }
             else if (npc.ai[0] == 1f)
@@ -140,12 +140,12 @@ namespace AAMod.NPCs.Bosses.Rajah
                 Vector2 vector80 = new Vector2(npc.Center.X, npc.Center.Y);
                 float num664 = Main.player[npc.target].Center.X - vector80.X;
                 float num665 = Main.player[npc.target].Center.Y - vector80.Y;
-                float num666 = (float)Math.Sqrt((double)(num664 * num664 + num665 * num665));
+                float num666 = (float)Math.Sqrt(num664 * num664 + num665 * num665);
                 num666 = num663 / num666;
                 npc.velocity.X = num664 * num666;
                 npc.velocity.Y = num665 * num666;
                 npc.ai[0] = 2f;
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
             }
             else if (npc.ai[0] == 2f)
             {
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 num668 += Rajah.velocity.Y;
                 num668 -= 9f;
                 num667 += 78f;
-                float num669 = (float)Math.Sqrt((double)(num667 * num667 + num668 * num668));
+                float num669 = (float)Math.Sqrt(num667 * num667 + num668 * num668);
                 if (Rajah.life < Rajah.lifeMax)
                 {
                     npc.knockBackResist = 0f;
@@ -216,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 Vector2 vector82 = new Vector2(npc.Center.X, npc.Center.Y);
                 float num673 = Main.player[npc.target].Center.X - vector82.X;
                 float num674 = Main.player[npc.target].Center.Y - vector82.Y;
-                float num675 = (float)Math.Sqrt((double)(num673 * num673 + num674 * num674));
+                float num675 = (float)Math.Sqrt((num673 * num673 + num674 * num674));
                 num675 = num671 / num675;
                 num673 *= num675;
                 num674 *= num675;
@@ -254,6 +254,47 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            int Rabbit = AAModGlobalNPC.Rajah;
+            NPC Rajah = Main.npc[Rabbit];
+            if (Rajah.ai[3] != 2)
+            {
+                return false;
+            }
+            Vector2 vector6 = new Vector2(npc.Center.X, npc.Center.Y);
+            float num19 = Rajah.Center.X - vector6.X;
+            float num20 = Rajah.Center.Y - vector6.Y;
+            num20 -= 7f;
+            num19 += 66f;
+            float rotation6 = (float)Math.Atan2(num20, num19) - 1.57f;
+            bool flag6 = true;
+            while (flag6)
+            {
+                float num21 = (float)Math.Sqrt((num19 * num19 + num20 * num20));
+                if (num21 < 16f)
+                {
+                    flag6 = false;
+                }
+                else
+                {
+                    num21 = 16f / num21;
+                    num19 *= num21;
+                    num20 *= num21;
+                    vector6.X += num19;
+                    vector6.Y += num20;
+                    num19 = Rajah.Center.X - vector6.X;
+                    num20 = Rajah.Center.Y - vector6.Y;
+                    num20 -= 7f;
+                    num19 += 66f;
+                    Color color6 = Lighting.GetColor((int)vector6.X / 16, (int)(vector6.Y / 16f));
+                    Texture2D Chain = mod.GetTexture("NPCs/Bosses/Rajah/PunisherR_Chain");
+                    Main.spriteBatch.Draw(Chain, new Vector2(vector6.X - Main.screenPosition.X, vector6.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, Chain.Width, Chain.Height)), color6, rotation6, new Vector2(Chain.Width * 0.5f, Chain.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                }
+            }
+            return true;
         }
     }
 }
