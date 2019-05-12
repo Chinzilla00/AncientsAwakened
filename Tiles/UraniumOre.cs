@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    public class Uranium : ModTile
+    public class UraniumOre : ModTile
     {
         public Texture2D glowTex;
         public bool glow = true;

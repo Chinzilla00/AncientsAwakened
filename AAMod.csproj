@@ -2176,7 +2176,7 @@
     <Compile Include="Tiles\Trophy\ShenTrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataATrophy.cs" />
     <Compile Include="Tiles\Trophy\YamataTrophy.cs" />
-    <Compile Include="Tiles\Uranium.cs" />
+    <Compile Include="Tiles\UraniumOre.cs" />
     <Compile Include="Tiles\ChaosAltar2.cs" />
     <Compile Include="Tiles\ChaosAltar1.cs" />
     <Compile Include="Tiles\DiscordiumOre.cs" />
