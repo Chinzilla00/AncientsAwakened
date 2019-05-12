@@ -105,7 +105,26 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public override void AI()
         {
 			npc.TargetClosest();
-			Player playerTarget = Main.player[npc.target];
+
+            if (!HeadsSpawned)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.realLife = npc.whoAmI;
+                    int latestNPC = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Head1 = Main.npc[latestNPC];
+                    latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Head2 = Main.npc[latestNPC];
+                }
+                HeadsSpawned = true;
+            }
+
+            Player playerTarget = Main.player[npc.target];
             if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
             {
                 npc.NPCLoot();
@@ -151,22 +170,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
 					npc.noGravity = false;		
 					npc.noTileCollide = false;				
 					npc.velocity.X *= 0.8f;
-					if (!HeadsSpawned)
-					{
-						if (Main.netMode != 1)
-						{
-							int latestNPC = npc.whoAmI;
-							latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-							Main.npc[latestNPC].realLife = npc.whoAmI;
-							Main.npc[latestNPC].ai[0] = npc.whoAmI;
-							Head1 = Main.npc[latestNPC];
-							latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-							Main.npc[latestNPC].realLife = npc.whoAmI;
-							Main.npc[latestNPC].ai[0] = npc.whoAmI;
-							Head2 = Main.npc[latestNPC];					
-						}
-						HeadsSpawned = true;
-					}
 					if (Math.Abs(playerTarget.Center.X - npc.Center.X) < 380f) 
 					{
 						
