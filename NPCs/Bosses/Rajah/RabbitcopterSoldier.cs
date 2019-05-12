@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public class RabbitcopterSoldier : ModNPC
+    public abstract class RabbitcopterSoldier : ModNPC
     {
         public override void SetStaticDefaults()
         {
