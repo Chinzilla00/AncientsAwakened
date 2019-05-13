@@ -756,7 +756,6 @@ namespace AAMod
                     {
                         recipe.AddIngredient(GRealm, "CosmicContainer");
                     }
-                    recipe.AddIngredient(ItemID.BottledWater);
                     recipe.AddTile(TileID.Bottles);
                     recipe.SetResult(GRealm, potion.Item1);
                     recipe.AddRecipe();
