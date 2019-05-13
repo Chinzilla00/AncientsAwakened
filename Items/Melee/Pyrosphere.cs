@@ -16,7 +16,7 @@ namespace AAMod.Items.Melee
             item.height = 30;
             item.maxStack = 1;
             item.rare = 2;
-            item.value = BaseUtility.CalcValue(0, 0, 90, 50);
+            item.value = BaseMod.BaseUtility.CalcValue(0, 0, 90, 50);
             item.useStyle = 5;
             item.useAnimation = 45;
             item.useTime = 45;

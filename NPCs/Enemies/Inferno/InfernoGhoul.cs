@@ -7,11 +7,11 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-    public class InfernalGoul : ModNPC
+    public class InfernoGhoul : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Goul");
+			DisplayName.SetDefault("Infernal Ghoul");
 			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DesertGhoul];
 		}
 
