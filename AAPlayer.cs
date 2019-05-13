@@ -1152,17 +1152,12 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 5:
-
-                        player.QuickSpawnItem(mod.ItemType("FazerHood"));
-                        player.QuickSpawnItem(mod.ItemType("FazerShirt"));
-                        player.QuickSpawnItem(mod.ItemType("FazerPants"));
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("FazerPaws"));
-                        }
+                        player.QuickSpawnItem(mod.ItemType("TailsHead"));
+                        player.QuickSpawnItem(mod.ItemType("TailsBody"));
+                        player.QuickSpawnItem(mod.ItemType("TailsLegs"));
                         if (dropType >= 2)
                         {
-                            player.QuickSpawnItem(mod.ItemType("Fluff" + addonEX));
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "FreedomStar" : "MobianBuster"));
                         }
                         spawnedDevItems = true;
                         break;
@@ -1251,15 +1246,6 @@ namespace AAMod
                             player.QuickSpawnItem(mod.ItemType("Etheral" + addonEX));
                         }
                         spawnedDevItems = true;
-                        break;
-                    case 15:
-                        player.QuickSpawnItem(mod.ItemType("TailsHead"));
-                        player.QuickSpawnItem(mod.ItemType("TailsBody"));
-                        player.QuickSpawnItem(mod.ItemType("TailsLegs"));
-                        if (dropType >= 2)
-                        {
-                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "FreedomStar" : "MobianBuster"));
-                        }
                         break;
                 }
             }

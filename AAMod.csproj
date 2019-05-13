@@ -860,13 +860,11 @@
     <Compile Include="Items\Dev\EnderStaffEX.cs" />
     <Compile Include="Items\Dev\Etheral.cs" />
     <Compile Include="Items\Dev\EtheralEX.cs" />
-    <Compile Include="Items\Dev\FluffEX.cs" />
     <Compile Include="Items\Dev\FreedomBlaster.cs" />
     <Compile Include="Items\Dev\MobianBuster.cs" />
     <Compile Include="Items\Dev\FreedomStar.cs" />
     <Compile Include="Items\Dev\GentlemansLongblade.cs" />
     <Compile Include="Items\Dev\GentlemansRapier.cs" />
-    <Compile Include="Items\Dev\Fluff.cs" />
     <Compile Include="Items\Dev\GroxNote.cs" />
     <Compile Include="Items\Dev\HallamDevWeapon.cs" />
     <Compile Include="Items\Dev\PoniumStaffEX.cs" />
@@ -992,6 +990,7 @@
     <Compile Include="Items\Melee\Pyrosphere.cs" />
     <Compile Include="Items\Melee\RustyCutlass.cs" />
     <Compile Include="Items\Melee\ScourgeOfShadows.cs" />
+    <Compile Include="Items\Melee\ThanosSword.cs" />
     <Compile Include="Items\Melee\SlapBone.cs" />
     <Compile Include="Items\Melee\StarWrathEX.cs" />
     <Compile Include="Items\Melee\SwampSlasher.cs" />
@@ -1770,6 +1769,7 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\ThanosSword.cs" />
     <Compile Include="Projectiles\Flasks\AshJar.cs" />
     <Compile Include="Projectiles\Flasks\CorruptionFlask.cs" />
     <Compile Include="Projectiles\Flasks\CrimsonFlask.cs" />
@@ -4146,6 +4146,8 @@
     <Content Include="Items\Melee\HeatCleaver.png" />
     <Content Include="Items\Melee\Pyrosphere.png" />
     <Content Include="Items\Melee\SwampSlasher.png" />
+    <Content Include="Items\Melee\ThanosSword.png" />
+    <Content Include="Items\Melee\ThanosSwordEX.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
     <Content Include="Items\Mushrooms\Pink.png" />
@@ -4736,7 +4738,6 @@
     <Content Include="Items\Dev\CordesDuFuret_Axe.png" />
     <Content Include="Items\Dev\CordesDuFuret_Notes.png" />
     <Content Include="Items\Dev\CrabGuardian.png" />
-    <Content Include="Items\Dev\DeltaBlade.png" />
     <Content Include="Items\Dev\DragonShell.png" />
     <Content Include="Items\Dev\DragonShell_Shield.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
@@ -4747,8 +4748,6 @@
     <Content Include="Items\Dev\EtheralEX.png" />
     <Content Include="Items\Dev\Excaligrim.png" />
     <Content Include="Items\Dev\ExcaligrimEX.png" />
-    <Content Include="Items\Dev\Fluff.png" />
-    <Content Include="Items\Dev\FluffEX.png" />
     <Content Include="Items\Dev\FreedomBlaster.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
@@ -6069,6 +6068,10 @@
     <Content Include="Projectiles\TerraRoseShotEX.png" />
     <Content Include="Projectiles\TerraShotEX.png" />
     <Content Include="Projectiles\TFGWP.png" />
+    <Content Include="Projectiles\ThanosSword.png" />
+    <Content Include="Projectiles\ThanosSwordEX.png" />
+    <Content Include="Projectiles\ThanosSwordEXT.png" />
+    <Content Include="Projectiles\ThanosSwordT.png" />
     <Content Include="Projectiles\TheIlluminatiP.png" />
     <Content Include="Projectiles\The_Plague_Pro.png" />
     <Content Include="Projectiles\Thorium\AuroraScythe.png" />

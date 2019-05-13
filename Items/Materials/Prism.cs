@@ -15,7 +15,7 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(Main.DiscoR / 3, Main.DiscoG / 3, Main.DiscoB / 3);
+            return new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
         }
 
         public override void SetDefaults()

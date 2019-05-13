@@ -22,6 +22,7 @@ namespace AAMod.Items.Melee
             item.shoot = mod.ProjectileType("DarkShredders");
             item.noUseGraphic = true;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
