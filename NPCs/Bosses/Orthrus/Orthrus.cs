@@ -108,28 +108,26 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public override void AI()
         {
 			npc.TargetClosest();
-			Player playerTarget = Main.player[npc.target];
 
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
                 {
+                    npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
                     latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
                     latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
+                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
                 }
                 HeadsSpawned = true;
             }
 
-            color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-
-            Lighting.AddLight(npc.Center, color.R / 255, color.G / 255, color.B / 255);
+            Player playerTarget = Main.player[npc.target];
             if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
             {
                 npc.NPCLoot();
