@@ -128,7 +128,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             }
 
             Player playerTarget = Main.player[npc.target];
-            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())))
+            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && !playerTarget.dead)
             {
                 npc.NPCLoot();
                 npc.active = false;

@@ -1351,10 +1351,6 @@
     <Compile Include="Items\Vanity\Eliza\LizScarf.cs" />
     <Compile Include="Items\Vanity\Eliza\LizShirt.cs" />
     <Compile Include="Items\Vanity\Eliza\NightingaleWings.cs" />
-    <Compile Include="Items\Vanity\Fazer\FazerHood.cs" />
-    <Compile Include="Items\Vanity\Fazer\FazerPants.cs" />
-    <Compile Include="Items\Vanity\Fazer\FazerShirt.cs" />
-    <Compile Include="Items\Vanity\Fazer\FazerPaws.cs" />
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
@@ -5241,17 +5237,6 @@
     <Content Include="Items\Vanity\Fargo\FargoSuit_Arms.png" />
     <Content Include="Items\Vanity\Fargo\FargoSuit_Body.png" />
     <Content Include="Items\Vanity\Fargo\FargoSuit_Female.png" />
-    <Content Include="Items\Vanity\Fazer\FazerArmor.png" />
-    <Content Include="Items\Vanity\Fazer\FazerHood.png" />
-    <Content Include="Items\Vanity\Fazer\FazerHood_Head.png" />
-    <Content Include="Items\Vanity\Fazer\FazerHood_Head_Glow.png" />
-    <Content Include="Items\Vanity\Fazer\FazerPants.png" />
-    <Content Include="Items\Vanity\Fazer\FazerPants_Legs.png" />
-    <Content Include="Items\Vanity\Fazer\FazerPaws.png" />
-    <Content Include="Items\Vanity\Fazer\FazerPaws_Wings.png" />
-    <Content Include="Items\Vanity\Fazer\FazerShirt.png" />
-    <Content Include="Items\Vanity\Fazer\FazerShirt_Arms.png" />
-    <Content Include="Items\Vanity\Fazer\FazerShirt_Body.png" />
     <Content Include="Items\Vanity\Hallam\HalHat.png" />
     <Content Include="Items\Vanity\Hallam\HalHat_Head.png" />
     <Content Include="Items\Vanity\Hallam\HalTrousers.png" />
@@ -6457,6 +6442,7 @@
     <Content Include="Tiles\TerrariumBox.png" />
     <Content Include="Tiles\TerraWood.png" />
     <Content Include="Tiles\ToadBox.png" />
+    <Content Include="Tiles\Torch.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\Torchsand.png" />
     <Content Include="Tiles\TorchsandBall.png" />
@@ -6484,8 +6470,8 @@
     <Content Include="Tiles\Trophy\ZeroTrophy.png" />
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
     <Content Include="Tiles\UnifiedMycelium.png" />
-    <Content Include="Tiles\Uranium.png" />
     <Content Include="Tiles\UraniumAnvil.png" />
+    <Content Include="Tiles\UraniumOre.png" />
     <Content Include="Tiles\VoidBox.png" />
     <Content Include="Tiles\VoidUnit.png" />
     <Content Include="Tiles\WallTied.png" />
