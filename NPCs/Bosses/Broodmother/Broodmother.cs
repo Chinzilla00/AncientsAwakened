@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.chaseable = true;
             npc.damage = 25;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
-            npc.defense = 10;
+            npc.defense = 20;
             npc.boss = true;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;

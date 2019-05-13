@@ -257,6 +257,8 @@ namespace AAMod
 
         public bool WorldgenReminder = false;
 
+        public static int RabbitKills = 0;
+
         public override void ResetEffects()
         {
             //Minions
@@ -405,6 +407,7 @@ namespace AAMod
 
             //Misc
             Compass = false;
+            RabbitKills = 0;
         }
 
         public override void Initialize()
@@ -424,38 +427,17 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
-        /*public override TagCompound Save()
+        public override TagCompound Save()
         {
-            var PlayerBool = new List<string>();
-
-
-            if (Compass) PlayerBool.Add("Compass");
-
             return new TagCompound {
-                {"PlayerBool", PlayerBool},
-                {
-                    "ManaLantern", ManaLantern
-                }
+                {"Rabbits", RabbitKills},
             };
         }
 
-
         public override void Load(TagCompound tag)
         {
-            int ManaLantern = tag.GetInt("ManaLantern");
-            var PlayerBool = tag.GetList<string>("PlayerBool");
-
-            Compass = PlayerBool.Contains("Compass");
-
-            if (tag.ContainsKey("ManaLantern"))
-            {
-                ManaLantern = tag.GetInt("ManaLantern");
-            }
-            else
-            {
-                ManaLantern = 0;
-            }
-        }*/
+            RabbitKills = tag.GetInt("Rabbits");
+        }
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
         {
@@ -744,6 +726,13 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (RabbitKills >= 100)
+            {
+                RabbitKills = 0;
+                Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), player.Center);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
+            }
             if (SagCooldown > 0)
             {
                 player.noItems = true;

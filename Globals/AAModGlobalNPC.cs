@@ -226,7 +226,15 @@ namespace AAMod
                 }
                 npc.lifeRegen -= Math.Abs((int)(npc.velocity.X));
             }
+        }
 
+        public override bool PreNPCLoot(NPC npc)
+        {
+            if (npc.type == NPCID.Bunny || npc.type == NPCID.BunnyXmas || npc.type == NPCID.BunnySlimed || npc.type == NPCID.GoldBunny || npc.type == NPCID.PartyBunny)
+            {
+                AAPlayer.RabbitKills += 1;
+            }
+            return true;
         }
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
@@ -752,7 +760,6 @@ namespace AAMod
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            Mod GRealm = ModLoader.GetMod("Grealm");
             Player player = Main.player[Main.myPlayer];
             
 
@@ -776,10 +783,11 @@ namespace AAMod
                     pool.Add(mod.NPCType("Wyrmling"), .3f);
                     pool.Add(mod.NPCType("InfernalSlime"), .7f);
                     pool.Add(mod.NPCType("Flamebrute"), .3f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), .7f);
-                    pool.Add(mod.NPCType("DragonClaw"), .7f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), .5f);
+                    pool.Add(mod.NPCType("DragonClaw"), .1f);
                     if (Main.hardMode)
                     {
+                        pool.Add(mod.NPCType("MagmaSwimmer"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Wyvern"), .2f);
                         pool.Add(mod.NPCType("BlazePhoenix"), .1f);
                     }
@@ -788,10 +796,12 @@ namespace AAMod
                 {
                     pool.Add(mod.NPCType("Wyrmling"), .3f);
                     pool.Add(mod.NPCType("Flamebrute"), .3f);
-                    pool.Add(mod.NPCType("InfernoSalamander"), .7f);
-                    pool.Add(mod.NPCType("DragonClaw"), .7f);
+                    pool.Add(mod.NPCType("InfernoSalamander"), .5f);
+                    pool.Add(mod.NPCType("DragonClaw"), .1f);
                     if (Main.hardMode)
                     {
+                        pool.Add(mod.NPCType("HotWasp"), .1f);
+                        pool.Add(mod.NPCType("MagmaSwimmer"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Wyvern"), .2f);
                         pool.Add(mod.NPCType("Wyrm"), .1f);
                         pool.Add(mod.NPCType("ChaoticDawn"), .1f);
@@ -799,11 +809,15 @@ namespace AAMod
                         {
                             pool.Add(mod.NPCType("Dragron"), .05f);
                         }
+                        if (player.ZoneUndergroundDesert)
+                        {
+                            pool.Add(mod.NPCType("InfernoGhoul"), .1f);
+                        }
                     }
                 }
                 if (AAWorld.downedGripsS)
                 {
-                    pool.Add(mod.NPCType("BlazeClaw"), .6f);
+                    pool.Add(mod.NPCType("BlazeClaw"), .05f);
                 }
                 if (AAWorld.downedAkuma)
                 {
@@ -823,6 +837,7 @@ namespace AAMod
                     pool.Add(mod.NPCType("MireSkulker"), .7f);
                     if (Main.hardMode)
                     {
+                        pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Toxitoad"), .2f);
                         pool.Add(mod.NPCType("Kappa"), .4f);
                     }
@@ -835,11 +850,16 @@ namespace AAMod
                     pool.Add(mod.NPCType("MireSkulker"), .5f);
                     if (Main.hardMode)
                     {
+                        pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Miresquito"), .4f);
                         pool.Add(mod.NPCType("ChaoticTwilight"), .1f);
                         if (player.ZoneSnow)
                         {
                             pool.Add(mod.NPCType("Miregron"), .05f);
+                        }
+                        if (player.ZoneUndergroundDesert)
+                        {
+                            pool.Add(mod.NPCType("MireGhoul"), .1f);
                         }
                     }
                 }

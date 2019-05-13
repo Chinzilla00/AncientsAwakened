@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 				npc.spriteDirection = (npc.Center.X < player.Center.X ? 1 : -1);	
 			}else
 			{
-				BaseMod.BaseAI.AIZombie(npc, ref npc.ai, false, true, -1, 0.1f, 2f, 5, 7, 120);	
+				BaseAI.AIZombie(npc, ref npc.ai, false, true, -1, 0.1f, 2f, 5, 7, 120);	
 				npc.spriteDirection = (npc.velocity.X > 0 ? 1 : -1);				
 			}
 

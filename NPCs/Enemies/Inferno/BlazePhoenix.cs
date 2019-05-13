@@ -28,8 +28,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.aiStyle = -1;
             npc.npcSlots = 1;
             npc.value = BaseUtility.CalcValue(0, 1, 25, 0);
-            npc.lifeMax = 300;
-            npc.defense = 30;
+            npc.lifeMax = 200;
+            npc.defense = 5;
             npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.knockBackResist = 0f;
@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void AI()
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
-			AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 12f, 0.4f, 0.4f, 0.95f, 5f);
+			AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
 			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
 			BaseAI.LookAt(npc.Center + npc.velocity, npc, 0);
             npc.frameCounter++;

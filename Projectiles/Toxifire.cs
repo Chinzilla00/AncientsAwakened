@@ -55,7 +55,7 @@ namespace AAMod.Projectiles
 						if ((num297 == 66 && Main.rand.Next(3) == 0))
 						{
 							Main.dust[num299].noGravity = true;
-							Main.dust[num299].scale *= 1.75f;
+							Main.dust[num299].scale *= 2f;
 							Dust expr_DBEF_cp_0 = Main.dust[num299];
 							expr_DBEF_cp_0.velocity.X = expr_DBEF_cp_0.velocity.X * 2f;
 							Dust expr_DC0F_cp_0 = Main.dust[num299];
@@ -64,7 +64,7 @@ namespace AAMod.Projectiles
 						else
 						{
 							Main.dust[num299].noGravity = true;
-							Main.dust[num299].scale *= 0.5f;
+							Main.dust[num299].scale *= 0.8f;
 						}
 						Dust expr_DC74_cp_0 = Main.dust[num299];
 						expr_DC74_cp_0.velocity.X = expr_DC74_cp_0.velocity.X * 1.2f;

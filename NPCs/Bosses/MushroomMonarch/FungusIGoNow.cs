@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
             projectile.velocity *= 0;
-            projectile.alpha -= 10;
+            projectile.alpha += 10;
             if (projectile.alpha >= 255)
             {
                 projectile.active = false;
@@ -45,15 +45,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D tex = mod.GetTexture("NPCs/Bosses/MushroomMonarch/FungusIGoNow");
             Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungusIGoNow_Glow");
-
-            Vector2 Drawpos = projectile.Center - Main.screenPosition + new Vector2(0, projectile.gfxOffY);
 
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
 
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, lightColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, AAColor.Glow, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(lightColor), true);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(AAColor.Glow), true);
             return false;
         }
     }
