@@ -4,13 +4,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Enemies.Inferno
+namespace AAMod.NPCs.Enemies.Mire
 {
     public class MireGhoul : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Goul");
+			DisplayName.SetDefault("Shadow Ghoul");
 			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DesertGhoul];
 		}
 

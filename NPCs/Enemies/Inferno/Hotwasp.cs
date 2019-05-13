@@ -5,9 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.NPCs.Enemies.Mire
+namespace AAMod.NPCs.Enemies.Inferno
 {
-    public class Hotwasp : ModNPC
+    public class HotWasp : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
