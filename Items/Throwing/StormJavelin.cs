@@ -8,17 +8,14 @@ namespace AAMod.Items.Throwing
 {
     public class StormJavelin : ModItem
     {
-
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Storm Javelin Javelin");
+            DisplayName.SetDefault("Storm Javelin");
             Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
         {
-
             item.damage = 70;           //this is the item damage
             item.melee = true;             //this make the item do throwing damage
             item.noMelee = true;
@@ -61,8 +58,6 @@ namespace AAMod.Items.Throwing
                 0f
             );
         }
-
-
 
         public override void AddRecipes()  //How to craft this item
         {
