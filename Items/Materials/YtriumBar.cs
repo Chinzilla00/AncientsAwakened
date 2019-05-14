@@ -12,13 +12,21 @@ namespace AAMod.Items.Materials
             item.width = 32;
             item.height = 32;
 			item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.rare = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.createTile = mod.TileType("YttriumBar");
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Yttrium Bar");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Yttrium Bar");
+            Tooltip.SetDefault("");
+        }
 
 		public override void AddRecipes()
         {                                                   //How to craft this item

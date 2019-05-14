@@ -2083,6 +2083,16 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
+    <Compile Include="Tiles\YttriumBar.cs" />
+    <Compile Include="Tiles\TechneciumBar.cs" />
+    <Compile Include="Tiles\UraniumBar.cs" />
+    <Compile Include="Tiles\StarcloudBar.cs" />
+    <Compile Include="Tiles\RelicBar.cs" />
+    <Compile Include="Tiles\OrderBar.cs" />
+    <Compile Include="Tiles\NightmareBar.cs" />
+    <Compile Include="Tiles\GlowingMushiumBar.cs" />
+    <Compile Include="Tiles\FulguriteBar.cs" />
+    <Compile Include="Tiles\DoomiteBar.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
     <Compile Include="Tiles\Mushplants.cs" />
@@ -6242,6 +6252,7 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DoomiteBar.png" />
     <Content Include="Tiles\DoomitePlate.png" />
     <Content Include="Tiles\DoomsdayChest.png" />
     <Content Include="Tiles\DoomsdayChestLockedFrame.png" />
@@ -6258,11 +6269,13 @@
     <Content Include="Tiles\FateBox.png" />
     <Content Include="Tiles\FulgurGlass.png" />
     <Content Include="Tiles\FulgurGlassS.png" />
+    <Content Include="Tiles\FulguriteBar.png" />
     <Content Include="Tiles\FulguriteBrick.png" />
     <Content Include="Tiles\FulguriteBrickS.png" />
     <Content Include="Tiles\FulguritePlating.png" />
     <Content Include="Tiles\FulguritePlatingS.png" />
     <Content Include="Tiles\FungusBox.png" />
+    <Content Include="Tiles\GlowingMushiumBar.png" />
     <Content Include="Tiles\Hotshroom.png" />
     <Content Include="Tiles\InfernoFoliage.png" />
     <Content Include="Tiles\InfernoFoliage1.png" />
@@ -6289,7 +6302,9 @@
     <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
+    <Content Include="Tiles\NightmareBar.png" />
     <Content Include="Tiles\NightmareOre.png" />
+    <Content Include="Tiles\OrderBar.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
     <Content Include="Tiles\OroborosChestC1_Highlight.png" />
     <Content Include="Tiles\OroborosChestC2.png" />
@@ -6323,6 +6338,7 @@
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />
     <Content Include="Tiles\Razetus.png" />
+    <Content Include="Tiles\RelicBar.png" />
     <Content Include="Tiles\RelicOre.png" />
     <Content Include="Tiles\RottedDynastyWoodS.png" />
     <Content Include="Tiles\RottedPlatform.png" />
@@ -6430,6 +6446,7 @@
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
     <Content Include="Tiles\StarBoxN.png" />
+    <Content Include="Tiles\StarcloudBar.png" />
     <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\StormChest.png" />
     <Content Include="Tiles\StormChestS.png" />
@@ -6438,6 +6455,7 @@
     <Content Include="Tiles\StormCloud.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
+    <Content Include="Tiles\TechneciumBar.png" />
     <Content Include="Tiles\TechneciumForge.png" />
     <Content Include="Tiles\TechneciumOre.png" />
     <Content Include="Tiles\TerraCore.png" />
@@ -6476,6 +6494,7 @@
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
     <Content Include="Tiles\UnifiedMycelium.png" />
     <Content Include="Tiles\UraniumAnvil.png" />
+    <Content Include="Tiles\UraniumBar.png" />
     <Content Include="Tiles\UraniumOre.png" />
     <Content Include="Tiles\VoidBox.png" />
     <Content Include="Tiles\VoidUnit.png" />
@@ -6483,6 +6502,7 @@
     <Content Include="Tiles\YamataABox.png" />
     <Content Include="Tiles\YamataBox.png" />
     <Content Include="Tiles\YtriumOre.png" />
+    <Content Include="Tiles\YttriumBar.png" />
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
