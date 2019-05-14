@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		public override void SetDefaults()
 		{
             npc.aiStyle = 1;
-            npc.noGravity = false;
+            npc.noGravity = true;
             npc.noTileCollide = false;
             npc.width = 32;
 			npc.height = 26;

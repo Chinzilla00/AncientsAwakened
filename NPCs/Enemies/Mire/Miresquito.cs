@@ -50,6 +50,14 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             BaseAI.AIFlier(npc, ref npc.ai, false, 0.2f, 0.1f, 3, 2.5f, true, 250);
             npc.rotation = npc.velocity.X * 0.05f;
+            if (npc.velocity.X > 0)
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
         }
 
         public override void NPCLoot()

@@ -35,7 +35,17 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 Lighting.AddLight(npc.Center, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255, AAColor.Lantern.B / 255);
             }
-            BaseAI.AIFish(npc, ref npc.ai, true, true, false, 3, 2);
+            if (npc.wet)
+            {
+                npc.noGravity = true;
+                BaseAI.AIFish(npc, ref npc.ai, true, false, true, 4f, 3f);
+                BaseAI.Look(npc, 1);
+                if (!Collision.WetCollision(npc.position + npc.velocity, npc.width, npc.height)) { npc.velocity.Y -= 3f; }
+            }
+            else
+            {
+                npc.noGravity = false;
+            }
         }
 
         public override void FindFrame(int frameHeight)
