@@ -89,8 +89,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public int[] Vortexes = null;
 
-        float moveSpeed = 16f;
-
         public bool Health3 = false;
         public bool Health2 = false;
         public bool Health1 = false;

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             npc.width = 68;
             npc.height = 38;
-            npc.damage = 100;
+            npc.damage = 80;
 			npc.defense = 20;
 			npc.lifeMax = 70;
 			npc.HitSound = SoundID.NPCHit1;
@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     npc.frame.Y += 48;
                     if (npc.frame.Y < 48 * 2 || npc.frame.Y > 48 * 3)
                     {
-                        npc.frame.Y = 48 * 6;
+                        npc.frame.Y = 48 * 2;
                     }
                 }
                 else

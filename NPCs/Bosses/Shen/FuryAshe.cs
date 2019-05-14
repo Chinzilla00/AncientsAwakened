@@ -396,10 +396,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                npc.direction = npc.velocity.X > 0 ? -1 : 1;
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
-
-
         }
 
         public override void BossLoot(ref string name, ref int potionType)

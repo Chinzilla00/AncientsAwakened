@@ -32,6 +32,19 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.knockBackResist = 0.5f;
         }
 
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ > 7)
+            {
+                npc.frame.Y += 64;
+                npc.frameCounter = 0;
+                if (npc.frame.Y >= 64 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+        }
+
         public override void AI()
         {
             BaseAI.AIFlier(npc, ref npc.ai, false, 0.2f, 0.1f, 3, 2.5f, true, 250);

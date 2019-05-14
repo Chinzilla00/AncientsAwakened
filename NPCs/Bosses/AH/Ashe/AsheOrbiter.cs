@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.timeLeft = 10;
             npc.alpha = 255;
             npc.scale = .02f;
-            npc.chaseable = false;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
