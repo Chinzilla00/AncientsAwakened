@@ -81,12 +81,12 @@ namespace AAMod.NPCs.Bosses.Broodmother
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
-                writer.Write((float)internalAI[4]);
-                writer.Write((float)internalAI[5]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
+                writer.Write(internalAI[5]);
             }
         }
 
@@ -216,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
             int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
 
-            if (Main.netMode != 1 && internalAI[0]++ >= 180)
+            if (Main.netMode != 1 && internalAI[0]++ >= 120)
             {
                 internalAI[0] = 0;
                 internalAI[1] = Minions < MaxMinions ? Main.rand.Next(4) : Main.rand.Next(3);

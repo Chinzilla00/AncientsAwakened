@@ -45,28 +45,17 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] += 1;
-                    if (!npc.collideY)
+                    if (npc.frame.Y > (92 * 12))
                     {
-                        if (npc.ai[1] > 3)
+                        npc.ai[2] = 1;
+                        for (int Loop = 0; Loop < 20; Loop++)
                         {
-                            npc.ai[1] = 0;
-
-                        }
-                    }
-                    else
-                    {
-                        if (npc.frame.Y > (92 * 12))
-                        {
-                            npc.ai[2] = 1 ;
-                            for (int Loop = 0; Loop < 20; Loop++)
-                            {
-                                int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 1f);
-                                Main.dust[Smoke2].noGravity = true;
-                                Main.dust[Smoke2].noLight = true;
-                                int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 2f);
-                                Main.dust[Smoke].noGravity = true;
-                                Main.dust[Smoke].noLight = true;
-                            }
+                            int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 1f);
+                            Main.dust[Smoke2].noGravity = true;
+                            Main.dust[Smoke2].noLight = true;
+                            int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 2f);
+                            Main.dust[Smoke].noGravity = true;
+                            Main.dust[Smoke].noLight = true;
                         }
                     }
                 }
@@ -96,8 +85,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/HarukaVanish_Glow");
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, false);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, true);
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 27);
             return false;
         }

@@ -120,8 +120,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                                 }
                             }
                             else
-                            { 
-                                //DONT CHANGE VELOCITY HERE OR IT WILL BREAK!
+                            {
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
                             }
                         }

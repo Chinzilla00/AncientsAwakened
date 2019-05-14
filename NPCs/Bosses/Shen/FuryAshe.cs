@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Shen
         bool FlyingPositive = false;
         bool FlyingNegative = false;
         public float MeleeSpeed;
-        public float pos = 0f;
+        public float pos = 250f;
         private bool HasFiredProj = false;
 
 
