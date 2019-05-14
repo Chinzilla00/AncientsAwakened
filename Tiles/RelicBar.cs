@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-    public class Darkmatter : ModTile
+    public class RelicBar : ModTile
     {
         public override void SetDefaults()
         {
@@ -22,8 +22,8 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
-            dustType = mod.DustType("DarkmatterDust");
-            drop = mod.ItemType("DarkMatter");   //put your CustomBlock name
+            dustType = Terraria.ID.DustID.Ice;
+            drop = mod.ItemType("RelicBar");   //put your CustomBlock name
             AddMapEntry(new Color(0, 0, 255));
 			minPick = 0;
         }
