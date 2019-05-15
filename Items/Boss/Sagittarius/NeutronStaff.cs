@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Sagittarius
 {
-    public class GelWand : ModItem
+    public class NeutronStaff : ModItem
     {
         public override void SetDefaults()
         {
