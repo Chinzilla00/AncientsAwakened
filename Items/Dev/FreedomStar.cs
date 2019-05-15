@@ -46,6 +46,7 @@ Mobian Buster EX");
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "MobianBuster");
                 recipe.AddIngredient(null, "EXSoul");
+                recipe.AddTile(null, "QuantumFusionAccelerator");
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

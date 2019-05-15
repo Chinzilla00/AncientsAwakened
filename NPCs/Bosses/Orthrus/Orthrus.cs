@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         
         public Player playerTarget = null;
         public static int AISTATE_TURRET = 0, AISTATE_FLY = 1, AISTATE_RUNAWAY = 2;
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[2];
 
         //clientside stuff
 		public int fWidth = 200;

@@ -4,12 +4,35 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
+using AAMod.NPCs.Bosses.Yamata.Awakened;
+using Terraria.ID;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Orthrus
 {
     [AutoloadBossHead]
     public class OrthrusHead1 : ModNPC
     {
+        public float[] internalAI = new float[2];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((float)internalAI[0]);
+                writer.Write((float)internalAI[1]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+            }
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Orthrus X");

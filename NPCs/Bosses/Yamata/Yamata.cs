@@ -35,10 +35,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
-                writer.Write(internalAI[2]);
-                writer.Write(internalAI[3]);
+                writer.Write((float)internalAI[0]);
+                writer.Write((float)internalAI[1]);
+                writer.Write((float)internalAI[2]);
+                writer.Write((float)internalAI[3]);
             }
         }
 
