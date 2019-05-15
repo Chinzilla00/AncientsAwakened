@@ -96,7 +96,7 @@ namespace AAMod.Projectiles.Rajah
                 for (int i = 0; i < 3; i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner);
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner);
                 }
             }
         }
@@ -145,8 +145,6 @@ namespace AAMod.Projectiles.Rajah
                     vector21.Normalize();
                     position += vector21 * num1;
                     vector24 = mountedCenter - position;
-                    Color color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
-                    color2 = projectile.GetAlpha(color2);
                     Main.spriteBatch.Draw(texture, position - Main.screenPosition, sourceRectangle, Color.White, rotation, origin, 1.35f, SpriteEffects.None, 0.0f);
                 }
             }

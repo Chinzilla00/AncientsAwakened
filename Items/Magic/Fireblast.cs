@@ -29,7 +29,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fireblast");
-			Tooltip.SetDefault("Shoots exploding bolt of dragonflame");
+			Tooltip.SetDefault("Shoots an explosive bolt of dragonflame");
 		}
 
 		public override void AddRecipes()

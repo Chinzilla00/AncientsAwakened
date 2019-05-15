@@ -42,7 +42,7 @@ namespace AAMod.NPCs.TownNPCs
 			npc.friendly = true;
             npc.height = 40;
             npc.width = 18;
-			npc.height = 56;
+			npc.height = 40;
 			npc.aiStyle = 7;
 			npc.damage = 80;
 			npc.defense = 98;

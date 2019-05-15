@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Rift Shredder");
-			Tooltip.SetDefault("Sharp enough to slice through reality itself");
+			Tooltip.SetDefault("Shoots void stars that shred through reality itself");
         }
 
 		public override void SetDefaults()

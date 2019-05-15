@@ -9,6 +9,7 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mana Blade");
+            Tooltip.SetDefault("Fires Homing projectiles at the cost of mana");
 		}
 
 		public override void SetDefaults()

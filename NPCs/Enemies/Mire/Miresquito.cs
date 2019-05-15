@@ -52,17 +52,17 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.rotation = npc.velocity.X * 0.05f;
             if (npc.velocity.X > 0)
             {
-                npc.spriteDirection = -1;
+                npc.spriteDirection = 1;
             }
             else
             {
-                npc.spriteDirection = 1;
+                npc.spriteDirection = -1;
             }
         }
 
         public override void NPCLoot()
 		{
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"), Main.rand.Next(50,100));
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"), Main.rand.Next(1,2));
         }
 	}
 }

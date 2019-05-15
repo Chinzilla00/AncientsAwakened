@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 BaseAI.AIEater(npc, ref npc.ai, 0.05f, 4f, 0, false, true);
                 npc.rotation = 0;
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("DoomLaser"), ref shootAI[0], 15, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 10f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("SagProj"), ref shootAI[0], 15, (int)(npc.damage * 0.25f), 10f, true, new Vector2(20f, 15f));
             }
             else if (internalAI[2] == 2) //Shield Mode
             {
@@ -269,13 +269,18 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void NPCLoot()
         {
             AAWorld.downedSag = true;
+
             if (Main.rand.Next(10) == 0)
             {
                 npc.DropLoot(mod.ItemType("SagTrophy"));
             }
             if (!Main.expertMode)
             {
-                string[] lootTable = { "SagCore" };
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("SagMask"));
+                }
+                string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));

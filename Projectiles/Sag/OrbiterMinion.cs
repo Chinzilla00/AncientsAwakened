@@ -16,11 +16,6 @@ namespace AAMod.Projectiles.Sag
 		float rot = 0f;
 		float rotInit = -1f;
 
-        public override void SetStaticDefaults()
-        {
-
-        }
-
         public override void SetDefaults()
         {
             projectile.width = 30;
@@ -99,7 +94,7 @@ namespace AAMod.Projectiles.Sag
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color dColor)
         {
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, 0, 0, 4, frame, dColor, true);
             return false;
         }

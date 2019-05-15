@@ -12,7 +12,8 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Terra Blade");//<--- Item name here
-			Tooltip.SetDefault(@"Terra Blade EX");
+			Tooltip.SetDefault(@"Shoots homing projectiles that inflict terrablaze
+Terra Blade EX");
         }
         public override void SetDefaults()
 		{

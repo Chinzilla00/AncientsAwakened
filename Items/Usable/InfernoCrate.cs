@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using AAMod;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
@@ -63,9 +64,9 @@ namespace AAMod.Items.Usable
                     NetMessage.SendData(21, -1, -1, null, index1, 1f, 0f, 0f, 0, 0, 0);
                 }
             }
-            
+
             //bypass all checks and spawn defaults
-            player.openCrate(4000);
+            AAModGlobalItem.OpenAACrate(player, 0);
         }
     }
 }

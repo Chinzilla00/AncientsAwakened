@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss
@@ -36,6 +37,17 @@ You know what? Just don't put it anywhere near your mouth.");
             player.noFallDmg = true;
             player.statManaMax2 += 50;
             player.statLifeMax2 += 50;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "HeartyTruffle", 1);
+            recipe.AddIngredient(null, "MagicTruffle", 1);
+            recipe.AddIngredient(null, "MetallicTruffle", 1);
+            recipe.AddIngredient(null, "ToadLeg", 1);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

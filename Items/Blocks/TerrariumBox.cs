@@ -10,6 +10,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Terrarium Music Box");
+            Tooltip.SetDefault("Plays 'Otherworld' by Jonathan Vd Wijngaarden");
 		}
 
 		public override void SetDefaults()

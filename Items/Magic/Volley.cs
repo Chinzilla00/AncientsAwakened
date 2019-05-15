@@ -31,6 +31,7 @@ namespace AAMod.Items.Magic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Volley");
+            Tooltip.SetDefault("Shoots a volley of three flameballs at an even spread");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

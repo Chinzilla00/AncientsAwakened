@@ -34,6 +34,12 @@ Inflicts Moonrazed");
             item.shoot = mod.ProjectileType("Moonblow");
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-3, 0);
+
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             /*Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");

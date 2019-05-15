@@ -24,7 +24,7 @@ Consumes in process");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(Terraria.ID.ItemID.FragmentNebula, 15);
+            recipe.AddIngredient(Terraria.ID.ItemID.FragmentVortex, 15);
             recipe.AddTile(Terraria.ID.TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

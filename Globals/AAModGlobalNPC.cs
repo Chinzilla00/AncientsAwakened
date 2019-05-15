@@ -446,7 +446,7 @@ namespace AAMod
                     Item.NewItem(npc.getRect(), mod.ItemType("Bloody_Mary"));
                 }
             }
-			if (npc.type == NPCID.AngryBones || npc.type == NPCID.DarkCaster)
+            if (npc.type == NPCID.AngryBones || npc.type == NPCID.DarkCaster)
             {
                 if (Main.rand.Next(200) == 0)
                 {
@@ -464,7 +464,7 @@ namespace AAMod
 
             if (npc.type == NPCID.Plantera)
             {
-                Item.NewItem(npc.getRect(),  ItemID.ChlorophyteOre, Main.rand.Next(50, 80));
+                Item.NewItem(npc.getRect(), ItemID.ChlorophyteOre, Main.rand.Next(50, 80));
             }
 
             if (npc.type == NPCID.SkeletronHand)
@@ -480,7 +480,7 @@ namespace AAMod
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("Everleaf"), Main.rand.Next(1, 2));
             }
-            
+
             if ((npc.type == NPCID.GoblinArcher
                 || npc.type == NPCID.GoblinPeon
                 || npc.type == NPCID.GoblinScout
@@ -495,43 +495,45 @@ namespace AAMod
                 || npc.type == NPCID.DD2GoblinT2
                 || npc.type == NPCID.DD2GoblinBomberT3
                 || npc.type == NPCID.BoundGoblin
-                || npc.type == NPCID.GoblinTinkerer) 
+                || npc.type == NPCID.GoblinTinkerer)
                 && NPC.downedGoblins)
             {
                 if (Main.rand.Next(20) == 0)
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(1, 2));
                 }
-                
+
             }
 
-            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire) && Main.hardMode)
             {
-                if (Main.rand.Next(0, 100) >= 80)
+                Player player = Main.player[Player.FindClosest(npc.position, npc.width, npc.height);
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode && player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSpite"), 1);
+                    if (Main.rand.Next(0, 100) >= 80)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSpite"), 1);
+                    }
                 }
-            }
-            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno) && Main.hardMode)
-            {
-                if (Main.rand.Next(0, 100) >= 80)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode && player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
+                    if (Main.rand.Next(0, 100) >= 80)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
+                    }
                 }
-            }
-
-            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneMire) && Main.hardMode)
-            {
-                if (Main.rand.Next(0, 2499) == 0)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireKey"), 1);
+                    if (Main.rand.Next(0, 2499) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireKey"), 1);
+                    }
                 }
-            }
-            if ((Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<AAPlayer>(mod).ZoneInferno) && Main.hardMode)
-            {
-                if (Main.rand.Next(0, 2499) == 0)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
+                    if (Main.rand.Next(0, 2499) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
+                    }
                 }
             }
         }

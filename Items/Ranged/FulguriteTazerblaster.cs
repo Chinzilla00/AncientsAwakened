@@ -12,7 +12,8 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Fulgurite Tazerblaster");
-            Tooltip.SetDefault("Rapidly fires taserblasts");
+            Tooltip.SetDefault(@"Rapidly fires taserblasts
+Slim chance to fire 2 taserblasts at once");
             
         }
 
@@ -36,22 +37,10 @@ namespace AAMod.Items.Ranged
             item.shootSpeed = 17f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
-            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-            {
-                position += muzzleOffset;
-            }
-            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
-            speedX = perturbedSpeed.X;
-            speedY = perturbedSpeed.Y;
-            return true;
-        }
         public override void AddRecipes()
         {                                                   //How to craft this item
             ModRecipe recipe = new ModRecipe(mod);
