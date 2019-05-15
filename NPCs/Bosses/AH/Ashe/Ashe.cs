@@ -77,6 +77,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             return null;
         }
 
+        public float moveSpeed;
         public bool FlyingBack = false;
         public bool FlyingPositive = false;
         public bool FlyingNegative = false;
@@ -88,8 +89,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public bool SelectPoint = false;
 
         public int[] Vortexes = null;
-
-        float moveSpeed = 16f;
 
         public bool Health3 = false;
         public bool Health2 = false;

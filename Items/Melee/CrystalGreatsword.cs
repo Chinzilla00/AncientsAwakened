@@ -30,7 +30,7 @@ namespace AAMod.Items.Melee   //where is located
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Crystal Greatsword");
-      Tooltip.SetDefault("Its pink");
+      Tooltip.SetDefault("Its green");
     }
 
         public override void AddRecipes()  //How to craft this sword

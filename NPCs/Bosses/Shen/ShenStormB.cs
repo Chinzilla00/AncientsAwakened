@@ -65,6 +65,15 @@ namespace AAMod.NPCs.Bosses.Shen
 					projectile.velocity *= 1.02f;
 				}
 			}
+            if (projectile.frameCounter++ > 6)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
         
         public override void OnHitPlayer(Player target, int damage, bool crit)

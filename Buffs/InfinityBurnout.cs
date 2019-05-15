@@ -16,7 +16,7 @@ namespace AAMod.Buffs
         {
 			DisplayName.SetDefault("Infinity Burnout");
             Description.SetDefault("They didn't go for the head.");
-            Main.buffNoTimeDisplay[Type] = true;		
+            Main.debuff[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)

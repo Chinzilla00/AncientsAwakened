@@ -125,6 +125,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.defense = 999;
                 npc.knockBackResist = 0;
                 npc.reflectingProjectiles = true;
+                npc.velocity *= 0;
                 ShellTimer++;
                 if (ShellTimer >= 180)
                 {

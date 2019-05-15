@@ -12,6 +12,7 @@ namespace AAMod.Items.Boss.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Subzero Slasher");
+            Tooltip.SetDefault("Has a chance to shoot a subzero projectile on swing");
         }
 
         public override void SetDefaults()

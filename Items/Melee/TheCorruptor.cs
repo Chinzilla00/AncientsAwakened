@@ -25,11 +25,11 @@ namespace AAMod.Items.Melee   //where is located
 			item.shootSpeed = 10f;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("The Corruptor");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("The Corruptor");
+            Tooltip.SetDefault("Shoots corrupt eaters that break after hitting an enemy");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

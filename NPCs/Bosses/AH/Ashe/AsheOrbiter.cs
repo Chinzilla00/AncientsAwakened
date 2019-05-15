@@ -19,16 +19,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SetDefaults()
         {
             npc.lifeMax = 1;
-            npc.width = 50;
-            npc.height = 50;
+            npc.width = 46;
+            npc.height = 46;
             npc.friendly = false;
             npc.lifeMax = 1000;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
             npc.alpha = 255;
-            npc.scale = .02f;
-            npc.chaseable = false;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -47,14 +45,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     npc.frame.Y = 0;
                 }
-            }
-            if (npc.scale > 1f)
-            {
-                npc.scale = 1f;
-            }
-            else
-            {
-                npc.scale += .02f;
             }
 
             if (npc.alpha < 0)

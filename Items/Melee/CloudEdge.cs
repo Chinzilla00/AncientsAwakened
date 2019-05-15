@@ -29,7 +29,7 @@ namespace AAMod.Items.Melee   //where is located
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Cloud Edge");
-      Tooltip.SetDefault("Summon a rain of sharp clouds.");
+      Tooltip.SetDefault("Shoots cloud projectiles");
     }
 
         public override void AddRecipes()  //How to craft this sword

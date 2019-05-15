@@ -26,26 +26,6 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 
-        public Texture2D glowTex = null;
-
-        public Color GetColor(Color color)
-        {
-            return AAColor.ZeroShield;
-        }
-
-        public override void PostDraw(int x, int y, SpriteBatch sb)
-        {
-            Tile tile = Main.tile[x, y];
-            if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/Zero2Box_Glow");
-            if (glowTex != null && tile != null && tile.active() && tile.type == Type)
-            {
-                int width = 16, height = 16;
-                int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0);
-                int frameY = (tile != null && tile.active() ? tile.frameY : 0);
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, width, height, frameX, frameY, false, false, false, null, GetColor);
-            }
-        }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("Zero2Box"));

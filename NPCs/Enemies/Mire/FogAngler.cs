@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             npc.width = 68;
             npc.height = 38;
-            npc.damage = 100;
+            npc.damage = 80;
 			npc.defense = 20;
 			npc.lifeMax = 70;
 			npc.HitSound = SoundID.NPCHit1;
@@ -35,7 +35,17 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 Lighting.AddLight(npc.Center, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255, AAColor.Lantern.B / 255);
             }
-            BaseAI.AIFish(npc, ref npc.ai, true, true, false, 3, 2);
+            if (npc.wet)
+            {
+                npc.noGravity = true;
+                BaseAI.AIFish(npc, ref npc.ai, true, false, true, 4f, 3f);
+                BaseAI.Look(npc, 1);
+                if (!Collision.WetCollision(npc.position + npc.velocity, npc.width, npc.height)) { npc.velocity.Y -= 3f; }
+            }
+            else
+            {
+                npc.noGravity = false;
+            }
         }
 
         public override void FindFrame(int frameHeight)
@@ -53,7 +63,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     npc.frame.Y += 48;
                     if (npc.frame.Y < 48 * 2 || npc.frame.Y > 48 * 3)
                     {
-                        npc.frame.Y = 48 * 6;
+                        npc.frame.Y = 48 * 2;
                     }
                 }
                 else

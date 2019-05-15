@@ -14,7 +14,8 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracula Knives");
-            Tooltip.SetDefault("Vampire Knives EX");
+            Tooltip.SetDefault(@"Rapidly throw life stealing daggers
+Vampire Knives EX");
         }
 
         public override void SetDefaults()

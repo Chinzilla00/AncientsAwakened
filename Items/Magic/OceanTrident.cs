@@ -10,7 +10,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ocean Trident");
-			Tooltip.SetDefault("Very slippy");
+			Tooltip.SetDefault("Very slippery");
 			Item.staff[item.type] = true;
 		}
 

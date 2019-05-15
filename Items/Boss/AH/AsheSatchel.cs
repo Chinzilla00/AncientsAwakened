@@ -21,7 +21,8 @@ namespace AAMod.Items.Boss.AH
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe's Satchel");
-            Tooltip.SetDefault("Contains a set of Fury Witch's robes");
+            Tooltip.SetDefault(@"Right click to open
+Contains a set of Fury Witch's robes");
         }
 
         public override bool CanRightClick()

@@ -15,7 +15,7 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = false;
             soundType = 21;
             drop = mod.ItemType("Uranium");   //put your CustomBlock name
-            dustType = mod.DustType("InfinityOverloadG");
+            dustType = mod.DustType("UraniumDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Uranium Ore");
             AddMapEntry(new Color(2, 150, 0), name);

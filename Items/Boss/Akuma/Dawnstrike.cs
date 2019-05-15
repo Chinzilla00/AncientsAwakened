@@ -14,7 +14,8 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dawnstrike");
-            Tooltip.SetDefault("Shoots a piercing blaze of fire");
+            Tooltip.SetDefault(@"Shoots a piercing blaze of fire
+50% chance to not consume gel");
         }
 
         public override void SetDefaults()
@@ -28,6 +29,7 @@ namespace AAMod.Items.Boss.Akuma
             item.useTime = 2;
             item.useAnimation = 15;
             item.useStyle = 5;
+            item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType("Dawnstrike");
             item.knockBack = 0;
             item.value = Item.buyPrice( 1, 0, 0, 0);
@@ -65,6 +67,15 @@ namespace AAMod.Items.Boss.Akuma
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;
+            }
+            return true;
+        }
+
+        public override bool ConsumeAmmo(Player player)
+        {
+            if (Main.rand.Next(99) < 49)
+            {
+                return false;
             }
             return true;
         }

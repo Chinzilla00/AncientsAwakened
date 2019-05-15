@@ -31,7 +31,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Crystal Tome");
-			Tooltip.SetDefault("Casts crystals that shatter in pieces.");
+			Tooltip.SetDefault("Casts crystals that shatter into pieces");
 		}
 
      

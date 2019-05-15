@@ -33,6 +33,7 @@ namespace AAMod.Projectiles.Zero
             projectile.tileCollide = false;
             projectile.alpha = 255;
             projectile.netImportant = true;
+            projectile.minionSlots = 1;
         }
 
 

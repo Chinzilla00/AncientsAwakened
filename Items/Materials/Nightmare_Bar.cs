@@ -18,7 +18,15 @@ namespace AAMod.Items.Materials
 			item.maxStack = 99;
 			item.value = Item.sellPrice(0, 0, 21, 0);
 			item.rare = 4;
-		}
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.rare = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.createTile = mod.TileType("NightmareBar");
+        }
 		
 		public override void AddRecipes()
 		{

@@ -32,7 +32,9 @@ namespace AAMod.Items.Boss.Sagittarius
             item.noMelee = true;
             item.summon = true;
             item.shoot = mod.ProjType("OrbiterMinion");
-            item.shootSpeed = 5;			
+            item.shootSpeed = 5;
+            item.damage = 50;
+            item.mana = 10;
         }
 		
 		public override void UseStyle(Player player)

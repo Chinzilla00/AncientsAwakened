@@ -15,6 +15,7 @@ namespace AAMod.Items.Boss.EFish
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soap Blaster");
+            Tooltip.SetDefault("Rapidly shoots destructive bubbles");
         }
 
         public override void SetDefaults()

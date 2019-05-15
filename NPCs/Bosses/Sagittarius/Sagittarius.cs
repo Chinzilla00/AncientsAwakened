@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     npc.DropLoot(mod.ItemType("SagMask"));
                 }
-                string[] lootTable = { "SagCore" };
+                string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));

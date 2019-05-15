@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Mire
 		public override void SetDefaults()
 		{
             npc.aiStyle = 1;
-            npc.noGravity = false;
+            npc.noGravity = true;
             npc.noTileCollide = false;
             npc.width = 64;
 			npc.height = 64;
@@ -31,19 +31,38 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = 6000f;
             npc.lavaImmune = false;
             npc.knockBackResist = 0.5f;
-            animationType = 81;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ > 7)
+            {
+                npc.frame.Y += 60;
+                npc.frameCounter = 0;
+                if (npc.frame.Y >= 240)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
         }
 
         public override void AI()
         {
-            Player player = Main.player[npc.target];
             BaseAI.AIFlier(npc, ref npc.ai, false, 0.2f, 0.1f, 3, 2.5f, true, 250);
             npc.rotation = npc.velocity.X * 0.05f;
+            if (npc.velocity.X > 0)
+            {
+                npc.spriteDirection = 1;
+            }
+            else
+            {
+                npc.spriteDirection = -1;
+            }
         }
 
         public override void NPCLoot()
 		{
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"), Main.rand.Next(50,100));
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"), Main.rand.Next(1,2));
         }
 	}
 }

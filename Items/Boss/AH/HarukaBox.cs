@@ -21,7 +21,8 @@ namespace AAMod.Items.Boss.AH
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Haruka's Lockbox");
-            Tooltip.SetDefault("Contains a set of Midnight Assassin clothes");
+            Tooltip.SetDefault(@"Right click to open
+Contains a set of Midnight Assassin clothes");
         }
 
         public override bool CanRightClick()

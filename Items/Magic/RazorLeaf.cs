@@ -32,7 +32,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Razor Leaf");
-			Tooltip.SetDefault("Casts a flurry of leafes.");
+			Tooltip.SetDefault("Casts a flurry of leaves.");
 		}
 
      

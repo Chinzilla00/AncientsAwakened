@@ -26,15 +26,15 @@ namespace AAMod.Items.Magic
             item.autoReuse = false;
             item.shoot = mod.ProjectileType ("CrystalP");  //this make the item shoot your projectile
             item.shootSpeed = 15f;    //projectile speed when shoot
-        }   
+        }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Sky Book");
-      Tooltip.SetDefault("Casts tiny bits of crystals.");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sky Tome");
+            Tooltip.SetDefault("Casts crystal shards towards your cursor");
+        }
 
-		public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "StarcloudBar", 15);   //you need 10 Wood

@@ -28,47 +28,49 @@ namespace AAMod.Projectiles.Rajah
             projectile.hide = true;
         }
 
+
+        public float MovementFactor // Change this value to alter how fast the spear moves
+        {
+            get { return projectile.ai[0]; }
+            set { projectile.ai[0] = value; }
+        }
+
+
         public override void AI()
         {
-            Main.player[projectile.owner].direction = projectile.direction;
-            Main.player[projectile.owner].heldProj = projectile.whoAmI;
-            Main.player[projectile.owner].itemTime = Main.player[projectile.owner].itemAnimation;
-            projectile.position.X = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - (float)(projectile.width / 2);
-            projectile.position.Y = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - (float)(projectile.height / 2);
-            projectile.position += projectile.velocity * projectile.ai[0];
-            if (projectile.ai[0] == 0f)
+            Player projOwner = Main.player[projectile.owner];
+            Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
+            projectile.direction = projOwner.direction;
+            projOwner.heldProj = projectile.whoAmI;
+            projOwner.itemTime = projOwner.itemAnimation;
+            projectile.position.X = ownerMountedCenter.X - (float)(projectile.width / 2);
+            projectile.position.Y = ownerMountedCenter.Y - (float)(projectile.height / 2);
+            if (!projOwner.frozen)
             {
-                projectile.ai[0] = 3f;
-                projectile.netUpdate = true;
-            }
-            if (Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
-            {
-                projectile.ai[0] -= 2.4f;
-                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
+                if (MovementFactor == 0f)
                 {
-                    projectile.localAI[0] = 1f;
+                    MovementFactor = 3f;
+                    projectile.netUpdate = true;
+                }
+                if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3)
+                {
+                    MovementFactor -= 2.4f;
+                }
+                else
+                {
+                    MovementFactor += 2.1f;
                 }
             }
-            else
-            {
-                projectile.ai[0] += 0.95f;
-            }
-
-            if (Main.player[projectile.owner].itemAnimation == 0)
+            projectile.position += projectile.velocity * MovementFactor;
+            if (projOwner.itemAnimation == 0)
             {
                 projectile.Kill();
             }
-
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
             if (projectile.spriteDirection == -1)
             {
-                projectile.rotation -= 1.57f;
+                projectile.rotation -= MathHelper.ToRadians(90f);
             }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.immune[projectile.owner] = 5;
         }
     }
 }

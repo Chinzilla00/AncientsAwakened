@@ -18,10 +18,10 @@ namespace AAMod.NPCs.Bosses.Truffle
 			base.SendExtraAI(writer);
 			if((Main.netMode == 2 || Main.dedServ))
 			{
-				writer.Write((float)internalAI[0]);
-				writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+				writer.Write(internalAI[0]);
+				writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
 		}
 
@@ -66,7 +66,6 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("TruffleBag");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
-            npc.netAlways = true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -81,26 +80,8 @@ namespace AAMod.NPCs.Bosses.Truffle
         bool SelectPoint = false;
         Vector2 MovePoint = new Vector2(0, 0);
 
-
-        public override void AI()
+        public override void FindFrame(int frameHeight)
         {
-            Player player = Main.player[npc.target];
-             
-            if (Main.dayTime)
-            {
-                npc.active = false;
-                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
-                return;
-            }
-            if (Main.player[npc.target].dead)
-            {
-                npc.TargetClosest(true);
-                if (Main.player[npc.target].dead)
-                {
-                    npc.active = false;
-                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
-                }
-            }
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
@@ -123,6 +104,32 @@ namespace AAMod.NPCs.Bosses.Truffle
                     }
                 }
             }
+            if (npc.frame.Y > (104 * 11))
+            {
+                npc.frame.Y = 104 * 8;
+            }
+        }
+
+        public override void AI()
+        {
+            Player player = Main.player[npc.target];
+             
+            if (Main.dayTime)
+            {
+                npc.active = false;
+                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
+                return;
+            }
+            if (Main.player[npc.target].dead)
+            {
+                npc.TargetClosest(true);
+                if (Main.player[npc.target].dead)
+                {
+                    npc.active = false;
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
+                }
+            }
+            
 
             if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
@@ -140,6 +147,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     if (internalAI[1] == AISTATE_ROCKET)
                     {
                         SelectPoint = true;
+                        npc.netUpdate = true;
                     }
                     npc.ai = new float[4];
                     npc.netUpdate = true;
@@ -183,6 +191,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (npc.velocity == new Vector2(0, 0))
                 {
                     HasStopped = true;
+                    npc.netUpdate = true;
                 }
             }
             else if (internalAI[1] == AISTATE_ROCKET)

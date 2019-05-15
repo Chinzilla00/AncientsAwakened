@@ -10,7 +10,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Arcanum");
-			Tooltip.SetDefault("Releases homing miniature quazar, which explodes on enemy hit");
+			Tooltip.SetDefault("Releases a homing miniature quazar that explodes upon hitting an enemy");
 		}
 
 		public override void SetDefaults()

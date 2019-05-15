@@ -50,10 +50,10 @@ namespace AAMod.NPCs.Bosses.Shen
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Shen
         bool FlyingPositive = false;
         bool FlyingNegative = false;
         public float MeleeSpeed;
-        public float pos = 0f;
+        public float pos = 250f;
         private bool HasFiredProj = false;
 
 
@@ -117,6 +117,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             Player player = Main.player[npc.target];
+            bool AsheType = npc.type == mod.NPCType<Ashe>();
 
             npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
@@ -158,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
+                        if (NPC.CountNPCS(mod.NPCType<Shenling>()) < 3)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -330,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheDragon>(), 0);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Shenling>(), 0);
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -343,13 +344,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.dontTakeDamage = false;
             }
-
             npc.rotation = 0; //No ugly rotation.
-        }
-
-        public static int VortexDamage(Mod mod)
-        {
-            return 1 + (NPC.CountNPCS(mod.NPCType<AsheOrbiter>()) / 15);
         }
 
         public override void PostAI()
@@ -396,10 +391,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                npc.direction = npc.velocity.X > 0 ? -1 : 1;
+                npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
-
-
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -495,7 +488,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
                 double offsetAngle;
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<DiscordianInferno>(), npc.damage / 2, 4);
@@ -649,9 +642,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 BaseDrawing.DrawTexture(spritebatch, RingTex1, purple, npc.position, npc.width, npc.height, scale, -RingRotation, 0, 1, RingFrame, Color.White, true);
             }
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, purple, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, npc.GetAlpha(dColor), true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, purple, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
 
 
             if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))

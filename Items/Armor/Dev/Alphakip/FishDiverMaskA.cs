@@ -61,7 +61,10 @@ The Infinity Gauntlet is now at its max potential
 You gain a fishy companion";
             player.gills = true;
             player.GetModPlayer<AAPlayer>(mod).Alpha = true;
-            player.AddBuff(mod.BuffType("Mudkip"), 18000);
+            if (!player.HasBuff(mod.BuffType("Mudkip")))
+            {
+                player.AddBuff(mod.BuffType("Mudkip"), 2);
+            }
             player.ignoreWater = true;
         }
 

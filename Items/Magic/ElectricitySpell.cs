@@ -32,7 +32,7 @@ namespace AAMod.Items.Magic
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Electricity Shard");
-      Tooltip.SetDefault("It shoots sparks at an even spread.");
+      Tooltip.SetDefault("It shoots sparks in an even spread.");
     }
 
 		public override void AddRecipes()  //How to craft this item

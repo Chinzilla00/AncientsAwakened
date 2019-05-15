@@ -23,8 +23,8 @@ namespace AAMod.Items.Boss.Akuma
             item.crit = 20;
             item.useStyle = 5;
             item.autoReuse = true;
-            item.useAnimation = 22;
-            item.useTime = 22;
+            item.useAnimation = 18;
+            item.useTime = 18;
             item.useAmmo = AmmoID.Rocket;
             item.width = 50;
             item.height = 20;

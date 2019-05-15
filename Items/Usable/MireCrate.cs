@@ -63,7 +63,7 @@ namespace AAMod.Items.Usable
             }
 
             //bypass all checks and spawn defaults
-            player.openCrate(4000);
+            AAModGlobalItem.OpenAACrate(player, 1);
         }
     }
 }

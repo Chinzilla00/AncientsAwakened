@@ -9,7 +9,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         public override void SetDefaults()
         {
 
-            item.damage = 140;                      
+            item.damage = 100;                      
             item.magic = true;  
             item.width = 32;     
             item.height = 28;    
@@ -30,7 +30,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bog Bomb");
-			Tooltip.SetDefault("Fires an explosive bomb that leaves your opponents venomized");
+			Tooltip.SetDefault("Fires an explosive bomb that inflicts venom upon whatever it strikes");
 		}
     }
 }

@@ -18,8 +18,9 @@ namespace AAMod.Items.Ranged
             item.width = 62;
             item.height = 24;
             item.useTime = 22;
-            item.useAnimation = 2;
+            item.useAnimation = 22;
             item.useStyle = 5;
+            item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType<Projectiles.DragonfireProj>();
             item.knockBack = 0;
             item.value = 10;
@@ -32,7 +33,7 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blastshot");
-            Tooltip.SetDefault("Doesn't use ammo");
+            Tooltip.SetDefault("Consumes Gel");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

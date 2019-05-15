@@ -755,6 +755,8 @@
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
     <Compile Include="Items\Boss\Retriever\StormRiot.cs" />
+    <Compile Include="Items\Boss\Sagittarius\Legg.cs" />
+    <Compile Include="Items\Boss\Sagittarius\NeutronStaff.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagBag.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagCore.cs" />
     <Compile Include="Items\Boss\Sagittarius\SagShield.cs" />
@@ -1021,7 +1023,6 @@
     <Compile Include="Items\Melee\Gem\TopazSaber.cs" />
     <Compile Include="Items\Melee\GoblinSlayer.cs" />
     <Compile Include="Items\Melee\AbyssalTwilight.cs" />
-    <Compile Include="Items\Melee\Amnesia.cs" />
     <Compile Include="Items\Melee\AncientPoker.cs" />
     <Compile Include="Items\Melee\Apocalypse.cs" />
     <Compile Include="Items\Melee\BlazingDawn.cs" />
@@ -1066,7 +1067,6 @@
     <Compile Include="Items\Melee\MoltenLance.cs" />
     <Compile Include="Items\Melee\NightKeeper.cs" />
     <Compile Include="Items\Melee\Nightmare_Katana.cs" />
-    <Compile Include="Items\Melee\Oblivion.cs" />
     <Compile Include="Items\Melee\OceanRazor.cs" />
     <Compile Include="Items\Melee\PerfectChaos.cs" />
     <Compile Include="Items\Melee\ScorchDagger.cs" />
@@ -1085,7 +1085,6 @@
     <Compile Include="Items\Melee\TrueCopperShortsword.cs" />
     <Compile Include="Items\Melee\TrueCopperShortswordEX.cs" />
     <Compile Include="Items\Melee\TrueFleshrendClaymore.cs" />
-    <Compile Include="Items\Melee\TrueOblivion.cs" />
     <Compile Include="Items\Melee\Void.cs" />
     <Compile Include="Items\Melee\Voidsaber.cs" />
     <Compile Include="Items\Melee\Xiphos.cs" />
@@ -1765,6 +1764,7 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\Sag\SagStar.cs" />
     <Compile Include="Projectiles\ThanosSword.cs" />
     <Compile Include="Projectiles\Flasks\AshJar.cs" />
     <Compile Include="Projectiles\Flasks\CorruptionFlask.cs" />
@@ -1788,6 +1788,7 @@
     <Compile Include="Projectiles\Rajah\RabbitRocket2.cs" />
     <Compile Include="Projectiles\Rajah\RabbitRocket1.cs" />
     <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
+    <Compile Include="Projectiles\ThanosSwordT.cs" />
     <Compile Include="Projectiles\Toad\Toadsplosion.cs" />
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
@@ -2083,6 +2084,16 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
+    <Compile Include="Tiles\YttriumBar.cs" />
+    <Compile Include="Tiles\TechneciumBar.cs" />
+    <Compile Include="Tiles\UraniumBar.cs" />
+    <Compile Include="Tiles\StarcloudBar.cs" />
+    <Compile Include="Tiles\RelicBar.cs" />
+    <Compile Include="Tiles\OrderBar.cs" />
+    <Compile Include="Tiles\NightmareBar.cs" />
+    <Compile Include="Tiles\GlowingMushiumBar.cs" />
+    <Compile Include="Tiles\FulguriteBar.cs" />
+    <Compile Include="Tiles\DoomiteBar.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
     <Compile Include="Tiles\Mushplants.cs" />
@@ -4080,7 +4091,9 @@
     <Content Include="Items\Armor\Viking\VikingPlate_Female.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Items\Blocks\OroborosCampfire.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
+    <Content Include="Items\Blocks\RazewoodCampfire.png" />
     <Content Include="Items\Blocks\StarBox.png" />
     <Content Include="Items\Blocks\StarBoxN.png" />
     <Content Include="Items\Blocks\ToadBox.png" />
@@ -4099,6 +4112,8 @@
     <Content Include="Items\Boss\Rajah\RajahSash.png" />
     <Content Include="Items\Boss\Rajah\RoyalScepter.png" />
     <Content Include="Items\Boss\Rajah\ThrowingCarrot.png" />
+    <Content Include="Items\Boss\Sagittarius\Legg.png" />
+    <Content Include="Items\Boss\Sagittarius\NeutronStaff.png" />
     <Content Include="Items\Boss\Sagittarius\SagBag.png" />
     <Content Include="Items\Boss\Sagittarius\SagCore.png" />
     <Content Include="Items\Boss\Sagittarius\SagShield.png" />
@@ -4139,11 +4154,16 @@
     <Content Include="Items\Materials\VikingRelic0.png" />
     <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
+    <Content Include="Items\Melee\AsgardianLance.png" />
+    <Content Include="Items\Melee\ChaosYari.png" />
+    <Content Include="Items\Melee\ChaosYariEX.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
     <Content Include="Items\Melee\Pyrosphere.png" />
+    <Content Include="Items\Melee\RaiderLance.png" />
     <Content Include="Items\Melee\SwampSlasher.png" />
     <Content Include="Items\Melee\ThanosSword.png" />
     <Content Include="Items\Melee\ThanosSwordEX.png" />
+    <Content Include="Items\Melee\VikingPolearm.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
     <Content Include="Items\Mushrooms\Pink.png" />
@@ -4162,6 +4182,9 @@
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
+    <Content Include="Items\Usable\ManaLanternB.png" />
+    <Content Include="Items\Usable\ManaLanternG.png" />
+    <Content Include="Items\Usable\ManaLanternP.png" />
     <Content Include="Items\Usable\MirrorRift.png" />
     <Content Include="Items\Usable\Mooncaller.png" />
     <Content Include="Items\Usable\Mushplant.png" />
@@ -4300,6 +4323,7 @@
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="NPCs\Swarm_Thing.png" />
+    <Content Include="NPCs\TownNPCs\StanLee.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
     <Content Include="Items\Armor\Witch\WitchBoots.png" />
     <Content Include="Items\Armor\Witch\WitchBoots_Legs.png" />
@@ -4928,7 +4952,6 @@
     <Content Include="Items\Melee\MoltenLance.png" />
     <Content Include="Items\Melee\NightKeeper.png" />
     <Content Include="Items\Melee\Nightmare_Katana.png" />
-    <Content Include="Items\Melee\Oblivion.png" />
     <Content Include="Items\Melee\OceanRazor.png" />
     <Content Include="Items\Melee\PerfectChaos.png" />
     <Content Include="Items\Melee\RustyCutlass.png" />
@@ -4952,7 +4975,6 @@
     <Content Include="Items\Melee\TrueCopperShortsword.png" />
     <Content Include="Items\Melee\TrueCopperShortswordEX.png" />
     <Content Include="Items\Melee\TrueFleshrendClaymore.png" />
-    <Content Include="Items\Melee\TrueOblivion.png" />
     <Content Include="Items\Melee\TrueTinShortsword.png" />
     <Content Include="Items\Melee\UraniumSword.png" />
     <Content Include="Items\Melee\Void.png" />
@@ -5844,6 +5866,7 @@
     <Content Include="Projectiles\MireLeaf.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
+    <Content Include="Projectiles\Pyrosphere_Chain.png" />
     <Content Include="Projectiles\Rajah\Bane.png" />
     <Content Include="Projectiles\Rajah\BaneT.png" />
     <Content Include="Projectiles\Rajah\BaneS.png" />
@@ -5855,6 +5878,7 @@
     <Content Include="Projectiles\Rajah\RabbitRocket3.png" />
     <Content Include="Projectiles\Rajah\RabbitRocket4.png" />
     <Content Include="Projectiles\Sag\OrbiterMinion.png" />
+    <Content Include="Projectiles\Sag\SagStar.png" />
     <Content Include="Projectiles\ScourgeOfShadowsP2.png" />
     <Content Include="Projectiles\Singularity.png" />
     <Content Include="Projectiles\SingularityVortex.png" />
@@ -6242,6 +6266,7 @@
     <Content Include="Tiles\DiscordiumOre.png" />
     <Content Include="Tiles\DjinnBox.png" />
     <Content Include="Tiles\Doomgrass.png" />
+    <Content Include="Tiles\DoomiteBar.png" />
     <Content Include="Tiles\DoomitePlate.png" />
     <Content Include="Tiles\DoomsdayChest.png" />
     <Content Include="Tiles\DoomsdayChestLockedFrame.png" />
@@ -6258,11 +6283,13 @@
     <Content Include="Tiles\FateBox.png" />
     <Content Include="Tiles\FulgurGlass.png" />
     <Content Include="Tiles\FulgurGlassS.png" />
+    <Content Include="Tiles\FulguriteBar.png" />
     <Content Include="Tiles\FulguriteBrick.png" />
     <Content Include="Tiles\FulguriteBrickS.png" />
     <Content Include="Tiles\FulguritePlating.png" />
     <Content Include="Tiles\FulguritePlatingS.png" />
     <Content Include="Tiles\FungusBox.png" />
+    <Content Include="Tiles\GlowingMushiumBar.png" />
     <Content Include="Tiles\Hotshroom.png" />
     <Content Include="Tiles\InfernoFoliage.png" />
     <Content Include="Tiles\InfernoFoliage1.png" />
@@ -6272,6 +6299,11 @@
     <Content Include="Tiles\InfernoFoliage5.png" />
     <Content Include="Tiles\InfernoGrassAsh.png" />
     <Content Include="Tiles\LakeBox.png" />
+    <Content Include="Tiles\ManaLanternB.png" />
+    <Content Include="Tiles\ManaLanternG.png" />
+    <Content Include="Tiles\ManaLanternP.png" />
+    <Content Include="Tiles\ManaLanternTile.png" />
+    <Content Include="Tiles\ManaLantern_Glow.png" />
     <Content Include="Tiles\MireFoliage1.png" />
     <Content Include="Tiles\MireFoliage2.png" />
     <Content Include="Tiles\MireFoliage3.png" />
@@ -6284,7 +6316,9 @@
     <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
+    <Content Include="Tiles\NightmareBar.png" />
     <Content Include="Tiles\NightmareOre.png" />
+    <Content Include="Tiles\OrderBar.png" />
     <Content Include="Tiles\OroborosChestC1.png" />
     <Content Include="Tiles\OroborosChestC1_Highlight.png" />
     <Content Include="Tiles\OroborosChestC2.png" />
@@ -6318,6 +6352,7 @@
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />
     <Content Include="Tiles\Razetus.png" />
+    <Content Include="Tiles\RelicBar.png" />
     <Content Include="Tiles\RelicOre.png" />
     <Content Include="Tiles\RottedDynastyWoodS.png" />
     <Content Include="Tiles\RottedPlatform.png" />
@@ -6425,6 +6460,7 @@
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
     <Content Include="Tiles\StarBoxN.png" />
+    <Content Include="Tiles\StarcloudBar.png" />
     <Content Include="Tiles\Sticker.png" />
     <Content Include="Tiles\StormChest.png" />
     <Content Include="Tiles\StormChestS.png" />
@@ -6433,6 +6469,7 @@
     <Content Include="Tiles\StormCloud.png" />
     <Content Include="Tiles\SunAltar.png" />
     <Content Include="Tiles\SunAltarA.png" />
+    <Content Include="Tiles\TechneciumBar.png" />
     <Content Include="Tiles\TechneciumForge.png" />
     <Content Include="Tiles\TechneciumOre.png" />
     <Content Include="Tiles\TerraCore.png" />
@@ -6471,6 +6508,7 @@
     <Content Include="Tiles\TruePaladinsSmeltery.png" />
     <Content Include="Tiles\UnifiedMycelium.png" />
     <Content Include="Tiles\UraniumAnvil.png" />
+    <Content Include="Tiles\UraniumBar.png" />
     <Content Include="Tiles\UraniumOre.png" />
     <Content Include="Tiles\VoidBox.png" />
     <Content Include="Tiles\VoidUnit.png" />
@@ -6478,6 +6516,7 @@
     <Content Include="Tiles\YamataABox.png" />
     <Content Include="Tiles\YamataBox.png" />
     <Content Include="Tiles\YtriumOre.png" />
+    <Content Include="Tiles\YttriumBar.png" />
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />

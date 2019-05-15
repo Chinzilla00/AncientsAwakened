@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		public override void SetDefaults()
 		{
             npc.aiStyle = 1;
-            npc.noGravity = false;
+            npc.noGravity = true;
             npc.noTileCollide = false;
             npc.width = 32;
 			npc.height = 26;
@@ -30,6 +30,19 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 1000f;
             npc.lavaImmune = true;
             npc.knockBackResist = 0.5f;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ > 7)
+            {
+                npc.frame.Y += 64;
+                npc.frameCounter = 0;
+                if (npc.frame.Y >= 64 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
         }
 
         public override void AI()
