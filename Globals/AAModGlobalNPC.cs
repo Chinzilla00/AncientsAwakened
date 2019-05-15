@@ -506,7 +506,7 @@ namespace AAMod
             }
 
             {
-                Player player = Main.player[Player.FindClosest(npc.position, npc.width, npc.height);
+                Player player = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
                 if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode && player.position.Y > (Main.worldSurface * 16.0))
                 {
                     if (Main.rand.Next(0, 100) >= 80)
