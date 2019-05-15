@@ -43,7 +43,11 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            projectile.alpha -= 10;
+            projectile.ai[0]++;
+            if (projectile.ai[0] > 20)
+            {
+                projectile.alpha = 0;
+            }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] > 130f) //projectile time left before disappears

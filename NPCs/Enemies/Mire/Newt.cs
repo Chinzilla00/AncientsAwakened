@@ -83,9 +83,9 @@ namespace AAMod.NPCs.Enemies.Mire
                 }
             }
             float distance = npc.Distance(Main.player[npc.target].Center);
-            if (distance <= 150) // distance until it does the tongue attack
+            if (distance >= 100) // distance until it does the tongue attack
             {
-                if (Main.rand.Next(60) == 0) // so it wont do it repeatedly when the player is near. increase to lower the chance of it doing it
+                if (Main.rand.Next(30) == 0) // so it wont do it repeatedly when the player is near. increase to lower the chance of it doing it
                 {
                     if (tongueAttack == false)
                     {
@@ -102,11 +102,11 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     if (npc.direction == -1)
                     {
-                        Projectile.NewProjectile((new Vector2(npc.Center.X - 56f, npc.Center.Y)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X + 56f, npc.Center.Y)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
                     }
                     else
                     {
-                        Projectile.NewProjectile((new Vector2(npc.position.X + 56f, npc.Center.Y)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
+                        Projectile.NewProjectile((new Vector2(npc.position.X - 56f, npc.Center.Y)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
                     }
                 }
                 if (tongueTimer >= 100)

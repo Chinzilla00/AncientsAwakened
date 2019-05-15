@@ -298,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[2]++;
                     if (internalAI[2] > 30f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12, true, new Vector2(0, -40f));					
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12, true, new Vector2(0, 40f));					
                     }
                     if (internalAI[2] > 90)
                     {

@@ -244,10 +244,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
             }
 
-            if (Main.dayTime)
-            {
-                internalAI[1] = AISTATE_RUNAWAY;
-            }
+            
 
             if (internalAI[1] == AISTATE_RUNAWAY)
             {
@@ -274,6 +271,13 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
+                npc.netUpdate = true;
+            }
+
+            if (Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.netUpdate = true;
             }
 
             if (internalAI[1] == AISTATE_ROCKETS)
