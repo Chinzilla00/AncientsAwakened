@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.lifeMax = 300;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
-            npc.value = 1f;
+            npc.value = 100f;
             npc.knockBackResist = 0.6f;
             npc.noGravity = true;
         }
@@ -43,8 +43,7 @@ namespace AAMod.NPCs.Enemies.Other
                 npc.spriteDirection = -1;
                 npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 3.14f;
             }
-            npc.frameCounter++;
-            if (npc.frameCounter >= 8)
+            if (npc.frameCounter++ >= 8)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 38;

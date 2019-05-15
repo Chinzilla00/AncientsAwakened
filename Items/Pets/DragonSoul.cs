@@ -32,7 +32,7 @@ namespace AAMod.Items.Pets
 
 		public override void AI()
         {
-            Lighting.AddLight(projectile.Center, 64 / 128, 35 / 128, 64 / 128);
+            Lighting.AddLight((int)(projectile.Center.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, .5f, 0.3f, 0f);
             if (projectile.velocity.X > 0f)
             {
                 projectile.spriteDirection = -1;

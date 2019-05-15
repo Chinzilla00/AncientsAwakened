@@ -1634,7 +1634,7 @@ namespace AAMod
             {
                 if (AAMod.AbilityKey.JustPressed && SagCooldown == 0)
                 {
-                    player.AddBuff(mod.BuffType<SagShield>(), 5400);
+                    player.AddBuff(mod.BuffType<SagShield>(), 300);
                     SagCooldown = 5400;
                 }
             }

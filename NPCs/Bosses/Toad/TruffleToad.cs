@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         }
                     }
                 }
-                else if (npc.velocity.Y > 0)
+                else
                 {
                     npc.frame.Y = 108 * 4;
                 }

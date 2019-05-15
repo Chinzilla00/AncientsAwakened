@@ -100,16 +100,13 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.velocity.X = 0;
                 if (tongueTimer == 35)
                 {
-                    // projectile code, donno how to do it though, so it just throws up dirt ¯\_(ツ)_/¯
                     if (npc.direction == -1)
                     {
-                        //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                        Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X - 56f, npc.Center.Y)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
                     }
                     else
                     {
-                        //Main.PlaySound(SoundID.Item3, (int)npc.position.X, (int)npc.position.Y);
-                        Projectile.NewProjectile((new Vector2(npc.position.X + 57f, npc.position.Y + 18f)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
+                        Projectile.NewProjectile((new Vector2(npc.position.X + 56f, npc.Center.Y)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
                     }
                 }
                 if (tongueTimer >= 100)

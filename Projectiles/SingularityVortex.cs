@@ -30,6 +30,7 @@ namespace AAMod.Projectiles
             projectile.alpha = 130;
             projectile.scale = .01f;
             projectile.alpha = 255;
+            projectile.tileCollide = false;
         }
 
         private float RingRotation = 0f;

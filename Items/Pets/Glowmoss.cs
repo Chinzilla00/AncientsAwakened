@@ -31,7 +31,7 @@ namespace AAMod.Items.Pets
 
 		public override void AI()
         {
-            Lighting.AddLight(projectile.Center, 23 / 128, 44 / 128, 128 / 128);
+            Lighting.AddLight((int)(projectile.Center.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, 0f, 0.5f, 0.2f);
             Player player = Main.player[projectile.owner];
             projectile.rotation += 0.02f;
             if (Main.myPlayer == projectile.owner)

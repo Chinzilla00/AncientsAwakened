@@ -18,6 +18,7 @@ Right click to use as a javelin");
 		public override void SetDefaults()
 		{
             item.damage = 270;
+            item.melee = true;
             item.width = 92; 
             item.height = 92;
             item.noMelee = true;
@@ -48,7 +49,7 @@ Right click to use as a javelin");
                 item.useTurn = false;
                 item.useStyle = 5;
                 item.shoot = mod.ProjectileType("BaneS");  
-                item.shootSpeed = 4f;
+                item.shootSpeed = 10f;
             }
             else
             {

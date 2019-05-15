@@ -289,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     num20 = Rajah.Center.Y - vector6.Y;
                     num20 -= 7f;
                     num19 += 66f;
-                    Color color6 = Lighting.GetColor((int)vector6.X / 16, (int)(vector6.Y / 16f));
+                    Color color6 = npc.GetAlpha(Lighting.GetColor((int)vector6.X / 16, (int)(vector6.Y / 16f)));
                     Texture2D Chain = mod.GetTexture("NPCs/Bosses/Rajah/PunisherR_Chain");
                     Main.spriteBatch.Draw(Chain, new Vector2(vector6.X - Main.screenPosition.X, vector6.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, Chain.Width, Chain.Height)), color6, rotation6, new Vector2(Chain.Width * 0.5f, Chain.Height * 0.5f), 1f, SpriteEffects.None, 0f);
                 }

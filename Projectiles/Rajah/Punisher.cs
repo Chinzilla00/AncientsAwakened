@@ -17,7 +17,7 @@ namespace AAMod.Projectiles.Rajah
         {
             projectile.width = 26;
             projectile.height = 26;
-            projectile.aiStyle = 69;
+            projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.alpha = 255;
@@ -44,6 +44,7 @@ namespace AAMod.Projectiles.Rajah
             }
             Main.player[projectile.owner].itemAnimation = 10;
             Main.player[projectile.owner].itemTime = 10;
+            float arg_1C53D_0 = vector54.X;
             if (vector54.X < 0f)
             {
                 Main.player[projectile.owner].ChangeDir(1);
@@ -58,7 +59,6 @@ namespace AAMod.Projectiles.Rajah
             projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
             if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {
-                projectile.ai[1] = 1f;
                 projectile.ai[0] = 1f;
             }
             if (projectile.ai[0] == 1f || projectile.ai[0] == 2f)
@@ -86,18 +86,19 @@ namespace AAMod.Projectiles.Rajah
                     return;
                 }
             }
-            if (projectile.ai[1] == 1f)
+            projectile.ai[1] += 1f;
+            if (projectile.ai[1] > 5f)
             {
-                float spread = 45f * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((10 * 10) + (10 * 10));
-                double startAngle = Math.Atan2(10, 10) - .1d;
-                double deltaAngle = spread / 6f;
-                double offsetAngle;
-                for (int i = 0; i < 3; i++)
-                {
-                    offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner);
-                }
+                projectile.alpha = 0;
+            }
+            if ((int)projectile.ai[1] % 4 == 0 && projectile.owner == Main.myPlayer)
+            {
+                Vector2 vector55 = vector54 * -1f;
+                vector55.Normalize();
+                vector55 *= Main.rand.Next(45, 65) * 0.1f;
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                return;
             }
         }
 

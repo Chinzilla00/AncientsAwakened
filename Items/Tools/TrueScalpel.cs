@@ -8,7 +8,7 @@ namespace AAMod.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 90;
+            item.damage = 50;
             item.melee = true;
             item.width = 40;
             item.height = 40;
@@ -18,7 +18,7 @@ namespace AAMod.Items.Tools
             item.pick = 205;
             item.useStyle = 1;
             item.knockBack = 1;
-            item.value = 10;
+            item.value = 10000;
             item.rare = 5;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

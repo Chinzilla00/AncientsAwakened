@@ -22,7 +22,7 @@ namespace AAMod.Items.Ranged
             item.knockBack = 5;
             item.value = 1000;
             item.rare = 11;
-            item.UseSound = SoundID.Item5;
+            item.UseSound = SoundID.Item12;
             item.autoReuse = true;
             item.shootSpeed = 22f;
         }

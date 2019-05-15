@@ -38,10 +38,12 @@ namespace AAMod.Projectiles
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
             projectile.timeLeft = 900;
+            projectile.alpha = 255;
         }
 
         public override void AI()
         {
+            projectile.alpha -= 10;
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] > 130f) //projectile time left before disappears
