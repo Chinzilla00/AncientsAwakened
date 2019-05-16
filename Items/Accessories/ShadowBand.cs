@@ -11,7 +11,7 @@ namespace AAMod.Items.Accessories
         {
             item.width = 32;
             item.height = 44;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 1;
             item.accessory = true;
         }

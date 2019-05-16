@@ -222,12 +222,12 @@ namespace AAMod.Worldgeneration
 				new Modifiers.RadialDither(biomeRadius - 5, biomeRadius), //this provides the 'blending' on the edges (except the top)
 				new SetModTile(tileGrass, true, true) //actually place the tile
 			}));
-            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
+            /*WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //dirt...
             {
                 new Modifiers.OnlyTiles(new ushort[] { TileID.SnowBlock }),
                  new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new BaseMod.SetModTile(tileGrass, true, true)
-            }));
+            }));*/
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //and stone.
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone }),

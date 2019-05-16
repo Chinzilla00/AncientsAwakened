@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rajah Rabbit");
-            Main.npcFrameCount[npc.type] = 1;
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults()
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
-            WeaponPos = new Vector2(npc.Center.X + 78, npc.Center.Y - 9);
+            WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (!NPC.AnyNPCs(mod.NPCType<PunisherR>()))
             {
                 NPC.NewNPC((int)npc.Center.X + 78, (int)npc.Center.Y - 9, mod.NPCType<PunisherR>(), 0, -1f, 0f, 0f, 0f, 255);
@@ -107,12 +107,10 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (player.Center.Y < npc.position.Y || TileBelowEmpty())
             {
                 FlyAI();
-                internalAI[4] = 0;
             }
             else
             {
                 JumpAI();
-                internalAI[4] = 1;
             }
 
             if (npc.target <= 0 || npc.target == 255 || Main.player[npc.target].dead)
@@ -237,7 +235,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah_Fly");
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
+                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape_Fly");
             }
             else
             {
@@ -281,6 +279,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void JumpAI()
         {
+            internalAI[4] = 1;
             if (npc.ai[0] == 0f)
             {
                 npc.noTileCollide = false;
@@ -389,10 +388,13 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
+
+            npc.rotation = 0;
         }
 
         public void FlyAI()
         {
+            internalAI[4] = 0;
             BaseAI.AISpaceOctopus(npc, ref internalAI, .25f, 7, 300, 0, null);
         }
 

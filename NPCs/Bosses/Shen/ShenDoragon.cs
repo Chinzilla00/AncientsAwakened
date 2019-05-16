@@ -636,6 +636,7 @@ namespace AAMod.NPCs.Bosses.Shen
             HandleRotations(player);
         }
 
+
         public void SwitchToAI(float ai0, float ai1, float ai2, float ai3)
 		{
             customAI[2] = -1;
@@ -735,6 +736,7 @@ namespace AAMod.NPCs.Bosses.Shen
     
         public override void HitEffect(int hitDirection, double damage)
         {
+            damage *= .8f;
             Player player = Main.player[npc.target];
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {

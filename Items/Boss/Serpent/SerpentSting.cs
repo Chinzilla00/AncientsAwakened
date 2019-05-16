@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Serpent
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Serpent's sting");
+			DisplayName.SetDefault("Serpent's Sting");
 			Tooltip.SetDefault("Turns bullets into snow shots");
 		}
 

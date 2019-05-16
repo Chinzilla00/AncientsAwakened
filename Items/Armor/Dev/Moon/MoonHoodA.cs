@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Dev.Moon
         public override void UpdateEquip(Player player)
         {
             player.magicDamage += .24f;
-            player.meleeCrit += 24;
+            player.magicCrit += 24;
             player.statManaMax2 += 200;
             player.manaCost -= .15f;
         }

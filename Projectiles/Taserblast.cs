@@ -44,7 +44,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             projectile.ai[0]++;
-            if (projectile.ai[0] > 20)
+            if (projectile.ai[0] > 5)
             {
                 projectile.alpha = 0;
             }

@@ -54,6 +54,7 @@ namespace AAMod.Projectiles
                     -projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188));
                 Main.dust[num469].velocity *= 2f;
             }
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DoomBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }

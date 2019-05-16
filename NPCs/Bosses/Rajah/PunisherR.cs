@@ -50,11 +50,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (npc.alpha > 0)
                 {
-                    npc.alpha -= 10;
-                    if (npc.alpha < 0)
-                    {
-                        npc.alpha = 0;
-                    }
+                    npc.alpha = 0;
                     npc.ai[1] = 0f;
                 }
             }

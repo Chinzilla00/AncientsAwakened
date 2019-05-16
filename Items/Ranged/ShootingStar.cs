@@ -10,7 +10,6 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-
             item.damage = 100;
             item.noMelee = true;
             item.ranged = true;
@@ -22,13 +21,11 @@ namespace AAMod.Items.Ranged
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 5;
-            item.value = 1000;
+            item.value = 10000;
             item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 22f;
-
-
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

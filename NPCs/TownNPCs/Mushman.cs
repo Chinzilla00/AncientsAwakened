@@ -25,7 +25,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 24;
+            Main.npcFrameCount[npc.type] = 26;
             NPCID.Sets.ExtraFramesCount[npc.type] = 7;
             NPCID.Sets.AttackFrameCount[npc.type] = 3;
             NPCID.Sets.DangerDetectRange[npc.type] = 700;

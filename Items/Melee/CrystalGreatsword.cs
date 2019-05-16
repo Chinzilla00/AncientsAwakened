@@ -8,23 +8,21 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 			item.CloneDefaults(ItemID.TrueNightsEdge);
-
-            item.damage = 83;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 96;              //Sword width
-            item.height = 96;             //Sword height
-
-            item.useTime = 30;          //how fast 
-            item.useAnimation = 30;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 6;      //Sword knockback
-            item.value = 10;        
+            item.damage = 83;
+            item.melee = true;
+            item.width = 96;
+            item.height = 96;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            item.useStyle = 1;
+            item.knockBack = 6;
+            item.value = 50000;
             item.rare = 7;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;
+            item.autoReuse = true;
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.CGP>();
-            item.shootSpeed = 6f;                //projectile speed                 
+            item.shootSpeed = 6f;
         }
 
     public override void SetStaticDefaults()
