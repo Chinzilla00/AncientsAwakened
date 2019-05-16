@@ -36,7 +36,6 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;      //this is how many enemy this projectile penetrate before desapear
             projectile.extraUpdates = 1;
             aiType = ProjectileID.BoneJavelin;
-            
         }
 
         public override void AI()

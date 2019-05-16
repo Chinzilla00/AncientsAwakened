@@ -79,6 +79,7 @@ namespace AAMod
         public static bool downedRaider;
         public static bool downedStormAny;
         public static bool downedStormAll;
+        public static bool downedRajah;
         public static bool downedDB;
         public static bool downedNC;
         public static bool downedEquinox;
@@ -88,12 +89,12 @@ namespace AAMod
         public static bool downedYamata;
         public static bool zeroUS;
         public static bool downedZero;
-        public static bool downedShen;
-        public static bool downedIZ;
         public static bool downedKraken;
         public static bool downedAllAncients;
-        public static int downedIZnumber;
         public static bool ShenSummoned;
+        public static bool downedShen;
+        public static bool downedIZ;
+        public static int downedIZnumber;
         public static bool downedToad;
         public static bool downedGripsS;
         public static bool downedSoC;
@@ -176,6 +177,7 @@ namespace AAMod
             downedSag = false;
             SistersSummoned = false;
             downedTruffle = false;
+            downedRajah = false;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -291,6 +293,7 @@ namespace AAMod
             if (ModContentGenerated) downed.Add("WorldGenned");
             if (SistersSummoned) downed.Add("Summoned");
             if (downedTruffle) downed.Add("Truffle");
+            if (downedRajah) downed.Add("Rajah");
 
             return new TagCompound {
                 {"downed", downed},
@@ -377,6 +380,7 @@ namespace AAMod
             BitsByte flags6 = new BitsByte();
             flags6[0] = ModContentGenerated;
             flags6[1] = downedTruffle;
+            flags6[2] = downedRajah;
             writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
@@ -456,6 +460,7 @@ namespace AAMod
             BitsByte flags6 = reader.ReadByte();
             ModContentGenerated = flags6[0];
             downedTruffle = flags6[1];
+            downedRajah = flags6[2];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -522,6 +527,7 @@ namespace AAMod
             downedSag = downed.Contains("Sag");
             SistersSummoned = downed.Contains("Summoned");
             downedTruffle = downed.Contains("Truffle");
+            downedRajah = downed.Contains("Rajah");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
