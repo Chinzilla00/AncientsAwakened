@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.buffImmune[k] = true;
             }
 
-            if (AAWorld.downedAllAncients)
+            if (AAWorld.downedShen)
             {
                 npc.lifeMax = 220000;
                 npc.damage = 160;
@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false && AAWorld.downedAllAncients)
+                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                     AAWorld.RealityDropped = true;

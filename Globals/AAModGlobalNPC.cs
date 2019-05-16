@@ -56,7 +56,7 @@ namespace AAMod
 
         public override void SetDefaults(NPC npc)
         {
-            if (AAWorld.downedAllAncients == true)
+            if (AAWorld.downedShen == true)
             {
                 if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want
                 {
