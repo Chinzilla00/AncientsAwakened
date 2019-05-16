@@ -2870,6 +2870,7 @@
     <Content Include="Glowmasks\HallamDevWeapon_Glow.png" />
     <Content Include="Glowmasks\HallowedForge_Glow.png" />
     <Content Include="Glowmasks\HaphestusForge_Glow.png" />
+    <Content Include="Glowmasks\HarukaVanish_Glow.png" />
     <Content Include="Glowmasks\Haruka_Glow.png" />
     <Content Include="Glowmasks\HeartstoneChestguard_Arms_Glow.png" />
     <Content Include="Glowmasks\HeartstoneChestguard_Body_Glow.png" />
@@ -3424,6 +3425,12 @@
     <Content Include="Healthbars\FBarBody.png" />
     <Content Include="Healthbars\FBarHead.png" />
     <Content Include="Healthbars\FBarTail.png" />
+    <Content Include="Healthbars\HarukaBar2Body.png" />
+    <Content Include="Healthbars\HarukaBar2Head.png" />
+    <Content Include="Healthbars\HarukaBar2Tail.png" />
+    <Content Include="Healthbars\HarukaBarBody.png" />
+    <Content Include="Healthbars\HarukaBarHead.png" />
+    <Content Include="Healthbars\HarukaBarTail.png" />
     <Content Include="Healthbars\HydraBarBody.png" />
     <Content Include="Healthbars\HydraBarHead.png" />
     <Content Include="Healthbars\HydraBarTail.png" />
