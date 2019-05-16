@@ -26,7 +26,6 @@ namespace AAMod.Items.Pets
 			projectile.timeLeft *= 5;
 			projectile.friendly = true;
 			projectile.ignoreWater = true;
-			projectile.scale = 0.8f;
 			projectile.tileCollide = false;
 		}
 

@@ -1489,6 +1489,7 @@
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusBreath.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead1.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusHead2.cs" />
+    <Compile Include="NPCs\Bosses\Orthrus\OrthrusLock.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\OrthrusSpark.cs" />
     <Compile Include="NPCs\Bosses\Orthrus\Shocking.cs" />
     <Compile Include="NPCs\Bosses\Raider\RaidStrike.cs" />
@@ -4255,6 +4256,7 @@
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />
+    <Content Include="NPCs\Bosses\Orthrus\OrthrusLock.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBattler.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBrawler.png" />
     <Content Include="NPCs\Bosses\Rajah\CarrotHostile.png" />

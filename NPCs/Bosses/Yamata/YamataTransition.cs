@@ -47,6 +47,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
+            if (Vector2.Distance(npc.Center, player.Center) > 2000)
+            {
+                npc.alpha = 255;
+                npc.Center = player.Center - new Vector2(0, 300f);
+            }
+
+
             npc.ai[0]++;
             npc.frameCounter++;
             if (npc.frameCounter >= 7)
@@ -154,6 +161,13 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;			
             }
         }
-
+        public override bool CheckActive()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

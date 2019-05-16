@@ -20,6 +20,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
+            npc.noTileCollide = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
@@ -45,6 +46,12 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
+
+            if (Vector2.Distance(npc.Center, player.Center) > 2000)
+            {
+                npc.alpha = 255;
+                npc.Center = player.Center - new Vector2(0, 300f);
+            }
 
             npc.ai[0]++;
             npc.frameCounter++;
@@ -137,6 +144,15 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
+        }
+
+        public override bool CheckActive()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            {
+                return false;
+            }
+            return true;
         }
 
     }
