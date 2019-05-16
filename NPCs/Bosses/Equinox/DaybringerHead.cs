@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("DBBag");			
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 200000;
                 npc.defense = 150;
@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			float moveSpeedMax = 16f;	
 			npc.damage = 200;
 			npc.defense = 100;
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.defense = 150;
             }
@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				moveSpeedMax = (!nightcrawler ? 20f : 16f);
 				npc.damage = 300;		
 				npc.defense = (!nightcrawler ? 120 : 150);
-                if (AAWorld.downedShen)
+                if (AAWorld.downedAllAncients)
                 {
                     moveSpeedMax = (!nightcrawler ? 25f : 16f);
                     npc.damage = 300;
@@ -295,7 +295,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
-                if (Main.rand.Next(20) == 0 && AAWorld.MindDropped == false && AAWorld.downedShen)
+                if (Main.rand.Next(20) == 0 && AAWorld.MindDropped == false && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MindStone"));
                     AAWorld.MindDropped = true;

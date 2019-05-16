@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
             musicPriority = MusicPriority.BossHigh;
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.damage = 120;
                 npc.defense = 160;
@@ -537,7 +537,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
-                if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false && AAWorld.downedShen)
+                if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                     AAWorld.PowerDropped = true;

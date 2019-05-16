@@ -4,7 +4,6 @@ using AAMod.Buffs;
 using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
-using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using Microsoft.Xna.Framework;
@@ -491,20 +490,13 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useShen = (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()));
-            bool useShenA = (NPC.AnyNPCs(mod.NPCType<ShenA>()));
             bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
             bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
-            bool useVoid = (ZoneVoid || VoidUnit) && !useShen;
-            bool useStars = ZoneStars && !useShen;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+            bool useVoid = (ZoneVoid || VoidUnit);
 
             //player.ManageSpecialBiomeVisuals("AAMod:StarSky", useStars);
-
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
-
-            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
 
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
 
@@ -726,13 +718,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (RabbitKills >= 100)
-            {
-                RabbitKills = 0;
-                Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), player.Center);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
-            }
             if (SagCooldown > 0)
             {
                 player.noItems = true;

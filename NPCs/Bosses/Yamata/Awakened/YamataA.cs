@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false && AAWorld.downedShen)
+                if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                     AAWorld.SpaceDropped = true;

@@ -58,13 +58,16 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
-            if (npc.velocity.X < 0) // so it faces the player
+            if (!tongueAttack)
             {
-                npc.spriteDirection = 1;
-            }
-            else if (npc.velocity.X > 0)
-            {
-                npc.spriteDirection = -1;
+                if (npc.velocity.X < 0) // so it faces the player
+                {
+                    npc.spriteDirection = 1;
+                }
+                else if (npc.velocity.X > 0)
+                {
+                    npc.spriteDirection = -1;
+                }
             }
             if (tongueAttack == true)
             {

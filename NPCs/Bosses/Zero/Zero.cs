@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.netAlways = true;
             musicPriority = MusicPriority.BossHigh;
 
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 200000;
                 npc.damage = 140;
@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
-                if (Main.rand.Next(20) == 0 && AAWorld.RealityDropped == false && AAWorld.downedShen)
+                if (Main.rand.Next(20) == 0 && AAWorld.RealityDropped == false && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                     AAWorld.RealityDropped = true;
