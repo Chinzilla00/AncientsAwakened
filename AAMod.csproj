@@ -4165,6 +4165,8 @@
     <Content Include="Items\Melee\ChaosYari.png" />
     <Content Include="Items\Melee\ChaosYariEX.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
+    <Content Include="Items\Melee\Mjolnir.png" />
+    <Content Include="Items\Melee\MjolnirEX.png" />
     <Content Include="Items\Melee\Pyrosphere.png" />
     <Content Include="Items\Melee\RaiderLance.png" />
     <Content Include="Items\Melee\SwampSlasher.png" />
