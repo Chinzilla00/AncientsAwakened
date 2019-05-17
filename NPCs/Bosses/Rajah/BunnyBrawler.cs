@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bunny Brawler");
-            Main.npcFrameCount[npc.type] = 7;
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults()
@@ -32,6 +32,28 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
             }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.velocity.Y == 0)
+            {
+                npc.frame.Y = 0;
+            }
+            else if (npc.velocity.Y < 0)
+            {
+                npc.frame.Y = frameHeight;
+            }
+            else if(npc.velocity.Y > 0)
+            {
+                npc.frame.Y = frameHeight * 2;
+            }
+        }
+
+        public override void AI()
+        {
+           
+            BaseMod.BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
         }
 
         public override bool PreNPCLoot()

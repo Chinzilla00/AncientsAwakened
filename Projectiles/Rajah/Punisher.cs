@@ -97,7 +97,7 @@ namespace AAMod.Projectiles.Rajah
                 vector55.Normalize();
                 vector55 *= Main.rand.Next(45, 65) * 0.1f;
                 vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X * 2, vector55.Y * 2, mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }

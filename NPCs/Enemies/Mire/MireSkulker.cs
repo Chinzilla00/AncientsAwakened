@@ -89,6 +89,10 @@ namespace AAMod.NPCs.Enemies.Mire
                     }
                 }
             }
+            if (npc.frame.Y > 40 * 10)
+            {
+                npc.frame.Y = 40 * 10;
+            }
         }
 
         public override void AI()

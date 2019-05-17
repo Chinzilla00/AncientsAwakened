@@ -232,31 +232,31 @@ namespace AAMod.Worldgeneration
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileStone, true, true)
+                new SetModTile(tileStone, true, true)
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //ice...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileStone, true, true)
+                new SetModTile(tileStone, true, true)
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //sand...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Sand, TileID.Ebonsand, TileID.Crimsand }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileSand, true, true)
+                new SetModTile(tileSand, true, true)
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //hardened sand...
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileSandHardened, true, true)
+                new SetModTile(tileSandHardened, true, true)
             }));
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and sandstone.
 			{
                 new Modifiers.OnlyTiles(new ushort[]{ TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone }),
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
-                new BaseMod.SetModTile(tileSandstone, true, true)
+                new SetModTile(tileSandstone, true, true)
             }));
 			int genX = origin.X - (gen.width / 2);
             int genY = origin.Y - 80;

@@ -1,103 +1,120 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using BaseMod;
 
 namespace AAMod.Projectiles.Zero
 {
     public class VoidStarPF : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Star Vortex");
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 60;
             projectile.height = 60;
             projectile.friendly = true;
-            projectile.hostile = false;
-            projectile.tileCollide = false;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 300;
-            projectile.aiStyle = -1;
+            projectile.ranged = true;
             projectile.ignoreWater = true;
+            projectile.penetrate = 100;
+            projectile.alpha = 130;
+            projectile.scale = .01f;
+            projectile.alpha = 255;
+            projectile.tileCollide = false;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return new Color(220, 220, 220, 220);
-        }
+        private float RingRotation = 0f;
 
         public override void AI()
         {
-            float num472 = projectile.Center.X;
-            float num473 = projectile.Center.Y;
-            float num474 = 400f;
-            bool flag17 = false;
-            for (int num475 = 0; num475 < 200; num475++)
+            RingRotation += 0.03f;
+
+            if (projectile.alpha > 80)
             {
-                if (Main.npc[num475].CanBeChasedBy(projectile, false) && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
+                projectile.alpha -= 3;
+            }
+            else
+            {
+                projectile.alpha = 80;
+            }
+
+            if (projectile.scale > 1f && projectile.ai[0] == 0)
+            {
+                projectile.ai[0] = 1;
+                projectile.scale = 1f;
+            }
+            else
+            {
+                projectile.scale += .5f;
+            }
+
+            if (projectile.ai[0] == 1 && projectile.penetrate > 0)
+            {
+                projectile.scale = projectile.penetrate / 100f;
+            }
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
                 {
-                    float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                    float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                    float num478 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num476) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num477);
-                    if (num478 < num474)
-                    {
-                        num474 = num478;
-                        num472 = num476;
-                        num473 = num477;
-                        flag17 = true;
-                    }
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            if (flag17)
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
             {
-                float num483 = 20f;
-                Vector2 vector35 = new Vector2(projectile.position.X + ((float)projectile.width * 0.5f), projectile.position.Y + ((float)projectile.height * 0.5f));
-                float num484 = num472 - vector35.X;
-                float num485 = num473 - vector35.Y;
-                float num486 = (float)Math.Sqrt((double)((num484 * num484) + (num485 * num485)));
-                num486 = num483 / num486;
-                num484 *= num486;
-                num485 *= num486;
-                projectile.velocity.X = ((projectile.velocity.X * 20f) + num484) / 21f;
-                projectile.velocity.Y = ((projectile.velocity.Y * 20f) + num485) / 21f;
-                projectile.rotation += projectile.direction * 0.8f;
-                projectile.ai[0] += 1f;
-                if (projectile.ai[0] >= 30f)
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
                 {
-                    if (projectile.ai[0] < 100f)
-                    {
-                        projectile.velocity *= 1.00f;
-                    }
-                    else
-                    {
-                        projectile.ai[0] = 200f;
-                    }
-                }
-                for (int num257 = 0; num257 < 2; num257++)
-                {
-                    int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, new Color(120, 0, 30), 1f);
-                    Main.dust[num258].noGravity = true;
-                }
-                return;
-            }
-            projectile.rotation += 0.3f;
-            projectile.ai[0] += 1f;
-            if (projectile.ai[0] >= 30f)
-            {
-                if (projectile.ai[0] < 100f)
-                {
-                    projectile.velocity *= 1.00f;
-                }
-                else
-                {
-                    projectile.ai[0] = 200f;
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
                 }
             }
-            for (int num257 = 0; num257 < 2; num257++)
-            {
-                int num258 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, new Color(120, 0, 30), 1f);
-                Main.dust[num258].noGravity = true;
-            }
+
+            return selectedTarget;
+        }
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
+        {
+            Texture2D Tex = Main.projectileTexture[projectile.type];
+            Texture2D Vortex = mod.GetTexture("Projectiles/SingularityVortex1");
+            Rectangle frame = new Rectangle(0, 0, Tex.Width, Tex.Height);
+            BaseDrawing.DrawTexture(spritebatch, Vortex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, RingRotation, 0, 1, frame, projectile.GetAlpha(GenericUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(spritebatch, Tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, -RingRotation, 0, 1, frame, projectile.GetAlpha(GenericUtils.COLOR_GLOWPULSE), true);
+            return false;
         }
     }
 }

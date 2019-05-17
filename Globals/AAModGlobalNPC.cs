@@ -1012,6 +1012,7 @@ namespace AAMod
         }
 
     }
+
     public abstract class AANPC : ParentNPC
     {
         public virtual bool CanSpawn(int x, int y, int type, Player player, NPCSpawnInfo info)

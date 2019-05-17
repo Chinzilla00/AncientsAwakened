@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
@@ -38,7 +37,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SingularityVortex"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0, projectile.velocity.Y * 0, mod.ProjectileType("SingularityVortex"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens

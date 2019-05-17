@@ -29,9 +29,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public int chargeWidth = 50;
-        public int normalWidth = 250;
-
         public override void AI()
         {
             npc.TargetClosest();
@@ -93,14 +90,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void SummonShen()
         {
+            Player player = Main.player[npc.target];
             Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             Main.NewText("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            if (Main.netMode != 1)
-            {
-                int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenA"));
-                Main.npc[npcID].Center = npc.Center;
-                Main.npc[npcID].netUpdate = true;
-            }
+
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, npc.Center, "");
         }
 
         public Color GetColorAlpha()

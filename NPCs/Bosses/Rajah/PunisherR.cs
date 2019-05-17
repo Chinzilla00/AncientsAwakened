@@ -28,19 +28,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.knockBackResist = 0f;
             npc.npcSlots = 0f;
             npc.netAlways = true;
-            npc.noGravity = false;
+            npc.noGravity = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RajahTheme");
         }
 
         public override void AI()
         {
-            int Rabbit = AAModGlobalNPC.Rajah;
-            NPC Rajah = Main.npc[Rabbit];
-            if (Rabbit < 0)
-            {
-                npc.active = false;
-                return;
-            }
+            NPC Rajah = Main.npc[(int)npc.ai[2]];
             if (Rajah.ai[3] != 2)
             {
                 npc.ai[1] = -1;
@@ -58,11 +52,11 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.noTileCollide = true;
                 float num659 = 14f;
-                if (npc.life < npc.lifeMax / 2)
+                if (Rajah.life < Rajah.lifeMax / 2)
                 {
                     num659 += 3f;
                 }
-                if (npc.life < npc.lifeMax / 4)
+                if (Rajah.life < Rajah.lifeMax / 4)
                 {
                     num659 += 3f;
                 }

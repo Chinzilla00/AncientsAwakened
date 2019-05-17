@@ -155,7 +155,7 @@ namespace AAMod
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
             if (Main.tile[i, j - 1].active() && 
-                (Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar2>()))
+                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
             }
@@ -165,7 +165,7 @@ namespace AAMod
         public override bool CanExplode(int i, int j, int type)
         {
             if (Main.tile[i, j - 1].active() &&
-                (Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<Tiles.ChaosAltar2>()))
+                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()) && (Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
             }

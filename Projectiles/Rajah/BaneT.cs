@@ -25,5 +25,9 @@ namespace AAMod.Projectiles.Rajah
             projectile.extraUpdates = 2;
             aiType = ProjectileID.BoneJavelin;
         }
+        public override void PostAI()
+        {
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 0.785f;
+        }
     }
 }

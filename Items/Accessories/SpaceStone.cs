@@ -54,6 +54,7 @@ You are immune to the Chaos State Debuff
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.GetModPlayer<AAPlayer>(mod).Space = true;
             if (player.controlHook && StoneCD == 0 && Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector32;

@@ -71,6 +71,8 @@
     <Compile Include="AARecipes.cs" />
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
+    <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
+    <Compile Include="WingAnimation.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\AkumaSkyData.cs" />
     <Compile Include="Backgrounds\FogOverlay.cs" />
@@ -295,6 +297,7 @@
     <Compile Include="Items\Accessories\Wings\RadiumWings.cs" />
     <Compile Include="Items\Accessories\Wings\VultureWings.cs" />
     <Compile Include="Items\Accessories\Wings\ZeroWings.cs" />
+    <Compile Include="Items\Accessories\SpacePlaceholder.cs" />
     <Compile Include="Items\Armor\Abyssal\AbyssalFukumen.cs" />
     <Compile Include="Items\Armor\Abyssal\AbyssalGi.cs" />
     <Compile Include="Items\Armor\Abyssal\AbyssalHakama.cs" />
@@ -750,7 +753,11 @@
     <Compile Include="Items\Boss\Raider\RaiderBag.cs" />
     <Compile Include="Items\Boss\Raider\RaiderTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\BaneOfTheBunny.cs" />
+    <Compile Include="Items\Boss\Rajah\Bunzooka.cs" />
     <Compile Include="Items\Boss\Rajah\Punisher.cs" />
+    <Compile Include="Items\Boss\Rajah\RabbitcopterEars.cs" />
+    <Compile Include="Items\Boss\Rajah\RajahBag.cs" />
+    <Compile Include="Items\Boss\Rajah\RajahSash.cs" />
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
     <Compile Include="Items\Boss\Retriever\RetrieverTrophy.cs" />
     <Compile Include="Items\Boss\Retriever\StormClaw.cs" />
@@ -1379,6 +1386,7 @@
     <Compile Include="Items\Vanity\Moon\MoonBoots.cs" />
     <Compile Include="Items\Vanity\Moon\MoonHood.cs" />
     <Compile Include="Items\Vanity\Moon\MoonRobe.cs" />
+    <Compile Include="Items\Vanity\Moon\MoonWings.cs" />
     <Compile Include="Items\Vanity\Tails\TailsBody.cs" />
     <Compile Include="Items\Vanity\Tails\TailsHead.cs" />
     <Compile Include="Items\Vanity\Tails\TailsLegs.cs" />
@@ -3514,6 +3522,7 @@
     <Content Include="Items\Accessories\ShadowBand_HandsOn.png" />
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
+    <Content Include="Items\Accessories\SpacePlaceholder.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
     <Content Include="Items\Accessories\SpaceStone_Face.png" />
     <Content Include="Items\Accessories\TimeStone.png" />
@@ -3522,10 +3531,14 @@
     <Content Include="Items\Accessories\Wings\AbyssalWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\AquamancerWings.png" />
     <Content Include="Items\Accessories\Wings\AquamancerWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\AsgardianWings.png" />
+    <Content Include="Items\Accessories\Wings\AsgardianWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\DarkmatterJetpack.png" />
     <Content Include="Items\Accessories\Wings\DarkmatterJetpack_Wings.png" />
     <Content Include="Items\Accessories\Wings\DeathlyWings.png" />
     <Content Include="Items\Accessories\Wings\DeathlyWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\DevilWings.png" />
+    <Content Include="Items\Accessories\Wings\DevilWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\DraconianWings.png" />
     <Content Include="Items\Accessories\Wings\DraconianWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\DreadWings.png" />
@@ -4111,7 +4124,7 @@
     <Content Include="Items\BossSummons\Toadstool.png" />
     <Content Include="Items\Boss\MadnessTruffle.png" />
     <Content Include="Items\Boss\Rajah\BaneOfTheBunny.png" />
-    <Content Include="Items\Boss\Rajah\Bunnyzooka.png" />
+    <Content Include="Items\Boss\Rajah\Bunzooka.png" />
     <Content Include="Items\Boss\Rajah\Punisher.png" />
     <Content Include="Items\Boss\Rajah\RabbitcopterEars.png" />
     <Content Include="Items\Boss\Rajah\RabbitcopterEars_Wings.png" />
@@ -4215,6 +4228,8 @@
     <Content Include="Items\Vanity\Beg\PonyHoofs_Legs.png" />
     <Content Include="Items\Vanity\Beg\PonyMask.png" />
     <Content Include="Items\Vanity\Beg\PonyMask_Head.png" />
+    <Content Include="Items\Vanity\Grox\GroxHood.png" />
+    <Content Include="Items\Vanity\Grox\GroxHood_Head.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask_Head.png" />
     <Content Include="Items\Vanity\Mask\AkumaMask.png" />
@@ -4249,6 +4264,8 @@
     <Content Include="Items\Vanity\Mask\YamataAMask_Head.png" />
     <Content Include="Items\Vanity\Mask\YamataMask.png" />
     <Content Include="Items\Vanity\Mask\YamataMask_Head.png" />
+    <Content Include="Items\Vanity\Moon\MoonWings.png" />
+    <Content Include="Items\Vanity\Moon\MoonWings_Wings.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />

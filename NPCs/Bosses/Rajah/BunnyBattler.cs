@@ -15,9 +15,17 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.CorruptBunny);
-            npc.life = 300;
+            npc.width = 48;
+            npc.height = 40;
+            npc.aiStyle = -1;
             npc.damage = 50;
+            npc.defense = 40;
+            npc.lifeMax = 300;
+            npc.knockBackResist = 0f;
+            npc.npcSlots = 0f;
+            npc.HitSound = SoundID.NPCHit14;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.value = 10000f;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -31,6 +39,11 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
             }
+        }
+
+        public override void AI()
+        {
+            BaseMod.BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, .1f, 2, 7, 5, 60, true, 10, 60, true);
         }
 
         public override bool PreNPCLoot()

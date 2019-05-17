@@ -71,7 +71,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-            float dist = npc.Distance(player.Center);
 
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
             if (npc.alpha != 0)

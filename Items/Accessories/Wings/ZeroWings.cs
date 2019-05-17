@@ -10,7 +10,7 @@ namespace AAMod.Items.Accessories.Wings
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Gravity Nullifiers");
+            DisplayName.SetDefault("Zero Jet");
             Tooltip.SetDefault("Allows flight and slow fall");
         }
 
