@@ -442,7 +442,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (internalAI[4] == 0)
             {
-                if (npc.frameCounter++ > 3)
+                if (npc.frameCounter++ > 7.5f)
                 {
                     npc.frame.Y += frameHeight;
                     npc.frameCounter = 0;
@@ -507,7 +507,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else
                     {
                         npc.frameCounter++;
-                        if  (npc.frame.Y > 3)
+                        if  (npc.frame.Y > 7.5f)
                         {
                             if (npc.frameCounter > 0)
                             {

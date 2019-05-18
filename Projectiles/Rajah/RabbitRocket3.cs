@@ -79,6 +79,7 @@ namespace AAMod.Projectiles.Rajah
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(SoundID.Item14, projectile.position);
             Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoom>(), projectile.damage, projectile.knockBack, projectile.owner);
         }
     }

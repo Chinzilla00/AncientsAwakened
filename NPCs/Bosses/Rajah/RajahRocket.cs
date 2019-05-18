@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
             const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -81,6 +81,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(SoundID.Item14, projectile.position);
             Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoomR>(), projectile.damage, projectile.knockBack, projectile.owner);
         }
     }
