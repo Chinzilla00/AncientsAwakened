@@ -28,8 +28,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.lifeMax = 50000;
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
-            npc.HitSound = SoundID.NPCHit14;
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/RajahRoar");
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/Rajah");
             npc.value = 10000f;
             npc.boss = true;
             npc.netAlways = true;
@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (Main.player[npc.target].dead || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
                 {
                     Main.NewText("Justice has been served...", 107, 137, 179);
-                    Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
                     npc.active = false;
                     npc.noTileCollide = true;
                 }
@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     internalAI[2] = 0;
                     if (internalAI[4] == 0)
                     {
-                        NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>());
+                        NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>(), 0);
                     }
                     else
                     {
@@ -156,18 +156,18 @@ namespace AAMod.NPCs.Bosses.Rajah
                         {
                             for (int i = 0; i < 3; i++)
                             {
-                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>());
+                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<RabbitcopterSoldier>(), 0);
                             }
                         }
                         else if (internalAI[3] == 1)
                         {
-                            NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBrawler>());
+                            NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBrawler>(), 0);
                         }
                         else if (internalAI[3] == 2)
                         {
                             for (int i = 0; i < 4; i++)
                             {
-                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBattler>());
+                                NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y, (int)npc.Center.X - 200), mod.NPCType<BunnyBattler>(), 0);
                             }
                         }
                         internalAI[3] += 1;
@@ -456,34 +456,46 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (npc.ai[0] == 0f)
                 {
-                    npc.frameCounter = 0;
                     if (npc.ai[1] < -17f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = 0;
                     }
                     else if (npc.ai[1] < -14f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = frameHeight;
                     }
                     else if (npc.ai[1] < -11f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 2;
                     }
                     else if (npc.ai[1] < -8f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 3;
                     }
-                    else if (npc.ai[1] < 5f)
+                    else if (npc.ai[1] < -5f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 4;
                     }
-                    else if (npc.ai[1] < 2f)
+                    else if (npc.ai[1] < -2f)
                     {
+                        npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 5;
                     }
                     else
                     {
-                        npc.frame.Y = 0;
+                        if (npc.frameCounter++ > 3)
+                        {
+                            npc.frame.Y += frameHeight;
+                            if (npc.frame.Y > frameHeight * 2)
+                            {
+                                npc.frame.Y = 0;
+                            }
+                        }
                     }
                 }
                 else if (npc.ai[0] == 1f)
@@ -495,17 +507,31 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else
                     {
                         npc.frameCounter++;
-                        if (npc.frameCounter > 0)
+                        if  (npc.frame.Y > 3)
                         {
-                            npc.frame.Y = frameHeight * 6;
+                            if (npc.frameCounter > 0)
+                            {
+                                npc.frame.Y = frameHeight * 6;
+                            }
+                            else if (npc.frameCounter > 4)
+                            {
+                                npc.frame.Y = frameHeight * 7;
+                            }
+                            else if (npc.frameCounter > 8)
+                            {
+                                npc.frame.Y = 0;
+                            }
                         }
-                        else if (npc.frameCounter > 4)
+                        else
                         {
-                            npc.frame.Y = frameHeight * 7;
-                        }
-                        else if (npc.frameCounter > 8)
-                        {
-                            npc.frame.Y = 0;
+                            if (npc.frameCounter > 3)
+                            {
+                                npc.frame.Y += frameHeight;
+                                if (npc.frame.Y > frameHeight * 2)
+                                {
+                                    npc.frame.Y = 0;
+                                }
+                            }
                         }
                     }
                 }
@@ -525,7 +551,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
             Main.NewText("You win this time, terrarian...but I will avenge those you mercilicely slayed...", 107, 137, 179);
-            Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
             npc.value = 0f;
             npc.boss = false;
         }

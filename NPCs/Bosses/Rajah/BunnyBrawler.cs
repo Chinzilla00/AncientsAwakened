@@ -25,6 +25,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit14;
             npc.DeathSound = SoundID.NPCDeath1;
+            npc.aiStyle = 41;
+            aiType = NPCID.Derpling;
+            animationType = NPCID.Derpling;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -54,11 +57,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.frame.Y = frameHeight * 2;
             }
-        }
-
-        public override void AI()
-        {
-            BaseMod.BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
         }
 
         public override bool PreNPCLoot()

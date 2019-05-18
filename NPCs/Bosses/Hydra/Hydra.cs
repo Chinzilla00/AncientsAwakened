@@ -115,19 +115,22 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 if (Main.netMode != 1)
                 {
-                    int latestNPC = npc.whoAmI;
+                    int latestNPC;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead1"), npc.whoAmI + 1, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
+                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead2"), npc.whoAmI + 1, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
+                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead3"), npc.whoAmI + 1, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head3 = Main.npc[latestNPC];
+                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
                 }
                 HeadsSpawned = true;
             }

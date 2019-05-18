@@ -498,7 +498,7 @@ namespace AAMod
 
             if (Main.hardMode)
             {
-                Player punishedPlayer = Main.player[Main.myPlayer];
+                Player punishedPlayer = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
                 int lastCreatureHit = punishedPlayer.lastCreatureHit;
                 if (Item.BannerToNPC(lastCreatureHit) == 14) //14 is the banner ID for all bunny creatures.
                 {

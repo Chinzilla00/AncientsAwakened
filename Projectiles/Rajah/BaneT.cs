@@ -16,18 +16,14 @@ namespace AAMod.Projectiles.Rajah
 
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 24;
+            projectile.width = 16;
+            projectile.height = 16;
             projectile.friendly = true;
             projectile.aiStyle = 1;
             projectile.melee = true;
             projectile.penetrate = -1;
             projectile.extraUpdates = 2;
             aiType = ProjectileID.BoneJavelin;
-        }
-        public override void PostAI()
-        {
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 0.785f;
         }
     }
 }

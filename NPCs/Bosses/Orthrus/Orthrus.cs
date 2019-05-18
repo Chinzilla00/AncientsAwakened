@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 	{
         public NPC Head1;
         public NPC Head2;
+        public int[] Heads = null;
         public bool HeadsSpawned = false;
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -107,25 +108,32 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override void AI()
         {
-			npc.TargetClosest();
+            color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
+            Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
+
+            npc.TargetClosest();
 
             if (!HeadsSpawned)
             {
                 if (Main.netMode != 1)
                 {
                     npc.realLife = npc.whoAmI;
-                    int latestNPC = npc.whoAmI;
+                    int latestNPC;
                     latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
+                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
                     latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
+                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
                 }
                 HeadsSpawned = true;
             }
+
 
             Player playerTarget = Main.player[npc.target];
             if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && !playerTarget.dead)
@@ -279,7 +287,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead1", "NPCs/Bosses/Orthrus/OrthrusHead1_Glow", Head1, dColor, false);			
             DrawHead(sb, "NPCs/Bosses/Orthrus/OrthrusHead2", "NPCs/Bosses/Orthrus/OrthrusHead2_Glow", Head2, dColor, true); 			
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);		         
-		   return false;
+		    return false;
         }
     }
 }

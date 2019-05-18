@@ -39,7 +39,7 @@ namespace AAMod.Projectiles.Rajah
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
-                    Player target = Main.player[foundTarget];
+                    NPC target = Main.npc[foundTarget];
                     Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }

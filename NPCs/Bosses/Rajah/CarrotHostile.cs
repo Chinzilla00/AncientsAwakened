@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 		public override void SetDefaults()
 		{
             projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
+            projectile.damage = 120;
 		}
 
         public override void Kill(int timeleft)

@@ -113,7 +113,11 @@ namespace AAMod.NPCs.Bosses.Truffle
         public override void AI()
         {
             Player player = Main.player[npc.target];
-             
+
+            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
+            Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
+
             if (Main.dayTime)
             {
                 npc.active = false;
@@ -217,6 +221,8 @@ namespace AAMod.NPCs.Bosses.Truffle
                 else
                 {
                     MoveToPoint(MovePoint);
+
+                    Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, Color.LightCyan.R / 255, Color.LightCyan.G / 255, Color.LightCyan.B / 255);
                     if (Vector2.Distance(npc.Center, MovePoint) <= 0)
                     {
                         internalAI[1] = Main.rand.Next(3);

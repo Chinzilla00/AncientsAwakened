@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.hostile = true;
             projectile.scale = 0.9f;
             projectile.penetrate = 1;
+            projectile.damage = 120;
         }
 
         public override void AI()

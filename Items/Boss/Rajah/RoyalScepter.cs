@@ -30,6 +30,7 @@ namespace AAMod.Items.Boss.Rajah
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Royal Scepter");
+            Item.staff[item.type] = true;
         }
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

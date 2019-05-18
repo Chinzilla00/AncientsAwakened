@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             projectile.damage = 100;
             projectile.width = 200;
-            projectile.height = 220;
+            projectile.height = 214;
             projectile.penetrate = -1;
             projectile.hostile = true;
             projectile.friendly = false;
@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
             }
             projectile.velocity.X *= 0.00f;
-            projectile.velocity.Y -= .05f;
+            projectile.velocity.Y -= .1f;
         }
     }
 }

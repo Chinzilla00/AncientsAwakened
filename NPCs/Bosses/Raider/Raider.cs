@@ -55,12 +55,12 @@ namespace AAMod.NPCs.Bosses.Raider
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
-                writer.Write((float)internalAI[4]);
-                writer.Write((float)internalAI[5]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
+                writer.Write(internalAI[5]);
             }
         }
 
@@ -207,8 +207,9 @@ namespace AAMod.NPCs.Bosses.Raider
             Player player = Main.player[npc.target];
 
             int Minions = NPC.CountNPCS(mod.NPCType<RaidEgg>()) + NPC.CountNPCS(mod.NPCType<Raidmini>());
-            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-            Lighting.AddLight(npc.Center, color.R / 255, color.G / 255, color.B / 255);
+            color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
+            Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
 
             if (Main.netMode != 1 && internalAI[0]++ >= 180)
             {
