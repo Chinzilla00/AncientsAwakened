@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Rajah
         {
             projectile.width = 14;
             projectile.height = 14;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.scale = 0.9f;

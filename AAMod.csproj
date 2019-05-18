@@ -1518,9 +1518,7 @@
     <Compile Include="NPCs\Bosses\Rajah\CarrotHostile.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahBookIt.cs" />
-    <Compile Include="NPCs\Bosses\Rajah\RajahBunny.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahRocket.cs" />
-    <Compile Include="NPCs\Bosses\Rajah\RajahSpawn.cs" />
     <Compile Include="NPCs\Bosses\Rajah\Rajah.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.cs" />
     <Compile Include="NPCs\Bosses\Retriever\RetrieverLaser.cs" />
@@ -4308,11 +4306,9 @@
     <Content Include="NPCs\Bosses\Rajah\RajahArmsR_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArms_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahBookIt.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahBunny.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahCape.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahCape_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahSpawn.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Fly.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
@@ -4821,7 +4817,6 @@
     <Content Include="Items\Dev\GroxNote.png" />
     <Content Include="Items\Dev\HallamDevWeapon.png" />
     <Content Include="Items\Dev\MobianBuster.png" />
-    <Content Include="Items\Dev\OmegaBlade.png" />
     <Content Include="Items\Dev\PoniumStaff.png" />
     <Content Include="Items\Dev\PoniumStaffEX.png" />
     <Content Include="Items\Dev\Prismeow.png" />

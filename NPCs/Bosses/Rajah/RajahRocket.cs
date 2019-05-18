@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.hostile = true;
+            projectile.friendly = false;
             projectile.scale = 0.9f;
             projectile.penetrate = 1;
             projectile.damage = 120;
