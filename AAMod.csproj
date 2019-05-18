@@ -72,7 +72,6 @@
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
-    <Compile Include="WingAnimation.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\AkumaSkyData.cs" />
     <Compile Include="Backgrounds\FogOverlay.cs" />

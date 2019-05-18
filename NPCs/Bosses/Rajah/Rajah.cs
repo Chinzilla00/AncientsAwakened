@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
             npc.HitSound = SoundID.NPCHit14;
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCHit, "Sounds/Sounds/RajahRoar");
+            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/RajahRoar");
             npc.value = 10000f;
             npc.boss = true;
             npc.netAlways = true;
@@ -180,7 +180,15 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (npc.ai[3] == 1) //Bunzooka
             {
-                BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, mod.ProjectileType<RajahRocket>(), ref internalAI[2], 45, npc.damage / 2, 9, true);
+                internalAI[2]++;
+                if (internalAI[2] > 40)
+                {
+                    internalAI[2] = 0;
+                    Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                    dir *= 9f;
+                    float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                    Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                }
             }
 
             if (npc.ai[3] == 3) //Royal Scepter
@@ -334,7 +342,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else if (npc.ai[1] == -1f)
                     {
                         npc.TargetClosest(true);
-                        npc.velocity.X = 4 * npc.direction;
+                        npc.velocity.X = 6 * npc.direction;
                         npc.velocity.Y = -12.1f;
                         npc.ai[0] = 1f;
                         npc.ai[1] = 0f;
@@ -364,7 +372,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     if (npc.position.X < Main.player[npc.target].position.X && npc.position.X + (float)npc.width > Main.player[npc.target].position.X + (float)Main.player[npc.target].width)
                     {
                         npc.velocity.X = npc.velocity.X * 0.9f;
-                        npc.velocity.Y = npc.velocity.Y + 0.2f;
+                        npc.velocity.Y = npc.velocity.Y + 0.4f;
                     }
                     else
                     {

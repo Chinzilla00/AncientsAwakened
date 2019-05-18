@@ -17,12 +17,12 @@ namespace AAMod.Items.Boss.Rajah
 
         public override void SetDefaults()
         {
-            item.damage = 220;
+            item.damage = 150;
             item.ranged = true;
             item.width = 66;
             item.height = 28;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 5;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 7.5f;
@@ -32,17 +32,6 @@ namespace AAMod.Items.Boss.Rajah
             item.shootSpeed = 24f;
             item.shoot = mod.ProjectileType("RabbitRocket3");
             item.useAmmo = AmmoID.Rocket;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(0, 255, 200);
-                }
-            }
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

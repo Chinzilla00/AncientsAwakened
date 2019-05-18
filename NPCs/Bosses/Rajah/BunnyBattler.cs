@@ -25,7 +25,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit14;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 10000f;
         }
 
         public override void HitEffect(int hitDirection, double damage)

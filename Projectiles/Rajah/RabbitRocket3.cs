@@ -1,3 +1,4 @@
+using Terraria.ID;
 namespace AAMod.Projectiles.Rajah
 {
     public class RabbitRocket3 : RabbitRocket1
@@ -9,8 +10,7 @@ namespace AAMod.Projectiles.Rajah
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
-            RocketType = 3;
+            projectile.CloneDefaults(ProjectileID.RocketSnowmanIII);
         }
     }
 }

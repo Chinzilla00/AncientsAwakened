@@ -51,10 +51,10 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 14000;   //boss life
-            npc.damage = 30;  //boss damage
-            npc.defense = 20;    //boss defense
-            npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
+            npc.lifeMax = 5000;
+            npc.damage = 30;
+            npc.defense = 10;
+            npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 1, 0, 0);
             npc.aiStyle = -1;
             npc.width = 98;

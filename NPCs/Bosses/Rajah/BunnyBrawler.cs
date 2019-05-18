@@ -15,10 +15,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.Derpling);
-            npc.life = 500;
-            npc.damage = 70;
-            npc.alpha = 255;
+            npc.width = 48;
+            npc.height = 40;
+            npc.aiStyle = -1;
+            npc.damage = 80;
+            npc.defense = 60;
+            npc.lifeMax = 400;
+            npc.knockBackResist = 0f;
+            npc.npcSlots = 0f;
+            npc.HitSound = SoundID.NPCHit14;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -52,7 +58,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-           
             BaseMod.BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
         }
 

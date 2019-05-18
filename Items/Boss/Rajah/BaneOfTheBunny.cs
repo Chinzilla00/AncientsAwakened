@@ -28,7 +28,6 @@ Right click to use as a javelin");
             item.useStyle = 5;
             item.useTime = 20;
             item.knockBack = 4f;
-            item.autoReuse = false;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("BaneS");
             item.shootSpeed = 4f;
@@ -46,20 +45,20 @@ Right click to use as a javelin");
                 item.useTime = 15;
                 item.useAnimation = 15;
                 item.UseSound = SoundID.Item1;
-                item.useTurn = false;
                 item.useStyle = 5;
                 item.shoot = mod.ProjectileType("BaneS");  
                 item.shootSpeed = 10f;
+                item.autoReuse = true;
             }
             else
             {
                 item.useAnimation = 13;
                 item.useTime = 13;
                 item.UseSound = SoundID.Item1;
-                item.useTurn = false;
                 item.useStyle = 1;
                 item.shoot = mod.ProjectileType("BaneT");
                 item.shootSpeed = 10f;
+                item.autoReuse = true;
             }
             return base.CanUseItem(player);
         }
