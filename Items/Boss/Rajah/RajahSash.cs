@@ -98,5 +98,80 @@ Immunity to fall damage");
             }
             return 0f;
         }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            string BoostType;
+            Player player = Main.player[item.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            if (modPlayer.RangedHighest(player))
+            {
+                BoostType = "R";
+            }
+            else if (modPlayer.MagicHighest(player))
+            {
+                BoostType = "M";
+            }
+            else if (modPlayer.SummonHighest(player))
+            {
+                BoostType = "S";
+            }
+            else if (modPlayer.ThrownHighest(player))
+            {
+                BoostType = "T";
+            }
+            else
+            {
+                BoostType = "";
+            }
+            Texture2D texture = mod.GetTexture("Items/Boss/Rajah/RajahSash" + BoostType);
+            spriteBatch.Draw
+                (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                lightColor,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+                );
+            return false;
+        }
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            string BoostType;
+            Player player = Main.player[item.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            if (modPlayer.RangedHighest(player))
+            {
+                BoostType = "R";
+            }
+            else if (modPlayer.MagicHighest(player))
+            {
+                BoostType = "M";
+            }
+            else if (modPlayer.SummonHighest(player))
+            {
+                BoostType = "S";
+            }
+            else if (modPlayer.ThrownHighest(player))
+            {
+                BoostType = "T";
+            }
+            else
+            {
+                BoostType = "";
+            }
+            Texture2D texture = mod.GetTexture("Items/Boss/Rajah/RajahSash" + BoostType);
+            spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+            return false;
+        }
     }
 }

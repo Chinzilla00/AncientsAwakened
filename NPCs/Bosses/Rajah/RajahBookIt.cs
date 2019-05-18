@@ -24,11 +24,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
         public override void AI()
         {
-            if (projectile.ai[0] == 0)
-            {
-                projectile.ai[0] = 1;
-                Main.NewText("You win this time, terrarian...but I will avenge those you mercilicely slayed...", 107, 137, 179);
-            }
             if (++projectile.frameCounter > 3)
             {
                 projectile.frameCounter = 0;

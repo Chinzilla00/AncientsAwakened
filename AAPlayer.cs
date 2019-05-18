@@ -61,6 +61,7 @@ namespace AAMod
         public bool Protocol = false;
         public bool ScoutMinion = false;
         public bool SagOrbiter = false;
+        public bool Rabbitcopter = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -292,6 +293,7 @@ namespace AAMod
             Protocol = false;
             ScoutMinion = false;
             SagOrbiter = false;
+            Rabbitcopter = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -726,13 +728,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (RabbitKills >= 100)
-            {
-                RabbitKills = 0;
-                Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), player.Center);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
-            }
             if (SagCooldown > 0)
             {
                 player.noItems = true;

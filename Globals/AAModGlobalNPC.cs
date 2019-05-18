@@ -228,14 +228,6 @@ namespace AAMod
             }
         }
 
-        public override bool PreNPCLoot(NPC npc)
-        {
-            if (npc.type == NPCID.Bunny || npc.type == NPCID.BunnyXmas || npc.type == NPCID.BunnySlimed || npc.type == NPCID.GoldBunny || npc.type == NPCID.PartyBunny)
-            {
-                AAPlayer.RabbitKills += 1;
-            }
-            return true;
-        }
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
@@ -310,7 +302,7 @@ namespace AAMod
                 }
             }
 
-            if (Main.rand.Next(4096) == 0)   //item rarity
+            if (Main.rand.Next(8192) == 0)   //item rarity
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShinyCharm")); //Item spawn
             }
@@ -502,33 +494,52 @@ namespace AAMod
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("GoblinSoul"), Main.rand.Next(1, 2));
                 }
-
             }
 
+            if (Main.hardMode)
+            {
+                Player punishedPlayer = Main.player[Main.myPlayer];
+                int lastCreatureHit = punishedPlayer.lastCreatureHit;
+                if (Item.BannerToNPC(lastCreatureHit) == 14) //14 is the banner ID for all bunny creatures.
+                {
+                    if (NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 50 == 0 && NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 100 != 0)
+                    {
+                        Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
+                    }
+                    if (NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 100 == 0)
+                    {
+                        Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                        Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                        SpawnBoss(punishedPlayer, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                    }
+                }
+            }
+
+            if (Main.hardMode)
             {
                 Player player = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode && player.position.Y > (Main.worldSurface * 16.0))
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && player.position.Y > (Main.worldSurface * 16.0))
                 {
                     if (Main.rand.Next(0, 100) >= 80)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSpite"), 1);
                     }
                 }
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode && player.position.Y > (Main.worldSurface * 16.0))
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.position.Y > (Main.worldSurface * 16.0))
                 {
                     if (Main.rand.Next(0, 100) >= 80)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
                     }
                 }
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
                 {
                     if (Main.rand.Next(0, 2499) == 0)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MireKey"), 1);
                     }
                 }
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
                 {
                     if (Main.rand.Next(0, 2499) == 0)
                     {

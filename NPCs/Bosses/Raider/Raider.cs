@@ -18,7 +18,6 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             DisplayName.SetDefault("The Raider Ultima");
             Main.npcFrameCount[npc.type] = 8;
-
         }
 
         public override void SetDefaults()
@@ -243,8 +242,6 @@ namespace AAMod.NPCs.Bosses.Raider
                     npc.ai = new float[4];
                 }
             }
-
-            
 
             if (internalAI[1] == AISTATE_RUNAWAY)
             {

@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             npc.width = 200;
-            npc.height = 218;
+            npc.height = 214;
             npc.aiStyle = -1;
             npc.damage = 130;
             npc.defense = 80;
@@ -81,10 +81,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
-            if (!NPC.AnyNPCs(mod.NPCType<PunisherR>()))
-            {
-                NPC.NewNPC((int)npc.Center.X + 78, (int)npc.Center.Y - 9, mod.NPCType<PunisherR>(), 0, -1f, 0f, npc.whoAmI, 0f, 255);
-            }
 
             
 
@@ -94,6 +90,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
                 {
+                    Main.NewText("Justice has been served...", 107, 137, 179);
                     Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
                     npc.active = false;
                     npc.noTileCollide = true;
@@ -137,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 internalAI[2] = 0;
                 npc.ai[2] = 0;
-                npc.ai[3] = Main.rand.Next(4);
+                npc.ai[3] = Main.rand.Next(3);
             }
 
             if (npc.ai[3] == 0) //Minion Phase
@@ -191,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
             }
 
-            if (npc.ai[3] == 3) //Royal Scepter
+            if (npc.ai[3] == 2) //Royal Scepter
             {
                 float spread = 45f * 0.0174f;
                 Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
@@ -263,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public string WeaponTexture()
         {
-            if (npc.ai[3] == 0 || npc.ai[3] == 2) //No Weapon/Punisher
+            if (npc.ai[3] == 0) //No Weapon/Punisher
             {
                 if (internalAI[4] == 0)
                 {
@@ -527,6 +524,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
+            Main.NewText("You win this time, terrarian...but I will avenge those you mercilicely slayed...", 107, 137, 179);
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
             npc.value = 0f;
             npc.boss = false;

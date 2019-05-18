@@ -11,8 +11,8 @@ namespace AAMod.Items.Boss.Rajah
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Bane Of The Bunny");
-            Tooltip.SetDefault(@"Left click to use as a spear
-Right click to use as a javelin");
+            Tooltip.SetDefault(@"Right click to use as a spear
+Left click to use as a javelin");
 		}
 
 		public override void SetDefaults()

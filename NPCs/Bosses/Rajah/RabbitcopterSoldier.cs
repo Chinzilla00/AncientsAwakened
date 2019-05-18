@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
             npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
+            if (!NPC.AnyNPCs(mod.NPCType<Rajah>()))
             {
                 if (npc.timeLeft > 5)
 					npc.timeLeft = 5;
