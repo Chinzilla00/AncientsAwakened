@@ -1857,7 +1857,7 @@ namespace AAMod
                 RiftPos = player.position;
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>() || Space)
                     {
                         player.Spawn();
                     }
@@ -1867,7 +1867,7 @@ namespace AAMod
             {
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>() || Space)
                     {
                         player.position = RiftPos;
                     }
