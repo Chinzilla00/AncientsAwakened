@@ -67,7 +67,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         private Texture2D RajahTex;
-        private Texture2D CapeTex;
         private Texture2D ArmTex;
         public Vector2 WeaponPos;
 
@@ -129,7 +128,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.ai[2] = 0;
                 npc.ai[3] = 0;
             }
-            else if (npc.ai[3] == 0 && npc.ai[2] > 240)
+            else if (npc.ai[3] == 0 && npc.ai[2] >= 240)
             {
                 internalAI[2] = 0;
                 npc.ai[2] = 0;
@@ -138,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (npc.ai[3] == 0) //Minion Phase
             {
-                if (internalAI[2] >= 60)
+                if (internalAI[2] >= 80)
                 {
                     internalAI[2] = 0;
                     if (internalAI[4] == 0)
@@ -582,10 +581,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void RajahTexture()
         {
-            if (CapeTex == null)
-            {
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
-            }
             if (ArmTex == null)
             {
                 ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArms");
@@ -593,12 +588,10 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah_Fly");
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape_Fly");
             }
             else
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah");
-                CapeTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahCape");
             }
         }
 
@@ -606,9 +599,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             ArmTex = mod.GetTexture(WeaponTexture());
             RajahTexture();
-            BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, ArmTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, CapeTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             return false;
         }
     }

@@ -48,19 +48,13 @@ namespace AAMod.Projectiles.Zero
                 projectile.alpha = 80;
             }
 
-            if (projectile.scale > 1f && projectile.ai[0] == 0)
+            if (projectile.scale > 1f)
             {
-                projectile.ai[0] = 1;
                 projectile.scale = 1f;
             }
             else
             {
-                projectile.scale += .5f;
-            }
-
-            if (projectile.ai[0] == 1 && projectile.penetrate > 0)
-            {
-                projectile.scale = projectile.penetrate / 100f;
+                projectile.scale += .1f;
             }
 
             const int aislotHomingCooldown = 0;

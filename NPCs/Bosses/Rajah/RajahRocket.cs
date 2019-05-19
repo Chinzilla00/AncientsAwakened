@@ -31,6 +31,10 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
+            if(projectile.timeLeft <= 0)
+            {
+                Kill(projectile.timeLeft);
+            }
             if (projectile.velocity.X < 0f)
             {
                 projectile.spriteDirection = -1;
