@@ -26,7 +26,7 @@ namespace AAMod.Projectiles.Zero
             projectile.alpha = 30;
             projectile.extraUpdates = 2;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 2;
         }
 
         public override void AI()
