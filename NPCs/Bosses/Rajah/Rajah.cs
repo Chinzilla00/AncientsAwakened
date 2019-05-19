@@ -574,10 +574,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void RajahTexture()
         {
-            if (ArmTex == null)
-            {
-                ArmTex = mod.GetTexture("NPCs/Bosses/Rajah/RajahArms");
-            }
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah_Fly");

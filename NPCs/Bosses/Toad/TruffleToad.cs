@@ -103,13 +103,27 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
             }
 
-            if (npc.velocity.X < 0)
+            if (npc.velocity.Y != 0)
             {
-                npc.spriteDirection = 1;
+                if (npc.velocity.X < 0)
+                {
+                    npc.spriteDirection = 1;
+                }
+                else if (npc.velocity.X > 0)
+                {
+                    npc.spriteDirection = -1;
+                }
             }
-            else if (npc.velocity.X > 0)
+            else
             {
-                npc.spriteDirection = -1;
+                if (player.position.X < npc.position.X)
+                {
+                    npc.spriteDirection = -1;
+                }
+                else if (player.position.X > npc.position.X)
+                {
+                    npc.spriteDirection = 1;
+                }
             }
 
             if (internalAI[0] == AISTATE_JUMP)
@@ -205,43 +219,40 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.frameCounter++;
             if (npc.velocity.Y == 0)
             {
-                npc.frame.Y = 0;
-		        if (internalAI[0] == AISTATE_BARF)
-		        {
-		            if (npc.frameCounter < 648)
-		            {
-		                npc.frameCounter = 648;
-		            }
-		            if (npc.frameCounter >= 10)
+                if (internalAI[0] == AISTATE_BARF)
+                {
+                    if (npc.frameCounter < 648)
+                    {
+                        npc.frameCounter = 648;
+                    }
+                    if (npc.frameCounter >= 10)
                     {
                         npc.frameCounter = 0;
-                        npc.frame.Y += 72;
+                        npc.frame.Y += frameHeight;
                         if (npc.frame.Y > 864)
                         {
                             npc.frameCounter = 0;
                             npc.frame.Y = 864;
                         }
                     }
-		        }
+                }
             }
             else
             {
-                if (npc.velocity.Y < 0)
+                if (npc.frameCounter >= 6)
                 {
-                    if (npc.frameCounter >= 10)
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > (frameHeight * 4))
                     {
                         npc.frameCounter = 0;
-                        npc.frame.Y += 72;
-                        if (npc.frame.Y > (108 * 3))
-                        {
-                            npc.frameCounter = 0;
-                            npc.frame.Y = 108 * 3;
-                        }
+                        npc.frame.Y = frameHeight * 4;
                     }
                 }
-                else
+
+                if (npc.wet)
                 {
-                    npc.frame.Y = 108 * 4;
+                    npc.frame.Y = frameHeight * 3;
                 }
             }
         }
