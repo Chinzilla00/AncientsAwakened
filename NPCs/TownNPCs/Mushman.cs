@@ -60,11 +60,11 @@ namespace AAMod.NPCs.TownNPCs
                 {
                     int type = Main.tile[x, y].type;
                     int wall = Main.tile[x, y].wall;
-                    if (type == mod.TileType("Mycelium") || wall == mod.WallType<Walls.Mushwall>())
+                    if (type == mod.TileType("Mycelium"))
                     {
                         score++;
                     }
-                    if (Main.tile[x, y].wall == mod.WallType("ExampleWall"))
+                    if (wall == mod.WallType<Walls.Mushwall>())
                     {
                         score++;
                     }

@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.height = 214;
             npc.aiStyle = -1;
             npc.damage = 130;
-            npc.defense = 80;
+            npc.defense = 90;
             npc.lifeMax = 50000;
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
@@ -267,16 +267,9 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public string WeaponTexture()
         {
-            if (npc.ai[3] == 0) //No Weapon/Punisher
+            if (npc.ai[3] == 0) //No Weapon
             {
-                if (internalAI[4] == 0)
-                {
-                    return "NPCs/Bosses/Rajah/RajahArms_Fly";
-                }
-                else
-                {
-                    return "NPCs/Bosses/Rajah/RajahArms";
-                }
+                return null;
             }
             else if (npc.ai[3] == 1) //Bunzooka
             {
@@ -597,9 +590,12 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            ArmTex = mod.GetTexture(WeaponTexture());
+            if (npc.ai[3] != 0) //No Weapon
+            {
+                ArmTex = mod.GetTexture(WeaponTexture());
+                BaseDrawing.DrawTexture(spriteBatch, ArmTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
+            }
             RajahTexture();
-            BaseDrawing.DrawTexture(spriteBatch, ArmTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             return false;
         }

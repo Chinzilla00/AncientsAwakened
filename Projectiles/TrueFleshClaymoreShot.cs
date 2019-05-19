@@ -47,13 +47,10 @@ namespace AAMod.Projectiles
             }
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            Texture2D tex = Main.projectileTexture[projectile.type];
-            spriteBatch.Draw(tex, projectile.Center - Main.screenPosition, null, projectile.GetAlpha(lightColor), projectile.rotation, tex.Size() / 2f, projectile.scale, SpriteEffects.None, 0f);
-            return false;
+            return AAColor.Ichor;
         }
-
         public override void Kill(int timeLeft)
         {
             for (int k = 0; k < 5; k++)

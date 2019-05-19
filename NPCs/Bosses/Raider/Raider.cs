@@ -241,6 +241,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 {
                     internalAI[1] = AISTATE_RUNAWAY;
                     npc.ai = new float[4];
+                    npc.netUpdate = true;
                 }
             }
 
@@ -284,14 +285,13 @@ namespace AAMod.NPCs.Bosses.Raider
                 {
                     internalAI[2]++;
                     float spread = 12f * 0.0174f;
-                    double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
-                    double deltaAngle = spread / (Main.expertMode ? 5 : 4);
                     if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
                     {
                         for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
                         {
                             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
                         }
+                        npc.netUpdate = true;
                     }
                     if (internalAI[2] > 90)
                     {
@@ -321,6 +321,7 @@ namespace AAMod.NPCs.Bosses.Raider
                             Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }
+                        npc.netUpdate = true;
                     }
                 }
             }

@@ -229,6 +229,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                         internalAI[0] = 0;
                         npc.netUpdate = true;
                     }
+                    npc.netUpdate = true;
                 }
                 npc.netUpdate = true;
             }
@@ -249,6 +250,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         {
             Player player = Main.player[npc.target];
             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
+            npc.netUpdate = true;
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -269,8 +271,6 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public void FungusAttack(int Attack)
         {
-            Player player = Main.player[npc.target];
-
             if (Attack == 0)
             {
                 if (NPC.CountNPCS(mod.NPCType<Truffling>()) < 1)
@@ -294,6 +294,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                             NPC.NewNPC((int)npc.Center.X - 40, (int)npc.Center.Y + 40, mod.NPCType<Truffling>());
                         }
                     }
+                    npc.netUpdate = true;
                 }
                 else
                 { Attack = 1; }
@@ -320,6 +321,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                         NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
                     }
                 }
+                npc.netUpdate = true;
             }
         }
 

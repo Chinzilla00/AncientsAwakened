@@ -50,25 +50,13 @@ namespace AAMod.Projectiles
                 dust.noGravity = true;
             }
         }
-        
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
+
+        public override Color? GetAlpha(Color lightColor)
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            DisplayName.SetDefault("Doom");
-		}
-	
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+            return Color.White;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 500);
         }

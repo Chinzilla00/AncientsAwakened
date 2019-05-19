@@ -43,8 +43,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
             npc.ai[0]++;
 
-            
-            
             if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Shocking>()))
             {
                 npc.active = false;
