@@ -23,6 +23,7 @@ namespace AAMod.Items.Summoning
             item.height = 28;
             item.useTime = 36;
             item.useAnimation = 36;
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 3;
