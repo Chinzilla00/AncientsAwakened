@@ -4310,6 +4310,7 @@
     <Content Include="NPCs\Bosses\Rajah\RajahCape_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Fly.png" />
+    <Content Include="NPCs\Bosses\Rajah\Rajah_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain2.png" />
@@ -4353,7 +4354,7 @@
     <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Zero\Tazer_Boss_Head.png" />
+    <Content Include="NPCs\Bosses\Zero\Taser_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
