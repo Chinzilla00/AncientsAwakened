@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]
     public class TeslaHand : ModNPC
     {
 
@@ -355,6 +356,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/TeslaHandZ");
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GetGlowAlpha());
+        }
+
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
         }
     }
 }

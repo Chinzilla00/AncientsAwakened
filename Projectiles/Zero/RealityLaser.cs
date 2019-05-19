@@ -22,8 +22,11 @@ namespace AAMod.Projectiles.Zero
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.penetrate = 1;
-            projectile.timeLeft = 150;
+            projectile.timeLeft = 600;
             projectile.alpha = 30;
+            projectile.extraUpdates = 2;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
         }
 
         public override void AI()

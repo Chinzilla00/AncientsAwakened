@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]
     public class NovaFocus : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nova Focus");
@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
                 float NewRotation = (float)Math.Atan2(num2, num1);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
                 ++npc.localAI[0];
                 if (npc.localAI[0] <= 200.0)
                     return;
@@ -278,9 +278,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num6 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float num8 = (float)Math.Sqrt((num6 * (double)num6) + (num7 * (double)num7));
                 float NewRotation = (float)Math.Atan2(num7, num6);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
                 if (Main.netMode != 1)
                     return;
                 ++npc.localAI[0];
@@ -331,5 +330,9 @@ namespace AAMod.NPCs.Bosses.Zero
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
+        }
     }
 }

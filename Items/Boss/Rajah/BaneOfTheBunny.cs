@@ -12,7 +12,8 @@ namespace AAMod.Items.Boss.Rajah
 		{
             DisplayName.SetDefault("Bane Of The Bunny");
             Tooltip.SetDefault(@"Right click to use as a spear
-Left click to use as a javelin");
+Left click to use as a javelin
+Throwing Javelins right after a spear thrust throws javelins faster for a moment");
 		}
 
 		public override void SetDefaults()

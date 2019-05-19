@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
+            projectile.CloneDefaults(ProjectileID.EyeLaser);
             projectile.width = 12;
             projectile.height = 12;
             projectile.friendly = true;
@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 2)
                 {
-                    projectile.frame = 00;
+                    projectile.frame = 0;
                 }
             }
         }

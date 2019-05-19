@@ -111,23 +111,24 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            float Eggroll = Math.Abs(Main.GameUpdateCount) / 0.5f;
-            float Pie = 1f * (float)Math.Sin(Eggroll);
-            Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
-
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedZero)
+            if (npc.life <= npc.lifeMax / 4 && Panic == false && !AAWorld.downedZero)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedZero)
+            if (npc.life <= npc.lifeMax / 4 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
                 Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
-                if (Main.rand.Next(0, 10) == 0)
+                int TeleportChance = (int)(100 * (npc.life / npc.lifeMax));
+                if (TeleportChance < 5)
+                {
+                    TeleportChance = 5;
+                }
+                if (Main.rand.Next(0, TeleportChance) == 0)
                 {
                     int Xint = Main.rand.Next(-400, 400);
                     int Yint = Main.rand.Next(-400, 400);

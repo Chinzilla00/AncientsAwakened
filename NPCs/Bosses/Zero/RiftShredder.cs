@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]
     public class RiftShredder : ModNPC
     {
         public override void SetStaticDefaults()
@@ -341,6 +342,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/RiftShredderZ");
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+        }
+
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
         }
     }
 }

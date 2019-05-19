@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
             projectile.damage = 22;
+            projectile.damage = 100;
         }
 
         public override Color? GetAlpha(Color lightColor)

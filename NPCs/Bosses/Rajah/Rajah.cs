@@ -10,6 +10,7 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
+    [AutoloadBossHead]
     public class Rajah : ModNPC
     {
         public override void SetStaticDefaults()

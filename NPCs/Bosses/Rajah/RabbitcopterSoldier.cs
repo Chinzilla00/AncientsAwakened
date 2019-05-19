@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.lifeMax = 400;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
-            npc.HitSound = new LegacySoundStyle(3, 43, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.3f;
             npc.value = 0f;
             npc.npcSlots = 0.1f;

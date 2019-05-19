@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
                 {
                     npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 6.0)
                             npc.velocity.Y = 6f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;

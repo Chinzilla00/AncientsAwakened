@@ -6207,6 +6207,7 @@
     <Content Include="Projectiles\Zero\Rift.png" />
     <Content Include="Projectiles\Zero\Teslashock.png" />
     <Content Include="Projectiles\Zero\VoidStarPF.png" />
+    <Content Include="Projectiles\Zero\VoidStarPF1.png" />
     <Content Include="Projectiles\Zero\Vortex.png" />
     <Content Include="Projectiles\Zero\ZeroArrow.png" />
     <Content Include="Projectiles\Zero\ZeroStarP.png" />
