@@ -23,7 +23,7 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = 1;
             projectile.timeLeft = 600;
             projectile.alpha = 30;
-            projectile.extraUpdates = 2;
+            projectile.extraUpdates = 3;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 2;
             projectile.ranged = true;

@@ -12,7 +12,8 @@ namespace AAMod.Items.Boss
             DisplayName.SetDefault("Storm Charm");
             Tooltip.SetDefault(@"15% increased damage and damage resistance
 10% Increased melee speed
-All attacks deal 20 True damage (damage unaffected by class)");
+All attacks deal 20 True damage (damage unaffected by class)
+Grants the ability to dash.");
         }
         public override void SetDefaults()
         {

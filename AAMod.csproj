@@ -3007,6 +3007,7 @@
     <Content Include="Glowmasks\PowerStone_Glow.png" />
     <Content Include="Glowmasks\PrinceFishron_Glow.png" />
     <Content Include="Glowmasks\PrismOre_Glow.png" />
+    <Content Include="Glowmasks\Protocol_Glow.png" />
     <Content Include="Glowmasks\QuantumFusionAccelerator_Glow.png" />
     <Content Include="Glowmasks\RadiantArcanum_Glow.png" />
     <Content Include="Glowmasks\RadiantDawn_Glow.png" />
@@ -3040,6 +3041,7 @@
     <Content Include="Glowmasks\Raidmini_Glow1.png" />
     <Content Include="Glowmasks\Raidmini_Glow2.png" />
     <Content Include="Glowmasks\RainbowCatPro_Glow.png" />
+    <Content Include="Glowmasks\Rainbow_Glow.png" />
     <Content Include="Glowmasks\RealityBar_Glow.png" />
     <Content Include="Glowmasks\RealityCannonZ.png" />
     <Content Include="Glowmasks\RealityCannon_Glow.png" />
@@ -3072,6 +3074,7 @@
     <Content Include="Glowmasks\Scout_Glow.png" />
     <Content Include="Glowmasks\ScrapHeap_Glow.png" />
     <Content Include="Glowmasks\ScytheOfDecay_Glow.png" />
+    <Content Include="Glowmasks\Searcher1_Glow.png" />
     <Content Include="Glowmasks\SearcherMinion_Glow.png" />
     <Content Include="Glowmasks\SearcherZero_Glow.png" />
     <Content Include="Glowmasks\Searcher_Glow.png" />
@@ -3180,9 +3183,7 @@
     <Content Include="Glowmasks\TrueCopperPlate_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortswordEX_Glow.png" />
     <Content Include="Glowmasks\TrueCopperShortsword_glow.png" />
-    <Content Include="Glowmasks\TrueCopperShot_Glow.png" />
     <Content Include="Glowmasks\TrueDeathlyLongbow_Glow.png" />
-    <Content Include="Glowmasks\TrueFleshClaymoreShot_Glow.png" />
     <Content Include="Glowmasks\TrueFleshrendClaymore_glow.png" />
     <Content Include="Glowmasks\TrueFleshrendHelm_Glow_Head.png" />
     <Content Include="Glowmasks\TrueFleshrendPlate_Glow_Body.png" />
@@ -3223,6 +3224,7 @@
     <Content Include="Glowmasks\VoidStar_Glow.png" />
     <Content Include="Glowmasks\VoidUnit_Glow.png" />
     <Content Include="Glowmasks\Void_Glow.png" />
+    <Content Include="Glowmasks\VortexBlades_Glow.png" />
     <Content Include="Glowmasks\Vortex_Glow.png" />
     <Content Include="Glowmasks\WrathHaruka_Glow.png" />
     <Content Include="Glowmasks\WyrmStaff_GLOW.png" />

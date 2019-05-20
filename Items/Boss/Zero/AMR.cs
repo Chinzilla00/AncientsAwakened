@@ -22,13 +22,13 @@ Doesn't require ammo");
         public override void SetDefaults()
         {
             
-            item.damage = 380;
+            item.damage = 325;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;
             item.height = 24;
-            item.useTime = 26;
-            item.useAnimation = 26; 
+            item.useTime = 65;
+            item.useAnimation = 65; 
             item.useStyle = 5; 
             item.shoot = mod.ProjectileType("Antimatter");
             item.knockBack = 12;

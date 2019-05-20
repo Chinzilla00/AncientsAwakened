@@ -45,6 +45,7 @@ Inflicts Moonraze");
             item.shootSpeed = 24f;
             item.UseSound = SoundID.Item21;
             item.melee = true;
+            item.autoReuse = true;
         }
 
 

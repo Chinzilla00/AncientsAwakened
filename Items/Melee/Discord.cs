@@ -33,8 +33,8 @@ namespace AAMod.Items.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "IncineriteBar", 20);
 			recipe.AddIngredient(mod, "AbyssiumBar", 20);
-            recipe.AddIngredient(mod, "FlamingFury", 1);
-            recipe.AddIngredient(mod, "ExilesKatana", 1);
+            recipe.AddIngredient(mod, "HeatCleaver", 1);
+            recipe.AddIngredient(mod, "SwampSlasher", 1);
             recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

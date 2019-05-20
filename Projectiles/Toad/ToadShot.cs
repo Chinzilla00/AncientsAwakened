@@ -20,7 +20,6 @@ namespace AAMod.Projectiles.Toad
 			projectile.aiStyle = 1;
             projectile.friendly = true;
 			projectile.hostile = false;
-            projectile.penetrate = 2;
             projectile.timeLeft = 600;
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;

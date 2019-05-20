@@ -17,7 +17,8 @@ Combines the effects of the Taiyang Baolei and the Naitokurosu, while granting t
 Your attacks inflict Discordian Inferno
 Enemies that hit you are inflicted with Discordian Inferno
 You are immune to Terrablaze, Dragonfire, Hydratoxin, Discordian Inferno
-While in the chaos biomes, your attack is multiplied by 30%
+Attack is multiplied by 13%
+While in the chaos biomes, your attack multiplier is increased to 30%
 While in the Inferno, your defense is increased by 10
 While in the Mire, your speed is increased by 50%
 Grants a strong dash that shreds through enemies
@@ -101,13 +102,21 @@ Grants effects of the Discordian Rampart");
             {
                 item.defense = 8;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
                 player.meleeDamage += .3f;
                 player.magicDamage += .3f;
                 player.rangedDamage += .3f;
                 player.minionDamage += .3f;
                 player.thrownDamage += .3f;
+            }
+            else
+            {
+                player.meleeDamage += .13f;
+                player.magicDamage += .13f;
+                player.rangedDamage += .13f;
+                player.minionDamage += .13f;
+                player.thrownDamage += .13f;
             }
         }
 
