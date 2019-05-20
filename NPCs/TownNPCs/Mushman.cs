@@ -53,24 +53,42 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool CheckConditions(int left, int right, int top, int bottom)
         {
-            int score = 0;
-            for (int x = left; x <= right; x++)
+            if (WorldGen.roomY2 > Main.worldSurface)
             {
-                for (int y = top; y <= bottom; y++)
+                return false;
+            }
+            int num = 0;
+            int num2 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - Lighting.offScreenTiles;
+            int num3 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + Lighting.offScreenTiles;
+            int num4 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - Lighting.offScreenTiles;
+            int num5 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + Lighting.offScreenTiles;
+            if (num2 < 0)
+            {
+                num2 = 0;
+            }
+            if (num3 >= Main.maxTilesX)
+            {
+                num3 = Main.maxTilesX - 1;
+            }
+            if (num4 < 0)
+            {
+                num4 = 0;
+            }
+            if (num5 > Main.maxTilesX)
+            {
+                num5 = Main.maxTilesX;
+            }
+            for (int i = num2 + 1; i < num3; i++)
+            {
+                for (int j = num4 + 2; j < num5 + 2; j++)
                 {
-                    int type = Main.tile[x, y].type;
-                    int wall = Main.tile[x, y].wall;
-                    if (type == mod.TileType("Mycelium"))
+                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == mod.TileType<Tiles.Mycelium>() || Main.tile[i, j].type == mod.TileType<Tiles.Mushroom>() || Main.tile[i, j].type == mod.TileType<Tiles.Mushplants>()))
                     {
-                        score++;
-                    }
-                    if (wall == mod.WallType<Walls.Mushwall>())
-                    {
-                        score++;
+                        num++;
                     }
                 }
             }
-            return score >= (right - left) * (bottom - top) / 2;
+            return num >= 100;
         }
 
 
@@ -142,7 +160,6 @@ namespace AAMod.NPCs.TownNPCs
                 Main.PlaySound(12, -1, -1, 1);
 
                 Player player = Main.LocalPlayer;
-                AAPlayer p = player.GetModPlayer<AAPlayer>(mod);
 
                 int Special = player.FindItem(mod.ItemType("Mushplant"));
                 int Special2 = player.FindItem(mod.ItemType("Shroomplant"));
