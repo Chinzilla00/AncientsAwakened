@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.AH
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
 
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -37,8 +38,6 @@ namespace AAMod.NPCs.Bosses.AH
             Player player = Main.player[npc.target];
 
             npc.Center = player.Center;
-
-            AAMod.AHIntro = true;
 
             if (npc.ai[1] == 100)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
@@ -82,9 +81,8 @@ namespace AAMod.NPCs.Bosses.AH
             if (npc.ai[1] == 700)
             {
                 Main.NewText("Hmpf..! Fine! Be that way! I'm going back to the inferno!", new Color(102, 20, 48));
-                AAMod.AHIntro = false;
-                npc.active = false;
                 AAWorld.downedSisters = true;
+                npc.active = false;
             }
         }
     }

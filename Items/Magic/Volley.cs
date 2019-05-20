@@ -22,7 +22,7 @@ namespace AAMod.Items.Magic
             item.value = Item.buyPrice(0, 3, 0, 0);
             item.rare = 4;
             item.mana = 10;
-            item.UseSound = SoundID.Item21;
+            item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Volley");
             item.shootSpeed = 5f;

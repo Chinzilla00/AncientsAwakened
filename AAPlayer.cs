@@ -446,7 +446,7 @@ namespace AAMod
             // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
             if (BegAccessory)
             {
-                player.AddBuff(mod.BuffType<Buffs.Horse>(), 60, true);
+                player.AddBuff(mod.BuffType<Horse>(), 60, true);
             }
         }
 
@@ -454,6 +454,7 @@ namespace AAMod
         {
 
         }
+
 
         public override void UpdateBiomes()
         {

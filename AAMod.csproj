@@ -4220,8 +4220,10 @@
     <Content Include="Items\Pets\DragonsSoul.png" />
     <Content Include="Items\Pets\Glowmoss.png" />
     <Content Include="Items\Pets\GlowmossBall.png" />
+    <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
+    <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\ManaLanternB.png" />
@@ -5914,8 +5916,10 @@
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\MireLeaf.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
+    <Content Include="Projectiles\PrimevalJavelin.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
     <Content Include="Projectiles\Pyrosphere_Chain.png" />
+    <Content Include="Projectiles\RaiderLance.png" />
     <Content Include="Projectiles\Rajah\Bane.png" />
     <Content Include="Projectiles\Rajah\BaneT.png" />
     <Content Include="Projectiles\Rajah\BaneS.png" />

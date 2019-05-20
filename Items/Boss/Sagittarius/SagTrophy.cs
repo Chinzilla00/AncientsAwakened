@@ -27,7 +27,6 @@ namespace AAMod.Items.Boss.Sagittarius
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 1;
-            item.expert = true;
 			item.createTile = mod.TileType("SagTrophy");
 		}
 	}

@@ -87,19 +87,27 @@ Grants effects of the Discordian Rampart");
             player.dash = 3;
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
-                player.moveSpeed *= 1.5f;
+                player.moveSpeed += .5f;
+            }
+            else
+            {
+
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 item.defense = 18;
             }
+            else
+            {
+                item.defense = 8;
+            }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
-                player.meleeDamage *= 1.3f;
-                player.magicDamage *= 1.3f;
-                player.rangedDamage *= 1.3f;
-                player.minionDamage *= 1.3f;
-                player.thrownDamage *= 1.3f;
+                player.meleeDamage += .3f;
+                player.magicDamage += .3f;
+                player.rangedDamage += .3f;
+                player.minionDamage += .3f;
+                player.thrownDamage += .3f;
             }
         }
 

@@ -38,7 +38,6 @@ namespace AAMod.Items.Boss.Shen
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 2;
-            item.expert = true;
 			item.createTile = mod.TileType("ShenTrophy");
 		}
 	}

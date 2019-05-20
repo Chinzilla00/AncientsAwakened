@@ -26,8 +26,7 @@ namespace AAMod.Items.Boss.Orthrus
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 2;
-            item.expert = true;
+			item.rare = 1;
 			item.createTile = mod.TileType("OrthrusTrophy");
 		}
 	}

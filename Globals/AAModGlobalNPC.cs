@@ -828,7 +828,7 @@ namespace AAMod
                         }
                     }
                 }
-                if (AAWorld.downedGripsS)
+                if (AAWorld.downedSisters)
                 {
                     pool.Add(mod.NPCType("BlazeClaw"), .05f);
                 }
@@ -876,7 +876,7 @@ namespace AAMod
                         }
                     }
                 }
-                if (AAWorld.downedGripsS)
+                if (AAWorld.downedSisters)
                 {
                     pool.Add(mod.NPCType("AbyssClaw"), .8f);
                 }

@@ -55,6 +55,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(SoundID.DD2_BetsyFireballImpact, projectile.Center);
             if (Main.rand.Next(3) == 0)
             {
                 Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 6,

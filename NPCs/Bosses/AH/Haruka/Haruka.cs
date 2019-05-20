@@ -270,10 +270,23 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     if (internalAI[2] == 5 && internalAI[1] == 3)
                     {
                         repeat -= 1;
-                        Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaKunai>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 20f);
+                        int projectileType = mod.ProjectileType<HarukaKunai>();
+                        Vector2 rotVec = BaseUtility.RotateVector(npc.position, npc.position + new Vector2(18f, 0f), BaseUtility.RotationTo(npc.position, fireTarget));
+                        rotVec -= npc.position;
+                        float spread = 45f * 0.0174f;
+                        float baseSpeed = (float)Math.Sqrt((rotVec.X * rotVec.X) + (rotVec.Y * rotVec.Y));
+                        double startAngle = Math.Atan2(rotVec.X, rotVec.Y) - .1d;
+                        double deltaAngle = spread / 6f;
+                        double offsetAngle;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            offsetAngle = startAngle + (deltaAngle * i);
+                            int projectileID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), projectileType, npc.damage / 2, 4);
+                            Projectile proj = Main.projectile[projectileID];
+                            proj.velocity = rotVec;
+                            proj.netUpdate2 = true;
+                        }
                         npc.netUpdate = true;
                     }
                     if (internalAI[2] < 4 || internalAI[2] > 6)
@@ -321,7 +334,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 18f);
                     }
                     if (isSlashing && internalAI[2] > 9)
                     {
@@ -468,14 +481,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 6f;
+            float moveSpeed = 10f;
             if (Vector2.Distance(npc.Center, point) > 500)
             {
-                moveSpeed = 14;
+                moveSpeed = 16;
             }
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
-                moveSpeed = 18f;
+                moveSpeed = 20f;
             }
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;

@@ -132,11 +132,11 @@ At night, you move three times as fast and your ranged attacks & minions inflict
             player.buffImmune[mod.BuffType("Clueless")] = true;
             if (Main.dayTime)
             { 
-                player.moveSpeed *= 2f;
+                player.moveSpeed += 2f;
             }
             else
             {
-                player.moveSpeed *= 3f;
+                player.moveSpeed += 3f;
             }
         }
     }

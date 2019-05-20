@@ -454,9 +454,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int VortexType = mod.NPCType("AsheOrbiter");
             if (internalAI[0] == 1)
             {
-                Vector2 targetCenter = player.Center;
-                int speedX = 8;
-                int speedY = 8;
+                int speedX = 12;
+                int speedY = 13;
                 float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
@@ -486,7 +485,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (internalAI[0] == AISTATE_CAST4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 10f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 14f, 0, 0, -1);
             }
 
             else if (internalAI[0] == AISTATE_VORTEX)

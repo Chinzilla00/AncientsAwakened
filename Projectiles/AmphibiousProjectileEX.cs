@@ -114,6 +114,7 @@ namespace AAMod.Projectiles
         {
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<AmphibiousBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             int pieCut = 20;
+            Main.PlaySound(SoundID.Item14, projectile.position);
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 1.6f);

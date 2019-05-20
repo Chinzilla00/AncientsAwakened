@@ -30,7 +30,6 @@ namespace AAMod.Items.Boss.Toad
 			item.shoot = mod.ProjectileType("ToadRock");
             item.useTime = 30;
             item.useAnimation = 30;
-            item.shoot = mod.ProjectileType("BigCrystal");
             item.shootSpeed = 15f;
         }
 	}

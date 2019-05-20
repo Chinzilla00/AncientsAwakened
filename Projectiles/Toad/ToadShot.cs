@@ -38,5 +38,10 @@ namespace AAMod.Projectiles.Toad
         {
             Lighting.AddLight(projectile.Center, Color.DodgerBlue.R / 255, Color.DodgerBlue.G / 255, Color.DodgerBlue.B / 255);
         }
+
+        public override void Kill(int timeLeft)
+        {
+            Main.PlaySound(SoundID.DD2_BetsyFireballImpact, projectile.Center);
+        }
     }
 }
