@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             npc.width = 40;
             npc.height = 80;
-            npc.damage = 80;
+            npc.damage = 120;
             npc.defense = 40;
             npc.lifeMax = 100000;
             npc.value = Item.buyPrice(0, 0, 75, 45);
@@ -346,6 +346,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 MoveToPoint(wantedVelocity);
             }
 
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
+
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
             {
                 npc.dontTakeDamage = true;
@@ -366,14 +375,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.dontTakeDamage = false;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                npc.dontTakeDamage = true;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }
             npc.rotation = 0; //No ugly rotation.
         }
 
@@ -454,8 +455,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int VortexType = mod.NPCType("AsheOrbiter");
             if (internalAI[0] == 1)
             {
-                int speedX = 12;
-                int speedY = 13;
+                int speedX = 10;
+                int speedY = 10;
                 float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
@@ -464,7 +465,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < 5; i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / 2, 4);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage, 4);
                 }
             }
             else if (internalAI[0] == 2)
@@ -480,7 +481,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (internalAI[0] == AISTATE_CAST4)

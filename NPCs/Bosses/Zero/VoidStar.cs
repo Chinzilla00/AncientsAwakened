@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 40;
             npc.height = 54;
-            npc.damage = 30;
+            npc.damage = 70;
             npc.defense = 40;
             npc.lifeMax = 37500;
             npc.HitSound = SoundID.NPCHit4;
@@ -186,9 +186,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.netMode == 1)
                     return;
                 ++npc.localAI[0];
-                if (npc.localAI[0] <= 200.0)
+                if (npc.localAI[0] <= 200)
                     return;
-                npc.localAI[0] = 0.0f;
+                npc.localAI[0] = 0f;
                 float num4 = 8f;
                 int Damage = npc.damage;
                 int Type = mod.ProjectileType<VoidStarP>();

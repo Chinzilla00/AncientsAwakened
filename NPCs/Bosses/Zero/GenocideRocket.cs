@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 240;
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.damage = 22;
         }
 
 

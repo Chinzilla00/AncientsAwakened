@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.width = 46;
             npc.height = 46;
             npc.friendly = false;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 1300;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;

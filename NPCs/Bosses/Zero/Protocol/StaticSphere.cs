@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             const float homingMaximumRangeInPixels = 500;
 
             int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            for (int i = 0; i < Main.maxPlayers; i++)
             {
                 Player target = Main.player[i];
                 if (target.active && (!target.wet || homingCanAimAtWetEnemies))
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            projectile.Distance(Main.player[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
                     )
                         selectedTarget = i;
                 }
