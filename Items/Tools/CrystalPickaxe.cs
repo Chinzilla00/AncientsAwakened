@@ -27,7 +27,7 @@ namespace AAMod.Items.Tools
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Crystal Pickaxe");
+      DisplayName.SetDefault("Unity Pickaxe");
       Tooltip.SetDefault("Can mine mythril and orichalcum.");
     }
 
