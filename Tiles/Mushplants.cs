@@ -14,7 +14,7 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
-            TileObjectData.newTile.CopyFrom(TileObjectData.StyleDye);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
         }
 

@@ -4134,6 +4134,7 @@
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\Banners\Banners.png" />
+    <Content Include="Items\Blocks\BogwoodCampfire.png" />
     <Content Include="Items\Blocks\OroborosCampfire.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
     <Content Include="Items\Blocks\RazewoodCampfire.png" />
