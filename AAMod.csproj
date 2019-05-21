@@ -1521,6 +1521,7 @@
     <Compile Include="NPCs\Bosses\Raider\RaidEgg.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raider.cs" />
     <Compile Include="NPCs\Bosses\Raider\Raidmini.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BaneR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnyBrawler.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnyBattler.cs" />
     <Compile Include="NPCs\Bosses\Rajah\CarrotHostile.cs" />
@@ -4319,6 +4320,7 @@
     <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />
     <Content Include="NPCs\Bosses\Orthrus\OrthrusLock.png" />
+    <Content Include="NPCs\Bosses\Rajah\BaneR.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBattler.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBrawler.png" />
     <Content Include="NPCs\Bosses\Rajah\CarrotHostile.png" />
@@ -4329,6 +4331,7 @@
     <Content Include="NPCs\Bosses\Rajah\RajahArmsB_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsR.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsR_Fly.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArmsS.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahBookIt.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Fly.png" />

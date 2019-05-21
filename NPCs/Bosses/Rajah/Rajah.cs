@@ -115,11 +115,11 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (player.Center.X < npc.Center.X)
             {
-                npc.direction = 1;
+                npc.direction = -1;
             }
             else
             {
-                npc.direction = -1;
+                npc.direction = 1;
             }
 
             if (player.Center.Y < npc.position.Y || TileBelowEmpty())
@@ -293,7 +293,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         internalAI[2] = 0;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 9f;
-                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 5, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
                         if (Main.netMode == 2 && Proj < 200)
                         {
@@ -372,7 +372,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<BaneR>()))
                 {
-                    return null;
+                    return "BlankTex";
                 }
                 return "NPCs/Bosses/Rajah/RajahArmsS";
             }
