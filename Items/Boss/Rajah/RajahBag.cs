@@ -46,6 +46,10 @@ namespace AAMod.Items.Boss.Rajah
             {
                 player.QuickSpawnItem(mod.ItemType("ThrowingCarrot"), Main.rand.Next(150, 200));
             }
+            else if (Main.rand.Next(6) == 1 && AAMod.thoriumLoaded)
+            {
+                player.QuickSpawnItem(mod.ItemType("CarrotFarmer"));
+            }
             else
             {
                 player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

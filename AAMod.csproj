@@ -1311,6 +1311,10 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\ReforgeHammerM.cs" />
+    <Compile Include="Items\Usable\ReforgeHammerH.cs" />
+    <Compile Include="Items\Usable\ReforgeHammerF.cs" />
+    <Compile Include="Items\Usable\ReforgeHammer.cs" />
     <Compile Include="Items\Usable\MyceliumSeeds.cs" />
     <Compile Include="Items\Usable\RiftMirror.cs" />
     <Compile Include="Items\Usable\Timecaller.cs" />
@@ -4236,6 +4240,10 @@
     <Content Include="Items\Usable\Mushplant.png" />
     <Content Include="Items\Usable\MyceliumSeeds.png" />
     <Content Include="Items\Usable\PurityStar.png" />
+    <Content Include="Items\Usable\ReforgeHammer.png" />
+    <Content Include="Items\Usable\ReforgeHammerF.png" />
+    <Content Include="Items\Usable\ReforgeHammerH.png" />
+    <Content Include="Items\Usable\ReforgeHammerM.png" />
     <Content Include="Items\Usable\RiftMirror.png" />
     <Content Include="Items\Usable\Shroomplant.png" />
     <Content Include="Items\Usable\Suncaller.png" />
