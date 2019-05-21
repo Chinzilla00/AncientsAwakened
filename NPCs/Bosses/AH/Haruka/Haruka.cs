@@ -270,11 +270,18 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     if (internalAI[2] == 5 && internalAI[1] == 3)
                     {
                         repeat -= 1;
-                        Vector2 fireTarget = npc.Center;
-                        int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(player.Center + new Vector2(0, 16), fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
-                        BaseAI.FireProjectile(player.Center, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
-                        BaseAI.FireProjectile(player.Center - new Vector2(0, 16), fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
+                        int projType = mod.ProjectileType<HarukaKunai>();
+                        float spread = 45f * 0.0174f;
+                        Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                        dir *= 9f;
+                        float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                        double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                        double deltaAngle = spread / 6f;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            double offsetAngle = startAngle + (deltaAngle * i);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        }
                         npc.netUpdate = true;
                     }
                     if (internalAI[2] < 4 || internalAI[2] > 6)

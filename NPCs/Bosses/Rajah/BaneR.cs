@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Rajah
+namespace AAMod.NPCs.Bosses.Rajah
 {
-    public class BaneT : ModProjectile
+    public class BaneR: ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -18,11 +18,10 @@ namespace AAMod.Projectiles.Rajah
         {
             projectile.width = 16;
             projectile.height = 16;
-            projectile.friendly = true;
+            projectile.hostile = true;
             projectile.aiStyle = 1;
-            projectile.melee = true;
             projectile.penetrate = -1;
-            projectile.extraUpdates = 1;
+            projectile.extraUpdates = 2;
             aiType = ProjectileID.BoneJavelin;
         }
     }
