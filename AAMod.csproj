@@ -1313,6 +1313,8 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\Shroomplant.cs" />
+    <Compile Include="Items\Usable\Mushplant.cs" />
     <Compile Include="Items\Usable\ReforgeHammerM.cs" />
     <Compile Include="Items\Usable\ReforgeHammerH.cs" />
     <Compile Include="Items\Usable\ReforgeHammerF.cs" />
@@ -4131,6 +4133,7 @@
     <Content Include="Items\Armor\Viking\VikingPlate_Female.png" />
     <Content Include="Items\Armor\Witch\FlameSoul.png" />
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
+    <Content Include="Items\Banners\Banners.png" />
     <Content Include="Items\Blocks\OroborosCampfire.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
     <Content Include="Items\Blocks\RazewoodCampfire.png" />
