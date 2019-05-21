@@ -73,6 +73,7 @@
     <Compile Include="AAWorld.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
+    <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
     <Compile Include="Backgrounds\AkumaSkyData.cs" />
@@ -1245,6 +1246,7 @@
     <Compile Include="Items\Summoning\SkullStaff.cs" />
     <Compile Include="Items\Summoning\TerraStaff.cs" />
     <Compile Include="Items\Summoning\TrueHallowStaff.cs" />
+    <Compile Include="Items\Thorium\Healer\CarrotFarmer.cs" />
     <Compile Include="Items\Thorium\Healer\AuroraScythe.cs" />
     <Compile Include="Items\Thorium\Healer\DragonsClaw.cs" />
     <Compile Include="Items\Thorium\Healer\HydrasFury.cs" />
@@ -1807,6 +1809,11 @@
     <Compile Include="Projectiles\Rajah\RabbitRocket1.cs" />
     <Compile Include="Projectiles\Sag\OrbiterMinion.cs" />
     <Compile Include="Projectiles\ThanosSwordT.cs" />
+    <Compile Include="Projectiles\Thorium\CarrotFarmer.cs" />
+    <Compile Include="Projectiles\Thorium\CarrotFarmerDamage.cs" />
+    <Compile Include="Projectiles\Thorium\CarrotFarmerDamage2.cs" />
+    <Compile Include="Projectiles\Thorium\CarrotFarmerEffect.cs" />
+    <Compile Include="Projectiles\Thorium\FarmedCarrot.cs" />
     <Compile Include="Projectiles\Toad\Toadsplosion.cs" />
     <Compile Include="Projectiles\Toad\ToadRock.cs" />
     <Compile Include="Projectiles\Toad\ToadShot.cs" />
@@ -4150,6 +4157,7 @@
     <Content Include="Items\Boss\Rajah\RajahSashR.png" />
     <Content Include="Items\Boss\Rajah\RajahSashS.png" />
     <Content Include="Items\Boss\Rajah\RajahSashT.png" />
+    <Content Include="Items\Boss\Rajah\RajahTrophy.png" />
     <Content Include="Items\Boss\Rajah\RoyalScepter.png" />
     <Content Include="Items\Boss\Rajah\ThrowingCarrot.png" />
     <Content Include="Items\Boss\Sagittarius\Legg.png" />
@@ -4231,6 +4239,8 @@
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
+    <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\ManaLanternB.png" />
     <Content Include="Items\Usable\ManaLanternG.png" />
@@ -6152,10 +6162,15 @@
     <Content Include="Projectiles\Thorium\AuroraScytheDamage.png" />
     <Content Include="Projectiles\Thorium\AuroraScytheDamage2.png" />
     <Content Include="Projectiles\Thorium\AuroraScytheEffect.png" />
+    <Content Include="Projectiles\Thorium\CarrotFarmer.png" />
+    <Content Include="Projectiles\Thorium\CarrotFarmerDamage.png" />
+    <Content Include="Projectiles\Thorium\CarrotFarmerDamage2.png" />
+    <Content Include="Projectiles\Thorium\CarrotFarmerEffect.png" />
     <Content Include="Projectiles\Thorium\DragonsClaw.png" />
     <Content Include="Projectiles\Thorium\DragonsClawDamage.png" />
     <Content Include="Projectiles\Thorium\DragonsClawDamage2.png" />
     <Content Include="Projectiles\Thorium\DragonsClawEffect.png" />
+    <Content Include="Projectiles\Thorium\FarmedCarrot.png" />
     <Content Include="Projectiles\Thorium\HydrasFury.png" />
     <Content Include="Projectiles\Thorium\HydrasFuryDamage.png" />
     <Content Include="Projectiles\Thorium\HydrasFuryDamage2.png" />

@@ -11,10 +11,10 @@ namespace AAMod
 {
     public class AAModReforgeSouls : GlobalItem
 	{
-        public ReforgeHammer Hammer = null;
+        /*public ReforgeHammer Hammer = null;
         public ReforgeHammerH HammerH = null;
         public ReforgeHammerF HammerF = null;
-        public ReforgeHammerM HammerM = null;
+        public ReforgeHammerM HammerM = null;*/
 
         public override bool CanRightClick(Item item)
 		{
@@ -28,10 +28,10 @@ namespace AAMod
 				return true;
 			}
 
-            if ((Main.mouseItem.type == mod.ItemType("ReforgeHammer") || Main.mouseItem.type == mod.ItemType("ReforgeHammerF") || Main.mouseItem.type == mod.ItemType("ReforgeHammerH") || Main.mouseItem.type == mod.ItemType("ReforgeHammerM")) && item.damage > 3 && !item.consumable && item.knockBack > 0 && item.maxStack == 1)
+            /*if ((Main.mouseItem.type == mod.ItemType("ReforgeHammer") || Main.mouseItem.type == mod.ItemType("ReforgeHammerF") || Main.mouseItem.type == mod.ItemType("ReforgeHammerH") || Main.mouseItem.type == mod.ItemType("ReforgeHammerM")) && item.damage > 3 && !item.consumable && item.knockBack > 0 && item.maxStack == 1)
             {
                 return true;
-            }
+            }*/
             return base.CanRightClick(item);
 		}
 
@@ -48,7 +48,7 @@ namespace AAMod
                 Main.mouseItem.stack = 0;
 			}
 
-            if (reforgable)
+            /*if (reforgable)
             {
                 if (Main.mouseItem.type == mod.ItemType("ReforgeHammer"))
                 {
@@ -97,7 +97,7 @@ namespace AAMod
                         HammerM.item.TurnToAir();
                     }
                 }
-            }
+            }*/
         }
 		
 		public override bool ConsumeItem(Item item, Player player)

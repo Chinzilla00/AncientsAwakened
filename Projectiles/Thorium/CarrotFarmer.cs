@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Thorium
 {
-    public class ChristmasCheerPro : ModProjectile
+    public class CarrotFarmer : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -102,7 +102,6 @@ namespace AAMod.Projectiles.Thorium
                         if (Main.rand.Next(15) == 0)
                         {
                             int ProjID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Carrot"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                            Main.projectile[ProjID]
                         }
                         if (Main.rand.Next(15) == 0)
                         {

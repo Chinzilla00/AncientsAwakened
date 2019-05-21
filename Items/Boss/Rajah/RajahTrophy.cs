@@ -1,8 +1,6 @@
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
-namespace AAMod.Items.Boss.Akuma
+namespace AAMod.Items.Boss.Rajah
 {
     public class RajahTrophy : ModItem
 	{
