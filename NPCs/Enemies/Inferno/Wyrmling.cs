@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.noTileCollide = true;
             npc.behindTiles = true;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
         }

@@ -273,7 +273,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         int projType = mod.ProjectileType<HarukaKunai>();
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
-                        dir *= 9f;
+                        dir *= 14f;
                         float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                         double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                         double deltaAngle = spread / 6f;
@@ -408,7 +408,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
-                    pos = pos * -1f;
+                    pos *= -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -425,7 +425,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 160;
+                npc.damage = 200;
                 npc.defense = 300;
             }
             else //Reset Stats

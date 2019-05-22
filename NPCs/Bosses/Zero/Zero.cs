@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
-                    Main.NewText("PHYSICAL ZER0 B0DY IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)
@@ -535,7 +535,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.velocity.X = npc.velocity.X * 0.95f;
                 if (npc.timeLeft > 500)
                 {
-                    npc.timeLeft = 500;
+                    npc.velocity.Y += 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
                     return;
                 }
             }

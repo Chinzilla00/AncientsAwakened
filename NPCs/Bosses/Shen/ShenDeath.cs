@@ -1,7 +1,6 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -19,12 +18,11 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.width = 100;
             npc.height = 100;
             npc.friendly = false;
-            npc.alpha = 255;
-            npc.lifeMax = 10000000;
+            npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
-            npc.timeLeft = 10;
+            npc.alpha = 255;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {

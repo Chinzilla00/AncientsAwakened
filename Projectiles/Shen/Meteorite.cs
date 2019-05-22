@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -66,6 +67,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound), projectile.position);
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, mod.DustType<Dusts.Discord>(), -projectile.velocity.X * 0.2f,

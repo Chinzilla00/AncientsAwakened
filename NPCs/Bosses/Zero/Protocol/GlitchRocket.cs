@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             cooldownSlot = 1;
-            projectile.damage = 70;
+            projectile.damage = 6;
         }
 
         public override Color? GetAlpha(Color lightColor)

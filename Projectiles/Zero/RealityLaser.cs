@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Zero
             projectile.alpha = 30;
             projectile.extraUpdates = 3;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 2;
+            projectile.localNPCHitCooldown = 4;
             projectile.ranged = true;
         }
 

@@ -75,7 +75,7 @@ namespace AAMod.Projectiles.Shen
                 {
                     projectile.ai[0] = 1f;
                 }
-                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.785f;
+                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) - 0.785f;
                 projectile.ai[1] += 1f;
                 if (projectile.ai[1] > 5f)
                 {

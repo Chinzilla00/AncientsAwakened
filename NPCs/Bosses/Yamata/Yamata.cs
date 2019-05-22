@@ -350,7 +350,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         }
                     }
                     SayTheLineYamata--;
-                    npc.alpha += 5;
+                    npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;
@@ -367,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 else
                 {
-                    npc.alpha -= 5;
+                    npc.alpha -= 8;
                     SayTheLineYamata = 300;
                     if (npc.alpha <= 0)
                     {

@@ -1645,6 +1645,7 @@
     <Compile Include="NPCs\Bosses\Zero\NovaFocus.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStar.cs" />
     <Compile Include="NPCs\Bosses\Zero\VoidStarP.cs" />
+    <Compile Include="NPCs\Bosses\Zero\ZeroArmAIs.cs" />
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeactivated.cs" />
     <Compile Include="NPCs\Enemies\Corruption\FeralMonster.cs" />
@@ -4328,11 +4329,11 @@
     <Content Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsB.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahArmsB_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsR.png" />
-    <Content Include="NPCs\Bosses\Rajah\RajahArmsR_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsS.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahBookIt.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahRoar.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahRoar_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Head_Boss.png" />
@@ -4377,6 +4378,7 @@
     <Content Include="NPCs\Bosses\Truffle\Truffling.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY.png" />
     <Content Include="NPCs\Bosses\Yamata\Awakened\HarukaY_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\CycloneProtocol.png" />
     <Content Include="NPCs\Bosses\Zero\GenocideCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\Neutralizer_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\NovaFocus_Head_Boss.png" />
@@ -5923,6 +5925,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\DynaskullJavelin.png" />
     <Content Include="Projectiles\Flasks\AshJar.png" />
     <Content Include="Projectiles\Flasks\CorruptionFlask.png" />
     <Content Include="Projectiles\Flasks\CrimsonFlask.png" />
@@ -6250,7 +6253,6 @@
     <Content Include="Projectiles\Zero\Rift.png" />
     <Content Include="Projectiles\Zero\Teslashock.png" />
     <Content Include="Projectiles\Zero\VoidStarPF.png" />
-    <Content Include="Projectiles\Zero\VoidStarPF1.png" />
     <Content Include="Projectiles\Zero\Vortex.png" />
     <Content Include="Projectiles\Zero\ZeroArrow.png" />
     <Content Include="Projectiles\Zero\ZeroStarP.png" />

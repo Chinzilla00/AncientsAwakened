@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.ai[0] == 375)          //if the npc.ai[0] has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Heh...", new Color(180, 41, 32));
-                AAMod.AkumaMusic = true;
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
             }
             if (npc.ai[0] == 750)
             {
@@ -105,14 +105,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             if (npc.ai[0] >= 1250 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
             }
 
             if (NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                AAMod.AkumaMusic = false;
                 npc.netUpdate = true;
                 npc.active = false;
             }

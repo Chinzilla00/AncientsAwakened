@@ -353,7 +353,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             int Frames = IsHead ? 3 : 1;
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Frames, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Frames, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
 
             return false;
         }

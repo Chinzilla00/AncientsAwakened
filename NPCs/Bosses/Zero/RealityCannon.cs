@@ -174,7 +174,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float num3 = (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
                 npc.rotation = (float)Math.Atan2(num2, num1) - 1.57f;
                 if (Main.netMode == 1)
                     return;
@@ -182,17 +181,22 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.localAI[0] <= 200.0)
                     return;
                 npc.localAI[0] = 0.0f;
-                float num4 = 8f;
-                int Damage = npc.damage;
-                int Type = 100;
-                float num5 = num4 / num3;
-                float num6 = num1 * num5;
-                float num7 = num2 * num5;
-                float SpeedX = num6 + (Main.rand.Next(-40, 41) * 0.05f);
-                float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
-                vector2.X += SpeedX * 8f;
-                vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                float spread = 45f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(Main.player[npc.target].Center - npc.Center);
+                dir *= 9f;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                for (int i = 0; i < 3; i++)
+                {
+                    double offsetAngle = startAngle + (deltaAngle * i);
+                    int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                    Main.projectile[Proj].netUpdate = true;
+                    if (Main.netMode == 2 && Proj < 200)
+                    {
+                        NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                }
             }
             else
             {
@@ -240,7 +244,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num6 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
                 float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float num8 = (float)Math.Sqrt((num6 * (double)num6) + (num7 * (double)num7));
                 npc.rotation = (float)Math.Atan2(num7, num6) - 1.57f;
                 if (Main.netMode != 1)
                     return;
@@ -248,17 +251,22 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.localAI[0] <= 80.0)
                     return;
                 npc.localAI[0] = 0.0f;
-                float num9 = 10f;
-                int Damage = npc.damage;
-                int Type = 100;
-                float num10 = num9 / num8;
-                float num11 = num6 * num10;
-                float num12 = num7 * num10;
-                float SpeedX = num11 + (Main.rand.Next(-40, 41) * 0.05f);
-                float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
-                vector2.X += SpeedX * 8f;
-                vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                float spread = 45f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(Main.player[npc.target].Center - npc.Center);
+                dir *= 9f;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                for (int i = 0; i < 3; i++)
+                {
+                    double offsetAngle = startAngle + (deltaAngle * i);
+                    int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                    Main.projectile[Proj].netUpdate = true;
+                    if (Main.netMode == 2 && Proj < 200)
+                    {
+                        NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                }
             }
         }
 
