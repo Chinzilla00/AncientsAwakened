@@ -12,7 +12,6 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
-            Main.tileCut[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
