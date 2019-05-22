@@ -747,7 +747,14 @@ namespace AAMod
                     {
                         recipe.AddIngredient(null, mushroom, potion.Item3);
                     }
-                    recipe.AddIngredient(ItemID.BottledWater);
+                    if (potion.Item1 == "BloodbathPotion" || potion.Item1 == "ChitinPotion")
+                    {
+                        recipe.AddIngredient(ItemID.BottledWater);
+                    }
+                    else
+                    {
+                        recipe.AddIngredient(GRealm, "CosmicContainer");
+                    }
                     recipe.AddTile(TileID.Bottles);
                     recipe.SetResult(GRealm, potion.Item1);
                     recipe.AddRecipe();

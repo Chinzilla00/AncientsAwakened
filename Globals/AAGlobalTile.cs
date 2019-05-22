@@ -7,22 +7,22 @@ using Terraria.ModLoader;
 namespace AAMod
 {
     public class AAGlobalTile : GlobalTile
-	{
+    {
         public static int glowTick = 0;
-		public static int glowMax = 100;
+        public static int glowMax = 100;
 
         public override void AnimateTile()
         {
-			glowTick++; if (glowTick >= glowMax) glowTick = 0;
-		}
+            glowTick++; if (glowTick >= glowMax) glowTick = 0;
+        }
 
-        public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }		
-		public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
-		public static Color GetIncineriteColorBright(Color color){ return GetIncineriteColor(color, 0.6f, 1f, false); }
-		public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)
-		{
-			return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
-		}
+        public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }
+        public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
+        public static Color GetIncineriteColorBright(Color color) { return GetIncineriteColor(color, 0.6f, 1f, false); }
+        public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
+        }
         public static Color GetZeroColorBrightInvert(Color color) { return GetZeroColor(color, 1f, 0.6f, true); }
         public static Color GetZeroColorDim(Color color) { return GetZeroColor(color, 0.4f, 1f, false); }
         public static Color GetZeroColorBright(Color color) { return GetZeroColor(color, 0.6f, 1f, false); }
@@ -111,7 +111,7 @@ namespace AAMod
         {
             return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
         }
-        
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass
@@ -126,31 +126,31 @@ namespace AAMod
         }
 
         public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
-		{
-			Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
-			if (clamp)
-			{
-				if (color.R > glowColor.R) { glowColor.R = color.R; }
-				if (color.G > glowColor.G) { glowColor.G = color.G; }
-				if (color.B > glowColor.B) { glowColor.B = color.B; }
-			}
-			return glowColor;
-		}
-		public static Color GetGradientColor(Color tColor1, Color tColor2, Color color, bool clamp)
-		{
-			Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, 0f, 1f, 0f));
-			if (clamp)
-			{
-				if (color.R > glowColor.R) { glowColor.R = color.R; }
-				if (color.G > glowColor.G) { glowColor.G = color.G; }
-				if (color.B > glowColor.B) { glowColor.B = color.B; }
-			}
-			return glowColor;
-		}
+        {
+            Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
+            if (clamp)
+            {
+                if (color.R > glowColor.R) { glowColor.R = color.R; }
+                if (color.G > glowColor.G) { glowColor.G = color.G; }
+                if (color.B > glowColor.B) { glowColor.B = color.B; }
+            }
+            return glowColor;
+        }
+        public static Color GetGradientColor(Color tColor1, Color tColor2, Color color, bool clamp)
+        {
+            Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, 0f, 1f, 0f));
+            if (clamp)
+            {
+                if (color.R > glowColor.R) { glowColor.R = color.R; }
+                if (color.G > glowColor.G) { glowColor.G = color.G; }
+                if (color.B > glowColor.B) { glowColor.B = color.B; }
+            }
+            return glowColor;
+        }
 
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.tile[i, j - 1].active() && 
+            if (Main.tile[i, j - 1].active() &&
                 (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
@@ -194,6 +194,24 @@ namespace AAMod
                 WorldGen.SquareTileFrame(x, y, true);
             }
             return false;
+        }
+    }
+
+    public class Beanz : GlobalTile
+    {
+        public override bool Drop(int i, int j, int type)
+        {
+            if (Main.rand.Next(15) == 1)
+            {
+                if (Main.tile[i, j].type == 5 && Main.tile[i, j + 1].type != 5)
+                {
+                    if (!Main.player[Main.myPlayer].ZoneJungle)
+                    {
+                        Item.NewItem(i * 16, j * 16, 26, 26, mod.ItemType("CocoaBean"), 1, false, -1, false);
+                    }
+                }
+            }
+            return true;
         }
     }
 }

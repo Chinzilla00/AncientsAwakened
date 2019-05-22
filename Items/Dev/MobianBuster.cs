@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev
             item.width = 74;
             item.height = 34;
             item.ranged = true;
-            item.damage = 150;
+            item.damage = 100;
             item.shoot = mod.ProjectileType("MobianBuster");
             item.useTime = 10;
             item.useAnimation = 10;

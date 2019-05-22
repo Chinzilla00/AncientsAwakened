@@ -943,6 +943,7 @@
     <Compile Include="Items\Magic\YtriumStaff.cs" />
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
+    <Compile Include="Items\Materials\CocoaBean.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
     <Compile Include="Items\Materials\Discordium.cs" />
     <Compile Include="Items\Materials\DoomiteScrap.cs" />
@@ -4204,6 +4205,7 @@
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Magic\Volley.png" />
+    <Content Include="Items\Materials\CocoaBean.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\TerraShard.png" />
@@ -6387,7 +6389,7 @@
     <Content Include="Tiles\InfernoFoliage5.png" />
     <Content Include="Tiles\InfernoGrassAsh.png" />
     <Content Include="Tiles\LakeBox.png" />
-    <Content Include="Tiles\MadnessShrooms.png" />
+    <Content Include="Tiles\MadnessShroom.png" />
     <Content Include="Tiles\ManaLanternB.png" />
     <Content Include="Tiles\ManaLanternG.png" />
     <Content Include="Tiles\ManaLanternP.png" />
