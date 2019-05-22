@@ -122,10 +122,6 @@ namespace AAMod
             {
                 return false;
             }
-            if (type == mod.TileType<Tiles.Doomstone>() && TileID.Sets.BreakableWhenPlacing[mod.TileType<Tiles.Doomstone>()]) //placing grass
-            {
-                return false;
-            }
             return base.Drop(i, j, type);
         }
 
@@ -176,10 +172,11 @@ namespace AAMod
         {
             if (Main.tile[i, j].type == TileID.MushroomGrass)
             {
-                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(500) == 0)
                 {
-                    PlaceObject(i, j - 1, mod.TileType<Tiles.Shroomplant>());
-                    NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Shroomplant>(), 0, 0, -1, -1);
+                    int style = Main.rand.Next(5);
+                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.MadnessShroom>(), style, 0, -1, -1);
                 }
             }
         }

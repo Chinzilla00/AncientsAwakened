@@ -20,6 +20,8 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
             drop = ItemID.Mushroom;
+            dustType = mod.DustType<Dusts.MushDust>();
+            soundType = 6;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)

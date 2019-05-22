@@ -33,10 +33,11 @@ namespace AAMod.Tiles
                 PlaceObject(i, j - 1, mod.TileType("Mushroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);
             }
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(500) == 0)
             {
-                PlaceObject(i, j - 1, mod.TileType<Mushplants>());
-                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Mushplants>(), 0, 0, -1, -1);
+                int style = Main.rand.Next(5);
+                if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                    NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<MadnessShroom>(), style, 0, -1, -1);
             }
         }
 

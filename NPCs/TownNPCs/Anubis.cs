@@ -19,8 +19,9 @@ namespace AAMod.NPCs.TownNPCs
 		}
 
 		public override bool Autoload(ref string name)
-		{
-			return mod.Properties.Autoload;
+        {
+            name = "Legendscribe";
+            return mod.Properties.Autoload;
 		}
 
 		public override void SetStaticDefaults()

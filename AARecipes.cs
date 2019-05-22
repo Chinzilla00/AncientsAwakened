@@ -149,6 +149,13 @@ namespace AAMod
             recipe.AddTile(TileID.GlassKiln);
             recipe.SetResult(ItemID.SnowGlobe, 1);
             recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "CocoaBean");
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.BrownDye);
+            recipe.AddRecipe();
             #endregion
         }
 

@@ -1105,6 +1105,7 @@
     <Compile Include="Items\Melee\YtriumSword.cs" />
     <Compile Include="Items\Boss\MadnessTruffle.cs" />
     <Compile Include="Items\Mushrooms\Green.cs" />
+    <Compile Include="Items\Mushrooms\MadnessShroom.cs" />
     <Compile Include="Items\Mushrooms\Rainbow.cs" />
     <Compile Include="Items\Mushrooms\Red.cs" />
     <Compile Include="Items\Mushrooms\Purple.cs" />
@@ -1313,8 +1314,6 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
-    <Compile Include="Items\Usable\Shroomplant.cs" />
-    <Compile Include="Items\Usable\Mushplant.cs" />
     <Compile Include="Items\Usable\ReforgeHammerM.cs" />
     <Compile Include="Items\Usable\ReforgeHammerH.cs" />
     <Compile Include="Items\Usable\ReforgeHammerF.cs" />
@@ -2113,6 +2112,7 @@
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
+    <Compile Include="Tiles\MadnessShroom.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
     <Compile Include="Tiles\TechneciumBar.cs" />
     <Compile Include="Tiles\UraniumBar.cs" />
@@ -2125,8 +2125,6 @@
     <Compile Include="Tiles\DoomiteBar.cs" />
     <Compile Include="Tiles\DevStatue.cs" />
     <Compile Include="Tiles\DoomitePlate.cs" />
-    <Compile Include="Tiles\Mushplants.cs" />
-    <Compile Include="Tiles\ShroomPlant.cs" />
     <Compile Include="Tiles\StarBox.cs" />
     <Compile Include="Tiles\Mycelium.cs" />
     <Compile Include="Tiles\MireGrass.cs" />
@@ -4228,6 +4226,7 @@
     <Content Include="Items\Melee\VikingPolearm.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
+    <Content Include="Items\Mushrooms\MadnessShroom.png" />
     <Content Include="Items\Mushrooms\Pink.png" />
     <Content Include="Items\Mushrooms\Rainbow.png" />
     <Content Include="Items\Mushrooms\Red.png" />
@@ -4253,7 +4252,6 @@
     <Content Include="Items\Usable\ManaLanternP.png" />
     <Content Include="Items\Usable\MirrorRift.png" />
     <Content Include="Items\Usable\Mooncaller.png" />
-    <Content Include="Items\Usable\Mushplant.png" />
     <Content Include="Items\Usable\MyceliumSeeds.png" />
     <Content Include="Items\Usable\PurityStar.png" />
     <Content Include="Items\Usable\ReforgeHammer.png" />
@@ -4261,7 +4259,6 @@
     <Content Include="Items\Usable\ReforgeHammerH.png" />
     <Content Include="Items\Usable\ReforgeHammerM.png" />
     <Content Include="Items\Usable\RiftMirror.png" />
-    <Content Include="Items\Usable\Shroomplant.png" />
     <Content Include="Items\Usable\Suncaller.png" />
     <Content Include="Items\Usable\SupremeRiftMirror.png" />
     <Content Include="Items\Usable\SurfaceCrate.png" />
@@ -6390,6 +6387,7 @@
     <Content Include="Tiles\InfernoFoliage5.png" />
     <Content Include="Tiles\InfernoGrassAsh.png" />
     <Content Include="Tiles\LakeBox.png" />
+    <Content Include="Tiles\MadnessShrooms.png" />
     <Content Include="Tiles\ManaLanternB.png" />
     <Content Include="Tiles\ManaLanternG.png" />
     <Content Include="Tiles\ManaLanternP.png" />
@@ -6404,7 +6402,6 @@
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
     <Content Include="Tiles\MushBox.png" />
-    <Content Include="Tiles\Mushplants.png" />
     <Content Include="Tiles\Mushroom.png" />
     <Content Include="Tiles\MushroomBlock.png" />
     <Content Include="Tiles\NightmareBar.png" />
@@ -6546,7 +6543,6 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
-    <Content Include="Tiles\Shroomplant.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
