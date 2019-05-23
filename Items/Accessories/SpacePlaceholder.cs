@@ -1,9 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using System;
-using ReLogic.Utilities;
-using System.Collections.Generic;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Accessories

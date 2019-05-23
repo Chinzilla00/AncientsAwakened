@@ -1,16 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using AAMod;
 using Terraria;
 
 namespace AAMod.Backgrounds
 {
-	public class StarSky : CustomSky
+    public class StarSky : CustomSky
 	{
 		private struct Star
 		{

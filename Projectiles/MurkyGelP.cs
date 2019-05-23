@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class MurkyGelP : ModProjectile
+    public class MurkyGelP : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

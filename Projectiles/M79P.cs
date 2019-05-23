@@ -1,21 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using ReLogic.Utilities;
-using System;
-using System.Collections.Generic;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.Shaders;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Utilities;
-using Terraria.World.Generation;
 using Terraria;
 using Terraria.ModLoader;
 

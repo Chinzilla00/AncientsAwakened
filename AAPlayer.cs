@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using AAMod.Buffs;
-using AAMod.Items.Dev;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Shen;
@@ -19,13 +18,8 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
 using System.Collections.Generic;
 using BaseMod;
-using Terraria.ModLoader.IO;
-using Terraria.Localization;
-using Terraria.Graphics.Shaders;
 using Terraria.Graphics.Effects;
 using AAMod.Items;
-using AAMod.Items.DevTools;
-using AAMod.Items.BossSummons;
 namespace AAMod
 {
     public class AAPlayer : ModPlayer

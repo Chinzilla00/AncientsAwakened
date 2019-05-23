@@ -2,12 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Shen;
-using System.Collections.Generic;
 using BaseMod;
-using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace AAMod.Items.Blocks
 {

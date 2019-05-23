@@ -1,15 +1,10 @@
-using System; using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-
-using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.Melee
 {
-	public class YtriumHalberd : ModItem
+    public class YtriumHalberd : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

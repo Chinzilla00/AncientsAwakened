@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox

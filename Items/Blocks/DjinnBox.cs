@@ -1,9 +1,5 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ID;
-using System.Collections.Generic;
-using Terraria;
 
 namespace AAMod.Items.Blocks
 {

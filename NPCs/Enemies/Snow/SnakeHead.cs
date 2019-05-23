@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Snow
 {
-	public class SnakeHead : ModNPC
+    public class SnakeHead : ModNPC
 	{
 		bool TailSpawned = false;
 

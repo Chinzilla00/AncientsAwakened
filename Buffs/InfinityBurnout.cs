@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Buffs
 {
-	public class InfinityBurnout : ModBuff
+    public class InfinityBurnout : ModBuff
 	{
         public override void SetDefaults()
         {

@@ -1,6 +1,4 @@
 ﻿using Terraria;
-using Terraria.ID;
-using AAMod;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable

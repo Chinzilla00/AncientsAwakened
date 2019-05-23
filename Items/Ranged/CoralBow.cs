@@ -1,11 +1,9 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Ranged
 {
-	public class CoralBow : ModItem
+    public class CoralBow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

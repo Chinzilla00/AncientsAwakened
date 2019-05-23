@@ -2,7 +2,6 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Grips;
 

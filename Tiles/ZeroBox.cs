@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
-using BaseMod;
 
 namespace AAMod.Tiles
 {

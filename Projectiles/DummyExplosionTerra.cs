@@ -1,12 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class DummyExplosionTerra : ModProjectile
+    public class DummyExplosionTerra : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

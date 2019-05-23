@@ -2,11 +2,10 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Boss.Shen
 {
-	public class DraconicRipper : ModItem
+    public class DraconicRipper : ModItem
 	{
 		public override void SetDefaults()
 		{

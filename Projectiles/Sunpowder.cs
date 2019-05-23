@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using AAMod.Tiles;
 using AAMod.Walls;
 using AAMod.Dusts;
-using System.Collections.Generic;
 
 namespace AAMod.Projectiles
 {

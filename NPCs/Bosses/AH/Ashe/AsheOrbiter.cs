@@ -3,12 +3,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.ID;
 using BaseMod;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-	public class AsheOrbiter : Ashe
+    public class AsheOrbiter : Ashe
 	{				
 		public override void SetStaticDefaults()
 		{

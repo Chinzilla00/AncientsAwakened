@@ -1,10 +1,3 @@
-using Terraria;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
-using System.Collections.Generic;
-using Terraria.ID;
-
 namespace AAMod.Items.Boss.Akuma
 {
     /*public class Daystorm : BaseAAItem //extend BaseAAItem

@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
-using AAMod.NPCs.Bosses.Akuma.Awakened;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {

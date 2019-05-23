@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Serpent
 {
-	public class SerpentTail : SerpentHead
+    public class SerpentTail : SerpentHead
 	{
 		public override void SetStaticDefaults()
 		{

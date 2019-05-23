@@ -1,12 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class HydraFangP : ModProjectile
+    public class HydraFangP : ModProjectile
 	{
 		public override void SetDefaults()
 		{

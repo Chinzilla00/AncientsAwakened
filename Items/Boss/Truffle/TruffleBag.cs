@@ -1,9 +1,9 @@
 using Terraria;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Truffle
 {
-	public class TruffleBag : ModItem
+    public class TruffleBag : ModItem
 	{
         
         public override void SetStaticDefaults()

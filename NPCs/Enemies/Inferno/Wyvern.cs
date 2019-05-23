@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-	public class Wyvern : AANPC
+    public class Wyvern : AANPC
 	{
 		public override void SetStaticDefaults()
         {

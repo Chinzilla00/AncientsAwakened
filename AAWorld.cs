@@ -12,10 +12,8 @@ using Terraria.ModLoader.IO;
 using AAMod.Tiles;
 using BaseMod;
 using AAMod.Worldgeneration;
-using AAMod.NPCs.Enemies.Other;
 using AAMod.Worldgen;
 using Terraria.Utilities;
-using AAMod.Backgrounds;
 using Terraria.Localization;
 using AAMod.Walls;
 

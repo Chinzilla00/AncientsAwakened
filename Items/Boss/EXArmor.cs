@@ -1,8 +1,7 @@
 ﻿using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-using BaseMod;
+using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss
 {

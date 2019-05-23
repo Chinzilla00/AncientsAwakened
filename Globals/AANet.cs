@@ -4,10 +4,7 @@ using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 using BaseMod;
-using System.Collections.Generic;
-using Terraria.ID;
 
 namespace AAMod
 {

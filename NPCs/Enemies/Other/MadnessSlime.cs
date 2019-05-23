@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Other
 {
-	public class MadnessSlime : ModNPC
+    public class MadnessSlime : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

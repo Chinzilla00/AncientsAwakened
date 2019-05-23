@@ -1,12 +1,10 @@
 using Terraria;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-	//Ferret's dev weapon (note form)	
+    //Ferret's dev weapon (note form)	
     public class CordesDuFuret_Notes : ModItem
 	{
 		public override void SetStaticDefaults()

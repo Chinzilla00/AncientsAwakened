@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Buffs
 {
-	public class DragonfireFlaskBuff : ModBuff
+    public class DragonfireFlaskBuff : ModBuff
 	{
 		public override void SetDefaults()
 		{

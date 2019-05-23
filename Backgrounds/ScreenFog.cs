@@ -1,5 +1,4 @@
-﻿using AAMod.NPCs.Bosses.Yamata;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
+﻿using AAMod.NPCs.Bosses.Yamata.Awakened;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

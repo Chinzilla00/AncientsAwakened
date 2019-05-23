@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria;
 
 namespace AAMod.NPCs.Enemies.Snow
 {
-	public class SnakeBody2 : SnakeHead
+    public class SnakeBody2 : SnakeHead
     {
 		public override void SetStaticDefaults()
 		{

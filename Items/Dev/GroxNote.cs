@@ -1,9 +1,8 @@
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-	public class GroxNote : ModItem
+    public class GroxNote : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

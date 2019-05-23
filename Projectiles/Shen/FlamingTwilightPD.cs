@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles.Shen
 {
-	public class FlamingTwilightPD : ModProjectile
+    public class FlamingTwilightPD : ModProjectile
 	{
 		public override void SetDefaults()
 		{

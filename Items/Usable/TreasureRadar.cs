@@ -1,15 +1,11 @@
-using System; using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-
+using System;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.Usable
 {
-	public class TreasureRadar : ModItem
+    public class TreasureRadar : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,10 +1,8 @@
-using System;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Grips;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 

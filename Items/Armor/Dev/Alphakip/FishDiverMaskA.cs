@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 
 namespace AAMod.Items.Armor.Dev.Alphakip
 {

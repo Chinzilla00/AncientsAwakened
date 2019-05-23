@@ -1,13 +1,8 @@
-using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Items.Melee
 {
-	public class RustyCutlass : BaseAAItem
+    public class RustyCutlass : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

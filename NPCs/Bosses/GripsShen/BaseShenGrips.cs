@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.GripsShen;
 using System.IO;
 
 namespace AAMod.NPCs.Bosses.GripsShen

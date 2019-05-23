@@ -1,9 +1,8 @@
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Orthrus;
 using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons

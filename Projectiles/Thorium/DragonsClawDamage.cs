@@ -1,14 +1,7 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod;
-using BaseMod;
 
 namespace AAMod.Projectiles.Thorium
 {

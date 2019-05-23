@@ -1,14 +1,11 @@
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Ranged
 {
-	public class Flare_Minigun : ModItem
+    public class Flare_Minigun : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

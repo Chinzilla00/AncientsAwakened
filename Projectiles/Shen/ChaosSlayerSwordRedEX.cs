@@ -1,12 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using BaseMod;
-
-namespace AAMod.Projectiles.Shen
+﻿namespace AAMod.Projectiles.Shen
 {
     public class ChaosSlayerSwordRedEX : ChaosSlayerSword
     {

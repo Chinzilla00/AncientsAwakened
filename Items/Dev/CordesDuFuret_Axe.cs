@@ -2,11 +2,10 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-	//Ferret's dev weapon (axe form)
+    //Ferret's dev weapon (axe form)
     public class CordesDuFuret_Axe : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -1,10 +1,5 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using System;
 using Terraria.ID;
 
 namespace AAMod.Items.Boss.Djinn

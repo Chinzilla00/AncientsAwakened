@@ -1,12 +1,9 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using AAMod;
 
 namespace AAMod.Buffs
 {
-	public class Hunted : ModBuff
+    public class Hunted : ModBuff
 	{
 		public override void SetDefaults()
 		{

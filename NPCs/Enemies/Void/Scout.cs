@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,7 +8,7 @@ using AAMod.Dusts;
 
 namespace AAMod.NPCs.Enemies.Void
 {
-	public class Scout : ModNPC
+    public class Scout : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

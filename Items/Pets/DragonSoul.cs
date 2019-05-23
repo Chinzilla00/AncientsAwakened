@@ -1,13 +1,12 @@
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class DragonSoul : ModProjectile
+    public class DragonSoul : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

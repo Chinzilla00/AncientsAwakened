@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using BaseMod;
 using System;
 
 namespace AAMod.NPCs.Enemies.Inferno

@@ -1,7 +1,4 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Enums;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ID;
