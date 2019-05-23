@@ -72,6 +72,7 @@
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
+    <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
     <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
@@ -2123,6 +2124,7 @@
     <Compile Include="Tiles\InfernoFoliage.cs" />
     <Compile Include="Tiles\MadnessShroom.cs" />
     <Compile Include="Tiles\MireFoliage.cs" />
+    <Compile Include="Tiles\RajahBox.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
     <Compile Include="Tiles\TechneciumBar.cs" />
     <Compile Include="Tiles\UraniumBar.cs" />
@@ -4760,7 +4762,6 @@
     <Content Include="Items\Boss\Serpent\BlizzardBuster.png" />
     <Content Include="Items\Boss\Serpent\SnowflakeShuriken.png" />
     <Content Include="Items\Boss\Serpent\SubzeroSlasher.png" />
-    <Content Include="Items\Blocks\Riftstone.png" />
     <Content Include="Items\Boss\Shen\Astroid.png" />
     <Content Include="Items\Boss\Shen\ChaosPike.png" />
     <Content Include="Items\Boss\Shen\ChaosScale.png" />
@@ -6459,6 +6460,7 @@
     <Content Include="Tiles\PagodaBox.png" />
     <Content Include="Tiles\PrismOre.png" />
     <Content Include="Tiles\RadiumOreDark.png" />
+    <Content Include="Tiles\RajahBox.png" />
     <Content Include="Tiles\RazePalmSapling.png" />
     <Content Include="Tiles\RazePalmTree.png" />
     <Content Include="Tiles\RazePalmTreetops.png" />

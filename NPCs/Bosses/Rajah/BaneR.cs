@@ -17,8 +17,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.hostile = true;
             projectile.aiStyle = 1;
             projectile.penetrate = -1;
-            projectile.extraUpdates = 2;
+            projectile.extraUpdates = 1;
             aiType = ProjectileID.BoneJavelin;
+        }
+
+        public override void PostAI()
+        {
+            projectile.damage = 100;
         }
     }
 }
