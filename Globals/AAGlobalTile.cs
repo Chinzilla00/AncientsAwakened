@@ -150,7 +150,7 @@ namespace AAMod
 
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.tile[i, j - 1].active() &&
+            if (Main.tile[i, j + 1].active() &&
                 (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
@@ -160,8 +160,8 @@ namespace AAMod
 
         public override bool CanExplode(int i, int j, int type)
         {
-            if (Main.tile[i, j - 1].active() &&
-                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()) && (Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar2>()))
+            if (Main.tile[i, j + 1].active() &&
+                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
             }
@@ -172,11 +172,21 @@ namespace AAMod
         {
             if (Main.tile[i, j].type == TileID.MushroomGrass)
             {
-                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(500) == 0)
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1000) == 0)
                 {
                     int style = Main.rand.Next(5);
                     if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
                         NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.MadnessShroom>(), style, 0, -1, -1);
+                }
+            }
+
+            if (Main.tile[i, j].type == TileID.Grass && Main.hardMode)
+            {
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(800) == 0)
+                {
+                    int style = Main.rand.Next(5);
+                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.Carrot>(), false, style))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Carrot>(), style, 0, -1, -1);
                 }
             }
         }

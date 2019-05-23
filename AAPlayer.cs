@@ -258,8 +258,6 @@ namespace AAMod
 
         public bool WorldgenReminder = false;
 
-        public static int RabbitKills = 0;
-
         public override void ResetEffects()
         {
             //Minions
@@ -409,7 +407,6 @@ namespace AAMod
 
             //Misc
             Compass = false;
-            RabbitKills = 0;
         }
 
         public override void Initialize()
@@ -427,18 +424,6 @@ namespace AAMod
             ZoneTower = false;
             ZoneStars = false;
             WorldgenReminder = false;
-        }
-
-        public override TagCompound Save()
-        {
-            return new TagCompound {
-                {"Rabbits", RabbitKills},
-            };
-        }
-
-        public override void Load(TagCompound tag)
-        {
-            RabbitKills = tag.GetInt("Rabbits");
         }
 
         public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)

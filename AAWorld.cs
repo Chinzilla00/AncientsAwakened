@@ -139,6 +139,7 @@ namespace AAMod
         //Other
         public static bool Suncaller = false;
         public static bool Mooncaller = false;
+        public static int RabbitKills = 0;
 
         public override void Initialize()
         {
@@ -178,6 +179,7 @@ namespace AAMod
             SistersSummoned = false;
             downedTruffle = false;
             downedRajah = false;
+            RabbitKills = 0;
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -315,6 +317,7 @@ namespace AAMod
                 {"squid14", squid14},
                 {"squid15", squid15},
                 {"squid16", squid16},
+                {"Bunny", RabbitKills},
                 {"Egg", SmashDragonEgg},
                 {"Pod", SmashHydraPod}
             };
@@ -402,6 +405,7 @@ namespace AAMod
             writer.Write(squid14);
             writer.Write(squid15);
             writer.Write(squid16);
+            writer.Write(RabbitKills);
             writer.Write(SmashDragonEgg);
             writer.Write(SmashHydraPod);
         }
@@ -481,6 +485,7 @@ namespace AAMod
             squid14 = reader.ReadInt32();
             squid15 = reader.ReadInt32();
             squid16 = reader.ReadInt32();
+            RabbitKills = reader.ReadInt32();
             SmashHydraPod = reader.ReadInt32();
             SmashDragonEgg = reader.ReadInt32();
         }
@@ -567,6 +572,7 @@ namespace AAMod
             squid14 = tag.GetInt("squid14");
             squid15 = tag.GetInt("squid15");
             squid16 = tag.GetInt("squid16");
+            RabbitKills = tag.GetInt("Bunny");
             SmashDragonEgg = tag.GetInt("Egg");
             SmashHydraPod = tag.GetInt("Pod");
         }

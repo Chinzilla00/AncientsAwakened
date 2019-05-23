@@ -26,10 +26,11 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 100;
+            projectile.penetrate = 50;
             projectile.alpha = 130;
             projectile.scale = .01f;
             projectile.alpha = 255;
+            projectile.timeLeft = 600;
             projectile.tileCollide = false;
         }
 
@@ -60,9 +61,20 @@ namespace AAMod.Projectiles
                 projectile.scale += .5f;
             }
 
-            if (projectile.ai[0] == 1 && projectile.penetrate > 0)
+            if (projectile.timeLeft < 60)
             {
-                projectile.scale = projectile.penetrate / 100f;
+                projectile.scale -= .1f;
+                if (projectile.scale <= 0f)
+                {
+                    projectile.active = false;
+                }
+            }
+            else
+            {
+                if (projectile.ai[0] == 1 && projectile.penetrate > 0)
+                {
+                    projectile.scale = projectile.penetrate / 50;
+                }
             }
         }
 

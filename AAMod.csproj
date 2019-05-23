@@ -1136,6 +1136,7 @@
     <Compile Include="Items\Pets\RoyalStar.cs" />
     <Compile Include="Items\Pets\Seashroom.cs" />
     <Compile Include="Items\Pets\Sharkron.cs" />
+    <Compile Include="Items\Potions\Carrot.cs" />
     <Compile Include="Items\Potions\DragonfireFlask.cs" />
     <Compile Include="Items\Potions\GrandHealingPotion.cs" />
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
@@ -2112,6 +2113,8 @@
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
     <Compile Include="Sounds\Sounds\Zerohit2.cs" />
     <Compile Include="Tiles\AbyssiumBar.cs" />
+    <Compile Include="Tiles\Carrot.cs" />
+    <Compile Include="Tiles\CarrotGold.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\MadnessShroom.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
@@ -4241,6 +4244,7 @@
     <Content Include="Items\Pets\DragonsSoul.png" />
     <Content Include="Items\Pets\Glowmoss.png" />
     <Content Include="Items\Pets\GlowmossBall.png" />
+    <Content Include="Items\Potions\Carrot.png" />
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
@@ -6334,6 +6338,8 @@
     <Content Include="Tiles\BogPalmTreetops.png" />
     <Content Include="Tiles\Bogtus.png" />
     <Content Include="Tiles\Campfires.png" />
+    <Content Include="Tiles\Carrot.png" />
+    <Content Include="Tiles\CarrotGold.png" />
     <Content Include="Tiles\ChaosAltar1.png" />
     <Content Include="Tiles\ChaosAltar2.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />
