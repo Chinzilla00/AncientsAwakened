@@ -2125,6 +2125,7 @@
     <Compile Include="Tiles\MadnessShroom.cs" />
     <Compile Include="Tiles\MireFoliage.cs" />
     <Compile Include="Tiles\RajahBox.cs" />
+    <Compile Include="Tiles\ToadBox.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
     <Compile Include="Tiles\TechneciumBar.cs" />
     <Compile Include="Tiles\UraniumBar.cs" />
