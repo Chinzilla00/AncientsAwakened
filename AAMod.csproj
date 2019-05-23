@@ -1371,6 +1371,10 @@
     <Compile Include="Items\Vanity\Eliza\LizScarf.cs" />
     <Compile Include="Items\Vanity\Eliza\LizShirt.cs" />
     <Compile Include="Items\Vanity\Eliza\NightingaleWings.cs" />
+    <Compile Include="Items\Vanity\Grox\AngryPirateBoots.cs" />
+    <Compile Include="Items\Vanity\Grox\AngryPirateCofferplate.cs" />
+    <Compile Include="Items\Vanity\Grox\AngryPirateHood.cs" />
+    <Compile Include="Items\Vanity\Grox\AngryPirateSails.cs" />
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
@@ -2116,7 +2120,9 @@
     <Compile Include="Tiles\Carrot.cs" />
     <Compile Include="Tiles\CarrotGold.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
+    <Compile Include="Tiles\InfernoFoliage.cs" />
     <Compile Include="Tiles\MadnessShroom.cs" />
+    <Compile Include="Tiles\MireFoliage.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
     <Compile Include="Tiles\TechneciumBar.cs" />
     <Compile Include="Tiles\UraniumBar.cs" />
@@ -4278,8 +4284,16 @@
     <Content Include="Items\Vanity\Beg\PonyHoofs_Legs.png" />
     <Content Include="Items\Vanity\Beg\PonyMask.png" />
     <Content Include="Items\Vanity\Beg\PonyMask_Head.png" />
-    <Content Include="Items\Vanity\Grox\GroxHood.png" />
-    <Content Include="Items\Vanity\Grox\GroxHood_Head.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateBoots.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateBoots_Legs.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateCofferplate.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateCofferplate_Arms.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateCofferplate_Body.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateCofferplate_Female.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateHood.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateHood_Head.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateSails.png" />
+    <Content Include="Items\Vanity\Grox\AngryPirateSails_Wings.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask_Head.png" />
     <Content Include="Items\Vanity\Mask\AkumaMask.png" />
@@ -6401,6 +6415,7 @@
     <Content Include="Tiles\ManaLanternP.png" />
     <Content Include="Tiles\ManaLanternTile.png" />
     <Content Include="Tiles\ManaLantern_Glow.png" />
+    <Content Include="Tiles\MireFoliage.png" />
     <Content Include="Tiles\MireFoliage1.png" />
     <Content Include="Tiles\MireFoliage2.png" />
     <Content Include="Tiles\MireFoliage3.png" />

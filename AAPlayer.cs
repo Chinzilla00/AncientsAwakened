@@ -1086,6 +1086,11 @@ namespace AAMod
                 
             }
 
+            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Grox.AngryPirateSails>(), true, true))
+            {
+                WingAnimation(player, 1, 4, 2);
+            }
+
 
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
             {
@@ -1487,6 +1492,20 @@ namespace AAMod
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("Etheral" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 15:
+                        player.QuickSpawnItem(mod.ItemType("AngryPirateHood"));
+                        player.QuickSpawnItem(mod.ItemType("AngryPirateCofferplate"));
+                        player.QuickSpawnItem(mod.ItemType("AngryPirateBoots"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("AngryPirateSails"));
+                        }
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GroxNote"));
                         }
                         spawnedDevItems = true;
                         break;

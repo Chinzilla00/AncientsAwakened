@@ -34,29 +34,11 @@ namespace AAMod.Tiles
             }
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
             {
-                switch (Main.rand.Next(5))
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(20) == 0)
                 {
-                    case 0:
-                        PlaceObject(i, j - 1, mod.TileType("InfernoFoliage1"));
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("InfernoFoliage1"), 0, 0, -1, -1);
-                        break;
-                    case 1:
-                        PlaceObject(i, j - 1, mod.TileType("InfernoFoliage2"));
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("InfernoFoliage2"), 0, 0, -1, -1);
-                        break;
-                    case 2:
-                        PlaceObject(i, j - 1, mod.TileType("InfernoFoliage3"));
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("InfernoFoliage3"), 0, 0, -1, -1);
-                        break;
-                    case 3:
-                        PlaceObject(i, j - 1, mod.TileType("InfernoFoliage4"));
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("InfernoFoliage4"), 0, 0, -1, -1);
-                        break;
-
-                    default:
-                        PlaceObject(i, j - 1, mod.TileType("InfernoFoliage5"));
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("InfernoFoliage5"), 0, 0, -1, -1);
-                        break;
+                    int style = Main.rand.Next(23);
+                    if (PlaceObject(i, j - 1, InfernoFoliage._type, false, style))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, InfernoFoliage._type, style, 0, -1, -1);
                 }
             }
         }

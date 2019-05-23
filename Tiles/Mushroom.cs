@@ -13,9 +13,10 @@ namespace AAMod.Tiles
             Main.tileCut[Type] = true;
 
             Main.tileMergeDirt[Type] = true;
-            //Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+            TileObjectData.newTile.RandomStyleRange = 5;
+            TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.addTile(Type);
             drop = ItemID.Mushroom;
             dustType = mod.DustType<Dusts.MushDust>();

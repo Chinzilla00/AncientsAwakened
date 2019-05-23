@@ -42,18 +42,7 @@ namespace AAMod.Projectiles
             {
                 projectile.alpha = 80;
             }
-
-            if (projectile.scale > 1f && projectile.ai[0] == 0)
-            {
-                projectile.hostile = true;
-                projectile.ai[0] = 1;
-                projectile.scale = 1f;
-            }
-            else
-            {
-                projectile.hostile = false;
-                projectile.scale += .5f;
-            }
+            
 
             if (projectile.timeLeft < 60)
             {
@@ -65,6 +54,17 @@ namespace AAMod.Projectiles
             }
             else
             {
+                if (projectile.scale > 1f && projectile.ai[0] == 0)
+                {
+                    projectile.hostile = true;
+                    projectile.ai[0] = 1;
+                    projectile.scale = 1f;
+                }
+                else
+                {
+                    projectile.hostile = false;
+                    projectile.scale += .5f;
+                }
                 if (projectile.ai[0] == 1 && projectile.penetrate > 0)
                 {
                     projectile.scale = projectile.penetrate / 50;
