@@ -67,8 +67,6 @@ namespace AAMod.NPCs.Bosses.GripsShen
             return lightColor;
         }
 
-        public static  glowTex = null;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/AbyssGrip_Glow");

@@ -1081,7 +1081,6 @@
     <Compile Include="Items\Melee\IceLongsword.cs" />
     <Compile Include="Items\Melee\IllumantFlail.cs" />
     <Compile Include="Items\Melee\Incineration.cs" />
-    <Compile Include="Items\Melee\Judgement.cs" />
     <Compile Include="Items\Melee\JungleReaper.cs" />
     <Compile Include="Items\Melee\LeafBlade.cs" />
     <Compile Include="Items\Melee\Lolkat.cs" />
@@ -3572,6 +3571,7 @@
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
     <Content Include="Items\Accessories\SpacePlaceholder.png" />
+    <Content Include="Items\Accessories\SpacePlaceholder_Head.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
     <Content Include="Items\Accessories\SpaceStone_Face.png" />
     <Content Include="Items\Accessories\TimeStone.png" />
@@ -4248,6 +4248,7 @@
     <Content Include="Items\Melee\ChaosYariEX.png" />
     <Content Include="Items\Melee\Chicken.png" />
     <Content Include="Items\Melee\Chicken_Hold.png" />
+    <Content Include="Items\Melee\DragonFang.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
     <Content Include="Items\Melee\Mjolnir.png" />
     <Content Include="Items\Melee\MjolnirEX.png" />
@@ -5060,7 +5061,6 @@
     <Content Include="Items\Melee\IchorSpear.png" />
     <Content Include="Items\Melee\IllumantFlail.png" />
     <Content Include="Items\Melee\Incineration.png" />
-    <Content Include="Items\Melee\Judgement.png" />
     <Content Include="Items\Melee\JungleReaper.png" />
     <Content Include="Items\Melee\LeafBlade.png" />
     <Content Include="Items\Melee\Lolkat.png" />

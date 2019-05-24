@@ -231,7 +231,7 @@ namespace AAMod.Items.Dev
             
             if (!AttackFrame)
             {
-                if (++projectile.frameCounter >= 10)
+                if (projectile.frameCounter++ >= 10)
                 {
                     projectile.frameCounter = 0;
                     if (++projectile.frame > 5)
@@ -242,7 +242,7 @@ namespace AAMod.Items.Dev
             }
             else
             {
-                if (++projectile.frameCounter >= 5)
+                if (projectile.frameCounter++ >= 5)
                 {
                     projectile.frameCounter = 0;
                     if (projectile.frame < 6 || projectile.frame > 10)
