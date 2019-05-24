@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     internalAI[1] = Main.rand.Next(4);
                     internalAI[0] = 0;
                     FungusAttack(attack);
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
 
                 npc.velocity *= 0.7f;
@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (npc.velocity == new Vector2(0, 0))
                 {
                     HasStopped = true;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
             else if (internalAI[1] == AISTATE_ROCKET)
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     float Point = 200 * npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 200f);
                     SelectPoint = false;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
 
                 Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
@@ -227,11 +227,11 @@ namespace AAMod.NPCs.Bosses.Truffle
                     {
                         internalAI[1] = Main.rand.Next(3);
                         internalAI[0] = 0;
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
             else if (internalAI[1] == AISTATE_CHARGE)
             {
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     float Point = Main.rand.Next(2) == 0 ? 300 : -300;
                     MovePoint = player.Center + new Vector2(Point, 200f);
                     SelectPoint = false;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
                 if (Vector2.Distance(npc.Center, MovePoint) < 60)
                 {
@@ -276,7 +276,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     internalAI[0] = 0;
                     internalAI[1] = AISTATE_HOVER;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
 
             }
@@ -303,7 +303,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         {
             Player player = Main.player[npc.target];
             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
-            npc.netUpdate = true;
+            npc.netUpdate2 = true;
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -371,7 +371,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                         NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
                     }
                 }
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
         }
 

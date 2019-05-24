@@ -8,8 +8,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bunny Summon");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Bunny Summon");
         }
 
         public override void SetDefaults()
@@ -21,22 +20,30 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.hostile = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 600;
-        }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
+            projectile.alpha = 255;
         }
 
         public override void AI()
         {
-            Move(new Vector2(projectile.ai[0], projectile.ai[1]);
+            projectile.damage = 0;
+            projectile.knockBack = 0;
+            Move(new Vector2(projectile.ai[0], projectile.ai[1]));
+            if (Vector2.Distance(projectile.Center, new Vector2(projectile.ai[0], projectile.ai[1])) < 10)
+            {
+                Kill(projectile.timeLeft);
+            }
         }
 
         public override void Kill(int timeLeft)
         {
-            projectile.timeLeft = 0;
+            int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType<RabbitcopterSoldier>(), 0);
+            Main.npc[Minion].netUpdate2 = true;
+            if (Main.netMode == 2 && Minion < 200)
+            {
+                NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+            }
+            projectile.active = false;
+            projectile.netUpdate2 = true;
         }
 
         public void Move(Vector2 point)

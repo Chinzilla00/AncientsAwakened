@@ -562,8 +562,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 damage = (int)(damage * .5f);
             }
         }
-
-        public static Texture2D glowTex = null, glowTex1 = null, glowTex2 = null, glowTex3 = null, glowTex4 = null, glowTex5 = null;
         
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -571,15 +569,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 AkumaTex = Main.npcTexture[npc.type];
             }
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/AkumaA_Glow");
-                glowTex1 = mod.GetTexture("Glowmasks/AkumaA1_Glow");
-                glowTex2 = mod.GetTexture("Glowmasks/AkumaAArms_Glow");
-                glowTex3 = mod.GetTexture("Glowmasks/AkumaABody_Glow");
-                glowTex4 = mod.GetTexture("Glowmasks/AkumaABody1_Glow");
-                glowTex5 = mod.GetTexture("Glowmasks/AkumaATail_Glow");
-            }
+
+            Texture2D glowTex = mod.GetTexture("Glowmasks/AkumaA_Glow");
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/AkumaA1_Glow");
+            Texture2D glowTex2 = mod.GetTexture("Glowmasks/AkumaAArms_Glow");
+            Texture2D glowTex3 = mod.GetTexture("Glowmasks/AkumaABody_Glow");
+            Texture2D glowTex4 = mod.GetTexture("Glowmasks/AkumaABody1_Glow");
+            Texture2D glowTex5 = mod.GetTexture("Glowmasks/AkumaATail_Glow");
+
             Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
             int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             if (npc.ai[1] == 1 || npc.ai[2] >= 470 || Main.npc[(int)npc.ai[3]].ai[1] == 1 || Main.npc[(int)npc.ai[3]].ai[2] >= 500)

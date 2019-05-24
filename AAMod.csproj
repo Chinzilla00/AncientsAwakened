@@ -1540,6 +1540,7 @@
     <Compile Include="NPCs\Bosses\Rajah\BunnySummon3.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnySummon2.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnySummon1.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\CarrotFarmerR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\CarrotHostile.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahBookIt.cs" />
@@ -4365,6 +4366,7 @@
     <Content Include="NPCs\Bosses\Rajah\BunnySummon3.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnySummon2.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnySummon1.png" />
+    <Content Include="NPCs\Bosses\Rajah\CarrotFarmerR.png" />
     <Content Include="NPCs\Bosses\Rajah\CarrotHostile.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.png" />

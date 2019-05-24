@@ -372,32 +372,6 @@ namespace AAMod
             {
                 precachedTextures.Clear();
 
-                NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex = null;
-                NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex2 = null;
-
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex2 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex3 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex4 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex5 = null;
-
-                NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
-                NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
-                NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;
-
-                NPCs.Bosses.Raider.Raider.glowTex = null;
-                NPCs.Bosses.Raider.Raider.glowTex1 = null;
-                NPCs.Bosses.Raider.RaidEgg.glowTex = null;
-                NPCs.Bosses.Raider.Raidmini.glowTex = null;
-                NPCs.Bosses.Raider.Raidmini.glowTex1 = null;
-
-                NPCs.Bosses.Retriever.Retriever.glowTex = null;
-                NPCs.Bosses.Retriever.Retriever.glowTex = null;
-
-                NPCs.Bosses.Zero.SearcherZero.glowTex = null;
-
-                NPCs.Enemies.Void.Searcher.glowTex = null;
-
                 AkumaSky.PlanetTexture = null;
                 AkumaSky.BGTexture = null;
                 AkumaSky.SkyTex = null;
@@ -432,9 +406,7 @@ namespace AAMod
 
                 ShenASky.MeteorTexture = null;
                 ShenASky.PlanetTexture = null;
-                ShenASky.SkyTex = null;
-
-                Items.Accessories.SoulStone._glow = null;                
+                ShenASky.SkyTex = null;            
             }
         }
 

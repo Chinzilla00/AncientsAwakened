@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         private Texture2D RajahTex;
         private Texture2D ArmTex;
-        public Vector2 WeaponPos;
+        Projectile CarrotFarmer;
         public int WeaponFrame = 0;
 
         /*
@@ -93,10 +93,14 @@ namespace AAMod.NPCs.Bosses.Rajah
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
         }
 
+        public Vector2 WeaponPos;
+        public Vector2 StaffPos;
+
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
+            StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
 
             Player player = Main.player[npc.target];
@@ -153,8 +157,15 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 internalAI[2] = 0;
                 npc.ai[2] = 0;
-                npc.ai[3] = Main.rand.Next(4);
-                npc.netUpdate = true;
+                if (AAMod.thoriumLoaded)
+                {
+                    npc.ai[3] = Main.rand.Next(5);
+                }
+                else
+                {
+                    npc.ai[3] = Main.rand.Next(4);
+                }
+                npc.netUpdate2 = true;
             }
 
             if (npc.ai[3] == 0) //Minion Phase
@@ -164,13 +175,13 @@ namespace AAMod.NPCs.Bosses.Rajah
                     internalAI[2] = 0;
                     if (internalAI[4] == 0)
                     {
-                        if (NPC.CountNPCS(mod.NPCType<RabbitcopterSoldier>()) < 5)
+                        if (NPC.CountNPCS(mod.NPCType<RabbitcopterSoldier>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon1>()) < 5)
                         {
-                            int Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<RabbitcopterSoldier>(), 0);
-                            Main.npc[Minion].netUpdate2 = true;
-                            if (Main.netMode == 2 && Minion < 200)
+                            int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                            Main.npc[Proj].netUpdate2 = true;
+                            if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                             {
-                                NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                             }
                         }
                     }
@@ -182,54 +193,55 @@ namespace AAMod.NPCs.Bosses.Rajah
                         }
                         if (internalAI[3] == 0)
                         {
-                            if (NPC.CountNPCS(mod.NPCType<RabbitcopterSoldier>()) < 5)
+                            if (NPC.CountNPCS(mod.NPCType<RabbitcopterSoldier>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon1>()) < 5)
                             {
-                                int Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<RabbitcopterSoldier>(), 0);
-                                Main.npc[Minion].netUpdate2 = true;
-                                if (Main.netMode == 2 && Minion < 200)
+                                int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
                         else if (internalAI[3] == 1)
                         {
-                            if (NPC.CountNPCS(mod.NPCType<BunnyBrawler>()) < 3)
+                            if (NPC.CountNPCS(mod.NPCType<BunnyBrawler>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon2>()) < 5)
                             {
-                                int Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<BunnyBrawler>(), 0);
-                                if (Main.netMode == 2 && Minion < 200)
+                                int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon2>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
                         else if (internalAI[3] == 2)
                         {
-                            if (NPC.CountNPCS(mod.NPCType<BunnyBrawler>()) < 8)
+                            if (NPC.CountNPCS(mod.NPCType<BunnyBattler>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon3>()) < 8)
                             {
-                                int Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<BunnyBattler>(), 0);
-                                Main.npc[Minion].netUpdate2 = true;
-                                if (Main.netMode == 2 && Minion < 200)
+                                int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
-                                Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<BunnyBattler>(), 0);
-                                Main.npc[Minion].netUpdate2 = true;
-                                if (Main.netMode == 2 && Minion < 200)
+                                Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
-                                Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<BunnyBattler>(), 0);
-                                Main.npc[Minion].netUpdate2 = true;
-                                if (Main.netMode == 2 && Minion < 200)
+                                Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
-                                Minion = NPC.NewNPC(Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50), mod.NPCType<BunnyBattler>(), 0);
-                                Main.npc[Minion].netUpdate2 = true;
-                                if (Main.netMode == 2 && Minion < 200)
+                                Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                Main.npc[Proj].netUpdate2 = true;
+                                if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
@@ -248,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     dir *= 9f;
                     int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
                     Main.projectile[Proj].netUpdate = true;
-                    if (Main.netMode == 2 && Proj < 200)
+                    if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                     {
                         NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -273,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         double offsetAngle = startAngle + (deltaAngle * i);
                         int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle) , mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
-                        if (Main.netMode == 2 && Proj < 200)
+                        if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                         {
                             NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                         }
@@ -294,12 +306,18 @@ namespace AAMod.NPCs.Bosses.Rajah
                         dir *= 9f;
                         int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 1, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
-                        if (Main.netMode == 2 && Proj < 200)
+                        if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                         {
                             NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                         }
                     }
                 }
+                npc.netUpdate2 = true;
+            }
+
+            if (npc.ai[3] == 4) //Carrot Farmer
+            {
+                CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
                 npc.netUpdate2 = true;
             }
 

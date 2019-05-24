@@ -178,18 +178,12 @@ namespace AAMod.NPCs.Bosses.Raider
             }
         }
 
-
-        public static Texture2D glowTex = null;
-        public static Texture2D glowTex1 = null;
         public Color color;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/Raider_Glow1");
-                glowTex1 = mod.GetTexture("Glowmasks/Raider_Glow2");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Raider_Glow1");
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/Raider_Glow2");
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
@@ -228,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 {
                     SelectPoint = true;
                 }
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
             pos = (npc.ai[1] == 0 ? -250 : 250);
 
@@ -236,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 internalAI[1] = AISTATE_RUNAWAY;
                 npc.ai = new float[4];
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
                 return;
             }
 
@@ -248,7 +242,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 {
                     internalAI[1] = AISTATE_RUNAWAY;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
 
@@ -279,13 +273,13 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
 
             if (Main.dayTime)
             {
                 internalAI[1] = AISTATE_RUNAWAY;
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
 
             if (internalAI[1] == AISTATE_ROCKETS)
@@ -300,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         {
                             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
                         }
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                     if (internalAI[2] > 90)
                     {
@@ -308,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         npc.ai = new float[4];
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                 }
 
@@ -330,7 +324,7 @@ namespace AAMod.NPCs.Bosses.Raider
                             Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                 }
             }
@@ -341,7 +335,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     float Point = 500 * npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 500f);
                     SelectPoint = false;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
                 Charge(MovePoint);
 
@@ -351,7 +345,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
             else if (internalAI[1] == AISTATE_SHOCKBOMB)

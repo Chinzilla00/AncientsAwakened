@@ -66,15 +66,10 @@ namespace AAMod.NPCs.Bosses.GripsShen
             return lightColor;
         }
 
-
-        public static Texture2D glowTex = null;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/BlazeGrip_Glow");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/BlazeGrip_Glow");
+
             int shader = 0;
             if (npc.ai[0] == 0)
             {
