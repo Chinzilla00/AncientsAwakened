@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace AAMod.Items.Boss.Rajah
 {
@@ -59,14 +60,17 @@ Immunity to fall damage");
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmmount = (100 * DamageBoost(player)) + "%";
+            string DamageAmmount = (10 * DamageBoost(player)) + "%";
 
-            new TooltipLine(mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + "Damage")
+            TooltipLine DamageToltip = new TooltipLine (mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
             {
                 overrideColor = damageColor
             };
-        }
 
+            tooltips.Add(DamageToltip);
+            base.ModifyTooltips(tooltips);
+        }
+        
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);

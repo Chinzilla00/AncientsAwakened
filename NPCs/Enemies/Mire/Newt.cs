@@ -58,13 +58,27 @@ namespace AAMod.NPCs.Enemies.Mire
                 npc.frameCounter = 0;
                 npc.frame.Y = 0;
             }
-            if (npc.velocity.X < 0) // so it faces the player
+            if (!tongueAttack)
             {
-                npc.spriteDirection = 1;
+                if (npc.velocity.X < 0) // so it faces the player
+                {
+                    npc.direction = 1;
+                }
+                else if (npc.velocity.X > 0)
+                {
+                    npc.direction = -1;
+                }
             }
-            else if (npc.velocity.X > 0)
+            else
             {
-                npc.spriteDirection = -1;
+                if (player.position.X > npc.position.X)
+                {
+                    npc.direction = 1;
+                }
+                else
+                {
+                    npc.direction = -1;
+                }
             }
             if (tongueAttack == true)
             {
@@ -141,17 +155,17 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D tongueAni = mod.GetTexture("NPCs/Enemies/Mire/Newt_Shoot");
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (tongueAttack == false) // i think this is important for it to not do its usual walking cycle while its also doing those attacks
             {
-                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0f);
             }
             if (tongueAttack == true)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = tongueAni.Height / 4;
                 int y6 = num214 * tongueFrame;
-                Main.spriteBatch.Draw(tongueAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, tongueAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)tongueAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(tongueAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, tongueAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)tongueAni.Width / 2f, (float)num214 / 2f), npc.scale, effects, 0f);
             }
             return false;
         }

@@ -9,7 +9,7 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("GRealm Advertisement");
-            Tooltip.SetDefault(@"'Want my dev weapon? Go play GRealm!'
+            Tooltip.SetDefault(@"'Want more AA content and more Grox-filled fun? Go play GRealm!'
 -Grox The Great");
 		}
         public override void ModifyTooltips(List<TooltipLine> list)

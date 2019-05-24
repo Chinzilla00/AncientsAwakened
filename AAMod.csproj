@@ -860,7 +860,10 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\SoccMinion.cs" />
+    <Compile Include="Items\Dev\SockPuppetEX.cs" />
     <Compile Include="Items\Dev\SockPuppet.cs" />
+    <Compile Include="Items\Dev\SoccStaff.cs" />
     <Compile Include="Items\Dev\SockStaff.cs" />
     <Compile Include="Items\Dev\SoulSiphon.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
@@ -1534,6 +1537,9 @@
     <Compile Include="NPCs\Bosses\Rajah\BaneR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnyBrawler.cs" />
     <Compile Include="NPCs\Bosses\Rajah\BunnyBattler.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BunnySummon3.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BunnySummon2.cs" />
+    <Compile Include="NPCs\Bosses\Rajah\BunnySummon1.cs" />
     <Compile Include="NPCs\Bosses\Rajah\CarrotHostile.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.cs" />
     <Compile Include="NPCs\Bosses\Rajah\RajahBookIt.cs" />
@@ -1679,12 +1685,14 @@
     <Compile Include="NPCs\Enemies\Inferno\Lung.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Magmalgam\Magmalgam.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Hotwasp.cs" />
+    <Compile Include="NPCs\Enemies\Inferno\InfernoSandShark.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Wyrm.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Wyrmling.cs" />
     <Compile Include="NPCs\Enemies\Inferno\Wyvern.cs" />
     <Compile Include="NPCs\Enemies\Mire\AcidBoom.cs" />
     <Compile Include="NPCs\Enemies\Mire\AcidProj.cs" />
     <Compile Include="NPCs\Enemies\Mire\FogAngler.cs" />
+    <Compile Include="NPCs\Enemies\Mire\MireSandShark.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireGhoul.cs" />
     <Compile Include="NPCs\Enemies\Mire\MireSkulker.cs" />
     <Compile Include="NPCs\Enemies\Mire\Kappa.cs" />
@@ -2557,6 +2565,7 @@
     <Content Include="Buffs\Snagged.png" />
     <Content Include="Buffs\Snagged2.png" />
     <Content Include="Buffs\SnakeMinion.png" />
+    <Content Include="Buffs\Socc.png" />
     <Content Include="Buffs\SockPuppet.png" />
     <Content Include="Buffs\Stunned.png" />
     <Content Include="Buffs\Terrablaze.png" />
@@ -4181,7 +4190,6 @@
     <Content Include="Items\Boss\Rajah\RajahSashT.png" />
     <Content Include="Items\Boss\Rajah\RajahTrophy.png" />
     <Content Include="Items\Boss\Rajah\RoyalScepter.png" />
-    <Content Include="Items\Boss\Rajah\ThrowingCarrot.png" />
     <Content Include="Items\Boss\Sagittarius\Legg.png" />
     <Content Include="Items\Boss\Sagittarius\NeutronStaff.png" />
     <Content Include="Items\Boss\Sagittarius\SagBag.png" />
@@ -4204,6 +4212,7 @@
     <Content Include="Items\DevTools\Undowner.png" />
     <Content Include="Items\Dev\SoccMinion.png" />
     <Content Include="Items\Dev\SoccStaff.png" />
+    <Content Include="Items\Dev\SockPuppetEX.png" />
     <Content Include="Items\Dev\SockPuppet.png" />
     <Content Include="Items\Dev\SockStaff.png" />
     <Content Include="Items\Flasks\AshJar.png" />
@@ -4353,6 +4362,9 @@
     <Content Include="NPCs\Bosses\Rajah\BaneR.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBattler.png" />
     <Content Include="NPCs\Bosses\Rajah\BunnyBrawler.png" />
+    <Content Include="NPCs\Bosses\Rajah\BunnySummon3.png" />
+    <Content Include="NPCs\Bosses\Rajah\BunnySummon2.png" />
+    <Content Include="NPCs\Bosses\Rajah\BunnySummon1.png" />
     <Content Include="NPCs\Bosses\Rajah\CarrotHostile.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.png" />
@@ -4400,6 +4412,7 @@
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Truffle\TechnoTruffle.png" />
+    <Content Include="NPCs\Bosses\Truffle\TechnoTruffleWalk.png" />
     <Content Include="NPCs\Bosses\Truffle\TechnoTruffle_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Truffle\TruffleBookIt.png" />
     <Content Include="NPCs\Bosses\Truffle\TruffleProbe.png" />

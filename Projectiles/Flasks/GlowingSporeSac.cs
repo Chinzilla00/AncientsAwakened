@@ -67,7 +67,7 @@ namespace AAMod.Projectiles.Flasks
 
                     if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
                     {
-                        WorldGen.Convert(xPosition, yPosition, 4, 1);
+                        WorldGen.Convert(xPosition, yPosition, 3, 1);
                     }
                 }
             }

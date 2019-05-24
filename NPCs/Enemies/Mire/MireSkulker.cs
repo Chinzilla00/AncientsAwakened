@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.defense = 14;
             npc.value = Item.buyPrice(0, 0, 6, 45);
             npc.aiStyle = -1;
-            npc.width = 104;
+            npc.width = 56;
             npc.height = 28;
             npc.npcSlots = 1f;
             npc.HitSound = SoundID.NPCHit1;

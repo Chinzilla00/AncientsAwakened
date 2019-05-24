@@ -5,18 +5,18 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Mire
 {
-    public class MireGhoul : ModNPC
+    public class MireSandShark : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Ghoul");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DesertGhoul];
+			DisplayName.SetDefault("Sand Shark");
+			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.SandShark];
 		}
 
 		public override void SetDefaults()
 		{
-            npc.CloneDefaults(NPCID.DesertGhoul);
-            animationType = NPCID.DesertGhoul;
+            npc.CloneDefaults(NPCID.SandShark);
+            animationType = NPCID.SandShark;
         }
 
         public override void HitEffect(int hitDirection, double damage)

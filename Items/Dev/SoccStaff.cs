@@ -3,24 +3,26 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class SockStaff : ModItem
+    public class SoccStaff : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sock Puppet Staff");
-            Tooltip.SetDefault(@"Summons a sock puppet to fight with you");
+            DisplayName.SetDefault("Socc on a Stick");
+            Tooltip.SetDefault(@"Summons a cotton god to fight for you
+Only one Socc may exist. 
+Any summons after one has been summoned will result in a regular Sock
+Sock Puppet Staff EX");
         }
 
         public override void SetDefaults()
         {
             item.useStyle = 1;
             item.shootSpeed = 14f;
-            item.shoot = mod.ProjectileType("SockPuppet");
-            item.damage = 130;
+            item.shoot = mod.ProjectileType("SoccMinion");
+            item.damage = 240;
             item.width = 60;
             item.height = 56;
             item.UseSound = SoundID.Item44;
@@ -32,17 +34,6 @@ namespace AAMod.Items.Dev
             item.rare = 8;
             item.summon = true;
             item.mana = 20;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(89, 119, 71);
-                }
-            }
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -76,8 +67,25 @@ namespace AAMod.Items.Dev
             num79 = 0f;
             vector2.X = (float)Main.mouseX + Main.screenPosition.X;
             vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("SockPuppet"), num73, num74, i, 0f, 0f);
+            if (player.ownedProjectileCounts[mod.ProjectileType("SoccMinion")] > 0)
+            {
+                Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("SockPuppetEX"), num73, num74, i, 0f, 0f);
+            }
+            else
+            {
+                Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, mod.ProjectileType("SoccMinion"), (int)(num73 * 1.5f), num74, i, 0f, 0f);
+            }
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "SockStaff", 1);
+            recipe.AddIngredient(null, "EXSoul", 1);
+            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

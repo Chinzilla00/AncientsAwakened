@@ -54,8 +54,8 @@ namespace AAMod.Items.Vanity.Grox
 
 		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
-            speed = 15f;
-            acceleration *= 10f;
+            speed = 10f;
+            acceleration *= 2.5f;
         }
 	}
 }

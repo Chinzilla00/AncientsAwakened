@@ -204,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     internalAI[0] = 0.0f;
                 }
-                if (internalAI[0] % 5 == 0)
+                if (internalAI[0] % 6 == 0)
                 {
                     float num4 = 8f;
                     int Damage = npc.damage;

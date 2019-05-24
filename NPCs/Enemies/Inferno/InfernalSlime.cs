@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.lavaImmune = true;
             npc.knockBackResist = 0.5f;
             animationType = 81;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public override bool PreAI()

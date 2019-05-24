@@ -29,7 +29,9 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.DeathSound = SoundID.NPCDeath5;
             npc.knockBackResist = 0.5f;
             npc.noTileCollide = false;
-		}
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
+        }
 
 		public bool brokenJaw = false;
 		public bool canFire = false;

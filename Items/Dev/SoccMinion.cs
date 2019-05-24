@@ -8,13 +8,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class SockPuppet : ModProjectile
+    public class SoccMinion : ModProjectile
     {
 
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sock Puppet");
-			Main.projFrames[projectile.type] = 8;
+			Main.projFrames[projectile.type] = 11;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 		}
@@ -38,17 +38,17 @@ namespace AAMod.Items.Dev
 
         public override void AI()
         {
-            bool flag64 = projectile.type == mod.ProjectileType("SockPuppet");
+            bool flag64 = projectile.type == mod.ProjectileType("SoccMinion");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("SockPuppet"), 3600);
+            player.AddBuff(mod.BuffType("Socc"), 3600);
             if (flag64)
             {
                 if (player.dead)
                 {
-                    modPlayer.Sock = false;
+                    modPlayer.Socc = false;
                 }
-                if (modPlayer.Sock)
+                if (modPlayer.Socc)
                 {
                     projectile.timeLeft = 2;
                 }
@@ -56,29 +56,26 @@ namespace AAMod.Items.Dev
 
             float num633 = 700f;
             float num634 = 800f;
-            float num635 = 1200f;
-            float num636 = 150f;
-            float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("SockPuppet"));
+                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("SoccMinion"));
                 if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < (float)projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
                     {
-                        projectile.velocity.X = projectile.velocity.X - num637;
+                        projectile.velocity.X = projectile.velocity.X - 0.02f;
                     }
                     else
                     {
-                        projectile.velocity.X = projectile.velocity.X + num637;
+                        projectile.velocity.X = projectile.velocity.X + 0.02f;
                     }
                     if (projectile.position.Y < Main.projectile[num638].position.Y)
                     {
-                        projectile.velocity.Y = projectile.velocity.Y - num637;
+                        projectile.velocity.Y = projectile.velocity.Y - 0.02f;
                     }
                     else
                     {
-                        projectile.velocity.Y = projectile.velocity.Y + num637;
+                        projectile.velocity.Y = projectile.velocity.Y + 0.02f;
                     }
                 }
             }
@@ -127,7 +124,7 @@ namespace AAMod.Items.Dev
             float num647 = num634;
             if (flag25)
             {
-                num647 = num635;
+                num647 = 1200f;
             }
             if (Vector2.Distance(player.Center, projectile.Center) > num647)
             {
@@ -172,7 +169,7 @@ namespace AAMod.Items.Dev
                 {
                     num650 = 8f;
                 }
-                if (num651 < num636 && flag26 && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
+                if (num651 < 150f && flag26 && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                 {
                     projectile.ai[0] = 0f;
                     projectile.netUpdate = true;
@@ -196,59 +193,64 @@ namespace AAMod.Items.Dev
                 }
             }
             projectile.rotation = projectile.velocity.X * 0.04f;
-            if ((double)Math.Abs(projectile.velocity.X) > 0.2)
+            if (Math.Abs(projectile.velocity.X) > 0.2)
             {
-                projectile.spriteDirection = -projectile.direction;
+                projectile.spriteDirection = projectile.direction;
             }
 
-            if (++projectile.frameCounter >= 10)
-            {
-                projectile.frameCounter = 0;
-                if (!AttackFrame)
-                {
-                    if (++projectile.frame > 3)
-                    {
-                        projectile.frame = 0;
-                    }
-                }
-                else
-                {
-                    if (++projectile.frame < 3 || projectile.frame > 7)
-                    {
-                        projectile.frame = 3;
-                    }
-                }
-
-            }
             if (projectile.ai[1] > 0f)
             {
-                projectile.ai[1] += (float)Main.rand.Next(1, 4);
+                projectile.ai[1]++;
             }
             if (projectile.ai[1] > 90f)
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;
             }
-            if (projectile.ai[0] == 0f)
+            if (projectile.ai[0] % 10 == 0)
             {
-                float scaleFactor3 = 12f;
                 if (flag25 && projectile.ai[1] == 0f)
                 {
-                    projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, vector46, 0, 0))
                     {
                         Vector2 value19 = vector46 - projectile.Center;
                         value19.Normalize();
-                        value19 *= scaleFactor3;
+                        value19 *= 12f;
                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, 449, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                         Main.projectile[proj].hostile = false;
                         Main.projectile[proj].friendly = true;
                         Main.projectile[proj].magic = false;
                         Main.projectile[proj].minion = true;
+                        Main.projectile[proj].usesLocalNPCImmunity = true;
                         Main.projectile[proj].netUpdate = true;
                         projectile.netUpdate = true;
                     }
                 }
+            }
+
+            
+            if (!AttackFrame)
+            {
+                if (++projectile.frameCounter >= 10)
+                {
+                    projectile.frameCounter = 0;
+                    if (++projectile.frame > 5)
+                    {
+                        projectile.frame = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (++projectile.frameCounter >= 5)
+                {
+                    projectile.frameCounter = 0;
+                    if (projectile.frame < 6 || projectile.frame > 10)
+                    {
+                        projectile.frame = 6;
+                    }
+                }
+                
             }
         }
     }

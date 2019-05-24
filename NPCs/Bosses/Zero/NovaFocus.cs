@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 40;
             npc.height = 54;
-            npc.damage = 40;
+            npc.damage = 30;
             npc.defense = 70;
             npc.lifeMax = 37500;
             npc.HitSound = SoundID.NPCHit4;
@@ -203,13 +203,12 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.localAI[0] > 360)
                 {
                     npc.localAI[0] = 0.0f;
-                    LaserTime = 0;
+                    LaserTime = 0; if (Main.netMode != 1) laser.Kill();
                 }
                 LaserTime++;
                 if (LaserTime >= 600)
                 {
                     internalAI[0] = 0;
-                    if (Main.netMode != 1) laser.Kill();
                 }
                 else if (LaserTime >= 300)
                 {

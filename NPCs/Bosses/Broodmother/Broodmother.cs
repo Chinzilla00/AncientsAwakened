@@ -233,17 +233,25 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
 			pos = (npc.ai[1] == 0 ? -250 : 250);
 
-            npc.TargetClosest();			
-            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+            if (!Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.ai = new float[4];
+            }
+            else
             {
                 npc.TargetClosest();
                 if (Main.player[npc.target].dead || !Main.player[npc.target].active)
                 {
-                    internalAI[1] = AISTATE_RUNAWAY;
-                    npc.ai = new float[4];
+                    npc.TargetClosest();
+                    if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+                    {
+                        internalAI[1] = AISTATE_RUNAWAY;
+                        npc.ai = new float[4];
+                    }
                 }
             }
-            
+
             if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 npc.dontTakeDamage = true;

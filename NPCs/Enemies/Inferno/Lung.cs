@@ -47,6 +47,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
             npc.buffImmune[103] = false;
             npc.alpha = 255;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
         private int speed = 8;
 

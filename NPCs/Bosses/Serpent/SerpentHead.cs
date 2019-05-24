@@ -76,31 +76,11 @@ namespace AAMod.NPCs.Bosses.Serpent
             Player player = Main.player[Main.myPlayer];
             if (Main.dayTime || !player.ZoneSnow)
             {
-                npc.alpha += 4;
-                for (int loop = 0; loop < 3; loop++)
+                internalAI[0]++;
+                npc.velocity.Y = npc.velocity.Y + 0.8f;
+                if (internalAI[0] >= 300)
                 {
-                    Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Smoke);
-                }
-                if (npc.alpha > 255)
-                {
-                    npc.alpha = 4;
-                }
-                if (!Main.player[npc.target].active || Main.player[npc.target].dead)
-                {
-                    npc.TargetClosest(true);
-                    if (!Main.player[npc.target].active || Main.player[npc.target].dead)
-                    {
-                        internalAI[0]++;
-                        npc.velocity.Y = npc.velocity.Y + 0.8f;
-                        if (internalAI[0] >= 300)
-                        {
-                            npc.active = false;
-                        }
-                    }
-                    else
-                    {
-                        internalAI[0] = 0;
-                    }
+                    npc.active = false;
                 }
             }
             else if (player.dead || !player.active)

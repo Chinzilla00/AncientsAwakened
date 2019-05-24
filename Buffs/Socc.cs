@@ -16,7 +16,7 @@ namespace AAMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            if (player.ownedProjectileCounts[mod.ProjectileType("Socc")] > 0)
+            if (player.ownedProjectileCounts[mod.ProjectileType("SoccMinion")] > 0)
             {
                 modPlayer.Socc = true;
             }

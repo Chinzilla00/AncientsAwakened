@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
@@ -13,7 +14,15 @@ namespace AAMod.NPCs.Bosses.Equinox
 			nightcrawler = true;
 		}
 
-		public override bool PreNPCLoot()
+        public override void PostAI()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
+            {
+                npc.life = 0;
+            }
+        }
+
+        public override bool PreNPCLoot()
 		{
 			return false;
 		}

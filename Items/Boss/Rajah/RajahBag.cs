@@ -42,11 +42,7 @@ namespace AAMod.Items.Boss.Rajah
             player.QuickSpawnItem(mod.ItemType("RajahSash"));
             string[] lootTable = { "BaneOfTheBunny", "Bunzooka", "Punisher", "RabbitcopterEars", "RoyalScepter" };
             int loot = Main.rand.Next(lootTable.Length);
-            if (Main.rand.Next(6) == 0)
-            {
-                player.QuickSpawnItem(mod.ItemType("ThrowingCarrot"), Main.rand.Next(150, 200));
-            }
-            else if (Main.rand.Next(6) == 1 && AAMod.thoriumLoaded)
+            if (Main.rand.Next(6) == 1 && AAMod.thoriumLoaded)
             {
                 player.QuickSpawnItem(mod.ItemType("CarrotFarmer"));
             }

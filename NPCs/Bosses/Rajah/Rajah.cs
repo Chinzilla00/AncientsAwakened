@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void SetDefaults()
         {
-            npc.width = 200;
+            npc.width = 130;
             npc.height = 214;
             npc.aiStyle = -1;
             npc.damage = 130;
@@ -29,12 +29,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/Rajah");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/Rajah");
             npc.value = 10000f;
             npc.boss = true;
             npc.netAlways = true;
             npc.timeLeft = NPC.activeTime * 30;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RajahTheme");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
             bossBag = mod.ItemType("RajahBag");
         }
 
@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public void Roar(int timer)
         {
             roarTimer = timer;
-            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
         }
 
         public override void AI()
@@ -114,11 +114,11 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (player.Center.X < npc.Center.X)
             {
-                npc.direction = -1;
+                npc.direction = 1;
             }
             else
             {
-                npc.direction = 1;
+                npc.direction = -1;
             }
 
             if (player.Center.Y < npc.position.Y || TileBelowEmpty())
@@ -244,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (internalAI[2] > 40)
                 {
                     internalAI[2] = 0;
-                    Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                    Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                     dir *= 9f;
                     int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
                     Main.projectile[Proj].netUpdate = true;
@@ -259,7 +259,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (npc.ai[3] == 2) //Royal Scepter
             {
                 float spread = 45f * 0.0174f;
-                Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                 dir *= 9f;
                 float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                 double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
@@ -271,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     for (int i = 0; i < 3; i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
-                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle) , mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
                         if (Main.netMode == 2 && Proj < 200)
                         {
@@ -290,9 +290,9 @@ namespace AAMod.NPCs.Bosses.Rajah
                     if (internalAI[2] > 60)
                     {
                         internalAI[2] = 0;
-                        Vector2 dir = Vector2.Normalize(player.position - npc.Center);
+                        Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
                         dir *= 9f;
-                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 5, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 1, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
                         if (Main.netMode == 2 && Proj < 200)
                         {
@@ -495,27 +495,27 @@ namespace AAMod.NPCs.Bosses.Rajah
             float speed = 7f;
             if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
             {
-                speed = 7.5f;
+                speed = 10f;
             }
             if (npc.life < (npc.lifeMax * .7f))
             {
-                speed = 8f;
+                speed = 10.5f;
             }
             if (npc.life < (npc.lifeMax * .65f))
             {
-                speed = 8.5f;
+                speed = 11f;
             }
             if (npc.life < (npc.lifeMax * .4f))
             {
-                speed = 9f;
+                speed = 11.5f;
             }
             if (npc.life < (npc.lifeMax * .25f))
             {
-                speed = 9.5f;
+                speed = 12f;
             }
             if (npc.life < (npc.lifeMax * .1f))
             {
-                speed = 10f;
+                speed = 12.5f;
             }
             BaseAI.AISpaceOctopus(npc, ref internalAI, .25f, speed, 300, 0, null);
             internalAI[4] = 0;

@@ -424,7 +424,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 200;
+                npc.damage = 300;
                 npc.defense = 300;
             }
             else //Reset Stats

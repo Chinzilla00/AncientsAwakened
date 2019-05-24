@@ -40,6 +40,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.DeathSound = SoundID.NPCDeath1;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
+            npc.lavaImmune = true;
         }
         public override bool PreAI()
         {

@@ -17,6 +17,9 @@ namespace AAMod.NPCs.Enemies.Inferno
 		public override void SetDefaults()
 		{
             npc.CloneDefaults(NPCID.DesertGhoul);
+            animationType = NPCID.DesertGhoul;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public override void HitEffect(int hitDirection, double damage)

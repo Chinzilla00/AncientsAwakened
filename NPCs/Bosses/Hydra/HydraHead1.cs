@@ -165,16 +165,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.spriteDirection = -1;
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-            if (Body != null)
-            {
-				dColor = npc.GetAlpha(dColor);
-                Body.DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", npc, dColor);
-            }
-            return true;
-        }
-
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;

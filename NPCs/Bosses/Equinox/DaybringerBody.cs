@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
@@ -12,7 +13,15 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.dontCountMe = true;
 		}
 
-		public override bool PreNPCLoot()
+        public override void PostAI()
+        {
+            if (!NPC.AnyNPCs(mod.NPCType<DaybringerHead>()))
+            {
+                npc.life = 0;
+            }
+        }
+
+        public override bool PreNPCLoot()
 		{
 			return false;
 		}

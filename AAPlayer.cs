@@ -20,6 +20,9 @@ using System.Collections.Generic;
 using BaseMod;
 using Terraria.Graphics.Effects;
 using AAMod.Items;
+using Terraria.GameContent.Events;
+using Terraria.Utilities;
+
 namespace AAMod
 {
     public class AAPlayer : ModPlayer
@@ -712,6 +715,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (player.ZoneSandstorm && (ZoneInferno || ZoneMire))
+            {
+                EmitDust();
+            }
             if (SagCooldown > 0)
             {
                 player.noItems = true;
@@ -1092,7 +1099,7 @@ namespace AAMod
 
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Grox.AngryPirateSails>(), true, true))
             {
-                WingAnimation(player, 1, 4, 2);
+                WingAnimation(player, 1, 10, 2);
             }
 
 
@@ -1140,6 +1147,127 @@ namespace AAMod
                 {
                     player.wingFrame = 0;
                 }
+            }
+        }
+
+        public static void EmitDust()
+        {
+            if (Main.gamePaused)
+            {
+                return;
+            }
+            int sandTiles = Main.sandTiles;
+            Player player = Main.player[Main.myPlayer];
+            bool flag = Sandstorm.Happening && player.ZoneSandstorm && (Main.bgStyle == 2 || Main.bgStyle == 5) && Main.bgDelay < 50;
+            Sandstorm.HandleEffectAndSky(flag && Main.UseStormEffects);
+            if (sandTiles < 100 || (double)player.position.Y > Main.worldSurface * 16.0 || player.ZoneBeach)
+            {
+                return;
+            }
+            int maxValue = 1;
+            if (!flag)
+            {
+                return;
+            }
+            if (Main.rand.Next(maxValue) != 0)
+            {
+                return;
+            }
+            int num = Math.Sign(Main.windSpeed);
+            float num2 = Math.Abs(Main.windSpeed);
+            if (num2 < 0.01f)
+            {
+                return;
+            }
+            float num3 = (float)num * MathHelper.Lerp(0.9f, 1f, num2);
+            float num4 = 2000f / sandTiles;
+            float num5 = 3f / num4;
+            num5 = MathHelper.Clamp(num5, 0.77f, 1f);
+            int num6 = (int)num4;
+            float num7 = (float)Main.screenWidth / (float)Main.maxScreenW;
+            int num8 = (int)(1000f * num7);
+            float num9 = 20f * Sandstorm.Severity;
+            float num10 = (float)num8 * (Main.gfxQuality * 0.5f + 0.5f) + (float)num8 * 0.1f - (float)Dust.SandStormCount;
+            if (num10 <= 0f)
+            {
+                return;
+            }
+            float num11 = (float)Main.screenWidth + 1000f;
+            float num12 = (float)Main.screenHeight;
+            Vector2 value = Main.screenPosition + player.velocity;
+            WeightedRandom<Color> weightedRandom = new WeightedRandom<Color>();
+            weightedRandom.Add(new Color(200, 160, 20, 180), (double)(Main.screenTileCounts[53] + Main.screenTileCounts[396] + Main.screenTileCounts[397]));
+            weightedRandom.Add(new Color(103, 98, 122, 180), (double)(Main.screenTileCounts[112] + Main.screenTileCounts[400] + Main.screenTileCounts[398]));
+            weightedRandom.Add(new Color(135, 43, 34, 180), (double)(Main.screenTileCounts[234] + Main.screenTileCounts[401] + Main.screenTileCounts[399]));
+            weightedRandom.Add(new Color(213, 196, 197, 180), (double)(Main.screenTileCounts[116] + Main.screenTileCounts[403] + Main.screenTileCounts[402]));
+            float num13 = MathHelper.Lerp(0.2f, 0.35f, Sandstorm.Severity);
+            float num14 = MathHelper.Lerp(0.5f, 0.7f, Sandstorm.Severity);
+            float amount = (num5 - 0.77f) / 0.230000019f;
+            int maxValue2 = (int)MathHelper.Lerp(1f, 10f, amount);
+            int num15 = 0;
+            while ((float)num15 < num9)
+            {
+                if (Main.rand.Next(num6 / 4) == 0)
+                {
+                    Vector2 vector = new Vector2(Main.rand.NextFloat() * num11 - 500f, Main.rand.NextFloat() * -50f);
+                    if (Main.rand.Next(3) == 0 && num == 1)
+                    {
+                        vector.X = (float)(Main.rand.Next(500) - 500);
+                    }
+                    else if (Main.rand.Next(3) == 0 && num == -1)
+                    {
+                        vector.X = (float)(Main.rand.Next(500) + Main.screenWidth);
+                    }
+                    if (vector.X < 0f || vector.X > (float)Main.screenWidth)
+                    {
+                        vector.Y += Main.rand.NextFloat() * num12 * 0.9f;
+                    }
+                    vector += value;
+                    int num16 = (int)vector.X / 16;
+                    int num17 = (int)vector.Y / 16;
+                    if (Main.tile[num16, num17] != null && Main.tile[num16, num17].wall == 0)
+                    {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            Dust dust = Main.dust[Dust.NewDust(vector, 10, 10, 268, 0f, 0f, 0, default(Color), 1f)];
+                            dust.velocity.Y = 2f + Main.rand.NextFloat() * 0.2f;
+                            Dust expr_460_cp_0 = dust;
+                            expr_460_cp_0.velocity.Y = expr_460_cp_0.velocity.Y * dust.scale;
+                            Dust expr_47A_cp_0 = dust;
+                            expr_47A_cp_0.velocity.Y = expr_47A_cp_0.velocity.Y * 0.35f;
+                            dust.velocity.X = num3 * 5f + Main.rand.NextFloat() * 1f;
+                            Dust expr_4B7_cp_0 = dust;
+                            expr_4B7_cp_0.velocity.X = expr_4B7_cp_0.velocity.X + num3 * num14 * 20f;
+                            dust.fadeIn += num14 * 0.2f;
+                            dust.velocity *= 1f + num13 * 0.5f;
+                            dust.color = weightedRandom;
+                            dust.velocity *= 1f + num13;
+                            dust.velocity *= num5;
+                            dust.scale = 0.9f;
+                            num10 -= 1f;
+                            if (num10 <= 0f)
+                            {
+                                break;
+                            }
+                            if (Main.rand.Next(maxValue2) != 0)
+                            {
+                                i--;
+                                vector += Utils.RandomVector2(Main.rand, -10f, 10f) + dust.velocity * -1.1f;
+                                num16 = (int)vector.X / 16;
+                                num17 = (int)vector.Y / 16;
+                                if (WorldGen.InWorld(num16, num17, 10) && Main.tile[num16, num17] != null)
+                                {
+                                    ushort arg_5F6_0 = Main.tile[num16, num17].wall;
+                                }
+                            }
+                        }
+                        if (num10 <= 0f)
+                        {
+                            return;
+                        }
+                    }
+                }
+                num15++;
             }
         }
 
@@ -1509,9 +1637,12 @@ namespace AAMod
                         }
                         if (dropType >= 2)
                         {
-                            player.QuickSpawnItem(mod.ItemType("GroxNote"));
+                            player.QuickSpawnItem(mod.ItemType(dropType == 3 ? "SoccStaff" : "SockStaff"));
                         }
                         spawnedDevItems = true;
+                        break;
+                    case 16:
+                        player.QuickSpawnItem(mod.ItemType("GroxNote"));
                         break;
                 }
             }

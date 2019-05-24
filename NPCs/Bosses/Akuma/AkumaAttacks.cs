@@ -63,6 +63,11 @@ namespace AAMod
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, mod.NPCType(isAwakened ? "AwakenedLung" : "AncientLung"), 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 600f);
                 Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+
+                if (Main.netMode == 2 && npcID < 200)
+                {
+                    NetMessage.SendData(23, -1, -1, null, npcID, 0f, 0f, 0f, 0, 0, 0);
+                }
             }
         }
 
@@ -110,7 +115,7 @@ namespace AAMod
             num79 *= num80;
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.75f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
         

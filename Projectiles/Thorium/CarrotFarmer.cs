@@ -76,6 +76,15 @@ namespace AAMod.Projectiles.Thorium
             projectile.position.X = player.Center.X - 80;
             projectile.position.Y = player.Center.Y - 73;
 
+            Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CarrotFarmerDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CarrotFarmerDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+
+            if (projectile.timeLeft == 13)
+            {
+                Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CarrotFarmerDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CarrotFarmerDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+            }
+
             if (projectile.timeLeft < 8)
             {
                 projectile.alpha -= 28;

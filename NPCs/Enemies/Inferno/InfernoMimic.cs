@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.aiStyle = 87;
             aiType = NPCID.Zombie;
             animationType = 475;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

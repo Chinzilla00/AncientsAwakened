@@ -135,7 +135,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
 
             Player playerTarget = Main.player[npc.target];
-            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && !playerTarget.dead)
+            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && internalAI[1] != AISTATE_RUNAWAY)
             {
                 npc.NPCLoot();
                 npc.active = false;
@@ -143,7 +143,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
             if (!playerTarget.active || playerTarget.dead || Main.dayTime) //fleeing
 			{
-	            npc.noGravity = true;	
+                internalAI[1] = AISTATE_RUNAWAY;
+
+                npc.dontTakeDamage = true;
+                npc.noGravity = true;	
 				npc.noTileCollide = true;				
 				npc.velocity.Y -= 0.5f;				
 				if (Main.netMode != 1)
@@ -173,6 +176,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}
 					}
 				}
+                return;
 			}
             else
 			{	
@@ -231,10 +235,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}				
 					}
 				}
-                else if (internalAI[1] == AISTATE_RUNAWAY)
-                {
-
-                }
             }
             
 

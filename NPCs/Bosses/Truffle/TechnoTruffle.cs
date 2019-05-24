@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (internalAI[0] >= 180)
                 {
                     internalAI[0] = 0;
-                    internalAI[1] = Main.rand.Next(4);
+                    internalAI[1] = Main.rand.Next(5);
                     if (internalAI[1] == AISTATE_ROCKET || internalAI[1] == AISTATE_CHARGE)
                     {
                         SelectPoint = true;
@@ -253,8 +253,8 @@ namespace AAMod.NPCs.Bosses.Truffle
                 }
                 else
                 {
-                    npc.noGravity = false;
                     npc.noTileCollide = false;
+                    npc.noGravity = false;
 
                     if (player.Center.X > npc.Center.X)
                     {
@@ -294,13 +294,6 @@ namespace AAMod.NPCs.Bosses.Truffle
             {
                 npc.spriteDirection = 1;
             }
-
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
-                internalAI[0]++;
-                MoveToPoint(new Vector2(player.Center.X, player.Center.Y - 170f));
-            }
-
             
         }
 
@@ -333,7 +326,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         {
             if (Attack == 0)
             {
-                if (NPC.CountNPCS(mod.NPCType<Truffling>()) < 1)
+                if (NPC.CountNPCS(mod.NPCType<Truffling>()) < 4)
                 {
                     for (int i = 0; i < 4; i++)
                     {
@@ -354,33 +347,9 @@ namespace AAMod.NPCs.Bosses.Truffle
                             NPC.NewNPC((int)npc.Center.X - 40, (int)npc.Center.Y + 40, mod.NPCType<Truffling>());
                         }
                     }
-                    npc.netUpdate = true;
-                }
-                else
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-
-                        if (i == 1)
-                        {
-                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
-                        }
-                        if (i == 2)
-                        {
-                            NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
-                        }
-                        if (i == 3)
-                        {
-                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
-                        }
-                        else
-                        {
-                            NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
-                        }
-                    }
                 }
             }
-            else if (Attack == 1)
+            else
             {
                 for (int i = 0; i < 4; i++)
                 {

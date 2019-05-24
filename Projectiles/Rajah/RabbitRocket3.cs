@@ -62,7 +62,7 @@ namespace AAMod.Projectiles.Rajah
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC target = Main.npc[i];
-                if (target.active && target.chaseable)
+                if (target.active && target.chaseable && !target.friendly)
                 {
                     float distance = projectile.Distance(target.Center);
                     if (distance <= homingMaximumRangeInPixels &&
