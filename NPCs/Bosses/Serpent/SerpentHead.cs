@@ -85,20 +85,6 @@ namespace AAMod.NPCs.Bosses.Serpent
                 {
                     npc.alpha = 4;
                 }
-            }
-            else
-            {
-                if (npc.alpha > 0)
-                {
-                    npc.alpha -= 4;
-                }
-                else
-                {
-                    npc.alpha = 0;
-                }
-            }
-            if (player.dead || !player.active)
-            {
                 if (!Main.player[npc.target].active || Main.player[npc.target].dead)
                 {
                     npc.TargetClosest(true);
@@ -117,6 +103,35 @@ namespace AAMod.NPCs.Bosses.Serpent
                     }
                 }
             }
+            else if (player.dead || !player.active)
+            {
+                npc.TargetClosest(true);
+                if (player.dead || !player.active)
+                {
+                    internalAI[0]++;
+                    npc.velocity.Y = npc.velocity.Y + 0.8f;
+                    if (internalAI[0] >= 300)
+                    {
+                        npc.active = false;
+                    }
+                }
+                else
+                {
+                    internalAI[0] = 0;
+                }
+            }
+            else
+            {
+                if (npc.alpha > 0)
+                {
+                    npc.alpha -= 4;
+                }
+                else
+                {
+                    npc.alpha = 0;
+                }
+            }
+
             if (RunOnce == 0)
             {
                 RainStart();

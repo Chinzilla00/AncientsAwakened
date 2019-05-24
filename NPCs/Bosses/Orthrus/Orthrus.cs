@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 npc.active = false;
             }
 
-            if (!playerTarget.active || playerTarget.dead) //fleeing
+            if (!playerTarget.active || playerTarget.dead || Main.dayTime) //fleeing
 			{
 	            npc.noGravity = true;	
 				npc.noTileCollide = true;				
@@ -231,6 +231,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						}				
 					}
 				}
+                else if (internalAI[1] == AISTATE_RUNAWAY)
+                {
+
+                }
             }
             
 

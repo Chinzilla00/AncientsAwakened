@@ -56,6 +56,8 @@ namespace AAMod
         public bool ScoutMinion = false;
         public bool SagOrbiter = false;
         public bool Rabbitcopter = false;
+        public bool Sock = false;
+        public bool Socc = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -286,6 +288,8 @@ namespace AAMod
             ScoutMinion = false;
             SagOrbiter = false;
             Rabbitcopter = false;
+            Sock = false;
+            Socc = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;

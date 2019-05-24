@@ -345,15 +345,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 MoveToPoint(wantedVelocity);
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                npc.dontTakeDamage = true;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }
-
+            
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
             {
                 npc.dontTakeDamage = true;
@@ -368,6 +360,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+            }
+
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            {
+                npc.dontTakeDamage = true;
             }
             else
             {

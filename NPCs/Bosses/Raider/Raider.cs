@@ -232,6 +232,14 @@ namespace AAMod.NPCs.Bosses.Raider
             }
             pos = (npc.ai[1] == 0 ? -250 : 250);
 
+            if (Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.ai = new float[4];
+                npc.netUpdate = true;
+                return;
+            }
+
             npc.TargetClosest();
             if (Main.player[npc.target].dead || !Main.player[npc.target].active)
             {

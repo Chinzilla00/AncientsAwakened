@@ -110,11 +110,11 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (player.position.X < npc.position.X)
                 {
-                    npc.spriteDirection = -1;
+                    npc.spriteDirection = 1;
                 }
                 else if (player.position.X > npc.position.X)
                 {
-                    npc.spriteDirection = 1;
+                    npc.spriteDirection = -1;
                 }
             }
 

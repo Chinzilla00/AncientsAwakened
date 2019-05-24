@@ -72,6 +72,8 @@
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
+    <Compile Include="Buffs\Socc.cs" />
+    <Compile Include="Buffs\SockPuppet.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
     <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
@@ -858,6 +860,8 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\SockPuppet.cs" />
+    <Compile Include="Items\Dev\SockStaff.cs" />
     <Compile Include="Items\Dev\SoulSiphon.cs" />
     <Compile Include="Items\Dev\AmphibianLongsword.cs" />
     <Compile Include="Items\Dev\AmphibianLongswordEX.cs" />
@@ -2553,6 +2557,7 @@
     <Content Include="Buffs\Snagged.png" />
     <Content Include="Buffs\Snagged2.png" />
     <Content Include="Buffs\SnakeMinion.png" />
+    <Content Include="Buffs\SockPuppet.png" />
     <Content Include="Buffs\Stunned.png" />
     <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\TerraDemon.png" />
@@ -4197,6 +4202,10 @@
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
+    <Content Include="Items\Dev\SoccMinion.png" />
+    <Content Include="Items\Dev\SoccStaff.png" />
+    <Content Include="Items\Dev\SockPuppet.png" />
+    <Content Include="Items\Dev\SockStaff.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
     <Content Include="Items\Flasks\CrimsonFlask.png" />
