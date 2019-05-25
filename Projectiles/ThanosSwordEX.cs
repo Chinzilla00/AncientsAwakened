@@ -18,7 +18,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             projectile.ignoreWater = true;
             projectile.melee = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCImmunity = 8;
+            projectile.localNPCHitCooldown = 8;
 
         }
         public override void AI()

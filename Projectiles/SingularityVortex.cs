@@ -18,7 +18,6 @@ namespace AAMod.Projectiles
             projectile.width = 60;
             projectile.height = 60;
             projectile.friendly = true;
-            projectile.
             projectile.ranged = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 50;
