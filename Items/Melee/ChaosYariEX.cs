@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee
             item.rare = 11;
             item.expert = true;
             item.shootSpeed = 12f;
-            item.shoot = mod.ProjectileType("ChaosYariEx");
+            item.shoot = mod.ProjectileType("ChaosYariEX");
         }
 
         public override bool CanUseItem(Player player)

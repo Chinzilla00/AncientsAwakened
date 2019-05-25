@@ -35,7 +35,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 50, 4, 16);
+            BaseMod.BaseAI.AIVilethorn(projectile, 50, 4, 24);
             spineEnd = projectile.ai[1] == 10;
         }
 

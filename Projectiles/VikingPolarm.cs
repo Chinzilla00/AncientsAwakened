@@ -7,11 +7,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class ChaosYari : ModProjectile
+    public class VikingPolearm : ModProjectile
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaos Yari");
+			DisplayName.SetDefault("VikingPolearm");
 		}
     	
         public override void SetDefaults()
@@ -50,11 +50,10 @@ namespace AAMod.Projectiles
         	if(Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
         	{
         		projectile.ai[0] -= 2.4f;
-				if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
-				{
-					projectile.localAI[0] = 1f;
-					Projectile.NewProjectile(Main.player[projectile.owner].Center.X, Main.player[projectile.owner].Center.Y, projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("ChaosYariShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
-				}
+                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
+                {
+                    projectile.localAI[0] = 1f;
+                }
         	}
         	else
         	{

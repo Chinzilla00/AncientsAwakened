@@ -1026,6 +1026,7 @@
     <Compile Include="Items\Melee\StarWrathEX.cs" />
     <Compile Include="Items\Melee\SwampSlasher.cs" />
     <Compile Include="Items\Melee\TerraShortsword.cs" />
+    <Compile Include="Items\Melee\ThanosSwordEX.cs" />
     <Compile Include="Items\Melee\TrueTinShortsword.cs" />
     <Compile Include="Items\Melee\UraniumSword.cs" />
     <Compile Include="Items\Melee\BackScratcher.cs" />
@@ -1812,6 +1813,7 @@
     <Compile Include="Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Projectiles\AncientArcanum.cs" />
     <Compile Include="Projectiles\AsgardianIce.cs" />
+    <Compile Include="Projectiles\VikingPolarm.cs" />
     <Compile Include="Projectiles\Executioner.cs" />
     <Compile Include="Projectiles\SaltwaterSpear.cs" />
     <Compile Include="Projectiles\RaiderLance.cs" />

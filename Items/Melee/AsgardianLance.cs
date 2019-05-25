@@ -30,7 +30,6 @@ namespace AAMod.Items.Melee
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 3;
             item.shootSpeed = 10f;
-            item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("AsgardianLance");  //put your Spear projectile name
         }
 

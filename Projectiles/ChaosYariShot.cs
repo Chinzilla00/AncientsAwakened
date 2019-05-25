@@ -35,7 +35,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 50, 4, 14);
+            BaseMod.BaseAI.AIVilethorn(projectile, 50, 4, 20);
         }
 
         public override void PostAI()
