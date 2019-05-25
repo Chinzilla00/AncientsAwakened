@@ -43,7 +43,7 @@ namespace AAMod.Items.Melee
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "AsgardianLance", 1);
             recipe.AddIngredient(ItemID.Gungnir, 1);
-            recipe.AddIngredient(mod, "ChaosPrism", 1);
+            recipe.AddIngredient(mod, "ChaosCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

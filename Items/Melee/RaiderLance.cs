@@ -42,7 +42,7 @@ namespace AAMod.Items.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "VikingPolearm", 1);
-            recipe.AddIngredient(mod, "HydraSpear", 1);
+            recipe.AddIngredient(mod, "HydrasSpear", 1);
             recipe.AddIngredient(mod, "SaltwaterSpear", 1);
             recipe.AddIngredient(mod, "Executioner", 1);
             recipe.AddTile(TileID.DemonAltar);
