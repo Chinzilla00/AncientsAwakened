@@ -9,7 +9,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class GardenOfMadness : ModItem
+    public class DragonFang : ModItem
     {
         public override void SetStaticDefaults()
         {

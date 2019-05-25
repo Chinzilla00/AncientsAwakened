@@ -5916,7 +5916,6 @@
     <Content Include="NPCs\Enemies\Void\Null.png" />
     <Content Include="NPCs\Enemies\Void\Searcher.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
-    <Content Include="NPCs\Minibosses\ExterminatorCharge.png" />
     <Content Include="NPCs\TownNPCs\Anubis.gif" />
     <Content Include="NPCs\TownNPCs\Anubis.png" />
     <Content Include="NPCs\TownNPCs\Anubis_Hat.png" />

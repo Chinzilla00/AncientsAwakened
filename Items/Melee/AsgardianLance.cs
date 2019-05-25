@@ -5,7 +5,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class AsgaridanLance : ModItem
+    public class AsgardianLance : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
