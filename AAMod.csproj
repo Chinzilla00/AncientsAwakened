@@ -1169,8 +1169,11 @@
     <Compile Include="Items\Ranged\ApollosWrath.cs" />
     <Compile Include="Items\Ranged\Battlestar.cs" />
     <Compile Include="Items\Ranged\Blastshot.cs" />
+    <Compile Include="Items\Ranged\DoomiteHolobow.cs" />
     <Compile Include="Items\Ranged\CoinPistol.cs" />
     <Compile Include="Items\Ranged\CoralBow.cs" />
+    <Compile Include="Items\Ranged\DoomiteAssaultBlaster.cs" />
+    <Compile Include="Items\Ranged\DynaskullJavelin.cs" />
     <Compile Include="Items\Ranged\Festivity.cs" />
     <Compile Include="Items\Ranged\Firebuster.cs" />
     <Compile Include="Items\Ranged\Flare_Minigun.cs" />
@@ -1192,6 +1195,7 @@
     <Compile Include="Items\Ranged\HydraTrishot.cs" />
     <Compile Include="Items\Ranged\L85A2.cs" />
     <Compile Include="Items\Ranged\Laser_Rifle.cs" />
+    <Compile Include="Items\Ranged\OceanWhaler.cs" />
     <Compile Include="Items\Ranged\Mossket.cs" />
     <Compile Include="Items\Ranged\Railjaw.cs" />
     <Compile Include="Items\Ranged\RustyCrossbow.cs" />
@@ -1791,6 +1795,7 @@
     <Compile Include="Projectiles\Akuma\SunSpearRain.cs" />
     <Compile Include="Projectiles\Akuma\SunSpearShot.cs" />
     <Compile Include="Projectiles\Akuma\Sunstorm.cs" />
+    <Compile Include="Projectiles\AmberArrow.cs" />
     <Compile Include="Projectiles\AmphibiousProjectile.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEXSplit.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEX.cs" />
@@ -1805,6 +1810,9 @@
     <Compile Include="Projectiles\BurningGelP.cs" />
     <Compile Include="Projectiles\ChaosArrow.cs" />
     <Compile Include="Projectiles\Antifungus.cs" />
+    <Compile Include="Projectiles\DoomiteVortex.cs" />
+    <Compile Include="Projectiles\HoloArrow.cs" />
+    <Compile Include="Projectiles\OceanWhaler.cs" />
     <Compile Include="Projectiles\Rajah\RabbitcopterSoldier.cs" />
     <Compile Include="Projectiles\Rajah\RabbitRocketBoom.cs" />
     <Compile Include="Projectiles\Sag\SagStar.cs" />
@@ -1895,7 +1903,6 @@
     <Compile Include="Projectiles\Darkray.cs" />
     <Compile Include="Projectiles\DeathDagger.cs" />
     <Compile Include="Projectiles\DeathDaggerHeal.cs" />
-    <Compile Include="Projectiles\DevSolution.cs" />
     <Compile Include="Projectiles\Djinn\DesertGust.cs" />
     <Compile Include="Projectiles\Djinn\DesertBolt2.cs" />
     <Compile Include="Projectiles\Djinn\DesertBolt1.cs" />
@@ -4278,10 +4285,14 @@
     <Content Include="Items\Ranged\AbyssalPentashot.png" />
     <Content Include="Items\Ranged\ChaosShot.png" />
     <Content Include="Items\Ranged\ChaosShotEX.png" />
+    <Content Include="Items\Ranged\DoomiteAssaultBlaster.png" />
+    <Content Include="Items\Ranged\DoomiteHolobow.png" />
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
+    <Content Include="Items\Ranged\FossilBoneslinger.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\AbyssalShadowshot.png" />
+    <Content Include="Items\Ranged\OceanWhaler.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
@@ -5927,6 +5938,7 @@
     <Content Include="Projectiles\Akuma\SunSpearRain.png" />
     <Content Include="Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Projectiles\Akuma\Sunstorm.png" />
+    <Content Include="Projectiles\AmberArrow.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />
     <Content Include="Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Projectiles\AmphibiousProjectileEXSplit.png" />
@@ -5973,6 +5985,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\DoomiteVortex.png" />
     <Content Include="Projectiles\DynaskullJavelin.png" />
     <Content Include="Projectiles\Flasks\AshJar.png" />
     <Content Include="Projectiles\Flasks\CorruptionFlask.png" />
@@ -5992,7 +6005,10 @@
     <Content Include="Projectiles\Flasks\SporeSac.png" />
     <Content Include="Projectiles\Flasks\VoidFlask.png" />
     <Content Include="Projectiles\Gunk.png" />
+    <Content Include="Projectiles\HoloArrow.png" />
     <Content Include="Projectiles\MireLeaf.png" />
+    <Content Include="Projectiles\OceanWhaler.png" />
+    <Content Include="Projectiles\OceanWhaler_Chain.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
     <Content Include="Projectiles\PrimevalJavelin.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
@@ -6022,7 +6038,6 @@
     <Content Include="Projectiles\DecayScytheProj.png" />
     <Content Include="Projectiles\Depthsprayer.png" />
     <Content Include="Projectiles\Depthwalker.png" />
-    <Content Include="Projectiles\DevSolution.png" />
     <Content Include="Projectiles\Djinn\DesertBolt1.png" />
     <Content Include="Projectiles\Djinn\DesertBolt2.png" />
     <Content Include="Projectiles\Djinn\DevilGust.png" />
