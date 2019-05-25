@@ -1174,6 +1174,7 @@
     <Compile Include="Items\Ranged\Festivity.cs" />
     <Compile Include="Items\Ranged\Firebuster.cs" />
     <Compile Include="Items\Ranged\Flare_Minigun.cs" />
+    <Compile Include="Items\Ranged\AbyssalPentashot.cs" />
     <Compile Include="Items\Ranged\M79.cs" />
     <Compile Include="Items\Ranged\MadnessBow.cs" />
     <Compile Include="Items\Ranged\BoneBow.cs" />
@@ -4274,9 +4275,13 @@
     <Content Include="Items\Pets\Glowmoss.png" />
     <Content Include="Items\Pets\GlowmossBall.png" />
     <Content Include="Items\Potions\Carrot.png" />
+    <Content Include="Items\Ranged\AbyssalPentashot.png" />
+    <Content Include="Items\Ranged\ChaosShot.png" />
+    <Content Include="Items\Ranged\ChaosShotEX.png" />
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\Mossket.png" />
+    <Content Include="Items\Ranged\AbyssalShadowshot.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
