@@ -18,6 +18,7 @@ namespace AAMod.Projectiles
             projectile.width = 60;
             projectile.height = 60;
             projectile.friendly = true;
+            projectile.
             projectile.ranged = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 50;
@@ -56,13 +57,13 @@ namespace AAMod.Projectiles
             {
                 if (projectile.scale > 1f && projectile.ai[0] == 0)
                 {
-                    projectile.hostile = true;
+                    projectile.hostile = false;
                     projectile.ai[0] = 1;
                     projectile.scale = 1f;
                 }
                 else
                 {
-                    projectile.hostile = false;
+                    projectile.hostile = true;
                     projectile.scale += .5f;
                 }
                 if (projectile.ai[0] == 1 && projectile.penetrate > 0)

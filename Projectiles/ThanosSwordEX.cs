@@ -5,18 +5,21 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles     //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
-    public class ThanosSword : ModProjectile
+    public class ThanosSwordEX : ModProjectile
     {
 
         public override void SetDefaults()
         {
             projectile.width = 98;
-            projectile.height = 110;
+            projectile.height = 110; 
             projectile.friendly = true;
-            projectile.penetrate = -1;
+            projectile.penetrate = -1; 
             projectile.tileCollide = false; 
             projectile.ignoreWater = true;
             projectile.melee = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCImmunity = 8;
+
         }
         public override void AI()
         {

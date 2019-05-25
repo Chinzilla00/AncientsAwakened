@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace AAMod.Projectiles
 {
-    public class HydraSpear : ModProjectile
+    public class SaltwaterSpear : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -24,7 +24,7 @@ namespace AAMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hydra Spear");
+            DisplayName.SetDefault("Saltwater Spear");
         }
 
         public float MovementFactor // Change this value to alter how fast the spear moves
@@ -77,11 +77,6 @@ namespace AAMod.Projectiles
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
             }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
-        {
-            target.AddBuff(BuffID.Poisoned, 300);
         }
     }
 }

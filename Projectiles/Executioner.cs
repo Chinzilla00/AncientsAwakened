@@ -4,13 +4,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace AAMod.Projectiles
 {
-    public class HydraSpear : ModProjectile
+    public class Executioner : ModProjectile
     {
         public override void SetDefaults()
         {
-            projectile.width = 75;
-            projectile.height = 75;
-            projectile.scale = 1.1f;
+            projectile.width = 100;
+            projectile.height = 100;
             projectile.aiStyle = 19;
             projectile.friendly = true;
             projectile.hostile = false;
@@ -24,7 +23,7 @@ namespace AAMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hydra Spear");
+            DisplayName.SetDefault("Executioner");
         }
 
         public float MovementFactor // Change this value to alter how fast the spear moves
@@ -35,17 +34,15 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            // Since we access the owner player instance so much, it's useful to create a helper local variable for this
-            // Sadly, Projectile/ModProjectile does not have its own
             Player projOwner = Main.player[projectile.owner];
-            // Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
+
             Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
             projectile.direction = projOwner.direction;
             projOwner.heldProj = projectile.whoAmI;
             projOwner.itemTime = projOwner.itemAnimation;
             projectile.position.X = ownerMountedCenter.X - (float)(projectile.width / 2);
             projectile.position.Y = ownerMountedCenter.Y - (float)(projectile.height / 2);
-            // As long as the player isn't frozen, the spear can move
+
             if (!projOwner.frozen)
             {
                 if (MovementFactor == 0f) // When initially thrown out, the ai0 will be 0f
@@ -77,11 +74,6 @@ namespace AAMod.Projectiles
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
             }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
-        {
-            target.AddBuff(BuffID.Poisoned, 300);
         }
     }
 }
