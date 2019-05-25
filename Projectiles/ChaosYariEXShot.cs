@@ -35,8 +35,8 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 50, 4, 24);
-            spineEnd = projectile.ai[1] == 10;
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 24);
+            spineEnd = projectile.ai[1] == 24;
         }
 
         public override void PostAI()
@@ -49,7 +49,6 @@ namespace AAMod.Projectiles
                 }
             }
         }
-
 
         private Texture2D mainTex;
         private Texture2D endTex;

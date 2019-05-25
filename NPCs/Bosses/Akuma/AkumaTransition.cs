@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.frame.Y = 0;
             }
 
-            if (npc.ai[0] > 375)
+            if (npc.ai[0] > 300)
             {
                 npc.alpha -= 5;
                 if (npc.alpha < 0)
@@ -79,12 +79,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.NewText("Heh...", new Color(180, 41, 32));
                 music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
             }
-            if (npc.ai[0] == 750)
+            if (npc.ai[0] == 560)
             {
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
 
-            if (npc.ai[0] >= 675)
+            if (npc.ai[0] >= 660)
             {
                 RVal -= 5;
                 BVal += 5;
@@ -98,12 +98,12 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            if (npc.ai[0] == 975)
+            if (npc.ai[0] == 900)
             {
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (npc.ai[0] >= 1250 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
             }

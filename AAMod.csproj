@@ -1813,10 +1813,10 @@
     <Compile Include="Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Projectiles\AncientArcanum.cs" />
     <Compile Include="Projectiles\AsgardianIce.cs" />
+    <Compile Include="Projectiles\RaiderLance.cs" />
     <Compile Include="Projectiles\VikingPolarm.cs" />
     <Compile Include="Projectiles\Executioner.cs" />
     <Compile Include="Projectiles\SaltwaterSpear.cs" />
-    <Compile Include="Projectiles\RaiderLance.cs" />
     <Compile Include="Projectiles\AsgardianLanceShot.cs" />
     <Compile Include="Projectiles\AtlanteanTridentP.cs" />
     <Compile Include="Projectiles\Axis.cs" />
@@ -4359,6 +4359,7 @@
     <Content Include="Items\Vanity\Grox\AngryPirateHood_Head.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateSails.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateSails_Wings.png" />
+    <Content Include="Items\Vanity\HappySunSticker.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask_Head.png" />
     <Content Include="Items\Vanity\Mask\AkumaMask.png" />

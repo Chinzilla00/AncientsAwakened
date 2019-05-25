@@ -9,7 +9,7 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Viking Polearm");		
+			DisplayName.SetDefault("Raider Lance");		
 		}
 
         public override void SetDefaults()
