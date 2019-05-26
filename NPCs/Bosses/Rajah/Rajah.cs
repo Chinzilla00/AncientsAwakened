@@ -317,8 +317,11 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (npc.ai[3] == 4) //Carrot Farmer
             {
-                CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
-                npc.netUpdate2 = true;
+                if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
+                {
+                    CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                    npc.netUpdate2 = true;
+                }
             }
 
             if (Main.expertMode)

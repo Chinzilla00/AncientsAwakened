@@ -361,7 +361,7 @@ namespace AAMod
                 npc.type == NPCID.AngryBonesBigHelmet ||
                 npc.type == NPCID.AngryBonesBigMuscle)
             {
-                if (Main.rand.NextFloat() < 0.1f)
+                if (Main.rand.NextFloat() < 0.01f)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AncientPoker"));
                 }

@@ -4397,6 +4397,8 @@
     <Content Include="Items\Vanity\Moon\MoonWings.png" />
     <Content Include="Items\Vanity\Moon\MoonWings_Wings.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
+    <Content Include="Mounts\KingBunny.png" />
+    <Content Include="Mounts\KingCarrot.png" />
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
