@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.direction = -1;
             }
 
-            if (player.Center.Y < npc.position.Y || TileBelowEmpty())
+            if (player.Center.Y < npc.position.Y || TileBelowEmpty() || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
                 npc.noGravity = true;
                 FlyAI();
@@ -184,6 +184,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.defDamage = 450;
                 npc.defDefense = 350;
                 npc.lifeMax = 500000;
+                npc.life = 500000;
                 npc.ai[3] = 0;
             }
 
@@ -732,59 +733,69 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.damage = 130;
             npc.defense = 90;
             npc.lifeMax = 50000;
+            npc.life = 50000;
             if (NPC.killCount[NPCID.Bunny] >= 200)
             {
                 npc.damage = 160;
                 npc.defense = 130;
                 npc.lifeMax = 80000;
+                npc.life = 80000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 300)
             {
                 npc.damage = 180;
                 npc.defense = 150;
                 npc.lifeMax = 100000;
+                npc.life = 80000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 400)
             {
                 npc.damage = 200;
                 npc.defense = 180;
                 npc.lifeMax = 200000;
+                npc.life = 200000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 500)
             {
                 npc.damage = 250;
                 npc.defense = 210;
                 npc.lifeMax = 300000;
+                npc.life = 50000;
             }
             if (NPC.killCount[NPCID.Bunny] > 600)
             {
                 npc.damage = 300;
                 npc.defense = 230;
                 npc.lifeMax = 500000;
+                npc.life = 500000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 700)
             {
                 npc.damage = 340;
                 npc.defense = 250;
                 npc.lifeMax = 700000;
+                npc.life = 700000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 800)
             {
                 npc.damage = 370;
                 npc.defense = 270;
                 npc.lifeMax = 900000;
+                npc.life = 900000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 900)
             {
                 npc.damage = 400;
                 npc.defense = 290;
                 npc.lifeMax = 1000000;
+                npc.life = 1000000;
             }
             if (NPC.killCount[NPCID.Bunny] >= 1000)
             {
                 npc.damage = 450;
                 npc.defense = 350;
                 npc.lifeMax = 4000000;
+                npc.life = 4000000;
             }
         }
     }

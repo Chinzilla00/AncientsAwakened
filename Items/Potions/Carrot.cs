@@ -34,15 +34,5 @@ namespace AAMod.Items.Potions
             player.AddBuff(BuffID.NightOwl, 52000);
             return base.UseItem(player);
         }
-
-        public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.BottledWater);
-			recipe.AddIngredient(mod.ItemType("DragonFire"), 2);
-			recipe.AddTile(TileID.ImbuingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

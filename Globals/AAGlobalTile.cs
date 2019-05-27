@@ -184,9 +184,8 @@ namespace AAMod
             {
                 if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(800) == 0)
                 {
-                    int style = Main.rand.Next(5);
-                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.Carrot>(), false, style))
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Carrot>(), style, 0, -1, -1);
+                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.Carrot>(), false, 0))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Carrot>(), 0, 0, -1, -1);
                 }
             }
         }
