@@ -916,6 +916,7 @@
     <Compile Include="Items\Flasks\AshJar.cs" />
     <Compile Include="Items\Flasks\DarkwaterFlask.cs" />
     <Compile Include="Items\Flasks\VoidFlask.cs" />
+    <Compile Include="Items\Flasks\Z.cs" />
     <Compile Include="Items\Hooks\DragonsGrip.cs" />
     <Compile Include="Items\Magic\AncientArcanum.cs" />
     <Compile Include="Items\Magic\AtlanteanTrident.cs" />
@@ -1741,7 +1742,10 @@
     <Compile Include="NPCs\Enemies\Snow\SnakeBody2.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeHead.cs" />
     <Compile Include="NPCs\Enemies\Snow\SnakeTail.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraProbe.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraSquire.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraWatcher.cs" />
+    <Compile Include="NPCs\Enemies\Terrarium\Hardmode\TerraWatcherSphere.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostEquinox\TerraSerpent.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\Bladon.cs" />
     <Compile Include="NPCs\Enemies\Terrarium\PostPlant\MagicBlast.cs" />
@@ -4263,6 +4267,7 @@
     <Content Include="Items\Flasks\JungleFlask.png" />
     <Content Include="Items\Flasks\PurityFlask.png" />
     <Content Include="Items\Flasks\VoidFlask.png" />
+    <Content Include="Items\Flasks\Z.png" />
     <Content Include="Items\Magic\GunkStaff.png" />
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
@@ -4290,6 +4295,7 @@
     <Content Include="Items\Melee\ThanosSword.png" />
     <Content Include="Items\Melee\ThanosSwordEX.png" />
     <Content Include="Items\Melee\VikingPolearm.png" />
+    <Content Include="Items\Misc\Fishmother.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
     <Content Include="Items\Mushrooms\Green.png" />
     <Content Include="Items\Mushrooms\MadnessShroom.png" />
@@ -4311,6 +4317,7 @@
     <Content Include="Items\Ranged\ChaosShotEX.png" />
     <Content Include="Items\Ranged\DoomiteAssaultBlaster.png" />
     <Content Include="Items\Ranged\DoomiteHolobow.png" />
+    <Content Include="Items\Ranged\DragonSpine.png" />
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\FossilBoneslinger.png" />
@@ -4488,6 +4495,9 @@
     <Content Include="NPCs\Enemies\Mire\MireTurtle.png" />
     <Content Include="NPCs\Enemies\Mire\Nibbler.png" />
     <Content Include="NPCs\Enemies\Mire\Snapper.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraProbe.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraWatcher.png" />
+    <Content Include="NPCs\Enemies\Terrarium\Hardmode\TerraWatcherSphere.png" />
     <Content Include="NPCs\Enemies\Void\NullNew.png" />
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="NPCs\Swarm_Thing.png" />

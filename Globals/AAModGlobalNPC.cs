@@ -570,6 +570,14 @@ namespace AAMod
                     }
                 }
             }
+
+            if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)
+            {
+                if (Main.rand.Next(0, 100) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TerraCrystal"), 1);
+                }
+            }
         }
 
         public void Anticheat(NPC npc, string Text, Color TextColor, ref double damage)
@@ -933,10 +941,14 @@ namespace AAMod
                 ClearPoolWithExceptions(pool);
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .1f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .1f);
-                    pool.Add(mod.NPCType("TerraWizard"), .1f);
-                    pool.Add(mod.NPCType("TerraWarlock"), .1f);
+                    pool.Add(mod.NPCType("Bladon"), .05f);
+                    pool.Add(mod.NPCType("TerraDeadshot"), .05f);
+                    pool.Add(mod.NPCType("TerraWizard"), .05f);
+                    pool.Add(mod.NPCType("TerraWarlock"), .05f);
+                    pool.Add(mod.NPCType("PurityWeaver"), .03f);
+                    pool.Add(mod.NPCType("PuritySphere"), .03f);
+                    pool.Add(mod.NPCType("PurityCrawler"), .03f);
+                    pool.Add(mod.NPCType("PuritySquid"), .03f);
                     return;
                 }
                 if (NPC.downedBoss3)

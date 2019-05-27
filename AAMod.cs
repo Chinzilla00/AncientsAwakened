@@ -28,11 +28,6 @@ namespace AAMod
         public static ModHotKey Rift;
         public static ModHotKey RiftReturn;
 
-        // Music
-        public static bool AkumaMusic = false;
-        public static bool YamataMusic = false;
-        public static bool AHIntro = false;
-
         // Textures
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
@@ -450,30 +445,6 @@ namespace AAMod
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
-
-                return;
-            }
-
-            if (AkumaMusic == true)
-            {
-                priority = MusicPriority.BossHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
-
-                return;
-            }
-
-            if (YamataMusic == true)
-            {
-                priority = MusicPriority.BossHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
-
-                return;
-            }
-
-            if (AHIntro)
-            {
-                priority = (MusicPriority)10;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
 
                 return;
             }

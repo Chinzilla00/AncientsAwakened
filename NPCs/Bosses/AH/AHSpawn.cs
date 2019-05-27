@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.AH
             if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Well hello there, what a surprise to see YOU here~!", new Color(102, 20, 48));
-                AAMod.AHIntro = true;
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             }
 
             if (npc.ai[1] == 300)
@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 820)
             {
-                AAMod.AHIntro = false;
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
                 Main.NewText("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }

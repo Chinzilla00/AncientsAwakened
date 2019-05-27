@@ -80,6 +80,7 @@ All effects of the infinity stones
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.wingTimeMax = 500;
+            player.buffImmune[mod.BuffType<Buffs.InfinityOverload>()] = true;
             player.GetModPlayer<AAPlayer>().dwarvenGauntlet = true;
             player.GetModPlayer<AAPlayer>().Power = true;
             player.GetModPlayer<AAPlayer>().Time = true;

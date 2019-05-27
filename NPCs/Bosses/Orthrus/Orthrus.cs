@@ -124,11 +124,19 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
                     Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                    if (Main.netMode == 2 && latestNPC < 200)
+                    {
+                        NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                    }
                     latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
                     Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                    if (Main.netMode == 2 && latestNPC < 200)
+                    {
+                        NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                    }
                 }
                 HeadsSpawned = true;
             }

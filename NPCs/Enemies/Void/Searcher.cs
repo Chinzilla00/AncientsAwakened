@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,8 +28,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.lifeMax = 250;
             npc.defense = 30;
             npc.damage = 65;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.5f;
             npc.noGravity = true;
 

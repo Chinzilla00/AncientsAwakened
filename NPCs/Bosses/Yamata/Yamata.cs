@@ -213,30 +213,58 @@ namespace AAMod.NPCs.Bosses.Yamata
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						TrueHead = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF1"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head2 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF1"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head3 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF1"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head4 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF2"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head5 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF2"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head6 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataAHeadF2"), 0, npc.whoAmI);
                         Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
                         Head7 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                     }
                     else
 					{
@@ -246,30 +274,58 @@ namespace AAMod.NPCs.Bosses.Yamata
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						TrueHead = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head2 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head3 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF1"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head4 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head5 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head6 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 100, mod.NPCType("YamataHeadF2"), 0, npc.whoAmI);
 						Main.npc[(int)latestNPC].ai[0] = npc.whoAmI;
 						Head7 = Main.npc[latestNPC];
                         Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
+                        if (Main.netMode == 2 && latestNPC < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        }
                     }
                 }
                 HeadsSpawned = true;

@@ -204,36 +204,6 @@ namespace AAMod.NPCs.Bosses.Raider
 
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
 
-            if (Main.netMode != 1 && internalAI[0]++ >= 180)
-            {
-                internalAI[0] = 0;
-                internalAI[1] = Minions < MaxMinions ? Main.rand.Next(5) : Main.rand.Next(4);
-                npc.ai = new float[4];
-                if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
-                {
-                    npc.ai[1] = 1 + Main.rand.Next(2);
-                }
-                else
-                if (internalAI[1] == AISTATE_SPAWNEGGS)
-                {
-                    npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
-                }
-                if (internalAI[1] == AISTATE_CHARGEATPLAYER)
-                {
-                    SelectPoint = true;
-                }
-                npc.netUpdate2 = true;
-            }
-            pos = (npc.ai[1] == 0 ? -250 : 250);
-
-            if (Main.dayTime)
-            {
-                internalAI[1] = AISTATE_RUNAWAY;
-                npc.ai = new float[4];
-                npc.netUpdate2 = true;
-                return;
-            }
-
             npc.TargetClosest();
             if (Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
@@ -262,19 +232,46 @@ namespace AAMod.NPCs.Bosses.Raider
 
                 if (internalAI[0] > 300)
                 {
-                    npc.velocity.Y -= 3f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    npc.velocity.Y -= 4;
+                    npc.netUpdate2 = true;
+                    if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    return;
                 }
                 return;
             }
-            else
+
+            if (Main.netMode != 1 && internalAI[0]++ >= 180)
             {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
-                MoveToPoint(wantedVelocity);
+                internalAI[0] = 0;
+                internalAI[1] = Minions < MaxMinions ? Main.rand.Next(5) : Main.rand.Next(4);
+                npc.ai = new float[4];
+                if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
+                {
+                    npc.ai[1] = 1 + Main.rand.Next(2);
+                }
+                else
+                if (internalAI[1] == AISTATE_SPAWNEGGS)
+                {
+                    npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
+                }
+                if (internalAI[1] == AISTATE_CHARGEATPLAYER)
+                {
+                    SelectPoint = true;
+                }
                 npc.netUpdate2 = true;
             }
+            pos = (npc.ai[1] == 0 ? -250 : 250);
+
+            if (Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.ai = new float[4];
+                npc.netUpdate2 = true;
+            }
+
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+            MoveToPoint(wantedVelocity);
+            npc.netUpdate2 = true;
 
             if (Main.dayTime)
             {
@@ -287,7 +284,6 @@ namespace AAMod.NPCs.Bosses.Raider
                 if (Main.netMode != 1)
                 {
                     internalAI[2]++;
-                    float spread = 12f * 0.0174f;
                     if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
                     {
                         for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)

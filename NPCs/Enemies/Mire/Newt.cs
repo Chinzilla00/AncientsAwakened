@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Enemies.Mire
             }
             else
             {
-                if (player.position.X > npc.position.X)
+                if (player.position.X < npc.position.X)
                 {
                     npc.direction = 1;
                 }

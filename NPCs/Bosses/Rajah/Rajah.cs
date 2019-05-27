@@ -104,10 +104,10 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (Roaring) roarTimer--;
 
             Player player = Main.player[npc.target];
-            if (npc.target >= 0 && Main.player[npc.target].dead || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
+            if (npc.target >= 0 && Main.player[npc.target].dead)
             {
                 npc.TargetClosest(true);
-                if (Main.player[npc.target].dead || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
+                if (Main.player[npc.target].dead)
                 {
                     Main.NewText("Justice has been served...", 107, 137, 179);
                     Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
@@ -115,6 +115,19 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.noTileCollide = true;
                 }
             }
+
+            if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
+            {
+                npc.TargetClosest(true);
+                if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
+                {
+                    Main.NewText("Coward.", 107, 137, 179);
+                    Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    npc.active = false;
+                    npc.noTileCollide = true;
+                }
+            }
+
 
             if (player.Center.X < npc.Center.X)
             {

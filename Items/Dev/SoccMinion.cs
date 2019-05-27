@@ -200,35 +200,35 @@ namespace AAMod.Items.Dev
 
             if (projectile.ai[1] > 0f)
             {
-                projectile.ai[1]++;
+                projectile.ai[1] += Main.rand.Next(1, 4);
             }
-            if (projectile.ai[1] > 90f)
+            if (projectile.ai[1] > 40)
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;
             }
-            if (projectile.ai[0] % 10 == 0)
+            if (projectile.ai[0] == 0f)
             {
                 if (flag25 && projectile.ai[1] == 0f)
                 {
+                    projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, vector46, 0, 0))
                     {
                         Vector2 value19 = vector46 - projectile.Center;
                         value19.Normalize();
-                        value19 *= 12f;
+                        value19 *= 16f;
                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, 449, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                         Main.projectile[proj].hostile = false;
                         Main.projectile[proj].friendly = true;
                         Main.projectile[proj].magic = false;
                         Main.projectile[proj].minion = true;
-                        Main.projectile[proj].usesLocalNPCImmunity = true;
                         Main.projectile[proj].netUpdate = true;
                         projectile.netUpdate = true;
                     }
                 }
             }
 
-            
+
             if (!AttackFrame)
             {
                 if (projectile.frameCounter++ >= 10)
