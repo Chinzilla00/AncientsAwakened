@@ -46,25 +46,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             }
         }
 
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
@@ -226,7 +207,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     npc.velocity.Y = npc.velocity.Y + 1f;
                     speed = 30f;
                 }
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                if npc.position.Y > Main.rockLayer * 16.0)
                 {
                     for (int num957 = 0; num957 < 200; num957++)
                     {

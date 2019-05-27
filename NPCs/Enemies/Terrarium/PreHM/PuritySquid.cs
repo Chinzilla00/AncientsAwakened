@@ -35,25 +35,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             return Color.White;
         }
 
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public override void AI()
         {
             if (npc.alpha != 0)

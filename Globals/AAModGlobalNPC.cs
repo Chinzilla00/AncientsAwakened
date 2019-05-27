@@ -501,37 +501,6 @@ namespace AAMod
                 }
             }
 
-            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
-
-            if (Main.hardMode && isBunny)
-            {
-                Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
-
-                if (AAWorld.RabbitKills == 50)
-                {
-                    Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
-                }
-                if (AAWorld.RabbitKills >= 100)
-                {
-                    if (Main.netMode == 1)
-                    {
-                        AANet.SendNetMessage(AANet.RabbitKillCounter, (byte)2);
-                    }
-                    AAWorld.RabbitKills = 0;
-                    Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
-                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                    SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
-                }
-                else
-                {
-                    if (Main.netMode == 1)
-                    {
-                        AANet.SendNetMessage(AANet.RabbitKillCounter, (byte)1);
-                    }
-                    AAWorld.RabbitKills++;
-                }
-            }
-
             if (npc.type == NPCID.GoldBunny && NPC.downedGolemBoss)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("GoldenCarrot"), 1);
@@ -580,6 +549,30 @@ namespace AAMod
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TerraCrystal"), 1);
                     }
+                }
+            }
+
+            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
+
+            if (Main.hardMode && isBunny)
+            {
+                Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
+                int bunnyKills = NPC.killCount[NPCID.Bunny];
+                if (bunnyKills % 100 == 0 && bunnyKills < 1000)
+                {
+                    Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                    SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                }
+                if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
+                {
+                    Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name + "!", 107, 137, 179);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                    SpawnBoss(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                }
+                if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
+                {
+                    Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
                 }
             }
         }
