@@ -251,6 +251,8 @@ namespace AAMod
 
         public override void NPCLoot(NPC npc)
         {
+            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
+
             if (npc.type == NPCID.FireImp)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DevilSilk"), Main.rand.Next(2, 3));
@@ -552,7 +554,6 @@ namespace AAMod
                 }
             }
 
-            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
 
             if (Main.hardMode && isBunny)
             {
