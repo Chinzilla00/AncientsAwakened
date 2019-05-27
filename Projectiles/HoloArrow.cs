@@ -22,6 +22,8 @@ namespace AAMod.Projectiles
 			projectile.height = 18;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 600;
-		}
+            projectile.arrow = true;
+            projectile.penetrate = 1;
+        }
 	}
 }

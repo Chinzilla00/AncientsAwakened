@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod
@@ -16,7 +17,7 @@ namespace AAMod
 
             if ((Main.mouseItem.type == mod.ItemType("Godly") && reforgable) ||
                 (Main.mouseItem.type == mod.ItemType("Legendary") && reforgable && item.melee) || 
-                (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown)) ||
+                (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown) && item.ammo == AmmoID.None) ||
                 (Main.mouseItem.type == mod.ItemType("Mythical") && reforgable && (item.summon || item.magic)))
 			{
 				return true;
@@ -36,7 +37,7 @@ namespace AAMod
 
             if ((Main.mouseItem.type == mod.ItemType("Godly") && reforgable) ||
                 (Main.mouseItem.type == mod.ItemType("Legendary") && reforgable && item.melee) ||
-                (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown)) ||
+                (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown) && item.ammo == AmmoID.None) ||
                 (Main.mouseItem.type == mod.ItemType("Mythical") && reforgable && (item.summon || item.magic)))
             { 
                 Main.mouseItem.stack = 0;
@@ -107,7 +108,7 @@ namespace AAMod
 				Main.mouseItem.stack--;
 				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 81);
 			}
-			if (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown))
+			if (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown) && item.ammo == AmmoID.None)
 			{
 				Main.mouseItem.stack--;
 				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 82);

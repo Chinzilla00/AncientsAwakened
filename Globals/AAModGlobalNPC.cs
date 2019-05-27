@@ -4,9 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Shen;
+using AAMod.NPCs.Enemies.Terrarium.PreHM;
+using AAMod.NPCs.Enemies.Terrarium.Hardmode;
+using AAMod.NPCs.Enemies.Terrarium.PostPlant;
+using AAMod.NPCs.Enemies.Terrarium.PostEquinox;
 using System;
 using BaseMod;
 using Terraria.Localization;
+
 
 namespace AAMod
 {
@@ -224,7 +229,7 @@ namespace AAMod
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= Math.Abs((int)(npc.velocity.X));
+                npc.lifeRegen -= Math.Abs((int)npc.velocity.X);
             }
         }
 
@@ -569,13 +574,12 @@ namespace AAMod
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
                     }
                 }
-            }
-
-            if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)
-            {
-                if (Main.rand.Next(0, 100) == 0)
+                if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TerraCrystal"), 1);
+                    if (Main.rand.Next(0, 100) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TerraCrystal"), 1);
+                    }
                 }
             }
         }
@@ -726,11 +730,45 @@ namespace AAMod
                 }
             }
 
+            if (Hydratoxin)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType<Dusts.HydratoxinDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.3f, 0.7f);
+            }
+
+            if (Dragonfire)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType<Dusts.DragonflameDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.7f, 0.2f, 0.1f);
+            }
+
             if (terraBlaze)
             {
                 if (Main.rand.Next(4) < 3)
                 {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 3.5f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -915,7 +953,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                ClearPoolWithExceptions(pool);
+                pool.Clear();
                 pool.Add(mod.NPCType("Searcher1"), .05f);
                 if (AAWorld.downedSag)
                 {
@@ -938,25 +976,35 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                ClearPoolWithExceptions(pool);
+                pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .05f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .05f);
-                    pool.Add(mod.NPCType("TerraWizard"), .05f);
-                    pool.Add(mod.NPCType("TerraWarlock"), .05f);
-                    pool.Add(mod.NPCType("PurityWeaver"), .03f);
-                    pool.Add(mod.NPCType("PuritySphere"), .03f);
-                    pool.Add(mod.NPCType("PurityCrawler"), .03f);
-                    pool.Add(mod.NPCType("PuritySquid"), .03f);
+                    pool.Add(mod.NPCType<Bladon>(), .05f);
+                    pool.Add(mod.NPCType<TerraDeadshot>(), .05f);
+                    pool.Add(mod.NPCType<TerraWizard>(), .05f);
+                    pool.Add(mod.NPCType<TerraWarlock>(), .05f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .03f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .03f);
                     return;
+                }
+                if (Main.hardMode)
+                {
+                    pool.Add(mod.NPCType<TerraProbe>(), .07f);
+                    pool.Add(mod.NPCType<TerraWatcher>(), .07f);
+                    pool.Add(mod.NPCType<TerraSquire>(), .07f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .03f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .03f);
                 }
                 if (NPC.downedBoss3)
                 {
-                    pool.Add(mod.NPCType("PurityWeaver"), .1f);
-                    pool.Add(mod.NPCType("PuritySphere"), .1f);
-                    pool.Add(mod.NPCType("PurityCrawler"), .1f);
-                    pool.Add(mod.NPCType("PuritySquid"), .1f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .1f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .1f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .1f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .1f);
                 }
             }
         }

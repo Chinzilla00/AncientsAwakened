@@ -9,9 +9,9 @@ namespace AAMod.Items.Boss.AH
         {
             DisplayName.SetDefault("Heart of Sorrow");
             Tooltip.SetDefault(@"Your melee and ranged attacks grow stronger the less health you have
-Melee and Ranged inflict hydratoxin
+Melee and Ranged inflict Hydratoxin
 Below 2/3 of your maximum life, Your movement speed is doubled
-Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze instead of venom");
+Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze instead of Hydratoxin");
         }
 
         public override void SetDefaults()

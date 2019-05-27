@@ -26,6 +26,7 @@ namespace AAMod.Items.Pets
 			projectile.friendly = true;
 			projectile.ignoreWater = true;
 			projectile.tileCollide = false;
+
 		}
 
 		public override void AI()

@@ -171,6 +171,15 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			}
 			if(internalAI[1] == AISTATE_WALK) //fighter
 			{
+                if (NPC.CountNPCS(mod.NPCType<RedMushling>()) < 4)
+                {
+                    int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RedMushling>(), 0);
+                    Main.npc[Minion].netUpdate2 = true;
+                    if (Main.netMode == 2 && Minion < 200)
+                    {
+                        NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                }
                 AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
 			}else
 			if(internalAI[1] == AISTATE_JUMP)//jumper

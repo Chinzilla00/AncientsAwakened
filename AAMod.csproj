@@ -6028,6 +6028,7 @@
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
     <Content Include="Projectiles\DoomiteVortex.png" />
+    <Content Include="Projectiles\DragonSpine.png" />
     <Content Include="Projectiles\DynaskullJavelin.png" />
     <Content Include="Projectiles\Executioner.png" />
     <Content Include="Projectiles\Flasks\AshJar.png" />

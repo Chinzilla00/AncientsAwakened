@@ -20,7 +20,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			aiType = ProjectileID.FrostburnArrow;
-		}
+            projectile.arrow = true;
+        }
 
 		public override void ModifyHitNPC (NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{

@@ -16,19 +16,20 @@ namespace AAMod.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.width = 14;
-			projectile.height = 32;
+			projectile.height = 14;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.ranged = true;
-			projectile.penetrate = 2;
+			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.alpha = 0;
 			projectile.light = 0.5f;
 			projectile.ignoreWater = false;
 			projectile.tileCollide = true;
 			projectile.extraUpdates = 1;
-			aiType = ProjectileID.FireArrow;           
+			aiType = ProjectileID.FireArrow;
+            projectile.arrow = true;
 		}
 
 
@@ -55,7 +56,7 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 90);
+            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 90);
         }
     }
 }

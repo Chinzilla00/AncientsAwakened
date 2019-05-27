@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            projectile.damage = 70;
+            projectile.damage = 50;
             if (projectile.timeLeft <= 0)
             {
                 Kill(projectile.timeLeft);

@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.width = 48;
             npc.height = 40;
             npc.aiStyle = -1;
-            npc.damage = 50;
+            npc.damage = 90;
             npc.defense = 40;
             npc.lifeMax = 300;
             npc.knockBackResist = 0f;

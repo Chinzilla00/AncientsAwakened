@@ -19,6 +19,7 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 5;
 			projectile.timeLeft = 600;
 			aiType = 1;
-		}
+            projectile.arrow = true;
+        }
 	}
 }

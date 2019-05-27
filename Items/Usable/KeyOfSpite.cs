@@ -1,4 +1,5 @@
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
@@ -9,7 +10,6 @@ namespace AAMod.Items.Usable
 			DisplayName.SetDefault("Key of Spite");
 			Tooltip.SetDefault("'Charged with abyssal energy'");
 		}
-
 
         public override void SetDefaults()
         {
@@ -25,6 +25,7 @@ namespace AAMod.Items.Usable
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "SoulOfSpite", 15);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

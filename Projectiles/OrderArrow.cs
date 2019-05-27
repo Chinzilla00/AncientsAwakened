@@ -19,7 +19,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			aiType = 1;
-		}
+            projectile.arrow = true;
+        }
 
 		public override void AI()
 		{
