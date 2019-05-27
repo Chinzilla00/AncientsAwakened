@@ -564,6 +564,7 @@ namespace AAMod
                     Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                     SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                    
                 }
                 if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                 {
@@ -1106,7 +1107,7 @@ namespace AAMod
             }
         }
 
-        public static void SpawnRajah(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnRajah(Player player, int bossType, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
             if (npcCenter == default(Vector2))
                 npcCenter = player.Center;
@@ -1114,36 +1115,8 @@ namespace AAMod
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
-                Main.npc[npcID].ai[3] = -1;
                 Main.npc[npcID].Center = npcCenter;
-                Main.npc[npcID].netUpdate2 = true;
-                if (spawnMessage)
-                {
-                    string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
-                    if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
-                        npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
-                    if (namePlural)
-                    {
-                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
-                        else
-                        if (Main.netMode == 2)
-                        {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
-                        }
-                    }
-                    else
-                    {
-                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
-                        else
-                        if (Main.netMode == 2)
-                        {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
-                            {
-                            NetworkText.FromLiteral(npcName)
-                            }), new Color(175, 75, 255), -1);
-                        }
-                    }
-                }
+
             }
             else
             {

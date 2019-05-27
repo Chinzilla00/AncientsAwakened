@@ -497,6 +497,15 @@ namespace AAMod.NPCs.TownNPCs
 			shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.LesserManaPotion);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
+
+            if (NPC.downedPlantBoss == true)
+            {
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
+                shop.item[nextSlot].shopCustomPrice = 5000000;
+            }
 
             if (NPC.downedBoss3 == true)
             {

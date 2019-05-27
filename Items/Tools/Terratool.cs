@@ -12,7 +12,7 @@ namespace AAMod.Items.Tools
             item.width = 54;
             item.height = 60;
 			item.useStyle = 1;
-            item.useTime = 8;
+            item.useTime = 5;
             item.useAnimation = 20;
             item.tileBoost += 3;
             item.knockBack = 3;
@@ -22,7 +22,7 @@ namespace AAMod.Items.Tools
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 60;
-            item.pick = 205;
+            item.pick = 215;
 
         }
 
@@ -76,7 +76,7 @@ namespace AAMod.Items.Tools
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(mod, "TrueNightaxe");
-                recipe.AddIngredient(ItemID.PickaxeAxe);
+                recipe.AddIngredient(ItemID.Picksaw);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -85,7 +85,7 @@ namespace AAMod.Items.Tools
 
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(mod, "TrueScalpel");
-                recipe.AddIngredient(ItemID.PickaxeAxe);
+                recipe.AddIngredient(ItemID.Picksaw);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

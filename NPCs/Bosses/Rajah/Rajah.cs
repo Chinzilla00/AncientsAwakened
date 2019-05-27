@@ -23,9 +23,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.width = 130;
             npc.height = 214;
             npc.aiStyle = -1;
-            npc.defDamage = 450;
-            npc.defDefense = 350;
-            npc.lifeMax = 4000000;
+            npc.damage = 130;
+            npc.defense = 90;
+            npc.lifeMax = 50000;
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
             npc.HitSound = SoundID.NPCHit1;
@@ -35,6 +35,67 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
             bossBag = mod.ItemType("RajahBag");
+            if (NPC.killCount[NPCID.Bunny] >= 1000)
+            {
+                npc.damage = 450;
+                npc.defense = 350;
+                npc.lifeMax = 4000000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 900)
+            {
+                npc.damage = 400;
+                npc.defense = 290;
+                npc.lifeMax = 1000000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 800)
+            {
+                npc.damage = 370;
+                npc.defense = 270;
+                npc.lifeMax = 900000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 700)
+            {
+                npc.damage = 340;
+                npc.defense = 250;
+                npc.lifeMax = 700000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] > 600)
+            {
+                npc.damage = 300;
+                npc.defense = 230;
+                npc.lifeMax = 500000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 500)
+            {
+                npc.damage = 250;
+                npc.defense = 210;
+                npc.lifeMax = 300000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 400)
+            {
+                npc.damage = 200;
+                npc.defense = 180;
+                npc.lifeMax = 200000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 300)
+            {
+                npc.damage = 180;
+                npc.defense = 150;
+                npc.lifeMax = 80000;
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 200)
+            {
+                npc.damage = 160;
+                npc.defense = 130;
+                npc.lifeMax = 80000;
+            }
+            if (npc.ai[3] < 0)
+            {
+                npc.damage = 130;
+                npc.defense = 90;
+                npc.lifeMax = 50000;
+                npc.ai[3] = 0;
+            }
         }
 
         public float[] internalAI = new float[5];
@@ -93,6 +154,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public Vector2 WeaponPos;
         public Vector2 StaffPos;
+        Projectile CarrotFarmer;
 
         public override void AI()
         {
@@ -111,6 +173,8 @@ namespace AAMod.NPCs.Bosses.Rajah
                     Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
                     npc.active = false;
                     npc.noTileCollide = true;
+                    npc.netUpdate2 = true;
+                    return;
                 }
             }
 
@@ -123,6 +187,8 @@ namespace AAMod.NPCs.Bosses.Rajah
                     Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
                     npc.active = false;
                     npc.noTileCollide = true;
+                    npc.netUpdate2 = true;
+                    return;
                 }
             }
 
@@ -138,6 +204,14 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (player.Center.Y < npc.position.Y || TileBelowEmpty() || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
+                if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                {
+                    npc.noTileCollide = true;
+                }
+                else
+                {
+                    npc.noTileCollide = false;
+                }
                 npc.noGravity = true;
                 FlyAI();
             }
@@ -177,21 +251,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.ai[3] = Main.rand.Next(4);
                 }
                 npc.netUpdate2 = true;
-            }
-
-            if (npc.ai[3] == -2)
-            {
-                npc.defDamage = 450;
-                npc.defDefense = 350;
-                npc.lifeMax = 500000;
-                npc.life = 500000;
-                npc.ai[3] = 0;
-            }
-
-            if (npc.ai[3] == -1)
-            {
-                RajahScale();
-                npc.ai[3] = 0;
             }
 
             if (npc.ai[3] == 0) //Minion Phase
@@ -341,7 +400,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
                 {
-                    Projectile CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                    CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                    CarrotFarmer.netUpdate2 = true;
                     npc.netUpdate2 = true;
                 }
             }
@@ -400,7 +460,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (npc.ai[3] == 0 || npc.ai[3] == 4) //No Weapon or Carrot Farmer
             {
-                return null;
+                return "BlankTex";
             }
             else if (npc.ai[3] == 1) //Bunzooka
             {
@@ -726,77 +786,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             RajahTexture();
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             return false;
-        }
-
-        public void RajahScale()
-        {
-            npc.damage = 130;
-            npc.defense = 90;
-            npc.lifeMax = 50000;
-            npc.life = 50000;
-            if (NPC.killCount[NPCID.Bunny] >= 200)
-            {
-                npc.damage = 160;
-                npc.defense = 130;
-                npc.lifeMax = 80000;
-                npc.life = 80000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 300)
-            {
-                npc.damage = 180;
-                npc.defense = 150;
-                npc.lifeMax = 100000;
-                npc.life = 80000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 400)
-            {
-                npc.damage = 200;
-                npc.defense = 180;
-                npc.lifeMax = 200000;
-                npc.life = 200000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 500)
-            {
-                npc.damage = 250;
-                npc.defense = 210;
-                npc.lifeMax = 300000;
-                npc.life = 50000;
-            }
-            if (NPC.killCount[NPCID.Bunny] > 600)
-            {
-                npc.damage = 300;
-                npc.defense = 230;
-                npc.lifeMax = 500000;
-                npc.life = 500000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 700)
-            {
-                npc.damage = 340;
-                npc.defense = 250;
-                npc.lifeMax = 700000;
-                npc.life = 700000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 800)
-            {
-                npc.damage = 370;
-                npc.defense = 270;
-                npc.lifeMax = 900000;
-                npc.life = 900000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 900)
-            {
-                npc.damage = 400;
-                npc.defense = 290;
-                npc.lifeMax = 1000000;
-                npc.life = 1000000;
-            }
-            if (NPC.killCount[NPCID.Bunny] >= 1000)
-            {
-                npc.damage = 450;
-                npc.defense = 350;
-                npc.lifeMax = 4000000;
-                npc.life = 4000000;
-            }
         }
     }
 }

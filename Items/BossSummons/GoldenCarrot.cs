@@ -63,12 +63,12 @@ namespace AAMod.Items.BossSummons
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
-                Main.npc[npcID].ai[3] = -2;
+                Main.npc[npcID].ai[3] = -1;
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)

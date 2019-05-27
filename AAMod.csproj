@@ -851,6 +851,7 @@
     <Compile Include="Items\Boss\Zero\ZeroTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Zero\ZeroTrophy.cs" />
     <Compile Include="Items\Currency\GoblinSoul.cs" />
+    <Compile Include="Items\DevTools\AncientOreGenner.cs" />
     <Compile Include="Items\DevTools\Undowner.cs" />
     <Compile Include="Items\DevTools\HardmodeUndowner.cs" />
     <Compile Include="Items\DevTools\TerrariaUndowner.cs" />
