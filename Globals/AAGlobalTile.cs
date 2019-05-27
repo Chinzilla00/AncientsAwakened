@@ -211,18 +211,64 @@ namespace AAMod
     {
         public override bool Drop(int i, int j, int type)
         {
+            Tile tile = Main.tile[i, j];
             if (Main.rand.Next(15) == 1)
             {
-                if (Main.tile[i, j].type == 5 && Main.tile[i, j + 1].type != 5)
+                if (tile.type == 5 && Main.tile[i, j + 1].type != 5 && (GetTreeVariant(i, j) == 5 || GetTreeVariant(i, j) == 1))
                 {
-                    if (!Main.player[Main.myPlayer].ZoneJungle)
-                    {
-                        Item.NewItem(i * 16, j * 16, 26, 26, mod.ItemType("CocoaBean"), 1, false, -1, false);
-                    }
+                    Item.NewItem(i * 16, j * 16, 26, 26, mod.ItemType("CocoaBean"), 1, false, -1, false);
                 }
             }
             return true;
         }
+        public int GetTreeVariant(int x, int y)
+        {
+            if (Main.tile[x, y] == null || !Main.tile[x, y].active())
+            {
+                return -1;
+            }
+            int type = Main.tile[x, y].type;
+            int num = type;
+            if (num <= 70)
+            {
+                if (num == 23)
+                {
+                    return 0;
+                }
+                if (num != 60)
+                {
+                    if (num == 70)
+                    {
+                        return 6;
+                    }
+                }
+                else
+                {
+                    if (y <= Main.worldSurface)
+                    {
+                        return 1;
+                    }
+                    return 5;
+                }
+            }
+            else
+            {
+                if (num == 109)
+                {
+                    return 2;
+                }
+                if (num == 147)
+                {
+                    return 3;
+                }
+                if (num == 199)
+                {
+                    return 4;
+                }
+            }
+            return -1;
+        }
     }
+
 }
 

@@ -60,7 +60,7 @@ Immunity to fall damage");
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmmount = (10 * DamageBoost(player)) + "%";
+            string DamageAmmount = (10 * DamageBoost(player)) + "% ";
 
             TooltipLine DamageToltip = new TooltipLine (mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
             {

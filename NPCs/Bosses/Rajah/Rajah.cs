@@ -23,9 +23,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.width = 130;
             npc.height = 214;
             npc.aiStyle = -1;
-            npc.damage = 130;
-            npc.defense = 90;
-            npc.lifeMax = 50000;
+            npc.defDamage = 450;
+            npc.defDefense = 350;
+            npc.lifeMax = 4000000;
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
             npc.HitSound = SoundID.NPCHit1;
@@ -33,7 +33,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.value = 10000f;
             npc.boss = true;
             npc.netAlways = true;
-            npc.timeLeft = NPC.activeTime * 30;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
             bossBag = mod.ItemType("RajahBag");
         }
@@ -67,7 +66,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         private Texture2D RajahTex;
         private Texture2D ArmTex;
-        Projectile CarrotFarmer;
         public int WeaponFrame = 0;
 
         /*
@@ -181,6 +179,20 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.netUpdate2 = true;
             }
 
+            if (npc.ai[3] == -2)
+            {
+                npc.defDamage = 450;
+                npc.defDefense = 350;
+                npc.lifeMax = 500000;
+                npc.ai[3] = 0;
+            }
+
+            if (npc.ai[3] == -1)
+            {
+                RajahScale();
+                npc.ai[3] = 0;
+            }
+
             if (npc.ai[3] == 0) //Minion Phase
             {
                 if (internalAI[2] >= 80)
@@ -262,8 +274,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
-
-            if (npc.ai[3] == 1) //Bunzooka
+            else if (npc.ai[3] == 1) //Bunzooka
             {
                 internalAI[2]++;
                 if (internalAI[2] > 40)
@@ -280,8 +291,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.netUpdate2 = true;
                 }
             }
-
-            if (npc.ai[3] == 2) //Royal Scepter
+            else if (npc.ai[3] == 2) //Royal Scepter
             {
                 float spread = 45f * 0.0174f;
                 Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
@@ -306,8 +316,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.netUpdate2 = true;
                 }
             }
-
-            if (npc.ai[3] == 3) //Javelin
+            else if (npc.ai[3] == 3) //Javelin
             {
                 internalAI[2]++;
                 if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<BaneR>()))
@@ -327,12 +336,11 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 npc.netUpdate2 = true;
             }
-
-            if (npc.ai[3] == 4) //Carrot Farmer
+            else if (npc.ai[3] == 4) //Carrot Farmer
             {
                 if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
                 {
-                    CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                    Projectile CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
                     npc.netUpdate2 = true;
                 }
             }
@@ -389,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public string WeaponTexture()
         {
-            if (npc.ai[3] == 0) //No Weapon
+            if (npc.ai[3] == 0 || npc.ai[3] == 4) //No Weapon or Carrot Farmer
             {
                 return null;
             }
@@ -717,6 +725,67 @@ namespace AAMod.NPCs.Bosses.Rajah
             RajahTexture();
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             return false;
+        }
+
+        public void RajahScale()
+        {
+            npc.damage = 130;
+            npc.defense = 90;
+            npc.lifeMax = 50000;
+            if (NPC.killCount[NPCID.Bunny] >= 200)
+            {
+                npc.damage = 160;
+                npc.defense = 130;
+                npc.lifeMax = 80000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 300)
+            {
+                npc.damage = 180;
+                npc.defense = 150;
+                npc.lifeMax = 100000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 400)
+            {
+                npc.damage = 200;
+                npc.defense = 180;
+                npc.lifeMax = 200000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 500)
+            {
+                npc.damage = 250;
+                npc.defense = 210;
+                npc.lifeMax = 300000;
+            }
+            if (NPC.killCount[NPCID.Bunny] > 600)
+            {
+                npc.damage = 300;
+                npc.defense = 230;
+                npc.lifeMax = 500000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 700)
+            {
+                npc.damage = 340;
+                npc.defense = 250;
+                npc.lifeMax = 700000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 800)
+            {
+                npc.damage = 370;
+                npc.defense = 270;
+                npc.lifeMax = 900000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 900)
+            {
+                npc.damage = 400;
+                npc.defense = 290;
+                npc.lifeMax = 1000000;
+            }
+            if (NPC.killCount[NPCID.Bunny] >= 1000)
+            {
+                npc.damage = 450;
+                npc.defense = 350;
+                npc.lifeMax = 4000000;
+            }
         }
     }
 }
