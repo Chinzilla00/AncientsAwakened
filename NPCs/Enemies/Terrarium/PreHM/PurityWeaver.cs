@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     npc.velocity.Y = npc.velocity.Y + 1f;
                     speed = 30f;
                 }
-                if npc.position.Y > Main.rockLayer * 16.0)
+                if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     for (int num957 = 0; num957 < 200; num957++)
                     {
