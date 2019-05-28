@@ -259,7 +259,6 @@ namespace AAMod
         public bool WorldgenReminder = false;
 
         public static int RabbitKills = 0;
-
         public override void ResetEffects()
         {
             //Minions

@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public NPC Head2;
         public int[] Heads = null;
         public bool HeadsSpawned = false;
-
+        public bool retreating = false;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -118,14 +118,13 @@ namespace AAMod.NPCs.Bosses.Orthrus
             {
                 if (Main.netMode != 1)
                 {
-                    npc.realLife = npc.whoAmI;
                     int latestNPC;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead1"), npc.whoAmI + 1, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head1 = Main.npc[latestNPC];
                     Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("OrthrusHead2"), npc.whoAmI + 1, npc.whoAmI);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[0] = npc.whoAmI;
                     Head2 = Main.npc[latestNPC];
@@ -136,14 +135,15 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
 
             Player playerTarget = Main.player[npc.target];
-            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && !playerTarget.dead)
+            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && !retreating)
             {
                 npc.NPCLoot();
                 npc.active = false;
             }
 
-            if (!playerTarget.active || playerTarget.dead) //fleeing
+            if (!playerTarget.active || playerTarget.dead || retreating) //fleeing
 			{
+                retreating = true;
 	            npc.noGravity = true;	
 				npc.noTileCollide = true;				
 				npc.velocity.Y -= 0.5f;				

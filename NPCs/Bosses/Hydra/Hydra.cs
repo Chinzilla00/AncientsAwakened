@@ -153,7 +153,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
 				npc.timeLeft = 50;
                 AIMovementNormal();
-            }else
+            }
+            else
             {
 				runningAway = true;
                 AIMovementRunAway();
