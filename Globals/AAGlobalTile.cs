@@ -7,22 +7,22 @@ using Terraria.ModLoader;
 namespace AAMod
 {
     public class AAGlobalTile : GlobalTile
-	{
+    {
         public static int glowTick = 0;
-		public static int glowMax = 100;
+        public static int glowMax = 100;
 
         public override void AnimateTile()
         {
-			glowTick++; if (glowTick >= glowMax) glowTick = 0;
-		}
+            glowTick++; if (glowTick >= glowMax) glowTick = 0;
+        }
 
-        public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }		
-		public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
-		public static Color GetIncineriteColorBright(Color color){ return GetIncineriteColor(color, 0.6f, 1f, false); }
-		public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)
-		{
-			return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
-		}
+        public static Color GetIncineriteColorBrightInvert(Color color) { return GetIncineriteColor(color, 1f, 0.6f, true); }
+        public static Color GetIncineriteColorDim(Color color) { return GetIncineriteColor(color, 0.4f, 1f, false); }
+        public static Color GetIncineriteColorBright(Color color) { return GetIncineriteColor(color, 0.6f, 1f, false); }
+        public static Color GetIncineriteColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
+        }
         public static Color GetZeroColorBrightInvert(Color color) { return GetZeroColor(color, 1f, 0.6f, true); }
         public static Color GetZeroColorDim(Color color) { return GetZeroColor(color, 0.4f, 1f, false); }
         public static Color GetZeroColorBright(Color color) { return GetZeroColor(color, 0.6f, 1f, false); }
@@ -111,7 +111,7 @@ namespace AAMod
         {
             return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
         }
-        
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass
@@ -122,39 +122,35 @@ namespace AAMod
             {
                 return false;
             }
-            if (type == mod.TileType<Tiles.Doomstone>() && TileID.Sets.BreakableWhenPlacing[mod.TileType<Tiles.Doomstone>()]) //placing grass
-            {
-                return false;
-            }
             return base.Drop(i, j, type);
         }
 
         public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
-		{
-			Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
-			if (clamp)
-			{
-				if (color.R > glowColor.R) { glowColor.R = color.R; }
-				if (color.G > glowColor.G) { glowColor.G = color.G; }
-				if (color.B > glowColor.B) { glowColor.B = color.B; }
-			}
-			return glowColor;
-		}
-		public static Color GetGradientColor(Color tColor1, Color tColor2, Color color, bool clamp)
-		{
-			Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, 0f, 1f, 0f));
-			if (clamp)
-			{
-				if (color.R > glowColor.R) { glowColor.R = color.R; }
-				if (color.G > glowColor.G) { glowColor.G = color.G; }
-				if (color.B > glowColor.B) { glowColor.B = color.B; }
-			}
-			return glowColor;
-		}
+        {
+            Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
+            if (clamp)
+            {
+                if (color.R > glowColor.R) { glowColor.R = color.R; }
+                if (color.G > glowColor.G) { glowColor.G = color.G; }
+                if (color.B > glowColor.B) { glowColor.B = color.B; }
+            }
+            return glowColor;
+        }
+        public static Color GetGradientColor(Color tColor1, Color tColor2, Color color, bool clamp)
+        {
+            Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, 0f, 1f, 0f));
+            if (clamp)
+            {
+                if (color.R > glowColor.R) { glowColor.R = color.R; }
+                if (color.G > glowColor.G) { glowColor.G = color.G; }
+                if (color.B > glowColor.B) { glowColor.B = color.B; }
+            }
+            return glowColor;
+        }
 
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.tile[i, j - 1].active() && 
+            if (Main.tile[i, j + 1].active() &&
                 (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
@@ -164,8 +160,8 @@ namespace AAMod
 
         public override bool CanExplode(int i, int j, int type)
         {
-            if (Main.tile[i, j - 1].active() &&
-                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()) && (Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j - 1].type != mod.TileType<Tiles.ChaosAltar2>()))
+            if (Main.tile[i, j + 1].active() &&
+                (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
             {
                 return false;
             }
@@ -176,10 +172,20 @@ namespace AAMod
         {
             if (Main.tile[i, j].type == TileID.MushroomGrass)
             {
-                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1000) == 0)
                 {
-                    PlaceObject(i, j - 1, mod.TileType<Tiles.Shroomplant>());
-                    NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Shroomplant>(), 0, 0, -1, -1);
+                    int style = Main.rand.Next(5);
+                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.MadnessShroom>(), style, 0, -1, -1);
+                }
+            }
+
+            if (Main.tile[i, j].type == TileID.Grass && Main.hardMode)
+            {
+                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(800) == 0)
+                {
+                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.Carrot>(), false, 0))
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Carrot>(), 0, 0, -1, -1);
                 }
             }
         }
@@ -199,5 +205,69 @@ namespace AAMod
             return false;
         }
     }
+
+    public class Beanz : GlobalTile
+    {
+        public override bool Drop(int i, int j, int type)
+        {
+            Tile tile = Main.tile[i, j];
+            if (Main.rand.Next(15) == 1)
+            {
+                if (tile.type == 5 && Main.tile[i, j + 1].type != 5 && (GetTreeVariant(i, j) == 5 || GetTreeVariant(i, j) == 1))
+                {
+                    Item.NewItem(i * 16, j * 16, 26, 26, mod.ItemType("CocoaBean"), 1, false, -1, false);
+                }
+            }
+            return true;
+        }
+        public int GetTreeVariant(int x, int y)
+        {
+            if (Main.tile[x, y] == null || !Main.tile[x, y].active())
+            {
+                return -1;
+            }
+            int type = Main.tile[x, y].type;
+            int num = type;
+            if (num <= 70)
+            {
+                if (num == 23)
+                {
+                    return 0;
+                }
+                if (num != 60)
+                {
+                    if (num == 70)
+                    {
+                        return 6;
+                    }
+                }
+                else
+                {
+                    if (y <= Main.worldSurface)
+                    {
+                        return 1;
+                    }
+                    return 5;
+                }
+            }
+            else
+            {
+                if (num == 109)
+                {
+                    return 2;
+                }
+                if (num == 147)
+                {
+                    return 3;
+                }
+                if (num == 199)
+                {
+                    return 4;
+                }
+            }
+            return -1;
+        }
+    }
+
 }
 

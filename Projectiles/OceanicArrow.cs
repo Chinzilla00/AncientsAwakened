@@ -1,13 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles
 {
-	public class OceanicArrow : ModProjectile
+    public class OceanicArrow : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -22,7 +20,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			aiType = ProjectileID.FrostburnArrow;
-		}
+            projectile.arrow = true;
+        }
 
 		public override void ModifyHitNPC (NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{

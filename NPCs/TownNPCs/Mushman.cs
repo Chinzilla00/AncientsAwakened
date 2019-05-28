@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -53,24 +52,42 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool CheckConditions(int left, int right, int top, int bottom)
         {
-            int score = 0;
-            for (int x = left; x <= right; x++)
+            if (WorldGen.roomY2 > Main.worldSurface)
             {
-                for (int y = top; y <= bottom; y++)
+                return false;
+            }
+            int num = 0;
+            int num2 = WorldGen.roomX1 - Main.zoneX / 2 / 16 - 1 - Lighting.offScreenTiles;
+            int num3 = WorldGen.roomX2 + Main.zoneX / 2 / 16 + 1 + Lighting.offScreenTiles;
+            int num4 = WorldGen.roomY1 - Main.zoneY / 2 / 16 - 1 - Lighting.offScreenTiles;
+            int num5 = WorldGen.roomY2 + Main.zoneY / 2 / 16 + 1 + Lighting.offScreenTiles;
+            if (num2 < 0)
+            {
+                num2 = 0;
+            }
+            if (num3 >= Main.maxTilesX)
+            {
+                num3 = Main.maxTilesX - 1;
+            }
+            if (num4 < 0)
+            {
+                num4 = 0;
+            }
+            if (num5 > Main.maxTilesX)
+            {
+                num5 = Main.maxTilesX;
+            }
+            for (int i = num2 + 1; i < num3; i++)
+            {
+                for (int j = num4 + 2; j < num5 + 2; j++)
                 {
-                    int type = Main.tile[x, y].type;
-                    int wall = Main.tile[x, y].wall;
-                    if (type == mod.TileType("Mycelium"))
+                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == mod.TileType<Tiles.Mycelium>() || Main.tile[i, j].type == mod.TileType<Tiles.Mushroom>() || Main.tile[i, j].type == mod.TileType<Tiles.MadnessShroom>()))
                     {
-                        score++;
-                    }
-                    if (wall == mod.WallType<Walls.Mushwall>())
-                    {
-                        score++;
+                        num++;
                     }
                 }
             }
-            return score >= (right - left) * (bottom - top) / 2;
+            return num >= 100;
         }
 
 
@@ -92,11 +109,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            switch (WorldGen.genRand.Next(4))
-            {
-                default:
-                    return "Mushman";
-            }
+            return null;
         }
 
         public override string GetChat()
@@ -142,14 +155,27 @@ namespace AAMod.NPCs.TownNPCs
                 Main.PlaySound(12, -1, -1, 1);
 
                 Player player = Main.LocalPlayer;
-                AAPlayer p = player.GetModPlayer<AAPlayer>(mod);
 
-                int Special = player.FindItem(mod.ItemType("Mushplant"));
-                int Special2 = player.FindItem(mod.ItemType("Shroomplant"));
+                int Special = player.FindItem(mod.ItemType("MadnessShroom"));
                 int Item = player.FindItem(ItemID.StrangePlant1);
                 int Item2 = player.FindItem(ItemID.StrangePlant2);
                 int Item3 = player.FindItem(ItemID.StrangePlant3);
                 int Item4 = player.FindItem(ItemID.StrangePlant4);
+
+                int DyeRed = player.FindItem(ItemID.RedHusk);
+                int DyeOrange = player.FindItem(ItemID.OrangeBloodroot);
+                int DyeYellow = player.FindItem(ItemID.YellowMarigold);
+                int DyeGreen1 = player.FindItem(ItemID.GreenMushroom);
+                int DyeGreen2 = player.FindItem(ItemID.LimeKelp);
+                int DyeGreen3 = player.FindItem(ItemID.TealMushroom);
+                int DyeBlue1 = player.FindItem(ItemID.CyanHusk);
+                int DyeBlue2 = player.FindItem(ItemID.SkyBlueFlower);
+                int DyeBlue3 = player.FindItem(ItemID.BlueBerries);
+                int DyePurple1 = player.FindItem(ItemID.PurpleMucos);
+                int DyePurple2 = player.FindItem(ItemID.VioletHusk);
+                int DyePink = player.FindItem(ItemID.PinkPricklyPear);
+                int DyeGray = player.FindItem(ItemID.BlackInk);
+                int DyeBrown = player.FindItem(mod.ItemType<Items.Materials.CocoaBean>());
 
                 string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Brown", "Gray", "Pink" };
                 int loot = Main.rand.Next(lootTable.Length);
@@ -163,27 +189,12 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = SpecialChat();
-                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Rainbow>(), 3);
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Rainbow>(), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
                 }
-                else if (Special2 >= 0)
-                {
-                    player.inventory[Special2].stack--;
-                    if (player.inventory[Special2].stack <= 0)
-                    {
-                        player.inventory[Special2] = new Item();
-                    }
-
-                    Main.npcChatText = SpecialChat();
-                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
-
-                    Main.PlaySound(24, -1, -1, 1);
-                    return;
-                }
-
-                if (Item >= 0)
+                else if (Item >= 0)
                 {
                     player.inventory[Item].stack--;
                     if (player.inventory[Item].stack <= 0)
@@ -192,7 +203,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = MushroomChat();
-                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -206,7 +217,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = MushroomChat();
-                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -220,7 +231,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = MushroomChat();
-                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -234,7 +245,203 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = MushroomChat();
-                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 3);
+                    player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeRed >= 0)
+                {
+                    player.inventory[DyeRed].stack--;
+                    if (player.inventory[DyeRed].stack <= 0)
+                    {
+                        player.inventory[DyeRed] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Red>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeOrange >= 0)
+                {
+                    player.inventory[DyeOrange].stack--;
+                    if (player.inventory[DyeOrange].stack <= 0)
+                    {
+                        player.inventory[DyeOrange] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Orange>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeYellow >= 0)
+                {
+                    player.inventory[DyeYellow].stack--;
+                    if (player.inventory[DyeYellow].stack <= 0)
+                    {
+                        player.inventory[DyeYellow] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Yellow>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeGreen1 >= 0)
+                {
+                    player.inventory[DyeGreen1].stack--;
+                    if (player.inventory[DyeGreen1].stack <= 0)
+                    {
+                        player.inventory[DyeGreen1] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Green>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeGreen2 >= 0)
+                {
+                    player.inventory[DyeGreen2].stack--;
+                    if (player.inventory[DyeGreen2].stack <= 0)
+                    {
+                        player.inventory[DyeGreen2] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Green>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeGreen3 >= 0)
+                {
+                    player.inventory[DyeGreen3].stack--;
+                    if (player.inventory[DyeGreen3].stack <= 0)
+                    {
+                        player.inventory[DyeGreen3] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Green>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeBlue1 >= 0)
+                {
+                    player.inventory[DyeBlue1].stack--;
+                    if (player.inventory[DyeBlue1].stack <= 0)
+                    {
+                        player.inventory[DyeBlue1] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Blue>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeBlue2 >= 0)
+                {
+                    player.inventory[DyeBlue2].stack--;
+                    if (player.inventory[DyeBlue2].stack <= 0)
+                    {
+                        player.inventory[DyeBlue2] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Blue>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeBlue3 >= 0)
+                {
+                    player.inventory[DyeBlue3].stack--;
+                    if (player.inventory[DyeBlue3].stack <= 0)
+                    {
+                        player.inventory[DyeBlue3] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Blue>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyePurple1 >= 0)
+                {
+                    player.inventory[DyePurple1].stack--;
+                    if (player.inventory[DyePurple1].stack <= 0)
+                    {
+                        player.inventory[DyePurple1] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Purple>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyePurple2 >= 0)
+                {
+                    player.inventory[DyePurple2].stack--;
+                    if (player.inventory[DyePurple2].stack <= 0)
+                    {
+                        player.inventory[DyePurple2] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Purple>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeBrown >= 0)
+                {
+                    player.inventory[DyeBrown].stack--;
+                    if (player.inventory[DyeBrown].stack <= 0)
+                    {
+                        player.inventory[DyeBrown] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Brown>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyeGray >= 0)
+                {
+                    player.inventory[DyeGray].stack--;
+                    if (player.inventory[DyeGray].stack <= 0)
+                    {
+                        player.inventory[DyeGray] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Gray>(), 5);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                else if (DyePink >= 0)
+                {
+                    player.inventory[DyePink].stack--;
+                    if (player.inventory[DyePink].stack <= 0)
+                    {
+                        player.inventory[DyePink] = new Item();
+                    }
+
+                    Main.npcChatText = MushroomChat();
+                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Pink>(), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -260,18 +467,18 @@ namespace AAMod.NPCs.TownNPCs
         public string SpecialChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add("Ooh..! I like this one! Reminds me of home. Here's a special kind mushroom for payment. This one is really useful. Just...don't eat it directly.");
-            chat.Add("Oh, one of these! These ones I like a lot. Here, have a few rainbow shrooms.");
-            chat.Add("You can find these in both mushroom biomes, you know. Make sure to check both of them just in case.");
+            chat.Add("A Madness Mushroom? Sweet! Here's a special kind mushroom for payment. This one is really useful. Just...don't eat it directly.");
+            chat.Add("Oh, a Madness Mushroom! These ones I like a lot because of their special properties. Here, have a few rainbow shrooms.");
+            chat.Add("You can find these in both mushroom biomes, you know. Make sure to check both of them just in case. They're really useful.");
             return chat;
         }
 
         public string MushroomChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add("Thank you. These mushrooms are way more useful than worthless dyes, right?");
-            chat.Add("Here. More colored mushrooms for all your brewing needs");
-            chat.Add("What do I use these plants for? Uh...things.");
+            chat.Add("Thank you. These mushrooms are way more useful than worthless dyes, am I right?");
+            chat.Add("Here. More colored mushrooms for all your brewing needs. Just...don't eat them.");
+            chat.Add("What do I use these dye materials for? Uh...things. Now leave me be, I have stuff to do!");
             return chat;
         }
 
@@ -290,6 +497,15 @@ namespace AAMod.NPCs.TownNPCs
 			shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.LesserManaPotion);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
+
+            if (NPC.downedPlantBoss == true)
+            {
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
+                shop.item[nextSlot].shopCustomPrice = 5000000;
+            }
 
             if (NPC.downedBoss3 == true)
             {

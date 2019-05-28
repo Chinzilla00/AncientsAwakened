@@ -1,12 +1,7 @@
-using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -32,26 +27,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 npc.life = 0;
             }
         }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			base.ReceiveExtraAI(reader);
-			if(Main.netMode == 1)
-			{
-				internalAI[0] = reader.ReadFloat();
-				internalAI[1] = reader.ReadFloat();
-			}	
-		}	
 
         public override void SetStaticDefaults()
         {

@@ -1,14 +1,5 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -31,6 +22,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.knockBackResist = 1f;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.aiStyle = -1;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.width = 30;
             npc.height = 44;
             npc.npcSlots = 0f;

@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spirit of Chaos");
+            DisplayName.SetDefault("Discordian Awakening");
         }
         public override void SetDefaults()
         {

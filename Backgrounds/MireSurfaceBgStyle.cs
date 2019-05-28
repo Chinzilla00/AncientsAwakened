@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.Backgrounds

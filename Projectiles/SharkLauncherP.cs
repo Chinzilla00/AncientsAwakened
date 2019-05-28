@@ -1,13 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles
 {
-	public class SharkLauncherP : ModProjectile
+    public class SharkLauncherP : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

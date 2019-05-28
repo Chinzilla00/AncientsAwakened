@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Tied   //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly

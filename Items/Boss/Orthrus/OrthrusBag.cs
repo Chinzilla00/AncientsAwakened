@@ -1,9 +1,9 @@
 using Terraria;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Orthrus
 {
-	public class OrthrusBag : ModItem
+    public class OrthrusBag : ModItem
 	{
         
         public override void SetStaticDefaults()

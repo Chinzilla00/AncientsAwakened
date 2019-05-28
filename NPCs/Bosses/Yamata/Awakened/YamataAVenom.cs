@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using BaseMod;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened

@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 //using AAMod.NPCs.Bosses.Infinity;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using BaseMod;
 
 namespace AAMod.Items.BossSummons

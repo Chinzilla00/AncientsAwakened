@@ -1,8 +1,4 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee     //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
@@ -12,8 +8,6 @@ namespace AAMod.Items.Melee     //We need this to basically indicate the folder 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mad Titan's Dualblade");
-            Tooltip.SetDefault(@"Left click to spin the sword around you
-Right click to throw the sword at your enemies");
         }
 
         public override void SetDefaults()
@@ -40,27 +34,6 @@ Right click to throw the sword at your enemies");
                 player.bodyFrame.Y = 3 * player.bodyFrame.Height;
             }
             return true;
-        }
-
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-
-        public override bool CanUseItem(Player player)
-        {
-
-            if (player.altFunctionUse == 2)
-            {
-                item.useStyle = 5;
-                item.shoot = mod.ProjectileType("ThanosSword");
-            }
-            else
-            {
-                item.useStyle = 5;
-                item.shoot = mod.ProjectileType("ThanosSwordT");
-            }
-            return base.CanUseItem(player);
         }
 
         public override void AddRecipes()

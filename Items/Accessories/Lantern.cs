@@ -1,9 +1,7 @@
 using AAMod.Items.Materials;
-using AAMod.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ID;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 

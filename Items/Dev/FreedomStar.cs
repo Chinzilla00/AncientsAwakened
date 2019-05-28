@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
@@ -27,7 +20,7 @@ Mobian Buster EX");
             item.width = 74;
             item.height = 34;
             item.ranged = true;
-            item.damage = 300;
+            item.damage = 200;
             item.shoot = mod.ProjectileType("FreedomStar");
             item.useTime = 10;
             item.useAnimation = 10;

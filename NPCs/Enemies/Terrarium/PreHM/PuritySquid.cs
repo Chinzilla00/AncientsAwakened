@@ -1,6 +1,5 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,25 +33,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
         public override Color? GetAlpha(Color drawColor)
         {
             return Color.White;
-        }
-
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
         }
 
         public override void AI()

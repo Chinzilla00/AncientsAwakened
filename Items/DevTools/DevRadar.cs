@@ -1,15 +1,11 @@
-using System; using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.DevTools
 {
-	public class DevRadar : ModItem
+    public class DevRadar : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

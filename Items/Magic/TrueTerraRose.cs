@@ -1,10 +1,10 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class TrueTerraRose : BaseAAItem
+    public class TrueTerraRose : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

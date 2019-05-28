@@ -28,11 +28,6 @@ namespace AAMod
         public static ModHotKey Rift;
         public static ModHotKey RiftReturn;
 
-        // Music
-        public static bool AkumaMusic = false;
-        public static bool YamataMusic = false;
-        public static bool AHIntro = false;
-
         // Textures
         public static IDictionary<string, Texture2D> Textures = null;
         public static Dictionary<string, Texture2D> precachedTextures = new Dictionary<string, Texture2D>();
@@ -273,8 +268,10 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn"), ItemType("DjinnBox"), TileType("DjinnBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TODE"), ItemType("ToadBox"), TileType("ToadBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Siege"), ItemType("SiegeBox"), TileType("SiegeBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RajahBox"), TileType("RajahBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
@@ -370,32 +367,6 @@ namespace AAMod
             {
                 precachedTextures.Clear();
 
-                NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex = null;
-                NPCs.Bosses.Yamata.Awakened.YamataSoul.glowTex2 = null;
-
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex2 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex3 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex4 = null;
-                NPCs.Bosses.Akuma.Awakened.AkumaA.glowTex5 = null;
-
-                NPCs.Bosses.Grips.GripOfChaosRed.glowTex = null;
-                NPCs.Bosses.GripsShen.AbyssGrip.glowTex = null;
-                NPCs.Bosses.GripsShen.BlazeGrip.glowTex = null;
-
-                NPCs.Bosses.Raider.Raider.glowTex = null;
-                NPCs.Bosses.Raider.Raider.glowTex1 = null;
-                NPCs.Bosses.Raider.RaidEgg.glowTex = null;
-                NPCs.Bosses.Raider.Raidmini.glowTex = null;
-                NPCs.Bosses.Raider.Raidmini.glowTex1 = null;
-
-                NPCs.Bosses.Retriever.Retriever.glowTex = null;
-                NPCs.Bosses.Retriever.Retriever.glowTex = null;
-
-                NPCs.Bosses.Zero.SearcherZero.glowTex = null;
-
-                NPCs.Enemies.Void.Searcher.glowTex = null;
-
                 AkumaSky.PlanetTexture = null;
                 AkumaSky.BGTexture = null;
                 AkumaSky.SkyTex = null;
@@ -430,9 +401,7 @@ namespace AAMod
 
                 ShenASky.MeteorTexture = null;
                 ShenASky.PlanetTexture = null;
-                ShenASky.SkyTex = null;
-
-                Items.Accessories.SoulStone._glow = null;                
+                ShenASky.SkyTex = null;            
             }
         }
 
@@ -476,30 +445,6 @@ namespace AAMod
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
-
-                return;
-            }
-
-            if (AkumaMusic == true)
-            {
-                priority = MusicPriority.BossHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
-
-                return;
-            }
-
-            if (YamataMusic == true)
-            {
-                priority = MusicPriority.BossHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
-
-                return;
-            }
-
-            if (AHIntro)
-            {
-                priority = (MusicPriority)10;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
 
                 return;
             }

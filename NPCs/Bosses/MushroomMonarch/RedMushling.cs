@@ -1,16 +1,7 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
@@ -40,6 +31,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void AI()

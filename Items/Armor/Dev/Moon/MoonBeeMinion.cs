@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 
 namespace AAMod.Items.Armor.Dev.Moon
 {
-	public class MoonBeeMinion : ModProjectile
+    public class MoonBeeMinion : ModProjectile
 	{
         public override void SetStaticDefaults()
         {

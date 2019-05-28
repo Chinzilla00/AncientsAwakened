@@ -68,7 +68,6 @@ namespace AAMod.NPCs.Bosses.AH
                 if (AAWorld.downedSisters)
                 {
                     Main.NewText("Rgh..! Shut up..!", new Color(102, 20, 48));
-                    AAMod.AHIntro = false;
                     npc.active = false;
                     AAWorld.downedSisters = true;
                 }

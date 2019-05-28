@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria;
-using System;
 
 namespace AAMod.Items.Blocks
 {

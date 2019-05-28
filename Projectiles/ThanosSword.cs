@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles     //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
@@ -11,15 +10,13 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 
         public override void SetDefaults()
         {
-            projectile.width = 98;     //Set the hitbox width
-            projectile.height = 110;       //Set the hitbox height
-            projectile.friendly = true;    //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1;    //Tells the game how many enemies it can hit before being destroyed. -1 = never
-            projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
-            projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
-            projectile.melee = true;  //Tells the game whether it is a melee projectile or not
-            projectile.scale = 3f;
-            
+            projectile.width = 98;
+            projectile.height = 110;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.tileCollide = false; 
+            projectile.ignoreWater = true;
+            projectile.melee = true;
         }
         public override void AI()
         {

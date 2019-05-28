@@ -1,15 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace AAMod.Items.Magic
 {
-	public class HiveArtillery : ModItem
+    public class HiveArtillery : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

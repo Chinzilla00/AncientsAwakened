@@ -14,7 +14,7 @@ namespace AAMod.Items.Ranged.Ammo
 
 		public override void SetDefaults()
 		{
-			item.damage = 14;
+			item.damage = 34;
 			item.ranged = true;
 			item.width = 14;
 			item.height = 32;
@@ -27,11 +27,6 @@ namespace AAMod.Items.Ranged.Ammo
 			item.shootSpeed = 1f;                  //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
 		}
-
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            target.AddBuff(BuffID.OnFire, 300);
-        }
 
         public override void AddRecipes()
 		{

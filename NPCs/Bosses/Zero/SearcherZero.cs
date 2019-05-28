@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
@@ -25,14 +22,13 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 5, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
-            npc.lifeMax = 250;
+            npc.lifeMax = 600;
             npc.defense = 30;
-            npc.damage = 65;
+            npc.damage = 75;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
 			npc.noGravity = true;
-            
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -65,16 +61,13 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public static Texture2D glowTex = null;
         public float auraPercent = 0f;
         public bool auraDirection = true;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/SearcherZero_Glow");
-            }
+
+            Texture2D glowTex = mod.GetTexture("Glowmasks/SearcherZero_Glow");
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);

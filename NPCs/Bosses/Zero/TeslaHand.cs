@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -19,7 +20,6 @@ namespace AAMod.NPCs.Bosses.Zero
         }
         public override void SetDefaults()
         {
-            
             npc.width = 40;
             npc.height = 48;
             npc.damage = 150;
@@ -45,6 +45,30 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write((short)npc.localAI[0]);
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write((short)npc.localAI[0]);
+                writer.Write(internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            npc.localAI[0] = reader.ReadInt16();
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                npc.localAI[0] = reader.ReadInt16();
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
+
+
         public override bool CheckActive()
         {
             if (NPC.AnyNPCs(mod.NPCType<Zero>()))
@@ -60,15 +84,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.damage = (int)(npc.damage * 0.6f);
         }
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write((short)npc.localAI[0]);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            npc.localAI[0] = reader.ReadInt16();
-        }
         public override bool PreNPCLoot()
         {
             GoreHand();
@@ -113,14 +128,36 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.active = false;
                 }
             }
-            if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneVoid == false)
+
+            internalAI[0]++;
+
+            if (internalAI[0] > 40)
             {
-                npc.defense = 999999999;
+                Player player = Main.player[npc.target];
+                float spread = 45f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                dir *= 9f;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                internalAI[2]++;
+                if (internalAI[2] > 40)
+                {
+                    internalAI[2] = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        double offsetAngle = startAngle + (deltaAngle * i);
+                        int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("Static"), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        Main.projectile[Proj].netUpdate = true;
+                        if (Main.netMode == 2 && Proj < 200)
+                        {
+                            NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                    npc.netUpdate2 = true;
+                }
             }
-            else
-            {
-                npc.defense = 70;
-            }
+
             if (npc.ai[2] == 99.0)
             {
                 if (npc.position.Y > (double)Main.npc[(int)npc.ai[1]].position.Y)

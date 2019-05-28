@@ -1,14 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
+﻿using System.IO;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -68,8 +60,8 @@ namespace AAMod.NPCs.Bosses.Toad
             bossBag = mod.ItemType("ToadBag");
             npc.alpha = 255;
         }
-      
-		public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_TONGUE = 2;
+
+        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_TONGUE = 3;
 		public float[] internalAI = new float[4];
         public int NOM = 0;
         public bool tonguespawned = false;
@@ -83,12 +75,12 @@ namespace AAMod.NPCs.Bosses.Toad
             if (player != null)
             {
                 float dist = npc.Distance(player.Center);
-                if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 800 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     npc.alpha += 5;
                     if (npc.alpha >= 255)
                     {
-                        Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(2) == 0 ? 400 : -400), player.Center.Y - 16);
+                        Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(2) == 0 ? 300 : -300), player.Center.Y - 16);
                         npc.Center = tele;
                         npc.netUpdate = true;
                     }
@@ -118,17 +110,17 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (player.position.X < npc.position.X)
                 {
-                    npc.spriteDirection = -1;
+                    npc.spriteDirection = 1;
                 }
                 else if (player.position.X > npc.position.X)
                 {
-                    npc.spriteDirection = 1;
+                    npc.spriteDirection = -1;
                 }
             }
 
             if (internalAI[0] == AISTATE_JUMP)
             {
-                BaseAI.AISlime(npc, ref npc.ai, false, 60, 5, -5, 13, -13);
+                BaseAI.AISlime(npc, ref npc.ai, false, 30, 5, -5, 13, -13);
                 if (npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
@@ -153,11 +145,11 @@ namespace AAMod.NPCs.Bosses.Toad
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
                         }
                     }
                 }
@@ -168,49 +160,17 @@ namespace AAMod.NPCs.Bosses.Toad
                     internalAI[2] = 0;
                 }
             }
-            else if (internalAI[0] == AISTATE_TONGUE)
+            else if (internalAI[0] == AISTATE_BARF)
             {
-                /*if (npc.ai[2] >= 120f)
+                internalAI[1]++;
+                BaseAI.AISlime(npc, ref npc.ai, false, -10, 5, -5, 13, -13);
+                if (internalAI[1] >= 180)
                 {
-                    num1160 = npc.ai[2] - 120f;
-                    num1161 = 555f;
-                    num1162 = 2;
-                    if (num1160 == 0f && Main.netMode != 1)
-                    {
-                        Vector2 value25 = new Vector2(36f, 0f);
-                        value25.X = value25.X * npc.direction;
-                        Vector2 value26 = npc.Center + value25;
-                        for (int num1169 = 0; num1169 < 255; num1169++)
-                        {
-                            Player player5 = Main.player[num1169];
-                            if (player5.active && !player5.dead && Vector2.Distance(player5.Center, value26) <= 2000f)
-                            {
-                                Vector2 value27 = Main.player[npc.target].Center - value26;
-                                if (value27 != Vector2.Zero)
-                                {
-                                    value27.Normalize();
-                                }
-                                Projectile.NewProjectile(value26.X, value26.Y, value27.X, value27.Y, mod.ProjectileType<TruffleToadTongue>(), 0, 0f, Main.myPlayer, (npc.whoAmI + 1), num1169);
-                            }
-                        }
-                    }
-                    if ((num1160 == 120f || num1160 == 180f || num1160 == 240f) && Main.netMode != 1)
-                    {
-                        for (int num1170 = 0; num1170 < 1000; num1170++)
-                        {
-                            Projectile projectile5 = Main.projectile[num1170];
-                            if (projectile5.active && projectile5.type == 456 && Main.player[(int)projectile5.ai[1]].FindBuffIndex(145) != -1)
-                            {
-                                Vector2 center19 = Main.player[npc.target].Center;
-                                int num1171 = NPC.NewNPC((int)center19.X, (int)center19.Y, 401, 0, 0f, 0f, 0f, 0f, 255);
-                                Main.npc[num1171].netUpdate = true;
-                                Main.npc[num1171].ai[0] = (float)(npc.whoAmI + 1);
-                                Main.npc[num1171].ai[1] = (float)num1170;
-                            }
-                        }
-                    }
-                }*/
-                
+                    internalAI[1] = 0;
+                    internalAI[0] = Main.rand.Next(2);
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
             }
         }
 
@@ -221,25 +181,29 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (internalAI[0] == AISTATE_BARF)
                 {
-                    if (npc.frameCounter < 648)
+                    if (npc.frameCounter < frameHeight * 6)
                     {
-                        npc.frameCounter = 648;
+                        npc.frame.Y = frameHeight * 6;
                     }
                     if (npc.frameCounter >= 10)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y += frameHeight;
-                        if (npc.frame.Y > 864)
+                        if (npc.frame.Y > frameHeight * 11)
                         {
                             npc.frameCounter = 0;
-                            npc.frame.Y = 864;
+                            npc.frame.Y = frameHeight * 11;
                         }
                     }
+                }
+                else
+                {
+                    npc.frame.Y = 0;
                 }
             }
             else
             {
-                if (npc.frameCounter >= 6)
+                if (npc.frameCounter >= 10)
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y += frameHeight;
@@ -249,8 +213,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         npc.frame.Y = frameHeight * 4;
                     }
                 }
-
-                if (npc.wet)
+                else if (npc.wet)
                 {
                     npc.frame.Y = frameHeight * 3;
                 }

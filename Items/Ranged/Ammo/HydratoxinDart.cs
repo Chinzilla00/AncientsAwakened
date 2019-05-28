@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,7 +17,7 @@ namespace AAMod.Items.Ranged.Ammo
 			item.height = 8;
 			item.maxStack = 999;
 			item.ammo = AmmoID.Dart;
-			item.damage = 10;
+			item.damage = 7;
 			item.knockBack = 3f;
 			item.shootSpeed = 4f;
 			item.ranged = true;

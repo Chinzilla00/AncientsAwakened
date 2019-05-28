@@ -1,11 +1,10 @@
 ﻿using Terraria.ModLoader;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Tied
 {
-	[AutoloadEquip(EquipType.Body)]
+    [AutoloadEquip(EquipType.Body)]
 	class TiedsSuit : ModItem
 	{
         public override void SetStaticDefaults()

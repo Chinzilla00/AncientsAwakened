@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 2000f;
             animationType = NPCID.PigronCorruption;
             npc.buffImmune[31] = false;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
 

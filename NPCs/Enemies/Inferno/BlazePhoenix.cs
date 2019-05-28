@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -33,8 +28,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.knockBackResist = 0f;
+            npc.lavaImmune = true;
 			npc.buffImmune[BuffID.OnFire] = true;
-			npc.buffImmune[BuffID.Daybreak] = true;
             npc.damage = 70;
         }
 

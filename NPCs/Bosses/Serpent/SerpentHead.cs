@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -78,14 +76,28 @@ namespace AAMod.NPCs.Bosses.Serpent
             Player player = Main.player[Main.myPlayer];
             if (Main.dayTime || !player.ZoneSnow)
             {
-                npc.alpha += 4;
-                for (int loop = 0; loop < 3; loop++)
+                internalAI[0]++;
+                npc.velocity.Y = npc.velocity.Y + 0.8f;
+                if (internalAI[0] >= 300)
                 {
-                    Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Smoke);
+                    npc.active = false;
                 }
-                if (npc.alpha > 255)
+            }
+            else if (player.dead || !player.active)
+            {
+                npc.TargetClosest(true);
+                if (player.dead || !player.active)
                 {
-                    npc.alpha = 4;
+                    internalAI[0]++;
+                    npc.velocity.Y = npc.velocity.Y + 0.8f;
+                    if (internalAI[0] >= 300)
+                    {
+                        npc.active = false;
+                    }
+                }
+                else
+                {
+                    internalAI[0] = 0;
                 }
             }
             else
@@ -99,26 +111,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                     npc.alpha = 0;
                 }
             }
-            if (player.dead || !player.active)
-            {
-                if (!Main.player[npc.target].active || Main.player[npc.target].dead)
-                {
-                    npc.TargetClosest(true);
-                    if (!Main.player[npc.target].active || Main.player[npc.target].dead)
-                    {
-                        internalAI[0]++;
-                        npc.velocity.Y = npc.velocity.Y + 0.8f;
-                        if (internalAI[0] >= 300)
-                        {
-                            npc.active = false;
-                        }
-                    }
-                    else
-                    {
-                        internalAI[0] = 0;
-                    }
-                }
-            }
+
             if (RunOnce == 0)
             {
                 RainStart();

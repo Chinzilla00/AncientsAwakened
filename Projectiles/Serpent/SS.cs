@@ -1,13 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Serpent
 {
-	public class SS : ModProjectile
+    public class SS : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

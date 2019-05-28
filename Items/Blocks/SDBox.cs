@@ -1,10 +1,9 @@
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-using Terraria;
+using Terraria.ModLoader;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class SDBox : ModItem
+    public class SDBox : ModItem
 	{
         
 		public override void SetStaticDefaults()

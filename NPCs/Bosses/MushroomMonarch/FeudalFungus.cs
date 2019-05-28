@@ -1,14 +1,9 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using ReLogic.Utilities;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Utilities;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -152,11 +147,9 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
             else if (internalAI[1] == AISTATE_SHOOT)
             {
-
                 if (HasStopped)
                 {
                     internalAI[0]++;
-                    npc.rotation = 0;
                 }
                 if (internalAI[0] >= 60)
                 {
@@ -182,6 +175,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     HasStopped = true;
                 }
             }
+
+            npc.rotation = 0;
         }
 
 

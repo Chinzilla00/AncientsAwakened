@@ -1,13 +1,7 @@
 using Terraria;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Shen;
-using System.Collections.Generic;
-using BaseMod;
-using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace AAMod.Items.Mushrooms
 {
@@ -25,6 +19,7 @@ namespace AAMod.Items.Mushrooms
             item.width = 16;
             item.height = 16;
             item.rare = 2;
+            item.maxStack = 99;
             item.expert = true;
             item.value = Item.sellPrice(0, 0, 0, 0);
         }

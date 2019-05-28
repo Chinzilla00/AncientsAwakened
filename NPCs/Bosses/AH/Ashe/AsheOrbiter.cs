@@ -3,12 +3,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.ID;
 using BaseMod;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-	public class AsheOrbiter : Ashe
+    public class AsheOrbiter : Ashe
 	{				
 		public override void SetStaticDefaults()
 		{
@@ -22,7 +21,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.width = 46;
             npc.height = 46;
             npc.friendly = false;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 1300;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;

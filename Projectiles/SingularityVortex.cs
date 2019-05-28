@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
@@ -26,10 +20,11 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 100;
+            projectile.penetrate = 50;
             projectile.alpha = 130;
             projectile.scale = .01f;
             projectile.alpha = 255;
+            projectile.timeLeft = 600;
             projectile.tileCollide = false;
         }
 
@@ -47,22 +42,33 @@ namespace AAMod.Projectiles
             {
                 projectile.alpha = 80;
             }
+            
 
-            if (projectile.scale > 1f && projectile.ai[0] == 0)
+            if (projectile.timeLeft < 60)
             {
-                projectile.hostile = true;
-                projectile.ai[0] = 1;
-                projectile.scale = 1f;
+                projectile.scale -= .1f;
+                if (projectile.scale <= 0f)
+                {
+                    projectile.active = false;
+                }
             }
             else
             {
-                projectile.hostile = false;
-                projectile.scale += .5f;
-            }
-
-            if (projectile.ai[0] == 1 && projectile.penetrate > 0)
-            {
-                projectile.scale = projectile.penetrate / 100f;
+                if (projectile.scale > 1f && projectile.ai[0] == 0)
+                {
+                    projectile.hostile = false;
+                    projectile.ai[0] = 1;
+                    projectile.scale = 1f;
+                }
+                else
+                {
+                    projectile.hostile = true;
+                    projectile.scale += .5f;
+                }
+                if (projectile.ai[0] == 1 && projectile.penetrate > 0)
+                {
+                    projectile.scale = projectile.penetrate / 50;
+                }
             }
         }
 

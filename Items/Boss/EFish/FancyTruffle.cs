@@ -1,14 +1,9 @@
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Boss.EFish
 {
-	public class FancyTruffle : ModItem
+    public class FancyTruffle : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

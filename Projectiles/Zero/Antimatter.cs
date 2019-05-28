@@ -19,7 +19,7 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 0;
+            projectile.localNPCHitCooldown = 15;
         }
 
 		public override void SetStaticDefaults()

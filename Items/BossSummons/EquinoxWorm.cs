@@ -1,11 +1,7 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Equinox;
-using System.Collections.Generic;
-using BaseMod;
-using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {

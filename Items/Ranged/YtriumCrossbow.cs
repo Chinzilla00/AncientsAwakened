@@ -2,11 +2,10 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Ranged
 {
-	public class YtriumCrossbow : ModItem
+    public class YtriumCrossbow : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

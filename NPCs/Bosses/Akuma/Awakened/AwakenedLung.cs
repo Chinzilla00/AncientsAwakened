@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using BaseMod;
-using System.IO;
 
 namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {

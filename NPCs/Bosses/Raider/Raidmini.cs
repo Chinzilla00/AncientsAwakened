@@ -72,18 +72,13 @@ namespace AAMod.NPCs.Bosses.Raider
                 target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
         }
-
-        public static Texture2D glowTex = null;
-        public static Texture2D glowTex1 = null;
+        
         public Color color;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/Raidmini_Glow1");
-                glowTex1 = mod.GetTexture("Glowmasks/Raidmini_Glow2");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Raidmini_Glow1");
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/Raidmini_Glow2");
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);

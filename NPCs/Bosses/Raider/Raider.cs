@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -179,18 +178,12 @@ namespace AAMod.NPCs.Bosses.Raider
             }
         }
 
-
-        public static Texture2D glowTex = null;
-        public static Texture2D glowTex1 = null;
         public Color color;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/Raider_Glow1");
-                glowTex1 = mod.GetTexture("Glowmasks/Raider_Glow2");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Raider_Glow1");
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/Raider_Glow2");
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
@@ -211,6 +204,42 @@ namespace AAMod.NPCs.Bosses.Raider
 
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
 
+            npc.TargetClosest();
+            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+            {
+                npc.TargetClosest();
+                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+                {
+                    internalAI[1] = AISTATE_RUNAWAY;
+                    npc.ai = new float[4];
+                    npc.netUpdate2 = true;
+                }
+            }
+
+            if (internalAI[1] == AISTATE_RUNAWAY)
+            {
+                npc.noTileCollide = true;
+                npc.ai[1] = 0;
+                npc.ai[2] = 0;
+                npc.ai[3] = 0;
+                internalAI[0]++;
+
+                npc.dontTakeDamage = true;
+
+                if (npc.timeLeft < 10)
+                    npc.timeLeft = 10;
+                npc.velocity.X *= 0.9f;
+
+                if (internalAI[0] > 300)
+                {
+                    npc.velocity.Y -= 4;
+                    npc.netUpdate2 = true;
+                    if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    return;
+                }
+                return;
+            }
+
             if (Main.netMode != 1 && internalAI[0]++ >= 180)
             {
                 internalAI[0] = 0;
@@ -229,54 +258,25 @@ namespace AAMod.NPCs.Bosses.Raider
                 {
                     SelectPoint = true;
                 }
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
             }
             pos = (npc.ai[1] == 0 ? -250 : 250);
-
-            npc.TargetClosest();
-            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest();
-                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-                {
-                    internalAI[1] = AISTATE_RUNAWAY;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
-                }
-            }
-
-            if (internalAI[1] == AISTATE_RUNAWAY)
-            {
-                npc.noTileCollide = true;
-                npc.ai[1] = 0;
-                npc.ai[2] = 0;
-                npc.ai[3] = 0;
-                internalAI[0]++;
-
-                if (npc.timeLeft < 10)
-                    npc.timeLeft = 10;
-                npc.velocity.X *= 0.9f;
-
-                if (internalAI[0] > 300)
-                {
-                    npc.velocity.Y += 0.1f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-                }
-                return;
-            }
-            else
-            {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
-                MoveToPoint(wantedVelocity);
-                npc.netUpdate = true;
-            }
 
             if (Main.dayTime)
             {
                 internalAI[1] = AISTATE_RUNAWAY;
-                npc.netUpdate = true;
+                npc.ai = new float[4];
+                npc.netUpdate2 = true;
+            }
+
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+            MoveToPoint(wantedVelocity);
+            npc.netUpdate2 = true;
+
+            if (Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.netUpdate2 = true;
             }
 
             if (internalAI[1] == AISTATE_ROCKETS)
@@ -284,14 +284,13 @@ namespace AAMod.NPCs.Bosses.Raider
                 if (Main.netMode != 1)
                 {
                     internalAI[2]++;
-                    float spread = 12f * 0.0174f;
                     if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
                     {
                         for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
                         {
                             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
                         }
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                     if (internalAI[2] > 90)
                     {
@@ -299,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         internalAI[1] = 0;
                         internalAI[2] = 0;
                         npc.ai = new float[4];
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                 }
 
@@ -321,7 +320,7 @@ namespace AAMod.NPCs.Bosses.Raider
                             Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }
-                        npc.netUpdate = true;
+                        npc.netUpdate2 = true;
                     }
                 }
             }
@@ -332,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     float Point = 500 * npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 500f);
                     SelectPoint = false;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
                 Charge(MovePoint);
 
@@ -342,7 +341,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
             else if (internalAI[1] == AISTATE_SHOCKBOMB)

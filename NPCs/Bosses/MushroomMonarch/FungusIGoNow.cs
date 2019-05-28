@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
             projectile.velocity *= 0;
-            projectile.alpha += 10;
+            projectile.alpha += 4;
             if (projectile.alpha >= 255)
             {
                 projectile.active = false;

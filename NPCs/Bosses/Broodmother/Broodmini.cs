@@ -1,9 +1,7 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -28,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.lifeMax = 100;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
-            npc.HitSound = new LegacySoundStyle(3, 43, Terraria.Audio.SoundType.Sound);
-            npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.3f;
             npc.value = 0f;
             npc.npcSlots = 0.1f;

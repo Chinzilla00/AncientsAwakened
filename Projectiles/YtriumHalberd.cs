@@ -1,16 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Projectiles
 {
-	public class YtriumHalberd : ModProjectile
+    public class YtriumHalberd : ModProjectile
 	{
 		public static Color lightColor = new Color(82, 138, 206);
 		public static Vector2[] spearPos = new Vector2[]{ new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(150, 0), new Vector2(150, 0), new Vector2(30, 0) };

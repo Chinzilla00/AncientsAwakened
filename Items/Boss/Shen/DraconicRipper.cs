@@ -2,11 +2,10 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace AAMod.Items.Boss.Shen
 {
-	public class DraconicRipper : ModItem
+    public class DraconicRipper : ModItem
 	{
 		public override void SetDefaults()
 		{
@@ -52,7 +51,7 @@ namespace AAMod.Items.Boss.Shen
 			int numberProjectiles = 4 + Main.rand.Next(3); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
 				float scale = 1f - (Main.rand.NextFloat() * .4f);
 				perturbedSpeed = perturbedSpeed * scale; 
 				Projectile.NewProjectile(vector.X, vector.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);

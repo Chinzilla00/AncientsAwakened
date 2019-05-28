@@ -1,5 +1,5 @@
 using Terraria;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
@@ -42,9 +42,9 @@ namespace AAMod.Items.Boss.Rajah
             player.QuickSpawnItem(mod.ItemType("RajahSash"));
             string[] lootTable = { "BaneOfTheBunny", "Bunzooka", "Punisher", "RabbitcopterEars", "RoyalScepter" };
             int loot = Main.rand.Next(lootTable.Length);
-            if (Main.rand.Next(6) == 0)
+            if (Main.rand.Next(6) == 1 && AAMod.thoriumLoaded)
             {
-                player.QuickSpawnItem(mod.ItemType("ThrowingCarrot"), Main.rand.Next(150, 200));
+                player.QuickSpawnItem(mod.ItemType("CarrotFarmer"));
             }
             else
             {

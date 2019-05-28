@@ -1,17 +1,11 @@
 using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 using BaseMod;
-using AAMod;
 
 namespace AAMod.Projectiles.AH
 {
-	public class FireOrbiter : AAProjectile
+    public class FireOrbiter : AAProjectile
 	{
 		float rot = 0f;
 		float rotInit = -1f;

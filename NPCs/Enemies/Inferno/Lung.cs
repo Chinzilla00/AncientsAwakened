@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using BaseMod;
-using System.IO;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
@@ -48,6 +47,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
             npc.buffImmune[103] = false;
             npc.alpha = 255;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
         private int speed = 8;
 

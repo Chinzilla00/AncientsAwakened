@@ -1,8 +1,5 @@
-﻿using BaseMod;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,12 +29,12 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Crimson;
+            return AAColor.COLOR_WHITEFADE1;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Crimson.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, AAColor.COLOR_WHITEFADE1.ToVector3() * 0.55f * Main.essScale);
         }
 
         public override void AddRecipes()

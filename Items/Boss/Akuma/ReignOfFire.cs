@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {

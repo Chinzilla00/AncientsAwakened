@@ -4,18 +4,16 @@ using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
 using BaseMod;
-using System.Collections.Generic;
-using Terraria.ID;
 
 namespace AAMod
 {
     public class AANet
     {
         public const byte SummonNPCFromClient = 0;
-	    public const byte UpdateLovecraftianCount = 1;	
-		
+	    public const byte UpdateLovecraftianCount = 1;
+        public const byte RabbitKillCounter = 1;
+
         public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
 			byte msg = bb.ReadByte();		
@@ -41,7 +39,12 @@ namespace AAMod
 				{
 					LovecraftianCount(bb, whoAmI);
 				}
-			}catch(Exception e){ ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+                if (msg == RabbitKillCounter)
+                {
+                    RabbitCount(bb, whoAmI);
+                }
+            }
+            catch(Exception e){ ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
 		}
 
         private static void LovecraftianCount(BinaryReader reader, int fromWho)
@@ -110,6 +113,20 @@ namespace AAMod
             else if (whichSquidX == 17)
             {
                 AAWorld.squid16 += 1;
+            }
+        }
+
+
+        private static void RabbitCount(BinaryReader reader, int fromWho)
+        {
+            int RabbitKills = reader.ReadByte();
+            if (RabbitKills == 1)
+            {
+                AAWorld.RabbitKills += 1;
+            }
+            else if (RabbitKills == 2)
+            {
+                AAWorld.RabbitKills = 0;
             }
         }
 

@@ -1,6 +1,3 @@
-using Terraria;
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Materials
 {
     /*public class Dragon_Scale : ModItem

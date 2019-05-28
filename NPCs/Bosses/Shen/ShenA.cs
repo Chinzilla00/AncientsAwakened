@@ -1,12 +1,9 @@
 ﻿using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.IO;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ModLoader;
-using AAMod;
 
 namespace AAMod.NPCs.Bosses.Shen
 {

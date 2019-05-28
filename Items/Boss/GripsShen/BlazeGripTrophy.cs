@@ -1,9 +1,8 @@
-using Terraria;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.GripsShen
 {
-	public class BlazeGripTrophy : ModItem
+    public class BlazeGripTrophy : ModItem
 	{
         
         public override void SetStaticDefaults()

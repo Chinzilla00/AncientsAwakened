@@ -1,6 +1,4 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -25,13 +23,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.friendly = false;
             projectile.scale = 0.9f;
             projectile.penetrate = 1;
-            projectile.damage = 120;
             projectile.timeLeft = 120;
         }
 
         public override void AI()
         {
-            if(projectile.timeLeft <= 0)
+            projectile.damage = 50;
+            if (projectile.timeLeft <= 0)
             {
                 Kill(projectile.timeLeft);
             }

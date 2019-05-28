@@ -1,13 +1,14 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
-	//imported from my tAPI mod because I'm lazy
-	public class SubzeroCrystal : ModItem
+    //imported from my tAPI mod because I'm lazy
+    public class SubzeroCrystal : ModItem
 	{
         
         public override void SetStaticDefaults()

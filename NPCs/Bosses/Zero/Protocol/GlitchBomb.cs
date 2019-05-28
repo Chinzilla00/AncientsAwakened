@@ -1,9 +1,7 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
@@ -30,8 +28,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.timeLeft = 240;
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.damage = 22;
             projectile.scale *= 1.5f;
+            projectile.damage = 100;
         }
 
         public override Color? GetAlpha(Color lightColor)

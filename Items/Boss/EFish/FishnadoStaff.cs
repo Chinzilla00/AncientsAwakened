@@ -1,14 +1,9 @@
-using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.EFish
 {
-	public class FishnadoStaff : ModItem
+    public class FishnadoStaff : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

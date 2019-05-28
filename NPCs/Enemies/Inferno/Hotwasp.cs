@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,6 +28,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 1000f;
             npc.lavaImmune = true;
             npc.knockBackResist = 0.5f;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public override void FindFrame(int frameHeight)

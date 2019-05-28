@@ -1,9 +1,8 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria;
-using Terraria.ID;
-
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace AAMod.Items.Boss.Rajah
 {
@@ -29,6 +28,49 @@ Immunity to fall damage");
             item.expert = true;
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.player[item.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            Color damageColor = Color.Firebrick;
+            string DamageType = "";
+            if (modPlayer.MeleeHighest(player))
+            {
+                DamageType = "Melee";
+                damageColor = Color.Firebrick;
+            }
+            else if (modPlayer.RangedHighest(player))
+            {
+                DamageType = "Ranged";
+                damageColor = Color.SeaGreen;
+            }
+            else if (modPlayer.MagicHighest(player))
+            {
+                DamageType = "Magic";
+                damageColor = Color.Violet;
+            }
+            else if (modPlayer.SummonHighest(player))
+            {
+                DamageType = "Summoning";
+                damageColor = Color.Cyan;
+            }
+            else if (modPlayer.ThrownHighest(player))
+            {
+                DamageType = "Throwing";
+                damageColor = Color.DarkOrange;
+            }
+
+            string DamageAmmount = (10 * DamageBoost(player)) + "% ";
+
+            TooltipLine DamageToltip = new TooltipLine (mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
+            {
+                overrideColor = damageColor
+            };
+
+            tooltips.Add(DamageToltip);
+            base.ModifyTooltips(tooltips);
+        }
+        
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);

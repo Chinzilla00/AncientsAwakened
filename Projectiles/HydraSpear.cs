@@ -24,7 +24,7 @@ namespace AAMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("HydraSpear");
+            DisplayName.SetDefault("Hydra Spear");
         }
 
         public float MovementFactor // Change this value to alter how fast the spear moves

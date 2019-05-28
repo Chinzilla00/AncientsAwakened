@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataA"));
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
             }
 
             if (NPC.AnyNPCs(mod.NPCType("YamataA")))

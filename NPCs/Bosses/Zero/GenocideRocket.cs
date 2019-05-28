@@ -1,10 +1,7 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
@@ -28,7 +25,6 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 240;
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.damage = 22;
         }
 
 

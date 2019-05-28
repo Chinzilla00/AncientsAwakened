@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles

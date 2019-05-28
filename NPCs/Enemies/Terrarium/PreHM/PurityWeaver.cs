@@ -2,10 +2,7 @@
 using System;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
@@ -47,25 +44,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraShard>());
             }
-        }
-
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
         }
 
         public override bool PreAI()
@@ -229,7 +207,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
                     npc.velocity.Y = npc.velocity.Y + 1f;
                     speed = 30f;
                 }
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     for (int num957 = 0; num957 < 200; num957++)
                     {

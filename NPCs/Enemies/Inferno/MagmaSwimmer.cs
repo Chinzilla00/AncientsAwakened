@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using BaseMod;
 using System;
@@ -27,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.value = 5000;
             npc.knockBackResist = .10f;
             npc.aiStyle = -1;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public override void AI()

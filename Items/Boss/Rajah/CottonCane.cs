@@ -26,11 +26,11 @@ namespace AAMod.Items.Boss.Rajah
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 4;
+            item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType("CottonCane");
+            item.shoot = mod.ProjectileType<Projectiles.Rajah.RabbitcopterSoldier>();
             item.shootSpeed = 10f;
-            item.buffType = mod.BuffType("CottonCane");
+            item.buffType = mod.BuffType<Buffs.RabbitcopterSoldier>();
             item.buffTime = 3600;
             item.autoReuse = true;
         }
@@ -52,20 +52,10 @@ namespace AAMod.Items.Boss.Rajah
             float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
             num78 = 0f;
             num79 = 0f;
-            vector2.X = (float)Main.mouseX + Main.screenPosition.X;
-            vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+            vector2.X = Main.mouseX + Main.screenPosition.X;
+            vector2.Y = Main.mouseY + Main.screenPosition.Y;
             Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, item.shoot, num73, num74, i, 0f, 0f);
             return false;
-        }
-
-        public override void AddRecipes()  //How to craft this sword
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "HallowStaff");
-            recipe.AddIngredient(null, "HallowCrystal");
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

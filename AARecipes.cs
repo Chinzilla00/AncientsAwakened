@@ -149,6 +149,13 @@ namespace AAMod
             recipe.AddTile(TileID.GlassKiln);
             recipe.SetResult(ItemID.SnowGlobe, 1);
             recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "CocoaBean");
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.BrownDye);
+            recipe.AddRecipe();
             #endregion
         }
 
@@ -740,7 +747,14 @@ namespace AAMod
                     {
                         recipe.AddIngredient(null, mushroom, potion.Item3);
                     }
-                    recipe.AddIngredient(ItemID.BottledWater);
+                    if (potion.Item1 == "BloodbathPotion" || potion.Item1 == "ChitinPotion")
+                    {
+                        recipe.AddIngredient(ItemID.BottledWater);
+                    }
+                    else
+                    {
+                        recipe.AddIngredient(GRealm, "CosmicContainer");
+                    }
                     recipe.AddTile(TileID.Bottles);
                     recipe.SetResult(GRealm, potion.Item1);
                     recipe.AddRecipe();

@@ -1,10 +1,9 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-	public class DragonSoul : ModBuff
+    public class DragonSoul : ModBuff
 	{
 		public override void SetDefaults()
 		{

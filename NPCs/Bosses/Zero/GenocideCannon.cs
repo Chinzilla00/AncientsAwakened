@@ -20,8 +20,8 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 40;
             npc.height = 54;
-            npc.damage = 30;
-            npc.defense = 60;
+            npc.damage = 80;
+            npc.defense = 70;
             npc.lifeMax = 37500;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
@@ -133,7 +133,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.ai[3] = 0.0f;
                         npc.netUpdate = true;
                     }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y > 0.0)
                             npc.velocity.Y *= 0.96f;
@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.velocity.Y > 3.0)
                             npc.velocity.Y = 3f;
                     }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
+                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y)
                     {
                         if (npc.velocity.Y < 0.0)
                             npc.velocity.Y *= 0.96f;

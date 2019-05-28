@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
@@ -26,6 +26,7 @@ namespace AAMod.Items.Usable
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "SoulOfSmite", 15);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

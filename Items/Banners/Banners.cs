@@ -1,17 +1,9 @@
-using System; 
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Microsoft.Xna.Framework;
-
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Items.Banners
 {
-	public class Banners : ModItem
+    public class Banners : ModItem
 	{
 		int pStyle = -1;
 		string dName = null;

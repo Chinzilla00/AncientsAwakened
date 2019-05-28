@@ -1,7 +1,5 @@
-using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-
+using Microsoft.Xna.Framework;
 namespace AAMod.Items.Melee  //where is located
 {
     public class CthulhusBlade : BaseAAItem

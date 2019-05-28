@@ -1,7 +1,6 @@
 using Terraria;
 using System;
 using Terraria.ID;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
@@ -270,22 +269,17 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     if (internalAI[2] == 5 && internalAI[1] == 3)
                     {
                         repeat -= 1;
-                        Vector2 fireTarget = npc.Center;
-                        int projectileType = mod.ProjectileType<HarukaKunai>();
-                        Vector2 rotVec = BaseUtility.RotateVector(npc.position, npc.position + new Vector2(18f, 0f), BaseUtility.RotationTo(npc.position, fireTarget));
-                        rotVec -= npc.position;
+                        int projType = mod.ProjectileType<HarukaKunai>();
                         float spread = 45f * 0.0174f;
-                        float baseSpeed = (float)Math.Sqrt((rotVec.X * rotVec.X) + (rotVec.Y * rotVec.Y));
-                        double startAngle = Math.Atan2(rotVec.X, rotVec.Y) - .1d;
+                        Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                        dir *= 14f;
+                        float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                        double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                         double deltaAngle = spread / 6f;
-                        double offsetAngle;
                         for (int i = 0; i < 3; i++)
                         {
-                            offsetAngle = startAngle + (deltaAngle * i);
-                            int projectileID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), projectileType, npc.damage / 2, 4);
-                            Projectile proj = Main.projectile[projectileID];
-                            proj.velocity = rotVec;
-                            proj.netUpdate2 = true;
+                            double offsetAngle = startAngle + (deltaAngle * i);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -334,7 +328,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 18f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
                     }
                     if (isSlashing && internalAI[2] > 9)
                     {
@@ -413,7 +407,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
-                    pos = pos * -1f;
+                    pos *= -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -430,10 +424,12 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 300;
+                npc.defense = 300;
             }
             else //Reset Stats
             {
+                npc.defense = npc.defDefense;
                 npc.damage = 80;
             }
 

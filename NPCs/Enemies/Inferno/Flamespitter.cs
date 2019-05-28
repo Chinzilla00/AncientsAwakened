@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.aiStyle = -1;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
         }
 
         public bool teleport = false;

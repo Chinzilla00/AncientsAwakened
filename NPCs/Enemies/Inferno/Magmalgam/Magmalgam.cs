@@ -1,11 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-
-namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
+﻿namespace AAMod.NPCs.Enemies.Inferno.Magmalgam
 {
     /*public class Magmalgam : ModNPC
     {

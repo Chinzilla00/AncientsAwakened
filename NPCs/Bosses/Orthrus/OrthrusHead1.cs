@@ -4,8 +4,6 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
-using Terraria.ID;
 using System.IO;
 
 namespace AAMod.NPCs.Bosses.Orthrus

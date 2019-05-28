@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +20,7 @@ namespace AAMod.Projectiles
             projectile.melee = true;
             aiType = ProjectileID.WoodenArrowFriendly;
         }
-        public virtual void AI()
+        public override void AI()
         {
             Lighting.AddLight(projectile.Center, 0.9f, 0.1f, 0.3f);
             projectile.ai[0] += 1f;
@@ -29,8 +28,8 @@ namespace AAMod.Projectiles
             {
                 projectile.ai[0] = 0f;
                 projectile.netUpdate = true;
-                    int dustIndex = Dust.NewDust(projectile.Center, projectile.width, projectile.height, 41);
-                    Main.dust[dustIndex].velocity *= 0.3f;
+                int dustIndex = Dust.NewDust(projectile.Center, projectile.width, projectile.height, 41);
+                Main.dust[dustIndex].velocity *= 0.3f;
             }
         }
     }

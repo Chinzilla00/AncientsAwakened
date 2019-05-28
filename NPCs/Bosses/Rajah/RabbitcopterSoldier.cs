@@ -1,11 +1,7 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using Terraria.Audio;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -46,9 +42,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
 
             }
-			for (int m = 0; m < (isDead ? 35 : 6); m++)
+			for (int m = 0; m < (isDead ? 10 : 3); m++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
             }			
         }
 

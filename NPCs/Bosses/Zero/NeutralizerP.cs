@@ -17,6 +17,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 800;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
+            projectile.damage = 50;
         }
 
 		public override void SetStaticDefaults()
@@ -31,19 +32,18 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 projectile.position.X = projectile.position.X + projectile.velocity.X;
                 projectile.velocity.X = -oldVelocity.X;
-                projectile.damage = (int)(projectile.damage * 1.2);
             }
             if (projectile.velocity.Y != oldVelocity.Y)
             {
                 projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
                 projectile.velocity.Y = -oldVelocity.Y;
-                projectile.damage = (int)(projectile.damage * 1.2);
             }
             return false; // return false because we are handling collision
         }
 
         public override void AI()
         {
+            projectile.damage = 50;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] > 9f)
             {

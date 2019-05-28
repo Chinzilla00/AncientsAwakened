@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,6 +16,7 @@ namespace AAMod.NPCs.Enemies.Mire
 		public override void SetDefaults()
 		{
             npc.CloneDefaults(NPCID.DesertGhoul);
+            animationType = NPCID.DesertGhoul;
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -1,14 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Armor.PerfectChaos
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
     public class PerfectChaosKabuto : ModItem
     {
         public override void SetStaticDefaults()

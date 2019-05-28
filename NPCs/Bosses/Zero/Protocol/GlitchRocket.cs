@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
@@ -24,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             cooldownSlot = 1;
-            projectile.damage = 100;
+            projectile.damage = 6;
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
@@ -26,7 +19,7 @@ namespace AAMod.Items.Dev
             item.width = 74;
             item.height = 34;
             item.ranged = true;
-            item.damage = 150;
+            item.damage = 100;
             item.shoot = mod.ProjectileType("MobianBuster");
             item.useTime = 10;
             item.useAnimation = 10;

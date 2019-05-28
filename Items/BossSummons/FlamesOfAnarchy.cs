@@ -5,10 +5,6 @@ using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.AH;
 using AAMod.NPCs.Bosses.AH.Ashe;
 using AAMod.NPCs.Bosses.AH.Haruka;
-using System.Collections.Generic;
-using BaseMod;
-using Terraria.Localization;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
 namespace AAMod.Items.BossSummons

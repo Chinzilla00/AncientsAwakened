@@ -1,8 +1,6 @@
-using AAMod.Items.Summoning.Minions;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips

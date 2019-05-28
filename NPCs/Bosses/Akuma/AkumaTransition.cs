@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.frame.Y = 0;
             }
 
-            if (npc.ai[0] > 375)
+            if (npc.ai[0] > 300)
             {
                 npc.alpha -= 5;
                 if (npc.alpha < 0)
@@ -77,14 +77,14 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.ai[0] == 375)          //if the npc.ai[0] has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
                 Main.NewText("Heh...", new Color(180, 41, 32));
-                AAMod.AkumaMusic = true;
+                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
             }
-            if (npc.ai[0] == 750)
+            if (npc.ai[0] == 560)
             {
                 Main.NewText("You know, kid...", new Color(180, 41, 32));
             }
 
-            if (npc.ai[0] >= 675)
+            if (npc.ai[0] >= 660)
             {
                 RVal -= 5;
                 BVal += 5;
@@ -98,21 +98,20 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
             }
 
-            if (npc.ai[0] == 975)
+            if (npc.ai[0] == 900)
             {
                 Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
             }
 
-            if (npc.ai[0] >= 1250 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaA"));
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
             }
 
             if (NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                AAMod.AkumaMusic = false;
                 npc.netUpdate = true;
                 npc.active = false;
             }

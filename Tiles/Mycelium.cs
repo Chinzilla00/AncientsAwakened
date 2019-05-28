@@ -14,7 +14,7 @@ namespace AAMod.Tiles
 			Main.tileSolid[Type] = true;
             TileID.Sets.Conversion.Grass[Type] = true;
             SetModTree(new MushroomTree());
-            Main.tileBlendAll[this.Type] = true;
+            Main.tileBlendAll[Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;
             dustType = mod.DustType("Mushdust");
 			AddMapEntry(new Color(100, 100, 0));
@@ -33,10 +33,11 @@ namespace AAMod.Tiles
                 PlaceObject(i, j - 1, mod.TileType("Mushroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);
             }
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(250) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1000) == 0)
             {
-                PlaceObject(i, j - 1, mod.TileType<Mushplants>());
-                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Mushplants>(), 0, 0, -1, -1);
+                int style = Main.rand.Next(5);
+                if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                    NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<MadnessShroom>(), style, 0, -1, -1);
             }
         }
 

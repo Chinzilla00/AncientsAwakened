@@ -13,13 +13,13 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             Main.tileSpelunker[Type] = true;
-            Main.tileMerge[Type][TileID.Stone] = true;
+            TileID.Sets.Ore[Type] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Prism");   //put your CustomBlock name
             dustType = DustID.Stone;
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Yttrium Ore");
+            name.SetDefault("Prism Ore");
             AddMapEntry(new Color(100, 100, 100), name);
 			minPick = 65;
         }

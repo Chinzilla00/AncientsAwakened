@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Solar");
             Tooltip.SetDefault(@"Spins with the speed of a planet orbiting the sun
-Inflicts daybreak");
+Inflicts daybroken");
         }
 
         public override void SetDefaults()

@@ -29,6 +29,7 @@ It feels hot, but comforting...");
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 5, 50, 0);
 			item.buffType = mod.BuffType("DragonSoul");
+            item.noUseGraphic = true;
 		}
 
 		public override void UseStyle(Player player)

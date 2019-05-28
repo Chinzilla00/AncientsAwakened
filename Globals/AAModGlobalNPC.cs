@@ -4,9 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Shen;
+using AAMod.NPCs.Enemies.Terrarium.PreHM;
+using AAMod.NPCs.Enemies.Terrarium.Hardmode;
+using AAMod.NPCs.Enemies.Terrarium.PostPlant;
+using AAMod.NPCs.Enemies.Terrarium.PostEquinox;
 using System;
 using BaseMod;
 using Terraria.Localization;
+
 
 namespace AAMod
 {
@@ -224,7 +229,7 @@ namespace AAMod
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= Math.Abs((int)(npc.velocity.X));
+                npc.lifeRegen -= Math.Abs((int)npc.velocity.X);
             }
         }
 
@@ -246,6 +251,8 @@ namespace AAMod
 
         public override void NPCLoot(NPC npc)
         {
+            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
+
             if (npc.type == NPCID.FireImp)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DevilSilk"), Main.rand.Next(2, 3));
@@ -361,7 +368,7 @@ namespace AAMod
                 npc.type == NPCID.AngryBonesBigHelmet ||
                 npc.type == NPCID.AngryBonesBigMuscle)
             {
-                if (Main.rand.NextFloat() < 0.1f)
+                if (Main.rand.NextFloat() < 0.01f)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AncientPoker"));
                 }
@@ -496,24 +503,16 @@ namespace AAMod
                 }
             }
 
-            if (Main.hardMode)
+            if (npc.type == NPCID.GoldBunny && NPC.downedGolemBoss)
             {
-                Player punishedPlayer = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
-                int lastCreatureHit = punishedPlayer.lastCreatureHit;
-                if (Item.BannerToNPC(lastCreatureHit) == 14) //14 is the banner ID for all bunny creatures.
-                {
-                    if (NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 50 == 0 && NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 100 != 0)
-                    {
-                        Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
-                    }
-                    if (NPC.killCount[Item.BannerToNPC(lastCreatureHit)] % 100 == 0)
-                    {
-                        Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
-                        Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                        SpawnBoss(punishedPlayer, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
-                    }
-                }
+                Item.NewItem(npc.getRect(), mod.ItemType("GoldenCarrot"), 1);
             }
+
+            if (isBunny && NPC.downedGolemBoss && Main.rand.Next(80) == 0)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("GoldenCarrot"), 1);
+            }
+
 
             if (Main.hardMode)
             {
@@ -546,6 +545,37 @@ namespace AAMod
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
                     }
                 }
+                if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)
+                {
+                    if (Main.rand.Next(0, 100) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TerraCrystal"), 1);
+                    }
+                }
+            }
+
+
+            if (Main.hardMode && isBunny)
+            {
+                Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
+                int bunnyKills = NPC.killCount[NPCID.Bunny];
+                if (bunnyKills % 100 == 0 && bunnyKills < 1000)
+                {
+                    Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                    SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                    
+                }
+                if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
+                {
+                    Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name + "!", 107, 137, 179);
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                    SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                }
+                if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
+                {
+                    Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
+                }
             }
         }
 
@@ -566,7 +596,7 @@ namespace AAMod
                 if (Main.rand.Next(4) < 3)
                 {
                     Lighting.AddLight((int)npc.Center.X / 16, (int)npc.Center.Y / 16, 0.3f, 0.8f, 1.1f);
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Electric, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Electric, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -695,11 +725,45 @@ namespace AAMod
                 }
             }
 
+            if (Hydratoxin)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType<Dusts.HydratoxinDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.3f, 0.7f);
+            }
+
+            if (Dragonfire)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType<Dusts.DragonflameDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.7f, 0.2f, 0.1f);
+            }
+
             if (terraBlaze)
             {
                 if (Main.rand.Next(4) < 3)
                 {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 3.5f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107, default(Color), 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -884,7 +948,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                ClearPoolWithExceptions(pool);
+                pool.Clear();
                 pool.Add(mod.NPCType("Searcher1"), .05f);
                 if (AAWorld.downedSag)
                 {
@@ -907,21 +971,35 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                ClearPoolWithExceptions(pool);
+                pool.Clear();
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(mod.NPCType("Bladon"), .1f);
-                    pool.Add(mod.NPCType("TerraDeadshot"), .1f);
-                    pool.Add(mod.NPCType("TerraWizard"), .1f);
-                    pool.Add(mod.NPCType("TerraWarlock"), .1f);
+                    pool.Add(mod.NPCType<Bladon>(), .05f);
+                    pool.Add(mod.NPCType<TerraDeadshot>(), .05f);
+                    pool.Add(mod.NPCType<TerraWizard>(), .05f);
+                    pool.Add(mod.NPCType<TerraWarlock>(), .05f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .03f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .03f);
                     return;
+                }
+                if (Main.hardMode)
+                {
+                    pool.Add(mod.NPCType<TerraProbe>(), .07f);
+                    pool.Add(mod.NPCType<TerraWatcher>(), .07f);
+                    pool.Add(mod.NPCType<TerraSquire>(), .07f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .03f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .03f);
                 }
                 if (NPC.downedBoss3)
                 {
-                    pool.Add(mod.NPCType("PurityWeaver"), .1f);
-                    pool.Add(mod.NPCType("PuritySphere"), .1f);
-                    pool.Add(mod.NPCType("PurityCrawler"), .1f);
-                    pool.Add(mod.NPCType("PuritySquid"), .1f);
+                    pool.Add(mod.NPCType<PurityWeaver>(), .1f);
+                    pool.Add(mod.NPCType<PuritySphere>(), .1f);
+                    pool.Add(mod.NPCType<PurityCrawler>(), .1f);
+                    pool.Add(mod.NPCType<PuritySquid>(), .1f);
                 }
             }
         }
@@ -937,6 +1015,13 @@ namespace AAMod
             if (type == NPCID.WitchDoctor && Main.hardMode)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("Mortar"));
+                nextSlot++;
+            }
+
+            if (type == NPCID.Dryad && AAWorld.downedRajah)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenCarrot"));
+                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(1, 0, 0, 0);
                 nextSlot++;
             }
         }
@@ -1014,6 +1099,24 @@ namespace AAMod
                         }
                     }
                 }
+            }
+            else
+            {
+                //I have no idea how to convert this to the standard system so im gonna post this method too lol
+                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
+            }
+        }
+
+        public static void SpawnRajah(Player player, int bossType, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (npcCenter == default(Vector2))
+                npcCenter = player.Center;
+            if (Main.netMode != 1)
+            {
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                Main.npc[npcID].Center = npcCenter;
+
             }
             else
             {

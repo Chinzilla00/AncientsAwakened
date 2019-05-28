@@ -1,13 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles
 {
-	public class OrderArrow : ModProjectile
+    public class OrderArrow : ModProjectile
 	{
 		public static int defense = 0;
 		public override void SetStaticDefaults()
@@ -23,7 +19,8 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			aiType = 1;
-		}
+            projectile.arrow = true;
+        }
 
 		public override void AI()
 		{

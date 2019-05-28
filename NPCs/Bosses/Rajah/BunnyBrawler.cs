@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.width = 48;
             npc.height = 40;
             npc.aiStyle = -1;
-            npc.damage = 80;
+            npc.damage = 120;
             npc.defense = 60;
             npc.lifeMax = 400;
             npc.knockBackResist = 0f;
@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             for (int m = 0; m < (isDead ? 35 : 6); m++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
             }
         }
 

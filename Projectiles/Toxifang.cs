@@ -1,11 +1,10 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-	public class Toxifang : ModProjectile
+    public class Toxifang : ModProjectile
 	{
 		public override void SetDefaults()
 		{

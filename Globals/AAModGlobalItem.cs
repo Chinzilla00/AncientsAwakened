@@ -1,16 +1,10 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Retriever;
 using AAMod.Items.Boss.Grips;
-using AAMod.Items.Dev;
-using System;
-using Terraria.Localization;
 
 namespace AAMod
 {

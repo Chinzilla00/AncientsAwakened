@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using AAMod;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

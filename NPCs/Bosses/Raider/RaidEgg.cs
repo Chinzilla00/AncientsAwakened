@@ -34,9 +34,6 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.npcSlots = 0f;
         }
 
-
-
-        public static Texture2D glowTex = null;
         public Color color;
 
         public override void NPCLoot()
@@ -45,17 +42,15 @@ namespace AAMod.NPCs.Bosses.Raider
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/RaidEggGore2"), 1f);
         }
 
-        /*public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/RaidEgg_Glow");
-            }
+
+            Texture2D glowTex = mod.GetTexture("Glowmasks/RaidEgg_Glow");
             color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color, true);
             return false;
-        }*/
+        }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

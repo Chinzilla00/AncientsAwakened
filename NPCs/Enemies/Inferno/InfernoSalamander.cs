@@ -34,6 +34,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.lavaImmune = true;
             npc.noGravity = false;
             npc.noTileCollide = false;
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
 
         }
 

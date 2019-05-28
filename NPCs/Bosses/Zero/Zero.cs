@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
-                    Main.NewText("PHYSICAL ZER0 B0DY IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    Main.NewText("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)
@@ -208,6 +208,12 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
+            Texture2D Vortex = mod.GetTexture("NPCs/Bosses/Zero/CycloneProtocol");
+
+            if (VortexScale > 0)
+            {
+                BaseDrawing.DrawTexture(spritebatch, Vortex, 0, npc.position, npc.width, npc.height, VortexScale, 0, 0, 1, new Rectangle(0, 0, Vortex.Width, Vortex.Height), Color.White, true);
+            }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
@@ -225,7 +231,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public int MinionTimer = 0;
         public int LineStopper = 180;
         public Vector2 offsetBasePoint = new Vector2(-240f, 0f);
-        public float UnitRotation;
         public float[] internalAI = new float[4];
         public static int ChargeType = 0, XPos = 1, YPos = 2, PrepareCharge = 2;
 
@@ -292,7 +297,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[index4].netUpdate = true;
                 Main.npc[index4].ai[3] = 150f;
             }
-            npc.rotation = npc.velocity.X / 15f;
 
             if (npc.type == mod.NPCType<Zero>() && 
                 (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
@@ -361,6 +365,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     ShieldScale = .5f;
                 }
+            }
+
+            if (ShieldScale < 0)
+            {
+                ShieldScale = 0;
             }
 
             if (Main.player[npc.target].dead)
@@ -471,7 +480,14 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = true;
                 npc.damage = 200;
-                npc.rotation += .08f;
+                if (npc.velocity.X > 0)
+                {
+                    npc.rotation += .08f;
+                }
+                else
+                {
+                    npc.rotation -= .08f;
+                }
                 Vector2 vector45 = new Vector2(npc.position.X + ((float)npc.width * 0.5f), npc.position.Y + ((float)npc.height * 0.5f));
                 float num444 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector45.X;
                 float num445 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector45.Y;
@@ -519,7 +535,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.velocity.X = npc.velocity.X * 0.95f;
                 if (npc.timeLeft > 500)
                 {
-                    npc.timeLeft = 500;
+                    npc.velocity.Y += 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
                     return;
                 }
             }
@@ -538,13 +557,96 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (internalAI[1] >= 180)
                 {
                     npc.dontTakeDamage = false;
+                    internalAI[1] = 0;
                     npc.ai[2] = 0f;
                     npc.ai[1] = 0f;
                     npc.TargetClosest(true);
                     npc.netUpdate = true;
                 }
             }
+            else if (npc.ai[1] == 8f)
+            {
+                internalAI[1]++;
+                if (internalAI[1] == 1) Main.NewText("CYCLONE PROTOCOL ENGAGED", Color.Red);
+                npc.rotation += .2f;
+                
+
+                if (internalAI[1] > 120)
+                {
+                    if (SelectPoint)
+                    {
+                        int DirectionX = -1;
+                        if (Main.player[npc.target].Center.X > npc.Center.X)
+                        {
+                            DirectionX = 1;
+                        }
+                        int DirectionY = -1;
+                        if (Main.player[npc.target].Center.Y > npc.Center.Y)
+                        {
+                            DirectionY = 1;
+                        }
+                        float Pointx = 500 * DirectionX;
+                        float PointY = 200 * DirectionY;
+                        MovePoint = Main.player[npc.target].Center + new Vector2(Pointx, PointY);
+                        SelectPoint = false;
+                        npc.netUpdate = true;
+                    }
+                    VortexMovement(MovePoint);
+
+                    npc.netUpdate = true;
+                }
+                else
+                {
+                    npc.frame.Y = 0;
+                    npc.dontTakeDamage = true;
+                    npc.velocity *= 0.8f;
+                }
+
+                if (internalAI[1] >= 260)
+                {
+                    if (VortexScale > 0)
+                    {
+                        VortexScale -= .05f;
+                    }
+                    else
+                    {
+                        VortexScale = 0f;
+                    }
+
+                    if (npc.rotation != 0)
+                    {
+                        npc.rotation += .1f;
+                    }
+                    npc.velocity *= 0.8f;
+                    npc.netUpdate = true;
+                    if (npc.rotation == 0)
+                    {
+                        npc.dontTakeDamage = false;
+                        internalAI[1] = 0;
+                        npc.ai[2] = 0f;
+                        npc.ai[1] = 0f;
+                        npc.TargetClosest(true);
+                        npc.netUpdate = true;
+                    }
+                }
+                else
+                {
+                    if (VortexScale < 1f)
+                    {
+                        VortexScale += .05f;
+                    }
+                    else
+                    {
+                        VortexScale = 1f;
+                    }
+                }
+
+            }
         }
+
+        public Vector2 MovePoint = new Vector2(0, 0);
+        public bool SelectPoint = false;
+        public float VortexScale = .1f;
 
         public static void DrawArm(Mod mod, NPC npc, SpriteBatch spriteBatch, Color drawColor)
         {
@@ -590,8 +692,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-
-
         public void MoveToPoint(Vector2 point)
         {
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
@@ -617,6 +717,37 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
+        }
+
+        public void VortexMovement(Vector2 point)
+        {
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+            if (dist == new Vector2(0, 0))
+            {
+                SelectPoint = true;
+            }
         }
     }
 }

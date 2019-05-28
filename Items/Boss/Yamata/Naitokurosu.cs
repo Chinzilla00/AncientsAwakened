@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -12,9 +11,11 @@ namespace AAMod.Items.Boss.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Naitokurosu");
-            Tooltip.SetDefault(@"Grants you the abilities of a true master ninja
+            Tooltip.SetDefault(@"8% increased ranged damage
+Grants you the abilities of a true master ninja
 Allows you to do a speedy dash
 You move twice as fast and your ranged attacks & minions inflict Venom
+While in the mire, you gain 18% increased ranged damage instead of 9%
 At night, you move three times as fast and your ranged attacks & minions inflict Moonraze");
         }
 
@@ -130,6 +131,14 @@ At night, you move three times as fast and your ranged attacks & minions inflict
             player.GetModPlayer<AAPlayer>().Naitokurosu = true;
             player.buffImmune[mod.BuffType("HydraToxin")] = true;
             player.buffImmune[mod.BuffType("Clueless")] = true;
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
+            {
+                player.rangedDamage += .18f;
+            }
+            else
+            {
+                player.rangedDamage += .08f;
+            }
             if (Main.dayTime)
             { 
                 player.moveSpeed += 2f;

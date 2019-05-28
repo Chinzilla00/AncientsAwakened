@@ -1,8 +1,5 @@
-using Terraria.Graphics.Shaders;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using System;
 using Terraria.ID;
 
 namespace AAMod.Items.Armor.Raider

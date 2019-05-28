@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -32,14 +31,9 @@ namespace AAMod.NPCs.Bosses.Grips
             }
         }
 
-        public static Texture2D glowTex = null;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            if (glowTex == null)
-            {
-                glowTex = mod.GetTexture("Glowmasks/GripOfChaosRed_Glow");
-            }
+            Texture2D glowTex = mod.GetTexture("Glowmasks/GripOfChaosRed_Glow");
             BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
             return false;
@@ -76,14 +70,10 @@ namespace AAMod.NPCs.Bosses.Grips
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))       //Chances for it to inflict the debuff
+            if (Main.rand.Next(2) == 0 || (Main.expertMode && Main.rand.Next(0) == 0))
             {
-                target.AddBuff(BuffID.OnFire, Main.rand.Next(180, 250));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
+                target.AddBuff(BuffID.OnFire, Main.rand.Next(180, 250));
             }
-            /*if (Main.rand.Next(9) == 0 || (Main.expertMode && Main.rand.Next(7) == 0))
-            {
-                target.AddBuff(BuffID.Poisoned, Main.rand.Next(250, 500));                 //there is no need for this, unless it inflicts a different debuff
-            }*/
         }
     }
 }

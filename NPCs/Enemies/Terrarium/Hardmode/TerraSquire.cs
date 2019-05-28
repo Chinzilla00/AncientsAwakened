@@ -34,25 +34,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             animationType = NPCID.GraniteGolem;
         }
 
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this

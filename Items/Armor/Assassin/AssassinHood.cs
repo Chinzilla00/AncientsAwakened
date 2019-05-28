@@ -1,10 +1,9 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Assassin
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class AssassinHood : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
+            npc.lavaImmune = true;
         }
         public override bool PreAI()
         {

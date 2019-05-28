@@ -10,46 +10,41 @@ namespace AAMod.Projectiles
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Arrow");     //The English name of the projectile
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        //The recording mode
+            DisplayName.SetDefault("Chaos Arrow");
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;               //The width of projectile hitbox
-			projectile.height = 34;              //The height of projectile hitbox
-			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
-			projectile.friendly = true;         //Can the projectile deal damage to enemies?
-			projectile.hostile = false;         //Can the projectile deal damage to the player?
-			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
-			projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+			projectile.width = 14;
+			projectile.height = 34;
+			projectile.aiStyle = 1;
+			projectile.friendly = true;
+			projectile.hostile = false;
+			projectile.ranged = true;
+			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.alpha = 100;
 			projectile.light = 0.5f;
 			projectile.ignoreWater = true;
 			projectile.tileCollide = false;
 			projectile.extraUpdates = 1;
-			aiType = ProjectileID.FrostburnArrow;           
-            
-		}
+			aiType = ProjectileID.FrostburnArrow;
+            projectile.arrow = true;
+
+        }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-			switch (Main.rand.Next(4))
+			switch (Main.rand.Next(2))
 			{
 				case 0:
-				target.AddBuff(BuffID.OnFire, 300);
-				break;
+                    target.AddBuff(mod.BuffType("Dragonfire"), 300);
+                    break;
 				case 1:
-				target.AddBuff(BuffID.Venom, 300);
-				break;
-				case 2:
-				target.AddBuff(mod.BuffType("Dragonfire"), 300);
-				break;
-				case 3:
-				target.AddBuff(mod.BuffType("HydraToxin"), 300);
-				break;
+                    target.AddBuff(mod.BuffType("HydraToxin"), 300);
+                    break;
 			}
         }
 

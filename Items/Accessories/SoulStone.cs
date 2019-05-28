@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,9 +10,6 @@ namespace AAMod.Items.Accessories
     [AutoloadEquip(EquipType.Face)]
     public class SoulStone : ModItem
     {
-        
-        public static ModItem _ref;
-        public static Texture2D _glow;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Stone");
@@ -31,8 +26,6 @@ Allows you to detect the souls of creatures, detect valuable resources, and see 
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

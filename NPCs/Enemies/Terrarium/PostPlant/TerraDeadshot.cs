@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -29,26 +28,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.buffImmune[31] = false;
             animationType = NPCID.VortexRifleman;
         }
-
-        public override void PostAI()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                npc.life = 0;
-            }
-        }
-
-        public override bool PreNPCLoot()
-        {
-            Player player = Main.player[Main.myPlayer];
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
-            {
-                return false;
-            }
-            return true;
-        }
-
+        
         public override void AI()
         {
             bool flag4 = false;

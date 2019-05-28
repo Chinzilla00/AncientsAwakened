@@ -1,12 +1,10 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-	public class MireFoliage5 : ModTile
+    public class MireFoliage5 : ModTile
 	{
 		public override void SetDefaults()
 		{

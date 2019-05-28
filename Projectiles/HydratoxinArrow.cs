@@ -16,28 +16,21 @@ namespace AAMod.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.width = 14;
-			projectile.height = 32;
+			projectile.height = 12;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.ranged = true;
-			projectile.penetrate = 2;
+			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.alpha = 0;
 			projectile.light = 0.5f;
 			projectile.ignoreWater = false;
 			projectile.tileCollide = true;
 			projectile.extraUpdates = 1;
-			aiType = ProjectileID.VenomArrow;           
-		}
-
-
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.Blue;
+			aiType = ProjectileID.VenomArrow;
+            projectile.arrow = true;
         }
-
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
@@ -51,7 +44,6 @@ namespace AAMod.Projectiles
 			}
 			return true;
 		}
-
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

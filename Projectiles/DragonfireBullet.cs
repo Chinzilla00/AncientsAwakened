@@ -31,11 +31,6 @@ namespace AAMod.Projectiles
 			projectile.extraUpdates = 1;
 			aiType = ProjectileID.Bullet;           
 		}
-		
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.Red;
-		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
@@ -52,7 +47,7 @@ namespace AAMod.Projectiles
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			target.AddBuff(mod.DustType("DragonFire"), 90);
+			target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 90);
 		}
 	}
 }

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -7,7 +6,6 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -144,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
             
 
-            if (!runningAway && foundTarget)
+            if ((!runningAway && foundTarget) || !Main.dayTime)
             {
                 int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
                 float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
@@ -248,9 +246,9 @@ namespace AAMod.NPCs.Bosses.Hydra
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 30);
                 Vector2 connector = head.Center;
-                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
-                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, npc.GetAlpha(drawColor), 1f, false, null);
+                spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, npc.GetAlpha(drawColor), head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, npc.GetAlpha(Color.White), head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
                 
             }
         }

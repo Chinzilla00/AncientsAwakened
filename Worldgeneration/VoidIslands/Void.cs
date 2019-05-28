@@ -1,21 +1,12 @@
-using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using Terraria;
-using Terraria.Utilities;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
-using Terraria.GameContent.Generation;
 using BaseMod;
-using AAMod.Tiles;
 
 namespace AAMod.Worldgeneration
-{ 
+{
     public class VoidIslands : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)

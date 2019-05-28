@@ -1,4 +1,3 @@
-using AAMod.Items.Summoning.Minions;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

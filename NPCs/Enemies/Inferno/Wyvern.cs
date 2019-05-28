@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-	public class Wyvern : AANPC
+    public class Wyvern : AANPC
 	{
 		public override void SetStaticDefaults()
         {
@@ -34,7 +29,9 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.DeathSound = SoundID.NPCDeath5;
             npc.knockBackResist = 0.5f;
             npc.noTileCollide = false;
-		}
+            npc.lavaImmune = true;
+            npc.buffImmune[BuffID.OnFire] = true;
+        }
 
 		public bool brokenJaw = false;
 		public bool canFire = false;
@@ -139,7 +136,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 			if (internalAI[0] < 300)
 			{
 				Player player = Main.player[npc.target];
-				Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseMod.BaseUtility.RotationTo(npc.Center, player.Center));
+				Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
 				BaseAI.AITackle(npc, ref npc.ai, player.Center + offsetVec, 0.35f, 6f, true, 60);
 				BaseAI.LookAt(player.Center, npc, 0);
 			}
@@ -160,6 +157,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
                 }
 			}
+            npc.rotation = 0;
 		}
 	}
 }

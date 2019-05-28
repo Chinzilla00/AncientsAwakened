@@ -39,13 +39,13 @@ namespace AAMod.Items.Usable
 
             if (player.altFunctionUse == 2)
             {
-                item.shoot = mod.ProjectileType("Flask");
-                item.shootSpeed = 1f;
+                item.shoot = mod.ProjectileType<Projectiles.Flasks.SporeSac>();
+                item.shootSpeed = 9f;
             }
             else
             {
                 item.shoot = mod.ProjectileType("SPORZ");
-                item.shootSpeed = 4f;
+                item.shootSpeed = 2f;
             }
             return base.CanUseItem(player);
         }

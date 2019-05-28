@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.width = 40;
             npc.height = 70;
             npc.damage = 25;
-            npc.defense = 40;
+            npc.defense = 70;
             npc.lifeMax = 37500;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
@@ -200,18 +200,24 @@ namespace AAMod.NPCs.Bosses.Zero
                 ++internalAI[0];
                 if (internalAI[0] <= 200.0)
                     return;
-                internalAI[0] = 0.0f;
-                float num4 = 8f;
-                int Damage = npc.damage;
-                int Type = 100;
-                float num5 = num4 / num3;
-                float num6 = num1 * num5;
-                float num7 = num2 * num5;
-                float SpeedX = num6 + (Main.rand.Next(-40, 41) * 0.05f);
-                float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
-                vector2.X += SpeedX * 8f;
-                vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                if (internalAI[0] > 300.0)
+                {
+                    internalAI[0] = 0.0f;
+                }
+                if (internalAI[0] % 6 == 0)
+                {
+                    float num4 = 8f;
+                    int Damage = npc.damage;
+                    int Type = mod.ProjectileType<OmegaBullet>();
+                    float num5 = num4 / num3;
+                    float num6 = num1 * num5;
+                    float num7 = num2 * num5;
+                    float SpeedX = num6 + (Main.rand.Next(-40, 41) * 0.05f);
+                    float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
+                    vector2.X += SpeedX * 8f;
+                    vector2.Y += SpeedY * 8f;
+                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                }
             }
             else
             {
@@ -266,18 +272,24 @@ namespace AAMod.NPCs.Bosses.Zero
                 ++internalAI[0];
                 if (internalAI[0] <= 80.0)
                     return;
-                internalAI[0] = 0.0f;
-                float num9 = 10f;
-                int Damage = npc.damage;
-                int Type = mod.ProjectileType<OmegaBullet>();
-                float num10 = num9 / num8;
-                float num11 = num6 * num10;
-                float num12 = num7 * num10;
-                float SpeedX = num11 + (Main.rand.Next(-40, 41) * 0.05f);
-                float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
-                vector2.X += SpeedX * 8f;
-                vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                if (internalAI[0] > 140.0)
+                {
+                    internalAI[0] = 0.0f;
+                }
+                if (internalAI[0] % 5 == 0)
+                {
+                    float num9 = 10f;
+                    int Damage = npc.damage;
+                    int Type = mod.ProjectileType<OmegaBullet>();
+                    float num10 = num9 / num8;
+                    float num11 = num6 * num10;
+                    float num12 = num7 * num10;
+                    float SpeedX = num11 + (Main.rand.Next(-40, 41) * 0.05f);
+                    float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
+                    vector2.X += SpeedX * 8f;
+                    vector2.Y += SpeedY * 8f;
+                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                }
             }
         }
 

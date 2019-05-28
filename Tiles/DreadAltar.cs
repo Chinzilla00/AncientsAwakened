@@ -3,15 +3,7 @@ using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.DataStructures;
-using System.Diagnostics;
-using System.Collections.Generic;
-using Terraria.Enums;
-using System;
 using BaseMod;
-using AAMod.NPCs.Bosses.Yamata;
-using AAMod.NPCs.Bosses.Yamata.Awakened;
-using Terraria.ID;
 
 namespace AAMod.Tiles
 {

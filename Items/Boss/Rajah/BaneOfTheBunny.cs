@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,6 +30,7 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("BaneS");
             item.shootSpeed = 4f;
+            item.rare = 8;
         }
 
         public override bool AltFunctionUse(Player player)

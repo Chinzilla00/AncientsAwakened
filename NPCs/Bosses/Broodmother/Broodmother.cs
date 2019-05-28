@@ -233,17 +233,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
 			pos = (npc.ai[1] == 0 ? -250 : 250);
 
-            npc.TargetClosest();			
-            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest();
-                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-                {
-                    internalAI[1] = AISTATE_RUNAWAY;
-                    npc.ai = new float[4];
-                }
-            }
             
+
             if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 npc.dontTakeDamage = true;
@@ -276,12 +267,30 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
                 return;
             }
-
             else
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
             }
+
+            if (!Main.dayTime)
+            {
+                internalAI[1] = AISTATE_RUNAWAY;
+                npc.ai = new float[4];
+                return;
+            }
+            npc.TargetClosest();
+            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+            {
+                npc.TargetClosest();
+                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
+                {
+                    internalAI[1] = AISTATE_RUNAWAY;
+                    npc.ai = new float[4];
+                    return;
+                }
+            }
+
 
             if (internalAI[1] == AISTATE_FIREBREATH)
             {
@@ -341,7 +350,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         if (projectileTimer > (projectileInterval + 50))
                             projectileTimer = 0;
                         Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
-                        Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 28f);
+                        Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 10f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);
                         Main.projectile[projID].netUpdate = true;
