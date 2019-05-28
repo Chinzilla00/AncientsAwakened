@@ -23,9 +23,10 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            projectile.ai[0] += 1f;
-
-            if(projectile.ai[0] >= 180f)
+            projectile.localAI[0] += 1f;
+            projectile.alpha += 10;
+            projectile.scale += 0.3f;
+            if (projectile.alpha >= 255)
             {
                 projectile.Kill();
             }
