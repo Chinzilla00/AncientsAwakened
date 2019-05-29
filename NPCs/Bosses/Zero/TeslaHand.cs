@@ -12,7 +12,6 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class TeslaHand : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Arm");
@@ -45,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public float[] internalAI = new float[1];
+        public float[] internalAI = new float[2];
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write((short)npc.localAI[0]);
@@ -54,6 +53,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 writer.Write((short)npc.localAI[0]);
                 writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
             }
         }
 
@@ -65,6 +65,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.localAI[0] = reader.ReadInt16();
                 internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
             }
         }
 
@@ -131,27 +132,27 @@ namespace AAMod.NPCs.Bosses.Zero
 
             internalAI[0]++;
 
-            if (internalAI[0] > 40)
+            if (internalAI[0] > 120)
             {
                 Player player = Main.player[npc.target];
                 float spread = 45f * 0.0174f;
                 Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
-                dir *= 9f;
+                dir *= 4f;
                 float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                 double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                 double deltaAngle = spread / 6f;
-                internalAI[2]++;
-                if (internalAI[2] > 40)
+                internalAI[1]++;
+                if (internalAI[1] > 40)
                 {
-                    internalAI[2] = 0;
+                    internalAI[1] = 0;
                     for (int i = 0; i < 3; i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
                         int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("Static"), (int)(npc.damage * .75f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
-                        if (Main.netMode == 2 && Proj < 200)
+                        if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                         {
-                            NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                         }
                     }
                     npc.netUpdate2 = true;

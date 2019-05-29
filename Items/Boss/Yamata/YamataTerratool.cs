@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Yamata
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
-            item.pick = 260;
+            item.pick = 300;
 
         }
 

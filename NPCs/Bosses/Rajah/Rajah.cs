@@ -266,7 +266,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             Main.npc[Proj].netUpdate2 = true;
                             if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                             {
-                                NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                             }
                         }
                     }
@@ -284,7 +284,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
@@ -296,7 +296,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
@@ -308,25 +308,25 @@ namespace AAMod.NPCs.Bosses.Rajah
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                                 Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                                 Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                                 Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 Main.npc[Proj].netUpdate2 = true;
                                 if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                         }
@@ -346,7 +346,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     Main.projectile[Proj].netUpdate = true;
                     if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                     {
-                        NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                     }
                     npc.netUpdate2 = true;
                 }
@@ -370,7 +370,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         Main.projectile[Proj].netUpdate = true;
                         if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                         {
-                            NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                         }
                     }
                     npc.netUpdate2 = true;
@@ -390,7 +390,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         Main.projectile[Proj].netUpdate = true;
                         if (Main.netMode == 2 && Proj < Main.maxProjectiles)
                         {
-                            NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
                         }
                     }
                 }

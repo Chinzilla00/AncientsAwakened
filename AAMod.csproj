@@ -6898,8 +6898,6 @@
     <None Include=".vs\config\applicationhost.config" />
     <None Include=".vs\slnx.sqlite" />
     <None Include=".vs\VSWorkspaceState.json" />
-    <None Include="Effects\dyeshader.xnb" />
-    <None Include="Effects\TotalBlack.xnb" />
     <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
     <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />

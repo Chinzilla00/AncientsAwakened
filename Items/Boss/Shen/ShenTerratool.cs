@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Shen
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 120;
-            item.pick = 270;
+            item.pick = 320;
 
         }
 

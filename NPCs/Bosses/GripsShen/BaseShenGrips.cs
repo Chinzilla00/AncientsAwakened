@@ -105,7 +105,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 		}
 
 		public Vector2 offsetBasePoint = Vector2.Zero;
-		public float moveSpeed = 10f;
+		public float moveSpeed = 14f;
         public int MinionTimer = 0;
 
         public float[] internalAI = new float[1];
@@ -258,7 +258,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
                     }
                     MinionTimer = 0;
                 }
-				moveSpeed = 12f;
+				moveSpeed = 16f;
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
 				if(Main.netMode != 1)

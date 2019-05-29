@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Akuma
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
-            item.pick = 260;
+            item.pick = 300;
 
         }
 

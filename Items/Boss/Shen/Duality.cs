@@ -20,8 +20,7 @@ Attack is multiplied by 13%
 While in the chaos biomes, your attack multiplier is increased to 30%
 While in the Inferno, your defense is increased by 10
 While in the Mire, your speed is increased by 50%
-Grants a strong dash that shreds through enemies
-Grants effects of the Discordian Rampart");
+Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
         }
 
@@ -91,7 +90,7 @@ Grants effects of the Discordian Rampart");
             }
             else
             {
-
+                player.moveSpeed += 0f;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
