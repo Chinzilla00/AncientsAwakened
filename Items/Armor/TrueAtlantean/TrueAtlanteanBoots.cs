@@ -10,9 +10,7 @@ namespace AAMod.Items.Armor.TrueAtlantean
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Triton Greaves");
-            Tooltip.SetDefault(@"Increases magic critical strike chance by 15%
-Allows to freely move in liquids");
-
+            Tooltip.SetDefault(@"Increases magic critical strike chance by 15%");
         }
 
 		public override void SetDefaults()
@@ -27,8 +25,6 @@ Allows to freely move in liquids");
 		public override void UpdateEquip(Player player)
 		{
 			player.magicCrit += 15;
-            player.accFlipper = true;
-			player.ignoreWater = true;
 		}
 		
 		public override void AddRecipes()

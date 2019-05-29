@@ -11,8 +11,6 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Asgardian Chestplate");
-			Tooltip.SetDefault(@"Increases melee damage by 15%");
-
 		}
 
 		public override void SetDefaults()
@@ -21,12 +19,7 @@ namespace AAMod.Items.Armor.TrueRaider
 			item.height = 24;
 			item.value = Item.sellPrice (0, 5, 0, 0);
 			item.rare = 7;
-			item.defense = 19;
-		}
-		
-		public override void UpdateEquip(Player player)
-		{
-            player.meleeDamage += 0.2f;
+			item.defense = 27;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -36,12 +29,14 @@ namespace AAMod.Items.Armor.TrueRaider
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"You are immune to Chilled, Frozen and Frostburn debuffs
-You quickly regenerate your HP while staying";
-			player.buffImmune[44] = true;
+            player.setBonus = @"You are immune to all cold-related debuffs
+You quickly regenerate your HP while standing still
+You are immune to knockback";
+            player.buffImmune[44] = true;
 			player.buffImmune[46] = true;
 			player.buffImmune[47] = true;
-			if (player.velocity.X == 0f && player.velocity.Y == 0f)
+            player.noKnockback = true;
+            if (player.velocity.X == 0f && player.velocity.Y == 0f)
 			{
 				if (player.statLife < player.statLifeMax2)
 				{
@@ -54,6 +49,10 @@ You quickly regenerate your HP while staying";
 					counter++;
 				}
 			}
+            else
+            {
+                counter = 0;
+            }
         }
 		
 		public override void AddRecipes()

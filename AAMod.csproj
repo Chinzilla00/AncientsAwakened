@@ -72,6 +72,7 @@
     <Compile Include="AAUtils.cs" />
     <Compile Include="AAWorld.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
+    <Compile Include="Buffs\ScoutMinion.cs" />
     <Compile Include="Buffs\Socc.cs" />
     <Compile Include="Buffs\SockPuppet.cs" />
     <Compile Include="Dusts\SnapDust.cs" />
@@ -1376,7 +1377,6 @@
     <Compile Include="Items\Usable\IndigoSolution.cs" />
     <Compile Include="Items\Usable\InfernoCrate.cs" />
     <Compile Include="Items\Usable\InfernoKey.cs" />
-    <Compile Include="Items\Usable\KeyOfBlight.cs" />
     <Compile Include="Items\Usable\KeyOfSmite.cs" />
     <Compile Include="Items\Usable\KeyOfSpite.cs" />
     <Compile Include="Items\Usable\MireCrate.cs" />
@@ -2620,12 +2620,11 @@
     <Content Include="Buffs\RoyalKitten.png" />
     <Content Include="Buffs\SagOrbiter.png" />
     <Content Include="Buffs\SagShield.png" />
+    <Content Include="Buffs\ScoutMinion.png" />
     <Content Include="Buffs\Searcher.png" />
     <Content Include="Buffs\Sharkron.png" />
     <Content Include="Buffs\Shroomed.png" />
     <Content Include="Buffs\SkullMinion.png" />
-    <Content Include="Buffs\Snagged.png" />
-    <Content Include="Buffs\Snagged2.png" />
     <Content Include="Buffs\SnakeMinion.png" />
     <Content Include="Buffs\Socc.png" />
     <Content Include="Buffs\SockPuppet.png" />
@@ -5419,7 +5418,6 @@
     <Content Include="Items\Usable\InfernoCrate.png" />
     <Content Include="Items\Usable\InfernoKey.png" />
     <Content Include="Items\Usable\InfernoSeeds.png" />
-    <Content Include="Items\Usable\KeyOfBlight.png" />
     <Content Include="Items\Usable\KeyOfSmite.png" />
     <Content Include="Items\Usable\KeyOfSpite.png" />
     <Content Include="Items\Usable\MireCrate.png" />

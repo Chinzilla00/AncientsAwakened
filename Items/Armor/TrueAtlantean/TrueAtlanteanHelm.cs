@@ -38,11 +38,14 @@ Allows to breath underwater");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"While submerged in liquids, player is getting special buff for 30 seconds";
+			player.setBonus = @"While submerged in liquids, your magic abilities are increased drastically
+You can swim and water does not affect your movement";
 			if (player.wet)
 			{
 				player.AddBuff(mod.BuffType("AtlanteanBuff"), 1800);
-			}
+            }
+            player.accFlipper = true;
+            player.ignoreWater = true;
         }
 		
 		public override void AddRecipes()

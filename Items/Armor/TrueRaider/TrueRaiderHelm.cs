@@ -9,9 +9,7 @@ namespace AAMod.Items.Armor.TrueRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
 			DisplayName.SetDefault("Asgardian Helmet");
-            Tooltip.SetDefault(@"Increases melee speed by 15%");
         }
 
 		public override void SetDefaults()
@@ -20,7 +18,7 @@ namespace AAMod.Items.Armor.TrueRaider
 			item.height = 24;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
-            item.defense = 17;
+            item.defense = 25;
         }
 		
 		public override void UpdateEquip(Player player)

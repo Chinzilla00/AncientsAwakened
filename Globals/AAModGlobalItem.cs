@@ -29,11 +29,11 @@ namespace AAMod
             }
         }
 
-        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            if (item.type == ItemID.AnkhShield)
+            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnet>())
             {
-                player.meleeSpeed += 0.07f;
+                grabRange += 250;
             }
         }
 

@@ -10,8 +10,7 @@ namespace AAMod.Items.Armor.Raider
 		public static int counter = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Raider Chestplate");
-			Tooltip.SetDefault(@"Increases melee damage by 15%");
+			DisplayName.SetDefault("Raider Chestplate");=
 
 		}
 
@@ -21,12 +20,7 @@ namespace AAMod.Items.Armor.Raider
 			item.height = 24;
 			item.value = Item.sellPrice (0, 0, 5, 0);
 			item.rare = 4;
-			item.defense = 9;
-		}
-		
-		public override void UpdateEquip(Player player)
-		{
-            player.meleeDamage += 0.15f;
+			item.defense = 14;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

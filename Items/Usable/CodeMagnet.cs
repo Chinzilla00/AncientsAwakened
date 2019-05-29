@@ -15,9 +15,18 @@ namespace AAMod.Items.Usable
         public override void SetDefaults()
         {
             item.width = item.height = 16;
-            item.rare = 6;
+            item.rare = 4;
             item.maxStack = 1;
-			item.value = 800000;
+			item.value = 8000;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Doomite", 20);
+            recipe.AddTile(null, "HellstoneAnvil");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

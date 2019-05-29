@@ -39,8 +39,8 @@ namespace AAMod.Items.Armor.TrueAbyssal
 		{
             player.setBonus = @"Your minions are imbued with the venomous properties of bogtoxin
 Enemies are less likely to target you
-7% reduced ammo consumption
-When hiding in shadow, you enter stealth mode";
+Night Vision and hunter effects
+75% reduced ammo consumption";
             player.GetModPlayer<AAPlayer>(mod).trueAbyssal = true;
             player.ammoCost75 = true;
             player.nightVision = true;

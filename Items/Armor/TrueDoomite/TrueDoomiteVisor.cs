@@ -36,18 +36,18 @@ namespace AAMod.Items.Armor.TrueDoomite
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = @"+4 Minion slots
-Void searchers fight by your side";
+A void scout hunts down your foes for you";
             player.maxMinions += 4;
             player.GetModPlayer<AAPlayer>(mod).doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(mod.BuffType("Searcher")) == -1)
+                if (player.FindBuffIndex(mod.BuffType("ScoutMinion")) == -1)
                 {
-                    player.AddBuff(mod.BuffType("Searcher"), 3600, true);
+                    player.AddBuff(mod.BuffType("ScoutMinion"), 3600, true);
                 }
-                if (player.ownedProjectileCounts[mod.ProjectileType("Searcher")] < 3)
+                if (player.ownedProjectileCounts[mod.ProjectileType("ScoutMinion")] < 1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Searcher"), 55, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ScoutMinion"), 55, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }

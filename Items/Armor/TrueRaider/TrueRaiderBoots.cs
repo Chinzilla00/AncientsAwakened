@@ -10,7 +10,6 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Asgardian Greaves");
-            Tooltip.SetDefault(@"Increases melee critical strike chance by 10%");
 
         }
 
@@ -20,12 +19,7 @@ namespace AAMod.Items.Armor.TrueRaider
 			item.height = 24;
 			item.value = Item.sellPrice(0, 5, 0, 0);
 			item.rare = 7;
-			item.defense = 18;
-		}
-        
-		public override void UpdateEquip(Player player)
-		{
-			player.meleeCrit += 15;
+			item.defense = 26;
 		}
 		
 		public override void AddRecipes()
