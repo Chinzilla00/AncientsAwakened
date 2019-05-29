@@ -41,27 +41,8 @@ namespace AAMod.Projectiles.Zero
             {
                 projectile.alpha = 80;
             }
-            if (projectile.ai[1] == 0)
-            {
-                if (projectile.scale > 1f)
-                {
-                    projectile.scale = 1f;
-                }
-                else
-                {
-                    projectile.scale += .1f;
-                }
-            }
 
-            if (projectile.scale >= 1f)
-            {
-                projectile.ai[1] = 1;
-            }
-
-            if (projectile.ai[1] != 0)
-            {
-                projectile.scale = projectile.penetrate / 100;
-            }
+            projectile.scale = projectile.penetrate / 100;
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;

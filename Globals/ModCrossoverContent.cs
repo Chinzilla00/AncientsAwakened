@@ -10,7 +10,7 @@ namespace AAMod
 {
     public class ModSupport
     {
-        public static Mod thorium = null, calamity = null;
+        public static Mod thorium = null, calamity = null, redemption = null;
 
         public static FieldInfo Revengance = null, Death = null, Defiled = null;
 
@@ -51,6 +51,7 @@ namespace AAMod
             {
                 case "Calamity": return calamity != null;
                 case "Thorium": return thorium != null;
+                case "Redemption": return redemption != null;
                 default: return false;
             }
         }
@@ -68,6 +69,7 @@ namespace AAMod
             Mod mod = AAMod.instance;
             thorium = ModLoader.GetMod("ThoriumMod");
             calamity = ModLoader.GetMod("CalamityMod");
+            redemption = ModLoader.GetMod("Redemption");
 
             #region Calamity
             if (calamity != null)
@@ -94,7 +96,7 @@ namespace AAMod
 
     public abstract class CrossoverItem : ModItem
     {
-        public string crossoverModName = "THORIUM";
+        public string crossoverModName = "(N/A)";
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -169,6 +171,49 @@ namespace AAMod
                 }
             }
         }
+        #endregion
+
+        #region Redemption
+
+        public float Redemption_druidicBoost
+        {
+            get
+            {
+                if (ModSupport.redemption != null)
+                {
+                    float? boost = (float?)ModSupport.redemption.Call("GetDruidicBoost", player.whoAmI);
+                    if (boost != null) return (float)boost;
+                }
+                return 1f;
+            }
+            set
+            {
+                if (ModSupport.redemption != null)
+                {
+                    ModSupport.redemption.Call("SetDruidicBoost", player.whoAmI, value);
+                }
+            }
+        }
+        public int Redemption_druidicCrit
+        {
+            get
+            {
+                if (ModSupport.redemption != null)
+                {
+                    int? boost = (int?)ModSupport.redemption.Call("GetDruidicCrit", player.whoAmI);
+                    if (boost != null) return (int)boost;
+                }
+                return 0;
+            }
+            set
+            {
+                if (ModSupport.redemption != null)
+                {
+                    ModSupport.redemption.Call("SetDruidicCrit", player.whoAmI, value);
+                }
+            }
+        }
+
         #endregion
     }
 

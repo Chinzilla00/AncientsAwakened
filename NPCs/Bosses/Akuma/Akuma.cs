@@ -168,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Main.NewText("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
                     }
                 }
-                else
+                else if (!npc.HasBuff(BuffID.Wet))
                 {
                     AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 2);
                 }
@@ -536,10 +536,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
-                if (Main.rand.Next(20) == 0 && AAWorld.PowerDropped == false && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
-                    AAWorld.PowerDropped = true;
                 }
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);

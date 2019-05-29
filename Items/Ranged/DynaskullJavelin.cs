@@ -13,7 +13,7 @@ namespace AAMod.Items.Ranged
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Morning Glory");
+            DisplayName.SetDefault("Dynaskull Javelin");
             Tooltip.SetDefault("");
         }
 

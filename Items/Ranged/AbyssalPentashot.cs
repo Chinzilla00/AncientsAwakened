@@ -54,9 +54,10 @@ namespace AAMod.Items.Ranged
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HydraTrishot", 1);
-            recipe.AddIngredient(null, "CoralBow", 1);
-            recipe.AddIngredient(null, "DoomGun", 1);
+            recipe.AddIngredient(null, "OceanWhaler", 1);
+            recipe.AddIngredient(null, "DoomiteAssaultBlaster", 1);
             recipe.AddIngredient(ItemID.SnowballCannon, 1);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

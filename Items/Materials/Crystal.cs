@@ -18,10 +18,10 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            
+            
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -60,10 +60,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -99,7 +97,7 @@ namespace AAMod.Items.Materials
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Ichor, 3);
+                recipe.AddIngredient(ItemID.SoulofNight, 2);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -121,10 +119,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -160,7 +156,7 @@ namespace AAMod.Items.Materials
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.CursedFlame, 3);
+                recipe.AddIngredient(ItemID.SoulofNight, 2);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -179,13 +175,10 @@ namespace AAMod.Items.Materials
             Tooltip.SetDefault("Imbued with the ghastly spirits of the ancient crypt");
         }
 
-        // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -234,10 +227,8 @@ namespace AAMod.Items.Materials
 
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -287,10 +278,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -308,71 +297,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "PureEvil", 3);
-                recipe.AddIngredient(null, "Crystal");
-                recipe.AddTile(null, "TerraPrism");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-        }
-    }
-
-    /*public class SkyCrystal : ModItem
-    {
-        public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Sky Prism");
-            Tooltip.SetDefault("Imbued with the celestial wonder of the expansive ozone");
-            
-           
-        }
-
-        // TODO -- Velocity Y smaller, post NewItem?
-        public override void SetDefaults()
-        {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
-            item.maxStack = 999;
-            item.value = 10000;
-            item.rare = 8;
-        }
-
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("AAMod/Items/Materials/Crystal");
-            Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - texture.Height * 0.5f + 2f);
-            spriteBatch.Draw(texture, position, null, AAColor.Sky, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
-            return false;
-        }
-
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            Texture2D texture = mod.GetTexture("AAMod/Items/Materials/Crystal");
-            spriteBatch.Draw(texture, position, null, AAColor.Sky, 0, origin, scale, SpriteEffects.None, 0f);
-            return false;
-        }
-
-        public override void PostUpdate()
-        {
-            Lighting.AddLight(item.Center, AAColor.Sky.ToVector3() * 0.55f * Main.essScale);
-        }
-
-        public override void AddRecipes()
-        {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "PureEvil", 3);
             recipe.AddIngredient(null, "Crystal");
             recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.Cloud);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-    }*/
+    }
 
     public class OceanCrystal : ModItem
     {
@@ -387,10 +319,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -407,13 +337,22 @@ namespace AAMod.Items.Materials
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(TileID.Sand);
-            recipe.needWater = true;
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Coral, 10);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.SharkFin, 4);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -430,10 +369,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -451,12 +388,22 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Crystal");
-            recipe.AddTile(null, "TerraPrism");
-            recipe.needSnowBiome = true;
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "SnowMana", 10);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.FrostCore, 1);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 
@@ -473,10 +420,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -496,7 +441,15 @@ namespace AAMod.Items.Materials
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 3);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 1);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "DesertMana", 10);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -518,10 +471,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -541,7 +492,15 @@ namespace AAMod.Items.Materials
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "PlanteraPetal", 5);
+                recipe.AddIngredient(null, "PlanteraPetal", 3);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.JungleSpores, 5);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -563,10 +522,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -594,7 +551,15 @@ namespace AAMod.Items.Materials
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "DragonScale", 15);
+                recipe.AddIngredient(null, "DragonFire", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "DragonScale", 10);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -616,10 +581,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -647,7 +610,15 @@ namespace AAMod.Items.Materials
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "MirePod", 15);
+                recipe.AddIngredient(null, "HydraToxin", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "MirePod", 10);
                 recipe.AddIngredient(null, "Crystal");
                 recipe.AddTile(null, "TerraPrism");
                 recipe.SetResult(this);
@@ -669,10 +640,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -690,6 +659,14 @@ namespace AAMod.Items.Materials
 
         public override void AddRecipes()
         {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "TerraShard", 5);
+                recipe.AddIngredient(null, "Crystal");
+                recipe.AddTile(null, "TerraPrism");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DragonSpirit", 5);
@@ -714,10 +691,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -757,10 +732,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 8;
@@ -779,9 +752,9 @@ namespace AAMod.Items.Materials
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "VoidEnergy");
             recipe.AddIngredient(null, "Crystal");
             recipe.AddTile(null, "TerraPrism");
-            recipe.AddTile(null, "Doomstone");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

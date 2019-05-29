@@ -104,12 +104,6 @@ namespace AAMod
         public static bool downedSag;
         public static bool SistersSummoned;
         public static bool downedTruffle;
-        //Stones
-        public static bool RealityDropped;
-        public static bool SpaceDropped;
-        public static bool TimeDropped;
-        public static bool MindDropped;
-        public static bool PowerDropped;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -201,15 +195,7 @@ namespace AAMod
             MireCenter = -Vector2.One;
             SmashDragonEgg = 2;
             SmashHydraPod = 2;
-            //Stones
-            RealityDropped = false;
-            SpaceDropped = false;
-            TimeDropped = false;
-            MindDropped = false;
-            PowerDropped = false;
-
             //Squid Lady
-
             squid1 = 0;
             squid2 = 0;
             squid3 = 0;
@@ -1421,13 +1407,13 @@ namespace AAMod
         public override void TileCountsAvailable(int[] tileCounts)
         {
             Main.sandTiles += tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
-            Main.snowTiles += tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()];
+            Main.snowTiles += tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<Depthice>()] + tileCounts[mod.TileType<TorchAsh>()];
             //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<Depthice>()];
-            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()];
+            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<TorchAsh>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
-            Main.jungleTiles +=  mireTiles;
+            Main.jungleTiles += mireTiles;
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
             //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
@@ -1767,8 +1753,6 @@ namespace AAMod
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
-
-
                             if (TileID.Sets.Conversion.Stone[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<Torchstone>();
@@ -1927,6 +1911,315 @@ namespace AAMod
                             else if (type == (ushort)mod.TileType<Mycelium>())
                             {
                                 Main.tile[k, l].type = TileID.Grass;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                        }
+                        else if (conversionType == 6) //Jungle
+                        {
+                            if (wall == 2)
+                            {
+                                Main.tile[k, l].wall = 15;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == 63)
+                            {
+                                Main.tile[k, l].wall = 64;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (WallID.Sets.Conversion.Stone[wall] && wall != WallID.Stone)
+                            {
+                                Main.tile[k, l].wall = WallID.Stone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (WallID.Sets.Conversion.HardenedSand[wall] && wall != WallID.HardenedSand)
+                            {
+                                Main.tile[k, l].wall = WallID.HardenedSand;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (WallID.Sets.Conversion.Sandstone[wall] && wall != WallID.Sandstone)
+                            {
+                                Main.tile[k, l].wall = WallID.Sandstone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+
+                            if (type == 0 && Main.tile[k, l].active())
+                            {
+                                Main.tile[k, l].type = TileID.Mud;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (TileID.Sets.Grass[type] || type == TileID.MushroomGrass)
+                            {
+                                Main.tile[k, l].type = TileID.JungleGrass;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (TileID.Sets.Stone[type] && type != TileID.Stone)
+                            {
+                                Main.tile[k, l].type = TileID.Stone;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 3)
+                            {
+                                Main.tile[k, l].type = 61;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 52)
+                            {
+                                Main.tile[k, l].type = 62;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 73)
+                            {
+                                Main.tile[k, l].type = 74;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                        }
+                        else if (conversionType == 7) //Jungle Removal
+                        {
+                            if (wall == 15)
+                            {
+                                Main.tile[k, l].wall = 2;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            if (wall == 64)
+                            {
+                                Main.tile[k, l].wall = 63;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+
+                            if (type == 52 && Main.tile[k, l].active())
+                            {
+                                Main.tile[k, l].type = 0;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+
+                            else if (type == 60)
+                            {
+                                Main.tile[k, l].type = 2;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 61)
+                            {
+                                Main.tile[k, l].type = 3;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 62)
+                            {
+                                Main.tile[k, l].type = 52;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 74)
+                            {
+                                Main.tile[k, l].type = 73;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                        }
+                        else if (conversionType == 8) //Snow
+                        {
+                            if (wall == 2 || wall == 63 || wall == 65)
+                            {
+                                Main.tile[k, l].wall = 40;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            if (type == 0 && Main.tile[k, l].active() || type == 2 || type == 23 || type == 109 || type == 199)
+                            {
+                                Main.tile[k, l].type = 147;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 1)
+                            {
+                                Main.tile[k, l].type = 161;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 25)
+                            {
+                                Main.tile[k, l].type = 163;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == 117)
+                            {
+                                Main.tile[k, l].type = 164;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+
+                            else if (type == 203)
+                            {
+                                Main.tile[k, l].type = 200;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchstone>())
+                            {
+                                Main.tile[k, l].type = (ushort)mod.TileType<Torchice>();
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Depthstone>())
+                            {
+                                Main.tile[k, l].type = (ushort)mod.TileType<Depthice>();
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                        }
+                        else if (conversionType == 9) //Snowmelt
+                        {
+                            if (wall == WallID.SnowWallUnsafe)
+                            {
+                                Main.tile[k, l].wall = WallID.GrassUnsafe;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            if (wall == WallID.IceUnsafe)
+                            {
+                                Main.tile[k, l].wall = WallID.Stone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            if (type == TileID.SnowBlock)
+                            {
+                                if ((WorldGen.InWorld(k, l - 1, 1) && Main.tile[k, l - 1].type == TileID.Trees) || (WorldGen.InWorld(k, l + 1, 1) && Main.tile[k, l + 1].type == TileID.Trees))
+                                {
+                                    Main.tile[k, l].type = 2;
+                                }
+                                else
+                                {
+                                    Main.tile[k, l].type = 0;
+                                }
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == TileID.IceBlock)
+                            {
+                                Main.tile[k, l].type = 1;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == TileID.CorruptIce)
+                            {
+                                Main.tile[k, l].type = TileID.Ebonstone;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == TileID.HallowedIce)
+                            {
+                                Main.tile[k, l].type = TileID.Pearlstone;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == TileID.FleshIce)
+                            {
+                                Main.tile[k, l].type = TileID.Crimstone;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchice>())
+                            {
+                                Main.tile[k, l].type = (ushort)mod.TileType<Torchstone>();
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Depthice>())
+                            {
+                                Main.tile[k, l].type = (ushort)mod.TileType<Depthstone>();
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                        }
+                        else if (conversionType == 11) //Order
+                        {
+                            if (wall == mod.WallType<TorchstoneWall>() || wall == mod.WallType<DepthstoneWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.Stone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == mod.WallType<InfernoGrassWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.GrassUnsafe;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == mod.WallType<MireJungleWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.JungleUnsafe;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == mod.WallType<TorchsandHardenedWall>() || wall == mod.WallType<DepthsandHardenedWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.HardenedSand;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == mod.WallType<TorchsandstoneWall>() || wall == mod.WallType<DepthsandstoneWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.Sandstone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+
+                            if (type == mod.TileType<InfernoGrass>() || type == mod.TileType<Doomgrass>())
+                            {
+                                Main.tile[k, l].type = TileID.Grass;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<MireGrass>())
+                            {
+                                Main.tile[k, l].type = TileID.JungleGrass;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<TorchAsh>())
+                            {
+                                Main.tile[k, l].type = TileID.SnowBlock;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchsand>() || type == mod.TileType<Depthsand>())
+                            {
+                                Main.tile[k, l].type = TileID.Sand;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<TorchsandHardened>() || type == mod.TileType<DepthsandHardened>())
+                            {
+                                Main.tile[k, l].type = TileID.Sand;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchsandstone>() || type == mod.TileType<Depthsandstone>())
+                            {
+                                Main.tile[k, l].type = TileID.Sandstone;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchice>() || type == mod.TileType<Depthice>())
+                            {
+                                Main.tile[k, l].type = TileID.IceBlock;
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -25,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lifeMax = 600;
             npc.defense = 30;
             npc.damage = 75;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.5f;
 			npc.noGravity = true;
         }

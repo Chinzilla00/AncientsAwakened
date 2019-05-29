@@ -12,8 +12,10 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Shiny Kipron Wings");
-            Tooltip.SetDefault("'Great for impersonating Ancients Awakened Devs!'");
-		}
+            Tooltip.SetDefault(@"Allows flight and slow fall
+Hold down and jump to hover for an extended period of time
+'Great for impersonating Ancients Awakened Devs!'");
+        }
 
 		public override void SetDefaults()
 		{
@@ -50,10 +52,23 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
 			constantAscend = 0.135f;
 		}
 
-		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
-		{
-			speed = 10f;
-			acceleration *= 2.5f;
-		}
-	}
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+        {
+            if (player.controlDown && player.controlJump && player.wingTime > 0f)
+            {
+                speed = 15f;
+                acceleration *= 10f;
+                player.velocity.Y = player.velocity.Y * 0.92f;
+                if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                {
+                    player.velocity.Y = 1E-05f;
+                }
+            }
+            else
+            {
+                speed = 10f;
+                acceleration *= 6.25f;
+            }
+        }
+    }
 }

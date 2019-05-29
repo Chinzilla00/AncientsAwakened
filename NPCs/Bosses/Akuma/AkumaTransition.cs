@@ -106,13 +106,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
-            }
-
-            if (NPC.AnyNPCs(mod.NPCType("AkumaA")))
-            {
                 Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                 Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                npc.netUpdate = true;
+                npc.netUpdate2 = true;
                 npc.active = false;
             }
         }

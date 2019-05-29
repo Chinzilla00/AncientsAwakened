@@ -753,7 +753,8 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;
+            potionType = ItemID.GreaterHealingPotion;
+            AAWorld.downedRajah = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

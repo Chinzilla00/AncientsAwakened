@@ -19,6 +19,7 @@ namespace AAMod.Projectiles
             projectile.tileCollide = true;
             projectile.aiStyle = 1; //
             aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.arrow = true;
         }
 
         public override void AI()

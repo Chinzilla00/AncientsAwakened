@@ -39,7 +39,7 @@ Non-consumable");
 			item.knockBack = 7f;
 			item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 6;
-			item.shoot = mod.ProjectileType("Neutralizer");         //The speed of the projectile
+			item.shoot = mod.ProjectileType("ZeroArrow");         //The speed of the projectile
 			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
 		}
 

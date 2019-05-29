@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.AH
             item.value = Item.buyPrice(0, 25, 0, 0);
             item.rare = 11;
             item.mana = 5;          
-            item.UseSound = SoundID.Item21;      
+            item.UseSound = SoundID.Item20;      
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("FireMagic"); 
             item.shootSpeed = 11f; 

@@ -2429,17 +2429,13 @@ namespace AAMod
             }
             if (demonGauntlet && !dwarvenGauntlet)
             {
-                int ThisDust;
-                if (WorldGen.crimson)
-                {
-                    ThisDust = 76;
-                }
-                else
-                {
-                    ThisDust = 264;
-                }
                 if (Main.rand.NextFloat() < 1f)
                 {
+                    int ThisDust = 170;
+                    if (!WorldGen.crimson)
+                    {
+                        ThisDust = 75;
+                    }
                     Dust dust;
                     dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ThisDust, 0f, 0f, 46, default(Color), 1.381579f)];
                     dust.noGravity = true;

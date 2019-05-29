@@ -60,6 +60,11 @@ Hold down and jump to hover for an extended period of time
             {
                 speed = 15f;
                 acceleration *= 10f;
+                player.velocity.Y = player.velocity.Y * 0.92f;
+                if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                {
+                    player.velocity.Y = 1E-05f;
+                }
             }
             else
             {

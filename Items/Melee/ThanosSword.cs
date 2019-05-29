@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee     //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
+namespace AAMod.Items.Melee 
 {
     public class ThanosSword : BaseAAItem
     {
@@ -11,28 +11,56 @@ namespace AAMod.Items.Melee     //We need this to basically indicate the folder 
         }
 
         public override void SetDefaults()
-        {
-            item.damage = 170;  
+        {              
+            item.noUseGraphic = true;
+            item.damage = 170;
             item.melee = true;
             item.noMelee = true;
-            item.width = 88;    
-            item.height = 100; 
-            item.useTime = 6; 
-            item.useAnimation = 6;
+            item.width = 88;
+            item.height = 100;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.channel = true;
-            item.knockBack = 0f; 
-            item.value = Item.buyPrice(1, 0, 0, 0); 
+            item.useStyle = 100;
+            item.knockBack = 6f;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 11;
-            item.shoot = mod.ProjectileType("ThanosSword"); 
+            item.shoot = mod.ProjectileType("ThanosSword");
             item.noUseGraphic = true;
         }
-        
-        public override bool UseItemFrame(Player player)
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)
             {
-                player.bodyFrame.Y = 3 * player.bodyFrame.Height;
+                item.useStyle = 100;
+                item.shoot = mod.ProjectileType("ThanosSword");
+                item.shootSpeed = 0f;
             }
+            else
+            {
+                item.useStyle = 1;
+                item.shoot = mod.ProjectileType("ThanosSwordT");
+                item.shootSpeed = 10f;
+            }
+            for (int i = 0; i < 1000; ++i)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && (Main.projectile[i].type == mod.ProjectileType("ThanosSword") || Main.projectile[i].type == mod.ProjectileType("ThanosSwordT")))
+                {
+                    return false;
+                }
+            }
+            return base.CanUseItem(player);
+        }
+
+        public override bool UseItemFrame(Player player)     //this defines what frame the player use when this weapon is used
+        {
+            player.bodyFrame.Y = 3 * player.bodyFrame.Height;
             return true;
         }
 

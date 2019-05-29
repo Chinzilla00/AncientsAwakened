@@ -39,7 +39,7 @@ namespace AAMod.Items.Boss.Zero
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            
+            item.rare = 10;
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;

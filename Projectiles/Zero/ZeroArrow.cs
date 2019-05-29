@@ -22,7 +22,6 @@ namespace AAMod.Projectiles.Zero
             projectile.ignoreWater = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.penetrate = 1;
-            projectile.alpha = 0;
             projectile.arrow = true;
         }
 

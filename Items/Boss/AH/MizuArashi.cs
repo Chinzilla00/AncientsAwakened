@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.AH
             item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 8f;
 
         }
 
@@ -47,7 +47,7 @@ Spirits deal 2x damage, pierce up to 10 enemies and go through tiles
         {
 			if (Main.rand.NextBool(15))
 			{
-                Projectile.NewProjectile(position.X, position.Y, speedX * 1.5f, speedY * 1.5f, mod.ProjectileType("Mizu"), damage * 2, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, speedX , speedY, mod.ProjectileType("Mizu"), damage * 2, knockBack, player.whoAmI);
             }
 			else
 			{

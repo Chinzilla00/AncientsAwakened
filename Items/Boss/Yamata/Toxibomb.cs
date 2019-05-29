@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.knockBack = 1; 
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.mana = 9;
-            item.UseSound = SoundID.Item1; 
+            item.UseSound = SoundID.Item20; 
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("Toxibomb");  
             item.shootSpeed = 20f;    

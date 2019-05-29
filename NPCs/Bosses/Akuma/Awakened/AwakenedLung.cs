@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            npc.damage = 50;
+            npc.damage = 130;
             npc.defense = 90;
             npc.lifeMax = 9000;
             npc.knockBackResist = 0f;

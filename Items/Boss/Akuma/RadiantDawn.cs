@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetDefaults()
         {
-            item.damage = 300;
+            item.damage = 170;
             item.ranged = true;
             item.width = 22;
             item.height = 50;

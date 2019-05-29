@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.netAlways = true;
             npc.knockBackResist = 0f;
             npc.damage = 180;
-            npc.defense = 210;
+            npc.defense = 170;
             npc.lifeMax = 1000000;
             if (Main.expertMode)
             {
@@ -89,7 +89,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * 1.2f);
 			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }

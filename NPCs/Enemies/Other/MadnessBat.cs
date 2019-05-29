@@ -29,28 +29,28 @@ namespace AAMod.NPCs.Enemies.Other
             npc.netAlways = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            aiType = NPCID.CaveBat;
+            animationType = NPCID.CaveBat;
         }
 
-        public override void AI()
+        public override void FindFrame(int frameHeight)
         {
-            Player player = Main.player[npc.target];
-            BaseAI.AIEye(npc, ref npc.ai, false, true, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
-
-            if (npc.wet)
-            {
-                npc.velocity *= 1.1f;
-            }
             npc.frameCounter++;
             if (npc.frameCounter >= 8)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 30;
-                if (npc.frame.Y > (30 * 3))
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y > (frameHeight * 3))
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y = 0;
                 }
             }
+        }
+
+        public override void PostAI()
+        {
+            Player player = Main.player[npc.target];
 
             if (player.Center.X > npc.Center.X)
             {

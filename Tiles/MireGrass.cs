@@ -17,7 +17,6 @@ namespace AAMod.Tiles
             Main.tileBlendAll[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
-            Main.tileLighted[Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;
             TileID.Sets.JungleSpecial[Type] = true;
             dustType = mod.DustType("AbyssiumDust");

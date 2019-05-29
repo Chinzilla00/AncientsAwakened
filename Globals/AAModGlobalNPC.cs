@@ -1018,10 +1018,38 @@ namespace AAMod
                 nextSlot++;
             }
 
-            if (type == NPCID.Dryad && AAWorld.downedRajah)
+            if (type == NPCID.Dryad)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenCarrot"));
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(1, 0, 0, 0);
+                if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneMush)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType("MyceliumSeeds"));
+                    nextSlot++;
+                }
+                if (AAWorld.downedRajah)
+                {
+                    shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenCarrot"));
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(1, 0, 0, 0);
+                    nextSlot++;
+                }
+            }
+
+            if (type == NPCID.Truffle && NPC.downedPlantBoss)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
+                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(3, 0, 0, 0);
+                nextSlot++;
+            }
+            if (type == NPCID.Steampunker)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("DeepGreenSolution"));
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType("LimeSolution"));
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType("FungicideSolution"));
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType("WhiteSolution"));
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType("YellowSolution"));
                 nextSlot++;
             }
         }

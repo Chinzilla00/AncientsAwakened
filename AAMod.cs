@@ -689,21 +689,6 @@ namespace AAMod
         }
     }
 
-    public class RuneRecipe : ModRecipe
-    {
-        public bool IsExpert;
-
-        public RuneRecipe(Mod mod) : base(mod)
-        {
-            IsExpert = Main.expertMode;
-        }
-
-        public override bool RecipeAvailable()
-        {
-            return IsExpert;         
-        }
-    }
-
     public enum MPMessageType : byte
     {
         RequestUpdateSquidLady

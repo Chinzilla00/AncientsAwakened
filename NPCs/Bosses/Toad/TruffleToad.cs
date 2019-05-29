@@ -120,7 +120,8 @@ namespace AAMod.NPCs.Bosses.Toad
 
             if (internalAI[0] == AISTATE_JUMP)
             {
-                BaseAI.AISlime(npc, ref npc.ai, false, 30, 5, -5, 13, -13);
+                if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
                 if (npc.velocity.Y == 0)
                 {
                     internalAI[1]++;

@@ -77,10 +77,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.NextFloat() < 0.05f && AAWorld.RealityDropped == false && AAWorld.downedShen)
+                if (Main.rand.NextFloat(50) == 0 && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
-                    AAWorld.RealityDropped = true;
                 }
                 npc.DropBossBags();
                 return;
@@ -315,7 +314,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
 				return;
             }
-            else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f)
             {
                 if (Killed == false)
                 {

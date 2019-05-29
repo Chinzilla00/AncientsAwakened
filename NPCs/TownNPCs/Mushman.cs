@@ -486,59 +486,64 @@ namespace AAMod.NPCs.TownNPCs
 		{
             shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
             nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
+            nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("SporeSac"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.RecallPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
+            shop.item[nextSlot].SetDefaults(mod.ItemType("MyceliumSeeds"));
             nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
+            shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.LesserManaPotion);
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
 
-            if (NPC.downedPlantBoss == true)
+            if (NPC.downedBoss3 == true)
             {
+                shop.item[nextSlot].SetDefaults(ItemID.HealingPotion);
                 nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
-                shop.item[nextSlot].shopCustomPrice = 5000000;
+                shop.item[nextSlot].SetDefaults(ItemID.ManaPotion);
+                nextSlot++;
             }
 
             if (NPC.downedBoss3 == true)
             {
-                nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.HealingPotion);
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.ManaPotion);
+                nextSlot++;
             }
             if (Main.hardMode == true)
             {
-                nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.GreaterHealingPotion);
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.GreaterManaPotion);
+                nextSlot++;
             }
             if (NPC.downedMoonlord == true)
             {
-                nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.SuperHealingPotion);
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.SuperManaPotion);
+                nextSlot++;
             }
             if (AAWorld.downedAncient == true)
             {
-                nextSlot++;
                 shop.item[nextSlot].SetDefaults(mod.ItemType("GrandHealingPotion"));
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(mod.ItemType("GrandManaPotion"));
+                nextSlot++;
             }
             if (AAWorld.downedSAncient == true)
             {
-                nextSlot++;
                 shop.item[nextSlot].SetDefaults(mod.ItemType("TheBigOne"));
+                nextSlot++;
             }
         }
 

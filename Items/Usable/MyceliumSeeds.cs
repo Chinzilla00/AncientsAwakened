@@ -10,7 +10,7 @@ namespace AAMod.Items.Usable
 		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mycelium Seeds");
-            Tooltip.SetDefault("Plants Inferno grass"); ;	
+            Tooltip.SetDefault("Plants Mycelium"); ;	
 		}		
 		
         public override void SetDefaults()

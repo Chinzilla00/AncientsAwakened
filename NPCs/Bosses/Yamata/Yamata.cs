@@ -150,10 +150,9 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         Main.NewText("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
                     }
-                    if (Main.rand.Next(20) == 0 && AAWorld.SpaceDropped == false && AAWorld.downedShen)
+                    if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
-                        AAWorld.SpaceDropped = true;
                     }
                 }
                 if (Main.expertMode)

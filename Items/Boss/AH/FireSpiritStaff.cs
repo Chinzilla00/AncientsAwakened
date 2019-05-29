@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 1;
             item.useAnimation = 35;
             item.useTime = 35;
-            item.UseSound = SoundID.Item8;
+            item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.noMelee = true;
             item.summon = true;

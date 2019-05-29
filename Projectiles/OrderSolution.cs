@@ -25,10 +25,10 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = mod.DustType<Discord>();
+            int dustType = mod.DustType<Dusts.OrderSolution>();
             if (projectile.owner == Main.myPlayer)
             {
-                Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16);
+                AAWorld.AAConvert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16, 11);
             }
             if (projectile.timeLeft > 133)
             {
@@ -70,81 +70,6 @@ namespace AAMod.Projectiles
                 projectile.ai[0] += 1f;
             }
             projectile.rotation += 0.3f * (float)projectile.direction;
-        }
-
-        public void Convert(int i, int j, int size = 4)
-        {
-            for (int k = i - size; k <= i + size; k++)
-            {
-                for (int l = j - size; l <= j + size; l++)
-                {
-                    if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
-                    {
-                        int type = Main.tile[k, l].type;
-                        int wall = Main.tile[k, l].wall;
-                        if (type == (ushort)mod.WallType<TorchstoneWall>() || type == (ushort)mod.WallType<DepthstoneWall>())
-                        {
-                            Main.tile[k, l].wall = WallID.Stone;
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == (ushort)mod.WallType<TorchsandstoneWall>() || type == (ushort)mod.WallType<DepthsandstoneWall>())
-                        {
-                            Main.tile[k, l].wall = WallID.Sandstone;
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == (ushort)mod.WallType<TorchsandHardenedWall>() || type == (ushort)mod.WallType<DepthsandHardenedWall>())
-                        {
-                            Main.tile[k, l].wall = WallID.HardenedSand;
-                            WorldGen.SquareWallFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<Torchstone>() || type == mod.TileType<Depthstone>())
-                        {
-                            Main.tile[k, l].type = 1;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<InfernoGrass>())
-                        {
-                            Main.tile[k, l].type = 2;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<MireGrass>())
-                        {
-                            Main.tile[k, l].type = 60;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<Torchice>() || type == mod.TileType<Depthice>())
-                        {
-                            Main.tile[k, l].type = 161;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<Torchsandstone>() || type == mod.TileType<Depthsandstone>())
-                        {
-                            Main.tile[k, l].type = 396;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<Torchsand>() || type == mod.TileType<Depthsand>())
-                        {
-                            Main.tile[k, l].type = 53;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                        else if (type == mod.TileType<TorchsandHardened>() || type == mod.TileType<DepthsandHardened>())
-                        {
-                            Main.tile[k, l].type = 397;
-                            WorldGen.SquareTileFrame(k, l, true);
-                            NetMessage.SendTileSquare(-1, k, l, 1);
-                        }
-                    }
-                }
-            }
         }
     }
 }
