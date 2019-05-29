@@ -12,6 +12,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             DisplayName.SetDefault("Hydra");
             Main.npcFrameCount[npc.type] = 2;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

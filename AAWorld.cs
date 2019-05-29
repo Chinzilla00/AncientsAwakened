@@ -132,6 +132,8 @@ namespace AAMod
         public static bool Suncaller = false;
         public static bool Mooncaller = false;
         public static int RabbitKills = 0;
+        public static bool TimeStopped = false;
+        public static double PausedTime = 0;
 
         public override void Initialize()
         {
@@ -1203,29 +1205,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (Suncaller)
+            if (TimeStopped)
             {
-                if (!Main.dayTime)
-                {
-                    Main.fastForwardTime = true;
-                    Main.dayRate = 15;
-                }
-                else
-                {
-                    Suncaller = false;
-                }
-            }
-            if (Mooncaller)
-            {
-                if (Main.dayTime)
-                {
-                    Main.fastForwardTime = true;
-                    Main.dayRate = 15;
-                }
-                else
-                {
-                    Suncaller = false;
-                }
+                Main.fastForwardTime = false;
+                Main.time = PausedTime;
             }
             if (downedEquinox)
             {

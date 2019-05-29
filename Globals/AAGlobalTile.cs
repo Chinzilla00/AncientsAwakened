@@ -112,6 +112,14 @@ namespace AAMod
             return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
         }
 
+        public static Color GetBlankColorBrightInvert(Color color) { return GetBlankColor(color, 1f, 0.6f, true); }
+        public static Color GetBlankColorDim(Color color) { return GetBlankColor(color, 0.4f, 1f, false); }
+        public static Color GetBlankColorBright(Color color) { return GetBlankColor(color, 0.6f, 1f, false); }
+        public static Color GetBlankColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAColor.COLOR_WHITEFADE1, color, min, max, clamp);
+        }
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

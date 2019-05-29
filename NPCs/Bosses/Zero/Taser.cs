@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             DisplayName.SetDefault("Gigataser");
             Main.npcFrameCount[npc.type] = 2;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

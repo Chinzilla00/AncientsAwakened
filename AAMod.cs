@@ -24,9 +24,11 @@ namespace AAMod
 
         // Hotkeys
         public static ModHotKey InfinityHotKey;
-        public static ModHotKey AbilityKey;
+        public static ModHotKey AccessoryAbilityKey;
+        public static ModHotKey ArmorAbilityKey;
         public static ModHotKey Rift;
         public static ModHotKey RiftReturn;
+        public static ModHotKey TimeStone;
 
         // Textures
         public static IDictionary<string, Texture2D> Textures = null;
@@ -228,7 +230,10 @@ namespace AAMod
             Rift = RegisterHotKey("Rift Home", "C");
             RiftReturn = RegisterHotKey("Rift Back", "X");
 
-            AbilityKey = RegisterHotKey("AA Ability", "Y");
+            AccessoryAbilityKey = RegisterHotKey("AA Accessory Ability", "U");
+            ArmorAbilityKey = RegisterHotKey("AA Armor Ability", "Y");
+
+            TimeStone = RegisterHotKey("Time Stone", "K");
 
             if (!Main.dedServ)
             {
@@ -254,6 +259,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/Star 1"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
+            PremultiplyTexture(GetTexture("Items/Accessories/Snap"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
@@ -358,7 +364,9 @@ namespace AAMod
             InfinityHotKey = null;
             Rift = null;
             RiftReturn = null;
-            AbilityKey = null;
+            AccessoryAbilityKey = null;
+            ArmorAbilityKey = null;
+            TimeStone = null;
         }
 
         public void CleanupStaticArrays()

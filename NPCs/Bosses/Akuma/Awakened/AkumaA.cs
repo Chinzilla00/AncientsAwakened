@@ -249,6 +249,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
                             Main.npc[latestNPC].realLife = npc.whoAmI;
                             Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                            Main.npc[latestNPC].netUpdate2 = true;
                             segment += 1;
                         }
                         if (segment == 1 || segment == 4 || segment == 7)
@@ -256,23 +257,27 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaAArms"), npc.whoAmI, 0, latestNPC);
                             Main.npc[latestNPC].realLife = npc.whoAmI;
                             Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                            Main.npc[latestNPC].netUpdate2 = true;
                             segment += 1;
                         }
                     }
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[latestNPC].netUpdate2 = true;
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody1"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[latestNPC].netUpdate2 = true;
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaATail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[latestNPC].netUpdate2 = true;
 
                     npc.ai[0] = 1;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
 

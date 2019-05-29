@@ -56,6 +56,12 @@ All effects of the infinity stones
 
         public override void UpdateEquip(Player player)
         {
+            player.GetModPlayer<AAPlayer>().Reality = true;
+            player.GetModPlayer<AAPlayer>().Soul = true;
+            player.GetModPlayer<AAPlayer>().Mind = true;
+            player.GetModPlayer<AAPlayer>().Time = true;
+            player.GetModPlayer<AAPlayer>().Space = true;
+            player.GetModPlayer<AAPlayer>().Power = true;
             player.meleeSpeed += 0.18f;
             player.aggro += 8;
             player.meleeDamage += .4f;

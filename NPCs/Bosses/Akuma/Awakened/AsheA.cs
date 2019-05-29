@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             DisplayName.SetDefault("Ashe Akuma");
             Main.npcFrameCount[npc.type] = 24;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
 

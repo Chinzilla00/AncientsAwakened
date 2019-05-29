@@ -714,6 +714,8 @@ namespace AAMod
         public float ShieldScale = 0;
         public float RingRoatation = 0;
 
+        public float TimeScale = 0;
+
         public override void PostUpdate()
         {
             if (player.ZoneSandstorm && (ZoneInferno || ZoneMire))
@@ -746,6 +748,28 @@ namespace AAMod
                 {
                     ShieldScale = 0f;
                 }
+            }
+
+            if (AAWorld.TimeStopped || (Time && Main.fastForwardTime))
+            {
+                TimeScale += .02f;
+                if (TimeScale >= 1f)
+                {
+                    TimeScale = 1f;
+                }
+            }
+            else
+            {
+                TimeScale -= .02f;
+                if (TimeScale <= 0f)
+                {
+                    TimeScale = 0f;
+                }
+            }
+
+            if (ShieldScale > 0f || TimeScale > 0f)
+            {
+                RingRoatation += .05f;
             }
 
             if (ShieldScale > 0)
@@ -2014,10 +2038,26 @@ namespace AAMod
                 {
                     SnapCD = 18000;
                     player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
+                    Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Items.Accessories.Snap>(), 0, 0, player.whoAmI);
                     Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && x.type != mod.NPCType<RiftShredder>() && x.type != mod.NPCType<Taser>() && x.type != mod.NPCType<RealityCannon>() && x.type != mod.NPCType<VoidStar>() && x.type != mod.NPCType<TeslaHand>() && !x.boss).ToList().ForEach(x =>
+                    Main.npc.Where(x => x.active && !x.townNPC && (x.type != NPCID.TargetDummy || !NPCID.Sets.TechnicallyABoss[x.type] || !x.boss)).ToList().ForEach(x =>
                     {
-                        player.ApplyDamageToNPC(x, damage: x.lifeMax, knockback: 0f, direction: 0, crit: true);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int num9 = Dust.NewDust(x.position, x.width, x.height, mod.DustType<Dusts.SnapDust>(), 0f, 0f, 0, default(Color), 1f);
+                            Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
+                            Dust expr_292_cp_0 = Main.dust[num9];
+                            expr_292_cp_0.velocity.Y *= Main.dust[num9].scale;
+                            Main.dust[num9].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+                            Dust expr_370_cp_0 = Main.dust[num9];
+                            expr_370_cp_0.velocity.Y += expr_370_cp_0.velocity.Y * 0.5f;
+                            Dust expr_38E_cp_0 = Main.dust[num9];
+                            expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
+                            Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
+                            Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
+                        }
+                        x.NPCLoot();
+                        x.active = false;
                     });
                 }
             }
@@ -2025,12 +2065,34 @@ namespace AAMod
             {
                 if (!player.mount.Active)
                 {
-                    AssassinStealth = !AssassinStealth;
+                    if (!AssassinStealth)
+                    {
+                        AssassinStealth = true;
+                    }
+                    else
+                    {
+                        AssassinStealth = false;
+                    }
+                }
+            }
+            if (Time)
+            {
+                if (AAMod.TimeStone.JustPressed && !NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()))
+                {
+                    AAWorld.TimeStopped = false;
+                    if (!Main.fastForwardTime)
+                    {
+                        Main.fastForwardTime = true;
+                    }
+                    else
+                    {
+                        Main.fastForwardTime = false;
+                    }
                 }
             }
             if (SagShield)
             {
-                if (AAMod.AbilityKey.JustPressed && SagCooldown == 0)
+                if (AAMod.AccessoryAbilityKey.JustPressed && SagCooldown == 0)
                 {
                     player.AddBuff(mod.BuffType<SagShield>(), 300);
                     SagCooldown = 5400;
@@ -2038,7 +2100,7 @@ namespace AAMod
             }
             if (trueDynaskull)
             {
-                if (AAMod.AbilityKey.JustPressed && AbilityCD == 0)
+                if (AAMod.ArmorAbilityKey.JustPressed && AbilityCD == 0)
                 {
                     AbilityCD = 180;
                     int i = Main.myPlayer;
@@ -3427,6 +3489,11 @@ namespace AAMod
                 BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
                 BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
                 BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);
+            }
+            if (drawPlayer.GetModPlayer<AAPlayer>(mod).TimeScale > 0)
+            {
+                Texture2D Ring = mod.GetTexture("Items/Accessories/TimeRing");
+                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).TimeScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), AAColor.COLOR_WHITEFADE1, true);
             }
         });
 

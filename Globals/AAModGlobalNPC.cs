@@ -531,7 +531,7 @@ namespace AAMod
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
                     }
                 }
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire )
                 {
                     if (Main.rand.Next(0, 2499) == 0)
                     {
@@ -543,6 +543,13 @@ namespace AAMod
                     if (Main.rand.Next(0, 2499) == 0)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoKey"), 1);
+                    }
+                }
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
+                {
+                    if (Main.rand.Next(0, 1249) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DoomstopperKey"), 1);
                     }
                 }
                 if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)

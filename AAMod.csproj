@@ -74,6 +74,8 @@
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
     <Compile Include="Buffs\Socc.cs" />
     <Compile Include="Buffs\SockPuppet.cs" />
+    <Compile Include="Dusts\SnapDust.cs" />
+    <Compile Include="Items\Accessories\Snap.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Blocks\ToadBox.cs" />
     <Compile Include="Items\Blocks\TorchAsh.cs" />
@@ -2189,6 +2191,7 @@
     <Compile Include="Tiles\Carrot.cs" />
     <Compile Include="Tiles\CarrotGold.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
+    <Compile Include="Tiles\BiomePrism.cs" />
     <Compile Include="Tiles\TorchAsh.cs" />
     <Compile Include="Tiles\TorchsandBall.cs" />
     <Compile Include="Tiles\DepthsandBall.cs" />
@@ -2707,6 +2710,7 @@
     <Content Include="Dusts\RedDust.png" />
     <Content Include="Dusts\SandDust.png" />
     <Content Include="Dusts\ShroomDust.png" />
+    <Content Include="Dusts\SnapDust.png" />
     <Content Include="Dusts\SnowDustLight.png" />
     <Content Include="Dusts\SnowDust.png" />
     <Content Include="Dusts\SoulDust.png" />
@@ -3632,6 +3636,7 @@
     <Content Include="Items\Accessories\RealityStone_Wings.png" />
     <Content Include="Items\Accessories\ShadowBand.png" />
     <Content Include="Items\Accessories\ShadowBand_HandsOn.png" />
+    <Content Include="Items\Accessories\Snap.png" />
     <Content Include="Items\Accessories\SoulStone.png" />
     <Content Include="Items\Accessories\SoulStone_Face.png" />
     <Content Include="Items\Accessories\SpacePlaceholder.png" />

@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             DisplayName.SetDefault("Fury Ashe");
             Main.npcFrameCount[npc.type] = 24;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

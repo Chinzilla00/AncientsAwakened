@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             DisplayName.SetDefault("Haruka Yamata");
             Main.npcFrameCount[npc.type] = 27;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

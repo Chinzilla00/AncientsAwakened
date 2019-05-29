@@ -35,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             DisplayName.SetDefault("Orthrus X");
             Main.npcFrameCount[npc.type] = 2;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             DisplayName.SetDefault("Wrath Haruka");
             Main.npcFrameCount[npc.type] = 27;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()
@@ -40,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Shen
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
             npc.noGravity = false;
             npc.noTileCollide = false;
-            bossBag = mod.ItemType("AHBag");
         }
 
 

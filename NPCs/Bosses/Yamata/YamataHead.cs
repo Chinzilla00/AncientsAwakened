@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             DisplayName.SetDefault("Yamata");
             Main.npcFrameCount[npc.type] = 3;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

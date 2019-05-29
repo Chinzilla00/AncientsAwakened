@@ -14,7 +14,8 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Strange Machine");
-		}
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
+        }
 		public override void SetDefaults()
 		{
 			npc.aiStyle = -1;
@@ -31,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.alpha = 0;
 			npc.dontTakeDamage = true;
 			npc.boss = false;
-		}
+        }
 
 		public override bool CheckActive()
 		{
