@@ -2965,6 +2965,8 @@
     <Content Include="Glowmasks\FulguriteShard_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazerblaster_Glow.png" />
     <Content Include="Glowmasks\FulguriteTazesaber_Glow.png" />
+    <Content Include="Glowmasks\FuryAsheVanish_Glow1.png" />
+    <Content Include="Glowmasks\FuryAsheVanish_Glow2.png" />
     <Content Include="Glowmasks\FuryAshe_Glow1.png" />
     <Content Include="Glowmasks\FuryAshe_Glow2.png" />
     <Content Include="Glowmasks\GalaxyBreastplate_Glow.png" />
@@ -3510,6 +3512,9 @@
     <Content Include="Healthbars\AkumaBarBody.png" />
     <Content Include="Healthbars\AkumaBarHead.png" />
     <Content Include="Healthbars\AkumaBarTail.png" />
+    <Content Include="Healthbars\AsheBar2Body.png" />
+    <Content Include="Healthbars\AsheBar2Head.png" />
+    <Content Include="Healthbars\AsheBar2Tail.png" />
     <Content Include="Healthbars\BarFill.png" />
     <Content Include="Healthbars\BGBarBody.png" />
     <Content Include="Healthbars\BGBarHead.png" />

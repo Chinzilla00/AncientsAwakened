@@ -257,6 +257,7 @@ namespace AAMod
 
         public bool WorldgenReminder = false;
 
+
         public override void ResetEffects()
         {
             //Minions

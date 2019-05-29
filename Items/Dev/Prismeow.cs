@@ -12,7 +12,6 @@ namespace AAMod.Items.Dev
 		{
             DisplayName.SetDefault("Prismeow");
             Tooltip.SetDefault(@"Fires rainbow cats
-Warning: Using this WILL lag your game!
 'Godly'
 -Hallam");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
