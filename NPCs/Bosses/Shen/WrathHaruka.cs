@@ -77,9 +77,13 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void HitEffect(int hitDirection, double damage)
         {
             Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, mod.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
+            if (npc.life <= 0)
+            {
+                DontSayDeathLine = false;
+            }
         }
 
-        private bool DontSayDeathLine = false;
+        private bool DontSayDeathLine = true;
 
         public override void NPCLoot()
         {

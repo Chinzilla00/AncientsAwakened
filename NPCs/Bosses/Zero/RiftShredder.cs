@@ -254,7 +254,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 vector2_2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num4 = (float)(Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (200.0 * npc.ai[0])) - vector2_2.X;
                 float num5 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector2_2.Y;
-                float num6 = (float)Math.Sqrt((num4 * (double)num4) + (num5 * (double)num5));
                 npc.rotation = (float)Math.Atan2(num5, num4) + 1.57f;
                 npc.velocity.X *= 0.95f;
                 npc.velocity.Y -= 0.1f;
@@ -321,7 +320,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 vector2_2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num9 = (float)(Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (200.0 * npc.ai[0])) - vector2_2.X;
                 float num10 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector2_2.Y;
-                float num11 = (float)Math.Sqrt((num9 * (double)num9) + (num10 * (double)num10));
                 npc.rotation = (float)Math.Atan2(num10, num9) + 1.57f;
             }
             else

@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 namespace AAMod.NPCs.Bosses.Hydra
 {
     [AutoloadBossHead]
