@@ -145,6 +145,11 @@ namespace AAMod
         public bool AbyssalStealth;
         public bool AssassinStealth;
         public bool Witch;
+        public bool Beg;
+        public bool Tied;
+        public bool Tails;
+        public bool Dallin;
+        public bool Liz;
 
         public static Color groviteColor = new Color(0, (int)(157 * 0.7f), (int)(242 * 0.7f));
         public static bool[] groviteGlow = new bool[255];
@@ -234,7 +239,7 @@ namespace AAMod
         public bool BoomBoi = false;
         public bool DragonSoul = false;
         public bool Glowmoss = false;
-
+        public bool TiedHead = false;
         //NPCcount
 
         public static int yamata = -1;
@@ -341,6 +346,11 @@ namespace AAMod
             AssassinStealth = false;
             AbyssalStealth = false;
             Witch = false;
+            Beg = false;
+            Tied = false;
+            Tails = false;
+            Dallin = false;
+            Liz = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -406,6 +416,7 @@ namespace AAMod
             BoomBoi = false;
             DragonSoul = false;
             Glowmoss = false;
+            TiedHead = false;
             //EnemyChecks
             IsGoblin = false;
 
@@ -2166,6 +2177,10 @@ namespace AAMod
                 }
             }
 
+            if (Tied)
+            {
+                target.AddBuff(BuffID.CursedInferno, 300);
+            }
 
             if (perfectChaos)
             {
@@ -2752,7 +2767,12 @@ namespace AAMod
                 target.AddBuff(BuffID.Confused, 180);
             }
 
-            if (valkyrieSet && (proj.melee || proj.thrown))
+            if (Tied && proj.melee)
+            {
+                target.AddBuff(BuffID.CursedInferno, 180);
+            }
+
+            if (valkyrieSet && proj.melee)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
                 target.AddBuff(BuffID.Chilled, 180);
@@ -2998,7 +3018,6 @@ namespace AAMod
                 BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
                 BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
                 BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteShell, PlayerLayer.Wings, true);
             }
             AddPlayerLayer(list, glAfterAll, list[list.Count - 1], false);
         }
@@ -3531,12 +3550,6 @@ namespace AAMod
                 Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateHood_Head_Glow");
                 DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.headArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.headRotation, drawPlayer.headPosition, edi.headOrigin);
             }
-            else
-            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateHoodA")))
-            {
-                Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateHood_Head_Glow");
-                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.headArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.headRotation, drawPlayer.headPosition, edi.headOrigin);
-            }
         });
         public PlayerLayer glGroviteBody = new PlayerLayer("AAMod", "glGroviteBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -3545,12 +3558,6 @@ namespace AAMod
             if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateCofferplate")))
             {
                 Texture2D tex = mod.GetTexture("GroviteCofferplateBodyGlow");
-                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
-            }
-            else
-            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateCofferplateA")))
-            {
-                Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateCofferplate_Body_Glow");
                 DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
             }
         });
@@ -3563,24 +3570,12 @@ namespace AAMod
                 Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateBoots_Legs_Glow");
                 DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.legArmorShader, drawPlayer, drawPlayer.legFrame, drawPlayer.legRotation, drawPlayer.legPosition, edi.legOrigin);
             }
-            else
-            if (edi.shadow == 0 && (!drawPlayer.mount.Active || drawPlayer.mount.Type != 6) && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateBootsA")))
-            {
-                Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateBoots_Legs_Glow");
-                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.legArmorShader, drawPlayer, drawPlayer.legFrame, drawPlayer.legRotation, drawPlayer.legPosition, edi.legOrigin);
-            }
         });
         public PlayerLayer glGroviteArm = new PlayerLayer("AAMod", "glGroviteArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
             if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateCofferplate")))
-            {
-                Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateCofferplate_Arms_Glow");
-                DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
-            }
-            else
-            if (edi.shadow == 0 && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateCofferplateA")))
             {
                 Texture2D tex = mod.GetTexture("Glowmasks/AngryPirateCofferplate_Arms_Glow");
                 DrawFlickerTexture(0, Main.playerDrawData, edi, tex, edi.bodyArmorShader, drawPlayer, drawPlayer.bodyFrame, drawPlayer.bodyRotation, drawPlayer.bodyPosition, edi.bodyOrigin);
