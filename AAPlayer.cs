@@ -61,6 +61,8 @@ namespace AAMod
         public bool Rabbitcopter = false;
         public bool Sock = false;
         public bool Socc = false;
+        public bool Squirrel = false;
+        public bool DapperSquirrel = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;

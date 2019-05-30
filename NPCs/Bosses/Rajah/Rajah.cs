@@ -156,6 +156,22 @@ namespace AAMod.NPCs.Bosses.Rajah
         public Vector2 StaffPos;
         Projectile CarrotFarmer;
 
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (AAWorld.Anticheat == true && NPC.killCount[NPCID.Bunny] >= 1000)
+            {
+                if (damage > npc.lifeMax / 8)
+                {
+                    Main.NewText("Cheaters cannot escape justice!", 107, 137, 179);
+                    damage = 0;
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;

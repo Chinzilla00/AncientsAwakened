@@ -120,12 +120,12 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
-            item.damage = 0;
+            damage = 0;
         }
 
         public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
         {
-            projectile.damage = 0;
+            damage = 0;
         }
 
         public bool Dead = false;
@@ -193,33 +193,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public bool NoFly4U = false;
         public int NoFlyCountDown = 60;
 
-        public void SpawnHeads(NPC head, int NPCType)
-        {
-            if (head == null)
-            {
-                if (Main.netMode != 1)
-                {
-                    head = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCType, 0)];
-                }
-                else
-                {
-                    int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 100f, null);
-                    if (npcs != null && npcs.Length > 0)
-                    {
-                        foreach (int npcID in npcs)
-                        {
-                            NPC npc2 = Main.npc[npcID];
-                            if (npc2 != null && npc2.type == NPCType)
-                            {
-                                head = npc2;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         public override void AI()
         {
             TargetClosest();
@@ -234,12 +207,21 @@ namespace AAMod.NPCs.Bosses.Yamata
                         if (Main.netMode != 1)
                         {
                             TrueHead = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHead"), 0)];
+                            TrueHead.lifeMax = npc.lifeMax;
+                            TrueHead.realLife = npc.whoAmI;
+                            TrueHead.ai[0] = npc.whoAmI;
                             Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
+                            Head2.ai[0] = npc.whoAmI;
                             Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
+                            Head3.ai[0] = npc.whoAmI;
                             Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
+                            Head4.ai[0] = npc.whoAmI;
                             Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
+                            Head5.ai[0] = npc.whoAmI;
                             Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
+                            Head6.ai[0] = npc.whoAmI;
                             Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
+                            Head7.ai[0] = npc.whoAmI;
                         }
                         else
                         {
@@ -295,12 +277,20 @@ namespace AAMod.NPCs.Bosses.Yamata
                         if (Main.netMode != 1)
                         {
                             TrueHead = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHead"), 0)];
+                            TrueHead.realLife = npc.whoAmI;
+                            TrueHead.ai[0] = npc.whoAmI;
                             Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF1"), 0)];
+                            Head2.ai[0] = npc.whoAmI;
                             Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF1"), 0)];
+                            Head3.ai[0] = npc.whoAmI;
                             Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF1"), 0)];
+                            Head4.ai[0] = npc.whoAmI;
                             Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF2"), 0)];
+                            Head5.ai[0] = npc.whoAmI;
                             Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF2"), 0)];
+                            Head6.ai[0] = npc.whoAmI;
                             Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataHeadF2"), 0)];
+                            Head7.ai[0] = npc.whoAmI;
                         }
                         else
                         {
@@ -786,16 +776,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     quarterHealth = true;
                 }
             }
-        }
-
-        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            damage = 0;
-        }
-
-        public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
-        {
-            damage = 0;
         }
     }
 

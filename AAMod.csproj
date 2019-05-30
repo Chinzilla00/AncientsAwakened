@@ -6440,6 +6440,7 @@
     <Content Include="Sounds\Music\InfernoUnderground.mp3" />
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
+    <Content Include="Sounds\Music\RajahTheme.mp3" />
     <Content Include="Sounds\Music\RayOfHope.mp3" />
     <Content Include="Sounds\Music\Sagittarius.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />

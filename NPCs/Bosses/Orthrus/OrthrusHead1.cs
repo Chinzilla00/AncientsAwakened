@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             if (Body == null)
             {
-				int npcID = BaseMod.BaseAI.GetNPC(npc.Center, mod.NPCType("Orthrus"), 500f, null);
+				int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Orthrus"), 500f, null);
 				if(npcID != -1)
 					bodyNPC = Main.npc[npcID];              
 				return;

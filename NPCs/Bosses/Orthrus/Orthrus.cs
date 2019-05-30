@@ -135,12 +135,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
                                 if (npc2 != null && npc2.type == mod.NPCType("OrthrusHead1"))
                                 {
                                     Head1 = npc2;
-                                    Head1.realLife = npc.whoAmI;
                                 }
                                 if (npc2 != null && npc2.type == mod.NPCType("OrthrusHead2"))
                                 {
                                     Head2 = npc2;
-                                    Head1.realLife = npc.whoAmI;
                                 }
                             }
                         }

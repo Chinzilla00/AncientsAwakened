@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void AI()
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.player[npc.target];
             if (Main.dayTime || !player.ZoneSnow)
             {
                 internalAI[0]++;

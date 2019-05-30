@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-			npc.life = npc.lifeMax = 100;
+			npc.life = 180000;
             npc.damage = 180;
             npc.defense = 80;
             npc.width = 78;
@@ -509,5 +509,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             return true;
         }
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            return false;
+        }
     }
 }

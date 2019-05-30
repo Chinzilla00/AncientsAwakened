@@ -6,6 +6,7 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 using BaseMod;
 using System.IO;
 using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Yamata
 {
@@ -242,6 +243,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.frameCounter = 0;
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            return false;
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
