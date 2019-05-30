@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Tied
+namespace AAMod.Items.Armor.Dev.Tied
 {
 	public class TiedemiesPet : ModProjectile
 	{
