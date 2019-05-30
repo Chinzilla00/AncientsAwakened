@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Dev.Fargo
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class FargoPants : ModItem
+	public class FargoPantsA : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

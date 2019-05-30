@@ -1,19 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Tails
+namespace AAMod.Items.Armor.Dev.Grox
 {
-    [AutoloadEquip(EquipType.Head)]
-    public class TailsHead : ModItem
+    [AutoloadEquip(EquipType.Body)]
+    public class AngryPirateCofferplateA : ModItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Tails Helmet");
-            Tooltip.SetDefault(@"A helmet made to resemble a certain two-tailed fox.
+            DisplayName.SetDefault("Angry Pirate's Cofferplate");
+            Tooltip.SetDefault(@"Like Grovite, but ANGRY
 'Great for impersonating Ancients Awakened Devs!'");
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -22,16 +21,21 @@ namespace AAMod.Items.Armor.Dev.Tails
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(255, 216, 0);
+                    line2.overrideColor = new Color(89, 119, 71);
                 }
             }
+        }
+
+        public override bool DrawBody()
+        {
+            return false;
         }
 
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 9;
+            item.rare = 7;
             item.vanity = true;
         }
     }

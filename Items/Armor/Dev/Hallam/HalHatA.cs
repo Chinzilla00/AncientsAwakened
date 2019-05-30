@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Armor.Dev.Hallam
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class HalTux : ModItem
-    {
-        public override void SetStaticDefaults()
+    [AutoloadEquip(EquipType.Head)]
+	public class HalHatA : ModItem
+	{
+		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Hallam's Fancy Tux");
+            DisplayName.SetDefault("Hallam's Dapper Top Hat");
             Tooltip.SetDefault(
-@"This tux was woven with pure class
+@"You can't help but feel fancy just wearing this
 'Great for impersonating Ancients Awakened Devs!'");
-        }
+		}
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
@@ -27,10 +27,10 @@ namespace AAMod.Items.Armor.Dev.Hallam
         }
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 24;
+            item.width = 20;
+            item.height = 14;
             item.rare = 9;
             item.vanity = true;
         }
-    }
+	}
 }

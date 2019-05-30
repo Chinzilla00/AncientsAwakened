@@ -1,34 +1,28 @@
-using System.Collections.Generic;
+﻿using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Armor.Dev.Tied
-{ 
-    [AutoloadEquip(EquipType.Head)]
-    public class TiedsMask : ModItem
-    {
+{
+    [AutoloadEquip(EquipType.Body)]
+	class TiedsSuitA : ModItem
+	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spooky Skull");
+            DisplayName.SetDefault("Spooky Suit");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
-
         public override void SetDefaults()
-        {
-            item.width = 24;
-            item.height = 28;
-            item.rare = 9;
-            item.vanity = true;
-        }
-
-        public override bool DrawHead()
-        {
-            return false; 
-        }
-        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
-        {
-            drawHair = drawAltHair = false;
-        }
+		{
+			item.width = 34;
+			item.height = 22;
+			item.rare = 9;
+			item.vanity = true;
+		}
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
+		{
+			drawHands = false;
+		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

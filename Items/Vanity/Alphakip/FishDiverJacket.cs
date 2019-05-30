@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Alphakip
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Alphakip's Diving Jacket");
+            DisplayName.SetDefault("Fish Diver's Diving Jacket");
             Tooltip.SetDefault(@"This jacket is so insulated, you could sit in the ocean and still come out dry
 'Great for impersonating Ancients Awakened Devs!'");
         }

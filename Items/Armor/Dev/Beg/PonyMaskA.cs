@@ -3,16 +3,16 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Armor.Dev.Beg
-
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class PonyBody : ModItem
-    {
-        public override void SetStaticDefaults()
+    [AutoloadEquip(EquipType.Head)]
+	public class PonyMaskA : ModItem
+	{
+		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Weird Horse Shirt");
+            DisplayName.SetDefault("Weird Horse Mask");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
+
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -28,10 +28,10 @@ namespace AAMod.Items.Armor.Dev.Beg
 
         public override void SetDefaults()
         {
-            item.width = 26;
+            item.width = 18;
             item.height = 20;
             item.rare = 9;
             item.vanity = true;
         }
-    }
+	}
 }

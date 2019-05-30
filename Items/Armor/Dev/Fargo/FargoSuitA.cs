@@ -2,16 +2,16 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Grox
+namespace AAMod.Items.Armor.Dev.Fargo
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AngryPirateCofferplate : ModItem
+    public class FargoSuitA : ModItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Angry Pirate's Cofferplate");
-            Tooltip.SetDefault(@"Hatred towards fish that can't code radiates from this Chestplate.
+            DisplayName.SetDefault("Dapper Squirrel Suit");
+            Tooltip.SetDefault(@"soonTM
 'Great for impersonating Ancients Awakened Devs!'");
         }
 
@@ -21,21 +21,16 @@ namespace AAMod.Items.Armor.Dev.Grox
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(89, 119, 71);
+                    line2.overrideColor = new Color(189, 76, 15);
                 }
             }
         }
 
-        public override bool DrawBody()
-        {
-            return false;
-        }
-
         public override void SetDefaults()
         {
-            item.width = 18;
+            item.width = 26;
             item.height = 20;
-            item.rare = 7;
+            item.rare = 9;
             item.vanity = true;
         }
     }

@@ -1,17 +1,18 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Fargo
+namespace AAMod.Items.Armor.Dev.Tails
+
 {
     [AutoloadEquip(EquipType.Body)]
-    public class FargoSuit : ModItem
+    public class TailsBodyA : ModItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Dapper Squirrel Suit");
-            Tooltip.SetDefault(@"soonTM
+            DisplayName.SetDefault("Tails Body Costume");
+            Tooltip.SetDefault(@"A body suit made to resemble a certain two-tailed fox.
 'Great for impersonating Ancients Awakened Devs!'");
         }
 
@@ -21,7 +22,7 @@ namespace AAMod.Items.Armor.Dev.Fargo
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(189, 76, 15);
+                    line2.overrideColor = new Color(255, 216, 0);
                 }
             }
         }

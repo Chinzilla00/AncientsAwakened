@@ -1,18 +1,19 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Beg
+namespace AAMod.Items.Armor.Dev.Fargo
 {
-    [AutoloadEquip(EquipType.Legs)]
-	public class PonyHoofs : ModItem
+    [AutoloadEquip(EquipType.Head)]
+	public class FargoHatA : ModItem
 	{
 		public override void SetStaticDefaults()
-		{
+        {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Weird Horse Hoofs");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
-		}
+            DisplayName.SetDefault("Dapper Squirrel Top Hat");
+            Tooltip.SetDefault(@"soonTM
+'Great for impersonating Ancients Awakened Devs!'");
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -20,17 +21,17 @@ namespace AAMod.Items.Armor.Dev.Beg
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(0, 130, 150);
+                    line2.overrideColor = new Color(189, 76, 15);
                 }
             }
         }
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 18;
+            item.width = 18;
+            item.height = 20;
             item.rare = 9;
             item.vanity = true;
         }
-    }
+	}
 }

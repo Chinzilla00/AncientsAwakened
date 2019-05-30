@@ -2,34 +2,40 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Hallam
+namespace AAMod.Items.Armor.Dev.Grox
 {
     [AutoloadEquip(EquipType.Head)]
-	public class HalHat : ModItem
+	public class AngryPirateHoodA : ModItem
 	{
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Hallam's Dapper Top Hat");
-            Tooltip.SetDefault(
-@"You can't help but feel fancy just wearing this
+            DisplayName.SetDefault("Angry Pirate's Hood");
+            Tooltip.SetDefault(@"Like Grovite, but ANGRY
 'Great for impersonating Ancients Awakened Devs!'");
-		}
+        }
+
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(255, 8, 251);
+                    line2.overrideColor = new Color(89, 119, 71);
                 }
             }
         }
+
+        public override bool DrawHead()
+        {
+            return false;
+        }
+        
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 14;
-            item.rare = 9;
+            item.width = 18;
+            item.height = 20;
+            item.rare = 7;
             item.vanity = true;
         }
 	}

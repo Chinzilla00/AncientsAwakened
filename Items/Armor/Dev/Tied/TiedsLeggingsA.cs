@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 namespace AAMod.Items.Armor.Dev.Tied
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TiedsLeggings : ModItem
+    public class TiedsLeggingsA : ModItem
     {
         public override void SetStaticDefaults()
         {

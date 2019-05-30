@@ -1,19 +1,21 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Grox
+namespace AAMod.Items.Armor.Dev.Eliza
+
 {
-    [AutoloadEquip(EquipType.Legs)]
-	public class AngryPirateBoots : ModItem
-	{
+    [AutoloadEquip(EquipType.Body)]
+    public class LizShirtA : ModItem
+    {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Angry Pirate's Legguards");
-            Tooltip.SetDefault(@"Hatred towards fish that can't code radiates from these boots.
-'Great for impersonating Ancients Awakened Devs!'");
+            DisplayName.SetDefault("Midnight Cat Blouse");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
+
+
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -21,21 +23,21 @@ namespace AAMod.Items.Armor.Dev.Grox
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(89, 119, 71);
+                    line2.overrideColor = new Color(121, 21, 214);
                 }
             }
         }
 
-        public override bool DrawLegs()
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
         {
-            return false;
+            drawHands = true;
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
+            item.width = 26;
             item.height = 20;
-            item.rare = 7;
+            item.rare = 11;
             item.vanity = true;
         }
     }

@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip.Shiny
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Shiny Fish Diver's Jacket");
+            DisplayName.SetDefault("Shiny Fish Diver's Jacket EX");
             Tooltip.SetDefault(@"This jacket is so well insulated, you could sit in the ocean and still come out dry
 20% increased Melee/Ranged damage & critical strike chance
 13% increased damage resistance and melee speed

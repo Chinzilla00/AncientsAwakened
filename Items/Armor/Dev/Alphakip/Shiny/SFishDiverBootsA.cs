@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip.Shiny
        
 		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Shiny Fish Diver's Flippers");
+            DisplayName.SetDefault("Shiny Fish Diver's Flippers EX");
             Tooltip.SetDefault(@"Actually flippers now!
 20% increased Melee/Ranged damage & critical strike chance
 13% increased damage resistance and melee speed

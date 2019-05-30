@@ -2,17 +2,18 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Armor.Dev.Grox
+namespace AAMod.Items.Armor.Dev.Eliza
 {
     [AutoloadEquip(EquipType.Head)]
-	public class AngryPirateHood : ModItem
+	public class LizEarsA : ModItem
 	{
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Angry Pirate's Hood");
-            Tooltip.SetDefault(@"Hatred towards fish that can't code radiates from this hood.
+            DisplayName.SetDefault("Midnight Cat Ears");
+            Tooltip.SetDefault(@"As opposed to normal cat ears
 'Great for impersonating Ancients Awakened Devs!'");
+
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -21,22 +22,22 @@ namespace AAMod.Items.Armor.Dev.Grox
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(89, 119, 71);
+                    line2.overrideColor = new Color(121, 21, 214);
                 }
             }
         }
 
-        public override bool DrawHead()
-        {
-            return false;
-        }
-        
+
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 7;
+            item.rare = 11;
             item.vanity = true;
         }
-	}
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = drawAltHair = true;  //this make so the player hair does not show when the vanity mask is equipped.  add true if you want to show the player hair.
+        }
+    }
 }
