@@ -115,27 +115,35 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
             if (!HeadsSpawned)
             {
-                if (Main.netMode != 1)
+                if (Head1 == null)
                 {
-                    npc.realLife = npc.whoAmI;
-                    int latestNPC;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X + 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead1"), 0, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                    Head1 = Main.npc[latestNPC];
-                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
-                    if (Main.netMode == 2 && latestNPC < 200)
+                    if (Main.netMode != 1)
                     {
-                        NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead1"), 0)];
+                        Head1.realLife = npc.whoAmI;
+                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead2"), 0)];
+                        Head1.realLife = npc.whoAmI;
                     }
-                    latestNPC = NPC.NewNPC((int)npc.Center.X - 34, (int)npc.Center.Y - 23, mod.NPCType("OrthrusHead2"), 0, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                    Head2 = Main.npc[latestNPC];
-                    Main.npc[latestNPC].netUpdate2 = true; Main.npc[latestNPC].netUpdate = true;
-                    if (Main.netMode == 2 && latestNPC < 200)
+                    else
                     {
-                        NetMessage.SendData(23, -1, -1, null, latestNPC, 0f, 0f, 0f, 0, 0, 0);
+                        int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 100f, null);
+                        if (npcs != null && npcs.Length > 0)
+                        {
+                            foreach (int npcID in npcs)
+                            {
+                                NPC npc2 = Main.npc[npcID];
+                                if (npc2 != null && npc2.type == mod.NPCType("OrthrusHead1"))
+                                {
+                                    Head1 = npc2;
+                                    Head1.realLife = npc.whoAmI;
+                                }
+                                if (npc2 != null && npc2.type == mod.NPCType("OrthrusHead2"))
+                                {
+                                    Head2 = npc2;
+                                    Head1.realLife = npc.whoAmI;
+                                }
+                            }
+                        }
                     }
                 }
                 HeadsSpawned = true;
