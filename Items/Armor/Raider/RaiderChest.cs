@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Raider
 		public static int counter = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Raider Chestplate");=
+			DisplayName.SetDefault("Raider Chestplate");
 
 		}
 

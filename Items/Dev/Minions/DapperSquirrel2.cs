@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev.Minions
 {
-    public class DapperSquirrel1 : ModProjectile
+    public class DapperSquirrel2 : ModProjectile
     {
         public override void SetStaticDefaults()
         {
