@@ -31,6 +31,8 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.melee = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 12;
         }
 
         public override void AI()

@@ -21,14 +21,13 @@ namespace AAMod.Projectiles
             aiType = 1;
         }
 
-        public override void AI()
+        public override void PostAI()
         {
-
+            projectile.alpha = 0;
         }
 
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Asgardian Ice");
 		}
 

@@ -13,10 +13,10 @@ namespace AAMod.Projectiles
             projectile.height = 18;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("CGP");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("CGP");
+        }
 
 
     }

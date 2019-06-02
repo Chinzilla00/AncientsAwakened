@@ -29,10 +29,10 @@ namespace AAMod.Projectiles.Yamata
         }
 
         public override void AI()
-		{
+        {
+            projectile.rotation += 0.1f;
             if (projectile.ai[0] == 0f)
             {
-                projectile.rotation += projectile.velocity.X * 0.1f;
                 float num689 = 500f;
                 int num690 = -1;
                 for (int num691 = 0; num691 < 200; num691++)

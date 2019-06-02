@@ -11,12 +11,13 @@ namespace AAMod.Projectiles
             projectile.penetrate = 6;  
             projectile.width = 32;
             projectile.height = 32;
+            aiType = ProjectileID.PossessedHatchet;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("SpookerangP");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("SpookerangP");
+        }
 
 
     }

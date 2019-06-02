@@ -20,6 +20,7 @@ namespace AAMod.Projectiles
 		
 		public override void AI()
 		{
+            projectile.alpha = 0;
 			if (Main.rand.NextFloat() < 0.9210526f)
 			{
 				Dust dust;

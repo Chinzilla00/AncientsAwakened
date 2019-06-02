@@ -23,7 +23,6 @@ namespace AAMod.Projectiles
             projectile.ignoreWater = true;
             projectile.penetrate = 50;
             projectile.alpha = 130;
-            projectile.scale = .01f;
             projectile.alpha = 255;
             projectile.timeLeft = 600;
             projectile.tileCollide = false;
@@ -55,7 +54,7 @@ namespace AAMod.Projectiles
             }
             else
             {
-                if (projectile.ai[0] == 1 && projectile.penetrate > 0)
+                if (projectile.penetrate > 0)
                 {
                     projectile.scale = projectile.penetrate / 50;
                 }

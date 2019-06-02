@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Akuma
 {
@@ -19,7 +20,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
@@ -91,7 +92,10 @@ namespace AAMod.Projectiles.Akuma
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("Venom"), 600);
+            if (!target.daybreak)
+            {
+                target.AddBuff(BuffID.Daybreak, 600);
+            }
         }
     }
 }

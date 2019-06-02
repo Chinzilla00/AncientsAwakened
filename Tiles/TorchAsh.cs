@@ -16,6 +16,7 @@ namespace AAMod.Tiles
             Main.tileBlendAll[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
+            TileID.Sets.Snow[Type] = true;
             dustType = mod.DustType<Dusts.AshRain>();
             AddMapEntry(new Color(30, 30, 30));
             drop = mod.ItemType<Items.Blocks.TorchAsh>();

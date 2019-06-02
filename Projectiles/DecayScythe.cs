@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -45,7 +46,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)//this is the proper sound delay for this type of weapon
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15);    //this is the sound when the weapon is used
+                Main.PlaySound(1, (int)projectile.Center.X, (int)projectile.Center.Y);    //this is the sound when the weapon is used
                 projectile.soundDelay = 45;    //this is the proper sound delay for this type of weapon
             }
             //-----------------------------------------------How the projectile works---------------------------------------------------------------------
@@ -65,17 +66,47 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;
-                Projectile.NewProjectile(projectile.Center.X + (projectile.velocity.X * 2), projectile.Center.Y + (projectile.velocity.Y * 2), projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("DecayScytheProj"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
             }
             else if (projectile.rotation < 0)
             {
                 projectile.rotation += MathHelper.TwoPi;
-                Projectile.NewProjectile(projectile.Center.X + (projectile.velocity.X * 2), projectile.Center.Y + (projectile.velocity.Y * 2), projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("DecayScytheProj"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
             }
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
+            if (Main.netMode != 1)
+            {
+                projectile.ai[1]++;
+                if (projectile.ai[1] > 20)
+                {
+                    projectile.ai[1] = 0;
+                    Vector2 vector = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
+                    float num22 = (float)Main.mouseX + Main.screenPosition.X - vector.X;
+                    float num23 = (float)Main.mouseY + Main.screenPosition.Y - vector.Y;
+                    if (player.gravDir == -1f)
+                    {
+                        num23 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector.Y;
+                    }
+                    float num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+                    if ((float.IsNaN(num22) && float.IsNaN(num23)) || (num22 == 0f && num23 == 0f))
+                    {
+                        num22 = (float)player.direction;
+                        num23 = 0f;
+                        num24 = 10;
+                    }
+                    else
+                    {
+                        num24 = 10 / num24;
+                    }
+                    num22 *= num24;
+                    num23 *= num24;
+                    int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, mod.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
+                    Main.projectile[a].netUpdate = true;
+
+                }
+            }
+            
  
         }
 

@@ -106,7 +106,7 @@ namespace AAMod.Projectiles
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Depthice>())
+                        else if (type == mod.TileType<DepthIce>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);

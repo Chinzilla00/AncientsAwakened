@@ -53,7 +53,6 @@ namespace AAMod.Projectiles
 				if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
 				{
 					projectile.localAI[0] = 1f;
-					Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X * projectile.ai[0], projectile.Center.Y + projectile.velocity.Y * projectile.ai[0], projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("AsgardianLanceShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
 				}
         	}
         	else

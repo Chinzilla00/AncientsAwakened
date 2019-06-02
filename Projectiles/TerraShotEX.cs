@@ -13,10 +13,12 @@ namespace AAMod.Projectiles
             projectile.aiStyle = 27;
             projectile.friendly = true;
             projectile.melee = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.timeLeft = 240;
             projectile.tileCollide = false;
             aiType = 132;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()

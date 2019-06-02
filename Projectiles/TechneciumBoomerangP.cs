@@ -20,10 +20,10 @@ namespace AAMod.Projectiles
 			
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("tBoomerangP");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("tBoomerangP");
+        }
 
        
 

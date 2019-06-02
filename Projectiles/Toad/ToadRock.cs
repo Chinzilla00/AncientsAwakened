@@ -31,6 +31,7 @@ namespace AAMod.Projectiles.Toad
 
         public override bool PreKill(int timeLeft)
         {
+            Main.PlaySound(SoundID.Item14, projectile.position);
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<Toadsplosion>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)

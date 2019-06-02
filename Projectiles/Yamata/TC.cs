@@ -7,7 +7,7 @@ namespace AAMod.Projectiles.Yamata
 	{
 		public override void SetDefaults()
 		{
-            projectile.CloneDefaults(ProjectileID.PossessedHatchet);
+            projectile.CloneDefaults(ProjectileID.PaladinsHammerFriendly);
 			projectile.width = 18;
 			projectile.height = 20;
 			projectile.friendly = true;
@@ -17,16 +17,11 @@ namespace AAMod.Projectiles.Yamata
 			projectile.timeLeft = 550;
 			projectile.light = 0.9f;
 			projectile.extraUpdates = 2;
-			
-			
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("tc");
-    }
-
-       
-
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Throwing Crescent");
+        }
     }
 }

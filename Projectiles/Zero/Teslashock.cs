@@ -30,13 +30,15 @@ namespace AAMod.Projectiles.Zero
             projectile.width = 12;
             projectile.height = 12;
             projectile.friendly = true;
-            projectile.penetrate = -1;                       //this is the projectile penetration
+            projectile.penetrate = 4;                       //this is the projectile penetration
             Main.projFrames[projectile.type] = 3;           //this is projectile frames
             projectile.hostile = false;
             projectile.magic = true;                        //this make the projectile do magic damage
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
             projectile.timeLeft = 900;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 6;
         }
 
         public override void AI()
@@ -55,6 +57,48 @@ namespace AAMod.Projectiles.Zero
                     projectile.frame = 00;
                 }
             }
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

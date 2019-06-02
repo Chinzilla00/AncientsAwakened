@@ -43,6 +43,8 @@ namespace AAMod.Projectiles
 			projectile.tileCollide = false;
 			projectile.magic = true;
 			projectile.hide = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

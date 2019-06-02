@@ -20,6 +20,8 @@ namespace AAMod.Projectiles
 			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
 			projectile.penetrate = 5;
             projectile.tileCollide = false;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 8;
 		}
 
         public short customGlowMask = 0;

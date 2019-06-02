@@ -10,7 +10,7 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 6;
+
         }
 
         public override void SetDefaults()
@@ -25,8 +25,7 @@ namespace AAMod.Projectiles
         {
             return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, AAColor.CursedInferno, AAColor.Ichor);
         }
-
-
+        
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Ichor, 1000);

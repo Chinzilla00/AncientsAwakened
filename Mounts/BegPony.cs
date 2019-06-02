@@ -36,7 +36,7 @@ namespace AAMod.Mounts
             mountData.playerYOffsets = array;
             mountData.xOffset = 5;
             mountData.bodyFrame = 3;
-            mountData.yOffset = 1;
+            mountData.yOffset = 3;
             mountData.playerHeadOffset = 31;
             mountData.standingFrameCount = 1;
             mountData.standingFrameDelay = 12;

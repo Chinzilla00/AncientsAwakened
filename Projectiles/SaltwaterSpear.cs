@@ -7,8 +7,8 @@ namespace AAMod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 75;
-            projectile.height = 75;
+            projectile.width = 30;
+            projectile.height = 30;
             projectile.scale = 1.1f;
             projectile.aiStyle = 19;
             projectile.friendly = true;
@@ -49,7 +49,7 @@ namespace AAMod.Projectiles
             {
                 if (MovementFactor == 0f) // When initially thrown out, the ai0 will be 0f
                 {
-                    MovementFactor = 3f; // Make sure the spear moves forward when initially thrown out
+                    MovementFactor = 2f; // Make sure the spear moves forward when initially thrown out
                     projectile.netUpdate = true; // Make sure to netUpdate this spear
                 }
                 if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
