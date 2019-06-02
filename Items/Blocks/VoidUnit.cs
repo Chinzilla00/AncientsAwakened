@@ -29,7 +29,8 @@ namespace AAMod.Items.Blocks
 			item.rare = 10;
 			item.value = Item.buyPrice(0, 10, 0, 0);
 			item.createTile = mod.TileType("VoidUnit");
-		}
+            item.rare = 10;
+        }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

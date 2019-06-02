@@ -20,7 +20,7 @@ Inflicts daybroken");
 
         public override void SetDefaults()
         {
-            item.damage = 210;
+            item.damage =310;
             item.melee = true;
             item.width = 96;
             item.height = 96;
@@ -35,7 +35,7 @@ Inflicts daybroken");
 			item.autoReuse = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 3;
+            item.rare = 10;
             item.shoot = mod.ProjectileType("SunSpear");  //put your Spear projectile name
             item.shootSpeed = 7f;
         }

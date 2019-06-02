@@ -26,7 +26,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.UseSound = SoundID.Item1; //item.UseSound = SoundID.Item1;   //The sound played when using your Weapon
             item.autoReuse = true; //Weather your Weapon will be used again after use while holding down, if false you will need to click again after use to use it again.
             item.shoot = 206;  //This defines what type of projectile this weapon will shoot  
-            item.shootSpeed = 22f;    //This defines the projectile speed when shoot
+            item.shootSpeed = 14f;    //This defines the projectile speed when shoot
         }
 
 		public override void SetStaticDefaults()
@@ -42,7 +42,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
               int numberProjectiles = 3; //This defines how many projectiles to shot. 4 + Main.rand.Next(2)= 4 or 5 shots
               for (int i = 0; i < numberProjectiles; i++)
               {
-                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // This defines the projectiles random spread . 30 degree spread.
+                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // This defines the projectiles random spread . 30 degree spread.
                   Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
               }
               return false;

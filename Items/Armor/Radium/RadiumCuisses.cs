@@ -13,7 +13,6 @@ namespace AAMod.Items.Armor.Radium
 			DisplayName.SetDefault("Radium Cuisses");
 			Tooltip.SetDefault(@"30% increased movement speed
 Shines with the light of a starry night sky");
-
 		}
 
 		public override void SetDefaults()

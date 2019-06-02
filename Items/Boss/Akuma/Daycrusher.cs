@@ -34,19 +34,19 @@ Inflicts Daybroken");
             item.width = 54;
             item.height = 44;
             item.value = Item.buyPrice(1, 0, 0, 0); ;
-            item.rare = 1;
-
+            item.rare = 10;
             item.noMelee = true;
             item.useStyle = 5;
             item.useAnimation = 40;
             item.useTime = 40;
             item.knockBack = 7.5F;
-            item.damage = 240;
+            item.damage = 340;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Daycrusher");
             item.shootSpeed = 20F;
             item.UseSound = SoundID.Item20;
             item.melee = true;
+            item.rare = 10;
         }
 
 

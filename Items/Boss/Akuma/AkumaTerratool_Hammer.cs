@@ -17,13 +17,12 @@ namespace AAMod.Items.Boss.Akuma
             item.tileBoost += 20;
             item.knockBack = 3;
             item.value = 1000000;
-            item.rare = 11;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
             item.hammer = 260;
-
+            item.rare = 10;
         }
 
         public override void SetStaticDefaults()

@@ -28,7 +28,7 @@ namespace AAMod.Items.Melee
             item.autoReuse = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 7;
+            item.rare = 8;
             item.shootSpeed = 11f;
             item.shoot = mod.ProjectileType("ChaosYari");  //put your Spear projectile name
         }

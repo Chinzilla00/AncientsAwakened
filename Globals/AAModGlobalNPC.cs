@@ -16,7 +16,7 @@ using Terraria.Localization;
 namespace AAMod
 {
     public class AAModGlobalNPC : GlobalNPC
-	{
+    {
         //debuffs
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
@@ -36,15 +36,15 @@ namespace AAMod
         public static int Rajah = -1;
 
         public override bool InstancePerEntity
-		{
-			get
-			{
-				return true;
-			}
-		}
+        {
+            get
+            {
+                return true;
+            }
+        }
 
-		public override void ResetEffects(NPC npc)
-		{
+        public override void ResetEffects(NPC npc)
+        {
             infinityOverload = false;
             terraBlaze = false;
             TimeFrozen = false;
@@ -97,7 +97,7 @@ namespace AAMod
                     damage = 40;
                 }
             }
-            
+
             if (InfinityScorch)
             {
                 drain = true;
@@ -215,7 +215,7 @@ namespace AAMod
 
             if (BrokenArmor)
             {
-               npc.defense *= (int).8f;
+                npc.defense *= (int).8f;
             }
 
             if (Dragonfire)
@@ -314,7 +314,7 @@ namespace AAMod
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShinyCharm")); //Item spawn
             }
 
-            if (AAWorld.downedShen == true)
+            if (AAWorld.downedAllAncients == true)
             {
                 if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want
                 {
@@ -531,7 +531,7 @@ namespace AAMod
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulOfSmite"), 1);
                     }
                 }
-                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire )
+                if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
                 {
                     if (Main.rand.Next(0, 2499) == 0)
                     {
@@ -571,7 +571,7 @@ namespace AAMod
                     Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                     SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
-                    
+
                 }
                 if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                 {
@@ -595,8 +595,8 @@ namespace AAMod
             }
         }
 
-		public override void DrawEffects(NPC npc, ref Color drawColor)
-		{
+        public override void DrawEffects(NPC npc, ref Color drawColor)
+        {
             Rectangle hitbox = npc.Hitbox;
             if (Electrified)
             {
@@ -802,18 +802,6 @@ namespace AAMod
 
         }
 
-        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-        {
-            for (int i = 0; i < 200; ++i)
-            {
-                if (Main.npc[i].boss && Main.npc[i].type != NPCID.WallofFlesh && Main.npc[i].active)
-                {
-                    spawnRate = 0;
-                    maxSpawns = 0;
-                }
-            }
-        }
-
         public void ClearPoolWithExceptions(IDictionary<int, float> pool)
         {
             try
@@ -845,7 +833,7 @@ namespace AAMod
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
             Player player = Main.player[Main.myPlayer];
-            
+
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneStars)
             {
@@ -1012,8 +1000,8 @@ namespace AAMod
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
-		{
-			if (type == NPCID.Demolitionist && !Main.dayTime)
+        {
+            if (type == NPCID.Demolitionist && !Main.dayTime)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("M79Round"));
                 nextSlot++;
@@ -1058,16 +1046,6 @@ namespace AAMod
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(mod.ItemType("YellowSolution"));
                 nextSlot++;
-            }
-        }
-
-        public const string HeadTex = "AAMod/Resprites/TEoCHead";
-
-        public override void BossHeadSlot(NPC npc, ref int index)
-        {
-            if (npc.type == NPCID.MoonLordFreeEye)
-            {
-                index = NPCHeadLoader.GetBossHeadSlot(HeadTex);
             }
         }
 
@@ -1158,19 +1136,6 @@ namespace AAMod
                 //I have no idea how to convert this to the standard system so im gonna post this method too lol
                 AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
             }
-        }
-
-    }
-
-    public abstract class AANPC : ParentNPC
-    {
-        public virtual bool CanSpawn(int x, int y, int type, Player player, NPCSpawnInfo info)
-        {
-            return CanSpawn(x, y, type, player);
-        }
-        public virtual bool CanSpawn(int x, int y, int type, Player player)
-        {
-            return false;
         }
     }
 }

@@ -25,6 +25,7 @@ The blazing fury of the Inferno rests in this armor");
 			item.height = 20;
 			item.value = 3000000;
 			item.defense = 49;
+            item.rare = 10;
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

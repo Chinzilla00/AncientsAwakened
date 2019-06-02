@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Enemies.Other
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hydra Claw");
+            DisplayName.SetDefault("Abyss Claw");
             Main.npcFrameCount[npc.type] = 5;
         }
         public override void SetDefaults()

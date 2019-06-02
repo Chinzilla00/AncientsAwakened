@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.DeathSound = null;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
-            music = music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("DBBag");			
             if (AAWorld.downedShen)
@@ -105,7 +105,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		bool prevWormStronger = false;
 		bool initCustom = false;
-        public override void AI()
+        public override bool  PreAI()
         {
             if (Main.netMode != 1 && !initCustom)
 			{
@@ -130,19 +130,19 @@ namespace AAMod.NPCs.Bosses.Equinox
 					Main.dust[dustID].noGravity = true;
 				}
 			}
-
+				
 			if(isHead) //prevents despawn and allows them to run away
-			{
+			{				
 				bool foundTarget = TargetClosest();		
 				if(foundTarget)
-				{
+				{			
 					npc.timeLeft = 300;	
 				}else
-				{					
+				{		
 					if(npc.timeLeft > 50) npc.timeLeft = 50;
 					npc.velocity.Y -= 0.2f;
 					if(npc.velocity.Y < -20f) npc.velocity.Y = -20f;
-					return;
+					return false;
 				}
 			}else
 			{
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     npc.damage = 300;
                     npc.defense = (!nightcrawler ? 120 : 200);
                 }
-            }
+            }	
             if (!isHead && NPC.CountNPCS(mod.NPCType<Equiprobe>()) < 15)
             {
 				SpawnProbe();
@@ -180,9 +180,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                 int Length = nightcrawler ? 24 : 30;
 				int[] wormTypes = (nightcrawler ? new int[]{ mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[]{ mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") });
 				BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);	
-			}
+			}			
 			npc.spriteDirection = 1;
 			prevWormStronger = wormStronger;
+			return false;
         }
 
 		public int probeCounter = -1;
@@ -280,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 					}
 					for (int k = 0; k < 15; k++)
 					{
-						int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.5f);
+						Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.5f);
 					}
 				}
             }
@@ -348,18 +349,18 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public Color GetAuraAlpha()
 		{
 			Color c = (Color.White * ((float)Main.mouseTextColor / 255f));
-			c.A = 255;
+			//c.A = 255;
 			return c;
 		}
 
         public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
-            ModifyCritArea(npc, ref crit);
+            //ModifyCritArea(npc, ref crit);
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            ModifyCritArea(npc, ref crit);
+           // ModifyCritArea(npc, ref crit);
         }
 
         private void ModifyCritArea(NPC npc, ref bool crit)
@@ -424,7 +425,7 @@ namespace AAMod.NPCs.Bosses.Equinox
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
-		{
+		{				
 			bool wormStronger = (nightcrawler && !Main.dayTime) ||  (!nightcrawler && Main.dayTime);
 			Texture2D tex = Main.npcTexture[npc.type];
 			if(wormStronger)
@@ -442,9 +443,8 @@ namespace AAMod.NPCs.Bosses.Equinox
 				float diffFloat = (float)diff / 50f;
 				float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f); //did it this way so it's syncronized between all the segments
 				BaseMod.BaseDrawing.DrawAura(spritebatch, tex, 0, npc, auraPercent, 2f, 0f, 0f, GetAuraAlpha());				
-			}
-			
-			BaseMod.BaseDrawing.DrawTexture(spritebatch, tex, 0, npc, GetAuraAlpha());				
+			}			
+			BaseMod.BaseDrawing.DrawTexture(spritebatch, tex, 0, npc, Color.White); //GetAuraAlpha());				
 			return false;
 		}	
     }

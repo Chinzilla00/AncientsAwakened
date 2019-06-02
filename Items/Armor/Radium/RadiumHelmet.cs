@@ -45,6 +45,7 @@ Being hit causes stars from the heavans to fall around you and increases your mo
                 player.moveSpeed += .3f;
             }
             player.GetModPlayer<AAPlayer>(mod).Radium = true;
+            player.GetModPlayer<AAPlayer>(mod).radiumMe = true;
             player.meleeSpeed += 0.15f;
             player.meleeCrit += 15;
             player.panic = true;

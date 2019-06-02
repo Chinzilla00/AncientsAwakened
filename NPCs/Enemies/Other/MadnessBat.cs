@@ -17,7 +17,6 @@ namespace AAMod.NPCs.Enemies.Other
         {
             npc.width = 30;
             npc.height = 30;
-            npc.aiStyle = -1;
             npc.damage = 5;
             npc.defense = 4;
             npc.lifeMax = 20;
@@ -27,10 +26,10 @@ namespace AAMod.NPCs.Enemies.Other
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            npc.aiStyle = 14;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             aiType = NPCID.CaveBat;
-            animationType = NPCID.CaveBat;
         }
 
         public override void FindFrame(int frameHeight)

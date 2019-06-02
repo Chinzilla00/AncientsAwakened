@@ -7,8 +7,6 @@ namespace AAMod.NPCs.Enemies.Snow
 {
     public class SnakeHead : ModNPC
 	{
-		bool TailSpawned = false;
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snow Serpent");
@@ -45,7 +43,7 @@ namespace AAMod.NPCs.Enemies.Snow
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeBody2"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
+			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
             
             if (npc.velocity.X < 0f)
             {

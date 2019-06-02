@@ -20,7 +20,6 @@ namespace AAMod.Items.Ranged
             item.damage = 30;
             item.shootSpeed = 9f;
             item.noMelee = true;
-            item.scale = 0.8f;
             item.rare = 3;
             item.autoReuse = true;
             item.ranged = true;

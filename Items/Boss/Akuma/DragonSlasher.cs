@@ -42,7 +42,7 @@ Inflicts Daybroken");
 
         public override void SetDefaults()
         {
-            item.damage = 350;            //Sword damage
+            item.damage = 450;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 42;              //Sword width
             item.height = 52;             //Sword height
@@ -54,6 +54,7 @@ Inflicts Daybroken");
             item.UseSound = SoundID.Item20;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
+            item.rare = 10;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)

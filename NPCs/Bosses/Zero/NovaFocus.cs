@@ -77,8 +77,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-
-
         public override void HitEffect(int hitDirection, double damage)
         {
             bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>())));
@@ -114,84 +112,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
                     npc.timeLeft = 10;
-                if (Main.npc[(int)npc.ai[1]].ai[1] != 0f)
-                {
-                    npc.localAI[0] += 3f;
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
-                    {
-                        if (npc.velocity.Y > 0.0)
-                            npc.velocity.Y *= 0.96f;
-                        npc.velocity.Y -= 0.07f;
-                        if (npc.velocity.Y > 6.0)
-                            npc.velocity.Y = 6f;
-                    }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
-                    {
-                        if (npc.velocity.Y < 0.0)
-                            npc.velocity.Y *= 0.96f;
-                        npc.velocity.Y += 0.07f;
-                        if (npc.velocity.Y < -6.0)
-                            npc.velocity.Y = -6f;
-                    }
-                    if (npc.position.X + (double)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (120.0 * npc.ai[0]))
-                    {
-                        if (npc.velocity.X > 0.0)
-                            npc.velocity.X *= 0.96f;
-                        npc.velocity.X -= 0.1f;
-                        if (npc.velocity.X > 8.0)
-                            npc.velocity.X = 8f;
-                    }
-                    if (npc.position.X + (double)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (120.0 * npc.ai[0]))
-                    {
-                        if (npc.velocity.X < 0.0)
-                            npc.velocity.X *= 0.96f;
-                        npc.velocity.X += 0.1f;
-                        if (npc.velocity.X < -8.0)
-                            npc.velocity.X = -8f;
-                    }
-                }
-                else
-                {
-                    ++npc.ai[3];
-                    if (npc.ai[3] >= 800.0)
-                    {
-                        ++npc.ai[2];
-                        npc.ai[3] = 0.0f;
-                        npc.netUpdate = true;
-                    }
-                    if (npc.position.Y > Main.npc[(int)npc.ai[1]].position.Y - 100.0)
-                    {
-                        if (npc.velocity.Y > 0.0)
-                            npc.velocity.Y *= 0.96f;
-                        npc.velocity.Y -= 0.1f;
-                        if (npc.velocity.Y > 3.0)
-                            npc.velocity.Y = 3f;
-                    }
-                    else if (npc.position.Y < Main.npc[(int)npc.ai[1]].position.Y - 100.0)
-                    {
-                        if (npc.velocity.Y < 0.0)
-                            npc.velocity.Y *= 0.96f;
-                        npc.velocity.Y += 0.1f;
-                        if (npc.velocity.Y < -3.0)
-                            npc.velocity.Y = -3f;
-                    }
-                    if (npc.position.X + (double)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (180.0 * npc.ai[0]))
-                    {
-                        if (npc.velocity.X > 0.0)
-                            npc.velocity.X *= 0.96f;
-                        npc.velocity.X -= 0.14f;
-                        if (npc.velocity.X > 8.0)
-                            npc.velocity.X = 8f;
-                    }
-                    if (npc.position.X + (double)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (double)(Main.npc[(int)npc.ai[1]].width / 2) - (180.0 * npc.ai[0]))
-                    {
-                        if (npc.velocity.X < 0.0)
-                            npc.velocity.X *= 0.96f;
-                        npc.velocity.X += 0.14f;
-                        if (npc.velocity.X < -8.0)
-                            npc.velocity.X = -8f;
-                    }
-                }
+                ArmAIs.Focus(npc, (int)npc.ai[1], internalAI[0]);
                 npc.TargetClosest(true);
                 Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;

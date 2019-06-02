@@ -72,8 +72,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            scale = 1.5f;
-            return null;
+            return false;
         }
 
         public override void NPCLoot()
@@ -85,7 +84,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
             if (Main.expertMode)
             {
                 npc.DropBossBags();
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofMight, Main.rand.Next(25, 40));
             }
             else
             {
@@ -105,15 +103,65 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public Color color;
 
+		public void HandleHeads()
+		{
+			if(Main.netMode != 1)
+			{
+				if(!HeadsSpawned)
+				{
+					Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead1"), 0)];
+					Head1.ai[0] = npc.whoAmI;
+					Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead2"), 0)];				
+					Head2.ai[0] = npc.whoAmI;
+					
+					Head1.netUpdate = true;
+					Head2.netUpdate = true;
+					HeadsSpawned = true;
+				}
+			}else
+			{
+				if(!HeadsSpawned)
+				{
+					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 200f, null);
+					if (npcs != null && npcs.Length > 0)
+					{
+						foreach (int npcID in npcs)
+						{
+							NPC npc2 = Main.npc[npcID];
+							if (npc2 != null)
+							{
+								if(Head1 == null && npc2.type == mod.NPCType("OrthrusHead1") && npc2.ai[0] == npc.whoAmI)
+								{
+									Head1 = npc2;
+								}else
+								if(Head2 == null && npc2.type == mod.NPCType("OrthrusHead2") && npc2.ai[0] == npc.whoAmI)
+								{
+									Head2 = npc2;
+								}							
+							}
+						}
+					}
+					if(Head1 != null && Head2 != null)
+					{
+						HeadsSpawned = true;
+					}
+				}
+			}
+		}
+		
+		
         public override void AI()
         {
             color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
 
             npc.TargetClosest();
-
-            if (!HeadsSpawned)
+			
+			HandleHeads();
+			
+			
+			
+           /* if (!HeadsSpawned)
             {
                 if (Head1 == null)
                 {
@@ -122,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                         Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead1"), 0)];
                         Head1.realLife = npc.whoAmI;
                         Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("OrthrusHead2"), 0)];
-                        Head1.realLife = npc.whoAmI;
+                        Head2.realLife = npc.whoAmI;
                     }
                     else
                     {
@@ -145,51 +193,25 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     }
                 }
                 HeadsSpawned = true;
-            }
-
+            }*/
 
             Player playerTarget = Main.player[npc.target];
-            if (HeadsSpawned && (!NPC.AnyNPCs(mod.NPCType<OrthrusHead1>()) || !NPC.AnyNPCs(mod.NPCType<OrthrusHead2>())) && internalAI[1] != AISTATE_RUNAWAY)
-            {
-                npc.NPCLoot();
-                npc.active = false;
-            }
 
             if (!playerTarget.active || playerTarget.dead || Main.dayTime) //fleeing
 			{
-                internalAI[1] = AISTATE_RUNAWAY;
-
+                npc.noTileCollide = true;
                 npc.dontTakeDamage = true;
                 npc.noGravity = true;	
-				npc.noTileCollide = true;				
-				npc.velocity.Y -= 0.5f;				
-				if (Main.netMode != 1)
-				{
-					if(npc.position.Y + npc.height + npc.velocity.Y < 0) //if out of map, kill boss
-					{
-                        npc.active = false; 
-						npc.netUpdate = true;
-					}
-                    else
-					{
-						float oldAI = internalAI[1];	
-						internalAI[1] = AISTATE_FLY;					
-						if(internalAI[1] != oldAI) 
-							npc.netUpdate = true;					
-
-						if(Head1 != null && Head2 != null)
-						{
-							float oldAIH1 = Head1.ai[0];
-							float oldAIH2 = Head2.ai[0];						
-							Head1.ai[0] = AISTATE_FLY;
-							Head2.ai[0] = AISTATE_FLY;							
-							if(Head1.ai[0] != oldAIH1) 
-								Head1.netUpdate = true;
-							if(Head2.ai[0] != oldAIH2) 
-								Head2.netUpdate = true;						
-						}
-					}
-				}
+				npc.noTileCollide = true;
+                npc.velocity.Y -= .05f;
+                int SHLOOPX = 34;
+                int SHLOOPY = 60;
+                if (Head1 != null && Head2 != null)
+                {
+                    Head1.Center = npc.Center + new Vector2(SHLOOPX, -SHLOOPY) + npc.velocity;
+                    Head2.Center = npc.Center + new Vector2(-SHLOOPX, -SHLOOPY) + npc.velocity;
+                }
+                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { npc.active = false; npc.netUpdate = true; }
                 return;
 			}
             else
@@ -209,8 +231,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						npc.netUpdate = true;
 						if(Head1 != null && Head2 != null)
 						{
-							Head1.ai[0] = AISTATE_FLY;
-							Head2.ai[0] = AISTATE_FLY;							 
+							Head1.ai[1] = AISTATE_FLY;
+							Head2.ai[1] = AISTATE_FLY;							 
 							Head1.netUpdate = true;
 							Head2.netUpdate = true;						
 						}
@@ -242,8 +264,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 						npc.netUpdate = true;
 						if(Head1 != null && Head2 != null)
 						{
-							Head1.ai[0] = AISTATE_TURRET;
-							Head2.ai[0] = AISTATE_TURRET;							 
+							Head1.ai[1] = AISTATE_TURRET;
+							Head2.ai[1] = AISTATE_TURRET;							 
 							Head1.netUpdate = true;
 							Head2.netUpdate = true;						
 						}				
@@ -287,7 +309,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool leftHead)
         {
-            if (head != null && head.active)
+            if (head != null && head.active && head.modNPC != null && head.modNPC is OrthrusHead1)
             {
                 string neckTex = ("NPCs/Bosses/Orthrus/OrthrusNeck");
                 Texture2D neckTex2D = mod.GetTexture(neckTex);

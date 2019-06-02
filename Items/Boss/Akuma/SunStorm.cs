@@ -36,8 +36,6 @@ namespace AAMod.Items.Boss.Akuma
             item.rare = 10;
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
-            
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

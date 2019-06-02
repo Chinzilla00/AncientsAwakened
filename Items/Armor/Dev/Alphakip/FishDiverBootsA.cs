@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip
        
 		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Fish Diver's Flippers EX");
+            DisplayName.SetDefault("Fish Diver's Flippers");
             Tooltip.SetDefault(@"Actually flippers now!
 20% increased Melee/Ranged damage & critical strike chance
 13% increased damage resistance and melee speed

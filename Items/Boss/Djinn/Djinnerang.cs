@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Djinn
 			item.knockBack = 0;
 			item.value = 8;
 			item.rare = 6;
-			item.shootSpeed = 10f;
+			item.shootSpeed = 7f;
 			item.shoot = mod.ProjectileType ("Djinnerang");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

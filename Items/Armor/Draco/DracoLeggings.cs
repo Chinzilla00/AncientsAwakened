@@ -47,7 +47,8 @@ The blazing fury of the Inferno rests in this armor");
 			item.height = 18;
 			item.value = 3000000;
 			item.defense = 30;
-		}
+            item.rare = 10;
+        }
 
 		public override void UpdateEquip(Player player)
 		{

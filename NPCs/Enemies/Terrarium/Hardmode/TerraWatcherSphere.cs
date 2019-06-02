@@ -11,8 +11,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             projectile.width = 4;
             projectile.height = 4;
             projectile.aiStyle = 0;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.timeLeft = 800;
             projectile.penetrate = 10;
             projectile.tileCollide = true;

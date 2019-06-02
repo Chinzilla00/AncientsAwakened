@@ -21,6 +21,7 @@ namespace AAMod.Items.Flasks
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
+            item.noUseGraphic = false;
         }
 
         public override void SetStaticDefaults()

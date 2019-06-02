@@ -142,7 +142,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 Tex = mod.GetTexture("NPCs/Bosses/Broodmother/Broodmother0");
                 Glow = mod.GetTexture("Glowmasks/Broodmother0_Glow");
             }			
-            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
 
             BaseDrawing.DrawTexture(spriteBatch, Tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, drawColor, true);
             BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, GenericUtils.COLOR_GLOWPULSE, true);

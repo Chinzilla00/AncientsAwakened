@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Akuma
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 1;
+            item.rare = 10;
             item.expert = true;
 			item.createTile = mod.TileType("AkumaATrophy");
 		}

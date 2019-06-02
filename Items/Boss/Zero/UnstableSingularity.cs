@@ -36,19 +36,15 @@ namespace AAMod.Items.Boss.Zero
             return AAColor.Oblivion;
         }
 
-        // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            item.rare = 10;
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;
             item.value = Item.buyPrice(1, 0, 0, 0);
+            item.rare = 10;
         }
-
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
         
-
         public override void PostUpdate()
         {
             Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);

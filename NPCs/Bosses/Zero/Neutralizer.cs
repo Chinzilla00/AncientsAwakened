@@ -192,7 +192,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num7 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                if (!AAGlobalProjectile.AnyProjectiless(Type))
+                {
+                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                }
             }
             else
             {
@@ -250,7 +253,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.localAI[0] = 0.0f;
                 float num9 = 10f;
                 int Damage = npc.damage;
-                int Type = 100;
+                int Type = mod.ProjectileType<NeutralizerP>();
                 float num10 = num9 / num8;
                 float num11 = num6 * num10;
                 float num12 = num7 * num10;
@@ -258,7 +261,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 float SpeedY = num12 + (Main.rand.Next(-40, 41) * 0.05f);
                 vector2.X += SpeedX * 8f;
                 vector2.Y += SpeedY * 8f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                if (!AAGlobalProjectile.AnyProjectiless(Type))
+                {
+                    Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, Type, Damage, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+                }
             }
         }
 

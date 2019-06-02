@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Akuma Awakened Music Box");
+			DisplayName.SetDefault("Pagoda of the Rising Sun Music Box");
             Tooltip.SetDefault("Plays 'Scorched Tower' by Rockwizard");
 		}
 

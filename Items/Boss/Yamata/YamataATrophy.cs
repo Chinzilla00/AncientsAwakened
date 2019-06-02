@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Yamata
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 2;
+            item.rare = 10;
             item.expert = true;
 			item.createTile = mod.TileType("YamataATrophy");
 		}

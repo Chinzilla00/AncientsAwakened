@@ -128,6 +128,10 @@ namespace AAMod
         public bool darkmatterSetMa;
         public bool darkmatterSetSu;
         public bool darkmatterSetTh;
+        public bool radiumMe;
+        public bool radiumRa;
+        public bool radiumMa;
+        public bool radiumSu;
         public bool DarkmatterSet;
         public bool dracoSet;
         public bool dreadSet;
@@ -145,14 +149,8 @@ namespace AAMod
         public bool AbyssalStealth;
         public bool AssassinStealth;
         public bool Witch;
-        public bool Beg;
         public bool Tied;
-        public bool Tails;
-        public bool Dallin;
-        public bool Liz;
-
-        public static Color groviteColor = new Color(0, (int)(157 * 0.7f), (int)(242 * 0.7f));
-        public static bool[] groviteGlow = new bool[255];
+        public bool TiedHead;
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -239,7 +237,7 @@ namespace AAMod
         public bool BoomBoi = false;
         public bool DragonSoul = false;
         public bool Glowmoss = false;
-        public bool TiedHead = false;
+
         //NPCcount
 
         public static int yamata = -1;
@@ -248,6 +246,9 @@ namespace AAMod
         public static Color IncineriteColor = new Color((int)(242 * 0.7f), (int)(107 * 0.7f), 0);
 
         public static Color ZeroColor = new Color((int)(233 * 0.7f), (int)(53 * 0.7f), (int)(53 * 0.7f));
+
+        public static Color groviteColor = new Color(138, (int)(39 * 0.7f), (int)(196 * 0.7f));
+        public static bool[] groviteGlow = new bool[255];
 
         //IZ Death count
         public static int ZeroKills = 0;
@@ -263,6 +264,8 @@ namespace AAMod
         public int PrismCooldown = 0;
 
         public bool WorldgenReminder = false;
+
+        public bool DemonSun = false;
 
 
         public override void ResetEffects()
@@ -301,6 +304,8 @@ namespace AAMod
             Rabbitcopter = false;
             Sock = false;
             Socc = false;
+            Squirrel = false;
+            DapperSquirrel = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -346,11 +351,8 @@ namespace AAMod
             AssassinStealth = false;
             AbyssalStealth = false;
             Witch = false;
-            Beg = false;
             Tied = false;
-            Tails = false;
-            Dallin = false;
-            Liz = false;
+            TiedHead = false;
             //Accessory
             AshRemover = false;
             FogRemover = false;
@@ -416,12 +418,12 @@ namespace AAMod
             BoomBoi = false;
             DragonSoul = false;
             Glowmoss = false;
-            TiedHead = false;
             //EnemyChecks
             IsGoblin = false;
 
             //Misc
             Compass = false;
+            DemonSun = false;
         }
 
         public override void Initialize()
@@ -731,6 +733,28 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.HappySunSticker>(), true, true))
+            {
+                if (!Main.eclipse)
+                {
+                    Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
+                }
+                else
+                {
+                    Main.sunTexture = mod.GetTexture("Backgrounds/DemonSunEclipse");
+                }
+            }
+            else
+            {
+                if (!Main.eclipse)
+                {
+                    Main.sunTexture = mod.GetTexture("Backgrounds/Sun1");
+                }
+                else
+                {
+                    Main.sunTexture = mod.GetTexture("Backgrounds/Sun3");
+                }
+            }
             if (player.ZoneSandstorm && (ZoneInferno || ZoneMire))
             {
                 EmitDust();

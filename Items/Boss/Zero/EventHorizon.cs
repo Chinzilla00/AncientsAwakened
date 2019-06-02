@@ -33,7 +33,8 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("EventHorizon");
             item.shootSpeed = 22f;
-		}
+            item.rare = 10;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

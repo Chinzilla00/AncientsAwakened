@@ -58,9 +58,10 @@ namespace AAMod.Items.Armor.TrueCopper
 			item.height = 18;
 			item.value = 3000000;
 			item.defense = 11;
-		}
+            item.expert = true;
+        }
 
-		public override void UpdateEquip(Player player)
+        public override void UpdateEquip(Player player)
         {
             player.meleeDamage += .1f;
             player.rangedDamage += .1f;

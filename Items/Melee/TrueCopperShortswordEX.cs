@@ -1,6 +1,7 @@
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.Items.Melee
 {
@@ -34,6 +35,14 @@ namespace AAMod.Items.Melee
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            int proj = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, item.owner);
+            Main.projectile[proj].usesLocalNPCImmunity = true;
+            Main.projectile[proj].localNPCHitCooldown = 6;
+            return false;
         }
 
         public override void AddRecipes()

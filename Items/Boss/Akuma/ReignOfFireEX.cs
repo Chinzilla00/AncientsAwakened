@@ -21,7 +21,7 @@ Reign of Fire EX");
         
         public override void SetDefaults()
         {
-            item.damage = 350;            //Sword damage
+            item.damage = 450;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 86;              //Sword width
             item.height = 86;             //Sword height
@@ -34,6 +34,7 @@ Reign of Fire EX");
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.expert = true;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

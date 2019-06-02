@@ -29,7 +29,7 @@ Cat's Eye Rifle EX");
         public override void SetDefaults()
         {
             
-            item.damage = 730; 
+            item.damage = 850; 
             item.noMelee = true;
             item.ranged = true;
             item.width = 86; 
@@ -44,6 +44,7 @@ Cat's Eye Rifle EX");
             item.shootSpeed = 25f; 
             item.crit = 5;
             item.expert = true;
+            item.rare = 10;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

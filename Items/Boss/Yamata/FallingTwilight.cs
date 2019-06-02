@@ -31,6 +31,7 @@ namespace AAMod.Items.Boss.Yamata
             item.shoot = 1;
             item.shootSpeed = 14f;
             item.useAmmo = 40;
+            item.rare = 10;
         }
 
 

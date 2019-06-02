@@ -18,8 +18,8 @@ namespace AAMod.Items.Accessories.Wings
 			item.width = 22;
 			item.height = 20;
 			item.value = 400000;
-            item.rare = 2;
-			item.accessory = true;
+            item.rare = 10;
+            item.accessory = true;
             
 		}
 		

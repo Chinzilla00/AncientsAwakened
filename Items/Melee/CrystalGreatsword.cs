@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee   //where is located
             item.autoReuse = true;
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.CGP>();
-            item.shootSpeed = 6f;
+            item.shootSpeed = 10f;
         }
 
     public override void SetStaticDefaults()

@@ -21,18 +21,19 @@ Inflicts Daybroken");
         
         public override void SetDefaults()
         {
-            item.damage = 270;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 86;              //Sword width
-            item.height = 86;             //Sword height
-            item.useTime = 29;          //how fast 
+            item.damage = 370;
+            item.melee = true;
+            item.width = 86;
+            item.height = 86;
+            item.useTime = 29;
             item.useAnimation = 29;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 6.5f;      //Sword knockback
+            item.useStyle = 1;
+            item.knockBack = 6.5f;
             item.value = Item.buyPrice(1, 0, 0, 0);
 			item.UseSound = SoundID.Item20;
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;
             item.useTurn = true;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

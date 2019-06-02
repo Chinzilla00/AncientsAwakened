@@ -23,7 +23,7 @@ namespace AAMod.Items.Magic
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 8;             //mana use
-            item.UseSound = SoundID.Item13;            //this is the sound when you use the item
+            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
             item.shoot = 122;
 			item.shootSpeed = 10f;

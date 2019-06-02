@@ -9,8 +9,7 @@ namespace AAMod.Items.Ranged
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bone Bow");
-            Tooltip.SetDefault("Replaces Wooden Arrows with Bone Arrows");
+            DisplayName.SetDefault("Doomite Holobow");
         }
 
         public override void SetDefaults()

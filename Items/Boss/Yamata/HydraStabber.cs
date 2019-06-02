@@ -22,7 +22,7 @@ IInflicts Moonraze");
         
         public override void SetDefaults()
         {
-            item.damage = 190;            //Sword damage
+            item.damage = 290;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 42;              //Sword width
             item.height = 52;             //Sword height
@@ -34,6 +34,7 @@ IInflicts Moonraze");
             item.UseSound = SoundID.Item1;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

@@ -36,7 +36,7 @@ Inflicts Daybroken");
             item.knockBack = 5f;
             item.summon = true;
             item.sentry = true;
-            
+            item.rare = 10;
         }
 
 

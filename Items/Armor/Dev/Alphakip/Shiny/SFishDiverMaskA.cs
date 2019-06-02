@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip.Shiny
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Shiny Fish Diver's Mask EX");
+            DisplayName.SetDefault("Shiny Fish Diver's Mask");
             Tooltip.SetDefault(@"So I heard you like mudkips
 20% increased Melee/Ranged damage & critical strike chance
 13% increased damage resistance and melee speed

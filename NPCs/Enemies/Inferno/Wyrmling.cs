@@ -317,7 +317,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
 
@@ -424,7 +424,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
 
@@ -527,7 +527,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
                     npc.active = false;
-                    // NetMessage.SendData(28, -1, -1, "", npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
+                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
 

@@ -24,7 +24,7 @@ namespace AAMod.Items.Magic
             item.mana = 2;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = false;
-            item.shoot = mod.ProjectileType ("CrystalP");  //this make the item shoot your projectile
+            item.shoot = mod.ProjectileType ("Cloud");  //this make the item shoot your projectile
             item.shootSpeed = 15f;    //projectile speed when shoot
         }
 

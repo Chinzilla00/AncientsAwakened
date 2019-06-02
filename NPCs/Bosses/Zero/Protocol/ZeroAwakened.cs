@@ -223,7 +223,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             float num369 = (float)Math.Atan2(num368, num367) + 1.57f;
             if (Panic)
             {
-
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroPinch");
             }
             if (num369 < 0f)
@@ -299,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (dead2)
             {
-                npc.TargetClosest(false);
+                npc.TargetClosest(true);
                 if (Killed == false)
                 {
                     Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);

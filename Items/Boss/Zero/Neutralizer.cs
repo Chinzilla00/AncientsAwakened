@@ -26,15 +26,16 @@ namespace AAMod.Items.Boss.Zero
 			item.useTime = 13;
 			item.useAnimation = 13;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true;
 			item.knockBack = 0;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Neutralizer");
 			item.shootSpeed = 8f;
-            
-		}
+            item.rare = 10;
+
+        }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

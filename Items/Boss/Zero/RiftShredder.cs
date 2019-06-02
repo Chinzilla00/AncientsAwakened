@@ -32,7 +32,8 @@ namespace AAMod.Items.Boss.Zero
 			item.value = Item.buyPrice(1, 0, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
-		}
+            item.rare = 10;
+        }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

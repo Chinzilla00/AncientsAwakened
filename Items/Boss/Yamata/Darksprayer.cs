@@ -18,7 +18,7 @@ Inflicts Moonrazed");
 
         public override void SetDefaults()
         {
-            item.damage = 200;
+            item.damage = 300;
             item.ranged = true;
             item.width = 44;
             item.height = 34;
@@ -32,6 +32,7 @@ Inflicts Moonrazed");
             item.autoReuse = true;   //if it's capable of autoswing.
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Moonblow");
+            item.rare = 10;
         }
 
         public override Vector2? HoldoutOffset()

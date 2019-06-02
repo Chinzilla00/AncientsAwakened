@@ -36,6 +36,7 @@ Inflicts Moonrazed");
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;
             item.shootSpeed = 20f;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

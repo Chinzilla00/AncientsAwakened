@@ -24,7 +24,8 @@ namespace AAMod.Items.Armor.TrueCopper
 			item.height = 20;
 			item.value = 300000;
 			item.defense = 12;
-		}
+            item.expert = true;
+        }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

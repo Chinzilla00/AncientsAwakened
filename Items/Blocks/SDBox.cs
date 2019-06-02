@@ -33,9 +33,8 @@ namespace AAMod.Items.Blocks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "InfernoBox");
-            recipe.AddIngredient(null, "MireBox");
-            recipe.AddIngredient(null, "ChaosScale", 10);
+            recipe.AddIngredient(null, "PagodaBox");
+            recipe.AddIngredient(null, "LakeBox");
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();

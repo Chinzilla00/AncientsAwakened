@@ -24,7 +24,7 @@ namespace AAMod.Items.Ranged
             item.rare = 5;
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 10f;
             item.value = 10000;
             item.ammo = AmmoID.Gel;
 

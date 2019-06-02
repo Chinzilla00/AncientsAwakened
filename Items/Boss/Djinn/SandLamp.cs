@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Djinn
             item.UseSound = SoundID.Item21;      
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("SandSpray"); 
-            item.shootSpeed = 6f; 
+            item.shootSpeed = 9f; 
         }
         
     }

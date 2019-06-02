@@ -177,6 +177,9 @@ namespace AAMod.NPCs.TownNPCs
                 int Item8 = player.FindItem(ItemID.JungleSpores);
                 int Item9 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.Mushium>());
                 int Item10 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>());
+                int Item11 = player.FindItem(ItemID.Stinger);
+                int Item12 = player.FindItem(ItemID.IceMachine);
+                int Item13 = player.FindItem(ItemID.Bunny);
 
                 if (Item1 >= 0 && AAWorld.squid1 < 5) //Item 1: 3 Blueberries
                 {
@@ -390,6 +393,70 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
 					}
                     AAWorld.squid10++;
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item11 >= 0 && AAWorld.squid11 < 5)
+                {
+                    Main.npcChatCornerItem = ItemID.Stinger;
+                    player.inventory[Item11].stack--;
+                    if (player.inventory[Item11].stack <= 0)
+                    {
+                        player.inventory[Item11] = new Item();
+                    }
+                    if (AAWorld.squid11 == 4)
+                    {
+                        Main.npcChatText = "Oh thank you so much! These stingers will work nicely for some makeshift syringes. Here, I've developed a brand new solution that changes forest into jungle. Nifty, huh?";
+                        player.QuickSpawnItem(mod.ItemType("JungleFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("JungleFlask");
+                    }
+                    if (Main.netMode == 1)
+                    {
+                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)11);
+                    }
+                    AAWorld.squid11++;
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item12 >= 0 && AAWorld.squid12 < 1)
+                {
+                    Main.npcChatCornerItem = ItemID.IceMachine;
+                    player.inventory[Item12].stack--;
+                    if (player.inventory[Item12].stack <= 0)
+                    {
+                        player.inventory[Item12] = new Item();
+                    }
+                    if (AAWorld.squid12 == 0)
+                    {
+                        Main.npcChatText = "Now THIS will come in handy. Thank you. Hey, speaking of ice, check this out. Snow creation AND removal flasks? You like it? Two for the price of one!";
+                        player.QuickSpawnItem(mod.ItemType("IceFlask"), 3);
+                        player.QuickSpawnItem(mod.ItemType("IcemeltFlask"), 3);
+                        Main.npcChatCornerItem = mod.ItemType("IceFlask");
+                    }
+                    if (Main.netMode == 1)
+                    {
+                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)12);
+                    }
+                    AAWorld.squid12++;
+                    Main.PlaySound(24, -1, -1, 1);
+                }
+                else if (Item13 >= 0 && AAWorld.squid13 < 5)
+                {
+                    Main.npcChatCornerItem = ItemID.Bunny;
+                    player.inventory[Item13].stack--;
+                    if (player.inventory[Item13].stack <= 0)
+                    {
+                        player.inventory[Item13] = new Item();
+                    }
+                    if (AAWorld.squid13 == 4)
+                    {
+                        Main.npcChatText = "I wish we had these back where I came from. They're adorable~! Oh, but I'd be careful with these little guys if I were you. The dryad told me there's some giant monster that protects them...anyways, while you were out, I made a new flask. It turns Jungle into forest. Careful with it.";
+                        player.QuickSpawnItem(mod.ItemType("ForestFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("ForestFlask");
+                    }
+                    if (Main.netMode == 1)
+                    {
+                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)13);
+                    }
+                    AAWorld.squid13++;
                     Main.PlaySound(24, -1, -1, 1);
                 }
                 else

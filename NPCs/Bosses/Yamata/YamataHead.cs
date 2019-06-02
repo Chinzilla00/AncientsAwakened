@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-			npc.life = 180000;
+			npc.lifeMax = 180000;
             npc.damage = 180;
             npc.defense = 80;
             npc.width = 78;
@@ -133,8 +133,9 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
                 return;
             }
-	
+
             npc.realLife = Body.whoAmI;
+			npc.timeLeft = 100;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
 		
@@ -254,7 +255,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (attackTimer == 40)
                     {
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 1.6f, npc.velocity.Y * 1.6f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), npc.damage / 2, 0, Main.myPlayer);
+                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), npc.damage, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = npc.damage / 3;
                         attackTimer = 0;
                         attackFrame = 0;
@@ -274,7 +275,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), npc.damage / 2, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 1.5f, PlayerPosY * 1.5f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), npc.damage, 0f, Main.myPlayer);
                             }
                         }
                         

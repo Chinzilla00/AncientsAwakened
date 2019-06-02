@@ -155,16 +155,15 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public void SpawnDeactivatedZero()
         {
-			int whoAmI = -1;
-			int VoidHeight = 140;
+            int VoidHeight = 140;
 			
 			Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);				
 			Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 			bool anyZerosExist = NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")) || NPC.AnyNPCs(mod.NPCType("Zero")) || NPC.AnyNPCs(mod.NPCType("ZeroAwakened"));			
 			if (!anyZerosExist)
 			{
-				whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
-				ZX = (int)spawnPos.X;
+                int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
+                ZX = (int)spawnPos.X;
 				ZY = (int)spawnPos.Y;				
 				if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
 				{					

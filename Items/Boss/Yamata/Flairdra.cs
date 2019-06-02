@@ -46,6 +46,7 @@ Inflicts Moonraze");
             item.UseSound = SoundID.Item21;
             item.melee = true;
             item.autoReuse = true;
+            item.rare = 10;
         }
 
 

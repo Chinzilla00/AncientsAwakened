@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Radium
 {
     [AutoloadEquip(EquipType.Head)]
-	public class RadiumHelm : ModItem
+	public abstract class RadiumHelm : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

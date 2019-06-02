@@ -29,8 +29,9 @@ Inflicts daybroken");
             item.useStyle = 5;
             item.useAnimation = 15;
             item.useTime = 15;
-            item.shoot = mod.ProjectileType("Solar");  
-		}
+            item.shoot = mod.ProjectileType("Solar");
+            item.rare = 10;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

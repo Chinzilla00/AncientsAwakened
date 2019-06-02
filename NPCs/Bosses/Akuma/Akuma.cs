@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            npc.damage = 130;
+            npc.damage = 100;
             npc.defense = 150;
             npc.lifeMax = 190000;
             if (Main.expertMode)

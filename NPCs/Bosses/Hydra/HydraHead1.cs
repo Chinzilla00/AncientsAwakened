@@ -2,7 +2,11 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using BaseMod;
+using System.IO;
 using Terraria.ID;
+
 namespace AAMod.NPCs.Bosses.Hydra
 {
     [AutoloadBossHead]
@@ -17,13 +21,12 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void SetDefaults()
         {
-			npc.aiStyle = -1;
-            npc.lifeMax = 35000;
-            npc.width = 36;
-            npc.height = 32;
+            base.SetDefaults();
+            npc.lifeMax = 4000;
+            npc.width = 46;
+            npc.height = 46;
+            npc.damage = 40;
             npc.npcSlots = 0;
-			npc.timeLeft = 500;
-            npc.damage = 20;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;
@@ -32,6 +35,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 npc.buffImmune[k] = true;
             }
+			leftHead = false;
 			middleHead = true;
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -39,35 +43,65 @@ namespace AAMod.NPCs.Bosses.Hydra
             return 0f;
         }
 
-        public Hydra Body = null;
+        public override void NPCLoot()
+        {
+            if (npc.type == mod.NPCType("HydraHead2"))
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreB"), 1f);
+            }
+            else
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreR"), 1f);
+            }
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
+        }
+
+        public Hydra Body
+		{
+			get
+			{
+				return ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
+			}
+		}
+		public NPC bodyNPC = null;	
+        public bool middleHead = false;
         public bool leftHead = false;
-		public bool middleHead = true;
         public int damage = 0;
 
-        public int distFromBodyX = 50; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 80; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 30; //how far from the center point to move.
+        public int distFromBodyX = 60; //how far from the body to centeralize the movement points. (X coord)
+        public int distFromBodyY = 90; //how far from the body to centeralize the movement points. (Y coord)
+        public int movementVariance = 40; //how far from the center point to move.
+        public bool fireAttack = false;
 
         public override void AI()
         {
-            if (Body == null)
+	        if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType("Hydra"))
+                if (npcBody.type == mod.NPCType<Hydra>())
                 {
-                    Body = (Hydra)npcBody.modNPC;
+                    bodyNPC = npcBody;
                 }
             }
-			if(Body == null) return;
-            npc.timeLeft = 50;
-            if (!Body.npc.active || Body.npc.life <= 0 || !NPC.AnyNPCs(mod.NPCType<Hydra>()))
+			if(bodyNPC == null)
+				return;
+            if (!bodyNPC.active)
             {
-                npc.life = 0;
-				npc.checkDead();
+                if (Main.netMode != 1) //force a kill to prevent 'ghosting'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                }
                 return;
-            }
-			npc.realLife = (int)npc.ai[0];
-			npc.alpha = Body.npc.alpha;
+            }			
+			
+            npc.realLife = bodyNPC.whoAmI;
+            npc.timeLeft = 100;
+
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -77,62 +111,48 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 damage = npc.damage / 2;
             }
-            npc.TargetClosest();
+            npc.TargetClosest();			
             Player targetPlayer = Main.player[npc.target];
+            if (!targetPlayer.active || targetPlayer.dead || Main.dayTime) //fleeing
+            {
+                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { npc.active = false; npc.netUpdate = true; }
+                return;
+            }
+            npc.TargetClosest();
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-            if (npc.type == mod.NPCType<HydraHead1>() && Body.TeleportMe1)
-            {
-                Body.TeleportMe1 = false;
-                npc.Center = Body.npc.Center;
-                return;
-            }
-
-            if (npc.type == mod.NPCType<HydraHead2>() && Body.TeleportMe2)
-            {
-                Body.TeleportMe2 = false;
-                npc.Center = Body.npc.Center;
-                return;
-            }
-
-            if (npc.type == mod.NPCType<HydraHead3>() && Body.TeleportMe3)
-            {
-                Body.TeleportMe3 = false;
-                npc.Center = Body.npc.Center;
-                return;
-            }
 
             if (Main.netMode != 1)
             {
                 npc.ai[1]++;
                 int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
                 if (leftHead) aiTimerFire += 30;
-				if(middleHead)
-				{
-					aiTimerFire = 100;
-				}
+                if (middleHead)
+                {
+                    aiTimerFire = 100;
+                }
 
                 if (targetPlayer != null)
-				{
-					Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);					
-					if(!middleHead && npc.ai[1] == aiTimerFire)
-					{
-						dir *= 9f;
-						for (int i = 0; i < 7; ++i)
-						{
-							int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
-							Main.projectile[projID].netUpdate = true;
-						}
-					}else
-					if(middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0)
-					{
-						dir *= 6f;		
-						dir.X += Main.rand.Next(-1, 1) * 0.5f;
-						dir.Y += Main.rand.Next(-1, 1) * 0.5f;
-						int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
-						Main.projectile[projID].netUpdate = true;													
-					}
-				}
+                {
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    if (!middleHead && npc.ai[1] == aiTimerFire)
+                    {
+                        dir *= 9f;
+                        for (int i = 0; i < 7; ++i)
+                        {
+                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
+                            Main.projectile[projID].netUpdate = true;
+                        }
+                    }
+                    else
+                    if (middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0)
+                    {
+                        dir *= 6f;
+                        dir.X += Main.rand.Next(-1, 1) * 0.5f;
+                        dir.Y += Main.rand.Next(-1, 1) * 0.5f;
+                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        Main.projectile[projID].netUpdate = true;
+                    }
+                }
                 if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
                     npc.ai[1] = 0;
@@ -141,29 +161,49 @@ namespace AAMod.NPCs.Bosses.Hydra
                     npc.netUpdate = true;
                 }
             }
-            npc.rotation = 1.57f;
             Vector2 nextTarget = Body.npc.Center + new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-            if (Vector2.Distance(nextTarget, npc.Center) < 40f)
+			float dist = Vector2.Distance(nextTarget, npc.Center);
+            if (dist < 40f)
             {
                 npc.velocity *= 0.9f;
                 if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
                 if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
-            }
+            }else
+            if (dist > 200f) //teleport to keep up with body
+            {
+                npc.Center = Body.npc.Center;
+				npc.netUpdate = true;
+            }	
             else
             {
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-			if(Body.chasePlayer || Body.runningAway) //player trying to outrun it, force heads to keep up with body
-			{
-				npc.Center = Body.npc.Center;	
-				npc.Center += new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY);
-			}else
-			{
-				npc.position += (Body.npc.oldPos[0] - Body.npc.position);	
-				npc.position += Body.npc.velocity;
-			}
+            npc.position += (Body.npc.position - Body.npc.oldPosition);
+            npc.position += bodyNPC.velocity;
+            npc.rotation = 1.57f;
             npc.spriteDirection = -1;
+            BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
+        }
+
+        public float moveSpeed = 16f; 
+        public void MoveToPoint(Vector2 point)
+        {
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
+        {
+            return false;
         }
 
         public override void BossHeadRotation(ref float rotation)
@@ -173,32 +213,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreNPCLoot()
         {
-            if (Main.rand.Next(7) == 0)
-            {
-                if (npc.type == mod.NPCType<HydraHead1>())
-                {
-                    npc.DropLoot(Items.Vanity.Mask.HydraMask1.type, 1f / 7);
-                }
-                else if (npc.type == mod.NPCType<HydraHead2>())
-                {
-                    npc.DropLoot(Items.Vanity.Mask.HydraMask3.type, 1f / 7);
-                }
-                else if (npc.type == mod.NPCType<HydraHead3>())
-                {
-                    npc.DropLoot(Items.Vanity.Mask.HydraMask2.type, 1f / 7);
-                }
-            }
             return false;
         }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Hydra>()))
-            {
-                return false;
-            }
-            return true;
-        }
-
     }
 }

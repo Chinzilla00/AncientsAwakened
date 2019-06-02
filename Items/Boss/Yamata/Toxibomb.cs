@@ -26,7 +26,8 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.UseSound = SoundID.Item20; 
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("Toxibomb");  
-            item.shootSpeed = 20f;    
+            item.shootSpeed = 20f;
+            item.rare = 10;
         }
 
 		public override void SetStaticDefaults()

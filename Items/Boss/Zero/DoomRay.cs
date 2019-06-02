@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Zero
         
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Doom Ray");
+			DisplayName.SetDefault("Nova Focus");
             Tooltip.SetDefault("Fires a insanely powerful death laser");
         }
 
@@ -36,6 +36,7 @@ namespace AAMod.Items.Boss.Zero
             item.noMelee = true;
             item.magic = true;
             item.autoReuse = true;
+            item.rare = 10;
         }
 
         public override Vector2? HoldoutOffset()
@@ -80,7 +81,7 @@ namespace AAMod.Items.Boss.Zero
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "ApocalyptitePlate", 5);
 			recipe.AddIngredient(null, "UnstableSingularity", 5);
-			recipe.AddIngredient(ItemID.StarCannon);
+			recipe.AddIngredient(ItemID.ChargedBlasterCannon);
 	        recipe.AddTile(null, "ACS");
 	        recipe.SetResult(this);
 	        recipe.AddRecipe();

@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Zero
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-            item.rare = 1;
+            item.rare = 10;
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;

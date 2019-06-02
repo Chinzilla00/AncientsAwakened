@@ -33,7 +33,29 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void AI()
         {
             Lighting.AddLight(npc.Center, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255, AAColor.Lantern.B / 255);
-            BaseAI.AIFish(npc, ref npc.ai, true, true, false, 3, 2);
+            if (npc.wet)
+            {
+                npc.noGravity = true;
+                BaseAI.AIFish(npc, ref npc.ai, true, false, true, 4f, 3f);
+                BaseAI.Look(npc, 1);
+                if (!Collision.WetCollision(npc.position + npc.velocity, npc.width, npc.height)) { npc.velocity.Y -= 3f; }
+            }
+            else
+            {
+                if (npc.velocity.Y == 0f)
+                {
+                    npc.velocity.Y = (float)Main.rand.Next(-50, -20) * 0.1f;
+                    npc.velocity.X = (float)Main.rand.Next(-20, 20) * 0.1f;
+                    npc.netUpdate = true;
+                }
+                npc.velocity.Y = npc.velocity.Y + 0.3f;
+                if (npc.velocity.Y > 10f)
+                {
+                    npc.velocity.Y = 10f;
+                }
+                npc.ai[0] = 1f;
+                npc.noGravity = false;
+            }
         }
 
         public override void FindFrame(int frameHeight)

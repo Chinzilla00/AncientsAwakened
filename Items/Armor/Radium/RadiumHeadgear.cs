@@ -44,6 +44,7 @@ Shines with the light of a starry night sky");
 Being hit causes stars from the heavans to fall around you and increases your movement speed";
 
             player.GetModPlayer<AAPlayer>(mod).Radium = true;
+            player.GetModPlayer<AAPlayer>(mod).radiumRa = true;
             player.ammoCost75 = true;
             player.rangedCrit += 20;
             player.panic = true;

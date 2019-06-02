@@ -23,7 +23,7 @@ namespace AAMod.Items.Ranged
             item.rare = 7;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
-            item.shootSpeed = 8f;
+            item.shootSpeed = 4f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
@@ -32,7 +32,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Apollo's Wraths");
+            DisplayName.SetDefault("Apollo's Wrath");
             Tooltip.SetDefault(@"Shoots Shadow beams
 Doesn't use Ammo");
         }

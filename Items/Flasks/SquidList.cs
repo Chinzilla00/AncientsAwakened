@@ -1,4 +1,6 @@
 using Terraria.ModLoader;
+using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Flasks
 {
@@ -14,9 +16,12 @@ namespace AAMod.Items.Flasks
 4. Find whatever the creatures in the mire eat. Just kill them until one drops its food or something.
 5. A scale from something in the inferno. I'm trying to figure out how these things are so fire resistant.
 6. Spore Samples from the jungle. These mushrooms are really annoying, maybe I can make something to kill them off.
-7. A sample of whatever the Mushroom Monarch and Feudal Fungus are made of. I might need some help studying these, though...
-8. A piece of scrap metal from those floating islands west of here. That stuff looks interesting to make equipment with.
-9. Something sparkly from the Hallow. I wonder if I can use it to make more potions...");
+7. Some kind of creature part that injects poison or something. My syringe broke and that nurse won't let me use any of hers.
+8. A sample of whatever the Mushroom Monarch and Feudal Fungus are made of. I might need some help studying these, though...
+9. A  piece of scrap metal from those floating islands west of here. That stuff looks interesting to make equipment with.
+10. An Ice machine would be kind of nice to have.
+11. Bunnies. Not for testing purposes, I just think they're cute and want a couple as pets.
+12. Something sparkly from the Hallow. I wonder if I can use it to make more potions...");
         }
 
         public override void SetDefaults()

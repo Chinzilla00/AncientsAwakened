@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
        
 		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Fish Diver's Flippers");
+            DisplayName.SetDefault("Alphakip's Flippers");
             Tooltip.SetDefault(@"Not actually flippers
 'Great for impersonating Ancients Awakened Devs!'");
 		}

@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
             if (Body == null)
-                return;
+                return;			
 
             npc.alpha = Body.npc.alpha;
 
@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (int)(projectileDamage * .8f), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), npc.damage, 0f, Main.myPlayer);
                     }
                 }
                 else
@@ -279,7 +279,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         
 		public override bool PreNPCLoot()
         {
-            if (!Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) < 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) < 6000f)
+            if (Body.npc.active)
             {
                 BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
             }

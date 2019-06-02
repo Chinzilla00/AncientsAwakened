@@ -193,10 +193,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     double offsetAngle = startAngle + (deltaAngle * i);
                     int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                     Main.projectile[Proj].netUpdate = true;
-                    if (Main.netMode == 2 && Proj < 200)
-                    {
-                        NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
-                    }
                 }
             }
             else
@@ -263,10 +259,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     double offsetAngle = startAngle + (deltaAngle * i);
                     int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                     Main.projectile[Proj].netUpdate = true;
-                    if (Main.netMode == 2 && Proj < 200)
-                    {
-                        NetMessage.SendData(23, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
-                    }
                 }
             }
         }

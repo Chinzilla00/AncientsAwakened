@@ -30,10 +30,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.buffImmune[k] = true;
             }
         }
-        public bool ATransitionActive = false;
+
         public int RVal = 255;
         public int BVal = 0;
-
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
@@ -43,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void AI()
         {
-
+			npc.TargetClosest();			
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
@@ -52,65 +51,78 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.alpha = 255;
                 npc.Center = player.Center - new Vector2(0, 300f);
             }
-
-            npc.ai[0]++;
-            npc.frameCounter++;
-            if (npc.frameCounter >= 7)
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y += 52;
-            }
-
-            if (npc.frame.Y > 52 * 5)
-            {
-                npc.frame.Y = 0;
-            }
-
-            if (npc.ai[0] > 300)
-            {
-                npc.alpha -= 5;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-            }
-            if (npc.ai[0] == 375)          //if the npc.ai[0] has gotten to 7.5 seconds, this happens (60 = 1 second)
-            {
-                Main.NewText("Heh...", new Color(180, 41, 32));
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
-            }
-            if (npc.ai[0] == 560)
-            {
-                Main.NewText("You know, kid...", new Color(180, 41, 32));
-            }
-
-            if (npc.ai[0] >= 660)
-            {
-                RVal -= 5;
-                BVal += 5;
-                if (RVal <= 0)
-                {
-                    RVal = 0;
-                }
-                if (BVal >= 255)
-                {
-                    BVal = 255;
-                }
-            }
-
-            if (npc.ai[0] == 900)
-            {
-                Main.NewText("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
-            }
-
-            if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
-            {
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
-                Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                Main.NewText("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-                npc.netUpdate2 = true;
-                npc.active = false;
-            }
+			
+			if(Main.netMode != 2) //clientside stuff
+			{
+				npc.frameCounter++;
+				if (npc.frameCounter >= 7)
+				{
+					npc.frameCounter = 0;
+					npc.frame.Y += 52;
+				}
+				if (npc.frame.Y > 52 * 5)
+				{
+					npc.frame.Y = 0;
+				}
+				if (npc.ai[0] > 300)
+				{
+					npc.alpha -= 5;
+					if (npc.alpha < 0)
+					{
+						npc.alpha = 0;
+					}
+				}
+				if (npc.ai[0] >= 375) //after he says 'heh' on the server, change music on the client
+				{
+					music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
+				}				
+				if (npc.ai[0] >= 660) //after 660 on the server, transition color
+				{
+					RVal -= 5;
+					BVal += 5;
+					if (RVal <= 0)
+					{
+						RVal = 0;
+					}
+					if (BVal >= 255)
+					{
+						BVal = 255;
+					}
+				}
+			}
+			if(Main.netMode != 1)
+			{
+				npc.ai[0]++;	
+				if(npc.ai[0] == 300)
+				{
+					npc.netUpdate = true;
+				}else
+				if (npc.ai[0] == 375)
+				{
+					BaseUtility.Chat("Heh...", new Color(180, 41, 32));
+					npc.netUpdate = true;
+				}else
+				if (npc.ai[0] == 560)
+				{
+					BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
+				}else
+				if(npc.ai[0] == 660) //sync so the color transition occurs
+				{
+					npc.netUpdate = true;
+				}else
+				if (npc.ai[0] == 900)
+				{
+					BaseUtility.Chat("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
+				}else
+				if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+				{
+					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
+					BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					BaseUtility.Chat("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+					npc.netUpdate = true;
+					npc.active = false;
+				}
+			}
         }
 
         public void MoveToPoint(Vector2 point)

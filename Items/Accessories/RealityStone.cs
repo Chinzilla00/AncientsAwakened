@@ -29,8 +29,6 @@ namespace AAMod.Items.Accessories
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            
-
         }
 
         public override Color? GetAlpha(Color lightColor)

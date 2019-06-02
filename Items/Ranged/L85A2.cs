@@ -10,7 +10,8 @@ namespace AAMod.Items.Ranged
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("L85A2");
-		}
+            Tooltip.SetDefault("Turns bullets into high-velocity bullets!");
+        }
 
 		public override void SetDefaults()
 		{

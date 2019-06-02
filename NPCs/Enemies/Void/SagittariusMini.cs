@@ -25,8 +25,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.damage = 20;
             npc.defense = 10;
             npc.lifeMax = 100;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath6;
+            npc.HitSound = SoundID.NPCHit4;
+            npc.DeathSound = SoundID.NPCDeath14;
             npc.alpha = 70;
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;

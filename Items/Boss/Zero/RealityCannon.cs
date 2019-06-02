@@ -36,6 +36,7 @@ namespace AAMod.Items.Boss.Zero
             item.ranged = true;
             item.autoReuse = true;
             item.noUseGraphic = false;
+            item.rare = 10;
         }
 
 

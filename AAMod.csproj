@@ -88,6 +88,7 @@
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Blocks\ToadBox.cs" />
     <Compile Include="Items\Blocks\TorchAsh.cs" />
+    <Compile Include="Items\Boss\Hydra\HydraTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
     <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
@@ -1422,6 +1423,9 @@
     <Compile Include="Items\Vanity\Eliza\LizScarf.cs" />
     <Compile Include="Items\Vanity\Eliza\LizShirt.cs" />
     <Compile Include="Items\Vanity\Eliza\NightingaleWings.cs" />
+    <Compile Include="Items\Vanity\Fargo\FargoHat.cs" />
+    <Compile Include="Items\Vanity\Fargo\FargoPants.cs" />
+    <Compile Include="Items\Vanity\Fargo\FargoSuit.cs" />
     <Compile Include="Items\Vanity\Grox\AngryPirateBoots.cs" />
     <Compile Include="Items\Vanity\Grox\AngryPirateCofferplate.cs" />
     <Compile Include="Items\Vanity\Grox\AngryPirateHood.cs" />
@@ -1429,6 +1433,7 @@
     <Compile Include="Items\Vanity\Hallam\HalHat.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTrousers.cs" />
     <Compile Include="Items\Vanity\Hallam\HalTux.cs" />
+    <Compile Include="Items\Vanity\HappySunSticker.cs" />
     <Compile Include="Items\Vanity\Mask\ShenAMask.cs" />
     <Compile Include="Items\Vanity\Mask\YamataAMask.cs" />
     <Compile Include="Items\Vanity\Mask\ShenMask.cs" />
@@ -1676,6 +1681,7 @@
     <Compile Include="NPCs\Bosses\Yamata\Yamata.cs" />
     <Compile Include="NPCs\Bosses\Yamata\YamataHandler.cs" />
     <Compile Include="NPCs\Bosses\Yamata\Yanker.cs" />
+    <Compile Include="NPCs\Bosses\Zero\ArmAIs.cs" />
     <Compile Include="NPCs\Bosses\Zero\DeathLaser.cs" />
     <Compile Include="NPCs\Bosses\Zero\GenocideRocket.cs" />
     <Compile Include="NPCs\Bosses\Zero\GenocideBoom.cs" />
@@ -2216,6 +2222,8 @@
     <Compile Include="Tiles\MireFoliage.cs" />
     <Compile Include="Tiles\RajahBox.cs" />
     <Compile Include="Tiles\ToadBox.cs" />
+    <Compile Include="Tiles\Trophy\HydraTrophy.cs" />
+    <Compile Include="Tiles\Trophy\RajahTrophy.cs" />
     <Compile Include="Tiles\YttriumBar.cs" />
     <Compile Include="Tiles\TechneciumBar.cs" />
     <Compile Include="Tiles\UraniumBar.cs" />
@@ -4285,6 +4293,7 @@
     <Content Include="Items\BossSummons\GoldenCarrot.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
+    <Content Include="Items\Boss\Hydra\HydraTrophy.png" />
     <Content Include="Items\Boss\MadnessTruffle.png" />
     <Content Include="Items\Boss\MushroomMonarch\GlowingMushlingStaff.png" />
     <Content Include="Items\Boss\MushroomMonarch\MushlingStaff.png" />
@@ -4424,6 +4433,7 @@
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
     <Content Include="Items\Usable\BrownSolution.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
+    <Content Include="Items\Usable\ChaosOverloader.png" />
     <Content Include="Items\Usable\DeepGreenSolution.png" />
     <Content Include="Items\Usable\FungicideSolution.png" />
     <Content Include="Items\Usable\LimeSolution.png" />
@@ -4450,6 +4460,10 @@
     <Content Include="Items\Vanity\Beg\PonyHoofs_Legs.png" />
     <Content Include="Items\Vanity\Beg\PonyMask.png" />
     <Content Include="Items\Vanity\Beg\PonyMask_Head.png" />
+    <Content Include="Items\Vanity\Fargo\FargoHat.png" />
+    <Content Include="Items\Vanity\Fargo\FargoHat_Head.png" />
+    <Content Include="Items\Vanity\Fargo\FargoPants.png" />
+    <Content Include="Items\Vanity\Fargo\FargoSuit.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateBoots.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateBoots_Legs.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateCofferplate.png" />
@@ -4460,6 +4474,8 @@
     <Content Include="Items\Vanity\Grox\AngryPirateHood_Head.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateSails.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateSails_Wings.png" />
+    <Content Include="Items\Vanity\Grox\GroxHood.png" />
+    <Content Include="Items\Vanity\Grox\GroxHood_Head.png" />
     <Content Include="Items\Vanity\HappySunSticker.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask.png" />
     <Content Include="Items\Vanity\Mask\AkumaAMask_Head.png" />
@@ -4580,6 +4596,7 @@
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\Taser_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\Tazer_Boss_Head.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar_Head_Boss.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
@@ -6802,9 +6819,11 @@
     <Content Include="Tiles\Trophy\DBTrophy.png" />
     <Content Include="Tiles\Trophy\GripBlueTrophy.png" />
     <Content Include="Tiles\Trophy\GripRedTrophy.png" />
+    <Content Include="Tiles\Trophy\HydraTrophy.png" />
     <Content Include="Tiles\Trophy\NCTrophy.png" />
     <Content Include="Tiles\Trophy\OrthrusTrophy.png" />
     <Content Include="Tiles\Trophy\RaiderTrophy.png" />
+    <Content Include="Tiles\Trophy\RajahTrophy.png" />
     <Content Include="Tiles\Trophy\RetrieverTrophy.png" />
     <Content Include="Tiles\Trophy\SagTrophy.png" />
     <Content Include="Tiles\Trophy\ShenATrophy.png" />

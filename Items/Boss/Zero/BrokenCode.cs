@@ -28,13 +28,13 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            
             item.width = 60;
             item.height = 52;
             item.maxStack = 1;
             item.value = Item.buyPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
+            item.rare = 10;
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -14,24 +14,24 @@ namespace AAMod.Items.Boss.Yamata
 
         public override void SetDefaults()
         {
-            item.damage = 100; //idk
+            item.damage = 170;
             item.melee = true;
             item.width = 132;
             item.height = 132;
             item.scale = 1.1f;
             item.maxStack = 1;
-            item.useTime = 25; //idk
-            item.useAnimation = 25; //idk
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item1;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 2, 40, 0); //idk
-            item.rare = 2; //idk
+            item.value = Item.sellPrice(0, 2, 40, 0);
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;
+            item.rare = 10;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

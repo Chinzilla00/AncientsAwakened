@@ -4,10 +4,11 @@ using Terraria;
 using Terraria.ID;
 using BaseMod;
 using System.IO;
+using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    public class Wyvern : AANPC
+    public class Wyvern : ModNPC
 	{
 		public override void SetStaticDefaults()
         {

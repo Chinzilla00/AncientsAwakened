@@ -9,7 +9,9 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Titan Slayer");
-            Tooltip.SetDefault(@"Titan Axe EX");
+            Tooltip.SetDefault(@"Right click to quickly swing the axe
+left click to throw the axe
+Titan Axe EX");
 		}
 
 		public override void SetDefaults()
@@ -42,6 +44,7 @@ namespace AAMod.Items.Dev
 
             if (player.altFunctionUse == 2)
             {
+                item.damage = 300;
                 item.useStyle = 1;
                 item.thrown = true;
                 item.melee = false;
@@ -49,6 +52,7 @@ namespace AAMod.Items.Dev
             }
             else
             {
+                item.damage = 450;
                 item.useStyle = 5;
                 item.melee = true;
                 item.thrown = false;

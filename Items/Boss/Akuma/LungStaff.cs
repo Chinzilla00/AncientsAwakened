@@ -32,6 +32,7 @@ namespace AAMod.Items.Boss.Akuma
             item.buffType = mod.BuffType("LungMinion");
             item.buffTime = 3600;
             item.summon = true;
+            item.rare = 10;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

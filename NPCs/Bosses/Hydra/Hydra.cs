@@ -55,13 +55,12 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void NPCLoot()
         {
             AAWorld.downedHydra = true;
-            //npc.DropLoot(Items.Boss.Hydra.HydraTrophy.type, 1f / 10);
+            npc.DropLoot(Items.Boss.Hydra.HydraTrophy.type, 1f / 10);
 
             if (!Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("HydraHide"), 30, 50);
                 npc.DropLoot(mod.ItemType("Abyssium"), 40, 90);
-                //npc.DropLoot(Items.Vanity.Mask.HydraMask.type, 1f / 7);
             }
             if (Main.expertMode)
             {
@@ -81,8 +80,103 @@ namespace AAMod.NPCs.Bosses.Hydra
         public bool TeleportMe2 = false;
         public bool TeleportMe3 = false;
 
+		public void HandleHeads()
+		{
+			if(Main.netMode != 1)
+			{
+				if(!HeadsSpawned)
+				{
+					Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0)];
+					Head1.ai[0] = npc.whoAmI;
+					Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0)];
+					Head2.ai[0] = npc.whoAmI;
+					Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0)];
+					Head3.ai[0] = npc.whoAmI;					
+
+					Head1.netUpdate = true;
+					Head2.netUpdate = true;
+					Head3.netUpdate = true;
+					HeadsSpawned = true;
+				}
+			}else
+			{
+				if(!HeadsSpawned)
+				{
+					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 200f, null);
+					if (npcs != null && npcs.Length > 0)
+					{
+						foreach (int npcID in npcs)
+						{
+							NPC npc2 = Main.npc[npcID];
+							if (npc2 != null)
+							{
+								if(Head1 == null && npc2.type == mod.NPCType("HydraHead1") && npc2.ai[0] == npc.whoAmI)
+								{
+									Head1 = npc2;
+								}else
+								if(Head2 == null && npc2.type == mod.NPCType("HydraHead2") && npc2.ai[0] == npc.whoAmI)
+								{
+									Head2 = npc2;
+								}else
+								if(Head3 == null && npc2.type == mod.NPCType("HydraHead3") && npc2.ai[0] == npc.whoAmI)
+								{
+									Head3 = npc2;
+								}						
+							}
+						}
+					}
+					if(Head1 != null && Head2 != null && Head3 != null)
+					{
+						HeadsSpawned = true;
+					}
+				}
+			}
+		}		
+		
         public override void AI()
         {
+			HandleHeads();
+			
+           /* if (!HeadsSpawned)
+            {
+                if (Head1 == null)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0)];
+                        Head1.realLife = npc.whoAmI;
+                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0)];
+                        Head2.realLife = npc.whoAmI;
+                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0)];
+                        Head3.realLife = npc.whoAmI;
+                    }
+                    else
+                    {
+                        int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 100f, null);
+                        if (npcs != null && npcs.Length > 0)
+                        {
+                            foreach (int npcID in npcs)
+                            {
+                                NPC npc2 = Main.npc[npcID];
+                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead1"))
+                                {
+                                    Head1 = npc2;
+                                }
+                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead2"))
+                                {
+                                    Head2 = npc2;
+                                }
+                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead3"))
+                                {
+                                    Head2 = npc2;
+                                }
+                            }
+                        }
+                    }
+                }
+                HeadsSpawned = true;
+            }*/
+
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
@@ -109,26 +203,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
             }
 
-            if (!HeadsSpawned)
-            {
-                if (Main.netMode != 1)
-                {
-                    int latestNPC = npc.whoAmI;
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead1"), npc.whoAmI + 1, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                    Head1 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead2"), npc.whoAmI + 1, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                    Head2 = Main.npc[latestNPC];
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 60, mod.NPCType("HydraHead3"), npc.whoAmI + 1, npc.whoAmI);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[0] = npc.whoAmI;
-                    Head3 = Main.npc[latestNPC];
-                }
-                HeadsSpawned = true;
-            }
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];
@@ -137,12 +211,8 @@ namespace AAMod.NPCs.Bosses.Hydra
 
             bool foundTarget = TargetClosest();
 
-
-
             if (!runningAway && foundTarget)
             {
-                int tileY = BaseWorldGen.GetFirstTileFloor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
-                float playerDistance = Vector2.Distance(playerTarget.Center, npc.Center);
                 if (Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
                 if (Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
@@ -237,13 +307,13 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
         {
-            if (head != null && head.active)
+            if (head != null && head.active && head.modNPC != null && head.modNPC is HydraHead1)
             {
                 string neckTex = ("NPCs/Bosses/Hydra/HydraNeck");
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 30);
                 Vector2 connector = head.Center;
-                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, null, 1f, false, null);
+                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, false, null);
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
 

@@ -22,12 +22,13 @@ namespace AAMod.Items.Flasks
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
+            item.noUseGraphic = false;
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ash Jar");
-            Tooltip.SetDefault(@"Spreads the Inferno");
+            DisplayName.SetDefault("Ice Flask");
+            Tooltip.SetDefault(@"Spreads the Tundra");
         }
 
         public override bool AltFunctionUse(Player player)

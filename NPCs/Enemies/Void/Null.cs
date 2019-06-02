@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Enemies.Void
             npc.damage = 50;
             npc.defense = 9999999;
             npc.lifeMax = 100;
-            npc.HitSound = SoundID.NPCHit1;
+            npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Sounds/Glitch");
             npc.DeathSound = SoundID.NPCDeath6;
             npc.alpha = 70;
             npc.value = 7000f;

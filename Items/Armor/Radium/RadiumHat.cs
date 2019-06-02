@@ -47,6 +47,7 @@ Being hit causes stars from the heavans to fall around you and increases your mo
             player.panic = true;
             player.starCloak = true;
             player.GetModPlayer<AAPlayer>(mod).Radium = true;
+            player.GetModPlayer<AAPlayer>(mod).radiumSu = true;
         }
 
 		public override void AddRecipes()

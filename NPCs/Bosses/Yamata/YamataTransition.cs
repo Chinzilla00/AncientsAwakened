@@ -20,10 +20,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
+            npc.noTileCollide = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
             npc.timeLeft = 10;
-            npc.scale *= 1.3f;
             npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
-
+			npc.TargetClosest();			
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
@@ -52,74 +52,77 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.alpha = 255;
                 npc.Center = player.Center - new Vector2(0, 300f);
             }
+			
+			if(Main.netMode != 2) //clientside stuff
+			{
+				npc.frameCounter++;
+				if (npc.frameCounter >= 7)
+				{
+					npc.frameCounter = 0;
+					npc.frame.Y += Main.npcTexture[npc.type].Height / 4 ;
+				}
 
+				if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
+				{
+					npc.frame.Y = 0 ;
+				}
+				if (npc.ai[0] > 375)
+				{
+					npc.alpha -= 5;
+					if (npc.alpha < 0)
+					{
+						npc.alpha = 0;
+					}
+				}
+				if (npc.ai[0] >= 375) //after he says 'nyeh' on the server, change music on the client
+				{
+					music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");
+				}
+				if (npc.ai[0] >= 900) //after he says 'as if' on the server, transition color
+				{
+					RVal += 5;
+					BVal -= 5;
+					if (RVal <= 90)
+					{
+						BVal = 90;
+					}
+					if (RVal >= 255)
+					{
+						RVal = 255;
+					}
+				}
+			}
+			if(Main.netMode != 1)
+			{
+				npc.ai[0]++;
 
-            npc.ai[0]++;
-            npc.frameCounter++;
-            if (npc.frameCounter >= 7)
-            {
-                npc.frameCounter = 0;
-                npc.frame.Y += Main.npcTexture[npc.type].Height / 4 ;
-            }
-
-            if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
-            {
-                npc.frame.Y = 0 ;
-            }
-
-            if (npc.ai[0] > 375)
-            {
-                npc.alpha -= 5;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-            }
-
-            if (npc.ai[0] == 375)    
-            {
-                Main.NewText("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
-            }
-            if (npc.ai[0] == 650)
-            {
-                Main.NewText("You thought I was DONE..?!", new Color(45, 46, 70));
-            }
-            if (npc.ai[0] == 900)
-            {
-                Main.NewText("HAH! AS IF!", new Color(45, 46, 70));
-            }
-
-            if (npc.ai[0] >= 900)
-            {
-                RVal += 5;
-                BVal -= 5;
-                if (RVal <= 90)
-                {
-                    BVal = 90;
-                }
-                if (RVal >= 255)
-                {
-                    RVal = 255;
-                }
-            }
-
-            if (npc.ai[0] == 1100)
-            {
-                Main.NewText("The abyss hungers...", new Color(146, 30, 68));
-            }
-            if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
-            {
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
-            }
-
-            if (NPC.AnyNPCs(mod.NPCType("YamataA")))
-            {
-                Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                Main.NewText("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
-                npc.netUpdate = true;
-                npc.active = false;
-            }
+				if (npc.ai[0] == 375)    
+				{
+					BaseUtility.Chat("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
+					npc.netUpdate = true;
+				}else
+				if (npc.ai[0] == 650)
+				{
+					BaseUtility.Chat("You thought I was DONE..?!", new Color(45, 46, 70));
+				}else
+				if (npc.ai[0] == 900)
+				{
+					BaseUtility.Chat("HAH! AS IF!", new Color(45, 46, 70));
+					npc.netUpdate = true;
+				}else
+				if (npc.ai[0] == 1100)
+				{
+					BaseUtility.Chat("The abyss hungers...", new Color(146, 30, 68));
+				}else
+				if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
+				{
+					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
+					BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					BaseUtility.Chat("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
+					npc.netUpdate = true;
+					npc.active = false;				
+				}
+			}
         }
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
@@ -163,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
         public override bool CheckActive()
         {
-            if (!NPC.AnyNPCs(mod.NPCType("AkumaA")))
+            if (!NPC.AnyNPCs(mod.NPCType("YamataA")))
             {
                 return false;
             }

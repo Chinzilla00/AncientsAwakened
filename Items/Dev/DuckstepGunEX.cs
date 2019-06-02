@@ -31,13 +31,13 @@ namespace AAMod.Items.Dev
             item.expert = true;
 			item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
+			item.shoot = 10;
 			item.shootSpeed = 15f;
             item.shoot = mod.ProjectileType("Duck");
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
-            glowmaskDrawColor = Color.White;  //glowmask draw color
+            item.rare = 10;
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
+            glowmaskDrawType = GLOWMASKTYPE_GUN;
+            glowmaskDrawColor = Color.White;  
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -62,7 +62,7 @@ namespace AAMod.Items.Dev
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			float numberProjectiles = 3 + Main.rand.Next(3); // 3, 4, or 5 shots
+			float numberProjectiles = 3 + Main.rand.Next(3);
 			float rotation = MathHelper.ToRadians(45);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)

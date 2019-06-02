@@ -53,6 +53,7 @@ Can only be used in the Void");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomiteScrap", 10);
+            recipe.AddIngredient(ItemID.Bone, 20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

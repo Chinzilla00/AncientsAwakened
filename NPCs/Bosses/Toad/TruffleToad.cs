@@ -16,10 +16,10 @@ namespace AAMod.NPCs.Bosses.Toad
 			base.SendExtraAI(writer);
 			if((Main.netMode == 2 || Main.dedServ))
 			{
-				writer.Write((float)internalAI[0]);
-				writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+				writer.Write(internalAI[0]);
+				writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
 		}
 
@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Toad
             if (player != null)
             {
                 float dist = npc.Distance(player.Center);
-                if (dist > 800 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 800)
                 {
                     npc.alpha += 5;
                     if (npc.alpha >= 255)
@@ -120,9 +120,9 @@ namespace AAMod.NPCs.Bosses.Toad
 
             if (internalAI[0] == AISTATE_JUMP)
             {
-                if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                npc.wet = false;
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
-                if (npc.velocity.Y == 0)
+                if (Main.netMode !=1)
                 {
                     internalAI[1]++;
                 }
@@ -136,22 +136,29 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BARF)
             {
-                internalAI[1]++;
+                if (Main.netMode != 1)
+                {
+                    internalAI[1]++;
+                }
                 npc.velocity.X = 0;
                 if (internalAI[1] >= 35)
                 {
-                    internalAI[2]++;
+                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    {
+                        internalAI[2]++;
+                    }
                     if (internalAI[2] > 5)
                     {
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
                         }
+                        npc.netUpdate = true;
                     }
                 }
                 if (internalAI[1] >= 100)
@@ -159,12 +166,18 @@ namespace AAMod.NPCs.Bosses.Toad
                     internalAI[0] = AISTATE_JUMP;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
+                    npc.netUpdate = true;
                 }
             }
-            else if (internalAI[0] == AISTATE_BARF)
+            else if (internalAI[0] == AISTATE_JUMPALOT)
             {
-                internalAI[1]++;
+                internalAI[1]++; if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                npc.wet = false;
                 BaseAI.AISlime(npc, ref npc.ai, false, -10, 5, -5, 13, -13);
+                if (Main.netMode != 1)
+                {
+                    internalAI[1]++;
+                }
                 if (internalAI[1] >= 180)
                 {
                     internalAI[1] = 0;
@@ -182,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (internalAI[0] == AISTATE_BARF)
                 {
-                    if (npc.frameCounter < frameHeight * 6)
+                    if (npc.frame.Y < frameHeight * 6)
                     {
                         npc.frame.Y = frameHeight * 6;
                     }
@@ -192,7 +205,6 @@ namespace AAMod.NPCs.Bosses.Toad
                         npc.frame.Y += frameHeight;
                         if (npc.frame.Y > frameHeight * 11)
                         {
-                            npc.frameCounter = 0;
                             npc.frame.Y = frameHeight * 11;
                         }
                     }
@@ -213,10 +225,6 @@ namespace AAMod.NPCs.Bosses.Toad
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 4;
                     }
-                }
-                else if (npc.wet)
-                {
-                    npc.frame.Y = frameHeight * 3;
                 }
             }
         }

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    public class InfernoSandShark : ModNPC
+    public abstract class InfernoSandShark : ModNPC
     {
         public override void SetStaticDefaults()
         {

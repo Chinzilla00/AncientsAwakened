@@ -11,7 +11,7 @@ namespace AAMod.Items.Ranged
 		{
 			DisplayName.SetDefault("U.W.A.M.");
 			Tooltip.SetDefault("Shoots hundreds of bullets with a very low spread"
-			+"\nHave a chance to shoot sharks, dealing 3x damage"
+			+"\nHave a chance to shoot sharks, dealing 2x damage"
 			+"\n88% chance not to consume ammo"
 			+"\nS.D.M.G. EX");
         }
@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.SDMG);
-			item.damage = 120;
+			item.damage = 50;
 			item.ranged = true;
 			item.knockBack = 4;
 			item.width = 86;
@@ -48,7 +48,7 @@ namespace AAMod.Items.Ranged
 				type = 408;
 				speedX *= 4;
 				speedY *= 4;
-				damage *= 3;
+				damage *= 2;
 			}
 			else
 			{

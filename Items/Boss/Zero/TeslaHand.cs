@@ -35,7 +35,8 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Teslashock");
-		}
+            item.rare = 10;
+        }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

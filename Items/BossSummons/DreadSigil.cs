@@ -28,6 +28,7 @@ Non-Consumable");
             item.useTime = 45;
             item.useStyle = 500;
             item.consumable = false;
+            item.rare = 10;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

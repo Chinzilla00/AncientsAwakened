@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Yamata
             item.height = 34;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 11;
+            item.rare = 10;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.

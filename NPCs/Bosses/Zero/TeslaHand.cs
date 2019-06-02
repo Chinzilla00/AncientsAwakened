@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                 double deltaAngle = spread / 6f;
                 internalAI[1]++;
-                if (internalAI[1] > 40)
+                if (internalAI[1] > 60)
                 {
                     internalAI[1] = 0;
                     for (int i = 0; i < 3; i++)
@@ -151,12 +151,8 @@ namespace AAMod.NPCs.Bosses.Zero
                         double offsetAngle = startAngle + (deltaAngle * i);
                         int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("Static"), (int)(npc.damage * .75f), 5, Main.myPlayer);
                         Main.projectile[Proj].netUpdate = true;
-                        if (Main.netMode == 2 && Proj < Main.maxProjectiles)
-                        {
-                            NetMessage.SendData(27, -1, -1, null, Proj, 0f, 0f, 0f, 0, 0, 0);
-                        }
+                        npc.netUpdate2 = true;
                     }
-                    npc.netUpdate2 = true;
                 }
             }
 

@@ -20,7 +20,7 @@ Meowmere EX");
         public override void SetDefaults()
         {
 
-            item.damage = 450;            //Sword damage
+            item.damage = 550;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 64;              //Sword width
             item.height = 70;             //Sword height

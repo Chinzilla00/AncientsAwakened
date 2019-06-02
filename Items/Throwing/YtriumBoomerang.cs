@@ -19,7 +19,7 @@ namespace AAMod.Items.Throwing
             item.useStyle = 1;
 			item.knockBack = 0;
 			item.rare = 6;
-			item.shootSpeed = 17f;
+			item.shootSpeed = 9f;
 			item.shoot = mod.ProjectileType ("YtriumBoomerangP");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

@@ -41,6 +41,7 @@ namespace AAMod.Items.Boss.Orthrus
             }
             player.QuickSpawnItem(mod.ItemType("FulguriteBar"), Main.rand.Next(40, 76));
             player.QuickSpawnItem(mod.ItemType("StormPendant"));
-		}
+            player.QuickSpawnItem(Terraria.ID.ItemID.SoulofMight, Main.rand.Next(25, 40));
+        }
 	}
 }

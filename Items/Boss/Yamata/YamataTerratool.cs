@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Yamata
             item.tileBoost += 20;
             item.knockBack = 3;
             item.value = 1000000;
-            item.rare = 11;
+            item.rare = 10;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

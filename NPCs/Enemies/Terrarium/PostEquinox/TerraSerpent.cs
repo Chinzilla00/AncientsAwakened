@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terra Weaver");
+            DisplayName.SetDefault("Terra Serpent");
         }
 
         public override void SetDefaults()
@@ -363,7 +363,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terra Weaver");
+            DisplayName.SetDefault("Terra Serpent");
         }
 
         public override void SetDefaults()

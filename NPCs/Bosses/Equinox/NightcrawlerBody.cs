@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
-    [AutoloadBossHead]
+    //[AutoloadBossHead]
     public class NightcrawlerBody : NightcrawlerHead
 	{
 		public override void SetDefaults()
@@ -12,14 +12,6 @@ namespace AAMod.NPCs.Bosses.Equinox
             base.SetDefaults();
             npc.dontCountMe = true;
 		}
-
-        public override void PostAI()
-        {
-            if (!NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
-            {
-                npc.life = 0;
-            }
-        }
 
         public override bool PreNPCLoot()
 		{
@@ -30,5 +22,14 @@ namespace AAMod.NPCs.Bosses.Equinox
 		{
 			return false;
 		}
+
+        public override bool CheckActive()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

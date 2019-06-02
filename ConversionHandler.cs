@@ -105,7 +105,7 @@ namespace AAMod.Worldgen
                     wallSandHard = mod.WallType("DepthsandHardenedWall");
                     tileSandstone = mod.TileType("Depthsandstone");
 					wallSandstone = mod.WallType("DepthsandstoneWall");	
-					tileIce = mod.TileType("Depthice");
+					tileIce = mod.TileType("DepthIce");
 					//tileThorn = mod.TileType("MireThorn");			
 					break;
 				}

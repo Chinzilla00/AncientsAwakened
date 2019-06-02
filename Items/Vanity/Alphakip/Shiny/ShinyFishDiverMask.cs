@@ -10,7 +10,7 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Fish Diver's Diving Mask");
+            DisplayName.SetDefault("Alphakip's Diving Mask");
             Tooltip.SetDefault(@"So I heard you like mudkips
 'Great for impersonating Ancients Awakened Devs!'");
 

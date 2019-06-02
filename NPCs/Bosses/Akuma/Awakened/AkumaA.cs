@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.lifeMax = 190000;
-            npc.damage = 150;
+            npc.damage = 120;
             npc.defense = 190;
             npc.value = Item.buyPrice(20, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -88,8 +88,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
         }
 
-        private int attackFrame;
-        private int attackCounter;
         private int attackTimer;
         public static int MinionCount = 0;
 
@@ -119,14 +117,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-            if (npc.ai[1] == 1 || npc.ai[2] >= 400)
-            {
-                AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
-            }
-            else
-            {
-                AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA");
-            }
+            
 
             npc.frameCounter++;
             if (npc.frameCounter > 8)
@@ -214,8 +205,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     npc.ai[1] = 0;
                     attackTimer = 0;
-                    attackFrame = 0;
-                    attackCounter = 0;
                 }
             }
 
@@ -569,9 +558,17 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (AkumaTex == null)
+            AkumaTex = Main.npcTexture[npc.type];
+            if (npc.type == mod.NPCType<AkumaA>())
             {
-                AkumaTex = Main.npcTexture[npc.type];
+                if (npc.ai[1] == 1 || npc.ai[2] >= 400)
+                {
+                    AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
+                }
+                else
+                {
+                    AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA");
+                }
             }
 
             Texture2D glowTex = mod.GetTexture("Glowmasks/AkumaA_Glow");

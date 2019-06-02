@@ -38,10 +38,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType<RabbitcopterSoldier>(), 0);
             Main.npc[Minion].netUpdate2 = true;
-            if (Main.netMode == 2 && Minion < 200)
-            {
-                NetMessage.SendData(23, -1, -1, null, Minion, 0f, 0f, 0f, 0, 0, 0);
-            }
             projectile.active = false;
             projectile.netUpdate2 = true;
         }

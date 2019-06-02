@@ -65,9 +65,9 @@ namespace AAMod.Items.Boss.AH
                 item.useAnimation = 15;
                 item.useTime = 15;
                 item.useStyle = 1;
-                item.autoReuse = false;
+                item.autoReuse = true;
                 item.shoot = mod.ProjectileType("MasamuneSlash");
-                item.shootSpeed = 15f;
+                item.shootSpeed = 12f;
             }
             return base.CanUseItem(player);
         }

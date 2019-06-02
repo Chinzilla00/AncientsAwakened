@@ -7,8 +7,6 @@ namespace AAMod.NPCs.Bosses.Retriever
 {
     public class RetrieverShot : ModProjectile
     {
-       
-
         public override void SetDefaults()
         {
             projectile.width = 18;
@@ -38,8 +36,14 @@ namespace AAMod.NPCs.Bosses.Retriever
             return projHitbox.Intersects(targetHitbox);
         }
 
+		public bool spawnSound = false;
         public override void AI()
         {
+			if(Main.netMode != 2 && !spawnSound)
+			{
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 33);				
+				spawnSound = true;
+			}
             projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
 
             if (Main.rand.Next(1) == 0)

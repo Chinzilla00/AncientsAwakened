@@ -28,8 +28,8 @@ Non-consumable");
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("DaybreakArrow");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 3f;                  //The speed of the projectile
-			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
-            
+			item.ammo = AmmoID.Arrow;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

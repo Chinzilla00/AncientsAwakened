@@ -20,7 +20,7 @@ namespace AAMod.Items.Throwing
 			item.knockBack = 0;
             item.value = 108000;
             item.rare = 6;
-			item.shootSpeed = 15f;
+			item.shootSpeed = 10f;
 			item.shoot = mod.ProjectileType ("TechneciumBoomerangP");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

@@ -43,16 +43,15 @@ namespace AAMod.NPCs.Bosses.Retriever
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Siege");
         }
 
-        public float[] customAI = new float[4];
+        public float[] customAI = new float[3];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((short)customAI[0]);
-                writer.Write((short)customAI[1]);
-                writer.Write((short)customAI[2]);
-                writer.Write((short)customAI[3]);
+                writer.Write(customAI[0]);
+                writer.Write(customAI[1]);
+                writer.Write(customAI[2]);
             }
         }
 
@@ -64,7 +63,6 @@ namespace AAMod.NPCs.Bosses.Retriever
                 customAI[0] = reader.ReadFloat();
                 customAI[1] = reader.ReadFloat();
                 customAI[2] = reader.ReadFloat();
-                customAI[3] = reader.ReadFloat();
             }
         }
 
@@ -97,7 +95,6 @@ namespace AAMod.NPCs.Bosses.Retriever
             if (Main.expertMode)
             {
                 npc.DropBossBags();
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofSight, Main.rand.Next(20, 40));
             }
             else
             {
@@ -140,12 +137,9 @@ namespace AAMod.NPCs.Bosses.Retriever
             spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
         }
 
-        public Vector2 offsetBasePoint = new Vector2(240f, 0f);
-
+		public Vector2 offsetBasePoint = new Vector2(240, 0);
+		
         public float moveSpeed = 10f;
-
-
-        public float[] shootAI = new float[4];
 
         public override void AI()
         {
@@ -162,9 +156,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.active = false;
                     return;
                 }
-            }
-            
-            customAI[0]--;
+            }       
 
             if (Main.dayTime)
             {
@@ -174,108 +166,15 @@ namespace AAMod.NPCs.Bosses.Retriever
                 return;
             }
 
-            if (customAI[0] <= 300)
-            {
-                moveSpeed = 11f;
-                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
-                MoveToPoint(point);
-                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
-                if (customAI[0] >= 293)
-                {
-                    npc.frame.Y = (100 * 5);
-
-                    return;
-                }
-                else if (customAI[0] >= 286)
-                {
-                    npc.frame.Y = (100 * 6);
-
-                    return;
-                }
-                else if (customAI[0] >= 279)
-                {
-                    npc.frame.Y = (100 * 7);
-                    return;
-                }
-                else if (customAI[0] >= 272)
-                {
-                    npc.frame.Y = (100 * 8);
-                    return;
-                }
-                else if (customAI[0] >= 265)
-                {
-                    npc.frame.Y = (100 * 9);
-                    return;
-                }
-                else if (customAI[0] >= 258)
-                {
-                    npc.frame.Y = (100 * 10);
-                    return;
-                }
-                else if (customAI[0] >= 251)
-                {
-                    npc.frame.Y = (100 * 11);
-                    return;
-                }
-                else if (customAI[0] >= 60)
-                {
-                    npc.frameCounter++;
-                    if (npc.frameCounter >= 7)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y += 100;
-                    }
-                    if (npc.frame.Y > (100 * 13))
-                    {
-                        npc.frame.Y = 100 * 11;
-                    }
-                    npc.defense = 999;
-
-                    Player player = Main.player[npc.target];
-
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<RetrieverShot>(), ref customAI[3], 5, npc.damage / 2, 12);
-                    npc.netUpdate2 = true;
-                    return;
-                }
-                else if (customAI[0] >= 59)
-                {
-                    npc.frame.Y = (100 * 10);
-                    return;
-                }
-                else if (customAI[0] == 1)
-                {
-                    npc.frame.Y = (100 * 7);
-                    return;
-                }
-                else if (customAI[0] <= 0)
-                {
-                    customAI[0] = 1200;
-                    return;
-                }
-            }
-            else
-            {
-
-                npc.frameCounter++;
-                npc.defense = 30;
-                if (npc.frameCounter >= 10)
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += 100;
-                    if (npc.frame.Y > (100 * 3))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-            }
-
             bool forceChange = false;
 
             bool Dive1 = npc.life < npc.lifeMax * .8f;
             bool Dive2 = npc.life < npc.lifeMax * .5f;
             bool Dive3 = npc.life < npc.lifeMax * .2f;
             int DiveSpeed = Dive1 ? 14 : Dive2 ? 17 : 20;
+			int ShootLaserRate = 10;
+			offsetBasePoint.X = customAI[2];
+			
             if (Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
             {
                 int stopValue = 60;
@@ -294,7 +193,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.ai[1] = targetPlayer.Center.X;
                     npc.ai[2] = targetPlayer.Center.Y;
                     npc.ai[3] = 0;
-                    npc.netUpdate2 = true;
+                    npc.netUpdate = true;
                 }
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
@@ -311,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.ai[1] = Dive1 ? targetPlayer.Center.X : 0;
                     npc.ai[2] = Dive1 ? targetPlayer.Center.Y : 0;
                     npc.ai[3] = 0;
-                    npc.netUpdate2 = true;
+                    npc.netUpdate = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
             }
@@ -328,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.ai[1] = Dive2 ? targetPlayer.Center.X : 0;
                     npc.ai[2] = Dive2 ? targetPlayer.Center.Y : 0;
                     npc.ai[3] = 0;
-                    npc.netUpdate2 = true;
+                    npc.netUpdate = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
             }
@@ -341,11 +240,11 @@ namespace AAMod.NPCs.Bosses.Retriever
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-                    npc.ai[0] = Dive3 ? 5 : 0;
+					npc.ai[0] = Dive3 ? 5 : 0;
                     npc.ai[1] = Dive3 ? targetPlayer.Center.X : 0;
                     npc.ai[2] = Dive3 ? targetPlayer.Center.Y : 0;
                     npc.ai[3] = 0;
-                    npc.netUpdate2 = true;
+					npc.netUpdate2 = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
             }
@@ -358,14 +257,62 @@ namespace AAMod.NPCs.Bosses.Retriever
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-                    npc.ai[0] = 0;
-                    npc.ai[1] = 0;
-                    npc.ai[2] = 0;
-                    npc.ai[3] = 0;
-                    npc.netUpdate2 = true;
+					npc.ai[0] = 0;
+					npc.ai[1] = 0;
+					npc.ai[2] = 0;
+					npc.ai[3] = 0;
+					npc.netUpdate = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
-            }
+            }else
+            if (npc.ai[0] == 6) //shoot lasers right
+            {
+                moveSpeed = 11f;
+                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+                if (Main.netMode != 1)
+                {
+					customAI[0]++;
+					if(customAI[0] > 200)
+					{
+						npc.ai[0] = 0;
+						npc.ai[1] = 0;
+						npc.ai[2] = 0;
+						npc.ai[3] = 0;
+						customAI[0] = 0;
+						npc.netUpdate = true;						
+					}
+					if(Vector2.Distance(npc.Center, point) < 10f || customAI[0] > 50)
+					{
+						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
+					}
+                }
+            }else
+            if (npc.ai[0] == 7) //shoot lasers left
+            {
+                moveSpeed = 11f;
+                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+                MoveToPoint(point);
+                BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+                if (Main.netMode != 1)
+                {
+					customAI[0]++;
+					if(customAI[0] > 200)
+					{
+						npc.ai[0] = 0;
+						npc.ai[1] = 0;
+						npc.ai[2] = 0;
+						npc.ai[3] = 0;
+						customAI[0] = 0;
+						npc.netUpdate = true;						
+					}	
+					if(Vector2.Distance(npc.Center, point) < 10f)
+					{						
+						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
+					}
+                }
+            }				
             else //standard movement
             {
                 moveSpeed = 8;
@@ -384,46 +331,148 @@ namespace AAMod.NPCs.Bosses.Retriever
                         {
                             offsetBasePoint.X = -240;
                         }
-
-                        npc.ai[0] = 1;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                        npc.netUpdate2 = true;
+						customAI[2] = offsetBasePoint.X;
+						if(Main.rand.Next(3) == 0) //lasers
+						{
+							npc.ai[0] = offsetBasePoint.X < 0 ? 7 : 6;
+							npc.ai[1] = 0;
+							npc.ai[2] = 0;
+							npc.ai[3] = 0;
+							npc.netUpdate2 = true;						
+						}else
+						{
+							npc.ai[0] = 1;
+							npc.ai[1] = 0;
+							npc.ai[2] = 0;
+							npc.ai[3] = 0;
+							npc.netUpdate2 = true;
+						}
                     }
                 }
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
         }
-        
-        
-            
+		
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.ai[0] == 6 || npc.ai[0] == 7) //firing lasers
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter >= 4)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > (frameHeight * 13))
+                    {
+                        npc.frame.Y = (frameHeight * 10);
+                    }
+                }				
+            }
+            else
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter >= 10)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                }
+				if (npc.frame.Y > (frameHeight * 3))
+				{
+					npc.frameCounter = 0;
+					npc.frame.Y = 0;
+				}				
+            }
+
+        }
+		
+
+        public void FindFrameOld(int frameHeight)
+        {
+            if (customAI[0] <= 300)
+            {
+                if (customAI[0] >= 293)
+                {
+                    npc.frame.Y = (frameHeight * 5);
+                }
+                else if (customAI[0] >= 286)
+                {
+                    npc.frame.Y = (frameHeight * 6);
+                }
+                else if (customAI[0] >= 279)
+                {
+                    npc.frame.Y = (frameHeight * 7);
+                }
+                else if (customAI[0] >= 272)
+                {
+                    npc.frame.Y = (frameHeight * 8);
+                }
+                else if (customAI[0] >= 265)
+                {
+                    npc.frame.Y = (frameHeight * 9);
+                }
+                else if (customAI[0] >= 258)
+                {
+                    npc.frame.Y = (frameHeight * 10);
+                }
+                else if (customAI[0] >= 251)
+                {
+                    npc.frame.Y = (frameHeight * 11);
+                }
+                else if (customAI[0] >= 60)
+                {
+                    npc.frameCounter++;
+                    if (npc.frameCounter >= 7)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += frameHeight;
+                    }
+                    if (npc.frame.Y > (frameHeight * 13))
+                    {
+                        npc.frame.Y = frameHeight * 11;
+                    }
+                }
+                else if (customAI[0] >= 59)
+                {
+                    npc.frame.Y = (frameHeight * 10);
+                }
+                else if (customAI[0] == 1)
+                {
+                    npc.frame.Y = (frameHeight * 7);
+                }
+            }
+            else
+            {
+
+                npc.frameCounter++;
+                if (npc.frameCounter >= 10)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > (frameHeight * 3))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
+                    }
+                }
+            }
+
+        }
+
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
-            float velMultiplier = 1f;
+			float moveSpd = moveSpeed;			
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            if (length < moveSpeed)
+			if(length < 50f)
+				moveSpd /= 2f;
+            if (length < moveSpd)
             {
-                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+				moveSpd = length;
             }
-            if (length < 200f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 100f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 50f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
+            npc.velocity = (length <= 5f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpd;
         }
     }
 }

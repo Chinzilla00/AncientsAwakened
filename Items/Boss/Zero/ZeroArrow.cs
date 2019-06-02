@@ -35,13 +35,14 @@ Non-consumable");
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;
-			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
+            item.consumable = false;
 			item.knockBack = 7f;
 			item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 6;
-			item.shoot = mod.ProjectileType("ZeroArrow");         //The speed of the projectile
-			item.ammo = AmmoID.Arrow;              //The ammo class this ammo belongs to.
-		}
+			item.shoot = mod.ProjectileType("ZeroArrow");
+			item.ammo = AmmoID.Arrow;
+            item.rare = 10;
+        }
 
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

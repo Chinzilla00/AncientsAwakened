@@ -35,6 +35,7 @@ namespace AAMod.Items.Boss.Zero
             item.noMelee = true;
             item.magic = true;
             item.noUseGraphic = true;
+            item.rare = 10;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

@@ -37,7 +37,7 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Molten Lance");
-            Tooltip.SetDefault("Makes instant barbeque shishkebabs!");
+            Tooltip.SetDefault("Makes instant barbeque shish kebabs!");
         }
 
         public override void AddRecipes()  //How to craft this item

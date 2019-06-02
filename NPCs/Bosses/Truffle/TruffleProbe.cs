@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Audio;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Truffle
 {
@@ -33,9 +35,11 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void AI()
         {
-            Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
+            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
 
-            BaseAI.AIFloater(npc, ref npc.ai, false, 0.2f, 2f, 1.5f, 0.04f, 1.5f, 3);
+            Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
+
+            BaseAI.AISpore(npc, ref npc.ai, 0.1f, 0.02f, 5f, 1f);
 
             npc.frameCounter++;
             if (npc.frameCounter > 8)
@@ -47,6 +51,18 @@ namespace AAMod.NPCs.Bosses.Truffle
                     npc.frame.Y = 0;
                 }
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D glowTex = mod.GetTexture("Glowmasks/TruffleProbe_Glow1");
+            Texture2D glowTex1 = mod.GetTexture("Glowmasks/TruffleProbe_Glow2");
+            Color color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
+            BaseDrawing.DrawTexture(spritebatch, glowTex1, 0, npc, Color.White);
+            return false;
         }
     }
 }
