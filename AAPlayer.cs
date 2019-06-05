@@ -2079,7 +2079,7 @@ namespace AAMod
                     player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
                     Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Items.Accessories.Snap>(), 0, 0, player.whoAmI);
                     Main.NewText("Perfectly Balanced, as all things should be...", Color.Purple);
-                    Main.npc.Where(x => x.active && !x.townNPC && (x.type != NPCID.TargetDummy || !NPCID.Sets.TechnicallyABoss[x.type] || !x.boss)).ToList().ForEach(x =>
+                    Main.npc.Where(x => x.active && !x.townNPC && (x.type != NPCID.TargetDummy || !NPCID.Sets.TechnicallyABoss[x.type] || !x.boss || x.type != mod.NPCType<NPCs.Bosses.Zero.ZeroDeactivated>())).ToList().ForEach(x =>
                     {
                         for (int i = 0; i < 5; i++)
                         {

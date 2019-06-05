@@ -565,7 +565,7 @@ namespace AAMod
             if (Main.hardMode && isBunny)
             {
                 Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
-                int bunnyKills = NPC.killCount[NPCID.Bunny];
+                int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
                 if (bunnyKills % 100 == 0 && bunnyKills < 1000)
                 {
                     Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);

@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Strange Machine");
-            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 		public override void SetDefaults()
 		{

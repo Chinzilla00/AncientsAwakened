@@ -1838,6 +1838,7 @@
     <Compile Include="Projectiles\Akuma\Lung\LungHead.cs" />
     <Compile Include="Projectiles\Akuma\MorningGlory.cs" />
     <Compile Include="Projectiles\Akuma\Solar.cs" />
+    <Compile Include="Projectiles\Akuma\SolarSun.cs" />
     <Compile Include="Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Projectiles\Akuma\Sunray.cs" />
     <Compile Include="Projectiles\Akuma\SunSpear.cs" />
@@ -1922,6 +1923,7 @@
     <Compile Include="Projectiles\Toad\ToadTongue.cs" />
     <Compile Include="Projectiles\ValkyrieSlash.cs" />
     <Compile Include="Projectiles\Volley.cs" />
+    <Compile Include="Projectiles\Yamata\YWSplit.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
     <Compile Include="Projectiles\SingularityVortex.cs" />
@@ -2195,6 +2197,7 @@
     <Compile Include="Projectiles\Zero\Teslashock.cs" />
     <Compile Include="Projectiles\Zero\VoidStarPF.cs" />
     <Compile Include="Projectiles\Zero\Vortex.cs" />
+    <Compile Include="Projectiles\Zero\VortexProj.cs" />
     <Compile Include="Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Projectiles\Zero\ZeroStarP.cs" />
     <Compile Include="Sounds\Sounds\AkumaRoar.cs" />
@@ -2214,6 +2217,7 @@
     <Compile Include="Tiles\CarrotGold.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\BiomePrism.cs" />
+    <Compile Include="Tiles\DepthMoss.cs" />
     <Compile Include="Tiles\TorchAsh.cs" />
     <Compile Include="Tiles\TorchsandBall.cs" />
     <Compile Include="Tiles\DepthsandBall.cs" />
@@ -6083,6 +6087,7 @@
     <Content Include="Projectiles\Akuma\Lung\LungTail.png" />
     <Content Include="Projectiles\Akuma\MorningGlory.png" />
     <Content Include="Projectiles\Akuma\Solar.png" />
+    <Content Include="Projectiles\Akuma\SolarSun.png" />
     <Content Include="Projectiles\Akuma\SunOrb.png" />
     <Content Include="Projectiles\Akuma\Sunray.png" />
     <Content Include="Projectiles\Akuma\SunSpear.png" />
@@ -6466,6 +6471,7 @@
     <Content Include="Projectiles\Yamata\YamataSoul.png" />
     <Content Include="Projectiles\Yamata\YariProj.png" />
     <Content Include="Projectiles\Yamata\YWProjectile.png" />
+    <Content Include="Projectiles\Yamata\YWSplit.png" />
     <Content Include="Projectiles\YtriumBoomerangP.png" />
     <Content Include="Projectiles\HydraSpray.png" />
     <Content Include="Projectiles\YtriumHalberd.png" />
@@ -6481,6 +6487,7 @@
     <Content Include="Projectiles\Zero\Teslashock.png" />
     <Content Include="Projectiles\Zero\VoidStarPF.png" />
     <Content Include="Projectiles\Zero\Vortex.png" />
+    <Content Include="Projectiles\Zero\VortexProj.png" />
     <Content Include="Projectiles\Zero\ZeroArrow.png" />
     <Content Include="Projectiles\Zero\ZeroStarP.png" />
     <Content Include="Items\Dev\SoulSiphon.png" />
@@ -6578,7 +6585,9 @@
     <Content Include="Tiles\Darkshroom.png" />
     <Content Include="Tiles\DataBank.png" />
     <Content Include="Tiles\DaybreakIncineriteOre.png" />
+    <Content Include="Tiles\DepthIce - Copy.png" />
     <Content Include="Tiles\DepthIce.png" />
+    <Content Include="Tiles\DepthMoss.png" />
     <Content Include="Tiles\DepthsandBall.png" />
     <Content Include="Tiles\DepthsandHardened.png" />
     <Content Include="Tiles\Depthsandstone.png" />
