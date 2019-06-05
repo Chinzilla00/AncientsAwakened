@@ -189,6 +189,7 @@ namespace AAMod
         public bool HeartA = false;
         public bool DragonsGuard = false;
         public bool ShadowBand = false;
+        public bool RajahCape = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -387,6 +388,7 @@ namespace AAMod
             ShieldUp = false;
             DragonsGuard = false;
             ShadowBand = false;
+            RajahCape = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;

@@ -35,11 +35,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
             bossBag = mod.ItemType("RajahBag");
-            if (NPC.killCount[NPCID.Bunny] >= 1000)
+            if (NPC.killCount[NPCID.Bunny] >= 1000 || npc.ai[3] == -2)
             {
                 npc.damage = 450;
                 npc.defense = 350;
                 npc.lifeMax = 4000000;
+                npc.ai[3] = 0;
             }
             else if (NPC.killCount[NPCID.Bunny] >= 900)
             {
@@ -162,9 +163,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    Main.NewText("Cheaters cannot escape justice!", 107, 137, 179);
+                    Main.NewText("JUSTICE CANNOT BE CHEATED", 107, 137, 179);
                     damage = 0;
                 }
+
+                npc.damage = 9999;
+                npc.defense = 99999;
 
                 return false;
             }

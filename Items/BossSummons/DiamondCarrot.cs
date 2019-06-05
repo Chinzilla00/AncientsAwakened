@@ -8,12 +8,12 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons
 {
-    public class GoldenCarrot : ModItem
+    public class DiamondCarrot : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ten Karat Carrot");
-            Tooltip.SetDefault(@"Summons the Pouncing Punisher himself");
+            DisplayName.SetDefault("Ten Carat Carrot");
+            Tooltip.SetDefault(@"The fury of the Raging Rajah can be felt radiating from this ornate carrot...");
         }
 
         public override void SetDefaults()
@@ -31,7 +31,6 @@ namespace AAMod.Items.BossSummons
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah");
         }
 
-        // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
             return !NPC.AnyNPCs(mod.NPCType<Rajah>());
@@ -39,31 +38,30 @@ namespace AAMod.Items.BossSummons
 
         public override bool UseItem(Player player)
         {
+            Main.NewText("GRAVE MISTAKE, TERRARIAN!", 107, 137, 179);
             int overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
-            SpawnBoss(player, mod.NPCType("Rajah"), true, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
+            SpawnBoss(player, mod.NPCType("Rajah"), false, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
             return true;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Potions.Carrot>(), 5);
-            recipe.AddIngredient(ItemID.GoldCoin, 50);
-            recipe.AddIngredient(ItemID.GoldBunny, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddIngredient(null, "GoldenCarrot", 1);
+            recipe.AddIngredient(null, "RoyalRabbit", 1);
+            recipe.AddIngredient(ItemID.Diamond, 5);
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
 
         public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
-            if (npcCenter == default(Vector2))
-                npcCenter = player.Center;
             if (Main.netMode != 1)
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
-                Main.npc[npcID].ai[3] = -1;
+                Main.npc[npcID].ai[3] = -2;
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)

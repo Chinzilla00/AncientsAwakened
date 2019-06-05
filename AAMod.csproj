@@ -88,8 +88,10 @@
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Blocks\ToadBox.cs" />
     <Compile Include="Items\Blocks\TorchAsh.cs" />
+    <Compile Include="Items\BossSummons\DiamondCarrot.cs" />
     <Compile Include="Items\Boss\Hydra\HydraTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
+    <Compile Include="Items\Boss\Rajah\RajahCape.cs" />
     <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
     <Compile Include="Backgrounds\AkumaSky.cs" />
@@ -980,6 +982,7 @@
     <Compile Include="Items\Magic\YtriumStaff.cs" />
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
+    <Compile Include="Items\Materials\RoyalRabbit.cs" />
     <Compile Include="Items\Materials\CocoaBean.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
     <Compile Include="Items\Materials\Discordium.cs" />
@@ -1714,6 +1717,7 @@
     <Compile Include="NPCs\Bosses\Zero\ZeroArmAIs.cs" />
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeactivated.cs" />
+    <Compile Include="NPCs\Critters\RoyalRabbit.cs" />
     <Compile Include="NPCs\Enemies\Corruption\FeralMonster.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst1.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst2.cs" />
@@ -4294,6 +4298,7 @@
     <Content Include="Items\Blocks\ToadBox.png" />
     <Content Include="Items\Blocks\TorchAsh.png" />
     <Content Include="Items\BossSummons\CyberneticShroom.png" />
+    <Content Include="Items\BossSummons\DiamondCarrot.png" />
     <Content Include="Items\BossSummons\GoldenCarrot.png" />
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
@@ -4308,6 +4313,9 @@
     <Content Include="Items\Boss\Rajah\RabbitcopterEars.png" />
     <Content Include="Items\Boss\Rajah\RabbitcopterEars_Wings.png" />
     <Content Include="Items\Boss\Rajah\RajahBag.png" />
+    <Content Include="Items\Boss\Rajah\RajahCape.png" />
+    <Content Include="Items\Boss\Rajah\RajahCape_Back.png" />
+    <Content Include="Items\Boss\Rajah\RajahCape_Front.png" />
     <Content Include="Items\Boss\Rajah\RajahPelt.png" />
     <Content Include="Items\Boss\Rajah\RajahSash.png" />
     <Content Include="Items\Boss\Rajah\RajahSashB.png" />
@@ -4377,6 +4385,7 @@
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\Dracokarp.png" />
     <Content Include="Items\Materials\RelicBar.png" />
+    <Content Include="Items\Materials\RoyalRabbit.png" />
     <Content Include="Items\Materials\SwampKoi.png" />
     <Content Include="Items\Materials\TerraShard.png" />
     <Content Include="Items\Materials\VikingRelic0.png" />
@@ -4603,6 +4612,7 @@
     <Content Include="NPCs\Bosses\Zero\Tazer_Boss_Head.png" />
     <Content Include="NPCs\Bosses\Zero\TeslaHand_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar_Head_Boss.png" />
+    <Content Include="NPCs\Critters\RoyalRabbit.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
     <Content Include="NPCs\Enemies\Inferno\MagmaSwimmer.png" />
