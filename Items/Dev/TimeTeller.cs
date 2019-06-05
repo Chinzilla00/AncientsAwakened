@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using BaseMod;
 
 namespace AAMod.Items.Dev
 {
@@ -13,7 +14,7 @@ namespace AAMod.Items.Dev
             item.useTime = 25;
             item.CloneDefaults(ItemID.Terrarian);
 
-            item.damage = 120;
+            item.damage = 200;
             item.value = 1000000;
             item.rare = 11;
             item.knockBack = 1;
@@ -24,10 +25,10 @@ namespace AAMod.Items.Dev
             item.shoot = mod.ProjectileType("TimeTeller");
         }
 
-        public override void PostUpdate()
-        {
-            item.damage = Damage();
-        }
+		public override void GetWeaponDamage(Player player, ref int damage)
+		{
+			damage = (int)((float)damage * CalcDamageMultiplierFromTimeOfDay(item.damage));
+		}
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
@@ -37,8 +38,9 @@ namespace AAMod.Items.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Time Teller");
-            Tooltip.SetDefault("Slows time for enemies hit \n" +
-                "Time to Die \n" +
+            Tooltip.SetDefault("Damage changes based on time of day\n" +
+				"Damage is greatest at Midday and Midnight\n" +
+                "'Time to Die!'\n" +
                 "-Dallin");
         }
 
@@ -58,118 +60,21 @@ namespace AAMod.Items.Dev
             if (player.accWatch < 3)
                 player.accWatch = 3;
         }
+		
+		public float CalcDamageMultiplierFromTimeOfDay(int baseDamage)
+		{
+			int minDamage = baseDamage; //this is the damage you set in SetDefaults.
+			int maxDamage = 350; //this is the damage you get at midday/midnight.
 
-        public int Damage()
-        {
-            double num4 = (float)Main.time;
-            if (!Main.dayTime)
-            {
-                num4 += 54000.0;
-            }
-            num4 = num4 / 86400.0 * 24.0;
-            double num5 = 7.5;
-            num4 = num4 - num5 - 12.0;
-            if (num4 < 0.0)
-            {
-                num4 += 24.0;
-            }
-            if (num4 == 1)
-            {
-                return 30;
-            }
-            else if (num4 == 2)
-            {
-                return 60;
-            }
-            else if (num4 == 3)
-            {
-                return 90;
-            }
-            else if (num4 == 4)
-            {
-                return 120;
-            }
-            else if (num4 == 5)
-            {
-                return 150;
-            }
-            else if (num4 == 6)
-            {
-                return 180;
-            }
-            else if (num4 == 7)
-            {
-                return 210;
-            }
-            else if (num4 == 8)
-            {
-                return 240;
-            }
-            else if (num4 == 9)
-            {
-                return 270;
-            }
-            else if (num4 == 10)
-            {
-                return 300;
-            }
-            else if (num4 == 11)
-            {
-                return 330;
-            }
-            else if (num4 == 12)
-            {
-                return 360;
-            }
-            else if (num4 == 13)
-            {
-                return 30;
-            }
-            else if (num4 == 14)
-            {
-                return 60;
-            }
-            else if (num4 == 15)
-            {
-                return 90;
-            }
-            else if (num4 == 16)
-            {
-                return 120;
-            }
-            else if (num4 == 17)
-            {
-                return 150;
-            }
-            else if (num4 == 18)
-            {
-                return 180;
-            }
-            else if (num4 == 19)
-            {
-                return 210;
-            }
-            else if (num4 == 20)
-            {
-                return 240;
-            }
-            else if (num4 == 21)
-            {
-                return 270;
-            }
-            else if (num4 == 22)
-            {
-                return 300;
-            }
-            else if (num4 == 23)
-            {
-                return 330;
-            }
-            else
-            {
-                return 360;
-            }
-        }
+			float maxMultiplier = ((float)maxDamage / (float)minDamage);		
+			float time = (int)Main.time;
+			float calcTimeMax = 0f;
+			if(Main.dayTime)
+				calcTimeMax = 54000f; //max time in a day
+			else
+				calcTimeMax = 32400f; //max time in a night
 
+			return BaseUtility.MultiLerp(time / calcTimeMax, 1f, maxMultiplier, 1f);
+		}
     }
 }
