@@ -581,7 +581,7 @@
     <Compile Include="Items\Blocks\DaybreakIncinceriteOre.cs" />
     <Compile Include="Items\Blocks\Depthsand.cs" />
     <Compile Include="Items\Blocks\Depthsandstone.cs" />
-    <Compile Include="Items\Blocks\Depthice.cs" />
+    <Compile Include="Items\Blocks\DepthIce.cs" />
     <Compile Include="Items\Blocks\Depthstone.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
     <Compile Include="Items\Blocks\Doomstone.cs" />
@@ -2359,7 +2359,7 @@
     <Compile Include="Tiles\Crates\MireCrate.cs" />
     <Compile Include="Tiles\FulguritePlating.cs" />
     <Compile Include="Tiles\Razetus.cs" />
-    <Compile Include="Tiles\Depthice.cs" />
+    <Compile Include="Tiles\DepthIce.cs" />
     <Compile Include="Tiles\DepthsandHardened.cs" />
     <Compile Include="Tiles\Depthsandstone.cs" />
     <Compile Include="Tiles\Depthsand.cs" />
@@ -4657,7 +4657,7 @@
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\DaybreakIncineriteOre.png" />
-    <Content Include="Items\Blocks\Depthice.png" />
+    <Content Include="Items\Blocks\DepthIce.png" />
     <Content Include="Items\Blocks\Depthsand.png" />
     <Content Include="Items\Blocks\DepthsandHardened.png" />
     <Content Include="Items\Blocks\Depthsandstone.png" />
