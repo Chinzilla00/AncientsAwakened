@@ -31,9 +31,13 @@ namespace AAMod
 
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnet>())
+            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnetWeak>())
             {
                 grabRange += 250;
+            }
+            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnet>())
+            {
+                grabRange += 1920;
             }
         }
 

@@ -1370,6 +1370,8 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\CodeMagnetWeak.cs" />
+    <Compile Include="Items\Usable\MireLifeFruit.cs" />
     <Compile Include="Items\Usable\MyceliumSeeds.cs" />
     <Compile Include="Items\Usable\BrownSolution.cs" />
     <Compile Include="Items\Usable\FungicideSolution.cs" />
@@ -4447,6 +4449,7 @@
     <Content Include="Items\Usable\BrownSolution.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\ChaosOverloader.png" />
+    <Content Include="Items\Usable\CodeMagnetWeak.png" />
     <Content Include="Items\Usable\DeepGreenSolution.png" />
     <Content Include="Items\Usable\FungicideSolution.png" />
     <Content Include="Items\Usable\LimeSolution.png" />
@@ -6595,7 +6598,6 @@
     <Content Include="Tiles\Darkshroom.png" />
     <Content Include="Tiles\DataBank.png" />
     <Content Include="Tiles\DaybreakIncineriteOre.png" />
-    <Content Include="Tiles\DepthIce - Copy.png" />
     <Content Include="Tiles\DepthIce.png" />
     <Content Include="Tiles\DepthMoss.png" />
     <Content Include="Tiles\DepthsandBall.png" />
@@ -6652,6 +6654,9 @@
     <Content Include="Tiles\MireFoliage3.png" />
     <Content Include="Tiles\MireFoliage4.png" />
     <Content Include="Tiles\MireFoliage5.png" />
+    <Content Include="Tiles\MireLifeFruit.png" />
+    <Content Include="Tiles\MirePlanteraBulb.png" />
+    <Content Include="Tiles\MirePlants.png" />
     <Content Include="Tiles\MonarchBox.png" />
     <Content Include="Tiles\MoonAltarA.png" />
     <Content Include="Tiles\MoonBeeJar.png" />
