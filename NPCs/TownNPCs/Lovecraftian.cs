@@ -533,6 +533,23 @@ namespace AAMod.NPCs.TownNPCs
                 shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.GlowingSporeSac>());
                 nextSlot++;
             }
+            if (AAWorld.squid11 >= 5)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.JungleFlask>());
+                nextSlot++;
+            }
+            if (AAWorld.squid12 >= 1)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.IceFlask>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.IcemeltFlask>());
+                nextSlot++;
+            }
+            if (AAWorld.squid13 >= 5)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.ForestFlask>());
+                nextSlot++;
+            }
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
