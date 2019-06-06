@@ -26,10 +26,10 @@ namespace AAMod.Worldgen
 			int biomeRadius = (worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150);	
 			biomeRadius /= 2;
 			switch(convertType)
-			{	
+			{
 				case 0: //MIRE
 				{
-					startMireX = centerX + biomeRadius - width + 10;
+					startMireX = centerX;
 					startMireY = y;
 					genMireWidth = width;
 					ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownMireCallback), null);
@@ -37,7 +37,7 @@ namespace AAMod.Worldgen
 				}
 				case 1: //INFERNO
 				{
-					startInfernoX = centerX + biomeRadius - width + 10;
+					startInfernoX = centerX;
 					startInfernoY = y;
 					genInfernoWidth = width;
 					ThreadPool.QueueUserWorkItem(new WaitCallback(ConvertDownInfernoCallback), null);
@@ -127,7 +127,7 @@ namespace AAMod.Worldgen
 				default: break;
 			}
 			int centerX = startX, y = startY;
-			centerX -= (genWidth / 2);
+			//centerX -= (genWidth / 2);
 			for(int x1 = 0; x1 < genWidth; x1++)
 			{
 				while(y < (Main.maxTilesY -50))

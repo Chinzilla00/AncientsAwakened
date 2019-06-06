@@ -119,24 +119,24 @@ namespace AAMod.NPCs.TownNPCs
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerHelm>());
-            shop.item[nextSlot].shopCustomPrice = new int?(10);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            shop.item[nextSlot].shopCustomPrice = new int?(10);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerChest>());
-            shop.item[nextSlot].shopCustomPrice = new int?(15);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            shop.item[nextSlot].shopCustomPrice = new int?(15);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerGreaves>());
-            shop.item[nextSlot].shopCustomPrice = new int?(12);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            shop.item[nextSlot].shopCustomPrice = new int?(12);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Melee.GoblinSlayer>());
-            shop.item[nextSlot].shopCustomPrice = new int?(15);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            shop.item[nextSlot].shopCustomPrice = new int?(15);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
-            shop.item[nextSlot].shopCustomPrice = new int?(5);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+            shop.item[nextSlot].shopCustomPrice = new int?(5);
             nextSlot++;
         }
 
