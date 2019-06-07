@@ -9,8 +9,9 @@ namespace AAMod.Items.Armor.Doomite
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doomite Greaves");
-            Tooltip.SetDefault(@"+1 Minion slot");
+            DisplayName.SetDefault("Charged Doomite Greaves");
+            Tooltip.SetDefault(@"+1 Minion slot
+Increases minion damage by 5%");
         }
 
         public override void SetDefaults()
@@ -19,7 +20,7 @@ namespace AAMod.Items.Armor.Doomite
             item.height = 20;
             item.rare = 4;
             item.defense = 7;
-            item.value = 9000;
+            item.value = 90000;
         }
 
         public override void UpdateEquip(Player player)
@@ -30,7 +31,10 @@ namespace AAMod.Items.Armor.Doomite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Doomite", 15);
+            recipe.AddIngredient(null, "DoomiteUPlate", 1);
+            recipe.AddIngredient(null, "DepthGi", 1);
+            recipe.AddIngredient(null, "VikingPlate", 1);
+            recipe.AddIngredient(null, "OceanShirt", 1);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

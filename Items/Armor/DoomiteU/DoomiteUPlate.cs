@@ -9,9 +9,8 @@ namespace AAMod.Items.Armor.DoomiteU
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dark Doomite Chestplate");
-			Tooltip.SetDefault(@"Increases minion damage by 6%");
-
+			DisplayName.SetDefault("Doomite Chestplate");
+			Tooltip.SetDefault(@"Increases minion damage by 5%");
 		}
 
 		public override void SetDefaults()
@@ -25,14 +24,14 @@ namespace AAMod.Items.Armor.DoomiteU
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.minionDamage += 0.06f;
+            player.minionDamage += 0.05f;
 		}
 		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomiteScrap", 10);
             recipe.AddIngredient(null, "Doomite", 2);
+            recipe.AddIngredient(null, "DoomiteScrap", 10);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

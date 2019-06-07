@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod
 {
@@ -12,9 +13,9 @@ namespace AAMod
     {
         public static Mod thorium = null, calamity = null, redemption = null;
 
-        public static FieldInfo Revengance = null, Death = null, Defiled = null;
+        public static FieldInfo Revengance = null, CDeath = null, CDefiled = null;
 
-        public static bool Calamity_Revengence(bool? value = null)
+        public static bool Revengence(bool? value = null)
         {
             if (value != null && Revengance != null)
             {
@@ -25,24 +26,24 @@ namespace AAMod
             return (Revengance == null ? false : (bool)Revengance.GetValue(null));
         }
 
-        public static bool Calamity_Death(bool? value = null)
+        public static bool Death(bool? value = null)
         {
-            if (value != null && Death != null)
+            if (value != null && CDeath != null)
             {
-                Death.SetValue(null, (bool)value);
+                CDeath.SetValue(null, (bool)value);
                 return (bool)value;
             }
-            return (Death == null ? false : (bool)Death.GetValue(null));
+            return (CDeath == null ? false : (bool)CDeath.GetValue(null));
         }
 
-        public static bool Calamity_Defiled(bool? value = null)
+        public static bool Defiled(bool? value = null)
         {
-            if (value != null && Defiled != null)
+            if (value != null && CDefiled != null)
             {
-                Defiled.SetValue(null, (bool)value);
+                CDefiled.SetValue(null, (bool)value);
                 return (bool)value;
             }
-            return (Defiled == null ? false : (bool)Defiled.GetValue(null));
+            return (CDefiled == null ? false : (bool)CDefiled.GetValue(null));
         }
 
         public static bool ModInstalled(string name)
@@ -85,8 +86,8 @@ namespace AAMod
                     {
                         default: break;
                         case "revenge": Revengance = info; break;
-                        case "death": Death = info; break;
-                        case "defiled": Defiled = info; break;
+                        case "death": CDeath = info; break;
+                        case "defiled": CDefiled = info; break;
                     }
                 }
             }
@@ -217,5 +218,58 @@ namespace AAMod
         #endregion
     }
 
-
+    public class ModSupportNPC : GlobalNPC
+    {
+        public override void ScaleExpertStats(NPC npc, int numPlayers, float bossLifeScale)
+        {
+            bool AABoss = npc.type == mod.NPCType("Ashe") ||
+                npc.type == mod.NPCType("Haruka") ||
+                npc.type == mod.NPCType("Akuma") ||
+                npc.type == mod.NPCType("AkumaA") ||
+                npc.type == mod.NPCType("Broodmother") ||
+                npc.type == mod.NPCType("Djinn") ||
+                npc.type == mod.NPCType("DaybringerHead") ||
+                npc.type == mod.NPCType("NightcrawlerHead") ||
+                npc.type == mod.NPCType("GripOfChaosBlue") ||
+                npc.type == mod.NPCType("GripOfChaosRed") ||
+                npc.type == mod.NPCType("Hydra") ||
+                npc.type == mod.NPCType("MushroomMonarch") ||
+                npc.type == mod.NPCType("FeudalFungus") ||
+                npc.type == mod.NPCType("Orthrus") ||
+                npc.type == mod.NPCType("Raider") ||
+                npc.type == mod.NPCType("Rajah") ||
+                npc.type == mod.NPCType("Retriever") ||
+                npc.type == mod.NPCType("Sagittarius") ||
+                npc.type == mod.NPCType("Serpent") ||
+                npc.type == mod.NPCType("ShenDoragon") ||
+                npc.type == mod.NPCType("ShenA") ||
+                npc.type == mod.NPCType("TruffleToad") ||
+                npc.type == mod.NPCType("TechnoTruffle") ||
+                npc.type == mod.NPCType("Yamata") ||
+                npc.type == mod.NPCType("YamataHead") ||
+                npc.type == mod.NPCType("YamataHeadF1") ||
+                npc.type == mod.NPCType("YamataHeadF2") ||
+                npc.type == mod.NPCType("YamataA") ||
+                npc.type == mod.NPCType("YamataAHead") ||
+                npc.type == mod.NPCType("YamataAHeadF1") ||
+                npc.type == mod.NPCType("YamataAHeadF2") ||
+                npc.type == mod.NPCType("Zero") ||
+                npc.type == mod.NPCType("GenocideCannon") ||
+                npc.type == mod.NPCType("Neutralizer") ||
+                npc.type == mod.NPCType("NovaFocus") ||
+                npc.type == mod.NPCType("OmegaVolley") ||
+                npc.type == mod.NPCType("RealityCannon") ||
+                npc.type == mod.NPCType("RiftShredder") ||
+                npc.type == mod.NPCType("Taser") ||
+                npc.type == mod.NPCType("TeslaHand") ||
+                npc.type == mod.NPCType("VoidStar") ||
+                npc.type == mod.NPCType("ZeroAwakened");
+            if (AABoss)
+            {
+                bool revenge = ModSupport.Revengence();
+                if (revenge) bossLifeScale *= 2f;
+                npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
+            }
+        }
+    }
 }

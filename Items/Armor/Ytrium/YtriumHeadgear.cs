@@ -20,8 +20,8 @@ namespace AAMod.Items.Armor.Ytrium
         {
             item.width = 28;
             item.height = 24;
-            item.value = 70000;
-            item.rare = 4;
+            item.value = 50000;
+            item.rare = 3;
             item.defense = 2;
         }
 

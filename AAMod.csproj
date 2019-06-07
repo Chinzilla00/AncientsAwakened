@@ -85,6 +85,7 @@
     <Compile Include="Items\Armor\Dev\Tied\TiedsLeggingsA.cs" />
     <Compile Include="Items\Armor\Dev\Tied\TiedsMaskA.cs" />
     <Compile Include="Items\Armor\Dev\Tied\TiedsSuitA.cs" />
+    <Compile Include="Items\Blocks\DepthsandHardened.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Blocks\ToadBox.cs" />
     <Compile Include="Items\Blocks\TorchAsh.cs" />
@@ -965,6 +966,8 @@
     <Compile Include="Items\Magic\Gong.cs" />
     <Compile Include="Items\Magic\MagicFlower.cs" />
     <Compile Include="Items\Magic\BlazePike.cs" />
+    <Compile Include="Items\Magic\StarStaff.cs" />
+    <Compile Include="Items\Magic\SubzeroStaff.cs" />
     <Compile Include="Items\Magic\ManaRose.cs" />
     <Compile Include="Items\Magic\NovaFlare.cs" />
     <Compile Include="Items\Magic\OceanTrident.cs" />
@@ -982,6 +985,8 @@
     <Compile Include="Items\Magic\YtriumStaff.cs" />
     <Compile Include="Items\Materials\AbyssiumBar.cs" />
     <Compile Include="Items\Materials\ApocalyptitePlate.cs" />
+    <Compile Include="Items\Materials\PrimevalSkull.cs" />
+    <Compile Include="Items\Materials\OceanWhisper.cs" />
     <Compile Include="Items\Materials\RoyalRabbit.cs" />
     <Compile Include="Items\Materials\CocoaBean.cs" />
     <Compile Include="Items\Materials\Crystal.cs" />
@@ -1720,6 +1725,7 @@
     <Compile Include="NPCs\Bosses\Zero\Zero.cs" />
     <Compile Include="NPCs\Bosses\Zero\ZeroDeactivated.cs" />
     <Compile Include="NPCs\Critters\RoyalRabbit.cs" />
+    <Compile Include="NPCs\Enemies\BiomeGuardians\Fishron.cs" />
     <Compile Include="NPCs\Enemies\Corruption\FeralMonster.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst1.cs" />
     <Compile Include="NPCs\Enemies\Desert\DjinnBurst2.cs" />
@@ -1858,7 +1864,13 @@
     <Compile Include="Projectiles\AmphibiousProjectileEXS.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileS.cs" />
     <Compile Include="Projectiles\AncientArcanum.cs" />
+    <Compile Include="Projectiles\ApocalypseBoom.cs" />
     <Compile Include="Projectiles\AsgardianIce.cs" />
+    <Compile Include="Projectiles\ChaosShot1.cs" />
+    <Compile Include="Projectiles\ChaosShot2.cs" />
+    <Compile Include="Projectiles\ChaosShot3.cs" />
+    <Compile Include="Projectiles\Cloud.cs" />
+    <Compile Include="Projectiles\DarkArrow.cs" />
     <Compile Include="Projectiles\Flasks\ForestFlask.cs" />
     <Compile Include="Projectiles\Flasks\IceFlask.cs" />
     <Compile Include="Projectiles\Flasks\IcemeltFlask.cs" />
@@ -1866,9 +1878,13 @@
     <Compile Include="Projectiles\Flasks\OrderBottle.cs" />
     <Compile Include="Projectiles\ForestSolution.cs" />
     <Compile Include="Projectiles\JungleSolution.cs" />
+    <Compile Include="Projectiles\RadiumStar.cs" />
+    <Compile Include="Projectiles\ScourgeOfShadowsP2.cs" />
+    <Compile Include="Projectiles\Stars.cs" />
     <Compile Include="Projectiles\RaiderLance.cs" />
     <Compile Include="Projectiles\Snowmelt.cs" />
     <Compile Include="Projectiles\SnowSolution.cs" />
+    <Compile Include="Projectiles\SubzeroSnowflake.cs" />
     <Compile Include="Projectiles\ThanosSwordEXT.cs" />
     <Compile Include="Projectiles\VikingPolarm.cs" />
     <Compile Include="Projectiles\Executioner.cs" />
@@ -2977,6 +2993,7 @@
     <Content Include="Glowmasks\DuckstepGunEX_Glow.png" />
     <Content Include="Glowmasks\DuckstepGun_Glow.png" />
     <Content Include="Glowmasks\DuckstepWings_Glow.png" />
+    <Content Include="Glowmasks\Dynasaur_Glow.png" />
     <Content Include="Glowmasks\DynaskullOre_Glow.png" />
     <Content Include="Glowmasks\Ectoblade_Glow.png" />
     <Content Include="Glowmasks\EFishTrophy_Glow.png" />
@@ -4379,13 +4396,14 @@
     <Content Include="Items\Flasks\PurityFlask.png" />
     <Content Include="Items\Flasks\VoidFlask.png" />
     <Content Include="Items\Flasks\Z.png" />
-    <Content Include="Items\Magic\GunkStaff.png" />
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Magic\Volley.png" />
     <Content Include="Items\Materials\CocoaBean.png" />
     <Content Include="Items\Materials\DoomiteScrap.png" />
     <Content Include="Items\Materials\Dracokarp.png" />
+    <Content Include="Items\Materials\OceanWhisper.png" />
+    <Content Include="Items\Materials\PrimevalSkull.png" />
     <Content Include="Items\Materials\RelicBar.png" />
     <Content Include="Items\Materials\RoyalRabbit.png" />
     <Content Include="Items\Materials\SwampKoi.png" />
@@ -4616,6 +4634,8 @@
     <Content Include="NPCs\Bosses\Zero\TeslaHand_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\VoidStar_Head_Boss.png" />
     <Content Include="NPCs\Critters\RoyalRabbit.png" />
+    <Content Include="NPCs\Enemies\BiomeGuardians\Dynasaur.png" />
+    <Content Include="NPCs\Enemies\BiomeGuardians\Fishron.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
     <Content Include="NPCs\Enemies\Inferno\MagmaSwimmer.png" />
@@ -6116,6 +6136,7 @@
     <Content Include="Projectiles\AncientArcanum.png" />
     <Content Include="Projectiles\AntimonBoomerangP.png" />
     <Content Include="Projectiles\Apocalypse.png" />
+    <Content Include="Projectiles\ApocalypseBoom.png" />
     <Content Include="Projectiles\APP.png" />
     <Content Include="Projectiles\AsgardianIce.png" />
     <Content Include="Projectiles\AsgardianLance.png" />
@@ -6137,6 +6158,9 @@
     <Content Include="Projectiles\ChaosScythe.png" />
     <Content Include="Projectiles\ChaosScytheP.png" />
     <Content Include="Projectiles\ChaosShot.png" />
+    <Content Include="Projectiles\ChaosShot1.png" />
+    <Content Include="Projectiles\ChaosShot2.png" />
+    <Content Include="Projectiles\ChaosShot3.png" />
     <Content Include="Projectiles\ChaosShotP.png" />
     <Content Include="Projectiles\ChaosYari.png" />
     <Content Include="Projectiles\ChaosYariEX.png" />
@@ -6144,6 +6168,7 @@
     <Content Include="Projectiles\ChaosYariEXShot_Tip.png" />
     <Content Include="Projectiles\ChaosYariShot.png" />
     <Content Include="Projectiles\Chronos.png" />
+    <Content Include="Projectiles\Cloud.png" />
     <Content Include="Projectiles\CloudEdgeP.png" />
     <Content Include="Projectiles\CosmicLaser.png" />
     <Content Include="Projectiles\Crystal.png" />
@@ -6191,6 +6216,9 @@
     <Content Include="Projectiles\PrimevalJavelin.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
     <Content Include="Projectiles\Pyrosphere_Chain.png" />
+    <Content Include="Projectiles\RadiumStar.png" />
+    <Content Include="Projectiles\Shadowshot.png" />
+    <Content Include="Projectiles\Stars.png" />
     <Content Include="Projectiles\RaiderLance.png" />
     <Content Include="Projectiles\Rajah\Bane.png" />
     <Content Include="Projectiles\Rajah\BaneT.png" />
@@ -6382,7 +6410,6 @@
     <Content Include="Projectiles\ReaperArrow.png" />
     <Content Include="Projectiles\Ryugen.png" />
     <Content Include="Projectiles\SandPro.png" />
-    <Content Include="Projectiles\Sandstorm.png" />
     <Content Include="Projectiles\Serpent\BB.png" />
     <Content Include="Projectiles\Serpent\IceArrow.png" />
     <Content Include="Projectiles\Serpent\SerpentBody.png" />
@@ -6397,6 +6424,7 @@
     <Content Include="Projectiles\Squirt.png" />
     <Content Include="Projectiles\StarWrathEXP.png" />
     <Content Include="Projectiles\StormJavelin.png" />
+    <Content Include="Projectiles\SubzeroSnowflake.png" />
     <Content Include="Projectiles\SunLance.png" />
     <Content Include="Projectiles\Sunpowder.png" />
     <Content Include="Projectiles\Taserblast.png" />

@@ -10,7 +10,8 @@ namespace AAMod.Items.Armor.DoomiteU
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scrap Plate Greaves");
+			DisplayName.SetDefault("Doomite Greaves");
+            Tooltip.SetDefault(@"Increases minion damage by 5%");
         }
 
 		public override void SetDefaults()
@@ -22,11 +23,16 @@ namespace AAMod.Items.Armor.DoomiteU
 			item.defense = 5;
 		}
 
-		public override void AddRecipes()
+        public override void UpdateEquip(Player player)
+        {
+            player.minionDamage += 0.05f;
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "DoomiteScrap", 8);
             recipe.AddIngredient(null, "Doomite", 2);
+            recipe.AddIngredient(null, "DoomiteScrap", 8);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

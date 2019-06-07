@@ -14,10 +14,10 @@ namespace AAMod.Projectiles
 		}
 
 		public override void SetDefaults()
-		{
-			projectile.width = 14;
-			projectile.height = 14;
-			projectile.aiStyle = 1;
+        {
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.ranged = true;

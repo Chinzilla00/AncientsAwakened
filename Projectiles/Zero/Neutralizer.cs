@@ -27,7 +27,6 @@ namespace AAMod.Projectiles.Zero
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
             if (projectile.velocity.X != oldVelocity.X)
             {
                 projectile.position.X = projectile.position.X + projectile.velocity.X;

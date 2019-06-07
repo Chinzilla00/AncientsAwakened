@@ -19,8 +19,8 @@ Weightless as shadow itself");
 		{
 			item.width = 22;
 			item.height = 18;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = 90000;
+            item.rare = 2;
 			item.defense = 5;
 		}
 

@@ -58,6 +58,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[3]); //Used to count down to AI change
                 writer.Write(internalAI[4]); //Used as an AI Timer
                 writer.Write(internalAI[5]);
+                writer.Write(internalAI[6]);
             }
         }
 
@@ -72,6 +73,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[3] = reader.ReadInt();
                 internalAI[4] = reader.ReadInt();
                 internalAI[5] = reader.ReadInt();
+                internalAI[6] = reader.ReadInt();
             }
         }
 
@@ -242,7 +244,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (Main.netMode != 1) 
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 90)
+                    if (internalAI[3] >= (ModSupport.Revengence() ? 60 : 90))
                     {
                         internalAI[3] = 0;
                         internalAI[0] = Main.rand.Next(3);

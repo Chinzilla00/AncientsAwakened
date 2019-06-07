@@ -259,7 +259,8 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/Star 1"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
-            PremultiplyTexture(GetTexture("Items/Accessories/Snap"));
+            PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
+            PremultiplyTexture(GetTexture("Projectiles/Stars"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
@@ -361,7 +362,7 @@ namespace AAMod
 
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
         private Texture2D sunTextureBackup = null;
-        Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
+        public Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
         public void ReplaceItemTexture(int id, string texturePath)
         {
             vanillaTextureBackups.Add(id, Main.itemTexture[id]);

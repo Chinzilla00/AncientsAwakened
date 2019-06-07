@@ -41,44 +41,33 @@ namespace AAMod.Projectiles
 		
         public override void AI()
         {
-			if (projectile.alpha <= 200)
-			{
-				int num3;
-				for (int num20 = 0; num20 < 4; num20 = num3 + 1)
-				{
-					float num21 = projectile.velocity.X / 4f * (float)num20;
-					float num22 = projectile.velocity.Y / 4f * (float)num20;
-					int num23 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 184, 0f, 0f, 0, default(Color), 1f);
-					Main.dust[num23].position.X = projectile.Center.X - num21;
-					Main.dust[num23].position.Y = projectile.Center.Y - num22;
-					Dust dust = Main.dust[num23];
-					dust.velocity *= 0f;
-					Main.dust[num23].scale = 0.7f;
-					num3 = num20;
-				}
-			}
-			projectile.alpha -= 50;
-			if (projectile.alpha < 0)
-			{
-				projectile.alpha = 0;
-			}
-			projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.785f;
-			
-			if (Main.rand.Next(30) == 0)
-			{
-				for (int num627 = 0; num627 < 2; num627++)
-				{
-					float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
-					float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
-					num628 *= 10f;
-					num629 *= 10f;
-					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, 307, projectile.damage, (float)((int)((double)projectile.knockBack * 0.35)), Main.myPlayer, 0f, 0f);
-					Main.projectile[p].timeLeft = 180;
-				}
-			}
+            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.03f * (float)projectile.direction;
+            if (projectile.alpha <= 200)
+            {
+                for (int num19 = 0; num19 < 4; num19++)
+                {
+                    float num20 = projectile.velocity.X / 4f * (float)num19;
+                    float num21 = projectile.velocity.Y / 4f * (float)num19;
+                    int num22 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 75, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[num22].position.X = projectile.Center.X - num20;
+                    Main.dust[num22].position.Y = projectile.Center.Y - num21;
+                    Main.dust[num22].velocity *= 0f;
+                    Main.dust[num22].scale = 0.7f;
+                }
+            }
+            projectile.alpha -= 50;
+            if (projectile.alpha < 0)
+            {
+                projectile.alpha = 0;
+            }
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.785f;
+            if (projectile.velocity.Y > 16f)
+            {
+                projectile.velocity.Y = 16f;
+            }
         }
-		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.immune[projectile.owner] = 1;
 			projectile.Kill();
@@ -86,52 +75,44 @@ namespace AAMod.Projectiles
 		
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
-			int num3;
-			for (int num622 = 0; num622 < 20; num622 = num3 + 1)
-			{
-				int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0, default(Color), 1f);
-				Dust dust = Main.dust[num623];
-				dust.scale *= 1.1f;
-				Main.dust[num623].noGravity = true;
-				num3 = num622;
-			}
-			for (int num624 = 0; num624 < 30; num624 = num3 + 1)
-			{
-				int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0, default(Color), 1f);
-				Dust dust = Main.dust[num625];
-				dust.velocity *= 2.5f;
-				dust = Main.dust[num625];
-				dust.scale *= 0.8f;
-				Main.dust[num625].noGravity = true;
-				num3 = num624;
-			}
-			if (projectile.owner == Main.myPlayer)
-			{
-				int num626 = 2;
-				if (Main.rand.Next(10) == 0)
-				{
-					num626++;
-				}
-				if (Main.rand.Next(10) == 0)
-				{
-					num626++;
-				}
-				if (Main.rand.Next(10) == 0)
-				{
-					num626++;
-				}
-				for (int num627 = 0; num627 < num626; num627 = num3 + 1)
-				{
-					float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
-					float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
-					num628 *= 10f;
-					num629 *= 10f;
-					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, 307, projectile.damage*3, (float)((int)((double)projectile.knockBack * 0.35)), Main.myPlayer, 0f, 0f);
-					num3 = num627;
-					Main.projectile[p].timeLeft = 240;
-				}
-			}
-		}
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+            for (int num621 = 0; num621 < 20; num621++)
+            {
+                int num622 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[num622].scale *= 1.1f;
+                Main.dust[num622].noGravity = true;
+            }
+            for (int num623 = 0; num623 < 30; num623++)
+            {
+                int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, 0f, 0f, 0, default(Color), 1f);
+                Main.dust[num624].velocity *= 2.5f;
+                Main.dust[num624].scale *= 0.8f;
+                Main.dust[num624].noGravity = true;
+            }
+            if (projectile.owner == Main.myPlayer)
+            {
+                int num625 = 2;
+                if (Main.rand.Next(10) == 0)
+                {
+                    num625++;
+                }
+                if (Main.rand.Next(10) == 0)
+                {
+                    num625++;
+                }
+                if (Main.rand.Next(10) == 0)
+                {
+                    num625++;
+                }
+                for (int num626 = 0; num626 < num625; num626++)
+                {
+                    float num627 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    num627 *= 10f;
+                    num628 *= 10f;
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num627, num628, mod.ProjectileType<ScourgeOfShadowsP2>(), projectile.damage, (float)((int)((double)projectile.knockBack * 0.35)), Main.myPlayer, 0f, 0f);
+                }
+            }
+        }
     }
 }

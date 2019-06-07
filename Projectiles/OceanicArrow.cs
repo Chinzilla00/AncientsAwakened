@@ -15,8 +15,8 @@ namespace AAMod.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.CloneDefaults(ProjectileID.FrostburnArrow);
-			projectile.width = 14;
-			projectile.height = 18;
+			projectile.width = 10;
+			projectile.height = 10;
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			aiType = ProjectileID.FrostburnArrow;

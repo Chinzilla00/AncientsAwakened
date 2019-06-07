@@ -176,7 +176,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= 90)
+                    if (internalAI[3] >= (ModSupport.Revengence() ? 60 : 90))
                     {
                         internalAI[3] = 0;
                         if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
@@ -666,7 +666,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public static void DrawAfterimage(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, Vector2[] oldPoints, float scale = 1f, float rotation = 0f, int direction = 0, int framecount = 1, Rectangle frame = default(Rectangle), float distanceScalar = 1.0F, float sizeScalar = 1f, int imageCount = 7, bool useOldPos = true, float offsetX = 0f, float offsetY = 0f, bool drawCentered = false, Color? overrideColor = null)
         {
-            Vector2 origin = new Vector2((float)(texture.Width / 2), (float)(texture.Height / framecount / 2));
             Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
             Vector2 velAddon = default(Vector2);
             Vector2 originalpos = position;

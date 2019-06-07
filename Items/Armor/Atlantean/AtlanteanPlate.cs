@@ -19,8 +19,8 @@ It vibrates with the powers of Atlantis");
 		{
 			item.width = 22;
 			item.height = 24;
-			item.value = Item.sellPrice (0, 0, 5, 0);
-			item.rare = 4;
+            item.value = 90000;
+            item.rare = 4;
 			item.defense = 8;
 		}
 		
@@ -32,8 +32,11 @@ It vibrates with the powers of Atlantis");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OceanShirt"));
-			recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(null, "OceanShirt", 1);
+            recipe.AddIngredient(null, "DepthGi", 1);
+            recipe.AddIngredient(null, "DoomiteUPlate", 1);
+            recipe.AddIngredient(null, "VikingPlate", 1);
+            recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -22,10 +22,8 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
             item.rare = 7;

@@ -35,7 +35,7 @@ Increases your max number of minions");
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DemonGarb", 1);
                 recipe.AddIngredient(null, "PureEvil", 2);
-                recipe.AddIngredient(null, "DevilSilk", 8);
+                recipe.AddIngredient(null, "HellCrystal", 1);
                 recipe.AddTile(null, "TruePaladinsSmeltery");
                 recipe.SetResult(this);
                 recipe.AddRecipe();

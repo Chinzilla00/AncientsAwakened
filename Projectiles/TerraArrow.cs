@@ -9,15 +9,15 @@ namespace AAMod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 10;
+            projectile.height = 10;
             projectile.aiStyle = 27;
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.timeLeft = 240;
             projectile.tileCollide = true;
-            projectile.aiStyle = 1; //
+            projectile.aiStyle = 1;
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.arrow = true;
         }

@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.DoomiteU
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Dark Doomite Helmet");
+			DisplayName.SetDefault("Doomite Helmet");
             Tooltip.SetDefault(@"Increases minion damage by 5%");
         }
 
@@ -31,21 +31,20 @@ namespace AAMod.Items.Armor.DoomiteU
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"Increases max amount of minions by 2
-Increases your minions knockback by 100%";
+			player.setBonus = @"Increases max amount of minions by 1";
+            player.maxMinions += 1;
         }
 		
 		public override void UpdateEquip(Player player)
 		{
             player.minionDamage += 0.05f;
-			player.minionKB += 1f;
 		}
 		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomiteScrap", 6);
             recipe.AddIngredient(null, "Doomite", 2);
+            recipe.AddIngredient(null, "DoomiteScrap", 6);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
