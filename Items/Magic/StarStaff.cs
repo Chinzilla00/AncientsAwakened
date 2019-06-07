@@ -50,7 +50,7 @@ namespace AAMod.Items.Magic
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Radium", 10);
+            recipe.AddIngredient(null, "RadiumBar", 10);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
