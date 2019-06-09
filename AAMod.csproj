@@ -4679,7 +4679,7 @@
     <Content Include="NPCs\Bosses\Zero\VoidStar_Head_Boss.png" />
     <Content Include="NPCs\Critters\RoyalRabbit.png" />
     <Content Include="NPCs\Enemies\BiomeGuardians\DynaBlast.png" />
-    <Content Include="NPCs\Enemies\BiomeGuardians\Dynaboom.png" />
+    <Content Include="NPCs\Enemies\BiomeGuardians\DynaBoom.png" />
     <Content Include="NPCs\Enemies\BiomeGuardians\Dynasaur.png" />
     <Content Include="NPCs\Enemies\BiomeGuardians\Fishron.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
