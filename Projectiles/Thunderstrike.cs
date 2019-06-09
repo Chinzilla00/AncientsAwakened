@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class Thunderstrike1 : ModProjectile
+    public class Thunderstrike : ModProjectile
     {
         public override void SetStaticDefaults()
         {

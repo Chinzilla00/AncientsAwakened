@@ -8,7 +8,7 @@ using Terraria.Utilities;
 
 namespace AAMod.Projectiles
 {
-    public class MeteorStrikeBlue : ModProjectile
+    public class Thunder : ModProjectile
     {
         public override void SetStaticDefaults()
         {
