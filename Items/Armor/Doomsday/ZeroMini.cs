@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Summoning.Minions
+namespace AAMod.Items.Armor.Doomsday
 {
     public class ZeroMini : ModProjectile
     {
