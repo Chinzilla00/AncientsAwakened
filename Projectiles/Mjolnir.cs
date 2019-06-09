@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class MJolnir : ModProjectile
+    public class Mjolnir : ModProjectile
     {
         public override void SetDefaults()
         {
