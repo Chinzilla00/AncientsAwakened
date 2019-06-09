@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Haruka Yamata");     //The English name of the projectile
-            Main.npcFrameCount[npc.type] = 17;     //The recording mode
+            DisplayName.SetDefault("Haruka Yamata");     
+            Main.npcFrameCount[npc.type] = 17;     
         }
 
         public override void SetDefaults()

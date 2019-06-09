@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.Rajah
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Raboom");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Raboom");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()

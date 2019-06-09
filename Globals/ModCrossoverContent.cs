@@ -13,17 +13,17 @@ namespace AAMod
     {
         public static Mod thorium = null, calamity = null, redemption = null;
 
-        public static FieldInfo Revengance = null, CDeath = null, CDefiled = null;
+        public static FieldInfo CRevengence = null, CDeath = null, CDefiled = null;
 
         public static bool Revengence(bool? value = null)
         {
-            if (value != null && Revengance != null)
+            if (value != null && CRevengence != null)
             {
-                Revengance.SetValue(null, (bool)value);
+                CRevengence.SetValue(null, (bool)value);
                 return (bool)value;
 
             }
-            return (Revengance == null ? false : (bool)Revengance.GetValue(null));
+            return (CRevengence == null ? false : (bool)CRevengence.GetValue(null));
         }
 
         public static bool Death(bool? value = null)
@@ -67,7 +67,6 @@ namespace AAMod
 
         public static void SetupSupport()
         {
-            Mod mod = AAMod.instance;
             thorium = ModLoader.GetMod("ThoriumMod");
             calamity = ModLoader.GetMod("CalamityMod");
             redemption = ModLoader.GetMod("Redemption");
@@ -85,7 +84,7 @@ namespace AAMod
                     switch (fname)
                     {
                         default: break;
-                        case "revenge": Revengance = info; break;
+                        case "revenge": CRevengence = info; break;
                         case "death": CDeath = info; break;
                         case "defiled": CDefiled = info; break;
                     }
@@ -216,60 +215,5 @@ namespace AAMod
         }
 
         #endregion
-    }
-
-    public class ModSupportNPC : GlobalNPC
-    {
-        public override void ScaleExpertStats(NPC npc, int numPlayers, float bossLifeScale)
-        {
-            bool AABoss = npc.type == mod.NPCType("Ashe") ||
-                npc.type == mod.NPCType("Haruka") ||
-                npc.type == mod.NPCType("Akuma") ||
-                npc.type == mod.NPCType("AkumaA") ||
-                npc.type == mod.NPCType("Broodmother") ||
-                npc.type == mod.NPCType("Djinn") ||
-                npc.type == mod.NPCType("DaybringerHead") ||
-                npc.type == mod.NPCType("NightcrawlerHead") ||
-                npc.type == mod.NPCType("GripOfChaosBlue") ||
-                npc.type == mod.NPCType("GripOfChaosRed") ||
-                npc.type == mod.NPCType("Hydra") ||
-                npc.type == mod.NPCType("MushroomMonarch") ||
-                npc.type == mod.NPCType("FeudalFungus") ||
-                npc.type == mod.NPCType("Orthrus") ||
-                npc.type == mod.NPCType("Raider") ||
-                npc.type == mod.NPCType("Rajah") ||
-                npc.type == mod.NPCType("Retriever") ||
-                npc.type == mod.NPCType("Sagittarius") ||
-                npc.type == mod.NPCType("Serpent") ||
-                npc.type == mod.NPCType("ShenDoragon") ||
-                npc.type == mod.NPCType("ShenA") ||
-                npc.type == mod.NPCType("TruffleToad") ||
-                npc.type == mod.NPCType("TechnoTruffle") ||
-                npc.type == mod.NPCType("Yamata") ||
-                npc.type == mod.NPCType("YamataHead") ||
-                npc.type == mod.NPCType("YamataHeadF1") ||
-                npc.type == mod.NPCType("YamataHeadF2") ||
-                npc.type == mod.NPCType("YamataA") ||
-                npc.type == mod.NPCType("YamataAHead") ||
-                npc.type == mod.NPCType("YamataAHeadF1") ||
-                npc.type == mod.NPCType("YamataAHeadF2") ||
-                npc.type == mod.NPCType("Zero") ||
-                npc.type == mod.NPCType("GenocideCannon") ||
-                npc.type == mod.NPCType("Neutralizer") ||
-                npc.type == mod.NPCType("NovaFocus") ||
-                npc.type == mod.NPCType("OmegaVolley") ||
-                npc.type == mod.NPCType("RealityCannon") ||
-                npc.type == mod.NPCType("RiftShredder") ||
-                npc.type == mod.NPCType("Taser") ||
-                npc.type == mod.NPCType("TeslaHand") ||
-                npc.type == mod.NPCType("VoidStar") ||
-                npc.type == mod.NPCType("ZeroAwakened");
-            if (AABoss)
-            {
-                bool revenge = ModSupport.Revengence();
-                if (revenge) bossLifeScale *= 2f;
-                npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
-            }
-        }
     }
 }

@@ -456,6 +456,11 @@ namespace AAMod
             AARecipes.AddRecipes();
         }
 
+        public static Texture2D GetGlowmask(string Name)
+        {
+            return instance.GetTexture("Glowmasks/" + Name + "_Glow");
+        }
+
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
             if (Main.gameMenu)

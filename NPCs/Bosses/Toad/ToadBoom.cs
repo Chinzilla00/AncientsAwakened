@@ -7,8 +7,8 @@ namespace AAMod.NPCs.Bosses.Toad
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Boom");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Boom");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

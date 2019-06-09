@@ -104,6 +104,7 @@ namespace AAMod
         public static bool downedSag;
         public static bool SistersSummoned;
         public static bool downedTruffle;
+        public static bool downedRajahsRevenge;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -282,6 +283,7 @@ namespace AAMod
             if (SistersSummoned) downed.Add("Summoned");
             if (downedTruffle) downed.Add("Truffle");
             if (downedRajah) downed.Add("Rajah");
+            if (downedRajahsRevenge) downed.Add("Rajah2");
 
             return new TagCompound {
                 {"downed", downed},
@@ -370,6 +372,7 @@ namespace AAMod
             flags6[0] = ModContentGenerated;
             flags6[1] = downedTruffle;
             flags6[2] = downedRajah;
+            flags6[3] = downedRajahsRevenge;
             writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
@@ -451,6 +454,7 @@ namespace AAMod
             ModContentGenerated = flags6[0];
             downedTruffle = flags6[1];
             downedRajah = flags6[2];
+            downedRajahsRevenge = flags6[3];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -519,6 +523,7 @@ namespace AAMod
             SistersSummoned = downed.Contains("Summoned");
             downedTruffle = downed.Contains("Truffle");
             downedRajah = downed.Contains("Rajah");
+            downedRajahsRevenge = downed.Contains("Rajah2");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;

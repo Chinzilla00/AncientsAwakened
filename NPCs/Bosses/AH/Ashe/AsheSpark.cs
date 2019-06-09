@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dayfire");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 4;     //The recording mode
+            DisplayName.SetDefault("Dayfire");     
+            Main.projFrames[projectile.type] = 4;     
         }
 
         public override void SetDefaults()

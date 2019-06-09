@@ -11,7 +11,7 @@ namespace AAMod.Projectiles.Akuma
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sun Portal");    //The recording mode
+            DisplayName.SetDefault("Sun Portal");    
 		}
 
 		public override void SetDefaults()

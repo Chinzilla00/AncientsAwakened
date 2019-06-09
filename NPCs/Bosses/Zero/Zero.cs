@@ -85,14 +85,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-
-
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 1.5f;
             return null;
         }
-        
 
         public override void HitEffect(int hitDirection, double damage)
         {

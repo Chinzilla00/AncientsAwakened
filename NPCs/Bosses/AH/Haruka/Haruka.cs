@@ -113,8 +113,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
+            bool revenge = ModSupport.Revengence();
+            if (revenge) bossLifeScale *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale) + (revenge ? (80000 + (30000 * numPlayers)) : 0);
+            npc.defense = (int)(npc.defense * 1.5f);
+            npc.damage = (int)(npc.damage * 1.3f);
         }
 
         public bool SetMovePos = false;
@@ -426,7 +429,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 300;
+                npc.damage = 150;
                 npc.defense = 300;
             }
             else //Reset Stats

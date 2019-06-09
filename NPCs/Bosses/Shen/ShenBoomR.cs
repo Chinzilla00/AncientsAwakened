@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Discordian Strike");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Discordian Strike");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()

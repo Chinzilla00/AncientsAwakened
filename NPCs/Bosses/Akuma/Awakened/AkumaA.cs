@@ -65,8 +65,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
+            bool revenge = ModSupport.Revengence();
+            if (revenge) bossLifeScale *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
+            npc.defense = (int)(npc.defense * 1.6f);
+            npc.damage = (int)(npc.damage * 1.3f);
         }
 
 
@@ -444,7 +447,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return;
         }
 
-        
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (ModSupport.Revengence())
+            {
+                damage = (int)(damage * .75f);
+            }
+            return true;
+        }
+
         public bool Quote1;
         public bool Quote2;
         public bool Quote3;

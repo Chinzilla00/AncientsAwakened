@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,7 +19,6 @@ namespace AAMod.Dusts
 
         public override bool MidUpdate(Dust dust)
         {
-            
             if (!dust.noGravity)
             {
                 Dust expr_1256_cp_0 = dust;
@@ -39,5 +40,6 @@ namespace AAMod.Dusts
         {
             return new Color(lightColor.R, lightColor.G, lightColor.B);
         }
+
     }
 }

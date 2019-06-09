@@ -11,12 +11,12 @@ namespace AAMod.Items.Armor.Doomsday
     [AutoloadEquip(EquipType.Head)]
 	public class DoomsdayHelmet : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Doomsday Assault Visor");
-			Tooltip.SetDefault(@"25% increased minion damage strike chance
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Doomsday Assault Visor");
+            Tooltip.SetDefault(@"45% increased magic damage
 The power to destroy entire planets rests in this armor");
-		}
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -40,16 +40,16 @@ The power to destroy entire planets rests in this armor");
         }
 
         public override void SetDefaults()
-		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 3000000;
-			item.defense = 34;
-		}
-		
-		public override void UpdateEquip(Player player)
-		{
-            player.minionDamage += .25f;
+        {
+            item.width = 18;
+            item.height = 18;
+            item.value = 3000000;
+            item.defense = 34;
+        }
+
+        public override void UpdateEquip(Player player)
+        {
+            player.magicDamage += .45f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -74,9 +74,10 @@ The power to destroy entire planets rests in this armor");
 			player.setBonus = @"Life termination systems activated
 You detect all hostile life around you
 You can see in the dark much more easily
-Your minion's attacks are strong enough to weaken your enemies defense for a time
-+5 Minion slots";
+Your magic attacks are strong enough to weaken your target's defense for a time
+20% increased magic damage";
 
+            player.magicDamage *= 1.2f;
             player.maxMinions += 5;
             player.AddBuff(BuffID.Hunter, 2);
             player.AddBuff(BuffID.NightOwl, 2);

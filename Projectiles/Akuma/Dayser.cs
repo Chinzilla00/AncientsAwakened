@@ -10,7 +10,7 @@ namespace AAMod.Projectiles.Akuma
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;      //The recording mode
+            Main.projFrames[projectile.type] = 4;      
         }
 
         public override void SetDefaults()

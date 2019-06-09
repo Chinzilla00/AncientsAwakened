@@ -63,6 +63,9 @@ namespace AAMod
         public bool Socc = false;
         public bool Squirrel = false;
         public bool DapperSquirrel = false;
+        public bool CyberClaw = false;
+        public bool ChaosClaw = false;
+        public bool MiniZero = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -135,6 +138,7 @@ namespace AAMod
         public bool DarkmatterSet;
         public bool dracoSet;
         public bool dreadSet;
+        public bool zeroSet1;
         public bool zeroSet;
         public bool valkyrieSet;
         public bool infinitySet;
@@ -307,6 +311,9 @@ namespace AAMod
             Socc = false;
             Squirrel = false;
             DapperSquirrel = false;
+            CyberClaw = false;
+            ChaosClaw = false;
+            MiniZero = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -2764,7 +2771,11 @@ namespace AAMod
                     target.AddBuff(mod.BuffType<Moonraze>(), 1000);
                 }
             }
-            if (zeroSet && proj.ranged)
+            if (zeroSet && proj.magic)
+            {
+                target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
+            }
+            if (zeroSet1 && proj.minion)
             {
                 target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
             }

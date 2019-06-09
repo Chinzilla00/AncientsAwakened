@@ -99,7 +99,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            bool revenge = ModSupport.Revengence();
+            if (revenge) bossLifeScale *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -118,14 +120,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage = 0;
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            damage = 0;
+            return false;
         }
 
         public bool Dead = false;

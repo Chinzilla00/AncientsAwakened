@@ -538,8 +538,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
+            bool revenge = ModSupport.Revengence();
+            if (revenge) bossLifeScale *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale) + (revenge ? (80000 + (30000 * numPlayers)) : 0);
+            npc.defense = (int)(npc.defense * 1.5f);
+            npc.damage = (int)(npc.damage * 1.3f);
         }
 
 

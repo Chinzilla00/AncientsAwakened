@@ -9,7 +9,7 @@ namespace AAMod.Projectiles.Zero
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Singularity Arrow");    //The recording mode
+            DisplayName.SetDefault("Singularity Arrow");    
 		}
 
 		public override void SetDefaults()

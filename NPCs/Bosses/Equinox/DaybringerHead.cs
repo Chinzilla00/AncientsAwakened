@@ -121,15 +121,22 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			bool isDay = Main.dayTime;
 			bool wormStronger = (nightcrawler && !isDay) ||  (!nightcrawler && isDay);
-			if(wormStronger != prevWormStronger)
-			{
-				int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
-				for (int k = 0; k < 10; k++)
-				{
-					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
-					Main.dust[dustID].noGravity = true;
-				}
-			}
+            if (ModSupport.Revengence())
+            {
+                wormStronger = true;
+            }
+            else
+            {
+                if (wormStronger != prevWormStronger)
+                {
+                    int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
+                    for (int k = 0; k < 10; k++)
+                    {
+                        int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
+                        Main.dust[dustID].noGravity = true;
+                    }
+                }
+            }
 				
 			if(isHead) //prevents despawn and allows them to run away
 			{				
@@ -239,7 +246,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
             for (int k = 0; k < 5; k++)
             {
-                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
+                Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
             }
             if (npc.life <= 0 || (npc.life - damage <= 0))
             {			
@@ -349,18 +356,17 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public Color GetAuraAlpha()
 		{
 			Color c = (Color.White * ((float)Main.mouseTextColor / 255f));
-			//c.A = 255;
 			return c;
 		}
 
         public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
-            //ModifyCritArea(npc, ref crit);
+            ModifyCritArea(npc, ref crit);
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-           // ModifyCritArea(npc, ref crit);
+            ModifyCritArea(npc, ref crit);
         }
 
         private void ModifyCritArea(NPC npc, ref bool crit)

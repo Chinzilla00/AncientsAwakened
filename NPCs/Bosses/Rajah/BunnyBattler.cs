@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -10,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rabbid Rabbit");
-            Main.npcFrameCount[npc.type] = 7;
+            Main.npcFrameCount[npc.type] = 6;
         }
 
         public override void SetDefaults()
@@ -25,9 +27,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.aiStyle = 3;
-            aiType = NPCID.CorruptBunny;
-            animationType = NPCID.CorruptBunny;
+            npc.aiStyle = -1;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -40,6 +40,39 @@ namespace AAMod.NPCs.Bosses.Rajah
             for (int m = 0; m < (isDead ? 35 : 6); m++)
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
+            }
+        }
+
+        public override void AI()
+        {
+            BaseAI.AISlime(npc, ref npc.ai, true, 25, 6f, -8f, 6f, -10f);
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.velocity.Y < 0)
+            {
+                npc.frame.Y = frameHeight * 4;
+            }
+            else if (npc.velocity.Y > 0)
+            {
+                npc.frame.Y = frameHeight * 5;
+            }
+            else if (npc.ai[0] < -15f)
+            {
+                npc.frame.Y = 0;
+            }
+            else if (npc.ai[0] > -15f)
+            {
+                npc.frame.Y = frameHeight;
+            }
+            else if (npc.ai[0] > -10f)
+            {
+                npc.frame.Y = frameHeight * 2;
+            }
+            else if (npc.ai[0] > -5f)
+            {
+                npc.frame.Y = frameHeight * 3;
             }
         }
 

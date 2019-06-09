@@ -10,9 +10,9 @@ namespace AAMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser");     //The English name of the projectile
+			DisplayName.SetDefault("Laser");     
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        //The recording mode
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        
 		}
 
 		public override void SetDefaults()

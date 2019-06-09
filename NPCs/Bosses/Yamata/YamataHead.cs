@@ -101,6 +101,15 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            bool revenge = ModSupport.Revengence();
+            if (revenge) bossLifeScale *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
+            npc.defense = (int)(npc.defense * 1.2f);
+            npc.damage = (int)(npc.damage * 1.5f * (revenge ? 1.25f : 1f));
+        }
+
         public override void AI()
         {
             int attackpower = isAwakened ? 130 : 100;
