@@ -48,7 +48,7 @@ namespace AAMod.Items.Boss.Retriever
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ClawBaton", 1);
-            recipe.AddIngredient(null, "Fulgurite", 10);
+            recipe.AddIngredient(null, "FulguriteBar", 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
