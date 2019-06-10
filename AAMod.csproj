@@ -1487,9 +1487,6 @@
     <Compile Include="Items\Walls\DoomiteWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
-    <Compile Include="CrossMod\MagicStorage\AAStorageUnit.cs" />
-    <Compile Include="CrossMod\MagicStorage\AbyssiumStorage.cs" />
-    <Compile Include="CrossMod\MagicStorage\AbyssiumUpgrade.cs" />
     <Compile Include="Mounts\BegPony.cs" />
     <Compile Include="Mounts\MonochromeApple.cs" />
     <Compile Include="Mounts\PrinceFishron.cs" />
