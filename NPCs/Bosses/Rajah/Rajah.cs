@@ -39,20 +39,20 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.damage = 450;
                 npc.defense = 350;
-                npc.lifeMax = 4000000;
+                npc.lifeMax = 5000000;
                 npc.ai[3] = 0;
             }
             else if (NPC.killCount[NPCID.Bunny] >= 900)
             {
                 npc.damage = 400;
                 npc.defense = 290;
-                npc.lifeMax = 1000000;
+                npc.lifeMax = 2000000;
             }
             else if (NPC.killCount[NPCID.Bunny] >= 800)
             {
                 npc.damage = 370;
                 npc.defense = 270;
-                npc.lifeMax = 900000;
+                npc.lifeMax = 1000000;
             }
             else if (NPC.killCount[NPCID.Bunny] >= 700)
             {
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.damage = 180;
                 npc.defense = 150;
-                npc.lifeMax = 80000;
+                npc.lifeMax = 100000;
             }
             else if (NPC.killCount[NPCID.Bunny] >= 200)
             {
