@@ -6680,6 +6680,7 @@
     <Content Include="Tiles\Darkshroom.png" />
     <Content Include="Tiles\DataBank.png" />
     <Content Include="Tiles\DaybreakIncineriteOre.png" />
+    <Content Include="Tiles\DepthIce.png" />
     <Content Include="Tiles\DepthMoss.png" />
     <Content Include="Tiles\DepthsandBall.png" />
     <Content Include="Tiles\DepthsandHardened.png" />
