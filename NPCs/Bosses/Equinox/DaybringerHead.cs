@@ -326,15 +326,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			if (Main.expertMode)
 			{
-                if (!nightcrawler)
-                {
-
-                    npc.DropBossBags();
-                }
-                else
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NCBag"));
-                }
+                npc.DropBossBags();
 			}
 			else
 			{
