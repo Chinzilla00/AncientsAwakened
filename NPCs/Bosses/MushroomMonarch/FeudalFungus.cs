@@ -194,12 +194,20 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             AAWorld.downedFungus = true;
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("FungusIGoNow"), 0, 0, 255, npc.scale);
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingSporeSac"), Main.rand.Next(30, 35));
-            if (Main.expertMode == true)
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FungusTrophy"));
+            }
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
             else
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FungusMask"));
+                }
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GlowingMushium"), Main.rand.Next(25, 35));
             }
         }

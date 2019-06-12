@@ -176,7 +176,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (Main.netMode != 1 && internalAI[0] == AISTATE_HOVER) //Only randomly select AI if not doing a dragon summon
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= (ModSupport.Revengence() ? 60 : 90))
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
                         if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
@@ -524,6 +524,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AsheTrophy"));
+            }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
             Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
@@ -538,11 +542,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            bool revenge = ModSupport.Revengence();
-            if (revenge) bossLifeScale *= 2;
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale) + (revenge ? (80000 + (30000 * numPlayers)) : 0);
-            npc.defense = (int)(npc.defense * 1.5f);
-            npc.damage = (int)(npc.damage * 1.3f);
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
+            npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
         }
 
 
@@ -669,6 +670,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public static void DrawAfterimage(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, Vector2[] oldPoints, float scale = 1f, float rotation = 0f, int direction = 0, int framecount = 1, Rectangle frame = default(Rectangle), float distanceScalar = 1.0F, float sizeScalar = 1f, int imageCount = 7, bool useOldPos = true, float offsetX = 0f, float offsetY = 0f, bool drawCentered = false, Color? overrideColor = null)
         {
+            Vector2 origin = new Vector2((float)(texture.Width / 2), (float)(texture.Height / framecount / 2));
             Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
             Vector2 velAddon = default(Vector2);
             Vector2 originalpos = position;

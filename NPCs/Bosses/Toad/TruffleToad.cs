@@ -231,13 +231,21 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void BossLoot(ref string name, ref int potionType)
         {
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ToadTrophy"));
+            }
             AAWorld.downedToad = true;
-            if (Main.expertMode == true)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
             else
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ToadMask"));
+                }
                 string[] lootTable = { "MushrockStaff", "ToadTongue", "Todegun" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));

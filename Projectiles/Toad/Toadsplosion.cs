@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.Toad
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kashroom");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Kashroom");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

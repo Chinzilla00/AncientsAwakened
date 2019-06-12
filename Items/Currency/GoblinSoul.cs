@@ -35,7 +35,6 @@ namespace AAMod.Items.Currency
             item.rare = 3;
         }
     }
-
     public class GSouls : CustomCurrencySingleCoin
     {
         public static Color color = Color.ForestGreen;

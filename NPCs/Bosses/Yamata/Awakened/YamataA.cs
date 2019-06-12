@@ -66,8 +66,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (Main.expertMode)
             {
-                potionType = ItemID.SuperHealingPotion;   //boss drops
-                AAWorld.downedYamata = true;
+                potionType = ItemID.SuperHealingPotion;
             }
             if (!AAWorld.downedYamata && !cheated)
             {
@@ -88,23 +87,28 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (Main.expertMode)
             {
-
                 if (!AAWorld.downedYamata)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DreadRune"));
                 }
-
-                npc.DropLoot(Items.Vanity.Mask.YamataAMask.type, 1f / 7);
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YamataATrophy"));
+                }
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YamataAMask"));
+                }
 
                 BaseAI.DropItem(npc, mod.ItemType("YamataATrophy"), 1, 1, 15, true);
                 
                 npc.DropBossBags();
                 AAWorld.downedYamata = true;
-                if (Main.rand.NextFloat() < 0.1f)
+                if (Main.rand.Next(20) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                 }

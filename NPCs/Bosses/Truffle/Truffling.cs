@@ -41,12 +41,11 @@ namespace AAMod.NPCs.Bosses.Truffle
 
             BaseAI.AIEye(npc, ref npc.ai, true, true, .2f, .2f, 4, 2, 1, 1);
 
-            npc.frameCounter++;
-            if (npc.frameCounter > 8)
+            if (npc.frameCounter++ > 8)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 44;
-                if (npc.frame.Y > 132)
+                npc.frame.Y += 80;
+                if (npc.frame.Y > 80 * 3)
                 {
                     npc.frame.Y = 0;
                 }

@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Enemies.Mire
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Acid");     
-            Main.projFrames[projectile.type] = 5;     
+            DisplayName.SetDefault("Acid");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 5;     //The recording mode
 		}
 
 		public override void SetDefaults()

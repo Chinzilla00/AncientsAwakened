@@ -110,7 +110,7 @@ namespace AAMod
             num79 *= num80;
             float num114 = num78;
             float num115 = num79 + ((float)Main.rand.Next(-40, 41) * 0.02f);
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 1.3f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 2f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
         

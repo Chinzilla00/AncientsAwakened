@@ -19,7 +19,7 @@ Allows to breath underwater");
 		{
 			item.width = 22;
 			item.height = 24;
-            item.value = 90000;
+            item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 4;
             item.defense = 6;
         }
@@ -48,11 +48,8 @@ Allows to breath underwater");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "OceanHelm", 1);
-            recipe.AddIngredient(null, "DepthFukumen", 1);
-            recipe.AddIngredient(null, "DoomiteUHelm", 1);
-            recipe.AddIngredient(null, "VikingHelm", 1);
-            recipe.AddTile(TileID.DemonAltar);
+			recipe.AddIngredient(mod.ItemType("OceanHelm"));
+			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

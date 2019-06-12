@@ -242,7 +242,12 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void BossLoot(ref string name, ref int potionType)
         {   //boss drops
+            potionType = ItemID.GreaterHealingPotion;
             AAWorld.downedTruffle = true;
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TruffleTrophy"));
+            }
             Projectile.NewProjectile(npc.Center, npc.velocity, mod.ProjectileType("TruffleBookIt"), 0, 0, 255, npc.scale);
             if (Main.expertMode == true)
             {
@@ -250,6 +255,10 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             else
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TruffleMask"));
+                }
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofSight, Main.rand.Next(25, 40));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
             }

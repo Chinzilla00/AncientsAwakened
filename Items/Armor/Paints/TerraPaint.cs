@@ -51,8 +51,8 @@ namespace AAMod.Items.Armor.Paints
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 6);
-            recipe.AddIngredient(ItemID.BottledWater, 1);
+            recipe.AddIngredient(null, "HallowedPaint", 1);
+            recipe.AddIngredient(null, "ChlorophytePaint", 1);
             recipe.AddTile(TileID.BewitchingTable);
             recipe.SetResult(this);
 			recipe.AddRecipe();

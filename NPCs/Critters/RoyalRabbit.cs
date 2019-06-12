@@ -9,7 +9,6 @@ namespace AAMod.NPCs.Critters
 {
     public class RoyalRabbit : ModNPC
     {
-        bool KilledByMinion = false;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Royal Rabbit");
@@ -20,7 +19,7 @@ namespace AAMod.NPCs.Critters
             npc.width = 28;
             npc.height = 24;
             npc.defense = 0;
-            npc.lifeMax = 50;
+            npc.lifeMax = 100;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
@@ -34,32 +33,21 @@ namespace AAMod.NPCs.Critters
             npc.catchItem = (short)mod.ItemType("RoyalRabbit");
         }
 
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            if (projectile.minion)
-            {
-                KilledByMinion = true;
-            }
-        }
-
         public override void NPCLoot()
         {
-            if (!KilledByMinion)
+            Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
+            int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
+            if (bunnyKills % 100 == 0 && bunnyKills < 1000)
             {
-                Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
-                int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
-                if (bunnyKills % 100 == 0 && bunnyKills < 1000)
-                {
-                    Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
-                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                    AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
-                }
-                if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
-                {
-                    Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!!!", 107, 137, 179);
-                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                    AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
-                }
+                Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+            }
+            if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
+            {
+                Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!!!", 107, 137, 179);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
+                AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
             }
         }
 

@@ -12,7 +12,7 @@ namespace AAMod.Items.Tools
 		}
 
 		public override void SetDefaults()
-		{
+        {
             item.useStyle = 5;
             item.useAnimation = 25;
             item.useTime = 7;
@@ -23,14 +23,13 @@ namespace AAMod.Items.Tools
             item.damage = 20;
             item.pick = 180;
             item.UseSound = SoundID.Item23;
-            item.shoot = mod.ProjectileType("TechneciumDrill");
             item.rare = 4;
             item.value = 108000;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.melee = true;
             item.channel = true;
-            
+            item.shoot = mod.ProjectileType("TechneciumDrill");
         }
 
         public override void AddRecipes()

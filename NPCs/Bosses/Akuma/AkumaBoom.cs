@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.Akuma
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dayfire");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Dayfire");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.buffImmune[k] = true;
             }
 
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 220000;
                 npc.damage = 160;
@@ -69,15 +69,22 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
+                AAWorld.downedZero = true;
 
                 Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
-                npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-                npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
-                if (Main.rand.NextFloat() < 0.1f)
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));
+                }
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
+                }
+                if (Main.rand.Next(20) < 5)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.NextFloat(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.NextFloat(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }
@@ -90,7 +97,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;
-                AAWorld.downedZero = true;
                 Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
             }
             else

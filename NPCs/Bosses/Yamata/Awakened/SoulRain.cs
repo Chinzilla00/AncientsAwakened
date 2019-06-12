@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     public class SoulRain : ModProjectile
     {
         public override void SetStaticDefaults()
-        {      
+        {      //The recording mode
         }
 
         public override void SetDefaults()

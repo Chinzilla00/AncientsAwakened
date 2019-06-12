@@ -7,17 +7,17 @@ namespace AAMod.Items.Blocks
     {
         public override void SetDefaults()
         {
-
-            item.width = 16;
-            item.height = 16;
-            item.maxStack = 999;
+            item.useStyle = 1;
             item.useTurn = true;
-            item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
-            item.rare = 1;
+            item.autoReuse = true;
+            item.maxStack = 999;
             item.consumable = true;
+            item.width = 12;
+            item.height = 12;
+            item.value = 5500;
+            item.rare = 3;
             item.createTile = mod.TileType("Uranium"); //put your CustomBlock Tile name
         }
 

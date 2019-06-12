@@ -22,8 +22,8 @@ namespace AAMod.Projectiles
                 Main.glowMaskTexture = glowMasks;
             }
             projectile.glowMask = customGlowMask;
-            DisplayName.SetDefault("Discordian Fury");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Discordian Fury");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

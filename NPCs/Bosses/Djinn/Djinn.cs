@@ -269,8 +269,16 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void NPCLoot()
         {
             Sandstorm.TimeLeft = 0;
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DjinnTrophy"));
+            }
             if (!Main.expertMode)
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DjinnMask"));
+                }
                 npc.DropLoot(mod.ItemType("DesertMana"), 10, 15);
                 string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };
                 int loot = Main.rand.Next(lootTable.Length);
@@ -284,7 +292,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                 }
             }
-            if (Main.expertMode)
+            else
             {
                 npc.DropBossBags();
             }

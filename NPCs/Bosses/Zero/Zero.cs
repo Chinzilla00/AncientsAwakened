@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.netAlways = true;
             musicPriority = MusicPriority.BossHigh;
 
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 200000;
                 npc.damage = 140;
@@ -85,11 +85,14 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 1.5f;
             return null;
         }
+        
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -163,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
                 npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
                 npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }

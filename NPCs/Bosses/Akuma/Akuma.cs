@@ -26,11 +26,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            bool revenge = ModSupport.Revengence();
-            if (revenge) bossLifeScale *= 2;
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
-            npc.defense = (int)(npc.defense * 1.5f);
-            npc.damage = (int)(npc.damage * 1.3f);
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.defense * 1.2f);
         }
 
         public override void SetDefaults()
@@ -69,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
             musicPriority = MusicPriority.BossHigh;
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.damage = 120;
                 npc.defense = 160;
@@ -117,6 +114,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
+
             
             if (fireAttack == true || internalAI[0] >= 450)
             {
@@ -538,7 +536,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                 }
@@ -570,14 +568,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (ModSupport.Revengence())
-            {
-                damage = (int)(damage * .75f);
-            }
-            return true;
-        }
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)

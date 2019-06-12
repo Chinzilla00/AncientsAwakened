@@ -1120,6 +1120,7 @@ namespace AAMod
             }
         }
 
+
         public static void SpawnRajah(Player player, int bossType, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
             if (npcCenter == default(Vector2))
@@ -1130,6 +1131,69 @@ namespace AAMod
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
                 Main.npc[npcID].Center = npcCenter;
 
+                if (NPC.killCount[NPCID.Bunny] >= 1000)
+                {
+                    Main.npc[npcID].damage = 450;
+                    Main.npc[npcID].defense = 350;
+                    Main.npc[npcID].lifeMax = 4000000;
+                    Main.npc[npcID].life = 4000000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 900)
+                {
+                    Main.npc[npcID].damage = 400;
+                    Main.npc[npcID].defense = 290;
+                    Main.npc[npcID].lifeMax = 1000000;
+                    Main.npc[npcID].life = 1000000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 800)
+                {
+                    Main.npc[npcID].damage = 370;
+                    Main.npc[npcID].defense = 270;
+                    Main.npc[npcID].lifeMax = 900000;
+                    Main.npc[npcID].life = 900000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 700)
+                {
+                    Main.npc[npcID].damage = 340;
+                    Main.npc[npcID].defense = 250;
+                    Main.npc[npcID].lifeMax = 700000;
+                    Main.npc[npcID].life = 700000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] > 600)
+                {
+                    Main.npc[npcID].damage = 300;
+                    Main.npc[npcID].defense = 230;
+                    Main.npc[npcID].lifeMax = 500000;
+                    Main.npc[npcID].life = 500000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 500)
+                {
+                    Main.npc[npcID].damage = 250;
+                    Main.npc[npcID].defense = 210;
+                    Main.npc[npcID].lifeMax = 300000;
+                    Main.npc[npcID].life = 300000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 400)
+                {
+                    Main.npc[npcID].damage = 200;
+                    Main.npc[npcID].defense = 180;
+                    Main.npc[npcID].lifeMax = 200000;
+                    Main.npc[npcID].life = 200000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 300)
+                {
+                    Main.npc[npcID].damage = 180;
+                    Main.npc[npcID].defense = 150;
+                    Main.npc[npcID].lifeMax = 100000;
+                    Main.npc[npcID].life = 100000;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 200)
+                {
+                    Main.npc[npcID].damage = 160;
+                    Main.npc[npcID].defense = 130;
+                    Main.npc[npcID].lifeMax = 80000;
+                    Main.npc[npcID].life = 80000;
+                }
             }
             else
             {

@@ -55,7 +55,10 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void NPCLoot()
         {
             AAWorld.downedHydra = true;
-            npc.DropLoot(Items.Boss.Hydra.HydraTrophy.type, 1f / 10);
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraTrophy"));
+            }
 
             if (!Main.expertMode)
             {

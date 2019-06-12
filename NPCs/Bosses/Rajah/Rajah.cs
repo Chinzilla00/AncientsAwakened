@@ -35,70 +35,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
             bossBag = mod.ItemType("RajahBag");
-            if (NPC.killCount[NPCID.Bunny] >= 1000 || npc.ai[3] == -2)
-            {
-                npc.damage = 450;
-                npc.defense = 350;
-                npc.lifeMax = 5000000;
-                npc.ai[3] = 0;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 900)
-            {
-                npc.damage = 400;
-                npc.defense = 290;
-                npc.lifeMax = 2000000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 800)
-            {
-                npc.damage = 370;
-                npc.defense = 270;
-                npc.lifeMax = 1000000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 700)
-            {
-                npc.damage = 340;
-                npc.defense = 250;
-                npc.lifeMax = 700000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] > 600)
-            {
-                npc.damage = 300;
-                npc.defense = 230;
-                npc.lifeMax = 500000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 500)
-            {
-                npc.damage = 250;
-                npc.defense = 210;
-                npc.lifeMax = 300000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 400)
-            {
-                npc.damage = 200;
-                npc.defense = 180;
-                npc.lifeMax = 200000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 300)
-            {
-                npc.damage = 180;
-                npc.defense = 150;
-                npc.lifeMax = 100000;
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 200)
-            {
-                npc.damage = 160;
-                npc.defense = 130;
-                npc.lifeMax = 80000;
-            }
-            if (npc.ai[3] < 0)
-            {
-                npc.damage = 130;
-                npc.defense = 90;
-                npc.lifeMax = 50000;
-                npc.ai[3] = 0;
-            }
         }
 
+        public bool SetLife = false;
         public float[] internalAI = new float[5];
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -110,6 +49,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
+                writer.Write(SetLife);
             }
         }
 
@@ -123,6 +63,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 internalAI[2] = reader.ReadFloat(); //Minion/Rocket Timer
                 internalAI[3] = reader.ReadFloat(); //Ground Minion Alternation
                 internalAI[4] = reader.ReadFloat(); //Is Flying
+                SetLife = reader.ReadBool(); //Set Life
             }
         }
 
@@ -182,6 +123,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
+
+            if (Main.netMode != 1 && !SetLife)
+            {
+                npc.life = npc.lifeMax;
+                SetLife = true;
+                npc.netUpdate = true;
+            }
 
             Player player = Main.player[npc.target];
             if (npc.target >= 0 && Main.player[npc.target].dead)
@@ -251,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.ai[2]++;
                 internalAI[2]++;
             }
-            if (npc.ai[3] != 0 && npc.ai[2] >= 500)
+            if (npc.ai[2] >= 500)
             {
                 internalAI[2] = 0;
                 npc.ai[2] = 0;
@@ -303,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             {
                                 if (NPC.CountNPCS(mod.NPCType<RabbitcopterSoldier>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon1>()) < 5)
                                 {
-                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
                                 }
                             }
@@ -311,7 +259,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             {
                                 if (NPC.CountNPCS(mod.NPCType<BunnyBrawler>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon2>()) < 5)
                                 {
-                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon2>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon2>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
                                 }
                             }
@@ -319,16 +267,16 @@ namespace AAMod.NPCs.Bosses.Rajah
                             {
                                 if (NPC.CountNPCS(mod.NPCType<BunnyBattler>()) + AAGlobalProjectile.CountProjectiles(mod.ProjectileType<BunnySummon3>()) < 8)
                                 {
-                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    int Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
 
-                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
 
-                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
 
-                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                                    Proj = Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Main.projectile[Proj].netUpdate = true;
 
                                 }
@@ -338,77 +286,60 @@ namespace AAMod.NPCs.Bosses.Rajah
                         }
                     }
                 }
-            }
-            else if (npc.ai[3] == 1) //Bunzooka
-            {
-                if (Main.netMode != 1)
+                else if (npc.ai[3] == 1) //Bunzooka
                 {
-                    internalAI[2]++;
-                }
-                if (internalAI[2] > 40)
-                {
-                    internalAI[2] = 0;
-                    Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
-                    dir *= 9f;
-                    int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
-                    Main.projectile[Proj].netUpdate = true;
-
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[3] == 2) //Royal Scepter
-            {
-                float spread = 45f * 0.0174f;
-                Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
-                dir *= 9f;
-                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
-                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
-                double deltaAngle = spread / 6f; if 
-                    (Main.netMode != 1)
-                {
-                    internalAI[2]++;
-                }
-                if (internalAI[2] > 40)
-                {
-                    internalAI[2] = 0;
-                    for (int i = 0; i < 3; i++)
-                    {
-                        double offsetAngle = startAngle + (deltaAngle * i);
-                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle) , mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
-                        Main.projectile[Proj].netUpdate = true;
-
-                    }
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[3] == 3) //Javelin
-            {
-                if (Main.netMode != 1)
-                {
-                    internalAI[2]++;
-                }
-                if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<BaneR>()))
-                {
-                    if (internalAI[2] > 60)
+                    if (internalAI[2] > 40)
                     {
                         internalAI[2] = 0;
-                        Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
+                        Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                         dir *= 9f;
-                        int Proj = Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 2, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
-                        Main.projectile[Proj].netUpdate = true;
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        npc.netUpdate = true;
                     }
                 }
-                npc.netUpdate = true;
-            }
-            else if (npc.ai[3] == 4) //Carrot Farmer
-            {
-                if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
+                else if (npc.ai[3] == 2) //Royal Scepter
                 {
-                    CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
-                    CarrotFarmer.netUpdate = true;
+                    float spread = 45f * 0.0174f;
+                    Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
+                    dir *= 9f;
+                    float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                    double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                    double deltaAngle = spread / 6f;
+                    if (internalAI[2] > 40)
+                    {
+                        internalAI[2] = 0;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            double offsetAngle = startAngle + (deltaAngle * i);
+                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        }
+                        npc.netUpdate = true;
+                    }
+                }
+                else if (npc.ai[3] == 3) //Javelin
+                {
+                    if (internalAI[2] == 60)
+                    {
+                        Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
+                        dir *= 9f;
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 2, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                    }
+                    if (internalAI[2] > 90)
+                    {
+                        internalAI[2] = 0;
+                    }
                     npc.netUpdate = true;
                 }
+                else if (npc.ai[3] == 4) //Carrot Farmer
+                {
+                    if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
+                    {
+                        CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                        npc.netUpdate = true;
+                    }
+                }
             }
+            
 
             if (Main.expertMode)
             {
@@ -476,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             else //Javelin
             {
-                if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<BaneR>()))
+                if (internalAI[2] > 60)
                 {
                     return "BlankTex";
                 }
@@ -748,6 +679,10 @@ namespace AAMod.NPCs.Bosses.Rajah
                 string[] lootTableA = { "BaneOfTheBunny", "Bunnyzooka", "RoyalScepter", "Punisher", "RabbitcopterEars"};
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
+            }
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RajahTrophy"));
             }
             BaseUtility.Chat("You win this time, murderer...but I will avenge those you've mercilicely slain...", 107, 137, 179, true);
             Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);

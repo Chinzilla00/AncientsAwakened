@@ -26,7 +26,7 @@ namespace AAMod.Tiles
             adjTiles = new int[] { TileID.DemonAltar };
         }
 
-        public override void PostDraw(int i, int j, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -36,6 +36,11 @@ namespace AAMod.Tiles
             }
             int height = tile.frameY == 36 ? 18 : 16;
             Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ChaosAltar_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+        }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
