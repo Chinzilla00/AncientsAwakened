@@ -12,16 +12,16 @@ namespace AAMod.Items.Materials
         }
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 24;
-            item.rare = 4;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 99;
+            item.value = 22000;
+            item.rare = 3;
+            item.useStyle = 1;
             item.useTurn = true;
-            item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 10;
-            item.useStyle = 1;
+            item.autoReuse = true;
             item.consumable = true;
             item.createTile = mod.TileType("UraniumBar");
         }

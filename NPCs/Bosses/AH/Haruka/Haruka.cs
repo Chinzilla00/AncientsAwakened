@@ -58,7 +58,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[3]); //Used to count down to AI change
                 writer.Write(internalAI[4]); //Used as an AI Timer
                 writer.Write(internalAI[5]);
-                writer.Write(internalAI[6]);
             }
         }
 
@@ -73,7 +72,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[3] = reader.ReadInt();
                 internalAI[4] = reader.ReadInt();
                 internalAI[5] = reader.ReadInt();
-                internalAI[6] = reader.ReadInt();
             }
         }
 
@@ -106,6 +104,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 int lootH = Main.rand.Next(lootTableH.Length);
                 npc.DropLoot(mod.ItemType(lootTableH[lootH]));
             }
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RaiderTrophy"));
+            }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>());
             Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
@@ -113,11 +115,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            bool revenge = ModSupport.Revengence();
-            if (revenge) bossLifeScale *= 2;
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale) + (revenge ? (80000 + (30000 * numPlayers)) : 0);
-            npc.defense = (int)(npc.defense * 1.5f);
-            npc.damage = (int)(npc.damage * 1.3f);
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
         public bool SetMovePos = false;
@@ -247,7 +246,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (Main.netMode != 1) 
                 {
                     internalAI[3]++;
-                    if (internalAI[3] >= (ModSupport.Revengence() ? 60 : 90))
+                    if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
                         internalAI[0] = Main.rand.Next(3);
@@ -429,7 +428,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 150;
+                npc.damage = 300;
                 npc.defense = 300;
             }
             else //Reset Stats

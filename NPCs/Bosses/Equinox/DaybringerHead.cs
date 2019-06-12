@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("DBBag");			
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 200000;
                 npc.defense = 150;
@@ -121,22 +121,15 @@ namespace AAMod.NPCs.Bosses.Equinox
 			}
 			bool isDay = Main.dayTime;
 			bool wormStronger = (nightcrawler && !isDay) ||  (!nightcrawler && isDay);
-            if (ModSupport.Revengence())
-            {
-                wormStronger = true;
-            }
-            else
-            {
-                if (wormStronger != prevWormStronger)
-                {
-                    int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
-                    for (int k = 0; k < 10; k++)
-                    {
-                        int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
-                        Main.dust[dustID].noGravity = true;
-                    }
-                }
-            }
+			if(wormStronger != prevWormStronger)
+			{
+				int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
+				for (int k = 0; k < 10; k++)
+				{
+					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
+					Main.dust[dustID].noGravity = true;
+				}
+			}
 				
 			if(isHead) //prevents despawn and allows them to run away
 			{				
@@ -161,7 +154,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			float moveSpeedMax = 16f;	
 			npc.damage = 200;
 			npc.defense = 100;
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.defense = 150;
             }
@@ -171,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				moveSpeedMax = (!nightcrawler ? 20f : 16f);
 				npc.damage = 300;		
 				npc.defense = (!nightcrawler ? 120 : 150);
-                if (AAWorld.downedShen)
+                if (AAWorld.downedAllAncients)
                 {
                     moveSpeedMax = (!nightcrawler ? 25f : 16f);
                     npc.damage = 300;
@@ -232,9 +225,14 @@ namespace AAMod.NPCs.Bosses.Equinox
 				return true;
 			}
 			return false;
-		}		
-		
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		}
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.SuperHealingPotion;
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.85f);
@@ -246,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
+                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
             }
             if (npc.life <= 0 || (npc.life - damage <= 0))
             {			
@@ -301,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedDB = true;
                 BaseAI.DropItem(npc, mod.ItemType("DBTrophy"), 1, 1, 15, true);
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MindStone"));
                 }
@@ -310,7 +308,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedNC = true;
                 BaseAI.DropItem(npc, mod.ItemType("NCTrophy"), 1, 1, 15, true);
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TimeStone"));
                 }
@@ -348,17 +346,18 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public Color GetAuraAlpha()
 		{
 			Color c = (Color.White * ((float)Main.mouseTextColor / 255f));
+			//c.A = 255;
 			return c;
 		}
 
         public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
-            ModifyCritArea(npc, ref crit);
+            //ModifyCritArea(npc, ref crit);
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            ModifyCritArea(npc, ref crit);
+           // ModifyCritArea(npc, ref crit);
         }
 
         private void ModifyCritArea(NPC npc, ref bool crit)

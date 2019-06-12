@@ -7,8 +7,8 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Genocide");     
-            Main.projFrames[projectile.type] = 5;     
+            DisplayName.SetDefault("Genocide");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 5;     //The recording mode
         }
 
         public override void SetDefaults()

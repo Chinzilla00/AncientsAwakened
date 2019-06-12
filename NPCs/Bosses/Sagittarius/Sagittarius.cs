@@ -302,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             AAWorld.downedSag = true;
             if (Main.rand.Next(10) == 0)
             {
-                npc.DropLoot(mod.ItemType("SagTrophy"));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SagTrophy"));
             }
             if (!Main.expertMode)
             {

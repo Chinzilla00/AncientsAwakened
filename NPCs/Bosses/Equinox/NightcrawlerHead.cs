@@ -3,8 +3,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
-    [AutoloadBossHead]
-    public class NightcrawlerHead : DaybringerHead
+    [AutoloadBossHead]		
+	public class NightcrawlerHead : DaybringerHead
 	{
 		public override void SetStaticDefaults()
 		{

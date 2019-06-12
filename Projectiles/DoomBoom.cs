@@ -7,8 +7,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doom");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Doom");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

@@ -49,14 +49,17 @@ namespace AAMod.NPCs.Bosses.Grips
                 {
                     npc.DropBossBags();
                 }
-            } else
+            }
+            else
             {
                 if (Main.rand.Next(10) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GripMaskBlue"));
                 }
+            }
+            if (!Main.expertMode)
+            {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Abyssium"), Main.rand.Next(30, 44));
-                
             }
         }
 

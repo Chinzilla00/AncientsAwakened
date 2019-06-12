@@ -64,6 +64,9 @@ namespace AAMod.NPCs.Bosses.Grips
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GripMaskRed"));
                 }
+            }
+            if (!Main.expertMode)
+            {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Incinerite"), Main.rand.Next(30, 44));
             }
         }

@@ -343,6 +343,10 @@ namespace AAMod.NPCs.Bosses.Serpent
         {
             if (!Main.expertMode)
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SerpentMask"));
+                }
                 AAWorld.downedSerpent = true;
                 npc.DropLoot(mod.ItemType("SnowMana"), 10, 15);
                 string[] lootTable = { "BlizardBuster", "SerpentSpike", "Icepick", "SerpentSting", "Sickle", "SickleShot", "SnakeStaff", "SubzeroSlasher" };
@@ -360,6 +364,10 @@ namespace AAMod.NPCs.Bosses.Serpent
             if (Main.expertMode)
             {
                 npc.DropBossBags();
+            }
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SerpentTrophy"));
             }
             npc.value = 0f;
             npc.boss = false;

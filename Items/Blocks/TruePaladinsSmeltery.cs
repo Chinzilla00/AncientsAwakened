@@ -14,7 +14,7 @@ namespace AAMod.Items.Blocks
             DisplayName.SetDefault("True Paladin's Smeltery");
             Tooltip.SetDefault(
 @"A superforge meant for only the worthiest of smiths
-Functions as most nececary crafting stations");
+Functions as most necessary crafting stations");
         }
 
         public override void SetDefaults()

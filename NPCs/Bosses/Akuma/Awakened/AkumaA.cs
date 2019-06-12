@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.buffImmune[103] = false;
             npc.alpha = 255;
             musicPriority = MusicPriority.BossHigh;
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.damage = 140;
                 npc.defense = 180;
@@ -65,11 +65,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            bool revenge = ModSupport.Revengence();
-            if (revenge) bossLifeScale *= 2;
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
-            npc.defense = (int)(npc.defense * 1.6f);
-            npc.damage = (int)(npc.damage * 1.3f);
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.defense = (int)(npc.defense * 1.2f);
         }
 
 
@@ -430,13 +427,19 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 Main.NewText(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Heere's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
-                npc.DropLoot(Items.Vanity.Mask.AkumaAMask.type, 1f / 7);
-                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                 }
-                npc.DropLoot(Items.Boss.Akuma.AkumaATrophy.type, 1f / 10);
-                if (Main.rand.NextFloat() < 0.1f)
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaATrophy"));
+                }
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaAMask"));
+                }
+                if (Main.rand.Next(20) == 0)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
@@ -447,15 +450,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return;
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (ModSupport.Revengence())
-            {
-                damage = (int)(damage * .75f);
-            }
-            return true;
-        }
-
+        
         public bool Quote1;
         public bool Quote2;
         public bool Quote3;

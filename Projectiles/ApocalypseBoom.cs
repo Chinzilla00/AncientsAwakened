@@ -9,8 +9,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Apocalypse");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Apocalypse");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

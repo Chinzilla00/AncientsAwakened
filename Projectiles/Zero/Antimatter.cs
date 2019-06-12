@@ -14,17 +14,15 @@ namespace AAMod.Projectiles.Zero
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ranged = true;
-            projectile.extraUpdates = 100;
+            projectile.extraUpdates = 50;
             projectile.timeLeft = 1000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 15;
         }
 
 		public override void SetStaticDefaults()
 		{
-		    DisplayName.SetDefault("Antimatter");
+		DisplayName.SetDefault("Antimatter");
 		}
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Demon
         {
             item.width = 24;
             item.height = 20;
-            item.value = 90000;
+            item.value = 9000;
             item.rare = 4;
             item.defense = 6;
         }

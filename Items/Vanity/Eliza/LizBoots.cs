@@ -8,7 +8,6 @@ namespace AAMod.Items.Vanity.Eliza
 	public class LizBoots : ModItem
 	{
 		public override void SetStaticDefaults()
-       
 		{
             base.SetStaticDefaults();
             DisplayName.SetDefault("Midnight Cat Boots");

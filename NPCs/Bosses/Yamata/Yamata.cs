@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
-            if (AAWorld.downedShen)
+            if (AAWorld.downedAllAncients)
             {
                 npc.lifeMax = 250000;
             }
@@ -99,9 +99,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            bool revenge = ModSupport.Revengence();
-            if (revenge) bossLifeScale *= 2;
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale) + (revenge ? (100000 + (40000 * numPlayers)) : 0);
+            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
         }
 
         public override void BossLoot(ref string name, ref int potionType)
@@ -120,10 +118,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
             damage = 0;
-            return false;
+        }
+
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            damage = 0;
         }
 
         public bool Dead = false;
@@ -148,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         Main.NewText("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
                     }
-                    if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
+                    if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                     }

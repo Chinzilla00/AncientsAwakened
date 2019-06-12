@@ -8,8 +8,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mudkip");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Mudkip");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

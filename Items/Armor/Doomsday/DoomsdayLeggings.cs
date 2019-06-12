@@ -4,6 +4,7 @@ using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
+
 namespace AAMod.Items.Armor.Doomsday
 {
     [AutoloadEquip(EquipType.Legs)]
@@ -13,7 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		{
 			DisplayName.SetDefault("Doomsday Assault Greaves");
 			Tooltip.SetDefault(@"18% increased movement speed
-30% decreased mana consumption
+20% increased Minion damage
 The power to destroy entire planets rests in this armor");
 
 		}
@@ -50,7 +51,7 @@ The power to destroy entire planets rests in this armor");
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.18f;
-            player.manaCost *= .7f;
+            player.minionDamage += .20f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -45,7 +45,31 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            BaseAI.AISlime(npc, ref npc.ai, true, 25, 6f, -8f, 6f, -10f);
+            npc.TargetClosest(false);
+            Player player = Main.player[npc.target];
+            if (npc.velocity.Y != 0)
+            {
+                if (npc.velocity.X < 0)
+                {
+                    npc.spriteDirection = -1;
+                }
+                else if (npc.velocity.X > 0)
+                {
+                    npc.spriteDirection = 1;
+                }
+            }
+            else
+            {
+                if (player.position.X < npc.position.X)
+                {
+                    npc.spriteDirection = -1;
+                }
+                else if (player.position.X > npc.position.X)
+                {
+                    npc.spriteDirection = 1;
+                }
+            }
+            BaseAI.AISlime(npc, ref npc.ai, false, 25, 6f, -8f, 6f, -10f);
         }
 
         public override void FindFrame(int frameHeight)

@@ -40,12 +40,16 @@ A dark hood infused with the shadow of midnight");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"Slash and Stalk.
+            player.setBonus = @"Slash and Stalk.
 18% increased Melee and Ranged damage
 25% decreased ammo consumption
-Double tap down to go into stealth mode
-Movement is not impeded while in stealth mode
-Melee and Ranged damage increased while in stealth";
+Enemies are less likely to target you
+you can do a swift dash";
+            //Double tap down to go into stealth mode
+            //Movement is not impeded while in stealth mode
+            //Melee and Ranged damage increased while in stealth";
+            player.dash = 2;
+            player.aggro -= 6;
             player.rangedDamage += .2f;
             player.meleeDamage += .2f;
             player.GetModPlayer<AAPlayer>(mod).Assassin = true;

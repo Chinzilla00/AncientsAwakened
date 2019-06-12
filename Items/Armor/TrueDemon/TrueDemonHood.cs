@@ -61,7 +61,7 @@ Imp army doesn't affect minion count";
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DemonHood", 1);
                 recipe.AddIngredient(null, "PureEvil", 2);
-                recipe.AddIngredient(null, "HellCrystal", 1);
+                recipe.AddIngredient(null, "DevilSilk", 7);
                 recipe.AddTile(null, "TruePaladinsSmeltery");
                 recipe.SetResult(this);
                 recipe.AddRecipe();

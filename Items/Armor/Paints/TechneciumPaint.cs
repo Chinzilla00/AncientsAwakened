@@ -56,7 +56,7 @@ Enemies that hit you are electrified";
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "YtriumBar", 6);
+                recipe.AddIngredient(mod, "TechneciumBar", 6);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
                 recipe.AddTile(TileID.BewitchingTable);
                 recipe.SetResult(this);

@@ -13,8 +13,8 @@ namespace AAMod.Items.Tools
             item.width = 40;
             item.height = 40;
 
-            item.useTime = 15;
-            item.useAnimation = 20;
+            item.useTime = 8;
+            item.useAnimation = 17;
             item.pick = 205;
             item.useStyle = 1;
             item.knockBack = 1;

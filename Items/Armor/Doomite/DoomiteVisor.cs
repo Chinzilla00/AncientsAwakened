@@ -9,9 +9,8 @@ namespace AAMod.Items.Armor.Doomite
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Charged Doomite Visor");
-            Tooltip.SetDefault(@"+1 Minion slot
-Increases minion damage by 5%");
+            DisplayName.SetDefault("Doomite Visor");
+            Tooltip.SetDefault(@"+1 Minion slot");
         }
 
         public override void SetDefaults()
@@ -20,7 +19,7 @@ Increases minion damage by 5%");
             item.height = 20;
             item.rare = 4;
             item.defense = 6;
-            item.value = 90000;
+            item.value = 9000;
         }
 
         public override void UpdateEquip(Player player)
@@ -55,10 +54,7 @@ A void searcher fights by your side";
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomiteUHelm", 1);
-            recipe.AddIngredient(null, "DepthFukumen", 1);
-            recipe.AddIngredient(null, "VikingHelm", 1);
-            recipe.AddIngredient(null, "OceanHelm", 1);
+            recipe.AddIngredient(null, "Doomite", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

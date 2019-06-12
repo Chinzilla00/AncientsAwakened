@@ -64,6 +64,9 @@ namespace AAMod.Items.BossSummons
                 Main.npc[npcID].ai[3] = -2;
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
+                Main.npc[npcID].damage = 450;
+                Main.npc[npcID].defense = 350;
+                Main.npc[npcID].lifeMax = 4000000;
                 if (spawnMessage)
                 {
                     string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);

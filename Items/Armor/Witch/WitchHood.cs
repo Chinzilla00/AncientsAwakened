@@ -35,6 +35,7 @@ A hood enchanted with the firey spirit of a supreme dragon acolyte");
             player.magicDamage += .1f;
             player.minionDamage += .1f;
             player.maxMinions += 2;
+            player.statManaMax2 += 120;
         }
 
 

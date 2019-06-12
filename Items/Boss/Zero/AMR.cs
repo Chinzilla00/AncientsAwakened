@@ -15,14 +15,13 @@ namespace AAMod.Items.Boss.Zero
         {
             DisplayName.SetDefault("Anti-matter Rifle");
             Tooltip.SetDefault(@"Fires an infinitely piercing laser that ignores tiles
-Gets stronger the more the laser pierces
 Doesn't require ammo");
         }
 
         public override void SetDefaults()
         {
             
-            item.damage = 325;
+            item.damage = 600;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;

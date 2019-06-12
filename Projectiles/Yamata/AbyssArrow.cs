@@ -23,14 +23,14 @@ namespace AAMod.Projectiles.Yamata
             }
             projectile.glowMask = customGlowMask;
 
-            DisplayName.SetDefault("Eventide Arrow");    
+            DisplayName.SetDefault("Eventide Arrow");    //The recording mode
 		}
 
 		public override void SetDefaults()
-        {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.aiStyle = 1;
+		{
+			projectile.width = 14;
+			projectile.height = 40;
+			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.hostile = false;
 			projectile.ranged = true;

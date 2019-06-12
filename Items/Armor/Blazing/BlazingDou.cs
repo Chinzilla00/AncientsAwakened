@@ -20,8 +20,8 @@ Forged in the flames of the blazing sun");
 		{
 			item.width = 30;
 			item.height = 24;
-            item.value = 90000;
-            item.rare = 4;
+			item.value = 60000;
+			item.rare = 4;
 			item.defense = 8;
 		}
 
@@ -33,10 +33,10 @@ Forged in the flames of the blazing sun");
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "KindledDou", 1);
-            recipe.AddIngredient(null, "DoomiteUGreaves", 1);
-            recipe.AddIngredient(ItemID.FossilShirt, 1);
-            recipe.AddIngredient(null, "OceanBoots", 1);
+            recipe.AddIngredient(mod.ItemType("KindledDou"));
+            recipe.AddIngredient(mod.ItemType("OceanShirt"));
+            recipe.AddIngredient(ItemID.FossilHelm);
+            recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

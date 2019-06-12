@@ -206,16 +206,25 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
 
         public override void BossLoot(ref string name, ref int potionType)
-        {   //boss drops
+        {
+            potionType = ItemID.LesserHealingPotion;
             AAWorld.downedMonarch = true;
             Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SporeSac"), Main.rand.Next(30, 35));
-            if (Main.expertMode == true)
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MonarchTrophy"));
+            }
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
             else
             {
+                if (Main.rand.Next(7) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MonarchMask"));
+                }
 
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Mushium"), Main.rand.Next(25, 35));
             }

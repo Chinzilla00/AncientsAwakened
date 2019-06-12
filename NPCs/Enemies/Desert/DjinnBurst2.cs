@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Enemies.Desert
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Djinn Burst");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Djinn Burst");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override void SetDefaults()

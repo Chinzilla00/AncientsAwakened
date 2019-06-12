@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.Yamata
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soulsplosion");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
+            Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
         public override Color? GetAlpha(Color lightColor)

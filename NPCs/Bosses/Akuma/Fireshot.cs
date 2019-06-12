@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Akuma
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;      
+            Main.projFrames[projectile.type] = 4;      //The recording mode
         }
 
         public override void SetDefaults()
