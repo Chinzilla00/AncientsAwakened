@@ -81,6 +81,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore2"), 1f);
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore3"), 1f);
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusBodyGore4"), 1f);
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrthrusTrophy"));
+            }
             if (Main.expertMode)
             {
                 npc.DropBossBags();

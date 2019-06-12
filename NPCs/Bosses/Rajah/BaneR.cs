@@ -27,12 +27,15 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.damage = 100;
         }
 
+        public bool StuckInEnemy = false;
+
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3)
+            if (flag3 && !StuckInEnemy)
             {
+                StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
                 projectile.velocity = (target.Center - projectile.Center) * 0.75f;
@@ -65,6 +68,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (projectile.ai[0] == 1f)
             {
+                projectile.damage = 0;
                 projectile.ignoreWater = true;
                 projectile.tileCollide = false;
                 int num977 = 15;

@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.MadTitan
 			item.height = 20;
 			item.value = 3000000;
 			item.rare = 11;
-			item.defense = 38;
+			item.defense = 48;
 		}
 
 		public override void UpdateEquip(Player player)
@@ -53,7 +53,8 @@ namespace AAMod.Items.Armor.MadTitan
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DarkmatterBreastplate", 1);
             recipe.AddIngredient(null, "RadiumPlatemail", 1);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.AddIngredient(null, "CrucibleScale", 20);
+            recipe.AddTile(null, "AncientForge");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

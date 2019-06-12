@@ -14,7 +14,7 @@ namespace AAMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sapphire Spine");
+            DisplayName.SetDefault("Perfect Chaos Yari");
         }
 
         public override void SetDefaults()

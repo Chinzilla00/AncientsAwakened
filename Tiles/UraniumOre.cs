@@ -22,23 +22,6 @@ namespace AAMod.Tiles
             minPick = 110;
         }
 
-        public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
-        {
-            if (!glow) return;
-            Color color = BaseMod.BaseUtility.ColorMult(Color.DarkSeaGreen, 0.7f);
-            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
-        }
-
-        public override void PostDraw(int x, int y, SpriteBatch sb)
-        {
-            Tile tile = Main.tile[x, y];
-            if (glow && (tile != null && tile.active() && tile.type == this.Type))
-            {
-                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/UraniumOre_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetUraniumColorDim);
-            }
-        }
-
         public override bool CanExplode(int i, int j)
         {
             return false;

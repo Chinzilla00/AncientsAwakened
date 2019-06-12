@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.MadTitan
 			item.height = 18;
 			item.value = 3000000;
 			item.rare = 11;
-			item.defense = 38;
+			item.defense = 48;
 		}
 
 		public override void UpdateEquip(Player player)
@@ -32,7 +32,13 @@ namespace AAMod.Items.Armor.MadTitan
             player.minionDamage *= 1.40f;
             player.thrownDamage *= 1.40f;
             player.ammoCost75 = true;
-		}
+        }
+
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
+        {
+            drawHands = true;
+            drawArms = true;
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
@@ -41,7 +47,6 @@ namespace AAMod.Items.Armor.MadTitan
 
         public override void UpdateArmorSet(Player player)
         {
-
             player.setBonus = @"The infinity gauntlet is now at it's most powerful
 'The power of a mad titan is now at your fingertips'";
             player.GetModPlayer<AAPlayer>(mod).TrueInfinityGauntlet = true;
@@ -53,7 +58,8 @@ namespace AAMod.Items.Armor.MadTitan
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DarkmatterBreastplate", 1);
             recipe.AddIngredient(null, "RadiumPlatemail", 1);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.AddIngredient(null, "CrucibleScale", 20);
+            recipe.AddTile(null, "AncientForge");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -17,7 +17,7 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
-            Main.tileSolid[Type] = true;
+            Main.tileSolid[Type] = false;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
             Main.tileHammer[Type] = true;

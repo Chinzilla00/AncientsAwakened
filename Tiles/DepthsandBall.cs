@@ -22,7 +22,7 @@ namespace AAMod.Tiles
             projectile.penetrate = 5;
             projectile.tileCollide = true;
             projectile.aiStyle = 10;
-            aiType = ProjectileID.GoldCoinsFalling;
+            aiType = ProjectileID.SandBallFalling;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

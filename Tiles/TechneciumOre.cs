@@ -18,13 +18,6 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(100, 200, 200), name);
 			minPick = 150;
         }
-      
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
-        {
-            r = 0.2f;
-            g = 0.5f;
-            b = 0.5f;
-        }
 
         public override bool CanExplode(int i, int j)
         {

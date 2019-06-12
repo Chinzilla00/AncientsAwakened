@@ -19,13 +19,6 @@ namespace AAMod.Tiles
             dustType = mod.DustType<Dusts.YtriumDust>();
 			minPick = 100;
         }
-      
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
-        {
-            r = 0.5f;
-            g = 0.5f;
-            b = 0f;
-        }
 
         public override bool CanExplode(int i, int j)
         {

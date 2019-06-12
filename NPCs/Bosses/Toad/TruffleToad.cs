@@ -12,28 +12,28 @@ namespace AAMod.NPCs.Bosses.Toad
         public float bossLife;
 
         public override void SendExtraAI(BinaryWriter writer)
-		{
-			base.SendExtraAI(writer);
-			if((Main.netMode == 2 || Main.dedServ))
-			{
-				writer.Write(internalAI[0]);
-				writer.Write(internalAI[1]);
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
             }
-		}
+        }
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			base.ReceiveExtraAI(reader);
-			if(Main.netMode == 1)
-			{
-				internalAI[0] = reader.ReadFloat();
-				internalAI[1] = reader.ReadFloat();
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
-            }	
-		}	
+            }
+        }
 
         public override void SetStaticDefaults()
         {
@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 5000;
+            npc.lifeMax = 3000;
             npc.damage = 30;
             npc.defense = 10;
             npc.knockBackResist = 0f;
@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Toad
         }
 
         public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_TONGUE = 3;
-		public float[] internalAI = new float[4];
+        public float[] internalAI = new float[4];
         public int NOM = 0;
         public bool tonguespawned = false;
         public bool TongueAttack = false;
@@ -71,6 +71,20 @@ namespace AAMod.NPCs.Bosses.Toad
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
+
+            if (player.dead || !player.active || !player.ZoneGlowshroom)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || !player.ZoneGlowshroom)
+                {
+                    npc.alpha += 5;
+                    if (npc.alpha >= 255)
+                    {
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
+                }
+            }
 
             if (player != null)
             {

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
@@ -12,6 +13,8 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
+            Main.tileMergeDirt[Type] = true;
+            Main.tileBlendAll[Type] = true;
             drop = mod.ItemType("Torchsand");
             soundStyle = 18;
             AddMapEntry(new Color(50, 35, 22));
@@ -33,7 +36,7 @@ namespace AAMod.Tiles
                 {
                     if (tile3 != null && !tile3.active())
                     {
-                        bool flag18 = !(tile2.active() && (TileID.Sets.BasicChest[(int)tile2.type] || TileID.Sets.BasicChestFake[(int)tile2.type] || tile2.type == 323 || TileLoader.IsDresser(tile2.type)));
+                        bool flag18 = !(tile2.active() && (TileID.Sets.BasicChest[tile2.type] || TileID.Sets.BasicChestFake[tile2.type] || tile2.type == 323 || TileLoader.IsDresser(tile2.type)));
                         if (flag18)
                         {
                             int damage = 10;

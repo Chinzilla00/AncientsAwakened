@@ -46,8 +46,8 @@ namespace AAMod.Tiles
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
             r = 0;
-            g = 0;
-            b = 0.51f;
+            g = 0.1f;
+            b = 0.25f;
         }
     }
 }

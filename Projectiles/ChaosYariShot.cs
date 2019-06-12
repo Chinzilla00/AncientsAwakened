@@ -14,7 +14,7 @@ namespace AAMod.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sapphire Spine");
+            DisplayName.SetDefault("Chaos Yari");
         }
 
         public override void SetDefaults()
@@ -31,13 +31,11 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.melee = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 12;
         }
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 60, 4, 10);
+            BaseMod.BaseAI.AIVilethorn(projectile, 80, 4, 10);
         }
 
         public override void PostAI()

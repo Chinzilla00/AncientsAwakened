@@ -30,6 +30,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 			npc.knockBackResist = 0f;
             npc.lavaImmune = true;
 			npc.buffImmune[BuffID.OnFire] = true;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.damage = 70;
         }
 

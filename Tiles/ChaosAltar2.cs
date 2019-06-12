@@ -12,14 +12,15 @@ namespace AAMod.Tiles
 		public override void SetDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
-			Main.tileLavaDeath[Type] = true;
+			Main.tileLavaDeath[Type] = false;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.Origin = new Point16(0, 0);
             TileObjectData.addTile(Type);
             Main.tileHammer[Type] = true;
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Dragon Altar");
+            Main.tileLighted[Type] = true;
+            name.SetDefault("Dragon Altar");
             dustType = mod.DustType("IncineriteDust");
             AddMapEntry(new Color(160, 100, 0), name);
             adjTiles = new int[] { TileID.DemonAltar };
@@ -42,6 +43,12 @@ namespace AAMod.Tiles
             {
                 return true;
             }
+        }
+
+        public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
+        {
+            Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.IncineriteColor, 0.7f);
+            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
