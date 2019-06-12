@@ -1777,19 +1777,19 @@ namespace AAMod
                         }
                         else if (conversionType == 2)
                         {
-                            if (WallID.Sets.Conversion.Stone[type] == true)
+                            if (WallID.Sets.Conversion.Stone[type])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (WallID.Sets.Conversion.Sandstone[type] == true)
+                            else if (WallID.Sets.Conversion.Sandstone[type])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (WallID.Sets.Conversion.HardenedSand[type] == true)
+                            else if (WallID.Sets.Conversion.HardenedSand[type])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandHardenedWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
