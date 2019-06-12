@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         public bool StuckInEnemy = false;
-
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
