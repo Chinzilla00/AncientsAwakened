@@ -25,6 +25,11 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
+            for (int num468 = 0; num468 < 20; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, AAColor.Jevil, 1f);
+                Main.dust[num469].noGravity = true;
+            }
             projectile.damage = 0;
             projectile.knockBack = 0;
             Move(new Vector2(projectile.ai[0], projectile.ai[1]));

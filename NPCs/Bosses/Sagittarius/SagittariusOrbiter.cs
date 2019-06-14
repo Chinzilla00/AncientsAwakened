@@ -36,7 +36,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
 		public int body = -1;
 		public float rotValue = -1f;
-		public bool spawnedDust = false;
         public Vector2 pos;
         int ChainFrame = 0;
         int ChainTimer = 0;

@@ -1715,8 +1715,8 @@ namespace AAMod
                 {
                     if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < 6)
                     {
-                        int type = (int)Main.tile[k, l].type;
-                        int wall = (int)Main.tile[k, l].wall;
+                        int type = Main.tile[k, l].type;
+                        int wall = Main.tile[k, l].wall;
                         if (conversionType == 1)
                         {
                             bool sendNet = false;
@@ -1855,7 +1855,7 @@ namespace AAMod
                         {
                             if (WallID.Sets.Conversion.Grass[type])
                             {
-                                Main.tile[k, l].type = (ushort)mod.WallType<Walls.Mushwall>();
+                                Main.tile[k, l].type = (ushort)mod.WallType<Mushwall>();
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
@@ -1986,7 +1986,7 @@ namespace AAMod
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
 
-                            if (type == 52 && Main.tile[k, l].active())
+                            if (type == TileID.Mud && Main.tile[k, l].active())
                             {
                                 Main.tile[k, l].type = 0;
                                 WorldGen.SquareTileFrame(k, l, true);
@@ -2170,6 +2170,12 @@ namespace AAMod
                             if (type == mod.TileType<InfernoGrass>() || type == mod.TileType<Doomgrass>())
                             {
                                 Main.tile[k, l].type = TileID.Grass;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<Torchstone>() || type == mod.TileType<Depthstone>())
+                            {
+                                Main.tile[k, l].type = TileID.Stone;
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }

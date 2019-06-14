@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void SetDefaults()
         {
-            npc.width = 14;
-            npc.height = 14;
+            npc.width = 30;
+            npc.height = 30;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 0;
             npc.aiStyle = -1;

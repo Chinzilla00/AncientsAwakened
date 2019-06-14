@@ -35,7 +35,7 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/Sky");
+            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
             Sun = TextureManager.Load("Backgrounds/ShenSun");
             Moon = TextureManager.Load("Backgrounds/ShenMoon");
         }
@@ -83,7 +83,7 @@ namespace AAMod.Backgrounds
                 Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                 Vector2 SunPos = new Vector2(Main.screenWidth * .75f, Main.screenHeight / 4);
                 Vector2 MoonPos = new Vector2(Main.screenWidth * .25f, Main.screenHeight / 4);
-                spriteBatch.Draw(SkyTex, SkyPos, null, Color.DarkMagenta, 0f, new Vector2(SkyTex.Width >> 1, SkyTex.Height >> 1), 1f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(SkyTex, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.DarkMagenta * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * Intensity));
                 spriteBatch.Draw(Sun, SunPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Moon, MoonPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
             }

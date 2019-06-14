@@ -67,11 +67,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 if (!AAWorld.downedZero)
                 {
+                    Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
                 AAWorld.downedZero = true;
 
-                Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
                 if (Main.rand.Next(10) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroTrophy"));

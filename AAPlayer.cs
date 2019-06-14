@@ -470,11 +470,11 @@ namespace AAMod
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
-            ZoneMire = (AAWorld.mireTiles > 100) || NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>());
-            ZoneInferno = (AAWorld.infernoTiles > 100) || (NPC.AnyNPCs(mod.NPCType<Akuma>()) || NPC.AnyNPCs(mod.NPCType<AkumaA>()));
+            ZoneMire = (AAWorld.mireTiles > 100) || BaseAI.GetNPC(player.Center, mod.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<YamataA>(), 5000) != -1;
+            ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, mod.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<AkumaA>(), 5000) != -1;
             ZoneMush = (AAWorld.mushTiles > 100);
             Terrarium = (AAWorld.terraTiles >= 1);
-            ZoneVoid = (AAWorld.voidTiles > 20) || (NPC.AnyNPCs(mod.NPCType<Zero>()) || NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()));
+            ZoneVoid = (AAWorld.voidTiles > 20) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
             //ZoneStorm = (AAWorld.stormTiles >= 1);
             //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
@@ -512,9 +512,6 @@ namespace AAMod
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
             bool useVoid = (ZoneVoid || VoidUnit) && !useShen;
-            bool useStars = ZoneStars && !useShen;
-
-            //player.ManageSpecialBiomeVisuals("AAMod:StarSky", useStars);
 
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
 
@@ -811,6 +808,11 @@ namespace AAMod
                 {
                     TimeScale = 0f;
                 }
+            }
+
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
+            {
+                TimeScale = 0;
             }
 
             if (ShieldScale > 0f || TimeScale > 0f)
@@ -1741,6 +1743,11 @@ namespace AAMod
 
         public override void PreUpdate()
         {
+            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
+            {
+                player.flapSound = true;
+            }
+
             groviteGlow[player.whoAmI] = false;
 
             if (SnapCD != 0)

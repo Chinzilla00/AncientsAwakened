@@ -113,12 +113,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.TargetClosest();			
             Player targetPlayer = Main.player[npc.target];
-            if (!targetPlayer.active || targetPlayer.dead || Main.dayTime) //fleeing
-            {
-                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { npc.active = false; npc.netUpdate = true; }
-                return;
-            }
+
             npc.TargetClosest();
+
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
             if (Main.netMode != 1)

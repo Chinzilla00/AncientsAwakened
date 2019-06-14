@@ -95,6 +95,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.lifeMax = 250000;
             }
+            npc.chaseable = false;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

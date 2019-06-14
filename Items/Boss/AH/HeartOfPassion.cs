@@ -17,7 +17,7 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
         {
             item.width = 66;
             item.height = 78;
-            item.value = Item.sellPrice(0, 40, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 11;
             item.accessory = true;
             item.expert = true;

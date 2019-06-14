@@ -25,7 +25,7 @@ namespace AAMod.Items.Summoning
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 0, 27, 0);
+            item.value = Item.sellPrice(0, 15, 0, 0);
             item.knockBack = 8f;
             item.rare = 11;
             item.summon = true;

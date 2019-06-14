@@ -19,14 +19,14 @@ namespace AAMod.Items.Boss.Retriever
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("CyberBaton");
-            item.damage = 14;
+            item.damage = 40;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;
             item.useAnimation = 25;
             item.useTime = 25;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.knockBack = 5f;
             item.rare = 3;
             item.summon = true;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.AH
@@ -39,28 +40,6 @@ namespace AAMod.Projectiles.AH
             projectile.velocity *= .98f;
             if (projectile.timeLeft > 0 && projectile.velocity == new Vector2(0, 0))
             {
-                projectile.ai[0] = 1;
-            }
-            if (projectile.ai[0] == 1 )
-            {
-                Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-                float spread = 12f * 0.0174f;
-                double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-                double deltaAngle = spread / 4;
-                for (int i = 0; i < 4; i++)
-                {
-                    double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f), (float)(Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f), (float)(-Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                }
-                projectile.ai[0] = 1;
-            }
-            if (projectile.ai[0] == 1)
-            {
-                projectile.alpha += 5;
-            }
-            if (projectile.alpha >= 255)
-            {
                 projectile.Kill();
             }
             projectile.frameCounter++;
@@ -92,20 +71,17 @@ namespace AAMod.Projectiles.AH
 			for (int i = 0; i < 4; i++)
 			{
 				double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f), (float)(Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f), (float)(-Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f), (float)(Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage / 4, projectile.knockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f), (float)(-Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage / 4, projectile.knockBack, projectile.owner, 0f, 0f);
 			}
 		}
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			projectile.Kill();
-		}
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<MagicBlast>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            Main.PlaySound(SoundID.Item14, projectile.position);
             target.AddBuff(mod.BuffType("DragonFire"), 600);
-            Kill(0);
-        }
+            projectile.active = false;
+		}
     }
 }

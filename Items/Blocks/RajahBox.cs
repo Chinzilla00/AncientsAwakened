@@ -11,7 +11,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rajah Rabbit Music Box");
-            Tooltip.SetDefault(@"Plays 'Unforseen Consequences' by Spectral Aves");
+            Tooltip.SetDefault(@"Plays 'JUSTICE' by Spectral Aves");
         }
 
         public override void SetDefaults()

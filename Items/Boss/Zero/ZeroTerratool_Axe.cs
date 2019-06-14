@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Zero
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
-            item.axe = 180;
+            item.axe = 50;
 
         }
 

@@ -41,7 +41,7 @@ Can only be used in a surface glowing mushroom biome");
         {
             if (!player.ZoneGlowshroom && player.Center.Y > Main.worldSurface)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The toadstool croaks", Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The toadstool croaks..?", Color.Blue, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<TruffleToad>()))

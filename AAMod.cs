@@ -316,18 +316,18 @@ namespace AAMod
             VoidSky.boltTexture = GetTexture("Backgrounds/VoidBolt");
             VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
             VoidSky.Stars = GetTexture("Backgrounds/Void_Starfield");
-            VoidSky.SkyTexture = GetTexture("Backgrounds/Sky");
+            VoidSky.SkyTexture = GetTexture("Backgrounds/SkyTex");
 
             Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
             InfernoSky.PlanetTexture = GetTexture("Backgrounds/Sun");
-            InfernoSky.SkyTex = GetTexture("Backgrounds/Sky");
-            AkumaSky.MeteorTexture = GetTexture("Backgrounds/AkumaMeteor");
+            InfernoSky.SkyTex = GetTexture("Backgrounds/SkyTex");
+            InfernoSky.MeteorTexture = GetTexture("Backgrounds/AkumaMeteor");
 
             Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.3f, 0.4f).UseOpacity(0.5f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();
             AkumaSky.PlanetTexture = GetTexture("Backgrounds/AkumaSun");
-            AkumaSky.SkyTex = GetTexture("Backgrounds/Sky");
+            AkumaSky.SkyTex = GetTexture("Backgrounds/SkyTex");
             AkumaSky.MeteorTexture = GetTexture("Backgrounds/AkumaAMeteor");
 
             Filters.Scene["AAMod:YamataSky"] = new Filter(new YamataSkyData("FilterMiniTower").UseColor(.7f, 0f, 0f).UseOpacity(0.5f), EffectPriority.VeryHigh);
@@ -340,7 +340,7 @@ namespace AAMod
             SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
             ShenSky.Sun = GetTexture("Backgrounds/ShenSun");
             ShenSky.Moon = GetTexture("Backgrounds/ShenMoon");
-            ShenSky.SkyTex = GetTexture("Backgrounds/Sky");
+            ShenSky.SkyTex = GetTexture("Backgrounds/SkyTex");
 
             Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();

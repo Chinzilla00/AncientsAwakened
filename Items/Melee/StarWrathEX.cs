@@ -18,7 +18,7 @@ namespace AAMod.Items.Melee
 			item.shootSpeed = 10f;
 			item.knockBack = 7f;
 			item.value = Item.sellPrice(1, 0, 0, 0);
-			item.damage = 150;
+			item.damage = 220;
 			item.useTime = 12;
 			item.useAnimation = 12;
         }
@@ -32,17 +32,11 @@ namespace AAMod.Items.Melee
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 vector12 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
-			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-			float num75 = item.shootSpeed;
-			float num119 = vector12.Y;
-			if (num119 > player.Center.Y - 200f)
-			{
-				num119 = player.Center.Y - 200f;
-			}
+            float num75 = item.shootSpeed;
 			for (int num120 = 0; num120 < 3; num120++)
 			{
-				vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
-				vector2.Y -= (float)(100 * num120);
+                Vector2 vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
+                vector2.Y -= (float)(100 * num120);
 				Vector2 vector13 = vector12 - vector2;
 				if (vector13.Y < 0f)
 				{

@@ -22,7 +22,7 @@ namespace AAMod.Items.Flasks
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
-            item.noUseGraphic = false;
+            item.noUseGraphic = true;
         }
 
         public override void SetStaticDefaults()
@@ -47,7 +47,7 @@ namespace AAMod.Items.Flasks
             }
             else
             {
-                item.shoot = mod.ProjectileType("OrangeSolution");
+                item.shoot = mod.ProjectileType("BlackSolution");
                 item.shootSpeed = 2f;
             }
             return base.CanUseItem(player);

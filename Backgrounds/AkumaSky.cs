@@ -30,16 +30,16 @@ namespace AAMod.Backgrounds
         public static Texture2D SkyTex;
         public bool Active;
         public float Intensity;
-        private UnifiedRandom _random = new UnifiedRandom();
+        private readonly UnifiedRandom _random = new UnifiedRandom();
 
         public override void OnLoad()
         {
             PlanetTexture = TextureManager.Load("Backgrounds/AkumaSun");
             MeteorTexture = TextureManager.Load("Backgrounds/AkumaAMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/Sky");
+            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
         }
 
-        float num = 1200f;
+        private readonly float num = 1200f;
 
         public override void Update(GameTime gameTime)
         {
@@ -67,8 +67,6 @@ namespace AAMod.Backgrounds
             }
         }
 
-        
-
         public override Color OnTileColor(Color inColor)
         {
             Vector4 value = inColor.ToVector4();
@@ -81,8 +79,7 @@ namespace AAMod.Backgrounds
             {
                 if (Main.dayTime)
                 {
-                    Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(SkyTex, SkyPos, null, Color.DeepSkyBlue, 0f, new Vector2(SkyTex.Width >> 1, SkyTex.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(SkyTex, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.DeepSkyBlue * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * Intensity));
                     float num64 = 1f;
                     num64 -= Main.cloudAlpha * 1.5f;
                     if (num64 < 0f)
@@ -94,7 +91,6 @@ namespace AAMod.Backgrounds
                     float num22 = 1f;
                     float rotation = (float)(Main.time / 54000.0) * 2f - 7.3f;
                     double bgTop = ((-Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
-                    float rotation2 = (float)(Main.time / 32400.0) * 2f - 7.3f;
                     if (Main.dayTime)
                     {
                         double num26;
@@ -154,6 +150,19 @@ namespace AAMod.Backgrounds
         public override float GetCloudAlpha()
         {
             return (1f - Intensity);
+        }
+
+        public Color GetAlpha(Color newColor, float alph)
+        {
+            int alpha = 255 - (int)(255 * alph);
+            float alphaDiff = (float)(255 - alpha) / 255f;
+            int newR = (int)((float)newColor.R * alphaDiff);
+            int newG = (int)((float)newColor.G * alphaDiff);
+            int newB = (int)((float)newColor.B * alphaDiff);
+            int newA = (int)newColor.A - alpha;
+            if (newA < 0) newA = 0;
+            if (newA > 255) newA = 255;
+            return new Color(newR, newG, newB, newA);
         }
 
         public override void Activate(Vector2 position, params object[] args)

@@ -22,13 +22,8 @@ namespace AAMod.Projectiles.Zero
 
 		public override void SetStaticDefaults()
 		{
-		DisplayName.SetDefault("Antimatter");
+		    DisplayName.SetDefault("Antimatter");
 		}
-
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            projectile.damage = (int)(projectile.damage * 2);
-        }
 
         public override void AI()
         {
@@ -40,7 +35,7 @@ namespace AAMod.Projectiles.Zero
                     Vector2 vector33 = projectile.position;
                     vector33 -= projectile.velocity * (num447 * 0.25f);
                     projectile.alpha = 255;
-                    int num448 = Dust.NewDust(vector33, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200, default(Color), 1f); //Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200, default(Color), 1f);;
+                    int num448 = Dust.NewDust(vector33, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200, default(Color), 1f); 
                     Main.dust[num448].position = vector33;
                     Main.dust[num448].scale = Main.rand.Next(70, 110) * 0.013f;
                     Main.dust[num448].velocity *= 0.2f;

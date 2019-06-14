@@ -38,7 +38,7 @@ namespace AAMod.Backgrounds
             PlanetTexture = TextureManager.Load("Backgrounds/Sun");
             demonSun = TextureManager.Load("Backgrounds/DemonSun");
             MeteorTexture = TextureManager.Load("Backgrounds/AkumaMeteors");
-            SkyTex = TextureManager.Load("Backgrounds/Sky");
+            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
         }
 
         public override void Update(GameTime gameTime)
@@ -66,7 +66,7 @@ namespace AAMod.Backgrounds
                 if (Main.dayTime)
                 {
                     Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(SkyTex, SkyPos, null, Color.OrangeRed, 0f, new Vector2(SkyTex.Width >> 1, SkyTex.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(SkyTex, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.OrangeRed * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * Intensity));
                     float num64 = 1f;
                     num64 -= Main.cloudAlpha * 1.5f;
                     if (num64 < 0f)
