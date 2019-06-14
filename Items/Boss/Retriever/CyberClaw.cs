@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Retriever
         {
             projectile.width = 28;
             projectile.height = 24;
-            item.value = Item.sellPrice(0, 5, 0, 0);
             projectile.timeLeft *= 5;
             projectile.minionSlots = 1f;
             projectile.penetrate = -1;

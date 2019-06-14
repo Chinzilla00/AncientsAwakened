@@ -245,6 +245,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+            }
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             return false;
@@ -277,14 +285,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             rotation = npc.rotation;
         }
         
-		public override bool PreNPCLoot()
-        {
-            if (Body.npc.active)
-            {
-                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
-            }
-            return false;
-        }
+		
 
         public override bool CheckActive()
         {

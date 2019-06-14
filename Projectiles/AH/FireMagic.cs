@@ -78,7 +78,7 @@ namespace AAMod.Projectiles.AH
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<MagicBlast>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<MagicBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             Main.PlaySound(SoundID.Item14, projectile.position);
             target.AddBuff(mod.BuffType("DragonFire"), 600);
             projectile.active = false;

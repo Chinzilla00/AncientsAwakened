@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using AAMod.NPCs.Bosses.Zero.Protocol;
+using AAMod.NPCs.Bosses.Zero;
 
 namespace AAMod.NPCs.Bosses.Zero2.Protocol
 {

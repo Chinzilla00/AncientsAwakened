@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.AH
 {
-    public class MagicBlast : ModProjectile
+    public class MagicBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
