@@ -40,7 +40,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
 		public override void AI()
 		{
-
             RingRoatation += .01f;
             if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
@@ -52,8 +51,8 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.timeLeft = 10;
 			if(npc.ai[0] == 0)
 			{
-				npc.velocity.Y += 0.005f;	
-				if(npc.velocity.Y > .5f)
+				npc.velocity.Y += 0.003f;	
+				if(npc.velocity.Y > .3f)
 				{
 					npc.ai[0] = 1f;
 					npc.netUpdate = true;
@@ -61,8 +60,8 @@ namespace AAMod.NPCs.Bosses.Zero
 			}else
 			if(npc.ai[0] == 1)
 			{
-				npc.velocity.Y -= 0.005f;	
-				if(npc.velocity.Y < -.5f)
+				npc.velocity.Y -= 0.003f;	
+				if(npc.velocity.Y < -.3f)
 				{
 					npc.ai[0] = 0f;
 					npc.netUpdate = true;

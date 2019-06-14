@@ -15,7 +15,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.EyeLaser);
             projectile.width = 12;
             projectile.height = 12;
             projectile.friendly = true;
@@ -26,8 +25,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.ignoreWater = true;
             projectile.timeLeft = 900;
         }
-
-
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {

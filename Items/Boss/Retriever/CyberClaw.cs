@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Retriever
         {
             projectile.width = 28;
             projectile.height = 24;
-            projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
             projectile.minionSlots = 1f;
             projectile.penetrate = -1;

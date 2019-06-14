@@ -59,7 +59,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.buffImmune[46] = true;
             npc.buffImmune[47] = true;
             npc.netAlways = true;
-            npc.noTileCollide = true;
             npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;

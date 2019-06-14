@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Retriever
         {
             item.width = 30;
             item.height = 32;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 18, 0, 0);
             item.rare = -12;
             item.expert = true;
             item.accessory = true;

@@ -37,12 +37,8 @@ namespace AAMod.Backgrounds
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);
 
-            bool Yamata = NPC.AnyNPCs(mod.NPCType<Yamata>());
             bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
 
-            Color defaultColor = YamataA ? YamataFog : Color.White;
-
-            Color bgColor = GetAlpha(defaultColor, 0.2f * fadeOpacity * dayTimeOpacity);
             Color fogColor = GetAlpha(YamataA ? YamataFog : DefaultFog, 0.4f * fadeOpacity * dayTimeOpacity);
 
             //ensure we cover the whole screen first

@@ -18,6 +18,7 @@ namespace AAMod.Items.Boss.AH
             item.height = 20;
             item.useTime = 4;
             item.reuseDelay = 15;
+            item.useAnimation = 12;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
@@ -27,7 +28,6 @@ namespace AAMod.Items.Boss.AH
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 8f;
-
         }
 
         public override void SetStaticDefaults()

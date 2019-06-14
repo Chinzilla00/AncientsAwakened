@@ -19,14 +19,15 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ChaosBaton");
-            item.damage = 14;
+            item.damage = 120;
             item.width = 52;
+            item.noMelee = true;
             item.height = 52;
             item.UseSound = SoundID.Item44;
             item.useAnimation = 25;
             item.useTime = 25;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.knockBack = 5f;
             item.rare = 3;
             item.summon = true;

@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
 
-            BaseAI.AIZombie(npc, ref npc.ai, true, true, -1, .09f, 2, 3, 5, 120, true, 10, 10, true);
+            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, .09f, 2, 3, 5, 120, true, 10, 10, true);
 
             if (npc.velocity.Y == 0)
             {

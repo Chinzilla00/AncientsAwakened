@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.lifeMax = 180000;
-            npc.damage = 180;
+            npc.damage = 250;
             npc.defense = 80;
             npc.width = 78;
             npc.height = 60;
@@ -158,19 +158,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
-            int num429 = 1;
-            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-            {
-                num429 = -1;
-            }
             Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
             float num433 = 6f;
-            PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-            PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
             PlayerPos = num433 / PlayerPos;
             PlayerPosX *= PlayerPos;
             PlayerPosY *= PlayerPos;
@@ -310,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage / 2, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 13f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {
@@ -320,7 +312,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, npc.damage / 2, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, npc.damage, 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 2f)
                 {
@@ -330,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataBlast>(), ref internalAI[3], 15, npc.damage / 2, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataBlast>(), ref internalAI[3], 15, npc.damage, 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 3f)
                 {
@@ -487,7 +479,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (projectile.type == ProjectileID.LastPrismLaser)
             {
-                damage = (int)(damage * .05f);
+                projectile.damage = (int)(projectile.damage * .01f);
             }
         }
 

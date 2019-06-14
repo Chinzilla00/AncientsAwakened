@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.damage = 150;
+            npc.damage = 250;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -245,6 +245,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+            }
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             return false;
@@ -277,14 +285,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             rotation = npc.rotation;
         }
         
-		public override bool PreNPCLoot()
-        {
-            if (Body.npc.active)
-            {
-                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
-            }
-            return false;
-        }
+		
 
         public override bool CheckActive()
         {

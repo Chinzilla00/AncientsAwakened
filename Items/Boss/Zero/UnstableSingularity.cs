@@ -41,7 +41,7 @@ namespace AAMod.Items.Boss.Zero
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.buyPrice(0, 1, 0, 0);
             item.rare = 10;
         }
         

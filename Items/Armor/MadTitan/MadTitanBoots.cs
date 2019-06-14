@@ -36,7 +36,7 @@ namespace AAMod.Items.Armor.MadTitan
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DarkmatterGreaves", 1);
             recipe.AddIngredient(null, "RadiumCuisses", 1);
-            recipe.AddIngredient(null, "ApocalyptitePlate", 20);
+            recipe.AddIngredient(null, "UnstableSingularity", 20);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();

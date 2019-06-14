@@ -14,7 +14,6 @@ namespace AAMod.Items.Boss.AH
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.Arkhalis);
             item.damage = 200;
             item.width = 70; 
             item.height = 80;
@@ -44,7 +43,6 @@ namespace AAMod.Items.Boss.AH
 
             if (player.altFunctionUse == 2)
             {
-                item.CloneDefaults(ItemID.Arkhalis);
                 item.melee = true;
                 item.noMelee = true;
                 item.noUseGraphic = true;

@@ -25,9 +25,7 @@ Hold down and jump to hover for an extended period of time
 			item.rare = 11;
 			item.accessory = true;
 		}
-
         
-
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
@@ -60,11 +58,7 @@ Hold down and jump to hover for an extended period of time
             {
                 speed = 15f;
                 acceleration *= 10f;
-                player.velocity.Y = player.velocity.Y * 0.92f;
-                if (player.velocity.Y > -2f && player.velocity.Y < 1f)
-                {
-                    player.velocity.Y = 1E-05f;
-                }
+                player.velocity.Y *= 0f;
             }
             else
             {

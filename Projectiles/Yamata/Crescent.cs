@@ -31,17 +31,16 @@ namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Exam
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);
         }
+        int ProjTimer = 0;
 
         public override void PostAI()
         {
-            int ProjTimer = 0;
             if (Main.netMode != 1)
             {
                 ProjTimer++;
                 if (ProjTimer >= 90)
                 {
-                    int Proj = Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
-                    Main.projectile[Proj].netUpdate = true;
+                    Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
                 }
             }
         }

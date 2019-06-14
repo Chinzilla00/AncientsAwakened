@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 25000;
+            npc.lifeMax = 40000;
             npc.damage = 50;
             npc.defense = 40;
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             {
                 if (SelectPoint)
                 {
-                    float Point = 200 * npc.direction;
+                    float Point = 300 * npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 300f);
                     SelectPoint = false;
                     npc.netUpdate = true;

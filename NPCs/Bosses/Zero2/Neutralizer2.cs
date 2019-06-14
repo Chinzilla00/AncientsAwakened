@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -80,9 +81,68 @@ namespace AAMod.NPCs.Bosses.Zero2
             }
         }
 
+        public int body = -1;
+        public float rotValue = -1f;
+        public Vector2 pos;
+
         public override void AI()
         {
+            npc.noGravity = true;
 
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), 400f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            if (body == -1) return;
+            NPC zero = Main.npc[body];
+            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero2")) { BaseAI.KillNPCWithLoot(npc); return; }
+
+            Player player = Main.player[zero.target];
+
+            pos = zero.Center;
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
+            int probeNumber = ((Zero2)zero.modNPC).WeaponCount;
+            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            rotValue += 0.04f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+
+            int aiTimerFire = Main.expertMode ? 190 : 250;
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue);
+
+
+            if (Main.netMode != 1) { npc.ai[2]++; }
+
+            if (npc.ai[2] == aiTimerFire)
+            {
+                npc.ai[2] = 0;
+                if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
+                {
+                    Vector2 fireTarget = npc.Center;
+                    float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                    fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
+                    BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("NeutralizerP"), npc.damage / 2, 0f, 4f);
+                }
+            }
+
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+            float NewRotation = (float)Math.Atan2(num2, num1) - 1.57f;
+            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

@@ -163,29 +163,12 @@ namespace AAMod.NPCs.Bosses.Zero2
             return AAColor.ZeroShield * (Main.mouseTextColor / 255f);
         }
 
-        public bool saythelinezero = false;
-        public bool ArmsGone = false;
-        public float ShieldScale = 0.5f;
-        public float RingRoatation = 0;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Zero_Glow");
-
-            if (npc.ai[0] != 0)
-            {
-                BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(dColor.R, dColor.G, dColor.B, (byte)150));
-            }
-            
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
-            Texture2D Vortex = mod.GetTexture("NPCs/Bosses/Zero/CycloneProtocol");
-
-            if (VortexScale > 0)
-            {
-                BaseDrawing.DrawTexture(spritebatch, Vortex, 0, npc.position, npc.width, npc.height, VortexScale, 0, 0, 1, new Rectangle(0, 0, Vortex.Width, Vortex.Height), Color.White, true);
-            }
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
@@ -200,12 +183,10 @@ namespace AAMod.NPCs.Bosses.Zero2
         }
 
         public int MinionTimer = 0;
-
         public float[] internalAI = new float[4];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write((short)npc.localAI[0]);
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
@@ -218,7 +199,6 @@ namespace AAMod.NPCs.Bosses.Zero2
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            npc.localAI[0] = reader.ReadInt16();
             base.ReceiveExtraAI(reader);
             if (Main.netMode == 1)
             {
@@ -229,60 +209,108 @@ namespace AAMod.NPCs.Bosses.Zero2
             }
         }
 
+        public bool saythelinezero = false;
+        public bool ArmsGone = false;
+        public float ShieldScale = 0.5f;
+        public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
 
         public override void AI()
         {
             RingRoatation += 0.03f;
 
-            if (npc.ai[0] == 0 && Main.netMode != 1)
+            
+
+            if (internalAI[0] == 0 && Main.netMode != 1)
             {
                 for (int m = 0; m < WeaponCount; m++)
                 {
-                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(""), 0);
+                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0);
                     Main.npc[npcID].Center = npc.Center;
                     Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                     Main.npc[npcID].velocity *= 8f;
                     Main.npc[npcID].ai[0] = m;
                     Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                 }
+                internalAI[0] = 1;
             }
 
-            if (npc.type == mod.NPCType<Zero2>() && 
-                (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
-                !NPC.AnyNPCs(mod.NPCType<Taser>()) && 
-                !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) && 
-                !NPC.AnyNPCs(mod.NPCType<RiftShredder>()) && 
-                !NPC.AnyNPCs(mod.NPCType<Neutralizer>()) && 
-                !NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) && 
-                !NPC.AnyNPCs(mod.NPCType<NovaFocus>()) && 
-                !NPC.AnyNPCs(mod.NPCType<GenocideCannon>())))
+            if (!NPC.AnyNPCs(mod.NPCType<VoidStar>()) &&
+                !NPC.AnyNPCs(mod.NPCType<Taser>()) &&
+                !NPC.AnyNPCs(mod.NPCType<RealityCannon>()) &&
+                !NPC.AnyNPCs(mod.NPCType<RiftShredder>()) &&
+                !NPC.AnyNPCs(mod.NPCType<Neutralizer>()) &&
+                !NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) &&
+                !NPC.AnyNPCs(mod.NPCType<NovaFocus>()) &&
+                !NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+            {
+                npc.ai[1] = 1;
+            }
+            else
+            {
+                npc.ai[1] = 0;
+            }
+
+            if (npc.ai[1] == 0)
+            {
+                ArmsGone = false;
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+                npc.damage = 0;
+                saythelinezero = false;
+                if (ShieldScale < .5f)
+                {
+                    ShieldScale += .05f;
+                }
+                if (ShieldScale > .5f)
+                {
+                    ShieldScale = .5f;
+                }
+                if (internalAI[1] == 0)
+                {
+                    npc.velocity.Y += 0.003f;
+                    if (npc.velocity.Y > .3f)
+                    {
+                        internalAI[1] = 1f;
+                        npc.netUpdate = true;
+                    }
+                }
+                else if (internalAI[1] == 1)
+                {
+                    npc.velocity.Y -= 0.003f;
+                    if (npc.velocity.Y < -.3f)
+                    {
+                        internalAI[1] = 0f;
+                        npc.netUpdate = true;
+                    }
+                }
+            }
+            else
             {
                 ArmsGone = true;
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
                 npc.damage = 160;
+                if (ShieldScale > 0)
+                {
+                    ShieldScale -= .07f;
+                }
+                if (ShieldScale < 0)
+                {
+                    ShieldScale = 0;
+                }
             }
-            else
-            {
-                ArmsGone = false;
-                npc.dontTakeDamage = true;
-                npc.chaseable = false;
-                npc.damage = 80;
-                saythelinezero = false;
-            }
+        }
 
-            if (npc.type == mod.NPCType<Zero2>() &&
-                NPC.AnyNPCs(mod.NPCType<Neutralizer2>()) &&
-                NPC.AnyNPCs(mod.NPCType<OmegaVolley2>()) &&
-                NPC.AnyNPCs(mod.NPCType<NovaFocus2>()) &&
-                NPC.AnyNPCs(mod.NPCType<GenocideCannon2>()))
+        public override void FindFrame(int frameHeight)
+        {
+            if (ArmsGone)
             {
-                npc.ai[3] = 1;
+                npc.frame.Y = 0;
             }
             else
             {
-                npc.ai[3] = 0;
+                npc.frame.Y = frameHeight;
             }
         }
 

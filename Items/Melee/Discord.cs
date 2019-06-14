@@ -21,8 +21,8 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 18;
 			item.useStyle = 1;
 			item.knockBack = 3;
-			item.value = 20000;
-			item.rare = 3;
+            item.value = Item.sellPrice(0, 0, 54, 0);
+            item.rare = 3;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
             item.shootSpeed = 15f;
