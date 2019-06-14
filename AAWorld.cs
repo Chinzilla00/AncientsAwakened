@@ -284,6 +284,7 @@ namespace AAMod
             if (downedTruffle) downed.Add("Truffle");
             if (downedRajah) downed.Add("Rajah");
             if (downedRajahsRevenge) downed.Add("Rajah2");
+            if (zeroUS) downed.Add("ZUS");
 
             return new TagCompound {
                 {"downed", downed},
@@ -373,6 +374,7 @@ namespace AAMod
             flags6[1] = downedTruffle;
             flags6[2] = downedRajah;
             flags6[3] = downedRajahsRevenge;
+            flags6[4] = zeroUS;
             writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
@@ -455,6 +457,7 @@ namespace AAMod
             downedTruffle = flags6[1];
             downedRajah = flags6[2];
             downedRajahsRevenge = flags6[3];
+            zeroUS = flags6[4];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -524,6 +527,7 @@ namespace AAMod
             downedTruffle = downed.Contains("Truffle");
             downedRajah = downed.Contains("Rajah");
             downedRajahsRevenge = downed.Contains("Rajah2");
+            zeroUS = downed.Contains("ZUS");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
