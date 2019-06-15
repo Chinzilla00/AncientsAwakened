@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DepthIce : ModItem
+    public class IndigoIce : ModItem
     {
         public override void SetDefaults()
         {
@@ -17,7 +17,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 2;
-            item.createTile = mod.TileType("DepthIce"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("IndigoIce"); //put your CustomBlock Tile name
         }
 
         public override void SetStaticDefaults()

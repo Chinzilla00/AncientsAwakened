@@ -630,7 +630,6 @@
     <Compile Include="Items\Blocks\RadiantArcanum.cs" />
     <Compile Include="Items\Blocks\RadiumOre.cs" />
     <Compile Include="Items\Blocks\Razewood.cs" />
-    <Compile Include="Items\Blocks\RoHBox.cs" />
     <Compile Include="Items\Blocks\RottedDynastyWood.cs" />
     <Compile Include="Items\Blocks\RottedShingles.cs" />
     <Compile Include="Items\Blocks\ScorchedDynastyWood.cs" />
@@ -1424,6 +1423,9 @@
     <Compile Include="Items\Vanity\Apawn\ApawnBoots.cs" />
     <Compile Include="Items\Vanity\Apawn\ApawnPlate.cs" />
     <Compile Include="Items\Vanity\Apawn\ApawnHelm.cs" />
+    <Compile Include="Items\Vanity\Gibs\GibsShorts.cs" />
+    <Compile Include="Items\Vanity\Gibs\GibsSkull.cs" />
+    <Compile Include="Items\Vanity\Gibs\GibsPlate.cs" />
     <Compile Include="Items\Vanity\HappySunSticker.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckPants.cs" />
     <Compile Include="Items\Vanity\Aves\DJDuckShirt.cs" />
@@ -2409,7 +2411,6 @@
     <Compile Include="Tiles\OroborosChestC2.cs" />
     <Compile Include="Tiles\OroborosChestC3.cs" />
     <Compile Include="Tiles\OroborosChestC4.cs" />
-    <Compile Include="Tiles\RoHBox.cs" />
     <Compile Include="Tiles\Sticker.cs" />
     <Compile Include="Tiles\StormCloud.cs" />
     <Compile Include="Tiles\Crates\DesertCrate.cs" />
@@ -3665,18 +3666,6 @@
     <Content Include="Healthbars\DDBarBody.png" />
     <Content Include="Healthbars\DDBarHead.png" />
     <Content Include="Healthbars\DDBarTail.png" />
-    <Content Include="Healthbars\DDCoBarBody.png" />
-    <Content Include="Healthbars\DDCoBarHead.png" />
-    <Content Include="Healthbars\DDCoBarTail.png" />
-    <Content Include="Healthbars\DDCrBarBody.png" />
-    <Content Include="Healthbars\DDCrBarHead.png" />
-    <Content Include="Healthbars\DDCrBarTail.png" />
-    <Content Include="Healthbars\DDIBarBody.png" />
-    <Content Include="Healthbars\DDIBarHead.png" />
-    <Content Include="Healthbars\DDIBarTail.png" />
-    <Content Include="Healthbars\DDMBarBody.png" />
-    <Content Include="Healthbars\DDMBarHead.png" />
-    <Content Include="Healthbars\DDMBarTail.png" />
     <Content Include="Healthbars\FBarBody.png" />
     <Content Include="Healthbars\FBarHead.png" />
     <Content Include="Healthbars\FBarTail.png" />
@@ -3696,6 +3685,9 @@
     <Content Include="Healthbars\NCBarHead.png" />
     <Content Include="Healthbars\NCBarTail.png" />
     <Content Include="Healthbars\New Piskel.png" />
+    <Content Include="Healthbars\RajahBarBody.png" />
+    <Content Include="Healthbars\RajahBarHead.png" />
+    <Content Include="Healthbars\RajahBarTail.png" />
     <Content Include="Healthbars\RGCBarBody.png" />
     <Content Include="Healthbars\RGCBarHead.png" />
     <Content Include="Healthbars\RGCBarTail.png" />
@@ -4585,6 +4577,13 @@
     <Content Include="Items\Vanity\Fargo\FargoHat_Head.png" />
     <Content Include="Items\Vanity\Fargo\FargoPants.png" />
     <Content Include="Items\Vanity\Fargo\FargoSuit.png" />
+    <Content Include="Items\Vanity\Gibs\GibsPlate.png" />
+    <Content Include="Items\Vanity\Gibs\GibsPlate_Arms.png" />
+    <Content Include="Items\Vanity\Gibs\GibsPlate_Body.png" />
+    <Content Include="Items\Vanity\Gibs\GibsShorts.png" />
+    <Content Include="Items\Vanity\Gibs\GibsShorts_Legs.png" />
+    <Content Include="Items\Vanity\Gibs\GibsSkull.png" />
+    <Content Include="Items\Vanity\Gibs\GibsSkull_Head.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateBoots.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateBoots_Legs.png" />
     <Content Include="Items\Vanity\Grox\AngryPirateCofferplate.png" />
@@ -4913,7 +4912,6 @@
     <Content Include="Items\Blocks\RadiantArcanum.png" />
     <Content Include="Items\Blocks\RadiumOre.png" />
     <Content Include="Items\Blocks\Razewood.png" />
-    <Content Include="Items\Blocks\RoHBox.png" />
     <Content Include="Items\Blocks\RottedDynastyWood.png" />
     <Content Include="Items\Blocks\RottedShingles.png" />
     <Content Include="Items\Blocks\ScorchedDynastyWood.png" />

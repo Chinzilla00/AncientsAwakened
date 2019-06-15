@@ -19,7 +19,7 @@ namespace AAMod.Worldgeneration
 		public override bool Place(Point origin, StructureMap structures)
 		{
 			Mod mod = AAMod.instance;
-            ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"), tileIce = (ushort)mod.TileType("DepthIce"),
+            ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"), tileIce = (ushort)mod.TileType("IndigoIce"),
             tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone"),
             LivingWood = (ushort)mod.TileType<LivingBogwood>(), LivingLeaves = (ushort)mod.TileType<LivingBogleaves>();
 

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    public class DepthIce : ModTile
+    public class IndigoIce : ModTile
     {
         public override void SetDefaults()
         {
@@ -15,7 +15,7 @@ namespace AAMod.Tiles
 			Main.tileMerge[TileID.SnowBlock][Type] = true;
             soundType = 21;
             dustType = mod.DustType("DeepAbyssiumDust");
-            drop = mod.ItemType("DepthIce");   //put your CustomBlock name
+            drop = mod.ItemType("IndigoIce");   //put your CustomBlock name
             AddMapEntry(new Color(0, 60, 127));
             TileID.Sets.Conversion.Ice[Type] = true;
             TileID.Sets.Ices[Type] = true;

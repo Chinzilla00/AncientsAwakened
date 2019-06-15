@@ -291,7 +291,6 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2"), ItemType("AkumaABox"), TileType("AkumaABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2"), ItemType("YamataABox"), TileType("YamataABox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope"), ItemType("RoHBox"), TileType("RoHBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
@@ -358,10 +357,12 @@ namespace AAMod
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
 
             sunTextureBackup = Main.sunTexture;
+            sun3TextureBackup = Main.sun3Texture;
         }
 
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
         private Texture2D sunTextureBackup = null;
+        private Texture2D sun3TextureBackup = null;
         public Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
         public void ReplaceItemTexture(int id, string texturePath)
         {
@@ -400,6 +401,8 @@ namespace AAMod
 
             if (sunTextureBackup != null)
                 Main.sunTexture = sunTextureBackup;
+            if (sun3TextureBackup != null)
+                Main.sun3Texture = sun3TextureBackup;
         }
 
         public void CleanupStaticArrays()
@@ -558,7 +561,6 @@ namespace AAMod
                 {
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
-
                     return;
                 }
 

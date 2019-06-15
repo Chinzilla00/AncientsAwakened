@@ -741,25 +741,13 @@ namespace AAMod
         {
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.HappySunSticker>(), true, true))
             {
-                if (!Main.eclipse)
-                {
-                    Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
-                }
-                else
-                {
-                    Main.sunTexture = mod.GetTexture("Backgrounds/DemonSunEclipse");
-                }
+                Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
+                Main.sun3Texture = mod.GetTexture("Backgrounds/DemonSunEclipse");
             }
             else
             {
-                if (!Main.eclipse)
-                {
-                    Main.sunTexture = mod.GetTexture("Backgrounds/Sun1");
-                }
-                else
-                {
-                    Main.sunTexture = mod.GetTexture("Backgrounds/Sun3");
-                }
+                Main.sunTexture = mod.GetTexture("Backgrounds/Sun1");
+                Main.sun3Texture = mod.GetTexture("Backgrounds/Sun3");
             }
             if (player.ZoneSandstorm && (ZoneInferno || ZoneMire))
             {
