@@ -214,6 +214,8 @@ namespace AAMod.NPCs.Bosses.Zero2
         public float ShieldScale = 0.5f;
         public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
+        public bool teleport;
+        public int teleportTimer;
 
         public override void AI()
         {
@@ -298,6 +300,46 @@ namespace AAMod.NPCs.Bosses.Zero2
                 if (ShieldScale < 0)
                 {
                     ShieldScale = 0;
+                }
+            }
+            // Teleporting
+            float distance = npc.Distance(Main.player[npc.target].Center);
+            if (distance >= 1100)
+            {
+                if (!teleport)
+                {
+                    teleport = true;
+                    npc.netUpdate2 = true;
+                }
+            }
+            if (teleport == true)
+            {
+                npc.netUpdate = true;
+                teleportTimer++;
+                if (teleportTimer == 1)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        int choice = Main.rand.Next(2);
+                        if (choice == 0)
+                        {
+                            Vector2 newPos = new Vector2(Main.rand.Next(-400, -250), Main.rand.Next(-200, 100));
+                            npc.Center = Main.player[npc.target].Center + newPos;
+                            npc.netUpdate = true;
+                        }
+                        if (choice == 1)
+                        {
+                            Vector2 newPos = new Vector2(Main.rand.Next(250, 400), Main.rand.Next(-200, 100));
+                            npc.Center = Main.player[npc.target].Center + newPos;
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+                if (teleportTimer >= 2)
+                {
+                    teleport = false;
+                    teleportTimer = 0;
+                    npc.netUpdate = true;
                 }
             }
         }
