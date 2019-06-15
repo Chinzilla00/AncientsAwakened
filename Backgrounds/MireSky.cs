@@ -46,10 +46,8 @@ namespace AAMod.Backgrounds
             {
                 if (!Main.dayTime)
                 {
-                    Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    var planetPos = new Vector2((Main.screenWidth / 4) * 3, Main.screenHeight / 4);
-                    spriteBatch.Draw(SkyTexture, SkyPos, null, Color.White, 0f, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                    double bgTop = (int)((double)(-(double)Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
+                    spriteBatch.Draw(SkyTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
+                    double bgTop = (int)((-Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
                     Main.bgColor = Color.White;
                     if (Main.gameMenu || Main.netMode == 2)
                     {

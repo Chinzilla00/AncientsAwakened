@@ -2592,7 +2592,6 @@
     <Content Include="Backgrounds\Echo.png" />
     <Content Include="Backgrounds\fog.png" />
     <Content Include="Backgrounds\FogTex.png" />
-    <Content Include="Backgrounds\HellSurface.png" />
     <Content Include="Backgrounds\InfernoBG.png" />
     <Content Include="Backgrounds\InfernoCavern.png" />
     <Content Include="Backgrounds\InfernoCavern1.png" />
@@ -2630,6 +2629,7 @@
     <Content Include="Backgrounds\ShenMoon.png" />
     <Content Include="Backgrounds\ShenSun.png" />
     <Content Include="Backgrounds\Sky.png" />
+    <Content Include="Backgrounds\SkyTex.png" />
     <Content Include="Backgrounds\SSky.png" />
     <Content Include="Backgrounds\Star 0.png" />
     <Content Include="Backgrounds\Star 1.png" />

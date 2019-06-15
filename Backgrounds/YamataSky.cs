@@ -69,7 +69,7 @@ namespace AAMod.Backgrounds
                 if (!Main.dayTime)
                 {
                     Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(SkyTex, SkyPos, null, new Color(102, 20, 80), 0f, new Vector2(SkyTex.Width >> 1, SkyTex.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.MediumVioletRed);
                     double bgTop = (int)((-Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
                     Main.bgColor = Color.White;
                     if (Main.gameMenu || Main.netMode == 2)

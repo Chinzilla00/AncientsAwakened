@@ -139,7 +139,6 @@ namespace AAMod.Backgrounds
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
-
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
@@ -160,12 +159,11 @@ namespace AAMod.Backgrounds
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
                 if (!AAWorld.downedZero)
                 {
-                    spriteBatch.Draw(Stars, planetPos, null, Color.White, 0, new Vector2(Stars.Width >> 1, Stars.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(Stars, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
                 }
                 else
                 {
-                    Color VortexColor = GetAlpha(Color.White, Alpha);
-                    spriteBatch.Draw(SkyTexture, planetPos, null, Color.Black, 0, new Vector2(SkyTexture.Width >> 1, SkyTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
+                    spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
                     float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
