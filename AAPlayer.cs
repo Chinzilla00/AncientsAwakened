@@ -82,6 +82,7 @@ namespace AAMod
         public bool YamataAltar = false;
         public bool Terrarium = false;
         public bool ZoneStars = false;
+        public bool ZoneVoid2 = false;
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
@@ -444,21 +445,13 @@ namespace AAMod
             ZoneMush = false;
             ZoneStorm = false;
             ZoneVoid = false;
+            ZoneVoid2 = false;
             ZoneRisingMoonLake = false;
             ZoneRisingSunPagoda = false;
             ZoneShip = false;
             ZoneTower = false;
             ZoneStars = false;
             WorldgenReminder = false;
-        }
-
-        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
-        {
-            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
-            if (BegAccessory)
-            {
-                player.AddBuff(mod.BuffType<Horse>(), 60, true);
-            }
         }
 
         public override void PreUpdateBuffs()
@@ -475,6 +468,7 @@ namespace AAMod
             ZoneMush = (AAWorld.mushTiles > 100);
             Terrarium = (AAWorld.terraTiles >= 1);
             ZoneVoid = (AAWorld.voidTiles > 20) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
+            ZoneVoid = (AAWorld.voidTiles2 > 100);
             //ZoneStorm = (AAWorld.stormTiles >= 1);
             //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
@@ -511,7 +505,8 @@ namespace AAMod
             bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
-            bool useVoid = (ZoneVoid || VoidUnit) && !useShen;
+            bool useVoid = ZoneVoid && !useShen;
+            bool useVoid2 = (ZoneVoid2 || VoidUnit) && !useShen;
 
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
 
@@ -531,6 +526,8 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
 
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
+
+            player.ManageSpecialBiomeVisuals("AAMod:VoidSky2", useVoid2);
         }
 
         public override bool CustomBiomesMatch(Player other)
@@ -543,7 +540,8 @@ namespace AAMod
                 Terrarium == modOther.Terrarium &&
                 ZoneStorm == modOther.ZoneStorm &&
                 ZoneShip == modOther.ZoneShip &&
-                ZoneStars == modOther.ZoneStars);
+                ZoneStars == modOther.ZoneStars &&
+                ZoneVoid2 == modOther.ZoneVoid2);
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -559,6 +557,7 @@ namespace AAMod
             modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
             modOther.ZoneShip = ZoneShip;
             modOther.ZoneStars = ZoneStars;
+            modOther.ZoneVoid2 = ZoneVoid2;
         }
 
         public override void SendCustomBiomes(BinaryWriter bb)
@@ -577,6 +576,7 @@ namespace AAMod
             BitsByte zoneByte2 = 0;
             zoneByte2[0] = ZoneShip;
             zoneByte2[1] = ZoneStars;
+            zoneByte2[2] = ZoneVoid2;
             bb.Write(zoneByte2);
         }
 
@@ -595,6 +595,7 @@ namespace AAMod
             BitsByte zoneByte2 = bb.ReadByte();
             ZoneShip = zoneByte2[0];
             ZoneStars = zoneByte2[1];
+            ZoneVoid2 = zoneByte2[1];
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -866,44 +867,48 @@ namespace AAMod
                 }
             }
 
-            if (AAWorld.ModContentGenerated || ZoneInferno || ZoneMire || ZoneVoid || Terrarium || ZoneMush)
+            if (AAWorld.ModContentGenerated || ZoneInferno || ZoneMire || ZoneVoid || Terrarium || ZoneMush || ZoneVoid2)
             {
                 AAWorld.ModContentGenerated = true;
                 WorldgenReminder = true;
             }
             if (!WorldgenReminder)
             {
-                if (Main.rand.Next(8) == 0)
+                if (Main.rand.Next(9) == 0)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey uh...kid? Correct me if I'm wrong, but I think your world didn't generate with Ancients Awakened stuff in it. I'd make a new one if I were you.", new Color(180, 41, 32), false);
                 }
-                else if (Main.rand.Next(8) == 1)
+                else if (Main.rand.Next(9) == 1)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("YOU IMBECILE! YOU DIDN'T GENERATE ANCIENTS AWAKENED CONTENT! MAKE A NEW WORLD NOW! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(45, 46, 70), false);
                 }
-                else if (Main.rand.Next(8) == 2)
+                else if (Main.rand.Next(9) == 2)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. W0RLD D0ES N0T APPEAR T0 C0NTAIN AAM0D.TM0D C0NTENT. PLEASE GENERATE A NEW W0RLD.", new Color(255, 0, 0), false);
                 }
-                else if (Main.rand.Next(8) == 3)
+                else if (Main.rand.Next(9) == 3)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HEY! You didn't generate Ancients Awakened stuff in this world! Generate a new world before I blast you to mars!", new Color(102, 20, 48), false);
                 }
-                else if (Main.rand.Next(8) == 4)
+                else if (Main.rand.Next(9) == 4)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey, uh...I don't see any Ancients Awakened content in this world. Might be smart to make a new world or whatever...", new Color(72, 78, 117), false);
                 }
-                else if (Main.rand.Next(8) == 5)
+                else if (Main.rand.Next(9) == 5)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey. You. Interdimensional being. You might have forgotten to make a new world after downloading the mod. Make a new world if you want all the mod's content.", new Color(128, 0, 0), false);
                 }
-                else if (Main.rand.Next(8) == 6)
+                else if (Main.rand.Next(9) == 6)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Make...new world....or mushmad...will squish...little terrarian...", new Color(216, 110, 40), false);
                 }
-                else if (Main.rand.Next(8) == 7)
+                else if (Main.rand.Next(9) == 7)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("...Mortal. Your world doesn't have Ancients Awakened content if my old eyes are not lying to me. Generating a new world would be optimal.", new Color(43, 46, 61), false);
+                }
+                else if (Main.rand.Next(9) == 8)
+                {
+                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You did not create a new world. Make one before I come and stomp you into the ground like a carrot.", new Color(107, 137, 179), false);
                 }
                 WorldgenReminder = true;
             }
@@ -1109,105 +1114,9 @@ namespace AAMod
                 }
             }
 
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true))
-            {
-                bool isFlying = false;
-                if (player.controlJump && player.wingTime > 0f && !player.jumpAgainCloud && player.jump == 0 && player.velocity.Y != 0f)
-                {
-                    isFlying = true;
-                }
-                if (player.controlJump && player.controlDown && player.wingTime > 0f)
-                {
-                    isFlying = true;
-                }
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    int num80 = 2;
-                    if (player.wingFrameCounter >= num80 * 3)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / num80;
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        int num81 = 2;
-                        if (player.wingFrameCounter >= num81 * 3)
-                        {
-                            player.wingFrameCounter = 0;
-                        }
-                        player.wingFrame = 1 + player.wingFrameCounter / num81;
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-                
-            }
-
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Grox.AngryPirateSails>(), true, true))
             {
                 WingAnimation(player, 1, 10, 2);
-            }
-
-
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
-            {
-                bool isFlying = false;
-                if (player.controlJump && player.wingTime > 0f && !player.jumpAgainCloud && player.jump == 0 && player.velocity.Y != 0f)
-                {
-                    isFlying = true;
-                }
-                if (player.controlJump && player.controlDown && player.wingTime > 0f)
-                {
-                    isFlying = true;
-                }
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter >= 6)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / 2;
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        if (player.wingFrameCounter >= 6)
-                        {
-                            player.wingFrameCounter = 0;
-                        }
-                        player.wingFrame = 1 + player.wingFrameCounter / 2;
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
             }
         }
 
@@ -1709,7 +1618,7 @@ namespace AAMod
                     case 17:
                         player.QuickSpawnItem(mod.ItemType("GibsSkull"));
                         player.QuickSpawnItem(mod.ItemType("GibsPlate"));
-                        player.QuickSpawnItem(mod.ItemType("GribsShorts"));
+                        player.QuickSpawnItem(mod.ItemType("GibsShorts"));
                         if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("GibsJet"));
@@ -1754,7 +1663,11 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
+            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || 
+                BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true) || 
+                BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true) ||
+                BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Aves.DuckstepWings>(), true, true) ||
+                BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Gibs.GibsJet>(), true, true))
             {
                 player.flapSound = true;
             }
@@ -2371,7 +2284,7 @@ namespace AAMod
 
             if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
             {
-                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+                target.AddBuff(mod.BuffType("HydraToxin"), 900);
             }
         }
 
@@ -2712,8 +2625,6 @@ namespace AAMod
             }
         }
 
-
-
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
             if (ammo20percentdown && Main.rand.Next(5) == 0)
@@ -2913,7 +2824,7 @@ namespace AAMod
 
             if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")) && proj.melee)
             {
-                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+                target.AddBuff(mod.BuffType("HydraToxin"), 900);
             }
         }
         public override Texture2D GetMapBackgroundImage()
@@ -2926,7 +2837,7 @@ namespace AAMod
             {
                 return mod.GetTexture("Map/InfernoMap");
             }
-            if (ZoneVoid)
+            if (ZoneVoid || ZoneVoid2)
             {
                 return mod.GetTexture("Map/VoidMap");
             }

@@ -58,7 +58,7 @@ Hold down and jump to hover for an extended period of time
             {
                 speed = 15f;
                 acceleration *= 10f;
-                player.velocity.Y *= 0f;
+                player.velocity.Y = 0f;
             }
             else
             {
@@ -66,5 +66,31 @@ Hold down and jump to hover for an extended period of time
                 acceleration *= 6.25f;
             }
         }
-	}
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse || player.jump > 0)
+            {
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter > 3)
+                {
+                    player.wingFrame++;
+                    player.wingFrameCounter = 0;
+                    if (player.wingFrame >= 4)
+                    {
+                        player.wingFrame = 0;
+                    }
+                }
+            }
+            else if (player.velocity.Y != 0f)
+            {
+                player.wingFrame = 2;
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            return false;
+        }
+    }
 }

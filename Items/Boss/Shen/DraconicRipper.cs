@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Shen
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
-			item.damage = 70;
+			item.damage = 40;
 			item.shootSpeed = 15f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(1, 0, 0, 0);

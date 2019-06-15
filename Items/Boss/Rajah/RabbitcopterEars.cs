@@ -36,6 +36,44 @@ namespace AAMod.Items.Boss.Rajah
             constantAscend = 0.125f;
         }
 
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse || player.jump > 0)
+            {
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter >= 6)
+                {
+                    player.wingFrameCounter = 0;
+                }
+                player.wingFrame = 1 + player.wingFrameCounter / 2;
+            }
+            else if (player.velocity.Y != 0f)
+            {
+                if (player.controlJump)
+                {
+                    player.wingFrameCounter++;
+                    if (player.wingFrameCounter >= 6)
+                    {
+                        player.wingFrameCounter = 0;
+                    }
+                    player.wingFrame = 1 + player.wingFrameCounter / 2;
+                }
+                else if (player.wingTime == 0f)
+                {
+                    player.wingFrame = 0;
+                }
+                else
+                {
+                    player.wingFrame = 0;
+                }
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            return false;
+        }
+
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 8f;

@@ -53,13 +53,13 @@ namespace AAMod.Items.Boss.Raider
 		{
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("ZeroMask"));
+                player.QuickSpawnItem(mod.ItemType("RaiderMask"));
             }
-            if (Main.rand.Next(7) == 0)
+            if (Main.rand.Next(7) == 5)
             {
                 player.QuickSpawnItem(mod.ItemType("RaidEgg"));
             }
-            if (Main.rand.NextFloat(20) == 1)
+            if (Main.rand.Next(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.HMDevArmor();

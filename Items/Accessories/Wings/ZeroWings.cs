@@ -44,6 +44,46 @@ namespace AAMod.Items.Accessories.Wings
 			acceleration *= 3.5f;
 		}
 
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse || player.jump > 0)
+            {
+                player.wingFrameCounter++;
+                int num80 = 2;
+                if (player.wingFrameCounter >= num80 * 3)
+                {
+                    player.wingFrameCounter = 0;
+                }
+                player.wingFrame = 1 + player.wingFrameCounter / num80;
+            }
+            else if (player.velocity.Y != 0f)
+            {
+                if (player.controlJump)
+                {
+                    player.wingFrameCounter++;
+                    int num81 = 2;
+                    if (player.wingFrameCounter >= num81 * 3)
+                    {
+                        player.wingFrameCounter = 0;
+                    }
+                    player.wingFrame = 1 + player.wingFrameCounter / num81;
+                }
+                else if (player.wingTime == 0f)
+                {
+                    player.wingFrame = 0;
+                }
+                else
+                {
+                    player.wingFrame = 0;
+                }
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            return false;
+        }
+
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)

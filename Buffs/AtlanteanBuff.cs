@@ -7,8 +7,8 @@ namespace AAMod.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Atlantean Power");
-            Description.SetDefault("Your battle abilities are increased");
+            DisplayName.SetDefault("Atlantean Enhancement");
+            Description.SetDefault("Your magic abilities are increased");
             Main.buffNoSave[Type] = true;
         }
 

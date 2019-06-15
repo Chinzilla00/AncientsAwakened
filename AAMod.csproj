@@ -75,6 +75,7 @@
     <Compile Include="Backgrounds\ShenASkyData.cs" />
     <Compile Include="Backgrounds\ShenSky.cs" />
     <Compile Include="Backgrounds\ShenSkyData.cs" />
+    <Compile Include="Backgrounds\VoidSky2.cs" />
     <Compile Include="Buffs\ChaosClaw.cs" />
     <Compile Include="Buffs\CyberClaw.cs" />
     <Compile Include="Buffs\DapperSquirrel.cs" />
@@ -83,8 +84,15 @@
     <Compile Include="Buffs\ScoutMinion.cs" />
     <Compile Include="Buffs\Socc.cs" />
     <Compile Include="Buffs\SockPuppet.cs" />
+    <Compile Include="Buffs\TiedemiesBuff.cs" />
     <Compile Include="Dusts\SnapDust.cs" />
     <Compile Include="Items\Accessories\Snap.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedemiesPet.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsLeggingsA.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsMaskA.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsSuitA.cs" />
+    <Compile Include="Items\Armor\Doomsday\DoomsdayMask.cs" />
+    <Compile Include="Items\Armor\Doomsday\ZeroMini.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
@@ -1917,6 +1925,7 @@
     <Compile Include="Projectiles\Flasks\OrderBottle.cs" />
     <Compile Include="Projectiles\ForestSolution.cs" />
     <Compile Include="Projectiles\JungleSolution.cs" />
+    <Compile Include="Projectiles\Mjolnir.cs" />
     <Compile Include="Projectiles\RadiumStar.cs" />
     <Compile Include="Projectiles\RaiderLance.cs" />
     <Compile Include="Projectiles\ScourgeOfShadowsP2.cs" />
@@ -2277,6 +2286,7 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\BiomePrism.cs" />
     <Compile Include="Tiles\DepthMoss.cs" />
+    <Compile Include="Tiles\IndigoIce.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
@@ -2735,10 +2745,12 @@
     <Content Include="Buffs\SnakeMinion.png" />
     <Content Include="Buffs\Socc.png" />
     <Content Include="Buffs\SockPuppet.png" />
+    <Content Include="Buffs\Squirrel.png" />
     <Content Include="Buffs\Stunned.png" />
     <Content Include="Buffs\Terrablaze.png" />
     <Content Include="Buffs\TerraDemon.png" />
     <Content Include="Buffs\Terrarium.png" />
+    <Content Include="Buffs\TiedemiesBuff.png" />
     <Content Include="Buffs\TimeFrozen.png" />
     <Content Include="Buffs\TrueHallowedPrism.png" />
     <Content Include="Buffs\Unstable.png" />
@@ -2746,6 +2758,7 @@
     <Content Include="Buffs\YamataAGravity.png" />
     <Content Include="Buffs\YamataGravity.png" />
     <Content Include="Buffs\Yanked.png" />
+    <Content Include="Buffs\ZeroMini.png" />
     <Content Include="Buffs\_Blankbuff.png" />
     <Content Include="Buffs\_Blankdebuff.png" />
     <Content Include="build.txt" />
@@ -3888,6 +3901,14 @@
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA_Female.png" />
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA.png" />
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA_Head.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorPantsA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorPantsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Body.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Female.png" />
+    <Content Include="Items\Armor\Dev\Dallin\FezA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\FezA_Head.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBeeMinion.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA_Legs.png" />
@@ -3898,6 +3919,15 @@
     <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Arms.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Body.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonRobeAFemale.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedemiesPet.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsLeggingsA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsLeggingsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsMaskA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsMaskA_Head.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_Body.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_FemaleBody.png" />
     <Content Include="Items\Armor\Djinn\DjinnLegs.png" />
     <Content Include="Items\Armor\Djinn\DjinnTurban.png" />
     <Content Include="Items\Armor\DoomiteU\DoomiteUGreaves.png" />
@@ -3925,6 +3955,9 @@
     <Content Include="Items\Armor\Doomsday\DoomsdayHelmet_Head.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayLeggings.png" />
     <Content Include="Items\Armor\Doomsday\DoomsdayLeggings_Legs.png" />
+    <Content Include="Items\Armor\Doomsday\DoomsdayMask.png" />
+    <Content Include="Items\Armor\Doomsday\DoomsdayMask_Head.png" />
+    <Content Include="Items\Armor\Doomsday\ZeroMini.png" />
     <Content Include="Items\Armor\Draco\DracoHelm.png" />
     <Content Include="Items\Armor\Draco\DracoHelm_Head.png" />
     <Content Include="Items\Armor\Draco\DracoLeggings.png" />
@@ -4447,6 +4480,8 @@
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
+    <Content Include="Items\Dev\DeceivingTruth.png" />
+    <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
     <Content Include="Items\Dev\MagicAcornEX.png" />
     <Content Include="Items\Dev\Minions\Acorn.png" />
@@ -4546,6 +4581,7 @@
     <Content Include="Items\Ranged\OceanWhaler.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Summoning\Minions\CrowMinion.gif" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
     <Content Include="Items\Usable\BrownSolution.png" />
@@ -4578,6 +4614,7 @@
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Arms.png" />
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Body.png" />
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Female.png" />
+    <Content Include="Items\Vanity\Aves\DuckstepWings_Wings.png" />
     <Content Include="Items\Vanity\Beg\PonyBody.png" />
     <Content Include="Items\Vanity\Beg\PonyBody_Arms.png" />
     <Content Include="Items\Vanity\Beg\PonyBody_Body.png" />
@@ -6293,6 +6330,10 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\DeceivingTruth1.png" />
+    <Content Include="Projectiles\DeceivingTruth2.png" />
+    <Content Include="Projectiles\DeceivingTruth3.png" />
+    <Content Include="Projectiles\DeceivingTruth4.png" />
     <Content Include="Projectiles\DoomiteVortex.png" />
     <Content Include="Projectiles\DragonSpine.png" />
     <Content Include="Projectiles\DynaskullJavelin.png" />
@@ -6322,6 +6363,8 @@
     <Content Include="Projectiles\Incapacitator.png" />
     <Content Include="Projectiles\JungleSolution.png" />
     <Content Include="Projectiles\MireLeaf.png" />
+    <Content Include="Projectiles\Mjolnir.png" />
+    <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\OceanWhaler.png" />
     <Content Include="Projectiles\OceanWhaler_Chain.png" />
     <Content Include="Projectiles\OrderDiscP.png" />
@@ -6603,6 +6646,7 @@
     <Content Include="Projectiles\ValkyrieLance.png" />
     <Content Include="Projectiles\VikingPolearm.png" />
     <Content Include="Projectiles\Void.png" />
+    <Content Include="Projectiles\VoidBomb.png" />
     <Content Include="Projectiles\VoidRing.png" />
     <Content Include="Projectiles\Volley.png" />
     <Content Include="Projectiles\Yamata\AbyssalYariP.png" />
@@ -6772,7 +6816,7 @@
     <Content Include="Tiles\FungusBox.png" />
     <Content Include="Tiles\GlowingMushiumBar.png" />
     <Content Include="Tiles\Hotshroom.png" />
-    <Content Include="Tiles\InfernalAsh.png" />
+    <Content Include="Tiles\IndigoIce.png" />
     <Content Include="Tiles\InfernoFoliage.png" />
     <Content Include="Tiles\InfernoFoliage1.png" />
     <Content Include="Tiles\InfernoFoliage2.png" />

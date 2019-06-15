@@ -53,13 +53,54 @@ Hold down and jump to hover for an extended period of time
 			constantAscend = 0.135f;
         }
 
-		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse || player.jump > 0)
+            {
+                player.wingFrameCounter++;
+                int num80 = 2;
+                if (player.wingFrameCounter >= num80 * 3)
+                {
+                    player.wingFrameCounter = 0;
+                }
+                player.wingFrame = 1 + player.wingFrameCounter / num80;
+            }
+            else if (player.velocity.Y != 0f)
+            {
+                if (player.controlJump)
+                {
+                    player.wingFrameCounter++;
+                    int num81 = 2;
+                    if (player.wingFrameCounter >= num81 * 3)
+                    {
+                        player.wingFrameCounter = 0;
+                    }
+                    player.wingFrame = 1 + player.wingFrameCounter / num81;
+                }
+                else if (player.wingTime == 0f)
+                {
+                    player.wingFrame = 0;
+                }
+                else
+                {
+                    player.wingFrame = 0;
+                }
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            return false;
+        }
+
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
             if (player.controlDown && player.controlJump && player.wingTime > 0f)
             {
                 speed = 15f;
                 acceleration *= 10f;
-                player.velocity.Y *= 0f;
+                player.velocity.Y = 0f;
             }
             else
             {
