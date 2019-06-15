@@ -10,7 +10,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     public class YamataA : Yamata
 	{
 		bool cheated = false;
-		bool Panic = false;
         private bool tenthHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
@@ -169,18 +168,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     tenthHealth = true;
                 }
             }
-            if (npc.life > npc.lifeMax / 3)
+            if (npc.life <= npc.lifeMax / 3 && !AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
             {
-                Panic = false;
-            }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && !AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
-            {
-                Panic = true;
                 Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
             }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
+            if (npc.life <= npc.lifeMax / 3 && AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
             {
-                Panic = true;
                 Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
             }
 

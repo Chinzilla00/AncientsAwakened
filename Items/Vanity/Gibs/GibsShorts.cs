@@ -25,6 +25,11 @@ namespace AAMod.Items.Vanity.Gibs
             }
         }
 
+        public override bool DrawLegs()
+        {
+            return false;
+        }
+
         public override void SetDefaults()
         {
             item.width = 16;

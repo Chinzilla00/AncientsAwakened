@@ -228,10 +228,6 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
             float num367 = npc.position.X + (npc.width / 2) - Main.player[npc.target].position.X - (Main.player[npc.target].width / 2);
             float num368 = npc.position.Y + npc.height - 59f - Main.player[npc.target].position.Y - (Main.player[npc.target].height / 2);
             float num369 = (float)Math.Atan2(num368, num367) + 1.57f;
-            if (Panic)
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ZeroPinch");
-            }
             if (num369 < 0f)
             {
                 num369 += 6.283f;

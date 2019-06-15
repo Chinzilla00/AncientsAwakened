@@ -26,6 +26,17 @@ namespace AAMod.Items.Vanity.Gibs
             }
         }
 
+        public override bool DrawBody()
+        {
+            return false;
+        }
+
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
+        {
+            drawHands = false;
+            drawArms = false;
+        }
+
         public override void SetDefaults()
         {
             item.width = 16;

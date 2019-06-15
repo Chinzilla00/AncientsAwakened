@@ -21,9 +21,6 @@ namespace AAMod.Globals
 
             if (yabhb != null)
             {
-                yabhb.Call("RegisterHealthBarMini", AAMod.instance.NPCType("YamataHeadF1"));
-                yabhb.Call("RegisterHealthBarMini", AAMod.instance.NPCType("YamataHeadF2"));
-
                 // Mushroom Monarch
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -199,6 +196,21 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Orthrus"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah"));
 
                 // Daybringer
                 yabhb.Call("hbStart");

@@ -13,7 +13,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
     [AutoloadBossHead]
     public class AkumaA : ModNPC
 	{
-        public bool Panic;
         public bool Loludided;
         private bool weakness = false;
         public int fireTimer = 0;
@@ -161,18 +160,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     Main.NewText("Atta-girl..!", Color.DeepSkyBlue);
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
-            }
-
-            if (npc.life > npc.lifeMax / 3)
-            {
-                Panic = false;
-            }
-            if (npc.life <= npc.lifeMax / 3 && Panic == false && npc.type == mod.NPCType<AkumaA>())
-            {
-                Panic = true;
-
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
-                Main.NewText(AAWorld.downedAkuma ? "Still got it, do you? Ya got fire in your spirit! I like that about you, kid!" : "What?! How have you lasted this long?! Why you little... I refuse to be bested by a terrarian again! Have at it!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             }
 
             if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)

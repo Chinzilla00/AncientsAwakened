@@ -25,6 +25,17 @@ namespace AAMod.Items.Vanity.Gibs
             }
         }
 
+        public override bool DrawHead()
+        {
+            return false;
+        }
+
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = false;
+            drawAltHair = false;
+        }
+
         public override void SetDefaults()
         {
             item.width = 16;
