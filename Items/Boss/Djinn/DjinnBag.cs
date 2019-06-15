@@ -34,14 +34,10 @@ namespace AAMod.Items.Boss.Djinn
             {
                 player.QuickSpawnItem(mod.ItemType("DjinnMask"));
             }
-            if (Main.rand.NextFloat() < 0.01f)
+            if (Main.rand.NextFloat(20) == 1)
             {
-                int choice = Main.rand.Next(17);
-                {
-
-                    AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-                    modPlayer.PHMDevArmor();
-                }
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                modPlayer.PHMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("DesertMana"), Main.rand.Next(15, 20));
             string[] lootTable = { "Djinnerang", "SandLamp", "SandScepter", "SandstormCrossbow", "SultanScimitar" };

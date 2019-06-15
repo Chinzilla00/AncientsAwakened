@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Sagittarius
             {
                 player.QuickSpawnItem(mod.ItemType("SagMask"));
             }
-            if (Main.rand.NextFloat() < 0.01f)
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();

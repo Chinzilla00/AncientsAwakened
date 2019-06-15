@@ -32,9 +32,9 @@ namespace AAMod.Items.Boss.Toad
 		{
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("DBMask"));
+                player.QuickSpawnItem(mod.ItemType("ToadMask"));
             }
-            if (Main.rand.NextFloat() < 0.01f)
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.HMDevArmor();

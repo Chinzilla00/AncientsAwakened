@@ -1510,7 +1510,7 @@ namespace AAMod
             string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
             {
-                int choice = Main.rand.Next(19);
+                int choice = Main.rand.Next(20);
                 switch (choice)
                 {
                     case 0:
@@ -1710,12 +1710,22 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("GibsSkull"));
                         player.QuickSpawnItem(mod.ItemType("GibsPlate"));
                         player.QuickSpawnItem(mod.ItemType("GribsShorts"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GibsJet"));
+                        }
                         spawnedDevItems = true;
                         break;
                     case 18:
                         player.QuickSpawnItem(mod.ItemType("ApawnHelm"));
                         player.QuickSpawnItem(mod.ItemType("ApawnPlate"));
                         player.QuickSpawnItem(mod.ItemType("ApawnBoots"));
+                        spawnedDevItems = true;
+                        break;
+                    case 19:
+                        player.QuickSpawnItem(mod.ItemType("DarkMask"));
+                        player.QuickSpawnItem(mod.ItemType("DarkShirt"));
+                        player.QuickSpawnItem(mod.ItemType("DarkPants"));
                         spawnedDevItems = true;
                         break;
                 }

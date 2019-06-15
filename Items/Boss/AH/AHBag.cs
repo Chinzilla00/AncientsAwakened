@@ -28,8 +28,8 @@ namespace AAMod.Items.Boss.AH
         }
 
         public override void OpenBossBag(Player player)
-		{
-            if (Main.rand.NextFloat() < 0.01f)
+        {
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();

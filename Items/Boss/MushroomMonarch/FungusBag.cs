@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             {
                 player.QuickSpawnItem(mod.ItemType<Items.Vanity.Mask.FungusMask>());
             }
-            if (Main.rand.NextFloat() < 0.01f)
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();

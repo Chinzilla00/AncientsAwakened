@@ -33,11 +33,11 @@ namespace AAMod.Items.Boss.Grips
             {
                 player.QuickSpawnItem(mod.ItemType("GripMaskBlue"));
             }
-            if (Main.rand.Next(7) == 0)
+            else if (Main.rand.Next(7) == 1)
             {
                 player.QuickSpawnItem(mod.ItemType("GripMaskRed"));
             }
-            if (Main.rand.NextFloat() < 0.01f)
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();
