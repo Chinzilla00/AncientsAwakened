@@ -235,6 +235,10 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+            if (Main.netMode != 1)
+            {
+                AAWorld.zeroUS = false;
+            }
             LineStopper--;
             RingRoatation += 0.03f;
             
