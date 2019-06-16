@@ -37,8 +37,8 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
-            spineEnd = projectile.ai[1] == 10;
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 30);
+            spineEnd = projectile.ai[1] == 25;
         }
 
         public override void PostAI()
@@ -48,7 +48,7 @@ namespace AAMod.Projectiles
                 for (int j = 0; j < 4; j++)
                 {
                     int DustType = mod.DustType<Dusts.Discord>();
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 48, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, DustType, Color.White, j == 0 ? 1.1f : 1.2f);
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, 40, Color.White, j == 0 ? 1.1f : 1.2f);
                 }
             }
         }

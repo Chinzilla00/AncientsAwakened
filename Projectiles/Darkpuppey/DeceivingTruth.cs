@@ -8,10 +8,9 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Darkpuppey
 {
-    public class J : ModProjectile
+    public class DeceivingTruth : ModProjectile
     {
         public bool spineEnd = false;
-        public bool spineBeginning = false;
 
         public override void SetStaticDefaults()
         {
@@ -21,8 +20,8 @@ namespace AAMod.Projectiles.Darkpuppey
 
         public override void SetDefaults()
         {
-            projectile.width = 28;
-            projectile.height = 28;
+            projectile.width = 34;
+            projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
@@ -37,31 +36,28 @@ namespace AAMod.Projectiles.Darkpuppey
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 15);
-            spineBeginning = projectile.ai[1] == 0;
-            spineEnd = projectile.ai[1] == 15;
-            if (projectile.ai[1] == 0)
-            {
-                projectile.frame = 2;
-            }
-            else if (projectile.ai[1] == 15)
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
+            spineEnd = projectile.ai[1] == 10;
+            if (spineEnd)
             {
                 projectile.frame = 0;
             }
             else
             {
-                projectile.frame = 1;
+                if (projectile.ai[1] % 2 == 0)
+                {
+                    projectile.frame = 1;
+                }
+                else
+                {
+                    projectile.frame = 2;
+                }
             }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.CursedInferno, 300);
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            Color newLightColor = new Color(Math.Max(0, Color.DarkGreen.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.DarkGreen.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.DarkGreen.B + Math.Min(0, -projectile.alpha + 20)));
+            Color newLightColor = new Color(Math.Max(0, Color.Goldenrod.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Goldenrod.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Goldenrod.B + Math.Min(0, -projectile.alpha + 20)));
             BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
             Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
             BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);

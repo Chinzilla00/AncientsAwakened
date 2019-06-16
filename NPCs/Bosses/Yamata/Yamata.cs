@@ -119,14 +119,9 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            damage = 0;
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            damage = 0;
+            return false;
         }
 
         public bool Dead = false;
@@ -492,8 +487,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
-            float dist = npc.Distance(playerTarget.Center);
-            float movementScalar2 = Math.Min(4f, Math.Max(1f, (playerDistance / (float)playerTooFarDist) * 4f));
             bool playerTooFar = playerDistance > playerTooFarDist;
 			YamataBody(npc, ref npc.ai, true, 0.2f, 2.5f, 3f, 0.04f, 1.5f, 3);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
@@ -509,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 int tileDist = 16;
                 bool inRangeX = false;
                 bool inRangeY = false;
-                if (npc.position.X > ai[0] - (float)tileDist && npc.position.X < ai[0] + (float)tileDist) { inRangeX = true; }
+                if (npc.position.X > ai[0] - tileDist && npc.position.X < ai[0] + tileDist) { inRangeX = true; }
                 else
                     if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0)) { inRangeX = true; }
                 tileDist += 24;

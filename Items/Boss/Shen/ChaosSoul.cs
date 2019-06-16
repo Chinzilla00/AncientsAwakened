@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Shen
             item.width = 22;
             item.height = 24;
             item.maxStack = 999;
-            item.value = 1000000;
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 11;
             item.expert = true;
             item.alpha = 25;

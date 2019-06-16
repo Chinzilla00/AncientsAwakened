@@ -21,8 +21,8 @@ namespace AAMod.Projectiles.Darkpuppey
 
         public override void SetDefaults()
         {
-            projectile.width = 34;
-            projectile.height = 32;
+            projectile.width = 28;
+            projectile.height = 28;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
@@ -33,20 +33,38 @@ namespace AAMod.Projectiles.Darkpuppey
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.magic = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            for (int n = 0; n < 3; n++)
+            {
+                float x = projectile.position.X + Main.rand.Next(-400, 400);
+                float y = projectile.position.Y - Main.rand.Next(500, 800);
+                Vector2 vector = new Vector2(x, y);
+                float num13 = projectile.position.X + (projectile.width / 2) - vector.X;
+                float num14 = projectile.position.Y + (projectile.height / 2) - vector.Y;
+                num13 += Main.rand.Next(-100, 101);
+                int num15 = 23;
+                float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
+                num16 = num15 / num16;
+                num13 *= num16;
+                num14 *= num16;
+                int num17 = Projectile.NewProjectile(x, y, num13, num14, 92, 70, 5f, Main.myPlayer, 0f, 0f);
+                Main.projectile[num17].ai[1] = projectile.position.Y;
+            }
         }
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 15);
             spineBeginning = projectile.ai[1] == 0;
-            spineEnd = projectile.ai[1] == 10;
+            spineEnd = projectile.ai[1] == 15;
             if (projectile.ai[1] == 0)
             {
                 projectile.frame = 2;
             }
-            else if (projectile.ai[1] == 10)
+            else if (projectile.ai[1] == 15)
             {
                 projectile.frame = 0;
             }
@@ -56,23 +74,12 @@ namespace AAMod.Projectiles.Darkpuppey
             }
         }
 
-        public override void PostAI()
-        {
-            if (Main.netMode != 2 && projectile.alpha < 170 && projectile.alpha + 5 >= 170)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 48, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, DustID.BlueCrystalShard, Color.White, j == 0 ? 1.1f : 1.2f);
-                }
-            }
-        }
-
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
-        {or
-            Color newLightColor = new Color(Math.Max(0, Color.CnflowerBlue.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.CnflowerBlue.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.CnflowerBlue.B + Math.Min(0, -projectile.alpha + 20)));
+        {
+            Color newLightColor = new Color(Math.Max(0, Color.CornflowerBlue.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.CornflowerBlue.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.CornflowerBlue.B + Math.Min(0, -projectile.alpha + 20)));
             BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            Texture2D mainTex = Main.projectileTexture[projectile.type];
-            BaseMod.BaseDrawing.DrawTexture(sb, mainTex, 0, projectile);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

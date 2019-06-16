@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Akuma
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 10;
         }
         

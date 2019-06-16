@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Shen
             item.useAnimation = 16;
             item.tileBoost += 25;
             item.knockBack = 3;
-            item.value = 1000000;
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.rare = 11;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

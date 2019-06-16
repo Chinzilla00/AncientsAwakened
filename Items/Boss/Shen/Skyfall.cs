@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Shen
             item.noMelee = true;
             item.channel = true;
             item.knockBack = 5f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Skyfall");
             item.shootSpeed = 14f;

@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
             item.CloneDefaults(3859);
-			item.damage = 140;
+			item.damage = 110;
 			item.shootSpeed = 16f;
         }
 		

@@ -10,7 +10,7 @@ namespace AAMod.Items.Vanity.Mikpin
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Kitsune Komono");
+            DisplayName.SetDefault("Kitsune Dress");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 

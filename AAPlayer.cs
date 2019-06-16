@@ -1635,6 +1635,10 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("DarkMask"));
                         player.QuickSpawnItem(mod.ItemType("DarkShirt"));
                         player.QuickSpawnItem(mod.ItemType("DarkPants"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("DeceivingTruth" + addonEX));
+                        }
                         spawnedDevItems = true;
                         break;
                     case 20:

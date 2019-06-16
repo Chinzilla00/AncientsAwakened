@@ -21,8 +21,8 @@ namespace AAMod.Projectiles.Darkpuppey
 
         public override void SetDefaults()
         {
-            projectile.width = 34;
-            projectile.height = 32;
+            projectile.width = 26;
+            projectile.height = 26;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
@@ -33,20 +33,18 @@ namespace AAMod.Projectiles.Darkpuppey
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.magic = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
         }
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 18);
             spineBeginning = projectile.ai[1] == 0;
-            spineEnd = projectile.ai[1] == 10;
+            spineEnd = projectile.ai[1] == 18;
             if (projectile.ai[1] == 0)
             {
                 projectile.frame = 2;
             }
-            else if (projectile.ai[1] == 10)
+            else if (projectile.ai[1] == 18)
             {
                 projectile.frame = 0;
             }
@@ -56,23 +54,12 @@ namespace AAMod.Projectiles.Darkpuppey
             }
         }
 
-        public override void PostAI()
-        {
-            if (Main.netMode != 2 && projectile.alpha < 170 && projectile.alpha + 5 >= 170)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 48, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, DustID.GoldFlame, Color.White, j == 0 ? 1.1f : 1.2f);
-                }
-            }
-        }
-
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
             Color newLightColor = new Color(Math.Max(0, Color.Goldenrod.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Goldenrod.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Goldenrod.B + Math.Min(0, -projectile.alpha + 20)));
             BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            Texture2D mainTex = Main.projectileTexture[projectile.type];
-            BaseMod.BaseDrawing.DrawTexture(sb, mainTex, 0, projectile);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

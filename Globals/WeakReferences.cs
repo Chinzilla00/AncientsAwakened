@@ -326,7 +326,7 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Yamata"));
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("YamataHead"));
 
                 // Yamata Awakened
                 yabhb.Call("hbStart");
@@ -342,7 +342,7 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("YamataA"));
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("YamataAHead"));
 
                 // Akuma; Draconian Demon
                 yabhb.Call("hbStart");

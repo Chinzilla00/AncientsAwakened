@@ -21,8 +21,8 @@ namespace AAMod.Projectiles.Darkpuppey
 
         public override void SetDefaults()
         {
-            projectile.width = 34;
-            projectile.height = 32;
+            projectile.width = 28;
+            projectile.height = 28;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
@@ -33,20 +33,18 @@ namespace AAMod.Projectiles.Darkpuppey
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.magic = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
         }
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
+            BaseMod.BaseAI.AIVilethorn(projectile, 100, 4, 15);
             spineBeginning = projectile.ai[1] == 0;
-            spineEnd = projectile.ai[1] == 10;
+            spineEnd = projectile.ai[1] == 15;
             if (projectile.ai[1] == 0)
             {
                 projectile.frame = 2;
             }
-            else if (projectile.ai[1] == 10)
+            else if (projectile.ai[1] == 15)
             {
                 projectile.frame = 0;
             }
@@ -60,8 +58,8 @@ namespace AAMod.Projectiles.Darkpuppey
         {
             Color newLightColor = new Color(Math.Max(0, Color.White.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.White.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.White.B + Math.Min(0, -projectile.alpha + 20)));
             BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            Texture2D mainTex = Main.projectileTexture[projectile.type];
-            BaseMod.BaseDrawing.DrawTexture(sb, mainTex, 0, projectile);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

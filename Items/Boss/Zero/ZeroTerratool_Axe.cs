@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Zero
             item.useAnimation = 20;
             item.tileBoost += 20;
             item.knockBack = 3;
-            item.value = 1000000;
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 10;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

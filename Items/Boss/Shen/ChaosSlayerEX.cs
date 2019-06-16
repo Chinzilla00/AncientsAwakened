@@ -19,7 +19,7 @@ Chaos Slayer EX");
         {
             item.width = 85;
             item.height = 85;
-            item.value = 3000000;
+            item.value = Item.sellPrice(3, 0, 0, 0);
             item.useStyle = 1;
             item.useAnimation = 26;
             item.useTime = 26;

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Shen
         {
             item.width = 85;
             item.height = 85;
-            item.value = 3000000;
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.useStyle = 1;
             item.useAnimation = 25;
             item.useTime = 25;

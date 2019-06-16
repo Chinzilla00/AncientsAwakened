@@ -894,6 +894,7 @@
     <Compile Include="Items\Boss\Zero\ZeroTrophy.cs" />
     <Compile Include="Items\Currency\GoblinSoul.cs" />
     <Compile Include="Items\DevTools\AncientOreGenner.cs" />
+    <Compile Include="Items\DevTools\Anticheat.cs" />
     <Compile Include="Items\DevTools\Undowner.cs" />
     <Compile Include="Items\DevTools\HardmodeUndowner.cs" />
     <Compile Include="Items\DevTools\TerrariaUndowner.cs" />
@@ -902,6 +903,8 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\DeceivingTruthEX.cs" />
+    <Compile Include="Items\Dev\DeceivingTruth.cs" />
     <Compile Include="Items\Dev\MagicAcornEX.cs" />
     <Compile Include="Items\Dev\MagicAcorn.cs" />
     <Compile Include="Items\Dev\Minions\Acorn.cs" />
@@ -997,6 +1000,8 @@
     <Compile Include="Items\Magic\SkyBook.cs" />
     <Compile Include="Items\Magic\SludgeShot.cs" />
     <Compile Include="Items\Magic\Spectrum.cs" />
+    <Compile Include="Items\Magic\StarStaff.cs" />
+    <Compile Include="Items\Magic\SubzeroStaff.cs" />
     <Compile Include="Items\Magic\TerraRose.cs" />
     <Compile Include="Items\Magic\Toxifang.cs" />
     <Compile Include="Items\Magic\TrueGong.cs" />
@@ -1932,6 +1937,7 @@
     <Compile Include="Projectiles\CrystalP.cs" />
     <Compile Include="Projectiles\CyberBaton.cs" />
     <Compile Include="Projectiles\DarkArrow.cs" />
+    <Compile Include="Projectiles\Darkpuppey\DeceivingTruth.cs" />
     <Compile Include="Projectiles\Darkpuppey\J.cs" />
     <Compile Include="Projectiles\Darkpuppey\I.cs" />
     <Compile Include="Projectiles\Darkpuppey\H.cs" />
@@ -1981,7 +1987,12 @@
     <Compile Include="Projectiles\Shen\TimesplitterP.cs" />
     <Compile Include="Projectiles\Snowmelt.cs" />
     <Compile Include="Projectiles\SnowSolution.cs" />
+    <Compile Include="Projectiles\Stars.cs" />
+    <Compile Include="Projectiles\SubzeroSnowflake.cs" />
     <Compile Include="Projectiles\ThanosSwordEXT.cs" />
+    <Compile Include="Projectiles\Thunder.cs" />
+    <Compile Include="Projectiles\ThunderSphere.cs" />
+    <Compile Include="Projectiles\Thunderstrike.cs" />
     <Compile Include="Projectiles\VikingPolarm.cs" />
     <Compile Include="Projectiles\Executioner.cs" />
     <Compile Include="Projectiles\SaltwaterSpear.cs" />
@@ -4525,6 +4536,7 @@
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
     <Content Include="Items\Boss\Zero\ZeroATrophy.png" />
     <Content Include="Items\DevTools\AAUndowner.png" />
+    <Content Include="Items\DevTools\Anticheat.png" />
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
@@ -5336,7 +5348,6 @@
     <Content Include="Items\Dev\ChronosOld.png" />
     <Content Include="Items\Dev\CordesDuFuret_Axe.png" />
     <Content Include="Items\Dev\CordesDuFuret_Notes.png" />
-    <Content Include="Items\Dev\CrabGuardian.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
     <Content Include="Items\Dev\DuckstepGunEX.png" />
     <Content Include="Items\Dev\EnderStaff.png" />
@@ -6445,6 +6456,7 @@
     <Content Include="Projectiles\PrimevalJavelin.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
     <Content Include="Projectiles\Pyrosphere_Chain.png" />
+    <Content Include="Projectiles\Stars.png" />
     <Content Include="Projectiles\RadiumStar.png" />
     <Content Include="Projectiles\RaiderLance.png" />
     <Content Include="Projectiles\Rajah\Bane.png" />
@@ -6653,6 +6665,7 @@
     <Content Include="Projectiles\Squirt.png" />
     <Content Include="Projectiles\StarWrathEXP.png" />
     <Content Include="Projectiles\StormJavelin.png" />
+    <Content Include="Projectiles\SubzeroSnowflake.png" />
     <Content Include="Projectiles\SunLance.png" />
     <Content Include="Projectiles\Sunpowder.png" />
     <Content Include="Projectiles\Taserblast.png" />
@@ -6686,6 +6699,9 @@
     <Content Include="Projectiles\Thorium\HydrasFuryDamage2.png" />
     <Content Include="Projectiles\Thorium\HydrasFuryEffect.png" />
     <Content Include="Projectiles\Throwshroom.png" />
+    <Content Include="Projectiles\Thunder.png" />
+    <Content Include="Projectiles\ThunderSphere.png" />
+    <Content Include="Projectiles\Thunderstrike.png" />
     <Content Include="Projectiles\Time.png" />
     <Content Include="Projectiles\TimeTeller.png" />
     <Content Include="Projectiles\TitanAxe.png" />
