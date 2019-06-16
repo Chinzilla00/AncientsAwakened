@@ -40,7 +40,7 @@ namespace AAMod.Items.Flasks
 
             if (player.altFunctionUse == 2)
             {
-                item.shoot = mod.ProjectileType("DarkwaterFlask");
+                item.shoot = mod.ProjectileType<Projectiles.Flasks.DarkwaterFlask>();
                 item.shootSpeed = 9f;
             }
             else

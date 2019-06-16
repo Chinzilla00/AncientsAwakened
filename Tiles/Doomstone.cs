@@ -21,18 +21,6 @@ namespace AAMod.Tiles
 			minPick = 225;
         }
 
-        public override void PostDraw(int x, int y, SpriteBatch sb)
-        {
-            Tile tile = Main.tile[x, y];
-            Texture2D glowTex = null;
-            bool glow = !AAWorld.downedZero;
-            if (glow && (tile != null && tile.active() && tile.type == Type))
-            {
-                if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/Doomstone_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
-            }
-        }
-
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             return AAWorld.downedZero;

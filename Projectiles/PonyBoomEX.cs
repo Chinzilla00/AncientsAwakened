@@ -16,12 +16,12 @@ namespace AAMod.Projectiles
         {
             projectile.width = 12;
             projectile.height = 12;
-            projectile.aiStyle = 50;
+            projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.alpha = 255;
             projectile.magic = true;
             projectile.tileCollide = false;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
         }
 
         public override void AI()

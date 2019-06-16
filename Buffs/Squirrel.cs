@@ -16,8 +16,8 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			if (player.ownedProjectileCounts[mod.ProjectileType("Squirrel1")] + player.ownedProjectileCounts[mod.ProjectileType("Squirrel2")] > 0)
-			{
+            if (player.ownedProjectileCounts[mod.ProjectileType<Items.Dev.Minions.Squirrel1>()] + player.ownedProjectileCounts[mod.ProjectileType<Items.Dev.Minions.Squirrel2>()] > 0)
+            {
 				modPlayer.Squirrel = true;
 			}
 			if (!modPlayer.Squirrel)

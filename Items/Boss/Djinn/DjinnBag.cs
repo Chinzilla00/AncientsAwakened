@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Djinn
             {
                 player.QuickSpawnItem(mod.ItemType("DjinnMask"));
             }
-            if (Main.rand.NextFloat(20) == 1)
+            if (Main.rand.Next(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();

@@ -48,6 +48,7 @@ namespace AAMod.Items.Dev
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            player.AddBuff(mod.BuffType<Buffs.Squirrel>(), 3600);
             int shootMe = Main.rand.Next(2);
             {
                 switch (shootMe)

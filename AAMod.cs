@@ -317,6 +317,13 @@ namespace AAMod
             VoidSky.Stars = GetTexture("Backgrounds/Void_Starfield");
             VoidSky.SkyTexture = GetTexture("Backgrounds/SkyTex");
 
+            Filters.Scene["AAMod:VoidSky2"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
+            SkyManager.Instance["AAMod:VoidSky2"] = new VoidSky2();
+            VoidSky2.Asteroids1 = GetTexture("Backgrounds/Asteroids1");
+            VoidSky2.Asteroids2 = GetTexture("Backgrounds/Asteroids2");
+            VoidSky2.Asteroids3 = GetTexture("Backgrounds/Asteroids3");
+            VoidSky2.Stars = GetTexture("Backgrounds/Void_Starfield");
+
             Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
             InfernoSky.PlanetTexture = GetTexture("Backgrounds/Sun");
