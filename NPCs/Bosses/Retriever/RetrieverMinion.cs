@@ -7,15 +7,15 @@ using Terraria.Audio;
 namespace AAMod.NPCs.Bosses.Retriever
 {
     public class RetrieverMinion : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Storm Claw");
-			Main.npcFrameCount[npc.type] = 11;
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Storm Claw");
+            Main.npcFrameCount[npc.type] = 11;
+        }
 
-		public override void SetDefaults()
-		{
+        public override void SetDefaults()
+        {
             npc.lifeMax = 400;
             npc.defense = 40;
             npc.damage = 40;
@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public int shootAI = 0;
         public bool Shoot = false;
         public int ShootTimer = 0;
-        
+
         public override void AI()
         {
             BaseAI.AISkull(npc, ref npc.ai, true, 6f, 350f, 0.1f, 0.15f);

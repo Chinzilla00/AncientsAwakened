@@ -11,14 +11,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 {
     [AutoloadBossHead]
     public class SagittariusFree : Sagittarius
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Sagittarius-A");
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sagittarius-A");
             Main.npcFrameCount[npc.type] = 5;
-		}
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             npc.lifeMax = 6000;
             npc.boss = true;
@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.alpha = 255;
             bossBag = mod.ItemType("SagBag");
         }
-        
+
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 shootAI[0] = reader.ReadFloat();
             }
         }
-       
+
         public override void AI()
         {
             npc.noGravity = true;
@@ -160,8 +160,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
-            
-            if (internalAI[2] == 1) 
+
+            if (internalAI[2] == 1)
             {
                 BaseAI.AIEater(npc, ref npc.ai, 0.05f, 4f, 0, false, true);
                 npc.rotation = 0;
@@ -183,7 +183,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 BaseAI.AIEye(npc, ref npc.ai, false, true, .3f, .3f, 4, 4, 0, 0);
                 npc.rotation = 0;
             }
-            
+
             if (internalAI[2] != 2f)
             {
                 ShieldScale -= .02f;

@@ -32,7 +32,6 @@ namespace AAMod.NPCs.Enemies.Desert
                 if (++projectile.frame >= 6)
                 {
                     projectile.Kill();
-
                 }
             }
             projectile.velocity.X *= 0.00f;

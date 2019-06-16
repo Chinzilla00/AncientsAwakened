@@ -7,7 +7,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     internal class AFireProjHostile : ModProjectile
     {
-        
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4;

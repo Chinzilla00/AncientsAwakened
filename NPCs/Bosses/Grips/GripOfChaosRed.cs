@@ -11,13 +11,13 @@ namespace AAMod.NPCs.Bosses.Grips
     {
         public override void SetDefaults()
         {
-			base.SetDefaults();
-			npc.lifeMax = 1600;
+            base.SetDefaults();
+            npc.lifeMax = 1600;
             npc.damage = 32;
-            npc.defense = 15;	
-            npc.buffImmune[BuffID.OnFire] = true;			
+            npc.defense = 15;
+            npc.buffImmune[BuffID.OnFire] = true;
 
-			offsetBasePoint = new Vector2(-240f, 0f);			
+            offsetBasePoint = new Vector2(-240f, 0f);
         }
 
         public override void HitEffect(int hitDirection, double damage)

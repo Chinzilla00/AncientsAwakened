@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             projectile.aiStyle = -1;
         }
 
-		bool spawnSound = false;
+        bool spawnSound = false;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             return false;
@@ -34,11 +34,11 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-			if(!spawnSound)
-			{
-				Main.PlaySound(SoundID.Item34, projectile.position);
-				spawnSound = true;
-			}
+            if (!spawnSound)
+            {
+                Main.PlaySound(SoundID.Item34, projectile.position);
+                spawnSound = true;
+            }
             if (projectile.ai[0] < 8f)
             {
                 projectile.ai[0] = 8f;

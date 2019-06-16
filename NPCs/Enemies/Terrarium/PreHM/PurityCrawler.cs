@@ -10,18 +10,18 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityCrawler"; } }
         public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Purity Crawler");
-			Main.npcFrameCount[npc.type] = 5;
-		}
+        {
+            DisplayName.SetDefault("Purity Crawler");
+            Main.npcFrameCount[npc.type] = 5;
+        }
 
         public bool Val = false;
         public int[] subNPCs = new int[0];
         public int swapTicks = 0, swapTicksMax = 20;
 
         public override void SetDefaults()
-		{
-            npc.lifeMax =  60;
+        {
+            npc.lifeMax = 60;
             npc.defense = 5;
             npc.damage = 10;
             npc.width = 26;

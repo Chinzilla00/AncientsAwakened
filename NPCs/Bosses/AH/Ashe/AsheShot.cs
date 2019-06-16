@@ -7,12 +7,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     public class AsheShot : ModProjectile
     {
-    	
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dayfire");
-		}
-    	
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dayfire");
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 10;

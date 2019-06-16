@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             return false;
         }
-        
+
 
         public override void NPCLoot()
         {

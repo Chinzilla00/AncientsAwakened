@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Mushroom
 {
     public class MushroomZombie2 : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Mushroom Zombie");
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Mushroom Zombie");
             Main.npcFrameCount[npc.type] = 3;
-		}
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             npc.width = 18;
             npc.height = 40;
@@ -35,25 +35,25 @@ namespace AAMod.NPCs.Enemies.Mushroom
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
+        {
             return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMush ? .7f : 0f;
         }
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
+        public override void HitEffect(int hitDirection, double damage)
+        {
 
             int dust1 = mod.DustType<Dusts.MushDust>();
             if (npc.life <= 0)
-			{
+            {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
             }
-		}
+        }
 
-		public override void NPCLoot()
-		{
+        public override void NPCLoot()
+        {
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Mushroom);
         }
-	}
+    }
 }

@@ -8,13 +8,13 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class SummonBlast : ModProjectile
     {
-    	
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Summon Blast");
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Summon Blast");
             Main.projFrames[projectile.type] = 4;
-		}
-    	
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 10;
@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 Main.dust[num469].velocity *= 2f;
             }
         }
-        
+
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 600);

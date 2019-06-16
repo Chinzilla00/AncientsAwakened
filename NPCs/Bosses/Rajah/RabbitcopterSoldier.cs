@@ -37,15 +37,15 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void HitEffect(int hitDirection, double damage)
         {
-			bool isDead = npc.life <= 0;		
+            bool isDead = npc.life <= 0;
             if (isDead)          //this make so when the npc has 0 life(dead) he will spawn this
             {
 
             }
-			for (int m = 0; m < (isDead ? 10 : 3); m++)
+            for (int m = 0; m < (isDead ? 10 : 3); m++)
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
-            }			
+            }
         }
 
         public override void PostAI()
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (!NPC.AnyNPCs(mod.NPCType<Rajah>()))
             {
                 if (npc.timeLeft > 5)
-					npc.timeLeft = 5;
+                    npc.timeLeft = 5;
                 npc.velocity.Y = npc.velocity.Y - 0.2f;
                 if (npc.velocity.Y < -8f)
                 {

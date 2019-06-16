@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Rajah
 {
     public class RajahRocket : ModProjectile
-	{
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rajah Rocket");

@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     }
                 }
             }
-            
+
         }
 
         public Vector2 MovePoint;

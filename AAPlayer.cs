@@ -501,7 +501,7 @@ namespace AAMod
         }
 
         public float Intensity;
-        
+
 
         public override void UpdateBiomeVisuals()
         {
@@ -1155,7 +1155,7 @@ namespace AAMod
                 {
                     player.wingFrame = 0;
                 }
-                
+
             }
 
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Grox.AngryPirateSails>(), true, true))

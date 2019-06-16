@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 npc.wet = false;
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
-                if (Main.netMode !=1)
+                if (Main.netMode != 1)
                 {
                     internalAI[1]++;
                 }

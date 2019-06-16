@@ -10,13 +10,13 @@ namespace AAMod.NPCs.Bosses.Grips
     {
         public override void SetDefaults()
         {
-			base.SetDefaults();
-			npc.lifeMax = 1400;
+            base.SetDefaults();
+            npc.lifeMax = 1400;
             npc.damage = 30;
-            npc.defense = 10;		
-            npc.buffImmune[BuffID.Poisoned] = true;	
+            npc.defense = 10;
+            npc.buffImmune[BuffID.Poisoned] = true;
 
-			offsetBasePoint = new Vector2(240f, 0f);
+            offsetBasePoint = new Vector2(240f, 0f);
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -69,6 +69,6 @@ namespace AAMod.NPCs.Bosses.Grips
             {
                 target.AddBuff(BuffID.Poisoned, Main.rand.Next(180, 250));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
-        }		
+        }
     }
 }

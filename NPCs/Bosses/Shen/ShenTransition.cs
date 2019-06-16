@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     dust1.velocity.Y -= 6;
                 }
             }
-            if (npc.ai[0] == 375)    
+            if (npc.ai[0] == 375)
             {
                 Main.NewText("Heh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.ai[0] >= 1400)
             {
                 SummonShen();
-                npc.active = false;        
+                npc.active = false;
             }
         }
 
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
                 int npcID = NPC.NewNPC((int)center.X, (int)center.Y, bossType, 0);
                 Main.npc[npcID].Center = center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;			
+                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
             }
         }

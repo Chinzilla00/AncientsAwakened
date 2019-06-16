@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.buffImmune[k] = true;
             }
-        } 
+        }
 
         public override void AI()
         {

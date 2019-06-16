@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     public class Dragron : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Pigron");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[170];
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Pigron");
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[170];
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             npc.width = 44;
             npc.height = 36;
@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         }
 
         public override void HitEffect(int hitDirection, double damage)
-		{
+        {
             if (npc.life > 0)
             {
                 int num589 = 0;
@@ -193,12 +193,12 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
         }
 
-		public override void NPCLoot()
-		{
+        public override void NPCLoot()
+        {
             if (Main.rand.Next(3) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3532, 1, false, 0, false, false);
             }
         }
-	}
+    }
 }

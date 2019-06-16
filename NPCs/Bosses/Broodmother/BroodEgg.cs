@@ -34,21 +34,21 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void HitEffect(int hitDirection, double damage)
         {
-			bool isDead = npc.life <= 0;
+            bool isDead = npc.life <= 0;
             if (isDead)
             {
-				for(int m = 0; m < 4; m++)
-				{
-					Vector2 offset = new Vector2(Main.rand.Next(npc.width), Main.rand.Next(npc.height));
-					Gore.NewGore(npc.position + offset, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore3"), 1f); //reused brood gore, it looks right for the egg
-				}
+                for (int m = 0; m < 4; m++)
+                {
+                    Vector2 offset = new Vector2(Main.rand.Next(npc.width), Main.rand.Next(npc.height));
+                    Gore.NewGore(npc.position + offset, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore3"), 1f); //reused brood gore, it looks right for the egg
+                }
             }
-			for (int m = 0; m < (isDead ? 20 : 5); m++)
-			{
-				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, 1.3f);
-			}
+            for (int m = 0; m < (isDead ? 20 : 5); m++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, 1.3f);
+            }
         }
-        
+
         public override void AI()
         {
             if (npc.velocity.Y == 0f)
@@ -94,14 +94,14 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
         }
 
-		public Color GetGlowAlpha()
-		{
-			return GenericUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
-		}
+        public Color GetGlowAlpha()
+        {
+            return GenericUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
+        }
 
         public override void PostDraw(SpriteBatch sb, Color dColor)
         {
-			BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/BroodEgg_Glow"), 0, npc, GetGlowAlpha());
-        }		
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/BroodEgg_Glow"), 0, npc, GetGlowAlpha());
+        }
     }
 }

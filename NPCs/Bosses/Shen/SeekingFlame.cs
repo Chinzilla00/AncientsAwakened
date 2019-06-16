@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     float distance = projectile.Distance(target.Center);
                     if (distance <= homingMaximumRangeInPixels &&
                     (
-                        selectedTarget == -1 || projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
+                        selectedTarget == -1 || projectile.Distance(Main.npc[selectedTarget].Center) > distance)
                     )
                         selectedTarget = i;
                 }

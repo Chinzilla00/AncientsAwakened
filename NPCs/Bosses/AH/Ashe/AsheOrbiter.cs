@@ -8,12 +8,12 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     public class AsheOrbiter : Ashe
-	{				
-		public override void SetStaticDefaults()
-		{
+    {
+        public override void SetStaticDefaults()
+        {
             DisplayName.SetDefault("Flame Vortex");
             Main.npcFrameCount[npc.type] = 4;
-		}
+        }
 
         public override void SetDefaults()
         {
@@ -32,10 +32,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
-		public int body = -1;
-		public float rotValue = -1f;
-		public override void AI()
-		{
+        public int body = -1;
+        public float rotValue = -1f;
+        public override void AI()
+        {
             if (npc.frameCounter++ > 5)
             {
                 npc.frameCounter = 0;
@@ -54,17 +54,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.alpha -= 4;
             }
-			npc.noGravity = true;
-			if(body == -1)
-			{
-				int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Ashe"), 120f, null);	
-				if(npcID >= 0) body = npcID;
-			}
-			if(body == -1) return;
-            
-			NPC ashe = Main.npc[body];
-			if(ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("Ashe")){ npc.active = false; return; }
-            
+            npc.noGravity = true;
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Ashe"), 120f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            if (body == -1) return;
+
+            NPC ashe = Main.npc[body];
+            if (ashe == null || ashe.life <= 0 || !ashe.active || ashe.type != mod.NPCType("Ashe")) { npc.active = false; return; }
+
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
                 npc.oldPos[m] = npc.oldPos[m - 1];
@@ -91,9 +91,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
-		{
+        {
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
-			return false;
-		}		
-	}
+            return false;
+        }
+    }
 }

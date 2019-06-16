@@ -13,8 +13,8 @@ namespace AAMod.NPCs.Bosses.Yamata
     [AutoloadBossHead]
     public class YamataHead : ModNPC
     {
-		public bool isAwakened = false;
-		
+        public bool isAwakened = false;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yamata");
@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-			npc.lifeMax = 180000;
+            npc.lifeMax = 180000;
             npc.damage = 250;
             npc.defense = 80;
             npc.width = 78;
@@ -112,17 +112,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 damage = npc.damage / 2;
             }
-	        if (Body == null)
+            if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
                 {
                     Body = npcBody;
-					yamata = (Yamata)npcBody.modNPC;
+                    yamata = (Yamata)npcBody.modNPC;
                 }
             }
-			if(Body == null)
-				return;
+            if (Body == null)
+                return;
             if (!Body.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
@@ -135,17 +135,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
 
             npc.realLife = Body.whoAmI;
-			npc.timeLeft = 100;
+            npc.timeLeft = 100;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
-		
+
             if (Yamata.TeleportMeBitch)
             {
                 Yamata.TeleportMeBitch = false;
                 npc.Center = yamata.npc.Center;
                 return;
             }
-            
+
             npc.alpha = Body.alpha;
             if (npc.alpha > 0)
             {
@@ -270,7 +270,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                                 Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 1.5f, PlayerPosY * 1.5f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), npc.damage, 0f, Main.myPlayer);
                             }
                         }
-                        
+
                     }
                     if (attackTimer >= 80)
                     {
@@ -288,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.rotation = 0;
             npc.position += Body.position - Body.oldPosition;
         }
-        
+
         public void Attacks(float AttackType)
         {
             Player player = Main.player[npc.target];

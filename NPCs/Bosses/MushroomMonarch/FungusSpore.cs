@@ -76,9 +76,9 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.velocity.Y = 2.5f;
             }
             npc.ai[1] = 1;
-            
+
             BaseAI.AISpore(npc, ref internalAI, 0.1f, 0.02f, 5f, 1f);
-            
+
         }
     }
 }

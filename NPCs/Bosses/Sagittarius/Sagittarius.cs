@@ -11,13 +11,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 {
     [AutoloadBossHead]
     public class Sagittarius : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Sagittarius");
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sagittarius");
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             npc.lifeMax = 6000;
             npc.boss = true;
@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     MovementType[1] = 0;
                 }
-                
+
                 internalAI[6]++;
 
                 if (internalAI[6] > 360)
@@ -256,7 +256,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
 
-            
+
             if (internalAI[2] == 1) //Chaase down the target
             {
                 BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 2.5f);
@@ -320,6 +320,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.DropBossBags();
             }
         }
-        
+
     }
 }

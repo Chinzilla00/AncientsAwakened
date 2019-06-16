@@ -8,22 +8,22 @@ using System;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     public class Flamespitter : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Flamespitter");
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Flamespitter");
             Main.npcFrameCount[npc.type] = 15;
-		}
+        }
 
-		public override void SetDefaults()
+        public override void SetDefaults()
         {
             npc.width = 40;
             npc.height = 52;
             npc.damage = 20;
-			npc.defense = 15;
-			npc.lifeMax = 100;
-			npc.HitSound = SoundID.NPCHit4;
-			npc.DeathSound = SoundID.NPCDeath6;
+            npc.defense = 15;
+            npc.lifeMax = 100;
+            npc.HitSound = SoundID.NPCHit4;
+            npc.DeathSound = SoundID.NPCDeath6;
             npc.value = 240000f;
             npc.knockBackResist = .30f;
             npc.aiStyle = -1;
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             int attackInterval = 100;
             int stopAttackInterval = 500;
             int frameHeight = 52;
-            
+
             Func<int, int, bool> CanTeleportTo = null;
             npc.velocity.X = npc.velocity.X * 0.93f;
 
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                     npc.netUpdate = true;
                 }
             }
-            
+
             if (attackInterval != -1 && npc.ai[1] > 0f)
             {
                 npc.ai[1] -= 1f;
@@ -190,25 +190,25 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.frameCounter = 0;
             }
         }
-        
-		public override void HitEffect(int hitDirection, double damage)
-		{
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
 
             int dust1 = mod.DustType<Dusts.BroodmotherDust>();
             if (npc.life <= 0)
-			{
+            {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
             }
-		}
+        }
 
-		public override void NPCLoot()
-		{
+        public override void NPCLoot()
+        {
             if (Main.rand.NextFloat() < 0.1f)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonScale"));
             }
         }
-	}
+    }
 }

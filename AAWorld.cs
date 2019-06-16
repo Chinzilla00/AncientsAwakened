@@ -167,7 +167,7 @@ namespace AAMod
             downedSerpent = false;
             downedBrood = false;
             downedHydra = false;
-            downedAshe = false ;
+            downedAshe = false;
             downedHaruka = false;
             downedSisters = false;
             downedSag = false;
@@ -288,8 +288,8 @@ namespace AAMod
 
             return new TagCompound {
                 {"downed", downed},
-				{"MCenter", MireCenter },
-				{"ICenter", InfernoCenter },
+                {"MCenter", MireCenter },
+                {"ICenter", InfernoCenter },
                 {"squid1", squid1},
                 {"squid2", squid2},
                 {"squid3", squid3},
@@ -451,7 +451,7 @@ namespace AAMod
             MireStripe = flags5[5];
             downedAshe = flags5[6];
             downedHaruka = flags5[7];
-            
+
             BitsByte flags6 = reader.ReadByte();
             ModContentGenerated = flags6[0];
             downedTruffle = flags6[1];
@@ -460,7 +460,7 @@ namespace AAMod
             zeroUS = flags6[4];
 
             MireCenter = reader.ReadVector2();
-			InfernoCenter = reader.ReadVector2();		
+            InfernoCenter = reader.ReadVector2();
 
             squid1 = reader.ReadInt32();
             squid2 = reader.ReadInt32();
@@ -612,7 +612,7 @@ namespace AAMod
             }));
             tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
-				MireAndInferno(progress);
+                MireAndInferno(progress);
             }));
 
 
@@ -682,7 +682,7 @@ namespace AAMod
                                         chest.item[4].stack = WorldGen.genRand.Next(15, 31);
                                         chest.item[5].SetDefaults(73, false);
                                         chest.item[5].stack = WorldGen.genRand.Next(1, 3);
-                                        placed = true ;
+                                        placed = true;
                                         break;
                                     }
                                     break;
@@ -805,7 +805,7 @@ namespace AAMod
                     }
                 }));
             }
-            
+
             ModContentGenerated = true;
         }
 
@@ -1019,17 +1019,17 @@ namespace AAMod
                                 tile.type == mod.TileType<Torchice>() ||
                                 tile.type == mod.TileType<Torchsandstone>() ||
                                 tile.type == mod.TileType<Torchsand>() ||
-                                tile.type == mod.TileType<InfernoGrass>())  
+                                tile.type == mod.TileType<InfernoGrass>())
                                 && Altar == mod.TileType<ChaosAltar1>())
                             {
                                 Altar = mod.TileType<ChaosAltar2>();
                             }
-                            if ((tile.type == mod.TileType<Depthstone>() || 
-                                tile.type == mod.TileType<Depthsand>() || 
+                            if ((tile.type == mod.TileType<Depthstone>() ||
+                                tile.type == mod.TileType<Depthsand>() ||
                                 tile.type == mod.TileType<IndigoIce>() ||
                                 tile.type == mod.TileType<Depthsandstone>() ||
                                 tile.type == mod.TileType<Depthsand>() ||
-                                tile.type == mod.TileType<MireGrass>()) 
+                                tile.type == mod.TileType<MireGrass>())
                                 && Altar == mod.TileType<ChaosAltar2>())
                             {
                                 Altar = mod.TileType<ChaosAltar1>();
@@ -1040,7 +1040,7 @@ namespace AAMod
                 }
             }
         }
-        
+
         public int ChestNumber = 0;
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
@@ -1395,10 +1395,10 @@ namespace AAMod
             Main.sandTiles += tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
             Main.snowTiles += tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<IndigoIce>()] + tileCounts[mod.TileType<TorchAsh>()];
             //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
-            mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<IndigoIce>()];
-            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<TorchAsh>()];
+            mireTiles = tileCounts[mod.TileType<MireGrass>()] + tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<IndigoIce>()];
+            infernoTiles = tileCounts[mod.TileType<InfernoGrass>()] + tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<TorchAsh>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
-            mushTiles = tileCounts[mod.TileType<Mycelium>() ];
+            mushTiles = tileCounts[mod.TileType<Mycelium>()];
             Main.jungleTiles += mireTiles;
             pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
@@ -1497,8 +1497,8 @@ namespace AAMod
 
         public void InfernoVolcano()
         {
-            Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
+            Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             InfernoBiome biome = new InfernoBiome();
             InfernoDelete delete = new InfernoDelete();
             delete.Place(origin, WorldGen.structures);
@@ -1565,7 +1565,7 @@ namespace AAMod
 
         public void MireAbyss()
         {
-            Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
+            Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             MireDelete delete = new MireDelete();
             MireBiome biome = new MireBiome();
@@ -1599,7 +1599,7 @@ namespace AAMod
             Parthenan biome = new Parthenan();
             biome.Place(center, WorldGen.structures);
         }*/
-        
+
         public override void ResetNearbyTileEffects()
         {
             AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod);

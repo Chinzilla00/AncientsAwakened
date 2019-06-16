@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
-    public class BaneR: ModProjectile
+    public class BaneR : ModProjectile
     {
         public override void SetStaticDefaults()
         {

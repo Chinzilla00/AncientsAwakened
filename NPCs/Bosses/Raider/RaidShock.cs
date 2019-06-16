@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Raider
             }
 
         }
-        
+
 
         public override void Kill(int timeLeft)
         {
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Raider
             }
         }
 
-        
+
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {

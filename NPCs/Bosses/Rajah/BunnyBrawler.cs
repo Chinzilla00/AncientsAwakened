@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.frame.Y = frameHeight;
             }
-            else if(npc.velocity.Y > 0)
+            else if (npc.velocity.Y > 0)
             {
                 npc.frame.Y = frameHeight * 2;
             }

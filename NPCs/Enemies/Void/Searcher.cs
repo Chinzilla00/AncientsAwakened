@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Void
 {
     public class Searcher : ModNPC
-	{
-		public int timer = 0;
-		public bool start = true;
+    {
+        public int timer = 0;
+        public bool start = true;
 
         public override void SetStaticDefaults()
         {

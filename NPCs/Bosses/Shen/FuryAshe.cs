@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[3] = reader.ReadFloat();
             }
         }
-        
+
         bool FlyingBack = false;
         bool FlyingPositive = false;
         bool FlyingNegative = false;
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6;
 
         public int[] Vortexes = null;
-        
+
         public void ChangePos()
         {
             npc.ai[1] = Main.rand.Next(2);
@@ -495,7 +495,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<DiscordianInferno>(), npc.damage / 2, 4);
                 }
             }
-            else if(internalAI[0] == 2)
+            else if (internalAI[0] == 2)
             {
                 int speedX = 6;
                 int speedY = 6;
@@ -510,7 +510,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<ShenMeteor1>(), npc.damage / 2, 4);
                 }
             }
-            else if(internalAI[0] == 3)
+            else if (internalAI[0] == 3)
             {
                 float spread = 60f * 0.0174f;
                 double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;

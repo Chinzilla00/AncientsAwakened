@@ -17,17 +17,17 @@ namespace AAMod.NPCs.Bosses.GripsShen
             Main.npcFrameCount[npc.type] = 14;
         }
 
-	    public override void SetDefaults()
+        public override void SetDefaults()
         {
-			base.SetDefaults();
-			npc.lifeMax = 70000;
+            base.SetDefaults();
+            npc.lifeMax = 70000;
             npc.damage = 150;
             npc.defense = 90;
             npc.buffImmune[BuffID.Poisoned] = true;
 
-			offsetBasePoint = new Vector2(280f, 0f);
+            offsetBasePoint = new Vector2(280f, 0f);
         }
-		
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0) //this make so when the npc has 0 life(dead) he will spawn this

@@ -10,9 +10,9 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Magma Explosion");
-			Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 4;
         }
-		
+
         public override void SetDefaults()
         {
             projectile.width = 98;
@@ -25,30 +25,30 @@ namespace AAMod.NPCs.Bosses.Broodmother
             projectile.timeLeft = 100;
         }
 
-		bool playedSound = false;
+        bool playedSound = false;
         public override void AI()
         {
-			if(!playedSound)
-			{
-				playedSound = true;
-				Main.PlaySound(SoundID.Item88, (int)projectile.Center.X, (int)projectile.Center.Y);				
-			}
-			projectile.velocity = Vector2.Zero;
+            if (!playedSound)
+            {
+                playedSound = true;
+                Main.PlaySound(SoundID.Item88, (int)projectile.Center.X, (int)projectile.Center.Y);
+            }
+            projectile.velocity = Vector2.Zero;
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame > 3)
                 {
-					projectile.frame = 3;
-                    if(Main.netMode != 1) 
-						projectile.Kill();
+                    projectile.frame = 3;
+                    if (Main.netMode != 1)
+                        projectile.Kill();
                 }
-            }			
+            }
         }
 
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
-		}		
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 }

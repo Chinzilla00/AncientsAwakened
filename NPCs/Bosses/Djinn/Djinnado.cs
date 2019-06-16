@@ -6,14 +6,15 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Djinn
 {
     public class Djinnado : ModProjectile
-	{
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Djinnado");
-		}
+        }
 
-		public override void SetDefaults()
-		{;
+        public override void SetDefaults()
+        {
+            ;
             projectile.width = 10;
             projectile.height = 10;
             projectile.aiStyle = 127;

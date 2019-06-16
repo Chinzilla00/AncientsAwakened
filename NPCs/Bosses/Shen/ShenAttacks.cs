@@ -6,9 +6,9 @@ using Terraria;
 namespace AAMod
 {
     public class ShenAttacks
-	{
+    {
         static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
-        
+
         public static void Dragonfire(NPC npc, Mod mod)
         {
             Player player = Main.player[npc.target];

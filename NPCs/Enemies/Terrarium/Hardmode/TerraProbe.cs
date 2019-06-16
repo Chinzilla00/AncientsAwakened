@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
 {
     public class TerraProbe : ModNPC
-	{
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Unity Probe");

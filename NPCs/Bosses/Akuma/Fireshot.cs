@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.timeLeft = 100;
             projectile.magic = true;
             projectile.ignoreWater = true;
-            
+
         }
 
         public override void AI()
@@ -75,6 +75,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("Flare"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
-        
+
     }
 }

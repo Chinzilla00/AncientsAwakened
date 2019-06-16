@@ -137,8 +137,8 @@ namespace AAMod.NPCs.Bosses.Retriever
             spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
         }
 
-		public Vector2 offsetBasePoint = new Vector2(240, 0);
-		
+        public Vector2 offsetBasePoint = new Vector2(240, 0);
+
         public float moveSpeed = 10f;
 
         public override void AI()
@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.active = false;
                     return;
                 }
-            }       
+            }
 
             if (Main.dayTime)
             {
@@ -172,9 +172,9 @@ namespace AAMod.NPCs.Bosses.Retriever
             bool Dive2 = npc.life < npc.lifeMax * .5f;
             bool Dive3 = npc.life < npc.lifeMax * .2f;
             int DiveSpeed = Dive1 ? 14 : Dive2 ? 17 : 20;
-			int ShootLaserRate = 10;
-			offsetBasePoint.X = customAI[2];
-			
+            int ShootLaserRate = 10;
+            offsetBasePoint.X = customAI[2];
+
             if (Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
             {
                 int stopValue = 60;
@@ -240,11 +240,11 @@ namespace AAMod.NPCs.Bosses.Retriever
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-					npc.ai[0] = Dive3 ? 5 : 0;
+                    npc.ai[0] = Dive3 ? 5 : 0;
                     npc.ai[1] = Dive3 ? targetPlayer.Center.X : 0;
                     npc.ai[2] = Dive3 ? targetPlayer.Center.Y : 0;
                     npc.ai[3] = 0;
-					npc.netUpdate2 = true;
+                    npc.netUpdate2 = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
             }
@@ -257,14 +257,15 @@ namespace AAMod.NPCs.Bosses.Retriever
                 MoveToPoint(point);
                 if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
                 {
-					npc.ai[0] = 0;
-					npc.ai[1] = 0;
-					npc.ai[2] = 0;
-					npc.ai[3] = 0;
-					npc.netUpdate = true;
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
                 }
                 BaseAI.Look(npc, 0, 0f, 0.1f, false);
-            }else
+            }
+            else
             if (npc.ai[0] == 6) //shoot lasers right
             {
                 moveSpeed = 11f;
@@ -273,22 +274,23 @@ namespace AAMod.NPCs.Bosses.Retriever
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
                 if (Main.netMode != 1)
                 {
-					customAI[0]++;
-					if(customAI[0] > 200)
-					{
-						npc.ai[0] = 0;
-						npc.ai[1] = 0;
-						npc.ai[2] = 0;
-						npc.ai[3] = 0;
-						customAI[0] = 0;
-						npc.netUpdate = true;						
-					}
-					if(Vector2.Distance(npc.Center, point) < 10f || customAI[0] > 50)
-					{
-						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
-					}
+                    customAI[0]++;
+                    if (customAI[0] > 200)
+                    {
+                        npc.ai[0] = 0;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        customAI[0] = 0;
+                        npc.netUpdate = true;
+                    }
+                    if (Vector2.Distance(npc.Center, point) < 10f || customAI[0] > 50)
+                    {
+                        BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
+                    }
                 }
-            }else
+            }
+            else
             if (npc.ai[0] == 7) //shoot lasers left
             {
                 moveSpeed = 11f;
@@ -297,22 +299,22 @@ namespace AAMod.NPCs.Bosses.Retriever
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
                 if (Main.netMode != 1)
                 {
-					customAI[0]++;
-					if(customAI[0] > 200)
-					{
-						npc.ai[0] = 0;
-						npc.ai[1] = 0;
-						npc.ai[2] = 0;
-						npc.ai[3] = 0;
-						customAI[0] = 0;
-						npc.netUpdate = true;						
-					}	
-					if(Vector2.Distance(npc.Center, point) < 10f)
-					{						
-						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
-					}
+                    customAI[0]++;
+                    if (customAI[0] > 200)
+                    {
+                        npc.ai[0] = 0;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        customAI[0] = 0;
+                        npc.netUpdate = true;
+                    }
+                    if (Vector2.Distance(npc.Center, point) < 10f)
+                    {
+                        BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, (int)(npc.damage * .75f), 12f, false);
+                    }
                 }
-            }				
+            }
             else //standard movement
             {
                 moveSpeed = 8;
@@ -331,28 +333,29 @@ namespace AAMod.NPCs.Bosses.Retriever
                         {
                             offsetBasePoint.X = -240;
                         }
-						customAI[2] = offsetBasePoint.X;
-						if(Main.rand.Next(3) == 0) //lasers
-						{
-							npc.ai[0] = offsetBasePoint.X < 0 ? 7 : 6;
-							npc.ai[1] = 0;
-							npc.ai[2] = 0;
-							npc.ai[3] = 0;
-							npc.netUpdate2 = true;						
-						}else
-						{
-							npc.ai[0] = 1;
-							npc.ai[1] = 0;
-							npc.ai[2] = 0;
-							npc.ai[3] = 0;
-							npc.netUpdate2 = true;
-						}
+                        customAI[2] = offsetBasePoint.X;
+                        if (Main.rand.Next(3) == 0) //lasers
+                        {
+                            npc.ai[0] = offsetBasePoint.X < 0 ? 7 : 6;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            npc.netUpdate2 = true;
+                        }
+                        else
+                        {
+                            npc.ai[0] = 1;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            npc.netUpdate2 = true;
+                        }
                     }
                 }
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
         }
-		
+
         public override void FindFrame(int frameHeight)
         {
             if (npc.ai[0] == 6 || npc.ai[0] == 7) //firing lasers
@@ -366,7 +369,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     {
                         npc.frame.Y = (frameHeight * 10);
                     }
-                }				
+                }
             }
             else
             {
@@ -376,15 +379,15 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.frameCounter = 0;
                     npc.frame.Y += frameHeight;
                 }
-				if (npc.frame.Y > (frameHeight * 3))
-				{
-					npc.frameCounter = 0;
-					npc.frame.Y = 0;
-				}				
+                if (npc.frame.Y > (frameHeight * 3))
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y = 0;
+                }
             }
 
         }
-		
+
 
         public void FindFrameOld(int frameHeight)
         {
@@ -462,14 +465,14 @@ namespace AAMod.NPCs.Bosses.Retriever
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
-			float moveSpd = moveSpeed;			
+            float moveSpd = moveSpeed;
             Vector2 dist = point - npc.Center;
             float length = (dist == Vector2.Zero ? 0f : dist.Length());
-			if(length < 50f)
-				moveSpd /= 2f;
+            if (length < 50f)
+                moveSpd /= 2f;
             if (length < moveSpd)
             {
-				moveSpd = length;
+                moveSpd = length;
             }
             npc.velocity = (length <= 5f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpd;

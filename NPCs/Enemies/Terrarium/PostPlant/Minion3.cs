@@ -7,15 +7,15 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class Minion3 : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Terra Sphere");
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terra Sphere");
+        }
 
-		public override void SetDefaults()
-		{
-            npc.lifeMax =  350;
+        public override void SetDefaults()
+        {
+            npc.lifeMax = 350;
             npc.defense = 20;
             npc.damage = 10;
             npc.HitSound = SoundID.NPCHit1;

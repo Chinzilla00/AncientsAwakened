@@ -78,13 +78,13 @@ namespace AAMod.NPCs.Bosses.Orthrus
         }
 
         public Orthrus Body
-		{
-			get
-			{
-				return ((bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null);
-			}
-		}
-		public NPC bodyNPC = null;	
+        {
+            get
+            {
+                return ((bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null);
+            }
+        }
+        public NPC bodyNPC = null;
         public bool leftHead = false;
         public int damage = 0;
 
@@ -93,8 +93,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public int movementVariance = 40; //how far from the center point to move.
 
         public override void AI()
-        {         
-	        if (bodyNPC == null)
+        {
+            if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == mod.NPCType<Orthrus>())
@@ -102,8 +102,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     bodyNPC = npcBody;
                 }
             }
-			if(bodyNPC == null)
-				return;
+            if (bodyNPC == null)
+                return;
             if (!bodyNPC.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
@@ -113,8 +113,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     npc.netUpdate = true;
                 }
                 return;
-            }			
-		
+            }
+
             /*if (Body == null)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Orthrus"), 500f, null);
@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
         }
 
-        public float moveSpeed = 16f; 
+        public float moveSpeed = 16f;
         public void MoveToPoint(Vector2 point)
         {
             float velMultiplier = 1f;

@@ -7,16 +7,16 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class Minion2 : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Terra Crawler");
-			Main.npcFrameCount[npc.type] = 5;
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terra Crawler");
+            Main.npcFrameCount[npc.type] = 5;
+        }
 
-		public override void SetDefaults()
-		{
-            npc.lifeMax =  350;
+        public override void SetDefaults()
+        {
+            npc.lifeMax = 350;
             npc.defense = 20;
             npc.damage = 50;
             npc.width = 26;

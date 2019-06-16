@@ -7,15 +7,15 @@ using BaseMod;
 namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class TerraWizard : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Terra Wizard");
-			Main.npcFrameCount[npc.type] = 6;
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Terra Wizard");
+            Main.npcFrameCount[npc.type] = 6;
+        }
 
-		public override void SetDefaults()
-		{
+        public override void SetDefaults()
+        {
             npc.lifeMax = 600;
             npc.defense = 40;
             npc.damage = 90;
@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.15f, 6f, 250f, 70f, FireMagic);
-            
+
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {

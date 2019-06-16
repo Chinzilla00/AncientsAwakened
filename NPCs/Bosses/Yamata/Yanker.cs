@@ -8,12 +8,12 @@ namespace AAMod.NPCs.Bosses.Yamata
 {
     public class Yanker : ModProjectile
     {
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Soul Chomper");
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Soul Chomper");
             Main.projFrames[projectile.type] = 4;
         }
-    	
+
         public override void SetDefaults()
         {
             projectile.width = 30;
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             return selectedTarget;
         }
-        
+
 
         public override void Kill(int timeLeft)
         {

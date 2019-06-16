@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/TruffleBookIt_Glow1");
             Texture2D glowTex1 = mod.GetTexture("Glowmasks/TruffleBookIt_Glow2");
-            
+
             Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(projectile.position), BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position));
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
 

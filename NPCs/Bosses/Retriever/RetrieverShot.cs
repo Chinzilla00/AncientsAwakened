@@ -36,14 +36,14 @@ namespace AAMod.NPCs.Bosses.Retriever
             return projHitbox.Intersects(targetHitbox);
         }
 
-		public bool spawnSound = false;
+        public bool spawnSound = false;
         public override void AI()
         {
-			if(Main.netMode != 2 && !spawnSound)
-			{
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 33);				
-				spawnSound = true;
-			}
+            if (Main.netMode != 2 && !spawnSound)
+            {
+                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 33);
+                spawnSound = true;
+            }
             projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
 
             if (Main.rand.Next(1) == 0)
@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             Main.projFrames[projectile.type] = 5;
         }
 
-        
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.Violet;
@@ -67,9 +67,9 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
         {
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 5) 
+            if (projectile.frameCounter >= 5)
             {
-                projectile.frame++; 
+                projectile.frame++;
                 projectile.frameCounter = 0;
                 if (projectile.frame > 4)
                 {

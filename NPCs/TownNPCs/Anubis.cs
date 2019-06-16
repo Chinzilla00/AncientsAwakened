@@ -7,49 +7,49 @@ using Terraria.Utilities;
 namespace AAMod.NPCs.TownNPCs
 {
     [AutoloadHead]
-	public class Anubis : ModNPC
-	{
-		public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/Anubis";
-			}
-		}
+    public class Anubis : ModNPC
+    {
+        public override string Texture
+        {
+            get
+            {
+                return "AAMod/NPCs/TownNPCs/Anubis";
+            }
+        }
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
         {
             name = "Legendscribe";
             return mod.Properties.Autoload;
-		}
+        }
 
-		public override void SetStaticDefaults()
-		{
-			Main.npcFrameCount[npc.type] = 26;
+        public override void SetStaticDefaults()
+        {
+            Main.npcFrameCount[npc.type] = 26;
             npc.dontTakeDamageFromHostiles = true;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 10;
-			NPCID.Sets.AttackFrameCount[npc.type] = 5;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 40;
-			NPCID.Sets.AttackAverageChance[npc.type] = 20;
-			NPCID.Sets.HatOffsetY[npc.type] = 3;
-		}
+            NPCID.Sets.ExtraFramesCount[npc.type] = 10;
+            NPCID.Sets.AttackFrameCount[npc.type] = 5;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 40;
+            NPCID.Sets.AttackAverageChance[npc.type] = 20;
+            NPCID.Sets.HatOffsetY[npc.type] = 3;
+        }
 
-		public override void SetDefaults()
-		{
-			npc.townNPC = true;
-			npc.friendly = true;
-			npc.width = 18;
+        public override void SetDefaults()
+        {
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 18;
             npc.height = 40;
             npc.aiStyle = 7;
-			npc.damage = 10;
-			npc.defense = 68;
-			npc.lifeMax = 160000;
+            npc.damage = 10;
+            npc.defense = 68;
+            npc.lifeMax = 160000;
             npc.HitSound = SoundID.NPCHit23;
             npc.DeathSound = SoundID.NPCDeath39;
             npc.knockBackResist = 0f;
-			animationType = NPCID.Guide;
+            animationType = NPCID.Guide;
             npc.lavaImmune = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -57,31 +57,31 @@ namespace AAMod.NPCs.TownNPCs
             }
         }
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-		}
+        public override void HitEffect(int hitDirection, double damage)
+        {
+        }
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            for (int k = 0; k < 255; k++)
+            {
+                Player player = Main.player[k];
+                if (player.active)
+                {
                     return true;
                 }
-			}
-			return false;
-		}
+            }
+            return false;
+        }
 
-		public override string TownNPCName()
-		{
-			switch (WorldGen.genRand.Next(4))
-			{
+        public override string TownNPCName()
+        {
+            switch (WorldGen.genRand.Next(4))
+            {
                 default:
-					return "Anubis";
-			}
-		}
+                    return "Anubis";
+            }
+        }
 
         public static bool SwitchInfo = false;
         public static bool DoNext = false;
@@ -129,10 +129,10 @@ namespace AAMod.NPCs.TownNPCs
             Shen = false;
             Stones = false;
         }
-        
+
         public override void SetChatButtons(ref string button, ref string button2)
         {
-			string SwitchInfoT = "Switch Info";
+            string SwitchInfoT = "Switch Info";
 
             string DoNextT = "What Do I do now?";
 
@@ -175,8 +175,8 @@ namespace AAMod.NPCs.TownNPCs
             button = SwitchInfoT;
 
             if (ChatNumber == 0)
-			{
-			    button2 = DoNextT;
+            {
+                button2 = DoNextT;
                 DoNext = true;
             }
             else if (ChatNumber == 1)
@@ -299,38 +299,38 @@ namespace AAMod.NPCs.TownNPCs
             Stones = true;
         }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-		{
-			if (firstButton)
-			{
-				ResetBools();
-				ChatNumber += 1;
-				if (ChatNumber > 17)
-				{
-					ChatNumber = 0;
-				}
-			}
-			else
-			{
-				Main.npcChatText = BossChat();
-			}
-		}
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                ResetBools();
+                ChatNumber += 1;
+                if (ChatNumber > 17)
+                {
+                    ChatNumber = 0;
+                }
+            }
+            else
+            {
+                Main.npcChatText = BossChat();
+            }
+        }
 
         public static string BossChat()
         {
             if (Mushroom)
             {
-                return AAWorld.downedMonarch ? "...that was it?" : 
+                return AAWorld.downedMonarch ? "...that was it?" :
                     "Hey, you know all these little red mushrooms growing everywhere? I hear if you squish a bunch of them together and wave them around, their king or something will come and attempt to run you down. I gotta see that.";
             }
             else if (Glowshroom)
             {
-                return AAWorld.downedFungus ? "Nice work. Now be honest, how high are you right now?" : 
+                return AAWorld.downedFungus ? "Nice work. Now be honest, how high are you right now?" :
                     "The glowing mushroom caves always make me feel loopy for some reason. Anyways, you want better magic abilities? There's a big mushroom monster that has some great magic abilities infused into it. Just plug your nose while your down there.";
             }
             else if (Grips)
             {
-                return AAWorld.downedGrips ? "Nice job taking down those giant hands. Maybe the little ones will finally leave me alone for once." : 
+                return AAWorld.downedGrips ? "Nice job taking down those giant hands. Maybe the little ones will finally leave me alone for once." :
                     "Those flying claws at night are a nightmare to deal with, and they freak me out. In my travels, I've come across these two REEEEEEEEALLY big ones. Maybe if you kill them, the little ones will bugger off. Maybe killing a few of them and showing that you have in some way will call them down.";
             }
             else if (Brood)
@@ -340,37 +340,37 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Hydra)
             {
-                return AAWorld.downedHydra ? "Good riddance. That hydra can't seem to lay off. At least her daughter is a bit more mellow...huh? Who? I'll explain later, good job." : 
+                return AAWorld.downedHydra ? "Good riddance. That hydra can't seem to lay off. At least her daughter is a bit more mellow...huh? Who? I'll explain later, good job." :
                     "The Mire has always been a gathering spot for all the nastiest lizards, but there's a really big one there, and it's got 3 heads. She's really grouchy all the time, and any time I try to go into her den, she tries to EAT me!";
             }
             else if (Djinn)
             {
-                return AAWorld.downedDjinn ? "Hah! Who's tough now you sandy sadsack!" : 
+                return AAWorld.downedDjinn ? "Hah! Who's tough now you sandy sadsack!" :
                     "THAT SON OF A-- Oh hi. Sorry, I was just a bit angry about a little tussle I had with desert djinn. That magical meathead and his goons to stop flexing their muscles on me. Could you go teach em' a thing or two?";
             }
             else if (Serpent)
             {
-                return AAWorld.downedSerpent ? "Hope you didn't get any 'FROSTBITES'! *buh-dum-tish* ...yeah I know that was lame." : 
+                return AAWorld.downedSerpent ? "Hope you didn't get any 'FROSTBITES'! *buh-dum-tish* ...yeah I know that was lame." :
                     "Snakes, why does it always have to be snakes? I hate 'em! Whatever, in the tundra recently, there have been these snow snerpents that won't leave me alone. Could ya play exterminator and find out what they're doing?";
             }
             else if (Retriever)
             {
-                return AAWorld.downedRetriever ? "Did you get my 3rd edition of 'The Life and Epic Adventures of Anubis the Wonder Dog!' back by any chance?" : 
+                return AAWorld.downedRetriever ? "Did you get my 3rd edition of 'The Life and Epic Adventures of Anubis the Wonder Dog!' back by any chance?" :
                     "Remember the Grips of Chaos? Those nasty grabby hands? There's a robotic one and it keeps stealing my stuff. Can you do me a favor and go throw a wrench at it or something?";
             }
             else if (Raider)
             {
-                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. That thing was almost as fat as the Broodmother." : 
+                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. That thing was almost as fat as the Broodmother." :
                     "People said that they saw strange shade in one of the nights. It was so big that it even closed the moon for a moment. You should discover this mystery and do something.";
             }
             else if (Orthrus)
             {
-                return AAWorld.downedOrthrus ? "I guess orthrus is what it eats, now." : 
+                return AAWorld.downedOrthrus ? "I guess orthrus is what it eats, now." :
                     "Remeber the Hydra? There's a bigger one out there. And it's a robot. And it uh...shoots lightning. So uh...good luck!";
             }
             else if (Equinox)
             {
-                return AAWorld.downedEquinox ? "Nice job taking out the Equinox worms. I could tell you did because it's like a week later now. I hope I didn't miss my nurse's appointment..." : 
+                return AAWorld.downedEquinox ? "Nice job taking out the Equinox worms. I could tell you did because it's like a week later now. I hope I didn't miss my nurse's appointment..." :
                     "Like worms? Me neither, but guess what? There are 2 big ones that control the flow of day and night, and they're tough buggers. Good luck.";
             }
             else if (AnubisB)
@@ -379,12 +379,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Sisters)
             {
-                return AAWorld.downedSisters ? "Nice, you taught those two spoiled brats a lesson! Those two didn't see it coming!" : 
+                return AAWorld.downedSisters ? "Nice, you taught those two spoiled brats a lesson! Those two didn't see it coming!" :
                     "Remember ol' Brood and Hydra? Well, those two have daughters. And MAN they're annoying..! Every time I go into the chaos biomes, those two are just waiting to ruin my day! Can you go give em' the ol' one-two?";
             }
             else if (Akuma)
             {
-                return AAWorld.downedAkuma ? "Akuma thinks he's edgy. To me, he just comes across as trying to be way too cool and failing. Anyways, might wanna run some water through your hair. You got a little singed up there." : 
+                return AAWorld.downedAkuma ? "Akuma thinks he's edgy. To me, he just comes across as trying to be way too cool and failing. Anyways, might wanna run some water through your hair. You got a little singed up there." :
                     "Why would anyone call a sun serpent a demon? I have no idea personally...but Akuma has got to go. He always glasses my deserts with his flame breath and it pisses me off.";
             }
             else if (Yamata)
@@ -394,7 +394,7 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Zero)
             {
-                return AAWorld.downedZero ? "...I'll be honest. I don't like what that thing said after it died one bit." : 
+                return AAWorld.downedZero ? "...I'll be honest. I don't like what that thing said after it died one bit." :
                     "You know the void? Those spooky floating islands to the east? There's a BIG scary machine there that's always just floating there. Anyways, after you slammed the moon lord, I heard a massive shockwave come from the void. Could you check it out for me?";
             }
             else if (Shen)
@@ -482,7 +482,7 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add("I wrote the Terraria Historia, yes. But I also wrote another great book. 'The Life and Epic Adventures of Anubis the Wonder Dog!' Want a copy?");
             chat.Add("Don't you hate it when " + (WorldGen.crimson ? "red fleshy crap" : "purple muggy crap") + " takes over your biome? it's disgusting.");
             chat.Add("What creature do I hate most? Oh that's easy, King Slime. If that thing lands on you, good luck washing the slime out of your clothes or fur without a blowtorch.");
-            
+
             Player player = Main.player[Main.myPlayer];
 
 
@@ -544,21 +544,21 @@ namespace AAMod.NPCs.TownNPCs
         public static string WHATTHEFUCKDOIDOANUBIS()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            
+
             return chat;
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
-		{
-			damage = 30;
-			knockback = 4f;
-		}
+        {
+            damage = 30;
+            knockback = 4f;
+        }
 
-		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
-		{
-			cooldown = 20;
-			randExtraCooldown = 20;
-		}
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = 20;
+            randExtraCooldown = 20;
+        }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {

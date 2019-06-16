@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Primeval Burst");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Primeval Burst");
+            Main.projFrames[projectile.type] = 7;
         }
 
         public override Color? GetAlpha(Color lightColor)

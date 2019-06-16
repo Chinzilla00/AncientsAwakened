@@ -7,17 +7,17 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
     public class PuritySphere : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Purity Sphere");
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Purity Sphere");
+        }
 
-		public override void SetDefaults()
-		{
+        public override void SetDefaults()
+        {
             npc.width = 26;
             npc.height = 26;
-            npc.lifeMax =  60;
+            npc.lifeMax = 60;
             npc.defense = 5;
             npc.damage = 10;
             npc.HitSound = SoundID.NPCHit1;

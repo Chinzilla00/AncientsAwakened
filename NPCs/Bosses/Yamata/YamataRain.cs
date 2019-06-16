@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Yamata
     public class YamataRain : ModProjectile
     {
         public override void SetStaticDefaults()
-        {     
+        {
         }
 
         public override void SetDefaults()

@@ -8,26 +8,26 @@ namespace AAMod.NPCs.Enemies.Mire
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
     public class Kappa : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Kappa");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.CreatureFromTheDeep];
-		}
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Kappa");
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.CreatureFromTheDeep];
+        }
 
-		public override void SetDefaults()
-		{
-			npc.width = 18;
-			npc.height = 40;
-			npc.damage = 90;
-			npc.defense = 16;
-			npc.lifeMax = 300;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath2;
-			npc.value = 450f;
-			npc.aiStyle = 0;
-			animationType = NPCID.CreatureFromTheDeep;
-		}
+        public override void SetDefaults()
+        {
+            npc.width = 18;
+            npc.height = 40;
+            npc.damage = 90;
+            npc.defense = 16;
+            npc.lifeMax = 300;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath2;
+            npc.value = 450f;
+            npc.aiStyle = 0;
+            animationType = NPCID.CreatureFromTheDeep;
+        }
 
         public override void NPCLoot()
         {
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 if (num2 < 5f)
                 {
                     npc.velocity = (npc.velocity * 24f + value2) / 25f;
-                        return;
+                    return;
                 }
                 npc.velocity = (npc.velocity * 9f + value2) / 10f;
                 return;
@@ -113,12 +113,12 @@ namespace AAMod.NPCs.Enemies.Mire
                     }
                     if (npc.velocity.X > 0f)
                     {
-                            npc.direction = 1;
+                        npc.direction = 1;
                     }
                     npc.spriteDirection = npc.direction;
                 }
             }
-            
+
             bool flag4 = false;
             if (npc.velocity.X == 0f)
             {
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 flag4 = false;
             }
             int num36 = 60;
-            
+
             bool flag5 = false;
             bool flag6 = true;
             bool flag7 = false;
@@ -152,7 +152,7 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 flag8 = false;
             }
-            IL_2E98:
+        IL_2E98:
             if (!flag7 && flag8)
             {
                 if (npc.velocity.Y == 0f && ((npc.velocity.X > 0f && npc.direction < 0) || (npc.velocity.X < 0f && npc.direction > 0)))
@@ -182,7 +182,7 @@ namespace AAMod.NPCs.Enemies.Mire
             }
             if (npc.ai[3] < (float)num36 && (!Main.dayTime || (double)npc.position.Y > Main.worldSurface * 16.0))
             {
-                
+
                 npc.TargetClosest(true);
             }
             else if (npc.ai[2] <= 0f)
@@ -220,98 +220,98 @@ namespace AAMod.NPCs.Enemies.Mire
                     npc.velocity *= 0.8f;
                 }
             }
-                else if (npc.velocity.X < 2f && npc.direction == 1)
+            else if (npc.velocity.X < 2f && npc.direction == 1)
+            {
+                npc.velocity.X = npc.velocity.X + 0.07f;
+                if (npc.velocity.X > 2f)
                 {
-                    npc.velocity.X = npc.velocity.X + 0.07f;
-                    if (npc.velocity.X > 2f)
-                    {
-                        npc.velocity.X = 2f;
-                    }
+                    npc.velocity.X = 2f;
                 }
-                else if (npc.velocity.X > -2f && npc.direction == -1)
+            }
+            else if (npc.velocity.X > -2f && npc.direction == -1)
+            {
+                npc.velocity.X = npc.velocity.X - 0.07f;
+                if (npc.velocity.X < -2f)
                 {
-                    npc.velocity.X = npc.velocity.X - 0.07f;
-                    if (npc.velocity.X < -2f)
-                    {
-                        npc.velocity.X = -2f;
-                    }
+                    npc.velocity.X = -2f;
                 }
-            
+            }
+
             float num79 = 1f;
-                if (npc.type == 186)
+            if (npc.type == 186)
+            {
+                num79 = 1.1f;
+            }
+            if (npc.type == 187)
+            {
+                num79 = 0.9f;
+            }
+            if (npc.type == 188)
+            {
+                num79 = 1.2f;
+            }
+            if (npc.type == 189)
+            {
+                num79 = 0.8f;
+            }
+            if (npc.type == 132)
+            {
+                num79 = 0.95f;
+            }
+            if (npc.type == 200)
+            {
+                num79 = 0.87f;
+            }
+            if (npc.type == 223)
+            {
+                num79 = 1.05f;
+            }
+            if (npc.type == 489)
+            {
+                float num80 = (Main.player[npc.target].Center - npc.Center).Length();
+                num80 *= 0.0025f;
+                if ((double)num80 > 1.5)
                 {
-                    num79 = 1.1f;
+                    num80 = 1.5f;
                 }
-                if (npc.type == 187)
+                if (Main.expertMode)
                 {
-                    num79 = 0.9f;
+                    num79 = 3f - num80;
                 }
-                if (npc.type == 188)
+                else
                 {
-                    num79 = 1.2f;
+                    num79 = 2.5f - num80;
                 }
-                if (npc.type == 189)
+                num79 *= 0.8f;
+            }
+            if (npc.type == 489 || npc.type == 3 || npc.type == 132 || npc.type == 186 || npc.type == 187 || npc.type == 188 || npc.type == 189 || npc.type == 200 || npc.type == 223 || npc.type == 331 || npc.type == 332)
+            {
+                num79 *= 1f + (1f - npc.scale);
+            }
+            if (npc.velocity.X < -num79 || npc.velocity.X > num79)
+            {
+                if (npc.velocity.Y == 0f)
                 {
-                    num79 = 0.8f;
+                    npc.velocity *= 0.8f;
                 }
-                if (npc.type == 132)
+            }
+            else if (npc.velocity.X < num79 && npc.direction == 1)
+            {
+                npc.velocity.X = npc.velocity.X + 0.07f;
+                if (npc.velocity.X > num79)
                 {
-                    num79 = 0.95f;
+                    npc.velocity.X = num79;
                 }
-                if (npc.type == 200)
+            }
+            else if (npc.velocity.X > -num79 && npc.direction == -1)
+            {
+                npc.velocity.X = npc.velocity.X - 0.07f;
+                if (npc.velocity.X < -num79)
                 {
-                    num79 = 0.87f;
+                    npc.velocity.X = -num79;
                 }
-                if (npc.type == 223)
-                {
-                    num79 = 1.05f;
-                }
-                if (npc.type == 489)
-                {
-                    float num80 = (Main.player[npc.target].Center - npc.Center).Length();
-                    num80 *= 0.0025f;
-                    if ((double)num80 > 1.5)
-                    {
-                        num80 = 1.5f;
-                    }
-                    if (Main.expertMode)
-                    {
-                        num79 = 3f - num80;
-                    }
-                    else
-                    {
-                        num79 = 2.5f - num80;
-                    }
-                    num79 *= 0.8f;
-                }
-                if (npc.type == 489 || npc.type == 3 || npc.type == 132 || npc.type == 186 || npc.type == 187 || npc.type == 188 || npc.type == 189 || npc.type == 200 || npc.type == 223 || npc.type == 331 || npc.type == 332)
-                {
-                    num79 *= 1f + (1f - npc.scale);
-                }
-                if (npc.velocity.X < -num79 || npc.velocity.X > num79)
-                {
-                    if (npc.velocity.Y == 0f)
-                    {
-                        npc.velocity *= 0.8f;
-                    }
-                }
-                else if (npc.velocity.X < num79 && npc.direction == 1)
-                {
-                    npc.velocity.X = npc.velocity.X + 0.07f;
-                    if (npc.velocity.X > num79)
-                    {
-                        npc.velocity.X = num79;
-                    }
-                }
-                else if (npc.velocity.X > -num79 && npc.direction == -1)
-                {
-                    npc.velocity.X = npc.velocity.X - 0.07f;
-                    if (npc.velocity.X < -num79)
-                    {
-                        npc.velocity.X = -num79;
-                    }
-                }
-            
+            }
+
             bool flag23 = false;
             if (npc.velocity.Y == 0f)
             {
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     }
                 }
             }
-            
+
             if (npc.velocity.Y >= 0f)
             {
                 int num171 = 0;
@@ -410,7 +410,7 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 int num177 = (int)((npc.position.X + (float)(npc.width / 2) + (float)(15 * npc.direction)) / 16f);
                 int num178 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
-                
+
                 if (Main.tile[num177, num178] == null)
                 {
                     Main.tile[num177, num178] = new Tile();
@@ -450,7 +450,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     npc.ai[3] = 0f;
                     if (npc.ai[2] >= 60f)
                     {
-                       
+
                         npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
                         int num179 = 5;
                         if (Main.tile[num177, num178 - 1].type == 388)
@@ -458,7 +458,7 @@ namespace AAMod.NPCs.Enemies.Mire
                             num179 = 2;
                         }
                         npc.ai[1] += (float)num179;
-                        
+
                         npc.ai[2] = 0f;
                         if (npc.ai[1] >= 10f)
                         {
@@ -511,7 +511,7 @@ namespace AAMod.NPCs.Enemies.Mire
                             npc.velocity.Y = -5f;
                         }
                     }
-                    
+
                 }
             }
             else if (flag6)

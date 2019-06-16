@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             npc.value = 0f;
             npc.knockBackResist = 0.6f;
             npc.aiStyle = -1;
-            npc.noGravity = true; 
+            npc.noGravity = true;
         }
 
         public override void AI()

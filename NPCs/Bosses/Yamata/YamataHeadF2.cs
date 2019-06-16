@@ -6,8 +6,8 @@ namespace AAMod.NPCs.Bosses.Yamata
     {
         public override void SetDefaults()
         {
-			base.SetDefaults();
-			leftHead = true;
+            base.SetDefaults();
+            leftHead = true;
         }
-	}
+    }
 }

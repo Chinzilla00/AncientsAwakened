@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.Rajah
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Raboom");     
-            Main.projFrames[projectile.type] = 5;     
+            DisplayName.SetDefault("Raboom");
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
