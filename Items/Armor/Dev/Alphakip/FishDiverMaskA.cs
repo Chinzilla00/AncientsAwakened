@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
 
-
 namespace AAMod.Items.Armor.Dev.Alphakip
 {
     [AutoloadEquip(EquipType.Head)]
@@ -17,6 +16,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip
 20% increased Melee/Ranged damage & critical strike chance
 13% increased damage resistance and melee speed
 Allows for underwater breathing");
+
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -41,8 +41,7 @@ Allows for underwater breathing");
         public override void UpdateEquip(Player player)
         {
             player.breath = player.breathMax;
-            player.meleeDamage += .2f;
-            player.rangedDamage += .2f;
+            player.meleeDamage *= 1.2f;
             player.endurance *= 1.13f;
             player.meleeSpeed *= 1.13f;
         }
@@ -56,8 +55,6 @@ Allows for underwater breathing");
         {
             player.setBonus = @"'Hosing time.'
 All of your attacks inflict wet to non-boss enemies
-While submerged in water, defense is increased by 5
-While submerged in water all stats, melee damage, and ranged damage are increased by 25%
 Grants uninhibited liquid movement
 The Infinity Gauntlet is now at its max potential
 You gain a fishy companion";
@@ -68,16 +65,6 @@ You gain a fishy companion";
                 player.AddBuff(mod.BuffType("Mudkip"), 2);
             }
             player.ignoreWater = true;
-            if (player.wet && !player.lavaWet && !player.honeyWet)
-            {
-                player.meleeDamage += .25f;
-                player.rangedDamage += .25f;
-                player.statDefense += 5;
-                player.moveSpeed += .25f;
-                player.lifeRegen += 5;
-                player.meleeSpeed += 0.3f;
-                player.pickSpeed -= 0.30f;
-            }
         }
 
         public override void AddRecipes()

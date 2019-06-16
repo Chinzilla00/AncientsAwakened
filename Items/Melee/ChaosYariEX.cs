@@ -9,7 +9,7 @@ namespace AAMod.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Perfect Chaos Yari");		
+			DisplayName.SetDefault("Perfect Chaos Yari EX");		
 		}
 
         public override void SetDefaults()

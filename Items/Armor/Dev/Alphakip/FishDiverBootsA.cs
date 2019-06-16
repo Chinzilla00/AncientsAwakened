@@ -9,6 +9,7 @@ namespace AAMod.Items.Armor.Dev.Alphakip
 	public class FishDiverBootsA : ModItem
 	{
 		public override void SetStaticDefaults()
+       
 		{
             base.SetStaticDefaults();
             DisplayName.SetDefault("Fish Diver's Flippers");
@@ -40,8 +41,8 @@ namespace AAMod.Items.Armor.Dev.Alphakip
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .2f;
-            player.rangedDamage += .2f;
+            player.meleeDamage *= 1.2f;
+            player.rangedDamage *= 1.2f;
             player.meleeCrit += 20;
             player.rangedCrit += 20;
             player.endurance *= 1.13f;

@@ -7,7 +7,7 @@ namespace AAMod.Backgrounds
     {
         public override bool ChooseBgStyle()
         {
-            return !Main.gameMenu && (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneVoid || Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneVoid2);
+            return !Main.gameMenu && Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneVoid;
         }
 
         public override void FillTextureArray(int[] textureSlots)

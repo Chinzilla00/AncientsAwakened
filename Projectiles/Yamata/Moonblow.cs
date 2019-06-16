@@ -197,7 +197,7 @@ namespace AAMod.Projectiles.Yamata
                         float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
                         num628 *= 10f;
                         num629 *= 10f;
-                        int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<DarkSoul>(), projectile.damage / 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
+                        int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<DarkSoul>(), projectile.damage * 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
                         num3 = num627;
                         Main.projectile[p].timeLeft = 240;
                     }

@@ -40,8 +40,8 @@ namespace AAMod.Items.Armor.Dev.Alphakip
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .2f;
-            player.rangedDamage += .2f;
+            player.meleeDamage *= 1.2f;
+            player.rangedDamage *= 1.2f;
             player.endurance *= 1.13f;
             player.meleeSpeed *= 1.13f;
             player.ammoCost75 = true;

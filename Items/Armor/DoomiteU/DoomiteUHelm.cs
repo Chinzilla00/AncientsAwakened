@@ -33,13 +33,12 @@ namespace AAMod.Items.Armor.DoomiteU
 		{
 			player.setBonus = @"Increases max amount of minions by 2
 Increases your minions knockback by 100%";
-            player.minionKB += 1f;
-            player.maxMinions += 2;
         }
 		
 		public override void UpdateEquip(Player player)
 		{
             player.minionDamage += 0.05f;
+			player.minionKB += 1f;
 		}
 		
 		public override void AddRecipes()

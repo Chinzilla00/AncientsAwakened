@@ -52,7 +52,7 @@ namespace AAMod.Items.Boss.Shen
 
 		public override void OpenBossBag(Player player)
 		{
-            if (Main.rand.Next() < 0.01f)
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.SADevArmor();

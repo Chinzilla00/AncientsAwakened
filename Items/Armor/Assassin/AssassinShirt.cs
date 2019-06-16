@@ -27,8 +27,8 @@ A dark armor infused with the shadow of midnight");
         {
             player.meleeCrit += 14;
             player.rangedCrit += 14;
-            player.meleeDamage += .14f;
-            player.rangedDamage += .14f;
+            player.magicDamage += .14f;
+            player.minionDamage += .14f;
             player.ammoCost80 = true;
         }
 
