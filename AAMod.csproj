@@ -1932,6 +1932,16 @@
     <Compile Include="Projectiles\CrystalP.cs" />
     <Compile Include="Projectiles\CyberBaton.cs" />
     <Compile Include="Projectiles\DarkArrow.cs" />
+    <Compile Include="Projectiles\Darkpuppey\J.cs" />
+    <Compile Include="Projectiles\Darkpuppey\I.cs" />
+    <Compile Include="Projectiles\Darkpuppey\H.cs" />
+    <Compile Include="Projectiles\Darkpuppey\G.cs" />
+    <Compile Include="Projectiles\Darkpuppey\F.cs" />
+    <Compile Include="Projectiles\Darkpuppey\E.cs" />
+    <Compile Include="Projectiles\Darkpuppey\D.cs" />
+    <Compile Include="Projectiles\Darkpuppey\C.cs" />
+    <Compile Include="Projectiles\Darkpuppey\B.cs" />
+    <Compile Include="Projectiles\Darkpuppey\A.cs" />
     <Compile Include="Projectiles\Flasks\ForestFlask.cs" />
     <Compile Include="Projectiles\Flasks\IceFlask.cs" />
     <Compile Include="Projectiles\Flasks\IcemeltFlask.cs" />
@@ -6382,6 +6392,7 @@
     <Content Include="Projectiles\Darkpuppey\B.png" />
     <Content Include="Projectiles\Darkpuppey\C.png" />
     <Content Include="Projectiles\Darkpuppey\D.png" />
+    <Content Include="Projectiles\Darkpuppey\DeceivingTruth.png" />
     <Content Include="Projectiles\Darkpuppey\E.png" />
     <Content Include="Projectiles\Darkpuppey\F.png" />
     <Content Include="Projectiles\Darkpuppey\G.png" />
