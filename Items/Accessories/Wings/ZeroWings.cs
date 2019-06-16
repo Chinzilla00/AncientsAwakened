@@ -49,12 +49,11 @@ namespace AAMod.Items.Accessories.Wings
             if (inUse)
             {
                 player.wingFrameCounter++;
-                int num80 = 2;
-                if (player.wingFrameCounter >= num80 * 3)
+                if (player.wingFrameCounter >= 6)
                 {
                     player.wingFrameCounter = 0;
                 }
-                player.wingFrame = 1 + player.wingFrameCounter / num80;
+                player.wingFrame = 1 + player.wingFrameCounter / 2;
             }
             else
             {

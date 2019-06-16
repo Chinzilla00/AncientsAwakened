@@ -59,12 +59,11 @@ Hold down and jump to hover for an extended period of time
             if (inUse)
             {
                 player.wingFrameCounter++;
-                int num80 = 2;
-                if (player.wingFrameCounter >= num80 * 3)
+                if (player.wingFrameCounter >= 6)
                 {
                     player.wingFrameCounter = 0;
                 }
-                player.wingFrame = 1 + player.wingFrameCounter / num80;
+                player.wingFrame = 1 + player.wingFrameCounter / 2;
             }
             else
             {
@@ -78,7 +77,7 @@ Hold down and jump to hover for an extended period of time
                     player.velocity.Y = 1E-05f;
                 }
             }
-            return false;
+            return true;
         }
 
 

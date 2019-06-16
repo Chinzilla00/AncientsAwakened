@@ -7,7 +7,7 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Squrrel");
+			DisplayName.SetDefault("Squirrel");
 			Description.SetDefault("Throws nuts");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

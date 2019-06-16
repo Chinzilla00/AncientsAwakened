@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[1] == 540)
             {
-                Main.NewText("id, you will know our wrath again one day...when we gain enough power again…", new Color(180, 41, 32));
+                Main.NewText(player.name + ", you will know our wrath again one day...when we gain enough power again…", new Color(180, 41, 32));
             }
 
             if (npc.ai[1] == 720)

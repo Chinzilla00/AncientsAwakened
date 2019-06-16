@@ -1419,7 +1419,7 @@ namespace AAMod
             string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
             {
-                int choice = Main.rand.Next(20);
+                int choice = Main.rand.Next(30);
                 switch (choice)
                 {
                     case 0:
@@ -1635,6 +1635,12 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("DarkMask"));
                         player.QuickSpawnItem(mod.ItemType("DarkShirt"));
                         player.QuickSpawnItem(mod.ItemType("DarkPants"));
+                        spawnedDevItems = true;
+                        break;
+                    case 20:
+                        player.QuickSpawnItem(mod.ItemType("MikpinWig"));
+                        player.QuickSpawnItem(mod.ItemType("MikpinCloak"));
+                        player.QuickSpawnItem(mod.ItemType("MikpinPants"));
                         spawnedDevItems = true;
                         break;
                 }
@@ -3132,7 +3138,7 @@ namespace AAMod
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
             if (drawPlayer.mount.Active) return;
-            int accSlot = 0;
+            /*int accSlot = 0;
             bool social = false;
             Rectangle frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4);
             if (HasAndCanDraw(drawPlayer, mod.ItemType("ZeroJet"), ref social, ref accSlot))
@@ -3169,7 +3175,7 @@ namespace AAMod
             {
                 int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Items/Vanity/Moon/MoonWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
-            }
+            }*/
         });
 
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
