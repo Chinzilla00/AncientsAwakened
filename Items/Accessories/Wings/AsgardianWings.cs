@@ -48,7 +48,7 @@ namespace AAMod.Items.Accessories.Wings
             recipe.AddIngredient(ItemID.FrozenWings, 1);
             recipe.AddIngredient(null, "RelicBar", 10);
             recipe.AddIngredient(ItemID.FrostCore, 1);
-            recipe.AddIngredient(null, "SnowCrystal", 1);
+            recipe.AddIngredient(null, "IceCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
