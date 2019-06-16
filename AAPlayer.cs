@@ -2879,10 +2879,10 @@ namespace AAMod
             if (mitem != null)
             {
                 Item item = mitem.item;
-                if (item.headSlot > 0) return BaseMod.BasePlayer.HasHelmet(player, type) && BaseMod.BaseDrawing.ShouldDrawHelmet(player, type);
-                else if (item.bodySlot > 0) return BaseMod.BasePlayer.HasChestplate(player, type) && BaseMod.BaseDrawing.ShouldDrawChestplate(player, type);
-                else if (item.legSlot > 0) return BaseMod.BasePlayer.HasLeggings(player, type) && BaseMod.BaseDrawing.ShouldDrawLeggings(player, type);
-                else if (item.accessory) return BaseMod.BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseMod.BaseDrawing.ShouldDrawAccessory(player, type);
+                if (item.headSlot > 0) return BasePlayer.HasHelmet(player, type) && BaseDrawing.ShouldDrawHelmet(player, type);
+                else if (item.bodySlot > 0) return BasePlayer.HasChestplate(player, type) && BaseDrawing.ShouldDrawChestplate(player, type);
+                else if (item.legSlot > 0) return BasePlayer.HasLeggings(player, type) && BaseDrawing.ShouldDrawLeggings(player, type);
+                else if (item.accessory) return BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseDrawing.ShouldDrawAccessory(player, type);
             }
             return false;
         }
@@ -2897,7 +2897,7 @@ namespace AAMod
                 vector *= 0.4f;
                 if (drawType == 2)
                 {
-                    BaseMod.BaseDrawing.DrawPlayerTexture(sb, tex, shader, drawPlayer, edi.position, 1, -6f + vector.X, (drawPlayer.wings > 0 ? 0f : BaseMod.BaseDrawing.GetYOffset(drawPlayer)) + vector.Y, color, frame);
+                    BaseDrawing.DrawPlayerTexture(sb, tex, shader, drawPlayer, edi.position, 1, -6f + vector.X, (drawPlayer.wings > 0 ? 0f : BaseDrawing.GetYOffset(drawPlayer)) + vector.Y, color, frame);
                 }
                 else
                 {
@@ -2979,11 +2979,11 @@ namespace AAMod
             AddPlayerLayer(list, glAfterFace, PlayerLayer.FaceAcc, false);
             if (!player.merman && !player.wereWolf && groviteGlow[player.whoAmI])
             {
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteHead, PlayerLayer.Head, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteBody, PlayerLayer.Body, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteHead, PlayerLayer.Head, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteBody, PlayerLayer.Body, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
             }
             AddPlayerLayer(list, glAfterAll, list[list.Count - 1], false);
         }
@@ -3132,6 +3132,44 @@ namespace AAMod
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
             if (drawPlayer.mount.Active) return;
+            int accSlot = 0;
+            bool social = false;
+            Rectangle frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4);
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("ZeroJet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ZeroJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("GibsJet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/GibsJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.Red, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DuckstepWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DuckstepWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Ichor, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNights_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.CursedInferno, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("RealityStone"), ref social, ref accSlot) || HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGauntlet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/RealityStone_Wings_Glow"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("MoonWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Items/Vanity/Moon/MoonWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }
         });
 
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
@@ -3139,10 +3177,10 @@ namespace AAMod
             Mod mod = AAMod.instance;
             Player drawPlayer = (mapHead ? edhi.drawPlayer : edi.drawPlayer);
             AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
-            object drawObj = null; if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
+            object drawObj;
+            if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
             Vector2 Position = (mapHead ? drawPlayer.position : edi.position);
             int dyeHead = (mapHead ? edhi.armorShader : edi.headArmorShader);
-            Color colorArmorHead = (mapHead ? edhi.armorColor : edi.upperArmorColor);
             float scale = (mapHead ? edhi.scale : 0f);
 
             if (mapHead) { Position += new Vector2(0f, -3f * (1f - scale)); }
@@ -3555,7 +3593,7 @@ namespace AAMod
             bool social = false;
             if (edi.shadow == 0 && !drawPlayer.mount.Active && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateSails"), ref social, ref accSlot))
             {
-                int dye = BaseMod.BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
                 if (dye == -1) dye = 0;
                 DrawFlickerTexture(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/AngryPirateSails_Wings/Glow"), dye, drawPlayer);
             }

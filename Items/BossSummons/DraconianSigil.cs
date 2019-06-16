@@ -51,30 +51,26 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                 return false;
             }
+            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("AkumaTransition")))
+            {
+                return false;
+            }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
-                /*if (!AAWorld.downedAkuma)
+                if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !AAWorld.downedAkuma)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("That sigil has to be used at the Altar of the Draconian Sun, kid. It's in the middle of the inferno.", new Color(180, 41, 32), false);
                     return false;
-                }*/
-                if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-                {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
-                    return false;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
-                {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
-                    return false;
-                }
-                for (int m = 0; m < Main.maxProjectiles; m++)
-                {
-                    Projectile p = Main.projectile[m];
-                    if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
-                    {
-                        return false;
-                    }
                 }
                 return true;
             }

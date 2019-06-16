@@ -41,30 +41,27 @@ namespace AAMod.Items.Boss.Rajah
             if (inUse || player.jump > 0)
             {
                 player.wingFrameCounter++;
-                if (player.wingFrameCounter >= 6)
+                if (player.wingFrameCounter > 4)
                 {
+                    player.wingFrame++;
                     player.wingFrameCounter = 0;
-                }
-                player.wingFrame = 1 + player.wingFrameCounter / 2;
-            }
-            else if (player.velocity.Y != 0f)
-            {
-                if (player.controlJump)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter >= 6)
+                    if (player.wingFrame >= 4)
                     {
-                        player.wingFrameCounter = 0;
+                        player.wingFrame = 1;
                     }
-                    player.wingFrame = 1 + player.wingFrameCounter / 2;
                 }
-                else if (player.wingTime == 0f)
+            }
+            else if (player.velocity.Y != 0f && inUse)
+            {
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter > 8)
                 {
-                    player.wingFrame = 0;
-                }
-                else
-                {
-                    player.wingFrame = 0;
+                    player.wingFrame++;
+                    player.wingFrameCounter = 0;
+                    if (player.wingFrame >= 4)
+                    {
+                        player.wingFrame = 1;
+                    }
                 }
             }
             else

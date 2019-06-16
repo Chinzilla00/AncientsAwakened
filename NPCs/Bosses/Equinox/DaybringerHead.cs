@@ -70,8 +70,13 @@ namespace AAMod.NPCs.Bosses.Equinox
 		}
 
 		public void HandleDayNightCycle()
-		{
-			bool daybringerExists = NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
+        {
+            if (Main.time > 32200.0 && !Main.dayTime) //To prevent saving every time the day rolls over
+            {
+                Main.dayTime = true;
+                Main.time = 0;
+            }
+            bool daybringerExists = NPC.AnyNPCs(mod.NPCType<DaybringerHead>());
 			bool nightcrawlerExists = NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>());
 			if (daybringerExists && nightcrawlerExists)
             {

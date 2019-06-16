@@ -46,7 +46,7 @@ namespace AAMod.Items.Accessories.Wings
 
         public override bool WingUpdate(Player player, bool inUse)
         {
-            if (inUse || player.jump > 0)
+            if (inUse)
             {
                 player.wingFrameCounter++;
                 int num80 = 2;
@@ -55,27 +55,6 @@ namespace AAMod.Items.Accessories.Wings
                     player.wingFrameCounter = 0;
                 }
                 player.wingFrame = 1 + player.wingFrameCounter / num80;
-            }
-            else if (player.velocity.Y != 0f)
-            {
-                if (player.controlJump)
-                {
-                    player.wingFrameCounter++;
-                    int num81 = 2;
-                    if (player.wingFrameCounter >= num81 * 3)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / num81;
-                }
-                else if (player.wingTime == 0f)
-                {
-                    player.wingFrame = 0;
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
             }
             else
             {

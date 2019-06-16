@@ -41,21 +41,9 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 		public static Texture2D bodyTex;
 
 		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				for (int m = 0; m < 8; m++)
-				{
-					BaseMod.BaseAI.FireProjectile(npc.Center + new Vector2(velocitiesX[m], velocitiesY[m]), npc.Center, mod.ProjType("BugAcidShot"), 0, 0f, 5f);
-				}
-			}
-			BaseMod.BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
-			if(ModSupport.calamity != null)
-			{
-				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("BeetleJuice"), 1, 1, 65, true);	
-				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("EssenceofCinder"), 1, 1, (Main.expertMode ? 20 : 15), true);
-			}
-		}
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.PrimevalSkull>());
+        }
 
         public float moveSpeed = 14f;
         public Vector2 MovePoint;

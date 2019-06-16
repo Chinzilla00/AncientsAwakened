@@ -60,42 +60,13 @@ namespace AAMod.Items.Vanity.Grox
 
         public override bool WingUpdate(Player player, bool inUse)
         {
-            if (inUse || player.jump > 0)
+            if (inUse)
             {
-                player.wingFrameCounter++;
-                if (player.wingFrameCounter > 5)
+                if (player.wingFrame == 0)
                 {
-                    player.wingFrame++;
-                    player.wingFrameCounter = 0;
-                    if (player.wingFrame >= 4)
-                    {
-                        player.wingFrame = 1;
-                    }
+                    player.wingFrame = 1;
                 }
-            }
-            else if (player.velocity.Y != 0f)
-            {
-                if (inUse)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter > 8)
-                    {
-                        player.wingFrame++;
-                        player.wingFrameCounter = 0;
-                        if (player.wingFrame >= 4)
-                        {
-                            player.wingFrame = 1;
-                        }
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-            }
-            else
-            {
-                player.wingFrame = 0;
+
             }
             return false;
         }

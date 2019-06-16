@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class ZeroWings : ModItem
+	public class WingsofChaos : ModItem
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Zero Jet");
+            DisplayName.SetDefault("Wings of Chaos");
             Tooltip.SetDefault("Allows flight and slow fall");
         }
 
@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories.Wings
 		{
 			item.width = 22;
 			item.height = 20;
-			item.value = 400000;
+			item.value = 600000;
             item.rare = 2;
 			item.accessory = true;
             
@@ -40,28 +40,9 @@ namespace AAMod.Items.Accessories.Wings
 
 		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
-			speed = 14f;
+			speed = 16f;
 			acceleration *= 3.5f;
 		}
-
-        public override bool WingUpdate(Player player, bool inUse)
-        {
-            if (inUse)
-            {
-                player.wingFrameCounter++;
-                int num80 = 2;
-                if (player.wingFrameCounter >= num80 * 3)
-                {
-                    player.wingFrameCounter = 0;
-                }
-                player.wingFrame = 1 + player.wingFrameCounter / num80;
-            }
-            else
-            {
-                player.wingFrame = 0;
-            }
-            return false;
-        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -69,7 +50,7 @@ namespace AAMod.Items.Accessories.Wings
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Shen;
                 }
             }
         }
@@ -77,9 +58,10 @@ namespace AAMod.Items.Accessories.Wings
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "ApocalyptitePlate", 15);
-            recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddTile(null, "ACS");
+            recipe.AddIngredient(null, "DraconianWings", 1);
+            recipe.AddIngredient(null, "DreadWings", 1);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
