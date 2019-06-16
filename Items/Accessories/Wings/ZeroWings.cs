@@ -59,7 +59,7 @@ namespace AAMod.Items.Accessories.Wings
             {
                 player.wingFrame = 0;
             }
-            return false;
+            return true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

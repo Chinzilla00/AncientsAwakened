@@ -186,9 +186,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
             }
 
-            internalAI[1]++;
-
-            internalAI[5]++;
+            if (Main.netMode != 1)
+            {
+                internalAI[1]++;
+                internalAI[5]++;
+            }
 
             int InvisTimer1 = 1000;
 

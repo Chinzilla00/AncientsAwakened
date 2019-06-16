@@ -163,7 +163,7 @@ namespace AAMod.Projectiles.Akuma
         {
             Rectangle SunFrame = new Rectangle(0, 0, 64, 64);
             Rotation += .0008f;
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, GetAlpha(Color.White), true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, Color.White, true);
             return false;
         }
     }

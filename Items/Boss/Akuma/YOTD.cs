@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Akuma
             item.shoot = 134;
             item.UseSound = SoundID.Item11;
             item.damage = 155;
-            item.shootSpeed = 15f;
+            item.shootSpeed = 10f;
             item.noMelee = true;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.knockBack = 2f;
