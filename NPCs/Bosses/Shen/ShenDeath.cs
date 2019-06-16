@@ -31,8 +31,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             npc.ai[1]++;
-            Player player = Main.player[npc.target];
             npc.TargetClosest();
+            Player player = Main.player[npc.target];
             npc.Center = player.Center;
             if (npc.ai[1] == 180)
             {

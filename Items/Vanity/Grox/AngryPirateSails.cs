@@ -57,5 +57,18 @@ namespace AAMod.Items.Vanity.Grox
             speed = 10f;
             acceleration *= 2.5f;
         }
-	}
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse)
+            {
+                if (player.wingFrame == 0)
+                {
+                    player.wingFrame = 1;
+                }
+
+            }
+            return false;
+        }
+    }
 }

@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Serpent
             {
                 player.QuickSpawnItem(mod.ItemType("SerpentMask"));
             }
-            if (Main.rand.NextFloat(20) == 1)
+            if (Main.rand.Next(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PHMDevArmor();

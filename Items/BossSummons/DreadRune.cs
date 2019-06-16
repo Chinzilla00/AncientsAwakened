@@ -58,6 +58,20 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
+            if (NPC.AnyNPCs(mod.NPCType("Yamata")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType("YamataA")))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.YamataTransition>()))
+            {
+                return false;
+            }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
                 if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake && !AAWorld.downedYamata)
@@ -65,22 +79,9 @@ Non-Consumable");
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("An image of the strange tree at the heart of the mire flashes through your mind", Color.Indigo, false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType("Yamata")))
-                {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
-                    return false;
-                }
-                if (NPC.AnyNPCs(mod.NPCType("YamataA")))
-                {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
-                    return false;
-                }
-                if (NPC.AnyNPCs(mod.NPCType("YamataTransition")))
-                {
-                    return false;
-                }
                 return true;
             }
+
             if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);
             return false;
         }
