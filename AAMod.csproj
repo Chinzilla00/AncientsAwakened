@@ -4950,6 +4950,7 @@
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Swarm_Thing.png" />
     <Content Include="NPCs\TownNPCs\StanLee.png" />
+    <Content Include="NPCs\TownNPCs\StanLee_Head.png" />
     <Content Include="Projectiles\AH\AbyssBall.png" />
     <Content Include="Projectiles\AH\AbyssClaw.png" />
     <Content Include="Projectiles\AH\MagicBoom.png" />
