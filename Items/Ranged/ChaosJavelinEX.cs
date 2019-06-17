@@ -3,44 +3,42 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DynaskullJavelin : ModItem
+    public class ChaosJavelinEX : ModItem
     {
-
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dynaskull Javelin");
-            Tooltip.SetDefault("If stuck in an enemy and that enemy dies, releases a homing bolt of Dyna-Energy");
+            DisplayName.SetDefault("Perfect Chaos Javelin");
+            Tooltip.SetDefault(@"Explodes on contact
+Chaos Javelin EX");
         }
 
         public override void SetDefaults()
         {
-            item.shoot = mod.ProjectileType("DynaskullJavelin");
+            item.shoot = mod.ProjectileType("ChaosJavelinEX");
             item.shootSpeed = 12f;
-            item.damage = 40;
+            item.damage = 200;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;
             item.UseSound = SoundID.Item1;
-            item.useAnimation = 24;
-            item.useTime = 24;
+            item.useAnimation = 20;
+            item.useTime = 20;
             item.width = 30;
             item.height = 30;
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = 50000;
-            item.rare = 4;
+            item.value = 1000000;
+            item.rare = 11;
+            item.expert = true;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BoneJavelin, 500);
-            recipe.AddIngredient(null, "DragonSpine", 500);
-            recipe.AddIngredient(null, "Winterbreak", 500);
-            recipe.AddIngredient(null, "Incapacitator", 500);
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(null, "ChaosJavelin");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

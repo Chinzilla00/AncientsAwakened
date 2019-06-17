@@ -30,6 +30,8 @@ namespace AAMod
         public bool DiscordInferno = false;
         public bool riftBent = false;
         public bool BrokenArmor = false;
+        public bool DynaEnergy1 = false;
+        public bool DynaEnergy2 = false;
         public static int Toad = -1;
         public static int Rose = -1;
         public static int Brain = -1;
@@ -57,6 +59,8 @@ namespace AAMod
             irradiated = false;
             riftBent = false;
             BrokenArmor = false;
+            DynaEnergy1 = false;
+            DynaEnergy2 = false;
         }
 
         public override void SetDefaults(NPC npc)
@@ -274,6 +278,19 @@ namespace AAMod
                 if (Main.rand.NextFloat() < 0.1f)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GladiatorsGlory"));
+                }
+            }
+
+            if (DynaEnergy1)
+            {
+                Projectile.NewProjectile(npc.position, Vector2.Zero, mod.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer, 0, 0);
+            }
+
+            if (DynaEnergy2)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Projectile.NewProjectile(npc.position, Vector2.Zero, mod.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer, 0, 0);
                 }
             }
 

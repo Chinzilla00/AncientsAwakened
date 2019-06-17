@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
             item.autoReuse = false;
             item.shootSpeed = 10f;
             item.value = 10000;
-            item.ammo = AmmoID.Gel;
+            item.useAmmo = AmmoID.Gel;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

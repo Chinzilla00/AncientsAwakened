@@ -79,13 +79,18 @@
     <Compile Include="Buffs\ChaosClaw.cs" />
     <Compile Include="Buffs\CyberClaw.cs" />
     <Compile Include="Buffs\DapperSquirrel.cs" />
+    <Compile Include="Buffs\DynaEnergy2.cs" />
+    <Compile Include="Buffs\DynaEnergy1.cs" />
     <Compile Include="Buffs\Squirrel.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
     <Compile Include="Buffs\ScoutMinion.cs" />
     <Compile Include="Buffs\Socc.cs" />
     <Compile Include="Buffs\SockPuppet.cs" />
     <Compile Include="Buffs\TiedemiesBuff.cs" />
+    <Compile Include="Dusts\GroviteDust.cs" />
+    <Compile Include="Dusts\ShadowDust.cs" />
     <Compile Include="Dusts\SnapDust.cs" />
+    <Compile Include="Dusts\UraniumDust.cs" />
     <Compile Include="Items\Accessories\Snap.cs" />
     <Compile Include="Items\Accessories\Wings\AsgardianWings.cs" />
     <Compile Include="Items\Accessories\Wings\AbyssalWings.cs" />
@@ -1223,6 +1228,10 @@
     <Compile Include="Items\Potions\GrandManaPotion.cs" />
     <Compile Include="Items\Potions\HydratoxinFlask.cs" />
     <Compile Include="Items\Potions\TheBigOne.cs" />
+    <Compile Include="Items\Ranged\ChaosJavelinEX.cs" />
+    <Compile Include="Items\Ranged\ChaosShotEX.cs" />
+    <Compile Include="Items\Ranged\ChaosShot.cs" />
+    <Compile Include="Items\Ranged\AbyssalShadowshot.cs" />
     <Compile Include="Items\Ranged\Alien_Rifle.cs" />
     <Compile Include="Items\Ranged\Ammo\ChaosArrow.cs" />
     <Compile Include="Items\Ranged\Ammo\DarkmatterArrow.cs" />
@@ -1247,6 +1256,12 @@
     <Compile Include="Items\Ranged\CoinPistol.cs" />
     <Compile Include="Items\Ranged\CoralBow.cs" />
     <Compile Include="Items\Ranged\DoomiteAssaultBlaster.cs" />
+    <Compile Include="Items\Ranged\ChaosJavelin.cs" />
+    <Compile Include="Items\Ranged\FossilBoneslinger.cs" />
+    <Compile Include="Items\Ranged\PrimevalJavelin.cs" />
+    <Compile Include="Items\Ranged\Incapacitator.cs" />
+    <Compile Include="Items\Ranged\Winterbreak.cs" />
+    <Compile Include="Items\Ranged\DragonSpine.cs" />
     <Compile Include="Items\Ranged\DynaskullJavelin.cs" />
     <Compile Include="Items\Ranged\Festivity.cs" />
     <Compile Include="Items\Ranged\Firebuster.cs" />
@@ -1920,7 +1935,17 @@
     <Compile Include="Projectiles\Akuma\SunSpearShot.cs" />
     <Compile Include="Projectiles\Akuma\Sunstorm.cs" />
     <Compile Include="Projectiles\AmberArrow.cs" />
+    <Compile Include="Projectiles\ChaosBoom.cs" />
     <Compile Include="Projectiles\AmphibiousProjectile.cs" />
+    <Compile Include="Projectiles\ChaosJavelinEX.cs" />
+    <Compile Include="Projectiles\ChaosJavelin.cs" />
+    <Compile Include="Projectiles\DragonSpine.cs" />
+    <Compile Include="Projectiles\PrimevalJavelin.cs" />
+    <Compile Include="Projectiles\DynaskullJavelin.cs" />
+    <Compile Include="Projectiles\DynaEnergy.cs" />
+    <Compile Include="Projectiles\Winterbreak.cs" />
+    <Compile Include="Projectiles\Incapacitator.cs" />
+    <Compile Include="Projectiles\Shadowshot.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEXSplit.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEX.cs" />
     <Compile Include="Projectiles\AmphibiousProjectileEXS.cs" />
@@ -2204,7 +2229,7 @@
     <Compile Include="Projectiles\PerfectChaosE.cs" />
     <Compile Include="Projectiles\Petal_Kunai_Pro.cs" />
     <Compile Include="Projectiles\Platinum_Kunai_Pro.cs" />
-    <Compile Include="Projectiles\ProjectileDraw.cs" />
+    <Compile Include="Globals\ProjectileDraw.cs" />
     <Compile Include="Projectiles\RadiumArrow.cs" />
     <Compile Include="Projectiles\RainbowCatPro.cs" />
     <Compile Include="Projectiles\ReaperArrow.cs" />
@@ -2736,6 +2761,8 @@
     <Content Include="Buffs\DragonMinion.png" />
     <Content Include="Buffs\DragonSoul.png" />
     <Content Include="Buffs\DustDevil.png" />
+    <Content Include="Buffs\DynaEnergy1.png" />
+    <Content Include="Buffs\DynaEnergy2.png" />
     <Content Include="Buffs\EaterMinion.png" />
     <Content Include="Buffs\Electrified.png" />
     <Content Include="Buffs\EnderMinionBuff.png" />
@@ -2841,6 +2868,7 @@
     <Content Include="Dusts\FluffEXDust.png" />
     <Content Include="Dusts\FulguriteDust.png" />
     <Content Include="Dusts\Glass.png" />
+    <Content Include="Dusts\GroviteDust.png" />
     <Content Include="Dusts\HallowedDustT.png" />
     <Content Include="Dusts\HallowedDust.png" />
     <Content Include="Dusts\HydraDust.png" />
@@ -2878,6 +2906,7 @@
     <Content Include="Dusts\RealityDust.png" />
     <Content Include="Dusts\RedDust.png" />
     <Content Include="Dusts\SandDust.png" />
+    <Content Include="Dusts\ShadowDust.png" />
     <Content Include="Dusts\ShroomDust.png" />
     <Content Include="Dusts\SnapDust.png" />
     <Content Include="Dusts\SnowDustLight.png" />
@@ -2890,6 +2919,7 @@
     <Content Include="Dusts\TimeDust.png" />
     <Content Include="Dusts\TMagicDust.png" />
     <Content Include="Dusts\UmbreonSPDust.png" />
+    <Content Include="Dusts\UraniumDust.png" />
     <Content Include="Dusts\VoidDust.png" />
     <Content Include="Dusts\YamataAuraDust.png" />
     <Content Include="Dusts\YamataADust.png" />
@@ -4630,6 +4660,8 @@
     <Content Include="Items\Potions\Carrot.png" />
     <Content Include="Items\Ranged\AbyssalPentashot.png" />
     <Content Include="Items\Ranged\AbyssalShadowshot.png" />
+    <Content Include="Items\Ranged\ChaosJavelin.png" />
+    <Content Include="Items\Ranged\ChaosJavelinEX.png" />
     <Content Include="Items\Ranged\ChaosShot.png" />
     <Content Include="Items\Ranged\ChaosShotEX.png" />
     <Content Include="Items\Ranged\DoomiteAssaultBlaster.png" />
@@ -4638,7 +4670,7 @@
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\FossilBoneslinger.png" />
-    <Content Include="Items\Ranged\Icesickle.png" />
+    <Content Include="Items\Ranged\Winterbreak.png" />
     <Content Include="Items\Ranged\Incapacitator.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\OceanWhaler.png" />
@@ -6349,6 +6381,7 @@
     <Content Include="Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Projectiles\Akuma\Sunstorm.png" />
     <Content Include="Projectiles\AmberArrow.png" />
+    <Content Include="Projectiles\ChaosBoom.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />
     <Content Include="Projectiles\AmphibiousProjectileEX.png" />
     <Content Include="Projectiles\AmphibiousProjectileEXSplit.png" />
@@ -6377,6 +6410,8 @@
     <Content Include="Projectiles\CGP.png" />
     <Content Include="Projectiles\ChaosArrow.png" />
     <Content Include="Projectiles\ChaosBaton.png" />
+    <Content Include="Projectiles\ChaosJavelin.png" />
+    <Content Include="Projectiles\ChaosJavelinEX.png" />
     <Content Include="Projectiles\ChaosScythe.png" />
     <Content Include="Projectiles\ChaosScytheP.png" />
     <Content Include="Projectiles\ChaosShot.png" />
@@ -6387,7 +6422,6 @@
     <Content Include="Projectiles\ChaosYari.png" />
     <Content Include="Projectiles\ChaosYariEX.png" />
     <Content Include="Projectiles\ChaosYariEXShot.png" />
-    <Content Include="Projectiles\ChaosYariEXShot_Tip.png" />
     <Content Include="Projectiles\ChaosYariShot.png" />
     <Content Include="Projectiles\Chronos.png" />
     <Content Include="Projectiles\ClawBaton.png" />
@@ -6416,12 +6450,9 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
-    <Content Include="Projectiles\DeceivingTruth1.png" />
-    <Content Include="Projectiles\DeceivingTruth2.png" />
-    <Content Include="Projectiles\DeceivingTruth3.png" />
-    <Content Include="Projectiles\DeceivingTruth4.png" />
     <Content Include="Projectiles\DoomiteVortex.png" />
     <Content Include="Projectiles\DragonSpine.png" />
+    <Content Include="Projectiles\DynaEnergy.png" />
     <Content Include="Projectiles\DynaskullJavelin.png" />
     <Content Include="Projectiles\Executioner.png" />
     <Content Include="Projectiles\Flasks\AshJar.png" />
@@ -6445,7 +6476,7 @@
     <Content Include="Projectiles\ForestSolution.png" />
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\HoloArrow.png" />
-    <Content Include="Projectiles\Icesickle.png" />
+    <Content Include="Projectiles\Winterbreak.png" />
     <Content Include="Projectiles\Incapacitator.png" />
     <Content Include="Projectiles\JungleSolution.png" />
     <Content Include="Projectiles\MireLeaf.png" />
@@ -6457,6 +6488,7 @@
     <Content Include="Projectiles\PrimevalJavelin.png" />
     <Content Include="Projectiles\Pyrosphere.png" />
     <Content Include="Projectiles\Pyrosphere_Chain.png" />
+    <Content Include="Projectiles\Rajah\RoyalRabbit.png" />
     <Content Include="Projectiles\Stars.png" />
     <Content Include="Projectiles\RadiumStar.png" />
     <Content Include="Projectiles\RaiderLance.png" />
@@ -6539,11 +6571,9 @@
     <Content Include="Projectiles\DragonfireBullet.png" />
     <Content Include="Projectiles\DragonfireDart.png" />
     <Content Include="Projectiles\DragonfireProj.png" />
-    <Content Include="Projectiles\DragonLanceP.png" />
     <Content Include="Projectiles\DragonP.png" />
     <Content Include="Projectiles\DragonSP.png" />
     <Content Include="Projectiles\Duck.png" />
-    <Content Include="Projectiles\DuckEX.png" />
     <Content Include="Projectiles\DummyExplosion.png" />
     <Content Include="Projectiles\DummyExplosionTerra.png" />
     <Content Include="Projectiles\EFish\EFlairon.png" />
@@ -6645,7 +6675,6 @@
     <Content Include="Projectiles\PerfectChaosE.png" />
     <Content Include="Projectiles\Petal_Kunai_Pro.png" />
     <Content Include="Projectiles\Platinum_Kunai_Pro.png" />
-    <Content Include="Projectiles\PrismBolt.png" />
     <Content Include="Projectiles\RadiumArrow.png" />
     <Content Include="Projectiles\RainbowCatPro.png" />
     <Content Include="Projectiles\ReaperArrow.png" />

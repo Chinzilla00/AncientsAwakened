@@ -16,7 +16,7 @@ namespace AAMod.Projectiles
         {
             projectile.width = 130;
             projectile.height = 130;
-            projectile.aiStyle = 50;
+            projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.alpha = 255;
             projectile.magic = true;

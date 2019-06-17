@@ -34,23 +34,18 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = (proType == 0 ? 0 : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataAuraDust>());
+            int dustType = (proType == 0 ? mod.DustType<Dusts.DiscordLight>() : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataAuraDust>());
             if (projectile.ai[1] != 0)
             {
+                projectile.extraUpdates = 1;
                 projectile.usesLocalNPCImmunity = true;
                 projectile.localNPCHitCooldown = 5;
-                if (proType == 0)
-                {
-                    dustType = mod.DustType<Dusts.DiscordLight>();
-                }
             }
-            if (proType != 0)
-            {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1) - projectile.velocity, 2, 2, dustType, 0f, 0f, 100, Color.White, 1.2f);
-                Main.dust[dustID].velocity *= 0f;
-                Main.dust[dustID].noLight = false;
-                Main.dust[dustID].noGravity = true;
-            }
+
+            int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1) - projectile.velocity, 2, 2, dustType, 0f, 0f, 100, Color.White, 1.2f);
+            Main.dust[dustID].velocity *= 0f;
+            Main.dust[dustID].noLight = false;
+            Main.dust[dustID].noGravity = true;
 
             if (originalVelocity == Vector2.Zero)
             {

@@ -5,17 +5,17 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class AbyssalPentashot : ModItem
+    public class AbyssalShadowshot : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Abyssal Pentashot");
-            Tooltip.SetDefault("");
+            DisplayName.SetDefault("Abyssal Shadowshot");
+            Tooltip.SetDefault("Fires a homing shadow blast as well as a a blast of 6 bullets");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 35;
+            item.damage = 45;
             item.noMelee = true;
             item.ranged = true;
             item.width = 50;
@@ -26,8 +26,8 @@ namespace AAMod.Items.Ranged
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
-            item.value = 20000;
-            item.rare = 4;
+            item.value = 100000;
+            item.rare = 8;
             item.UseSound = SoundID.Item11;
             item.shootSpeed = 12f;
         }
@@ -39,22 +39,21 @@ namespace AAMod.Items.Ranged
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
 		    double deltaAngle = spread / 6f;
 		    double offsetAngle;
-		    for (int i = 0; i < 5; i++)
+		    for (int i = 0; i < 6; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
 		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
-		    }
-		    return false;
+            }
+            Projectile.NewProjectile(position.X, position.Y, speedX, mod.ProjectileType<Projectiles.Shadowshot>(), type, (int)(damage * 1.5f), knockBack, item.owner);
+            return false;
 		}
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "HydraTrishot", 1);
-            recipe.AddIngredient(null, "OceanWhaler", 1);
-            recipe.AddIngredient(null, "DoomiteAssaultBlaster", 1);
-            recipe.AddIngredient(ItemID.SnowballCannon, 1);
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(null, "AbyssalPentashot", 1);
+            recipe.AddIngredient(null, "MireCrystal", 1);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

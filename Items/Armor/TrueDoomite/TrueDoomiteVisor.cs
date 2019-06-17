@@ -30,7 +30,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("TrueDoomitePlate") && legs.type == mod.ItemType("TrueDoomiteBoots");
+            return body.type == mod.ItemType("TrueDoomiteBreastplate") && legs.type == mod.ItemType("TrueDoomiteGreaves");
         }
 
         public override void UpdateArmorSet(Player player)
