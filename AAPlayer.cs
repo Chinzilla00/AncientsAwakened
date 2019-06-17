@@ -454,12 +454,6 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
-        public override void PreUpdateBuffs()
-        {
-
-        }
-
-
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
