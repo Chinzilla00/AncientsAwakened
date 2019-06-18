@@ -475,6 +475,7 @@ namespace AAMod
             ZoneMush = (AAWorld.mushTiles > 100);
             Terrarium = (AAWorld.terraTiles >= 1);
             ZoneVoid = (AAWorld.voidTiles > 20) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
+            ZoneVoid2 = (AAWorld.voidTiles2 > 100);
             //ZoneStorm = (AAWorld.stormTiles >= 1);
             //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
@@ -728,6 +729,16 @@ namespace AAMod
                 {
                     caughtType = mod.ItemType("HellCrate");
                 }
+            }
+
+            if (questFish == mod.ItemType("TriHeadedKoi") && Main.rand.NextBool())
+            {
+                caughtType = mod.ItemType("TriHeadedKoi");
+            }
+
+            if (questFish == mod.ItemType("Fishmother") && Main.rand.NextBool())
+            {
+                caughtType = mod.ItemType("Fishmother");
             }
         }
 
@@ -1510,7 +1521,7 @@ namespace AAMod
             string addonEX = (dropType == 3 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
             {
-                int choice = Main.rand.Next(20);
+                int choice = Main.rand.Next(30);
                 switch (choice)
                 {
                     case 0:
@@ -1726,6 +1737,33 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("DarkMask"));
                         player.QuickSpawnItem(mod.ItemType("DarkShirt"));
                         player.QuickSpawnItem(mod.ItemType("DarkPants"));
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("DeceivingTruth" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 20:
+                        player.QuickSpawnItem(mod.ItemType("MikpinWig"));
+                        player.QuickSpawnItem(mod.ItemType("MikpinCloak"));
+                        player.QuickSpawnItem(mod.ItemType("MikpinPants"));
+                        spawnedDevItems = true;
+                        break;
+                    case 21:
+                        player.QuickSpawnItem(mod.ItemType("FargoHat"));
+                        player.QuickSpawnItem(mod.ItemType("FargoSuit"));
+                        player.QuickSpawnItem(mod.ItemType("FargoPants"));
+                        if (dropType >= 2)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("MagicAcorn" + addonEX));
+                            }
+                            else
+                            {
+                                player.QuickSpawnItem(mod.ItemType("Placeholder"));
+                            }
+                        }
                         spawnedDevItems = true;
                         break;
                 }
@@ -3221,6 +3259,44 @@ namespace AAMod
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
             if (drawPlayer.mount.Active) return;
+            /*int accSlot = 0;
+            bool social = false;
+            Rectangle frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4);
+            if (HasAndCanDraw(drawPlayer, mod.ItemType("ZeroJet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ZeroJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("GibsJet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/GibsJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.Red, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DuckstepWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DuckstepWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Ichor, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNights_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.CursedInferno, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("RealityStone"), ref social, ref accSlot) || HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGauntlet"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/RealityStone_Wings_Glow"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("MoonWings"), ref social, ref accSlot))
+            {
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Items/Vanity/Moon/MoonWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
+            }*/
         });
 
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
@@ -3258,7 +3334,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendHelm")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueFleshrendHelm_Glow_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAPlayer.Uranium, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueFleshrendHelm_Glow_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.headFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayHelmet")))
             {
@@ -3370,7 +3446,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TrueBlazingKabuto")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueBlazingKabutoHead_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.headFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TrueBlazingKabuto_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.headFrame, scale);
             }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
@@ -3400,11 +3476,11 @@ namespace AAMod
             }
             else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendPlate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendPlate_Glow_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendPlate_Glow_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendPlate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendPlate_Glow_Female"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendPlate_Glow_Female"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayChestplate")))
             {

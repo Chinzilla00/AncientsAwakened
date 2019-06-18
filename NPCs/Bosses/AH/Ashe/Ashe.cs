@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.damage = 120;
             npc.defense = 40;
             npc.lifeMax = 100000;
-            npc.value = Item.buyPrice(0, 0, 75, 45);
+            npc.value = Item.sellPrice(0, 0, 75, 45);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -110,8 +110,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
-                internalAI[1] = 0;
-                internalAI[2]++;
+                if (Main.netMode != 1)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2]++;
+                    npc.netUpdate = true;
+                }
             }
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)

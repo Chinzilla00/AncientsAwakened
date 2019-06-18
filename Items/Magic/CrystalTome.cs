@@ -19,7 +19,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.useStyle = 5;         //The way your Weapon will be used, 5 is the Holding Out Used for: Guns, Spellbooks, Drills, Chainsaws, Flails, Spears for example
             item.noMelee = true;     //Setting to True allows the weapon sprite to stop doing damage, so only the projectile does the damge
             item.knockBack = 1;  //The knockback stat of your Weapon.      
-            item.value = Item.buyPrice(0, 5, 0, 0); // How much the item is worth, in copper coins, when you sell it to a merchant. It costs 1/5th of this to buy it back from them. An easy way to remember the value is platinum, gold, silver, copper or PPGGSSCC (so this item price is 10gold)
+            item.value = Item.sellPrice(0, 5, 0, 0); // How much the item is worth, in copper coins, when you sell it to a merchant. It costs 1/5th of this to buy it back from them. An easy way to remember the value is platinum, gold, silver, copper or PPGGSSCC (so this item price is 10gold)
             item.rare = 7;   //The color the title of your Weapon when hovering over it ingame
             item.mana = 9;//How many mana this weapon use
             item.UseSound = SoundID.Item1; //item.UseSound = SoundID.Item1;   //The sound played when using your Weapon

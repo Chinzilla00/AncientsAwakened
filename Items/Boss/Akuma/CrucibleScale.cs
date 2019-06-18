@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 28;
             item.height = 30;
             item.maxStack = 999;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 11;
         }
 

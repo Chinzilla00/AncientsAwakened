@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Zero
             item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 3;
-			item.value = Item.buyPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(1, 0, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
             item.rare = 10;

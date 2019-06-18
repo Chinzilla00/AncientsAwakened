@@ -22,8 +22,8 @@ namespace AAMod.Items.Dev
 			item.useAnimation = 12;
 			item.useStyle = 5;
 			item.knockBack = 7;
-			item.value = 300000;
-			item.rare = 9;
+            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.rare = 9;
 			item.autoReuse = true;		
 			item.magic = true;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/FerretNote");

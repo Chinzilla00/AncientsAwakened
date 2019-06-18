@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Other
 			npc.lifeMax = 25;
 			npc.knockBackResist = 0f;
 			animationType = 81;
-			npc.value = Item.buyPrice(0, 0, 5, 0);
+			npc.value = Item.sellPrice(0, 0, 5, 0);
 			npc.alpha = 60;
 			npc.lavaImmune = false;
 			npc.noGravity = false;

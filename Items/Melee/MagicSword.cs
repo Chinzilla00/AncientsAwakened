@@ -25,7 +25,7 @@ namespace AAMod.Items.Melee
 			item.shoot = mod.ProjectileType("MagicPro");
 			item.shootSpeed = 8f;
 			item.knockBack = 5;
-			item.value = Item.buyPrice(0, 10, 0, 0);
+			item.value = Item.sellPrice(0, 10, 0, 0);
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

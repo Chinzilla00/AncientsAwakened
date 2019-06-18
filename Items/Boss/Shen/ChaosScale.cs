@@ -45,7 +45,7 @@ namespace AAMod.Items.Boss.Shen
             item.width = 30;
             item.height = 42;
             item.maxStack = 999;
-            item.value = 10000;
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 11;
             item.glowMask = customGlowMask;
         }

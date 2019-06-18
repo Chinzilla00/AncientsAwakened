@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Enemies.Snow
             npc.HitSound = SoundID.NPCHit5;
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
-            npc.value = Item.buyPrice(0, 0, 10, 0);
+            npc.value = Item.sellPrice(0, 0, 10, 0);
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

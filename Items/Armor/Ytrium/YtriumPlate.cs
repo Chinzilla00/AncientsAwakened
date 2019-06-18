@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Ytrium
             item.height = 18;
             item.value = 70000;
             item.rare = 4;
-            item.defense = 9;
+            item.defense = 7;
         }
 
         public override void UpdateEquip(Player player)

@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Zero
             item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
             item.rare = 10;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.ranged = true;
             item.autoReuse = true;

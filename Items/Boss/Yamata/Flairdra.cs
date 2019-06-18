@@ -33,11 +33,11 @@ Inflicts Moonraze");
         {
             item.width = 26;
             item.height = 22;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.useStyle = 5;
-            item.useAnimation = 20;
-            item.useTime = 20;
+            item.useAnimation = 12;
+            item.useTime = 12;
             item.knockBack = 3.5f;
             item.damage = 200;
             item.noUseGraphic = true;

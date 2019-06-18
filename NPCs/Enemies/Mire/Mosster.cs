@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.damage = 30;  //boss damage
             npc.defense = 8;    //boss defense
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 0, 6, 45);
+            npc.value = Item.sellPrice(0, 0, 6, 45);
             aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
             npc.HitSound = SoundID.NPCHit1;

@@ -31,7 +31,7 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
             item.width = 60;
             item.height = 52;
             item.maxStack = 1;
-            item.value = Item.buyPrice(3, 0, 0, 0);
+            item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
             item.rare = 10;

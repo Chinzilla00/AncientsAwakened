@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 1;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Teslashock");
             item.rare = 10;

@@ -1,6 +1,7 @@
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.Items.Melee   //where is located
 {
@@ -14,8 +15,6 @@ namespace AAMod.Items.Melee   //where is located
         }
         public override void SetDefaults()
         {
-
-            
             item.damage = 260;            //Sword damage
             item.melee = true;            //if it's melee
             item.width = 176;              //Sword width
@@ -24,7 +23,7 @@ namespace AAMod.Items.Melee   //where is located
             item.useAnimation = 30;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 4;      //Sword knockback
-            item.value = 20;        
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 9;
             item.UseSound = SoundID.Item20;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
@@ -44,7 +43,6 @@ namespace AAMod.Items.Melee   //where is located
             recipe.AddTile(TileID.MythrilAnvil);   //at work bench
             recipe.SetResult(this);
             recipe.AddRecipe();
-
         }
     }
 }

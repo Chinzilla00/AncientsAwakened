@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories.Wings
 		{
 			item.width = 22;
 			item.height = 20;
-			item.value = 400000;
+            item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 2;
 			item.accessory = true;
             
@@ -43,6 +43,24 @@ namespace AAMod.Items.Accessories.Wings
 			speed = 14f;
 			acceleration *= 3.5f;
 		}
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse)
+            {
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter >= 6)
+                {
+                    player.wingFrameCounter = 0;
+                }
+                player.wingFrame = 1 + player.wingFrameCounter / 2;
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            return true;
+        }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

@@ -31,7 +31,7 @@ Conflagrate Staff EX");
 			item.useStyle = 1;
 			item.noMelee = true;
 			item.knockBack = 3;
-			item.value = Item.buyPrice(0, 20, 0, 0);
+			item.value = Item.sellPrice(0, 20, 0, 0);
             item.shoot = mod.ProjectileType("EnderMinionEX");
             item.buffType = mod.BuffType("EnderMinionBuffEX");
             item.rare = 8;

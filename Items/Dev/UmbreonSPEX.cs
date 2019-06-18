@@ -26,7 +26,7 @@ Blade of Night EX");
 			item.useAnimation = 22;
 			item.useStyle = 1;
 			item.knockBack = 7;
-			item.value = Item.buyPrice(1, 1, 50, 0);
+			item.value = Item.sellPrice(1, 1, 50, 0);
 			item.rare = 2;
 			item.UseSound = SoundID.Item71;
 			item.autoReuse = true;

@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.height = 78;
             npc.friendly = false;
             npc.aiStyle = 0;
-            npc.value = Item.buyPrice(2, 0, 0, 0);
+            npc.value = Item.sellPrice(2, 0, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
-                if (Main.rand.NextFloat(50) == 0 && AAWorld.downedAllAncients)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }

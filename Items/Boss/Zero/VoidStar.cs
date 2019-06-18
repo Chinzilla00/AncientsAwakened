@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Zero
             item.UseSound = SoundID.Item20;
             item.shoot = mod.ProjectileType("VoidStarPF");
             item.mana = 18;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
             item.magic = true;
             item.noUseGraphic = true;

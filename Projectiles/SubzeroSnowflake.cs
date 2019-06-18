@@ -51,10 +51,10 @@ namespace AAMod.Projectiles
             }
 
             int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
+                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 1f);
             Main.dust[dustId].noGravity = true;
             int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
+                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 1f);
             Main.dust[dustId3].noGravity = true;
 
             const int aislotHomingCooldown = 0;
@@ -109,7 +109,7 @@ namespace AAMod.Projectiles
         public override void Kill(int timeleft)
         {
             Main.PlaySound(SoundID.Item27, projectile.position);
-            int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.SnowDustLight>(), 0f, 0f, 100, Color.White, 1.6f);
+            int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.SnowDustLight>(), 0f, 0f, 100, Color.White, 1f);
             Main.dust[dustID].noLight = false;
             Main.dust[dustID].noGravity = true;
         }

@@ -33,12 +33,13 @@ Inflicts Daybroken");
         {
             item.width = 54;
             item.height = 44;
-            item.value = Item.buyPrice(1, 0, 0, 0); ;
+            item.value = Item.sellPrice(1, 0, 0, 0); ;
             item.rare = 10;
             item.noMelee = true;
             item.useStyle = 5;
             item.useAnimation = 40;
             item.useTime = 40;
+            item.reuseDelay = 10;
             item.knockBack = 7.5F;
             item.damage = 340;
             item.noUseGraphic = true;

@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Void
             npc.damage = 40;
             npc.defense = 40;
             npc.lifeMax = 1000;
-            npc.value = Item.buyPrice(0, 0, 50, 0);
+            npc.value = Item.sellPrice(0, 0, 50, 0);
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;

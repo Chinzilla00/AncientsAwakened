@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Djinn
             item.useStyle = 5;    
             item.noMelee = true;
             item.knockBack = 4;
-            item.value = Item.buyPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
             item.mana = 5;          
             item.UseSound = SoundID.Item21;      

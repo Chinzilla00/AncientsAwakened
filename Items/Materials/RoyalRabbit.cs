@@ -18,7 +18,7 @@ namespace AAMod.Items.Materials
             item.width = 36;
             item.height = 30;
             item.maxStack = 999;
-            item.value = Item.buyPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 8;
             item.useAnimation = 30;
             item.useTime = 30;

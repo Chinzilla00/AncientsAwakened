@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.Items.Tools
 {
@@ -18,7 +19,7 @@ namespace AAMod.Items.Tools
             item.pick = 60;
             item.useStyle = 1;
             item.knockBack = 1;
-            item.value = 10;
+            item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

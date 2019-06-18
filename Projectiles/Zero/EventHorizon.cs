@@ -106,10 +106,8 @@ namespace AAMod.Projectiles.Zero
             {
                 color25 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f));
             }
-            Vector2 projPos = projectile.position;
-            projPos = (new Vector2(projectile.width, projectile.height) / 2f) + (Vector2.UnitY * projectile.gfxOffY) - Main.screenPosition; //fuck it
             Texture2D texture2D22 = Main.projectileTexture[projectile.type];
-            Microsoft.Xna.Framework.Color alpha3 = projectile.GetAlpha(color25);
+            Color alpha3 = projectile.GetAlpha(color25);
             if (projectile.velocity == Vector2.Zero)
             {
                 return false;
@@ -117,14 +115,14 @@ namespace AAMod.Projectiles.Zero
             float num230 = projectile.velocity.Length() + 16f;
             bool flag24 = num230 < 100f;
             Vector2 value28 = Vector2.Normalize(projectile.velocity);
-            Microsoft.Xna.Framework.Rectangle rectangle8 = new Microsoft.Xna.Framework.Rectangle(0, 0, texture2D22.Width, 36); //2 and 40
+            Rectangle rectangle8 = new Rectangle(0, 0, texture2D22.Width, 36); //2 and 40
             Vector2 value29 = new Vector2(0f, Main.player[projectile.owner].gfxOffY);
             float rotation24 = projectile.rotation + 3.14159274f;
             Main.spriteBatch.Draw(texture2D22, projectile.Center.Floor() - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, (rectangle8.Size() / 2f) - (Vector2.UnitY * 4f), projectile.scale, SpriteEffects.None, 0f);
             num230 -= 40f * projectile.scale;
             Vector2 vector31 = projectile.Center.Floor();
             vector31 += value28 * projectile.scale * 24f;
-            rectangle8 = new Microsoft.Xna.Framework.Rectangle(0, 62, texture2D22.Width, 18); //68 and 18
+            rectangle8 = new Rectangle(0, 62, texture2D22.Width, 18); //68 and 18
             if (num230 > 0f)
             {
                 float num231 = 0f;

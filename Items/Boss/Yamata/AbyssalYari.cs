@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Yamata
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 2, 40, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;

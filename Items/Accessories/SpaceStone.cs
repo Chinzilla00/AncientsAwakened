@@ -25,6 +25,17 @@ You are immune to the Chaos State Debuff
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
             item.accessory = true;
+            item.prefix = 0;
+        }
+
+        public override void PostReforge()
+        {
+            item.prefix = 0;
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            item.prefix = 0;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

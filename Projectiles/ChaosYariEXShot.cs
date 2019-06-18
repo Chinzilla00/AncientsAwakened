@@ -15,12 +15,13 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Perfect Chaos Yari");
+            Main.projFrames[projectile.type] = 2;
         }
 
         public override void SetDefaults()
         {
             projectile.width = 28;
-            projectile.height = 28;
+            projectile.height = 26;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
@@ -37,8 +38,17 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 10);
-            spineEnd = projectile.ai[1] == 10;
+
+            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 30);
+            spineEnd = projectile.ai[1] == 30;
+            if (spineEnd)
+            {
+                projectile.frame = 0;
+            }
+            else
+            {
+                projectile.frame = 1;
+            }
         }
 
         public override void PostAI()
@@ -47,21 +57,18 @@ namespace AAMod.Projectiles
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 48, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, 170, Color.White, j == 0 ? 1.1f : 1.2f);
+                    int DustType = mod.DustType<Dusts.Discord>();
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType, projectile.velocity.X * 0.025f, projectile.velocity.Y * 0.025f, 40, Color.White, j == 0 ? 1.1f : 1.2f);
                 }
             }
         }
 
-        private Texture2D mainTex;
-        private Texture2D endTex;
-
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            Color lightColor = new Color(0, 0, 200);
-            Color newLightColor = new Color(Math.Max(0, lightColor.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, lightColor.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, lightColor.B + Math.Min(0, -projectile.alpha + 20)));
+            Color newLightColor = new Color(Math.Max(0, Color.Purple.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Purple.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Purple.B + Math.Min(0, -projectile.alpha + 20)));
             BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            if (mainTex == null) { mainTex = Main.projectileTexture[projectile.type]; endTex = mod.GetTexture("Projectiles/ChaosYariEXShot_Tip"); }
-            BaseMod.BaseDrawing.DrawTexture(sb, spineEnd ? endTex : mainTex, 0, projectile);
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

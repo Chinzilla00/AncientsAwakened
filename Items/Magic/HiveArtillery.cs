@@ -19,7 +19,7 @@ namespace AAMod.Items.Magic
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.BeeGun);
-			item.damage = 30;
+			item.damage = 20;
 			item.mana = 6;
 			item.useAnimation = 5;
 			item.useTime = 5;

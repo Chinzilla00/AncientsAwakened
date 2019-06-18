@@ -32,8 +32,8 @@ Inflicts Discordian Inferno");
             item.useTime = 16;          //how fast 
             item.useAnimation = 16;
             item.useStyle = 5;      //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = .5f;      //Sword knockback
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.knockBack = .5f;
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.mana = 10;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;   //if it's capable of autoswing.

@@ -10,7 +10,7 @@ namespace AAMod.Items.Vanity.Gibs
 		public override void SetStaticDefaults()
 		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Revenant Trousers");
+            DisplayName.SetDefault("Revenant Legs");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
         }
 

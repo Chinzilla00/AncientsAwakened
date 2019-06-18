@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Zero
 			item.useAnimation = 12;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = Item.buyPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.melee = true;

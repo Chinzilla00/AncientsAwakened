@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.damage = 50;
             npc.defense = 40;
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.buyPrice(0, 12, 0, 0);
+            npc.value = Item.sellPrice(0, 12, 0, 0);
             npc.aiStyle = 0;
             npc.width = 66;
             npc.height = 104;

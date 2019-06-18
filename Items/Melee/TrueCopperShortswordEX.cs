@@ -24,10 +24,10 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 20;
 			item.useStyle = 3;
 			item.knockBack =20;
-			item.value = 10000000;
-			item.rare = 9;
+            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.rare = 9;
 			item.expert = true;
-			item.UseSound = SoundID.Item37;
+			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("TrueCopperShot");
             item.shootSpeed = 20f;

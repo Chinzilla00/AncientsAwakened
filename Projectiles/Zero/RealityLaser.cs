@@ -27,6 +27,7 @@ namespace AAMod.Projectiles.Zero
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 4;
             projectile.ranged = true;
+            projectile.scale *= 1.5f;
         }
 
         public override void AI()

@@ -1,6 +1,7 @@
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.Items.Melee   //where is located
 {
@@ -23,8 +24,8 @@ namespace AAMod.Items.Melee   //where is located
             item.useTime = 30;          //how fast 
             item.useAnimation = 30;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 4;      //Sword knockback
-            item.value = 10;        
+            item.knockBack = 4;
+            item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.

@@ -31,7 +31,7 @@ Inflicts Moonrazed");
             item.useAnimation = 17;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 3f;      //Sword knockback
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item20;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;

@@ -31,7 +31,7 @@ Inflicts Discordian Inferno");
         {
             item.width = 20;
             item.height = 20;
-            item.value = Item.buyPrice(1, 0, 0, 0); ;
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.rare = 1;
 
             item.noMelee = true;
@@ -39,7 +39,7 @@ Inflicts Discordian Inferno");
             item.useAnimation = 40;
             item.useTime = 40;
             item.knockBack = 7.5F;
-            item.damage = 240;
+            item.damage = 290;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Astroid");
             item.shootSpeed = 20F;

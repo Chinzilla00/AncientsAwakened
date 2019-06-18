@@ -13,6 +13,7 @@ namespace AAMod.Items.Vanity
             item.height = 24;
             item.rare = 3;
             item.accessory = true;
+            item.vanity = true;
         }
 
         public override void SetStaticDefaults()

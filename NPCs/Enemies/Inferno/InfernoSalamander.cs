@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.damage = 14;  //boss damage
             npc.defense = 14;    //boss defense
             npc.knockBackResist = 1f;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.buyPrice(0, 0, 6, 45);
+            npc.value = Item.sellPrice(0, 0, 6, 45);
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
             npc.HitSound = SoundID.NPCHit1;

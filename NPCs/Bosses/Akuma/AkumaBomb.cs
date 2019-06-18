@@ -152,7 +152,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
-            Vector2 Drawpos = projectile.Center - Main.screenPosition + new Vector2(0, projectile.gfxOffY);
 
             Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
 

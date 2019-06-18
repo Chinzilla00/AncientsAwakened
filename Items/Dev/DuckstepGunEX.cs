@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
-			item.value = 1000000;
+			item.value = 3000000;
             item.expert = true;
 			item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;

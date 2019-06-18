@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("FuryFlame");
             item.knockBack = 0;
-            item.value = Item.buyPrice(0, 25, 0, 0);
+            item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = 11;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;

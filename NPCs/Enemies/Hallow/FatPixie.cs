@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Enemies.Hallow
             npc.damage = 30;
             npc.defense = 15;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 0, 75, 45);
+            npc.value = Item.sellPrice(0, 0, 75, 45);
             npc.aiStyle = -1;
             npc.width = 60;
             npc.height = 36;

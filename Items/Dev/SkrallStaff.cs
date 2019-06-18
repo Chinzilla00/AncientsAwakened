@@ -58,7 +58,7 @@ It's the stick that's magic. The diamond is just for show
 
             if (player.altFunctionUse == 2)
             {
-                item.mana = 12;
+                item.mana = 6;
                 item.useTime = 30;
                 item.useAnimation = 30;
                 item.useStyle = 5;
@@ -69,7 +69,7 @@ It's the stick that's magic. The diamond is just for show
             }
             else
             {
-                item.mana = 12;
+                item.mana = 6;
                 item.useStyle = 5;
                 item.useTime = 5;
                 item.useAnimation = 5;

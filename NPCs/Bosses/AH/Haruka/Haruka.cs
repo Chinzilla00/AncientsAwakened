@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.defense = 50;
             npc.lifeMax = 90000;
             npc.HitSound = SoundID.NPCHit1;
-            npc.value = Item.buyPrice(0, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 0, 0, 0);
             npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -186,9 +186,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
             }
 
-            internalAI[1]++;
-
-            internalAI[5]++;
+            if (Main.netMode != 1)
+            {
+                internalAI[1]++;
+                internalAI[5]++;
+            }
 
             int InvisTimer1 = 1000;
 

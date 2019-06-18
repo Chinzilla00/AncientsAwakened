@@ -17,7 +17,7 @@ namespace AAMod.Items.Tools
             item.pick = 110;
             item.useStyle = 1;
             item.knockBack = 1;
-            item.value = 1000;
+            item.value = Terraria.Item.sellPrice(0, 1, 8, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

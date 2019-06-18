@@ -12,7 +12,7 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Primeval Skull");
             Tooltip.SetDefault("Energy from an age since passed radiates from this ancient fossil");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 8));
         }
 
         // TODO -- Velocity Y smaller, post NewItem?

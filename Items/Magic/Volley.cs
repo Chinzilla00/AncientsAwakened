@@ -19,7 +19,7 @@ namespace AAMod.Items.Magic
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 4;
-            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 4;
             item.mana = 10;
             item.UseSound = SoundID.Item20;

@@ -33,10 +33,8 @@ namespace AAMod.Items.Armor.TrueBlazing
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("KindledSuneate"));
-            recipe.AddIngredient(mod.ItemType("OceanBoots"));
-            recipe.AddIngredient(ItemID.FossilPants);
-            recipe.AddIngredient(mod.ItemType("DoomiteUGreaves"));
+            recipe.AddIngredient(mod.ItemType("BlazingSuneate"));
+            recipe.AddIngredient(mod.ItemType("InfernoCrystal"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -32,6 +32,7 @@ namespace AAMod.Items.Boss.AH
             item.rare = 3;
             item.summon = true;
             item.mana = 5;
+            item.noUseGraphic = true;
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

@@ -29,7 +29,7 @@ Inflicts Daybroken");
             item.useAnimation = 29;     
             item.useStyle = 1;
             item.knockBack = 6.5f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
 			item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.useTurn = true;

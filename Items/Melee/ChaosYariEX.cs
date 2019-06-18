@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
             item.noUseGraphic = true;
             item.autoReuse = true;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.value = Item.sellPrice(5, 0, 0, 0);
             item.rare = 11;
             item.expert = true;
             item.shootSpeed = 12f;

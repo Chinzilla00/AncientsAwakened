@@ -21,20 +21,20 @@ namespace AAMod.Items.Melee
 			item.melee = true;
 			item.width = 84;
 			item.height = 84;
-			item.useTime = 23;
-			item.useAnimation = 23;
+			item.useTime = 30;
+			item.useAnimation = 30;
 			item.useStyle = 1;
 			item.knockBack = 10;
-			item.value = 200000;
-			item.rare = 8;
-			item.UseSound = SoundID.Item20;
+            item.value = Item.sellPrice(5, 0, 0, 0);
+            item.rare = 8;
+			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShotP");
             item.shootSpeed = 16f;
             item.expert = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 

@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.channel = true;
             item.knockBack = 5f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("FireRain");
             item.shootSpeed = 14f;

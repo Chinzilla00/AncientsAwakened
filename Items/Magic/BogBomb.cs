@@ -18,7 +18,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
             item.useStyle = 5;        
             item.noMelee = true;   
             item.knockBack = 1; 
-            item.value = Item.buyPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 8;   
             item.mana = 9;
             item.UseSound = SoundID.Item1; 

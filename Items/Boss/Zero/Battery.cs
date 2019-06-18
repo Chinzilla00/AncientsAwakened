@@ -38,7 +38,7 @@ Non-consumable");
 			item.height = 32;
 			item.consumable = false;
 			item.knockBack = 7f;
-			item.value = Item.buyPrice(1, 0, 0, 0); ;
+			item.value = Item.sellPrice(1, 0, 0, 0);
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("RealityLaser");
 			item.shootSpeed = 1f;

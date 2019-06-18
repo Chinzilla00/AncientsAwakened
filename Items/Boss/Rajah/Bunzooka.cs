@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Rajah
             item.useStyle = 5;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 7.5f;
-            item.value = 5000000;
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
             item.shootSpeed = 24f;

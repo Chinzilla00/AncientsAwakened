@@ -46,7 +46,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)//this is the proper sound delay for this type of weapon
             {
-                Main.PlaySound(1, (int)projectile.Center.X, (int)projectile.Center.Y);    //this is the sound when the weapon is used
+                Main.PlaySound(SoundID.Item1, (int)projectile.Center.X, (int)projectile.Center.Y);    //this is the sound when the weapon is used
                 projectile.soundDelay = 45;    //this is the proper sound delay for this type of weapon
             }
             //-----------------------------------------------How the projectile works---------------------------------------------------------------------

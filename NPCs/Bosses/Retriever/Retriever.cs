@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.damage = 80;
             npc.defense = 30;
             npc.buffImmune[BuffID.Ichor] = true;
-            npc.value = Item.buyPrice(0, 10, 50, 0);
+            npc.value = Item.sellPrice(0, 10, 50, 0);
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;

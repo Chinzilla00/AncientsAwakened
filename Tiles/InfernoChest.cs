@@ -99,7 +99,7 @@ namespace AAMod.Tiles
             {
                 for (int num66 = 0; num66 < 58; num66++)
                 {
-                    if (player.inventory[num66].type == mod.ItemType("InfernoKey") && player.inventory[num66].stack > 0)
+                    if (player.inventory[num66].type == mod.ItemType("InfernoKey") && player.inventory[num66].stack > 0 && NPC.downedPlantBoss)
                     {
                         player.inventory[num66].stack--;
                         int left = i;

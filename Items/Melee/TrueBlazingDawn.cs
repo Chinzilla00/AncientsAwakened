@@ -24,8 +24,8 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 32;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 100000;
-			item.rare = 8;
+            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.rare = 8;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("TrueBlazingDawnShot");

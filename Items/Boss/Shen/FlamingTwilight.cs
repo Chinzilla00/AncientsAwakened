@@ -19,8 +19,8 @@ namespace AAMod.Items.Boss.Shen
 			item.noMelee = true;
 			item.knockBack = 2;
 			item.UseSound = SoundID.Item34;
-			item.value = 1000000;
-			item.rare = 11;
+            item.value = Item.sellPrice(1, 50, 0, 0);
+            item.rare = 11;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("FlamingTwilightP");
 			item.shootSpeed = 11f;

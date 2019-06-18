@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.damage = 20;
             npc.defense = 20;
             npc.lifeMax = 4000;
-            npc.value = Item.buyPrice(0, 0, 90, 0);
+            npc.value = Item.sellPrice(0, 0, 90, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             npc.lavaImmune = true;

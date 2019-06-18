@@ -36,13 +36,28 @@ namespace AAMod.Items.Magic
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            for (int i = 0; i < 3; i++)
+            for (int num111 = 0; num111 < 2; num111++)
             {
-                Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                float MouseX = Main.mouseX + Main.screenPosition.X + vector2.X;
-                float MouseY = Main.mouseY + Main.screenPosition.Y + vector2.Y;
-                vector2 = new Vector2(MouseX + Main.rand.Next(-200, 200), MouseY + Main.rand.Next(-200, 200));
-                Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, type, damage, knockBack, Main.myPlayer, 0f, (float)Main.rand.Next(3));
+                Vector2 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                vector2.X = (vector2.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
+                vector2.Y -= (float)(100 * num111);
+                float num81 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+                float num82 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                if (num82 < 0f)
+                {
+                    num82 *= -1f;
+                }
+                if (num82 < 20f)
+                {
+                    num82 = 20f;
+                }
+                float num83 = (float)Math.Sqrt((double)(num81 * num81 + num82 * num82));
+                num83 = item.shootSpeed / num83;
+                num81 *= num83;
+                num82 *= num83;
+                float speedX4 = num81 + (float)Main.rand.Next(-40, 41) * 0.02f;
+                float speedY5 = num82 + (float)Main.rand.Next(-40, 41) * 0.02f;
+                Projectile.NewProjectile(vector2.X, vector2.Y, speedX4, speedY5, mod.ProjectileType("Stars"), damage, knockBack, item.owner, 0f, (float)Main.rand.Next(5));
             }
             return false;
         }

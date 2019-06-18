@@ -53,7 +53,39 @@ Hold down and jump to hover for an extended period of time
 			constantAscend = 0.135f;
         }
 
-		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration);
+
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            if (inUse)
+            {
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter >= 6)
+                {
+                    player.wingFrameCounter = 0;
+                }
+                player.wingFrame = 1 + player.wingFrameCounter / 2;
+            }
+            else
+            {
+                player.wingFrame = 0;
+            }
+            if (BaseMod.BasePlayer.HasAccessory(player, mod.ItemType<GibsJet>(), true, false))
+            {
+                if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
+                {
+                    player.velocity.Y *= 0.7f;
+                    if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                    {
+                        player.velocity.Y = 1E-05f;
+                    }
+                }
+            }
+            return true;
+        }
+
+
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
             if (player.controlDown && player.controlJump && player.wingTime > 0f)
             {

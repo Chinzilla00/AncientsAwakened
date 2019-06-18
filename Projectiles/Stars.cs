@@ -36,23 +36,6 @@ namespace AAMod.Projectiles
             int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, stardust, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
             Main.dust[dustId3].noGravity = true;
-
-            if (projectile.ai[1] == 0f)
-            {
-                projectile.rotation += .05f;
-                projectile.scale += .05f;
-            }
-            else
-            {
-                projectile.rotation -= .05f;
-                projectile.scale -= .05f;
-            }
-
-            if (projectile.scale > 1f)
-            {
-                projectile.scale = 1f;
-                projectile.ai[1] = 1f;
-            }
         }
 
         public override void Kill(int timeleft)

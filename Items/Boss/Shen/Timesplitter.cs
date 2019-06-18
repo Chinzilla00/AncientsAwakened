@@ -31,10 +31,10 @@ Inflicts Daybroken and Moonraze");
             item.useTurn = true;
 			item.autoReuse = true;
             item.useStyle = 5;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 50, 0, 0);
             item.rare = 8;
             item.shoot = mod.ProjectileType("TimesplitterP");  //put your Spear projectile name
-            item.shootSpeed = 7f;
+            item.shootSpeed = 9f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

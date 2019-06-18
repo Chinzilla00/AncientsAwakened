@@ -29,7 +29,7 @@ Reign of Fire EX");
             item.useAnimation = 25;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 6.5f;      //Sword knockback
-            item.value = Item.buyPrice(3, 0, 0, 0);
+            item.value = Item.sellPrice(3, 0, 0, 0);
 			item.UseSound = SoundID.Item20;
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;

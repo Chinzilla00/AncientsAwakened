@@ -25,7 +25,7 @@ namespace AAMod.Items.Dev
             item.useAnimation = 10;
             item.useStyle = 5;
             item.channel = true;
-            Item.sellPrice(0, 50, 0, 0);
+            Item.sellPrice(1, 0, 0, 0);
             item.noMelee = true;
 			item.rare = 10;
 			item.shootSpeed = 12f;
