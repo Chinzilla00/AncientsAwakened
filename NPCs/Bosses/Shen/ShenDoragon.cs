@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             base.ReceiveExtraAI(reader);
             if (Main.netMode == 1)
-            {
+            {				
                 customAI[0] = reader.ReadFloat();
                 customAI[1] = reader.ReadFloat();
                 customAI[2] = reader.ReadFloat();
@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
             npc.damage = (int)(npc.damage * 1.2f);
-            damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
+			damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
         public override void UpdateLifeRegen(ref int damage)
@@ -108,55 +108,54 @@ namespace AAMod.NPCs.Bosses.Shen
         public float[] FireTimer = new float[1];
         public bool Weakness = false;
         public bool spawnalpha = false;
-        public bool isAwakened = false;
-        public float _normalSpeed = 15f;
-        public float _chargeSpeed = 40f;
-        public float MoveSpeed
-        {
-            get
-            {
-                float playerRunAcceleration = 1f;
-                if (Main.player[npc.target].active && !Main.player[npc.target].dead) //if you have a target, speed up to keep up
-                {
-                    playerRunAcceleration = Math.Max(Math.Abs(Main.player[npc.target].moveSpeed), Main.player[npc.target].runAcceleration);
-                    if (playerRunAcceleration <= 1f) playerRunAcceleration = 1f;
-                }
-                if (Charging)
-                {
-                    return _chargeSpeed * playerRunAcceleration;
-                }
-                else
-                {
-                    return _normalSpeed * playerRunAcceleration;
-                }
-            }
-        }
-        public bool ChargePrep
-        {
-            get
-            {
-                return npc.ai[0] == 0.5f || customAI[3] == 0.5f;
-            }
-        }
-        public bool Charging
-        {
-            get
-            {
-                return npc.ai[0] == 1;
-            }
-        }
-        public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
-        {
-            get
-            {
-                Player player = Main.player[npc.target];
-                if (player == null || !player.active || player.dead) return false;
+		public bool isAwakened = false;
+		public float _normalSpeed = 15f;
+		public float _chargeSpeed = 40f;
+		public float MoveSpeed
+		{
+			get
+			{
+				float playerRunAcceleration = 1f;
+				if(Main.player[npc.target].active && !Main.player[npc.target].dead) //if you have a target, speed up to keep up
+				{
+					playerRunAcceleration = Math.Max(Math.Abs(Main.player[npc.target].moveSpeed), Main.player[npc.target].runAcceleration);
+					if (playerRunAcceleration <= 1f) playerRunAcceleration = 1f;
+				}
+				if(Charging)
+				{
+					return _chargeSpeed * playerRunAcceleration;
+				}else
+				{
+					return _normalSpeed * playerRunAcceleration;
+				}
+			}
+		}
+		public bool ChargePrep
+		{
+			get
+			{
+				return npc.ai[0] == 0.5f || customAI[3] == 0.5f;
+			}
+		}
+		public bool Charging
+		{
+			get
+			{
+				return npc.ai[0] == 1;
+			}
+		}
+		public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
+		{
+			get
+			{
+				Player player = Main.player[npc.target];
+				if(player == null || !player.active || player.dead) return false;
 
-                if (ChargePrep) return true; //always snap when prepping a charge to prevent a stall
-
-                return false;
-            }
-        }
+				if(ChargePrep) return true; //always snap when prepping a charge to prevent a stall
+				
+				return false;
+			}
+		}
         public int spawnTimerMax = 100; //time to sit when you spawn
         public int discordianInfernoTimerMax = 105; //shoot fireballs timer
         public int discordianInfernoPercent = 20; //the % amount to shoot fireballs
@@ -283,7 +282,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             customAI[5]++;
 
-
+            
             if (npc.ai[0] == -1f) //initial spawn effects
             {
                 npc.chaseable = false;
@@ -638,105 +637,102 @@ namespace AAMod.NPCs.Bosses.Shen
 
 
         public void SwitchToAI(float ai0, float ai1, float ai2, float ai3)
-        {
+		{
             customAI[2] = -1;
-            customAI[3] = npc.ai[0]; //last AI
-            npc.ai[0] = ai0; //handles AI state (charging, prep, fire, etc.)
-            npc.ai[1] = ai1; //handles X movement for some AI states
-            npc.ai[2] = ai2; //handles timers for the AI state
-            npc.ai[3] = ai3; //handles the next AI choice
-            npc.netUpdate = true;
-        }
+			customAI[3] = npc.ai[0]; //last AI
+			npc.ai[0] = ai0; //handles AI state (charging, prep, fire, etc.)
+			npc.ai[1] = ai1; //handles X movement for some AI states
+			npc.ai[2] = ai2; //handles timers for the AI state
+			npc.ai[3] = ai3; //handles the next AI choice
+			npc.netUpdate = true;
+		}
 
-        public void Roar(int timer, bool fireSound)
-        {
-            roarTimer = timer;
-            if (fireSound)
-            {
-                Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
-            }
+		public void Roar(int timer, bool fireSound)
+		{
+			roarTimer = timer;
+			if (fireSound)
+			{
+				Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 60);
+			}
             else
-            {
+			{
                 Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar"), npc.Center);
             }
-        }
+		}
 
-        public void MoveToPoint(Vector2 point)
-        {
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = dist.Length();
-            if (length < MoveSpeed)
-            {
-                velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / MoveSpeed);
-            }
-            npc.velocity = Vector2.Normalize(point - npc.Center);
-            npc.velocity *= MoveSpeed;
-            npc.velocity *= velMultiplier;
-            if (!Charging)
-            {
-                if (length < 200f)
-                {
-                    npc.velocity *= 0.9f;
-                }
-                if (length < 150f)
-                {
-                    npc.velocity *= 0.9f;
-                }
-                if (length < 100f)
-                {
-                    npc.velocity *= 0.8f;
-                }
-                if (length < 50f)
-                {
-                    npc.velocity *= 0.8f;
-                }
-            }
-        }
+		public void MoveToPoint(Vector2 point)
+		{
+			float velMultiplier = 1f;
+			Vector2 dist = point - npc.Center;
+			float length = dist.Length();
+			if(length < MoveSpeed)
+			{
+				velMultiplier = MathHelper.Lerp(0f, 1f, dist.Length() / MoveSpeed);
+			}
+			npc.velocity = Vector2.Normalize(point - npc.Center);
+			npc.velocity *= MoveSpeed;
+			npc.velocity *= velMultiplier;	
+			if(!Charging)
+			{
+				if(length < 200f)
+				{
+					npc.velocity *= 0.9f;
+				}
+				if(length < 150f)
+				{
+					npc.velocity *= 0.9f;
+				}
+				if(length < 100f)
+				{
+					npc.velocity *= 0.8f;
+				}				
+				if(length < 50f)
+				{
+					npc.velocity *= 0.8f;
+				}				
+			}			
+		}
 
-        public void HandleFrames(Player player)
-        {
-            npc.frame = new Rectangle(0, (Roaring ? frameY : 0), 444, frameY);
-            if (Charging)
-            {
-                npc.frameCounter = 0;
-                wingFrame.Y = wingFrameY;
-            }
-            else
-            {
-                npc.frameCounter++;
-                if (npc.frameCounter >= 5)
-                {
-                    npc.frameCounter = 0;
-                    wingFrame.Y += wingFrameY;
-                    if (wingFrame.Y > (wingFrameY * 4))
-                    {
-                        npc.frameCounter = 0;
-                        wingFrame.Y = 0;
-                    }
-                }
-            }
-            npc.direction = (npc.Center.X < player.Center.X ? 1 : -1);
-        }
+		public void HandleFrames(Player player)
+		{
+			npc.frame = new Rectangle(0, (Roaring ? frameY : 0), 444, frameY);
+			if(Charging)
+			{
+				npc.frameCounter = 0;
+				wingFrame.Y = wingFrameY;
+			}else
+			{
+				npc.frameCounter++;
+				if (npc.frameCounter >= 5)
+				{
+					npc.frameCounter = 0;
+					wingFrame.Y += wingFrameY;
+					if (wingFrame.Y > (wingFrameY * 4))
+					{
+						npc.frameCounter = 0;
+						wingFrame.Y = 0;
+					}
+				}
+			}
+			npc.direction = (npc.Center.X < player.Center.X ? 1 : -1);
+		}
 
-        public void HandleRotations(Player player)
-        {
-            if (LookAtPlayer)
-            {
-                Vector2 diff = player.Center - npc.Center;
-                BaseAI.LookAt(npc.Center - diff, npc, 3, 0f, 0.12f, false);
-            }
-            else
-            if (Charging)
-            {
-                BaseAI.LookAt(npc.Center - npc.velocity, npc, 0, 0f, 0f, false);
-            }
-            else
-            {
-                BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 0, 0f, 0.05f, false);
-            }
-        }
-
+		public void HandleRotations(Player player)
+		{
+			if(LookAtPlayer)
+			{
+				Vector2 diff = player.Center - npc.Center;
+				BaseAI.LookAt(npc.Center - diff, npc, 3, 0f, 0.12f, false);			
+			}else
+			if(Charging)
+			{
+				BaseAI.LookAt(npc.Center - npc.velocity, npc, 0, 0f, 0f, false);			
+			}else
+			{
+				BaseAI.LookAt(npc.Center + new Vector2(-npc.direction * 200, 0f), npc, 0, 0f, 0.05f, false);
+			}
+		}
+    
         public override void HitEffect(int hitDirection, double damage)
         {
             damage *= .8f;
@@ -769,7 +765,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("WrathHaruka"), false, 0, 0);
             }
-
+            
             if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)
             {
                 if (AAWorld.downedShen)
@@ -827,7 +823,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
-            if (isAwakened)
+			if(isAwakened)
             {
                 if (Main.expertMode)
                 {
@@ -842,10 +838,10 @@ namespace AAMod.NPCs.Bosses.Shen
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDeath>());
                     npc.DropBossBags();
                     AAWorld.downedShen = true;
-                }
-            }
+				}
+			}
             else
-            {
+			{
 
                 npc.DropLoot(Items.Vanity.Mask.ShenMask.type, 1f / 7);
                 if (!Main.expertMode)
@@ -860,44 +856,44 @@ namespace AAMod.NPCs.Bosses.Shen
                         Main.NewText("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     }
                     AAWorld.downedShen = true;
-                    npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
-                    string[] lootTable = { "ChaosSlayer", "MeteorStrike", "Skyfall" };
-                    int loot = Main.rand.Next(lootTable.Length);
-                    npc.DropLoot(mod.ItemType(lootTable[loot]));
+					npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
+					string[] lootTable = { "ChaosSlayer", "MeteorStrike", "Skyfall" };
+					int loot = Main.rand.Next(lootTable.Length);
+					npc.DropLoot(mod.ItemType(lootTable[loot]));
                     BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
 
-                }
-                else
-                {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
+				}
+				else
+				{
+					NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
                 }
                 BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
                 npc.value = 0f;
-                npc.boss = false;
-            }
+				npc.boss = false;
+			}
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            Texture2D currentTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue") : Main.npcTexture[npc.type]);
-            Texture2D currentWingTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueWings") : mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonWings"));
+			Texture2D currentTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue") : Main.npcTexture[npc.type]);
+			Texture2D currentWingTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueWings") : mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonWings"));
 
-            //offset
-            npc.position.Y += 130f;
+			//offset
+			npc.position.Y += 130f;
 
-            //draw body/charge afterimage
-            if (Charging)
-            {
-                BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));
+			//draw body/charge afterimage
+			if(Charging)
+			{
+				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));
             }
             BaseDrawing.DrawTexture(sb, currentTex, 0, npc, npc.GetAlpha(drawColor), false);
             //draw wings
             BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, npc.GetAlpha(drawColor), false);
-
-            //deoffset
-            npc.position.Y -= 130f;
+			
+			//deoffset
+			npc.position.Y -= 130f; 
             return false;
         }
     }
-
+    
 }

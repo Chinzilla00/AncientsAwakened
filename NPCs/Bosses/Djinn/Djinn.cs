@@ -11,15 +11,15 @@ namespace AAMod.NPCs.Bosses.Djinn
 {
     [AutoloadBossHead]
     public class Djinn : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Desert Djinn");
-            Main.npcFrameCount[npc.type] = 15;
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Desert Djinn");
+			Main.npcFrameCount[npc.type] = 15;
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             npc.width = 70;
             npc.height = 80;
             npc.aiStyle = -1;
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
         }
-
+        
         public int runonce = 0;
         public int FrameHeight = 130;
 
@@ -329,5 +329,5 @@ namespace AAMod.NPCs.Bosses.Djinn
 
     }
 
-
+    
 }

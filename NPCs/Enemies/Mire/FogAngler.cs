@@ -7,22 +7,22 @@ using System;
 namespace AAMod.NPCs.Enemies.Mire
 {
     public class FogAngler : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Fog Angler");
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Fog Angler");
             Main.npcFrameCount[npc.type] = 4;
-        }
+		}
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             npc.width = 68;
             npc.height = 38;
             npc.damage = 80;
-            npc.defense = 20;
-            npc.lifeMax = 70;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+			npc.defense = 20;
+			npc.lifeMax = 70;
+			npc.HitSound = SoundID.NPCHit1;
+			npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 5000;
             npc.knockBackResist = .10f;
             npc.aiStyle = -1;
@@ -88,8 +88,8 @@ namespace AAMod.NPCs.Enemies.Mire
             }
         }
 
-        public override void NPCLoot()
-        {
+		public override void NPCLoot()
+		{
             if (Main.rand.Next(Main.expertMode ? 49 : 99) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.AdhesiveBandage);
@@ -99,5 +99,5 @@ namespace AAMod.NPCs.Enemies.Mire
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.RobotHat);
             }
         }
-    }
+	}
 }

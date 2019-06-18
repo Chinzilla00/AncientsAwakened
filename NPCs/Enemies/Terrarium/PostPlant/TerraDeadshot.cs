@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.buffImmune[31] = false;
             animationType = NPCID.VortexRifleman;
         }
-
+        
         public override void AI()
         {
             bool flag4 = false;

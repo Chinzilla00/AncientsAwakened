@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Retriever
     public class RetrieverLaser : ModProjectile
     {
         private const float MoveDistance = 70f;
-
+        
         public float Distance;
 
 
@@ -29,15 +29,15 @@ namespace AAMod.NPCs.Bosses.Retriever
             projectile.hide = false;
         }
         // The AI of the projectile
-        public bool runOnce = true;
+        public bool runOnce=true;
         public override void AI()
         {
-
-
+            
+            
             float rOffset = 0;
             shooter = Main.npc[(int)projectile.ai[0]];
             Player player = Main.player[projectile.owner];
-            if (!shooter.active || shooter.life <= 0)
+            if (!shooter.active || shooter.life <=0)
             {
                 projectile.Kill();
             }
@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             projectile.timeLeft = 2;
             int dir = projectile.direction;
             #endregion
-
+            
             Vector2 start = new Vector2(shooter.Center.X, shooter.Center.Y);
             Vector2 unit = projectile.velocity;
             unit *= -1;
@@ -82,11 +82,11 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 
-
-            DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], new Vector2(shooter.Center.X, shooter.Center.Y),
-                projectile.velocity, 10, projectile.damage, -1.57f, 1f, 4000f, AAColor.Oblivion, (int)MoveDistance);
-
-
+            
+                DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], new Vector2(shooter.Center.X, shooter.Center.Y),
+                    projectile.velocity, 10, projectile.damage, -1.57f, 1f, 4000f, AAColor.Oblivion, (int)MoveDistance);
+            
+            
             return false;
         }
 

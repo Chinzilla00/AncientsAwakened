@@ -67,7 +67,7 @@ namespace AAMod
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(ItemID.Starfury);
             recipe.AddRecipe();
-
+            
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.GoldBroadsword);
             recipe.AddIngredient(ItemID.FallenStar, 10);
@@ -844,7 +844,7 @@ namespace AAMod
         }
 
         private static void TransmuteRecipe(short item, short item2)
-        {
+        { 
             ModRecipe recipe = GetNewRecipe();
             recipe.AddIngredient(item, 2);
             recipe.AddTile(AAMod.instance, "Transmuter");
@@ -887,7 +887,7 @@ namespace AAMod
                 ItemID.PlatinumBar
             });
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
-
+           
             RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " astral crafting station", new int[]
             {
                 AAMod.instance.ItemType("RadiantArcanum"),
@@ -908,14 +908,14 @@ namespace AAMod
                 AAMod.instance.ItemType("ChaosSoul")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
-
+            
             RecipeGroup group6 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " world evil material", new int[]
             {
                 ItemID.Ichor,
                 ItemID.CursedFlame
             });
             RecipeGroup.RegisterGroup("AnyIchor", group6);
-
+            
             RecipeGroup group7 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " hardmode forge", validItems: new int[]
             {
                 ItemID.AdamantiteForge,

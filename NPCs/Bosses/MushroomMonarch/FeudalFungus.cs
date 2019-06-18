@@ -12,29 +12,29 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
     [AutoloadBossHead]
     public class FeudalFungus : ModNPC
     {
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			base.SendExtraAI(writer);
+			if((Main.netMode == 2 || Main.dedServ))
+			{
+				writer.Write((float)internalAI[0]);
+				writer.Write((float)internalAI[1]);
                 writer.Write((float)internalAI[2]);
                 writer.Write((float)internalAI[3]);
             }
-        }
+		}
 
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			base.ReceiveExtraAI(reader);
+			if(Main.netMode == 1)
+			{
+				internalAI[0] = reader.ReadFloat();
+				internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
-            }
-        }
+            }	
+		}	
 
         public override void SetStaticDefaults()
         {
@@ -74,13 +74,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
 
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2;
-        public float[] internalAI = new float[4];
+		public float[] internalAI = new float[4];
         bool HasStopped = false;
-
+		
         public override void AI()
         {
             Player player = Main.player[npc.target];
-
+             
             if ((Main.dayTime && player.position.Y < Main.worldSurface) || !player.ZoneGlowshroom)
             {
                 npc.velocity *= 0;
@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 
             if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
-            {
+			{
                 internalAI[0]++;
                 if (internalAI[0] >= 180)
                 {
@@ -136,13 +136,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[1] == AISTATE_HOVER)
+			if(internalAI[1] == AISTATE_HOVER) 
             {
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 170, 56f, FireMagic);
             }
-            else if (internalAI[1] == AISTATE_FLIER)
+            else if (internalAI[1] == AISTATE_FLIER) 
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 5f, 3f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f,0.04f, 5f, 3f, false, 1);
             }
             else if (internalAI[1] == AISTATE_SHOOT)
             {
@@ -298,7 +298,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
     }
 
-
+    
 }
 
 

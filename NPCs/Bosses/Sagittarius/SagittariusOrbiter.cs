@@ -11,11 +11,11 @@ using System.IO;
 namespace AAMod.NPCs.Bosses.Sagittarius
 {
     public class SagittariusOrbiter : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
+	{				
+		public override void SetStaticDefaults()
+		{
             DisplayName.SetDefault("Orbiter");
-        }
+		}
 
         public override void SetDefaults()
         {
@@ -29,13 +29,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.damage = 20;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
-            npc.knockBackResist = 0f;
-            npc.noTileCollide = true;
-            npc.defense = 15;
+            npc.knockBackResist = 0f;	
+			npc.noTileCollide = true;	
+			npc.defense = 15;
         }
 
-        public int body = -1;
-        public float rotValue = -1f;
+		public int body = -1;
+		public float rotValue = -1f;
         public Vector2 pos;
         int ChainFrame = 0;
         int ChainTimer = 0;
@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     npc.oldPos[m] = npc.oldPos[m - 1];
                 }
                 npc.oldPos[0] = npc.position;
-
+                
                 npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue);
             }
             else if (Sagittarius.MovementType[0] == 3)
@@ -234,7 +234,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                     npc.oldPos[m] = npc.oldPos[m - 1];
                 }
                 npc.oldPos[0] = npc.position;
-
+                
                 npc.Center = BaseUtility.RotateVector(sagittarius.Center, sagittarius.Center + new Vector2(140, 0f), rotValue);
             }
             else if (Sagittarius.MovementType[0] == 5)
@@ -283,10 +283,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(dColor));
+		{
+			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(dColor));
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusOrbiter_Glow"), 0, npc, npc.GetAlpha(GenericUtils.COLOR_GLOWPULSE));
             return false;
-        }
-    }
+		}		
+	}
 }

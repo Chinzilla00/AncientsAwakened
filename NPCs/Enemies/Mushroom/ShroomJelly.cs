@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Mushroom
 {
     public class ShroomJelly : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Mushroom Jelly");
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Mushroom Jelly");
             Main.npcFrameCount[npc.type] = 4;
-        }
+		}
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             npc.CloneDefaults(NPCID.FungoFish);
             animationType = NPCID.FungoFish;
@@ -32,16 +32,16 @@ namespace AAMod.NPCs.Enemies.Mushroom
         }
 
         public override void HitEffect(int hitDirection, double damage)
-        {
+		{
 
             int dust1 = mod.DustType<Dusts.MushDust>();
             if (npc.life <= 0)
-            {
+			{
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
             }
-        }
+		}
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -49,8 +49,8 @@ namespace AAMod.NPCs.Enemies.Mushroom
         }
 
         public override void NPCLoot()
-        {
+		{
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Mushroom);
         }
-    }
+	}
 }

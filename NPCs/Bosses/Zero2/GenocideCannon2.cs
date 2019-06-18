@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             npc.oldPos[0] = npc.position;
 
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue);
-
+            
             if (Main.netMode != 1) { npc.ai[2]++; }
 
             if (npc.ai[2] == aiTimerFire)

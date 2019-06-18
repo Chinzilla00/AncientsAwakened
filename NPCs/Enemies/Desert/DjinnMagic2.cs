@@ -52,6 +52,7 @@ namespace AAMod.NPCs.Enemies.Desert
             {
                 projectile.Kill();
             }
+
         }
 
         public override void Kill(int timeleft)
@@ -92,5 +93,6 @@ namespace AAMod.NPCs.Enemies.Desert
         {
             target.AddBuff(BuffID.OnFire, 600);
         }
+
     }
 }

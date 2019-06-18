@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Raider
             projectile.rotation += projectile.velocity.Length() * 0.025f;
             projectile.velocity.Y += .15f;
         }
-
+        
 
         public override void Kill(int timeLeft)
         {
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Raider
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("RaidShock"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
-
+        
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {

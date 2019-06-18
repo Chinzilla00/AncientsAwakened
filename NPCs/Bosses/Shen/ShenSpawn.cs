@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     dust2.velocity.Y -= 6;
                 }
             }
-
+            
             if (npc.ai[0] == 180)
             {
                 Main.NewText("Surprised to see us again, Kid?", new Color(180, 41, 32));
@@ -252,7 +252,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             return new Color(233, 0, 233) * (Main.mouseTextColor / 255f);
         }
-
+        
         public float auraPercent = 0f;
         public bool auraDirection = true;
         public bool saythelinezero = false;

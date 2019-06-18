@@ -35,8 +35,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 npc.buffImmune[k] = true;
             }
-            leftHead = false;
-            middleHead = true;
+			leftHead = false;
+			middleHead = true;
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -60,13 +60,13 @@ namespace AAMod.NPCs.Bosses.Hydra
         }
 
         public Hydra Body
-        {
-            get
-            {
-                return ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
-            }
-        }
-        public NPC bodyNPC = null;
+		{
+			get
+			{
+				return ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
+			}
+		}
+		public NPC bodyNPC = null;	
         public bool middleHead = false;
         public bool leftHead = false;
         public int damage = 0;
@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            if (bodyNPC == null)
+	        if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == mod.NPCType<Hydra>())
@@ -86,8 +86,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                     bodyNPC = npcBody;
                 }
             }
-            if (bodyNPC == null)
-                return;
+			if(bodyNPC == null)
+				return;
             if (!bodyNPC.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
@@ -97,8 +97,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                     npc.netUpdate = true;
                 }
                 return;
-            }
-
+            }			
+			
             npc.realLife = bodyNPC.whoAmI;
             npc.timeLeft = 100;
 
@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 damage = npc.damage / 2;
             }
-            npc.TargetClosest();
+            npc.TargetClosest();			
             Player targetPlayer = Main.player[npc.target];
 
             npc.TargetClosest();
@@ -159,19 +159,18 @@ namespace AAMod.NPCs.Bosses.Hydra
                 }
             }
             Vector2 nextTarget = Body.npc.Center + new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
-            float dist = Vector2.Distance(nextTarget, npc.Center);
+			float dist = Vector2.Distance(nextTarget, npc.Center);
             if (dist < 40f)
             {
                 npc.velocity *= 0.9f;
                 if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
                 if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
-            }
-            else
+            }else
             if (dist > 200f) //teleport to keep up with body
             {
                 npc.Center = Body.npc.Center;
-                npc.netUpdate = true;
-            }
+				npc.netUpdate = true;
+            }	
             else
             {
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
@@ -184,7 +183,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
         }
 
-        public float moveSpeed = 16f;
+        public float moveSpeed = 16f; 
         public void MoveToPoint(Vector2 point)
         {
             float velMultiplier = 1f;

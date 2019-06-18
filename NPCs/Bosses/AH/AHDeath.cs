@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.AH
                     Main.NewText("Whatever...I'm going back home. SOMEONE has to tell dad about this kid.", new Color(72, 78, 117));
                 }
             }
-
+            
             if (npc.ai[1] == 700)
             {
                 Main.NewText("Hmpf..! Fine! Be that way! I'm going back to the inferno!", new Color(102, 20, 48));

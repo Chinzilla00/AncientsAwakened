@@ -19,10 +19,10 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             projectile.aiStyle = 1;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Sphere");
-        }
+		public override void SetStaticDefaults()
+		{
+		    DisplayName.SetDefault("Sphere");
+		}
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

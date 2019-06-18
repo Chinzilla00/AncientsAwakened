@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Enemies.Mire
                     Shell = true;
                     npc.netUpdate = true;
                 }
-
+                
                 BaseAI.AIZombie(npc, ref npc.ai, true, true, -1, 0.08f, 1f, 2, 3, 120);
             }
             else

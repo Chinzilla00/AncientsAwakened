@@ -8,11 +8,11 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Void
 {
     public class Searcher1 : ModNPC
-    {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Stone Searcher");
+	{
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stone Searcher");
             Main.npcFrameCount[npc.type] = 5;
         }
 
@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Enemies.Void
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
             BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
-
+            
         }
 
         public override void NPCLoot()

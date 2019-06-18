@@ -7,19 +7,19 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Void
 {
     public class SagittariusMini : ModNPC
-    {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Shadow Scout");
+	{
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Shadow Scout");
             Main.npcFrameCount[npc.type] = 12;
         }
-
-        public override void SetDefaults()
-        {
+		
+		public override void SetDefaults()
+		{
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.aiStyle = -1;
+			npc.aiStyle = -1;
             npc.width = 24;
             npc.height = 40;
             npc.damage = 20;
@@ -33,14 +33,14 @@ namespace AAMod.NPCs.Enemies.Void
             npc.noGravity = true;
         }
 
-        public int frameCount = 0;
-        public int frameCounter = 0;
+		public int frameCount = 0;
+		public int frameCounter = 0;
         public int IdleTimer = 0;
 
-        public override void PostAI()
-        {
-            npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
-        }
+		public override void PostAI()
+		{
+			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+		}
 
         public override void AI()
         {
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Enemies.Void
                     {
                         npc.frame.Y = 44 * 9;
                     }
-                    if (npc.frame.Y > 44 * 11 || npc.frame.Y == 44 * 3)
+                    if (npc.frame.Y > 44 * 11 || npc.frame.Y == 44 * 3 )
                     {
                         npc.frame.Y = 0;
                     }
@@ -90,6 +90,6 @@ namespace AAMod.NPCs.Enemies.Void
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DeactivatedDoomite"), 1);
         }
 
-
+        
     }
 }

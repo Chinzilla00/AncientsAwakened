@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.DeathSound = SoundID.NPCDeath1;
             aiType = NPCID.Crawdad;
         }
-
+        
         private bool tongueAttack;
         private int tongueFrame;
         private int tongueCounter;

@@ -11,12 +11,12 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     public class AkumaMeteor : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Dayfire");
-        }
-
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Dayfire");
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

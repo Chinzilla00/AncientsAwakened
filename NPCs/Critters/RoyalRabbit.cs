@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Critters
         {
             return SpawnCondition.OverworldDayGrassCritter.Chance * ((Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type == TileID.Grass && NPC.downedGolemBoss) ? .01f : 0f);
         }
-
+        
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {
             return false;

@@ -6,12 +6,12 @@ namespace AAMod.NPCs.Bosses.Shen
 {
     public class DiscordianBreath : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Discordian Breath");
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Discordian Breath");
             Main.projFrames[projectile.type] = 6;
         }
-
+    	
         public override void SetDefaults()
         {
             projectile.width = 30;
@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public int chargeWidth = 50;
         public int normalWidth = 250;
-
+        
         public override void AI()
         {
             if (projectile.ai[1] < 0f || projectile.ai[1] > 200f)

@@ -7,13 +7,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
     public class FungusCloud : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Fungus Cloud");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Fungus Cloud");
             Main.projFrames[projectile.type] = 5;
-        }
-
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

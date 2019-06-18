@@ -6,9 +6,9 @@ using Terraria;
 namespace AAMod
 {
     public class AkumaAttacks
-    {
+	{
         static AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
-
+        
         public static void Dragonfire(NPC npc, Mod mod, bool Awakened = false)
         {
             Player player = Main.player[npc.target];
@@ -113,7 +113,7 @@ namespace AAMod
             Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 2f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
-
+        
         public static void DraconianFury(Player player, Mod mod, NPC npc)
         {
 

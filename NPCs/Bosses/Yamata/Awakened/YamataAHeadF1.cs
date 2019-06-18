@@ -22,13 +22,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.damage = 170;
             npc.width = 46;
             npc.height = 46;
-            isAwakened = true;
+			isAwakened = true;
         }
 
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-
+            
             if (npc.frameCounter > 5)
             {
                 npc.frameCounter = 0;

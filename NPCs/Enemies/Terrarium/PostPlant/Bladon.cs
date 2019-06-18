@@ -7,15 +7,15 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class Bladon : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Terra Knight");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.SolarSolenian];
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Terra Knight");
+			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.SolarSolenian];
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             npc.lifeMax = 900;
             npc.defense = 40;
             npc.damage = 90;
@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             }
 
             if (Main.player[npc.target].Center.Y + 100f < npc.position.Y && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
+            { 
                 {
                     npc.velocity.Y = -5f;
                     npc.ai[2] = 1f;
@@ -192,7 +192,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     }
                 }
             }
-
+            
             bool flag23 = false;
             if (npc.velocity.Y == 0f)
             {
@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     }
                 }
             }
-
+            
             if (npc.velocity.Y >= 0f)
             {
                 int num171 = 0;
@@ -287,7 +287,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             {
                 int num177 = (int)((npc.position.X + (float)(npc.width / 2) + (float)(15 * npc.direction)) / 16f);
                 int num178 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
-
+                
                 if (Main.tile[num177, num178] == null)
                 {
                     Main.tile[num177, num178] = new Tile();
@@ -321,14 +321,14 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     Main.tile[num177 - npc.direction, num178 + 1] = new Tile();
                 }
                 Main.tile[num177, num178 + 1].halfBrick();
-
+                
             }
             else if (flag6)
             {
                 npc.ai[1] = 0f;
                 npc.ai[2] = 0f;
             }
-
+            
         }
 
         public override void HitEffect(int hitDirection, double damage)

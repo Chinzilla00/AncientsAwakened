@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Yamata
     [AutoloadBossHead]
     public class YamataHeadF1 : ModNPC
     {
-        public bool isAwakened = false;
+		public bool isAwakened = false;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yamata");
@@ -77,14 +77,14 @@ namespace AAMod.NPCs.Bosses.Yamata
             return 0f;
         }
 
-        public Yamata Body = null;
+		public Yamata Body = null;
         public Yamata Head = null;
-        public bool killedbyplayer = true;
-        public bool leftHead = false;
+        public bool killedbyplayer = true;	
+		public bool leftHead = false;
         public bool fireAttack = false;
-        public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 60; //how far from the center point to move.
+		public int distFromBodyX = 110; //how far from the body to centeralize the movement points. (X coord)
+		public int distFromBodyY = 150; //how far from the body to centeralize the movement points. (Y coord)
+		public int movementVariance = 60; //how far from the center point to move.
 
         public override void AI()
         {
@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
             if (Body == null)
-                return;
+                return;			
 
             npc.alpha = Body.npc.alpha;
 
@@ -284,8 +284,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             rotation = npc.rotation;
         }
-
-
+        
+		
 
         public override bool CheckActive()
         {

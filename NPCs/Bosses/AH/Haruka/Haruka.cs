@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public int ProjectileShoot = -1;
         public int repeat = 10;
         public bool isSlashing = false;
-
+        
         public Vector2 MovePoint;
         public bool SelectPoint = false;
 
@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.netUpdate = true;
             }
 
-
+            
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
@@ -243,7 +243,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_IDLE)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != 1) 
                 {
                     internalAI[3]++;
                     if (internalAI[3] >= 90)

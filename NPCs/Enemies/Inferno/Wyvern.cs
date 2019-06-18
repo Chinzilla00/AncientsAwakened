@@ -9,15 +9,15 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     public class Wyvern : ModNPC
-    {
-        public override void SetStaticDefaults()
+	{
+		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Drake");
             Main.npcFrameCount[npc.type] = 8;
-        }
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             npc.width = 40;
             npc.height = 40;
             npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 60, 50);
@@ -34,9 +34,9 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.buffImmune[BuffID.OnFire] = true;
         }
 
-        public bool brokenJaw = false;
-        public bool canFire = false;
-        public float[] shootAI = new float[4];
+		public bool brokenJaw = false;
+		public bool canFire = false;
+		public float[] shootAI = new float[4];
         public float[] internalAI = new float[4];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -65,9 +65,9 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         //SPAWN CONDITIONS:
         public override void NPCLoot()
-        {
-            BaseAI.DropItem(npc, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2), 2, 100, true);
-        }
+		{
+			BaseAI.DropItem(npc, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2), 2, 100, true);
+		}
 
         public bool shootFrame = false;
         public int shootTimer = 0;
@@ -116,7 +116,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 
         public override void AI()
-        {
+		{
             internalAI[0]++;
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
             shootTimer--;
@@ -126,39 +126,39 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
             if (shootTimer > 0)
             {
-                shootFrame = true;
+                shootFrame = true ;
             }
             else
             {
                 shootFrame = false;
             }
             npc.noGravity = true;
-            npc.noTileCollide = true;
-            if (internalAI[0] < 300)
-            {
-                Player player = Main.player[npc.target];
-                Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
-                BaseAI.AITackle(npc, ref npc.ai, player.Center + offsetVec, 0.35f, 6f, true, 60);
-                BaseAI.LookAt(player.Center, npc, 0);
-            }
+			npc.noTileCollide = true;
+			if (internalAI[0] < 300)
+			{
+				Player player = Main.player[npc.target];
+				Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
+				BaseAI.AITackle(npc, ref npc.ai, player.Center + offsetVec, 0.35f, 6f, true, 60);
+				BaseAI.LookAt(player.Center, npc, 0);
+			}
             else
-            {
-                Player player = Main.player[npc.target];
-                bool canSee = Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height);
+			{
+				Player player = Main.player[npc.target];
+				bool canSee = Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height);
                 BaseAI.AIFlier(npc, ref npc.ai, true, .05f, .4f, 4, 2, true, 300);
-                BaseAI.LookAt(player.Center, npc, 0);
-                if (Vector2.Distance(npc.Center, player.Center) <= 220f && canSee)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("Dragonflame"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
-                    }
+				BaseAI.LookAt(player.Center, npc, 0);
+				if (Vector2.Distance(npc.Center, player.Center) <= 220f && canSee)
+                { 
+					if (Main.netMode != 1)
+					{
+						BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("Dragonflame"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 24f, true, new Vector2(20f, 15f));
+					}
                     shootTimer = 120;
                     internalAI[0] = 0;
 
                 }
-            }
+			}
             npc.rotation = 0;
-        }
-    }
+		}
+	}
 }

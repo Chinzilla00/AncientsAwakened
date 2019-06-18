@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             RingEffects();
             RingEffects2();
             internalAI[1]++;
-
+            
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
@@ -169,7 +169,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
             }
-
+            
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
@@ -345,7 +345,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 MoveToPoint(wantedVelocity);
             }
 
-
+            
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
             {
                 npc.dontTakeDamage = true;
@@ -442,7 +442,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public static int VortexDamage(Mod mod)
         {
-            return 1 + (NPC.CountNPCS(mod.NPCType<AsheOrbiter>()) / 15);
+            return  1 + (NPC.CountNPCS(mod.NPCType<AsheOrbiter>()) / 15);
         }
 
         public float[] shootAI = new float[4];
@@ -548,10 +548,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
 
         public bool Summon = false;
-
+        
         public float scale = 0;
         public float RingRotation = 0;
-
+        
         public float scale2 = 0;
         public float RingRotation2 = 0;
 

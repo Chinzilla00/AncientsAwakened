@@ -7,16 +7,16 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
     public class PuritySquid : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Purity Squid");
-            Main.npcFrameCount[npc.type] = 4;
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Purity Squid");
+			Main.npcFrameCount[npc.type] = 4;
+		}
 
-        public override void SetDefaults()
-        {
-            npc.lifeMax = 60;
+		public override void SetDefaults()
+		{
+            npc.lifeMax =  60;
             npc.defense = 20;
             npc.damage = 10;
             npc.width = 26;
@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.noTileCollide = false;
             npc.noGravity = true;
         }
-
+        
         public override Color? GetAlpha(Color drawColor)
         {
             return Color.White;

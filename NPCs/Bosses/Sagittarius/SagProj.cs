@@ -20,10 +20,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             projectile.tileCollide = true;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Nova Star");
-        }
+		public override void SetStaticDefaults()
+		{
+		    DisplayName.SetDefault("Nova Star");
+		}
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

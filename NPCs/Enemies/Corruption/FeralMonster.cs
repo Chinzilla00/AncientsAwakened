@@ -6,15 +6,15 @@ namespace AAMod.NPCs.Enemies.Corruption
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
     public class FeralMonster : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Feral Monster");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.FaceMonster];
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Feral Monster");
+			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.FaceMonster];
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             npc.width = 18;
             npc.height = 44;
             npc.aiStyle = -1;
@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Enemies.Corruption
 
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
+		{
             return SpawnCondition.Corruption.Chance * .8f;
         }
 

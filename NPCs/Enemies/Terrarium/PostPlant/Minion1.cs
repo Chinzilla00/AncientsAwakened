@@ -7,16 +7,16 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class Minion1 : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Terra Squid");
-            Main.npcFrameCount[npc.type] = 4;
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Terra Squid");
+			Main.npcFrameCount[npc.type] = 4;
+		}
 
-        public override void SetDefaults()
-        {
-            npc.lifeMax = 350;
+		public override void SetDefaults()
+		{
+            npc.lifeMax =  350;
             npc.defense = 20;
             npc.damage = 50;
             npc.width = 26;
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 npc.alpha = 0;
             }
             BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
-
+            
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {

@@ -74,33 +74,33 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
         }
-
+        
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DiscordInferno>(), 300);
+        	target.AddBuff(mod.BuffType<Buffs.DiscordInferno>(), 300);
         }
 
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
             float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double Angle = spread / 30f;
-            double offsetAngle;
-            int i;
-            if (projectile.owner == Main.myPlayer)
-            {
-                for (i = 0; i < 10; i++)
-                {
-                    offsetAngle = (startAngle + Angle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                }
-            }
-            for (int dust = 0; dust <= 5; dust++)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-            }
+			double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y)- spread/2;
+	    	double Angle = spread/30f;
+	    	double offsetAngle;
+	    	int i;
+	    	if (projectile.owner == Main.myPlayer)
+	    	{
+		    	for (i = 0; i < 10; i++ )
+		    	{
+		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+		    	}
+	    	}
+        	for (int dust = 0; dust <= 5; dust++)
+        	{
+        		Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+        	}
         }
     }
 }

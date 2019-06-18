@@ -9,15 +9,15 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class TerraWarlock : ModNPC
     {
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-            }
-        }
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			base.SendExtraAI(writer);
+			if((Main.netMode == 2 || Main.dedServ))
+			{
+				writer.Write((float)internalAI[0]);
+				writer.Write((float)internalAI[1]);
+			}
+		}
 
         public override void PostAI()
         {
@@ -47,29 +47,29 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.knockBackResist = 0.4f;
 
         }
-
-        public static int AISTATE_WALK = 0, AISTATE_SUMMON = 1;
-        public float[] internalAI = new float[2];
+      
+		public static int AISTATE_WALK = 0, AISTATE_SUMMON = 1;
+		public float[] internalAI = new float[2];
         public int SummonThis = 0;
-
+		
         public override void AI()
         {
-
+            
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             npc.frameCounter++;
             if (internalAI[1] != AISTATE_SUMMON) //walk or charge
             {
-                if (npc.frameCounter >= 10)
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += 60;
-                    if (npc.frame.Y > (60 * 7))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-                if (npc.velocity.Y != 0)
+				if (npc.frameCounter >= 10)
+				{
+					npc.frameCounter = 0;
+					npc.frame.Y += 60;
+					if (npc.frame.Y > (60 * 7))
+					{
+						npc.frameCounter = 0;
+						npc.frame.Y = 0;
+					}
+				}
+                if(npc.velocity.Y != 0)
                 {
                     npc.frame.Y = 0;
                 }
@@ -117,17 +117,16 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             if (player.Center.X > npc.Center.X) // so it faces the player
             {
                 npc.spriteDirection = -1;
-            }
-            else
+            }else
             {
                 npc.spriteDirection = 1;
             }
-            if (Main.netMode != 1)
-            {
-                internalAI[0]++;
-                if (internalAI[0] >= 240)
-                {
-                    internalAI[0] = 0;
+			if(Main.netMode != 1)
+			{
+				internalAI[0]++;
+				if (internalAI[0] >= 240)
+				{
+					internalAI[0] = 0;
                     if (internalAI[1] == AISTATE_SUMMON)
                     {
                         internalAI[1] = AISTATE_WALK;
@@ -136,16 +135,16 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     {
                         internalAI[1] = AISTATE_SUMMON;
                     }
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
-                }
-            }
-            if (internalAI[1] == AISTATE_WALK) //fighter
-            {
-                BaseAI.AIZombie(npc, ref npc.ai, false, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);
-            }
+					npc.ai = new float[4];
+					npc.netUpdate = true;
+				}
+			}
+			if(internalAI[1] == AISTATE_WALK) //fighter
+			{
+                BaseAI.AIZombie(npc, ref npc.ai, false, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
+			}
             else
-            {
+			{
                 npc.velocity.X = 0;
             }
         }

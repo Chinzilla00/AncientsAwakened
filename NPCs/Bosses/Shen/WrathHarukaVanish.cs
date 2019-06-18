@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Haruka Yamata");
-            Main.npcFrameCount[npc.type] = 17;
+            DisplayName.SetDefault("Haruka Yamata");     
+            Main.npcFrameCount[npc.type] = 17;     
         }
 
         public override void SetDefaults()
@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.immortal = true;
             npc.dontTakeDamage = true;
         }
-
+        
         public override void AI()
         {
             npc.velocity.Y += .1f;
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         if (npc.frame.Y > (92 * 12))
                         {
-                            npc.ai[2] = 1;
+                            npc.ai[2] = 1 ;
                             for (int Loop = 0; Loop < 20; Loop++)
                             {
                                 int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 1f);

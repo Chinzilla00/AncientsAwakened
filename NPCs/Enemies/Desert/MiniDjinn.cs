@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Enemies.Desert
                 FireMagic(npc, npc.velocity);
                 npc.ai[3] = 0;
             }
-
+            
             npc.frameCounter++;
             if (npc.frameCounter >= 10)
             {
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Enemies.Desert
                     {
                         npc.frame.Y = 66 * 8;
                     }
-                    if (npc.frame.Y > (66 * 15))
+                    if (npc.frame.Y > (66 * 15) )
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;

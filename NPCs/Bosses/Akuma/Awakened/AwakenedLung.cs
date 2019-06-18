@@ -10,24 +10,24 @@ using BaseMod;
 namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     public class AwakenedLung : ModNPC
-    {
+	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLung"; } }
-
+        
 
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Awakened Lung");
+		{
+			DisplayName.SetDefault("Awakened Lung");
 
         }
 
         public override void SetDefaults()
-        {
-            npc.noTileCollide = true;
-            npc.height = 28;
-            npc.width = 28;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
-            npc.knockBackResist = 0f;
+		{
+			npc.noTileCollide = true;
+			npc.height = 28;
+			npc.width = 28;
+			npc.aiStyle = -1;
+			npc.netAlways = true;
+			npc.knockBackResist = 0f;
             npc.damage = 130;
             npc.defense = 90;
             npc.lifeMax = 9000;
@@ -52,8 +52,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Player player = Main.player[npc.target];
 
-
-
+            
+            
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
@@ -88,9 +88,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AwakenedLungBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
+                        
                     }
-
+                    
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AwakenedLungTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -236,7 +236,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
             }
 
-
+            
 
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -275,7 +275,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             return false;
         }
-
+        
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
         }
     }
-
+    
     public class AwakenedLungBody : AwakenedLung
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungBody"; } }
@@ -407,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return true;
         }
     }
-
+    
     public class AwakenedLungTail : AwakenedLung
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungTail"; } }

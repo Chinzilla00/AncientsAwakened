@@ -61,12 +61,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.alpha = 0;
             }
-
+            
             bool flag = false;
             float num4 = 0.2f;
             int num5 = npc.type;
             flag = true;
-
+            
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || (flag && (double)Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
             {
                 npc.TargetClosest(true);
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (Main.netMode != 1)
             {
-
+                
                 if (npc.ai[0] == 0f)
                 {
                     npc.ai[3] = (float)npc.whoAmI;
@@ -150,18 +150,18 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             float num37 = 20f;
             float num38 = 0.55f;
-
+           
             Vector2 vector2 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
             float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
             float num41 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
-
+            
             num40 = (float)((int)(num40 / 16f) * 16);
             num41 = (float)((int)(num41 / 16f) * 16);
             vector2.X = (float)((int)(vector2.X / 16f) * 16);
             vector2.Y = (float)((int)(vector2.Y / 16f) * 16);
             num40 -= vector2.X;
             num41 -= vector2.Y;
-
+            
             float num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
             if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
             {

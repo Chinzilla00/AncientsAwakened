@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
-    public class FungusIGoNow : ModProjectile
+    public class FungusIGoNow: ModProjectile
     {
         public override void SetStaticDefaults()
         {

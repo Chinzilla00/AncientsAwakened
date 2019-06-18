@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
+			base.SetStaticDefaults();
             DisplayName.SetDefault("Yamata Awakened");
             Main.npcFrameCount[npc.type] = 7;
         }
@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
-            isAwakened = true;
+			isAwakened = true;
 
             npc.damage = 190;
             for (int k = 0; k < npc.buffImmune.Length; k++)

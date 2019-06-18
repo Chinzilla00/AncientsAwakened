@@ -298,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
 
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
-
+                                    
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, mod.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 }
                             }
@@ -360,7 +360,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
-
+            
 
             if (Main.expertMode)
             {
@@ -580,7 +580,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             internalAI[4] = 0;
         }
 
-
+        
 
         public override void FindFrame(int frameHeight)
         {
@@ -654,7 +654,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else
                     {
                         npc.frameCounter++;
-                        if (npc.frame.Y > 3)
+                        if  (npc.frame.Y > 3)
                         {
                             if (npc.frameCounter > 0)
                             {
@@ -676,7 +676,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         {
                             if (npc.frameCounter > 7.5f)
                             {
-                                npc.frameCounter = 0;
+                        npc.frameCounter = 0;
                                 npc.frame.Y += frameHeight;
                                 if (npc.frame.Y > frameHeight * 2)
                                 {
@@ -697,7 +697,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (!Main.expertMode)
             {
-                string[] lootTableA = { "BaneOfTheBunny", "Bunnyzooka", "RoyalScepter", "Punisher", "RabbitcopterEars" };
+                string[] lootTableA = { "BaneOfTheBunny", "Bunnyzooka", "RoyalScepter", "Punisher", "RabbitcopterEars"};
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));
             }

@@ -12,25 +12,25 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     [AutoloadBossHead]
     public class AkumaA : ModNPC
-    {
+	{
         public bool Loludided;
         private bool weakness = false;
         public int fireTimer = 0;
 
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
-            NPCID.Sets.TechnicallyABoss[npc.type] = true;
+		{
+			DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
+			NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
         }
 
-        public override void SetDefaults()
-        {
-            npc.noTileCollide = true;
+		public override void SetDefaults()
+		{
+			npc.noTileCollide = true;
             npc.width = 84;
             npc.height = 84;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
+			npc.aiStyle = -1;
+			npc.netAlways = true;
             npc.lifeMax = 190000;
             npc.damage = 120;
             npc.defense = 190;
@@ -116,7 +116,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-
+            
 
             npc.frameCounter++;
             if (npc.frameCounter > 8)
@@ -405,7 +405,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         }
 
         public override void NPCLoot()
-        {
+		{
             if (Main.expertMode)
             {
                 if (!AAWorld.downedAkuma)
@@ -437,7 +437,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return;
         }
 
-
+        
         public bool Quote1;
         public bool Quote2;
         public bool Quote3;
@@ -519,7 +519,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                 }
             }
-
+            
             if (internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 14 || internalAI[1] == 19 || internalAI[1] == 22)
             {
                 if (!QuoteSaid)
@@ -539,7 +539,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 internalAI[1] = 0;
             }
         }
-
+        
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
@@ -548,7 +548,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 damage = (int)(damage * .5f);
             }
         }
-
+        
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             AkumaTex = Main.npcTexture[npc.type];
@@ -611,7 +611,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             }
 
-
+            
         }
 
         public bool spawnAshe = false;

@@ -6,29 +6,29 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Toad
 {
     public class ToadBomb : ModProjectile
-    {
-
+	{
+        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Acid");
-            Main.projFrames[projectile.type] = 5;
-        }
+            DisplayName.SetDefault("Acid"); 
+            Main.projFrames[projectile.type] = 5;   
+		}
 
-        public override void SetDefaults()
-        {
-            projectile.width = 14;
-            projectile.height = 14;
-            projectile.aiStyle = 1;
-            projectile.friendly = false;
-            projectile.hostile = true;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 600;
-            projectile.alpha = 20;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = true;
-            aiType = ProjectileID.WoodenArrowFriendly;
-
-        }
+		public override void SetDefaults()
+		{
+			projectile.width = 14;   
+			projectile.height = 14;  
+			projectile.aiStyle = 1;            
+			projectile.friendly = false;      
+			projectile.hostile = true;    
+			projectile.penetrate = 1;     
+			projectile.timeLeft = 600;   
+			projectile.alpha = 20;    
+			projectile.ignoreWater = true;
+			projectile.tileCollide = true;      
+			aiType = ProjectileID.WoodenArrowFriendly;           
+            
+		}
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

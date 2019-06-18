@@ -7,23 +7,23 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Toad
 {
     public class TruffleToadTongue : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Tongue");
-        }
-
-        public override void SetDefaults()
-        {
-            projectile.aiStyle = -1;
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Tongue");
+		}
+		
+		public override void SetDefaults()
+		{
+			projectile.aiStyle = -1;
             projectile.alpha = 255;
             projectile.timeLeft = 600;
             projectile.damage = 50;
-            projectile.width = 20;
-            projectile.height = 20;
-        }
-
-        public override void AI()
+			projectile.width = 20;
+			projectile.height = 20;
+		}
+		
+		public override void AI()
         {
             Vector2 value43 = new Vector2(0f, 216f);
             projectile.alpha -= 15;
@@ -94,11 +94,11 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-
+            
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
+		{
             Texture2D texture2D24 = Main.projectileTexture[projectile.type];
             Texture2D texture2D25 = mod.GetTexture("NPCs/Bosses/Toad/TruffleToadTongueChain");
             Texture2D texture2D26 = mod.GetTexture("NPCs/Bosses/Toad/TruffleToadTongueChain");
@@ -143,6 +143,6 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             Main.spriteBatch.Draw(texture2D26, vector32 - Main.screenPosition, new Rectangle?(value36), color48, projectile.rotation, new Vector2(value36.Width / 2f, value36.Height), projectile.scale, SpriteEffects.None, 0f);
             return false;
-        }
-    }
+		}
+	}
 }

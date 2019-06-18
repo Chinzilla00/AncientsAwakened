@@ -8,13 +8,13 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
     public class PurityShot : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Purity Blast");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Purity Blast");
             Main.projFrames[projectile.type] = 4;
-        }
-
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

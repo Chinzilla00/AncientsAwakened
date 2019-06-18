@@ -8,13 +8,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     public class Flameburst : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Rain of Fire");
-            Main.projFrames[projectile.type] = 3;
-        }
-
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Rain of Fire");
+			Main.projFrames[projectile.type] = 3;
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

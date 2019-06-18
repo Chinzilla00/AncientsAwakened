@@ -6,16 +6,16 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Rajah
 {
     public class CarrotHostile : ModProjectile
-    {
+	{
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Carrot");
-        }
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
-        }
+		}
 
         public override void Kill(int timeleft)
         {

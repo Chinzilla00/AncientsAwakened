@@ -8,9 +8,9 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             base.SetDefaults();
             leftHead = true;
-            middleHead = false;
-            distFromBodyX = 60;
-            distFromBodyY = 70;
+			middleHead = false;	
+			distFromBodyX = 60;			
+			distFromBodyY = 70;			
         }
     }
 }

@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.BiomeGuardians
 {
     public class DynaBlast : ModProjectile
-    {
+	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Bomb");
-            Main.projFrames[projectile.type] = 4;
-        }
+            DisplayName.SetDefault("Soul Bomb");     
+            Main.projFrames[projectile.type] = 4;     
+		}
 
         public override Color? GetAlpha(Color lightColor)
         {
@@ -19,20 +19,20 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
         }
 
         public override void SetDefaults()
-        {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.aiStyle = 1;
-            projectile.friendly = false;
-            projectile.hostile = true;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 600;
-            projectile.alpha = 20;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = true;
+		{
+			projectile.width = 10;
+			projectile.height = 10;
+			projectile.aiStyle = 1;
+			projectile.friendly = false;
+			projectile.hostile = true;
+			projectile.penetrate = 1;
+			projectile.timeLeft = 600;
+			projectile.alpha = 20;
+			projectile.ignoreWater = true;
+			projectile.tileCollide = true;
             projectile.aiStyle = 0;
-
-        }
+            
+		}
 
         public override void AI()
         {

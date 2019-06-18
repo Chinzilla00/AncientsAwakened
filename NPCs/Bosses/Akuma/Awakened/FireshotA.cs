@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.timeLeft = 100;
             projectile.magic = true;
             projectile.ignoreWater = true;
-
+            
         }
 
         public override void AI()

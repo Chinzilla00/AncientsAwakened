@@ -7,22 +7,22 @@ using System;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     public class MagmaSwimmer : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Magma Swimmer");
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Magma Swimmer");
             Main.npcFrameCount[npc.type] = 4;
-        }
+		}
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             npc.width = 86;
             npc.height = 38;
             npc.damage = 60;
-            npc.defense = 30;
-            npc.lifeMax = 110;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+			npc.defense = 30;
+			npc.lifeMax = 110;
+			npc.HitSound = SoundID.NPCHit1;
+			npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 5000;
             npc.knockBackResist = .10f;
             npc.aiStyle = -1;
@@ -87,8 +87,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
         }
 
-        public override void NPCLoot()
-        {
+		public override void NPCLoot()
+		{
             if (Main.rand.Next(Main.expertMode ? 49 : 99) == 0)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.AdhesiveBandage);
@@ -98,5 +98,5 @@ namespace AAMod.NPCs.Enemies.Inferno
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.RobotHat);
             }
         }
-    }
+	}
 }

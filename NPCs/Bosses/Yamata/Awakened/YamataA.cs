@@ -8,25 +8,25 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     [AutoloadBossHead]
     public class YamataA : Yamata
-    {
-        bool cheated = false;
+	{
+		bool cheated = false;
         private bool tenthHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
 
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
+			base.SetStaticDefaults();
             displayName = "Yamata Awakened";
-            Main.npcFrameCount[npc.type] = 7;
-        }
+            Main.npcFrameCount[npc.type] = 7;			
+        }	
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
-            isAwakened = true;
+			base.SetDefaults();
+			isAwakened = true;
             npc.value = Item.buyPrice(20, 0, 0, 0);
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
 
                 BaseAI.DropItem(npc, mod.ItemType("YamataATrophy"), 1, 1, 15, true);
-
+                
                 npc.DropBossBags();
                 AAWorld.downedYamata = true;
                 if (Main.rand.Next(20) == 0)
@@ -226,11 +226,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             else if (npc.frameCounter < 35)
             {
                 npc.frame.Y = 6 * frameHeight;
-            }
-            else
+            }else
             {
                 npc.frameCounter = 0;
             }
-        }
-    }
+        }	
+	}
 }

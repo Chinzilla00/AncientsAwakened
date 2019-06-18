@@ -9,25 +9,25 @@ using Terraria.Audio;
 namespace AAMod.NPCs.Bosses.Shen
 {
     public class Shenling : ModNPC
-    {
+	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Shen/Shenling"; } }
-
+        
 
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Discordian Serpent");
+		{
+			DisplayName.SetDefault("Discordian Serpent");
             Main.npcFrameCount[npc.type] = 2;
         }
-
+        
 
         public override void SetDefaults()
-        {
-            npc.noTileCollide = true;
-            npc.height = 16;
-            npc.width = 16;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
-            npc.knockBackResist = 0f;
+		{
+			npc.noTileCollide = true;
+			npc.height = 16;
+			npc.width = 16;
+			npc.aiStyle = -1;
+			npc.netAlways = true;
+			npc.knockBackResist = 0f;
             npc.damage = 50;
             npc.defense = 90;
             npc.lifeMax = 8000;

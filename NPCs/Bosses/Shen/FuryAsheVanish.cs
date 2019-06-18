@@ -12,8 +12,8 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashe Akuma");
-            Main.npcFrameCount[npc.type] = 17;
+            DisplayName.SetDefault("Ashe Akuma");     
+            Main.npcFrameCount[npc.type] = 17;     
         }
 
         public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.immortal = true;
             npc.dontTakeDamage = true;
         }
-
+        
         public override void AI()
         {
             npc.velocity.X *= 0.97f;

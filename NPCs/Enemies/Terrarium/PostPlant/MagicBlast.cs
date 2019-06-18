@@ -8,13 +8,13 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class MagicBlast : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Magic Blast");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Magic Blast");
             Main.projFrames[projectile.type] = 4;
-        }
-
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;
@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
         {
             target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 600);
         }
-
+        
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
         {

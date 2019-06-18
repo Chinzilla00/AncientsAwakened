@@ -7,22 +7,22 @@ namespace AAMod.NPCs.TownNPCs
 
 {
     public class EyeShot : ModProjectile
-    {
+	{
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lovecraftian Eye");
-        }
+		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             projectile.penetrate = 1;
             projectile.width = 10;
             projectile.height = 10;
             projectile.tileCollide = true;
             projectile.hostile = false;
             projectile.friendly = true;
-
-        }
+            
+		}
 
         public override void Kill(int timeleft)
         {

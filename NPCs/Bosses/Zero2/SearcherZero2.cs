@@ -9,12 +9,12 @@ using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Zero2
 {
-    public class SearcherZero2 : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Searcher");
-        }
+	public class SearcherZero2 : ModNPC
+	{
+		public override void SetStaticDefaults()
+		{
+            DisplayName.SetDefault("Searcher");	
+		}		
 
         public override void SetDefaults()
         {
@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.5f;
-            npc.noGravity = true;
+			npc.noGravity = true;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -76,5 +76,5 @@ namespace AAMod.NPCs.Bosses.Zero2
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.Red);
             return false;
         }
-    }
+	}
 }

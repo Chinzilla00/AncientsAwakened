@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool isDead = npc.life <= 0;
+			bool isDead = npc.life <= 0;		
             if (isDead)          //this make so when the npc has 0 life(dead) he will spawn this
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore1"), 1f);
@@ -45,16 +45,16 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BroodminiGore3"), 1f);
             }
-            for (int m = 0; m < (isDead ? 35 : 6); m++)
-            {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead ? 2f : 1.5f));
-            }
+			for (int m = 0; m < (isDead ? 35 : 6); m++)
+			{
+				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead? 2f : 1.5f));
+			}			
         }
 
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
-            npc.DropLoot(mod.ItemType("BroodScale"), 2, 4);
+                npc.DropLoot(mod.ItemType("Incinerite"), 5, 6);
+                npc.DropLoot(mod.ItemType("BroodScale"), 2, 4);
         }
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             if (Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno == false)
             {
                 if (npc.timeLeft > 5)
-                    npc.timeLeft = 5;
+					npc.timeLeft = 5;
                 npc.velocity.Y = npc.velocity.Y - 0.2f;
                 if (npc.velocity.Y < -8f)
                 {
@@ -306,17 +306,17 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
             }
         }
-
-
-        public Color GetGlowAlpha()
-        {
-            return GenericUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
-        }
+		
+		
+		public Color GetGlowAlpha()
+		{
+			return GenericUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
+		}
 
         public override void PostDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Broodmini_Glow"), 0, npc, GetGlowAlpha());
-        }
-
+			BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Broodmini_Glow"), 0, npc, GetGlowAlpha());
+        }		
+		
     }
 }

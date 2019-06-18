@@ -10,26 +10,26 @@ using BaseMod;
 namespace AAMod.NPCs.Enemies.Inferno
 {
     public class Lung : ModNPC
-    {
+	{
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/Lung"; } }
 
         public bool loludided;
         private bool weakness;
 
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Ancient Lung");
+		{
+			DisplayName.SetDefault("Ancient Lung");
 
         }
 
         public override void SetDefaults()
-        {
-            npc.noTileCollide = true;
-            npc.height = 28;
-            npc.width = 28;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
-            npc.knockBackResist = 0f;
+		{
+			npc.noTileCollide = true;
+			npc.height = 28;
+			npc.width = 28;
+			npc.aiStyle = -1;
+			npc.netAlways = true;
+			npc.knockBackResist = 0f;
             npc.damage = 50;
             npc.defense = 100;
             npc.lifeMax = 10000;
@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             float speed = 18f;
             float acceleration = 0.09f;
-
-
+            
+            
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
@@ -95,9 +95,9 @@ namespace AAMod.NPCs.Enemies.Inferno
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("LungBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
+                        
                     }
-
+                    
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("LungTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -241,7 +241,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
             }
 
-
+            
 
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
         }
     }
-
+    
     public class LungBody : Lung
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungBody"; } }
@@ -419,7 +419,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             return true;
         }
     }
-
+    
     public class LungTail : Lung
     {
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungTail"; } }

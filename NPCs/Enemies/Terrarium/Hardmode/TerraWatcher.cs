@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
 {
     public class TerraWatcher : ModNPC
-    {
+	{
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Unity Watcher");
@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
                     npc.netUpdate2 = true;
                 }
             }
-
+            
         }
     }
 }

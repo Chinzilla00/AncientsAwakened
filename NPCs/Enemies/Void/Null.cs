@@ -6,20 +6,20 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Void
 {
     public class Null : ModNPC
-    {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Null");
+	{
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Null");
             Main.npcFrameCount[npc.type] = 4;
         }
-
-        public override void SetDefaults()
-        {
+		
+		public override void SetDefaults()
+		{
             npc.CloneDefaults(NPCID.Poltergeist);
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.aiStyle = -1;
+			npc.aiStyle = -1;
             npc.width = 24;
             npc.height = 40;
             npc.damage = 50;
@@ -33,15 +33,15 @@ namespace AAMod.NPCs.Enemies.Void
             npc.noGravity = true;
         }
 
-        public int frameCount = 0;
-        public int frameCounter = 0;
-        public override void PostAI()
-        {
-
-            npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
-            npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
-            npc.rotation = npc.velocity.X * 0.25f;
-        }
+		public int frameCount = 0;
+		public int frameCounter = 0;
+		public override void PostAI()
+		{
+			
+			npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
+			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.rotation = npc.velocity.X * 0.25f;
+		}
 
         public override void AI()
         {
@@ -59,6 +59,6 @@ namespace AAMod.NPCs.Enemies.Void
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("UnstableSingularity"), 1);
         }
 
-
+        
     }
 }

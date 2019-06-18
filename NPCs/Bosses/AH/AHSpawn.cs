@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.AH
                 npc.noGravity = true;
                 npc.aiStyle = -1;
                 npc.timeLeft = 10;
-
+                
                 for (int k = 0; k < npc.buffImmune.Length; k++)
                 {
                     npc.buffImmune[k] = true;
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.AH
                 }
             }
 
-
+            
             if (npc.ai[1] == 700)
             {
                 Main.NewText("So now..! Heh...", new Color(102, 20, 48));

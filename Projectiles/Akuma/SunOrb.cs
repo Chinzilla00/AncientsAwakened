@@ -7,15 +7,15 @@ using Terraria.ModLoader;
 namespace AAMod.Projectiles.Akuma
 {
     public class SunOrb : ModProjectile
-    {
+	{
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sun Portal");
             Main.projFrames[projectile.type] = 1;
         }
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
             projectile.width = 32;
             projectile.height = 32;
             projectile.aiStyle = -1;
@@ -31,15 +31,15 @@ namespace AAMod.Projectiles.Akuma
         {
             float num1058 = 1000f;
             projectile.velocity = Vector2.Zero;
-
+            
             projectile.alpha -= 5;
             if (projectile.alpha < 30)
             {
-                projectile.alpha = 30;
+                    projectile.alpha = 30;
             }
             if (projectile.direction == 0)
             {
-                projectile.direction = Main.player[projectile.owner].direction;
+                    projectile.direction = Main.player[projectile.owner].direction;
             }
             projectile.rotation -= (float)projectile.direction * 6.28318548f / 120f;
             projectile.scale = projectile.Opacity;
@@ -82,9 +82,9 @@ namespace AAMod.Projectiles.Akuma
             if (projectile.ai[0] < 0f)
             {
                 projectile.ai[0] += 1f;
-
-                projectile.ai[1] -= (float)projectile.direction * 0.3926991f / 50f;
-
+                
+                    projectile.ai[1] -= (float)projectile.direction * 0.3926991f / 50f;
+                
             }
             if (projectile.ai[0] == 0f)
             {
@@ -153,7 +153,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector137.X, vector137.Y, mod.ProjectileType("Sunray"), projectile.damage, projectile.knockBack, projectile.owner, 0f, (float)projectile.whoAmI);
                     }
-
+                    
                 }
             }
         }

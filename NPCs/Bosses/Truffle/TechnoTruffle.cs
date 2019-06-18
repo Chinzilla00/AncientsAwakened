@@ -13,29 +13,29 @@ namespace AAMod.NPCs.Bosses.Truffle
     [AutoloadBossHead]
     public class TechnoTruffle : ModNPC
     {
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			base.SendExtraAI(writer);
+			if((Main.netMode == 2 || Main.dedServ))
+			{
+				writer.Write(internalAI[0]);
+				writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
             }
-        }
+		}
 
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			base.ReceiveExtraAI(reader);
+			if(Main.netMode == 1)
+			{
+				internalAI[0] = reader.ReadFloat();
+				internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
-            }
-        }
+            }	
+		}	
 
         public override void SetStaticDefaults()
         {
@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         }
 
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2, AISTATE_ROCKET = 3;
-        public float[] internalAI = new float[4];
+		public float[] internalAI = new float[4];
         bool HasStopped = false;
         bool SelectPoint = false;
         Vector2 MovePoint = new Vector2(0, 0);
@@ -228,7 +228,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                     }
                 }
             }
-
+            
         }
 
         public float[] shootAI = new float[4];
@@ -363,7 +363,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         }
     }
 
-
+    
 }
 
 

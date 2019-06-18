@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
-
+        
         public override void AI()
         {
             if (npc.velocity.Y == 0f)

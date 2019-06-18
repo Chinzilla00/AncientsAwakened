@@ -483,7 +483,7 @@ namespace AAMod.NPCs.TownNPCs
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
-        {
+		{
             shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
@@ -547,22 +547,22 @@ namespace AAMod.NPCs.TownNPCs
             }
         }
 
-        public override void NPCLoot()
-        {
-            Item.NewItem(npc.getRect(), ItemID.Mushroom);
-        }
+		public override void NPCLoot()
+		{
+			Item.NewItem(npc.getRect(), ItemID.Mushroom);
+		}
 
-        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
-        {
-            damage = 20;
-            knockback = 4f;
-        }
+		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+		{
+			damage = 20;
+			knockback = 4f;
+		}
 
-        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
-        {
-            cooldown = 20;
-            randExtraCooldown = 20;
-        }
+		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+		{
+			cooldown = 20;
+			randExtraCooldown = 20;
+		}
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {

@@ -8,13 +8,13 @@ namespace AAMod.NPCs.TownNPCs
 {
     public class JudgementNPC : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Judgement");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Judgement");
             Main.projFrames[projectile.type] = 4;
-        }
-
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

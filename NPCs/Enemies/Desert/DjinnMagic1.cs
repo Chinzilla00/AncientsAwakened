@@ -9,12 +9,12 @@ namespace AAMod.NPCs.Enemies.Desert
 {
     public class DjinnMagic1 : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Magic Blast");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Magic Blast");
             Main.projFrames[projectile.type] = 4;
-        }
+		}
 
         public override void SetDefaults()
         {
@@ -56,6 +56,7 @@ namespace AAMod.NPCs.Enemies.Desert
             {
                 projectile.Kill();
             }
+
         }
 
         public override void Kill(int timeleft)

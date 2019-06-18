@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 target.AddBuff(BuffID.Electrified, Main.rand.Next(100, 180));       //Main.rand.Next part is the length of the buff, so 8.3 seconds to 16.6 seconds
             }
         }
-
+        
         public Color color;
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.3f * bossLifeScale);
         }
-
+        
         public override void AI()
         {
             npc.noTileCollide = false;

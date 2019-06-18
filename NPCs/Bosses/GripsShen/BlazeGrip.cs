@@ -17,16 +17,16 @@ namespace AAMod.NPCs.Bosses.GripsShen
             Main.npcFrameCount[npc.type] = 14;
         }
 
-        public override void SetDefaults()
+	    public override void SetDefaults()
         {
-            base.SetDefaults();
-            npc.lifeMax = 80000;
+			base.SetDefaults();
+			npc.lifeMax = 80000;
             npc.damage = 200;
             npc.defense = 110;
             npc.buffImmune[BuffID.OnFire] = true;
 
-            offsetBasePoint = new Vector2(-280f, 0f);
-        }
+            offsetBasePoint = new Vector2(-280f, 0f);		
+        }	
 
         public override void HitEffect(int hitDirection, double damage)
         {

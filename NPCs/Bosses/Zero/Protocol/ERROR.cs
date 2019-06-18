@@ -7,13 +7,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class ERROR : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("ERR0R");
+    	
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("ERR0R");
             Main.projFrames[projectile.type] = 4;
-        }
-
+		}
+    	
         public override void SetDefaults()
         {
             projectile.width = 10;

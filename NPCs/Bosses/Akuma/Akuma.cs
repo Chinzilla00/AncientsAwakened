@@ -11,16 +11,16 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     [AutoloadBossHead]
     public class Akuma : ModNPC
-    {
+	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Akuma"; } }
 
         public bool loludided;
         private bool weakness;
 
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
-            NPCID.Sets.TechnicallyABoss[npc.type] = true;
+		{
+			DisplayName.SetDefault("Akuma; Draconian Demon");
+			NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
         }
 
@@ -31,13 +31,13 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
 
         public override void SetDefaults()
-        {
-            npc.noTileCollide = true;
-            npc.height = 120;
-            npc.width = 84;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
-            npc.knockBackResist = 0f;
+		{
+			npc.noTileCollide = true;
+			npc.height = 120;
+			npc.width = 84;
+			npc.aiStyle = -1;
+			npc.netAlways = true;
+			npc.knockBackResist = 0f;
             npc.damage = 100;
             npc.defense = 150;
             npc.lifeMax = 190000;
@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         }
         private bool fireAttack;
         private int attackFrame;
-        private int attackCounter;
+        private int attackCounter; 
         private int attackTimer;
         public static int MinionCount = 0;
         public int MaxMinons = Main.expertMode ? 3 : 4;
@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Player player = Main.player[npc.target];
 
-
+            
             if (fireAttack == true || internalAI[0] >= 450)
             {
                 attackCounter++;
@@ -214,7 +214,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
+                        
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -227,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody1"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
+                    
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
                     Main.npc[latestNPC].realLife = npc.whoAmI;
                     Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -251,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 maxTilePosY = Main.maxTilesY;
 
             bool collision = true;
-
+            
             float speed = 12f;
             float acceleration = 0.13f;
 
@@ -446,13 +446,13 @@ namespace AAMod.NPCs.Bosses.Akuma
                         AkumaAttacks.Dragonfire(npc, mod, false);
                     }
                 }
-
+                
             }
             else if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
             {
                 if (!QuoteSaid)
                 {
-                    if (!Quote2) Main.NewText("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
+                     if (!Quote2) Main.NewText("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote2 = true;
                 }
@@ -543,7 +543,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
                 Main.NewText("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
-
+                
             }
             if (Main.expertMode)
             {
@@ -553,7 +553,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             npc.value = 0f;
             npc.boss = false;
-        }
+		}
 
         public override void BossLoot(ref string name, ref int potionType)
         {
@@ -590,7 +590,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.dust[dust2].noGravity = true;
             }
         }
-
+        
 
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
@@ -614,7 +614,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
             }
         }
-
+        
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
@@ -626,7 +626,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             rotation = npc.rotation;
         }
     }
-
+    
     [AutoloadBossHead]
     public class AkumaArms : Akuma
     {
@@ -736,7 +736,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             return true;
         }
     }
-
+    
     [AutoloadBossHead]
     public class AkumaBody : Akuma
     {
@@ -846,7 +846,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             return true;
         }
     }
-
+    
     [AutoloadBossHead]
     public class AkumaBody1 : Akuma
     {
@@ -1066,6 +1066,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             return true;
         }
 
-
+        
     }
 }

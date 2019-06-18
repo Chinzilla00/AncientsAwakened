@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             npc.lifeMax = 50;
             npc.damage = 12;
-            npc.defense = 5;
+            npc.defense = 5; 
             npc.knockBackResist = 1f;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.aiStyle = -1;

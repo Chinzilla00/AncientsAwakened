@@ -18,11 +18,11 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
             projectile.width = 10;
             projectile.height = 10;
             projectile.friendly = false;
-            projectile.penetrate = -1;
+            projectile.penetrate = -1; 
         }
-
-        public override void AI()
-        {
+		
+		public override void AI()
+        { 
             Vector2 vector54 = Main.npc[projectile.owner].Center - projectile.Center;
             projectile.rotation = vector54.ToRotation() - 1.57f;
             if (!Main.npc[projectile.owner].active)
@@ -87,24 +87,24 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
                 return;
             }
         }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
+		
+		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
+		{
             target.AddBuff(BuffID.Venom, 600);
         }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.ai[0] = 1f;
-            return false;
-        }
-
+		
+		public override bool OnTileCollide (Vector2 oldVelocity)
+		{
+			projectile.ai[0] = 1f;
+			return false;
+		}
+        
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 
             Texture2D texture = ModLoader.GetTexture("AAMod/NPCs/Enemies/Mire/Toxitoad/Toxitongue_Chain");
-
+            
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.npc[projectile.owner].Center;
             Rectangle? sourceRectangle = new Rectangle?();

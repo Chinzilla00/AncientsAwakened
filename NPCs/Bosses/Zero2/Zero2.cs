@@ -10,13 +10,13 @@ using AAMod.NPCs.Bosses.Zero;
 
 namespace AAMod.NPCs.Bosses.Zero2
 {
-    [AutoloadBossHead]
+    [AutoloadBossHead]	
     public class Zero2 : ModNPC
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.npcFrameCount[npc.type] = 2;
+            Main.npcFrameCount[npc.type] = 2; 
         }
 
         public override void SetDefaults()
@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             npc.noGravity = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
-
+            
             npc.knockBackResist = -1f;
             npc.boss = true;
             npc.friendly = false;
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Zero2
                 }
             }
         }
-
+        
         public override void BossLoot(ref string name, ref int potionType)
         {
             if (!Main.expertMode)
@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.Zero2
         {
             RingRoatation += 0.03f;
 
-
+            
 
             if (internalAI[0] == 0 && Main.netMode != 1)
             {
@@ -390,7 +390,7 @@ namespace AAMod.NPCs.Bosses.Zero2
                         break;
                 }
 
-                if (NPC.AnyNPCs(mod.NPCType(Choice)))
+                if(NPC.AnyNPCs(mod.NPCType(Choice)))
                 {
                     Choice = null;
                 }

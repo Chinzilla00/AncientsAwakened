@@ -11,13 +11,13 @@ using BaseMod;
 
 namespace AAMod.NPCs.Enemies.BiomeGuardians
 {
-    public class Dynasaur : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
+	public class Dynasaur : ModNPC
+	{
+		public override void SetStaticDefaults()
+		{
             Main.npcFrameCount[npc.type] = 8;
-        }
-
+		}		
+		
         public override void SetDefaults()
         {
             npc.width = 42;
@@ -30,32 +30,32 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             npc.damage = 30;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.7f;
+            npc.knockBackResist = 0.7f;	
         }
 
-        public Color smokeColor = new Color(145, 55, 26);
+		public Color smokeColor = new Color(145, 55, 26);
 
-        public static int[] velocitiesX = new int[] { -6, -3, 0, 3, 6, 3, 0, -3 };
-        public static int[] velocitiesY = new int[] { 0, 3, 6, 3, 0, -3, -6, -3 };
+		public static int[] velocitiesX = new int[] { -6, -3, 0, 3, 6, 3, 0, -3 };
+		public static int[] velocitiesY = new int[] { 0, 3, 6, 3, 0, -3, -6, -3 };
 
-        public static Texture2D bodyTex;
+		public static Texture2D bodyTex;
 
-        public override void NPCLoot()
-        {
-            if (Main.netMode != 1)
-            {
-                for (int m = 0; m < 8; m++)
-                {
-                    BaseMod.BaseAI.FireProjectile(npc.Center + new Vector2(velocitiesX[m], velocitiesY[m]), npc.Center, mod.ProjType("BugAcidShot"), 0, 0f, 5f);
-                }
-            }
-            BaseMod.BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
-            if (ModSupport.calamity != null)
-            {
-                BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("BeetleJuice"), 1, 1, 65, true);
-                BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("EssenceofCinder"), 1, 1, (Main.expertMode ? 20 : 15), true);
-            }
-        }
+		public override void NPCLoot()
+		{
+			if (Main.netMode != 1)
+			{
+				for (int m = 0; m < 8; m++)
+				{
+					BaseMod.BaseAI.FireProjectile(npc.Center + new Vector2(velocitiesX[m], velocitiesY[m]), npc.Center, mod.ProjType("BugAcidShot"), 0, 0f, 5f);
+				}
+			}
+			BaseMod.BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
+			if(ModSupport.calamity != null)
+			{
+				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("BeetleJuice"), 1, 1, 65, true);	
+				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("EssenceofCinder"), 1, 1, (Main.expertMode ? 20 : 15), true);
+			}
+		}
 
         public float moveSpeed = 14f;
         public Vector2 MovePoint;
@@ -268,12 +268,12 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-            BaseDrawing.DrawAfterimage(sb, bodyTex, 0, npc, 2.5f, 0.9F, 3, true, 0f, 0f, dColor);
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+		{
+			BaseDrawing.DrawAfterimage(sb, bodyTex, 0, npc, 2.5f, 0.9F, 3, true, 0f, 0f, dColor);
+			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Dynasaur_Glow"), 0, npc, Color.White);
             return false;
-        }
+		}
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {

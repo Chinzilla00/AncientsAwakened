@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
                 if (projectile.ai[1] == 3)
                 {
-                    num297 = mod.DustType<Dusts.BroodmotherDust>();
+                    num297 = mod.DustType<Dusts. BroodmotherDust>();
                 }
 
                 if (projectile.ai[1] == 4)
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(BuffID.Chilled, 300);
-            if (projectile.ai[1] == 1)
+            if  (projectile.ai[1] == 1)
             {
                 target.AddBuff(BuffID.CursedInferno, 180);
             }

@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.GripsShen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Explosion");
-            Main.projFrames[projectile.type] = 7;
+            DisplayName.SetDefault("Explosion");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

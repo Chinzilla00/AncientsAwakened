@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Shen
     public class ShenRain : ModProjectile
     {
         public override void SetStaticDefaults()
-        {
+        {     
         }
 
         public override void SetDefaults()

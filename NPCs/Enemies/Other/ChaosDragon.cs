@@ -7,16 +7,16 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Enemies.Other
 {
     public class ChaosDragon : ModNPC
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Chaos Dragon");
-            Main.npcFrameCount[npc.type] = 4;
-        }
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Chaos Dragon");
+			Main.npcFrameCount[npc.type] = 4;
+		}
 
-        public override void SetDefaults()
-        {
-            npc.lifeMax = 200;
+		public override void SetDefaults()
+		{
+            npc.lifeMax =  200;
             npc.defense = 20;
             npc.damage = 50;
             npc.width = 26;
@@ -94,6 +94,6 @@ namespace AAMod.NPCs.Enemies.Other
                 Main.dust[dust2].noGravity = true;
             }
         }
-
+        
     }
 }

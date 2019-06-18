@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("ZER0 PR0T0C0L");
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[npc.type] = 8; 
             NPCID.Sets.TrailCacheLength[npc.type] = 15;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
@@ -314,7 +314,7 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
                     npc.timeLeft = 10;
                 }
                 if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-                return;
+				return;
             }
             else if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f)
             {
@@ -330,8 +330,8 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
                 {
                     npc.timeLeft = 10;
                 }
-                if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-                return;
+                if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }				
+				return;				
             }
             else if (npc.ai[0] == 0f)
             {

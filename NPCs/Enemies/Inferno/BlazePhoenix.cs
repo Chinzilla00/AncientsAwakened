@@ -18,18 +18,18 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void SetDefaults()
         {
-            npc.width = 30;
-            npc.height = 30;
+			npc.width = 30;
+			npc.height = 30;
             npc.aiStyle = -1;
             npc.npcSlots = 1;
             npc.value = BaseUtility.CalcValue(0, 1, 25, 0);
             npc.lifeMax = 200;
             npc.defense = 5;
             npc.noGravity = true;
-            npc.noTileCollide = true;
-            npc.knockBackResist = 0f;
+			npc.noTileCollide = true;
+			npc.knockBackResist = 0f;
             npc.lavaImmune = true;
-            npc.buffImmune[BuffID.OnFire] = true;
+			npc.buffImmune[BuffID.OnFire] = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.damage = 70;
@@ -38,9 +38,9 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void AI()
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
-            AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
-            npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
-            BaseAI.LookAt(npc.Center + npc.velocity, npc, 0);
+			AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
+			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			BaseAI.LookAt(npc.Center + npc.velocity, npc, 0);
             npc.frameCounter++;
             if (npc.frameCounter > 3)
             {
@@ -72,20 +72,20 @@ namespace AAMod.NPCs.Enemies.Inferno
                 }
             }
         }
-
-
+		
+				
 
         public Color GetGlowAlpha()
         {
             return new Color(220, 150, 150) * ((float)Main.mouseTextColor / 255f);
         }
-
+        
         public override void NPCLoot()
         {
-            if (Main.netMode != 1)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2));
-            }
+			if(Main.netMode != 1)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2));
+			}
         }
 
         public float auraPercent = 0f;
@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 0.8f, 1f, 4, false, 0f, 0f, GetGlowAlpha());
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, Color.White);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, Color.White);			
             return false;
         }
 
@@ -107,23 +107,23 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool isDead = npc.life <= 0;
+			bool isDead = npc.life <= 0;
             if (isDead)
             {
-                for (int m = 0; m < 30; m++)
-                {
-                    int dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, DustID.Fire, -npc.velocity.X * 0.2f,
-                        -npc.velocity.Y * 0.2f, 100, default(Color), 2f);
-                    Main.dust[dustID].velocity *= 2f;
-                    dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
-                        -npc.velocity.Y * 0.2f, 100, default(Color));
-                    Main.dust[dustID].velocity *= 2f;
-                }
+				for (int m = 0; m < 30; m++)
+				{
+					int dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, DustID.Fire, -npc.velocity.X * 0.2f,
+						-npc.velocity.Y * 0.2f, 100, default(Color), 2f);
+					Main.dust[dustID].velocity *= 2f;
+					dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
+						-npc.velocity.Y * 0.2f, 100, default(Color));
+					Main.dust[dustID].velocity *= 2f;
+				}
             }
-            for (int m = 0; m < 5; m++)
-            {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, 1.3f);
-            }
-        }
+			for (int m = 0; m < 5; m++)
+			{
+				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, 1.3f);
+			}
+        }	
     }
 }
