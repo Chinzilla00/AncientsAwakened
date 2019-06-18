@@ -474,8 +474,7 @@ namespace AAMod
             ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, mod.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<AkumaA>(), 5000) != -1;
             ZoneMush = (AAWorld.mushTiles > 100);
             Terrarium = (AAWorld.terraTiles >= 1);
-            ZoneVoid = (AAWorld.voidTiles > 20) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
-            ZoneVoid2 = (AAWorld.voidTiles2 > 100);
+            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
             //ZoneStorm = (AAWorld.stormTiles >= 1);
             //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
@@ -739,6 +738,16 @@ namespace AAMod
             if (questFish == mod.ItemType("Fishmother") && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("Fishmother");
+            }
+
+            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode)
+            {
+                caughtType = mod.ItemType("ScorchShark");
+            }
+
+            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode)
+            {
+                caughtType = mod.ItemType("SwimmingHydra");
             }
         }
 

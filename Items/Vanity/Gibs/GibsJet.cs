@@ -53,8 +53,6 @@ Hold down and jump to hover for an extended period of time
 			constantAscend = 0.135f;
         }
 
-        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration);
-
         public override bool WingUpdate(Player player, bool inUse)
         {
             if (inUse)

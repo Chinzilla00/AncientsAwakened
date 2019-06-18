@@ -157,7 +157,7 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
                 Asteroidpos2.Y += (float)Math.Sin(asteroidPercent2) * -30f;
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
-                if (!AAWorld.downedZero)
+                if (!AAWorld.downedZero || !Main.player[Main.myPlayer].ZoneSkyHeight)
                 {
                     spriteBatch.Draw(Stars, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
                 }
