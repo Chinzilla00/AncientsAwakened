@@ -18,6 +18,7 @@ namespace AAMod.Items.Accessories
             Tooltip.SetDefault(
 @"Respawn time cut by 80%
 Pressing the Time Stone hotkey will allow you to speed up and resume time.
+Using the Time stone like an item stops/resumes time.
 'Dread it. Run from it. Destiny still arives.'");
 
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
@@ -47,6 +48,21 @@ Pressing the Time Stone hotkey will allow you to speed up and resume time.
                     line2.overrideColor = Color.Green;
                 }
             }
+        }
+
+        public override bool UseItem(Player player)
+        {
+            Main.fastForwardTime = false;
+            if (!AAWorld.TimeStopped)
+            {
+                AAWorld.PausedTime = Main.time;
+                AAWorld.TimeStopped = true;
+            }
+            else
+            {
+                AAWorld.TimeStopped = false;
+            }
+            return false;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Flasks
 {
-    public class DarkwaterFlask : ModProjectile
+    public class Flask : ModProjectile
     {
 
         public override void SetStaticDefaults()

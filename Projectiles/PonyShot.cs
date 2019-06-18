@@ -17,12 +17,12 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 8;
+            projectile.width = 1;
+            projectile.height = 1;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.melee = true;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.timeLeft = 90;
@@ -36,7 +36,7 @@ namespace AAMod.Projectiles
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
             const float desiredFlySpeedInPixelsPerFrame = 20;
-            const float amountOfFramesToLerpBy = 10;
+            const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
             for (int num468 = 0; num468 < 20; num468++)
             {
                 float Eggroll = Math.Abs(Main.GameUpdateCount) / 8f;
@@ -46,10 +46,10 @@ namespace AAMod.Projectiles
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
             }
-            projectile.ai[aislotHomingCooldown]++;
+                projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay;
+                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
 
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
@@ -58,6 +58,10 @@ namespace AAMod.Projectiles
                     Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
+            }
+            if (projectile.timeLeft < 10)
+            {
+                NoScythes = true;
             }
         }
 
@@ -87,8 +91,11 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(new LegacySoundStyle(2, 71, Terraria.Audio.SoundType.Sound), projectile.position);
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("PonyBoom"), projectile.damage, 0, projectile.owner, 0f, 0f);
+            if (!NoScythes)
+            {
+                Main.PlaySound(new LegacySoundStyle(2, 71, Terraria.Audio.SoundType.Sound), projectile.position);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("PonyBoom"), projectile.damage, 0, projectile.owner, 0f, 0f);
+            }
         }
     }
 }

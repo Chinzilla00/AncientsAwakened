@@ -50,23 +50,7 @@ namespace AAMod.Items.Vanity.Aves
 			constantAscend = 0.135f;
 		}
 
-        public override bool WingUpdate(Player player, bool inUse)
-        {
-            if (inUse)
-            {
-                if (player.wingFrame == 0)
-                {
-                    player.wingFrame = 1;
-                }
-            }
-            else
-            {
-                player.wingFrame = 0;
-            }
-            return false;
-        }
-
-        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
 			speed = 10f;
 			acceleration *= 2.5f;

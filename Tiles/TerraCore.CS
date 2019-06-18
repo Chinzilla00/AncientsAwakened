@@ -43,7 +43,6 @@ namespace AAMod.Tiles
                 mod.TileType("HellstoneAnvil"),
                 mod.TileType("HallowedAnvil"),
                 mod.TileType("HallowedForge"),
-                mod.TileType("PaladinsSmeltery"),
                 mod.TileType("QuantumFusionAccelerator"),
                 TileID.MythrilAnvil,
                 TileID.Anvils,

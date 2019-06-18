@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Equinox
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dark Void");
+            DisplayName.SetDefault("Radiant Star");
             Tooltip.SetDefault(
 @"Gives immensely increased stats at night
 'Dark and spooky'");

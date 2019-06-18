@@ -20,18 +20,19 @@ namespace AAMod.Items.Dev.Minions
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 36;
-            projectile.height = 34;
+            projectile.width = 18;
+            projectile.height = 18;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;
         }
-
+        
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             if (!player.active)
             {
                 projectile.active = false;
@@ -41,6 +42,7 @@ namespace AAMod.Items.Dev.Minions
             bool flag2 = false;
             bool flag3 = false;
             bool flag4 = false;
+            bool flag5 = true;
             if (projectile.lavaWet)
             {
                 projectile.ai[0] = 1f;
@@ -48,36 +50,62 @@ namespace AAMod.Items.Dev.Minions
             }
             if (player.dead)
             {
-                player.GetModPlayer<AAPlayer>(mod).DapperSquirrel = false;
+                modPlayer.DapperSquirrel = false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).DapperSquirrel)
+            if (modPlayer.DapperSquirrel)
             {
                 projectile.timeLeft = Main.rand.Next(2, 10);
             }
             int num = 10;
             int num2 = 40 * (projectile.minionPos + 1) * player.direction;
-            if (player.position.X + (player.width / 2) < projectile.position.X + (projectile.width / 2) - num + num2)
+            if (player.position.X + player.width / 2 < projectile.position.X + projectile.width / 2 - num + num2)
             {
                 flag = true;
             }
-            else if (player.position.X + (player.width / 2) > projectile.position.X + (projectile.width / 2) + num + num2)
+            else if (player.position.X + player.width / 2 > projectile.position.X + projectile.width / 2 + num + num2)
+            {
+                flag2 = true;
+            }
+            else if (player.position.X + player.width / 2 < projectile.position.X + projectile.width / 2 - num)
+            {
+                flag = true;
+            }
+            else if (player.position.X + player.width / 2 > projectile.position.X + projectile.width / 2 + num)
             {
                 flag2 = true;
             }
             if (projectile.ai[1] == 0f)
             {
+                int num36 = 500;
+                num36 += 40 * projectile.minionPos;
+                if (projectile.localAI[0] > 0f)
+                {
+                    num36 += 500;
+                }
                 if (player.rocketDelay2 > 0)
                 {
                     projectile.ai[0] = 1f;
                 }
                 Vector2 vector6 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
-                float num37 = player.position.X + (player.width / 2) - vector6.X;
-                float num38 = player.position.Y + (player.height / 2) - vector6.Y;
+                float num37 = player.position.X + player.width / 2 - vector6.X;
+                float num38 = player.position.Y + player.height / 2 - vector6.Y;
                 float num39 = (float)Math.Sqrt(num37 * num37 + num38 * num38);
                 if (num39 > 2000f)
                 {
-                    projectile.position.X = player.position.X + (player.width / 2) - (projectile.width / 2);
-                    projectile.position.Y = player.position.Y + (player.height / 2) - (projectile.height / 2);
+                    projectile.position.X = player.position.X + player.width / 2 - projectile.width / 2;
+                    projectile.position.Y = player.position.Y + player.height / 2 - projectile.height / 2;
+                }
+                else if (num39 > num36 || (Math.Abs(num38) > 300f && (projectile.localAI[0] <= 0f)))
+                {
+                    if (num38 > 0f && projectile.velocity.Y < 0f)
+                    {
+                        projectile.velocity.Y = 0f;
+                    }
+                    if (num38 < 0f && projectile.velocity.Y > 0f)
+                    {
+                        projectile.velocity.Y = 0f;
+                    }
+                    projectile.ai[0] = 1f;
                 }
             }
             if (projectile.ai[0] != 0f)
@@ -85,19 +113,22 @@ namespace AAMod.Items.Dev.Minions
                 int num41 = 100;
                 projectile.tileCollide = false;
                 Vector2 vector7 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
-                float num42 = player.position.X + (player.width / 2) - vector7.X;
-                num42 -= (40 * player.direction);
+                float num42 = player.position.X + player.width / 2 - vector7.X;
+                num42 -= 40 * player.direction;
                 float num43 = 700f;
-                num43 += 100f;
+                if (flag5)
+                {
+                    num43 += 100f;
+                }
                 bool flag6 = false;
                 int num44 = -1;
                 for (int j = 0; j < 200; j++)
                 {
                     if (Main.npc[j].CanBeChasedBy(this, false))
                     {
-                        float num45 = Main.npc[j].position.X + (Main.npc[j].width / 2);
-                        float num46 = Main.npc[j].position.Y + (Main.npc[j].height / 2);
-                        float num47 = Math.Abs(player.position.X + (player.width / 2) - num45) + Math.Abs(player.position.Y + (player.height / 2) - num46);
+                        float num45 = Main.npc[j].position.X + Main.npc[j].width / 2;
+                        float num46 = Main.npc[j].position.Y + Main.npc[j].height / 2;
+                        float num47 = Math.Abs(player.position.X + player.width / 2 - num45) + Math.Abs(player.position.Y + player.height / 2 - num46);
                         if (num47 < num43)
                         {
                             if (Collision.CanHit(projectile.position, projectile.width, projectile.height, Main.npc[j].position, Main.npc[j].width, Main.npc[j].height))
@@ -111,13 +142,13 @@ namespace AAMod.Items.Dev.Minions
                 }
                 if (!flag6)
                 {
-                    num42 -= (40 * projectile.minionPos * player.direction);
+                    num42 -= 40 * projectile.minionPos * player.direction;
                 }
                 if (flag6 && num44 >= 0)
                 {
                     projectile.ai[0] = 0f;
                 }
-                float num48 = player.position.Y + (player.height / 2) - vector7.Y;
+                float num48 = player.position.Y + player.height / 2 - vector7.Y;
                 float num49 = (float)Math.Sqrt(num42 * num42 + num48 * num48);
                 float num40 = 0.4f;
                 float num50 = 12f;
@@ -201,7 +232,7 @@ namespace AAMod.Items.Dev.Minions
             }
             else
             {
-                float num57 = (40 * projectile.minionPos);
+                float num57 = 40 * projectile.minionPos;
                 int num58 = 30;
                 int num59 = 60;
                 projectile.localAI[0] -= 1f;
@@ -223,9 +254,9 @@ namespace AAMod.Items.Dev.Minions
                     NPC ownerMinionAttackTargetNPC = projectile.OwnerMinionAttackTargetNPC;
                     if (ownerMinionAttackTargetNPC != null && ownerMinionAttackTargetNPC.CanBeChasedBy(this, false))
                     {
-                        float num65 = ownerMinionAttackTargetNPC.position.X + (ownerMinionAttackTargetNPC.width / 2);
-                        float num66 = ownerMinionAttackTargetNPC.position.Y + (ownerMinionAttackTargetNPC.height / 2);
-                        float num67 = Math.Abs(projectile.position.X + (projectile.width / 2) - num65) + Math.Abs(projectile.position.Y + (projectile.height / 2) - num66);
+                        float num65 = ownerMinionAttackTargetNPC.position.X + ownerMinionAttackTargetNPC.width / 2;
+                        float num66 = ownerMinionAttackTargetNPC.position.Y + ownerMinionAttackTargetNPC.height / 2;
+                        float num67 = Math.Abs(projectile.position.X + projectile.width / 2 - num65) + Math.Abs(projectile.position.Y + projectile.height / 2 - num66);
                         if (num67 < num62)
                         {
                             if (num64 == -1 && num67 <= num63)
@@ -245,13 +276,14 @@ namespace AAMod.Items.Dev.Minions
                     }
                     if (num64 == -1)
                     {
+                        
                         for (int l = 0; l < 200; l++)
                         {
                             if (Main.npc[l].CanBeChasedBy(this, false))
                             {
-                                float num68 = Main.npc[l].position.X + (Main.npc[l].width / 2);
-                                float num69 = Main.npc[l].position.Y + (Main.npc[l].height / 2);
-                                float num70 = Math.Abs(projectile.position.X + (projectile.width / 2) - num68) + Math.Abs(projectile.position.Y + (projectile.height / 2) - num69);
+                                float num68 = Main.npc[l].position.X + Main.npc[l].width / 2;
+                                float num69 = Main.npc[l].position.Y + Main.npc[l].height / 2;
+                                float num70 = Math.Abs(projectile.position.X + projectile.width / 2 - num68) + Math.Abs(projectile.position.Y + projectile.height / 2 - num69);
                                 if (num70 < num62)
                                 {
                                     if (num64 == -1 && num70 <= num63)
@@ -282,7 +314,7 @@ namespace AAMod.Items.Dev.Minions
                     }
                     if (num62 < num71 + num57 && num64 == -1)
                     {
-                        float num72 = num60 - (projectile.position.X + (projectile.width / 2));
+                        float num72 = num60 - (projectile.position.X + projectile.width / 2);
                         if (num72 < -5f)
                         {
                             flag = true;
@@ -297,7 +329,7 @@ namespace AAMod.Items.Dev.Minions
                     else if (num64 >= 0 && num62 < 800f + num57)
                     {
                         projectile.localAI[0] = num59;
-                        float num73 = num60 - (projectile.position.X + (projectile.width / 2));
+                        float num73 = num60 - (projectile.position.X + projectile.width / 2);
                         if (num73 > 300f || num73 < -300f)
                         {
                             if (num73 < -50f)
@@ -315,7 +347,7 @@ namespace AAMod.Items.Dev.Minions
                         {
                             projectile.ai[1] = num58;
                             float num74 = 12f;
-                            Vector2 vector8 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + (projectile.height / 2) - 8f);
+                            Vector2 vector8 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height / 2 - 8f);
                             float num75 = num60 - vector8.X + Main.rand.Next(-20, 21);
                             float num76 = Math.Abs(num75) * 0.1f;
                             num76 = num76 * Main.rand.Next(0, 100) * 0.001f;
@@ -325,8 +357,8 @@ namespace AAMod.Items.Dev.Minions
                             num75 *= num78;
                             num77 *= num78;
                             int num79 = projectile.damage;
-                            int num80 = mod.ProjectileType<FezShot>();
-                            int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75, num77, num80, num79, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                            int num80 = mod.ProjectileType<Hat>();
+                            int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75, num77, num80, num79, projectile.knockBack, Main.myPlayer, 0f, num64);
                             Main.projectile[num81].timeLeft = 300;
                             if (num75 < 0f)
                             {
@@ -340,13 +372,7 @@ namespace AAMod.Items.Dev.Minions
                         }
                     }
                 }
-                Vector2 vector9 = Vector2.Zero;
-                if (projectile.ai[1] != 0f)
-                {
-                    flag = false;
-                    flag2 = false;
-                }
-                else if (projectile.localAI[0] == 0f)
+                if (projectile.localAI[0] == 0f)
                 {
                     projectile.direction = player.direction;
                 }
@@ -390,8 +416,8 @@ namespace AAMod.Items.Dev.Minions
                 }
                 if (flag || flag2)
                 {
-                    int num105 = (int)(projectile.position.X + (projectile.width / 2)) / 16;
-                    int j2 = (int)(projectile.position.Y + (projectile.height / 2)) / 16;
+                    int num105 = (int)(projectile.position.X + projectile.width / 2) / 16;
+                    int j2 = (int)(projectile.position.Y + projectile.height / 2) / 16;
                     if (flag)
                     {
                         num105--;
@@ -415,8 +441,8 @@ namespace AAMod.Items.Dev.Minions
                 {
                     if (!flag3 && (projectile.velocity.X < 0f || projectile.velocity.X > 0f))
                     {
-                        int num106 = (int)(projectile.position.X + (projectile.width / 2)) / 16;
-                        int j3 = (int)(projectile.position.Y + (projectile.height / 2)) / 16 + 1;
+                        int num106 = (int)(projectile.position.X + projectile.width / 2) / 16;
+                        int j3 = (int)(projectile.position.Y + projectile.height / 2) / 16 + 1;
                         if (flag)
                         {
                             num106--;
@@ -429,14 +455,14 @@ namespace AAMod.Items.Dev.Minions
                     }
                     if (flag4)
                     {
-                        int num107 = (int)(projectile.position.X + (projectile.width / 2)) / 16;
+                        int num107 = (int)(projectile.position.X + projectile.width / 2) / 16;
                         int num108 = (int)(projectile.position.Y + projectile.height) / 16 + 1;
                         if (WorldGen.SolidTile(num107, num108) || Main.tile[num107, num108].halfBrick() || Main.tile[num107, num108].slope() > 0)
                         {
                             try
                             {
-                                num107 = (int)(projectile.position.X + (projectile.width / 2)) / 16;
-                                num108 = (int)(projectile.position.Y + (projectile.height / 2)) / 16;
+                                num107 = (int)(projectile.position.X + projectile.width / 2) / 16;
+                                num108 = (int)(projectile.position.Y + projectile.height / 2) / 16;
                                 if (flag)
                                 {
                                     num107--;
@@ -576,17 +602,6 @@ namespace AAMod.Items.Dev.Minions
                 }
                 return;
             }
-        }
-
-        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
-        {
-            fallThrough = false;
-            return true;
-        }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            return false;
         }
     }
 }

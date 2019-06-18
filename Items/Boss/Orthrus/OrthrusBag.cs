@@ -38,7 +38,7 @@ namespace AAMod.Items.Boss.Orthrus
             {
                 player.QuickSpawnItem(mod.ItemType("OrthrusMaskBlue"));
             }
-            if (Main.rand.Next(20) == 1)
+            if (Main.rand.NextFloat(20) == 1)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.HMDevArmor();

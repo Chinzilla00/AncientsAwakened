@@ -62,7 +62,7 @@ namespace AAMod.Projectiles
 				if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
 				{
 					projectile.localAI[0] = 1f;
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X * 1.3f, projectile.velocity.Y * 1.3f, mod.ProjectileType("ChaosYariEXShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("ChaosYariEXShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
 				}
         	}
         	else
