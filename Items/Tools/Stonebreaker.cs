@@ -1,25 +1,22 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace AAMod.Items.Tools
 {
-    public class Grasscutter : ModItem
+    public class Stonebreaker : ModItem
     {
         public override void SetDefaults()
         {
-
-            item.damage = 5;
+            item.damage = 15;
             item.melee = true;
-            item.width = 32;
-            item.height = 32;
-
-            item.useTime = 22;
-            item.useAnimation = 22;
-            item.pick = 60;
+            item.width = 64;
+            item.height = 64;
+            item.useAnimation = 30;
+            item.useTime = 10;
+            item.pick = 110;
             item.useStyle = 1;
             item.knockBack = 1;
-            item.value = Item.sellPrice(0, 0, 30, 0);
+            item.value = Terraria.Item.sellPrice(0, 1, 8, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
@@ -28,16 +25,17 @@ namespace AAMod.Items.Tools
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Grasscutter");
+            DisplayName.SetDefault("Stonebreaker");
         }
 
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Vine, 2);
-            recipe.AddIngredient(ItemID.Stinger, 2);
-            recipe.AddIngredient(ItemID.JungleSpores, 5);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(mod, "DragonDigger");
+            recipe.AddIngredient(mod, "OceanPick");
+            recipe.AddIngredient(mod, "Excavator");
+            recipe.AddIngredient(mod, "DoomiteMiningLaser");
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

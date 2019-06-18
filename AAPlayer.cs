@@ -724,6 +724,16 @@ namespace AAMod
                     caughtType = mod.ItemType("HellCrate");
                 }
             }
+
+            if (questFish == mod.ItemType("TriHeadedKoi") && Main.rand.NextBool())
+            {
+                caughtType = mod.ItemType("TriHeadedKoi");
+            }
+
+            if (questFish == mod.ItemType("Fishmother") && Main.rand.NextBool())
+            {
+                caughtType = mod.ItemType("Fishmother");
+            }
         }
 
         public int[] Spheres = null;
@@ -1639,6 +1649,23 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("MikpinWig"));
                         player.QuickSpawnItem(mod.ItemType("MikpinCloak"));
                         player.QuickSpawnItem(mod.ItemType("MikpinPants"));
+                        spawnedDevItems = true;
+                        break;
+                    case 21:
+                        player.QuickSpawnItem(mod.ItemType("FargoHat"));
+                        player.QuickSpawnItem(mod.ItemType("FargoSuit"));
+                        player.QuickSpawnItem(mod.ItemType("FargoPants"));
+                        if (dropType >= 2)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("MagicAcorn" + addonEX));
+                            }
+                            else
+                            {
+                                player.QuickSpawnItem(mod.ItemType("Placeholder"));
+                            }
+                        }
                         spawnedDevItems = true;
                         break;
                 }

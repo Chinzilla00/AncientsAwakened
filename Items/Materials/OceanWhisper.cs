@@ -13,7 +13,7 @@ namespace AAMod.Items.Materials
             DisplayName.SetDefault("Ocean Whisper");
             Tooltip.SetDefault("Sounds of the soft ocean waves eminate from this enchanted aura");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(7, 8));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(7, 5));
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
