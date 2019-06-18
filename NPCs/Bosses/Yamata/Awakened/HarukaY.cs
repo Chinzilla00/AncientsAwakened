@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.netAlways = true;
             npc.noGravity = true;
             npc.boss = false;
-            npc.value = Item.buyPrice(0, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 0, 0, 0);
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
         }
 

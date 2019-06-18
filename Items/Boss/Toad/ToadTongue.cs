@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Toad
         {
             item.width = 54;
             item.height = 44;
-            item.value = Item.buyPrice(0, 0, 70, 0);
+            item.value = Item.sellPrice(0, 0, 70, 0);
             item.rare = 4;
             item.noMelee = true;
             item.useStyle = 5;

@@ -68,18 +68,21 @@ Hold down and jump to hover for an extended period of time
 
         public override bool WingUpdate(Player player, bool inUse)
         {
-            if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
+            if (BaseMod.BasePlayer.HasAccessory(player, mod.ItemType<ShinyKipronWings>(), true, false))
             {
-                player.velocity.Y *= 0.7f;
-                if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
                 {
-                    player.velocity.Y = 1E-05f;
+                    player.velocity.Y *= 0.7f;
+                    if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                    {
+                        player.velocity.Y = 1E-05f;
+                    }
+                    player.armorEffectDrawShadowEOCShield = true;
                 }
-                player.armorEffectDrawShadowEOCShield = true;
-            }
-            else
-            {
-                player.armorEffectDrawShadowEOCShield = false;
+                else
+                {
+                    player.armorEffectDrawShadowEOCShield = false;
+                }
             }
             return false;
         }

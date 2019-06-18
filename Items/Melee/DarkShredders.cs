@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
             item.channel = true;
             item.useStyle = 100;
             item.knockBack = 3f;
-            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 11;      
             item.shoot = mod.ProjectileType("DarkShredders");
             item.noUseGraphic = true;

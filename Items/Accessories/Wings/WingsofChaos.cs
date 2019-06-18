@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories.Wings
 		{
 			item.width = 22;
 			item.height = 20;
-			item.value = 600000;
+            item.value = Item.sellPrice(0, 12, 0, 0);
             item.rare = 2;
 			item.accessory = true;
             

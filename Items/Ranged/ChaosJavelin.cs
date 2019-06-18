@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,7 +28,7 @@ namespace AAMod.Items.Ranged
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = 200000;
+            item.value = Item.sellPrice(0, 20, 0, 0);
             item.rare = 8;
         }
 

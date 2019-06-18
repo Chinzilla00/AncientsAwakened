@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Grips
         {
             item.width = 26;
             item.height = 30;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = -12;
             item.expert = true;
             item.accessory = true;

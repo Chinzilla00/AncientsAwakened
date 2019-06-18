@@ -1043,7 +1043,7 @@ namespace AAMod
                 if (AAWorld.downedRajah)
                 {
                     shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenCarrot"));
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(1, 0, 0, 0);
+                    shop.item[nextSlot].shopCustomPrice = Item.sellPrice(1, 0, 0, 0);
                     nextSlot++;
                 }
             }
@@ -1051,7 +1051,7 @@ namespace AAMod
             if (type == NPCID.Truffle && NPC.downedPlantBoss)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(3, 0, 0, 0);
+                shop.item[nextSlot].shopCustomPrice = Item.sellPrice(3, 0, 0, 0);
                 nextSlot++;
             }
             if (type == NPCID.Steampunker)

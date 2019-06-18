@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.damage = 30;
             npc.defense = 10;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.sellPrice(0, 1, 0, 0);
             npc.aiStyle = -1;
             npc.width = 98;
             npc.height = 72;

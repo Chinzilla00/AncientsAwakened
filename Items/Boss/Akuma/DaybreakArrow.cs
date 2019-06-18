@@ -24,7 +24,7 @@ Non-consumable");
 			item.height = 40;
 			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 7f;
-			item.value = Item.buyPrice(1, 0, 0, 0); ;
+			item.value = Item.sellPrice(1, 0, 0, 0); ;
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("DaybreakArrow");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 3f;                  //The speed of the projectile

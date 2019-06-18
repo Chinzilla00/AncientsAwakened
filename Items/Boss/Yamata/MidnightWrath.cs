@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Yamata
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.value = Item.buyPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(1, 0, 0, 0);
 			item.shootSpeed = 20f;
 			item.shoot = mod.ProjectileType ("MidnightWrath");
 			item.UseSound = SoundID.Item1;

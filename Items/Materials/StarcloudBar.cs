@@ -8,7 +8,7 @@ namespace AAMod.Items.Materials
     {
         public override void SetDefaults()
         {
-            item.value = Item.buyPrice(0, 0, 70, 0);
+            item.value = Item.sellPrice(0, 0, 70, 0);
 
             item.width = 32;
             item.height = 32;

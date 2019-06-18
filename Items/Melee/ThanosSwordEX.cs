@@ -25,7 +25,7 @@ Mad Titan's Dualblade EX");
             item.channel = true;
             item.useStyle = 100;
             item.knockBack = 6f;
-            item.value = Item.buyPrice(3, 0, 0, 0);
+            item.value = Item.sellPrice(3, 0, 0, 0);
             item.rare = 11;
             item.shoot = mod.ProjectileType("ThanosSwordEX");
             item.noUseGraphic = true;

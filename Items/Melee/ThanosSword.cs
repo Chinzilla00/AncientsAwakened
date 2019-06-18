@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee
             item.channel = true;
             item.useStyle = 100;
             item.knockBack = 6f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 11;
             item.shoot = mod.ProjectileType("ThanosSword");
             item.noUseGraphic = true;

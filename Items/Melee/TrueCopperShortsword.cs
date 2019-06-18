@@ -1,6 +1,7 @@
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AAMod.Items.Melee
 {
@@ -23,10 +24,10 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 40;
 			item.useStyle = 3;
 			item.knockBack =20;
-			item.value = 10000000;
-			item.rare = 9;
+            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.rare = 9;
 			item.expert = true;
-			item.UseSound = SoundID.Item37;
+			item.UseSound = SoundID.Item1;
 			item.autoReuse = false;
             item.shoot = mod.ProjectileType("TrueCopperShot");
             item.shootSpeed = 20f;
@@ -40,7 +41,7 @@ namespace AAMod.Items.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.CopperShortsword, 1);
-			recipe.AddIngredient(ItemID.BrokenHeroSword, 3);
+			recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

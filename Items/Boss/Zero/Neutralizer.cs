@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.Zero
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 0;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Neutralizer");

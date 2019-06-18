@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.damage = 12;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.buyPrice(0, 0, 75, 45);
+            npc.value = Item.sellPrice(0, 0, 75, 45);
             npc.aiStyle = 26;
             npc.width = 74;
             npc.height = 108;

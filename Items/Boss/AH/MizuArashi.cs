@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.AH
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 4;
-            item.value = Item.buyPrice(0, 25, 0, 0);
+            item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;

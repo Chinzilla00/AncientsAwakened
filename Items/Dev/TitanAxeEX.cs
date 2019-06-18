@@ -28,7 +28,7 @@ Titan Axe EX");
             item.useTime = 20;
             item.knockBack = 4f;
             item.autoReuse = false;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
             item.expert = true;

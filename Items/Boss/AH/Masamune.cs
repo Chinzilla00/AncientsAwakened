@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 5;
             item.knockBack = 4f;
             item.autoReuse = false;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
             item.rare = 11;
@@ -44,19 +44,6 @@ namespace AAMod.Items.Boss.AH
             if (player.altFunctionUse == 2)
             {
                 item.melee = true;
-                item.noMelee = true;
-                item.noUseGraphic = true;
-                item.channel = true;
-                item.useAnimation = 25;
-                item.useTime = 5;
-                item.useStyle = 5;
-                item.autoReuse = false;
-                item.shoot = mod.ProjectileType("Surasshu");
-                item.shootSpeed = 15f;
-            }
-            else
-            {
-                item.melee = true;
                 item.noMelee = false;
                 item.noUseGraphic = false;
                 item.channel = false;
@@ -66,6 +53,19 @@ namespace AAMod.Items.Boss.AH
                 item.autoReuse = true;
                 item.shoot = mod.ProjectileType("MasamuneSlash");
                 item.shootSpeed = 12f;
+            }
+            else
+            {
+                item.melee = true;
+                item.noMelee = true;
+                item.noUseGraphic = true;
+                item.channel = true;
+                item.useAnimation = 25;
+                item.useTime = 5;
+                item.useStyle = 5;
+                item.autoReuse = false;
+                item.shoot = mod.ProjectileType("Surasshu");
+                item.shootSpeed = 15f;
             }
             return base.CanUseItem(player);
         }

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,7 +29,7 @@ Chaos Javelin EX");
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = 1000000;
+            item.value = Item.sellPrice(5, 0, 0, 0);
             item.rare = 11;
             item.expert = true;
         }

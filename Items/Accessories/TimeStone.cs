@@ -23,6 +23,7 @@ Pressing the Time Stone hotkey will allow you to speed up and resume time.
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 16));
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
+
         public override void SetDefaults()
         {
             item.width = 54;
@@ -31,6 +32,17 @@ Pressing the Time Stone hotkey will allow you to speed up and resume time.
             item.rare = 11;
             item.accessory = true;
             item.consumable = false;
+            item.prefix = 0;
+        }
+
+        public override void PostReforge()
+        {
+            item.prefix = 0;
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            item.prefix = 0;
         }
 
         public override Color? GetAlpha(Color lightColor)

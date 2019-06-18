@@ -1935,6 +1935,7 @@
     <Compile Include="Projectiles\Akuma\SunSpearShot.cs" />
     <Compile Include="Projectiles\Akuma\Sunstorm.cs" />
     <Compile Include="Projectiles\AmberArrow.cs" />
+    <Compile Include="Projectiles\ChaosBoomEX.cs" />
     <Compile Include="Projectiles\ChaosBoom.cs" />
     <Compile Include="Projectiles\AmphibiousProjectile.cs" />
     <Compile Include="Projectiles\ChaosJavelinEX.cs" />
@@ -4626,7 +4627,6 @@
     <Content Include="Items\Melee\ChaosYari.png" />
     <Content Include="Items\Melee\ChaosYariEX.png" />
     <Content Include="Items\Melee\Chicken.png" />
-    <Content Include="Items\Melee\Chicken_Hold.png" />
     <Content Include="Items\Melee\DragonFang.png" />
     <Content Include="Items\Melee\Executioner.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
@@ -5754,7 +5754,6 @@
     <Content Include="Items\Throwing\HydraFang.png" />
     <Content Include="Items\Throwing\Iron_Kunai.png" />
     <Content Include="Items\Throwing\Lead_Kunai.png" />
-    <Content Include="Items\Throwing\LeechJavelin.png" />
     <Content Include="Items\Throwing\LunaticJavelin.png" />
     <Content Include="Items\Throwing\MadnessKnife.png" />
     <Content Include="Items\Throwing\MurkyGel.png" />
@@ -6410,6 +6409,7 @@
     <Content Include="Projectiles\CGP.png" />
     <Content Include="Projectiles\ChaosArrow.png" />
     <Content Include="Projectiles\ChaosBaton.png" />
+    <Content Include="Projectiles\ChaosBoomEX.png" />
     <Content Include="Projectiles\ChaosJavelin.png" />
     <Content Include="Projectiles\ChaosJavelinEX.png" />
     <Content Include="Projectiles\ChaosScythe.png" />

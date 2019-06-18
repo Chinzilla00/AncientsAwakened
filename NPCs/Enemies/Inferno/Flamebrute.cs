@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.damage = 25;
             npc.defense = 10;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 0, 6, 45);
+            npc.value = Item.sellPrice(0, 0, 6, 45);
             npc.aiStyle = -1;
             npc.width = 40;
             npc.height = 60;

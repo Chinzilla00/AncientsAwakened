@@ -27,7 +27,7 @@ Inflicts Moonrazed");
             item.useStyle = 5;
             item.useAmmo = AmmoID.Rocket;
             item.knockBack = 8f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.UseSound = SoundID.Item38;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.shootSpeed = 20f;

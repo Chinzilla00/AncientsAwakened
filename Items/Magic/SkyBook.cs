@@ -19,7 +19,7 @@ namespace AAMod.Items.Magic
             item.useStyle = 5;        //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 2;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
             item.mana = 2;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item

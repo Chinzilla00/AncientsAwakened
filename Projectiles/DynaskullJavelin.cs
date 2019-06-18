@@ -20,7 +20,6 @@ namespace AAMod.Projectiles
             projectile.aiStyle = -1;
             projectile.melee = true;
             projectile.penetrate = -1;
-            projectile.extraUpdates = 1;
         }
 
         public bool StuckInEnemy = false;

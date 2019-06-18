@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Akuma
             item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType("Dawnstrike");
             item.knockBack = 0;
-            item.value = Item.buyPrice( 1, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = 10;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;

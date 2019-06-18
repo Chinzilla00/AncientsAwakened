@@ -16,7 +16,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 10;
+            item.damage = 200;
             item.noMelee = true;
             item.ranged = true;
             item.width = 50;
@@ -27,9 +27,9 @@ namespace AAMod.Items.Ranged
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
-            item.value = 1000000;
+            item.value = Item.sellPrice(5, 0, 0, 0);
             item.rare = 8;
-            item.UseSound = SoundID.Item11;
+            item.UseSound = SoundID.Item14;
             item.shootSpeed = 12f;
             item.expert = true;
         }
@@ -50,6 +50,8 @@ namespace AAMod.Items.Ranged
             {
                 Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, (m == 0 ? mod.ProjectileType("ChaosShot2") : mod.ProjectileType("ChaosShot3")), damage, knockBack, player.whoAmI, 0, 1);
             }
+
+            Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, mod.ProjectileType("ChaosShot1"), damage, knockBack, player.whoAmI, 0, 1);
             return false;
 		}
 

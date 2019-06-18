@@ -6,7 +6,6 @@ namespace AAMod.Items.Dev
 {
     public class CatsEyeRifleEX : BaseAAItem
     {
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Silencer");
@@ -14,7 +13,6 @@ namespace AAMod.Items.Dev
 Doesn't require ammo
 Cat's Eye Rifle EX");
         }
-
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
@@ -28,7 +26,6 @@ Cat's Eye Rifle EX");
 
         public override void SetDefaults()
         {
-            
             item.damage = 850; 
             item.noMelee = true;
             item.ranged = true;
@@ -39,7 +36,7 @@ Cat's Eye Rifle EX");
             item.useStyle = 5; 
             item.shoot = mod.ProjectileType("CatsEye");
             item.knockBack = 12; 
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(3, 0, 0, 0);
             item.autoReuse = true; 
             item.shootSpeed = 25f; 
             item.crit = 5;

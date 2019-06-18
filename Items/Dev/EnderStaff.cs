@@ -31,7 +31,7 @@ I thought the sky was purple
 			item.useStyle = 1;
 			item.noMelee = true;
 			item.knockBack = 3;
-			item.value = Item.buyPrice(0, 20, 0, 0);
+			item.value = Item.sellPrice(0, 20, 0, 0);
 			item.rare = 8;
             item.expert = true;
 			item.UseSound = SoundID.Item44;

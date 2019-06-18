@@ -20,12 +20,13 @@ namespace AAMod.Projectiles
             projectile.aiStyle = -1;
             projectile.melee = true;
             projectile.penetrate = 1;
-            projectile.extraUpdates = 1;
         }
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<ChaosBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer, Main.rand.Next(2), 1);
+            Main.PlaySound(SoundID.Item14, projectile.position);
+            int Proj = Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<ChaosBoomEX>(), projectile.damage, projectile.knockBack, Main.myPlayer, Main.rand.Next(2), 1);
+            Main.projectile[Proj].Center = projectile.Center;
         }
 
         public override void AI()

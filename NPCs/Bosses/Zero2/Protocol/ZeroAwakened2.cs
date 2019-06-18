@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
             npc.height = 78;
             npc.friendly = false;
             npc.aiStyle = 0;
-            npc.value = Item.buyPrice(2, 0, 0, 0);
+            npc.value = Item.sellPrice(2, 0, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;

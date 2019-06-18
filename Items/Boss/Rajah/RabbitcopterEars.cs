@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Rajah
             item.width = 22;
             item.height = 20;
             item.accessory = true;
-            item.value = Item.buyPrice(0, 10, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 8;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)

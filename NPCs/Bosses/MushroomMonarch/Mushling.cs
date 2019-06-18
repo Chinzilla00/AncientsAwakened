@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.damage = 12;
             npc.defense = 5; 
             npc.knockBackResist = 1f;
-            npc.value = Item.buyPrice(0, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 0, 0, 0);
             npc.aiStyle = -1;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;

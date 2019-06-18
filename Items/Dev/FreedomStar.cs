@@ -26,7 +26,7 @@ Mobian Buster EX");
             item.useAnimation = 10;
             item.useStyle = 5;
             item.channel = true;
-            Item.sellPrice(1, 0, 0, 0);
+            Item.sellPrice(3, 0, 0, 0);
             item.noMelee = true;
 			item.rare = 11;
 			item.shootSpeed = 12f;

@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.damage = 18;
             npc.defense = 10;
             npc.lifeMax = 100;
-            npc.value = Item.buyPrice(0, 0, 3, 50);
+            npc.value = Item.sellPrice(0, 0, 3, 50);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             npc.lavaImmune = true;

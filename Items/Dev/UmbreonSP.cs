@@ -23,7 +23,7 @@ namespace AAMod.Items.Dev
 			item.useAnimation = 26;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = Item.buyPrice(0, 1, 50, 0);
+			item.value = Item.sellPrice(0, 1, 50, 0);
 			item.rare = 2;
 			item.UseSound = SoundID.Item71;
 			item.autoReuse = true;

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,8 +16,8 @@ namespace AAMod.Items.Melee   //where is located
             item.useTime = 23;          //how fast 
             item.useAnimation = 23;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 3;      //Sword knockback
-            item.value = 19;        
+            item.knockBack = 3;
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
             item.UseSound = SoundID.Item1;                  //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
@@ -25,7 +26,7 @@ namespace AAMod.Items.Melee   //where is located
 
     public override void SetStaticDefaults()
     {
-      DisplayName.SetDefault("Antimon Sword");
+      DisplayName.SetDefault("Diver's Doom");
       Tooltip.SetDefault("");
     }
 

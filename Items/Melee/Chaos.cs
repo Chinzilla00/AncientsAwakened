@@ -24,8 +24,8 @@ namespace AAMod.Items.Melee
 			item.useAnimation = 23;
 			item.useStyle = 1;
 			item.knockBack = 10;
-			item.value = 200000;
-			item.rare = 8;
+            item.value = Item.sellPrice(0, 20, 0, 0);
+            item.rare = 8;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShot");

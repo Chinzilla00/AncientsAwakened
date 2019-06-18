@@ -27,7 +27,7 @@ namespace AAMod.Items.Tools
 			item.pick = 65;
 			item.useStyle = 5;
 			item.knockBack = 0;
-			item.value = Item.buyPrice(0, 0, 30, 0);
+			item.value = Item.sellPrice(0, 0, 30, 0);
 			item.rare = 1;
 			item.UseSound = SoundID.Item23;
 			item.autoReuse = true;
