@@ -37,7 +37,7 @@ namespace AAMod.Items.Tools
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "HydraTunneler");
+            recipe.AddIngredient(mod, "HydraTuneller");
             recipe.AddIngredient(mod, "OceanPick");
             recipe.AddIngredient(mod, "Icepick");
             recipe.AddIngredient(mod, "DoomiteMiningLaser");

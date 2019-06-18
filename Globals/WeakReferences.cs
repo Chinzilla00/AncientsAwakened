@@ -436,7 +436,6 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", "Akuma", 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), "Use a [i:" + AAMod.instance.ItemType("DraconianSigil") + "] in the Inferno during the day");
                 bossChecklist.Call("AddBossWithInfo", "Zero", 16.4f, (Func<bool>)(() => AAWorld.downedZero), "Use a [i:" + AAMod.instance.ItemType("ZeroTesseract") + "] in the Void");
                 bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 20f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
-                bossChecklist.Call("AddBossWithInfo", "Shen Doragon", 20f, (Func<bool>)(() => AAWorld.downedShen), "Use a [i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Rajah Rabbit's Revenge", 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), "Use a [i:" + AAMod.instance.ItemType<DiamondCarrot>() + "] or every 100 rabbit kills after 1000.");
 
                 // SlimeKing = 1f;

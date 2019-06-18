@@ -24,11 +24,6 @@ namespace AAMod.Items.Tools
             item.useTurn = true;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Icepick");
-        }
-
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);

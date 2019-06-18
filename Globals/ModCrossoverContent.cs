@@ -50,8 +50,8 @@ namespace AAMod
         {
             switch (name)
             {
-                case "Calamity": return calamity != null;
-                case "Thorium": return thorium != null;
+                case "CalamityMod": return calamity != null;
+                case "ThoriumMod": return thorium != null;
                 case "Redemption": return redemption != null;
                 default: return false;
             }

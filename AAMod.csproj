@@ -1389,7 +1389,6 @@
     <Compile Include="Items\Tools\DragonPickaxe.cs" />
     <Compile Include="Items\Tools\FulguritePitchet.cs" />
     <Compile Include="Items\Tools\Excavator.cs" />
-    <Compile Include="Items\Tools\Icepick.cs" />
     <Compile Include="Items\Tools\Hellfisher.cs" />
     <Compile Include="Items\Tools\Hellfisher_Bob.cs" />
     <Compile Include="Items\Tools\Grasscutter.cs" />
@@ -3868,14 +3867,14 @@
     <Content Include="Items\Accessories\Wings\NightmareWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\RadiumWings.png" />
     <Content Include="Items\Accessories\Wings\RadiumWings_Wings.png" />
-    <Content Include="Items\Accessories\Wings\ScorchedWings.png" />
-    <Content Include="Items\Accessories\Wings\ScorchedWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\BlazingWings.png" />
+    <Content Include="Items\Accessories\Wings\BlazingWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\TrueFleshrendWings.png" />
     <Content Include="Items\Accessories\Wings\TrueFleshrendWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\TrueHallowedWings.png" />
     <Content Include="Items\Accessories\Wings\TrueHallowedWings_Wings.png" />
-    <Content Include="Items\Accessories\Wings\TrueNights.png" />
-    <Content Include="Items\Accessories\Wings\TrueNights_Wings.png" />
+    <Content Include="Items\Accessories\Wings\TrueNightsWings.png" />
+    <Content Include="Items\Accessories\Wings\TrueNightsWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\VultureWings.png" />
     <Content Include="Items\Accessories\Wings\VultureWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\WingsofChaos.png" />
@@ -4642,7 +4641,6 @@
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
     <Content Include="Items\Tools\DoomiteMiningLaser.png" />
     <Content Include="Items\Tools\Excavator.png" />
-    <Content Include="Items\Tools\Icepick.png" />
     <Content Include="Items\Tools\MadnessHammer.png" />
     <Content Include="Items\Tools\ScorchShark.png" />
     <Content Include="Items\Tools\ShadowDrill.png" />
