@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class TChaoserratool_Axe : ModItem
+    public class ChaosTerratool_Axe : ModItem
     {
         public override void SetDefaults()
         {
