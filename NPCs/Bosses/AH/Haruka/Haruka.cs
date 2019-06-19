@@ -24,11 +24,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
-            npc.damage = 80;
-            npc.defense = 50;
-            npc.lifeMax = 90000;
+            npc.damage = 110;
+            npc.defense = 120;
+            npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
-            npc.value = Item.sellPrice(0, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 4, 0, 0);
             npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {

@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-            npc.value = Item.sellPrice(20, 0, 0, 0);
+            npc.value = Item.sellPrice(2, 0, 0, 0);
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;

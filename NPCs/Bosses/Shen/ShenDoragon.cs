@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            npc.damage = 180;
-            npc.defense = 150;
+            npc.damage = 280;
+            npc.defense = 270;
             npc.lifeMax = 1000000;
             if (Main.expertMode)
             {

@@ -55,9 +55,9 @@ namespace AAMod.NPCs.Bosses.Zero2
 
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 200000;
-                npc.damage = 140;
-                npc.defense = 120;
+                npc.lifeMax = 1000000;
+                npc.damage = 150;
+                npc.defense = 320;
             }
         }
 
