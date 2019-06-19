@@ -15,19 +15,19 @@ namespace AAMod.Items.Melee   //where is located
             item.useTime = 23;          //how fast 
             item.useAnimation = 23;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 4;      //Sword knockback
-            item.value = 19;        
+            item.knockBack = 4;
+            item.value = Terraria.Item.sellPrice(0, 0, 20, 0);
             item.rare = 3;
             item.UseSound = SoundID.Item1;                  //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.useTurn = true;               
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Xiphos");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Xiphos");
+          Tooltip.SetDefault("");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {

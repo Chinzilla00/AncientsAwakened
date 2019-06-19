@@ -168,15 +168,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     tenthHealth = true;
                 }
             }
-            if (npc.life <= npc.lifeMax / 3 && !AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
-            {
-                Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
-            }
-            if (npc.life <= npc.lifeMax / 3 && AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
-            {
-                Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
-            }
-
 
             if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
             {

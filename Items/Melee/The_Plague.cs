@@ -30,18 +30,13 @@ namespace AAMod.Items.Melee
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.UseSound = SoundID.Item1;
-			item.value = Item.sellPrice(silver: 1);
-			item.shoot = mod.ProjectileType("The_Plague_Pro");
+            item.value = Terraria.Item.sellPrice(0, 10, 0, 0);
+            item.shoot = mod.ProjectileType("The_Plague_Pro");
 		}
 
-		/*public override void AddRecipes()
+		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.WoodYoyo);
-            recipe.AddIngredient(ItemID.Rally);
-            recipe.AddIngredient(ItemID.CorruptYoyo);
-            recipe.AddIngredient(ItemID.CrimsonYoyo);
-            recipe.AddIngredient(ItemID.JungleYoyo);
             recipe.AddIngredient(ItemID.Code1);
             recipe.AddIngredient(ItemID.Valor);
             recipe.AddIngredient(ItemID.Cascade);
@@ -52,14 +47,12 @@ namespace AAMod.Items.Melee
             recipe.AddIngredient(ItemID.Amarok);
             recipe.AddIngredient(ItemID.Code2);
             recipe.AddIngredient(ItemID.Yelets);
-            recipe.AddIngredient(ItemID.RedsYoyo);
-            recipe.AddIngredient(ItemID.ValkyrieYoyo);
             recipe.AddIngredient(ItemID.Kraken);
             recipe.AddIngredient(ItemID.TheEyeOfCthulhu);
             recipe.AddIngredient(ItemID.Terrarian);
             recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
+		}
 	}
 }

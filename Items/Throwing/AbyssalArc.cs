@@ -18,8 +18,8 @@ namespace AAMod.Items.Throwing
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.value = 8;
-			item.rare = 6;
+            item.value = Terraria.Item.sellPrice(0, 5, 0, 0);
+            item.rare = 6;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("AntimonBoomerangP");
 			item.UseSound = SoundID.Item1;

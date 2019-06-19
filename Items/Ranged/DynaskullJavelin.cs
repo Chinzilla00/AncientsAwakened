@@ -29,7 +29,7 @@ namespace AAMod.Items.Ranged
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = 50000;
+            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
             item.rare = 4;
         }
 

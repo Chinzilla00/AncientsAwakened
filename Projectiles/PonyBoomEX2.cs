@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
         {
             if (projectile.localAI[0] == 0f)
             {
-                Main.PlaySound(SoundID.Item74, projectile.position);
+                Main.PlaySound(SoundID.Item20, projectile.position);
                 projectile.localAI[0] += 1f;
             }
             projectile.ai[0] += 1f;

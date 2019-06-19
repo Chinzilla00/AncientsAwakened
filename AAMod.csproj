@@ -1393,13 +1393,18 @@
     <Compile Include="Items\Tools\Hellfisher_Bob.cs" />
     <Compile Include="Items\Tools\Grasscutter.cs" />
     <Compile Include="Items\Tools\MadnessHammer.cs" />
+    <Compile Include="Items\Tools\PerfectShadowDrill.cs" />
     <Compile Include="Items\Tools\Stonebreaker.cs" />
     <Compile Include="Items\Tools\ShadowDrill.cs" />
     <Compile Include="Items\Tools\TechneciumChainsaw.cs" />
     <Compile Include="Items\Tools\TechneciumDrill.cs" />
     <Compile Include="Items\Tools\TechneciumHamaxe.cs" />
     <Compile Include="Items\Tools\ScorchShark.cs" />
+    <Compile Include="Items\Tools\ChaosTerratool.cs" />
+    <Compile Include="Items\Tools\ChaosTerratool_Axe.cs" />
+    <Compile Include="Items\Tools\ChaosTerratool_Hammer.cs" />
     <Compile Include="Items\Tools\Toothpick.cs" />
+    <Compile Include="Items\Tools\PerfectStonebreaker.cs" />
     <Compile Include="Items\Tools\TrueScalpel.cs" />
     <Compile Include="Items\Tools\Scalpel.cs" />
     <Compile Include="Items\Tools\TrueNightaxe.cs" />
@@ -1947,6 +1952,7 @@
     <Compile Include="Projectiles\ChaosJavelin.cs" />
     <Compile Include="Projectiles\DragonSpine.cs" />
     <Compile Include="Projectiles\HydraSlash.cs" />
+    <Compile Include="Projectiles\Mjolnir.cs" />
     <Compile Include="Projectiles\PrimevalJavelin.cs" />
     <Compile Include="Projectiles\DynaskullJavelin.cs" />
     <Compile Include="Projectiles\DynaEnergy.cs" />
@@ -2352,6 +2358,7 @@
     <Compile Include="Tiles\AbyssiumBar.cs" />
     <Compile Include="Tiles\Carrot.cs" />
     <Compile Include="Tiles\CarrotGold.cs" />
+    <Compile Include="Tiles\CometBar.cs" />
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\BiomePrism.cs" />
     <Compile Include="Tiles\DepthMoss.cs" />
@@ -4531,6 +4538,8 @@
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
+    <Content Include="Items\Dev\DeceivingTruth.png" />
+    <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
     <Content Include="Items\Dev\MagicAcornEX.png" />
     <Content Include="Items\Dev\Minions\Acorn.png" />
@@ -4637,11 +4646,20 @@
     <Content Include="Items\Ranged\OceanWhaler.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Summoning\OmenStaff.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
+    <Content Include="Items\Throwing\CometDagger.png" />
+    <Content Include="Items\Throwing\CometFan.png" />
+    <Content Include="Items\Throwing\CometJavelin.png" />
+    <Content Include="Items\Tools\ChaosTerratool.png" />
+    <Content Include="Items\Tools\ChaosTerratool_Axe.png" />
+    <Content Include="Items\Tools\ChaosTerratool_Hammer.png" />
     <Content Include="Items\Tools\DoomiteMiningLaser.png" />
     <Content Include="Items\Tools\Excavator.png" />
     <Content Include="Items\Tools\MadnessHammer.png" />
+    <Content Include="Items\Tools\PerfectShadowDrill.png" />
+    <Content Include="Items\Tools\PerfectStonebreaker.png" />
     <Content Include="Items\Tools\ScorchShark.png" />
     <Content Include="Items\Tools\ShadowDrill.png" />
     <Content Include="Items\Tools\Stonebreaker.png" />
@@ -5335,7 +5353,6 @@
     <Content Include="Items\Dev\CatsEyeRifle.png" />
     <Content Include="Items\Dev\CatsEyeRifleEX.png" />
     <Content Include="Items\Dev\Chronos.png" />
-    <Content Include="Items\Dev\ChronosOld.png" />
     <Content Include="Items\Dev\CordesDuFuret_Axe.png" />
     <Content Include="Items\Dev\CordesDuFuret_Notes.png" />
     <Content Include="Items\Dev\DuckstepGun.png" />
@@ -5651,7 +5668,6 @@
     <Content Include="Items\Summoning\BlizzardDragonStaff.png" />
     <Content Include="Items\Summoning\CrimsonStaff.png" />
     <Content Include="Items\Summoning\DemonStaff.png" />
-    <Content Include="Items\Summoning\DemonStaff_Glow.png" />
     <Content Include="Items\Summoning\DevilStaff.png" />
     <Content Include="Items\Summoning\DragonriderStaff.png" />
     <Content Include="Items\Summoning\EaterStaff.png" />
@@ -5690,7 +5706,6 @@
     <Content Include="Items\Summoning\SkullStaff.png" />
     <Content Include="Items\Summoning\TerraStaff.png" />
     <Content Include="Items\Summoning\TrueHallowStaff.png" />
-    <Content Include="Items\Summoning\WyrmStaff_GLOW.png" />
     <Content Include="Items\Thorium\Bard\DragonboneDrum.png" />
     <Content Include="Items\Thorium\Bard\LyreofIce.png" />
     <Content Include="Items\Thorium\Bard\SongOfTheDeep.png" />
@@ -6437,6 +6452,8 @@
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\HoloArrow.png" />
     <Content Include="Projectiles\HydraSlash.png" />
+    <Content Include="Projectiles\Mjolnir.png" />
+    <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\SoonTM.png" />
     <Content Include="Projectiles\Tools\MiningLaser.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
@@ -6608,10 +6625,6 @@
     <Content Include="Projectiles\Moonpowder.png" />
     <Content Include="Projectiles\MorningStar.png" />
     <Content Include="Projectiles\MurkyGelP.png" />
-    <Content Include="Projectiles\Nightmare1.png" />
-    <Content Include="Projectiles\Nightmare2.png" />
-    <Content Include="Projectiles\Nightmare3.png" />
-    <Content Include="Projectiles\Nightmare4.png" />
     <Content Include="Projectiles\Nightmare_Hammer_Pro.png" />
     <Content Include="Projectiles\BlackSolution.png" />
     <Content Include="Projectiles\OceanicArrow.png" />
@@ -6632,7 +6645,6 @@
     <Content Include="Projectiles\OrangeSolution.png" />
     <Content Include="Projectiles\OrderSolution.png" />
     <Content Include="Projectiles\Paladins_Knife_Pro.png" />
-    <Content Include="Projectiles\Pellet.png" />
     <Content Include="Projectiles\PerfectChaosE.png" />
     <Content Include="Projectiles\Petal_Kunai_Pro.png" />
     <Content Include="Projectiles\Platinum_Kunai_Pro.png" />
@@ -6851,6 +6863,7 @@
     <Content Include="Tiles\CarrotGold.png" />
     <Content Include="Tiles\ChaosAltar1.png" />
     <Content Include="Tiles\ChaosAltar2.png" />
+    <Content Include="Tiles\CometBar.png" />
     <Content Include="Tiles\Crates\DesertCrate.png" />
     <Content Include="Tiles\Crates\HellCrate.png" />
     <Content Include="Tiles\Crates\IceCrate.png" />

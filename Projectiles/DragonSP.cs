@@ -43,6 +43,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeleft)
         {
+            Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 6, -projectile.velocity.X * 0.2f,

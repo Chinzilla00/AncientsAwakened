@@ -36,7 +36,7 @@ namespace AAMod.Items.Melee
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 item.useStyle = 100;
                 item.shoot = mod.ProjectileType("ThanosSword");

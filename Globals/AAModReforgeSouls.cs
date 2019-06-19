@@ -6,11 +6,6 @@ namespace AAMod
 {
     public class AAModReforgeSouls : GlobalItem
 	{
-        /*public ReforgeHammer Hammer = null;
-        public ReforgeHammerH HammerH = null;
-        public ReforgeHammerF HammerF = null;
-        public ReforgeHammerM HammerM = null;*/
-
         public override bool CanRightClick(Item item)
 		{
             bool reforgable = item.damage > 3 && !item.consumable && item.knockBack > 0 && item.maxStack == 1;
@@ -22,11 +17,6 @@ namespace AAMod
 			{
 				return true;
 			}
-
-            /*if ((Main.mouseItem.type == mod.ItemType("ReforgeHammer") || Main.mouseItem.type == mod.ItemType("ReforgeHammerF") || Main.mouseItem.type == mod.ItemType("ReforgeHammerH") || Main.mouseItem.type == mod.ItemType("ReforgeHammerM")) && item.damage > 3 && !item.consumable && item.knockBack > 0 && item.maxStack == 1)
-            {
-                return true;
-            }*/
             return base.CanRightClick(item);
 		}
 
@@ -42,57 +32,6 @@ namespace AAMod
             { 
                 Main.mouseItem.stack = 0;
 			}
-
-            /*if (reforgable)
-            {
-                if (Main.mouseItem.type == mod.ItemType("ReforgeHammer"))
-                {
-                    Item HammerType = Main.item[mod.ItemType<ReforgeHammer>()];
-                    Hammer = (ReforgeHammer)HammerType.modItem;
-
-                    Item item2 = player.GetItem(player.whoAmI, item, false, true);
-                    item2.Prefix(-2);
-
-                    int ReforgedItem = Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 81);
-                    Main.item[ReforgedItem].newAndShiny = false;
-
-                    Hammer.Durability -= 1;
-                    if (Hammer.Durability <= 0)
-                    {
-                        Hammer.item.TurnToAir();
-                    }
-                }
-                if (Main.mouseItem.type == mod.ItemType("ReforgeHammerH"))
-                {
-                    Item HammerType = Main.item[mod.ItemType<ReforgeHammerH>()];
-                    HammerH = (ReforgeHammerH)HammerType.modItem;
-                    HammerH.Durability -= 1;
-                    if (HammerH.Durability <= 0)
-                    {
-                        HammerH.item.TurnToAir();
-                    }
-                }
-                if (Main.mouseItem.type == mod.ItemType("ReforgeHammerF"))
-                {
-                    Item HammerType = Main.item[mod.ItemType<ReforgeHammerF>()];
-                    HammerF = (ReforgeHammerF)HammerType.modItem;
-                    HammerF.Durability -= 1;
-                    if (HammerF.Durability <= 0)
-                    {
-                        HammerF.item.TurnToAir();
-                    }
-                }
-                if (Main.mouseItem.type == mod.ItemType("ReforgeHammerM"))
-                {
-                    Item HammerType = Main.item[mod.ItemType<ReforgeHammerM>()];
-                    HammerM = (ReforgeHammerM)HammerType.modItem;
-                    HammerM.Durability -= 1;
-                    if (HammerM.Durability <= 0)
-                    {
-                        HammerM.item.TurnToAir();
-                    }
-                }
-            }*/
         }
 		
 		public override bool ConsumeItem(Item item, Player player)

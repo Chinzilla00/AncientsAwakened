@@ -28,10 +28,9 @@ Contains a set of Midnight Assassin clothes");
 
         public override void RightClick(Player player)
         {
-            item.TurnToAir();
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinHood"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinShirt"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinBoots"), 1, false, 0, false, false);
+            player.QuickSpawnItem(mod.ItemType("AssassinHood"));
+            player.QuickSpawnItem(mod.ItemType("AssassinShirt"));
+            player.QuickSpawnItem(mod.ItemType("AssassinBoots"));
         }
     }
 }

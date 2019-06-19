@@ -28,10 +28,9 @@ Contains a set of Fury Witch's robes");
 
         public override void RightClick(Player player)
         {
-            item.TurnToAir();
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchHood"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchRobe"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchBoots"), 1, false, 0, false, false);
+            player.QuickSpawnItem(mod.ItemType("WitchHood"));
+            player.QuickSpawnItem(mod.ItemType("WitchRobe"));
+            player.QuickSpawnItem(mod.ItemType("WitchBoots"));
         }
     }
 }

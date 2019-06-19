@@ -25,7 +25,7 @@ namespace AAMod.Items.Ranged
             item.shoot = 1;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 0;
-            item.value = Item.sellPrice(0, 0, 8, 0);
+            item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = 3;
             item.UseSound = SoundID.Item5;
             item.autoReuse = false;

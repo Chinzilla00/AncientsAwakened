@@ -33,6 +33,7 @@ namespace AAMod.Items.Summoning
             item.buffType = mod.BuffType("HallowedPrism");
             item.buffTime = 3600;
             item.autoReuse = true;
+            item.value = Terraria.Item.sellPrice(0, 5, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
