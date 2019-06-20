@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using AAMod.Items;
 
 namespace AAMod
 {
@@ -94,13 +94,13 @@ namespace AAMod
         }
     }
 
-    public abstract class CrossoverItem : ModItem
+    public abstract class CrossoverItem : BaseAAItem
     {
         public string crossoverModName = "(N/A)";
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            if (!ModSupport.ModInstalled(crossoverModName)) //this is to give a warning if they have the item and the mod is not enabled
+            if (!ModSupport.ModInstalled(crossoverModName))
             {
                 TooltipLine error = new TooltipLine(mod, "Error", "WARNING: ITEM WILL NOT FUNCTION WITHOUT " + crossoverModName.ToUpper() + " ENABLED!")
                 {

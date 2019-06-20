@@ -17,7 +17,7 @@ namespace AAMod.Items.Armor.Madness
             item.height = 18;
             item.value = 18000;
             item.rare = 1;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
             item.defense = 6;
         }
 

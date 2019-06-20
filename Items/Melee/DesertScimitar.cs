@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAmod.Items.Melee
+namespace AAMod.Items.Melee
 {
     public class DesertScimitar : BaseAAItem
     {
