@@ -124,7 +124,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen2;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

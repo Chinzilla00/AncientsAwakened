@@ -24,7 +24,7 @@ Inflicts Daybroken");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }
@@ -33,7 +33,7 @@ Inflicts Daybroken");
         {
             item.width = 54;
             item.height = 44;
-            item.value = Item.sellPrice(1, 0, 0, 0); ;
+            item.value = Item.sellPrice(0, 30, 0, 0); ;
             item.rare = 10;
             item.noMelee = true;
             item.useStyle = 5;

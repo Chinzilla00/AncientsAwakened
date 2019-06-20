@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Apawn
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Apawn's Visor");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

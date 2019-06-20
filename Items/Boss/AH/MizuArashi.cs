@@ -55,5 +55,16 @@ Spirits deal 2x damage, pierce up to 10 enemies and go through tiles
 			}
             return false;
         }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
     }
 }

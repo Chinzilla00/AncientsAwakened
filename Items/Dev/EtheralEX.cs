@@ -30,7 +30,7 @@ namespace AAMod.Items.Dev
 	        item.noMelee = true;
 			item.channel = true;
 	        item.knockBack = 0f;
-	        item.value = Item.sellPrice(1, 0, 0, 0); ;
+	        item.value = Item.sellPrice(0, 30, 0, 0); ;
             item.channel = true;
             item.shoot = mod.ProjectileType("EtheralLazerEX");
             item.shootSpeed = 30f;           

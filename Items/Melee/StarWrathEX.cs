@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
 			item.scale = 1.2f;
 			item.shootSpeed = 10f;
 			item.knockBack = 7f;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.damage = 220;
 			item.useTime = 12;
 			item.useAnimation = 12;

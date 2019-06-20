@@ -61,7 +61,7 @@ also acts as all vanilla crafting stations");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen2;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

@@ -31,7 +31,7 @@ Doesn't require ammo");
             item.useStyle = 5; 
             item.shoot = mod.ProjectileType("Antimatter");
             item.knockBack = 12;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
@@ -45,7 +45,7 @@ Doesn't require ammo");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

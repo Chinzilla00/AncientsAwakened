@@ -22,7 +22,7 @@ Inflicts daybroken");
         {
             item.CloneDefaults(ItemID.Terrarian);
             item.damage = 250;                            
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 2;
             item.knockBack = 1;
             item.channel = true;
@@ -60,7 +60,7 @@ Inflicts daybroken");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

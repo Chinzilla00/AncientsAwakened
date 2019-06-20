@@ -17,7 +17,7 @@ namespace AAMod.Items.Banners
 			item.useStyle = 1;
 			item.consumable = true;
 			item.rare = 1;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.createTile = mod.TileType("ThixxieBanner");
 			item.placeStyle = 0;
 		}

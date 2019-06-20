@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 5;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("EventHorizon");
             item.shootSpeed = 22f;
             item.rare = 10;
@@ -63,7 +63,7 @@ namespace AAMod.Items.Boss.Zero
 	        {
 	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
 	            {
-	                line2.overrideColor = AAColor.Zero;
+	                line2.overrideColor = AAColor.Rarity13;
 	            }
 	        }
 	    }

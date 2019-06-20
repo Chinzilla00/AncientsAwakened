@@ -1043,7 +1043,7 @@ namespace AAMod
                 if (AAWorld.downedRajah)
                 {
                     shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenCarrot"));
-                    shop.item[nextSlot].shopCustomPrice = Item.sellPrice(1, 0, 0, 0);
+                    shop.item[nextSlot].shopCustomPrice = Item.sellPrice(0, 30, 0, 0);
                     nextSlot++;
                 }
             }

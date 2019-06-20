@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Akuma
             item.damage = 155;
             item.shootSpeed = 10f;
             item.noMelee = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2f;
             item.rare = 10;
             item.ranged = true;
@@ -83,7 +83,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

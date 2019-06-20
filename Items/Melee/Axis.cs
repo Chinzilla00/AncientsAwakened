@@ -29,7 +29,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 7;
         }
 

@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Yamata
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shoot = 1;
@@ -41,7 +41,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

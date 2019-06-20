@@ -26,6 +26,17 @@ Contains a set of Fury Witch's robes");
             return true;
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
         public override void RightClick(Player player)
         {
             player.QuickSpawnItem(mod.ItemType("WitchHood"));

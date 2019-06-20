@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +22,7 @@ namespace AAMod.Items.Boss.Shen
 			item.damage = 70;
 			item.shootSpeed = 15f;
 			item.noMelee = true;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.rare = 11;
 			item.knockBack = 3f;
 			item.ranged = true;
@@ -58,8 +59,19 @@ namespace AAMod.Items.Boss.Shen
 			}
 			return false;
 		}
-		
-		public override void HoldItem(Player player)
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+
+        public override void HoldItem(Player player)
 		{
 			player.armorPenetration += 500;
 		}

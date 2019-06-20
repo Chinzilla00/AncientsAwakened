@@ -901,6 +901,7 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\ThunderLord.cs" />
     <Compile Include="Items\Dev\DeceivingTruthEX.cs" />
     <Compile Include="Items\Dev\DeceivingTruth.cs" />
     <Compile Include="Items\Dev\MagicAcornEX.cs" />
@@ -1474,6 +1475,10 @@
     <Compile Include="Items\Vanity\Apawn\ApawnBoots.cs" />
     <Compile Include="Items\Vanity\Apawn\ApawnPlate.cs" />
     <Compile Include="Items\Vanity\Apawn\ApawnHelm.cs" />
+    <Compile Include="Items\Vanity\Blazen\BlazenBooster.cs" />
+    <Compile Include="Items\Vanity\Blazen\BlazenBoots.cs" />
+    <Compile Include="Items\Vanity\Blazen\BlazenHelmet.cs" />
+    <Compile Include="Items\Vanity\Blazen\BlazenPlate.cs" />
     <Compile Include="Items\Vanity\Darkpuppey\DarkMask.cs" />
     <Compile Include="Items\Vanity\Darkpuppey\DarkPants.cs" />
     <Compile Include="Items\Vanity\Darkpuppey\DarkShirt.cs" />
@@ -1907,6 +1912,7 @@
     <Compile Include="NPCs\TownNPCs\Anubis.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\ThunderBullet.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\AH\AbyssBall.cs" />
     <Compile Include="Projectiles\AH\AbyssClaw.cs" />
@@ -1957,6 +1963,7 @@
     <Compile Include="Projectiles\DynaskullJavelin.cs" />
     <Compile Include="Projectiles\DynaEnergy.cs" />
     <Compile Include="Projectiles\SoonTM.cs" />
+    <Compile Include="Projectiles\ThunderSpark.cs" />
     <Compile Include="Projectiles\Tools\MiningLaser.cs" />
     <Compile Include="Projectiles\Tools\ShadowDrill.cs" />
     <Compile Include="Projectiles\Winterbreak.cs" />
@@ -2971,6 +2978,11 @@
     <Content Include="Glowmasks\AncientGroviteCowl_Head_Glow.png" />
     <Content Include="Glowmasks\AncientGroviteLegguards_Legs_Glow.png" />
     <Content Include="Glowmasks\AncientGroviteWings_Wings_Glow.png" />
+    <Content Include="Glowmasks\AngryPirateBoots_Legs_Glow.png" />
+    <Content Include="Glowmasks\AngryPirateCofferplate_Arms_Glow.png" />
+    <Content Include="Glowmasks\AngryPirateCofferplate_Body_Glow.png" />
+    <Content Include="Glowmasks\AngryPirateHood_Head_Glow.png" />
+    <Content Include="Glowmasks\AngryPirateSails_Wings_Glow.png" />
     <Content Include="Glowmasks\Annihilator_Glow.png" />
     <Content Include="Glowmasks\Apocalypse_Glow.png" />
     <Content Include="Glowmasks\ApocalyptiteTile_Glow.png" />
@@ -2986,6 +2998,11 @@
     <Content Include="Glowmasks\BinaryReassembler_Glow.png" />
     <Content Include="Glowmasks\BlazeGripTrophy_Glow.png" />
     <Content Include="Glowmasks\BlazeGrip_Glow.png" />
+    <Content Include="Glowmasks\BlazenBoots_Legs.png" />
+    <Content Include="Glowmasks\BlazenHelmet_Head.png" />
+    <Content Include="Glowmasks\BlazenPlate_Arms.png" />
+    <Content Include="Glowmasks\BlazenPlate_Body.png" />
+    <Content Include="Glowmasks\BlazenPlate_Female.png" />
     <Content Include="Glowmasks\BlazingDawn_Glow.png" />
     <Content Include="Glowmasks\BogBomb_Glow.png" />
     <Content Include="Glowmasks\Bonesaw_Glow.png" />
@@ -3103,6 +3120,7 @@
     <Content Include="Glowmasks\DoomiteBreastplate_Body_Glow.png" />
     <Content Include="Glowmasks\DoomiteBreastplate_Female_Glow.png" />
     <Content Include="Glowmasks\DoomiteGreaves_Legs_Glow.png" />
+    <Content Include="Glowmasks\DoomiteMiningLaser_Glow.png" />
     <Content Include="Glowmasks\DoomiteVisor_Head_Glow.png" />
     <Content Include="Glowmasks\DoomProj_Glow.png" />
     <Content Include="Glowmasks\DoomRay_Glow.png" />
@@ -3115,6 +3133,8 @@
     <Content Include="Glowmasks\DoomsdayHelmet_Head_Glow.png" />
     <Content Include="Glowmasks\DoomsdayLeggings_Glow.png" />
     <Content Include="Glowmasks\DoomsdayLeggings_Legs_Glow.png" />
+    <Content Include="Glowmasks\DoomsdayMask_Glow.png" />
+    <Content Include="Glowmasks\DoomsdayMask_Head_Glow.png" />
     <Content Include="Glowmasks\DoomsdayPlating_Glow.png" />
     <Content Include="Glowmasks\DoomsdayWall_Glow.png" />
     <Content Include="Glowmasks\DoomstoneBrickWall_Glow.png" />
@@ -3148,6 +3168,7 @@
     <Content Include="Glowmasks\DuckstepGunEX_Glow.png" />
     <Content Include="Glowmasks\DuckstepGun_Glow.png" />
     <Content Include="Glowmasks\DuckstepWings_Glow.png" />
+    <Content Include="Glowmasks\Dynasaur_Glow.png" />
     <Content Include="Glowmasks\DynaskullOre_Glow.png" />
     <Content Include="Glowmasks\Ectoblade_Glow.png" />
     <Content Include="Glowmasks\EFishTrophy_Glow.png" />
@@ -3169,6 +3190,7 @@
     <Content Include="Glowmasks\FeudalFungusIGoNow_Glow.png" />
     <Content Include="Glowmasks\FeudalFungus_Glow.png" />
     <Content Include="Glowmasks\FireProjHostile_Glow.png" />
+    <Content Include="Glowmasks\Fishron_Glow.png" />
     <Content Include="Glowmasks\Flairdra_Glow.png" />
     <Content Include="Glowmasks\Flamebrute_Glow.png" />
     <Content Include="Glowmasks\Flamebrute_Smash_Glow.png" />
@@ -3309,6 +3331,11 @@
     <Content Include="Glowmasks\OrthrusTrophy_Glow.png" />
     <Content Include="Glowmasks\OrthrusTrophy_Glow1.png" />
     <Content Include="Glowmasks\PaladinsSmeltery_Glow.png" />
+    <Content Include="Glowmasks\PerfectAbyssalFukumen_Head_Glow.png" />
+    <Content Include="Glowmasks\PerfectAbyssalGi_Arms_Glow.png" />
+    <Content Include="Glowmasks\PerfectAbyssalGi_Body_Glow.png" />
+    <Content Include="Glowmasks\PerfectAbyssalGi_Female_Glow.png" />
+    <Content Include="Glowmasks\PerfectAbyssalHakama_Legs_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosGreaves_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosGreaves_Legs_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosKabuto_Glow.png" />
@@ -3364,6 +3391,7 @@
     <Content Include="Glowmasks\RealityBar_Glow.png" />
     <Content Include="Glowmasks\RealityCannonZ.png" />
     <Content Include="Glowmasks\RealityCannon_Glow.png" />
+    <Content Include="Glowmasks\RealityLaser_Glow.png" />
     <Content Include="Glowmasks\RealityStone_Face_Glow.png" />
     <Content Include="Glowmasks\RealityStone_Glow.png" />
     <Content Include="Glowmasks\RealityStone_Wings_Glow.png" />
@@ -3552,6 +3580,7 @@
     <Content Include="Glowmasks\UraniumVisor_Head_Glow.png" />
     <Content Include="Glowmasks\Uranium_Glow.png" />
     <Content Include="Glowmasks\ValkyrieHelm_Head_Glow.png" />
+    <Content Include="Glowmasks\VoidBomb_Glow.png" />
     <Content Include="Glowmasks\VoidBox_Glow.png" />
     <Content Include="Glowmasks\VoidStarZ.png" />
     <Content Include="Glowmasks\VoidStar_Glow.png" />
@@ -3598,6 +3627,7 @@
     <Content Include="Glowmasks\ZeroDiverMask_Head_Glow.png" />
     <Content Include="Glowmasks\ZeroMask_Glow.png" />
     <Content Include="Glowmasks\ZeroMask_Head_Glow.png" />
+    <Content Include="Glowmasks\ZeroMini_Glow.png" />
     <Content Include="Glowmasks\ZeroProtocol.png" />
     <Content Include="Glowmasks\ZeroProtocol1.png" />
     <Content Include="Glowmasks\ZeroRune_Glow.png" />
@@ -4540,6 +4570,7 @@
     <Content Include="Items\DevTools\Undowner.png" />
     <Content Include="Items\Dev\DeceivingTruth.png" />
     <Content Include="Items\Dev\DeceivingTruthEX.png" />
+    <Content Include="Items\Dev\Demise.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
     <Content Include="Items\Dev\MagicAcornEX.png" />
     <Content Include="Items\Dev\Minions\Acorn.png" />
@@ -4556,6 +4587,7 @@
     <Content Include="Items\Dev\SockPuppetEX.png" />
     <Content Include="Items\Dev\SockPuppet.png" />
     <Content Include="Items\Dev\SockStaff.png" />
+    <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
@@ -4700,6 +4732,16 @@
     <Content Include="Items\Vanity\Beg\PonyHoofs_Legs.png" />
     <Content Include="Items\Vanity\Beg\PonyMask.png" />
     <Content Include="Items\Vanity\Beg\PonyMask_Head.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenBooster.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenBooster_Wings.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenBoots.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenBoots_Legs.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenHelmet.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenHelmet_Head.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenPlate.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenPlate_Arms.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenPlate_Body.png" />
+    <Content Include="Items\Vanity\Blazen\BlazenPlate_Female.png" />
     <Content Include="Items\Vanity\Darkpuppey\DarkMask.png" />
     <Content Include="Items\Vanity\Darkpuppey\DarkMask_Head.png" />
     <Content Include="Items\Vanity\Darkpuppey\DarkPants.png" />
@@ -5361,8 +5403,6 @@
     <Content Include="Items\Dev\EnderStaffEX.png" />
     <Content Include="Items\Dev\Etheral.png" />
     <Content Include="Items\Dev\EtheralEX.png" />
-    <Content Include="Items\Dev\Excaligrim.png" />
-    <Content Include="Items\Dev\ExcaligrimEX.png" />
     <Content Include="Items\Dev\FreedomBlaster.png" />
     <Content Include="Items\Dev\FreedomStar.png" />
     <Content Include="Items\Dev\GentlemansLongblade.png" />
@@ -6455,6 +6495,8 @@
     <Content Include="Projectiles\Mjolnir.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\SoonTM.png" />
+    <Content Include="Projectiles\ThunderBullet.png" />
+    <Content Include="Projectiles\ThunderSpark.png" />
     <Content Include="Projectiles\Tools\MiningLaser.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
     <Content Include="Projectiles\Winterbreak.png" />

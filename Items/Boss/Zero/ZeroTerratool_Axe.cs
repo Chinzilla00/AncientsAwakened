@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Zero
             item.useAnimation = 20;
             item.tileBoost += 20;
             item.knockBack = 3;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 10;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

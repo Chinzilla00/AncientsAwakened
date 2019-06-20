@@ -7,6 +7,38 @@ namespace AAMod
 {
 	public class AAColor
     {
+        public static Color Rarity12
+        {
+            get
+            {
+                return new Color(239, 0, 243);
+            }
+        }
+
+        public static Color Rarity13
+        {
+            get
+            {
+                return new Color(0, 125, 243);
+            }
+        }
+
+        public static Color Rarity14
+        {
+            get
+            {
+                return new Color(128, 11, 0);
+            }
+        }
+
+        public static Color Rarity15
+        {
+            get
+            {
+                return new Color(0, 178, 107);
+            }
+        }
+
         public static Color Lantern
         {
             get

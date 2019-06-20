@@ -31,7 +31,7 @@ Prismeow EX");
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.rare = 11;
 			item.UseSound = SoundID.Item44;
 			item.autoReuse = false;

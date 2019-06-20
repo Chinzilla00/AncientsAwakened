@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 5;
             item.knockBack = 4f;
             item.autoReuse = false;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
             item.rare = 11;
@@ -73,6 +73,17 @@ namespace AAMod.Items.Boss.AH
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
     }
 }
