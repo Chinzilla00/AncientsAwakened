@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class TerraCore : ModItem
+    public class TerraCore : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

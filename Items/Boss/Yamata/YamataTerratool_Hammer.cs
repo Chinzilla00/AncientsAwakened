@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class YamataTerratool_Hammer : ModItem
+    public class YamataTerratool_Hammer : BaseAAItem
     {
         public override void SetDefaults()
         {

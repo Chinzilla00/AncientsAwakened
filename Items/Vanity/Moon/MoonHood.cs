@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Moon
 {
     [AutoloadEquip(EquipType.Head)]
-	public class MoonHood : ModItem
+	public class MoonHood : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

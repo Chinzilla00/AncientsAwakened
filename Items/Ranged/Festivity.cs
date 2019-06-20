@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Festivity : ModItem
+    public class Festivity : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

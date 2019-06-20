@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Equinox
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class DarkVoid : ModItem
+    public class DarkVoid : BaseAAItem
     {
         public override void SetDefaults()
         {

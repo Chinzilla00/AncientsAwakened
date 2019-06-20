@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class EaterStaff : ModItem
+    public class EaterStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class BugSwatter : ModItem
+    public class BugSwatter : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

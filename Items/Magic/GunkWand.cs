@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class GunkWand : ModItem
+    public class GunkWand : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ChaosSlayerEX : ModItem
+    public class ChaosSlayerEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

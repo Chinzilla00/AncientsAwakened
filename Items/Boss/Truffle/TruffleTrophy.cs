@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Truffle
 {
-	public class TruffleTrophy : ModItem
+	public class TruffleTrophy : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

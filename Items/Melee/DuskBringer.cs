@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DuskBringer : ModItem
+    public class DuskBringer : BaseAAItem
     {
         public override void SetDefaults()
         {

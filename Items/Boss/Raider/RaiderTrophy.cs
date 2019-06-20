@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Raider
 {
-	public class RaiderTrophy : ModItem
+	public class RaiderTrophy : BaseAAItem
 	{
 
         

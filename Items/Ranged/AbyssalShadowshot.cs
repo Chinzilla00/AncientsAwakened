@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class AbyssalShadowshot : ModItem
+    public class AbyssalShadowshot : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

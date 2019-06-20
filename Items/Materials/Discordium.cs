@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Discordium : ModItem
+    public class Discordium : BaseAAItem
     {
         public short customGlowMask = 0;
         public override void SetStaticDefaults()

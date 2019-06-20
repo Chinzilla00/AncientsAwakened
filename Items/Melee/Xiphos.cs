@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Xiphos : ModItem
+    public class Xiphos : BaseAAItem
     {
         public override void SetDefaults()
         {

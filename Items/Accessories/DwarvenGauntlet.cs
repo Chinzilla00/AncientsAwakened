@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class DwarvenGauntlet : ModItem
+    public class DwarvenGauntlet : BaseAAItem
     {
         public override void SetDefaults()
         {

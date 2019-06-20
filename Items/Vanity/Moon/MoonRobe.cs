@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Moon
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class MoonRobe : ModItem
+    public class MoonRobe : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

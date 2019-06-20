@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-	public class ScorchShark : ModItem
+	public class ScorchShark : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

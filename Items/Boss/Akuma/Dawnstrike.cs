@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class Dawnstrike : ModItem
+    public class Dawnstrike : BaseAAItem
     {
         
 

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class VoidUnit : ModItem
+    public class VoidUnit : BaseAAItem
 	{
 
         

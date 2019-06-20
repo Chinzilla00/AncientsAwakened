@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.MushroomMonarch
 {
-    public class GlowingMushiumBar : ModItem
+    public class GlowingMushiumBar : BaseAAItem
     {
         public override void SetDefaults()
         {

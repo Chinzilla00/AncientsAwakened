@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class PalladiumPaint : ModItem
+    public class PalladiumPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

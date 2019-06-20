@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips
 {
-    public class GripTrophyBlue : ModItem
+    public class GripTrophyBlue : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

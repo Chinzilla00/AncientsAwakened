@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Eliza
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class LizBoots : ModItem
+	public class LizBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

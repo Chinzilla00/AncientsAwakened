@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Doomsday
 {
     [AutoloadEquip(EquipType.Body)]
-	public class DoomsdayChestplate : ModItem
+	public class DoomsdayChestplate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

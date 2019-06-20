@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class BreakingDawn : ModItem
+    public class BreakingDawn : BaseAAItem
     {
         
         public override void SetStaticDefaults()

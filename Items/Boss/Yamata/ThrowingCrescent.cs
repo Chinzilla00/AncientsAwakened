@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class ThrowingCrescent : ModItem
+    public class ThrowingCrescent : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

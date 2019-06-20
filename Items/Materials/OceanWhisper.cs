@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class OceanWhisper : ModItem
+    public class OceanWhisper : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

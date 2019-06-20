@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class EnderStatue : ModItem
+	public class EnderStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

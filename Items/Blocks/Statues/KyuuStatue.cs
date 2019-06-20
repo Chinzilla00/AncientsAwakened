@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class KyuuStatue : ModItem
+	public class KyuuStatue : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

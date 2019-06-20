@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-    public class Bomb : ModItem
+    public class Bomb : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

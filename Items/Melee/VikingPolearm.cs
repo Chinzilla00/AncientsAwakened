@@ -5,7 +5,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class VikingPolearm : ModItem
+    public class VikingPolearm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

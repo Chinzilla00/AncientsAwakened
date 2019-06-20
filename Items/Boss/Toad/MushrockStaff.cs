@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Toad
 {
-    public class MushrockStaff : ModItem
+    public class MushrockStaff : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

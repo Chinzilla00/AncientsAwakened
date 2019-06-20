@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Toxithrower : ModItem
+    public class Toxithrower : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class MadnessKnife : ModItem
+	public class MadnessKnife : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

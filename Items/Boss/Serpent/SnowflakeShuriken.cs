@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SnowflakeShuriken : ModItem
+    public class SnowflakeShuriken : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

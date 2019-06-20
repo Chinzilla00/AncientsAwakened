@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Magic
 {
-    public class TerraRose : ModItem
+    public class TerraRose : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

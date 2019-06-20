@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Radium
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class RadiumCuisses : ModItem
+	public class RadiumCuisses : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class YtriumSword : ModItem
+    public class YtriumSword : BaseAAItem
     {
         public override void SetDefaults()
         {

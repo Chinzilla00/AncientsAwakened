@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.PerfectChaos
 {
     [AutoloadEquip(EquipType.Head)]
-    public class PerfectChaosKabuto : ModItem
+    public class PerfectChaosKabuto : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,8 +22,9 @@ The power of discordian rage radiates from this armor");
 			item.width = 20;
 			item.height = 24;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-			item.rare = 10;
-			item.defense = 44;
+            item.rare = 9;
+            AARarity = 14;
+            item.defense = 44;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

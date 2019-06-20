@@ -7,8 +7,8 @@ using BaseMod;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class FireSpiritStaff : ModItem
-	{
+    public class FireSpiritStaff : BaseAAItem
+    {
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Flame Vortex Staff");	

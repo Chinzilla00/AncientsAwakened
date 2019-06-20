@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class The_Plague : ModItem
+    public class The_Plague : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

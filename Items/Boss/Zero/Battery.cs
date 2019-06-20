@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class Battery : ModItem
+    public class Battery : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Alphakip
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class FishDiverJacket : ModItem
+    public class FishDiverJacket : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss
 {
-    public class MadnessTruffle : ModItem
+    public class MadnessTruffle : BaseAAItem
     {
 
         public override void SetStaticDefaults()

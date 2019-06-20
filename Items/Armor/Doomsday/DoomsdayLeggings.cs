@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Doomsday
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DoomsdayLeggings : ModItem
+	public class DoomsdayLeggings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

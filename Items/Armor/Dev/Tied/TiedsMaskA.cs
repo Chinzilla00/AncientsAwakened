@@ -6,7 +6,7 @@ using Terraria;
 namespace AAMod.Items.Armor.Dev.Tied
 { 
     [AutoloadEquip(EquipType.Head)]
-    public class TiedsMaskA : ModItem
+    public class TiedsMaskA : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

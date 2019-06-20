@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class DevilStaff : ModItem
+    public class DevilStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

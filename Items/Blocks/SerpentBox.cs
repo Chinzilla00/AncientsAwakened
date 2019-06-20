@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class SerpentBox : ModItem
+    public class SerpentBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

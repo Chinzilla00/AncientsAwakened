@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class YamataMask : ModItem
+	public class YamataMask : BaseAAItem
 	{
         public static int type;
 

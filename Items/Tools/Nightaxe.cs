@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Tools
 {
-    public class Nightaxe : ModItem
+    public class Nightaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

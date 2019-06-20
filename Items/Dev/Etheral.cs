@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 namespace AAmod.Items.Dev
 {
-    public class Etheral : ModItem
+    public class Etheral : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

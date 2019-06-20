@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-    public class Seashroom : ModItem
+    public class Seashroom : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

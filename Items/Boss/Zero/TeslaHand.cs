@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class TeslaHand : ModItem
+    public class TeslaHand : BaseAAItem
     {
         
         public override void SetStaticDefaults()

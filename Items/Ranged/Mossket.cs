@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Mossket : ModItem
+    public class Mossket : BaseAAItem
     {
 
         public override void SetDefaults()

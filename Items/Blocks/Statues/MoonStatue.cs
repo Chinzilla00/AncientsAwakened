@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class MoonStatue : ModItem
+	public class MoonStatue : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

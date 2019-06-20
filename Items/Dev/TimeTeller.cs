@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dev
 {
-    public class TimeTeller : ModItem
+    public class TimeTeller : BaseAAItem
     {
         public override void SetDefaults()
         {

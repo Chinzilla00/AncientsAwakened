@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Dev
 {
     //imported from my tAPI mod because I'm lazy
-    public class EnderStaff : ModItem
+    public class EnderStaff : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

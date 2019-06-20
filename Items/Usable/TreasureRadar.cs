@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Usable
 {
-    public class TreasureRadar : ModItem
+    public class TreasureRadar : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

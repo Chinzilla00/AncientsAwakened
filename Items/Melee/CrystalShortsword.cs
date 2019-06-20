@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class CrystalShortsword : ModItem
+    public class CrystalShortsword : BaseAAItem
     {
         public override void SetDefaults()
         {

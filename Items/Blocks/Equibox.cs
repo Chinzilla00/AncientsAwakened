@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class Equibox : ModItem
+	public class Equibox : BaseAAItem
 	{
         
 		public override void SetStaticDefaults()

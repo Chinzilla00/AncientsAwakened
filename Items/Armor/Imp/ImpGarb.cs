@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Imp
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ImpGarb : ModItem
+    public class ImpGarb : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

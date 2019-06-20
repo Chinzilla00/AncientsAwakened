@@ -6,7 +6,7 @@ using Terraria;
 namespace AAMod.Items.Armor.Dev.Tied
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TiedsLeggingsA : ModItem
+    public class TiedsLeggingsA : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

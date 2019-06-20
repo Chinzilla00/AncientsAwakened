@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Blazing
 {
     [AutoloadEquip(EquipType.Head)]
-	public class BlazingKabuto : ModItem
+	public class BlazingKabuto : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

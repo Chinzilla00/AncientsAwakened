@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class NightKeeper : ModItem
+    public class NightKeeper : BaseAAItem
     {
         public override void SetDefaults()
         {

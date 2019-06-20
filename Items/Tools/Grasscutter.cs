@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Tools
 {
-    public class Grasscutter : ModItem
+    public class Grasscutter : BaseAAItem
     {
         public override void SetDefaults()
         {

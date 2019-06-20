@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueNights
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueNightsHelm : ModItem
+	public class TrueNightsHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

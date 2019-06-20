@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Crescent : ModItem
+    public class Crescent : BaseAAItem
     {
 
         

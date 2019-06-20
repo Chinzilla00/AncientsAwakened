@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueTribal
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrueTribalHat : ModItem
+    public class TrueTribalHat : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

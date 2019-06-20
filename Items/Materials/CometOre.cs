@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class CometOre : ModItem
+    public class CometOre : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.GoblinSlayer
 {
     [AutoloadEquip(EquipType.Body)]
-	public class GoblinSlayerChest : ModItem
+	public class GoblinSlayerChest : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

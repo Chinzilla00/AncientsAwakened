@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Duality : ModItem
+    public class Duality : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

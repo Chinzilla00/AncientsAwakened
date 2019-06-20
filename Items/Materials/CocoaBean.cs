@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class CocoaBean : ModItem
+    public class CocoaBean : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Stonebreaker : ModItem
+    public class Stonebreaker : BaseAAItem
     {
         public override void SetDefaults()
         {

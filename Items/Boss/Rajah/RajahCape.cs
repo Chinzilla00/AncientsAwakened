@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Boss.Rajah
 {
     [AutoloadEquip(EquipType.Back, EquipType.Front)]
-    public class RajahCape : ModItem
+    public class RajahCape : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

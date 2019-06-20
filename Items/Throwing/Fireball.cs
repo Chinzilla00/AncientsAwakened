@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class Fireball : ModItem
+	public class Fireball : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

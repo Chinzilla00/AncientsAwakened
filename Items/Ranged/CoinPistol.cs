@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class CoinPistol : ModItem
+    public class CoinPistol : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

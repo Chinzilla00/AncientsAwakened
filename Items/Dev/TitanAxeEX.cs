@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class TitanAxeEX : ModItem
+    public class TitanAxeEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

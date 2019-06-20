@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class DaybreakIncinerite : ModItem
+    public class DaybreakIncinerite : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

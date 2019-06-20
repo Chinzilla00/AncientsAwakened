@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Blocks
 {
-    public class AncientForge : ModItem
+    public class AncientForge : BaseAAItem
     {
         
         public override void SetStaticDefaults()

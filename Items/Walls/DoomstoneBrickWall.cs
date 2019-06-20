@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Walls
 {
-    public class DoomstoneBrickWall : ModItem
+    public class DoomstoneBrickWall : BaseAAItem
     {
         public override void SetDefaults()
         {

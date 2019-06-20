@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class ExilesKatana : ModItem
+    public class ExilesKatana : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

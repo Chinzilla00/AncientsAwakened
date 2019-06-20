@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.EFish
 {
-    public class Hurricane : ModItem
+    public class Hurricane : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

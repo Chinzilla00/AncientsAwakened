@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Boss
 {
-    public class StormCharm : ModItem
+    public class StormCharm : BaseAAItem
     {
         
         public override void SetStaticDefaults()

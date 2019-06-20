@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Gibs
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class GibsJet : ModItem
+    public class GibsJet : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

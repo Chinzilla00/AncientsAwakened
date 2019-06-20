@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class VoidStar : ModItem
+    public class VoidStar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

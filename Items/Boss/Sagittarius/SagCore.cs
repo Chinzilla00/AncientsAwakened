@@ -6,7 +6,7 @@ using BaseMod;
 
 namespace AAMod.Items.Boss.Sagittarius
 {
-    public class SagCore : ModItem
+    public class SagCore : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

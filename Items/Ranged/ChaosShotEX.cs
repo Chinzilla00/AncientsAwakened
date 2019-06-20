@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class ChaosShotEX : ModItem
+    public class ChaosShotEX : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

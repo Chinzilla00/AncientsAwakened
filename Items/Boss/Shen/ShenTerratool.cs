@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ShenTerratool : ModItem
+    public class ShenTerratool : BaseAAItem
     {
         
         public override void SetDefaults()

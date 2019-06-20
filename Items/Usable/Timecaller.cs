@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class Timecaller : ModItem
+    public class Timecaller : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

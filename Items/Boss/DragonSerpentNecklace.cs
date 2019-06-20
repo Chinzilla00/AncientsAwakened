@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Boss
 {
-    public class DragonSerpentNecklace : ModItem
+    public class DragonSerpentNecklace : BaseAAItem
     {
         
         public override void SetStaticDefaults()

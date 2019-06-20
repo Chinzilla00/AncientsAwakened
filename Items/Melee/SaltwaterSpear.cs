@@ -5,7 +5,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class SaltwaterSpear : ModItem
+    public class SaltwaterSpear : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

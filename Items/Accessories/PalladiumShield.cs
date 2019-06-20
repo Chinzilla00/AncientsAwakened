@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class PalladiumShield : ModItem
+    public class PalladiumShield : BaseAAItem
     {
         public override void SetDefaults()
         {

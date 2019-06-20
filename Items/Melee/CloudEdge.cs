@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class CloudEdge : ModItem
+    public class CloudEdge : BaseAAItem
     {
         public override void SetDefaults()
         {

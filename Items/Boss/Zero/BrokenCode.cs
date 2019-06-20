@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class BrokenCode : ModItem
+    public class BrokenCode : BaseAAItem
     {
         
         public int CodeCD = 0;

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Dread
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DreadBoots : ModItem
+	public class DreadBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
-    public class UraniumBar : ModItem
+    public class UraniumBar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

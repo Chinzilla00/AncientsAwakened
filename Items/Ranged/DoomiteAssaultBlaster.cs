@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DoomiteAssaultBlaster : ModItem
+    public class DoomiteAssaultBlaster : BaseAAItem
     {
         public override void SetDefaults()
         {

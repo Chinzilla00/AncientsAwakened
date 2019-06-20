@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata   //where is located
 {
-    public class HydraStabber : ModItem
+    public class HydraStabber : BaseAAItem
     {
         
         public override void SetStaticDefaults()

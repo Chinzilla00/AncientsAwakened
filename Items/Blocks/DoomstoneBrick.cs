@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class DoomstoneBrick : ModItem
+    public class DoomstoneBrick : BaseAAItem
     {
         public override void SetDefaults()
         {

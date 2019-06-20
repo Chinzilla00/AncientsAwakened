@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.PerfectChaos
 {
     [AutoloadEquip(EquipType.Body)]
-	public class PerfectChaosPlate : ModItem
+	public class PerfectChaosPlate : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -24,8 +24,9 @@ The power of discordian rage radiates from this armor");
 			item.width = 26;
 			item.height = 20;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-			item.rare = 10;
-			item.defense = 60;
+            item.rare = 9;
+            AARarity = 14;
+            item.defense = 60;
 		}
 
 		public override void UpdateEquip(Player player)

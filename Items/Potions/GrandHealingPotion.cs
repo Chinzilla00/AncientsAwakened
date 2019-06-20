@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Potions
 {
-    public class GrandHealingPotion : ModItem
+    public class GrandHealingPotion : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

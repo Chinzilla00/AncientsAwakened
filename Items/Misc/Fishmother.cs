@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Misc
 {
-    public class Fishmother : ModItem
+    public class Fishmother : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

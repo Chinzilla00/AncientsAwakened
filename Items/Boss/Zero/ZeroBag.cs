@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroBag : ModItem
+    public class ZeroBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

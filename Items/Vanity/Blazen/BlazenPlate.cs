@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Blazen
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class BlazenPlate : ModItem
+    public class BlazenPlate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class Vortex : ModItem
+    public class Vortex : BaseAAItem
     {
 
         

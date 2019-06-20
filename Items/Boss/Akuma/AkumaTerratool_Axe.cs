@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaTerratool_Axe : ModItem
+    public class AkumaTerratool_Axe : BaseAAItem
     {
         public override void SetDefaults()
         {

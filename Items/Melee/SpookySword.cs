@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class SpookySword : ModItem
+    public class SpookySword : BaseAAItem
     {
         public override void SetDefaults()
         {

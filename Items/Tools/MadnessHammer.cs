@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class MadnessHammer : ModItem
+    public class MadnessHammer : BaseAAItem
     {
         public override void SetDefaults()
         {

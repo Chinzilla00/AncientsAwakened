@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class SkyBook : ModItem
+    public class SkyBook : BaseAAItem
     {
         public override void SetDefaults()
         {

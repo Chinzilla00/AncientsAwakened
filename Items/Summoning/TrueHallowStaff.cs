@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class TrueHallowStaff : ModItem
+    public class TrueHallowStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

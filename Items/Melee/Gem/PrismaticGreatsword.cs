@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located
 {
-    public class PrismaticGreatsword : ModItem
+    public class PrismaticGreatsword : BaseAAItem
     {
         public override void SetDefaults()
         {

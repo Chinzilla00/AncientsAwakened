@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class Solar : ModItem
+    public class Solar : BaseAAItem
     {
 
         

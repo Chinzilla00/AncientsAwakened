@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Hydra
 {
     [AutoloadEquip(EquipType.Neck)]
-    public class HydraPendant : ModItem
+    public class HydraPendant : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

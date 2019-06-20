@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Darkmatter
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DarkmatterHeaddress : ModItem
+	public class DarkmatterHeaddress : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

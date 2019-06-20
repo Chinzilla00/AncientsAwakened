@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public class BaneOfTheBunny : ModItem
+    public class BaneOfTheBunny : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

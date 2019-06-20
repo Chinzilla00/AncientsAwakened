@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class Soul_Forge : ModItem
+    public class Soul_Forge : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

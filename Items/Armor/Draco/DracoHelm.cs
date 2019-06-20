@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Draco
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DracoHelm : ModItem
+	public class DracoHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class DragonsGuard : ModItem
+    public class DragonsGuard : BaseAAItem
     {
         public override void SetDefaults()
         {

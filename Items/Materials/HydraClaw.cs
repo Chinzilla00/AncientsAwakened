@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class HydraClaw : ModItem
+    public class HydraClaw : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DreadAltar : ModItem
+    public class DreadAltar : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

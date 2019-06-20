@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class TrueFleshrendWings : ModItem
+	public class TrueFleshrendWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -18,7 +18,7 @@ namespace AAMod.Items.Accessories.Wings
 			item.width = 26;
 			item.height = 30;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 1;
+            item.rare = 8;
 			item.accessory = true;
         }
 

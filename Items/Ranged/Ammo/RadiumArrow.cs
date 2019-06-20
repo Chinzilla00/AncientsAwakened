@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class RadiumArrow : ModItem
+    public class RadiumArrow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

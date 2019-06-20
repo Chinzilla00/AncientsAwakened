@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Incineration : ModItem
+    public class Incineration : BaseAAItem
     {
         public override void SetDefaults()
         {

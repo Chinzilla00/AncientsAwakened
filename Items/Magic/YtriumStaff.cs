@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class YtriumStaff : ModItem
+    public class YtriumStaff : BaseAAItem
     {
         public override void SetDefaults()
         {

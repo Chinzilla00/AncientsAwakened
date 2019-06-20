@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class MireUBox : ModItem
+    public class MireUBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

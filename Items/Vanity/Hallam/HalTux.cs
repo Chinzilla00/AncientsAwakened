@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Hallam
 {
     [AutoloadEquip(EquipType.Body)]
-    public class HalTux : ModItem
+    public class HalTux : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

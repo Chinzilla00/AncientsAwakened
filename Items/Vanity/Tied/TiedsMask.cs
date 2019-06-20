@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Tied   //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TiedsMask : ModItem
+    public class TiedsMask : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class FulguriteTazesaber : ModItem
+	public class FulguriteTazesaber : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

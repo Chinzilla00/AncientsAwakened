@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class JungleReaper : ModItem
+    public class JungleReaper : BaseAAItem
     {
         public override void SetDefaults()
         {

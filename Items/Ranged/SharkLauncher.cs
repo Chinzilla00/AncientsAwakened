@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class SharkLauncher : ModItem
+    public class SharkLauncher : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

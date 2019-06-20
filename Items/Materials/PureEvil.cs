@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class PureEvil : ModItem
+    public class PureEvil : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

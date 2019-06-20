@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class Suncaller : ModItem
+    public class Suncaller : BaseAAItem
     {
         
         public override void SetStaticDefaults()

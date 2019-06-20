@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class MidnightWrath : ModItem
+    public class MidnightWrath : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

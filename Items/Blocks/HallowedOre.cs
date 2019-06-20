@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class HallowedOre : ModItem
+    public class HallowedOre : BaseAAItem
     {
         public override void SetDefaults()
         {

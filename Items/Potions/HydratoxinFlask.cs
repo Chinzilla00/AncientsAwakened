@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Potions
 {
-    public class HydratoxinFlask : ModItem
+    public class HydratoxinFlask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class TechneciumSword : ModItem
+	public class TechneciumSword : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

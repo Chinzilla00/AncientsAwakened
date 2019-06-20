@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class AmphibianLongsword : ModItem
+    public class AmphibianLongsword : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

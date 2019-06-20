@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class ElectricitySpell : ModItem
+    public class ElectricitySpell : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.EFish
 {
-    public class FishnadoStaff : ModItem
+    public class FishnadoStaff : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

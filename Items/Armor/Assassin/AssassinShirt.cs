@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Assassin
 {
 	[AutoloadEquip(EquipType.Body)]
-	class AssassinShirt : ModItem
+	class AssassinShirt : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -18,7 +18,8 @@ A dark armor infused with the shadow of midnight");
 		{
 			item.width = 14;
 			item.height = 14;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
             item.value = 300000;
             item.defense = 29;
 		}

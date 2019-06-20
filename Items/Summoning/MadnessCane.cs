@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class MadnessCane : ModItem
+    public class MadnessCane : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class IllumantFlail : ModItem
+    public class IllumantFlail : BaseAAItem
     {
         public override void SetDefaults()
         {

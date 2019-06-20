@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class ScorchDagger : ModItem
+    public class ScorchDagger : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

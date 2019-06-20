@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class SunSpear : ModItem
+    public class SunSpear : BaseAAItem
     {
         
         public override void SetStaticDefaults()

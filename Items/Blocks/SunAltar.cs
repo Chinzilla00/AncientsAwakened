@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class SunAltar : ModItem
+    public class SunAltar : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

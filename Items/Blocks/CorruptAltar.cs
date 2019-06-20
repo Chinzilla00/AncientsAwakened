@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class CorruptAltar : ModItem
+    public class CorruptAltar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

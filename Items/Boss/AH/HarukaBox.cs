@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HarukaBox : ModItem
+    public class HarukaBox : BaseAAItem
     {
         public override void SetDefaults()
         {

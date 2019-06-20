@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Tied
 {
     [AutoloadEquip(EquipType.Body)]
-	class TiedsSuit : ModItem
+	class TiedsSuit : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

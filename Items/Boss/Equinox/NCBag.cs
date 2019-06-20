@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Equinox
 {
-    public class NCBag : ModItem
+    public class NCBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

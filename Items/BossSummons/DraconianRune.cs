@@ -8,7 +8,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class DraconianRune : ModItem
+    public class DraconianRune : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

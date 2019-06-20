@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class YamataTerratool : ModItem
+    public class YamataTerratool : BaseAAItem
     {
         
         public override void SetDefaults()

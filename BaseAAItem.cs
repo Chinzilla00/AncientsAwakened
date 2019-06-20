@@ -11,9 +11,10 @@ namespace AAMod.Items
 		public const int GLOWMASKTYPE_NONE = -1;	 //for shit like Daystorm which is a 'projectile' gun
 		public const int  GLOWMASKTYPE_SWORD = 0; //for swords and swordlike items
 		public const int GLOWMASKTYPE_GUN = 1; //for guns and gunlike items (bows too)
+        public int AARarity = 0;
 
-		//glowmask shenanigans
-		public string glowmaskTexture = null;
+        //glowmask shenanigans
+        public string glowmaskTexture = null;
 		public int glowmaskDrawType = 0;
 		public Color glowmaskDrawColor = Color.White;	//default white	
 		

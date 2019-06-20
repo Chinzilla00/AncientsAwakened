@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Dev
 {
     //Ferret's dev weapon (note form)	
-    public class CordesDuFuret_Notes : ModItem
+    public class CordesDuFuret_Notes : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

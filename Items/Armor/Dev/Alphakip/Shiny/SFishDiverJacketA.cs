@@ -7,7 +7,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Dev.Alphakip.Shiny
 {
     [AutoloadEquip(EquipType.Body)]
-    public class SFishDiverJacketA : ModItem
+    public class SFishDiverJacketA : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

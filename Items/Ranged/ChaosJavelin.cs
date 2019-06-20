@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class ChaosJavelin : ModItem
+    public class ChaosJavelin : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

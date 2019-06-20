@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Madness
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class MadnessBoots : ModItem
+    public class MadnessBoots : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -19,6 +19,7 @@ namespace AAMod.Items.Armor.Madness
             item.height = 18;
             item.value = 1700;
             item.rare = 1;
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.defense = 4;
         }
 

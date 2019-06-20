@@ -5,7 +5,7 @@ using AAMod.Items.Materials;
 
 namespace AAMod.Items.Accessories
 {
-    public class AshProofVest3 : ModItem
+    public class AshProofVest3 : BaseAAItem
     {
         public override void SetDefaults()
         {

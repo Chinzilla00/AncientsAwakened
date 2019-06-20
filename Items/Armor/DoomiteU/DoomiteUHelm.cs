@@ -6,7 +6,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.DoomiteU
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DoomiteUHelm : ModItem
+	public class DoomiteUHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

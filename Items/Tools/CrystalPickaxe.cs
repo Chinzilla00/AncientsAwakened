@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class CrystalPickaxe : ModItem
+    public class CrystalPickaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

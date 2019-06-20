@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Broodmother
 {
-    public class BroodBag : ModItem
+    public class BroodBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

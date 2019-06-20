@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class LeafBlade : ModItem
+    public class LeafBlade : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class MoonAltarA : ModItem
+    public class MoonAltarA : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

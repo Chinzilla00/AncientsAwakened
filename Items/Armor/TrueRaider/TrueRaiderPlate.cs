@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueRaider
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueRaiderPlate : ModItem
+	public class TrueRaiderPlate : BaseAAItem
 	{
 		public static int counter = 0;
 		public override void SetStaticDefaults()

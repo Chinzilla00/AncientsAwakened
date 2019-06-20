@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Blazen
 {
     [AutoloadEquip(EquipType.Head)]
-	public class BlazenHelmet : ModItem
+	public class BlazenHelmet : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

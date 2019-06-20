@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class SunStaff : ModItem
+    public class SunStaff : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Banners
 {
-    public class Banners : ModItem
+    public class Banners : BaseAAItem
 	{
 		int pStyle = -1;
 		string dName = null;

@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SerpentTrophy : ModItem
+    public class SerpentTrophy : BaseAAItem
 	{
         public static int type;
         

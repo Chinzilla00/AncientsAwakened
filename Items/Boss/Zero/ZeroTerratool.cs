@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroTerratool : ModItem
+    public class ZeroTerratool : BaseAAItem
     {
         
         public override void SetDefaults()

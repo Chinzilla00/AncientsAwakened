@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.DevTools
 {
-    public class NoodleSword : ModItem
+    public class NoodleSword : BaseAAItem
     {
         
         public override void SetStaticDefaults()

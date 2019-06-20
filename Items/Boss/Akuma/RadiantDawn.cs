@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class RadiantDawn : ModItem
+    public class RadiantDawn : BaseAAItem
     {
         
         public override void SetStaticDefaults()

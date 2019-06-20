@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class MireChest : ModItem
+    public class MireChest : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

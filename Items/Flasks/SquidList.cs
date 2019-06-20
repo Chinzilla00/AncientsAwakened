@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Flasks
 {
-    public class SquidList : ModItem
+    public class SquidList : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

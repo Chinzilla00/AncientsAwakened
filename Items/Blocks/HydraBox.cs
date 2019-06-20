@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class    HydraBox : ModItem
+    public class    HydraBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

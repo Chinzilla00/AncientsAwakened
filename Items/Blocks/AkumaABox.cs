@@ -6,7 +6,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class AkumaABox : ModItem
+    public class AkumaABox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

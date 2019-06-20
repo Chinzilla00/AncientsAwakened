@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DarkShredders : ModItem
+    public class DarkShredders : BaseAAItem
     {
         public override void SetDefaults()
         {

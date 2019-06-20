@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Sagittarius
 {
-    public class NeutronStaff : ModItem
+    public class NeutronStaff : BaseAAItem
     {
         public override void SetDefaults()
         {

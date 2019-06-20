@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Raider
 {
     [AutoloadEquip(EquipType.Body)]
-	public class RaiderChest : ModItem
+	public class RaiderChest : BaseAAItem
 	{
 		public static int counter = 0;
 		public override void SetStaticDefaults()

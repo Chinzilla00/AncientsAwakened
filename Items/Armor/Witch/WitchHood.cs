@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Witch
 {
     [AutoloadEquip(EquipType.Head)]
-	public class WitchHood : ModItem
+	public class WitchHood : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -22,8 +22,9 @@ A hood enchanted with the firey spirit of a supreme dragon acolyte");
 			item.width = 16;
 			item.height = 16;
             item.value = 300000;
-            item.rare = 11;
-			item.defense = 24;
+            item.rare = 9;
+            AARarity = 12;
+            item.defense = 24;
 		}
 
 

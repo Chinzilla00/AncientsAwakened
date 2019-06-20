@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Shen   //where is located
 {
-    public class MeteorStrike : ModItem
+    public class MeteorStrike : BaseAAItem
     {
 
         public override void SetStaticDefaults()

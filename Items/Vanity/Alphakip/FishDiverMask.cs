@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Alphakip
 {
     [AutoloadEquip(EquipType.Head)]
-	public class FishDiverMask : ModItem
+	public class FishDiverMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

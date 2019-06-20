@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Demon
 {
     [AutoloadEquip(EquipType.Head)]
-    public class DemonHood : ModItem
+    public class DemonHood : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

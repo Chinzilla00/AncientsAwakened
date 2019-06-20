@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Aves
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class DJDuckShirt : ModItem
+    public class DJDuckShirt : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

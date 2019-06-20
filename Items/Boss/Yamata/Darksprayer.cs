@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Darksprayer : ModItem
+    public class Darksprayer : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

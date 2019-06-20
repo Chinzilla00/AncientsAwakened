@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Blazen
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class BlazenBoots : ModItem
+	public class BlazenBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

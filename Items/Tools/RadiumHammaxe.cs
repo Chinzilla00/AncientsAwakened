@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class RadiumHammaxe : ModItem
+    public class RadiumHammaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class SandScimitar : ModItem
+    public class SandScimitar : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

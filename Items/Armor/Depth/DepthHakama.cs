@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Depth
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class DepthHakama : ModItem
+    public class DepthHakama : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

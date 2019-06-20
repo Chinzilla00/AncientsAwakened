@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class RadiantArcanum : ModItem
+    public class RadiantArcanum : BaseAAItem
     {
         
         public override void SetStaticDefaults()

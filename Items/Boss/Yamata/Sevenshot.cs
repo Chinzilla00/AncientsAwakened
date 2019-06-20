@@ -7,7 +7,7 @@ using AAMod.Projectiles.Yamata;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Sevenshot : ModItem
+    public class Sevenshot : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

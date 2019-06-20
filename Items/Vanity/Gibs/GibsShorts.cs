@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Gibs
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class GibsShorts : ModItem
+	public class GibsShorts : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

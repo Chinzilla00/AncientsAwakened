@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class UnstableSingularity : ModItem
+    public class UnstableSingularity : BaseAAItem
     {
         
         public override void SetStaticDefaults()

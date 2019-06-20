@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueAbyssal
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueAbyssalFukumen : ModItem
+	public class TrueAbyssalFukumen : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

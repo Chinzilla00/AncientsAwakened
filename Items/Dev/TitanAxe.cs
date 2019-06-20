@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class TitanAxe : ModItem
+    public class TitanAxe : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

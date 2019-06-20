@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class SubzeroStaff : ModItem
+    public class SubzeroStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

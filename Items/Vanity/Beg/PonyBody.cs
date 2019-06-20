@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Beg
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class PonyBody : ModItem
+    public class PonyBody : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

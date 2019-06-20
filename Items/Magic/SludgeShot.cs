@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class SludgeShot : ModItem
+	public class SludgeShot : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

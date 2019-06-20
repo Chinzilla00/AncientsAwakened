@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Rajah
 {
 
-    public class Bunzooka : ModItem
+    public class Bunzooka : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

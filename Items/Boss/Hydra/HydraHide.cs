@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Hydra
 {
-    public class HydraHide : ModItem
+    public class HydraHide : BaseAAItem
     {
         public override void SetDefaults()
         {

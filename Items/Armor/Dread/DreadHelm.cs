@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Dread
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DreadHelm : ModItem
+	public class DreadHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

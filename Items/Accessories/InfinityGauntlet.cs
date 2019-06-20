@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.HandsOn, EquipType.Wings)]
-    public class InfinityGauntlet : ModItem
+    public class InfinityGauntlet : BaseAAItem
     {
             
         public override void SetStaticDefaults()

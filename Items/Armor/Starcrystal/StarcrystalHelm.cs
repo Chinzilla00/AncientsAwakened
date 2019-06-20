@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Starcrystal
 {
     [AutoloadEquip(EquipType.Head)]
-    public class StarcrystalHelm : ModItem
+    public class StarcrystalHelm : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DarkmatterOre : ModItem
+    public class DarkmatterOre : BaseAAItem
     {
         public override void SetDefaults()
         {

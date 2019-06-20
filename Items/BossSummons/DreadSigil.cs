@@ -8,7 +8,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class DreadSigil : ModItem
+    public class DreadSigil : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class FungusBox : ModItem
+    public class FungusBox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

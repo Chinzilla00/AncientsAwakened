@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Dev
 {
     //Ferret's dev weapon (axe form)
-    public class CordesDuFuret_Axe : ModItem
+    public class CordesDuFuret_Axe : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

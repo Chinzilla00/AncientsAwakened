@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DoomiteGreatsword : ModItem
+    public class DoomiteGreatsword : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

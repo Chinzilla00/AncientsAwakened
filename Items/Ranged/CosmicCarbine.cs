@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class CosmicCarbine : ModItem
+    public class CosmicCarbine : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

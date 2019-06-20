@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class FulguritePitchet : ModItem
+    public class FulguritePitchet : BaseAAItem
     {
         
         public override void SetStaticDefaults()

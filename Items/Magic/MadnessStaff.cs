@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class MadnessStaff : ModItem
+    public class MadnessStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class ClawOfChaosRed : ModItem
+    public class ClawOfChaosRed : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

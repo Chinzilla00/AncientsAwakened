@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Mikpin
 {
     [AutoloadEquip(EquipType.Head)]
-    public class MikpinWig : ModItem
+    public class MikpinWig : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

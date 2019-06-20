@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class BlazePike : ModItem
+	public class BlazePike : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

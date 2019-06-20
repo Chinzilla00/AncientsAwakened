@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SerpentSpike : ModItem
+    public class SerpentSpike : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

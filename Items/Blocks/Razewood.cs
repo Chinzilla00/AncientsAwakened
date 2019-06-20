@@ -2,7 +2,7 @@
 
 namespace AAMod.Items.Blocks
 {
-    class Razewood : ModItem
+    class Razewood : BaseAAItem
     {
         public override void SetDefaults()
         {

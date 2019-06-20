@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class ReaperArrow : ModItem
+    public class ReaperArrow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Uranium
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class UraniumBoots : ModItem
+	public class UraniumBoots : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

@@ -9,7 +9,7 @@ namespace AAMod.Items.Accessories
 {
 
     [AutoloadEquip(EquipType.HandsOn, EquipType.HandsOff)]
-    public class DemonGauntlet : ModItem
+    public class DemonGauntlet : BaseAAItem
     {
         
         public override void SetStaticDefaults()

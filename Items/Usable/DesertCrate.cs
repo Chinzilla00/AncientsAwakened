@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class DesertCrate : ModItem
+    public class DesertCrate : BaseAAItem
     {
         public override void SetDefaults()
         {

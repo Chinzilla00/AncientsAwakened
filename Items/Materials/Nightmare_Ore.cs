@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Nightmare_Ore : ModItem
+    public class Nightmare_Ore : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located
 {
-    public class TopazSaber : ModItem
+    public class TopazSaber : BaseAAItem
     {
         public override void SetDefaults()
         {

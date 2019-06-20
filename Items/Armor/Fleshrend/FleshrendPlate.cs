@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Fleshrend
 {
     [AutoloadEquip(EquipType.Body)]
-	public class FleshrendPlate : ModItem
+	public class FleshrendPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

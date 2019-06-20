@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Sagittarius
 {
-    public class Legg : ModItem
+    public class Legg : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

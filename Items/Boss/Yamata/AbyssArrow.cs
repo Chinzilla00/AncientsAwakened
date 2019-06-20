@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class AbyssArrow : ModItem
+    public class AbyssArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

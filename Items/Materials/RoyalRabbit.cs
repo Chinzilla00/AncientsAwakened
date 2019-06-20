@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Materials
 {
-    public class RoyalRabbit : ModItem
+    public class RoyalRabbit : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

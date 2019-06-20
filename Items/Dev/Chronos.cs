@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dev
 {
-    public class Chronos : ModItem
+    public class Chronos : BaseAAItem
     {
         public override void SetDefaults()
         {

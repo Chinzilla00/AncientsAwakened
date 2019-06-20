@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Apawn
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class ApawnBoots : ModItem
+	public class ApawnBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

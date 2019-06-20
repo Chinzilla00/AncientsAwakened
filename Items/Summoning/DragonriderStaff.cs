@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class DragonriderStaff : ModItem
+    public class DragonriderStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

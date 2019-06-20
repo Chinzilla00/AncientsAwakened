@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class GroxStatue : ModItem
+	public class GroxStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

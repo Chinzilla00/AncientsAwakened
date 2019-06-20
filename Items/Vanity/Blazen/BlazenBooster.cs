@@ -9,7 +9,7 @@ namespace AAMod.Items.Vanity.Blazen
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class BlazenBooster : ModItem
+    public class BlazenBooster : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

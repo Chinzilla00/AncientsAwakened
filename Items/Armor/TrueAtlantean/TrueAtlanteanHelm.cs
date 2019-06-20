@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueAtlantean
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueAtlanteanHelm : ModItem
+	public class TrueAtlanteanHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

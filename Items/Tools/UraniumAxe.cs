@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class UraniumAxe : ModItem
+    public class UraniumAxe : BaseAAItem
     {
         public override void SetDefaults()
         {

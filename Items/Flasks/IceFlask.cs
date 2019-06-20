@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class IceFlask : ModItem
+    public class IceFlask : BaseAAItem
     {
         public override void SetDefaults()
         {

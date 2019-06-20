@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class AbyssalYari : ModItem
+    public class AbyssalYari : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

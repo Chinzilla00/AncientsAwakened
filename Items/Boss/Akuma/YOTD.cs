@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class YOTD : ModItem
+    public class YOTD : BaseAAItem
     {
 
 

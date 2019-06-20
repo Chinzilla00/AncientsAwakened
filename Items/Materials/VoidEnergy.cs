@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class VoidEnergy : ModItem
+    public class VoidEnergy : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

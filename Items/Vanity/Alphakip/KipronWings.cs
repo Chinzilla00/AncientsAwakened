@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Alphakip
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class KipronWings : ModItem
+    public class KipronWings : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

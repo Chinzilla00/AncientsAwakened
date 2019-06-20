@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class PoniumStaffEX : ModItem
+    public class PoniumStaffEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

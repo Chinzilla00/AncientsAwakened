@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class ShinyKipronWings : ModItem
+    public class ShinyKipronWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

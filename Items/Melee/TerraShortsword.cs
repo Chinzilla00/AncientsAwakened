@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class TerraShortsword : ModItem
+    public class TerraShortsword : BaseAAItem
     {
         public override void SetStaticDefaults()
 		{

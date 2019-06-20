@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DragonsMaw : ModItem
+    public class DragonsMaw : BaseAAItem
     {
 
         public override void SetDefaults()

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class IndigoSolution : ModItem
+    public class IndigoSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

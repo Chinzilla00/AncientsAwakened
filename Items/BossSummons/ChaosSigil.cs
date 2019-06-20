@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class ChaosSigil : ModItem
+    public class ChaosSigil : BaseAAItem
     {
         
         public override void SetStaticDefaults()

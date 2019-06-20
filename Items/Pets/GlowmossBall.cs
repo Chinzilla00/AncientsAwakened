@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-	public class GlowmossBall : ModItem
+	public class GlowmossBall : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

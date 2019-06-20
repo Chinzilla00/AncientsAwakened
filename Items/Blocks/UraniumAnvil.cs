@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class UraniumAnvil : ModItem
+    public class UraniumAnvil : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

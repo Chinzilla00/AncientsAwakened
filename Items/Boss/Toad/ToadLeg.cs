@@ -5,7 +5,7 @@ using Terraria;
 namespace AAMod.Items.Boss.Toad
 {
     [AutoloadEquip(EquipType.Shoes)]
-    public class ToadLeg : ModItem
+    public class ToadLeg : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Dread
 {
     [AutoloadEquip(EquipType.Body)]
-	public class DreadPlate : ModItem
+	public class DreadPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueBlazing
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueBlazingDou : ModItem
+	public class TrueBlazingDou : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

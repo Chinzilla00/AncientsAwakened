@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class YtriumCrossbow : ModItem
+    public class YtriumCrossbow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

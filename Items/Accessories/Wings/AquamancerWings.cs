@@ -6,7 +6,7 @@ namespace AAMod.Items.Accessories.Wings
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class AquamancerWings : ModItem
+    public class AquamancerWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

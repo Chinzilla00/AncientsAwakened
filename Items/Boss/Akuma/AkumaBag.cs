@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaBag : ModItem
+    public class AkumaBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Assassin
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class AssassinBoots : ModItem
+	public class AssassinBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -22,8 +22,9 @@ Dark boots infused with the shadow of midnight");
 			item.height = 16;
 			item.value = 300000;
 			item.defense = 20;
-            item.rare = 13;
-		}
+            item.rare = 9;
+            AARarity = 12;
+        }
 
 		public override void UpdateEquip(Player player)
 		{

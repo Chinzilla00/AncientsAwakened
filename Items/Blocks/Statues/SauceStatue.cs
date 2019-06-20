@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class SauceStatue : ModItem
+	public class SauceStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.TrueHallowed
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrueHallowedHelm : ModItem
+    public class TrueHallowedHelm : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class GlowingSporeSac : ModItem
+    public class GlowingSporeSac : BaseAAItem
 	{
         public override void SetDefaults()
         {

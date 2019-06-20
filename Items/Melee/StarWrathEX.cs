@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class StarWrathEX : ModItem
+    public class StarWrathEX : BaseAAItem
     {
         public override void SetDefaults()
         {

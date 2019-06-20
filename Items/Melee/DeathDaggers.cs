@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DeathDaggers : ModItem
+    public class DeathDaggers : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

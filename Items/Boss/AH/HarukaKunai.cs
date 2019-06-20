@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HarukaKunai : ModItem
-	{
+    public class HarukaKunai : BaseAAItem
+    {
 		public override void SetDefaults()
 		{
 			item.damage = 140;

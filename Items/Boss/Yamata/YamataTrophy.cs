@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class YamataTrophy : ModItem
+    public class YamataTrophy : BaseAAItem
 	{
         public static int type;
         

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueFleshrend
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueFleshrendGreaves : ModItem
+	public class TrueFleshrendGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

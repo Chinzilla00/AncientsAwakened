@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class DreadScale : ModItem
+    public class DreadScale : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

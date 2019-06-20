@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ChaosScale : ModItem
+    public class ChaosScale : BaseAAItem
     {
         public short customGlowMask = 0;
         public override void SetStaticDefaults()

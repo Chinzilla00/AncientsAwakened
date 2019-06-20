@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class Moonpowder : ModItem
+    public class Moonpowder : BaseAAItem
 	{
 		public override void SetDefaults()
         {

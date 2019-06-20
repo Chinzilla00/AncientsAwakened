@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mikpin
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class MikpinPants : ModItem
+    public class MikpinPants : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

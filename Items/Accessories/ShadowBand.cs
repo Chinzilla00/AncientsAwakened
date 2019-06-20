@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class ShadowBand : ModItem
+    public class ShadowBand : BaseAAItem
     {
         public override void SetDefaults()
         {

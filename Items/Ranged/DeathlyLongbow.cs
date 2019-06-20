@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DeathlyLongbow : ModItem
+    public class DeathlyLongbow : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

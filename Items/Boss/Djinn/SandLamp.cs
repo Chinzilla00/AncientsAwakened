@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class SandLamp : ModItem
+    public class SandLamp : BaseAAItem
     {
 
         public override void SetStaticDefaults()

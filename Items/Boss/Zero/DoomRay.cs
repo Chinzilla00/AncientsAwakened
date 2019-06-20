@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class DoomRay : ModItem
+    public class DoomRay : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class DragonStaff : ModItem
+    public class DragonStaff : BaseAAItem
     {
         public override void SetDefaults()
         {

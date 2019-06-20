@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class SandstormMedallion : ModItem
+    public class SandstormMedallion : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

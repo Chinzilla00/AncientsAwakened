@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ChaosSoul : ModItem
+    public class ChaosSoul : BaseAAItem
     {
         
         public override void SetStaticDefaults()

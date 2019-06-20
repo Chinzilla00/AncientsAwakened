@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class VoidBox : ModItem
+    public class VoidBox : BaseAAItem
     {
         
         public override void SetStaticDefaults()

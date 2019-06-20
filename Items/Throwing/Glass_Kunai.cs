@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Glass_Kunai : ModItem
+    public class Glass_Kunai : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

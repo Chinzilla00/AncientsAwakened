@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class DarkmatterKunai : ModItem
+    public class DarkmatterKunai : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

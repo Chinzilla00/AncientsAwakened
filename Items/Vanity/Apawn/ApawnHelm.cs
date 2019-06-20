@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Apawn
 {
     [AutoloadEquip(EquipType.Head)]
-	public class ApawnHelm : ModItem
+	public class ApawnHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

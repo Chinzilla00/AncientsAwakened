@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Abyssal
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class AbyssalHakama : ModItem
+	public class AbyssalHakama : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

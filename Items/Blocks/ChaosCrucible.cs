@@ -6,7 +6,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class ChaosCrucible : ModItem
+    public class ChaosCrucible : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -26,7 +26,8 @@ also acts as all vanilla crafting stations");
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 13;
             item.useStyle = 1;
             item.consumable = true;
             item.value = 1000000;

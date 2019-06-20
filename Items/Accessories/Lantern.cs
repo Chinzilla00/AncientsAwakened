@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories
 {
-    public class Lantern : ModItem
+    public class Lantern : BaseAAItem
     {
         public override void SetDefaults()
         {

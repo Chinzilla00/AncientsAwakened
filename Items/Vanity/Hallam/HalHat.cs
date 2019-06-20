@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Hallam
 {
     [AutoloadEquip(EquipType.Head)]
-	public class HalHat : ModItem
+	public class HalHat : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

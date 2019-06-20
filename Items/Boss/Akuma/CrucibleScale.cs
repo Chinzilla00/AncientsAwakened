@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class CrucibleScale : ModItem
+    public class CrucibleScale : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

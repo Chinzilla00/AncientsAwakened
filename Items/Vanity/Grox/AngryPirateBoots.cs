@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Grox
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class AngryPirateBoots : ModItem
+	public class AngryPirateBoots : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

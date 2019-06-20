@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueNights
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TrueNightsGreaves : ModItem
+    public class TrueNightsGreaves : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

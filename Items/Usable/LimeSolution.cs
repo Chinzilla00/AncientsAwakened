@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class LimeSolution : ModItem
+    public class LimeSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

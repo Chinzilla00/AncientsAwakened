@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class LakeBox : ModItem
+    public class LakeBox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

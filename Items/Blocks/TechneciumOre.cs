@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class TechneciumOre : ModItem
+    public class TechneciumOre : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Grox
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class AngryPirateSails : ModItem
+    public class AngryPirateSails : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Retriever;
 using AAMod.Items.Boss.Grips;
+using System.Collections.Generic;
+using AAMod.Items;
 
 namespace AAMod
 {
@@ -26,6 +28,84 @@ namespace AAMod
             if (item.type == ItemID.LunarOre)
             {
                 item.createTile = mod.TileType("LuminiteOre");
+            }
+            if (item.modItem != null && item.modItem.mod.Name == mod.Name && (item.damage > 0 || item.accessory || item.defense > 0) && item.maxStack < 2)
+            {
+                if (item.rare == 0)
+                {
+                    item.value = Item.sellPrice(0, 0, 25, 0);
+                }
+                else if (item.rare == 1)
+                {
+                    item.value = Item.sellPrice(0, 0, 50, 0);
+                }
+                else if (item.rare == 2)
+                {
+                    item.value = Item.sellPrice(0, 0, 75, 0);
+                }
+                else if (item.rare == 3)
+                {
+                    item.value = Item.sellPrice(0, 1, 0, 0);
+                }
+                else if (item.rare == 4)
+                {
+                    item.value = Item.sellPrice(0, 2, 0, 0);
+                }
+                else if (item.rare == 5)
+                {
+                    item.value = Item.sellPrice(0, 4, 0, 0);
+                }
+                else if (item.rare == 6)
+                {
+                    item.value = Item.sellPrice(0, 6, 0, 0);
+                }
+                else if (item.rare == 7)
+                {
+                    item.value = Item.sellPrice(0, 8, 0, 0);
+                }
+                else if (item.rare == 8)
+                {
+                    item.value = Item.sellPrice(0, 10, 0, 0);
+                }
+                else if (item.rare == 9)
+                {
+                    item.value = Item.sellPrice(0, 15, 0, 0);
+                }
+                else if (item.rare == 10)
+                {
+                    item.value = Item.sellPrice(0, 20, 0, 0);
+                }
+                else if (item.rare == 11)
+                {
+                    item.value = Item.sellPrice(0, 25, 0, 0);
+                }
+            }
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.modItem != null && item.modItem.mod.Name == mod.Name && !item.expert)
+            {
+                BaseAAItem AAitem = (BaseAAItem)item.modItem;
+                if (AAitem.AARarity != 0)
+                {
+                    Color Rare;
+                    switch (AAitem.AARarity)
+                    {
+                        default: Rare = Color.White; break;		
+                        case 12: Rare = AAColor.Rarity12; break; //Mantimyte Tier
+                        case 13: Rare = AAColor.Rarity13; break; //Soulrift Tier
+                        case 14: Rare = AAColor.Rarity14; break; //Aersteel Tier	
+                        case 15: Rare = AAColor.Rarity15; break; //Aersteel Tier					
+                    }
+                    foreach (TooltipLine line2 in tooltips)
+                    {
+                        if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                        {
+                            line2.overrideColor = Rare;
+                        }
+                    }
+                }
             }
         }
 

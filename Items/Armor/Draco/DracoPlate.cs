@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Draco
 {
     [AutoloadEquip(EquipType.Body)]
-	public class DracoPlate : ModItem
+	public class DracoPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class Masamune : ModItem
-	{
+    public class Masamune : BaseAAItem
+    {
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Masamune");
@@ -30,7 +30,8 @@ namespace AAMod.Items.Boss.AH
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -73,17 +74,6 @@ namespace AAMod.Items.Boss.AH
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
         }
     }
 }

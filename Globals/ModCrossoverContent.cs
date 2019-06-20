@@ -94,7 +94,7 @@ namespace AAMod
         }
     }
 
-    public abstract class CrossoverItem : ModItem
+    public abstract class CrossoverItem : BaseAAItem
     {
         public string crossoverModName = "(N/A)";
 

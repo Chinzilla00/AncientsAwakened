@@ -6,7 +6,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class Lifescanner : ModItem
+    public class Lifescanner : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

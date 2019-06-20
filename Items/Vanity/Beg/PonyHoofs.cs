@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Beg
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class PonyHoofs : ModItem
+	public class PonyHoofs : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

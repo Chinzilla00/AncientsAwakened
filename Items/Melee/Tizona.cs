@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Tizona : ModItem
+    public class Tizona : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

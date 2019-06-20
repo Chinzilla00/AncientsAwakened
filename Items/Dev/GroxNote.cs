@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class GroxNote : ModItem
+    public class GroxNote : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

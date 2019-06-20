@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class MushroomBlock : ModItem
+    public class MushroomBlock : BaseAAItem
     {
         public override void SetDefaults()
         {

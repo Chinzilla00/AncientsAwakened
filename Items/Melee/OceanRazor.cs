@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class OceanRazor : ModItem
+    public class OceanRazor : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

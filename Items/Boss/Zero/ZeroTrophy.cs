@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroTrophy : ModItem
+    public class ZeroTrophy : BaseAAItem
 	{
         public static int type;
 

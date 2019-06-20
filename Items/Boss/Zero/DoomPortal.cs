@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class DoomPortal : ModItem
+    public class DoomPortal : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

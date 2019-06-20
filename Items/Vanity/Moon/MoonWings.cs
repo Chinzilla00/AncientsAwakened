@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Moon
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class MoonWings : ModItem
+    public class MoonWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

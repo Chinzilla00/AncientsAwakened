@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DoomGun : ModItem
+    public class DoomGun : BaseAAItem
     {
         
         public override void SetDefaults()

@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueDoomite
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueDoomiteBreastplate : ModItem
+	public class TrueDoomiteBreastplate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

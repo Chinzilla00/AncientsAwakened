@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class Toxifang : ModItem
+	public class Toxifang : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

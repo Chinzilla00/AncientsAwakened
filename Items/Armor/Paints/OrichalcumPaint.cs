@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class OrichalcumPaint : ModItem
+    public class OrichalcumPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

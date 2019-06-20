@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class DarkmatterChakram : ModItem
+    public class DarkmatterChakram : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

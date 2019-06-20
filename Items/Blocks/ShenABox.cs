@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class ShenABox : ModItem
+	public class ShenABox : BaseAAItem
 	{
         
 		public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class FreedomStar : ModItem
+    public class FreedomStar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using AAMod.Projectiles.Yamata;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class EternalTwilight : ModItem
+    public class EternalTwilight : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

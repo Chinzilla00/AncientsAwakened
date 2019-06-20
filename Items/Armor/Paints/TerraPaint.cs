@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TerraPaint : ModItem
+	public class TerraPaint : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

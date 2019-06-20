@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DoomiteHolobow : ModItem
+    public class DoomiteHolobow : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

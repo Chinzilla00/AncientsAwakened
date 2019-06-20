@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Madness
 {
     [AutoloadEquip(EquipType.Head)]
-    public class MadnessVisor : ModItem
+    public class MadnessVisor : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -19,7 +19,8 @@ namespace AAMod.Items.Armor.Madness
             item.height = 18;
             item.value = 20000;
             item.rare = 1;
-            item.defense = 5; //8
+            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.defense = 5;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

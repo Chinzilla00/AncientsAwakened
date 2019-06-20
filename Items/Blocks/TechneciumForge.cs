@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class TechneciumForge : ModItem
+    public class TechneciumForge : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Hydra
 {
-    public class HydraBag : ModItem
+    public class HydraBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

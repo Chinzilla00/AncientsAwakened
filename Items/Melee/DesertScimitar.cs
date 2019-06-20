@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAmod.Items.Melee
 {
-    public class DesertScimitar : ModItem
+    public class DesertScimitar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

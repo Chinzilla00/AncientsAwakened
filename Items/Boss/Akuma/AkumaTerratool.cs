@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaTerratool : ModItem
+    public class AkumaTerratool : BaseAAItem
     {
         public override void SetDefaults()
         {

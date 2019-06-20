@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class OrderBar : ModItem
+    public class OrderBar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

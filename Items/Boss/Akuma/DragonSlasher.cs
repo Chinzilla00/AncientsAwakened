@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class DragonSlasher : ModItem
+    public class DragonSlasher : BaseAAItem
     {
         
         public override void SetStaticDefaults()

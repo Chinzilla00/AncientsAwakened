@@ -101,10 +101,15 @@
     <Compile Include="Items\Accessories\Wings\TrueHallowedWings.cs" />
     <Compile Include="Items\Accessories\Wings\TrueNightsWings.cs" />
     <Compile Include="Items\Accessories\Wings\WingsofChaos.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedemiesPet.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsLeggingsA.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsMaskA.cs" />
+    <Compile Include="Items\Armor\Dev\Tied\TiedsSuitA.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
     <Compile Include="Items\Blocks\DepthsandHardened.cs" />
+    <Compile Include="Items\Blocks\IndigoIce.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
     <Compile Include="Items\Blocks\SABox.cs" />
     <Compile Include="Items\Blocks\ShenABox.cs" />
@@ -605,7 +610,6 @@
     <Compile Include="Items\Blocks\DaybreakIncinceriteOre.cs" />
     <Compile Include="Items\Blocks\Depthsand.cs" />
     <Compile Include="Items\Blocks\Depthsandstone.cs" />
-    <Compile Include="Items\Blocks\DepthIce.cs" />
     <Compile Include="Items\Blocks\Depthstone.cs" />
     <Compile Include="Items\Blocks\DoomsdayPlating.cs" />
     <Compile Include="Items\Blocks\Doomstone.cs" />
@@ -901,7 +905,7 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
-    <Compile Include="Items\Dev\ThunderLord.cs" />
+    <Compile Include="Items\Dev\Demise.cs" />
     <Compile Include="Items\Dev\DeceivingTruthEX.cs" />
     <Compile Include="Items\Dev\DeceivingTruth.cs" />
     <Compile Include="Items\Dev\MagicAcornEX.cs" />
@@ -947,6 +951,8 @@
     <Compile Include="Items\Dev\Prismeow.cs" />
     <Compile Include="Items\Dev\PoniumStaff.cs" />
     <Compile Include="Items\Dev\SkrallStaff.cs" />
+    <Compile Include="Items\Dev\ThunderLord.cs" />
+    <Compile Include="Items\Dev\ThunderLordEX.cs" />
     <Compile Include="Items\Dev\TimeTeller.cs" />
     <Compile Include="Items\Dev\TitanAxe.cs" />
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
@@ -1429,6 +1435,7 @@
     <Compile Include="Items\Tools\YtriumChainsaw.cs" />
     <Compile Include="Items\Tools\YtriumDrill.cs" />
     <Compile Include="Items\Tools\YtriumPickaxe.cs" />
+    <Compile Include="Items\Usable\CodeMagnetWeak.cs" />
     <Compile Include="Items\Usable\MyceliumSeeds.cs" />
     <Compile Include="Items\Usable\BrownSolution.cs" />
     <Compile Include="Items\Usable\FungicideSolution.cs" />
@@ -4008,6 +4015,14 @@
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverJacketA_Female.png" />
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA.png" />
     <Content Include="Items\Armor\Dev\Alphakip\Shiny\SFishDiverMaskA_Head.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorPantsA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorPantsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Body.png" />
+    <Content Include="Items\Armor\Dev\Dallin\DoctorShirtA_Female.png" />
+    <Content Include="Items\Armor\Dev\Dallin\FezA.png" />
+    <Content Include="Items\Armor\Dev\Dallin\FezA_Head.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBeeMinion.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonBootsA_Legs.png" />
@@ -4018,6 +4033,15 @@
     <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Arms.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonRobeA_Body.png" />
     <Content Include="Items\Armor\Dev\Moon\MoonRobeAFemale.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedemiesPet.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsLeggingsA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsLeggingsA_Legs.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsMaskA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsMaskA_Head.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_Arms.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_Body.png" />
+    <Content Include="Items\Armor\Dev\Tied\TiedsSuitA_FemaleBody.png" />
     <Content Include="Items\Armor\Djinn\DjinnLegs.png" />
     <Content Include="Items\Armor\Djinn\DjinnTurban.png" />
     <Content Include="Items\Armor\DoomiteU\DoomiteUGreaves.png" />
@@ -4471,6 +4495,7 @@
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\Banners\Banners.png" />
     <Content Include="Items\Blocks\BogwoodCampfire.png" />
+    <Content Include="Items\Blocks\IndigoIce.png" />
     <Content Include="Items\Blocks\OroborosCampfire.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
     <Content Include="Items\Blocks\RajahBox.png" />
@@ -4588,6 +4613,7 @@
     <Content Include="Items\Dev\SockPuppet.png" />
     <Content Include="Items\Dev\SockStaff.png" />
     <Content Include="Items\Dev\ThunderLord.png" />
+    <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
@@ -4698,6 +4724,7 @@
     <Content Include="Items\Usable\BrownSolution.png" />
     <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\ChaosOverloader.png" />
+    <Content Include="Items\Usable\CodeMagnetWeak.png" />
     <Content Include="Items\Usable\DeepGreenSolution.png" />
     <Content Include="Items\Usable\FungicideSolution.png" />
     <Content Include="Items\Usable\LimeSolution.png" />
@@ -4711,8 +4738,8 @@
     <Content Include="Items\Usable\RiftMirror.png" />
     <Content Include="Items\Usable\Suncaller.png" />
     <Content Include="Items\Usable\SupremeRiftMirror.png" />
-    <Content Include="Items\Usable\SurfaceCrate.png" />
     <Content Include="Items\Usable\Timecaller.png" />
+    <Content Include="Items\Usable\VoidBomb.png" />
     <Content Include="Items\Usable\WhiteSolution.png" />
     <Content Include="Items\Usable\YellowSolution.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
@@ -5046,7 +5073,6 @@
     <Content Include="Items\Blocks\DarkmatterOre.png" />
     <Content Include="Items\Blocks\Darkmud.png" />
     <Content Include="Items\Blocks\DaybreakIncineriteOre.png" />
-    <Content Include="Items\Blocks\DepthIce.png" />
     <Content Include="Items\Blocks\Depthsand.png" />
     <Content Include="Items\Blocks\DepthsandHardened.png" />
     <Content Include="Items\Blocks\Depthsandstone.png" />
@@ -5418,7 +5444,6 @@
     <Content Include="Items\Dev\TimeTeller.png" />
     <Content Include="Items\Dev\TitanAxe.png" />
     <Content Include="Items\Dev\TitanAxeEX.png" />
-    <Content Include="Items\Dev\Umbra.png" />
     <Content Include="Items\Dev\UmbreonSP.png" />
     <Content Include="Items\Dev\UmbreonSPEX.png" />
     <Content Include="Items\Dyes\AbyssalDye.png" />
@@ -6647,7 +6672,6 @@
     <Content Include="Projectiles\IllumantBall_Chain.png" />
     <Content Include="Projectiles\Incineration.png" />
     <Content Include="Projectiles\IndigoSolution.png" />
-    <Content Include="Projectiles\InfernoProj.png" />
     <Content Include="Projectiles\Iron_Kunai_Pro.png" />
     <Content Include="Projectiles\JungleReaperP.png" />
     <Content Include="Projectiles\Lead_Kunai_Pro.png" />
@@ -6659,7 +6683,6 @@
     <Content Include="Projectiles\MagicPro.png" />
     <Content Include="Projectiles\Magma.png" />
     <Content Include="Projectiles\ManaShot.png" />
-    <Content Include="Projectiles\MireProj.png" />
     <Content Include="Projectiles\MLP.png" />
     <Content Include="Projectiles\MobianBuster.png" />
     <Content Include="Projectiles\MobianShot.png" />

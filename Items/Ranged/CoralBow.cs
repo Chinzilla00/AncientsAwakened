@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class CoralBow : ModItem
+    public class CoralBow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

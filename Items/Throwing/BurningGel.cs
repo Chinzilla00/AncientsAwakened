@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class BurningGel : ModItem
+	public class BurningGel : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

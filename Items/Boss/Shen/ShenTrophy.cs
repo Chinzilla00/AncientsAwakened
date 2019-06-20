@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ShenTrophy : ModItem
+    public class ShenTrophy : BaseAAItem
 	{
         public static int type;
         

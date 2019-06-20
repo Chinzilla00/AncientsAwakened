@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Blocks
 {
-    public class StarBox : ModItem
+    public class StarBox : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -2,6 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
@@ -9,8 +10,8 @@ namespace AAMod.Items.Dev
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Thunder Lord");
-            Tooltip.SetDefault(@"Fires off Thundershots
+            DisplayName.SetDefault("Storm Rifle");
+            Tooltip.SetDefault(@"Fires off static shots
 'NUM'
 -BlazenBreaker");
         }
@@ -22,7 +23,7 @@ namespace AAMod.Items.Dev
             {
                 position += muzzleOffset;
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.ThunderBullet>(), damage, knockBack, Main.myPlayer, 0, 0);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.ThunderSpark>(), damage, knockBack, Main.myPlayer, 0, 0);
             return false;
         }
 
@@ -36,11 +37,11 @@ namespace AAMod.Items.Dev
             item.useTime = 30; 
             item.useAnimation = 30; 
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType("ThunderBullet");
+            item.shoot = mod.ProjectileType("ThunderSpark");
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
-            item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Thunderlord");
+            item.UseSound = SoundID.Item92;
             item.autoReuse = false; 
             item.shootSpeed = 9f;
             item.useAmmo = AmmoID.Bullet;

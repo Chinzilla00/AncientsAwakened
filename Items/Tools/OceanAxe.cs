@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class OceanAxe : ModItem
+    public class OceanAxe : BaseAAItem
     {
         public override void SetDefaults()
         {

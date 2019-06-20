@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class MagicAcornEX : ModItem
+    public class MagicAcornEX : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

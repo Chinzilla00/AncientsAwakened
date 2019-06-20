@@ -1,6 +1,6 @@
 namespace AAMod.Items.Boss.Zero
 {
-    /*public class ZeroStar : ModItem
+    /*public class ZeroStar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

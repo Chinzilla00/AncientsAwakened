@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Draco
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DracoLeggings : ModItem
+	public class DracoLeggings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.BossSummons
 {
-    public class ChaosRune : ModItem
+    public class ChaosRune : BaseAAItem
     {
         
         public override void SetStaticDefaults()

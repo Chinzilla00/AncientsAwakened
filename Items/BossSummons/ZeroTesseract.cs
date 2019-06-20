@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
-    public class ZeroTesseract : ModItem
+    public class ZeroTesseract : BaseAAItem
     {
         
         public override void SetStaticDefaults()

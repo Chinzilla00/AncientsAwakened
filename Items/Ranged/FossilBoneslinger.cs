@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class FossilBoneslinger : ModItem
+    public class FossilBoneslinger : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

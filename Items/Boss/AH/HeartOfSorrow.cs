@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HeartOfSorrow: ModItem
+    public class HeartOfSorrow: BaseAAItem
     {
         public override void SetStaticDefaults()
         {

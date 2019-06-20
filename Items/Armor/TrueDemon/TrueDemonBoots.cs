@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueDemon
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueDemonBoots : ModItem
+	public class TrueDemonBoots : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

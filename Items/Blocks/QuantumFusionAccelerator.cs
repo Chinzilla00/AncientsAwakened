@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class QuantumFusionAccelerator : ModItem
+    public class QuantumFusionAccelerator : BaseAAItem
     {
         
         public override void SetStaticDefaults()

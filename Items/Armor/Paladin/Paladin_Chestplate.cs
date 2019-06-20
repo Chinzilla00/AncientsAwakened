@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paladin
 {
     [AutoloadEquip(EquipType.Body)]
-	public class Paladin_Chestplate : ModItem
+	public class Paladin_Chestplate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

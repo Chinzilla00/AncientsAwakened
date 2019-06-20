@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class TechneciumHamaxe : ModItem
+    public class TechneciumHamaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

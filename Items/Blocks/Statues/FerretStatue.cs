@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class FerretStatue : ModItem
+	public class FerretStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

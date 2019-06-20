@@ -5,7 +5,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class ChaosYariEX : ModItem
+    public class ChaosYariEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -6,7 +6,7 @@ namespace AAMod.Items.Boss.EFish
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class EFishWings : ModItem
+    public class EFishWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

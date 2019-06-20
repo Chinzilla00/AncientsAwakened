@@ -9,7 +9,7 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class DragonFang : ModItem
+    public class DragonFang : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

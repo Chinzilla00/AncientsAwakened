@@ -9,7 +9,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Skyfall : ModItem
+    public class Skyfall : BaseAAItem
     {
         
         public override void SetStaticDefaults()

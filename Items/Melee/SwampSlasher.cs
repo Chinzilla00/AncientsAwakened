@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class SwampSlasher : ModItem
+	public class SwampSlasher : BaseAAItem
 	{
         static int shoot = 0;
 		public override void SetStaticDefaults()

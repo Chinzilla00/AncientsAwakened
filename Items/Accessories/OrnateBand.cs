@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class OrnateBand : ModItem
+    public class OrnateBand : BaseAAItem
     {
         public override void SetDefaults()
         {

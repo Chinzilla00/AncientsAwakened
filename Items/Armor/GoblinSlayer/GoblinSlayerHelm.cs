@@ -7,7 +7,7 @@ using System;
 namespace AAMod.Items.Armor.GoblinSlayer
 {
     [AutoloadEquip(EquipType.Head)]
-	public class GoblinSlayerHelm : ModItem
+	public class GoblinSlayerHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Everleaf : ModItem
+    public class Everleaf : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

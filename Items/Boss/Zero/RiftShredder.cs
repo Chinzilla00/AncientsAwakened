@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class RiftShredder : ModItem
+    public class RiftShredder : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueNights
 {
     [AutoloadEquip(EquipType.Body)]
-    public class TrueNightsPlate : ModItem
+    public class TrueNightsPlate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

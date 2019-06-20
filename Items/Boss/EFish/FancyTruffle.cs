@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.EFish
 {
-    public class FancyTruffle : ModItem
+    public class FancyTruffle : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Pyrosphere : ModItem
+	public class Pyrosphere : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

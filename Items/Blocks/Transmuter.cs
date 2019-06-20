@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class Transmuter : ModItem
+    public class Transmuter : BaseAAItem
     {
         
         public override void SetStaticDefaults()

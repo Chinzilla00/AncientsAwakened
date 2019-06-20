@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Equinox
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class RadiantStar : ModItem
+    public class RadiantStar : BaseAAItem
     {
         public override void SetDefaults()
         {

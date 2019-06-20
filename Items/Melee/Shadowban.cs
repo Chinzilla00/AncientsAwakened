@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Shadowban : ModItem
+    public class Shadowban : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

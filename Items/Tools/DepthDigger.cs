@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class DepthDigger : ModItem
+    public class DepthDigger : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

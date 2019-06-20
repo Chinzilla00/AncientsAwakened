@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class Gong : ModItem
+    public class Gong : BaseAAItem
     {
         public override void SetDefaults()
         {

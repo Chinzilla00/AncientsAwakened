@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Oroboros
 {
     [AutoloadEquip(EquipType.Head)]
-    public class OroborosHelmet : ModItem
+    public class OroborosHelmet : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

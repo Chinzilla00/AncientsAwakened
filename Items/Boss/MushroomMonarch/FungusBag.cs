@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.MushroomMonarch
 {
-    public class FungusBag : ModItem
+    public class FungusBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

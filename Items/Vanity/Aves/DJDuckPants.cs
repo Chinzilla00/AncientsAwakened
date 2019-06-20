@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Aves
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DJDuckPants : ModItem
+	public class DJDuckPants : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

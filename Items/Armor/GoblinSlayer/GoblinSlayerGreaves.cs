@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.GoblinSlayer
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class GoblinSlayerGreaves : ModItem
+	public class GoblinSlayerGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

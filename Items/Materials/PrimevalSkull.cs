@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class PrimevalSkull : ModItem
+    public class PrimevalSkull : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

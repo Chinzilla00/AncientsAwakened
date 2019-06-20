@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class DesertMana : ModItem
+    public class DesertMana : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

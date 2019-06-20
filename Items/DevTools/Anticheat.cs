@@ -6,7 +6,7 @@ using BaseMod;
 
 namespace AAMod.Items.DevTools
 {
-    public class Anticheat : ModItem
+    public class Anticheat : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

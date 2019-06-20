@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroTerratool_Axe : ModItem
+    public class ZeroTerratool_Axe : BaseAAItem
     {
         public override void SetDefaults()
         {

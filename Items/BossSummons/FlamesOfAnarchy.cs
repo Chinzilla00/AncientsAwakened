@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Items.BossSummons
 {
-    public class FlamesOfAnarchy : ModItem
+    public class FlamesOfAnarchy : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Tools
 {
-	public class DoomiteMiningLaser : ModItem
+	public class DoomiteMiningLaser : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

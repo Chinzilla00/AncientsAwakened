@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class MagicSword : ModItem
+    public class MagicSword : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

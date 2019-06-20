@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Tools
 {
-    public class Excavator : ModItem
+    public class Excavator : BaseAAItem
     {
         public override void SetDefaults()
         {

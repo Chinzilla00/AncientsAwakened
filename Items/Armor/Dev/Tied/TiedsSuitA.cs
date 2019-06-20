@@ -6,7 +6,7 @@ using Terraria;
 namespace AAMod.Items.Armor.Dev.Tied
 {
     [AutoloadEquip(EquipType.Body)]
-	class TiedsSuitA : ModItem
+	class TiedsSuitA : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    class RottedShingles : ModItem
+    class RottedShingles : BaseAAItem
     {
         public override void SetDefaults()
         {

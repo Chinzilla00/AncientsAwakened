@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class M79Round : ModItem
+    public class M79Round : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

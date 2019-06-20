@@ -7,7 +7,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class OroborosChest : ModItem
+    public class OroborosChest : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

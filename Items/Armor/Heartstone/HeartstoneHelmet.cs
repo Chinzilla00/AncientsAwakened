@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Heartstone
 {
     [AutoloadEquip(EquipType.Head)]
-    public class HeartstoneHelmet : ModItem
+    public class HeartstoneHelmet : BaseAAItem
     {
         public override void SetDefaults()
         {

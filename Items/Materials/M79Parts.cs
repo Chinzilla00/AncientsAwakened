@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class M79Parts : ModItem
+    public class M79Parts : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

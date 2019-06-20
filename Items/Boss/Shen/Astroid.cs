@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Astroid : ModItem
+    public class Astroid : BaseAAItem
     {
         
         public override void SetStaticDefaults()

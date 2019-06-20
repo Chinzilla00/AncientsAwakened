@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Dracokarp : ModItem
+    public class Dracokarp : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

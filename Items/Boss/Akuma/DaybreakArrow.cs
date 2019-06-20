@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-	public class DaybreakArrow : ModItem
+	public class DaybreakArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-	public class FulguritePaint : ModItem
+	public class FulguritePaint : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

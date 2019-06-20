@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class MobianBuster : ModItem
+    public class MobianBuster : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

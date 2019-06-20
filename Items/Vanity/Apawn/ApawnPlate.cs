@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Apawn
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ApawnPlate : ModItem
+    public class ApawnPlate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

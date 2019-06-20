@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class HaphestusForge : ModItem
+    public class HaphestusForge : BaseAAItem
     {
         
         public override void SetStaticDefaults()

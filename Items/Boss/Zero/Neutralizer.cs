@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class Neutralizer : ModItem
+    public class Neutralizer : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

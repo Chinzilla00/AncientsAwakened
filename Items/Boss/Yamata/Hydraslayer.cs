@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata   //where is located
 {
-    public class Hydraslayer : ModItem
+    public class Hydraslayer : BaseAAItem
     {
         
         public override void SetStaticDefaults()

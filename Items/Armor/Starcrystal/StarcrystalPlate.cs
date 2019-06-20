@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Starcrystal
 {
     [AutoloadEquip(EquipType.Body)]
-    public class StarcrystalPlate : ModItem
+    public class StarcrystalPlate : BaseAAItem
     {
         public override void SetDefaults()
         {

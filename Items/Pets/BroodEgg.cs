@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-    public class BroodEgg : ModItem
+    public class BroodEgg : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

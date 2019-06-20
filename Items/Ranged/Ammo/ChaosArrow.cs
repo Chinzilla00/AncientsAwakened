@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class ChaosArrow : ModItem
+    public class ChaosArrow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

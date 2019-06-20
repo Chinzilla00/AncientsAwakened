@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ShenATrophy : ModItem
+    public class ShenATrophy : BaseAAItem
 	{
         public static int type;
         

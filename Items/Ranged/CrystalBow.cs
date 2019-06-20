@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class CrystalBow : ModItem
+    public class CrystalBow : BaseAAItem
     {
 
         public override void SetDefaults()

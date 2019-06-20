@@ -6,7 +6,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class RajahBox : ModItem
+    public class RajahBox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

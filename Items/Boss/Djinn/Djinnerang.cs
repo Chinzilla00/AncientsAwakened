@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class Djinnerang : ModItem
+    public class Djinnerang : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

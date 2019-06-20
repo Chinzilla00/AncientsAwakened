@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaTrophy : ModItem
+    public class AkumaTrophy : BaseAAItem
 	{
         public static int type;
         

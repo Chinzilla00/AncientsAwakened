@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class DragonsBreath : ModItem
+    public class DragonsBreath : BaseAAItem
     {
         public override void SetDefaults()
         {

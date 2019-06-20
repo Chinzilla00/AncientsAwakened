@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Crawblade : ModItem
+    public class Crawblade : BaseAAItem
     {
         public override void SetDefaults()
         {

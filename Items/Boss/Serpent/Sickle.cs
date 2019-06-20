@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class Sickle : ModItem
+    public class Sickle : BaseAAItem
     {
         public override void SetDefaults()
         {

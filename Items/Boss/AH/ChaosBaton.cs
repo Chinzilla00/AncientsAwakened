@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class ChaosBaton : ModItem
+    public class ChaosBaton : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

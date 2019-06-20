@@ -6,7 +6,7 @@ using Terraria;
 namespace AAMod.Items.Armor.Dev.Moon
 {
     [AutoloadEquip(EquipType.Head)]
-	public class MoonHoodA : ModItem
+	public class MoonHoodA : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

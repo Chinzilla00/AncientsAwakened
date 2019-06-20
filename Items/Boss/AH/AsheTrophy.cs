@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class AsheTrophy : ModItem
+    public class AsheTrophy : BaseAAItem
 	{
         public static int type;
         

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DragonGlove : ModItem
+    public class DragonGlove : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

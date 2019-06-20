@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class CharlieStatue : ModItem
+	public class CharlieStatue : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

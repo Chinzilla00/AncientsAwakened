@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class HydraChow : ModItem
+    public class HydraChow : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

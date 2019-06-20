@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class TheSquirter : ModItem
+    public class TheSquirter : BaseAAItem
     {
 
         public override void SetDefaults()

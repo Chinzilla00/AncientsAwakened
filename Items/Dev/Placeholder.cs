@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class Placeholder : ModItem
+    public class Placeholder : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

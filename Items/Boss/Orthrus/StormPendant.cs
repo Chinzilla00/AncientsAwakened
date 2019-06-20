@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Orthrus
 {
     [AutoloadEquip(EquipType.Neck)]
-    public class StormPendant : ModItem
+    public class StormPendant : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

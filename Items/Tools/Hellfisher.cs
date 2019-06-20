@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Hellfisher : ModItem
+    public class Hellfisher : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

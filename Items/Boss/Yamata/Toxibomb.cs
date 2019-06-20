@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
-    public class Toxibomb : ModItem
+    public class Toxibomb : BaseAAItem
     {
         public override void SetDefaults()
         {

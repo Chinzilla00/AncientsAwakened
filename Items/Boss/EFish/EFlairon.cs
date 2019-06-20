@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.EFish
 {
-    public class EFlairon : ModItem
+    public class EFlairon : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

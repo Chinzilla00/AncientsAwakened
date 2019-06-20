@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-	public class ChlorophytePaint : ModItem
+	public class ChlorophytePaint : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

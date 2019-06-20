@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    class OroborosWood : ModItem
+    class OroborosWood : BaseAAItem
     {
         public override void SetDefaults()
         {

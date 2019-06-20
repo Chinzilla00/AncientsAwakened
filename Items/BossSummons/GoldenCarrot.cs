@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons
 {
-    public class GoldenCarrot : ModItem
+    public class GoldenCarrot : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class DraconicRipper : ModItem
+    public class DraconicRipper : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DynaskullJavelin : ModItem
+    public class DynaskullJavelin : BaseAAItem
     {
 
         

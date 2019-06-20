@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class FuryFlame : ModItem
+    public class FuryFlame : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

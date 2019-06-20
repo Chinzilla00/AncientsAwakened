@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.EFish
 {
-	public class UltibladeTyphoon : ModItem
+	public class UltibladeTyphoon : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

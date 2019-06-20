@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Hallam
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class HalTrousers : ModItem
+	public class HalTrousers : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

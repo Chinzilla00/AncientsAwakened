@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Face, EquipType.Wings)]
-    public class RealityStone : ModItem
+    public class RealityStone : BaseAAItem
     {
         
 

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class ReignOfFireEX : ModItem
+    public class ReignOfFireEX : BaseAAItem
     {
         
         public override void SetStaticDefaults()

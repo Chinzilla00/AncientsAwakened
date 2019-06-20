@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-    public class DiscordianInfernoDye : ModItem
+    public class DiscordianInfernoDye : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

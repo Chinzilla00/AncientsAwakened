@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class EventideAbyssium : ModItem
+    public class EventideAbyssium : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

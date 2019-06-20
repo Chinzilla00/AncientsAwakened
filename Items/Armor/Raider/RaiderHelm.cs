@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Raider
 {
     [AutoloadEquip(EquipType.Head)]
-	public class RaiderHelm : ModItem
+	public class RaiderHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

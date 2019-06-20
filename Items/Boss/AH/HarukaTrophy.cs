@@ -2,8 +2,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HarukaTrophy : ModItem
-	{
+    public class HarukaTrophy : BaseAAItem
+    {
         public static int type;
         
         public override void SetStaticDefaults()
@@ -27,16 +27,5 @@ namespace AAMod.Items.Boss.AH
 			item.rare = 1;
 			item.createTile = mod.TileType("HarukaTrophy");
 		}
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
-        }
     }
 }

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class SingularityCannon : ModItem
+    public class SingularityCannon : BaseAAItem
     {
 
         public override void SetDefaults()

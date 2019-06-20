@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 namespace AAMod.Items.Boss.Raider
 {
     [AutoloadEquip(EquipType.Back, EquipType.Front)]
-    public class HoloCape : ModItem
+    public class HoloCape : BaseAAItem
     {
 
         

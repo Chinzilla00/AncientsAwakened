@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Gibs
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class GibsPlate : ModItem
+    public class GibsPlate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

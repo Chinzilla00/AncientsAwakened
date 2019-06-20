@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class AbyssalArc : ModItem
+    public class AbyssalArc : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

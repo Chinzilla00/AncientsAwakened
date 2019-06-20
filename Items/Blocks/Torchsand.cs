@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class Torchsand : ModItem
+    public class Torchsand : BaseAAItem
     {
         public override void SetDefaults()
         {

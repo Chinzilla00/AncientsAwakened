@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DepthsandHardened : ModItem
+    public class DepthsandHardened : BaseAAItem
     {
         public override void SetDefaults()
         {

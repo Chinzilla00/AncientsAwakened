@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Tails
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TailsLegs : ModItem
+    public class TailsLegs : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Flairdra : ModItem
+    public class Flairdra : BaseAAItem
     {
         
         public override void SetStaticDefaults()

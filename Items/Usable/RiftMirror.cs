@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class RiftMirror : ModItem
+    public class RiftMirror : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

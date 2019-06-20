@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class CobaltPaint : ModItem
+    public class CobaltPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Equinox
 {
-    public class Equinox : ModItem
+    public class Equinox : BaseAAItem
     {
 
         

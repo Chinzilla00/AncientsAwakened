@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class EnchantedWarhammer : ModItem
+    public class EnchantedWarhammer : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class HydraStaff : ModItem
+    public class HydraStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

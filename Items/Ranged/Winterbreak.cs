@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Winterbreak : ModItem
+    public class Winterbreak : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

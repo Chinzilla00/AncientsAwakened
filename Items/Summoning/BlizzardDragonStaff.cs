@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class BlizzardDragonStaff : ModItem
+    public class BlizzardDragonStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

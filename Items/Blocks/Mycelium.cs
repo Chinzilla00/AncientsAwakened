@@ -2,7 +2,7 @@
 
 namespace AAMod.Items.Blocks
 {
-    class Mycelium : ModItem
+    class Mycelium : BaseAAItem
     {
         public override void SetDefaults()
         {

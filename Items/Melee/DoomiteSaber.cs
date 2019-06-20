@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DoomiteSaber : ModItem
+    public class DoomiteSaber : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

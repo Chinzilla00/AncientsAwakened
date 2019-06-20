@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Grips
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class ClawOfChaos : ModItem
+    public class ClawOfChaos : BaseAAItem
     {
         public override void SetDefaults()
         {

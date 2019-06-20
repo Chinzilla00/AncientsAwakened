@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DaybreakIncineriteOre : ModItem
+    public class DaybreakIncineriteOre : BaseAAItem
     {
         public override void SetDefaults()
         {

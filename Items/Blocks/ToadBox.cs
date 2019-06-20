@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class ToadBox : ModItem
+    public class ToadBox : BaseAAItem
 	{
             
 		public override void SetStaticDefaults()

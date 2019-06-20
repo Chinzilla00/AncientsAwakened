@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Fulgurite
 {
     [AutoloadEquip(EquipType.Head)]
-	public class FulguriteHelmet : ModItem
+	public class FulguriteHelmet : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Technecium
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TechneciumGreaves : ModItem
+	public class TechneciumGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

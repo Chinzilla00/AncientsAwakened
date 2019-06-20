@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class YtriumPickaxe : ModItem
+    public class YtriumPickaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

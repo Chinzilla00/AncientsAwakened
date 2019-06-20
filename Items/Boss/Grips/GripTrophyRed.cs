@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Grips
 {
-	public class GripTrophyRed : ModItem
+	public class GripTrophyRed : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

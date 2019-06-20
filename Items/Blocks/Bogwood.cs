@@ -2,7 +2,7 @@
 
 namespace AAMod.Items.Blocks
 {
-    class Bogwood : ModItem
+    class Bogwood : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class PerfectShadowDrill : ModItem
+    public class PerfectShadowDrill : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

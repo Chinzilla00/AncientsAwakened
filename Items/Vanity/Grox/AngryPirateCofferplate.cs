@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Grox
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AngryPirateCofferplate : ModItem
+    public class AngryPirateCofferplate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class EventideAbyssiumOre : ModItem
+    public class EventideAbyssiumOre : BaseAAItem
     {
         public override void SetDefaults()
         {

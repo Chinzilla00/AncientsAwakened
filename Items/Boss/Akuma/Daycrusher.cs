@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class Daycrusher : ModItem
+    public class Daycrusher : BaseAAItem
     {
         
         public override void SetStaticDefaults()

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Mushrooms
 {
-    public class Rainbow : ModItem
+    public class Rainbow : BaseAAItem
     {
         
         public override void SetStaticDefaults()

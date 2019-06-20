@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories
 {
-    public class AshProofVest2 : ModItem
+    public class AshProofVest2 : BaseAAItem
     {
         public override void SetDefaults()
         {

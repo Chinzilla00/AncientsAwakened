@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Mounts
 {
-	public class MonochromeApple : ModItem
+	public class MonochromeApple : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Timesplitter : ModItem
+    public class Timesplitter : BaseAAItem
     {
         
         public override void SetStaticDefaults()

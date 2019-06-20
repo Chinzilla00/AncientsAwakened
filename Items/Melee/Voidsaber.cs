@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Voidsaber : ModItem
+	public class Voidsaber : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

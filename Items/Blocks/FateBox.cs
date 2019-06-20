@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class FateBox : ModItem
+    public class FateBox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

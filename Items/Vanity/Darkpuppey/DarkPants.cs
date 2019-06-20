@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Darkpuppey
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DarkPants : ModItem
+	public class DarkPants : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

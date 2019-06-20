@@ -7,7 +7,7 @@ using Terraria;
 
 namespace AAMod.Items.Dyes
 {
-    public class DoomsdayDye : ModItem
+    public class DoomsdayDye : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

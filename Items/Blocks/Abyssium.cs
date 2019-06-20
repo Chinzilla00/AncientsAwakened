@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class Abyssium : ModItem
+    public class Abyssium : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -16,9 +16,9 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.rare = 1;
-            item.value = 4000;
+            item.value = Terraria.Item.sellPrice(0, 0, 8, 0);
             item.consumable = true;
-            item.createTile = mod.TileType("AbyssiumOre"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("AbyssiumOre");
         }
 
         public override void SetStaticDefaults()

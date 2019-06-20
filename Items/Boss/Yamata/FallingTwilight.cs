@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class FallingTwilight : ModItem
+    public class FallingTwilight : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

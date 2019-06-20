@@ -1,6 +1,6 @@
 namespace AAMod.Items.Boss.Djinn   //where is located
 {
-    /*public class Sandstorm : ModItem
+    /*public class Sandstorm : BaseAAItem
     {
 
         public override void SetStaticDefaults()

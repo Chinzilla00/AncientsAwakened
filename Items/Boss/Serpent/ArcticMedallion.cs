@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class ArcticMedallion : ModItem
+    public class ArcticMedallion : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

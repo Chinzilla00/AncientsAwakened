@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Toad
 {
-	public class ToadBag : ModItem
+	public class ToadBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class OceanWhaler : ModItem
+    public class OceanWhaler : BaseAAItem
     {
 
         public override void SetDefaults()

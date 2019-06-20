@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class CyberneticShroom : ModItem
+    public class CyberneticShroom : BaseAAItem
     {
 
         public override void SetStaticDefaults()

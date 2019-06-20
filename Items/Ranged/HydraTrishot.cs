@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class HydraTrishot : ModItem
+    public class HydraTrishot : BaseAAItem
     {
 
         public override void SetDefaults()

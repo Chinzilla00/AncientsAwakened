@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class CarnalCrusher : ModItem
+    public class CarnalCrusher : BaseAAItem
     {
         public override void SetDefaults()
         {

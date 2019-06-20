@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class PagodaBox : ModItem
+    public class PagodaBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

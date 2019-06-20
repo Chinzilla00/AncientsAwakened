@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class NovaFlare : ModItem
+    public class NovaFlare : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

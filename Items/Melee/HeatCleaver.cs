@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class HeatCleaver : ModItem
+    public class HeatCleaver : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

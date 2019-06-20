@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    class RottedDynastyWood : ModItem
+    class RottedDynastyWood : BaseAAItem
     {
         public override void SetDefaults()
         {

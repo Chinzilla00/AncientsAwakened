@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class MadnessBow : ModItem
+    public class MadnessBow : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

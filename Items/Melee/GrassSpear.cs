@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class GrassSpear : ModItem
+    public class GrassSpear : BaseAAItem
     {
         public override void SetDefaults()
         {

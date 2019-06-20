@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Mushrooms
 {
-    public class Red : ModItem
+    public class Red : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

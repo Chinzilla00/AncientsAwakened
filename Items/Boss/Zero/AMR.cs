@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class AMR : ModItem
+    public class AMR : BaseAAItem
     {
         
         public override void SetStaticDefaults()

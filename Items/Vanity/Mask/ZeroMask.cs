@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class ZeroMask : ModItem
+	public class ZeroMask : BaseAAItem
 	{
         public static int type;
 

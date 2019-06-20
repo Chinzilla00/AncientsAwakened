@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class Energy_Cell : ModItem
+    public class Energy_Cell : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

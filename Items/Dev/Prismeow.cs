@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class Prismeow : ModItem
+    public class Prismeow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

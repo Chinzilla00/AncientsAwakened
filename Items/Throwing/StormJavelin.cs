@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class StormJavelin : ModItem
+    public class StormJavelin : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

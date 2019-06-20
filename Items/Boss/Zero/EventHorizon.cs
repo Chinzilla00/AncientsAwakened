@@ -8,7 +8,7 @@ using System;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class EventHorizon : ModItem
+    public class EventHorizon : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

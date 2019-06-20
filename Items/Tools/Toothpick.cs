@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Toothpick : ModItem
+    public class Toothpick : BaseAAItem
     {
         public override void SetDefaults()
         {
