@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
-            npc.damage = 80;
+            npc.damage = 200;
             npc.alpha = 255;
 
         }

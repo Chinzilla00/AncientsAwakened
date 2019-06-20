@@ -101,6 +101,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
+        }
+
         public override void AI()
         {
             int attackpower = isAwakened ? 130 : 100;

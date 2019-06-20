@@ -41,24 +41,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
         }
 
-        public int body = -1;
-
-        public override bool PreAI()
-        {
-            if (body == -1)
-            {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("YamataA"), -1, null);
-                if (npcID >= 0) body = npcID;
-            }
-            NPC Yamata = Main.npc[body];
-            if (Yamata.life <= Yamata.lifeMax / 5)
-            {
-                int musicType = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
-            }
-            return true;
-        }
-
         public override void PostAI()
         {
             Player player = Main.player[npc.target];

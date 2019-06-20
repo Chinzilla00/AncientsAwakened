@@ -2378,6 +2378,7 @@
     <Compile Include="Tiles\Crates\VoidCrate.cs" />
     <Compile Include="Tiles\BiomePrism.cs" />
     <Compile Include="Tiles\DepthMoss.cs" />
+    <Compile Include="Tiles\IndigoIce.cs" />
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
@@ -6979,7 +6980,7 @@
     <Content Include="Tiles\FungusBox.png" />
     <Content Include="Tiles\GlowingMushiumBar.png" />
     <Content Include="Tiles\Hotshroom.png" />
-    <Content Include="Tiles\InfernalAsh.png" />
+    <Content Include="Tiles\IndigoIce.png" />
     <Content Include="Tiles\InfernoFoliage.png" />
     <Content Include="Tiles\InfernoFoliage1.png" />
     <Content Include="Tiles\InfernoFoliage2.png" />
