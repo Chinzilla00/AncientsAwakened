@@ -19,13 +19,13 @@ namespace AAMod.Items.Boss.Akuma
             item.tileBoost += 20;
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 20, 0, 0);
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
             item.pick = 300;
-
         }
 
         public override void SetStaticDefaults()
@@ -38,19 +38,6 @@ namespace AAMod.Items.Boss.Akuma
         {
             return true;
         }
-
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
-        }
-
 
         public override void RightClick(Player player)
         {

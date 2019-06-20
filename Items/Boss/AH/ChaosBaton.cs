@@ -29,7 +29,8 @@ namespace AAMod.Items.Boss.AH
             item.noMelee = true;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.knockBack = 5f;
-            item.rare = 3;
+            item.rare = 9;
+            AARarity = 12;
             item.summon = true;
             item.mana = 5;
             item.noUseGraphic = true;
@@ -55,17 +56,6 @@ namespace AAMod.Items.Boss.AH
             vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
             Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, shootMe, damage, 5, item.owner, 0f, 0f);
             return true;
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
         }
 
         public override void AddRecipes()

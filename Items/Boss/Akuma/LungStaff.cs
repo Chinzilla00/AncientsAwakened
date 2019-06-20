@@ -32,7 +32,8 @@ namespace AAMod.Items.Boss.Akuma
             item.buffType = mod.BuffType("LungMinion");
             item.buffTime = 3600;
             item.summon = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.value = Item.sellPrice(0, 30, 0, 0);
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.

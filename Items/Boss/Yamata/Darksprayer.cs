@@ -32,7 +32,7 @@ Inflicts Moonrazed");
             item.autoReuse = true;   //if it's capable of autoswing.
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Moonblow");
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override Vector2? HoldoutOffset()

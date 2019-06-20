@@ -34,7 +34,8 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2f;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.ranged = true;
         }
 

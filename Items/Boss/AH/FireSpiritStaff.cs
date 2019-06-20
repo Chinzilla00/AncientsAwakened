@@ -20,8 +20,9 @@ namespace AAMod.Items.Boss.AH
             item.width = 45;
             item.height = 18;
             item.maxStack = 1;
-            item.rare = 4;
-            item.value = BaseMod.BaseUtility.CalcValue(0, 20, 0, 0);
+            item.rare = 9;
+            AARarity = 12;
+            item.value = BaseUtility.CalcValue(0, 20, 0, 0);
             item.useStyle = 1;
             item.useAnimation = 35;
             item.useTime = 35;
@@ -40,17 +41,6 @@ namespace AAMod.Items.Boss.AH
 				player.AddBuff(mod.BuffType("Orbiters"), 2, true);
 			}
 		}
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
-        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

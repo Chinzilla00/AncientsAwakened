@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("Toxibomb");  
             item.shootSpeed = 20f;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 		public override void SetStaticDefaults()

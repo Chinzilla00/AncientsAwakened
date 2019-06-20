@@ -35,7 +35,8 @@ Inflicts daybroken");
 			item.autoReuse = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.shoot = mod.ProjectileType("SunSpear");  //put your Spear projectile name
             item.shootSpeed = 7f;
         }

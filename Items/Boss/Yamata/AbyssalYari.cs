@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Yamata
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -18,17 +18,6 @@ namespace AAMod.Items.Boss.Zero
 Non-consumable");
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
-        }
-
         public override void SetDefaults()
 		{
 			item.damage = 28;
@@ -41,7 +30,7 @@ Non-consumable");
             item.rare = 6;
 			item.shoot = mod.ProjectileType("ZeroArrow");
 			item.ammo = AmmoID.Arrow;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 

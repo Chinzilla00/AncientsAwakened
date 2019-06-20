@@ -19,17 +19,6 @@ Non-consumable");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 10));
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
-        }
-
         public override void SetDefaults()
 		{
 			item.damage = 26;
@@ -43,7 +32,7 @@ Non-consumable");
 			item.shoot = mod.ProjectileType("RealityLaser");
 			item.shootSpeed = 1f;
 			item.ammo = AmmoID.Bullet;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void AddRecipes()

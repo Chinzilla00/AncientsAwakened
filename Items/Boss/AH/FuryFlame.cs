@@ -26,21 +26,12 @@ namespace AAMod.Items.Boss.AH
             item.shoot = mod.ProjectileType("FuryFlame");
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 25, 0, 0);
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shootSpeed = 7f;
             item.noUseGraphic = true;
-        }
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
         }
 
         public override Color? GetAlpha(Color lightColor)

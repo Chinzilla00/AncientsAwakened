@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Teslashock");
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 
@@ -59,17 +59,6 @@ namespace AAMod.Items.Boss.Zero
                 0f
             );
         }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-	    {
-	        foreach (TooltipLine line2 in list)
-	        {
-	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
-	            {
-	                line2.overrideColor = AAColor.Rarity13;
-	            }
-	        }
-	    }
 
         // How can I make the shots appear out of the muzzle exactly?
         // Also, when I do this, how do I prevent shooting through tiles?

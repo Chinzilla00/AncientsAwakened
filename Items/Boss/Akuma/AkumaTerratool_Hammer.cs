@@ -22,7 +22,8 @@ namespace AAMod.Items.Boss.Akuma
             item.useTurn = true;
             item.damage = 100;
             item.hammer = 260;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
         }
 
         public override void SetStaticDefaults()
@@ -36,17 +37,6 @@ namespace AAMod.Items.Boss.Akuma
             return true;
         }
         
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
-        }
-
         public override void RightClick(Player player)
         {
             byte pre = item.prefix;

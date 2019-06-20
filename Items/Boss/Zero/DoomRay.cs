@@ -36,7 +36,7 @@ namespace AAMod.Items.Boss.Zero
             item.noMelee = true;
             item.magic = true;
             item.autoReuse = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override Vector2? HoldoutOffset()
@@ -63,17 +63,6 @@ namespace AAMod.Items.Boss.Zero
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
         }
         
 		public override void AddRecipes()

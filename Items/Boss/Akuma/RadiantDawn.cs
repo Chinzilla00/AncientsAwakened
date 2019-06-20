@@ -33,7 +33,8 @@ namespace AAMod.Items.Boss.Akuma
             item.shoot = mod.ProjectileType("FireRain");
             item.shootSpeed = 14f;
             item.useAmmo = 40;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.UseSound = SoundID.Item20;
         }
 

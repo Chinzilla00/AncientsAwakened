@@ -31,7 +31,7 @@ Non-consumable");
 			item.shoot = mod.ProjectileType("AbyssArrow");
 			item.shootSpeed = 3f;
 			item.ammo = AmmoID.Arrow;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
 
         }
 

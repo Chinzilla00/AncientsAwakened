@@ -33,7 +33,8 @@ namespace AAMod.Items.Boss.Akuma
             item.knockBack = 4.5f;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.magic = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
         }

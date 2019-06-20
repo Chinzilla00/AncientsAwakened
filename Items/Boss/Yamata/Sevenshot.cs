@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Yamata
 	        item.shoot = 10;
 	        item.shootSpeed = 20f;
 	        item.useAmmo = 97;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

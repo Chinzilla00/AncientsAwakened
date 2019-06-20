@@ -31,53 +31,66 @@ namespace AAMod
             }
             if (item.modItem != null && item.modItem.mod.Name == mod.Name && (item.damage > 0 || item.accessory || item.defense > 0) && item.maxStack < 2)
             {
-                if (item.rare == 0)
+                BaseAAItem AAitem = (BaseAAItem)item.modItem;
+                if (AAitem.AARarity != 0)
                 {
-                    item.value = Item.sellPrice(0, 0, 25, 0);
+                    switch (AAitem.AARarity)
+                    {
+                        case 12:
+                            item.value = Item.sellPrice(0, 30, 0, 0);
+                            break;
+                        case 13:
+                            item.value = Item.sellPrice(0, 35, 0, 0);
+                            break;
+                        case 14:
+                            item.value = Item.sellPrice(0, 40, 0, 0);
+                            break;
+                        case 15:
+                            item.value = Item.sellPrice(0, 45, 0, 0);
+                            break;
+                    }
                 }
-                else if (item.rare == 1)
+                else
                 {
-                    item.value = Item.sellPrice(0, 0, 50, 0);
-                }
-                else if (item.rare == 2)
-                {
-                    item.value = Item.sellPrice(0, 0, 75, 0);
-                }
-                else if (item.rare == 3)
-                {
-                    item.value = Item.sellPrice(0, 1, 0, 0);
-                }
-                else if (item.rare == 4)
-                {
-                    item.value = Item.sellPrice(0, 2, 0, 0);
-                }
-                else if (item.rare == 5)
-                {
-                    item.value = Item.sellPrice(0, 4, 0, 0);
-                }
-                else if (item.rare == 6)
-                {
-                    item.value = Item.sellPrice(0, 6, 0, 0);
-                }
-                else if (item.rare == 7)
-                {
-                    item.value = Item.sellPrice(0, 8, 0, 0);
-                }
-                else if (item.rare == 8)
-                {
-                    item.value = Item.sellPrice(0, 10, 0, 0);
-                }
-                else if (item.rare == 9)
-                {
-                    item.value = Item.sellPrice(0, 15, 0, 0);
-                }
-                else if (item.rare == 10)
-                {
-                    item.value = Item.sellPrice(0, 20, 0, 0);
-                }
-                else if (item.rare == 11)
-                {
-                    item.value = Item.sellPrice(0, 25, 0, 0);
+                    switch (item.rare)
+                    {
+                        case 0:
+                            item.value = Item.sellPrice(0, 0, 25, 0);
+                            break;
+                        case 1:
+                            item.value = Item.sellPrice(0, 0, 50, 0);
+                            break;
+                        case 2:
+                            item.value = Item.sellPrice(0, 0, 75, 0);
+                            break;
+                        case 3:
+                            item.value = Item.sellPrice(0, 1, 0, 0);
+                            break;
+                        case 4:
+                            item.value = Item.sellPrice(0, 2, 0, 0);
+                            break;
+                        case 5:
+                            item.value = Item.sellPrice(0, 4, 0, 0);
+                            break;
+                        case 6:
+                            item.value = Item.sellPrice(0, 6, 0, 0);
+                            break;
+                        case 7:
+                            item.value = Item.sellPrice(0, 8, 0, 0);
+                            break;
+                        case 8:
+                            item.value = Item.sellPrice(0, 10, 0, 0);
+                            break;
+                        case 9:
+                            item.value = Item.sellPrice(0, 15, 0, 0);
+                            break;
+                        case 10:
+                            item.value = Item.sellPrice(0, 20, 0, 0);
+                            break;
+                        case 11:
+                            item.value = Item.sellPrice(0, 25, 0, 0);
+                            break;
+                    }
                 }
             }
         }

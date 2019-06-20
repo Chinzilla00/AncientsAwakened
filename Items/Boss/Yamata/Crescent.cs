@@ -30,7 +30,7 @@ Inflicts Moonraze");
             item.useAnimation = 15;
             item.useTime = 15;
             item.shoot = mod.ProjectileType("Crescent");
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
