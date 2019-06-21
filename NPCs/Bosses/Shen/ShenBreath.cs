@@ -46,11 +46,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = Main.rand.Next(2) == 0 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
                 if (Main.rand.Next(2) == 0)
                 {
-                    for (int num298 = 0; num298 < 4; num298++)
+                    for (int num298 = 0; num298 < 8; num298++)
                     {
+                        int num297 = Main.rand.Next(2) == 0 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
                         if (Main.rand.Next(3) == 0)
                         {
@@ -63,9 +63,9 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         Main.dust[num299].scale *= 1f;
                         Dust expr_DDE2_cp_0 = Main.dust[num299];
-                        expr_DDE2_cp_0.velocity.X = expr_DDE2_cp_0.velocity.X * 1.2f;
+                        expr_DDE2_cp_0.velocity.X *= 1.2f;
                         Dust expr_DE02_cp_0 = Main.dust[num299];
-                        expr_DE02_cp_0.velocity.Y = expr_DE02_cp_0.velocity.Y * 1.2f;
+                        expr_DE02_cp_0.velocity.Y *= 1.2f;
                         Main.dust[num299].scale *= num296;
                         Main.dust[num299].velocity += projectile.velocity;
                         if (!Main.dust[num299].noGravity)

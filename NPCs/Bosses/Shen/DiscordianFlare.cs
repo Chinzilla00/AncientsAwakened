@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Shen
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Discordian Flare");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 5;
 		}
     	
         public override void SetDefaults()
@@ -33,7 +33,17 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
         	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
-        	projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 6)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 4)
+                {
+                    projectile.frame = 0;
+                }
+            }
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
         	if (projectile.ai[1] == 0f)
 			{
 				projectile.ai[1] = 1f;
@@ -57,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 8;
             const float amountOfFramesToLerpBy = 20;
 
             projectile.ai[aislotHomingCooldown]++;

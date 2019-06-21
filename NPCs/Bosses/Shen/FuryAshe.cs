@@ -647,12 +647,6 @@ namespace AAMod.NPCs.Bosses.Shen
             BaseDrawing.DrawTexture(spritebatch, glowTex, purple, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
             BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 24, npc.frame, Color.White, true);
 
-
-            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
-            {
-                BaseDrawing.DrawAfterimage(spritebatch, eyeTex, 0, npc, .5f, 1f, 7, false, 0f, 0f, Color.DeepSkyBlue);
-            }
-
             if (scale > 0)
             {
                 BaseDrawing.DrawTexture(spritebatch, Barrier, purple, npc.position, npc.width, npc.height, scale2, -RingRotation2, 0, 1, BarrierFrame, dColor, true);
