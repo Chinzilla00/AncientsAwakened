@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.friendly = false;
             projectile.tileCollide = false;
             projectile.penetrate = 1;
-            projectile.extraUpdates = 2;
+            projectile.extraUpdates = 3;
         }
 
         public override void AI()
@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			{
 				projectile.tileCollide = true;
 			}
-			if ((double)projectile.position.Y < Main.worldSurface * 16.0)
+			if (projectile.position.Y < Main.worldSurface * 16.0)
 			{
 				projectile.tileCollide = true;
 			}

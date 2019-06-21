@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -8,6 +9,7 @@ namespace AAMod.Projectiles
 {
     public class ThunderBullet : ModProjectile
 	{
+        //Thank you Qwerty3.14 for letting us use his Oricalcum bullet code.
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Thundershot");
@@ -15,19 +17,19 @@ namespace AAMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.width = 10; 
-			projectile.height = 10; 
-			projectile.aiStyle = 1;   
-			projectile.friendly = true;
-			projectile.ranged = true;   
-			projectile.penetrate = 1;  
-			projectile.timeLeft = 600;
-			projectile.ignoreWater = true;
-			projectile.tileCollide = true;
-			aiType = ProjectileID.Bullet;
-            projectile.alpha = 255;
-		}
+            projectile.aiStyle = 1;
+            aiType = ProjectileID.Bullet;
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.friendly = true;
+            projectile.penetrate = 3;
+            projectile.ranged = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.extraUpdates = 2;
+        }
 
+        public bool runOnce = true;
+        float maxSpeed;
         public override void AI()
         {
             for (int num468 = 0; num468 < 5; num468++)
@@ -37,24 +39,58 @@ namespace AAMod.Projectiles
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 0f;
             }
+            if (runOnce)
+            {
+                maxSpeed = projectile.velocity.Length();
+                runOnce = false;
+            }
         }
+        public bool firstHit = true;
 
+        NPC ConfirmedTarget;
+        NPC possibleTarget;
+        float distance;
+        float maxDistance = 1200;
+        bool foundTarget;
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             projectile.localNPCImmunity[target.whoAmI] = -1;
             target.immune[projectile.owner] = 0;
 
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 4;
-            for (int i = 0; i < Main.rand.Next(4); i++)
+            for (int k = 0; k < 200; k++)
             {
-                double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f), (float)(Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f), (float)(-Math.Cos(offsetAngle) * 3f), mod.ProjectileType("Ash"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
+                possibleTarget = Main.npc[k];
+                distance = (possibleTarget.Center - projectile.Center).Length();
+                if (distance < maxDistance && possibleTarget.active && !possibleTarget.dontTakeDamage && projectile.localNPCImmunity[k] >= 0 && !possibleTarget.friendly && possibleTarget.lifeMax > 5 && !possibleTarget.immortal && Collision.CanHit(projectile.Center, 0, 0, possibleTarget.Center, 0, 0))
+                {
+                    ConfirmedTarget = Main.npc[k];
+                    foundTarget = true;
+
+
+                    maxDistance = (ConfirmedTarget.Center - projectile.Center).Length();
+                }
+
             }
+            if (foundTarget)
+            {
+                projectile.velocity = PolarVector(maxSpeed, (ConfirmedTarget.Center - projectile.Center).ToRotation());
+
+            }
+            else
+            {
+                projectile.Kill();
+            }
+            foundTarget = false;
+            maxDistance = 300;
         }
+
+        public static Vector2 PolarVector(float radius, float theta)
+        {
+            return new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
+        }
+
         public override void Kill(int timeleft)
         {
             for (int num468 = 0; num468 < 5; num468++)
@@ -67,6 +103,11 @@ namespace AAMod.Projectiles
                     -projectile.velocity.Y * 0.2f, 100);
                 Main.dust[num469].velocity *= 2f;
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            return false;
         }
     }
 }

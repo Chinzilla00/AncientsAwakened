@@ -8,7 +8,9 @@ namespace AAMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amber Arrow");
+			DisplayName.SetDefault("Thunder Spark");
+            Main.projFrames[projectile.type] = 4;
+
 		}
 
 		public override void SetDefaults()
@@ -19,6 +21,21 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 5;
 			projectile.timeLeft = 600;
 			aiType = 1;
+            projectile.extraUpdates = 1;
         }
-	}
+
+        public override void PostAI()
+        {
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 6)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
+        }
+    }
 }

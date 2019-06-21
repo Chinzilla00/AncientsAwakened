@@ -269,18 +269,19 @@ namespace AAMod.NPCs.Bosses.Shen
             int Inferno = mod.ProjectileType<DiscordianInferno>();
             int Bomb = mod.ProjectileType<ShenFirebomb>();
             int Storm = mod.ProjectileType<ShenStorm>();
+            int Flame = mod.ProjectileType<SeekingFlame>();
 
             int InfernoB = mod.ProjectileType<DiscordianInfernoB>();
             int BombB = mod.ProjectileType<ShenFirebombB>();
             int StormB = mod.ProjectileType<ShenStormB>();
+            int FlameB = mod.ProjectileType<SeekingFlameB>();
 
             int InfernoR = mod.ProjectileType<DiscordianInfernoR>();
             int BombR = mod.ProjectileType<ShenFirebombR>();
             int StormR = mod.ProjectileType<ShenStormR>();
+            int FlameR = mod.ProjectileType<SeekingFlameR>();
 
             int InfernoCount = 0;
-
-            customAI[5]++;
 
 
             if (npc.ai[0] == -1f) //initial spawn effects
@@ -411,17 +412,22 @@ namespace AAMod.NPCs.Bosses.Shen
                             case 0:
                             case 1:
                             case 2:
-                            case 3:
-                            case 4:
                                 aiChoice = 0.5f;
                                 break;
+                            case 3:
+                                aiChoice = Main.rand.Next(2, isAwakened ? 9 : 8);
+                                if (Main.rand.Next(2) == 0)
+                                {
+                                    npc.ai[3] = -1f;
+                                }
+                                break;
+                            case 4:
                             case 5:
-                                npc.ai[3] = 1f;
-                                aiChoice = 2f;
+                                aiChoice = 0.5f;
                                 break;
                             case 6:
-                                npc.ai[3] = 0f;
-                                aiChoice = 3f;
+                                npc.ai[3] = -1f;
+                                aiChoice = Main.rand.Next(2, isAwakened ? 9 : 8);
                                 break;
                         }
                     }
@@ -431,7 +437,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     customAI[3] = 0f;
                     if (aiChoice == 1f)
                     {
-
                         Vector2 vel = player.Center - npc.Center;
                         vel = Vector2.Normalize(vel) * 500f;
                         customAI[0] = player.Center.X + vel.X;
@@ -467,20 +472,16 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (Main.netMode != 1 && (point - npc.Center).Length() < 100f)
                 {
-                    SwitchToAI(0f, 0f, 40f, npc.ai[3] + 2f);
+                    SwitchToAI(0f, 0f, 40f, npc.ai[3] + 1f);
                 }
             }
             else if (npc.ai[0] == 2f) //fire discordian infernos
             {
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
                 MoveToPoint(playerPoint);
-                if (npc.ai[2] == 0f)
-                {
-                    Roar(roarTimerMax, false);
-                }
                 if (npc.ai[2] % discordianInfernoPercent == 0f)
                 {
-                    Roar(8, true);
+                    Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == 1 ? 65f : -45f));
@@ -541,7 +542,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianInfernoTimerMax)
                 {
-                    SwitchToAI(0f, 0f, -40f, 0f);
+                    SwitchToAI(0f, 0f, -40f, npc.ai[3] + 1);
                 }
             }
             else if (npc.ai[0] == 3f) //Fire firebombs
@@ -550,7 +551,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 MoveToPoint(playerPoint);
                 if (npc.ai[2] % discordianFirebombPercent == 0)
                 {
-                    Roar(roarTimerMax, true);
+                    Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
                         for (int m = 0; m < 3; m++)
@@ -607,25 +608,208 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= discordianFirebombTimerMax)
                 {
-                    SwitchToAI(0f, 0f, 0f, 1f);
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
             }
-            /*else if (npc.ai[0] == 4f) //Flame Breath
+            else if (npc.ai[0] == 4f) //Seeking Flame
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 400, -350);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
                 MoveToPoint(playerPoint);
-                if (npc.ai[2] % discordianFirebombPercent == 0)
+                Roar(roarTimerMax, true);
+                if (npc.ai[2] % 30 == 0)
                 {
-                    Roar(roarTimerMax, true);
+                    Roar(roarTimerMax, false);
+                    if (Main.netMode != 1)
+                    {
+                        for (int m = 0; m < 3; m++)
+                        {
+                            Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                            Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+
+                            if (player.active && !player.dead)
+                            {
+                                float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                                infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                                vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                                vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
+                                int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                                if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                                vel.Y += npc.velocity.Y;
+                                infernoPos += npc.Center;
+                                infernoPos.Y -= 60;
+                            }
+                            for (int i = 0; i < 3; i++)
+                            {
+                                int shootThis = Flame;
+                                if (!isAwakened)
+                                {
+                                    if (npc.spriteDirection == 1)
+                                    {
+                                        shootThis = FlameR;
+                                    }
+                                    else
+                                    {
+                                        shootThis = FlameB;
+                                    }
+                                }
+                                else
+                                {
+                                    if (i == 1)
+                                    {
+                                        shootThis = FlameR;
+                                    }
+                                    else if (i == 2)
+                                    {
+                                        shootThis = FlameB;
+                                    }
+                                }
+                                int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                                Main.projectile[projectile].velocity = vel;
+                                Main.projectile[projectile].netUpdate = true;
+                            }
+                        }
+                    }
                 }
-                int projectile = BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenBreath>(), ref FireTimer[0], 5, npc.damage / 2, 12);
-                Main.projectile[projectile].netUpdate = true;
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= discordianFirebombTimerMax)
+                if (npc.ai[2] >= 91)
                 {
-                    SwitchToAI(0f, 0f, 0f, 3f);
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
-            }*/
+            }
+            else if (npc.ai[0] == 5f) //Skyfall
+            {
+                if (npc.ai[2] % 40 == 0)
+                {
+                    Roar(roarTimerMax, false);
+                    if (Main.netMode != 1)
+                    {
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+
+                        if (player.active && !player.dead)
+                        {
+                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
+                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                            vel.Y += npc.velocity.Y;
+                            infernoPos += npc.Center;
+                            infernoPos.Y -= 60;
+                        }
+                        int shootThis = Storm;
+                        if (!isAwakened)
+                        {
+                            if (npc.spriteDirection == 1)
+                            {
+                                shootThis = StormR;
+                            }
+                            else
+                            {
+                                shootThis = StormB;
+                            }
+                        }
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        Main.projectile[projectile].velocity = vel;
+                        Main.projectile[projectile].netUpdate = true;
+                    }
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 121)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
+            else if (npc.ai[0] == 6f) //Discordian Flame
+            {
+                if (npc.ai[2] % 40 == 0)
+                {
+                    Roar(roarTimerMax, false);
+                    if (Main.netMode != 1)
+                    {
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+
+                        if (player.active && !player.dead)
+                        {
+                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
+                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                            vel.Y += npc.velocity.Y;
+                            infernoPos += npc.Center;
+                            infernoPos.Y -= 60;
+                        }
+                        int shootThis = mod.ProjectileType<DiscordianFlare>();
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        Main.projectile[projectile].velocity = vel;
+                        Main.projectile[projectile].netUpdate = true;
+                    }
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 121)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
+            else if (npc.ai[0] == 7f) //Discordian Flame
+            {
+                if (npc.ai[2] % 5 == 0)
+                {
+                    Roar(roarTimerMax, false);
+                    if (Main.netMode != 1)
+                    {
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+
+                        if (player.active && !player.dead)
+                        {
+                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
+                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                            vel.Y += npc.velocity.Y;
+                            infernoPos += npc.Center;
+                            infernoPos.Y -= 60;
+                        }
+                        int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        Main.projectile[projectile].velocity = vel;
+                        Main.projectile[projectile].netUpdate = true;
+                    }
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 150)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
+            else if (npc.ai[0] == 8f) //Fire Rain (Awakened only)
+            {
+                Roar(roarTimerMax, false);
+                if (npc.ai[2] % 30 == 0)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        for (int Loops = 0; Loops < 3; Loops++)
+                        {
+                            ShenAttacks.Dragonfire(npc, mod);
+                        }
+                    }
+                }
+                Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -300f);
+                MoveToPoint(playerPoint);
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 121)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
 
             if (SnapToPlayer)
             {
@@ -838,7 +1022,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDeath>());
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
                     npc.DropBossBags();
                     AAWorld.downedShen = true;
                 }

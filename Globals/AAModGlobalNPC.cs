@@ -84,13 +84,10 @@ namespace AAMod
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             int before = npc.lifeRegen;
-            bool drain = false;
-            bool noDamage = damage <= 1;
             int damageBefore = damage;
 
             if (infinityOverload)
             {
-                drain = true;
                 if (npc.lifeRegen > 0)
                 {
                     npc.lifeRegen = 0;
@@ -104,7 +101,6 @@ namespace AAMod
 
             if (InfinityScorch)
             {
-                drain = true;
                 if (npc.lifeRegen > 0)
                 {
                     npc.lifeRegen = 0;
@@ -152,10 +148,6 @@ namespace AAMod
                 RiftTimer = 0;
             }
 
-            if (noDamage)
-                damage -= damageBefore;
-            if (drain && before > 0)
-                npc.lifeRegen -= before;
             if (terraBlaze)
             {
                 if (npc.lifeRegen > 0)

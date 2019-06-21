@@ -62,44 +62,6 @@ namespace AAMod.NPCs.Bosses.Shen
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
-        public override void PostAI()
-        {
-            InternalAI[0]++;
-            if (InternalAI[0] > 240)
-            {
-                if (InternalAI[2] == 0)
-                {
-                    InternalAI[1] = Main.rand.Next(2);
-                    InternalAI[2] = 1;
-                }
-                if (InternalAI[1] == 0)
-                {
-                    if (InternalAI[0] == 280 || InternalAI[0] == 320 || InternalAI[0] == 360 || InternalAI[0] == 400)
-                    {
-                        for (int Loops = 0; Loops < 3; Loops++)
-                        {
-                            ShenAttacks.Dragonfire(npc, mod);
-                        }
-                    }
-                }
-                if (InternalAI[1] == 1)
-                {
-                    if (InternalAI[0] == 280 || InternalAI[0] == 340 || InternalAI[0] == 400)
-                    {
-                        for (int Loops = 0; Loops < 8; Loops++)
-                        {
-                            ShenAttacks.Eruption(npc, mod);
-                        }
-                    }
-                }
-                if (InternalAI[0] > 400)
-                {
-                    InternalAI[0] = 0;
-                    InternalAI[2] = 0;
-                }
-            }
-        }
-
         public bool Health9 = false;
         public bool Health8 = false;
         public bool Health7 = false;

@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Equinox
             {
                 player.lifeRegen += 5;
                 player.statDefense += 8;
-                player.meleeSpeed += 0.3f;
+                player.meleeSpeed += 0.10f;
                 player.meleeDamage += 0.3f;
                 player.meleeCrit += 4;
                 player.rangedDamage += 0.3f;
@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Equinox
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Radiant Star");
+            DisplayName.SetDefault("Dark Void");
             Tooltip.SetDefault(
 @"Gives immensely increased stats at night
 'Dark and spooky'");

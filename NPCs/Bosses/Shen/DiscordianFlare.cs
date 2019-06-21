@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Shen
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Discordian Flare");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 5;
 		}
     	
         public override void SetDefaults()
@@ -33,31 +33,22 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
         	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
-        	projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.frameCounter++;
+            if (projectile.frameCounter > 6)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 4)
+                {
+                    projectile.frame = 0;
+                }
+            }
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
         	if (projectile.ai[1] == 0f)
 			{
 				projectile.ai[1] = 1f;
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			}
-        	int num103 = (int)Player.FindClosest(projectile.Center, 1, 1);
-			projectile.ai[1] += 1f;
-			if (projectile.ai[1] < 220f && projectile.ai[1] > 20f)
-			{
-				float scaleFactor2 = projectile.velocity.Length();
-				Vector2 vector11 = Main.player[num103].Center - projectile.Center;
-				vector11.Normalize();
-				vector11 *= scaleFactor2;
-				projectile.velocity = (projectile.velocity * 24f + vector11) / 25f;
-				projectile.velocity.Normalize();
-				projectile.velocity *= scaleFactor2;
-			}
-			if (projectile.ai[0] < 0f)
-			{
-				if (projectile.velocity.Length() < 18f)
-				{
-					projectile.velocity *= 1.02f;
-				}
-            }
             int dustType = Main.rand.Next(3);
             dustType = dustType == 0 ? mod.DustType<Dusts.DiscordLight>() : dustType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>();
             if (projectile.alpha < 50 && Main.rand.Next(3) == 0)
@@ -74,11 +65,54 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.dust[dustID2].noLight = false;
                 Main.dust[dustID2].noGravity = true;
             }
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 8;
+            const float amountOfFramesToLerpBy = 20;
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay;
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    Player target = Main.player[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
         }
-        
+
+
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 500;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                Player target = Main.player[i];
+                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(target.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                    (
+                        selectedTarget == -1 || projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
+
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-        	target.AddBuff(mod.BuffType("HydraToxin"), 300);
+        	target.AddBuff(mod.BuffType("DiscordInferno"), 300);
         }
 
         public override void Kill(int timeLeft)
@@ -91,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Shen
 	    	int i;
 	    	if (projectile.owner == Main.myPlayer)
 	    	{
-		    	for (i = 0; i < 4; i++ )
+		    	for (i = 0; i < 2; i++ )
 		    	{
 		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("DiscordianInferno"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);

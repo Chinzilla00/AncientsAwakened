@@ -1707,14 +1707,18 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInfernoR.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
+    <Compile Include="NPCs\Bosses\Shen\SeekingFlameB.cs" />
+    <Compile Include="NPCs\Bosses\Shen\SeekingFlameR.cs" />
     <Compile Include="NPCs\Bosses\Shen\SeekingFlame.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenABreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenAttacks.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenDeathBoom.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoom.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoomB.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoomR.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBreath.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenDefeat.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDeath.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDoragon.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenFirebomb.cs" />
@@ -1921,6 +1925,7 @@
     <Compile Include="NPCs\TownNPCs\Anubis.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\Star1.cs" />
     <Compile Include="Projectiles\ThunderBullet.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
     <Compile Include="Projectiles\AH\AbyssBall.cs" />
@@ -2287,7 +2292,6 @@
     <Compile Include="Projectiles\TerraRoseShotEX.cs" />
     <Compile Include="Projectiles\TerraShotEX.cs" />
     <Compile Include="Projectiles\TFGWP.cs" />
-    <Compile Include="Projectiles\TheIlluminatiP.cs" />
     <Compile Include="Projectiles\The_Plague_Pro.cs" />
     <Compile Include="Projectiles\Thorium\AuroraScythe.cs" />
     <Compile Include="Projectiles\Thorium\AuroraScytheDamage.cs" />
@@ -2360,6 +2364,7 @@
     <Compile Include="Projectiles\Zero\ZeroArrow.cs" />
     <Compile Include="Projectiles\Zero\ZeroStarP.cs" />
     <Compile Include="Sounds\Sounds\AkumaRoar.cs" />
+    <Compile Include="Sounds\Sounds\Chicken.cs" />
     <Compile Include="Sounds\Sounds\FerretNote.cs" />
     <Compile Include="Sounds\Sounds\Glitch.cs" />
     <Compile Include="Sounds\Sounds\GONG.cs" />
@@ -2367,6 +2372,8 @@
     <Compile Include="Sounds\Sounds\QUAK.cs" />
     <Compile Include="Sounds\Sounds\Rajah.cs" />
     <Compile Include="Sounds\Sounds\ShenRoar.cs" />
+    <Compile Include="Sounds\Sounds\Thunderlord.cs" />
+    <Compile Include="Sounds\Sounds\Vine.cs" />
     <Compile Include="Sounds\Sounds\YamataRoar.cs" />
     <Compile Include="Sounds\Sounds\ZeroDeath.cs" />
     <Compile Include="Sounds\Sounds\Zerohit.cs" />
@@ -4599,6 +4606,7 @@
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
+    <Content Include="Items\Dev\CursedSickle.png" />
     <Content Include="Items\Dev\DeceivingTruth.png" />
     <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\Demise.png" />
@@ -4642,6 +4650,7 @@
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
     <Content Include="Items\Magic\Volley.png" />
+    <Content Include="Items\Magic\WandOfSparkingEX.png" />
     <Content Include="Items\Materials\CocoaBean.png" />
     <Content Include="Items\Materials\CometBar.png" />
     <Content Include="Items\Materials\CometOre.png" />
@@ -4663,6 +4672,7 @@
     <Content Include="Items\Melee\Chicken.png" />
     <Content Include="Items\Melee\DragonFang.png" />
     <Content Include="Items\Melee\Executioner.png" />
+    <Content Include="Items\Melee\GlacierBreaker.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
     <Content Include="Items\Melee\Mjolnir.png" />
     <Content Include="Items\Melee\MjolnirEX.png" />
@@ -4674,6 +4684,7 @@
     <Content Include="Items\Melee\ThanosSword.png" />
     <Content Include="Items\Melee\ThanosSwordEX.png" />
     <Content Include="Items\Melee\VikingPolearm.png" />
+    <Content Include="Items\Melee\Yogan.png" />
     <Content Include="Items\Misc\Fishmother.png" />
     <Content Include="Items\Misc\TriHeadedKoi.png" />
     <Content Include="Items\Mushrooms\Gray.png" />
@@ -4694,6 +4705,7 @@
     <Content Include="Items\Potions\Carrot.png" />
     <Content Include="Items\Ranged\AbyssalPentashot.png" />
     <Content Include="Items\Ranged\AbyssalShadowshot.png" />
+    <Content Include="Items\Ranged\Ammo\CometBullet.png" />
     <Content Include="Items\Ranged\ChaosJavelin.png" />
     <Content Include="Items\Ranged\ChaosJavelinEX.png" />
     <Content Include="Items\Ranged\ChaosShot.png" />
@@ -4728,7 +4740,6 @@
     <Content Include="Items\Tools\ShadowDrill.png" />
     <Content Include="Items\Tools\Stonebreaker.png" />
     <Content Include="Items\Usable\BrownSolution.png" />
-    <Content Include="Items\Usable\CavernCrate.png" />
     <Content Include="Items\Usable\ChaosOverloader.png" />
     <Content Include="Items\Usable\CodeMagnetWeak.png" />
     <Content Include="Items\Usable\DeepGreenSolution.png" />
@@ -4920,11 +4931,11 @@
     <Content Include="NPCs\Bosses\Shen\DiscordianInfernoR.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianSun.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe.png" />
-    <Content Include="NPCs\Bosses\Shen\FuryAsheOrbiter.png" />
-    <Content Include="NPCs\Bosses\Shen\FuryAsheSpark.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Shen\SeekingFlame.png" />
+    <Content Include="NPCs\Bosses\Shen\SeekingFlameB.png" />
+    <Content Include="NPCs\Bosses\Shen\SeekingFlameR.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenABreath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenAwakened.png" />
@@ -4935,6 +4946,7 @@
     <Content Include="NPCs\Bosses\Shen\ShenBoomB.png" />
     <Content Include="NPCs\Bosses\Shen\ShenBoomR.png" />
     <Content Include="NPCs\Bosses\Shen\ShenBreath.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenDefeat.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDeath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDeathBoom.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDeathBoomB.png" />
@@ -6496,6 +6508,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\Demise.png" />
     <Content Include="Projectiles\DoomiteVortex.png" />
     <Content Include="Projectiles\DragonSpine.png" />
     <Content Include="Projectiles\DynaEnergy.png" />
@@ -6526,10 +6539,12 @@
     <Content Include="Projectiles\Mjolnir.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\SoonTM.png" />
+    <Content Include="Projectiles\Star1.png" />
     <Content Include="Projectiles\ThunderBullet.png" />
     <Content Include="Projectiles\ThunderSpark.png" />
     <Content Include="Projectiles\Tools\MiningLaser.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
+    <Content Include="Projectiles\VoidBomb.png" />
     <Content Include="Projectiles\Winterbreak.png" />
     <Content Include="Projectiles\Incapacitator.png" />
     <Content Include="Projectiles\JungleSolution.png" />
@@ -6753,7 +6768,6 @@
     <Content Include="Projectiles\ThanosSwordEX.png" />
     <Content Include="Projectiles\ThanosSwordEXT.png" />
     <Content Include="Projectiles\ThanosSwordT.png" />
-    <Content Include="Projectiles\TheIlluminatiP.png" />
     <Content Include="Projectiles\The_Plague_Pro.png" />
     <Content Include="Projectiles\Thorium\AuroraScythe.png" />
     <Content Include="Projectiles\Thorium\AuroraScytheDamage.png" />
@@ -6800,14 +6814,12 @@
     <Content Include="Projectiles\ValkyrieSlash.png" />
     <Content Include="Projectiles\Venom.png" />
     <Content Include="Projectiles\Toxifire.png" />
-    <Content Include="Projectiles\TridentShot.png" />
     <Content Include="Projectiles\TrueAbyssalTwilightShot.png" />
     <Content Include="Projectiles\TrueBlazingDawnShot.png" />
     <Content Include="Projectiles\TrueCopperShot.png" />
     <Content Include="Projectiles\TrueFleshClaymoreShot.png" />
     <Content Include="Projectiles\TrueManaShot.png" />
     <Content Include="Projectiles\UmbreonSPProjectile.png" />
-    <Content Include="Projectiles\ValkyrieLance.png" />
     <Content Include="Projectiles\VikingPolearm.png" />
     <Content Include="Projectiles\Void.png" />
     <Content Include="Projectiles\VoidRing.png" />
@@ -6874,7 +6886,7 @@
     <Content Include="Sounds\Music\InfernoUnderground.mp3" />
     <Content Include="Sounds\Music\MireSurface.mp3" />
     <Content Include="Sounds\Music\MireUnderground.mp3" />
-    <Content Include="Sounds\Music\RayOfHope.mp3" />
+    <Content Include="Sounds\Music\RajahTheme.mp3" />
     <Content Include="Sounds\Music\Sagittarius.mp3" />
     <Content Include="Sounds\Music\Shen.mp3" />
     <Content Include="Sounds\Music\ShenA.mp3" />
@@ -6897,6 +6909,7 @@
     <Content Include="Sounds\Music\Zero2.mp3" />
     <Content Include="Sounds\Music\ZeroPinch.mp3" />
     <Content Include="Sounds\Sounds\AkumaRoar.mp3" />
+    <Content Include="Sounds\Sounds\Chicken.wav" />
     <Content Include="Sounds\Sounds\FerretNote.mp3" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
     <Content Include="Sounds\Sounds\GONG.mp3" />
@@ -6904,6 +6917,8 @@
     <Content Include="Sounds\Sounds\QUAK.wav" />
     <Content Include="Sounds\Sounds\Rajah.mp3" />
     <Content Include="Sounds\Sounds\ShenRoar.mp3" />
+    <Content Include="Sounds\Sounds\Thunderlord.wav" />
+    <Content Include="Sounds\Sounds\Vine.wav" />
     <Content Include="Sounds\Sounds\YamataRoar.mp3" />
     <Content Include="Sounds\Sounds\ZeroDeath.wav" />
     <Content Include="Sounds\Sounds\Zerohit.wav" />
