@@ -46,7 +46,7 @@ namespace AAMod.Items.Melee
             {
                 item.useStyle = 1;
                 item.shoot = mod.ProjectileType("ThanosSwordT");
-                item.shootSpeed = 10f;
+                item.shootSpeed = 14f;
             }
             for (int i = 0; i < 1000; ++i)
             {

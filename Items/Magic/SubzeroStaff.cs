@@ -20,7 +20,7 @@ namespace AAMod.Items.Magic
             item.autoReuse = true;
             item.mana = 11;
             item.useStyle = 5;
-            item.damage = 100;
+            item.damage = 140;
             item.useAnimation = 8;
             item.useTime = 8;
             item.width = 62;

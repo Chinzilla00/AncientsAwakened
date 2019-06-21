@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    internal class SeekingFlame : ModProjectile
+    internal class SeekingFlameB : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 60;
+            const int homingDelay = 40;
             const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20;
 
@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     float distance = projectile.Distance(target.Center);
                     if (distance <= homingMaximumRangeInPixels &&
                     (
-                        selectedTarget == -1 || projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
+                        selectedTarget == -1 || projectile.Distance(Main.player[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }
@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("DiscordianInferno"), 300);
+            target.AddBuff(mod.BuffType("DragonFire"), 300);
             Kill(0);
         }
 

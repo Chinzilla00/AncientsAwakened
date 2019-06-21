@@ -31,8 +31,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             npc.ai[1]++;
-            Player player = Main.player[npc.target];
             npc.TargetClosest();
+            Player player = Main.player[npc.target];
             npc.Center = player.Center;
             if (npc.ai[1] == 180)
             {
@@ -46,7 +46,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[1] == 540)
             {
-                Main.NewText(player.name + ", you will know our wrath again one day...when we gain enough power again…", new Color(180, 41, 32));
+                string Name = Main.netMode != 0 ? "Warriors" : player.name;
+                Main.NewText(Name + ", you will face our fury again one day...either when we gain enough power again…", new Color(180, 41, 32));
             }
 
             if (npc.ai[1] == 720)
@@ -60,6 +61,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.NewText("Your choice, child.", new Color(45, 46, 70));
                 npc.active = false;
             }
+        }
+
+        public override bool CheckActive()
+        {
+            return false;
         }
     }
 }

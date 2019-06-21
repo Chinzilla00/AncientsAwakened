@@ -33,15 +33,15 @@ Static Rifle EX");
             item.ranged = true; 
             item.width = 70; 
             item.height = 24;
-            item.useTime = 30; 
-            item.useAnimation = 30; 
+            item.useTime = 24; 
+            item.useAnimation = 24; 
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("ThunderBullet");
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
             item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Thunderlord");
-            item.autoReuse = false; 
+            item.autoReuse = true; 
             item.shootSpeed = 9f;
             item.useAmmo = AmmoID.Bullet;
 

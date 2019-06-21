@@ -45,7 +45,7 @@ namespace AAMod.Items.Boss.Equinox
             {
                 player.lifeRegen += 5;
                 player.statDefense += 8;
-                player.meleeSpeed += 0.3f;
+                player.meleeSpeed += 0.10f;
                 player.meleeDamage += 0.3f;
                 player.meleeCrit += 4;
                 player.rangedDamage += 0.3f;
