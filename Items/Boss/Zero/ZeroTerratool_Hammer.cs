@@ -18,13 +18,13 @@ namespace AAMod.Items.Boss.Zero
             item.tileBoost += 20;
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 9; AARarity = 13;
+            item.rare = 9;
+            AARarity = 13;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 100;
             item.hammer = 260;
-
         }
 
         public override void SetStaticDefaults()
