@@ -738,12 +738,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly");
-                Glow = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly_Glow");
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Fly_Glow");
             }
             else
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring);
-                Glow = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Glow");
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
             }
         }
 

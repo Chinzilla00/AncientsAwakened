@@ -1149,12 +1149,11 @@ namespace AAMod
             if (Main.netMode != 1)
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
-                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0, 0, NPC.killCount[NPCID.Bunny] >= 1000 ? .1f : 0, player.whoAmI);
                 Main.npc[npcID].Center = npcCenter;
 
                 if (NPC.killCount[NPCID.Bunny] >= 1000)
                 {
-                    Main.npc[npcID].ai[3] = .1f;
                     Main.npc[npcID].damage = 450;
                     Main.npc[npcID].defense = 350;
                     Main.npc[npcID].lifeMax = 4000000;
