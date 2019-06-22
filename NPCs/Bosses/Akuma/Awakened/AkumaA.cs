@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.height = 84;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
-            npc.damage = 170;
+            npc.damage = 140;
             npc.defense = 270;
             npc.lifeMax = 750000;
             npc.value = Item.sellPrice(2, 0, 0, 0);
@@ -584,9 +584,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
 
             Texture2D myGlowTex = (npc.type == mod.NPCType<AkumaA>() ? HeadGlow : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5);
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(AkumaTex, Drawpos, npc.frame, npc.GetAlpha(drawColor), npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
-            BaseDrawing.DrawTexture(spriteBatch, myGlowTex, shader, npc, npc.GetAlpha(Color.White), true, npc.frame.Size() / 2);
+            BaseDrawing.DrawTexture(spriteBatch, AkumaTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(drawColor), true);
+            BaseDrawing.DrawTexture(spriteBatch, myGlowTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(Color.White), true);
             return false;
         }
 

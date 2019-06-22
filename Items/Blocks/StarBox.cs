@@ -13,7 +13,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Celestial Stars Box");
-            Tooltip.SetDefault(@"Plays 'Galactic Gift' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'Interstellar' by OmegaFerretMusic");
         }
 
         public override void SetDefaults()

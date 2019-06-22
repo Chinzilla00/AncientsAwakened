@@ -243,7 +243,7 @@ namespace AAMod.Projectiles.EFish
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor4 = 5f;
-                int num29 = ProjectileID.SharknadoBolt;
+                int num29 = 408;
 
                 if (flag)
                 {

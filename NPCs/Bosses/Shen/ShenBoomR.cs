@@ -42,8 +42,9 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 200);
+            target.AddBuff(mod.BuffType("HydraToxin"), 300);
         }
+
 
         public override void Kill(int timeLeft)
         {

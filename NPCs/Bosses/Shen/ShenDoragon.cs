@@ -76,7 +76,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.alpha = 255;
-            npc.DeathSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
             musicPriority = (MusicPriority)11;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -92,18 +93,6 @@ namespace AAMod.NPCs.Bosses.Shen
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
-        public override void UpdateLifeRegen(ref int damage)
-        {
-            if (npc.lifeRegen > 0)
-            {
-                npc.lifeRegen = 0;
-            }
-            npc.lifeRegen -= 48;
-            if (damage < 10)
-            {
-                damage = 10;
-            }
-        }
         public float[] FireTimer = new float[1];
         public bool Weakness = false;
         public bool spawnalpha = false;
@@ -485,7 +474,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == 1 ? 65f : -45f));
-                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
                         {
@@ -569,7 +558,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 60;
+                                infernoPos.Y -= 40;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
                             int shootThis;
@@ -636,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 60;
+                                infernoPos.Y -= 40;
                             }
                             for (int i = 0; i < 3; i++)
                             {
@@ -678,13 +667,15 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 5f) //Skyfall
             {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
                 if (npc.ai[2] % 40 == 0)
                 {
                     Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
                         {
@@ -696,7 +687,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
-                            infernoPos.Y -= 60;
+                            infernoPos.Y -= 40;
                         }
                         int shootThis = Storm;
                         if (!isAwakened)
@@ -710,7 +701,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 shootThis = StormB;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -723,13 +714,15 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 6f) //Discordian Flame
             {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
                 if (npc.ai[2] % 40 == 0)
                 {
                     Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
                         {
@@ -757,6 +750,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 7f) //Flamethrower
             {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
                 if (npc.ai[2] % 5 == 0)
                 {
                     Roar(roarTimerMax, false);
@@ -775,7 +770,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
-                            infernoPos.Y -= 60;
+                            infernoPos.Y -= 40;
                         }
                         int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
                         int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
@@ -791,6 +786,8 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 8f) //Fire Rain (Awakened only)
             {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
                 Roar(roarTimerMax, false);
                 if (npc.ai[2] % 30 == 0)
                 {
@@ -802,8 +799,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                     }
                 }
-                Vector2 playerPoint = player.Center + new Vector2(npc.ai[1], -300f);
-                MoveToPoint(playerPoint);
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 121)
                 {

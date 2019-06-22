@@ -44,8 +44,14 @@ namespace AAMod.Projectiles
 			}
 			return true;
 		}
-		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+            return true;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 90);
         }

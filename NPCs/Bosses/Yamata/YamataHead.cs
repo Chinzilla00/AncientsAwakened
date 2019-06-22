@@ -307,7 +307,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 13f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 9f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {

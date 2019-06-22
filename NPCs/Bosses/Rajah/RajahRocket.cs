@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            projectile.damage = 50;
             if (projectile.timeLeft <= 0)
             {
                 Kill(projectile.timeLeft);
@@ -48,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoomR>(), projectile.damage, projectile.knockBack, projectile.owner);
+            Projectile.NewProjectile(projectile.position, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoomR>(), projectile.damage, projectile.knockBack, projectile.owner);
         }
     }
 }

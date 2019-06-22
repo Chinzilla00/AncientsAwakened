@@ -20,7 +20,7 @@ Non-consumable");
 
         public override void SetDefaults()
 		{
-			item.damage = 28;
+			item.damage = 20;
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;

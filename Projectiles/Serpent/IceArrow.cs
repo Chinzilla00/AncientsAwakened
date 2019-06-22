@@ -33,9 +33,9 @@ namespace AAMod.Projectiles.Serpent
         {
             target.AddBuff(BuffID.Chilled, 100);
         }
-
         public override void Kill(int timeleft)
         {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 50);
             for (int num468 = 0; num468 < 4; num468++)
             {
                 num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,

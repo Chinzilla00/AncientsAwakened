@@ -39,7 +39,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            projectile.damage = 90;
             if (rajah == null)
             {
                 NPC npcBody = Main.npc[(int)projectile.ai[0]];

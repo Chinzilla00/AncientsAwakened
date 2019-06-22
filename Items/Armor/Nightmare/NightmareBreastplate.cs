@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Nightmare
 {
     [AutoloadEquip(EquipType.Body)]
-	public class NightmareBreastplate : BaseAAItem
+	public abstract class NightmareBreastplate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

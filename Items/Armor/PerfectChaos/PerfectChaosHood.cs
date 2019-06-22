@@ -39,7 +39,7 @@ The power of discordian rage radiates from this hood");
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your magic damage increases and your mana consumption decreases
 Your magic attacks raze your oponents with the flames of discordian hell";
-            player.GetModPlayer<AAPlayer>(mod).perfectChaos = true;
+            player.GetModPlayer<AAPlayer>(mod).perfectChaosMa = true;
             if (player.statLife <= player.statLife * .2f)
             {
                 player.manaCost *= 0;
@@ -47,17 +47,17 @@ Your magic attacks raze your oponents with the flames of discordian hell";
             }
             else if (player.statLife <= player.statLife * .4f)
             {
-                player.endurance *= .25f;
+                player.manaCost *= .25f;
                 player.magicDamage *= 1.3f;
             }
             else if (player.statLife <= player.statLife * .6f)
             {
-                player.endurance *= .5f;
+                player.manaCost *= .5f;
                 player.magicDamage *= 1.2f;
             }
             else if (player.statLife <= player.statLife * .8f)
             {
-                player.endurance *= .75f;
+                player.manaCost *= .75f;
                 player.magicDamage *= 1.1f;
             }
         }

@@ -108,6 +108,8 @@
     <Compile Include="Items\Armor\Doomsday\DoomsdayMask.cs" />
     <Compile Include="Items\Armor\Doomsday\ZeroMini.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosVisor.cs" />
+    <Compile Include="Items\Armor\PerfectChaos\PerfectChaosMask.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosHood.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
@@ -1134,8 +1136,6 @@
     <Compile Include="Items\Melee\Bloody_Mary.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
     <Compile Include="Items\Melee\Chaos.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosBlue.cs" />
-    <Compile Include="Items\Melee\ClawOfChaosRed.cs" />
     <Compile Include="Items\Melee\CloudEdge.cs" />
     <Compile Include="Items\Melee\Crawblade.cs" />
     <Compile Include="Items\Melee\CrystalGreatsword.cs" />
@@ -2222,7 +2222,6 @@
     <Compile Include="Projectiles\Energy_Cell_Pro.cs" />
     <Compile Include="Projectiles\Etheral.cs" />
     <Compile Include="Projectiles\EtheralEX.cs" />
-    <Compile Include="Projectiles\EtheralLazer.cs" />
     <Compile Include="Projectiles\Fang_Knife_Pro.cs" />
     <Compile Include="Projectiles\Glass_Kunai_Pro.cs" />
     <Compile Include="Projectiles\Gold_Kunai_Pro.cs" />
@@ -3926,6 +3925,7 @@
     <Content Include="Items\Accessories\Wings\DraconianWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\DreadWings.png" />
     <Content Include="Items\Accessories\Wings\DreadWings_Wings.png" />
+    <Content Include="Items\Accessories\Wings\DynaskullWings.png" />
     <Content Include="Items\Accessories\Wings\DynaskullWings_Wings.png" />
     <Content Include="Items\Accessories\Wings\NightmareWings.png" />
     <Content Include="Items\Accessories\Wings\NightmareWings_Wings.png" />
@@ -4318,10 +4318,8 @@
     <Content Include="Items\Armor\Radium\RadiumHat_Head.png" />
     <Content Include="Items\Armor\Radium\RadiumHeadgear.png" />
     <Content Include="Items\Armor\Radium\RadiumHeadgear_Head.png" />
-    <Content Include="Items\Armor\Radium\RadiumHelm.png" />
     <Content Include="Items\Armor\Radium\RadiumHelmet.png" />
     <Content Include="Items\Armor\Radium\RadiumHelmet_Head.png" />
-    <Content Include="Items\Armor\Radium\RadiumHelm_Head.png" />
     <Content Include="Items\Armor\Radium\RadiumMask.png" />
     <Content Include="Items\Armor\Radium\RadiumMask_Head.png" />
     <Content Include="Items\Armor\Radium\RadiumPlatemail.png" />
@@ -5582,8 +5580,6 @@
     <Content Include="Items\Melee\CarnalCrusher.png" />
     <Content Include="Items\Melee\Chaos.png" />
     <Content Include="Items\Melee\ChaosScythe.png" />
-    <Content Include="Items\Melee\ClawOfChaosBlue.png" />
-    <Content Include="Items\Melee\ClawOfChaosRed.png" />
     <Content Include="Items\Melee\CloudEdge.png" />
     <Content Include="Items\Melee\Crawblade.png" />
     <Content Include="Items\Melee\CrystalGreatsword.png" />
@@ -6557,6 +6553,7 @@
     <Content Include="Projectiles\HydraSlash.png" />
     <Content Include="Projectiles\Mjolnir.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
+    <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\SoonTM.png" />
     <Content Include="Projectiles\Star1.png" />
     <Content Include="Projectiles\ThunderBullet.png" />
@@ -6674,7 +6671,6 @@
     <Content Include="Projectiles\Etheral.png" />
     <Content Include="Projectiles\EtheralBeam.png" />
     <Content Include="Projectiles\EtheralEX.png" />
-    <Content Include="Projectiles\EtheralLazer.png" />
     <Content Include="Projectiles\EtheralLazerEX.png" />
     <Content Include="Projectiles\Fang_Knife_Pro.png" />
     <Content Include="Projectiles\FerretNote.png" />

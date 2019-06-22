@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Nightmare_Bar : BaseAAItem
+    public abstract class Nightmare_Bar : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

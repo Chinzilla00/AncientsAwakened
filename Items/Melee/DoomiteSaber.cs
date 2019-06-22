@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
             item.useStyle = 1;
             item.useTurn = true;
             item.autoReuse = true;
-            item.useAnimation = 9;
+            item.useAnimation = 27;
             item.useTime = 27;
             item.width = 46;
             item.height = 46;

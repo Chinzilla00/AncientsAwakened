@@ -8,6 +8,8 @@ using AAMod.NPCs.Enemies.Terrarium.PreHM;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
 using AAMod.NPCs.Enemies.Terrarium.PostPlant;
 using AAMod.NPCs.Enemies.Terrarium.PostEquinox;
+using AAMod.NPCs.Bosses.Serpent;
+using AAMod.NPCs.Enemies.Snow;
 using System;
 using BaseMod;
 using Terraria.Localization;
@@ -83,9 +85,6 @@ namespace AAMod
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            int before = npc.lifeRegen;
-            int damageBefore = damage;
-
             if (infinityOverload)
             {
                 if (npc.lifeRegen > 0)
@@ -111,7 +110,9 @@ namespace AAMod
                     damage = 40;
                 }
             }
-            if (npc.type == NPCID.KingSlime || npc.type == NPCID.Plantera)
+            if (npc.type == NPCID.KingSlime || npc.type == NPCID.Plantera || 
+                npc.type == mod.NPCType<SerpentBody>() || npc.type == mod.NPCType<SerpentHead>() || npc.type == mod.NPCType<SerpentTail>() ||
+                npc.type == mod.NPCType<SnakeHead>() || npc.type == mod.NPCType<SnakeBody>() || npc.type == mod.NPCType<SnakeBody2>() || npc.type == mod.NPCType<SnakeTail>())
             {
                 if (npc.onFire)
                 {
@@ -156,12 +157,21 @@ namespace AAMod
                 }
                 if (npc.type == mod.NPCType<ShenDoragon>() || npc.type == mod.NPCType<ShenA>())
                 {
-                    npc.lifeRegen -= 48;
+                    npc.lifeRegen -= 30;
+                    if (damage < 30)
+                    {
+                        damage = 30;
+                    }
                 }
                 else
                 {
-                    npc.lifeRegen -= 16;
+                    npc.lifeRegen -= 10;
+                    if (damage < 10)
+                    {
+                        damage = 10;
+                    }
                 }
+                npc.lifeRegen -= 16;
                 if (damage < 2)
                 {
                     damage = 2;
@@ -417,8 +427,7 @@ namespace AAMod
             //Wall Of Flesh
             if (npc.type == NPCID.WallofFlesh)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("Nightmare_Ore"), Main.rand.Next(50, 60));
-                if (Main.rand.NextFloat() < .34f)
+                if (Main.rand.NextFloat() < .1f)
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("HK_MP5"));
                 }
@@ -1145,6 +1154,7 @@ namespace AAMod
 
                 if (NPC.killCount[NPCID.Bunny] >= 1000)
                 {
+                    Main.npc[npcID].ai[3] = .1f;
                     Main.npc[npcID].damage = 450;
                     Main.npc[npcID].defense = 350;
                     Main.npc[npcID].lifeMax = 4000000;
@@ -1206,6 +1216,7 @@ namespace AAMod
                     Main.npc[npcID].lifeMax = 80000;
                     Main.npc[npcID].life = 80000;
                 }
+                Main.npc[npcID].netUpdate = true;
             }
             else
             {

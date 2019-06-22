@@ -25,8 +25,18 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.alpha = 80;
         }
 
+        bool draw = true;
         public override void AI()
         {
+            if (!draw)
+            {
+                draw = true;
+            }
+            else
+            {
+                draw = false;
+            }
+            
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
@@ -53,6 +63,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
+            if (!draw)
+            {
+                return false;
+            }
             Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 7, 0, 2);
 
             Texture2D Tex = Main.projectileTexture[projectile.type];

@@ -11,7 +11,7 @@ namespace AAMod.Items.Blocks
 		{
 			DisplayName.SetDefault("Shen Doragon Awakened Music Box");
             
-            Tooltip.SetDefault(@"Plays 'Champion Battle (Fanmade)' by Emdasche");
+            Tooltip.SetDefault(@"Plays 'Blaze of Glory' by Charlie Debnam");
         }
 
 		public override void SetDefaults()

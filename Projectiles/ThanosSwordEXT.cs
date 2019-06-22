@@ -20,9 +20,14 @@ namespace AAMod.Projectiles
             projectile.tileCollide = false;
 			projectile.penetrate = -1;
             projectile.timeLeft = 300;
-            projectile.aiStyle = 3;
-            aiType = ProjectileID.WoodenBoomerang;
+            projectile.aiStyle = -1;
 		}
+
+        public override void AI()
+        {
+            Player p = Main.player[projectile.owner];
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 30, 0.8f, .8f, false);
+        }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {

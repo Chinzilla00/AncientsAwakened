@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Nightmare
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class NightmareGreaves : BaseAAItem
+    public abstract class NightmareGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

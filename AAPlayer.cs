@@ -149,6 +149,10 @@ namespace AAMod
         public bool doomite;
         public bool Radium;
         public bool perfectChaos;
+        public bool perfectChaosMe;
+        public bool perfectChaosRa;
+        public bool perfectChaosMa;
+        public bool perfectChaosSu;
         public bool Assassin;
         public bool AbyssalStealth;
         public bool AssassinStealth;
@@ -2291,7 +2295,7 @@ namespace AAMod
                 target.AddBuff(BuffID.CursedInferno, 300);
             }
 
-            if (perfectChaos)
+            if (perfectChaosMe)
             {
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
@@ -2855,7 +2859,19 @@ namespace AAMod
             {
                 target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
             }
-            if (perfectChaos && proj.melee)
+            if (perfectChaosMe && proj.melee)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+            }
+            if (perfectChaosRa && proj.ranged)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+            }
+            if (perfectChaosMa && proj.magic)
+            {
+                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+            }
+            if (perfectChaosSu && proj.minion)
             {
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
             }
@@ -3724,7 +3740,7 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("BlazenBoots")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenBoots_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenBoots_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
             }
         });
 

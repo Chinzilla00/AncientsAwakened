@@ -82,8 +82,12 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
             Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
         }
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType("HydraToxin"), 300);
+        }
 
-		public override Color? GetAlpha(Color lightColor)
+        public override Color? GetAlpha(Color lightColor)
 		{
 			return new Color(255, 255, 255, 50);
 		}		

@@ -147,7 +147,7 @@ namespace AAMod
 		{
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Magenta, Color.DarkMagenta, Color.Magenta);
+				return Color.Magenta;
 			}
 		}
 
@@ -163,7 +163,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Magenta, Color.Indigo, Color.Indigo, Color.Magenta, Color.OrangeRed);
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, AkumaA, Shen, YamataA, YamataA, Shen, AkumaA);
             }
         }
 

@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.ai[0] > 4)
                 {
                     npc.ai[0] = 0;
+                    Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
                     for (int i = 0; i < 3; i++)
                     {
                         Vector2 Pos = new Vector2(npc.position.X + Main.rand.Next(0, 444), npc.position.Y - Main.rand.Next(0, 100));

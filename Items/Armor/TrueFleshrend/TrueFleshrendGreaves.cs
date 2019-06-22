@@ -20,8 +20,8 @@ namespace AAMod.Items.Armor.TrueFleshrend
 			item.width = 22;
 			item.height = 20;
 			item.value = 100000;
-			item.rare = 16;
-			item.defense = 10;
+            item.rare = 7;
+            item.defense = 10;
 		}
 
 		public override void UpdateEquip(Player player)

@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.penetrate = 1;
             projectile.alpha = 120;
             cooldownSlot = 1;
+            projectile.timeLeft = 60;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -32,8 +33,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            projectile.alpha -= 1;
-            if (projectile.alpha <= 0)
+            projectile.timeLeft --;
+            if (projectile.timeLeft <= 0)
             {
                 projectile.Kill();
             }

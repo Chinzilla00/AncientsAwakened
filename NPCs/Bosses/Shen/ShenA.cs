@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health4 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.2f && !Health3)
+            if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
                 if (AAWorld.downedShen)
                 {
@@ -149,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health3 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.1f && !Health2)
+            if (npc.life <= npc.lifeMax * 0.2f && !Health2)
             {
                 if (AAWorld.downedShen)
                 {
@@ -162,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health2 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.05f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.1f && !Health1)
             {
                 if (AAWorld.downedShen)
                 {
@@ -175,9 +175,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health1 = true;
                 npc.netUpdate = true;
             }
-            if (Health2)
+            if (Health3)
             {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
         }
 

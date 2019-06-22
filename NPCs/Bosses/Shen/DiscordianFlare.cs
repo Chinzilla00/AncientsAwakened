@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 8;
+            const float desiredFlySpeedInPixelsPerFrame = 14;
             const float amountOfFramesToLerpBy = 20;
 
             projectile.ai[aislotHomingCooldown]++;

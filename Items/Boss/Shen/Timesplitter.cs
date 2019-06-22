@@ -17,7 +17,7 @@ Inflicts Daybroken and Moonraze");
 
         public override void SetDefaults()
         {
-            item.damage = 222;
+            item.damage = 170;
             item.melee = true;
             item.width = 96;
             item.height = 96;
