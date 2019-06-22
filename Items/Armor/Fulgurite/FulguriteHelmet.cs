@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Fulgurite
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fulgurite Helmet");
-			Tooltip.SetDefault(@"12% increased melee damage, critical strike chance, and melee speed");
+			Tooltip.SetDefault(@"10% increased melee damage, critical strike chance, and melee speed");
 
 		}
 
@@ -28,7 +28,7 @@ namespace AAMod.Items.Armor.Fulgurite
 		{
             player.meleeDamage *= 1.12f;
             player.meleeCrit += 12;
-            player.meleeSpeed *= 1.12f;
+            player.meleeSpeed *= 1.10f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -40,11 +40,11 @@ namespace AAMod.Items.Armor.Fulgurite
 		{
 
             player.setBonus = @"Being struck causes a burst of lightning to erupt from your body, knocking back enemies
-+22% increased melee and movement speed";
++20% increased melee and movement speed";
 
             player.GetModPlayer<AAPlayer>(mod).fulgurite = true;
-            player.meleeSpeed *= 1.22f;
-            player.moveSpeed *= 1.22f;
+            player.meleeSpeed *= 1.20f;
+            player.moveSpeed *= 1.20f;
         }
 
 		public override void AddRecipes()

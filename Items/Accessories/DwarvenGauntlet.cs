@@ -20,7 +20,7 @@ namespace AAMod.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage += 0.18f;
-            player.meleeSpeed += 0.18f;
+            player.meleeSpeed += 0.12f;
             player.aggro += 8;
         }
 
@@ -29,7 +29,8 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("Dwarven Gauntlet");
             Tooltip.SetDefault(
 @"Enemies are much more likely to target you
-18% Increased Melee Damage and Speed
+18% Increased Melee Damage and 
+12% increased melee speed
 Increased Melee Knockback
 Having this gauntlet allows you to handle the infinity stones without overloading
 'Fine. I'll do it myself.'");

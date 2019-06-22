@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 9)
+            if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 5)

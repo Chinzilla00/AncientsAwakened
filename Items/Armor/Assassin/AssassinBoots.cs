@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Assassin
 			DisplayName.SetDefault("Midnight Assassin's Boots");
 			Tooltip.SetDefault(@"15% increased ranged/melee damage
 15% increased movement speed
-14% increased melee speed
+8% increased melee speed
 Dark boots infused with the shadow of midnight");
 		}
 
@@ -31,7 +31,7 @@ Dark boots infused with the shadow of midnight");
             player.meleeDamage += .15f;
             player.rangedDamage += .15f;
             player.moveSpeed += .15f;
-            player.meleeSpeed += .14f;
+            player.meleeSpeed += .08f;
 		}
     }
 }

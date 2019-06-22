@@ -62,7 +62,7 @@ All effects of the infinity stones
             player.GetModPlayer<AAPlayer>().Time = true;
             player.GetModPlayer<AAPlayer>().Space = true;
             player.GetModPlayer<AAPlayer>().Power = true;
-            player.meleeSpeed += 0.18f;
+            player.meleeSpeed += 0.12f;
             player.aggro += 8;
             player.meleeDamage += .4f;
             player.rangedDamage += .4f;

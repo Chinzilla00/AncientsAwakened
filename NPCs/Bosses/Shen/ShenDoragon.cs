@@ -755,7 +755,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
             }
-            else if (npc.ai[0] == 7f) //Discordian Flame
+            else if (npc.ai[0] == 7f) //Flamethrower
             {
                 if (npc.ai[2] % 5 == 0)
                 {
