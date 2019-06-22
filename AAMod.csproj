@@ -2387,7 +2387,6 @@
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
-    <Compile Include="Tiles\ShroomPlant.cs" />
     <Compile Include="Tiles\TorchAsh.cs" />
     <Compile Include="Tiles\TorchMoss.cs" />
     <Compile Include="Tiles\TorchsandBall.cs" />
@@ -4691,6 +4690,7 @@
     <Content Include="Items\Melee\Executioner.png" />
     <Content Include="Items\Melee\GlacierBreaker.png" />
     <Content Include="Items\Melee\HeatCleaver.png" />
+    <Content Include="Items\Melee\Khopesh.png" />
     <Content Include="Items\Melee\Mjolnir.png" />
     <Content Include="Items\Melee\MjolnirEX.png" />
     <Content Include="Items\Melee\Pyrosphere.png" />
@@ -4745,6 +4745,7 @@
     <Content Include="Items\Throwing\CometDagger.png" />
     <Content Include="Items\Throwing\CometFan.png" />
     <Content Include="Items\Throwing\CometJavelin.png" />
+    <Content Include="Items\Throwing\Mug.png" />
     <Content Include="Items\Tools\ChaosTerratool.png" />
     <Content Include="Items\Tools\ChaosTerratool_Axe.png" />
     <Content Include="Items\Tools\ChaosTerratool_Hammer.png" />
@@ -7181,7 +7182,6 @@
     <Content Include="Tiles\ScorchedShingles.png" />
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
-    <Content Include="Tiles\Shroomplant.png" />
     <Content Include="Tiles\SiegeBox.png" />
     <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />

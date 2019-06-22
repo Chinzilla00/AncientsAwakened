@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Nightmare_Hammer : BaseAAItem
+    public abstract class Nightmare_Hammer : BaseAAItem
 	{
 		public override void SetDefaults()
 		{
