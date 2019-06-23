@@ -1,5 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.width = 60;
             projectile.height = 60;
             projectile.hostile = true;
-			projectile.aiStyle = 1;
+			projectile.aiStyle = -1;
             projectile.scale = 1f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
@@ -41,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Shen
 		
         public override void Kill(int timeLeft)
         {
-            int dustType = mod.DustType<Dusts.DiscordLight>();
+            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{
@@ -76,7 +80,40 @@ namespace AAMod.NPCs.Bosses.Shen
 		
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return new Color(255, 255, 255, 150);
-		}		
+			return new Color(255, 255, 255);
+		}
+
+        public float[] InternalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(InternalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                InternalAI[0] = reader.ReadFloat();
+            }
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            int ShaderType = projectile.ai[0] == 1 ? mod.ItemType<Items.Dyes.BlazingDye>() : projectile.ai[0] == 2 ? mod.ItemType<Items.Dyes.AbyssalDye>() : mod.ItemType<Items.Dyes.DiscordianDye>();
+            int shader = GameShaders.Armor.GetShaderIdFromItemId(ShaderType);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type], 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, Main.projFrames[projectile.type], frame, Color.White, true);
+            return false;
+        }
     }
 }
