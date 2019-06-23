@@ -194,6 +194,9 @@ namespace AAMod.NPCs.Bosses.Zero2
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+
+                writer.Write(teleport);
+                writer.Write(teleportTimer);
             }
         }
 
@@ -206,6 +209,9 @@ namespace AAMod.NPCs.Bosses.Zero2
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+
+                teleport = reader.ReadBool();
+                teleportTimer = reader.ReadInt32();
             }
         }
 
@@ -219,6 +225,8 @@ namespace AAMod.NPCs.Bosses.Zero2
 
         public override void AI()
         {
+            Player player = Main.player[npc.target];
+
             RingRoatation += 0.03f;
 
             
@@ -285,6 +293,53 @@ namespace AAMod.NPCs.Bosses.Zero2
                         internalAI[1] = 0f;
                         npc.netUpdate = true;
                     }
+                }
+                npc.ai[2]++;
+                if (npc.ai[2] == 60 || npc.ai[2] == 90 || npc.ai[2] == 120 || npc.ai[2] == 150 || npc.ai[2] == 180)
+                {
+                    float Speed = 16f;  //projectile speed
+                    Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                    int damage = 85;  //projectile damage
+                    int type = mod.ProjectileType("ZeroBeam1");  //put your projectile
+                    Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 33);
+                    float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                    int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                    Main.npc[num54].netUpdate = true;
+                }
+                if (npc.ai[2] == 300 || npc.ai[2] == 400)
+                {
+                    Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                    int pieCut = 4;
+                    for (int m = 0; m < pieCut; m++)
+                    {
+                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Main.projectile[projID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), ((float)m / (float)pieCut) * 6.28f);
+                        Main.npc[projID].netUpdate = true;
+                    }
+                }
+                if (npc.ai[2] == 350)
+                {
+                    Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                    int pieCut = 8;
+                    for (int m = 0; m < pieCut; m++)
+                    {
+                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Main.projectile[projID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), ((float)m / (float)pieCut) * 6.28f);
+                        Main.npc[projID].netUpdate = true;
+                    }
+                }
+                if (npc.ai[2] >= 500 && npc.ai[2] < 580)
+                {
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        Main.PlaySound(SoundID.Item74, (int)npc.position.X, (int)npc.position.Y);
+                        int ProjID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
+                        Main.npc[ProjID].netUpdate = true;
+                    }
+                }
+                if (npc.ai[2] >= 600)
+                {
+                    npc.ai[2] = 0;
                 }
             }
             else
