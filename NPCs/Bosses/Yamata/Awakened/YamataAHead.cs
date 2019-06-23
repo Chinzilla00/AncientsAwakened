@@ -13,6 +13,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             Main.npcFrameCount[npc.type] = 7;
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
+        }
+
         public override void SetDefaults()
         {
             base.SetDefaults();

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class CrucibleScale : ModItem
+    public class CrucibleScale : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -15,29 +15,15 @@ namespace AAMod.Items.Boss.Akuma
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Akuma;
-                }
-            }
-        }
-
-        // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 30;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 13;
         }
-
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
-        
 
         public override void PostUpdate()
         {

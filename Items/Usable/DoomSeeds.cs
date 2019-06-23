@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class DoomSeeds : ModItem
+    public class DoomSeeds : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

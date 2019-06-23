@@ -2,9 +2,10 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-namespace AAmod.Items.Dev
+
+namespace AAMod.Items.Dev
 {
-    public class Etheral : ModItem
+    public class Etheral : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

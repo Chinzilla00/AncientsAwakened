@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Aves
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DJDuckHead : ModItem
+	public class DJDuckHead : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

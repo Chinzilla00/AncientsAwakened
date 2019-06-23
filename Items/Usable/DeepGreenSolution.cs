@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class DeepGreenSolution : ModItem
+    public class DeepGreenSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

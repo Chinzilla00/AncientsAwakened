@@ -8,13 +8,13 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Draco
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DracoLeggings : ModItem
+	public class DracoLeggings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Draconian Sun Greaves");
 			Tooltip.SetDefault(@"16% increased movement speed
-16% increased melee speed
+15% increased melee speed
 10% increased damage resistance
 The blazing fury of the Inferno rests in this armor");
 
@@ -53,7 +53,7 @@ The blazing fury of the Inferno rests in this armor");
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.16f;
-			player.meleeSpeed += 0.16f;
+			player.meleeSpeed += 0.15f;
 			player.endurance *= 1.1f;
         }
 
@@ -63,7 +63,7 @@ The blazing fury of the Inferno rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

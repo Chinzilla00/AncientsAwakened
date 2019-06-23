@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Dread
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DreadBoots : ModItem
+	public class DreadBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -38,7 +38,7 @@ The abyssal wrath of the Mire rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

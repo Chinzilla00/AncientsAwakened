@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class PrimevalJavelin : ModItem
+    public class PrimevalJavelin : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

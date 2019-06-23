@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class HallowedAnvil : ModItem
+    public class HallowedAnvil : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

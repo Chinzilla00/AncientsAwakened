@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Firestorm : ModItem
+    public class Firestorm : BaseAAItem
 	{
         public override void SetStaticDefaults()
 		{

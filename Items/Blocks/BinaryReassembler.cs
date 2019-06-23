@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class BinaryReassembler : ModItem
+    public class BinaryReassembler : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -25,7 +25,8 @@ also acts as all vanilla crafting stations");
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 13;
             item.useStyle = 1;
             item.consumable = true;
             item.value = 1000000;
@@ -59,7 +60,7 @@ also acts as all vanilla crafting stations");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
 //
                 }
             }

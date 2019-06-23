@@ -7,6 +7,38 @@ namespace AAMod
 {
 	public class AAColor
     {
+        public static Color Rarity12
+        {
+            get
+            {
+                return new Color(239, 0, 243);
+            }
+        }
+
+        public static Color Rarity13
+        {
+            get
+            {
+                return new Color(0, 125, 243);
+            }
+        }
+
+        public static Color Rarity14
+        {
+            get
+            {
+                return new Color(128, 11, 0);
+            }
+        }
+
+        public static Color Rarity15
+        {
+            get
+            {
+                return new Color(0, 178, 107);
+            }
+        }
+
         public static Color Lantern
         {
             get
@@ -115,7 +147,7 @@ namespace AAMod
 		{
 			get
 			{
-				return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Magenta, Color.DarkMagenta, Color.Magenta);
+				return Color.Magenta;
 			}
 		}
 
@@ -131,7 +163,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.OrangeRed, Color.Magenta, Color.Indigo, Color.Indigo, Color.Magenta, Color.OrangeRed);
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, AkumaA, Shen, YamataA, YamataA, Shen, AkumaA);
             }
         }
 

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class TheCorruptor : ModItem
+    public class TheCorruptor : BaseAAItem
     {
         public override void SetDefaults()
         {

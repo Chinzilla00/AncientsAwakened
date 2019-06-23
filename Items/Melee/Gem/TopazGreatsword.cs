@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located
 {
-    public class TopazGreatsword : ModItem
+    public class TopazGreatsword : BaseAAItem
     {
         public override void SetDefaults()
         {

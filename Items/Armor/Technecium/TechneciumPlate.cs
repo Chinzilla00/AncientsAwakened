@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Technecium
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TechneciumPlate : ModItem
+	public class TechneciumPlate : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

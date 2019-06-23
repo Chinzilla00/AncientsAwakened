@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Atlantean
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class AtlanteanGreaves : ModItem
+	public class AtlanteanGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

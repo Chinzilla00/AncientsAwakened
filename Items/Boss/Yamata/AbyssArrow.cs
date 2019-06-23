@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class AbyssArrow : ModItem
+    public class AbyssArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -26,12 +26,12 @@ Non-consumable");
 			item.height = 40;
 			item.consumable = false;
 			item.knockBack = 7f;
-			item.value = Item.sellPrice(1, 0, 0, 0); ;
+			item.value = Item.sellPrice(0, 30, 0, 0); ;
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("AbyssArrow");
 			item.shootSpeed = 3f;
 			item.ammo = AmmoID.Arrow;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
 
         }
 
@@ -62,7 +62,7 @@ Non-consumable");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

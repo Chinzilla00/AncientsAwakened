@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class YamataTerratool_Hammer : ModItem
+    public class YamataTerratool_Hammer : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -17,8 +17,8 @@ namespace AAMod.Items.Boss.Yamata
             item.useAnimation = 20;
             item.tileBoost += 20;
             item.knockBack = 3;
-            item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 10;
+            item.value = Item.sellPrice(0, 30, 0, 0);
+            item.rare = 9; AARarity = 13;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata; ;
+                    line2.overrideColor = AAColor.Rarity13; ;
                 }
             }
         }

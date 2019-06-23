@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class AlphakipStatue : ModItem
+	public class AlphakipStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -26,8 +26,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override void SetDefaults()
@@ -38,9 +37,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 			npc.aiStyle = -1;
 			npc.netAlways = true;
 			npc.knockBackResist = 0f;
-            npc.damage = 100;
-            npc.defense = 150;
-            npc.lifeMax = 190000;
+            npc.damage = 120;
+            npc.defense = 250;
+            npc.lifeMax = 750000;
             if (Main.expertMode)
             {
                 npc.value = Item.sellPrice(0, 0, 0, 0);

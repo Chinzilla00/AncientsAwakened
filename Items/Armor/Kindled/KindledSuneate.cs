@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Kindled
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class KindledSuneate : ModItem
+	public class KindledSuneate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

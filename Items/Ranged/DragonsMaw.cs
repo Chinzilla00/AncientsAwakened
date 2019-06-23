@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DragonsMaw : ModItem
+    public class DragonsMaw : BaseAAItem
     {
 
         public override void SetDefaults()
@@ -23,11 +23,11 @@ namespace AAMod.Items.Ranged
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
-            item.value = 100;
             item.rare = 5;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 25f;
+            item.value = Item.sellPrice(0, 1, 0, 0);
 
         }
 

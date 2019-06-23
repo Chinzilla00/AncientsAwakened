@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class Neutralizer : ModItem
+    public class Neutralizer : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -28,15 +28,14 @@ namespace AAMod.Items.Boss.Zero
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 0;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Neutralizer");
 			item.shootSpeed = 8f;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
 
         }
-
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -57,17 +56,6 @@ namespace AAMod.Items.Boss.Zero
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
         }
 
         public override Vector2? HoldoutOffset()

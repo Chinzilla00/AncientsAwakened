@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class SnowMana : ModItem
+    public class SnowMana : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

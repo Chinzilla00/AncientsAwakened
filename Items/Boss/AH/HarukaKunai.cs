@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HarukaKunai : ModItem
-	{
+    public class HarukaKunai : BaseAAItem
+    {
 		public override void SetDefaults()
 		{
 			item.damage = 140;
@@ -29,5 +29,15 @@ namespace AAMod.Items.Boss.AH
 		{
 			DisplayName.SetDefault("Abyssal Kunai");
 		}
-	}
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+    }
 }

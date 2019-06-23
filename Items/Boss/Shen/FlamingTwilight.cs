@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class FlamingTwilight : ModItem
+    public class FlamingTwilight : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

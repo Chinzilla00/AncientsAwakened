@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Apollo : ModItem
+    public class Apollo : BaseAAItem
     {
 
         public override void SetDefaults()

@@ -3,14 +3,14 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Stonebreaker : ModItem
+    public class Stonebreaker : BaseAAItem
     {
         public override void SetDefaults()
         {
             item.damage = 15;
             item.melee = true;
-            item.width = 64;
-            item.height = 64;
+            item.width = 40;
+            item.height = 40;
             item.useAnimation = 30;
             item.useTime = 10;
             item.pick = 110;

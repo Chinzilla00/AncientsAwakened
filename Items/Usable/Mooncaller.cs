@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class Mooncaller : ModItem
+    public class Mooncaller : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

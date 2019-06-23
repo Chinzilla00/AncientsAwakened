@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class SwimmingHydra : ModItem
+    public class SwimmingHydra : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

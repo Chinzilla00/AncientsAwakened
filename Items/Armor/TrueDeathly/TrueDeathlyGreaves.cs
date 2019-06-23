@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueDeathly
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueDeathlyGreaves : ModItem
+	public class TrueDeathlyGreaves : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

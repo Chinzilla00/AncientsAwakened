@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Eliza
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class LizShirt : ModItem
+    public class LizShirt : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class BrokenCode : ModItem
+    public class BrokenCode : BaseAAItem
     {
         
         public int CodeCD = 0;
@@ -34,7 +34,7 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override Color? GetAlpha(Color lightColor)

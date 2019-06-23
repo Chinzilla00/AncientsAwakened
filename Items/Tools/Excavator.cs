@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Tools
 {
-    public class Excavator : ModItem
+    public class Excavator : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -22,11 +22,6 @@ namespace AAMod.Items.Tools
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-        }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Icepick");
         }
 
         public override void AddRecipes()  //How to craft this item

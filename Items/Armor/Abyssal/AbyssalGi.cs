@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Abyssal
 {
     [AutoloadEquip(EquipType.Body)]
-	public class AbyssalGi : ModItem
+	public class AbyssalGi : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

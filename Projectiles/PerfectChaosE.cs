@@ -37,7 +37,7 @@ namespace AAMod.Projectiles
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 30;
         }
 
         public override void AI()

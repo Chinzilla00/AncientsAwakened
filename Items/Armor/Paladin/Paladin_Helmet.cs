@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paladin
 {
     [AutoloadEquip(EquipType.Head)]
-    public class Paladin_Helmet : ModItem
+    public class Paladin_Helmet : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

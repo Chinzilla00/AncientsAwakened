@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Shen   //where is located
 {
-    public class MeteorStrike : ModItem
+    public class MeteorStrike : BaseAAItem
     {
 
         public override void SetStaticDefaults()
@@ -92,7 +92,7 @@ Inflicts Discordian Inferno");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

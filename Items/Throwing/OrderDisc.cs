@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class OrderDisc : ModItem
+	public class OrderDisc : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

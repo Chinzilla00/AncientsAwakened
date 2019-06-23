@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueDeathly
 {
     [AutoloadEquip(EquipType.Body)]
-    public class TrueDeathlyRibguard : ModItem
+    public class TrueDeathlyRibguard : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Deathly
 {
     [AutoloadEquip(EquipType.Head)]
-    public class DeathlySkull : ModItem
+    public class DeathlySkull : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

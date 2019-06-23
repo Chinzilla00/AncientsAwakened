@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class vulture_feather : ModItem
+    public class vulture_feather : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

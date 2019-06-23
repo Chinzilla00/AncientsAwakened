@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class SingularityCannon : ModItem
+    public class SingularityCannon : BaseAAItem
     {
 
         public override void SetDefaults()
@@ -18,7 +18,7 @@ namespace AAMod.Items.Ranged
             item.useStyle = 5;
             item.shoot = mod.ProjectileType<Projectiles.Singularity>();
             item.knockBack = 5;
-            item.value = 1000;
+            item.value = Terraria.Item.sellPrice(0, 8, 0, 0);
             item.rare = 11;
             item.UseSound = SoundID.Item12;
             item.autoReuse = true;

@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Retriever;
 using AAMod.Items.Boss.Grips;
+using System.Collections.Generic;
+using AAMod.Items;
 
 namespace AAMod
 {
@@ -26,6 +28,97 @@ namespace AAMod
             if (item.type == ItemID.LunarOre)
             {
                 item.createTile = mod.TileType("LuminiteOre");
+            }
+            if (item.modItem != null && item.modItem.mod.Name == mod.Name && (item.damage > 0 || item.accessory || item.defense > 0) && item.maxStack < 2)
+            {
+                BaseAAItem AAitem = (BaseAAItem)item.modItem;
+                if (AAitem.AARarity != 0)
+                {
+                    switch (AAitem.AARarity)
+                    {
+                        case 12:
+                            item.value = Item.sellPrice(0, 30, 0, 0);
+                            break;
+                        case 13:
+                            item.value = Item.sellPrice(0, 35, 0, 0);
+                            break;
+                        case 14:
+                            item.value = Item.sellPrice(0, 40, 0, 0);
+                            break;
+                        case 15:
+                            item.value = Item.sellPrice(0, 45, 0, 0);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (item.rare)
+                    {
+                        case 0:
+                            item.value = Item.sellPrice(0, 0, 25, 0);
+                            break;
+                        case 1:
+                            item.value = Item.sellPrice(0, 0, 50, 0);
+                            break;
+                        case 2:
+                            item.value = Item.sellPrice(0, 0, 75, 0);
+                            break;
+                        case 3:
+                            item.value = Item.sellPrice(0, 1, 0, 0);
+                            break;
+                        case 4:
+                            item.value = Item.sellPrice(0, 2, 0, 0);
+                            break;
+                        case 5:
+                            item.value = Item.sellPrice(0, 4, 0, 0);
+                            break;
+                        case 6:
+                            item.value = Item.sellPrice(0, 6, 0, 0);
+                            break;
+                        case 7:
+                            item.value = Item.sellPrice(0, 8, 0, 0);
+                            break;
+                        case 8:
+                            item.value = Item.sellPrice(0, 10, 0, 0);
+                            break;
+                        case 9:
+                            item.value = Item.sellPrice(0, 15, 0, 0);
+                            break;
+                        case 10:
+                            item.value = Item.sellPrice(0, 20, 0, 0);
+                            break;
+                        case 11:
+                            item.value = Item.sellPrice(0, 25, 0, 0);
+                            break;
+                    }
+                }
+            }
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.modItem != null && item.modItem.mod.Name == mod.Name && !item.expert)
+            {
+                BaseAAItem AAitem = (BaseAAItem)item.modItem;
+                if (AAitem.AARarity != 0)
+                {
+                    Color Rare;
+                    switch (AAitem.AARarity)
+                    {
+                        default: Rare = Color.White; break;		
+                        case 12: Rare = AAColor.Rarity12; break; //Mantimyte Tier
+                        case 13: Rare = AAColor.Rarity13; break; //Soulrift Tier
+                        case 14: Rare = AAColor.Rarity14; break; //Aersteel Tier	
+                        case 15: Rare = AAColor.Rarity15; break; //Aersteel Tier					
+                    }
+                    foreach (TooltipLine line2 in tooltips)
+                    {
+                        if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                        {
+                            line2.overrideColor = Rare;
+                        }
+                    }
+                }
             }
         }
 

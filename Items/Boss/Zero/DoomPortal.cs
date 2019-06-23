@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class DoomPortal : ModItem
+    public class DoomPortal : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -41,8 +41,8 @@ namespace AAMod.Items.Boss.Zero
             item.buffType = mod.BuffType("Protocol");
             item.buffTime = 3600;
             item.autoReuse = true;
-            item.rare = 10;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.rare = 9; AARarity = 13;
+            item.value = Item.sellPrice(0, 30, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

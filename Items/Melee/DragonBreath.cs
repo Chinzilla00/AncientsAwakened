@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class DragonBreath : ModItem
+    public class DragonBreath : BaseAAItem
     {
         public override void SetDefaults()
         {

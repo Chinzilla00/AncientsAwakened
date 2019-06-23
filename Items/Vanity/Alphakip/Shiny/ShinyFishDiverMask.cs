@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Alphakip.Shiny
 {
     [AutoloadEquip(EquipType.Head)]
-	public class ShinyFishDiverMask : ModItem
+	public class ShinyFishDiverMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

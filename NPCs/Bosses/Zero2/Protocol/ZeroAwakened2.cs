@@ -28,9 +28,9 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 160000;
-            npc.damage = 140;
-            npc.defense = 110;
+            npc.lifeMax = 600000;
+            npc.damage = 190;
+            npc.defense = 140;
             npc.knockBackResist = 0f;
             npc.width = 78;
             npc.height = 78;
@@ -52,12 +52,11 @@ namespace AAMod.NPCs.Bosses.Zero2.Protocol
             {
                 npc.buffImmune[k] = true;
             }
-
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 220000;
-                npc.damage = 160;
-                npc.defense = 140;
+                npc.lifeMax = 1000000;
+                npc.damage = 220;
+                npc.defense = 300;
             }
         }
 

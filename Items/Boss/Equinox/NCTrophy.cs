@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Equinox
 {
-    public class NCTrophy : ModItem
+    public class NCTrophy : BaseAAItem
     {
 
 

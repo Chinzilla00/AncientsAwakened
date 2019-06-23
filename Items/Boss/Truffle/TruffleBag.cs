@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Truffle
 {
-    public class TruffleBag : ModItem
+    public class TruffleBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class Spectrum : ModItem
+    public class Spectrum : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

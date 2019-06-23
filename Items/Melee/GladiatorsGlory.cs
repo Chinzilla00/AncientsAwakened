@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class GladiatorsGlory : ModItem
+    public class GladiatorsGlory : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

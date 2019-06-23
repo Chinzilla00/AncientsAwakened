@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ChaosSlayer : ModItem
+    public class ChaosSlayer : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -39,7 +39,7 @@ namespace AAMod.Items.Boss.Shen
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

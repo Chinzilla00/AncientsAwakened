@@ -4,8 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    //ported from my tAPI mod because I don't want to make more artwork
-    public class ShadowDrill : ModItem
+    public class ShadowDrill : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -38,7 +37,7 @@ namespace AAMod.Items.Tools
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "HydraTunneler");
+            recipe.AddIngredient(mod, "HydraTuneller");
             recipe.AddIngredient(mod, "OceanPick");
             recipe.AddIngredient(mod, "Icepick");
             recipe.AddIngredient(mod, "DoomiteMiningLaser");

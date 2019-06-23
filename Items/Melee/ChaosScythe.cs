@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class ChaosScythe : ModItem
+    public class ChaosScythe : BaseAAItem
     {
         public override void SetDefaults()
         {

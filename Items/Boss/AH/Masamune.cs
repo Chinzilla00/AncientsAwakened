@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class Masamune : ModItem
-	{
+    public class Masamune : BaseAAItem
+    {
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Masamune");
@@ -27,10 +27,11 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 5;
             item.knockBack = 4f;
             item.autoReuse = false;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
         }
 
         public override bool AltFunctionUse(Player player)

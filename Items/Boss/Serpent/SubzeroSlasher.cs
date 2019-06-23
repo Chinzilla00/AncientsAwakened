@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SubzeroSlasher : ModItem
+    public class SubzeroSlasher : BaseAAItem
     {
         private static int shoot;
 

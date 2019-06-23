@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class DragonSlasher : ModItem
+    public class DragonSlasher : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -42,19 +42,20 @@ Inflicts Daybroken");
 
         public override void SetDefaults()
         {
-            item.damage = 450;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 42;              //Sword width
-            item.height = 52;             //Sword height
-            item.useTime = 40;          //how fast 
+            item.damage = 450;
+            item.melee = true;
+            item.width = 42;
+            item.height = 52;
+            item.useTime = 40;
             item.useAnimation = 40;     
-            item.useStyle = 3;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 10f;      //Sword knockback
-            item.value = Item.sellPrice(1, 0, 0, 0);
-            item.UseSound = SoundID.Item20;      //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.useStyle = 3;
+            item.knockBack = 10f;
+            item.value = Item.sellPrice(0, 30, 0, 0);
+            item.UseSound = SoundID.Item20; 
+            item.autoReuse = true;
             item.useTurn = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -64,19 +65,6 @@ Inflicts Daybroken");
                 Dust dust;
                 dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
                 dust.noGravity = true;
-            }
-        }
-
-        
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Akuma;
-                }
             }
         }
 

@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Viking
 {
     [AutoloadEquip(EquipType.Body)]
-	public class VikingPlate : ModItem
+	public class VikingPlate : BaseAAItem
 	{
 		public static int counter = 0;
 		public override void SetStaticDefaults()

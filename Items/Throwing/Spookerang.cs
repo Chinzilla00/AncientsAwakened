@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Spookerang : ModItem
+    public class Spookerang : BaseAAItem
     {
 
         public override void SetDefaults()

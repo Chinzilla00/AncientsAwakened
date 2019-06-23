@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Fargo
 {
     [AutoloadEquip(EquipType.Head)]
-	public class FargoHat : ModItem
+	public class FargoHat : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

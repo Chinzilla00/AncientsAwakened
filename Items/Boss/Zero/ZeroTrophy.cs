@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroTrophy : ModItem
+    public class ZeroTrophy : BaseAAItem
 	{
         public static int type;
 
@@ -15,17 +15,6 @@ namespace AAMod.Items.Boss.Zero
         {
             DisplayName.SetDefault("Zero Trophy");
 		}
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
-        }
 
         public override void SetDefaults()
 		{
@@ -36,7 +25,7 @@ namespace AAMod.Items.Boss.Zero
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;

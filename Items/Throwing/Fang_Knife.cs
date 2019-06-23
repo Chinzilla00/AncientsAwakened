@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Fang_Knife : ModItem
+    public class Fang_Knife : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

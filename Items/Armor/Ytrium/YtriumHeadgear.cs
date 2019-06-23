@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Ytrium
 {
     [AutoloadEquip(EquipType.Head)]
-    public class YtriumHeadgear : ModItem
+    public class YtriumHeadgear : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

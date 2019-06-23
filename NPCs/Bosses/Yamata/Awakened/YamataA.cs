@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-            npc.value = Item.sellPrice(20, 0, 0, 0);
+            npc.value = Item.sellPrice(2, 0, 0, 0);
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = npc.lifeMax;
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
@@ -168,15 +168,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     tenthHealth = true;
                 }
             }
-            if (npc.life <= npc.lifeMax / 3 && !AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
-            {
-                Main.NewText("Wh-WHA?! DIE! DIE YOU LITTLE TWERP! DIEDIEDIEDIEDIEDIEDIE!!!!", new Color(146, 30, 68));
-            }
-            if (npc.life <= npc.lifeMax / 3 && AAWorld.downedYamata && npc.type == mod.NPCType<YamataA>())
-            {
-                Main.NewText("NO NO NO!!! NOT AGAIN!!! THIS TIME IMMA STOMP YOU RIGHT INTO THE GROUND!!!", new Color(146, 30, 68));
-            }
-
 
             if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
             {

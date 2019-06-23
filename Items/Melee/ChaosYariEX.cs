@@ -5,11 +5,11 @@ using Terraria;
 
 namespace AAMod.Items.Melee
 {
-    public class ChaosYariEX : ModItem
+    public class ChaosYariEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Perfect Chaos Yari EX");		
+			DisplayName.SetDefault("Perfect Chaos Yari");		
 		}
 
         public override void SetDefaults()

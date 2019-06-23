@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class CometBar : ModItem
+    public class CometBar : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Face)]
-    public class PowerStone : ModItem
+    public class PowerStone : BaseAAItem
     {
         
 

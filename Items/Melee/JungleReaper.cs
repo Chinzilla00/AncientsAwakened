@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class JungleReaper : ModItem
+    public class JungleReaper : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -16,7 +16,7 @@ namespace AAMod.Items.Melee   //where is located
             item.useAnimation = 30;     
             item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
             item.knockBack = 3;      //Sword knockback
-            item.value = 10;        
+            item.value = Terraria.Item.sellPrice(0, 0, 50, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;       //1 is the sound of the sword
             item.autoReuse = false;   //if it's capable of autoswing.

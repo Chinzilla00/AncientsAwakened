@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class MirePod : ModItem
+    public class MirePod : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

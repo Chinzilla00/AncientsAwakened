@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Darkpuppey
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DarkMask : ModItem
+	public class DarkMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

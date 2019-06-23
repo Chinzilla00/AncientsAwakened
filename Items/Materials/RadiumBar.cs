@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class RadiumBar : ModItem
+    public class RadiumBar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

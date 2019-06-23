@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Nightmare_Katana : ModItem
+    public abstract class Nightmare_Katana : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

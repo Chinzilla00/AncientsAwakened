@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
-    public class KeyOfSmite : ModItem
+    public class KeyOfSmite : BaseAAItem
     {
 		public override void SetStaticDefaults()
 		{

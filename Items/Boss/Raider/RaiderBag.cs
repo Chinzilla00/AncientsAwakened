@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Raider
 {
-    public class RaiderBag : ModItem
+    public class RaiderBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

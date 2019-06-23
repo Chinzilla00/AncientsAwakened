@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class OrderBottle : ModItem
+    public class OrderBottle : BaseAAItem
 	{
         public override void SetDefaults()
         {

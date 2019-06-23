@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
             item.useStyle = 5;
             item.shoot = 294;
             item.knockBack = 2;
-            item.value = 100;
+            item.value = Terraria.Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;

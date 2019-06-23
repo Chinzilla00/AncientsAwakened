@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.GlowingMushium
 {
     [AutoloadEquip(EquipType.Body)]
-	public class ShroomShirt : ModItem
+	public class ShroomShirt : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -20,7 +20,8 @@ namespace AAMod.Items.Armor.GlowingMushium
 			item.height = 20;
 			item.value = 50;
 			item.rare = 1;
-			item.defense = 3;
+            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)

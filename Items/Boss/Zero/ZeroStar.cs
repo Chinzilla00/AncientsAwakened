@@ -1,6 +1,6 @@
 namespace AAMod.Items.Boss.Zero
 {
-    /*public class ZeroStar : ModItem
+    /*public class ZeroStar : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Zero
 			item.useAnimation = 12;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.melee = true;
@@ -49,17 +49,6 @@ namespace AAMod.Items.Boss.Zero
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
         }
 
         public override void AddRecipes()

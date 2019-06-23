@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DarkShredders : ModItem
+    public class DarkShredders : BaseAAItem
     {
         public override void SetDefaults()
         {
 
-            item.damage = 115;
+            item.damage = 220;
             item.melee = true;
             item.width = 80;
             item.height = 80;

@@ -30,14 +30,14 @@ namespace AAMod.Items.Dev
 	        item.noMelee = true;
 			item.channel = true;
 	        item.knockBack = 0f;
-	        item.value = Item.sellPrice(1, 0, 0, 0); ;
+	        item.value = Item.sellPrice(0, 30, 0, 0);
             item.channel = true;
             item.shoot = mod.ProjectileType("EtheralLazerEX");
             item.shootSpeed = 30f;           
             item.expert = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_NONE; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_NONE; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 

@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class IndigoIce : ModItem
+    public class IndigoIce : BaseAAItem
     {
         public override void SetDefaults()
         {

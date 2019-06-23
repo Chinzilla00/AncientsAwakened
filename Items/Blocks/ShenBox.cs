@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class ShenBox : ModItem
+    public class ShenBox : BaseAAItem
 	{
             
 		public override void SetStaticDefaults()

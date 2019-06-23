@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class TailsStatue : ModItem
+	public class TailsStatue : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

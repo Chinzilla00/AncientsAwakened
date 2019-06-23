@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class BladeOfEvil : ModItem
+    public class BladeOfEvil : BaseAAItem
     {
         public override void SetDefaults()
         {

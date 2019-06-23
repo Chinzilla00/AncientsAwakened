@@ -5,13 +5,13 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Apawn
 {
     [AutoloadEquip(EquipType.Head)]
-	public class ApawnHelm : ModItem
+	public class ApawnHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Apawn's Visor");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

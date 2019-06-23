@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Walls
 {
-    public class DoomiteWall : ModItem
+    public class DoomiteWall : BaseAAItem
     {
         public override void SetDefaults()
         {

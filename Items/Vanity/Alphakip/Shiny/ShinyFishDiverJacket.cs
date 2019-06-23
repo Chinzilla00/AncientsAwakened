@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ShinyFishDiverJacket : ModItem
+    public class ShinyFishDiverJacket : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

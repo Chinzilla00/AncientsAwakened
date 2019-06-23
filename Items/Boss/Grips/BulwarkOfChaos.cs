@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Grips
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class BulwarkOfChaos : ModItem
+    public class BulwarkOfChaos : BaseAAItem
     {
         public override void SetDefaults()
         {

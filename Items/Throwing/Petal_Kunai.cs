@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Petal_Kunai : ModItem
+    public class Petal_Kunai : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

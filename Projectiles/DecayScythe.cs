@@ -30,26 +30,17 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 
         public override void SetDefaults()
         {
-            projectile.width = 144;     //Set the hitbox width
-            projectile.height = 129;       //Set the hitbox height
-            projectile.friendly = true;    //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1;    //Tells the game how many enemies it can hit before being destroyed. -1 = never
-            projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
-            projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
-            projectile.melee = true;  //Tells the game whether it is a melee projectile or not
-            projectile.scale = 3f;
+            projectile.width = 104;
+            projectile.height = 96;
+            projectile.friendly = true;
+            projectile.penetrate = -1; 
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;  
+            projectile.melee = true;
             
         }
         public override void AI()
         {
-            //-------------------------------------------------------------Sound-------------------------------------------------------
-            projectile.soundDelay--;
-            if (projectile.soundDelay <= 0)//this is the proper sound delay for this type of weapon
-            {
-                Main.PlaySound(SoundID.Item1, (int)projectile.Center.X, (int)projectile.Center.Y);    //this is the sound when the weapon is used
-                projectile.soundDelay = 45;    //this is the proper sound delay for this type of weapon
-            }
-            //-----------------------------------------------How the projectile works---------------------------------------------------------------------
             Player player = Main.player[projectile.owner];
             if (Main.myPlayer == projectile.owner)
             {
@@ -78,7 +69,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             if (Main.netMode != 1)
             {
                 projectile.ai[1]++;
-                if (projectile.ai[1] > 20)
+                if (projectile.ai[1] > 30)
                 {
                     projectile.ai[1] = 0;
                     Vector2 vector = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
@@ -101,6 +92,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     }
                     num22 *= num24;
                     num23 *= num24;
+                    Main.PlaySound(SoundID.Item71, (int)projectile.Center.X, (int)projectile.Center.Y);
                     int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, mod.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
                     Main.projectile[a].netUpdate = true;
 

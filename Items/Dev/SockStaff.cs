@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class SockStaff : ModItem
+    public class SockStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

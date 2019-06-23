@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-	public class AbyssalDye : ModItem
+	public class AbyssalDye : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -19,7 +19,7 @@ namespace AAMod.Items.Dyes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

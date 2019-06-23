@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Rajah
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class RabbitcopterEars : ModItem
+	public class RabbitcopterEars : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Eliza
 {
     [AutoloadEquip(EquipType.Head)]
-	public class LizEars : ModItem
+	public class LizEars : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

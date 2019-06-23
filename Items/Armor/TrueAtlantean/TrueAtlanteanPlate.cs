@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueAtlantean
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueAtlanteanPlate : ModItem
+	public class TrueAtlanteanPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

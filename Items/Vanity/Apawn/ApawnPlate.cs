@@ -6,13 +6,13 @@ namespace AAMod.Items.Vanity.Apawn
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ApawnPlate : ModItem
+    public class ApawnPlate : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Apawn's Plate");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

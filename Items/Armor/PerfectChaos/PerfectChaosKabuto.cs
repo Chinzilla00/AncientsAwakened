@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.PerfectChaos
 {
     [AutoloadEquip(EquipType.Head)]
-    public class PerfectChaosKabuto : ModItem
+    public class PerfectChaosKabuto : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,8 +22,9 @@ The power of discordian rage radiates from this armor");
 			item.width = 20;
 			item.height = 24;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-			item.rare = 10;
-			item.defense = 44;
+            item.rare = 9;
+            AARarity = 14;
+            item.defense = 44;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -41,7 +42,7 @@ The power of discordian rage radiates from this armor");
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your melee damage and defense increase
 Your attacks raze your oponents with the flames of Chaos";
-            player.GetModPlayer<AAPlayer>(mod).perfectChaos = true;
+            player.GetModPlayer<AAPlayer>(mod).perfectChaosMe = true;
             if (player.statLife <= player.statLife * .8f && !I1)
             {
                 I1 = true;
@@ -104,7 +105,6 @@ Your attacks raze your oponents with the flames of Chaos";
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DracoHelm", 1);
-            recipe.AddIngredient(null, "DreadHelm", 1);
             recipe.AddIngredient(null, "Discordium", 6);
             recipe.AddIngredient(null, "ChaosScale", 6);
             recipe.AddTile(null, "AncientForge");

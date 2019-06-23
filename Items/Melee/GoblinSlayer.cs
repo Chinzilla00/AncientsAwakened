@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class GoblinSlayer : ModItem
+    public class GoblinSlayer : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

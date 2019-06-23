@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.TrueHallowed
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueHallowedPlate : ModItem
+	public class TrueHallowedPlate : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

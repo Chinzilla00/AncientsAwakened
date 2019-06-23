@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class TeslaHand : ModItem
+    public class TeslaHand : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -32,10 +32,10 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 1;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Teslashock");
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 
@@ -59,17 +59,6 @@ namespace AAMod.Items.Boss.Zero
                 0f
             );
         }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-	    {
-	        foreach (TooltipLine line2 in list)
-	        {
-	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
-	            {
-	                line2.overrideColor = AAColor.Zero;
-	            }
-	        }
-	    }
 
         // How can I make the shots appear out of the muzzle exactly?
         // Also, when I do this, how do I prevent shooting through tiles?

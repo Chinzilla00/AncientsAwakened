@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class Volley : ModItem
+    public class Volley : BaseAAItem
     {
         public override void SetDefaults()
         {

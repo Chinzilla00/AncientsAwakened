@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class Lead_Kunai : ModItem
+    public class Lead_Kunai : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class TechneciumChainsaw : ModItem
+    public class TechneciumChainsaw : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

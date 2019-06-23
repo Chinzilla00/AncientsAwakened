@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips
 {
-    public class ClawBaton : ModItem
+    public class ClawBaton : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

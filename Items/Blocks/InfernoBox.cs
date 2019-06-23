@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class InfernoBox : ModItem
+    public class InfernoBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

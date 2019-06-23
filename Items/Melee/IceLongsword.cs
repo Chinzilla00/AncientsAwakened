@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class IceLongsword : ModItem
+    public class IceLongsword : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class DreadScale : ModItem
+    public class DreadScale : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }
@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Yamata
             item.height = 34;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.

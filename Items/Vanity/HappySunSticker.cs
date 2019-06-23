@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity
 {
-    public class HappySunSticker : ModItem
+    public class HappySunSticker : BaseAAItem
     {
         public override void SetDefaults()
         {

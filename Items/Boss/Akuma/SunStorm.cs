@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class SunStorm : ModItem
+    public class SunStorm : BaseAAItem
   {
         
         public override void SetStaticDefaults()
@@ -31,9 +31,10 @@ namespace AAMod.Items.Boss.Akuma
             item.shoot = mod.ProjectileType("Sunstorm");
             item.shootSpeed = 20f;
             item.knockBack = 4.5f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.magic = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
         }
@@ -65,7 +66,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

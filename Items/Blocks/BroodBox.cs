@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class BroodBox : ModItem
+	public class BroodBox : BaseAAItem
 	{
             
 		public override void SetStaticDefaults()

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Potions
 {
-    public class DragonfireFlask : ModItem
+    public class DragonfireFlask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

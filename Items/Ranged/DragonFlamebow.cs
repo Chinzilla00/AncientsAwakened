@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DragonFlamebow : ModItem
+    public class DragonFlamebow : BaseAAItem
     {
 
         public override void SetDefaults()

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem
 {
-    public class AmberGreatsword : ModItem
+    public class AmberGreatsword : BaseAAItem
     {
         public override void SetDefaults()
         {

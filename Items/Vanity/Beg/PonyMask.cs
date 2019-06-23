@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Beg
 {
     [AutoloadEquip(EquipType.Head)]
-	public class PonyMask : ModItem
+	public class PonyMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

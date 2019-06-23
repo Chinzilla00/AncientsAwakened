@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class InfernoSeeds : ModItem
+    public class InfernoSeeds : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class PurityFlask : ModItem
+    public class PurityFlask : BaseAAItem
 	{
         public override void SetDefaults()
         {

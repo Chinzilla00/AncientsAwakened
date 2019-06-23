@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class MythrilPaint : ModItem
+    public class MythrilPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

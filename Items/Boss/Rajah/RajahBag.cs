@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public class RajahBag : ModItem
+    public class RajahBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

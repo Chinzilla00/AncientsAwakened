@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located
 {
-    public class DiamondGreatsword : ModItem
+    public class DiamondGreatsword : BaseAAItem
     {
         public override void SetDefaults()
         {

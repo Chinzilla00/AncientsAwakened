@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueTribal
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TrueTribalKilt : ModItem
+    public class TrueTribalKilt : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

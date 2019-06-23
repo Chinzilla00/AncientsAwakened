@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class GripMaskRed : ModItem
+	public class GripMaskRed : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

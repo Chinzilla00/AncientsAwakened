@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class YamataBag : ModItem
+    public class YamataBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

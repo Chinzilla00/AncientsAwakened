@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAmod.Items.Melee
+namespace AAMod.Items.Melee
 {
-    public class DesertScimitar : ModItem
+    public class DesertScimitar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

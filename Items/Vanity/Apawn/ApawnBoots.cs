@@ -5,14 +5,14 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Apawn
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class ApawnBoots : ModItem
+	public class ApawnBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        
 		{
             base.SetStaticDefaults();
             DisplayName.SetDefault("Apawn's Greaves");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

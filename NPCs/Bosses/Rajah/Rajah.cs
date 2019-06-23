@@ -38,6 +38,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         public bool SetLife = false;
+        public bool isSupreme = false;
         public float[] internalAI = new float[5];
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -50,6 +51,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
                 writer.Write(SetLife);
+                writer.Write(isSupreme);
             }
         }
 
@@ -64,10 +66,12 @@ namespace AAMod.NPCs.Bosses.Rajah
                 internalAI[3] = reader.ReadFloat(); //Ground Minion Alternation
                 internalAI[4] = reader.ReadFloat(); //Is Flying
                 SetLife = reader.ReadBool(); //Set Life
+                isSupreme = reader.ReadBool(); //Is supreme
             }
         }
 
         private Texture2D RajahTex;
+        private Texture2D Glow;
         private Texture2D ArmTex;
         public int WeaponFrame = 0;
 
@@ -149,6 +153,11 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
+            if (npc.ai[3] == .1f)
+            {
+                npc.ai[3] = 0f;
+                isSupreme = true;
+            }
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
@@ -314,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         internalAI[2] = 0;
                         Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), npc.damage / 3, 5, Main.myPlayer);
                         npc.netUpdate = true;
                     }
                 }
@@ -332,7 +341,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), npc.damage / 3, 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -343,7 +352,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
                         dir *= ProjSpeed(); ;
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 4, mod.ProjectileType<BaneR>(), (int)(npc.damage * .75f), 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 4, mod.ProjectileType<BaneR>(), npc.damage / 3, 5, Main.myPlayer);
                     }
                     if (internalAI[2] > 90)
                     {
@@ -355,7 +364,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
                     {
-                        CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI)];
+                        CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), npc.damage / 3, 3f, Main.myPlayer, npc.whoAmI)];
                         npc.netUpdate = true;
                     }
                 }
@@ -729,10 +738,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly");
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Fly_Glow");
             }
             else
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring);
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
             }
         }
 
@@ -746,6 +757,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             RajahTexture();
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
+
+            if (isSupreme)
+            {
+                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
+                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
+            }
             return false;
         }
     }

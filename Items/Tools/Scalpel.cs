@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Scalpel : ModItem
+    public class Scalpel : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class EnchantedWarhammer : ModItem
+    public class EnchantedWarhammer : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -21,15 +21,14 @@ namespace AAMod.Items.Melee
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
- 
- 
+            item.hammer = 100;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Enchanted Warhammer");
-      Tooltip.SetDefault("Cannot be used as a hammer!");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Enchanted Warhammer");
+          Tooltip.SetDefault("Cannot be used as a hammer!");
+        }
 
  
         public override void AddRecipes()

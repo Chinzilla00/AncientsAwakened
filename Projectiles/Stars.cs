@@ -18,7 +18,6 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.tileCollide = false;
-            projectile.scale = 0.1f;
             projectile.timeLeft = 300;
         }
 

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class YtriumAxe : ModItem
+    public class YtriumAxe : BaseAAItem
     {
         public override void SetDefaults()
         {

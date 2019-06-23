@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons
 {
-    public class DiamondCarrot : ModItem
+    public class DiamondCarrot : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -61,7 +61,7 @@ namespace AAMod.Items.BossSummons
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
-                Main.npc[npcID].ai[3] = -2;
+                Main.npc[npcID].ai[3] = .1f;
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
                 Main.npc[npcID].damage = 450;

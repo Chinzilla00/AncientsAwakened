@@ -7,7 +7,7 @@ using Terraria;
 
 namespace AAMod.Items.Blocks
 {
-    public class OroborosChest : ModItem
+    public class OroborosChest : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -63,7 +63,7 @@ namespace AAMod.Items.Blocks
 
                     line2.overrideColor = new Color(100, 0, 10);
 
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
 //
                 }
             }

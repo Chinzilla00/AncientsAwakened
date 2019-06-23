@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class SkrallStaff : ModItem
+    public class SkrallStaff : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

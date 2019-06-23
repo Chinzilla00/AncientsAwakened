@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueDemon
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrueDemonHood : ModItem
+    public class TrueDemonHood : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

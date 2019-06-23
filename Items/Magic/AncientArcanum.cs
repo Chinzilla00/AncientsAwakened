@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class AncientArcanum : ModItem
+    public class AncientArcanum : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -28,7 +28,7 @@ namespace AAMod.Items.Magic
 			item.noMelee = true;
 			item.knockBack = 8f;
 			item.rare = 11;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.magic = true;
 			item.glowMask = 194;
 			item.noUseGraphic = true;

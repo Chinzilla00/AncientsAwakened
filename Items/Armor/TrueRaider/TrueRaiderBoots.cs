@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueRaider
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueRaiderBoots : ModItem
+	public class TrueRaiderBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

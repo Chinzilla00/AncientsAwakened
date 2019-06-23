@@ -6,15 +6,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.PerfectChaos
 {
     [AutoloadEquip(EquipType.Body)]
-	public class PerfectChaosPlate : ModItem
+	public class PerfectChaosPlate : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Chaos Slayer Plate");
-            Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
-15% increased damage resistance
-15% increased melee speed
+            Tooltip.SetDefault(@"15% increased damage resistance
 The power of discordian rage radiates from this armor");
         }
 
@@ -24,15 +22,13 @@ The power of discordian rage radiates from this armor");
 			item.width = 26;
 			item.height = 20;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-			item.rare = 10;
-			item.defense = 60;
+            item.rare = 9;
+            AARarity = 14;
+            item.defense = 60;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-
-            player.meleeDamage *= 1.3f;
-            player.meleeCrit += 30;
             player.endurance *= 1.15f;
             player.meleeSpeed *= 1.15f;
         }

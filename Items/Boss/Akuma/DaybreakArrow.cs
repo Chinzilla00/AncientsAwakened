@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-	public class DaybreakArrow : ModItem
+	public class DaybreakArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -22,14 +22,14 @@ Non-consumable");
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;
-			item.consumable = false;             //You need to set the item consumable so that the ammo would automatically consumed
+			item.consumable = false;
 			item.knockBack = 7f;
-			item.value = Item.sellPrice(1, 0, 0, 0); ;
-			item.rare = 6;
-			item.shoot = mod.ProjectileType("DaybreakArrow");   //The projectile shoot when your weapon using this ammo
-			item.shootSpeed = 3f;                  //The speed of the projectile
+			item.value = Item.sellPrice(0, 30, 0, 0);
+            item.shoot = mod.ProjectileType("DaybreakArrow");
+			item.shootSpeed = 3f;
 			item.ammo = AmmoID.Arrow;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -51,17 +51,6 @@ Non-consumable");
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Akuma;
-                }
-            }
         }
 
         public override void AddRecipes()

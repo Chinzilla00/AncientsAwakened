@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class DemonStaff : ModItem
+    public class DemonStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -33,6 +33,7 @@ namespace AAMod.Items.Summoning
             item.buffType = mod.BuffType("DemonMinion");
             item.buffTime = 3600;
             item.autoReuse = true;
+            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Starcloud
 {
     [AutoloadEquip(EquipType.Body)]
-    public class StarcloudChainmail : ModItem
+    public class StarcloudChainmail : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 namespace AAMod.Items.Boss.Retriever
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class StormClaw : ModItem
+    public class StormClaw : BaseAAItem
     {
         public override void SetDefaults()
         {

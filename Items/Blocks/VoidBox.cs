@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class VoidBox : ModItem
+    public class VoidBox : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -63,7 +63,7 @@ namespace AAMod.Items.Blocks
 
                     line2.overrideColor = new Color(100, 0, 10);
 
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
 //
                 }
             }

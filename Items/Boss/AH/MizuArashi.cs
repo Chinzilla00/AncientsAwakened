@@ -5,9 +5,8 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class MizuArashi : ModItem
+    public class MizuArashi : BaseAAItem
     {
-
         public override void SetDefaults()
         {
 
@@ -24,7 +23,8 @@ namespace AAMod.Items.Boss.AH
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 25, 0, 0);
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 8f;

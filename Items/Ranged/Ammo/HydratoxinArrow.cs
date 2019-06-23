@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class HydratoxinArrow : ModItem
+    public class HydratoxinArrow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

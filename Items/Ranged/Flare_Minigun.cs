@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Flare_Minigun : ModItem
+    public class Flare_Minigun : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

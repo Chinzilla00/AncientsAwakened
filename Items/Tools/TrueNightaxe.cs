@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class TrueNightaxe : ModItem
+    public class TrueNightaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

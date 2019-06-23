@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Materials
 {
-    public class IncineriteBar : ModItem
+    public class IncineriteBar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

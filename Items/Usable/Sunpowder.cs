@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class Sunpowder : ModItem
+    public class Sunpowder : BaseAAItem
     {
         public override void SetDefaults()
         {

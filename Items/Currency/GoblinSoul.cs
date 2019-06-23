@@ -8,7 +8,7 @@ using Terraria.Localization;
 
 namespace AAMod.Items.Currency
 {
-    public class GoblinSoul : ModItem
+    public class GoblinSoul : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

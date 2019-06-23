@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class FargoStatue : ModItem
+	public class FargoStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

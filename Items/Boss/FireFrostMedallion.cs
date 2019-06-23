@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Boss
 {
-    public class FireFrostMedallion : ModItem
+    public class FireFrostMedallion : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

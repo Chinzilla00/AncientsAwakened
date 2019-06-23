@@ -23,12 +23,9 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 360;
             projectile.friendly = true;
             projectile.tileCollide = true;
-            projectile.extraUpdates = 2;
             projectile.melee = true;
             projectile.ignoreWater = true;
         }
-
-        bool hit = false;
 
         public override Color? GetAlpha(Color lightColor)
         {

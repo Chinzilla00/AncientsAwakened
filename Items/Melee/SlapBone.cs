@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class SlapBone : ModItem
+	public class SlapBone : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

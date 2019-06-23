@@ -2,12 +2,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Darkshroom : ModItem
+    public class CometOre : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Lunar Mushroom");
-            Tooltip.SetDefault("Only grows at night");
+            DisplayName.SetDefault("Comet Ore");
         }
         public override void SetDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.BossSummons
 {
-    public class CursedSkull : ModItem
+    public class CursedSkull : BaseAAItem
     {
 
         public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.ReforgeSouls
 {
-    public class Unreal : ModItem
+    public class Unreal : BaseAAItem
     {
         public override void SetDefaults()
         {

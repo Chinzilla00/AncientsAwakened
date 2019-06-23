@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaTrophy : ModItem
+    public class AkumaTrophy : BaseAAItem
 	{
         public static int type;
         
@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

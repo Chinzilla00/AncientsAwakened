@@ -24,9 +24,9 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void SetDefaults()
         {
-			npc.lifeMax = 180000;
-            npc.damage = 250;
-            npc.defense = 80;
+			npc.lifeMax = 550000;
+            npc.damage = 280;
+            npc.defense = 200;
             npc.width = 78;
             npc.height = 60;
             npc.npcSlots = 0;
@@ -99,6 +99,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                 internalAI[3] = reader.ReadFloat();
                 EATTHELITTLEMAGGOT = reader.ReadBool();
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override void AI()
@@ -302,7 +307,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 13f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 9f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {

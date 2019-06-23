@@ -22,11 +22,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.extraUpdates = 1;
         }
 
-        public override void PostAI()
-        {
-            projectile.damage = 100;
-        }
-
         public bool StuckInEnemy = false;
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {

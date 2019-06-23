@@ -6,15 +6,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.PerfectChaos
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class PerfectChaosGreaves : ModItem
+	public class PerfectChaosGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Slayer Greaves");
-            Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
+            Tooltip.SetDefault(@"45% increased movement speed
 15% increased damage resistance
-15% increased melee speed
-45% increased movement speed
 The power of discordian rage radiates from this armor");
         }
 
@@ -24,15 +22,13 @@ The power of discordian rage radiates from this armor");
             item.height = 16;
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.defense = 35;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.3f;
-            player.meleeCrit += 30;
             player.endurance *= 1.15f;
-            player.meleeSpeed *= 1.15f;
             player.moveSpeed *= 1.45f;
         }
 

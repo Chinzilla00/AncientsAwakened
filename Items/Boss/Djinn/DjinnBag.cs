@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class DjinnBag : ModItem
+    public class DjinnBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

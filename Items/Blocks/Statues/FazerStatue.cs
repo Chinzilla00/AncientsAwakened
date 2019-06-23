@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class FazerStatue : ModItem
+	public class FazerStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-    public class BlazingFuryDye : ModItem
+    public class BlazingFuryDye : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

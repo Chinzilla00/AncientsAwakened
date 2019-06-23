@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Draco
 {
     [AutoloadEquip(EquipType.Body)]
-	public class DracoPlate : ModItem
+	public class DracoPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -55,7 +55,7 @@ The blazing fury of the Inferno rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

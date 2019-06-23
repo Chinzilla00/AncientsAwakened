@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Potions
 {
-    public class TheBigOne : ModItem
+    public class TheBigOne : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

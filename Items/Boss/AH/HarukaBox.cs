@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HarukaBox : ModItem
+    public class HarukaBox : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -11,7 +11,8 @@ namespace AAMod.Items.Boss.AH
             item.consumable = true;
             item.width = 16;
             item.height = 16;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
         }
 
         public override void SetStaticDefaults()
@@ -25,13 +26,11 @@ Contains a set of Midnight Assassin clothes");
         {
             return true;
         }
-
         public override void RightClick(Player player)
         {
-            item.TurnToAir();
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinHood"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinShirt"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AssassinBoots"), 1, false, 0, false, false);
+            player.QuickSpawnItem(mod.ItemType("AssassinHood"));
+            player.QuickSpawnItem(mod.ItemType("AssassinShirt"));
+            player.QuickSpawnItem(mod.ItemType("AssassinBoots"));
         }
     }
 }

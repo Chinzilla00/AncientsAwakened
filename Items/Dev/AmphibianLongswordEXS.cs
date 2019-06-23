@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class AmphibianLongswordEXS : ModItem
+    public class AmphibianLongswordEXS : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

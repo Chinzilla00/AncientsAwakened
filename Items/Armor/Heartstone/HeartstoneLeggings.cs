@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Heartstone
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class HeartstoneLeggings : ModItem
+    public class HeartstoneLeggings : BaseAAItem
     {
         public override void SetDefaults()
         {

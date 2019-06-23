@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Radium
 {
     [AutoloadEquip(EquipType.Body)]
-	public class RadiumPlatemail : ModItem
+	public class RadiumPlatemail : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

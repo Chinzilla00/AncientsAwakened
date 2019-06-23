@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic        //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
-    public class BogBomb : ModItem
+    public class BogBomb : BaseAAItem
     {
         public override void SetDefaults()
         {

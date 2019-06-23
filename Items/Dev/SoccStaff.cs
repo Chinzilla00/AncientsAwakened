@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class SoccStaff : ModItem
+    public class SoccStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

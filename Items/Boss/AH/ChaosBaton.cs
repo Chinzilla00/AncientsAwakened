@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class ChaosBaton : ModItem
+    public class ChaosBaton : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -29,7 +29,8 @@ namespace AAMod.Items.Boss.AH
             item.noMelee = true;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.knockBack = 5f;
-            item.rare = 3;
+            item.rare = 9;
+            AARarity = 12;
             item.summon = true;
             item.mana = 5;
             item.noUseGraphic = true;

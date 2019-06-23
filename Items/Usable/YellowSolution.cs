@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class YellowSolution : ModItem
+    public class YellowSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

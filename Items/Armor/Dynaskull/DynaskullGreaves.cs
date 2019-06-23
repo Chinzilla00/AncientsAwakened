@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Dynaskull
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DynaskullGreaves : ModItem
+	public class DynaskullGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DragonSpine : ModItem
+    public class DragonSpine : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Executioner : ModItem
+    public class Executioner : BaseAAItem
     {
         public override void SetDefaults()
         {

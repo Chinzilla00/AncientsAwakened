@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Tails
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class TailsBody : ModItem
+    public class TailsBody : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class OrderArrow : ModItem
+    public class OrderArrow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

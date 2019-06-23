@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SnakeStaff : ModItem
+    public class SnakeStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

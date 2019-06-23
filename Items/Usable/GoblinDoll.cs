@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class GoblinDoll : ModItem
+    public class GoblinDoll : BaseAAItem
     {
         public override void SetDefaults()
         {

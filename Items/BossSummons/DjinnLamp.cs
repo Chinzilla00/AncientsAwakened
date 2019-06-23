@@ -8,7 +8,7 @@ using Terraria.Localization;
 namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
-    public class DjinnLamp : ModItem
+    public class DjinnLamp : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

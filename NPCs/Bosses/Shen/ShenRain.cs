@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.LaserMachinegunLaser);
             projectile.width = 5;
             projectile.height = 5;
             projectile.aiStyle = 1;
@@ -37,16 +36,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     projectile.frame = 0;
                 }
-            }
-            if (projectile.velocity.X < 0f)
-            {
-                projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2((double)(-(double)projectile.velocity.Y), (double)(-(double)projectile.velocity.X));
-            }
-            else
-            {
-                projectile.spriteDirection = 1;
-                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
             }
 
             int dustId = Dust.NewDust(projectile.Center, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), projectile.velocity.X * 0.2f,

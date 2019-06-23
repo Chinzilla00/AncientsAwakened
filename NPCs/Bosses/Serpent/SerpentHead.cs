@@ -40,6 +40,11 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.boss = true;
             bossBag = mod.ItemType<Items.Boss.Serpent.SerpentBag>();
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
+            npc.buffImmune[BuffID.OnFire] = false;
         }
 
         private bool fireAttack;

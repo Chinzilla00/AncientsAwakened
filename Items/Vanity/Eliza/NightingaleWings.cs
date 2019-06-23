@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Eliza
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class NightingaleWings : ModItem
+    public class NightingaleWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

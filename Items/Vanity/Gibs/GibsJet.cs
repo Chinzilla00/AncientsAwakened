@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Gibs
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class GibsJet : ModItem
+    public class GibsJet : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -52,8 +52,6 @@ Hold down and jump to hover for an extended period of time
 			maxAscentMultiplier = 3f;
 			constantAscend = 0.135f;
         }
-
-        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration);
 
         public override bool WingUpdate(Player player, bool inUse)
         {

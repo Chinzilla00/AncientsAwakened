@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class StarcloudBar : ModItem
+    public class StarcloudBar : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Usable
 {
-    public class DoomstopperKey : ModItem
+    public class DoomstopperKey : BaseAAItem
     {
         
         public override void SetStaticDefaults()

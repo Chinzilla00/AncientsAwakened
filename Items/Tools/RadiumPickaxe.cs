@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class RadiumPickaxe : ModItem
+    public class RadiumPickaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

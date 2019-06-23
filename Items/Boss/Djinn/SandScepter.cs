@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class SandScepter : ModItem
+    public class SandScepter : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

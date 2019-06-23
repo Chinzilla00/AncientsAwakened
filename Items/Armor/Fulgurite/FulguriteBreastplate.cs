@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Fulgurite
 {
     [AutoloadEquip(EquipType.Body)]
-	public class FulguriteBreastplate : ModItem
+	public class FulguriteBreastplate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

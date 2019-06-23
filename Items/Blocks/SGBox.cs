@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class SGBox : ModItem
+	public class SGBox : BaseAAItem
 	{
         
 		public override void SetStaticDefaults()
@@ -25,8 +25,9 @@ namespace AAMod.Items.Blocks
 			item.createTile = mod.TileType("SGBox");
             item.width = 72;
 			item.height = 36;
-			item.rare = 4;
-			item.value = 10000;
+            item.rare = 9;
+            AARarity = 14;
+            item.value = 10000;
 			item.accessory = true;
             item.rare = 11;
         }

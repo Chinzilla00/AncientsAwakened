@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Firebuster : ModItem
+    public class Firebuster : BaseAAItem
     {
 
         public override void SetDefaults()

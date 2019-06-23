@@ -1,6 +1,6 @@
 namespace AAMod.Items.Boss.Djinn   //where is located
 {
-    /*public class Sandstorm : ModItem
+    /*public class Sandstorm : BaseAAItem
     {
 
         public override void SetStaticDefaults()
@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Djinn   //where is located
             item.useAnimation = 30;
             item.useStyle = 5;
             item.knockBack = .5f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.mana = 8;
             item.UseSound = new LegacySoundStyle(2, 66, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;

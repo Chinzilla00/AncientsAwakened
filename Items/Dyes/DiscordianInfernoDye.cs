@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-    public class DiscordianInfernoDye : ModItem
+    public class DiscordianInfernoDye : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -19,7 +19,7 @@ namespace AAMod.Items.Dyes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

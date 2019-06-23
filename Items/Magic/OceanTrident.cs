@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class OceanTrident : ModItem
+	public class OceanTrident : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

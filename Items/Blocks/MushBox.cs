@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class MushBox : ModItem
+    public class MushBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

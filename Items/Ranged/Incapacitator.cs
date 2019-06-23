@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Incapacitator : ModItem
+    public class Incapacitator : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

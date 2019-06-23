@@ -6,7 +6,7 @@ using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
-    public class PlanteraFlower : ModItem
+    public class PlanteraFlower : BaseAAItem
     {
 
         public override void SetStaticDefaults()

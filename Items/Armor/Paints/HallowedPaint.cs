@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-	public class HallowedPaint : ModItem
+	public class HallowedPaint : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

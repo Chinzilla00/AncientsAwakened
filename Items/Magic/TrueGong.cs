@@ -5,7 +5,7 @@ using System;
 
 namespace AAMod.Items.Magic
 {
-    public class TrueGong : ModItem
+    public class TrueGong : BaseAAItem
     {
         public override void SetDefaults()
         {

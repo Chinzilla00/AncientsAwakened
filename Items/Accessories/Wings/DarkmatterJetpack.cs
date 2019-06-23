@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class DarkmatterJetpack : ModItem
+	public class DarkmatterJetpack : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

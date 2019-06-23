@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TitaniumPaint : ModItem
+    public class TitaniumPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

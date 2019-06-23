@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.MadTitan
 {
     [AutoloadEquip(EquipType.Head)]
-	public class MadTitanHelm : ModItem
+	public class MadTitanHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -21,8 +21,9 @@ namespace AAMod.Items.Armor.MadTitan
 			item.width = 16;
 			item.height = 14;
 			item.value = 3000000;
-			item.rare = 11;
-			item.defense = 40;
+            item.rare = 9;
+            AARarity = 14;
+            item.defense = 40;
 		}
 		
 		public override void UpdateEquip(Player player)

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.HandsOn)]
-    public class BotchedBand : ModItem
+    public class BotchedBand : BaseAAItem
     {
         public override void SetDefaults()
         {

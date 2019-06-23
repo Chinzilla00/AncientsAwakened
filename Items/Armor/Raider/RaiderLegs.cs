@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Raider
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class RaiderLegs : ModItem
+	public class RaiderLegs : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

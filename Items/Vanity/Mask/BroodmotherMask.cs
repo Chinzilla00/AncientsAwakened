@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class BroodmotherMask : ModItem
+	public class BroodmotherMask : BaseAAItem
     {
         public static int type;
         public override void SetStaticDefaults()

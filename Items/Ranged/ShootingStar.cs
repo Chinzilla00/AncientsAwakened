@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class ShootingStar : ModItem
+    public class ShootingStar : BaseAAItem
     {
 
         public override void SetDefaults()

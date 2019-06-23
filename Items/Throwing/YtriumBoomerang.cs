@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class YtriumBoomerang : ModItem
+    public class YtriumBoomerang : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

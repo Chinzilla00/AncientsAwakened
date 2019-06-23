@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paladin
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class Paladin_Boots : ModItem
+	public class Paladin_Boots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

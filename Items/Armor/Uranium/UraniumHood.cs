@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Uranium
 {
     [AutoloadEquip(EquipType.Head)]
-    public class UraniumHood : ModItem
+    public class UraniumHood : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

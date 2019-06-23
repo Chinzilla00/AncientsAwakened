@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class Dracorang : ModItem
+	public class Dracorang : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

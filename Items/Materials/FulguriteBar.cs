@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Materials
 {
-    public class FulguriteBar : ModItem
+    public class FulguriteBar : BaseAAItem
     {
         public override void SetDefaults()
         {

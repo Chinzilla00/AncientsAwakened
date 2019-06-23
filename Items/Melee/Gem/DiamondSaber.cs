@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located
 {
-    public class DiamondSaber : ModItem
+    public class DiamondSaber : BaseAAItem
     {
         public override void SetDefaults()
         {

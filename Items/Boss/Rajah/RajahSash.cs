@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public class RajahSash : ModItem
+    public class RajahSash : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Face)]
-    public class MindStone : ModItem
+    public class MindStone : BaseAAItem
     {
         
 

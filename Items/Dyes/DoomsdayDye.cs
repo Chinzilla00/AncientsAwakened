@@ -7,7 +7,7 @@ using Terraria;
 
 namespace AAMod.Items.Dyes
 {
-    public class DoomsdayDye : ModItem
+    public class DoomsdayDye : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,7 +22,7 @@ namespace AAMod.Items.Dyes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

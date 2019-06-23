@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroArrow : ModItem
+    public class ZeroArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -18,30 +18,19 @@ namespace AAMod.Items.Boss.Zero
 Non-consumable");
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
-        }
-
         public override void SetDefaults()
 		{
-			item.damage = 28;
+			item.damage = 20;
 			item.ranged = true;
 			item.width = 14;
 			item.height = 40;
             item.consumable = false;
 			item.knockBack = 7f;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 6;
 			item.shoot = mod.ProjectileType("ZeroArrow");
 			item.ammo = AmmoID.Arrow;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 

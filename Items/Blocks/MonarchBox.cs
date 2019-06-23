@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class MonarchBox : ModItem
+    public class MonarchBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

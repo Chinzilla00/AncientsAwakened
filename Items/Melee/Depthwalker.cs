@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class Depthwalker : ModItem
+    public class Depthwalker : BaseAAItem
     {
         public override void SetDefaults()
         {

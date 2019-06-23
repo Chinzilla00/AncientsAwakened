@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class IchorSpear : ModItem
+    public class IchorSpear : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

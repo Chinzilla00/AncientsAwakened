@@ -20,8 +20,9 @@ namespace AAMod.Items.Boss.Akuma
             item.damage = 150;
             item.shoot = mod.ProjectileType("Daystorm");
             item.mana = 6;
-            item.rare = 8;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.rare = 9;
+            AARarity = 13;
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
             item.magic = true;

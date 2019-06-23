@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Oroboros
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class OroborosBoots : ModItem
+	public class OroborosBoots : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

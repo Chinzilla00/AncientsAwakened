@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.ReforgeSouls
 {
-    public class Godly : ModItem
+    public class Godly : BaseAAItem
     {
         public override void SetDefaults()
         {

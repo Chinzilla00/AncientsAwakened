@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Depth
 {
     [AutoloadEquip(EquipType.Head)]
-    public class DepthFukumen : ModItem
+    public class DepthFukumen : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

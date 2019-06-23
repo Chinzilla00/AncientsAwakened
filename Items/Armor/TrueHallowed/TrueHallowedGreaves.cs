@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.TrueHallowed
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueHallowedGreaves : ModItem
+	public class TrueHallowedGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

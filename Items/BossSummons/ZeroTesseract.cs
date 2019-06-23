@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
-    public class ZeroTesseract : ModItem
+    public class ZeroTesseract : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -36,7 +36,7 @@ N0N-C0NSUMABLE");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

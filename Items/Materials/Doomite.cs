@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Doomite : ModItem
+    public class Doomite : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

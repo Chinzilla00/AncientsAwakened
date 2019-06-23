@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class AbyssalPentashot : ModItem
+    public class AbyssalPentashot : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
-            item.value = 20000;
+            item.value = Terraria.Item.sellPrice(0, 1, 8, 0);
             item.rare = 4;
             item.UseSound = SoundID.Item11;
             item.shootSpeed = 12f;

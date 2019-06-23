@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Boss.Yamata
 {
     [AutoloadEquip(EquipType.Neck)]
-    public class Naitokurosu : ModItem
+    public class Naitokurosu : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ At night, you move three times as fast and your ranged attacks & minions inflict
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true;
             item.accessory = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 

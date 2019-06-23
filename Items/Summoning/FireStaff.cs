@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class FireStaff : ModItem
+    public class FireStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

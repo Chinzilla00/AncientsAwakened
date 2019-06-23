@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class FleshrendClaymore : ModItem
+    public class FleshrendClaymore : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

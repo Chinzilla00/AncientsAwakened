@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class HallowFlask : ModItem
+    public class HallowFlask : BaseAAItem
 	{
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Potions
 {
-    public class GrandManaPotion : ModItem
+    public class GrandManaPotion : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

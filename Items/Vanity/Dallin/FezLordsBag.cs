@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Dallin
 {
-    public class FezLordsBag : ModItem
+    public class FezLordsBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

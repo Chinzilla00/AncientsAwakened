@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Eliza
 {
     [AutoloadEquip(EquipType.Neck)]
-	public class LizScarf : ModItem
+	public class LizScarf : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public class BaneOfTheBunny : ModItem
+    public class BaneOfTheBunny : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -27,7 +27,7 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
             item.useStyle = 5;
             item.useTime = 20;
             item.knockBack = 4f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("BaneS");
             item.shootSpeed = 4f;
             item.rare = 8;

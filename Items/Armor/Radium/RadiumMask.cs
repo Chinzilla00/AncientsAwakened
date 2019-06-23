@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Radium
 {
     [AutoloadEquip(EquipType.Head)]
-	public class RadiumMask : ModItem
+	public class RadiumMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

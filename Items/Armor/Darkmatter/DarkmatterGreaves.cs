@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Darkmatter
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DarkmatterGreaves : ModItem
+	public class DarkmatterGreaves : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-    public class AbyssiumBar : ModTile
+    public class CometBar : ModTile
     {
         public override void SetDefaults()
         {
@@ -22,9 +22,9 @@ namespace AAMod.Tiles
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
-            drop = mod.ItemType("AbyssiumBar");   //put your CustomBlock name
-            dustType = mod.DustType("AbyssiumDust");
-            AddMapEntry(new Color(0, 0, 255));
+            drop = mod.ItemType("CometBar");   //put your CustomBlock name
+            dustType = mod.DustType("AbyssDust");
+            AddMapEntry(new Color(100, 0, 255));
 			minPick = 0;
         }
     }

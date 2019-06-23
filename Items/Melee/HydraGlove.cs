@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class HydraGlove : ModItem
+    public class HydraGlove : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

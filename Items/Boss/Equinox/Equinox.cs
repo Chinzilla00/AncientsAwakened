@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Equinox
 {
-    public class Equinox : ModItem
+    public class Equinox : BaseAAItem
     {
 
         
@@ -54,7 +54,7 @@ namespace AAMod.Items.Boss.Equinox
         {
             player.lifeRegen += 6;
             player.statDefense += 9;
-            player.meleeSpeed += 0.35f;
+            player.meleeSpeed += 0.10f;
             player.meleeDamage += 0.35f;
             player.meleeCrit += 5;
             player.rangedDamage += 0.35f;

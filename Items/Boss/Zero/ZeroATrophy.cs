@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class ZeroATrophy : ModItem
+    public class ZeroATrophy : BaseAAItem
 	{
         public static int type;
 
@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class DragonSpirit : ModItem
+    public class DragonSpirit : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

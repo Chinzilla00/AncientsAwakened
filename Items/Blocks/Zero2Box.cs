@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class Zero2Box : ModItem
+    public class Zero2Box : BaseAAItem
 	{
         
         public override void SetStaticDefaults()
@@ -58,7 +58,7 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

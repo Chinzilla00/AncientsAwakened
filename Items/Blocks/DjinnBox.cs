@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class DjinnBox : ModItem
+    public class DjinnBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

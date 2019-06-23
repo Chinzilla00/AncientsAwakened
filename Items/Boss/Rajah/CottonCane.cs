@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public class CottonCane : ModItem
+    public class CottonCane : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

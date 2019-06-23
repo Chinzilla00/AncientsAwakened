@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Ocean
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class OceanBoots : ModItem
+	public class OceanBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

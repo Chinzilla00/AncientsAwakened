@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class BackScratcher : ModItem
+    public class BackScratcher : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

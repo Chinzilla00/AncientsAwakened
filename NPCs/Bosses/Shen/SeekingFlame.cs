@@ -52,9 +52,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 0;
+            const int homingDelay = 60;
             const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20;
 

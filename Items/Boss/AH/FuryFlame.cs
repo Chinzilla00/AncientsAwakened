@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class FuryFlame : ModItem
+    public class FuryFlame : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,13 +26,13 @@ namespace AAMod.Items.Boss.AH
             item.shoot = mod.ProjectileType("FuryFlame");
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 25, 0, 0);
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shootSpeed = 7f;
             item.noUseGraphic = true;
         }
-
 
         public override Color? GetAlpha(Color lightColor)
         {

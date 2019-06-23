@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Darkshroom : ModItem
+    public class Darkshroom : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

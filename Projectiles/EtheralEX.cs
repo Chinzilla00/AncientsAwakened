@@ -120,7 +120,7 @@ namespace AAMod.Projectiles
 						int num29 = projectile.damage;
 						for (int l = 0; l < 7; l++)
 						{
-							Projectile.NewProjectile(center3.X, center3.Y, vector12.X, vector12.Y, mod.ProjectileType("EtheralLazer"), num29, projectile.knockBack, projectile.owner, (float)l, (float)projectile.whoAmI);
+							Projectile.NewProjectile(center3.X, center3.Y, vector12.X, vector12.Y, mod.ProjectileType("EtheralLazerEX"), num29, projectile.knockBack, projectile.owner, (float)l, (float)projectile.whoAmI);
 						}
 						projectile.netUpdate = true;
 					}

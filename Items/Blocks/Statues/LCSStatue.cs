@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class LCSStatue : ModItem
+	public class LCSStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

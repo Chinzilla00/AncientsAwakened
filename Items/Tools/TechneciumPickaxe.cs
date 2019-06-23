@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-	public class TechneciumPickaxe : ModItem
+	public class TechneciumPickaxe : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

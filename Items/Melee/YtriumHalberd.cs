@@ -4,7 +4,7 @@ using BaseMod;
 
 namespace AAMod.Items.Melee
 {
-    public class YtriumHalberd : ModItem
+    public class YtriumHalberd : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

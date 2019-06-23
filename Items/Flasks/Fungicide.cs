@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
-    public class Fungicide : ModItem
+    public class Fungicide : BaseAAItem
 	{
         public override void SetDefaults()
         {

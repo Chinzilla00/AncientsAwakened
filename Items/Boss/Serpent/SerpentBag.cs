@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Serpent
 {
-    public class SerpentBag : ModItem
+    public class SerpentBag : BaseAAItem
     {
         
         public override void SetStaticDefaults()

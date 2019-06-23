@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Darksprayer : ModItem
+    public class Darksprayer : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -27,12 +27,12 @@ Inflicts Moonrazed");
             item.useStyle = 5;
             item.useAmmo = AmmoID.Rocket;
             item.knockBack = 8f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item38;      //1 is the sound of the sword
             item.autoReuse = true;   //if it's capable of autoswing.
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Moonblow");
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override Vector2? HoldoutOffset()
@@ -74,7 +74,7 @@ Inflicts Moonrazed");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

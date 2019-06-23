@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class YamataABox : ModItem
+    public class YamataABox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class PaladinsSmeltery : ModItem
+    public class PaladinsSmeltery : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

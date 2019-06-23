@@ -4,7 +4,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class InfernoAltar : ModItem
+    public class InfernoAltar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

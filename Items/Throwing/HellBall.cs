@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class HellBall : ModItem
+    public class HellBall : BaseAAItem
     {
 
         public override void SetDefaults()

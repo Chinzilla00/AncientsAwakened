@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class TorchAsh : ModItem
+    public class TorchAsh : BaseAAItem
     {
         public override void SetDefaults()
         {

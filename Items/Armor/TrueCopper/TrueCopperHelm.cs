@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueCopper
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueCopperHelm : ModItem
+	public class TrueCopperHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

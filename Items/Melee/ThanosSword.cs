@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee
             item.channel = true;
             item.useStyle = 100;
             item.knockBack = 6f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 11;
             item.shoot = mod.ProjectileType("ThanosSword");
             item.noUseGraphic = true;
@@ -36,7 +36,7 @@ namespace AAMod.Items.Melee
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 item.useStyle = 100;
                 item.shoot = mod.ProjectileType("ThanosSword");
@@ -46,7 +46,7 @@ namespace AAMod.Items.Melee
             {
                 item.useStyle = 1;
                 item.shoot = mod.ProjectileType("ThanosSwordT");
-                item.shootSpeed = 10f;
+                item.shootSpeed = 14f;
             }
             for (int i = 0; i < 1000; ++i)
             {

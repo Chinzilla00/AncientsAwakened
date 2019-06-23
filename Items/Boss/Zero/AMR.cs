@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class AMR : ModItem
+    public class AMR : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -31,25 +31,14 @@ Doesn't require ammo");
             item.useStyle = 5; 
             item.shoot = mod.ProjectileType("Antimatter");
             item.knockBack = 12;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.shootSpeed = 8f;
             item.crit = 5;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
-        }
-
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

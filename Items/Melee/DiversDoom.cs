@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class DiversDoom : ModItem
+    public class DiversDoom : BaseAAItem
     {
         public override void SetDefaults()
         {

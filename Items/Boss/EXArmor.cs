@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss
 {
-    public class EXArmor : ModItem
+    public class EXArmor : BaseAAItem
     {
         internal static int type;
 

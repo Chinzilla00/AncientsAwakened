@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class DragonPickaxe : ModItem
+    public class DragonPickaxe : BaseAAItem
     {
         public override void SetDefaults()
         {

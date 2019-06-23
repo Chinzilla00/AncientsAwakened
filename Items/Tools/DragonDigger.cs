@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class DragonDigger : ModItem
+    public class DragonDigger : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class Timesplitter : ModItem
+    public class Timesplitter : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -17,7 +17,7 @@ Inflicts Daybroken and Moonraze");
 
         public override void SetDefaults()
         {
-            item.damage = 222;
+            item.damage = 170;
             item.melee = true;
             item.width = 96;
             item.height = 96;
@@ -43,7 +43,7 @@ Inflicts Daybroken and Moonraze");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Shen;
+                    line2.overrideColor = AAColor.Rarity14;
                 }
             }
         }

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Tools
 {
     //ported from my tAPI mod because I don't want to make more artwork
-    public class UraniumChainsaw : ModItem
+    public class UraniumChainsaw : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

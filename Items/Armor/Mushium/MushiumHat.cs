@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Mushium
 {
     [AutoloadEquip(EquipType.Head)]
-	public class MushiumHat : ModItem
+	public class MushiumHat : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -21,7 +21,8 @@ namespace AAMod.Items.Armor.Mushium
 			item.height = 16;
 			item.value = 90;
 			item.rare = 1;
-			item.defense = 3;
+            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.defense = 3;
 		}
 		
 		public override void UpdateEquip(Player player)

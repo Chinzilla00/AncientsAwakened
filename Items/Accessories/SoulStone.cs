@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories
 {
     [AutoloadEquip(EquipType.Face)]
-    public class SoulStone : ModItem
+    public class SoulStone : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

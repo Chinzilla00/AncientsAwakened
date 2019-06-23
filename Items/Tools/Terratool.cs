@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class Terratool : ModItem
+    public class Terratool : BaseAAItem
     {
         public override void SetDefaults()
         {

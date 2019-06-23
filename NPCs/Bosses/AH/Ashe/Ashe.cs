@@ -22,11 +22,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 80;
-            npc.damage = 120;
+            npc.height = 100;
+            npc.damage = 150;
             npc.defense = 40;
-            npc.lifeMax = 100000;
-            npc.value = Item.sellPrice(0, 0, 75, 45);
+            npc.lifeMax = 140000;
+            npc.value = Item.sellPrice(0, 4, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

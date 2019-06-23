@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class SiegeBox : ModItem
+    public class SiegeBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

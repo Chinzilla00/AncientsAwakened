@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Starcloud
 {
     [AutoloadEquip(EquipType.Head)]
-    public class StarcloudHeadgear : ModItem
+    public class StarcloudHeadgear : BaseAAItem
     {
         public override void SetDefaults()
         {

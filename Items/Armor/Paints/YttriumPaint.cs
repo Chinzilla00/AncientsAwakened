@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Paints
 {
     [AutoloadEquip(EquipType.Head)]
-    public class YttriumPaint : ModItem
+    public class YttriumPaint : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

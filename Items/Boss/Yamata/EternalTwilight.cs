@@ -6,7 +6,7 @@ using AAMod.Projectiles.Yamata;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class EternalTwilight : ModItem
+    public class EternalTwilight : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -25,14 +25,14 @@ namespace AAMod.Items.Boss.Yamata
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shoot = 1;
             item.shootSpeed = 16f;
             item.useAmmo = 40;
             item.expert = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 

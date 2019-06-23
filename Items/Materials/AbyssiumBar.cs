@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class AbyssiumBar : ModItem
+    public class AbyssiumBar : BaseAAItem
     {
         public override void SetDefaults()
         {

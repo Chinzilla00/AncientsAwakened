@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Shen
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 6;
+            projectile.localNPCHitCooldown = 30;
         }
 
         public override Color? GetAlpha(Color lightColor)

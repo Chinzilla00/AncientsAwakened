@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class Crystal : ModItem
+    public class Crystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -47,7 +47,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class CrimsonCrystal : ModItem
+    public class CrimsonCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
         
@@ -106,7 +106,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class CorruptionCrystal : ModItem
+    public class CorruptionCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -165,7 +165,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class DungeonCrystal : ModItem
+    public class DungeonCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -215,7 +215,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class HallowCrystal : ModItem
+    public class HallowCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -265,7 +265,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class HellCrystal : ModItem
+    public class HellCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -306,7 +306,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class OceanCrystal : ModItem
+    public class OceanCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -356,7 +356,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class IceCrystal : ModItem
+    public class IceCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -407,7 +407,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class DesertCrystal : ModItem
+    public class DesertCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -458,7 +458,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class JungleCrystal : ModItem
+    public class JungleCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -509,7 +509,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class InfernoCrystal : ModItem
+    public class InfernoCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -568,7 +568,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class MireCrystal : ModItem
+    public class MireCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -627,7 +627,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class TerraCrystal : ModItem
+    public class TerraCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -678,7 +678,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class ChaosCrystal : ModItem
+    public class ChaosCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 
@@ -719,7 +719,7 @@ namespace AAMod.Items.Materials
         }
     }
 
-    public class VoidCrystal : ModItem
+    public class VoidCrystal : BaseAAItem
     {
         public override string Texture { get { return "AAMod/Items/Materials/Crystal"; } }
 

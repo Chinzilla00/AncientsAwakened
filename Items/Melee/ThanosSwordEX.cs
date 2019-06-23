@@ -38,7 +38,7 @@ Mad Titan's Dualblade EX");
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 item.useStyle = 100;
                 item.shoot = mod.ProjectileType("ThanosSwordEX");
@@ -48,7 +48,7 @@ Mad Titan's Dualblade EX");
             {
                 item.useStyle = 1;
                 item.shoot = mod.ProjectileType("ThanosSwordEXT");
-                item.shootSpeed = 10f;
+                item.shootSpeed = 14f;
             }
             for (int i = 0; i < 1000; ++i)
             {

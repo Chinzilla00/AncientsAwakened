@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class TerraPrismStation : ModItem
+    public class TerraPrismStation : BaseAAItem
     {
         
         public override void SetStaticDefaults()

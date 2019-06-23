@@ -7,7 +7,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueCopper
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueCopperLeggings : ModItem
+	public class TrueCopperLeggings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

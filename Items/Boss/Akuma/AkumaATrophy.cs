@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaATrophy : ModItem
+    public class AkumaATrophy : BaseAAItem
 	{
         public static int type;
         

@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Viking
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class VikingBoots : ModItem
+	public class VikingBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

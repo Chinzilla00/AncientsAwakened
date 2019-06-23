@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Dread
 {
     [AutoloadEquip(EquipType.Body)]
-	public class DreadPlate : ModItem
+	public class DreadPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -37,7 +37,7 @@ The abyssal wrath of the Mire rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

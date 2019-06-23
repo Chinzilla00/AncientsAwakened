@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    class OroborosWood : ModItem
+    class OroborosWood : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks
 
                     line2.overrideColor = new Color(100, 0, 10);
 
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
 //
                 }
             }

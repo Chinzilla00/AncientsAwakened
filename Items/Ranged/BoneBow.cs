@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class BoneBow : ModItem
+    public class BoneBow : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

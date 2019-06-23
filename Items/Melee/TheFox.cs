@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class TheFox : ModItem
+    public class TheFox : BaseAAItem
     {
         public override void SetDefaults()
         {

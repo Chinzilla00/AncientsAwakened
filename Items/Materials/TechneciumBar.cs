@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class TechneciumBar : ModItem
+    public class TechneciumBar : BaseAAItem
     {
         public override void SetDefaults()
         {

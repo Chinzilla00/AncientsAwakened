@@ -9,7 +9,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class DreadRune : ModItem
+    public class DreadRune : BaseAAItem
 	{
 
         public override void SetStaticDefaults()

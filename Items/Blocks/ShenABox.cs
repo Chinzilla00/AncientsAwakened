@@ -4,14 +4,14 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class ShenABox : ModItem
+	public class ShenABox : BaseAAItem
 	{
         
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shen Doragon Awakened Music Box");
             
-            Tooltip.SetDefault(@"Plays 'Champion Battle (Fanmade)' by Emdasche");
+            Tooltip.SetDefault(@"Plays 'Blaze of Glory' by Charlie Debnam");
         }
 
 		public override void SetDefaults()

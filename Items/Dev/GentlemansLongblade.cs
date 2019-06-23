@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class GentlemansLongblade : ModItem
+    public class GentlemansLongblade : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

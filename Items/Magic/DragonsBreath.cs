@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class DragonsBreath : ModItem
+    public class DragonsBreath : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -27,11 +27,11 @@ namespace AAMod.Items.Magic
             item.shootSpeed = 11f;    //projectile speed when shoot
         }   
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Dragon's Breath");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Dragon's Breath");
+          Tooltip.SetDefault("");
+        }
 
 		public override void AddRecipes()  //How to craft this item
         {

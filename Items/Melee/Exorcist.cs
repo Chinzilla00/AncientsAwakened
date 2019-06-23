@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class Exorcist : ModItem
+    public class Exorcist : BaseAAItem
     {
         public override void SetDefaults()
         {

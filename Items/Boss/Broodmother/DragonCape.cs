@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 namespace AAMod.Items.Boss.Broodmother
 {
     [AutoloadEquip(EquipType.Back, EquipType.Front)]
-    public class DragonCape : ModItem
+    public class DragonCape : BaseAAItem
     {
         
         public override void SetStaticDefaults()

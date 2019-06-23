@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class DarkmatterPitchet : ModItem
+    public class DarkmatterPitchet : BaseAAItem
     {
         
         public override void SetStaticDefaults()

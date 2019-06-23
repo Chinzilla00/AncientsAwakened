@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class AkumaTerratool_Axe : ModItem
+    public class AkumaTerratool_Axe : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -16,8 +16,9 @@ namespace AAMod.Items.Boss.Akuma
             item.useAnimation = 20;
             item.tileBoost += 20;
             item.knockBack = 3;
-            item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 10;
+            item.value = Item.sellPrice(0, 30, 0, 0);
+            item.rare = 9;
+            AARarity = 13;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
@@ -35,18 +36,6 @@ namespace AAMod.Items.Boss.Akuma
         public override bool CanRightClick()
         {
             return true;
-        }
-
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Akuma;
-                }
-            }
         }
 
         public override void RightClick(Player player)

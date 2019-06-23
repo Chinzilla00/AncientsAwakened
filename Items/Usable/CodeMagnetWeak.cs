@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
-    public class CodeMagnetWeak : ModItem
+    public class CodeMagnetWeak : BaseAAItem
     {
         
         public override void SetStaticDefaults()

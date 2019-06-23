@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class HiveArtillery : ModItem
+    public class HiveArtillery : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

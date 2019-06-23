@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueAtlantean
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueAtlanteanBoots : ModItem
+	public class TrueAtlanteanBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

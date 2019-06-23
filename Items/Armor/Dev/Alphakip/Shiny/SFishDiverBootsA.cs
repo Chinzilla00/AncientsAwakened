@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Dev.Alphakip.Shiny
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class SFishDiverBootsA : ModItem
+	public class SFishDiverBootsA : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

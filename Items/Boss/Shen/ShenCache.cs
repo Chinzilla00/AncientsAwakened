@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Boss.Shen
 {
-    public class ShenCache : ModItem
+    public class ShenCache : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

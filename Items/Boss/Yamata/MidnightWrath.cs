@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class MidnightWrath : ModItem
+    public class MidnightWrath : BaseAAItem
 	{
 		public override void SetDefaults()
 		{
@@ -19,12 +19,12 @@ namespace AAMod.Items.Boss.Yamata
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.value = Item.sellPrice(1, 0, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.shootSpeed = 20f;
 			item.shoot = mod.ProjectileType ("MidnightWrath");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void SetStaticDefaults()
@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata; ;
+                    line2.overrideColor = AAColor.Rarity13; ;
                 }
             }
         }

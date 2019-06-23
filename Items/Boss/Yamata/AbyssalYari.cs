@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class AbyssalYari : ModItem
+    public class AbyssalYari : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -27,11 +27,11 @@ namespace AAMod.Items.Boss.Yamata
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useStyle = 5;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

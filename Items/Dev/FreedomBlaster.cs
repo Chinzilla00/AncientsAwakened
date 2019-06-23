@@ -2,7 +2,7 @@
 
 namespace AAMod.Items.Dev
 {
-    public class FreedomBlaster : ModItem
+    public class FreedomBlaster : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

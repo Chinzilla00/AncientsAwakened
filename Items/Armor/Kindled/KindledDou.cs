@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Kindled
 {
     [AutoloadEquip(EquipType.Body)]
-	public class KindledDou : ModItem
+	public class KindledDou : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

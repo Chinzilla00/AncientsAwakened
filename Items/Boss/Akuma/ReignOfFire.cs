@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class ReignOfFire : ModItem
+    public class ReignOfFire : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -29,11 +29,12 @@ Inflicts Daybroken");
             item.useAnimation = 29;     
             item.useStyle = 1;
             item.knockBack = 6.5f;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
 			item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.useTurn = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -105,7 +106,7 @@ Inflicts Daybroken");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

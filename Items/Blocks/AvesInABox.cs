@@ -1,6 +1,6 @@
 namespace AAMod.Items.Blocks
 {
-    /*public class AvesInABox : ModItem
+    /*public class AvesInABox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

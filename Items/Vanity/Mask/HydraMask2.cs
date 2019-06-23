@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class HydraMask2 : ModItem
+	public class HydraMask2 : BaseAAItem
     {
         public static int type;
         public override void SetStaticDefaults()

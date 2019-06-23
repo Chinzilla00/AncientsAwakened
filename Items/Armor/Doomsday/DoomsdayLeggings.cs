@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Doomsday
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class DoomsdayLeggings : ModItem
+	public class DoomsdayLeggings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -60,7 +60,7 @@ The power to destroy entire planets rests in this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

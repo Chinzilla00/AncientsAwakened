@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class ApocalyptitePlate : ModItem
+    public class ApocalyptitePlate : BaseAAItem
     {
         public override void SetDefaults()
         {

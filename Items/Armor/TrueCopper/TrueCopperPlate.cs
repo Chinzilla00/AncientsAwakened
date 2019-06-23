@@ -7,7 +7,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.TrueCopper
 {
     [AutoloadEquip(EquipType.Body)]
-	public class TrueCopperPlate : ModItem
+	public class TrueCopperPlate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

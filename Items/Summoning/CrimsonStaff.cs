@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class CrimsonStaff : ModItem
+    public class CrimsonStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -7,7 +7,7 @@ using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {
-    public class ConfusingMushroom : ModItem
+    public class ConfusingMushroom : BaseAAItem
     {
 
         public override void SetStaticDefaults()

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-	public class Fireblast : ModItem
+	public class Fireblast : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

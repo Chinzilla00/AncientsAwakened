@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Djinn
 {
-    public class SandstormCrossbow : ModItem
+    public class SandstormCrossbow : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

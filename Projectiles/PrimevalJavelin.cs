@@ -19,7 +19,7 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.aiStyle = -1;
             projectile.melee = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
         }
 
         public bool StuckInEnemy = false;

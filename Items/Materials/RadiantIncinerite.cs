@@ -4,7 +4,7 @@ using Terraria;
 
 namespace AAMod.Items.Materials
 {
-    public class RadiantIncinerite : ModItem
+    public class RadiantIncinerite : BaseAAItem
     {
         public override void SetDefaults()
         {

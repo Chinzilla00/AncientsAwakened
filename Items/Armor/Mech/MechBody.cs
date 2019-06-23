@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Mech
 {
     [AutoloadEquip(EquipType.Body)]
-	public class MechBody : ModItem
+	public class MechBody : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

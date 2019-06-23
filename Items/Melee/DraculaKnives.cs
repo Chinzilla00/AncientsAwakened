@@ -31,7 +31,7 @@ Vampire Knives EX");
             item.useTime = 11;
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2.75f;
             item.melee = true;
             item.expert = true;

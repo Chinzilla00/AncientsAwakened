@@ -8,7 +8,7 @@ using System;
 
 namespace AAMod.Items.Boss.Zero
 {
-    public class EventHorizon : ModItem
+    public class EventHorizon : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -30,10 +30,10 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = 5;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("EventHorizon");
             item.shootSpeed = 22f;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -56,17 +56,6 @@ namespace AAMod.Items.Boss.Zero
                 0f
             );
         }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-	    {
-	        foreach (TooltipLine line2 in list)
-	        {
-	            if (line2.mod == "Terraria" && line2.Name == "ItemName")
-	            {
-	                line2.overrideColor = AAColor.Zero;
-	            }
-	        }
-	    }
 		
 		public override void AddRecipes()
 		{

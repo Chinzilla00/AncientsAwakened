@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class HeartOfPassion : ModItem
+    public class HeartOfPassion : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -51,6 +51,17 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
                 }
             }
             return true;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
     }
 }

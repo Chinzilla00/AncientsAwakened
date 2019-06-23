@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class InfernoKey : ModItem
+    public class InfernoKey : BaseAAItem
     {
 		public override void SetStaticDefaults()
 		{

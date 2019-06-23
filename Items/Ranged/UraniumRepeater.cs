@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class UraniumRepeater : ModItem
+    public class UraniumRepeater : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

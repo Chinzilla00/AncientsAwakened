@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Blocks
 {
-    public class DoomstoneBrick : ModItem
+    public class DoomstoneBrick : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -16,7 +16,8 @@ namespace AAMod.Items.Blocks
             item.useAnimation = 15;
             item.useTime = 10;
             item.useStyle = 1;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
             item.consumable = true;
             item.createTile = mod.TileType("DoomstoneBrick"); //put your CustomBlock Tile name
         }
@@ -26,7 +27,7 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

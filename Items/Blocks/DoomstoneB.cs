@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DoomstoneB : ModItem
+    public class DoomstoneB : BaseAAItem
     {
         public override void SetDefaults()
         {

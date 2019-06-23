@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class FungicideSolution : ModItem
+    public class FungicideSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

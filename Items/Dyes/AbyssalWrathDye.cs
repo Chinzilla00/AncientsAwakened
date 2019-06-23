@@ -5,7 +5,7 @@ using BaseMod;
 
 namespace AAMod.Items.Dyes
 {
-	public class AbyssalWrathDye : ModItem
+	public class AbyssalWrathDye : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

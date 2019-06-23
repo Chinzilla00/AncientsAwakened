@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.DevTools
 {
-    public class HardmodeUndowner : ModItem
+    public class HardmodeUndowner : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

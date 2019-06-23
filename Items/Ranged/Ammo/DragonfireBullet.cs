@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged.Ammo
 {
-    public class DragonfireBullet : ModItem
+    public class DragonfireBullet : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

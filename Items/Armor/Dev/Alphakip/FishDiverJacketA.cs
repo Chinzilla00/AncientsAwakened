@@ -7,7 +7,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Dev.Alphakip
 {
     [AutoloadEquip(EquipType.Body)]
-    public class FishDiverJacketA : ModItem
+    public class FishDiverJacketA : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

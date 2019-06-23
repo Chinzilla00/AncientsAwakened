@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class MoltenLance : ModItem
+    public class MoltenLance : BaseAAItem
     {
         public override void SetDefaults()
         {

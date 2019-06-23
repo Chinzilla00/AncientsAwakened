@@ -8,7 +8,7 @@ using BaseMod;
 namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
-    public class CyberneticClaw : ModItem
+    public class CyberneticClaw : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
-    public class KeyOfSpite : ModItem
+    public class KeyOfSpite : BaseAAItem
     {
 		public override void SetStaticDefaults()
 		{

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class Blastshot : ModItem
+    public class Blastshot : BaseAAItem
     {
         
         public override void SetDefaults()

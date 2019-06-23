@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.penetrate = 1;
             projectile.alpha = 120;
             cooldownSlot = 1;
+            projectile.timeLeft = 60;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -32,36 +33,17 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-        	projectile.alpha -= 1;
-        	if (projectile.alpha <= 0)
-        	{
-        		projectile.Kill();
-        	}
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
+            projectile.timeLeft--;
+            if (projectile.timeLeft <= 0)
+            {
+                projectile.Kill();
+            }
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
         	projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
         	if (projectile.ai[1] == 0f)
 			{
 				projectile.ai[1] = 1f;
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
-			}
-        	int num103 = (int)Player.FindClosest(projectile.Center, 1, 1);
-			projectile.ai[1] += 1f;
-			if (projectile.ai[1] < 220f && projectile.ai[1] > 20f)
-			{
-				float scaleFactor2 = projectile.velocity.Length();
-				Vector2 vector11 = Main.player[num103].Center - projectile.Center;
-				vector11.Normalize();
-				vector11 *= scaleFactor2;
-				projectile.velocity = (projectile.velocity * 24f + vector11) / 25f;
-				projectile.velocity.Normalize();
-				projectile.velocity *= scaleFactor2;
-			}
-			if (projectile.ai[0] < 0f)
-			{
-				if (projectile.velocity.Length() < 18f)
-				{
-					projectile.velocity *= 1.02f;
-				}
 			}
             if (projectile.frameCounter++ > 6)
             {
@@ -76,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Shen
         
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-        	target.AddBuff(mod.BuffType("HydraToxin"), 300);
+        	target.AddBuff(mod.BuffType("DragonFire"), 300);
         }
 
         public override void Kill(int timeLeft)

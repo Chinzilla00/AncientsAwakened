@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Blocks
 {
-    public class TruePaladinsSmeltery : ModItem
+    public class TruePaladinsSmeltery : BaseAAItem
     {
         
         public override void SetStaticDefaults()

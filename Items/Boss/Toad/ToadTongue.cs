@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Toad
 {
-    public class ToadTongue : ModItem
+    public class ToadTongue : BaseAAItem
     {
         
         public override void SetStaticDefaults()

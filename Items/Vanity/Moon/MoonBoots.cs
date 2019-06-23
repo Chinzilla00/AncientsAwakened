@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Moon
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class MoonBoots : ModItem
+	public class MoonBoots : BaseAAItem
 	{
 		public override void SetStaticDefaults()
        

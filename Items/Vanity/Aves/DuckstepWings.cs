@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Aves
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class DuckstepWings : ModItem
+    public class DuckstepWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

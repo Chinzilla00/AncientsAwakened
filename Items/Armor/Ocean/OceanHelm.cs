@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Ocean
 {
     [AutoloadEquip(EquipType.Head)]
-	public class OceanHelm : ModItem
+	public class OceanHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

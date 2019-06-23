@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 
 namespace AAMod.Items.Blocks
 {
-    public class Uranium : ModItem
+    public class Uranium : BaseAAItem
     {
         public override void SetDefaults()
         {

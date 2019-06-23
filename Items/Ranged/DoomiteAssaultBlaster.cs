@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class DoomiteAssaultBlaster : ModItem
+    public class DoomiteAssaultBlaster : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -41,6 +41,15 @@ namespace AAMod.Items.Ranged
                 position += muzzleOffset;
             }
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Doomite", 10);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

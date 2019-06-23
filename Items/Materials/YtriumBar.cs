@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class YtriumBar : ModItem
+    public class YtriumBar : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.AH
 {
-    public class AsheSatchel : ModItem
+    public class AsheSatchel : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -11,7 +11,8 @@ namespace AAMod.Items.Boss.AH
             item.consumable = true;
             item.width = 16;
             item.height = 16;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
         }
 
         public override void SetStaticDefaults()
@@ -28,10 +29,9 @@ Contains a set of Fury Witch's robes");
 
         public override void RightClick(Player player)
         {
-            item.TurnToAir();
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchHood"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchRobe"), 1, false, 0, false, false);
-            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("WitchBoots"), 1, false, 0, false, false);
+            player.QuickSpawnItem(mod.ItemType("WitchHood"));
+            player.QuickSpawnItem(mod.ItemType("WitchRobe"));
+            player.QuickSpawnItem(mod.ItemType("WitchBoots"));
         }
     }
 }

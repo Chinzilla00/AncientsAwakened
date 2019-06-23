@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class PoniumStaff : ModItem
+    public class PoniumStaff : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Ponium Staff");
-            Tooltip.SetDefault(@"'That’s a fucking REEEEEEEEE if I’ve ever seen one'
+            Tooltip.SetDefault(@"'That’s a f***ing REEEEEEEEE if I’ve ever seen one'
 -Beg");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}

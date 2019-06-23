@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public class MadnessFragment : ModItem
+    public class MadnessFragment : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

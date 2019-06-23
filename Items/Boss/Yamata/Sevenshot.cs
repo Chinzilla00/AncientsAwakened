@@ -7,7 +7,7 @@ using AAMod.Projectiles.Yamata;
 
 namespace AAMod.Items.Boss.Yamata
 {
-    public class Sevenshot : ModItem
+    public class Sevenshot : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -27,13 +27,13 @@ namespace AAMod.Items.Boss.Yamata
 	        item.useStyle = 5;
 	        item.noMelee = true;
 	        item.knockBack = 4.5f;
-	        item.value = Item.sellPrice(1, 0, 0, 0);
+	        item.value = Item.sellPrice(0, 30, 0, 0);
 	        item.UseSound = SoundID.Item36;
 	        item.autoReuse = true;
 	        item.shoot = 10;
 	        item.shootSpeed = 20f;
 	        item.useAmmo = 97;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }

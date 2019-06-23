@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 namespace AAMod.Items.Vanity.Tied
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class TiedsLeggings : ModItem
+    public class TiedsLeggings : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

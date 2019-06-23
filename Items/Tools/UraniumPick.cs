@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class UraniumPick : ModItem
+    public class UraniumPick : BaseAAItem
     {
         public override void SetDefaults()
         {

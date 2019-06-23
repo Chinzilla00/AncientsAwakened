@@ -2,7 +2,7 @@ using Terraria.ModLoader; using Terraria.ID;
 
 namespace AAMod.Items.Blocks.Statues
 {
-	public class HallamStatue : ModItem
+	public class HallamStatue : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

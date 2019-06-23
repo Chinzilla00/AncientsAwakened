@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
-    public class RelicBar : ModItem
+    public class RelicBar : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class Depthsprayer : ModItem
+    public class Depthsprayer : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

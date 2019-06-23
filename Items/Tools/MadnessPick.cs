@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    public class MadnessPick : ModItem
+    public class MadnessPick : BaseAAItem
     {
         public override void SetDefaults()
         {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Retriever
 {
-    public class CyberBaton : ModItem
+    public class CyberBaton : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

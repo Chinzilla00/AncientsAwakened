@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {
-    public class TheDragonfire : ModItem
+    public class TheDragonfire : BaseAAItem
     {
         public override void SetDefaults()
         {

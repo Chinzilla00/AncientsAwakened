@@ -6,7 +6,7 @@ using BaseMod;
 
 namespace AAMod.Items.Usable
 {
-    public class MireSeeds : ModItem
+    public class MireSeeds : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

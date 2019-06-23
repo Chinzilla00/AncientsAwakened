@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class ZeroWings : ModItem
+	public class ZeroWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {
@@ -68,7 +68,7 @@ namespace AAMod.Items.Accessories.Wings
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Zero;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

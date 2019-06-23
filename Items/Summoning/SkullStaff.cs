@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning
 {
-    public class SkullStaff : ModItem
+    public class SkullStaff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

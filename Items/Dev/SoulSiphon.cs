@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class SoulSiphon : ModItem
+    public class SoulSiphon : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

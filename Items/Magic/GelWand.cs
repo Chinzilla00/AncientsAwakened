@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class GelWand : ModItem
+    public class GelWand : BaseAAItem
     {
         public override void SetDefaults()
         {

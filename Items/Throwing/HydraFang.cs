@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class HydraFang : ModItem
+	public class HydraFang : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

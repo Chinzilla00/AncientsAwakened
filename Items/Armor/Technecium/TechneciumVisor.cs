@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Technecium
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TechneciumVisor : ModItem
+	public class TechneciumVisor : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

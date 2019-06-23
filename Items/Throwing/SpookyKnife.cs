@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class SpookyKnife : ModItem
+	public class SpookyKnife : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

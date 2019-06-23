@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Armor.Doomsday
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DoomsdayMask : ModItem
+	public class DoomsdayMask : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {

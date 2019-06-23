@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class AbyssalTwilight : ModItem
+    public class AbyssalTwilight : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

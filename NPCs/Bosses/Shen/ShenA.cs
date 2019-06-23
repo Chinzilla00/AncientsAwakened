@@ -22,9 +22,9 @@ namespace AAMod.NPCs.Bosses.Shen
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((short)InternalAI[0]);
-                writer.Write((short)InternalAI[1]);
-                writer.Write((short)InternalAI[2]);
+                writer.Write(InternalAI[0]);
+                writer.Write(InternalAI[1]);
+                writer.Write(InternalAI[2]);
             }
         }
 
@@ -42,14 +42,14 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 230;
-            npc.defense = 200;
+            npc.damage = 300;
+            npc.defense = 270;
             npc.lifeMax = 1400000;
             npc.value = Item.buyPrice(40, 0, 0, 0);
             npc.lifeMax = 1000000;
             npc.value = Item.sellPrice(40, 0, 0, 0);
             bossBag = mod.ItemType("ShenCache");
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/ShenA");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
             musicPriority = (MusicPriority)11;
             isAwakened = true;
         }
@@ -62,45 +62,6 @@ namespace AAMod.NPCs.Bosses.Shen
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
-        public override void PostAI()
-        {
-            Player player = Main.player[npc.target];
-            InternalAI[0]++;
-            if (InternalAI[0] > 240)
-            {
-                if (InternalAI[2] == 0)
-                {
-                    InternalAI[1] = Main.rand.Next(2);
-                    InternalAI[2] = 1;
-                }
-                if (InternalAI[1] == 0)
-                {
-                    if (InternalAI[0] == 280 || InternalAI[0] == 320 || InternalAI[0] == 360 || InternalAI[0] == 400)
-                    {
-                        for (int Loops = 0; Loops < 3; Loops++)
-                        {
-                            ShenAttacks.Dragonfire(npc, mod);
-                        }
-                    }
-                }
-                if (InternalAI[1] == 1)
-                {
-                    if (InternalAI[0] == 280 || InternalAI[0] == 340 || InternalAI[0] == 400)
-                    {
-                        for (int Loops = 0; Loops < 8; Loops++)
-                        {
-                            ShenAttacks.Eruption(npc, mod);
-                        }
-                    }
-                }
-                if (InternalAI[0] > 400)
-                {
-                    InternalAI[0] = 0;
-                    InternalAI[2] = 0;
-                }
-            }
-        }
-
         public bool Health9 = false;
         public bool Health8 = false;
         public bool Health7 = false;
@@ -109,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            base.HitEffect(hitDirection, damage);			
+            base.HitEffect(hitDirection, damage);
             if (npc.life <= npc.lifeMax * 0.9f && !Health9)
             {
                 if (AAWorld.downedShen)
@@ -175,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health4 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.2f && !Health3)
+            if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
                 if (AAWorld.downedShen)
                 {
@@ -188,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health3 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.1f && !Health2)
+            if (npc.life <= npc.lifeMax * 0.2f && !Health2)
             {
                 if (AAWorld.downedShen)
                 {
@@ -201,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health2 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.05f && !Health1)
+            if (npc.life <= npc.lifeMax * 0.1f && !Health1)
             {
                 if (AAWorld.downedShen)
                 {
@@ -214,40 +175,40 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health1 = true;
                 npc.netUpdate = true;
             }
-            if (Health2)
+            if (Health3)
             {
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/LastStand");
-            }			
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
+            }
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-			Texture2D currentTex = Main.npcTexture[npc.type];
-			Texture2D currentWingTex = mod.GetTexture("NPCs/Bosses/Shen/ShenAWings");
+            Texture2D currentTex = Main.npcTexture[npc.type];
+            Texture2D currentWingTex = mod.GetTexture("NPCs/Bosses/Shen/ShenAWings");
             Texture2D glowTex = mod.GetTexture("NPCs/Bosses/Shen/ShenA_Glow");
 
-			//offset
-			npc.position.Y += 130f;
+            //offset
+            npc.position.Y += 130f;
 
-			//draw body/charge afterimage
-			if(Charging)
-			{
-				BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));	
-			}
-			BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
-			
-			//draw glow/glow afterimage
+            //draw body/charge afterimage
+            if (Charging)
+            {
+                BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));
+            }
+            BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
+
+            //draw glow/glow afterimage
             BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen3);
-			BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, AAColor.Shen3);	
-			
-			//draw wings
-			BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, AAColor.Shen3);
 
-			//deoffset
-			npc.position.Y -= 130f; // offsetVec;			
+            //draw wings
+            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+
+            //deoffset
+            npc.position.Y -= 130f; // offsetVec;			
 
             return false;
-        }		
+        }
     }
-    
+
 }

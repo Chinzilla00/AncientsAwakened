@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class BlackSolution : ModItem
+    public class BlackSolution : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

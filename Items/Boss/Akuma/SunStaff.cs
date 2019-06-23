@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma   //where is located
 {
-    public class SunStaff : ModItem
+    public class SunStaff : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -32,11 +32,12 @@ Inflicts Daybroken");
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 5f;
             item.summon = true;
             item.sentry = true;
-            item.rare = 10;
+            item.rare = 9;
+            AARarity = 13;
         }
 
 
@@ -85,7 +86,7 @@ Inflicts Daybroken");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

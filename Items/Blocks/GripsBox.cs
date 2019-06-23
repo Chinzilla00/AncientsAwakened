@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class GripsBox : ModItem
+    public class GripsBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class MobianBuster : ModItem
+    public class MobianBuster : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -25,7 +25,7 @@ namespace AAMod.Items.Dev
             item.useAnimation = 10;
             item.useStyle = 5;
             item.channel = true;
-            Item.sellPrice(1, 0, 0, 0);
+            Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
 			item.rare = 10;
 			item.shootSpeed = 12f;

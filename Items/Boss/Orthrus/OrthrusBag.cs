@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Orthrus
 {
-    public class OrthrusBag : ModItem
+    public class OrthrusBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

@@ -32,6 +32,16 @@ namespace AAMod.Projectiles
                 Main.dust[dustIndex].velocity *= 0.3f;
             }
         }
+
+        public override void Kill(int i)
+        {
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+
+            for (int m = 0; m < 12; m++)
+            {
+                Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.BogleafDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Microsoft.Xna.Framework.Color.White, 1.2f);
+            }
+        }
     }
 }
 

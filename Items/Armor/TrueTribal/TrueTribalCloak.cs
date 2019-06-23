@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueTribal
 {
     [AutoloadEquip(EquipType.Body)]
-    public class TrueTribalCloak : ModItem
+    public class TrueTribalCloak : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

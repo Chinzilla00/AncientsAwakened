@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class HallowedForge : ModItem
+    public class HallowedForge : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

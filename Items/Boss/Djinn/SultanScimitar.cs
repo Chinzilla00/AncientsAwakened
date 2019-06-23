@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Boss.Djinn
 
 {
-    public class SultanScimitar : ModItem
+    public class SultanScimitar : BaseAAItem
     {
         
         public override void SetStaticDefaults()

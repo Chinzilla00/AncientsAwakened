@@ -7,7 +7,7 @@ using AAMod.NPCs.Bosses.Toad;
 
 namespace AAMod.Items.BossSummons
 {
-    public class Toadstool : ModItem
+    public class Toadstool : BaseAAItem
     {
         
         public override void SetStaticDefaults()

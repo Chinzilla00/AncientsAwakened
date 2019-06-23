@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.BossSummons
 {
     //imported from my tAPI mod because I'm lazy
-    public class DragonBell : ModItem
+    public class DragonBell : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

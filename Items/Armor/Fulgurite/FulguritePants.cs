@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Fulgurite
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class FulguritePants : ModItem
+	public class FulguritePants : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

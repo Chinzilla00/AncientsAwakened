@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.TrueBlazing
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class TrueBlazingSuneate : ModItem
+	public class TrueBlazingSuneate : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Ranged
 {
-    public class CrystalBow : ModItem
+    public class CrystalBow : BaseAAItem
     {
 
         public override void SetDefaults()
@@ -20,7 +20,7 @@ namespace AAMod.Items.Ranged
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 5;
-            item.value = 1000;
+            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
             item.rare = 7;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;

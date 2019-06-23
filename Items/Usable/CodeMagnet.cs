@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class CodeMagnet : ModItem
+    public class CodeMagnet : BaseAAItem
     {
         
         public override void SetStaticDefaults()

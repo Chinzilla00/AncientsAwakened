@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Misc
 {
-    public class TriHeadedKoi : ModItem
+    public class TriHeadedKoi : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

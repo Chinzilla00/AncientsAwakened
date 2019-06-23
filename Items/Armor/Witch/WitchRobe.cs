@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Armor.Witch
 {
 	[AutoloadEquip(EquipType.Body)]
-	class WitchRobe : ModItem
+	class WitchRobe : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -19,7 +19,8 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
 		{
 			item.width = 14;
 			item.height = 14;
-            item.rare = 11;
+            item.rare = 9;
+            AARarity = 12;
             item.value = 300000;
             item.defense = 26;
 		}

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-    public class MorningGlory : ModItem
+    public class MorningGlory : BaseAAItem
     {
 
         
@@ -34,8 +34,9 @@ namespace AAMod.Items.Boss.Akuma
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
-            item.rare = 10;
+            item.value = Item.sellPrice(0, 30, 0, 0);
+            item.rare = 9;
+            AARarity = 13;
         }
         
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -66,7 +67,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

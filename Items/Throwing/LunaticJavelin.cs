@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-    public class LunaticJavelin : ModItem
+    public class LunaticJavelin : BaseAAItem
     {
         public override void SetDefaults()
         {

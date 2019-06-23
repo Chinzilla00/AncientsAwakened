@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Orthrus
 {
-    public class OrthrusTrophy : ModItem
+    public class OrthrusTrophy : BaseAAItem
 	{
         public static int type;
         

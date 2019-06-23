@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class ManaRose : ModItem
+    public class ManaRose : BaseAAItem
     {
         public override void SetStaticDefaults()
         {

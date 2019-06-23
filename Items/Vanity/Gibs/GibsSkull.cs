@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace AAMod.Items.Vanity.Gibs
 {
     [AutoloadEquip(EquipType.Head)]
-	public class GibsSkull : ModItem
+	public class GibsSkull : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

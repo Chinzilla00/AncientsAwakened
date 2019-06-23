@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.TrueHallowed
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrueHallowedHelm : ModItem
+    public class TrueHallowedHelm : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -36,7 +36,7 @@ Increases maximum mana by 100
         {
             player.setBonus = @"20% Chance not to Consume Ammo, reduced mana usage, increased melee, and movement speed";
 
-            player.meleeSpeed *= 1.2f;
+            player.meleeSpeed *= 1.1f;
             player.ammoCost80 = true;
             player.moveSpeed *= 1.2f;
             player.manaCost *= 0.8f;

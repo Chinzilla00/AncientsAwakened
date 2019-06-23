@@ -3,7 +3,7 @@ using Terraria;
 
 namespace AAMod.Items.Walls
 {
-    public class DoomsdayWall : ModItem
+    public class DoomsdayWall : BaseAAItem
     {
         public override void SetDefaults()
         {

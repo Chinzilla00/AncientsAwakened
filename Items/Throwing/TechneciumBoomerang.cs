@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class TechneciumBoomerang : ModItem
+	public class TechneciumBoomerang : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class GentlemansRapier : ModItem
+    public class GentlemansRapier : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

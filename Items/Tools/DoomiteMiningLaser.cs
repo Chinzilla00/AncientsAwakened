@@ -1,15 +1,11 @@
-using System; using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace GRealm.Items.Weapons.Melee
+namespace AAMod.Items.Tools
 {
-	public class DoomiteMiningLaser : ModItem
+	public class DoomiteMiningLaser : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

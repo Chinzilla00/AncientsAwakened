@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Magic
 {
-    public class VenomSpray : ModItem
+    public class VenomSpray : BaseAAItem
     {
         public override void SetDefaults()
         {

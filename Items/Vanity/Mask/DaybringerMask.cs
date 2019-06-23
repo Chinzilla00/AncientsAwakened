@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class DaybringerMask : ModItem
+	public class DaybringerMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

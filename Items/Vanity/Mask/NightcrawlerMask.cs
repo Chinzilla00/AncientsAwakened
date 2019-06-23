@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class NightcrawlerMask : ModItem
+	public class NightcrawlerMask : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

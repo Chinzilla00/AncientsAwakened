@@ -5,7 +5,7 @@ using Terraria.ID;
 namespace AAMod.Items.Armor.Viking
 {
     [AutoloadEquip(EquipType.Head)]
-	public class VikingHelm : ModItem
+	public class VikingHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

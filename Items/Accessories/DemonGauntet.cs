@@ -9,7 +9,7 @@ namespace AAMod.Items.Accessories
 {
 
     [AutoloadEquip(EquipType.HandsOn, EquipType.HandsOff)]
-    public class DemonGauntlet : ModItem
+    public class DemonGauntlet : BaseAAItem
     {
         
         public override void SetStaticDefaults()
@@ -17,7 +17,8 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("Demon Gauntlet");
             Tooltip.SetDefault(
 @"Enemies are more likely to target you
-14% Increased Melee Damage and Speed
+14% Increased Melee Damage
+10% Increased melee speed
 Increased Melee Knockback
 Melee Attacks Inflict a different debuff depending on your world evil
 Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
@@ -38,7 +39,7 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage += 0.14f;
-            player.meleeSpeed += 0.14f;
+            player.meleeSpeed += 0.1f;
             player.aggro += 5;
         }
 

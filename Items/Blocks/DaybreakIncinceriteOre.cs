@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class DaybreakIncineriteOre : ModItem
+    public class DaybreakIncineriteOre : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -27,7 +27,7 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Akuma;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

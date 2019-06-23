@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-    public class DeathDaggers : ModItem
+    public class DeathDaggers : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -29,7 +29,7 @@ namespace AAMod.Items.Melee
             item.useTime = 25;
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 1f;
             item.melee = true;
             item.rare = 4;

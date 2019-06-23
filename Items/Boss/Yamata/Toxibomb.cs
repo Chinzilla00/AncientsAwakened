@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
-    public class Toxibomb : ModItem
+    public class Toxibomb : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -21,13 +21,13 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.useStyle = 5;        
             item.noMelee = true;   
             item.knockBack = 1; 
-            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
             item.mana = 9;
             item.UseSound = SoundID.Item20; 
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("Toxibomb");  
             item.shootSpeed = 20f;
-            item.rare = 10;
+            item.rare = 9; AARarity = 13;
         }
 
 		public override void SetStaticDefaults()
@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Yamata;;
+                    line2.overrideColor = AAColor.Rarity13;;
                 }
             }
         }
