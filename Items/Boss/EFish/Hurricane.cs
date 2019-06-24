@@ -26,7 +26,7 @@ Tsunami EX");
             item.shoot = 1;
             item.useAmmo = AmmoID.Arrow;
             item.UseSound = SoundID.Item5;
-            item.damage = 125;
+            item.damage = 100;
             item.shootSpeed = 13f;
             item.knockBack = 4f;
             item.rare = 8;
@@ -44,7 +44,7 @@ Tsunami EX");
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			float num121 = 0.314159274f;
-			int num122 = 6;
+			int num122 = 5;
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 			float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
 			float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;

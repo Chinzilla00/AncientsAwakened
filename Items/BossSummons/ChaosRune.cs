@@ -54,7 +54,7 @@ Non-Consumable");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Shen2,
+                AAColor.Shen3,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
@@ -71,7 +71,7 @@ Non-Consumable");
             for (int i = 0; i < 4; i++)
             {
                 //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, AAColor.Shen2, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, AAColor.Shen3, 0, origin, scale, SpriteEffects.None, 0f);
 
             }
 

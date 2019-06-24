@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.alpha > 0 && npc.ai[0] > 375)
             {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenTransition");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
                 {
                     Dust dust1;

@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 draw = false;
             }
             
-            if (++projectile.frameCounter >= 4)
+            if (++projectile.frameCounter >= 3)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 7)

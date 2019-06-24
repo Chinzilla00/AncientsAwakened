@@ -70,8 +70,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         private Color Glow = GenericUtils.COLOR_GLOWPULSE;
-        Vector2 PlayerPos = new Vector2(0, 0);
-        Vector2 OldPos = new Vector2(0, 0);
+        private Vector2 PlayerPos = new Vector2(0, 0);
+        private Vector2 OldPos = new Vector2(0, 0);
 
         public override void AI()
         {

@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override Color? GetAlpha(Color lightColor)
         {
             Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
-            return new Color(color.R, color.G, color.B, 60);
+            return new Color(color.R, color.G, color.B, 120);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
@@ -137,17 +137,16 @@ namespace AAMod.NPCs.Bosses.Shen
                 for (i = 0; i < 4; i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                 }
                 for (i = 0; i < 2; i++)
                 {
                     offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                 }
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             for (int dust = 0; dust <= 10; dust++)
             {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);

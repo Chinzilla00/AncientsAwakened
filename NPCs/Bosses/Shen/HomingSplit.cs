@@ -23,14 +23,13 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 60;
             projectile.timeLeft = 300;
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
             Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
-            return new Color(color.R, color.G, color.B, 60);
+            return new Color(color.R, color.G, color.B, 120);
         }
 
         public override void AI()
@@ -91,18 +90,6 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
             }
-        }
-
-
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Microsoft.Xna.Framework.Color lightColor)
-        {
-            int shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetShaderIdFromItemId(Terraria.ID.ItemID.LivingFlameDye);
-
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
-
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, Color.White, true);
-            return false;
         }
 
         private int HomeOnTarget()

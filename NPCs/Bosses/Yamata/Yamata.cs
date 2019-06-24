@@ -385,7 +385,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                 }
             }
-			
             if (isAwakened && npc.life <= npc.lifeMax / 5)
             {
 				int musicType = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope"); ;
@@ -393,7 +392,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				{
 					BaseUtility.Chat("YOU THINK I'M DONE YET?! I DON'T THINK SO!!!!", new Color(146, 30, 68));
                 }
-                music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/RayOfHope");
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
             }
 			
             prevHalfHPLeft = halfHPLeft;
