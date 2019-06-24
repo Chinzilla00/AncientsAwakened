@@ -26,94 +26,95 @@ namespace AAMod.Projectiles
 
 			projectile.penetrate = -1;
 			projectile.alpha = 255;
+            
 		}
 
-		public override bool PreAI()
-		{
-			Vector2? vector68 = null;
-			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
-				projectile.velocity = -Vector2.UnitY;
+        public override bool PreAI()
+        {
+            Vector2? vector68 = null;
+            if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
+                projectile.velocity = -Vector2.UnitY;
 
-			if (Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].type == mod.ProjectileType("Etheral"))
-			{
-				projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
-				projectile.velocity = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].velocity);
-			}
-			else
-			{
-				projectile.Kill();
-			}
+            if (Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].type == mod.ProjectileType("Etheral"))
+            {
+                projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
+                projectile.velocity = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].velocity);
+            }
+            else
+            {
+                projectile.Kill();
+            }
 
-			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
-				projectile.velocity = -Vector2.UnitY;
+            if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
+                projectile.velocity = -Vector2.UnitY;
 
-			float num810 = projectile.velocity.ToRotation();
-			projectile.rotation = num810 - (float)(Math.PI / 2);
-			projectile.velocity = num810.ToRotationVector2();
-			float scaleFactor7 = 0f;
-			Vector2 value37 = projectile.Center;
-			if (vector68.HasValue)
-				value37 = vector68.Value;
+            float num810 = projectile.velocity.ToRotation();
+            projectile.rotation = num810 - (float)(Math.PI / 2);
+            projectile.velocity = num810.ToRotationVector2();
+            float scaleFactor7 = 0f;
+            Vector2 value37 = projectile.Center;
+            if (vector68.HasValue)
+                value37 = vector68.Value;
 
-			int num811 = 2;
-			scaleFactor7 = 0f;
+            int num811 = 2;
+            scaleFactor7 = 0f;
 
-			float[] array3 = new float[num811];
-			int num812 = 0;
-			while (num812 < num811)
-			{
-				float num813 = num812 / (num811 - 1f);
-				Vector2 value38 = value37 + projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * (num813 - 0.5f) * scaleFactor7 * projectile.scale;
-				int num814 = (int)value38.X >> 4;
-				int num815 = (int)value38.Y >> 4;
-				Vector2 vector69 = value38 + projectile.velocity * 16f * 150f;
-				int num816 = (int)vector69.X >> 4;
-				int num817 = (int)vector69.Y >> 4;
-				Tuple<int, int> tuple;
-				float num818;
-				if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out tuple))
-					num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
-				else if (tuple.Item1 == num816 && tuple.Item2 == num817)
-					num818 = 2400f;
-				else
-					num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
+            float[] array3 = new float[num811];
+            int num812 = 0;
+            while (num812 < num811)
+            {
+                float num813 = num812 / (num811 - 1f);
+                Vector2 value38 = value37 + projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * (num813 - 0.5f) * scaleFactor7 * projectile.scale;
+                int num814 = (int)value38.X >> 4;
+                int num815 = (int)value38.Y >> 4;
+                Vector2 vector69 = value38 + projectile.velocity * 16f * 150f;
+                int num816 = (int)vector69.X >> 4;
+                int num817 = (int)vector69.Y >> 4;
+                Tuple<int, int> tuple;
+                float num818;
+                if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out tuple))
+                    num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
+                else if (tuple.Item1 == num816 && tuple.Item2 == num817)
+                    num818 = 2400f;
+                else
+                    num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
 
-				array3[num812] = num818;
-				num812++;
-			}
-			float num819 = 0f;
-			for (int num820 = 0; num820 < array3.Length; num820++)
-				num819 += array3[num820];
+                array3[num812] = num818;
+                num812++;
+            }
+            float num819 = 0f;
+            for (int num820 = 0; num820 < array3.Length; num820++)
+                num819 += array3[num820];
 
-			num819 /= num811;
-			float amount = 0.5f;
-			projectile.localAI[1] = MathHelper.Lerp(projectile.localAI[1], num819, amount);
-			Vector2 vector72 = projectile.Center + projectile.velocity * (projectile.localAI[1] - 14f);
+            num819 /= num811;
+            float amount = 0.5f;
+            projectile.localAI[1] = MathHelper.Lerp(projectile.localAI[1], num819, amount);
+            Vector2 vector72 = projectile.Center + projectile.velocity * (projectile.localAI[1] - 14f);
 
-			for (int num826 = 0; num826 < 2; num826++)
-			{
-				float num827 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
-				float num828 = (float)Main.rand.NextDouble() * 2f + 2f;
-				Vector2 vector73 = new Vector2((float)Math.Cos((double)num827) * num828, (float)Math.Sin((double)num827) * num828);
-				int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0, default(Color), 1f);
-				Main.dust[num829].noGravity = true;
-				Main.dust[num829].scale = 1.7f;
-			}
+            for (int num826 = 0; num826 < 2; num826++)
+            {
+                float num827 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
+                float num828 = (float)Main.rand.NextDouble() * 2f + 2f;
+                Vector2 vector73 = new Vector2((float)Math.Cos((double)num827) * num828, (float)Math.Sin((double)num827) * num828);
+                int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0, default(Color), 1f);
+                Main.dust[num829].noGravity = true;
+                Main.dust[num829].scale = 1.7f;
+            }
 
-			if (Main.rand.Next(5) == 0)
-			{
-				Vector2 value40 = projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-				int num830 = Dust.NewDust(vector72 + value40 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
-				Main.dust[num830].velocity *= 0.5f;
-				Main.dust[num830].velocity.Y = -Math.Abs(Main.dust[num830].velocity.Y);
-			}
-			DelegateMethods.v3_1 = new Vector3(0.3f, 0.65f, 0.7f);
-			Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
+            if (Main.rand.Next(5) == 0)
+            {
+                Vector2 value40 = projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
+                int num830 = Dust.NewDust(vector72 + value40 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                Main.dust[num830].velocity *= 0.5f;
+                Main.dust[num830].velocity.Y = -Math.Abs(Main.dust[num830].velocity.Y);
+            }
+            DelegateMethods.v3_1 = new Vector3(0.3f, 0.65f, 0.7f);
+            Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
 
-			return false;
-		}
+            return false;
+        }
 
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			float n = 0f;
 			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], 30f * projectile.scale, ref n))

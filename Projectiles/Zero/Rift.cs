@@ -9,23 +9,6 @@ namespace AAMod.Projectiles.Zero
     // to investigate: Projectile.Damage, (8843)
     class Rift : ModProjectile
 	{
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
-        {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-        }
-
         public override void SetDefaults()
 		{
             
@@ -40,8 +23,13 @@ namespace AAMod.Projectiles.Zero
             projectile.scale = 0.9f;
             projectile.melee = true;
             projectile.timeLeft = 300;
-
         }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void AI()
         {
             float num472 = projectile.Center.X;

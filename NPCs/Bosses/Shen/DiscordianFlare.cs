@@ -25,18 +25,24 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 40;
             cooldownSlot = 1;
+            projectile.timeLeft = 180;
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(250, 250, 250);
+            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
+            return new Color(color.R, color.G, color.B, 60);
         }
 
         public override void AI()
         {
         	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
+            
+            if (projectile.timeLeft-- <= 0)
+            {
+                projectile.Kill();
+            }
             projectile.frameCounter++;
             if (projectile.frameCounter > 6)
             {
@@ -54,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Shen
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			}
             int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
-            if (projectile.alpha < 50 && Main.rand.Next(3) == 0)
+            if (Main.rand.Next(3) == 0)
             {
                 for (int m = 0; m < 3; m++)
                 {
@@ -69,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.dust[dustID2].noGravity = true;
             }
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 14;
+            const float desiredFlySpeedInPixelsPerFrame = 18;
             const float amountOfFramesToLerpBy = 20;
 
             InternalAI[0]++;
@@ -132,15 +138,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            int ShaderType = projectile.ai[0] == 1 ? mod.ItemType<Items.Dyes.BlazingDye>() : projectile.ai[0] == 2 ? mod.ItemType<Items.Dyes.AbyssalDye>() : mod.ItemType<Items.Dyes.DiscordianDye>();
-            int shader = GameShaders.Armor.GetShaderIdFromItemId(ShaderType);
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type], 0, 2);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, Main.projFrames[projectile.type], frame, Color.White, true);
-            return false;
         }
 
         public override void Kill(int timeLeft)

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("MushiumBar");
-			
+            item.value = Terraria.Item.sellPrice(0, 0, 9, 0);
         }
 
         public override void SetStaticDefaults()

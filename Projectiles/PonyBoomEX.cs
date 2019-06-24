@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
             projectile.alpha = 255;
             projectile.magic = true;
             projectile.tileCollide = false;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
         }
 
         public override void AI()

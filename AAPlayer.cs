@@ -198,7 +198,7 @@ namespace AAMod
         public bool DragonsGuard = false;
         public bool ShadowBand = false;
         public bool RajahCape = false;
-
+        
         public bool SagShield = false;
         public bool ShieldUp = false;
         public int SagCooldown = 0;
@@ -208,6 +208,7 @@ namespace AAMod
         public bool BegHideVanity;
         public bool BegForceVanity;
         public bool HorseBuff;
+
         //debuffs
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -234,6 +235,8 @@ namespace AAMod
         public Vector2 RingLocation;
         public bool IB = false;
         //buffs
+
+        public bool Glitched = false;
 
         //pets
         public bool Broodmini = false;
@@ -2891,7 +2894,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (DynaskullSet && proj.thrown)
+            if (DynaskullSet && proj.ranged)
             {
                 target.AddBuff(BuffID.Confused, 180);
             }

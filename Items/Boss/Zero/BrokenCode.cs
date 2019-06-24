@@ -18,7 +18,9 @@ namespace AAMod.Items.Boss.Zero
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
 Grants immunity to the Unstable debuff
-While cooldown is occurring, your speed is increased, but you lose invincibility frames
+While cooldown is occurring, your speed is increased, you gain invincibility frames
+While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
+
 'You don't look so good'");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 36));
@@ -68,6 +70,7 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
                         CodeCD = 300;
+                        player.AddBuff(mod.BuffType<Buffs.Glitched>(), 300);
                     }
                 }
             }
@@ -85,7 +88,7 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
                 if (on)
                 {
                     on = false;
-                    player.moveSpeed = player.moveSpeed + 5f;
+                    player.moveSpeed += 5f;
                     player.headPosition.Y -= 20f;
                     player.headPosition.X += 15f;
                     player.bodyPosition.Y += 37f;
@@ -99,7 +102,7 @@ While cooldown is occurring, your speed is increased, but you lose invincibility
                 if (!on)
                 {
                     on = true;
-                    player.moveSpeed = player.moveSpeed - 5f;
+                    player.moveSpeed -=5f;
                     player.headPosition.Y += 20f;
                     player.headPosition.X -= 15f;
                     player.bodyPosition.Y -= 37f;

@@ -80,6 +80,7 @@
     <Compile Include="Buffs\DapperSquirrel.cs" />
     <Compile Include="Buffs\DynaEnergy2.cs" />
     <Compile Include="Buffs\DynaEnergy1.cs" />
+    <Compile Include="Buffs\Glitched.cs" />
     <Compile Include="Buffs\Squirrel.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
     <Compile Include="Buffs\ScoutMinion.cs" />
@@ -660,7 +661,6 @@
     <Compile Include="Items\Blocks\ScorchedShingles.cs" />
     <Compile Include="Items\Blocks\SerpentBox.cs" />
     <Compile Include="Items\Blocks\SiegeBox.cs" />
-    <Compile Include="Items\Blocks\Soul_Forge.cs" />
     <Compile Include="Items\Blocks\StormChest.cs" />
     <Compile Include="Items\Blocks\SunAltar.cs" />
     <Compile Include="Items\Blocks\SunAltarA.cs" />
@@ -1700,10 +1700,12 @@
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAsheVanish.cs" />
+    <Compile Include="NPCs\Bosses\Shen\HomingSplit.cs" />
     <Compile Include="NPCs\Bosses\Shen\SeekingFlame.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenA.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenABreath.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenAttacks.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ShenBlast.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenDeathBoom.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBoom.cs" />
     <Compile Include="NPCs\Bosses\Shen\ShenBreath.cs" />
@@ -1910,6 +1912,7 @@
     <Compile Include="NPCs\TownNPCs\Anubis.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\Akuma\RadiantDawn.cs" />
     <Compile Include="Projectiles\Star1.cs" />
     <Compile Include="Projectiles\ThunderBullet.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
@@ -2322,7 +2325,6 @@
     <Compile Include="Projectiles\Yamata\Crescent.cs" />
     <Compile Include="Projectiles\Yamata\Flairdra.cs" />
     <Compile Include="Projectiles\Yamata\FlairdraCyclone.cs" />
-    <Compile Include="Projectiles\Yamata\Masamune.cs" />
     <Compile Include="Projectiles\Yamata\MidnightWrath.cs" />
     <Compile Include="Projectiles\Yamata\Moonblow.cs" />
     <Compile Include="Projectiles\Yamata\TC.cs" />
@@ -2588,7 +2590,6 @@
     <Compile Include="Tiles\RottedShingles.cs" />
     <Compile Include="Tiles\ScorchedDynastyWood.cs" />
     <Compile Include="Tiles\ScorchedShingles.cs" />
-    <Compile Include="Tiles\Soul_Forge_Placed.cs" />
     <Compile Include="Tiles\Bogtus.cs" />
     <Compile Include="Tiles\SunAltar.cs" />
     <Compile Include="Tiles\SunAltarA.cs" />
@@ -2793,6 +2794,7 @@
     <Content Include="Buffs\FireSpirit.png" />
     <Content Include="Buffs\Fishnado.png" />
     <Content Include="Buffs\FlameSoul.png" />
+    <Content Include="Buffs\Glitched.png" />
     <Content Include="Buffs\Glowmoss.png" />
     <Content Include="Buffs\GripMinion.png" />
     <Content Include="Buffs\HallowedPrism.png" />
@@ -4612,6 +4614,7 @@
     <Content Include="Items\Dev\DeceivingTruth.png" />
     <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\Demise.png" />
+    <Content Include="Items\Dev\Doragonburedo.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
     <Content Include="Items\Dev\MagicAcornEX.png" />
     <Content Include="Items\Dev\Minions\Acorn.png" />
@@ -4631,6 +4634,7 @@
     <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
+    <Content Include="Items\Dev\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
     <Content Include="Items\Flasks\CrimsonFlask.png" />
@@ -4719,12 +4723,18 @@
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\FossilBoneslinger.png" />
+    <Content Include="Items\Ranged\Shockwave.png" />
     <Content Include="Items\Ranged\Winterbreak.png" />
     <Content Include="Items\Ranged\Incapacitator.png" />
     <Content Include="Items\Ranged\Mossket.png" />
     <Content Include="Items\Ranged\OceanWhaler.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
+    <Content Include="Items\Summoning\Doomite Signal.png" />
+    <Content Include="Items\Summoning\DoomiteSignalC.png" />
+    <Content Include="Items\Summoning\Minions\CrowMinion.gif" />
+    <Content Include="Items\Summoning\Minions\DoomiteProbe.png" />
+    <Content Include="Items\Summoning\Minions\DoomiteProbeC.png" />
     <Content Include="Items\Summoning\OmenStaff.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
@@ -4773,6 +4783,7 @@
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Arms.png" />
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Body.png" />
     <Content Include="Items\Vanity\Apawn\ApawnPlate_Female.png" />
+    <Content Include="Items\Vanity\Aves\DuckstepWings_Wings.png" />
     <Content Include="Items\Vanity\Beg\PonyBody.png" />
     <Content Include="Items\Vanity\Beg\PonyBody_Arms.png" />
     <Content Include="Items\Vanity\Beg\PonyBody_Body.png" />
@@ -4931,6 +4942,7 @@
     <Content Include="NPCs\Bosses\Shen\FuryAshe.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAsheVanish.png" />
     <Content Include="NPCs\Bosses\Shen\FuryAshe_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\HomingSplit.png" />
     <Content Include="NPCs\Bosses\Shen\SeekingFlame.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA.png" />
     <Content Include="NPCs\Bosses\Shen\ShenABreath.png" />
@@ -4938,6 +4950,7 @@
     <Content Include="NPCs\Bosses\Shen\ShenAWings.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Glow.png" />
     <Content Include="NPCs\Bosses\Shen\ShenA_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenBlast.png" />
     <Content Include="NPCs\Bosses\Shen\ShenBoom.png" />
     <Content Include="NPCs\Bosses\Shen\ShenBreath.png" />
     <Content Include="NPCs\Bosses\Shen\ShenDefeat.png" />
@@ -5019,6 +5032,7 @@
     <Content Include="NPCs\Enemies\BiomeGuardians\DynaBoom.png" />
     <Content Include="NPCs\Enemies\BiomeGuardians\Dynasaur.png" />
     <Content Include="NPCs\Enemies\BiomeGuardians\Fishron.png" />
+    <Content Include="NPCs\Enemies\Crimson\BeholderCrimson.png" />
     <Content Include="NPCs\Enemies\Inferno\HotWasp.png" />
     <Content Include="NPCs\Enemies\Inferno\InfernoSkulker.png" />
     <Content Include="NPCs\Enemies\Inferno\MagmaSwimmer.png" />
@@ -5146,7 +5160,6 @@
     <Content Include="Items\Blocks\SerpentBox.png" />
     <Content Include="Items\Blocks\SGBox.png" />
     <Content Include="Items\Blocks\SiegeBox.png" />
-    <Content Include="Items\Blocks\Soul_Forge.png" />
     <Content Include="Items\Blocks\Statues\AlphakipStatue.png" />
     <Content Include="Items\Blocks\Statues\AvesStatue.png" />
     <Content Include="Items\Blocks\Statues\BegStatue.png" />
@@ -5899,7 +5912,6 @@
     <Content Include="Items\Vanity\Aves\DJDuckShirt_Body.png" />
     <Content Include="Items\Vanity\Aves\DJDuckShirt_Female.png" />
     <Content Include="Items\Vanity\Aves\DuckCultistRobe.png" />
-    <Content Include="Items\Vanity\Aves\DuckstepWings.gif" />
     <Content Include="Items\Vanity\Aves\DuckstepWings.png" />
     <Content Include="Items\Vanity\Beg\Pony.png" />
     <Content Include="Items\Vanity\Dallin\FezLordsBag.png" />
@@ -6416,6 +6428,7 @@
     <Content Include="Projectiles\Akuma\Lung\LungHead.png" />
     <Content Include="Projectiles\Akuma\Lung\LungTail.png" />
     <Content Include="Projectiles\Akuma\MorningGlory.png" />
+    <Content Include="Projectiles\Akuma\RadiantDawn.png" />
     <Content Include="Projectiles\Akuma\Solar.png" />
     <Content Include="Projectiles\Akuma\SolarSun.png" />
     <Content Include="Projectiles\Akuma\SunOrb.png" />
@@ -6821,7 +6834,6 @@
     <Content Include="Projectiles\Yamata\Flairdra.png" />
     <Content Include="Projectiles\Yamata\FlairdraCyclone.png" />
     <Content Include="Projectiles\Yamata\Flairdra_Chain.png" />
-    <Content Include="Projectiles\Yamata\Masamune.png" />
     <Content Include="Projectiles\Yamata\MidnightWrath.png" />
     <Content Include="Projectiles\Yamata\Moonblow.png" />
     <Content Include="Projectiles\Yamata\TC.png" />
@@ -7155,7 +7167,6 @@
     <Content Include="Tiles\ShenABox.png" />
     <Content Include="Tiles\ShenBox.png" />
     <Content Include="Tiles\SiegeBox.png" />
-    <Content Include="Tiles\Soul_Forge_Placed.png" />
     <Content Include="Tiles\StarBox.png" />
     <Content Include="Tiles\StarBoxN.png" />
     <Content Include="Tiles\StarcloudBar.png" />

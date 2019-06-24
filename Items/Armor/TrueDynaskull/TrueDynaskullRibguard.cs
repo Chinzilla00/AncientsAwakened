@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Primeval Dynaskull Ribguard");
-            Tooltip.SetDefault("30% increased Ranged damage");
+            Tooltip.SetDefault("18% increased Ranged damage");
         }
 
 		public override void SetDefaults()
@@ -21,12 +21,12 @@ namespace AAMod.Items.Armor.TrueDynaskull
 			item.height = 18;
 			item.value = 100000;
 			item.rare = 7;
-			item.defense = 17;
+			item.defense = 19;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownDamage *= 1.3f;
+			player.thrownDamage *= 1.18f;
 		}
 
 		public override void AddRecipes()

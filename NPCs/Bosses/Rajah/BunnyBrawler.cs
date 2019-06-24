@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using System.IO;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -41,6 +43,36 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), (isDead ? 2f : 1.5f));
             }
+        }
+        public bool SetLife = false;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(SetLife);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                SetLife = reader.ReadBool(); //Set Lifex
+            }
+        }
+
+        public override bool PreAI()
+        {
+            if (Main.netMode != 1 && !SetLife)
+            {
+                Rajah.ScaleMinionStats(npc);
+                npc.life = npc.lifeMax;
+                SetLife = true;
+                npc.netUpdate = true;
+            }
+            return true;
         }
 
         public override void FindFrame(int frameHeight)

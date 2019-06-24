@@ -12,7 +12,8 @@ namespace AAMod.Items.Vanity.Aves
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Duckstep Bass Boosters");
-            Tooltip.SetDefault("'Great for impersonating Ancients Awakened Devs!'");
+            Tooltip.SetDefault(@"Allows flight and slow fall
+'Great for impersonating Ancients Awakened Devs!'");
 		}
 
 		public override void SetDefaults()

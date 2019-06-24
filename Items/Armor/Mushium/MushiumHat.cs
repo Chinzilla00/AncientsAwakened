@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.Mushium
 			item.height = 16;
 			item.value = 90;
 			item.rare = 1;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 25, 0);
             item.defense = 3;
 		}
 		

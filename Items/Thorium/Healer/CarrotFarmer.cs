@@ -11,7 +11,7 @@ namespace AAMod.Items.Thorium.Healer
 	{
 		public override void SetStaticDefaults()
 		{
-			crossoverModName = "Thorium";
+			crossoverModName = "ThoriumMod";
             DisplayName.SetDefault("Carrot Farmer");
             Tooltip.SetDefault(@"Spins a Carrot Scythe around you that shreds through enemies
 Scythes fire off carrots while spun

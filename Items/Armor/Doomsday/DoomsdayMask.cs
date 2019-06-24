@@ -44,24 +44,14 @@ The power to destroy entire planets rests in this armor");
             item.width = 18;
             item.height = 18;
             item.value = 3000000;
-            item.defense = 34;
+            item.defense = 28;
+            item.rare = 9;
+            AARarity = 13;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.minionDamage += .5f;
-        }
-        
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Zero;
-                }
-            }
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (isAwakened && npc.life > npc.lifeMax * 0.2f) //set awakened stats
             {
                 _normalSpeed = 17f;
-                _chargeSpeed = 45f;
+                _chargeSpeed = 50f;
                 discordianInfernoPercent = 10;
                 discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.Bosses.Shen
             else if (isAwakened && npc.life <= npc.lifeMax * 0.2f)
             {
                 _normalSpeed = 20f;
-                _chargeSpeed = 50f;
+                _chargeSpeed = 60f;
                 discordianInfernoPercent = 7;
                 discordianFirebombPercent = 20;
                 aiTooLongCheck = 45;
@@ -772,7 +772,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 40;
                         }
                         int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }

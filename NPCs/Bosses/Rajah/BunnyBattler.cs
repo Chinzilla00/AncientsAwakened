@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -43,8 +44,34 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
 
+        public bool SetLife = false;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(SetLife);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                SetLife = reader.ReadBool(); //Set Lifex
+            }
+        }
+
         public override void AI()
         {
+            if (Main.netMode != 1 && !SetLife)
+            {
+                Rajah.ScaleMinionStats(npc);
+                npc.life = npc.lifeMax;
+                SetLife = true;
+                npc.netUpdate = true;
+            }
             npc.TargetClosest(false);
             Player player = Main.player[npc.target];
             if (npc.velocity.Y != 0)

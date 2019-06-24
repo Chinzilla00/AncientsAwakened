@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.scale = 1f;
             projectile.timeLeft = 100;
             projectile.ignoreWater = true;
+            projectile.extraUpdates = 2;
         }
 
         public override void AI()

@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.TrueDeathly
             item.height = 34;
             item.value = 90000;
             item.rare = 8;
-            item.defense = 10;
+            item.defense = 17;
         }
 
         public override void UpdateEquip(Player player)

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    public class ShenBoom : ModProjectile
+    public class ShenBlast : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -14,8 +14,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
-            projectile.width = 176;
-            projectile.height = 176;
+            projectile.width = 98;
+            projectile.height = 98;
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
@@ -29,15 +29,13 @@ namespace AAMod.NPCs.Bosses.Shen
             if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 5)
+                if (++projectile.frame >= 7)
                 {
                     projectile.Kill();
-
                 }
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
-
         }
 
         public override Color? GetAlpha(Color lightColor)

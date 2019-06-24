@@ -11,22 +11,22 @@ namespace AAMod.Items.Armor.TrueDeathly
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deathly Ghast Greaves");
-            Tooltip.SetDefault("12% Increased ranged damage and movement speed");
+            Tooltip.SetDefault("15% Increased ranged damage and movement speed");
         }
 
         public override void SetDefaults()
         {
             item.width = 22;
             item.height = 18;
-            item.value = 1000000;
+            item.value = 100000;
             item.rare = 8;
             item.defense = 18;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.12f;
-            player.moveSpeed *= 1.12f;
+            player.rangedDamage *= 1.15f;
+            player.moveSpeed *= 1.15f;
         }
 
         public override void AddRecipes()

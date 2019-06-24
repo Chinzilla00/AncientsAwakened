@@ -15,12 +15,12 @@ namespace AAMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
+            projectile.friendly = true;
+            projectile.aiStyle = -1;
 			projectile.width = 14;
 			projectile.height = 18;
 			projectile.penetrate = 5;
 			projectile.timeLeft = 600;
-			aiType = 1;
             projectile.extraUpdates = 1;
         }
 

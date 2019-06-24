@@ -21,7 +21,6 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.width = 30;
             projectile.height = 30;
             projectile.aiStyle = 1;
-            projectile.alpha = 250;
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
@@ -45,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     projectile.alpha = 0;
                 }
             }
-			if(projectile.alpha < 50 && Main.rand.Next(3) == 0)
+			if(Main.rand.Next(3) == 0)
 			{
 				for(int m = 0; m < 3; m++)
 				{
@@ -88,10 +87,11 @@ namespace AAMod.NPCs.Bosses.Shen
             Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
         }
 
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(255, 255, 255);
-		}
+        public override Color? GetAlpha(Color lightColor)
+        {
+            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
+            return new Color(color.R, color.G, color.B, 60);
+        }
 
         public float[] InternalAI = new float[1];
         public override void SendExtraAI(BinaryWriter writer)
@@ -115,15 +115,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            int ShaderType = projectile.ai[0] == 1 ? mod.ItemType<Items.Dyes.BlazingDye>() : projectile.ai[0] == 2 ? mod.ItemType<Items.Dyes.AbyssalDye>() : mod.ItemType<Items.Dyes.DiscordianDye>();
-            int shader = GameShaders.Armor.GetShaderIdFromItemId(ShaderType);
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type], 0, 2);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], shader, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, Main.projFrames[projectile.type], frame, Color.White, true);
-            return false;
         }
     }
 }

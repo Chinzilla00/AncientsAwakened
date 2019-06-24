@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Yamata
 
         public override void SetDefaults()
         {
-            item.damage = 90;
+            item.damage = 80;
             item.ranged = true;
             item.width = 44;
             item.height = 76;

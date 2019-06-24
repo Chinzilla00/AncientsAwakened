@@ -23,8 +23,10 @@ The power to destroy entire planets rests in this armor");
 			item.width = 30;
 			item.height = 20;
 			item.value = 3000000;
-			item.defense = 46;
-		}
+			item.defense = 35;
+            item.rare = 9;
+            AARarity = 13;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -45,17 +47,6 @@ The power to destroy entire planets rests in this armor");
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
         }
 
         public override void UpdateEquip(Player player)

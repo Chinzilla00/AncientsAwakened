@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,6 +20,21 @@ namespace AAMod.Projectiles.Yamata
 			projectile.light = 0.9f;
 			projectile.extraUpdates = 2;
 		}
+
+        int ProjTimer = 0;
+
+        public override void PostAI()
+        {
+            if (Main.netMode != 1)
+            {
+                ProjTimer++;
+                if (ProjTimer >= 60)
+                {
+                    ProjTimer = 0;
+                    Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
+                }
+            }
+        }
 
         public override void SetStaticDefaults()
         {

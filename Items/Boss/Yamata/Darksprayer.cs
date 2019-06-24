@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Darksprayer");
-            Tooltip.SetDefault(@"'Spouts of dark, leaves it's mark'
+            Tooltip.SetDefault(@"'Spouts of dark, leaves its mark'
 Inflicts Moonrazed");           
         }
 

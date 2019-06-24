@@ -32,6 +32,7 @@ namespace AAMod.Items.Ranged
             item.UseSound = SoundID.Item14;
             item.shootSpeed = 12f;
             item.expert = true;
+            item.autoReuse = true;
         }
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

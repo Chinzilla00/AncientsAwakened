@@ -44,7 +44,7 @@ namespace AAMod.Projectiles
 			projectile.magic = true;
 			projectile.hide = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 30;
+            projectile.localNPCHitCooldown = 20;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
