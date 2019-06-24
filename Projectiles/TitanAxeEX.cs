@@ -1,16 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    // to investigate: Projectile.Damage, (8843)
     class TitanAxeEX : ModProjectile
 	{
 		public override void SetDefaults()
 		{
-			// while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
 			projectile.width = 94;
 			projectile.height = 96;
 			projectile.friendly = true;
@@ -26,7 +25,6 @@ namespace AAMod.Projectiles
 			drawOriginOffsetY = 5;
 		
 		}
-
         public override void AI()
         {
             Vector2 vector14 = projectile.Center + projectile.velocity * 3f;
@@ -37,6 +35,8 @@ namespace AAMod.Projectiles
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= projectile.velocity;
             }
+            Player p = Main.player[projectile.owner];
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 10, 1.2f, .8f, false);
         }
     }
 }

@@ -1721,6 +1721,9 @@
     <Compile Include="NPCs\Bosses\Shen\ShenTransition.cs" />
     <Compile Include="NPCs\Bosses\Shen\WrathHaruka.cs" />
     <Compile Include="NPCs\Bosses\Shen\WrathHarukaVanish.cs" />
+    <Compile Include="NPCs\Bosses\Toad\FungusBubble.cs" />
+    <Compile Include="NPCs\Bosses\Toad\ToadBubble.cs" />
+    <Compile Include="NPCs\Bosses\Toad\TinyToad.cs" />
     <Compile Include="NPCs\Bosses\Toad\ToadBomb.cs" />
     <Compile Include="NPCs\Bosses\Toad\ToadBoom.cs" />
     <Compile Include="NPCs\Bosses\Toad\TruffleToad.cs" />
@@ -4979,8 +4982,11 @@
     <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Toad\FungusBubble.png" />
+    <Content Include="NPCs\Bosses\Toad\TinyToad.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBomb.png" />
     <Content Include="NPCs\Bosses\Toad\ToadBoom.png" />
+    <Content Include="NPCs\Bosses\Toad\ToadBubble.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToad.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongue.png" />
     <Content Include="NPCs\Bosses\Toad\TruffleToadTongueChain.png" />

@@ -1149,7 +1149,7 @@ namespace AAMod
             if (Main.netMode != 1)
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
-                int RajahLevel = NPC.killCount[NPCID.Bunny] / 100;
+                int RajahLevel;
                 if (NPC.killCount[NPCID.Bunny] >= 1000)
                 {
                     RajahLevel = 10;
@@ -1256,6 +1256,7 @@ namespace AAMod
                     Main.npc[npcID].lifeMax = 80000;
                     Main.npc[npcID].life = 80000;
                 }
+                Main.npc[npcID].ai[1] = RajahLevel;
                 Main.npc[npcID].netUpdate = true;
             }
             else

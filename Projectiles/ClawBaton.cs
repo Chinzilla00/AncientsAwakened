@@ -9,8 +9,8 @@ namespace AAMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.width = 130;
-			projectile.height = 130;
+			projectile.width = 72;
+			projectile.height = 60;
 			projectile.aiStyle = 0;
 			projectile.penetrate = -1;
 			projectile.tileCollide = false;

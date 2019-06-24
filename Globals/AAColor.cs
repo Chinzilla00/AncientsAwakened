@@ -27,7 +27,7 @@ namespace AAMod
         {
             get
             {
-                return new Color(128, 11, 0);
+                return new Color(255, 22, 0);
             }
         }
 

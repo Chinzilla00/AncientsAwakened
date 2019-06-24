@@ -355,7 +355,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
                         dir *= ProjSpeed(); ;
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y + 4, mod.ProjectileType<BaneR>(), npc.damage / 3, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y - 3, mod.ProjectileType<BaneR>(), npc.damage / 3, 5, Main.myPlayer);
                     }
                     if (internalAI[2] > 90)
                     {

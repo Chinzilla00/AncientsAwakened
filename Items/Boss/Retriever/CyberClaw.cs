@@ -28,6 +28,15 @@ namespace AAMod.Items.Boss.Retriever
         }
         public override void AI()
         {
+            if (projectile.frameCounter++ > 7)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             player.AddBuff(mod.BuffType("CyberClaw"), 3600);
@@ -212,15 +221,7 @@ namespace AAMod.Items.Boss.Retriever
                     }
                 }
             }
-            if (projectile.frameCounter > 10)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 3)
-                {
-                    projectile.frame = 0;
-                }
-            }
+            
         }
     }
 }

@@ -26,10 +26,11 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.timeLeft = 300;
         }
 
+
         public override Color? GetAlpha(Color lightColor)
         {
-            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
-            return new Color(color.R, color.G, color.B, 120);
+            Color color = projectile.ai[0] == 1 ? AAColor.AkumaA : projectile.ai[0] == 2 ? AAColor.YamataA : Color.Magenta;
+            return new Color(color.R, color.G, color.B, 200);
         }
 
         public override void AI()
@@ -83,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             if (Main.netMode != 1)
             {
-                int proj = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                int proj = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("ShenBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 Main.projectile[proj].netUpdate = true;
             }
             for (int dust = 0; dust <= 4; dust++)

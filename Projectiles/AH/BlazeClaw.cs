@@ -35,6 +35,15 @@ namespace AAMod.Projectiles.AH
 
         public override void AI()
         {
+            if (projectile.frameCounter++ > 6)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
             float radius = 700f;
             float num14 = 800f;
             float num15 = 1200f;
@@ -174,16 +183,6 @@ namespace AAMod.Projectiles.AH
             else
             {
                 projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-            }
-            projectile.frameCounter++;
-            if (projectile.frameCounter > 3)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-            }
-            if (projectile.frame > 2)
-            {
-                projectile.frame = 0;
             }
             if (projectile.ai[1] > 0f)
             {

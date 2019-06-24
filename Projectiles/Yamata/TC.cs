@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Yamata
             if (Main.netMode != 1)
             {
                 ProjTimer++;
-                if (ProjTimer >= 60)
+                if (ProjTimer >= 20)
                 {
                     ProjTimer = 0;
                     Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);

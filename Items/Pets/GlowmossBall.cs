@@ -10,7 +10,7 @@ namespace AAMod.Items.Pets
 		{
 			DisplayName.SetDefault("Glowing Moss Ball");
 			Tooltip.SetDefault(@"Summons a glowmoss ball
-Eww it's all squishy...");
+Don’t ask what makes it glow, Trust me");
 		}
 
 		public override void SetDefaults()

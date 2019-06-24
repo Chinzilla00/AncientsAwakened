@@ -19,12 +19,12 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             DisplayName.SetDefault("Yamata");
             Main.npcFrameCount[npc.type] = 3;
-            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()
         {
 			npc.lifeMax = 550000;
+            npc.boss = true;
             npc.damage = 280;
             npc.defense = 200;
             npc.width = 78;
@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (AAWorld.downedShen)
             {
-                npc.damage = 160;
+                npc.damage = 300;
             }
         }
 

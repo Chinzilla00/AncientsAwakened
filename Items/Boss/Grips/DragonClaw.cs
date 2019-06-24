@@ -29,6 +29,15 @@ namespace AAMod.Items.Boss.Grips
         }
         public override void AI()
         {
+            if (projectile.frameCounter++ > 5)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 4)
+                {
+                    projectile.frame = 0;
+                }
+            }
             bool flag64 = projectile.type == mod.ProjectileType("DragonClaw");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
@@ -216,15 +225,6 @@ namespace AAMod.Items.Boss.Grips
                         projectile.netUpdate = true;
                         return;
                     }
-                }
-            }
-            if (projectile.frameCounter > 10)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 4)
-                {
-                    projectile.frame = 0;
                 }
             }
         }

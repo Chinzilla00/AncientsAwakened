@@ -31,8 +31,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override Color? GetAlpha(Color lightColor)
         {
-            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
-            return new Color(color.R, color.G, color.B, 120);
+            Color color = projectile.ai[0] == 1 ? AAColor.AkumaA: projectile.ai[0] == 2 ? AAColor.YamataA : Color.Magenta;
+            return new Color(color.R, color.G, color.B, 200);
         }
 
         public override void AI()

@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.alpha = 255;
         }
 
-        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_TONGUE = 3;
+        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_MINIONS = 3, AISTATE_BUBBLES = 4;
         public float[] internalAI = new float[4];
         public int NOM = 0;
         public bool tonguespawned = false;
