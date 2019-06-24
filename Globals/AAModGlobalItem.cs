@@ -95,33 +95,6 @@ namespace AAMod
             }
         }
 
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (item.modItem != null && item.modItem.mod.Name == mod.Name && !item.expert)
-            {
-                BaseAAItem AAitem = (BaseAAItem)item.modItem;
-                if (AAitem.AARarity != 0)
-                {
-                    Color Rare;
-                    switch (AAitem.AARarity)
-                    {
-                        default: Rare = Color.White; break;		
-                        case 12: Rare = AAColor.Rarity12; break; //Mantimyte Tier
-                        case 13: Rare = AAColor.Rarity13; break; //Soulrift Tier
-                        case 14: Rare = AAColor.Rarity14; break; //Aersteel Tier	
-                        case 15: Rare = AAColor.Rarity15; break; //Aersteel Tier					
-                    }
-                    foreach (TooltipLine line2 in tooltips)
-                    {
-                        if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                        {
-                            line2.overrideColor = Rare;
-                        }
-                    }
-                }
-            }
-        }
-
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnetWeak>())

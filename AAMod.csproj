@@ -1979,6 +1979,7 @@
     <Compile Include="Projectiles\ThunderSpark.cs" />
     <Compile Include="Projectiles\Tools\MiningLaser.cs" />
     <Compile Include="Projectiles\Tools\ShadowDrill.cs" />
+    <Compile Include="Projectiles\VoidSpear.cs" />
     <Compile Include="Projectiles\Winterbreak.cs" />
     <Compile Include="Projectiles\Incapacitator.cs" />
     <Compile Include="Projectiles\Shadowshot.cs" />
@@ -6562,6 +6563,9 @@
     <Content Include="Projectiles\Tools\MiningLaser.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
     <Content Include="Projectiles\VoidBomb.png" />
+    <Content Include="Projectiles\VoidMagic.png" />
+    <Content Include="Projectiles\VoidMagicEX.png" />
+    <Content Include="Projectiles\VoidSpear.png" />
     <Content Include="Projectiles\Winterbreak.png" />
     <Content Include="Projectiles\Incapacitator.png" />
     <Content Include="Projectiles\JungleSolution.png" />

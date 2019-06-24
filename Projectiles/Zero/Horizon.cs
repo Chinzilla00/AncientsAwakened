@@ -31,7 +31,7 @@ namespace AAMod.Projectiles.Zero
             
             if (projectile.ai[0] == 0)
             {
-                projectile.scale *= 1.1f;
+                projectile.scale += .05f;
                 projectile.rotation += RotValue;
                 if (projectile.scale >= 1)
                 {
@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Zero
             }
             if (projectile.ai[0] == 1)
             {
-                projectile.scale *= .9f;
+                projectile.scale -= .05f;
                 projectile.rotation -= RotValue;
                 if (projectile.scale >= 0)
                 {
