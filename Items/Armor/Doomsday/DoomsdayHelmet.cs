@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Doomsday Assault Visor");
-			Tooltip.SetDefault(@"25% increased magic damage1
+			Tooltip.SetDefault(@"25% increased magic damage
 18% increased magic critical strike chance
 The power to destroy entire planets rests in this armor");
 		}
@@ -45,24 +45,15 @@ The power to destroy entire planets rests in this armor");
 			item.width = 18;
 			item.height = 18;
 			item.value = 3000000;
-			item.defense = 34;
-		}
+			item.defense = 30;
+            item.rare = 9;
+            AARarity = 13;
+        }
 		
 		public override void UpdateEquip(Player player)
 		{
             player.magicDamage += .25f;
             player.magicCrit += 18;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

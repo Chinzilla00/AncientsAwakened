@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownCrit += 20;
+			player.rangedCrit += 20;
             player.moveSpeed *= 1.12f;
 		}
 

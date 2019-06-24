@@ -26,6 +26,7 @@ namespace AAMod.Items.Melee
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.useTurn = true;
+            item.shootSpeed = 10;
             item.shoot = mod.ProjectileType<Projectiles.HydraSlash>();
 		}
 

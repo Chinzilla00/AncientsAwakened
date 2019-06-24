@@ -1149,12 +1149,52 @@ namespace AAMod
             if (Main.netMode != 1)
             {
                 if (NPC.AnyNPCs(bossType)) { return; }
-                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                int RajahLevel = NPC.killCount[NPCID.Bunny] / 100;
+                if (NPC.killCount[NPCID.Bunny] >= 1000)
+                {
+                    RajahLevel = 10;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 900)
+                {
+                    RajahLevel = 9;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 800)
+                {
+                    RajahLevel = 8;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 700)
+                {
+                    RajahLevel = 7;
+                }
+                else if (NPC.killCount[NPCID.Bunny] > 600)
+                {
+                    RajahLevel = 6;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 500)
+                {
+                    RajahLevel = 5;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 400)
+                {
+                    RajahLevel = 4;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 300)
+                {
+                    RajahLevel = 3;
+                }
+                else if (NPC.killCount[NPCID.Bunny] >= 200)
+                {
+                    RajahLevel = 2;
+                }
+                else
+                {
+                    RajahLevel = 1;
+                }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0, 0, RajahLevel, player.whoAmI);
                 Main.npc[npcID].Center = npcCenter;
 
                 if (NPC.killCount[NPCID.Bunny] >= 1000)
                 {
-                    Main.npc[npcID].ai[3] = .1f;
                     Main.npc[npcID].damage = 450;
                     Main.npc[npcID].defense = 350;
                     Main.npc[npcID].lifeMax = 4000000;

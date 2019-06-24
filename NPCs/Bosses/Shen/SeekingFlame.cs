@@ -1,6 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
@@ -13,21 +17,15 @@ namespace AAMod.NPCs.Bosses.Shen
             DisplayName.SetDefault("Seeking Flame");
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 54;
+            projectile.height = 54;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.scale = 1.1f;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 60;
             projectile.timeLeft = 300;
         }
 
@@ -52,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     projectile.frame = 0;
                 }
             }
-            const int aislotHomingCooldown = 0;
+            const int aislotHomingCooldown = 1;
             const int homingDelay = 60;
             const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20;
@@ -71,8 +69,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
         }
-
-
 
         private int HomeOnTarget()
         {
@@ -97,21 +93,65 @@ namespace AAMod.NPCs.Bosses.Shen
             return selectedTarget;
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public float[] InternalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
         {
-            target.AddBuff(mod.BuffType("DiscordianInferno"), 300);
-            Kill(0);
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(InternalAI[0]);
+            }
         }
 
-        public override void Kill(int timeleft)
+        public override void ReceiveExtraAI(BinaryReader reader)
         {
-            for (int num468 = 0; num468 < 20; num468++)
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0, default(Color), 1f);
-                Main.dust[num469].velocity *= 2f;
+                InternalAI[0] = reader.ReadFloat();
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("ShenBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
+            return new Color(color.R, color.G, color.B, 60);
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 4f;
+            double offsetAngle;
+            int i;
+            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
+            if (projectile.owner == Main.myPlayer)
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                }
+                for (i = 0; i < 2; i++)
+                {
+                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), dustType, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+                }
+            }
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            for (int dust = 0; dust <= 10; dust++)
+            {
+                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+            }
         }
     }
 }

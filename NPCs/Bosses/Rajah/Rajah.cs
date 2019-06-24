@@ -38,8 +38,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         public bool SetLife = false;
-        public bool isSupreme = false;
-        public float[] internalAI = new float[5];
+        public float RajahLevel = 0;
+        public float[] internalAI = new float[6];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -50,8 +50,9 @@ namespace AAMod.NPCs.Bosses.Rajah
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
+                writer.Write(internalAI[5]);
                 writer.Write(SetLife);
-                writer.Write(isSupreme);
+                writer.Write(RajahLevel);
             }
         }
 
@@ -65,8 +66,9 @@ namespace AAMod.NPCs.Bosses.Rajah
                 internalAI[2] = reader.ReadFloat(); //Minion/Rocket Timer
                 internalAI[3] = reader.ReadFloat(); //Ground Minion Alternation
                 internalAI[4] = reader.ReadFloat(); //Is Flying
-                SetLife = reader.ReadBool(); //Set Life
-                isSupreme = reader.ReadBool(); //Is supreme
+                internalAI[5] = reader.ReadFloat(); //Is Jumping
+                RajahLevel = reader.ReadFloat(); //Rajah Level
+                SetLife = reader.ReadBool(); //Set Lifex
             }
         }
 
@@ -77,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         /*
          * npc.ai[0] = Jump Timer
-         * npc.ai[1] = Jumping
+         * npc.ai[1] = Rajah Level
          * npc.ai[2] = Weapon Change timer
          * npc.ai[3] = Weapon type
          */
@@ -150,20 +152,21 @@ namespace AAMod.NPCs.Bosses.Rajah
             return 9f;
         }
 
+        public bool isSupreme = false;
+
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
-            if (npc.ai[3] == .1f)
-            {
-                npc.ai[3] = 0f;
-                isSupreme = true;
-            }
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
 
             if (Main.netMode != 1 && !SetLife)
             {
+                if (npc.ai[1] > 10)
+                {
+                    isSupreme = true;
+                }
                 npc.life = npc.lifeMax;
                 SetLife = true;
                 npc.netUpdate = true;
@@ -454,45 +457,45 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (npc.velocity.Y == 0f)
                 {
                     npc.velocity.X = npc.velocity.X * 0.8f;
-                    npc.ai[1] += 1f;
-                    if (npc.ai[1] > 0f)
+                    internalAI[5] += 1f;
+                    if (internalAI[5] > 0f)
                     {
                         if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more frequent the jumps
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                         if (npc.life < (npc.lifeMax * .7f))
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                         if (npc.life < (npc.lifeMax * .65f))
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                         if (npc.life < (npc.lifeMax * .4f))
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                         if (npc.life < (npc.lifeMax * .25f))
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                         if (npc.life < (npc.lifeMax * .1f))
                         {
-                            npc.ai[1] += 2;
+                            internalAI[5] += 2;
                         }
                     }
-                    if (npc.ai[1] >= 250f)
+                    if (internalAI[5] >= 250f)
                     {
-                        npc.ai[1] = -20f;
+                        internalAI[5] = -20f;
                     }
-                    else if (npc.ai[1] == -1f)
+                    else if (internalAI[5] == -1f)
                     {
                         npc.TargetClosest(true);
                         npc.velocity.X = 6 * npc.direction;
                         npc.velocity.Y = -12.1f;
                         npc.ai[0] = 1f;
-                        npc.ai[1] = 0f;
+                        internalAI[5] = 0f;
                         npc.netUpdate = true;
                     }
                 }
@@ -611,32 +614,32 @@ namespace AAMod.NPCs.Bosses.Rajah
                 WeaponFrame = npc.frame.Y;
                 if (npc.ai[0] == 0f)
                 {
-                    if (npc.ai[1] < -17f)
+                    if (internalAI[5] < -17f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = 0;
                     }
-                    else if (npc.ai[1] < -14f)
+                    else if (internalAI[5] < -14f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight;
                     }
-                    else if (npc.ai[1] < -11f)
+                    else if (internalAI[5] < -11f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 2;
                     }
-                    else if (npc.ai[1] < -8f)
+                    else if (internalAI[5] < -8f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 3;
                     }
-                    else if (npc.ai[1] < -5f)
+                    else if (internalAI[5] < -5f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 4;
                     }
-                    else if (npc.ai[1] < -2f)
+                    else if (internalAI[5] < -2f)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 5;
@@ -738,12 +741,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (internalAI[4] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly");
-                Glow = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly_Glow");
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Fly_Glow");
             }
             else
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring);
-                Glow = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Glow");
+                Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
             }
         }
 
@@ -760,11 +763,74 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (isSupreme)
             {
-                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Color.White, true);
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawAfterimage(spriteBatch, Glow, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, Main.DiscoColor);
+                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
             }
             return false;
+        }
+
+        public static void ScaleMinionStats(NPC Npc)
+        {
+            Mod mod = AAMod.instance;
+            NPC Rabbit = Main.npc[BaseAI.GetNPC(Npc.Center, mod.NPCType<Rajah>(), -1)];
+            if (Main.netMode != 1)
+            {
+                if (Rabbit.ai[1] >= 10)
+                {
+                    Npc.damage *= 3;
+                    Npc.defense *= 3;
+                    Npc.lifeMax *= 15;
+                }
+                else if (Rabbit.ai[1] == 9)
+                {
+                    Npc.damage = (int)(Npc.defense * 2.7);
+                    Npc.defense = (int)(Npc.defense * 2.7);
+                    Npc.lifeMax *= 13;
+                }
+                else if (Rabbit.ai[1] == 8)
+                {
+                    Npc.damage = (int)(Npc.defense * 2.4);
+                    Npc.defense = (int)(Npc.defense * 2.4);
+                    Npc.lifeMax *= 11;
+                }
+                else if (Rabbit.ai[1] == 7)
+                {
+                    Npc.damage = (int)(Npc.defense * 2.1);
+                    Npc.defense = (int)(Npc.defense * 2.1);
+                    Npc.lifeMax *= 9;
+                }
+                else if (Rabbit.ai[1] == 6)
+                {
+                    Npc.damage = (int)(Npc.defense * 1.9);
+                    Npc.defense = (int)(Npc.defense * 1.9);
+                    Npc.lifeMax *= 7;
+                }
+                else if (Rabbit.ai[1] == 5)
+                {
+                    Npc.damage = (int)(Npc.defense * 1.7);
+                    Npc.defense = (int)(Npc.defense * 1.7);
+                    Npc.lifeMax *= 5;
+                }
+                else if (Rabbit.ai[1] == 4)
+                {
+                    Npc.damage = (int)(Npc.defense * 1.5);
+                    Npc.defense = (int)(Npc.defense * 1.5);
+                    Npc.lifeMax *= 3;
+                }
+                else if (Rabbit.ai[1] == 3)
+                {
+                    Npc.damage = (int)(Npc.defense * 1.3);
+                    Npc.defense = (int)(Npc.defense * 1.3);
+                    Npc.lifeMax *= 2;
+                }
+                else if (Rabbit.ai[1] == 2)
+                {
+                    Npc.damage = (int)(Npc.defense * 1.1);
+                    Npc.defense = (int)(Npc.defense * 1.1);
+                    Npc.lifeMax = (int)(Npc.lifeMax * 1.5);
+                }
+                Npc.netUpdate = true;
+            }
         }
     }
 }

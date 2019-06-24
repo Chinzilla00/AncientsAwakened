@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
@@ -17,8 +18,8 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 1;
-            projectile.height = 1;
+            projectile.width = 5;
+            projectile.height = 5;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.melee = true;
@@ -34,14 +35,13 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 0;
+            const int homingDelay = 30;
             const float desiredFlySpeedInPixelsPerFrame = 20;
             const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
             for (int num468 = 0; num468 < 20; num468++)
             {
                 float Eggroll = Math.Abs(Main.GameUpdateCount) / 8f;
                 float Pie = 1f * (float)Math.Sin(Eggroll);
-                Color color1 = Color.Lerp(new Color(85, 145, 93), new Color(64, 61, 99), Pie);
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, Main.DiscoColor, 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
@@ -93,7 +93,7 @@ namespace AAMod.Projectiles
         {
             if (!NoScythes)
             {
-                Main.PlaySound(new LegacySoundStyle(2, 71, Terraria.Audio.SoundType.Sound), projectile.position);
+                Main.PlaySound(SoundID.Item14, projectile.position);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("PonyBoom"), projectile.damage, 0, projectile.owner, 0f, 0f);
             }
         }

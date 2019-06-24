@@ -11,7 +11,6 @@ namespace AAMod.Items.Summoning.Minions
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Demon Eater");
-			Main.projFrames[projectile.type] = 2;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -31,9 +30,6 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft *= 5;
             projectile.minion = true;
         }
-
-        public int FrameTimer = 0;
-
         public override void AI()
         {
             bool flag64 = projectile.type == mod.ProjectileType("DemonEater");
@@ -189,16 +185,6 @@ namespace AAMod.Items.Summoning.Minions
 				projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
 			}
 
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame++;
-            }
-            if (projectile.frame > 1)
-            {
-                projectile.frame = 0;
-            }
             if (projectile.ai[1] > 0f)
 			{
 				projectile.ai[1] += (float)Main.rand.Next(1, 4);

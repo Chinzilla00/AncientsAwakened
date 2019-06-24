@@ -22,7 +22,7 @@ namespace AAMod.Items.Armor.Mushium
 			item.value = 50;
 			item.rare = 1;
 			item.defense = 3;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 25, 0);
         }
 
 		public override void UpdateEquip(Player player)

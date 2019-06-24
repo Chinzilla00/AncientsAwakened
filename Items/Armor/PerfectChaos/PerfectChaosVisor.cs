@@ -41,23 +41,23 @@ Your ranged attacks raze your oponents with the flames of discordian hell";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosRa = true;
             if (player.statLife <= player.statLife * .2f)
             {
-                player.manaCost *= 0;
-                player.magicDamage *= 1.4f;
+                player.rangedDamage += .4f;
+                player.rangedCrit += 7;
             }
             else if (player.statLife <= player.statLife * .4f)
             {
-                player.manaCost *= .25f;
-                player.magicDamage *= 1.3f;
+                player.rangedDamage += .3f;
+                player.rangedCrit += 14;
             }
             else if (player.statLife <= player.statLife * .6f)
             {
-                player.manaCost *= .5f;
-                player.magicDamage *= 1.2f;
+                player.rangedDamage += .2f;
+                player.rangedCrit += 21;
             }
             else if (player.statLife <= player.statLife * .8f)
             {
-                player.manaCost *= .75f;
-                player.magicDamage *= 1.1f;
+                player.rangedDamage += .1f;
+                player.rangedCrit += 28;
             }
         }
 

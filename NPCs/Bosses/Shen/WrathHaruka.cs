@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
-            npc.damage = 90;
-            npc.defense = 50;
+            npc.damage = 120;
+            npc.defense = 180;
             npc.lifeMax = 130000;
             npc.HitSound = SoundID.NPCHit1;
             npc.value = Item.sellPrice(0, 0, 0, 0);

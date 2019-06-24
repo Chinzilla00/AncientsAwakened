@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             npc.width = 40;
             npc.height = 80;
-            npc.damage = 100;
-            npc.defense = 40;
+            npc.damage = 150;
+            npc.defense = 150;
             npc.lifeMax = 100000;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -118,14 +118,12 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            bool AsheType = npc.type == mod.NPCType<Ashe>();
 
             npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
 
             RingEffects();
             RingEffects2();
             internalAI[1]++;
-
 
             if (internalAI[1] >= 8) //IAI[1] is the frame counter
             {
@@ -603,11 +601,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.velocity *= velMultiplier;
         }
 
-
-
-        public float auraPercent = 0f;
-        public bool auraDirection = true;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/FuryAshe_Glow2");
@@ -627,9 +620,6 @@ namespace AAMod.NPCs.Bosses.Shen
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             int purple = GameShaders.Armor.GetShaderIdFromItemId(mod.ItemType<Items.Dyes.DiscordianDye>());
-
-            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
-            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
 
             if (internalAI[0] == AISTATE_MELEE)
             {

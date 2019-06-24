@@ -71,6 +71,16 @@ Inflicts Moonrazed");
             }
         }
 
+        int shoot = 0;
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
+        {
+            shoot++;
+            if (shoot % 2 != 0) return false;
+
+            shoot = 0;
+            return true;
+        }
+
         public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);

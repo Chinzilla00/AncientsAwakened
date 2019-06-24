@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.TrueDeathly
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deathly Ghast Ribguard");
-            Tooltip.SetDefault("16% Increased ranged damage");
+            Tooltip.SetDefault("20% Increased ranged damage");
         }
 
         public override void SetDefaults()
@@ -20,12 +20,12 @@ namespace AAMod.Items.Armor.TrueDeathly
             item.height = 44;
             item.value = 90000;
             item.rare = 8;
-            item.defense = 22;
+            item.defense = 17;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.16f;
+            player.rangedDamage *= 1.2f;
         }
 
         public override void AddRecipes()

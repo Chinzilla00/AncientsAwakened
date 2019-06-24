@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    public class ShenBoomB : ModProjectile
+    public class ShenBlast : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.hostile = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 300;
         }
 
         public override void AI()
@@ -29,32 +29,29 @@ namespace AAMod.NPCs.Bosses.Shen
             if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 5)
+                if (++projectile.frame >= 7)
                 {
                     projectile.Kill();
-
                 }
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
+        }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            Color color = projectile.ai[0] == 1 ? Color.DarkMagenta : projectile.ai[0] == 2 ? AAColor.YamataA : AAColor.AkumaA;
+            return new Color(color.R, color.G, color.B, 60);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 200);
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
         }
 
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;
         }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
-
     }
 }

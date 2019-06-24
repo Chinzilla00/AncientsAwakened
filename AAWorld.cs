@@ -1838,7 +1838,7 @@ namespace AAMod
                         }
                         else if (conversionType == 3)
                         {
-                            if (TileID.Sets.Conversion.Stone[type])
+                            if (TileID.Sets.Conversion.Stone[type] || TileID.Sets.Conversion.Moss[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<DoomstoneB>();
                                 WorldGen.SquareTileFrame(k, l, true);

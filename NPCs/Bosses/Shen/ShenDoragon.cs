@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (isAwakened && npc.life > npc.lifeMax * 0.2f) //set awakened stats
             {
                 _normalSpeed = 17f;
-                _chargeSpeed = 45f;
+                _chargeSpeed = 50f;
                 discordianInfernoPercent = 10;
                 discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.Bosses.Shen
             else if (isAwakened && npc.life <= npc.lifeMax * 0.2f)
             {
                 _normalSpeed = 20f;
-                _chargeSpeed = 50f;
+                _chargeSpeed = 60f;
                 discordianInfernoPercent = 7;
                 discordianFirebombPercent = 20;
                 aiTooLongCheck = 45;
@@ -259,16 +259,6 @@ namespace AAMod.NPCs.Bosses.Shen
             int Bomb = mod.ProjectileType<ShenFirebomb>();
             int Storm = mod.ProjectileType<ShenStorm>();
             int Flame = mod.ProjectileType<SeekingFlame>();
-
-            int InfernoB = mod.ProjectileType<DiscordianInfernoB>();
-            int BombB = mod.ProjectileType<ShenFirebombB>();
-            int StormB = mod.ProjectileType<ShenStormB>();
-            int FlameB = mod.ProjectileType<SeekingFlameB>();
-
-            int InfernoR = mod.ProjectileType<DiscordianInfernoR>();
-            int BombR = mod.ProjectileType<ShenFirebombR>();
-            int StormR = mod.ProjectileType<ShenStormR>();
-            int FlameR = mod.ProjectileType<SeekingFlameR>();
 
             int InfernoCount = 0;
 
@@ -489,16 +479,16 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-                        int InfernoType = Inferno;
+                        float InfernoType = 0;
                         if (!isAwakened)
                         {
                             if (npc.spriteDirection == 1)
                             {
-                                InfernoType = InfernoR;
+                                InfernoType = 1;
                             }
                             else
                             {
-                                InfernoType = InfernoB;
+                                InfernoType = 2;
                             }
                         }
                         else
@@ -512,18 +502,14 @@ namespace AAMod.NPCs.Bosses.Shen
 
                             if (InfernoCount == 1)
                             {
-                                InfernoType = Inferno;
+                                InfernoType = 1;
                             }
                             else if (InfernoCount == 2)
                             {
-                                InfernoType = InfernoR;
-                            }
-                            else if (InfernoCount == 3)
-                            {
-                                InfernoType = InfernoB;
+                                InfernoType = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, InfernoType, damageDiscordianInferno / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Inferno, damageDiscordianInferno / 2, 0f, Main.myPlayer, InfernoType, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -561,23 +547,23 @@ namespace AAMod.NPCs.Bosses.Shen
                                 infernoPos.Y -= 40;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
-                            int shootThis;
+                            float shootThis;
                             if (!isAwakened)
                             {
                                 if (npc.spriteDirection == 1)
                                 {
-                                    shootThis = BombR;
+                                    shootThis = 1;
                                 }
                                 else
                                 {
-                                    shootThis = BombB;
+                                    shootThis = 2;
                                 }
                             }
                             else
                             {
                                 if (m == 0)
                                 {
-                                    shootThis = BombR;
+                                    shootThis = 1;
                                 }
                                 else if (m == 1)
                                 {
@@ -585,10 +571,10 @@ namespace AAMod.NPCs.Bosses.Shen
                                 }
                                 else
                                 {
-                                    shootThis = BombB;
+                                    shootThis = 2;
                                 }
                             }
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Bomb, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
                         }
@@ -627,35 +613,36 @@ namespace AAMod.NPCs.Bosses.Shen
                                 infernoPos += npc.Center;
                                 infernoPos.Y -= 40;
                             }
-                            for (int i = 0; i < 3; i++)
+                            int shootThis;
+                            if (!isAwakened)
                             {
-                                int shootThis = Flame;
-                                if (!isAwakened)
+                                if (npc.spriteDirection == 1)
                                 {
-                                    if (npc.spriteDirection == 1)
-                                    {
-                                        shootThis = FlameR;
-                                    }
-                                    else
-                                    {
-                                        shootThis = FlameB;
-                                    }
+                                    shootThis = 1;
                                 }
                                 else
                                 {
-                                    if (i == 1)
-                                    {
-                                        shootThis = FlameR;
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        shootThis = FlameB;
-                                    }
+                                    shootThis = 2;
                                 }
-                                int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
-                                Main.projectile[projectile].velocity = vel;
-                                Main.projectile[projectile].netUpdate = true;
                             }
+                            else
+                            {
+                                if (m == 1)
+                                {
+                                    shootThis = 1;
+                                }
+                                else if (m == 2)
+                                {
+                                    shootThis = 0;
+                                }
+                                else
+                                {
+                                    shootThis = 2;
+                                }
+                            }
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Flame, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
+                            Main.projectile[projectile].velocity = vel;
+                            Main.projectile[projectile].netUpdate = true;
                         }
                     }
                 }
@@ -694,14 +681,14 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             if (npc.spriteDirection == 1)
                             {
-                                shootThis = StormR;
+                                shootThis = 1;
                             }
                             else
                             {
-                                shootThis = StormB;
+                                shootThis = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, Storm, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -736,8 +723,20 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos += npc.Center;
                             infernoPos.Y -= 60;
                         }
+                        int Type = 0;
+                        if (!isAwakened)
+                        {
+                            if (npc.spriteDirection == 1)
+                            {
+                                Type = 1;
+                            }
+                            else
+                            {
+                                Type = 2;
+                            }
+                        }
                         int shootThis = mod.ProjectileType<DiscordianFlare>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, Type, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -773,7 +772,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 40;
                         }
                         int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
