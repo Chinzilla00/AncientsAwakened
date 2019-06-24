@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (Main.netMode != 1 && !SetLife)
             {
-                if (npc.ai[1] > 10)
+                if (npc.ai[1] >= 10)
                 {
                     isSupreme = true;
                 }
