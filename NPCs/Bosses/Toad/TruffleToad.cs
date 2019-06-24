@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.ID;
+using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
@@ -55,15 +57,17 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.boss = true;
             npc.lavaImmune = true;
             npc.noGravity = false;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/TODE");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/TODE");
             npc.netAlways = true;
             bossBag = mod.ItemType("ToadBag");
             npc.alpha = 255;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = new LegacySoundStyle(29, 13, Terraria.Audio.SoundType.Sound);
         }
 
-        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_MINIONS = 3, AISTATE_BUBBLES = 4;
+        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_BUBBLES2 = 4;
         public float[] internalAI = new float[4];
-        public int NOM = 0;
+        public int Minions = 0;
         public bool tonguespawned = false;
         public bool TongueAttack = false;
 
@@ -83,6 +87,34 @@ namespace AAMod.NPCs.Bosses.Toad
                         npc.active = false;
                         npc.netUpdate = true;
                     }
+                }
+            }
+
+            if (Main.netMode != 1)
+            {
+                if (npc.life < (int)(npc.life * .8f) && Minions == 0)
+                {
+                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    Minions = 1;
+                    npc.netUpdate = true;
+                }
+                if (npc.life < (int)(npc.life * .5f) && Minions == 1)
+                {
+                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    Minions = 2;
+                    npc.netUpdate = true;
+                }
+                if (npc.life < (int)(npc.life * .2f) && Minions == 2)
+                {
+                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    Minions = 3;
+                    npc.netUpdate = true;
                 }
             }
 
@@ -136,11 +168,12 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 npc.wet = false;
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
-                if (Main.netMode !=1)
+                internalAI[1]++;
+                if (internalAI[1] == 179)
                 {
-                    internalAI[1]++;
+                    Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 13);
                 }
-                if (internalAI[1] >= 180)
+                if (internalAI[1] >= 180 && Main.netMode != 1)
                 {
                     internalAI[1] = 0;
                     internalAI[0] = Main.rand.Next(2);
@@ -200,6 +233,76 @@ namespace AAMod.NPCs.Bosses.Toad
                     npc.netUpdate = true;
                 }
             }
+            else if (internalAI[0] == AISTATE_BUBBLES)
+            {
+                if (Main.netMode != 1)
+                {
+                    internalAI[1]++;
+                }
+                npc.velocity.X = 0;
+                if (internalAI[1] >= 35)
+                {
+                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    {
+                        internalAI[2]++;
+                    }
+                    if (internalAI[2] > 8)
+                    {
+                        internalAI[2] = 0;
+                        if (npc.direction == -1)
+                        {
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("FungusBubble"), 35, 3);
+                        }
+                        else
+                        {
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("FungusBubble"), 35, 3);
+                        }
+                        npc.netUpdate = true;
+                    }
+                }
+                if (internalAI[1] >= 100)
+                {
+                    internalAI[0] = AISTATE_JUMP;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+            else if (internalAI[0] == AISTATE_BUBBLES2)
+            {
+                if (Main.netMode != 1)
+                {
+                    internalAI[1]++;
+                }
+                npc.velocity.X = 0;
+                if (internalAI[1] >= 35)
+                {
+                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    {
+                        internalAI[2]++;
+                    }
+                    if (internalAI[2] > 20)
+                    {
+                        internalAI[2] = 0;
+                        if (npc.direction == -1)
+                        {
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                        }
+                        else
+                        {
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                        }
+                        npc.netUpdate = true;
+                    }
+                }
+                if (internalAI[1] >= 100)
+                {
+                    internalAI[0] = AISTATE_JUMP;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    npc.netUpdate = true;
+                }
+            }
         }
 
         public override void FindFrame(int frameHeight)
@@ -207,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.frameCounter++;
             if (npc.velocity.Y == 0)
             {
-                if (internalAI[0] == AISTATE_BARF)
+                if (internalAI[0] == AISTATE_BARF || internalAI[0] == AISTATE_BUBBLES || internalAI[0] == AISTATE_BUBBLES2)
                 {
                     if (npc.frame.Y < frameHeight * 6)
                     {
