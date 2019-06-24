@@ -163,7 +163,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, AkumaA, Shen, YamataA, YamataA, Shen, AkumaA);
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Shen, AkumaA, Shen, YamataA, Shen, AkumaA, Shen);
             }
         }
 
@@ -433,6 +433,22 @@ namespace AAMod
             get
             {
                 return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(253, 152, 0), new Color(252, 202, 80), new Color(255, 251, 166), new Color(252, 202, 80), new Color(253, 152, 0));
+            }
+        }
+
+        public static Color BogToxin
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(32, 51, 91), new Color(42, 120, 165), new Color(32, 51, 91));
+            }
+        }
+
+        public static Color DragonFire
+        {
+            get
+            {
+                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, new Color(125, 10, 50), new Color(212, 45, 40), new Color(125, 10, 50));
             }
         }
 
