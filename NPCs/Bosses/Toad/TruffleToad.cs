@@ -73,6 +73,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void AI()
         {
+            npc.TargetClosest();
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
 
