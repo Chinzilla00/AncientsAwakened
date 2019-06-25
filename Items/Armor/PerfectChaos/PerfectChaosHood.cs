@@ -65,7 +65,7 @@ Your magic attacks raze your oponents with the flames of discordian hell";
         public override void UpdateEquip(Player player)
         {
             player.magicDamage *= 1.32f;
-            player.meleeCrit += 20;
+            player.magicCrit += 20;
             player.endurance *= 1.1f;
             player.manaCost *= .7f;
             player.statManaMax2 += 150;

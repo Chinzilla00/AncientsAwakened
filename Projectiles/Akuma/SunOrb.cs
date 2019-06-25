@@ -24,19 +24,12 @@ namespace AAMod.Projectiles.Akuma
             projectile.tileCollide = false;
             projectile.hide = true;
             projectile.sentry = true;
-            projectile.alpha = 255;
         }
 
         public override void AI()
         {
             float num1058 = 1000f;
             projectile.velocity = Vector2.Zero;
-            
-            projectile.alpha -= 5;
-            if (projectile.alpha < 30)
-            {
-                    projectile.alpha = 30;
-            }
             if (projectile.direction == 0)
             {
                     projectile.direction = Main.player[projectile.owner].direction;
@@ -163,7 +156,7 @@ namespace AAMod.Projectiles.Akuma
         {
             Rectangle SunFrame = new Rectangle(0, 0, 64, 64);
             Rotation += .0008f;
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, Color.White, true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
     }

@@ -153,13 +153,13 @@ namespace AAMod.Projectiles
                 switch (chargeLevel)
                 {
                     case 0:
-						Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark1"), projectile.damage, 1f, player.whoAmI);
+						Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, ProjectileID.Spark, projectile.damage, 1f, player.whoAmI);
 						break;
 					case 1:
-                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark2"), (int)(projectile.damage * 1.5), 1f, player.whoAmI);
+                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark2"), (int)(projectile.damage * 1.5), 3f, player.whoAmI);
 						break;
 					case 2:
-                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark3"), projectile.damage * 2, 1f, player.whoAmI);
+                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark3"), projectile.damage * 2, 6f, player.whoAmI);
 						break;
                 }
             }

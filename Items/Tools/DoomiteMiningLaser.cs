@@ -22,7 +22,7 @@ namespace AAMod.Items.Tools
             item.knockBack = 1f;
             item.width = 20;
             item.height = 12;
-            item.damage = 110;
+            item.damage = 10;
             item.pick = 100;
             item.axe = 30;
             item.UseSound = SoundID.Item23;

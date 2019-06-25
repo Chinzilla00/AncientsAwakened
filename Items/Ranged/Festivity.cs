@@ -17,7 +17,7 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(3546);
-			item.damage = 200;
+			item.damage = 250;
 		}
 		
 		public override void AddRecipes()
@@ -38,17 +38,16 @@ namespace AAMod.Items.Ranged
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-			float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-			float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+			float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+			float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 			if (player.gravDir == -1f)
 			{
-				num83 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+				num83 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
 			}
-			float num84 = (float)Math.Sqrt((double)(num82 * num82 + num83 * num83));
-			float num85 = num84;
+			float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
 			if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
 			{
-				num82 = (float)player.direction;
+				num82 = player.direction;
 				num83 = 0f;
 				num84 = 11f;
 			}
@@ -62,9 +61,9 @@ namespace AAMod.Items.Ranged
 			{
 				float num213 = num82;
 				float num214 = num83;
-				num213 += (float)Main.rand.Next(-40, 41) * 0.05f;
-				num214 += (float)Main.rand.Next(-40, 41) * 0.05f;
-				Vector2 vector29 = vector2 + Vector2.Normalize(new Vector2(num213, num214).RotatedBy((double)(-1.57079637f * (float)player.direction), default(Vector2))) * 6f;
+				num213 += Main.rand.Next(-40, 41) * 0.05f;
+				num214 += Main.rand.Next(-40, 41) * 0.05f;
+				Vector2 vector29 = vector2 + Vector2.Normalize(new Vector2(num213, num214).RotatedBy(-1.57079637f * player.direction)) * 6f;
 				Projectile.NewProjectile(vector29.X, vector29.Y, num213*1.5f, num214*1.5f, 167 + Main.rand.Next(4), damage, knockBack, player.whoAmI, 0f, 1f);
 			}
             return false;

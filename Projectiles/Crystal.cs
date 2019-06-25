@@ -18,6 +18,8 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 900;
             projectile.melee = false;
             projectile.magic = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
 		
 		public override void AI()

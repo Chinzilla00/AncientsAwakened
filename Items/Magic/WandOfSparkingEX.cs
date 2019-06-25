@@ -9,7 +9,7 @@ namespace AAMod.Items.Magic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Starburst Wand");
-            Tooltip.SetDefault(@"
+            Tooltip.SetDefault(@"Hold to charge the wand
 Wand of Sparking EX");
         }
 

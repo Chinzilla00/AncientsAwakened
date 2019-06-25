@@ -1929,7 +1929,6 @@
     <Compile Include="Projectiles\ChaosChainEX.cs" />
     <Compile Include="Projectiles\Akuma\RadiantDawn.cs" />
     <Compile Include="Projectiles\GlacierBreaker.cs" />
-    <Compile Include="Projectiles\Spark1.cs" />
     <Compile Include="Projectiles\Spark2.cs" />
     <Compile Include="Projectiles\Spark3.cs" />
     <Compile Include="Projectiles\SparkBoom2.cs" />
@@ -4704,7 +4703,8 @@
     <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
-    <Content Include="Items\Dev\ZSaber.png" />
+    <Content Include="Items\Dev\Umbral Reaper.png" />
+    <Content Include="Items\Melee\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
     <Content Include="Items\Flasks\CrimsonFlask.png" />
@@ -5301,7 +5301,6 @@
     <Content Include="Items\Boss\AH\HarukaBox.png" />
     <Content Include="Items\Boss\AH\HeartOfPassion.png" />
     <Content Include="Items\Boss\AH\HeartOfSorrow.png" />
-    <Content Include="Items\Magic\OrderStaff.png" />
     <Content Include="Items\Magic\StarStaff.png" />
     <Content Include="Items\Summoning\MadnessCane.png" />
     <Content Include="Items\Summoning\Minions\MadnessElemental.png" />
@@ -5533,7 +5532,6 @@
     <Content Include="Items\Dev\PoniumStaffEX.png" />
     <Content Include="Items\Dev\Prismeow.png" />
     <Content Include="Items\Dev\SkrallStaff.png" />
-    <Content Include="Items\Dev\SoulSiphonEX.png" />
     <Content Include="Items\Dev\TimeTeller.png" />
     <Content Include="Items\Dev\TitanAxe.png" />
     <Content Include="Items\Dev\TitanAxeEX.png" />
@@ -6623,7 +6621,6 @@
     <Content Include="Projectiles\Ryusei.png" />
     <Content Include="Projectiles\Ryusei_Chain.png" />
     <Content Include="Projectiles\SoonTM.png" />
-    <Content Include="Projectiles\Spark1.png" />
     <Content Include="Projectiles\Spark2.png" />
     <Content Include="Projectiles\Spark3.png" />
     <Content Include="Projectiles\SparkBoom2.png" />
@@ -6678,7 +6675,6 @@
     <Content Include="Projectiles\Shen\ChaosSlayerSwordRedEX.png" />
     <Content Include="Projectiles\Shen\CosmicBlow.png" />
     <Content Include="Projectiles\Shen\DiscordBeam.png" />
-    <Content Include="Projectiles\Shen\DiscordianNova.png" />
     <Content Include="Projectiles\Shen\FlamingTwilightP.png" />
     <Content Include="Projectiles\Shen\FlamingTwilightP2.png" />
     <Content Include="Projectiles\Shen\FlamingTwilightPD.png" />
