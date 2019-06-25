@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class Mjolnir : ModProjectile
+    public class MjolnirEX : ModProjectile
     {
         public override void SetDefaults()
         {
-            projectile.width = 36;
-            projectile.height = 36;
+            projectile.width = 38;
+            projectile.height = 38;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.penetrate = -1;
@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-		    DisplayName.SetDefault("Mjolnir");
+		    DisplayName.SetDefault("Mjolnir EX");
 		}
 		
 		public override void AI()
@@ -131,7 +131,7 @@ namespace AAMod.Projectiles
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			for (int k = 0; k < 10; k++)
+			for (int k = 0; k < 15; k++)
 			{
 				Vector2 vel = new Vector2(0, -1);
 				float rand = Main.rand.NextFloat() * 6.283f;
@@ -144,7 +144,7 @@ namespace AAMod.Projectiles
 					dust.noGravity = true;
 					dust.scale = Main.rand.Next(10, 20) * 0.05f;
 				}
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), projectile.damage/2, knockback, projectile.owner);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), (projectile.damage/3)*2, knockback, projectile.owner);
 			}
 		}
     }
