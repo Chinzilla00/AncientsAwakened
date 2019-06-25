@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Toad
             projectile.friendly = false;
             projectile.penetrate = 1;
             projectile.alpha = 255;
-            projectile.timeLeft = 90;
+            projectile.timeLeft = 180;
             projectile.noEnchantments = true;
         }
 
@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void AI()
         {
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 8;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
             const float amountOfFramesToLerpBy = 20;
 
             projectile.ai[0]++;
@@ -76,8 +76,17 @@ namespace AAMod.NPCs.Bosses.Toad
 		{
             target.AddBuff(mod.BuffType<Buffs.Shroomed>(), 180);
         }
-		
-		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+
+        public override void Kill(int timeLeft)
+        {
+            for (int dust = 0; dust <= 5; dust++)
+            {
+                int dustType = mod.DustType<Dusts.ShroomDust>();
+                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, dustType, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+            }
+        }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
             width = 30;
             height = 30;
