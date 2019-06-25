@@ -21,7 +21,7 @@ namespace AAMod.Tiles
             TileID.Sets.JungleSpecial[Type] = true;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("EventideAbyssiumOre");   //put your CustomBlock name
-            dustType = mod.DustType("YamataADust");
+            dustType = mod.DustType("YamataDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Eventide Abyssium Ore");
             AddMapEntry(new Color(0, 0, 30), name);
@@ -34,15 +34,15 @@ namespace AAMod.Tiles
             if (glow && (tile != null && tile.active() && tile.type == this.Type))
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/EventideAbyssiumOre_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim);
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim2);
             }
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
-            r = .51f;
+            r = .2f;
             g = 0f;
-            b = 0f;
+            b = .5f;
         }
     }
 }

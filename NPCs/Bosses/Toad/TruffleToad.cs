@@ -63,6 +63,10 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.alpha = 255;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = new LegacySoundStyle(29, 13, Terraria.Audio.SoundType.Sound);
+            if (Main.expertMode)
+            {
+                npc.defense = 20;
+            }
         }
 
         public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_BUBBLES2 = 4;

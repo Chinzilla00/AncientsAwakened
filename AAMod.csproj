@@ -114,6 +114,11 @@
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosHood.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
+    <Compile Include="Items\Blocks\EventideTorch.cs" />
+    <Compile Include="Items\Blocks\HydratoxinTorch.cs" />
+    <Compile Include="Items\Blocks\DragonfireTorch.cs" />
+    <Compile Include="Items\Blocks\DiscordianTorch.cs" />
+    <Compile Include="Items\Blocks\DaybreakTorch.cs" />
     <Compile Include="Items\Blocks\DepthsandHardened.cs" />
     <Compile Include="Items\Blocks\IndigoIce.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
@@ -647,7 +652,6 @@
     <Compile Include="Items\Blocks\MonarchBox.cs" />
     <Compile Include="Items\Blocks\MoonAltarA.cs" />
     <Compile Include="Items\Blocks\MoonAltar.cs" />
-    <Compile Include="Items\Blocks\Mycelium.cs" />
     <Compile Include="Items\Blocks\OroborosChest.cs" />
     <Compile Include="Items\Blocks\OroborosWood.cs" />
     <Compile Include="Items\Blocks\PaladinsSmeltery.cs" />
@@ -2379,6 +2383,11 @@
     <Compile Include="Tiles\SABox.cs" />
     <Compile Include="Tiles\ShenABox.cs" />
     <Compile Include="Tiles\ShenBox.cs" />
+    <Compile Include="Tiles\Torches\HydratoxinTorch.cs" />
+    <Compile Include="Tiles\Torches\DragonfireTorch.cs" />
+    <Compile Include="Tiles\Torches\DiscordianTorch.cs" />
+    <Compile Include="Tiles\Torches\EventideTorch.cs" />
+    <Compile Include="Tiles\Torches\DaybreakTorch.cs" />
     <Compile Include="Tiles\TorchAsh.cs" />
     <Compile Include="Tiles\TorchMoss.cs" />
     <Compile Include="Tiles\TorchsandBall.cs" />
@@ -3080,6 +3089,7 @@
     <Content Include="Glowmasks\Dawnstrike_Glow.png" />
     <Content Include="Glowmasks\DaybreakArrow_Glow.png" />
     <Content Include="Glowmasks\DaybreakIncineriteOre_Glow.png" />
+    <Content Include="Glowmasks\DaybreakTorch_Glow.png" />
     <Content Include="Glowmasks\DaybringerBodyBig_Glow.png" />
     <Content Include="Glowmasks\DaybringerBody_Glow.png" />
     <Content Include="Glowmasks\DaybringerHeadBig_Glow.png" />
@@ -3113,6 +3123,7 @@
     <Content Include="Glowmasks\DemonGauntlet_HandsOff_Glow.png" />
     <Content Include="Glowmasks\DemonGauntlet_HandsOn_Glow.png" />
     <Content Include="Glowmasks\DemonStaff_Glow.png" />
+    <Content Include="Glowmasks\DiscordianTorch_Glow.png" />
     <Content Include="Glowmasks\DiscordiumBrick_Glow.png" />
     <Content Include="Glowmasks\DiscordiumOre_Glow.png" />
     <Content Include="Glowmasks\DiscordiumOre_Glow1.png" />
@@ -3127,6 +3138,8 @@
     <Content Include="Glowmasks\DoomiteBreastplate_Female_Glow.png" />
     <Content Include="Glowmasks\DoomiteGreaves_Legs_Glow.png" />
     <Content Include="Glowmasks\DoomiteMiningLaser_Glow.png" />
+    <Content Include="Glowmasks\DoomiteProbeC_Glow.png" />
+    <Content Include="Glowmasks\DoomiteProbe_Glow.png" />
     <Content Include="Glowmasks\DoomiteVisor_Head_Glow.png" />
     <Content Include="Glowmasks\DoomProj_Glow.png" />
     <Content Include="Glowmasks\DoomRay_Glow.png" />
@@ -3162,6 +3175,7 @@
     <Content Include="Glowmasks\DragonBlade_Glow.png" />
     <Content Include="Glowmasks\DragonBreathP_Glow.png" />
     <Content Include="Glowmasks\DragonCape_Glow.png" />
+    <Content Include="Glowmasks\DragonfireTorch_Glow.png" />
     <Content Include="Glowmasks\DragonFlamebow_glow.png" />
     <Content Include="Glowmasks\Dragonkite_Glow.png" />
     <Content Include="Glowmasks\DragonShell_Glow.png" />
@@ -3190,6 +3204,8 @@
     <Content Include="Glowmasks\Etheral_Glow.png" />
     <Content Include="Glowmasks\EventHorizon_Glow.png" />
     <Content Include="Glowmasks\EventideAbyssiumOre_Glow.png" />
+    <Content Include="Glowmasks\EventideAbyssium_Glow.png" />
+    <Content Include="Glowmasks\EventideTorch_Glow.png" />
     <Content Include="Glowmasks\EXSoul_Glow.png" />
     <Content Include="Glowmasks\Exterminator_Glow.png" />
     <Content Include="Glowmasks\FallingTwilight_Glow.png" />
@@ -3247,6 +3263,7 @@
     <Content Include="Glowmasks\HydraHead3_Glow.png" />
     <Content Include="Glowmasks\Hydraslayer_Glow.png" />
     <Content Include="Glowmasks\HydraStabber_Glow.png" />
+    <Content Include="Glowmasks\HydratoxinTorch_Glow.png" />
     <Content Include="Glowmasks\Incineration_Glow.png" />
     <Content Include="Glowmasks\IncineriteBar_Glow.png" />
     <Content Include="Glowmasks\IncineriteOre_glow.png" />
@@ -3356,6 +3373,7 @@
     <Content Include="Glowmasks\PerfectChaosPlate_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosVisorBlue_Head_Glow.png" />
     <Content Include="Glowmasks\PerfectChaosVisor_Glow.png" />
+    <Content Include="Glowmasks\PerfectChaosVisor_Head_Glow.png" />
     <Content Include="Glowmasks\PerfectChaos_Glow.png" />
     <Content Include="Glowmasks\PiranhaUnit_Glow.png" />
     <Content Include="Glowmasks\Piranha_Glow.png" />
@@ -3400,6 +3418,10 @@
     <Content Include="Glowmasks\Raidmini_Glow2.png" />
     <Content Include="Glowmasks\RainbowCatPro_Glow.png" />
     <Content Include="Glowmasks\Rainbow_Glow.png" />
+    <Content Include="Glowmasks\RajahRoar_Fly_Glow.png" />
+    <Content Include="Glowmasks\RajahRoar_Glow.png" />
+    <Content Include="Glowmasks\Rajah_Fly_Glow.png" />
+    <Content Include="Glowmasks\Rajah_Glow.png" />
     <Content Include="Glowmasks\RealityBar_Glow.png" />
     <Content Include="Glowmasks\RealityCannonZ.png" />
     <Content Include="Glowmasks\RealityCannon_Glow.png" />
@@ -3526,6 +3548,7 @@
     <Content Include="Glowmasks\TiedsMask_Head_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Face_Glow.png" />
     <Content Include="Glowmasks\TimeStone_Glow.png" />
+    <Content Include="Glowmasks\TinyToad_Glowmasks.png" />
     <Content Include="Glowmasks\ToadTrophy_Glow.png" />
     <Content Include="Glowmasks\TodeGlow_Glow.png" />
     <Content Include="Glowmasks\TopHat_Glow.png" />
@@ -3728,8 +3751,27 @@
     <Content Include="Gores\OrthrusHeadGoreB.png" />
     <Content Include="Gores\OrthrusHeadGoreR.png" />
     <Content Include="Gores\OrthrusNeckGore.png" />
+    <Content Include="Gores\RaidEggGore1.png" />
+    <Content Include="Gores\RaidEggGore2.png" />
+    <Content Include="Gores\RaiderGore1.png" />
+    <Content Include="Gores\RaiderGore2.png" />
+    <Content Include="Gores\RaiderGore3.png" />
+    <Content Include="Gores\RaiderGore4.png" />
+    <Content Include="Gores\RaiderGore5.png" />
+    <Content Include="Gores\RaiderGore6.png" />
+    <Content Include="Gores\RaiderGore7.png" />
+    <Content Include="Gores\RaiderGoreHorn.png" />
+    <Content Include="Gores\RaiderGoreJaw.png" />
+    <Content Include="Gores\RaidMiniGore1.png" />
+    <Content Include="Gores\RaidMiniGore2.png" />
+    <Content Include="Gores\RaidMiniGore3.png" />
+    <Content Include="Gores\RetrieverGore1.png" />
+    <Content Include="Gores\RetrieverGore2.png" />
     <Content Include="Gores\RetrieverGore3.png" />
+    <Content Include="Gores\RetrieverGore4.png" />
     <Content Include="Gores\RetrieverGore5.png" />
+    <Content Include="Gores\RetrieverGore6.png" />
+    <Content Include="Gores\RoyalRabbit1.png" />
     <Content Include="Gores\SearcherGore1.png" />
     <Content Include="Gores\SearcherGore2.png" />
     <Content Include="Gores\SoCGore1.png" />
@@ -3762,6 +3804,10 @@
     <Content Include="Gores\TerraWizardGore3.png" />
     <Content Include="Gores\TerraWizardGore4.png" />
     <Content Include="Gores\TerraWizardGore5.png" />
+    <Content Include="Gores\TinyToadBody.png" />
+    <Content Include="Gores\TinyToadHead.png" />
+    <Content Include="Gores\TinyToadLeg.png" />
+    <Content Include="Gores\TinyToadLeg1.png" />
     <Content Include="Gores\ToxitoadGoreBackLeg.png" />
     <Content Include="Gores\ToxitoadGoreBody.png" />
     <Content Include="Gores\ToxitoadGoreCoinChain.png" />
@@ -4515,6 +4561,9 @@
     <Content Include="Items\Armor\Witch\FlameSoulShot.png" />
     <Content Include="Items\Banners\Banners.png" />
     <Content Include="Items\Blocks\BogwoodCampfire.png" />
+    <Content Include="Items\Blocks\DaybreakTorch.png" />
+    <Content Include="Items\Blocks\DiscordianTorch.png" />
+    <Content Include="Items\Blocks\EventideTorch.png" />
     <Content Include="Items\Blocks\IndigoIce.png" />
     <Content Include="Items\Blocks\OroborosCampfire.png" />
     <Content Include="Items\Blocks\Oroboros\OroborosWorkbench.png" />
@@ -4973,7 +5022,6 @@
     <Content Include="NPCs\Bosses\Shen\ShenlingBody1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingBody2.png" />
     <Content Include="NPCs\Bosses\Shen\ShenlingTail.png" />
-    <Content Include="NPCs\Bosses\Shen\ShenMeteor.png" />
     <Content Include="NPCs\Bosses\Shen\ShenMeteor1.png" />
     <Content Include="NPCs\Bosses\Shen\ShenRain.png" />
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
@@ -5107,8 +5155,6 @@
     <Content Include="Items\Blocks\Depthsandstone.png" />
     <Content Include="Items\Blocks\Depthstone.png" />
     <Content Include="Items\Blocks\DevStatues.png" />
-    <Content Include="Items\Blocks\DiscordiumBrick.png" />
-    <Content Include="Items\Blocks\DiscordiumOre.png" />
     <Content Include="Items\Blocks\DjinnBox.png" />
     <Content Include="Items\Blocks\DoomsdayPlating.png" />
     <Content Include="Items\Blocks\Doomstone.png" />
@@ -5122,8 +5168,6 @@
     <Content Include="Items\Blocks\Equibox.png" />
     <Content Include="Items\Blocks\EventideAbyssiumOre.png" />
     <Content Include="Items\Blocks\FateBox.png" />
-    <Content Include="Items\Blocks\FestiveWood.png" />
-    <Content Include="Items\Blocks\FulguriteBlock.png" />
     <Content Include="Items\Blocks\FulguriteShard.png" />
     <Content Include="Items\Blocks\FungusBox.png" />
     <Content Include="Items\Blocks\GripsBox.png" />
@@ -5150,7 +5194,6 @@
     <Content Include="Items\Blocks\MoonBeeJar.png" />
     <Content Include="Items\Blocks\MushBox.png" />
     <Content Include="Items\Blocks\MushroomBlock.png" />
-    <Content Include="Items\Blocks\Mycelium.png" />
     <Content Include="Items\Blocks\OroborosChest.png" />
     <Content Include="Items\Blocks\OroborosWood.png" />
     <Content Include="Items\Blocks\PagodaBox.png" />
@@ -5187,7 +5230,6 @@
     <Content Include="Items\Blocks\StormChest.png" />
     <Content Include="Items\Blocks\SunAltar.png" />
     <Content Include="Items\Blocks\SunAltarA.png" />
-    <Content Include="Items\Blocks\SunkenChest.png" />
     <Content Include="Items\Blocks\TechneciumForge.png" />
     <Content Include="Items\Blocks\TechneciumOre.png" />
     <Content Include="Items\Blocks\TerraCore.png" />
@@ -6445,6 +6487,8 @@
     <Content Include="Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Projectiles\Akuma\Sunstorm.png" />
     <Content Include="Projectiles\AmberArrow.png" />
+    <Content Include="Projectiles\Ammo\DaybreakBullet.png" />
+    <Content Include="Projectiles\Ammo\EventideBullet.png" />
     <Content Include="Projectiles\ChaosBoom.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />
     <Content Include="Projectiles\AmphibiousProjectileEX.png" />
@@ -7200,10 +7244,14 @@
     <Content Include="Tiles\TerraTree_Branches.png" />
     <Content Include="Tiles\TerraTree_Top.png" />
     <Content Include="Tiles\TerraWood.png" />
-    <Content Include="Tiles\TerraWood_Branches.png" />
     <Content Include="Tiles\ToadBox.png" />
     <Content Include="Tiles\Torch.png" />
     <Content Include="Tiles\TorchAsh.png" />
+    <Content Include="Tiles\Torches\DaybreakTorch.png" />
+    <Content Include="Tiles\Torches\DiscordianTorch.png" />
+    <Content Include="Tiles\Torches\DragonfireTorch.png" />
+    <Content Include="Tiles\Torches\EventideTorch.png" />
+    <Content Include="Tiles\Torches\HydratoxinTorch.png" />
     <Content Include="Tiles\Torchice.png" />
     <Content Include="Tiles\TorchMoss.png" />
     <Content Include="Tiles\Torchsand.png" />

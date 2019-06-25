@@ -96,6 +96,14 @@ namespace AAMod
             return GetTimedColor(Color.Maroon, color, min, max, clamp);
         }
 
+        public static Color GetYamataColorBrightInvert2(Color color) { return GetYamataColor2(color, 1f, 0.6f, true); }
+        public static Color GetYamataColorDim2(Color color) { return GetYamataColor2(color, 0.4f, 1f, false); }
+        public static Color GetYamataColorBright2(Color color) { return GetYamataColor2(color, 0.6f, 1f, false); }
+        public static Color GetYamataColor2 (Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(Color.Violet, color, min, max, clamp);
+        }
+
         public static Color GetCthulhuColorBrightInvert(Color color) { return GetCthulhuColor(color, 1f, 0.6f, true); }
         public static Color GetCthulhuColorDim(Color color) { return GetCthulhuColor(color, 0.4f, 1f, false); }
         public static Color GetCthulhuColorBright(Color color) { return GetCthulhuColor(color, 0.6f, 1f, false); }
