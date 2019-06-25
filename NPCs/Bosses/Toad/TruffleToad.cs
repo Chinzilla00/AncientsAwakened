@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.ID;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
@@ -181,7 +182,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 if (internalAI[1] >= 180 && Main.netMode != 1)
                 {
                     internalAI[1] = 0;
-                    internalAI[0] = Main.rand.Next(2);
+                    internalAI[0] = Main.rand.Next(Main.expertMode ? 5 : 4);
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -378,6 +379,15 @@ namespace AAMod.NPCs.Bosses.Toad
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 1.4f);  //boss damage increase in expermode
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/TruffleToad_Glow");
+
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE, true);
+            return false;
         }
     }
 }

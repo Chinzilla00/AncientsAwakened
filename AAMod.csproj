@@ -995,6 +995,7 @@
     <Compile Include="Items\Magic\CrystalTome.cs" />
     <Compile Include="Items\Magic\Depthsprayer.cs" />
     <Compile Include="Items\Magic\Fireblast.cs" />
+    <Compile Include="Items\Magic\WandOfSparkingEX.cs" />
     <Compile Include="Items\Magic\GunkWand.cs" />
     <Compile Include="Items\Magic\HiveArtillery.cs" />
     <Compile Include="Items\Magic\MadnessStaff.cs" />
@@ -1920,6 +1921,12 @@
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\Akuma\RadiantDawn.cs" />
+    <Compile Include="Projectiles\Spark1.cs" />
+    <Compile Include="Projectiles\Spark2.cs" />
+    <Compile Include="Projectiles\Spark3.cs" />
+    <Compile Include="Projectiles\SparkBoom2.cs" />
+    <Compile Include="Projectiles\SparkBoom3.cs" />
+    <Compile Include="Projectiles\SparkWand.cs" />
     <Compile Include="Projectiles\Star1.cs" />
     <Compile Include="Projectiles\ThunderBullet.cs" />
     <Compile Include="Projectiles\AcidBall.cs" />
@@ -4708,6 +4715,7 @@
     <Content Include="Items\Flasks\Z.png" />
     <Content Include="Items\Magic\GunkWand.png" />
     <Content Include="Items\Magic\SubzeroStaff.png" />
+    <Content Include="Items\Magic\UnityFocus.png" />
     <Content Include="Items\Magic\Volley.png" />
     <Content Include="Items\Magic\WandOfSparkingEX.png" />
     <Content Include="Items\Materials\CocoaBean.png" />
@@ -6592,6 +6600,12 @@
     <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\SoonTM.png" />
+    <Content Include="Projectiles\Spark1.png" />
+    <Content Include="Projectiles\Spark2.png" />
+    <Content Include="Projectiles\Spark3.png" />
+    <Content Include="Projectiles\SparkBoom2.png" />
+    <Content Include="Projectiles\SparkBoom3.png" />
+    <Content Include="Projectiles\SparkWand.png" />
     <Content Include="Projectiles\Star1.png" />
     <Content Include="Projectiles\ThunderBullet.png" />
     <Content Include="Projectiles\ThunderSpark.png" />

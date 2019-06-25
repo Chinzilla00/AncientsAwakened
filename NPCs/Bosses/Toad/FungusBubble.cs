@@ -20,7 +20,6 @@ namespace AAMod.NPCs.Bosses.Toad
             projectile.penetrate = 1;
             projectile.alpha = 255;
             projectile.timeLeft = 90;
-            projectile.melee = true;
             projectile.noEnchantments = true;
         }
 
@@ -31,58 +30,46 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void AI()
         {
-            projectile.rotation += 0.1f;
-            if (projectile.ai[0] == 0f)
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 8;
+            const float amountOfFramesToLerpBy = 20;
+
+            projectile.ai[0]++;
+            if (projectile.ai[0] > homingDelay)
             {
-                float num689 = 500f;
-                int num690 = -1;
-                for (int num691 = 0; num691 < Main.maxPlayers; num691++)
+                projectile.ai[0] = homingDelay;
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
                 {
-                    Player target = Main.player[num691];
-                    if (Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
-                    {
-                        float num692 = (target.Center - projectile.Center).Length();
-                        if (num692 < num689)
-                        {
-                            num690 = num691;
-                            num689 = num692;
-                        }
-                    }
-                }
-                projectile.ai[0] = (float)(num690 + 1);
-                if (projectile.ai[0] == 0f)
-                {
-                    projectile.ai[0] = -15f;
-                }
-                if (projectile.ai[0] > 0f)
-                {
-                    float scaleFactor5 = (float)Main.rand.Next(35, 75) / 30f;
-                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
-                    projectile.netUpdate = true;
+                    Player target = Main.player[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-            else if (projectile.ai[0] > 0f)
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 500;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
             {
-                Vector2 value23 = Vector2.Normalize(Main.player[(int)projectile.ai[0] - 1].Center - projectile.Center);
-                projectile.velocity = (projectile.velocity * 40f + value23 * 12f) / 41f;
-            }
-            else
-            {
-                projectile.ai[0] += 1f;
-                projectile.alpha -= 25;
-                if (projectile.alpha < 50)
+                Player target = Main.player[i];
+                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
                 {
-                    projectile.alpha = 50;
+                    float distance = projectile.Distance(target.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                    (
+                        selectedTarget == -1 || projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                    )
+                        selectedTarget = i;
                 }
-                projectile.velocity *= 0.95f;
             }
-            if (projectile.ai[1] == 0f)
-            {
-                projectile.ai[1] = (float)Main.rand.Next(80, 121) / 100f;
-                projectile.netUpdate = true;
-            }
-            projectile.scale = projectile.ai[1];
-            return;
+
+            return selectedTarget;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

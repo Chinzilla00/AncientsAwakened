@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Toad
             Lighting.AddLight(projectile.Center, 0, (255 - projectile.alpha) * .5f / 255f, (255 - projectile.alpha) * 0.9f / 255f);
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
-            projectile.velocity *= .96f;
+            projectile.velocity *= .99f;
             if (Main.rand.Next(3) == 0)
             {
                 for (int m = 0; m < 3; m++)
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 projectile.frameCounter = 0;
                 projectile.frame++;
-                if (projectile.frame > 3)
+                if (projectile.frame > 1)
                 {
                     projectile.frame = 0;
                 }
