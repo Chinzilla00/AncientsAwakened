@@ -43,8 +43,11 @@ namespace AAMod
         public bool SkullMinion = false;
         public bool EaterMinion = false;
         public bool CrimeraMinion = false;
+		public bool CrowMinion = false;
         public bool DemonMinion = false;
         public bool DevilMinion = false;
+		public bool DoomiteProbe = false;
+		public bool DoomiteProbeC = false;
         public bool TerraMinion = false;
         public bool HallowedPrism = false;
         public bool TrueHallowedPrism = false;
@@ -298,8 +301,11 @@ namespace AAMod
             SkullMinion = false;
             EaterMinion = false;
             CrimeraMinion = false;
+			CrowMinion = false;
             DemonMinion = false;
             DevilMinion = false;
+			DoomiteProbe = false;
+			DoomiteProbeC = false;
             HallowedPrism = false;
             TrueHallowedPrism = false;
             TerraMinion = false;
