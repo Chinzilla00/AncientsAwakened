@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Melee   //where is located
+namespace AAMod.Items.Melee
 {
     public class Yogan : BaseAAItem
     {
@@ -10,15 +10,14 @@ namespace AAMod.Items.Melee   //where is located
         {
 			item.CloneDefaults(ItemID.SolarEruption);
 
-            item.damage = 48;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 46;              //Sword width
-            item.height = 66;             //Sword height
-
+            item.damage = 48; 
+            item.melee = true; 
+            item.width = 46; 
+            item.height = 66;    
             item.knockBack = 7;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 4;
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;
             item.useTurn = false;
             item.shoot = mod.ProjectileType("Yogan");
 			item.UseSound = SoundID.Item18;
