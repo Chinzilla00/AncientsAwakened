@@ -28,12 +28,11 @@ namespace AAMod.Projectiles
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(BuffID.OnFire, 300);
-			target.AddBuff(BuffID.Frostburn, 300);
 		}
 		
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Glacier Breaker");
+            DisplayName.SetDefault("Yogan");
         }
 
 

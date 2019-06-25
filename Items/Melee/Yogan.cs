@@ -27,22 +27,22 @@ namespace AAMod.Items.Melee   //where is located
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Yogan");
-			Tooltip.SetDefault(@"Inflicts Frostburn and ignites enemies on hit");
+			Tooltip.SetDefault(@"Ignites enemies on hit");
 		}
 		
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.TheMeatball);
-			recipe.AddIngredient(mod.ItemType("GlacierBreaker"));
+            recipe.AddIngredient(mod.ItemType("Pyrosphere"));
+            recipe.AddIngredient(mod.ItemType("GlacierBreaker"));
             recipe.AddIngredient(ItemID.BlueMoon);
 			recipe.AddIngredient(ItemID.Sunfury);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.BallOHurt);
-			recipe.AddIngredient(mod.ItemType("GlacierBreaker"));
+            recipe.AddIngredient(mod.ItemType("Pyrosphere"));
+            recipe.AddIngredient(mod.ItemType("GlacierBreaker"));
             recipe.AddIngredient(ItemID.BlueMoon);
 			recipe.AddIngredient(ItemID.Sunfury);
             recipe.AddTile(TileID.Anvils);

@@ -1090,6 +1090,7 @@
     <Compile Include="Items\Melee\DoomiteSaber.cs" />
     <Compile Include="Items\Melee\DragonFang.cs" />
     <Compile Include="Items\Melee\Executioner.cs" />
+    <Compile Include="Items\Melee\GlacierBreaker.cs" />
     <Compile Include="Items\Melee\HeatCleaver.cs" />
     <Compile Include="Items\Melee\HydraGlove.cs" />
     <Compile Include="Items\Melee\DragonGlove.cs" />
@@ -1198,6 +1199,7 @@
     <Compile Include="Items\Melee\Void.cs" />
     <Compile Include="Items\Melee\Voidsaber.cs" />
     <Compile Include="Items\Melee\Xiphos.cs" />
+    <Compile Include="Items\Melee\Yogan.cs" />
     <Compile Include="Items\Melee\YtriumHalberd.cs" />
     <Compile Include="Items\Melee\YtriumSword.cs" />
     <Compile Include="Items\Boss\MadnessTruffle.cs" />
@@ -2111,6 +2113,7 @@
     <Compile Include="Projectiles\Volley.cs" />
     <Compile Include="Projectiles\Yamata\DarkSoul.cs" />
     <Compile Include="Projectiles\Yamata\YWSplit.cs" />
+    <Compile Include="Projectiles\Yogan.cs" />
     <Compile Include="Projectiles\Zero\VortexProj.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
@@ -4741,6 +4744,7 @@
     <Content Include="Items\Melee\SaltwaterSpear.png" />
     <Content Include="Items\Melee\SwampSlasher.png" />
     <Content Include="Items\Melee\SwimmingHydra.png" />
+    <Content Include="Items\Melee\TerraSlasher.png" />
     <Content Include="Items\Melee\ThanosSword.png" />
     <Content Include="Items\Melee\ThanosSwordEX.png" />
     <Content Include="Items\Melee\VikingPolearm.png" />
@@ -6898,6 +6902,8 @@
     <Content Include="Projectiles\Yamata\YariProj.png" />
     <Content Include="Projectiles\Yamata\YWProjectile.png" />
     <Content Include="Projectiles\Yamata\YWSplit.png" />
+    <Content Include="Projectiles\Yogan.png" />
+    <Content Include="Projectiles\Yogan_Chain.png" />
     <Content Include="Projectiles\YtriumBoomerangP.png" />
     <Content Include="Projectiles\HydraSpray.png" />
     <Content Include="Projectiles\YtriumHalberd.png" />

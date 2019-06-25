@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee   //where is located
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Glacier Breaker");
-			Tooltip.SetDefault(@"Hitting enemy causes some icicles to drop");
+			Tooltip.SetDefault(@"Hitting an enemy causes icicles to drop");
 		}
 		
 		public override void AddRecipes()
