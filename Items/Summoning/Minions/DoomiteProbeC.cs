@@ -222,6 +222,8 @@ namespace AAMod.Items.Summoning.Minions
                         int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].penetrate = 2;
                         Main.projectile[num659].timeLeft = 300;
+						Main.projectile[num659].usesLocalNPCImmunity = true;
+						Main.projectile[num659].localNPCHitCooldown = -1;
                         projectile.netUpdate = true;
                     }
                 }

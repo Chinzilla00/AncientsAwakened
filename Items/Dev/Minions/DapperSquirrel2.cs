@@ -20,8 +20,8 @@ namespace AAMod.Items.Dev.Minions
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 18;
-            projectile.height = 18;
+            projectile.width = 44;
+            projectile.height = 36;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
@@ -29,6 +29,17 @@ namespace AAMod.Items.Dev.Minions
             projectile.minionSlots = 1f;
         }
         
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		{
+			fallThrough = false;
+			return true;
+		}
+		
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			return false;
+		}
+		
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
@@ -43,6 +54,7 @@ namespace AAMod.Items.Dev.Minions
             bool flag3 = false;
             bool flag4 = false;
             bool flag5 = true;
+			
             if (projectile.lavaWet)
             {
                 projectile.ai[0] = 1f;
@@ -76,6 +88,7 @@ namespace AAMod.Items.Dev.Minions
             }
             if (projectile.ai[1] == 0f)
             {
+				projectile.tileCollide = true;
                 int num36 = 500;
                 num36 += 40 * projectile.minionPos;
                 if (projectile.localAI[0] > 0f)
@@ -357,7 +370,7 @@ namespace AAMod.Items.Dev.Minions
                             num75 *= num78;
                             num77 *= num78;
                             int num79 = projectile.damage;
-                            int num80 = mod.ProjectileType<Hat>();
+                            int num80 = mod.ProjectileType<FezShot>();
                             int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75, num77, num80, num79, projectile.knockBack, Main.myPlayer, 0f, num64);
                             Main.projectile[num81].timeLeft = 300;
                             if (num75 < 0f)

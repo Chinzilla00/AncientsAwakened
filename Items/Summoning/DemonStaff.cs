@@ -31,10 +31,17 @@ namespace AAMod.Items.Summoning
             item.shoot = mod.ProjectileType("DemonMinion");
             item.shootSpeed = 10f;
             item.buffType = mod.BuffType("DemonMinion");
-            item.buffTime = 3600;
             item.autoReuse = true;
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

@@ -32,8 +32,15 @@ namespace AAMod.Items.Summoning
             item.summon = true;
             item.mana = 5;
             item.buffType = mod.BuffType("MadnessElemental");	//The buff added to player after used the item
-            item.buffTime = 18000;
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

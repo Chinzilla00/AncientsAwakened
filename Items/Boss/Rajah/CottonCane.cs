@@ -31,9 +31,16 @@ namespace AAMod.Items.Boss.Rajah
             item.shoot = mod.ProjectileType<Projectiles.Rajah.RabbitcopterSoldier>();
             item.shootSpeed = 10f;
             item.buffType = mod.BuffType<Buffs.RabbitcopterSoldier>();
-            item.buffTime = 3600;
             item.autoReuse = true;
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

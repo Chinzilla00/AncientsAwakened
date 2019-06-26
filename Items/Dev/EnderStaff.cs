@@ -38,8 +38,16 @@ I thought the sky was purple
 			item.shoot = mod.ProjectileType("EnderMinion");
 			item.shootSpeed = 7f;
 			item.buffType = mod.BuffType("EnderMinionBuff");	//The buff added to player after used the item
-            item.buffTime = 18000;
 		}
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
+		
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)

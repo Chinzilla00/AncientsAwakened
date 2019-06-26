@@ -30,7 +30,6 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.knockBack = 2f;
             item.buffType = mod.BuffType("LungMinion");
-            item.buffTime = 3600;
             item.summon = true;
             item.rare = 9;
             AARarity = 13;
@@ -40,6 +39,14 @@ namespace AAMod.Items.Boss.Akuma
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

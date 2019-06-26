@@ -19,6 +19,7 @@ namespace AAMod.Items.Dev.Minions
             projectile.ranged = true; 
             projectile.tileCollide = false; 
             projectile.ignoreWater = true;
+			projectile.timeLeft = 90;
         }
 
         public override void SetStaticDefaults()

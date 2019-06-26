@@ -39,11 +39,18 @@ namespace AAMod.Items.Boss.Zero
             item.shoot = mod.ProjectileType("Protocol");
             item.shootSpeed = 10f;
             item.buffType = mod.BuffType("Protocol");
-            item.buffTime = 3600;
             item.autoReuse = true;
             item.rare = 9; AARarity = 13;
             item.value = Item.sellPrice(0, 30, 0, 0);
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

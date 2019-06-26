@@ -33,7 +33,16 @@ namespace AAMod.Items.Dev
             item.rare = 3;
             item.summon = true;
             item.mana = 5;
+			item.buffType = mod.BuffType("Squirrel");
         }
+		
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {

@@ -20,14 +20,25 @@ namespace AAMod.Items.Dev.Minions
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 18;
-            projectile.height = 18;
+            projectile.width = 44;
+            projectile.height = 36;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;
         }
+		
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		{
+			fallThrough = false;
+			return true;
+		}
+		
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			return false;
+		}
         
         public override void AI()
         {
@@ -76,6 +87,7 @@ namespace AAMod.Items.Dev.Minions
             }
             if (projectile.ai[1] == 0f)
             {
+				projectile.tileCollide = true;
                 int num36 = 500;
                 num36 += 40 * projectile.minionPos;
                 if (projectile.localAI[0] > 0f)
