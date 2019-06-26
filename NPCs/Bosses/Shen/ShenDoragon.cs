@@ -809,6 +809,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Roar(roarTimerMax, false);
                 if (Main.netMode != 1)
                 {
+
                     if (npc.ai[2] % 20 == 0)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));

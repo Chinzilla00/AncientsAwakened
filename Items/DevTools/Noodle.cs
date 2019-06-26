@@ -15,6 +15,7 @@ namespace AAMod.Items.DevTools
     	
         public override void SetDefaults()
         {
+            projectile.CloneDefaults(ProjectileID.LightBeam);
             projectile.width = 30;
             projectile.height = 30;
             projectile.friendly = true;
@@ -23,7 +24,6 @@ namespace AAMod.Items.DevTools
             projectile.ignoreWater = true;
             projectile.penetrate = 4;
             projectile.timeLeft = 300;
-            projectile.CloneDefaults(ProjectileID.LightBeam);
         }
 
         public override void AI()

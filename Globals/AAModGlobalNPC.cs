@@ -207,16 +207,12 @@ namespace AAMod
 
             if (DiscordInferno)
             {
-                npc.lifeRegen -= 52;
                 npc.damage -= 10;
-                if (npc.velocity.X < -2f || npc.velocity.X > 2f)
+                if (npc.lifeRegen > 0)
                 {
-                    npc.velocity.X *= 0.8f;
+                    npc.lifeRegen = 0;
                 }
-                if (npc.velocity.Y < -2f || npc.velocity.Y > 2f)
-                {
-                    npc.velocity.Y *= 0.8f;
-                }
+                npc.lifeRegen -= Math.Abs((int)npc.velocity.X) - 52;
             }
 
             if (BrokenArmor)

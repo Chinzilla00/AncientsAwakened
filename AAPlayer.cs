@@ -2523,6 +2523,10 @@ namespace AAMod
                 }
             }
 
+            if (shroomed)
+            {
+                player.velocity /= 2;
+            }
             if (Hunted)
             {
                 if (player.rocketTimeMax > 30)
