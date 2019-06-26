@@ -5510,17 +5510,11 @@
     <Content Include="Items\Boss\Zero\ZeroTerratool_Hammer.png" />
     <Content Include="Items\Boss\Zero\ZeroTrophy.png" />
     <Content Include="Items\Currency\GoblinSoul.png" />
-    <Content Include="Items\DevTools\AAWorldgenner.png" />
     <Content Include="Items\DevTools\AncientOreGenner.png" />
     <Content Include="Items\DevTools\ChaosConverter.png" />
     <Content Include="Items\DevTools\DevRadar.png" />
-    <Content Include="Items\DevTools\Minilake.png" />
     <Content Include="Items\DevTools\Noodle.png" />
     <Content Include="Items\DevTools\NoodleSword.png" />
-    <Content Include="Items\DevTools\OreGenerator.png" />
-    <Content Include="Items\DevTools\Smallcano.png" />
-    <Content Include="Items\DevTools\TerrariumGenerator.png" />
-    <Content Include="Items\DevTools\VoidSpawner.png" />
     <Content Include="Items\Dev\AmphibianLongsword.png" />
     <Content Include="Items\Dev\AmphibianLongswordEX.png" />
     <Content Include="Items\Dev\AmphibianLongswordEXS.png" />
