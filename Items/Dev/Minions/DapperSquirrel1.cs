@@ -43,6 +43,7 @@ namespace AAMod.Items.Dev.Minions
             bool flag3 = false;
             bool flag4 = false;
             bool flag5 = true;
+
             if (projectile.lavaWet)
             {
                 projectile.ai[0] = 1f;

@@ -1331,6 +1331,8 @@
     <Compile Include="Items\Summoning\CrimsonStaff.cs" />
     <Compile Include="Items\Summoning\DemonStaff.cs" />
     <Compile Include="Items\Summoning\DevilStaff.cs" />
+    <Compile Include="Items\Summoning\DoomiteSignal.cs" />
+    <Compile Include="Items\Summoning\DoomiteSignalC.cs" />
     <Compile Include="Items\Summoning\EaterStaff.cs" />
     <Compile Include="Items\Summoning\FireStaff.cs" />
     <Compile Include="Items\Summoning\HallowStaff.cs" />
@@ -1339,8 +1341,11 @@
     <Compile Include="Items\Summoning\Minions\BabyPhoenix.cs" />
     <Compile Include="Items\Summoning\Minions\BlizzardDragon.cs" />
     <Compile Include="Items\Summoning\Minions\CrimeraMinion.cs" />
+    <Compile Include="Items\Summoning\Minions\CrowMinion.cs" />
     <Compile Include="Items\Summoning\Minions\DemonEater.cs" />
     <Compile Include="Items\Summoning\Minions\DemonMinion.cs" />
+    <Compile Include="Items\Summoning\Minions\DoomiteProbe.cs" />
+    <Compile Include="Items\Summoning\Minions\DoomiteProbeC.cs" />
     <Compile Include="Items\Summoning\Minions\EaterProj.cs" />
     <Compile Include="Items\Summoning\Minions\DevilMinion.cs" />
     <Compile Include="Items\Summoning\Minions\DemonProj.cs" />
@@ -1365,6 +1370,7 @@
     <Compile Include="Items\Summoning\Minions\MadnessElemental.cs" />
     <Compile Include="Items\Summoning\Minions\TrueHallowedPrism.cs" />
     <Compile Include="Items\Summoning\Minions\TruePrismshot.cs" />
+    <Compile Include="Items\Summoning\OmenStaff.cs" />
     <Compile Include="Items\Summoning\ProbeControlUnit.cs" />
     <Compile Include="Items\Summoning\MadnessCane.cs" />
     <Compile Include="Items\Summoning\SkullStaff.cs" />
@@ -1930,7 +1936,10 @@
     <Compile Include="Projectiles\ChaosChain.cs" />
     <Compile Include="Projectiles\ChaosChainEX.cs" />
     <Compile Include="Projectiles\Akuma\RadiantDawn.cs" />
+    <Compile Include="Projectiles\EtheralLaserEX.cs" />
     <Compile Include="Projectiles\GlacierBreaker.cs" />
+    <Compile Include="Projectiles\MjolnirEffect.cs" />
+    <Compile Include="Projectiles\MjolnirEX.cs" />
     <Compile Include="Projectiles\Spark2.cs" />
     <Compile Include="Projectiles\Spark3.cs" />
     <Compile Include="Projectiles\SparkBoom2.cs" />
@@ -2203,7 +2212,6 @@
     <Compile Include="Projectiles\EFish\EFlairon.cs" />
     <Compile Include="Projectiles\EFish\Typhoon.cs" />
     <Compile Include="Projectiles\EtheralBeam.cs" />
-    <Compile Include="Projectiles\EtheralLazerEX.cs" />
     <Compile Include="Projectiles\HydraSpray.cs" />
     <Compile Include="Projectiles\AntimonBoomerangP.cs" />
     <Compile Include="Projectiles\Apocalypse.cs" />
@@ -4808,9 +4816,10 @@
     <Content Include="Items\Ranged\OceanWhaler.png" />
     <Content Include="Items\Ranged\PrimevalJavelin.png" />
     <Content Include="Items\Ranged\SingularityCannon.png" />
-    <Content Include="Items\Summoning\Doomite Signal.png" />
+    <Content Include="Items\Summoning\DoomiteSignal.png" />
     <Content Include="Items\Summoning\DoomiteSignalC.png" />
     <Content Include="Items\Summoning\Minions\CrowMinion.gif" />
+    <Content Include="Items\Summoning\Minions\CrowMinion.png" />
     <Content Include="Items\Summoning\Minions\DoomiteProbe.png" />
     <Content Include="Items\Summoning\Minions\DoomiteProbeC.png" />
     <Content Include="Items\Summoning\OmenStaff.png" />
@@ -6592,6 +6601,7 @@
     <Content Include="Projectiles\DragonSpine.png" />
     <Content Include="Projectiles\DynaEnergy.png" />
     <Content Include="Projectiles\DynaskullJavelin.png" />
+    <Content Include="Projectiles\EtheralLaserEX.png" />
     <Content Include="Projectiles\Executioner.png" />
     <Content Include="Projectiles\Flasks\AshJar.png" />
     <Content Include="Projectiles\Flasks\CorruptionFlask.png" />
@@ -6618,6 +6628,7 @@
     <Content Include="Projectiles\HoloArrow.png" />
     <Content Include="Projectiles\HydraSlash.png" />
     <Content Include="Projectiles\Mjolnir.png" />
+    <Content Include="Projectiles\MjolnirEffect.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\Ryusei.png" />
@@ -6745,7 +6756,6 @@
     <Content Include="Projectiles\Etheral.png" />
     <Content Include="Projectiles\EtheralBeam.png" />
     <Content Include="Projectiles\EtheralEX.png" />
-    <Content Include="Projectiles\EtheralLazerEX.png" />
     <Content Include="Projectiles\Fang_Knife_Pro.png" />
     <Content Include="Projectiles\FerretNote.png" />
     <Content Include="Projectiles\FireballP.png" />

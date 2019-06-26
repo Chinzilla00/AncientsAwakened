@@ -52,7 +52,7 @@ namespace AAMod.Projectiles
                     Main.player[projectile.owner].ChangeDir(-1);
                 }
             }
-            projectile.rotation += .1f;
+            projectile.rotation += .4f;
             Vector2 vector14 = new Vector2(projectile.position.X + (projectile.width * 0.5f), projectile.position.Y + (projectile.height * 0.5f));
             float num166 = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - vector14.X;
             float num167 = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - vector14.Y;

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Toad
             projectile.friendly = false;
             projectile.penetrate = 1;
             projectile.alpha = 255;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 300;
             projectile.noEnchantments = true;
         }
 

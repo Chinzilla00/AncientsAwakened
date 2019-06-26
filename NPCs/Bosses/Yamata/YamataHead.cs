@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.lifeMax = 550000;
-            npc.boss = true;
             npc.damage = 280;
             npc.defense = 200;
             npc.width = 78;
@@ -33,6 +32,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

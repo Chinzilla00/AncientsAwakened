@@ -663,7 +663,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            return false;
+            return true;
         }
 
         public void UpdateLimbs()

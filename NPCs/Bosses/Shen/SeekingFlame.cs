@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     projectile.frame = 0;
                 }
             }
-            const int aislotHomingCooldown = 1;
+            const int aislotHomingCooldown = 0;
             const int homingDelay = 60;
             const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20;
@@ -91,25 +91,6 @@ namespace AAMod.NPCs.Bosses.Shen
             }
 
             return selectedTarget;
-        }
-
-        public float[] InternalAI = new float[1];
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write(InternalAI[0]);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                InternalAI[0] = reader.ReadFloat();
-            }
         }
 
         public override Color? GetAlpha(Color lightColor)

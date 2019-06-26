@@ -482,7 +482,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         float InfernoType = 0;
                         if (!isAwakened)
                         {
-                            if (npc.spriteDirection == 1)
+                            if (npc.spriteDirection == -1)
                             {
                                 InfernoType = 1;
                             }
@@ -550,7 +550,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             float shootThis;
                             if (!isAwakened)
                             {
-                                if (npc.spriteDirection == 1)
+                                if (npc.spriteDirection == -1)
                                 {
                                     shootThis = 1;
                                 }
@@ -616,7 +616,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             int shootThis;
                             if (!isAwakened)
                             {
-                                if (npc.spriteDirection == 1)
+                                if (npc.spriteDirection == -1)
                                 {
                                     shootThis = 1;
                                 }
@@ -679,7 +679,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         int shootThis = Storm;
                         if (!isAwakened)
                         {
-                            if (npc.spriteDirection == 1)
+                            if (npc.spriteDirection == -1)
                             {
                                 shootThis = 1;
                             }
@@ -726,7 +726,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         int Type = 0;
                         if (!isAwakened)
                         {
-                            if (npc.spriteDirection == 1)
+                            if (npc.spriteDirection == -1)
                             {
                                 Type = 1;
                             }
@@ -757,24 +757,22 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (Main.netMode != 1)
                     {
                         Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-                        Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
-
-                        if (player.active && !player.dead)
-                        {
-                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
-                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
-                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
-                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
-                            vel.Y += npc.velocity.Y;
-                            infernoPos += npc.Center;
-                            infernoPos.Y -= 40;
-                        }
+                        Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        float num433 = 6f;
+                        float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                        float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                        float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                        PlayerPos = num433 / PlayerPos;
+                        PlayerPosX *= PlayerPos;
+                        PlayerPosY *= PlayerPos;
+                        PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                        PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                        PlayerPosY += npc.velocity.Y * 0.5f;
+                        PlayerPosX += npc.velocity.X * 0.5f;
+                        PlayerDistance.X -= PlayerPosX * 1f;
+                        PlayerDistance.Y -= PlayerPosY * 1f;
                         int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
-                        Main.projectile[projectile].velocity = vel;
-                        Main.projectile[projectile].netUpdate = true;
+                        Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, PlayerPos / 2, PlayerPosY / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 npc.ai[2] += 1f;

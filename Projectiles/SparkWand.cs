@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
         {
 			Player player = Main.player[projectile.owner];
 			
-			float num = .785f;
+			float num = 1.57f;
 			Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
 			projectile.ai[0] += 1f;
 			int num2 = 0;

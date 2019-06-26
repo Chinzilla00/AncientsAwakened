@@ -21,9 +21,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
-			isAwakened = true;
+            isAwakened = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
-            npc.damage = 190;
+            npc.damage = 300;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

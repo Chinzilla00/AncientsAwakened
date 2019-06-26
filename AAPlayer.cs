@@ -2760,7 +2760,7 @@ namespace AAMod
             }
             if (shroomed)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0, default(Color), 1f);
                     Main.dust[num4].alpha = 100;
