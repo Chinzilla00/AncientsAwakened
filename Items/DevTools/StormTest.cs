@@ -1,3 +1,14 @@
+using System;
+using System.IO;
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.Audio;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 namespace AAMod.Items.DevTools
 {
     public class StormTest : BaseAAItem
@@ -26,5 +37,18 @@ namespace AAMod.Items.DevTools
             item.shoot = mod.ProjectileType("ChaosLightning");
             item.shootSpeed = 9f;
         }
+		
+		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+			Vector2 vector = new Vector2(speedX, speedY);
+			int L = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("ChaosLightning"), damage, knockBack, player.whoAmI, vector.ToRotation());
+			Main.projectile[L].penetrate = -1;
+			Main.projectile[L].hostile = false;
+			Main.projectile[L].friendly = true;
+			Main.projectile[L].melee = true;
+			Main.projectile[L].usesLocalNPCImmunity = true;
+			Main.projectile[L].localNPCHitCooldown = -1;
+			return false;
+		}
     }
 }

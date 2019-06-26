@@ -20,12 +20,14 @@ namespace AAMod.Projectiles
 			projectile.penetrate = -1;
             projectile.timeLeft = 300;
             projectile.aiStyle = -1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
 		}
 
         public override void AI()
         {
             Player p = Main.player[projectile.owner];
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 30, 0.8f, .8f, false);
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 30, .8f, .8f, false);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

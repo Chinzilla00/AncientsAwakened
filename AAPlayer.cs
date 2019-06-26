@@ -201,6 +201,7 @@ namespace AAMod
         public bool DragonsGuard = false;
         public bool ShadowBand = false;
         public bool RajahCape = false;
+        public bool CapShield = false;
         
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -409,6 +410,7 @@ namespace AAMod
             DragonsGuard = false;
             ShadowBand = false;
             RajahCape = false;
+            CapShield = false;
             //Debuffs
             infinityOverload = false;
             discordInferno = false;
@@ -2274,6 +2276,43 @@ namespace AAMod
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("Dynabomb"), num73, num74, i, 0f, 0f);
                 }
             }
+            if (CapShield)
+            {
+                if (AAMod.AccessoryAbilityKey.JustPressed)
+                {
+                    for (int j = 0; j < 1000; ++j)
+                    {
+                        if (!Main.projectile[j].active && Main.projectile[j].owner != Main.myPlayer && Main.projectile[j].type != mod.ProjectileType<Projectiles.CapShield>())
+                        {
+                            int i = Main.myPlayer;
+                            float num72 = 8;
+                            int num73 = 70;
+                            float num74 = 1;
+                            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+                            float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+                            float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                            if (player.gravDir == -1f)
+                            {
+                                num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                            }
+                            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+                            float num81 = num80;
+                            if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
+                            {
+                                num78 = (float)player.direction;
+                                num79 = 0f;
+                            }
+                            else
+                            {
+                                num80 = num72 / num80;
+                            }
+                            vector2.X = (float)Main.mouseX + Main.screenPosition.X;
+                            vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+                            Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("CapShield"), num73, num74, i, 0f, 0f);
+                        }
+                    }
+                }
+            }
             if (AbilityCD != 0)
             {
                 AbilityCD--;
@@ -3162,11 +3201,11 @@ namespace AAMod
             AddPlayerLayer(list, glAfterFace, PlayerLayer.FaceAcc, false);
             if (!player.merman && !player.wereWolf && groviteGlow[player.whoAmI])
             {
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteHead, PlayerLayer.Head, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteBody, PlayerLayer.Body, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
-                BaseMod.BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteHead, PlayerLayer.Head, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteBody, PlayerLayer.Body, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteLegs, PlayerLayer.Legs, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteArm, PlayerLayer.Arms, false);
+                BaseDrawing.AddPlayerLayer(list, glGroviteWings, PlayerLayer.Wings, false);
             }
             AddPlayerLayer(list, glAfterAll, list[list.Count - 1], false);
         }
@@ -3227,6 +3266,16 @@ namespace AAMod
                 else
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TaiyangBaoleiA_Shield_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
+                }
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType<Items.Accessories.CapShield>()))
+            {
+                for (int j = 0; j < 1000; ++j)
+                {
+                    if (!Main.projectile[j].active && Main.projectile[j].owner != Main.myPlayer && Main.projectile[j].type != mod.ProjectileType<Projectiles.CapShield>())
+                    {
+                        BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Accessories/CapShield_ShieldTex"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
+                    }
                 }
             }
         });

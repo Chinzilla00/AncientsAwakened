@@ -11,8 +11,8 @@ using AAMod.NPCs.Enemies.Terrarium.PostEquinox;
 using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Enemies.Snow;
 using System;
-using BaseMod;
 using Terraria.Localization;
+using Terraria.GameContent.Events;
 
 
 namespace AAMod
@@ -829,6 +829,8 @@ namespace AAMod
                     {
                         if (mnpc.mod.Name.Equals("GRealm")) //do not remove GRealm spawns!
                             keepPool.Add(npcID, kvp.Value);
+                        if (npcID == mod.NPCType("StanLee")) //do not remove GRealm spawns!
+                            keepPool.Add(npcID, kvp.Value);
                     }
                 }
                 pool.Clear();
@@ -957,7 +959,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if (AAWorld.downedSag)
                 {
                     pool.Add(mod.NPCType("SagittariusMini"), .005f);
@@ -983,7 +985,7 @@ namespace AAMod
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
-                pool.Clear();
+                ClearPoolWithExceptions(pool);
                 if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType<Bladon>(), .05f);
@@ -1013,6 +1015,11 @@ namespace AAMod
                     pool.Add(mod.NPCType<PurityCrawler>(), .05f);
                     pool.Add(mod.NPCType<PuritySquid>(), .05f);
                 }
+            }
+
+            if (NPC.CountNPCS(mod.NPCType("StanLee")) < 1)
+            {
+                pool.Add(mod.NPCType<PurityWeaver>(), .00001f);
             }
         }
 

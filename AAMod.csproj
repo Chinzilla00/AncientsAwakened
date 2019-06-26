@@ -91,6 +91,8 @@
     <Compile Include="Dusts\ShadowDust.cs" />
     <Compile Include="Dusts\SnapDust.cs" />
     <Compile Include="Dusts\UraniumDust.cs" />
+    <Compile Include="Items\Accessories\CapShield.cs" />
+    <Compile Include="Items\Accessories\IronBoots.cs" />
     <Compile Include="Items\Accessories\Snap.cs" />
     <Compile Include="Items\Accessories\Wings\AbyssalWings.cs" />
     <Compile Include="Items\Accessories\Wings\AsgardianWings.cs" />
@@ -1933,8 +1935,10 @@
     <Compile Include="NPCs\TownNPCs\Lovecraftian.cs" />
     <Compile Include="NPCs\TownNPCs\Mushman.cs" />
     <Compile Include="NPCs\TownNPCs\Anubis.cs" />
+    <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\CapShield.cs" />
     <Compile Include="Projectiles\ChaosChain.cs" />
     <Compile Include="Projectiles\ChaosChainEX.cs" />
     <Compile Include="Projectiles\Akuma\RadiantDawn.cs" />
@@ -3938,6 +3942,8 @@
     <Content Include="Items\Accessories\AshProofVest3.png" />
     <Content Include="Items\Accessories\BotchedBand.png" />
     <Content Include="Items\Accessories\BotchedBand_HandsOn.png" />
+    <Content Include="Items\Accessories\CapShield.png" />
+    <Content Include="Items\Accessories\CapShield_Shield.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />
@@ -3949,6 +3955,8 @@
     <Content Include="Items\Accessories\InfinityGauntlet.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_HandsOn.png" />
     <Content Include="Items\Accessories\InfinityGauntlet_Wings.png" />
+    <Content Include="Items\Accessories\IronBoots.png" />
+    <Content Include="Items\Accessories\IronBoots_Shoes.png" />
     <Content Include="Items\Accessories\Lantern.png" />
     <Content Include="Items\Accessories\LifeCharm.png" />
     <Content Include="Items\Accessories\LifeCharm_Neck.png" />
@@ -3972,6 +3980,7 @@
     <Content Include="Items\Accessories\SpacePlaceholder_Head.png" />
     <Content Include="Items\Accessories\SpaceStone.png" />
     <Content Include="Items\Accessories\SpaceStone_Face.png" />
+    <Content Include="Items\Accessories\TimeRing.png" />
     <Content Include="Items\Accessories\TimeStone.png" />
     <Content Include="Items\Accessories\TimeStone_Face.png" />
     <Content Include="Items\Accessories\Wings\AbyssalWings.png" />
@@ -6519,6 +6528,7 @@
     <Content Include="Projectiles\AmberArrow.png" />
     <Content Include="Projectiles\Ammo\DaybreakBullet.png" />
     <Content Include="Projectiles\Ammo\EventideBullet.png" />
+    <Content Include="Projectiles\CapShield.png" />
     <Content Include="Projectiles\ChaosBoom.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />
     <Content Include="Projectiles\AmphibiousProjectileEX.png" />
