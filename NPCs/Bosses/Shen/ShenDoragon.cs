@@ -394,7 +394,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 3:
-                                aiChoice = Main.rand.Next(2, isAwakened ? 9 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 8);
                                 if (Main.rand.Next(2) == 0)
                                 {
                                     npc.ai[3] = -1f;
@@ -406,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                             case 6:
                                 npc.ai[3] = -1f;
-                                aiChoice = Main.rand.Next(2, isAwakened ? 9 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 8);
                                 break;
                         }
                     }
@@ -798,6 +798,51 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 121)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
+            else if (npc.ai[0] == 9f) //Discordian Storm (Awakened Only)
+            {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
+                Roar(roarTimerMax, false);
+                if (Main.netMode != 1)
+                {
+                    if (npc.ai[2] % 20 == 0)
+                    {
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+
+                        if (player.active && !player.dead)
+                        {
+                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
+                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                            vel.Y += npc.velocity.Y;
+                            infernoPos += npc.Center;
+                            infernoPos.Y -= 60;
+                        }
+                        int shootThis = mod.ProjectileType<ChaosLightning>();
+                        if (npc.ai[2] < 119)
+                        {
+                            int ChargeDust = Dust.NewDust(infernoPos, npc.width, npc.height, mod.DustType<Dusts.Discord>());
+                            Main.dust[ChargeDust].noGravity = true;
+                        }
+                        else
+                        {
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0F, 0f);
+                            Main.projectile[projectile].velocity = vel;
+                            Main.projectile[projectile].netUpdate = true;
+                        }
+                    }
+                    
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 200)
                 {
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }

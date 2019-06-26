@@ -13,7 +13,7 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stormbreaker");
-			Tooltip.SetDefault("Forged with star's heat, with the living wood handle"
+			Tooltip.SetDefault("Forged to slay the mad titan himself"
 			+"\nRight click to throw"
 			+"\nMjolnir EX");
         }

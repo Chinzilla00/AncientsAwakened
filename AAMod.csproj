@@ -1714,6 +1714,7 @@
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
+    <Compile Include="NPCs\Bosses\Shen\ChaosLightning.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianFlare.cs" />
     <Compile Include="NPCs\Bosses\Shen\DiscordianInferno.cs" />
     <Compile Include="NPCs\Bosses\Shen\FuryAshe.cs" />
@@ -5023,6 +5024,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagProj.png" />
+    <Content Include="NPCs\Bosses\Shen\ChaosLightning.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianFlare.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianInferno.png" />
     <Content Include="NPCs\Bosses\Shen\DiscordianSun.png" />

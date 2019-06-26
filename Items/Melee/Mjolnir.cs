@@ -12,7 +12,7 @@ namespace AAMod.Items.Melee
     {
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Forged by gnomes for the legendary Asgardian warrior"
+			Tooltip.SetDefault("Forged in the heart of a dying star"
 			+"\nWield it wisely"
 			+"\nRight click to throw");
         }

@@ -82,6 +82,16 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The imagery of a blazing demon flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The imagery of a 7 headed terror flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
+            }
             if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()))
             {
                 return false;

@@ -1562,10 +1562,10 @@ namespace AAMod
                                 player.QuickSpawnItem(mod.ItemType("ShinyFishDiverMask" + addonA));
                                 player.QuickSpawnItem(mod.ItemType("ShinyFishDiverJacket" + addonA));
                                 player.QuickSpawnItem(mod.ItemType("ShinyFishDiverBoots" + addonA));
+                                player.QuickSpawnItem(mod.ItemType("MudkipBall"));
                             }
                             if (dropType >= 1)
                             {
-                                player.QuickSpawnItem(mod.ItemType("MudkipBall"));
                                 player.QuickSpawnItem(mod.ItemType("ShinyKipronWings"));
                             }
                             if (dropType >= 2)
@@ -1672,10 +1672,12 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("LizShirt"));
                         player.QuickSpawnItem(mod.ItemType("LizBoots"));
                         player.QuickSpawnItem(mod.ItemType("LizScarf"));
+                        player.QuickSpawnItem(mod.ItemType("RoyalStar"));
+                        player.QuickSpawnItem(ItemID.TwilightHairDye);
                         if (dropType >= 1)
                         {
-                            player.QuickSpawnItem(mod.ItemType("RoyalStar"));
                             player.QuickSpawnItem(mod.ItemType("NightingaleWings"));
+                            player.QuickSpawnItem(ItemID.TwilightDye);
                         }
                         if (dropType >= 2)
                         {

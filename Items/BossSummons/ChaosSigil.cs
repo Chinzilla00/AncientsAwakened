@@ -44,7 +44,16 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Only the blue half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
+            }
+            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
+            {
+                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
+            }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
@@ -55,11 +64,11 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            /*if (!AAWorld.downedShen)
+            if (!AAWorld.downedShen && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
             {
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
                 return false;
-            }*/
+            }
             for (int m = 0; m < Main.maxProjectiles; m++)
             {
                 Projectile p = Main.projectile[m];
