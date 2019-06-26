@@ -56,14 +56,17 @@ namespace AAMod.Projectiles
                 Main.projectile[Shoot].melee = false;
                 Main.projectile[Shoot].magic = true;
 
-                if (Main.rand.Next(3) == 0)
+                if (Main.myPlayer == projectile.owner)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
-                }
-                if (Main.rand.Next(50) == 0)
-                {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), ProjectileID.RainbowRodBullet, projectile.damage, 3, Main.myPlayer);
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
+                    }
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), ProjectileID.RainbowRodBullet, projectile.damage, 3, Main.myPlayer);
+                    }
                 }
             }
             projectile.velocity.X *= 0.00f;
