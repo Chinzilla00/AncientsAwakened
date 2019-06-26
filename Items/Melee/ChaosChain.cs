@@ -34,6 +34,7 @@ namespace AAMod.Items.Melee
             item.value = Item.sellPrice(0, 20, 0, 0);
             item.melee = true;
             item.noMelee = true;
+            item.noUseGraphic = true;
         }
 
         public override void AddRecipes()

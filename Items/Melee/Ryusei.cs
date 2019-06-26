@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee
     {
         public override void SetDefaults()
         {
-			item.CloneDefaults(ItemID.Sunfury);
+			item.CloneDefaults(ItemID.SolarEruption);
 
             item.damage = 48; 
             item.melee = true; 
@@ -25,7 +25,7 @@ namespace AAMod.Items.Melee
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yogan");
+			DisplayName.SetDefault("Ryusei");
 			Tooltip.SetDefault(@"Ignites enemies on hit with flames and Dragonfire");
 		}
 		

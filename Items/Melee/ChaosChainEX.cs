@@ -36,6 +36,7 @@ Chaos Chain EX");
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.melee = true;
             item.noMelee = true;
+            item.noUseGraphic = true;
         }
 
         public override void AddRecipes()

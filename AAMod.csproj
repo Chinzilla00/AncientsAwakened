@@ -1100,6 +1100,8 @@
     <Compile Include="Items\Melee\Firestorm.cs" />
     <Compile Include="Items\Melee\IchorSpear.cs" />
     <Compile Include="Items\Melee\MadnessSword.cs" />
+    <Compile Include="Items\Melee\Mjolnir.cs" />
+    <Compile Include="Items\Melee\MjolnirEX.cs" />
     <Compile Include="Items\Melee\Pyrosphere.cs" />
     <Compile Include="Items\Melee\AsgardianLance.cs" />
     <Compile Include="Items\Melee\RustyCutlass.cs" />

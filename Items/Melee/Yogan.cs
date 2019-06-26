@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee
     {
         public override void SetDefaults()
         {
-			item.CloneDefaults(ItemID.SolarEruption);
+			item.CloneDefaults(ItemID.Sunfury);
 
             item.damage = 48; 
             item.melee = true; 
