@@ -29,6 +29,7 @@ namespace AAMod.Projectiles.Akuma
         public override void AI()
         {
             float num1058 = 1000f;
+            projectile.rotation += .0008f;
             projectile.velocity = Vector2.Zero;
             if (projectile.direction == 0)
             {
@@ -149,15 +150,6 @@ namespace AAMod.Projectiles.Akuma
                     
                 }
             }
-        }
-
-        public float Rotation = 0;
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Rectangle SunFrame = new Rectangle(0, 0, 64, 64);
-            Rotation += .0008f;
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
-            return false;
         }
     }
 }
