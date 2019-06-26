@@ -904,6 +904,7 @@
     <Compile Include="Items\Currency\GoblinSoul.cs" />
     <Compile Include="Items\DevTools\AncientOreGenner.cs" />
     <Compile Include="Items\DevTools\Anticheat.cs" />
+    <Compile Include="Items\DevTools\StormTest.cs" />
     <Compile Include="Items\DevTools\Undowner.cs" />
     <Compile Include="Items\DevTools\HardmodeUndowner.cs" />
     <Compile Include="Items\DevTools\TerrariaUndowner.cs" />
@@ -4687,6 +4688,7 @@
     <Content Include="Items\Calamity\ThrowingCarrot.png" />
     <Content Include="Items\DevTools\AAUndowner.png" />
     <Content Include="Items\DevTools\Anticheat.png" />
+    <Content Include="Items\DevTools\StormTest.png" />
     <Content Include="Items\DevTools\HardmodeUndowner.png" />
     <Content Include="Items\DevTools\TerrariaUndowner.png" />
     <Content Include="Items\DevTools\Undowner.png" />
