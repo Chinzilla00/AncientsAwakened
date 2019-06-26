@@ -1799,6 +1799,11 @@ namespace AAMod
                         }
                         spawnedDevItems = true;
                         break;
+                    case 23:
+                        player.QuickSpawnItem(ItemID.ReaperHood);
+                        player.QuickSpawnItem(ItemID.ReaperRobe);
+                        spawnedDevItems = true;
+                        break;
                 }
             }
         }
