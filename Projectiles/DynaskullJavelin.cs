@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
             target.AddBuff(mod.BuffType<Buffs.DynaEnergy1>(), 60);
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy)
+            if (flag3 && !StuckInEnemy && !target.boss)
             {
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
