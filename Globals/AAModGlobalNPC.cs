@@ -212,7 +212,7 @@ namespace AAMod
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= Math.Abs((int)npc.velocity.X) - 52;
+                npc.lifeRegen -= Math.Abs((int)npc.velocity.X) + 52;
             }
 
             if (BrokenArmor)
