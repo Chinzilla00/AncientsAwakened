@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.Shen
             int InfernoCount = 0;
 
 
-            if (npc.ai[0] == -1f) //initial spawn effects
+            if (npc.ai[0] == .1f) //initial spawn effects
             {
                 npc.chaseable = false;
             }

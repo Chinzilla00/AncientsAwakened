@@ -69,6 +69,7 @@ namespace AAMod
         public bool CyberClaw = false;
         public bool ChaosClaw = false;
         public bool MiniZero = false;
+        public bool TerraSummon = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -328,6 +329,7 @@ namespace AAMod
             CyberClaw = false;
             ChaosClaw = false;
             MiniZero = false;
+            TerraSummon = false;
             //Armor
             MoonSet = false;
             valkyrieSet = false;
@@ -3546,7 +3548,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosKabuto")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosKabutoBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame, scale);
                 }
@@ -3554,7 +3556,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosMask")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosMaskBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame, scale);
                 }
@@ -3562,7 +3564,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosHood")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosHoodBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame, scale);
                 }
@@ -3570,7 +3572,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosVisor")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosVisorBlue_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame, scale);
                 }
@@ -3664,7 +3666,7 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_" + (drawPlayer.Male ? "Body" : "Female")), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
                 }
@@ -3734,7 +3736,7 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosPlate")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosPlateBlue_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
                 }
@@ -3804,7 +3806,7 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("PerfectChaosGreaves")))
             {
-                if (drawPlayer.direction == -1)
+                if (drawPlayer.direction == 1)
                 {
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Armor/PerfectChaos/PerfectChaosGreavesBlue_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.legFrame);
                 }

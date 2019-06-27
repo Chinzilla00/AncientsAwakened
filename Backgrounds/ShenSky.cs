@@ -35,13 +35,10 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
+            SkyTex = TextureManager.Load("Backgrounds/ShenBg");
             Sun = TextureManager.Load("Backgrounds/ShenSun");
             Moon = TextureManager.Load("Backgrounds/ShenMoon");
         }
-
-        float num = 1200f;
-
         public override void Update(GameTime gameTime)
         {
             if (Active)
@@ -56,10 +53,10 @@ namespace AAMod.Backgrounds
             {
                 Meteor[] expr_60_cp_0_cp_0 = Meteors;
                 int expr_60_cp_0_cp_1 = i;
-                expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X = expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X - num * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X = expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X - 1200f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 Meteor[] expr_8E_cp_0_cp_0 = Meteors;
                 int expr_8E_cp_0_cp_1 = i;
-                expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y = expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y + num * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y = expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y + 1200f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if ((double)Meteors[i].Position.Y > Main.worldSurface * 16.0)
                 {
                     Meteors[i].Position.X = Meteors[i].StartX;
@@ -83,7 +80,7 @@ namespace AAMod.Backgrounds
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                 Vector2 SunPos = new Vector2(Main.screenWidth * .75f, Main.screenHeight / 4);
                 Vector2 MoonPos = new Vector2(Main.screenWidth * .25f, Main.screenHeight / 4);
-                spriteBatch.Draw(SkyTex, new Rectangle(0, Math.Max(0, (int)((Main.worldSurface * 16.0 - (double)Main.screenPosition.Y - 2400.0) * 0.10000000149011612)), Main.screenWidth, Main.screenHeight), Color.DarkMagenta * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f * Intensity));
+                spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
                 spriteBatch.Draw(Sun, SunPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Moon, MoonPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
@@ -136,7 +133,7 @@ namespace AAMod.Backgrounds
             {
                 float num = (float)i / (float)Meteors.Length;
                 Meteors[i].Position.X = num * (Main.maxTilesX * 16f) + this._random.NextFloat() * 40f - 20f;
-                Meteors[i].Position.Y = this._random.NextFloat() * -((float)Main.worldSurface * 16f + 10000f) - 10000f;
+                Meteors[i].Position.Y = _random.NextFloat() * -((float)Main.worldSurface * 16f + 10000f) - 10000f;
                 if (this._random.Next(3) != 0)
                 {
                     Meteors[i].Depth = this._random.NextFloat() * 3f + 1.8f;

@@ -35,11 +35,9 @@ namespace AAMod.Backgrounds
         public override void OnLoad()
         {
             MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/Stars");
+            SkyTex = TextureManager.Load("Backgrounds/ShenSky");
             PlanetTexture = TextureManager.Load("Backgrounds/ShenEclipse");
         }
-
-        float num = 1200f;
 
         public override void Update(GameTime gameTime)
         {
@@ -56,10 +54,10 @@ namespace AAMod.Backgrounds
             {
                 Meteor[] expr_60_cp_0_cp_0 = Meteors;
                 int expr_60_cp_0_cp_1 = i;
-                expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X = expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X - num * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X = expr_60_cp_0_cp_0[expr_60_cp_0_cp_1].Position.X - 1200f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 Meteor[] expr_8E_cp_0_cp_0 = Meteors;
                 int expr_8E_cp_0_cp_1 = i;
-                expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y = expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y + num * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y = expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y + 1200f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if ((double)Meteors[i].Position.Y > Main.worldSurface * 16.0)
                 {
                     Meteors[i].Position.X = Meteors[i].StartX;

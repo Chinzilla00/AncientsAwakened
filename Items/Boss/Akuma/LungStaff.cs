@@ -117,68 +117,6 @@ namespace AAMod.Items.Boss.Akuma
                 Main.projectile[tail].ai[1] = 1f;
             }
             return false;
-            /*
-            //to fix tail disapearing meme
-            float slotsUsed = 0;
-
-            Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
-
-            if (player.maxMinions - slotsUsed < 1) return false;
-
-            int headCheck = -1;
-            int tailCheck = -1;
-
-            for (int i = 0; i < 1000; i++)
-            {
-                Projectile proj = Main.projectile[i];
-                if (proj.active && proj.owner == player.whoAmI)
-                {
-                    if (headCheck == -1 && proj.type == mod.ProjectileType("LungHead")) headCheck = i;
-                    if (tailCheck == -1 && proj.type == mod.ProjectileType("LungTail")) tailCheck = i;
-                    if (headCheck != -1 && tailCheck != -1) break;
-                }
-            }
-
-            //initial spawn
-            if (headCheck == -1 && tailCheck == -1)
-            {
-                int current = Projectile.NewProjectile(position.X, position.Y, 0, 0, mod.ProjectileType("LungHead"), damage, knockBack, player.whoAmI, 0f, 0f);
-
-                int previous = 0;
-
-                for (int i = 0; i < 1; i++)
-                {
-                    current = Projectile.NewProjectile(position.X, position.Y, 0, 0, mod.ProjectileType("LungBody"), damage, knockBack, player.whoAmI, current, 0f);
-                    previous = current;
-                }
-
-                current = Projectile.NewProjectile(position.X, position.Y, 0, 0, mod.ProjectileType("LungTail"), damage, knockBack, player.whoAmI, current, 0f);
-
-                Main.projectile[previous].localAI[1] = current;
-                Main.projectile[previous].netUpdate = true;
-            }
-            //spawn more body segments
-            else
-            {
-                int previous = (int) Main.projectile[tailCheck].ai[0];
-                int current = 0;
-
-                for (int i = 0; i < 4; i++)
-                {
-                    current = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("EaterBody"), damage, knockBack, player.whoAmI,
-                        Projectile.GetByUUID(Main.myPlayer, previous), 0f);
-
-                    previous = current;
-                }
-
-                Main.projectile[current].localAI[1] = tailCheck;
-
-                Main.projectile[tailCheck].ai[0] = current;
-                Main.projectile[tailCheck].netUpdate = true;
-                Main.projectile[tailCheck].ai[1] = 1f;
-            }
-
-            return false;*/
         }
 
         public override void AddRecipes()

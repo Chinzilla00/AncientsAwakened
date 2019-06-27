@@ -31,6 +31,7 @@ namespace AAMod.Items.Boss.Grips
             item.rare = 3;
             item.summon = true;
             item.mana = 5;
+            item.noUseGraphic = true;
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -77,7 +78,7 @@ namespace AAMod.Items.Boss.Grips
             vector2.X = (float)Main.mouseX + Main.screenPosition.X;
             vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
             Projectile.NewProjectile(vector2.X, vector2.Y, num78, num79, shootMe, num73, num74, i, 0f, 0f);
-            return false;
+            return true ;
         }
     }
 }
