@@ -2291,7 +2291,7 @@ namespace AAMod
                         {
                             int i = Main.myPlayer;
                             float num72 = 8;
-                            int num73 = 70;
+                            int num73 = 40;
                             float num74 = 1;
                             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
                             float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
@@ -2569,7 +2569,7 @@ namespace AAMod
 
             if (shroomed)
             {
-                player.velocity /= 2;
+                player.velocity *= .8f;
             }
             if (Hunted)
             {

@@ -11,7 +11,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 
         public override void SetDefaults()
         {
-            projectile.width = 210;
+            projectile.width = 190;
             projectile.height = 210; 
             projectile.friendly = true;
             projectile.penetrate = -1; 

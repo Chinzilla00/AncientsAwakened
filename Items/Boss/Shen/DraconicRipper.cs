@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Shen
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
-			item.damage = 70;
+			item.damage = 60;
 			item.shootSpeed = 15f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
@@ -49,7 +49,7 @@ namespace AAMod.Items.Boss.Shen
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 vector = player.MountedCenter;
-			int numberProjectiles = 4 + Main.rand.Next(3); // 4 or 5 shots
+			int numberProjectiles = 2 + Main.rand.Next(3);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));

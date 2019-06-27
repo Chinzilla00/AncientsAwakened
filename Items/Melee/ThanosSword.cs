@@ -8,6 +8,8 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mad Titan's Dualblade");
+            Tooltip.SetDefault(@"Right click to throw the blade as a boomerang
+Mad Titan's Dualblade EX");
         }
 
         public override void SetDefaults()

@@ -394,7 +394,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 3:
-                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 11 : 8);
                                 if (Main.rand.Next(2) == 0)
                                 {
                                     npc.ai[3] = -1f;
@@ -406,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                             case 6:
                                 npc.ai[3] = -1f;
-                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 11 : 8);
                                 break;
                         }
                     }
@@ -835,7 +835,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         else
                         {
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 16 , vel.Y * 16, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 10 , vel.Y * 10, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                             Main.projectile[projectile].netUpdate = true;
                         }
                     }
@@ -843,6 +843,27 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 200)
+                {
+                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
+                }
+            }
+            else if (npc.ai[0] == 10f) //Thunderstrike (Awakened only)
+            {
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                MoveToPoint(playerPoint);
+                Roar(roarTimerMax, false);
+                if (npc.ai[2] % 30 == 0)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        for (int Loops = 0; Loops < 3; Loops++)
+                        {
+                            ShenAttacks.Thunderstrike(npc, mod);
+                        }
+                    }
+                }
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 121)
                 {
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }

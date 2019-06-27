@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 5;
         }
 
         public override Color? GetAlpha(Color lightColor)
