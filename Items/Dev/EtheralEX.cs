@@ -28,11 +28,12 @@ namespace AAMod.Items.Dev
 	        item.useStyle = 5;
 	        item.UseSound = SoundID.Item13;
 	        item.noMelee = true;
+            item.noUseGraphic = true;
 			item.channel = true;
 	        item.knockBack = 0f;
 	        item.value = Item.sellPrice(0, 30, 0, 0);
             item.channel = true;
-            item.shoot = mod.ProjectileType("EtheralLazerEX");
+            item.shoot = mod.ProjectileType("EtheralEX");
             item.shootSpeed = 30f;           
             item.expert = true;
 
@@ -60,11 +61,6 @@ namespace AAMod.Items.Dev
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(0, 0);
         }
     }
 }
