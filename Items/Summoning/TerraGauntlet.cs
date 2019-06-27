@@ -12,7 +12,7 @@ namespace AAMod.Items.Summoning
         {
             item.damage = 60;
             item.noMelee = true;
-            item.ranged = true;
+            item.summon = true;
             item.width = 18;
             item.height = 42;
             item.useTime = 30;
@@ -37,12 +37,9 @@ Only 1 terra crawler may be active at a time");
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int shootMe = Main.rand.Next(4);
-            for (int u = 0; u < 1000; ++u)
+            if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Minions.Terra.Minion4Head>()))
             {
-                if (Main.projectile[u].active && Main.projectile[u].owner == Main.myPlayer && Main.projectile[u].type == mod.ProjectileType<Minions.Terra.Minion4Head>())
-                {
-                    shootMe = Main.rand.Next(3);
-                }
+                shootMe = Main.rand.Next(3);
             }
             switch (shootMe)
             {
@@ -62,8 +59,6 @@ Only 1 terra crawler may be active at a time");
             if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>())
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                float velocityX = Main.mouseX + Main.screenPosition.X - vector2.X;
-                float velocityY = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 
                 int head = -1;
                 int tail = -1;
@@ -87,21 +82,20 @@ Only 1 terra crawler may be active at a time");
                 }
                 if (head == -1 && tail == -1)
                 {
-                    velocityX = 0f;
                     vector2.X = Main.mouseX + Main.screenPosition.X;
                     vector2.Y = Main.mouseY + Main.screenPosition.Y;
 
-                    int current = Projectile.NewProjectile(vector2.X, vector2.Y, velocityX, velocityX, mod.ProjectileType("Minion4Head"), damage, knockBack, Main.myPlayer);
+                    int current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Head"), damage, knockBack, Main.myPlayer);
 
                     int previous = current;
                     for (int k = 0; k < 4; k++)
                     {
-                        current = Projectile.NewProjectile(vector2.X, vector2.Y, velocityX, velocityX, mod.ProjectileType("Minion4Body"), damage, knockBack, Main.myPlayer, previous);
+                        current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Body"), damage, knockBack, Main.myPlayer, previous);
                         previous = current;
                     }
 
                     previous = current;
-                    current = Projectile.NewProjectile(vector2.X, vector2.Y, velocityX, velocityX, mod.ProjectileType("Minion4Tail"), damage, knockBack, Main.myPlayer, previous);
+                    current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Tail"), damage, knockBack, Main.myPlayer, previous);
                     Main.projectile[previous].localAI[1] = current;
                     Main.projectile[previous].netUpdate = true;
                 }
