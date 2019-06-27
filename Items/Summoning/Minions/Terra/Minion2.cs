@@ -119,8 +119,9 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
         public bool CanTarget(Entity codable, Vector2 startPos)
         {
-            if (codable is NPC npc)
+            if (codable is NPC)
             {
+                NPC npc = (NPC)codable;
                 return npc.active && npc.life > 0 && !npc.friendly && !npc.dontTakeDamage && npc.lifeMax > 5 && Vector2.Distance(startPos, npc.Center) < 900 && Math.Abs(npc.Center.Y - startPos.Y) < (16f * (20 - 1)) && (BaseUtility.CanHit(projectile.Hitbox, npc.Hitbox) || BaseUtility.CanHit(Main.player[projectile.owner].Hitbox, npc.Hitbox));
             }
             return false;
