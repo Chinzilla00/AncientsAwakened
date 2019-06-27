@@ -10,8 +10,6 @@ namespace AAMod.Backgrounds
 {
     public class ShenSky : CustomSky
     {
-        public static Texture2D Sun;
-        public static Texture2D Moon;
         public static Texture2D BGTexture;
         public static Texture2D SkyTex;
         public static Texture2D MeteorTexture;
@@ -36,8 +34,6 @@ namespace AAMod.Backgrounds
         {
             MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
             SkyTex = TextureManager.Load("Backgrounds/ShenBg");
-            Sun = TextureManager.Load("Backgrounds/ShenSun");
-            Moon = TextureManager.Load("Backgrounds/ShenMoon");
         }
         public override void Update(GameTime gameTime)
         {
@@ -81,8 +77,6 @@ namespace AAMod.Backgrounds
                 Vector2 SunPos = new Vector2(Main.screenWidth * .75f, Main.screenHeight / 4);
                 Vector2 MoonPos = new Vector2(Main.screenWidth * .25f, Main.screenHeight / 4);
                 spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
-                spriteBatch.Draw(Sun, SunPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
-                spriteBatch.Draw(Moon, MoonPos, null, Color.White * 0.9f * Intensity, 0f, new Vector2(Sun.Width >> 1, Sun.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
             int num = -1;
             int num2 = 0;

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
-    public class ShrooomGlow : ModNPC
+    public class ShroomGlow : ModNPC
     {
         public override void SetStaticDefaults()
         {

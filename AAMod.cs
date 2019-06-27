@@ -252,11 +252,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
-            PremultiplyTexture(GetTexture("Backgrounds/ShenSun"));
-            PremultiplyTexture(GetTexture("Backgrounds/ShenMoon"));
-            PremultiplyTexture(GetTexture("Backgrounds/ShenEclipse"));
-            PremultiplyTexture(GetTexture("Backgrounds/Star 0"));
-            PremultiplyTexture(GetTexture("Backgrounds/Star 1"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
@@ -338,8 +333,6 @@ namespace AAMod
 
             Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-            ShenSky.Sun = GetTexture("Backgrounds/ShenSun");
-            ShenSky.Moon = GetTexture("Backgrounds/ShenMoon");
             ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
 
             Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
@@ -433,12 +426,9 @@ namespace AAMod
 
                 ShenSky.MeteorTexture = null;
                 ShenSky.SkyTex = null;
-                ShenSky.Sun = null;
-                ShenSky.Moon = null;
                 ShenSky.BGTexture = null;
 
                 ShenASky.MeteorTexture = null;
-                ShenASky.PlanetTexture = null;
                 ShenASky.SkyTex = null;            
             }
         }
