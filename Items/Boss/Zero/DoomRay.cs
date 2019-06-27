@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Focus");
-            Tooltip.SetDefault("Fires a insanely powerful death laser");
+            Tooltip.SetDefault("Fires an insanely powerful death laser");
         }
 
         public override void SetDefaults()

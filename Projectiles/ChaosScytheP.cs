@@ -22,7 +22,7 @@ namespace AAMod.Projectiles
             projectile.aiStyle = -1;
             projectile.alpha = 254;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 30;
+            projectile.localNPCHitCooldown = 15;
         }
 
         public bool CHAOSCHAOS = false;

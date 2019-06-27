@@ -60,6 +60,14 @@ Non-Consumable");
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
+                if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenDoragon>()))
+                {
+                    return false;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenA>()))
+                {
+                    return false;
+                }
                 if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake && !AAWorld.downedYamata)
                 {
                     if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("An image of the strange tree at the heart of the mire flashes through your mind", Color.Indigo, false);

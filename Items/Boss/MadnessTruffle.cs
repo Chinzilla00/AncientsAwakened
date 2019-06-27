@@ -29,6 +29,14 @@ You know what? Just don't put it anywhere near your mouth.");
             item.defense = 8;
         }
 
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            if (player.wingTime > 0)
+            {
+                player.wingTime += 3;
+            }
+        }
+
         public override void UpdateEquip(Player player)
         {
             player.autoJump = true;

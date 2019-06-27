@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
             projectile.height = 10;
             projectile.aiStyle = -1;
             projectile.friendly = true;
-            projectile.melee = true;
+            projectile.ranged = true;
             projectile.hostile = false;
             projectile.penetrate = -1;
             projectile.timeLeft = 200;
@@ -34,7 +34,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = (proType == 0 ? mod.DustType<Dusts.DiscordLight>() : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataAuraDust>());
+            int dustType = (proType == 0 ? mod.DustType<Dusts.DiscordLight>() : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>());
             if (projectile.ai[1] != 0)
             {
                 projectile.extraUpdates = 1;

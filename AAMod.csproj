@@ -1938,6 +1938,7 @@
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\ApocalypseHeal.cs" />
     <Compile Include="Projectiles\VoidMagicEX.cs" />
     <Compile Include="Projectiles\VoidMagic.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
@@ -3946,6 +3947,7 @@
     <Content Include="Items\Accessories\BotchedBand_HandsOn.png" />
     <Content Include="Items\Accessories\CapShield.png" />
     <Content Include="Items\Accessories\CapShield_Shield.png" />
+    <Content Include="Items\Accessories\CapShield_ShieldTex.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />
@@ -4727,7 +4729,8 @@
     <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
-    <Content Include="Items\Dev\Umbral Reaper.png" />
+    <Content Include="Items\Dev\UmbralReaper.png" />
+    <Content Include="Items\Dev\UmbralReaperEX.png" />
     <Content Include="Items\Melee\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
     <Content Include="Items\Flasks\CorruptionFlask.png" />
@@ -5017,10 +5020,12 @@
     <Content Include="NPCs\Bosses\Rajah\RabbitcopterSoldier.png" />
     <Content Include="NPCs\Bosses\Rajah\RabbitRocketBoomR.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahArms.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsB.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsR.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahArmsS.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahBookIt.png" />
+    <Content Include="NPCs\Bosses\Rajah\RajahRabbit.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRoar.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRoar_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
@@ -6530,6 +6535,7 @@
     <Content Include="Projectiles\AmberArrow.png" />
     <Content Include="Projectiles\Ammo\DaybreakBullet.png" />
     <Content Include="Projectiles\Ammo\EventideBullet.png" />
+    <Content Include="Projectiles\ApocalypseHeal.png" />
     <Content Include="Projectiles\CapShield.png" />
     <Content Include="Projectiles\ChaosBoom.png" />
     <Content Include="Projectiles\AmphibiousProjectile.png" />

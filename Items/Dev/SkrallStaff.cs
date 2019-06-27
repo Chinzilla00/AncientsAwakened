@@ -19,7 +19,7 @@ It's the stick that's magic. The diamond is just for show
 
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 170;
 			item.magic = true;
 			item.mana = 6;
 			item.width = 58;
@@ -75,7 +75,7 @@ It's the stick that's magic. The diamond is just for show
                 item.useAnimation = 5;
                 item.melee = true;
                 item.shoot = mod.ProjectileType("Crystal");
-                item.damage = 70;
+                item.damage = 170;
                 item.noMelee = false;
                 item.shootSpeed = 20f;
             }

@@ -19,12 +19,14 @@ namespace AAMod.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<AAPlayer>(mod).CapShield = true;
+            player.dash = 1;
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon's Guard");
-            Tooltip.SetDefault(@"Enemies that strike you are set ablaze");
+            DisplayName.SetDefault("American Shield");
+            Tooltip.SetDefault(@"Double tap a direction to dash
+Pressing the accessory ability key allows you to throw the shield");
         }
     }
 }

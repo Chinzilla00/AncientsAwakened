@@ -8,17 +8,11 @@ namespace AAMod.Projectiles
 {
     class DecayScytheProj : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-
-        }
-
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.DeathSickle);
             projectile.tileCollide = true;
             projectile.alpha = 40;
-
         }
 
         public override Color? GetAlpha(Color lightColor)

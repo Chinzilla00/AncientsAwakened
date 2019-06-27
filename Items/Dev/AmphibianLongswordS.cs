@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
 			item.width = 64;
 			item.height = 64;
 			item.useTime = 22;
-			item.useAnimation = 2;
+			item.useAnimation = 22;
 			item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 10, 0, 0);

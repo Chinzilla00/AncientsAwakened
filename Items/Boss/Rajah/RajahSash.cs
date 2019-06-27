@@ -12,6 +12,7 @@ namespace AAMod.Items.Boss.Rajah
         {
             DisplayName.SetDefault("Rajah Rabbit's Sash of Vengeance");
             Tooltip.SetDefault(@"Every 10% of health lost gives you 8% extra attack power to your highest damage type boost
+40% increased movement speed
 Increased Jump Height and Speed
 Grants Autojump
 Immunity to fall damage");
@@ -70,7 +71,15 @@ Immunity to fall damage");
             tooltips.Add(DamageToltip);
             base.ModifyTooltips(tooltips);
         }
-        
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            if (player.wingTime > 0)
+            {
+                player.wingTime += 3;
+            }
+        }
+
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
@@ -78,6 +87,7 @@ Immunity to fall damage");
             Player.jumpHeight = 40;
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
+            player.moveSpeed *= 1.4f;
             if (modPlayer.MeleeHighest(player))
             {
                 player.meleeDamage += DamageBoost(player); 

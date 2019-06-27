@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.PerfectChaos
         {
             DisplayName.SetDefault("Chaos Slayer Visor");
             Tooltip.SetDefault(@"45% increased ranged damage
-35% increased ranged critical strike chance
+38% increased ranged critical strike chance
 12% increased damage resistance
 25% reduced ammo consumption
 The power of discordian rage radiates from this hood");
@@ -63,11 +63,10 @@ Your ranged attacks raze your oponents with the flames of discordian hell";
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.32f;
-            player.rangedCrit += 20;
+            player.rangedDamage *= 1.45f;
+            player.rangedCrit += 38;
             player.endurance *= 1.1f;
-            player.manaCost *= .7f;
-            player.statManaMax2 += 150;
+            player.ammoCost75 = true;
         }
 
         public override void AddRecipes()

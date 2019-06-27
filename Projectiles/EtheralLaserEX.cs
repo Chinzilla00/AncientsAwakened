@@ -9,13 +9,13 @@ using Terraria.Enums;
 using Terraria.GameContent.Shaders;
 using Terraria.Graphics.Effects;
 
-namespace AAMod.Projectiles
+namespace Redemption.Projectiles.v08
 {
     public class EtheralLaserEX : ModProjectile
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tesla Beam");
+			DisplayName.SetDefault("Light");
 		}
     	
         public override void SetDefaults()
@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 			projectile.alpha = 255;
 			projectile.tileCollide = false;
 			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 0;
+			projectile.localNPCHitCooldown = 5;
         }
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -181,7 +181,7 @@ namespace AAMod.Projectiles
 			}
 			Texture2D tex = Main.projectileTexture[projectile.type];
 			float num228 = projectile.localAI[1];
-			Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
+			Microsoft.Xna.Framework.Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
 			value25.A = 0;
 			Vector2 value26 = projectile.Center.Floor();
 			value26 += projectile.velocity * projectile.scale * 10.5f;
@@ -192,7 +192,7 @@ namespace AAMod.Projectiles
 			Vector2 projPos = projectile.oldPos[0];
 			projPos = new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
 			Utils.DrawLaser(Main.spriteBatch, tex, value26 - Main.screenPosition, value26 + projectile.velocity * num228 - Main.screenPosition, vector29, new Utils.LaserLineFraming(DelegateMethods.RainbowLaserDraw));
-			DelegateMethods.c_1 = new Color(0, 160, 200, 127) * 0.75f * projectile.Opacity;
+			DelegateMethods.c_1 = new Color(255, 250, 205, 127) * 0.75f * projectile.Opacity;
 			Utils.DrawLaser(Main.spriteBatch, tex, value26 - Main.screenPosition, value26 + projectile.velocity * num228 - Main.screenPosition, vector29 / 2f, new Utils.LaserLineFraming(DelegateMethods.RainbowLaserDraw));
 			return false;
         }

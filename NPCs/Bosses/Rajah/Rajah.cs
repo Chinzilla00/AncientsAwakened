@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public Vector2 WeaponPos;
         public Vector2 StaffPos;
-        Projectile CarrotFarmer;
+        private Projectile CarrotFarmer;
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
@@ -563,30 +563,30 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void FlyAI()
         {
-            float speed = 7f;
+            float speed = 10f;
             if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
-            {
-                speed = 10f;
-            }
-            if (npc.life < (npc.lifeMax * .7f))
-            {
-                speed = 10.5f;
-            }
-            if (npc.life < (npc.lifeMax * .65f))
             {
                 speed = 11f;
             }
-            if (npc.life < (npc.lifeMax * .4f))
-            {
-                speed = 11.5f;
-            }
-            if (npc.life < (npc.lifeMax * .25f))
+            if (npc.life < (npc.lifeMax * .7f))
             {
                 speed = 12f;
             }
+            if (npc.life < (npc.lifeMax * .65f))
+            {
+                speed = 13f;
+            }
+            if (npc.life < (npc.lifeMax * .4f))
+            {
+                speed = 14f;
+            }
+            if (npc.life < (npc.lifeMax * .25f))
+            {
+                speed = 15f;
+            }
             if (npc.life < (npc.lifeMax * .1f))
             {
-                speed = 12.5f;
+                speed = 16f;
             }
             BaseAI.AISpaceOctopus(npc, ref internalAI, .25f, speed, 300, 0, null);
             internalAI[4] = 0;

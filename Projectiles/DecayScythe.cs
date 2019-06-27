@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -42,6 +43,8 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
+
+            Color color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, AAColor.CursedInferno, AAColor.Ichor);
             if (Main.myPlayer == projectile.owner)
             {
                 if (!player.channel || player.noItems || player.CCed)
@@ -49,7 +52,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     projectile.Kill();
                 }
             }
-            Lighting.AddLight(projectile.Center, 0.52f, .40f, .80f);     //this is the projectile light color R, G, B (Red, Green, Blue)
+            Lighting.AddLight(projectile.Center, color.R / 255, color.G / 255, color.B / 255);     //this is the projectile light color R, G, B (Red, Green, Blue)
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;  //this is the projectile width sptrite direction from the playr
             projectile.spriteDirection = player.direction;
@@ -69,20 +72,20 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             if (Main.netMode != 1)
             {
                 projectile.ai[1]++;
-                if (projectile.ai[1] > 30)
+                if (projectile.ai[1] > 20)
                 {
                     projectile.ai[1] = 0;
-                    Vector2 vector = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
-                    float num22 = Main.mouseX + Main.screenPosition.X - vector.X;
-                    float num23 = Main.mouseY + Main.screenPosition.Y - vector.Y;
+                    Vector2 vector = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
+                    float num22 = (float)Main.mouseX + Main.screenPosition.X - vector.X;
+                    float num23 = (float)Main.mouseY + Main.screenPosition.Y - vector.Y;
                     if (player.gravDir == -1f)
                     {
-                        num23 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector.Y;
+                        num23 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector.Y;
                     }
-                    float num24 = (float)Math.Sqrt(num22 * num22 + num23 * num23);
+                    float num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
                     if ((float.IsNaN(num22) && float.IsNaN(num23)) || (num22 == 0f && num23 == 0f))
                     {
-                        num22 = player.direction;
+                        num22 = (float)player.direction;
                         num23 = 0f;
                         num24 = 10;
                     }
@@ -92,7 +95,6 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     }
                     num22 *= num24;
                     num23 *= num24;
-                    Main.PlaySound(SoundID.Item71, (int)projectile.Center.X, (int)projectile.Center.Y);
                     int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, mod.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
                     Main.projectile[a].netUpdate = true;
 

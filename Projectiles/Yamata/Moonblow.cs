@@ -178,7 +178,7 @@ namespace AAMod.Projectiles.Yamata
                 }
                 if (projectile.owner == Main.myPlayer)
                 {
-                    int num626 = 2;
+                    int num626 = 3;
                     if (Main.rand.Next(10) == 0)
                     {
                         num626++;
