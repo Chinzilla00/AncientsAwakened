@@ -210,7 +210,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 8f;
-                int num658 = mod.ProjectileType<SummonBlast>();
+                int num658 = mod.ProjectileType<SummonShot>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

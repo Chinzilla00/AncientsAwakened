@@ -1380,7 +1380,7 @@
     <Compile Include="Items\Summoning\Minions\Terra\Minion2.cs" />
     <Compile Include="Items\Summoning\Minions\Terra\Minion3.cs" />
     <Compile Include="Items\Summoning\Minions\Terra\Minion4Tail.cs" />
-    <Compile Include="Items\Summoning\Minions\Terra\SummonBlast.cs" />
+    <Compile Include="Items\Summoning\Minions\Terra\SummonShot.cs" />
     <Compile Include="Items\Summoning\Minions\TrueHallowedPrism.cs" />
     <Compile Include="Items\Summoning\Minions\TruePrismshot.cs" />
     <Compile Include="Items\Summoning\OmenStaff.cs" />
@@ -4865,7 +4865,7 @@
     <Content Include="Items\Summoning\Minions\Terra\Minion4Body.png" />
     <Content Include="Items\Summoning\Minions\Terra\Minion4Head.png" />
     <Content Include="Items\Summoning\Minions\Terra\Minion4Tail.png" />
-    <Content Include="Items\Summoning\Minions\Terra\SummonBlast.png" />
+    <Content Include="Items\Summoning\Minions\Terra\SummonShot.png" />
     <Content Include="Items\Summoning\OmenStaff.png" />
     <Content Include="Items\Summoning\TerraGauntlet.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />

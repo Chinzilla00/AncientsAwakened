@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions.Terra
 {
-    public class SummonBlast : ModProjectile
+    public class SummonShot : ModProjectile
     {
     	
     	public override void SetStaticDefaults()
