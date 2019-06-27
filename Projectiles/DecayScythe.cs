@@ -30,8 +30,8 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 
         public override void SetDefaults()
         {
-            projectile.width = 104;
-            projectile.height = 96;
+            projectile.width = 140;
+            projectile.height = 140;
             projectile.friendly = true;
             projectile.penetrate = -1; 
             projectile.tileCollide = false;
@@ -72,17 +72,17 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                 if (projectile.ai[1] > 30)
                 {
                     projectile.ai[1] = 0;
-                    Vector2 vector = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
-                    float num22 = (float)Main.mouseX + Main.screenPosition.X - vector.X;
-                    float num23 = (float)Main.mouseY + Main.screenPosition.Y - vector.Y;
+                    Vector2 vector = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
+                    float num22 = Main.mouseX + Main.screenPosition.X - vector.X;
+                    float num23 = Main.mouseY + Main.screenPosition.Y - vector.Y;
                     if (player.gravDir == -1f)
                     {
-                        num23 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector.Y;
+                        num23 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector.Y;
                     }
-                    float num24 = (float)Math.Sqrt((double)(num22 * num22 + num23 * num23));
+                    float num24 = (float)Math.Sqrt(num22 * num22 + num23 * num23);
                     if ((float.IsNaN(num22) && float.IsNaN(num23)) || (num22 == 0f && num23 == 0f))
                     {
-                        num22 = (float)player.direction;
+                        num22 = player.direction;
                         num23 = 0f;
                         num24 = 10;
                     }

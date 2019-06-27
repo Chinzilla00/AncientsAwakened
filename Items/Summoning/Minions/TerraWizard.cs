@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-    public class TerraDemon : ModProjectile
+    public class TerraWizard : ModProjectile
     {
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terra Guardian");
-            Main.projFrames[projectile.type] = 5;
+            DisplayName.SetDefault("Terra Mage");
+            Main.projFrames[projectile.type] = 6;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -45,7 +45,7 @@ namespace AAMod.Items.Summoning.Minions
                 projectile.frameCounter = 0;
                 projectile.frame += 1;
             }
-            if (projectile.frame > 4)
+            if (projectile.frame > 5)
             {
                 projectile.frame = 0;
             }
@@ -61,7 +61,8 @@ namespace AAMod.Items.Summoning.Minions
                 int num501 = 50;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, 6, 0f, 0f, 0, default(Color), 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, 107, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[num503].noGravity = true;
                     Main.dust[num503].velocity *= 2f;
                     Main.dust[num503].scale *= 1.15f;
                 }
@@ -76,11 +77,11 @@ namespace AAMod.Items.Summoning.Minions
             {
                 projectile.frame = 0;
             }
-            float num = (float)Main.rand.Next(90, 111) * 0.01f;
+            float num = Main.rand.Next(90, 111) * 0.01f;
             num *= Main.essScale;
             Lighting.AddLight(projectile.Center, 1f * num, 0f * num, 0.15f * num);
             projectile.rotation = projectile.velocity.X * 0.04f;
-            if ((double)Math.Abs(projectile.velocity.X) > 0.2)
+            if (Math.Abs(projectile.velocity.X) > 0.2)
             {
                 projectile.spriteDirection = -projectile.direction;
             }
@@ -91,8 +92,8 @@ namespace AAMod.Items.Summoning.Minions
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("RedDevil"));
-                if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < (float)projectile.width)
+                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("TerraWizard"));
+                if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
                     {
@@ -213,8 +214,8 @@ namespace AAMod.Items.Summoning.Minions
                 }
                 if (num651 > 2000f)
                 {
-                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+                    projectile.position.X = Main.player[projectile.owner].Center.X - (projectile.width / 2);
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (projectile.height / 2);
                     projectile.netUpdate = true;
                 }
                 if (num651 > 70f)
@@ -231,7 +232,7 @@ namespace AAMod.Items.Summoning.Minions
             }
             if (projectile.ai[1] > 0f)
             {
-                projectile.ai[1] += (float)Main.rand.Next(1, 4);
+                projectile.ai[1] += Main.rand.Next(1, 4);
             }
             if (projectile.ai[1] > 80f)
             {
@@ -241,7 +242,7 @@ namespace AAMod.Items.Summoning.Minions
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 8f;
-                int num658 = mod.ProjectileType<TDevilShot>();
+                int num658 = mod.ProjectileType<TerraBlast>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

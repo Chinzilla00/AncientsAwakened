@@ -11,7 +11,7 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Terra Staff");
-            Tooltip.SetDefault(@"Summons a Terra Demon to fight with you");
+            Tooltip.SetDefault(@"Summons a Terra Wizard to fight with you");
         }
 
         public override void SetDefaults()
@@ -28,9 +28,9 @@ namespace AAMod.Items.Summoning
             item.knockBack = 3;
             item.rare = 4;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType("TerraDemon");
+            item.shoot = mod.ProjectileType("TerraWizard");
             item.shootSpeed = 10f;
-            item.buffType = mod.BuffType("TerraDemon");
+            item.buffType = mod.BuffType("TerraWizard");
             item.autoReuse = true;
             item.value = Item.sellPrice(0, 20, 0, 0);
         }

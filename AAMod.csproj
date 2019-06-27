@@ -1360,6 +1360,7 @@
     <Compile Include="Items\Summoning\Minions\HydraProj.cs" />
     <Compile Include="Items\Summoning\Minions\IceBall.cs" />
     <Compile Include="Items\Summoning\Minions\MadnessLaser.cs" />
+    <Compile Include="Items\Summoning\Minions\TerraBlast.cs" />
     <Compile Include="Items\Summoning\Minions\Prismshot.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeMinion.cs" />
     <Compile Include="Items\Summoning\Minions\ProbeShot.cs" />
@@ -1368,8 +1369,7 @@
     <Compile Include="Items\Summoning\Minions\StoneHydra.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinion.cs" />
     <Compile Include="Items\Summoning\Minions\EnderMinionEX.cs" />
-    <Compile Include="Items\Summoning\Minions\TDevilShot.cs" />
-    <Compile Include="Items\Summoning\Minions\TerraDemon.cs" />
+    <Compile Include="Items\Summoning\Minions\TerraWizard.cs" />
     <Compile Include="Items\Summoning\Minions\MadnessElemental.cs" />
     <Compile Include="Items\Summoning\Minions\TrueHallowedPrism.cs" />
     <Compile Include="Items\Summoning\Minions\TruePrismshot.cs" />
@@ -1938,6 +1938,8 @@
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\VoidMagicEX.cs" />
+    <Compile Include="Projectiles\VoidMagic.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
     <Compile Include="Projectiles\ChaosChain.cs" />
     <Compile Include="Projectiles\ChaosChainEX.cs" />
@@ -4834,6 +4836,8 @@
     <Content Include="Items\Summoning\Minions\CrowMinion.png" />
     <Content Include="Items\Summoning\Minions\DoomiteProbe.png" />
     <Content Include="Items\Summoning\Minions\DoomiteProbeC.png" />
+    <Content Include="Items\Summoning\Minions\TerraBlast.png" />
+    <Content Include="Items\Summoning\Minions\TerraWizard.png" />
     <Content Include="Items\Summoning\OmenStaff.png" />
     <Content Include="Items\Thorium\Healer\CarrotFarmer.png" />
     <Content Include="Items\Thorium\Healer\StormDefibulator.png" />
@@ -5870,8 +5874,6 @@
     <Content Include="Items\Summoning\Minions\SkullMinion.png" />
     <Content Include="Items\Summoning\Minions\SkullShot.png" />
     <Content Include="Items\Summoning\Minions\StoneHydra.png" />
-    <Content Include="Items\Summoning\Minions\TDevilShot.png" />
-    <Content Include="Items\Summoning\Minions\TerraDemon.png" />
     <Content Include="Items\Summoning\Minions\TrueHallowedPrism.png" />
     <Content Include="Items\Summoning\Minions\TruePrismshot.png" />
     <Content Include="Items\Summoning\ProbeControlUnit.png" />

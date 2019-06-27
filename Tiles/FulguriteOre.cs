@@ -21,9 +21,7 @@ namespace AAMod.Tiles
             soundType = 21;
             drop = mod.ItemType("FulguriteShard");   //put your CustomBlock name
             dustType = mod.DustType("FulguriteDust");
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Fulgurite Ore");
-            AddMapEntry(new Color(204, 0, 150), name);
+            AddMapEntry(new Color(204, 0, 150));
 			minPick = 200;
         }
 

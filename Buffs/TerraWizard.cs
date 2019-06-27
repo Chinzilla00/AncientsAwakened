@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-    public class TerraDemon: ModBuff
+    public class TerraWizard : ModBuff
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Terra Demon");
-			Description.SetDefault("Like a regular devil, but green");
+			DisplayName.SetDefault("Terra Wizard");
+			Description.SetDefault("Magic");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			if (player.ownedProjectileCounts[mod.ProjectileType("TerraDemon")] > 0)
+			if (player.ownedProjectileCounts[mod.ProjectileType("TerraWizard")] > 0)
 			{
 				modPlayer.TerraMinion = true;
 			}
