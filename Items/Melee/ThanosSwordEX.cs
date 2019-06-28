@@ -8,7 +8,8 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Thanoscopter Blades");
-            Tooltip.SetDefault(@"'I am...inevitable'
+            Tooltip.SetDefault(@"Right click to throw the blade as a boomerang
+'I am...inevitable'
 Mad Titan's Dualblade EX");
         }
 

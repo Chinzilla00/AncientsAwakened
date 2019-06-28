@@ -15,6 +15,7 @@ Wand of Sparking EX");
 
         public override void SetDefaults()
         {
+            item.mana = 8;
             item.width = 74;
             item.height = 34;
             item.ranged = true;

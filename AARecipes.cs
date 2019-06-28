@@ -156,6 +156,14 @@ namespace AAMod
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(ItemID.BrownDye);
             recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.SoulofLight, 15);
+            recipe.AddIngredient(ItemID.Pearlwood, 5);
+            recipe.AddIngredient(ItemID.CrystalShard, 30);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.RodofDiscord);
+            recipe.AddRecipe();
             #endregion
         }
 
