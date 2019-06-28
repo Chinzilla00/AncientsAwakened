@@ -72,7 +72,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            return false;
+            scale *= 2;
+            return true;
         }
 
         public override void NPCLoot()

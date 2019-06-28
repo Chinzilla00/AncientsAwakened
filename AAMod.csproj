@@ -1953,6 +1953,8 @@
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
+    <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
+    <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
     <Compile Include="Projectiles\VoidMagicEX.cs" />
     <Compile Include="Projectiles\VoidMagic.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
@@ -2073,9 +2075,6 @@
     <Compile Include="Projectiles\Shen\ChaosSlayerSwordRedEX.cs" />
     <Compile Include="Projectiles\Shen\CosmicBlow.cs" />
     <Compile Include="Projectiles\Shen\DiscordBeam.cs" />
-    <Compile Include="Projectiles\Shen\FlamingTwilightP.cs" />
-    <Compile Include="Projectiles\Shen\FlamingTwilightP2.cs" />
-    <Compile Include="Projectiles\Shen\FlamingTwilightPD.cs" />
     <Compile Include="Projectiles\Shen\Meteor.cs" />
     <Compile Include="Projectiles\Shen\MeteorBlue.cs" />
     <Compile Include="Projectiles\Shen\MeteorBoom.cs" />
@@ -2317,11 +2316,8 @@
     <Compile Include="Projectiles\SandPro.cs" />
     <Compile Include="Projectiles\Serpent\BB.cs" />
     <Compile Include="Projectiles\Serpent\SS.cs" />
-    <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Serpent\IceArrow.cs" />
-    <Compile Include="Projectiles\Serpent\SerpentBody.cs" />
     <Compile Include="Projectiles\Serpent\SerpentSpike.cs" />
-    <Compile Include="Projectiles\Serpent\SerpentTail.cs" />
     <Compile Include="Projectiles\Serpent\Sting.cs" />
     <Compile Include="Projectiles\SpookerangP.cs" />
     <Compile Include="Projectiles\Squirt.cs" />
@@ -2754,7 +2750,6 @@
     <Content Include="Backgrounds\DemonSun.png" />
     <Content Include="Backgrounds\DemonSunEclipse.png" />
     <Content Include="Backgrounds\Echo.png" />
-    <Content Include="Backgrounds\fog.png" />
     <Content Include="Backgrounds\FogTex.png" />
     <Content Include="Backgrounds\InfernoBG.png" />
     <Content Include="Backgrounds\InfernoCavern.png" />
@@ -4846,6 +4841,8 @@
     <Content Include="Items\Ranged\DynaskullJavelin.png" />
     <Content Include="Items\Ranged\Firebuster.png" />
     <Content Include="Items\Ranged\FossilBoneslinger.png" />
+    <Content Include="Items\Ranged\MidasBlaster.png" />
+    <Content Include="Items\Ranged\PurityString.png" />
     <Content Include="Items\Ranged\Shockwave.png" />
     <Content Include="Items\Ranged\Winterbreak.png" />
     <Content Include="Items\Ranged\Incapacitator.png" />
@@ -6680,6 +6677,7 @@
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\Ryusei.png" />
     <Content Include="Projectiles\Ryusei_Chain.png" />
+    <Content Include="Projectiles\Shen\DiscordianInfernoF.png" />
     <Content Include="Projectiles\SoonTM.png" />
     <Content Include="Projectiles\Spark2.png" />
     <Content Include="Projectiles\Spark3.png" />
@@ -6735,9 +6733,6 @@
     <Content Include="Projectiles\Shen\ChaosSlayerSwordRedEX.png" />
     <Content Include="Projectiles\Shen\CosmicBlow.png" />
     <Content Include="Projectiles\Shen\DiscordBeam.png" />
-    <Content Include="Projectiles\Shen\FlamingTwilightP.png" />
-    <Content Include="Projectiles\Shen\FlamingTwilightP2.png" />
-    <Content Include="Projectiles\Shen\FlamingTwilightPD.png" />
     <Content Include="Projectiles\Shen\Meteor.png" />
     <Content Include="Projectiles\Shen\MeteorBlue.png" />
     <Content Include="Projectiles\Shen\MeteorBoom.png" />

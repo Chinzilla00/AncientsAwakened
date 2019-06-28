@@ -209,11 +209,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (Main.netMode != 1)
                 {
                     internalAI[0]++;
-                    if (internalAI[0] < 120)
-                    {
-                        npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 20f) + 1.57f;
-                    }
-                    else
+                    if (internalAI[0] >= 120)
                     {
                         MoveToPoint(MovePoint);
 
@@ -228,7 +224,11 @@ namespace AAMod.NPCs.Bosses.Truffle
                     }
                 }
             }
-            
+            if (internalAI[1] != AISTATE_ROCKET)
+            {
+                npc.rotation = 0;
+            }
+
         }
 
         public float[] shootAI = new float[4];

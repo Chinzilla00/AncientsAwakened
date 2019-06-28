@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Shen;
+using AAMod.NPCs.Bosses.Rajah;
 using AAMod.NPCs.Enemies.Terrarium.PreHM;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
 using AAMod.NPCs.Enemies.Terrarium.PostPlant;
@@ -584,14 +585,14 @@ namespace AAMod
                 {
                     Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                    SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                    SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
 
                 }
                 if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                 {
                     Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                    SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                    SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
                 }
                 if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
                 {
@@ -1145,127 +1146,59 @@ namespace AAMod
         }
 
 
-        public static void SpawnRajah(Player player, int bossType, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnRajah(Player player, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
             if (npcCenter == default(Vector2))
                 npcCenter = player.Center;
+            Mod mod = AAMod.instance;
+            int RajahType = mod.NPCType<Rajah>();
+            if (NPC.killCount[NPCID.Bunny] >= 1000)
+            {
+                RajahType = mod.NPCType<SupremeRajah>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 900)
+            {
+                RajahType = mod.NPCType<Rajah9>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 800)
+            {
+                RajahType = mod.NPCType<Rajah8>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 700)
+            {
+                RajahType = mod.NPCType<Rajah7>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] > 600)
+            {
+                RajahType = mod.NPCType<Rajah6>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 500)
+            {
+                RajahType = mod.NPCType<Rajah5>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 400)
+            {
+                RajahType = mod.NPCType<Rajah4>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 300)
+            {
+                RajahType = mod.NPCType<Rajah3>();
+            }
+            else if (NPC.killCount[NPCID.Bunny] >= 200)
+            {
+                RajahType = mod.NPCType<Rajah2>();
+            }
             if (Main.netMode != 1)
             {
-                if (NPC.AnyNPCs(bossType)) { return; }
-                int RajahLevel;
-                if (NPC.killCount[NPCID.Bunny] >= 1000)
-                {
-                    RajahLevel = 10;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 900)
-                {
-                    RajahLevel = 9;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 800)
-                {
-                    RajahLevel = 8;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 700)
-                {
-                    RajahLevel = 7;
-                }
-                else if (NPC.killCount[NPCID.Bunny] > 600)
-                {
-                    RajahLevel = 6;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 500)
-                {
-                    RajahLevel = 5;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 400)
-                {
-                    RajahLevel = 4;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 300)
-                {
-                    RajahLevel = 3;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 200)
-                {
-                    RajahLevel = 2;
-                }
-                else
-                {
-                    RajahLevel = 1;
-                }
-                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0, 0, RajahLevel, player.whoAmI);
+                if (NPC.AnyNPCs(RajahType)) { return; }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, RajahType, 0, 0, 0, player.whoAmI);
                 Main.npc[npcID].Center = npcCenter;
-
-                if (NPC.killCount[NPCID.Bunny] >= 1000)
-                {
-                    Main.npc[npcID].damage = 450;
-                    Main.npc[npcID].defense = 350;
-                    Main.npc[npcID].lifeMax = 4000000;
-                    Main.npc[npcID].life = 4000000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 900)
-                {
-                    Main.npc[npcID].damage = 400;
-                    Main.npc[npcID].defense = 290;
-                    Main.npc[npcID].lifeMax = 1000000;
-                    Main.npc[npcID].life = 1000000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 800)
-                {
-                    Main.npc[npcID].damage = 370;
-                    Main.npc[npcID].defense = 270;
-                    Main.npc[npcID].lifeMax = 900000;
-                    Main.npc[npcID].life = 900000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 700)
-                {
-                    Main.npc[npcID].damage = 340;
-                    Main.npc[npcID].defense = 250;
-                    Main.npc[npcID].lifeMax = 700000;
-                    Main.npc[npcID].life = 700000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] > 600)
-                {
-                    Main.npc[npcID].damage = 300;
-                    Main.npc[npcID].defense = 230;
-                    Main.npc[npcID].lifeMax = 500000;
-                    Main.npc[npcID].life = 500000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 500)
-                {
-                    Main.npc[npcID].damage = 250;
-                    Main.npc[npcID].defense = 210;
-                    Main.npc[npcID].lifeMax = 300000;
-                    Main.npc[npcID].life = 300000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 400)
-                {
-                    Main.npc[npcID].damage = 200;
-                    Main.npc[npcID].defense = 180;
-                    Main.npc[npcID].lifeMax = 200000;
-                    Main.npc[npcID].life = 200000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 300)
-                {
-                    Main.npc[npcID].damage = 180;
-                    Main.npc[npcID].defense = 150;
-                    Main.npc[npcID].lifeMax = 100000;
-                    Main.npc[npcID].life = 100000;
-                }
-                else if (NPC.killCount[NPCID.Bunny] >= 200)
-                {
-                    Main.npc[npcID].damage = 160;
-                    Main.npc[npcID].defense = 130;
-                    Main.npc[npcID].lifeMax = 80000;
-                    Main.npc[npcID].life = 80000;
-                }
-                Main.npc[npcID].ai[1] = RajahLevel;
                 Main.npc[npcID].netUpdate = true;
             }
             else
             {
                 //I have no idea how to convert this to the standard system so im gonna post this method too lol
-                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
+                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)RajahType, (bool)spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, (string)overrideDisplayName, (bool)namePlural);
             }
         }
     }

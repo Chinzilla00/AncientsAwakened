@@ -42,6 +42,10 @@ namespace AAMod.Projectiles
                 projectile.usesLocalNPCImmunity = true;
                 projectile.localNPCHitCooldown = 5;
             }
+            else
+            {
+                projectile.penetrate = 1;
+            }
 
             int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1) - projectile.velocity, 2, 2, dustType, 0f, 0f, 100, Color.White, 1.2f);
             Main.dust[dustID].velocity *= 0f;

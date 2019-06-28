@@ -209,6 +209,12 @@ namespace AAMod.NPCs.Bosses.Orthrus
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
         }
 
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
+
         public float moveSpeed = 16f; 
         public void MoveToPoint(Vector2 point)
         {

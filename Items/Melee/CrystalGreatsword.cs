@@ -12,8 +12,8 @@ namespace AAMod.Items.Melee   //where is located
             item.melee = true;
             item.width = 96;
             item.height = 96;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 27;
+            item.useAnimation = 27;
             item.useStyle = 1;
             item.knockBack = 6;
             item.value = 50000;
@@ -25,18 +25,18 @@ namespace AAMod.Items.Melee   //where is located
             item.shootSpeed = 10f;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Crystal Greatsword");
-      Tooltip.SetDefault("Its green");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Order Greatsword");
+          Tooltip.SetDefault("Its green");
+        }
 
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(ItemID.PixieDust, 15);   //you need 1 DirtBlock
-			recipe.AddIngredient(ItemID.CrystalShard, 20);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddIngredient(null, "CrystalShortsword");   //you need 1 DirtBlock
+			recipe.AddIngredient(null, "TerraCrystal");
+            recipe.AddTile(TileID.MythrilAnvil);  
             recipe.SetResult(this);
             recipe.AddRecipe();
 

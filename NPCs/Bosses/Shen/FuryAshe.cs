@@ -477,52 +477,46 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void FireMagic(NPC npc, Vector2 velocity)
         {
+            
             Player player = Main.player[npc.target];
             if (internalAI[0] == 1)
             {
-                int speedX = 8;
-                int speedY = 8;
-                float spread = 75f * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                double deltaAngle = spread / 6f;
-                double offsetAngle;
-                for (int i = 0; i < 4; i++)
+                if (Main.netMode != 1)
                 {
-                    offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<DiscordianInferno>(), npc.damage / 2, 4);
+                    for (int m = 0; m < 3; m++)
+                    {
+                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+
+                        if (player.active && !player.dead)
+                        {
+                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                            vel.Y += npc.velocity.Y;
+                            infernoPos += npc.Center;
+                            infernoPos.Y -= 40;
+                        }
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, mod.ProjectileType<DiscordianInferno>(), npc.damage / 2, 0f, Main.myPlayer, 0f, 0f);
+                        Main.projectile[projectile].velocity = vel;
+                        Main.projectile[projectile].netUpdate = true;
+                    }
                 }
             }
             else if(internalAI[0] == 2)
             {
-                int speedX = 6;
-                int speedY = 6;
-                float spread = 75f * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                double deltaAngle = spread / 6f;
-                double offsetAngle;
-                for (int i = 0; i < 3; i++)
-                {
-                    offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<ShenMeteor1>(), npc.damage / 2, 4);
-                }
+
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref shootAI[0], 5, npc.damage / 2, 12);
             }
             else if(internalAI[0] == 3)
             {
-                float spread = 60f * 0.0174f;
-                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
-                double deltaAngle = spread / (Main.expertMode ? 5 : 4);
-                double offsetAngle;
-                for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
-                {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<ShenRain>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
-                }
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenFirebomb>(), npc.damage, 3, 5f, 0, 0, 0);
             }
             else if (internalAI[0] == 4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenStorm>(), npc.damage, 3, 5f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenStorm>(), npc.damage, 3, 5f, 0, 0, 0);
             }
         }
 
@@ -603,9 +597,6 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/FuryAshe_Glow2");
-            Texture2D eyeTex = mod.GetTexture("Glowmasks/FuryAshe_Glow1");
-
             Texture2D RingTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing1");
             Texture2D RingTex1 = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing2");
             Texture2D RitualTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRitual");

@@ -293,7 +293,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.rotation = 0;
             npc.position += Body.position - Body.oldPosition;
         }
-        
+
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
+
         public void Attacks(float AttackType)
         {
             Player player = Main.player[npc.target];

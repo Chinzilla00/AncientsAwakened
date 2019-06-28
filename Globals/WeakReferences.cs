@@ -197,6 +197,22 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Orthrus"));
 
+                // Techno Truffle
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/SBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/SBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/SBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Violet,
+                    Color.Violet,
+                    Color.Violet);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("TechnoTruffle"));
+
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
