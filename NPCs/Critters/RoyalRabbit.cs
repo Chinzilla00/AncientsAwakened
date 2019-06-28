@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Critters
         }
         public override void SetDefaults()
         {
+            NPCID.Sets.TownCritter[npc.type] = true;
             npc.width = 28;
             npc.height = 24;
             npc.defense = 0;
