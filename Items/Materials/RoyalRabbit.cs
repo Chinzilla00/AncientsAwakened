@@ -50,14 +50,14 @@ namespace AAMod.Items.Materials
                         {
                             Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), player.Center);
-                            AAModGlobalNPC.SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
+                            AAModGlobalNPC.SpawnRajah(player, true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
 
                         }
                         if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                         {
-                            Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!", 107, 137, 179);
+                            Main.NewText("YOU WILL PAY FOR YOUR SINS, " + player.name.ToUpper() + "!", 107, 137, 179);
                             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), player.Center);
-                            AAModGlobalNPC.SpawnRajah(player, mod.NPCType<NPCs.Bosses.Rajah.Rajah>(), true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
+                            AAModGlobalNPC.SpawnRajah(player, true, new Vector2(player.Center.X, player.Center.Y - 2000), "Rajah Rabbit");
                         };
                     }
                 }

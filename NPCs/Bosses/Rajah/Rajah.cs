@@ -721,6 +721,10 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             potionType = ItemID.GreaterHealingPotion;
             AAWorld.downedRajah = true;
+            if (npc.type == mod.NPCType<SupremeRajah>())
+            {
+                AAWorld.downedRajahsRevenge = true;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

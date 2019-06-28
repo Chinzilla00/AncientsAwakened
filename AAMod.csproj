@@ -4745,6 +4745,7 @@
     <Content Include="Items\Dev\UmbralReaper.png" />
     <Content Include="Items\Dev\UmbralReaperEX.png" />
     <Content Include="Items\Magic\PrismLaser.png" />
+    <Content Include="Items\Materials\PhantomSteel.png" />
     <Content Include="Items\Melee\ScytheOfDecayOld.png" />
     <Content Include="Items\Melee\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
