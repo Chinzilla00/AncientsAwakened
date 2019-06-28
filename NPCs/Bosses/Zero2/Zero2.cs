@@ -303,7 +303,7 @@ namespace AAMod.NPCs.Bosses.Zero2
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     if (Main.netMode != 1)
                     {
-                        int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
                     }
                 }
                 if (npc.ai[2] == 300 || npc.ai[2] == 400)
@@ -314,8 +314,8 @@ namespace AAMod.NPCs.Bosses.Zero2
                     {
                         if (Main.netMode != 1)
                         {
-                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("ZeroBlast"), 85, 3);
-                            Main.projectile[projID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), ((float)m / (float)pieCut) * 6.28f);
+                            Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
                         }
                     }
                 }
@@ -327,8 +327,8 @@ namespace AAMod.NPCs.Bosses.Zero2
                     {
                         if (Main.netMode != 1)
                         {
-                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("ZeroBlast"), 85, 3);
-                            Main.projectile[projID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), ((float)m / (float)pieCut) * 6.28f);
+                            Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
                         }
                     }
                 }
@@ -336,11 +336,11 @@ namespace AAMod.NPCs.Bosses.Zero2
                 {
                     if (Main.rand.Next(10) == 0)
                     {
-                        Main.PlaySound(SoundID.Item74, (int)npc.position.X, (int)npc.position.Y); if (Main.netMode != 1)
-                            if (Main.netMode != 1)
-                            {
-                                int ProjID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
-                            }
+                        Main.PlaySound(SoundID.Item74, (int)npc.position.X, (int)npc.position.Y);
+                        if (Main.netMode != 1)
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
+                        }
                     }
                 }
                 if (npc.ai[2] >= 600)
