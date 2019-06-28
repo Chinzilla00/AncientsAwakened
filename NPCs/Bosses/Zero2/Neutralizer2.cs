@@ -147,8 +147,8 @@ namespace AAMod.NPCs.Bosses.Zero2
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/NeutralizerZ");
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Neutralizer2_Glow");
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 
         public override void BossHeadRotation(ref float rotation)

@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
             npc.noGravity = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Zero");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Zero");
             npc.noTileCollide = true;
             npc.knockBackResist = -1f;
             npc.boss = true;
@@ -192,9 +192,6 @@ namespace AAMod.NPCs.Bosses.Zero2
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
-
-                writer.Write(teleport);
-                writer.Write(teleportTimer);
             }
         }
 
@@ -207,22 +204,17 @@ namespace AAMod.NPCs.Bosses.Zero2
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
-
-                teleport = reader.ReadBool();
-                teleportTimer = reader.ReadInt32();
             }
         }
 
         public bool saythelinezero = false;
-        public bool ArmsGone = false;
         public float ShieldScale = 0.5f;
         public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
-        public bool teleport;
-        public int teleportTimer;
 
         public override void AI()
         {
+            npc.TargetClosest(false);
             Player player = Main.player[npc.target];
 
             RingRoatation += 0.03f;
@@ -283,15 +275,18 @@ namespace AAMod.NPCs.Bosses.Zero2
                     npc.netUpdate = true;
                 }
             }
-
             if (npc.ai[1] == 0)
             {
-                ArmsGone = false;
                 npc.dontTakeDamage = true;
                 npc.chaseable = false;
                 npc.damage = 0;
                 saythelinezero = false;
-
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+                npc.damage = 160;
                 npc.ai[2]++;
                 if (npc.ai[2] == 60 || npc.ai[2] == 90 || npc.ai[2] == 120 || npc.ai[2] == 150 || npc.ai[2] == 180)
                 {
@@ -301,10 +296,7 @@ namespace AAMod.NPCs.Bosses.Zero2
                     int type = mod.ProjectileType("ZeroBeam1");  //put your projectile
                     Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 33);
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                    if (Main.netMode != 1)
-                    {
-                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
-                    }
+                    Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
                 }
                 if (npc.ai[2] == 300 || npc.ai[2] == 400)
                 {
@@ -312,11 +304,8 @@ namespace AAMod.NPCs.Bosses.Zero2
                     int pieCut = 4;
                     for (int m = 0; m < pieCut; m++)
                     {
-                        if (Main.netMode != 1)
-                        {
-                            Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
-                        }
+                        Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
                     }
                 }
                 if (npc.ai[2] == 350)
@@ -325,11 +314,9 @@ namespace AAMod.NPCs.Bosses.Zero2
                     int pieCut = 8;
                     for (int m = 0; m < pieCut; m++)
                     {
-                        if (Main.netMode != 1)
-                        {
-                            Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
-                        }
+
+                        Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
                     }
                 }
                 if (npc.ai[2] >= 500 && npc.ai[2] < 580)
@@ -337,23 +324,13 @@ namespace AAMod.NPCs.Bosses.Zero2
                     if (Main.rand.Next(10) == 0)
                     {
                         Main.PlaySound(SoundID.Item74, (int)npc.position.X, (int)npc.position.Y);
-                        if (Main.netMode != 1)
-                        {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
-                        }
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
                     }
                 }
                 if (npc.ai[2] >= 600)
                 {
                     npc.ai[2] = 0;
                 }
-            }
-            else
-            {
-                ArmsGone = true;
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
-                npc.damage = 160;
                 if (ShieldScale > 0)
                 {
                     ShieldScale -= .07f;
@@ -363,51 +340,12 @@ namespace AAMod.NPCs.Bosses.Zero2
                     ShieldScale = 0;
                 }
             }
-            // Teleporting
-            float distance = npc.Distance(Main.player[npc.target].Center);
-            if (distance >= 1100)
-            {
-                if (!teleport)
-                {
-                    teleport = true;
-                    npc.netUpdate2 = true;
-                }
-            }
-            if (teleport == true)
-            {
-                npc.netUpdate = true;
-                teleportTimer++;
-                if (teleportTimer == 1)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        int choice = Main.rand.Next(2);
-                        if (choice == 0)
-                        {
-                            Vector2 newPos = new Vector2(Main.rand.Next(-400, -250), Main.rand.Next(-200, 100));
-                            npc.Center = Main.player[npc.target].Center + newPos;
-                            npc.netUpdate = true;
-                        }
-                        if (choice == 1)
-                        {
-                            Vector2 newPos = new Vector2(Main.rand.Next(250, 400), Main.rand.Next(-200, 100));
-                            npc.Center = Main.player[npc.target].Center + newPos;
-                            npc.netUpdate = true;
-                        }
-                    }
-                }
-                if (teleportTimer >= 2)
-                {
-                    teleport = false;
-                    teleportTimer = 0;
-                    npc.netUpdate = true;
-                }
-            }
+
         }
 
         public override void FindFrame(int frameHeight)
         {
-            if (ArmsGone)
+            if (npc.ai[1] == 0)
             {
                 npc.frame.Y = 0;
             }
