@@ -87,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Zero2
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), -1f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;

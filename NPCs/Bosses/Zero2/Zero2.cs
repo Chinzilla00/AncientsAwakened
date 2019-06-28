@@ -229,8 +229,6 @@ namespace AAMod.NPCs.Bosses.Zero2
 
             RingRoatation += 0.03f;
 
-            
-
             if (internalAI[0] == 0 && Main.netMode != 1)
             {
                 for (int m = 0; m < WeaponCount; m++)
@@ -261,6 +259,33 @@ namespace AAMod.NPCs.Bosses.Zero2
                 npc.ai[1] = 0;
             }
 
+            if (ShieldScale < .5f)
+            {
+                ShieldScale += .05f;
+            }
+            if (ShieldScale > .5f)
+            {
+                ShieldScale = .5f;
+            }
+            if (internalAI[1] == 0)
+            {
+                npc.velocity.Y += 0.003f;
+                if (npc.velocity.Y > .3f)
+                {
+                    internalAI[1] = 1f;
+                    npc.netUpdate = true;
+                }
+            }
+            else if (internalAI[1] == 1)
+            {
+                npc.velocity.Y -= 0.003f;
+                if (npc.velocity.Y < -.3f)
+                {
+                    internalAI[1] = 0f;
+                    npc.netUpdate = true;
+                }
+            }
+
             if (npc.ai[1] == 0)
             {
                 ArmsGone = false;
@@ -268,32 +293,7 @@ namespace AAMod.NPCs.Bosses.Zero2
                 npc.chaseable = false;
                 npc.damage = 0;
                 saythelinezero = false;
-                if (ShieldScale < .5f)
-                {
-                    ShieldScale += .05f;
-                }
-                if (ShieldScale > .5f)
-                {
-                    ShieldScale = .5f;
-                }
-                if (internalAI[1] == 0)
-                {
-                    npc.velocity.Y += 0.003f;
-                    if (npc.velocity.Y > .3f)
-                    {
-                        internalAI[1] = 1f;
-                        npc.netUpdate = true;
-                    }
-                }
-                else if (internalAI[1] == 1)
-                {
-                    npc.velocity.Y -= 0.003f;
-                    if (npc.velocity.Y < -.3f)
-                    {
-                        internalAI[1] = 0f;
-                        npc.netUpdate = true;
-                    }
-                }
+                
                 npc.ai[2]++;
                 if (npc.ai[2] == 60 || npc.ai[2] == 90 || npc.ai[2] == 120 || npc.ai[2] == 150 || npc.ai[2] == 180)
                 {

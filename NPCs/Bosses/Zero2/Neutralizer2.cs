@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Zero2
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), -1f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;
@@ -147,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Zero2
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/TaserZ");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/NeutralizerZ");
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 

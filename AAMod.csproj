@@ -1814,6 +1814,9 @@
     <Compile Include="NPCs\Bosses\Zero2\TeslaHand2.cs" />
     <Compile Include="NPCs\Bosses\Zero2\VoidStar2.cs" />
     <Compile Include="NPCs\Bosses\Zero2\Zero2.cs" />
+    <Compile Include="NPCs\Bosses\Zero2\ZeroBeam1.cs" />
+    <Compile Include="NPCs\Bosses\Zero2\ZeroBlast.cs" />
+    <Compile Include="NPCs\Bosses\Zero2\ZeroRocket.cs" />
     <Compile Include="NPCs\Bosses\Zero\ArmAIs.cs" />
     <Compile Include="NPCs\Bosses\Zero\DeathLaser.cs" />
     <Compile Include="NPCs\Bosses\Zero\GenocideRocket.cs" />
@@ -5156,6 +5159,10 @@
     <Content Include="NPCs\Bosses\Zero2\VoidStar2_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero2\Zero2.png" />
     <Content Include="NPCs\Bosses\Zero2\Zero2_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero2\ZeroBeam1.png" />
+    <Content Include="NPCs\Bosses\Zero2\ZeroBlast.png" />
+    <Content Include="NPCs\Bosses\Zero2\ZeroBlast_Beam.png" />
+    <Content Include="NPCs\Bosses\Zero2\ZeroRocket.png" />
     <Content Include="NPCs\Bosses\Zero\CycloneProtocol.png" />
     <Content Include="NPCs\Bosses\Zero\GenocideCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\Neutralizer_Head_Boss.png" />
