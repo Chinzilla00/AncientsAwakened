@@ -50,11 +50,11 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (projectile.ai[0] == 0f)
             {
                 projectile.ai[1] += 1f;
-                if (projectile.ai[1] >= 45f)
+                if (projectile.ai[1] >= 120f)
                 {
                     float num975 = 0.98f;
                     float num976 = 0.35f;
-                    projectile.ai[1] = 45f;
+                    projectile.ai[1] =120f;
                     projectile.velocity.X = projectile.velocity.X * num975;
                     projectile.velocity.Y = projectile.velocity.Y + num976;
                 }

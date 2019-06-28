@@ -32,7 +32,7 @@ Gentleman's Rapier EX");
             item.shoot = mod.ProjectileType("TopHat");
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.shootSpeed = 18f;
+            item.shootSpeed = 22f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

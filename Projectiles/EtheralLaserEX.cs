@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 			projectile.alpha = 255;
 			projectile.tileCollide = false;
 			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 5;
+			projectile.localNPCHitCooldown = 15;
         }
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

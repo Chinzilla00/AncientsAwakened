@@ -279,11 +279,11 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             if (TileHit)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, npc.velocity.X, npc.velocity.Y, mod.ProjectileType("RaidStrike"), npc.damage, 1, 255);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, npc.velocity.X, npc.velocity.Y, mod.ProjectileType("RaidStrike"), npc.damage / 4, 1, 255);
             }
             if (PlayerHit)
             {
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, npc.velocity.X, npc.velocity.Y, mod.ProjectileType("RaidBoom"), npc.damage, 1, 255);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, npc.velocity.X, npc.velocity.Y, mod.ProjectileType("RaidBoom"), npc.damage / 4, 1, 255);
             }
         }
 

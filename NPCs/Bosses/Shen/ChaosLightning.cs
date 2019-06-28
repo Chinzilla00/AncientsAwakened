@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.width = 14;
             projectile.height = 14;
             projectile.aiStyle = 88;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.alpha = 255;
             projectile.ignoreWater = true;
