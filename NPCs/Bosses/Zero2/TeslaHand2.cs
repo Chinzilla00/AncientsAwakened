@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero2>())));
             if (flag && Main.netMode != 1)
             {
-                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, -2f, npc.ai[1], 0f, 0f, byte.MaxValue);
+                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand2"), npc.whoAmI, -2f, npc.ai[1], 0f, 0f, byte.MaxValue);
                 Main.npc[ind].life = 1;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
