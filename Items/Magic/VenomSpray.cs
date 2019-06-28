@@ -24,14 +24,14 @@ namespace AAMod.Items.Magic
             item.useTime = 6;
             item.useAnimation = 18;
             item.shoot = mod.ProjectileType("Venom");
-            item.shootSpeed = 10f;   //projectile speed when shoot
+            item.shootSpeed = 9f;   //projectile speed when shoot
         }   
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Venom Spray");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Venom Spray");
+          Tooltip.SetDefault("");
+        }
 
 		public override void AddRecipes()  //How to craft this item
         {

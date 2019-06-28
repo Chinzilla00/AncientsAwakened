@@ -28,6 +28,7 @@ namespace AAMod.Projectiles
             projectile.alpha = 255;
             projectile.tileCollide = true;
         }
+
         public float vectorOffset = 0f;
         public bool offsetLeft = false;
         public Vector2 originalVelocity = Vector2.Zero;

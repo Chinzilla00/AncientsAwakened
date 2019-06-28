@@ -55,9 +55,9 @@ namespace AAMod.Projectiles
 		}
 
 		public override void Kill(int timeLeft)
-		{
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 54);
-			for (int index1 = 0; index1 < 5; ++index1)
+        {
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+            for (int index1 = 0; index1 < 5; ++index1)
 			{
 				int index2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 96, 0.0f, 0.0f, 50, new Color(), 2.5f);
 				Main.dust[index2].noGravity = true;

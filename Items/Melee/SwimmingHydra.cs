@@ -30,7 +30,16 @@ namespace AAMod.Items.Melee
             item.shoot = mod.ProjectileType<Projectiles.HydraSlash>();
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
+        {
+            shoot++;
+            if (shoot % 3 != 0) return false;
+
+            shoot = 0;
+            return true;
+        }
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 180);
 		}
