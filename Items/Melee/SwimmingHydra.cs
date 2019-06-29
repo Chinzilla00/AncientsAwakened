@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,6 +30,8 @@ namespace AAMod.Items.Melee
             item.shootSpeed = 10;
             item.shoot = mod.ProjectileType<Projectiles.HydraSlash>();
 		}
+
+        int shoot = 0;
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
         {
