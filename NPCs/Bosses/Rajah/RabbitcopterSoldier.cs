@@ -52,7 +52,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Rajah>()))
+            if (NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
+                   NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
                 {
@@ -102,7 +111,16 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
             npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
-            if (!NPC.AnyNPCs(mod.NPCType<Rajah>()))
+            if (!(NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(mod.NPCType<SupremeRajah>())))
             {
                 if (npc.timeLeft > 5)
 					npc.timeLeft = 5;

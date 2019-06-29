@@ -194,7 +194,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             else if (internalAI[1] == AISTATE_ROCKET)
             {
-                if (SelectPoint)
+                if (SelectPoint && Main.netMode != 1)
                 {
                     float Point = 300 * npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 300f);
@@ -214,13 +214,12 @@ namespace AAMod.NPCs.Bosses.Truffle
                         MoveToPoint(MovePoint);
 
                         Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, Color.LightCyan.R / 255, Color.LightCyan.G / 255, Color.LightCyan.B / 255);
-                        if (Vector2.Distance(npc.Center, MovePoint) <= 0)
+                        if (Vector2.Distance(npc.Center, MovePoint) <= 0 && Main.netMode != 1)
                         {
                             internalAI[1] = Main.rand.Next(3);
                             internalAI[0] = 0;
                             npc.netUpdate = true;
                         }
-                        npc.netUpdate = true;
                     }
                 }
             }

@@ -54,7 +54,7 @@ namespace AAMod.Worldgen
             return 1; //unknown size, assume small
         }			
 
-	#region thread callback stuff
+	    #region thread callback stuff
 		public static void ConvertDownMireCallback(object threadContext)
 		{
 			try

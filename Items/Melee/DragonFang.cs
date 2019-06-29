@@ -34,7 +34,8 @@ namespace AAMod.Items.Melee
             item.useTurn = true;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.shoot = mod.ProjectileType("MadnessSlash");
+            item.shoot = mod.ProjectileType("ValkyrieSlash");
+            item.melee = true;
         }
         public override bool AltFunctionUse(Player player)
         {

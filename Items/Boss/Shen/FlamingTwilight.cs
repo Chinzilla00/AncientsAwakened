@@ -32,7 +32,8 @@ namespace AAMod.Items.Boss.Shen
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flaming Twilight");
-			Tooltip.SetDefault(@"Blasts a discordian fireball at your foes 
+			Tooltip.SetDefault(@"Left click to blasts a discordian fireball at your foes 
+Right click to rain fire and fury at your cursor position
 Consumes gel as ammo
 33% chance not to consume gel");
         }
@@ -47,8 +48,8 @@ Consumes gel as ammo
 
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 18;
-                item.useAnimation = 18;
+                item.useTime = 14;
+                item.useAnimation = 14;
             }
             else
             {
@@ -71,7 +72,7 @@ Consumes gel as ammo
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             type = mod.ProjectileType("DiscordianInfernoF");
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 float num72 = item.shootSpeed;
                 int num112 = 3;
@@ -99,6 +100,20 @@ Consumes gel as ammo
                     Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + (float)(Main.rand.NextDouble() * 0.3f));
                 }
                 return false;
+            }
+            else
+            {
+                float Angle = Main.rand.Next(30, 46);
+                float spread = Angle * 0.0174f;
+                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                double deltaAngle = spread / 6f;
+                double offsetAngle;
+                for (int i = 0; i < 3; i++)
+                {
+                    offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                }
             }
             return true;
 		}

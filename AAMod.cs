@@ -11,6 +11,7 @@ using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
@@ -21,6 +22,7 @@ namespace AAMod
     {
         // Miscellaneous
         public static int GoblinSoul = -1;
+        public static int BoneAmmo = -1;
 
         // Hotkeys
         public static ModHotKey InfinityHotKey;
@@ -214,6 +216,7 @@ namespace AAMod
         {
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
+            BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
 
@@ -671,7 +674,7 @@ namespace AAMod
             AANet.HandlePacket(bb, whoAmI);
         }
 
-        public static void DrawStars()
+        /*public static void DrawStars()
         {
             Mod mod = instance;
             UIDisplay_ManaPerStar = 20;
@@ -719,7 +722,7 @@ namespace AAMod
                     Main.spriteBatch.Draw(Stars, new Vector2((775 + UI_ScreenAnchorX), (30 + Stars.Height / 2) + (Stars.Height - Stars.Height * num) / 2f + (28 * (i - 1))), new Rectangle?(new Rectangle(0, 0, Stars.Width, Stars.Height)), new Color(num2, num2, num2, a), 0f, new Vector2((Stars.Width / 2), (Stars.Height / 2)), num, SpriteEffects.None, 0f);
                 }
             }
-        }
+        }*/
     }
 
     public enum MPMessageType : byte

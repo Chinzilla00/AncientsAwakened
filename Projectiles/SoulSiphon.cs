@@ -25,6 +25,7 @@ namespace AAMod.Projectiles
             projectile.tileCollide = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
+            projectile.extraUpdates = 2;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -34,6 +35,15 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
+            if (projectile.frameCounter++ > 5)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+                if (projectile.frame > 2)
+                {
+                    projectile.frame = 0;
+                }
+            }
             if (projectile.ai[0] == 0)
             {
                 projectile.ai[1]++;

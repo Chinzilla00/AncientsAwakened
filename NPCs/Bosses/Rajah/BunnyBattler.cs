@@ -45,25 +45,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
 
-        public bool SetLife = false;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
-            {
-                writer.Write(SetLife);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                SetLife = reader.ReadBool();
-            }
-        }
-
         public override void AI()
         {
             npc.TargetClosest(false);
@@ -128,7 +109,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Rajah>()))
+            if (NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
                 {

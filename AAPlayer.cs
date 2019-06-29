@@ -1088,20 +1088,20 @@ namespace AAMod
                     if (Main.rand.Next(2) == 0)
                     {
                         Vector2 vector = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default(Color), 1f)];
+                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
                         dust.noGravity = true;
                         dust.position = player.Center - vector * (float)Main.rand.Next(5, 11);
-                        dust.velocity = vector.RotatedBy(1.5707963705062866, default(Vector2)) * 4f;
+                        dust.velocity = vector.RotatedBy(1.5707963705062866) * 4f;
                         dust.scale = 0.5f + Main.rand.NextFloat();
                         dust.fadeIn = 0.5f;
                     }
                     if (Main.rand.Next(2) == 0)
                     {
                         Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default(Color), 1f)];
+                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
                         dust2.noGravity = true;
                         dust2.position = player.Center - vector2 * 12f;
-                        dust2.velocity = vector2.RotatedBy(-1.5707963705062866, default(Vector2)) * 2f;
+                        dust2.velocity = vector2.RotatedBy(-1.5707963705062866) * 2f;
                         dust2.scale = 0.5f + Main.rand.NextFloat();
                         dust2.fadeIn = 0.5f;
                     }
@@ -1327,15 +1327,15 @@ namespace AAMod
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            Dust dust = Main.dust[Dust.NewDust(vector, 10, 10, 268, 0f, 0f, 0, default(Color), 1f)];
+                            Dust dust = Main.dust[Dust.NewDust(vector, 10, 10, 268, 0f, 0f, 0)];
                             dust.velocity.Y = 2f + Main.rand.NextFloat() * 0.2f;
                             Dust expr_460_cp_0 = dust;
-                            expr_460_cp_0.velocity.Y = expr_460_cp_0.velocity.Y * dust.scale;
+                            expr_460_cp_0.velocity.Y *= dust.scale;
                             Dust expr_47A_cp_0 = dust;
-                            expr_47A_cp_0.velocity.Y = expr_47A_cp_0.velocity.Y * 0.35f;
+                            expr_47A_cp_0.velocity.Y *= 0.35f;
                             dust.velocity.X = num3 * 5f + Main.rand.NextFloat() * 1f;
                             Dust expr_4B7_cp_0 = dust;
-                            expr_4B7_cp_0.velocity.X = expr_4B7_cp_0.velocity.X + num3 * num14 * 20f;
+                            expr_4B7_cp_0.velocity.X += num3 * num14 * 20f;
                             dust.fadeIn += num14 * 0.2f;
                             dust.velocity *= 1f + num13 * 0.5f;
                             dust.color = weightedRandom;
@@ -1349,14 +1349,7 @@ namespace AAMod
                             }
                             if (Main.rand.Next(maxValue2) != 0)
                             {
-                                i--;
-                                vector += Utils.RandomVector2(Main.rand, -10f, 10f) + dust.velocity * -1.1f;
-                                num16 = (int)vector.X / 16;
-                                num17 = (int)vector.Y / 16;
-                                if (WorldGen.InWorld(num16, num17, 10) && Main.tile[num16, num17] != null)
-                                {
-                                    ushort arg_5F6_0 = Main.tile[num16, num17].wall;
-                                }
+
                             }
                         }
                         if (num10 <= 0f)
@@ -1751,6 +1744,10 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("GibsJet"));
                         }
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("Skullshot"));
+                        }
                         spawnedDevItems = true;
                         break;
                     case 18:
@@ -1928,24 +1925,24 @@ namespace AAMod
                                 int num8 = num6 / 16;
                                 if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
                                 {
-                                    int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.AshRain>(), 0f, 0f, 0, default(Color), 1f);
+                                    int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.AshRain>(), 0f, 0f, 0);
                                     Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
                                     Dust expr_292_cp_0 = Main.dust[num9];
-                                    expr_292_cp_0.velocity.Y = expr_292_cp_0.velocity.Y * Main.dust[num9].scale;
+                                    expr_292_cp_0.velocity.Y *= Main.dust[num9].scale;
                                     if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
                                     {
                                         Main.dust[num9].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
                                         Dust expr_2EC_cp_0 = Main.dust[num9];
-                                        expr_2EC_cp_0.velocity.X = expr_2EC_cp_0.velocity.X + Main.windSpeed * Main.cloudAlpha * 10f;
+                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
                                     }
                                     else
                                     {
                                         Main.dust[num9].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
                                         Dust expr_370_cp_0 = Main.dust[num9];
-                                        expr_370_cp_0.velocity.Y = expr_370_cp_0.velocity.Y * 0.5f;
+                                        expr_370_cp_0.velocity.Y *= 0.5f;
                                     }
                                     Dust expr_38E_cp_0 = Main.dust[num9];
-                                    expr_38E_cp_0.velocity.Y = expr_38E_cp_0.velocity.Y * (1f + 0.3f * Main.cloudAlpha);
+                                    expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
                                     Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                                     Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
                                 }
@@ -2009,24 +2006,24 @@ namespace AAMod
                                 int num8 = num6 / 16;
                                 if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
                                 {
-                                    int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f);
+                                    int num9 = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 0);
                                     Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
                                     Dust expr_292_cp_0 = Main.dust[num9];
-                                    expr_292_cp_0.velocity.Y = expr_292_cp_0.velocity.Y * Main.dust[num9].scale;
+                                    expr_292_cp_0.velocity.Y *= Main.dust[num9].scale;
                                     if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
                                     {
                                         Main.dust[num9].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
                                         Dust expr_2EC_cp_0 = Main.dust[num9];
-                                        expr_2EC_cp_0.velocity.X = expr_2EC_cp_0.velocity.X + Main.windSpeed * Main.cloudAlpha * 10f;
+                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
                                     }
                                     else
                                     {
                                         Main.dust[num9].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
                                         Dust expr_370_cp_0 = Main.dust[num9];
-                                        expr_370_cp_0.velocity.Y = expr_370_cp_0.velocity.Y * 0.5f;
+                                        expr_370_cp_0.velocity.Y *= 0.5f;
                                     }
                                     Dust expr_38E_cp_0 = Main.dust[num9];
-                                    expr_38E_cp_0.velocity.Y = expr_38E_cp_0.velocity.Y * (1f + 0.3f * Main.cloudAlpha);
+                                    expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
                                     Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                                     Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
                                 }
@@ -2060,43 +2057,6 @@ namespace AAMod
             if (IsGoblin)
             {
                 knockback += 5f;
-            }
-        }
-
-        public void DrawItem(int i)
-        {
-
-            if (player.HeldItem.type == mod.ItemType("VoidStar"))
-            {
-                Vector2 vector25 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
-                if (player.direction != 1)
-                {
-                    vector25.X = player.bodyFrame.Width - vector25.X;
-                }
-                if (player.gravDir != 1f)
-                {
-                    vector25.Y = player.bodyFrame.Height - vector25.Y;
-                }
-                vector25 -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
-                Vector2 position17 = player.RotatedRelativePoint(player.position + vector25, true) - player.velocity;
-                for (int num277 = 0; num277 < 4; num277++)
-                {
-                    Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 242, player.direction * 2, 0f, 150, new Color(110, 20, 0), 1.3f)];
-                    dust.position = position17;
-                    dust.velocity *= 0f;
-                    dust.noGravity = true;
-                    dust.fadeIn = 1f;
-                    dust.velocity += player.velocity;
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        dust.position += Utils.RandomVector2(Main.rand, -4f, 4f);
-                        dust.scale += Main.rand.NextFloat();
-                        if (Main.rand.Next(2) == 0)
-                        {
-                            dust.customData = this;
-                        }
-                    }
-                }
             }
         }
 
@@ -2149,7 +2109,7 @@ namespace AAMod
         }
         public override void clientClone(ModPlayer clientClone)
         {
-            AAPlayer clone = clientClone as AAPlayer;
+            //AAPlayer clone = clientClone as AAPlayer;
         }
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -2195,7 +2155,7 @@ namespace AAMod
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            int num9 = Dust.NewDust(x.position, x.width, x.height, mod.DustType<Dusts.SnapDust>(), 0f, 0f, 0, default(Color), 1f);
+                            int num9 = Dust.NewDust(x.position, x.width, x.height, mod.DustType<Dusts.SnapDust>(), 0f, 0f, 0);
                             Main.dust[num9].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
                             Dust expr_292_cp_0 = Main.dust[num9];
                             expr_292_cp_0.velocity.Y *= Main.dust[num9].scale;
@@ -2289,7 +2249,7 @@ namespace AAMod
                     {
                         if (!Main.projectile[j].active && Main.projectile[j].owner != Main.myPlayer && Main.projectile[j].type != mod.ProjectileType<Projectiles.CapShield>())
                         {
-                            int i = Main.myPlayer;
+                            int i = player.whoAmI;
                             float num72 = 8;
                             int num73 = 40;
                             float num74 = 1;
@@ -2345,7 +2305,7 @@ namespace AAMod
                     || target.type == NPCID.BoundGoblin
                     || target.type == NPCID.GoblinTinkerer)
                 {
-                    damage = damage * 5;
+                    damage *= 5;
                     IsGoblin = true;
                 }
             }
@@ -2673,7 +2633,7 @@ namespace AAMod
                 if (Main.rand.NextFloat() < 1f)
                 {
                     Dust dust;
-                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 246, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 246, 0f, 0f, 46)];
                     dust.noGravity = true;
                 }
             }
@@ -2682,7 +2642,7 @@ namespace AAMod
                 if (Main.rand.NextFloat() < 1f)
                 {
                     Dust dust;
-                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 76, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 76, 0f, 0f, 46)];
                     dust.noGravity = true;
                 }
             }
@@ -2696,7 +2656,7 @@ namespace AAMod
                         ThisDust = 75;
                     }
                     Dust dust;
-                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ThisDust, 0f, 0f, 46, default(Color), 1.381579f)];
+                    dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ThisDust, 0f, 0f, 46)];
                     dust.noGravity = true;
                 }
             }
@@ -2708,7 +2668,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadB"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadB"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2717,10 +2677,9 @@ namespace AAMod
                 r *= 0.1f;
                 g *= 0.3f;
                 b *= 0.7f;
-                fullBright = true;
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadR"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadR"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2729,10 +2688,9 @@ namespace AAMod
                 r *= 0.7f;
                 g *= 0.2f;
                 b *= 0.2f;
-                fullBright = true;
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadG"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadG"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2741,9 +2699,9 @@ namespace AAMod
                 r *= 0.1f;
                 g *= 0.7f;
                 b *= 0.1f;
-                fullBright = true; if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadY"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadY"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2752,9 +2710,9 @@ namespace AAMod
                 r *= 0.5f;
                 g *= 0.5f;
                 b *= 0.1f;
-                fullBright = true; if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadP"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadP"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2763,9 +2721,9 @@ namespace AAMod
                 r *= 0.6f;
                 g *= 0.1f;
                 b *= 0.6f;
-                fullBright = true; if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadO"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadO"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2780,7 +2738,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 107, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 107, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2795,7 +2753,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType<Dusts.VoidDust>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType<Dusts.VoidDust>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2807,7 +2765,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 8; i++)
                 {
-                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0, default(Color), 1f);
+                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0);
                     Main.dust[num4].alpha = 100;
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
@@ -2817,7 +2775,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0, default(Color), 1f);
+                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0);
                     Main.dust[num4].alpha = 100;
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
@@ -2829,7 +2787,7 @@ namespace AAMod
                 int Loops = RiftDamage / 10;
                 for (int i = 0; i < Loops; i++)
                 {
-                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.CthulhuAuraDust>(), 0f, -2.5f, 0, default(Color), 1f);
+                    int num4 = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.CthulhuAuraDust>(), 0f, -2.5f, 0);
                     Main.dust[num4].alpha = 100;
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
@@ -3071,27 +3029,6 @@ namespace AAMod
             return null;
         }
 
-        public static void SilentBossSpawn(Mod mod, Player player, string BossType)
-        {
-            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
-            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), mod.NPCType(BossType), 0, 0f, 0f, 0f, 0f, 255);
-            if (Main.netMode == 2 && num < 200)
-            {
-                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
-            }
-        }
-
-        public static void SilentBossSpawn(Mod mod, Player player, int BossType)
-        {
-            int SpawnX = (int)player.Center.X - (int)MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble());
-            int num = NPC.NewNPC(SpawnX, (int)(player.position.Y - 1200f), BossType, 0, 0f, 0f, 0f, 0f, 255);
-            if (Main.netMode == 2 && num < 200)
-            {
-                NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
-            }
-        }
-
-
         #region Draw Methods
         public static bool HasAndCanDraw(Player player, int type)
         {
@@ -3106,10 +3043,10 @@ namespace AAMod
             if (mitem != null)
             {
                 Item item = mitem.item;
-                if (item.headSlot > 0) return BaseMod.BasePlayer.HasHelmet(player, type) && BaseMod.BaseDrawing.ShouldDrawHelmet(player, type);
-                else if (item.bodySlot > 0) return BaseMod.BasePlayer.HasChestplate(player, type) && BaseMod.BaseDrawing.ShouldDrawChestplate(player, type);
-                else if (item.legSlot > 0) return BaseMod.BasePlayer.HasLeggings(player, type) && BaseMod.BaseDrawing.ShouldDrawLeggings(player, type);
-                else if (item.accessory) return BaseMod.BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseMod.BaseDrawing.ShouldDrawAccessory(player, type);
+                if (item.headSlot > 0) return BasePlayer.HasHelmet(player, type) && BaseDrawing.ShouldDrawHelmet(player, type);
+                else if (item.bodySlot > 0) return BasePlayer.HasChestplate(player, type) && BaseDrawing.ShouldDrawChestplate(player, type);
+                else if (item.legSlot > 0) return BasePlayer.HasLeggings(player, type) && BaseDrawing.ShouldDrawLeggings(player, type);
+                else if (item.accessory) return BasePlayer.HasAccessory(player, type, true, true, ref social, ref slot) && BaseDrawing.ShouldDrawAccessory(player, type);
             }
             return false;
         }
@@ -3869,7 +3806,7 @@ namespace AAMod
             bool social = false;
             if (edi.shadow == 0 && !drawPlayer.mount.Active && HasAndCanDraw(drawPlayer, mod.ItemType("AngryPirateSails"), ref social, ref accSlot))
             {
-                int dye = BaseMod.BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
+                int dye = BaseDrawing.GetDye(drawPlayer, accSlot, social, true);
                 if (dye == -1) dye = 0;
                 DrawFlickerTexture(1, Main.playerDrawData, edi, mod.GetTexture("Glowmasks/AngryPirateSails_Wings/Glow"), dye, drawPlayer);
             }

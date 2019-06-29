@@ -51,10 +51,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -92,6 +92,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public bool Health3 = false;
         public bool Health2 = false;
         public bool Health1 = false;
+        public int Frame = 0;
 
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6, AISTATE_VORTEX = 7;
@@ -101,16 +102,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Player player = Main.player[npc.target];
             bool AsheType = npc.type == mod.NPCType<Ashe>();
 
-            npc.frame.Y = 82 * (int)internalAI[2]; //IAI[2] Is the current frame
-
             RingEffects();
             RingEffects2();
-            internalAI[1]++;
-            
-
-            if (internalAI[1] >= 8) //IAI[1] is the frame counter
+            if (Main.netMode != 1)
             {
-                if (Main.netMode != 1)
+                if (internalAI[1]++ >= 8)
                 {
                     internalAI[1] = 0;
                     internalAI[2]++;
@@ -123,34 +119,35 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.TargetClosest(false);
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-                    npc.velocity.Y -= 0.1f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-                }
-
-                if ((int)internalAI[2] > 3)
-                {
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
+                    if (Main.netMode != 1)
+                    {
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+                        Main.npc[DeathAnim].velocity = npc.velocity;
+                        Main.npc[DeathAnim].netUpdate = true;
+                    }
+                    npc.active = false;
                 }
                 return;
             }
 
-            if (npc.life <= (int)(npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
+            if (Main.netMode != 1)
             {
-                Health3 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
-            {
-                Health2 = true;
-                internalAI[0] = AISTATE_VORTEX;
-            }
-            if (npc.life <= (int)(npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
-            {
-                Health1 = true;
-                internalAI[0] = AISTATE_VORTEX;
+                if (npc.life <= (npc.lifeMax * .75f) && !Health3 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
+                {
+                    Health3 = true;
+                    internalAI[0] = AISTATE_VORTEX;
+                }
+                if (npc.life <= (npc.lifeMax * .5f) && !Health2 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
+                {
+                    Health2 = true;
+                    internalAI[0] = AISTATE_VORTEX;
+                }
+                if (npc.life <= (npc.lifeMax * .25f) && !Health1 && !NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) && AsheType)
+                {
+                    Health1 = true;
+                    internalAI[0] = AISTATE_VORTEX;
+                }
+                npc.netUpdate = true;
             }
 
             Vortexes = BaseAI.GetNPCs(npc.Center, mod.NPCType("AsheOrbiter"), 1500f);
@@ -174,6 +171,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
             
+
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
@@ -204,98 +202,107 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-                if (FlyingBack)
-                {
-                    if ((int)internalAI[2] > 3)
-                    {
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                    }
-                }
-                else
-                {
-                    if ((int)internalAI[2] > 7 || (int)internalAI[2] < 4)
-                    {
-                        internalAI[1] = 0;
-                        internalAI[2] = 4;
-                    }
-                }
+                
 
             }
             else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
             {
                 if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
-                    FireMagic(npc, npc.velocity);
-                    HasFiredProj = true;
-                    npc.netUpdate = true;
+                    if (Main.netMode != 1)
+                    {
+                        FireMagic(npc, npc.velocity);
+                        HasFiredProj = true;
+                        npc.netUpdate = true;
+                    }
                 }
-                if ((int)internalAI[2] < 16) //Sets to frame 16
+                if (internalAI[2] < 16) 
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 16;
                 }
-                if ((int)internalAI[2] > 23) //If frame is greater than 23, reset AI
+                if (internalAI[2] > 23)
                 {
                     if (internalAI[0] == AISTATE_MELEE)
                     {
                         pos = -pos;
                     }
-                    HasFiredProj = false;
-                    internalAI[0] = 0;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    moveSpeed = 16f;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        HasFiredProj = false;
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        moveSpeed = 16f;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
             else if (internalAI[0] == AISTATE_CAST2)
             {
                 if (internalAI[2] > 11)
                 {
-                    FireMagic(npc, npc.velocity);
-                    npc.netUpdate = true;
+                    if (Main.netMode != 1)
+                    {
+                        FireMagic(npc, npc.velocity);
+                        npc.netUpdate = true;
+                    }
                 }
-                if ((int)internalAI[2] < 8)
+                if (internalAI[2] < 8)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 8;
                 }
-                if ((int)internalAI[2] > 15)
+                if (internalAI[2] > 15)
                 {
-                    HasFiredProj = false;
-                    internalAI[0] = 0;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        HasFiredProj = false;
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
             else
             {
                 if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFiredProj)
                 {
-                    FireMagic(npc, npc.velocity);
-                    HasFiredProj = true;
-                    npc.netUpdate = true;
+                    if (Main.netMode != 1)
+                    {
+                        FireMagic(npc, npc.velocity);
+                        HasFiredProj = true;
+                        npc.netUpdate = true;
+                    }
                 }
-                if ((int)internalAI[2] < 8)
+                if (internalAI[2] < 8)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 8;
                 }
-                if ((int)internalAI[2] > 15)
+                if (internalAI[2] > 15)
                 {
-                    HasFiredProj = false;
-                    internalAI[0] = 0;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        HasFiredProj = false;
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
 
@@ -333,12 +340,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
-                if (SelectPoint)
+                if (Main.netMode != 1)
                 {
-                    float Point = 500 * npc.direction;
-                    MovePoint = player.Center + new Vector2(Point, 500f);
-                    SelectPoint = false;
-                    npc.netUpdate = true;
+                    if (SelectPoint)
+                    {
+                        float Point = 500 * npc.direction;
+                        MovePoint = player.Center + new Vector2(Point, 500f);
+                        SelectPoint = false;
+                        npc.netUpdate = true;
+                    }
                 }
                 MeleeMovement(MovePoint);
                 npc.netUpdate = true;
@@ -356,13 +366,18 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheDragon>(), 0);
-                    internalAI[0] = 0;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheDragon>(), 0);
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
             else
@@ -442,6 +457,59 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ >= 8) //IAI[1] is the frame counter
+            {
+                npc.frameCounter = 0;
+                Frame++;
+            }
+            if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
+            {
+                if (FlyingBack)
+                {
+                    if (Frame > 3)
+                    {
+                        npc.frameCounter = 0;
+                        Frame = 0;
+                    }
+                }
+                else
+                {
+                    if (Frame > 7 || Frame < 4)
+                    {
+                        npc.frameCounter = 0;
+                        Frame = 4;
+                    }
+                }
+            }
+            else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX)
+            {
+                if (Frame < 16)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 16;
+                }
+            }
+            else if (internalAI[0] == AISTATE_CAST2)
+            {
+                if (Frame < 8)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 8;
+                }
+            }
+            else
+            {
+                if (Frame < 8)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 8;
+                }
+            }
+            npc.frame.Y = Frame * frameHeight;
         }
 
         public static int VortexDamage(Mod mod)
@@ -530,7 +598,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             if (Main.rand.Next(10) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AsheTrophy"));
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("AsheTrophy"));
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;

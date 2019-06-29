@@ -919,6 +919,7 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\Skullshot.cs" />
     <Compile Include="Items\Dev\Demise.cs" />
     <Compile Include="Items\Dev\DeceivingTruthEX.cs" />
     <Compile Include="Items\Dev\DeceivingTruth.cs" />
@@ -4742,6 +4743,7 @@
     <Content Include="Items\Dev\Minions\Squirrel1.png" />
     <Content Include="Items\Dev\Minions\Squirrel2.png" />
     <Content Include="Items\Dev\Placeholder.png" />
+    <Content Include="Items\Dev\SkullShot.png" />
     <Content Include="Items\Dev\SoccMinion.png" />
     <Content Include="Items\Dev\SoccStaff.png" />
     <Content Include="Items\Dev\SockPuppetEX.png" />

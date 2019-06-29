@@ -596,19 +596,19 @@ namespace AAMod
             }));
             tasks.Insert(shiniesIndex + 2, new PassLegacy("Abyssium", delegate (GenerationProgress progress)
             {
-                GenAbyssium(progress);
+                GenAbyssium();
             }));
             tasks.Insert(shiniesIndex + 3, new PassLegacy("Incinerite", delegate (GenerationProgress progress)
             {
-                GenIncinerite(progress);
+                GenIncinerite();
             }));
             tasks.Insert(shiniesIndex + 4, new PassLegacy("Everleaf", delegate (GenerationProgress progress)
             {
-                GenEverleaf(progress);
+                GenEverleaf();
             }));
             tasks.Insert(shiniesIndex + 5, new PassLegacy("Relic", delegate (GenerationProgress progress)
             {
-                GenRelicOre(progress);
+                GenRelicOre();
             }));
             tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
@@ -809,11 +809,11 @@ namespace AAMod
             ModContentGenerated = true;
         }
 
-        private void GenIncinerite(GenerationProgress progress)
+        private void GenIncinerite()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            for (int k = 0; k < (int)((double)(x * y) * 15E-05); k++)
+            for (int k = 0; k < (int)((x * y) * 15E-05); k++)
             {
                 int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
                 int tilesY = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY);
@@ -824,7 +824,7 @@ namespace AAMod
             }
         }
 
-        private void GenAbyssium(GenerationProgress progress)
+        private void GenAbyssium()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
@@ -839,7 +839,7 @@ namespace AAMod
             }
         }
 
-        private void GenEverleaf(GenerationProgress progress)
+        private void GenEverleaf()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
@@ -854,7 +854,7 @@ namespace AAMod
             }
         }
 
-        private void GenRelicOre(GenerationProgress progress)
+        private void GenRelicOre()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
@@ -1610,8 +1610,9 @@ namespace AAMod
             modPlayer.YamataAltar = false;
         }
 
-        public static void SmashAltar(Mod mod, int i, int j)
+        public static void SmashAltar()
         {
+            Mod mod = AAMod.instance;
             if (Main.netMode == 1 || !Main.hardMode || WorldGen.noTileActions || WorldGen.gen)
             {
                 return;

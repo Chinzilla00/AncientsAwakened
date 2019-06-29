@@ -86,7 +86,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Rajah>()))
+            if (NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
+                   NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
                 {

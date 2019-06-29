@@ -814,8 +814,12 @@ namespace AAMod.NPCs.Bosses.Shen
                         int shootThis = mod.ProjectileType<ChaosLightning>();
                         if (npc.ai[2] < 119)
                         {
-                            int ChargeDust = Dust.NewDust(infernoPos, npc.width, npc.height, mod.DustType<Dusts.Discord>());
-                            Main.dust[ChargeDust].noGravity = true;
+                            for (int LOOP = 0; LOOP < 4; LOOP++)
+                            {
+                                Dust dust1;
+                                dust1 = Main.dust[Dust.NewDust(infernoPos, npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                                dust1.noGravity = true;
+                            }
                         }
                         else
                         {
