@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
+using BaseMod;
 
 namespace AAMod.Projectiles.Akuma
 {
@@ -13,7 +15,7 @@ namespace AAMod.Projectiles.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("FreedomStar");
+            DisplayName.SetDefault("Radiant Dawn");
         }
 
         public override void SetDefaults()
@@ -27,6 +29,8 @@ namespace AAMod.Projectiles.Akuma
             projectile.ranged = true;
             projectile.ignoreWater = true;
         }
+
+        public Color GlowColor = AAColor.Akuma;
 
         public override void AI()
         {
@@ -105,10 +109,12 @@ namespace AAMod.Projectiles.Akuma
 
             if (counter >= 60)
             {
+                GlowColor = AAColor.AkumaA;
                 chargeLevel = 2;
             }
             else if (counter >= 40)
             {
+                GlowColor = Color.Goldenrod;
                 chargeLevel = 1;
             }
             else if (counter >= 20)
@@ -194,6 +200,15 @@ namespace AAMod.Projectiles.Akuma
 					Main.projectile[num125].noDropItem = true;	
 				}					
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D glowTex = mod.GetTexture("Glowmasks/RadiantDawnP_Glow");
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, GlowColor, true);
+            return false;;
         }
     }
 }

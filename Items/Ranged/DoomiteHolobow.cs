@@ -44,7 +44,7 @@ namespace AAMod.Items.Ranged
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType<Projectiles.HoloArrow>(), damage, knockBack);
-            return true;
+            return false;
         }
     }
 }

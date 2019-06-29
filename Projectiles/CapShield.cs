@@ -22,15 +22,14 @@ namespace AAMod.Projectiles
             projectile.width = 16;
             projectile.height = 16;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = -1;
             projectile.ranged = true;
-            projectile.usesLocalNPCImmunity = true;
         }
 
         public override void AI()
         {
             Player p = Main.player[projectile.owner];
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 20f, 30, 1, 1, false);
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 20f, 30, .3f, .3f, false);
         }
     }
 }
