@@ -30,7 +30,8 @@ namespace AAMod.Projectiles.Shen
 
         public override void AI()
         {
-			int dustType = mod.DustType<Dusts.Discord>();
+            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            int dustType = mod.DustType<Dusts.Discord>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;

@@ -10,7 +10,7 @@ namespace AAMod.Projectiles
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cosmic Laser");
+            DisplayName.SetDefault("Holo Arrow");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -24,11 +24,9 @@ namespace AAMod.Projectiles
             projectile.hostile = false;
             projectile.ranged = true;
             projectile.timeLeft = 600;
-            projectile.alpha = 255;
             projectile.light = 0f;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
-            projectile.extraUpdates = 1;
             aiType = ProjectileID.Bullet;
         }
 
