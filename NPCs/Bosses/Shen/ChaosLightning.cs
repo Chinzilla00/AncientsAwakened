@@ -1,12 +1,7 @@
 ﻿using System;
-using System.IO;
-using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -23,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             projectile.width = 14;
             projectile.height = 14;
-            projectile.aiStyle = 88;
+            projectile.aiStyle = -1;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.alpha = 255;
@@ -222,5 +217,31 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             return false;
         }
+
+        /*
+         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            for (int z = projectile.oldPos.Length - 1; z > 0; z--)
+            {
+                if (projectile.oldPos[z] == Vector2.Zero) continue;
+
+                Vector2 oldPos = projectile.oldPos[z] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY;
+                Vector2 nextPos = projectile.oldPos[z - 1] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY;
+
+                float alphaMult = BaseUtility.MultiLerp((float)z / ((float)projectile.oldPos.Length - 1f), 0f, 1f, 1f, 1f, 0f);
+                if (Main.rand.Next((alphaMult < 0.5f ? 4 : 8)) == 0)
+                {
+                    Vector2 dustPos = Vector2.Lerp(oldPos, nextPos, (float)Main.rand.NextDouble());
+                    int dustID = DustHandler.SpawnSpecialDust(dustPos, 5, 5, default(Vector2), 1.4f, GRealm.GetTexture("dust_Spark"), GConstants.COLOR_LIGHTNINGDUST, new Color(255, 255, 255, 0), 1, 39);
+                    Main.dust[dustID].rotation = (Main.rand.Next(5) * (float)(Math.PI / 8f));
+                    Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                    Main.dust[dustID].velocity *= 3f;
+                }
+                Color color = Color.Lerp(Color.Transparent, Color.White, alphaMult);
+                BaseMod.BaseDrawing.DrawChain(spriteBatch, new Texture2D[]{ null, Main.projectileTexture[projectile.type], null }, 0, oldPos, nextPos, 0f, color);                
+            }
+            return false;
+        }*/
     }
 }
+ 
