@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero2>())));
             if (flag && Main.netMode != 1)
             {
-                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, -2f, npc.ai[1], 0f, 0f, byte.MaxValue);
+                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand2"), npc.whoAmI, -2f, npc.ai[1], 0f, 0f, byte.MaxValue);
                 Main.npc[ind].life = 1;
                 Main.npc[ind].rotation = npc.rotation;
                 Main.npc[ind].velocity = npc.velocity;
@@ -91,7 +91,7 @@ namespace AAMod.NPCs.Bosses.Zero2
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero2"), -1f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;
@@ -147,8 +147,8 @@ namespace AAMod.NPCs.Bosses.Zero2
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/TaserZ");
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            Texture2D glowTex = mod.GetTexture("Glowmasks/Neutralizer2_Glow");
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 
         public override void BossHeadRotation(ref float rotation)

@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             Texture2D texture = Main.projectileTexture[projectile.type];
             Vector2 centre = new Vector2(texture.Width / 2f, texture.Height / 2f);
 
-            drawLaser(spriteBatch, centre);
+            DrawLaser(spriteBatch, centre);
 
             spriteBatch.Draw(texture,
                 projectile.position - Main.screenPosition + centre,
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Zero2
             return false;
         }
 
-        private void drawLaser(SpriteBatch spritebatch, Vector2 centre)
+        private void DrawLaser(SpriteBatch spritebatch, Vector2 centre)
         {
             Vector2 projectileCentre = projectile.position + new Vector2(projectile.width / 2, projectile.height / 2);
             Vector2 start, end;
@@ -197,7 +197,7 @@ namespace AAMod.NPCs.Bosses.Zero2
 
                 Utils.DrawLaser(
                     spritebatch,
-                    mod.GetTexture("AAMod/NPCs/Bosses/Zero2/ZeroBlast_Beam"),
+                    mod.GetTexture("NPCs/Bosses/Zero2/ZeroBlast_Beam"),
                     start - Main.screenPosition,
                     end - Main.screenPosition,
                     new Vector2(projectile.ai[1]),

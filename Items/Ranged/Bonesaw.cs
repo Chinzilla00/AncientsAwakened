@@ -51,6 +51,12 @@ namespace AAMod.Items.Ranged
 			recipe.AddRecipe();
         }
 
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            type = ProjectileID.IchorBullet;
+            return true;
+        }
+
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

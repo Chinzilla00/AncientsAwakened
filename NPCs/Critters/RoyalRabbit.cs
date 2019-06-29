@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Critters
         }
         public override void SetDefaults()
         {
+            NPCID.Sets.TownCritter[npc.type] = true;
             npc.width = 28;
             npc.height = 24;
             npc.defense = 0;
@@ -41,13 +42,13 @@ namespace AAMod.NPCs.Critters
             {
                 Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
             }
             if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
             {
                 Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!!!", 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                AAModGlobalNPC.SpawnRajah(player, mod.NPCType<Bosses.Rajah.Rajah>(), true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
             }
         }
 
@@ -62,7 +63,7 @@ namespace AAMod.NPCs.Critters
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDayGrassCritter.Chance * ((Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type == TileID.Grass && NPC.downedGolemBoss) ? .01f : 0f);
+            return SpawnCondition.OverworldDayGrassCritter.Chance * (NPC.downedGolemBoss ? .005f : 0f);
         }
         
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)

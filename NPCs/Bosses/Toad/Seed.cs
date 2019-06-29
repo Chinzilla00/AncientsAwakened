@@ -22,21 +22,7 @@ namespace AAMod.NPCs.Bosses.Toad
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 200;
-        }
-
-        public override void AI()
-        {
-            projectile.localAI[0] += 1f;
-            projectile.rotation += 0.06f;
-            projectile.velocity.Y += 0.70f;
-            if (projectile.velocity.Y >= 10f)
-            {
-                projectile.velocity.Y = 9f;
-            }
-            if (projectile.localAI[0] > 130f)
-            {
-                projectile.Kill();
-            }
+            projectile.aiStyle = 1;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

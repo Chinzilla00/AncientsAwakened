@@ -32,7 +32,7 @@ namespace AAMod.Backgrounds
             if (fadeOpacity == 0f) return; //don't draw if no fog
             Main.spriteBatch.Begin();
             Player player = Main.player[Main.myPlayer];
-            Texture2D fog = mod.GetTexture("Backgrounds/fog");
+            Texture2D fog = mod.GetTexture("Backgrounds/FogTex");
 
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);
