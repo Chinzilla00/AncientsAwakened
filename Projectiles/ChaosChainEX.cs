@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -13,6 +15,7 @@ namespace AAMod.Projectiles
 		{
 			DisplayName.SetDefault("Perfect Chaos Chain");
 		}
+
         public override void SetDefaults()
         {
             projectile.width = 58;
@@ -25,9 +28,46 @@ namespace AAMod.Projectiles
             projectile.localNPCHitCooldown = 5;
             projectile.extraUpdates = 1;
         }
+
+        public float[] InternalAI = new float[2];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(InternalAI[0]);
+                writer.Write(InternalAI[1]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                InternalAI[0] = reader.ReadFloat();
+                InternalAI[1] = reader.ReadFloat();
+            }
+        }
+
+        float Rot = 0;
+        int Dir = 1;
 		
 		public override void AI()
-		{
+        {
+            for (int i = 0; i < 1000; ++i)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == mod.ProjectileType<ChaosChainEXSaw>() && projectile.ai[0] == 1f)
+                {
+                    InternalAI[1] = 1;
+                }
+            }
+            if (projectile.velocity.X < 0)
+            {
+                Dir = -1;
+            }
+            Rot += 0.03f * projectile.direction;
+
             if (projectile.timeLeft == 120)
             {
                 projectile.ai[0] = 1f;
@@ -68,6 +108,7 @@ namespace AAMod.Projectiles
                 {
                     projectile.ai[0] = 1f;
                 }
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
                 projectile.ai[1] += 1f;
                 if (projectile.ai[1] > 5f)
                 {
@@ -94,6 +135,7 @@ namespace AAMod.Projectiles
             else if (projectile.ai[0] == 1f)
             {
                 projectile.tileCollide = false;
+                projectile.rotation = (float)Math.Atan2(num167, num166) - 1.57f;
                 float num169 = 30f;
 
                 if (num168 < 50f)
@@ -119,15 +161,36 @@ namespace AAMod.Projectiles
 		
 		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
+            for (int i = 0; i < 1000; ++i)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == mod.ProjectileType<ChaosChainEXSaw>() && InternalAI[0] == 1f && InternalAI[1] == 0)
+                {
+                    InternalAI[0] = 1;
+                    Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
+                }
+            }
             target.AddBuff(mod.BuffType<Buffs.DiscordInferno>(), 240);
         }
 		
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModLoader.GetTexture("AAMod/Projectiles/ChaosChainEX_Chain");
-
-            BaseMod.BaseDrawing.DrawChain(spriteBatch, texture, 0, projectile.Center, Main.player[projectile.owner].Center, 0f, lightColor, 1f, true);
+            Texture2D texture = mod.GetTexture("Projectiles/ChaosChainEX_Chain");
+            BaseDrawing.DrawChain(spriteBatch, texture, 0, projectile.Center, Main.player[projectile.owner].Center, 0f, lightColor, 1f, true);
+            Texture2D Tex = mod.GetTexture("Projectiles/ChaosChainEXSaw");
+            Texture2D Tex2 = mod.GetTexture("Projectiles/ChaosChainEXSphere");
+            Rectangle frame = new Rectangle(0, 0, Tex.Width, Tex.Height);
+            for (int i = 0; i < 1000; ++i)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == mod.ProjectileType<ChaosChainEXSaw>())
+                {
+                    BaseDrawing.DrawTexture(spriteBatch, Tex2, 0, projectile.position, projectile.width, projectile.height, projectile.scale, Rot, Dir, 1, frame, lightColor, true);
+                }
+                else
+                {
+                    BaseDrawing.DrawTexture(spriteBatch, Tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, Rot, Dir, 1, frame, lightColor, true);
+                }
+            }
             return true;
         }
     }

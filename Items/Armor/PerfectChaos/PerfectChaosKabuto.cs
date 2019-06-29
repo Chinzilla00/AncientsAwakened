@@ -43,53 +43,29 @@ The power of discordian rage radiates from this armor");
 As your health decreases, your melee damage and defense increase
 Your attacks raze your oponents with the flames of Chaos";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosMe = true;
-            if (player.statLife <= player.statLife * .8f && !I1)
-            {
-                I1 = true;
-                player.endurance *= 1.1f;
-                player.meleeDamage *= 1.1f;
-            }
-            else if (player.statLife >= player.statLife * .8f && I1)
+            if (player.statLife <= player.statLifeMax2 * .8f)
             {
                 I1 = false;
-                player.endurance *= 1;
-                player.meleeDamage *= 1;
-            }
-            if (player.statLife <= player.statLife * .6f && !I2)
-            {
-                I2 = true;
-                player.endurance *= 1.1f;
+                player.endurance *= 1.05f;
                 player.meleeDamage *= 1.1f;
             }
-            else if (player.statLife >= player.statLife * .6f && I2)
+            else if (player.statLife <= player.statLifeMax2 * .6f)
             {
                 I1 = false;
-                player.endurance *= 1;
-                player.meleeDamage *= 1;
-            }
-            if (player.statLife <= player.statLife * .4f && !I3)
-            {
-                I3 = true;
                 player.endurance *= 1.1f;
-                player.meleeDamage *= 1.1f;
+                player.meleeDamage *= 1.2f;
             }
-            else if (player.statLife >= player.statLife * .4f && I3)
+            else if (player.statLife <= player.statLifeMax2 * .4f)
             {
                 I3 = false;
-                player.endurance *= 1;
-                player.meleeDamage *= 1;
+                player.endurance *= 1.12f;
+                player.meleeDamage *= 1.3f;
             }
-            if (player.statLife <= player.statLife * .2f && !I4)
-            {
-                I4 = true;
-                player.endurance *= 1.1f;
-                player.meleeDamage *= 1.1f;
-            }
-            else if (player.statLife >= player.statLife * .2f && I4)
+            else if (player.statLife <= player.statLifeMax2 * .2f)
             {
                 I4 = false;
-                player.endurance *= 1;
-                player.meleeDamage *= 1;
+                player.endurance *= 1.15f;
+                player.meleeDamage *= 1.4f;
             }
         }
 

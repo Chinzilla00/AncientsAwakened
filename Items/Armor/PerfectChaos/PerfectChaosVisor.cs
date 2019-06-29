@@ -39,22 +39,22 @@ The power of discordian rage radiates from this hood");
 As your health decreases, your ranged damage and critical chance increases
 Your ranged attacks raze your oponents with the flames of discordian hell";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosRa = true;
-            if (player.statLife <= player.statLife * .2f)
+            if (player.statLife <= player.statLifeMax2 * .2f)
             {
                 player.rangedDamage += .4f;
                 player.rangedCrit += 7;
             }
-            else if (player.statLife <= player.statLife * .4f)
+            else if (player.statLife <= player.statLifeMax2 * .4f)
             {
                 player.rangedDamage += .3f;
                 player.rangedCrit += 14;
             }
-            else if (player.statLife <= player.statLife * .6f)
+            else if (player.statLife <= player.statLifeMax2 * .6f)
             {
                 player.rangedDamage += .2f;
                 player.rangedCrit += 21;
             }
-            else if (player.statLife <= player.statLife * .8f)
+            else if (player.statLife <= player.statLifeMax2 * .8f)
             {
                 player.rangedDamage += .1f;
                 player.rangedCrit += 28;

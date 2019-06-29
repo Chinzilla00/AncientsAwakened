@@ -31,7 +31,7 @@ namespace AAMod
                 float num83 = vector13.Y;
                 float speedX5 = num82;
                 float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType<NPCs.Bosses.Shen.DiscordianInferno>(), npc.damage / 4, 6, Main.myPlayer, 0, 0);
+                Projectile.NewProjectile(vector2.X, vector2.Y, speedX5 * 2, speedY6 * 2, mod.ProjectileType<NPCs.Bosses.Shen.DiscordianInferno>(), npc.damage / 4, 6, Main.myPlayer, 0, 0);
             }
         }
 

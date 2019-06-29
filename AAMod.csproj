@@ -1957,6 +1957,7 @@
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
+    <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
     <Compile Include="Projectiles\VoidMagicEX.cs" />
@@ -6609,6 +6610,7 @@
     <Content Include="Projectiles\ChaosBoomEX.png" />
     <Content Include="Projectiles\ChaosChain.png" />
     <Content Include="Projectiles\ChaosChainEX.png" />
+    <Content Include="Projectiles\ChaosChainEXSaw.png" />
     <Content Include="Projectiles\ChaosChainEX_Chain.png" />
     <Content Include="Projectiles\ChaosChain_Chain.png" />
     <Content Include="Projectiles\ChaosJavelin.png" />
