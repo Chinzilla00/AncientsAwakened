@@ -152,7 +152,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Health1 = true;
                 npc.netUpdate = true;
             }
-            if (Health3)
+            if (Health2)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }

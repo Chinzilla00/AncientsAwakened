@@ -394,7 +394,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 3:
-                                aiChoice = Main.rand.Next(2, isAwakened ? 11 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
                                 if (Main.rand.Next(2) == 0)
                                 {
                                     npc.ai[3] = -1f;
@@ -406,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                             case 6:
                                 npc.ai[3] = -1f;
-                                aiChoice = Main.rand.Next(2, isAwakened ? 11 : 8);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
                                 break;
                         }
                     }
@@ -747,36 +747,20 @@ namespace AAMod.NPCs.Bosses.Shen
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
             }
-            else if (npc.ai[0] == 7f) //Flamethrower
+            else if (npc.ai[0] == 7f) //Thunderstrike (Awakened Only)
             {
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
                 MoveToPoint(playerPoint);
-                if (npc.ai[2] % 5 == 0)
+                Roar(roarTimerMax, false);
+                if (npc.ai[2] % 30 == 0)
                 {
-                    Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-                        Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                        float num433 = 6f;
-                        float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-                        float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-                        float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-                        PlayerPos = num433 / PlayerPos;
-                        PlayerPosX *= PlayerPos;
-                        PlayerPosY *= PlayerPos;
-                        PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-                        PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-                        PlayerPosY += npc.velocity.Y * 0.5f;
-                        PlayerPosX += npc.velocity.X * 0.5f;
-                        PlayerDistance.X -= PlayerPosX * 1f;
-                        PlayerDistance.Y -= PlayerPosY * 1f;
-                        int shootThis = isAwakened ? mod.ProjectileType<ShenABreath>() : mod.ProjectileType<ShenBreath>();
-                        Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, PlayerPos / 2, PlayerPosY / 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, 0f, 0f);
+                        ShenAttacks.Thunderstrike(npc, mod);
                     }
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= 150)
+                if (npc.ai[2] >= 121)
                 {
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
@@ -835,7 +819,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         else
                         {
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 10 , vel.Y * 10, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 6 , vel.Y * 6, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                             Main.projectile[projectile].netUpdate = true;
                         }
                     }
@@ -843,27 +827,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 200)
-                {
-                    SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
-                }
-            }
-            else if (npc.ai[0] == 10f) //Thunderstrike (Awakened only)
-            {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
-                MoveToPoint(playerPoint);
-                Roar(roarTimerMax, false);
-                if (npc.ai[2] % 30 == 0)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        for (int Loops = 0; Loops < 3; Loops++)
-                        {
-                            ShenAttacks.Thunderstrike(npc, mod);
-                        }
-                    }
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= 121)
                 {
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
