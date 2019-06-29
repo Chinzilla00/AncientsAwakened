@@ -138,6 +138,7 @@
     <Compile Include="Items\BossSummons\ChaosSigil.cs" />
     <Compile Include="Items\BossSummons\DiamondCarrot.cs" />
     <Compile Include="Items\BossSummons\PlatinumCarrot.cs" />
+    <Compile Include="Items\BossSummons\ZeroTesseractMK2.cs" />
     <Compile Include="Items\Boss\AH\ChaosBaton.cs" />
     <Compile Include="Items\Boss\AH\HarukaTrophy.cs" />
     <Compile Include="Items\Boss\AH\AsheTrophy.cs" />
@@ -4642,6 +4643,7 @@
     <Content Include="Items\BossSummons\Lifescanner.png" />
     <Content Include="Items\BossSummons\PlatinumCarrot.png" />
     <Content Include="Items\BossSummons\Toadstool.png" />
+    <Content Include="Items\BossSummons\ZeroTesseractMK2.png" />
     <Content Include="Items\Boss\AH\AsheTrophy.png" />
     <Content Include="Items\Boss\AH\ChaosBaton.png" />
     <Content Include="Items\Boss\AH\HarukaTrophy.png" />
@@ -4673,6 +4675,8 @@
     <Content Include="Items\Boss\Rajah\RajahSashT.png" />
     <Content Include="Items\Boss\Rajah\RajahTrophy.png" />
     <Content Include="Items\Boss\Rajah\RoyalScepter.png" />
+    <Content Include="Items\Boss\Rajah\Supreme\Excalihare.png" />
+    <Content Include="Items\Boss\Rajah\Supreme\FluffyFury.png" />
     <Content Include="Items\Boss\Retriever\CyberBaton.png" />
     <Content Include="Items\Boss\Retriever\CyberClaw.png" />
     <Content Include="Items\Boss\Sagittarius\Legg.png" />

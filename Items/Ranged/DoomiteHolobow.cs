@@ -27,7 +27,7 @@ namespace AAMod.Items.Ranged
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = 3;
-            item.UseSound = SoundID.Item5;
+            item.UseSound = SoundID.Item12;
             item.autoReuse = false;
             item.shootSpeed = 7f;
             item.crit = 0;
@@ -43,7 +43,7 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType<Projectiles.HoloArrow>(), damage, knockBack);
+            Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType<Projectiles.HoloArrow>(), item.damage, knockBack);
             return false;
         }
     }

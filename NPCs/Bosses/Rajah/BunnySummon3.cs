@@ -41,7 +41,22 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void Kill(int timeLeft)
         {
-            int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType<BunnyBattler>(), 0);
+            int MinionType = mod.NPCType<BunnyBattler>();
+            if (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            {
+                MinionType = mod.NPCType<BunnyBattler4>();
+            }
+            else if (NPC.AnyNPCs(mod.NPCType<Rajah7>()) || NPC.AnyNPCs(mod.NPCType<Rajah8>()) || NPC.AnyNPCs(mod.NPCType<Rajah9>()))
+            {
+                MinionType = mod.NPCType<BunnyBattler3>();
+            }
+            else if (NPC.AnyNPCs(mod.NPCType<Rajah4>()) || NPC.AnyNPCs(mod.NPCType<Rajah5>()) || NPC.AnyNPCs(mod.NPCType<Rajah6>()))
+            {
+                MinionType = mod.NPCType<BunnyBattler2>();
+            }
+
+
+            int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, MinionType, 0);
             Main.npc[Minion].netUpdate2 = true;
             projectile.active = false;
             projectile.netUpdate2 = true;

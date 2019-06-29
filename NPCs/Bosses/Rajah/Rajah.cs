@@ -171,7 +171,10 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (Main.player[npc.target].dead)
                 {
                     Main.NewText("Justice has been served...", 107, 137, 179);
-                    Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    if (Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    }
                     npc.active = false;
                     npc.noTileCollide = true;
                     npc.netUpdate = true;
@@ -185,7 +188,10 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 3000)
                 {
                     Main.NewText("Coward.", 107, 137, 179);
-                    Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    if (Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                    }
                     npc.active = false;
                     npc.noTileCollide = true;
                     npc.netUpdate = true;
@@ -408,7 +414,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     Main.tile[tileX, tY] = new Tile();
                 }
-                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[(int)Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
+                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[Main.tile[tileX, tY].type] && !TileID.Sets.Platforms[Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
                 {
                     return false;
                 }
@@ -765,70 +771,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true, new Vector2(Main.rand.Next(-3, 4) * 0.5f, Main.rand.Next(-3, 4) * 0.5f));
             }
             return false;
-        }
-
-        public static void ScaleMinionStats(NPC Npc)
-        {
-            Mod mod = AAMod.instance;
-            NPC Rabbit = Main.npc[BaseAI.GetNPC(Npc.Center, mod.NPCType<Rajah>(), -1)];
-            if (Main.netMode != 1)
-            {
-                if (Rabbit.ai[1] >= 10)
-                {
-                    Npc.damage *= 3;
-                    Npc.defense *= 3;
-                    Npc.lifeMax *= 15;
-                }
-                else if (Rabbit.ai[1] == 9)
-                {
-                    Npc.damage = (int)(Npc.defense * 2.7);
-                    Npc.defense = (int)(Npc.defense * 2.7);
-                    Npc.lifeMax *= 13;
-                }
-                else if (Rabbit.ai[1] == 8)
-                {
-                    Npc.damage = (int)(Npc.defense * 2.4);
-                    Npc.defense = (int)(Npc.defense * 2.4);
-                    Npc.lifeMax *= 11;
-                }
-                else if (Rabbit.ai[1] == 7)
-                {
-                    Npc.damage = (int)(Npc.defense * 2.1);
-                    Npc.defense = (int)(Npc.defense * 2.1);
-                    Npc.lifeMax *= 9;
-                }
-                else if (Rabbit.ai[1] == 6)
-                {
-                    Npc.damage = (int)(Npc.defense * 1.9);
-                    Npc.defense = (int)(Npc.defense * 1.9);
-                    Npc.lifeMax *= 7;
-                }
-                else if (Rabbit.ai[1] == 5)
-                {
-                    Npc.damage = (int)(Npc.defense * 1.7);
-                    Npc.defense = (int)(Npc.defense * 1.7);
-                    Npc.lifeMax *= 5;
-                }
-                else if (Rabbit.ai[1] == 4)
-                {
-                    Npc.damage = (int)(Npc.defense * 1.5);
-                    Npc.defense = (int)(Npc.defense * 1.5);
-                    Npc.lifeMax *= 3;
-                }
-                else if (Rabbit.ai[1] == 3)
-                {
-                    Npc.damage = (int)(Npc.defense * 1.3);
-                    Npc.defense = (int)(Npc.defense * 1.3);
-                    Npc.lifeMax *= 2;
-                }
-                else if (Rabbit.ai[1] == 2)
-                {
-                    Npc.damage = (int)(Npc.defense * 1.1);
-                    Npc.defense = (int)(Npc.defense * 1.1);
-                    Npc.lifeMax = (int)(Npc.lifeMax * 1.5);
-                }
-                Npc.netUpdate = true;
-            }
         }
     }
     public class Rajah2 : Rajah

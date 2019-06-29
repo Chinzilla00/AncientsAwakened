@@ -18,7 +18,7 @@ Wand of Sparking EX");
             item.mana = 8;
             item.width = 74;
             item.height = 34;
-            item.ranged = true;
+            item.magic = true;
             item.damage = 300;
             item.shoot = mod.ProjectileType("SparkWand");
             item.useTime = 10;

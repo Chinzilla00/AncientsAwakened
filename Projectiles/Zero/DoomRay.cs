@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Zero
 			projectile.penetrate = -1;
 			projectile.alpha = 255;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
+            projectile.localNPCHitCooldown = 10;
 		}
 
 		public override bool PreAI()

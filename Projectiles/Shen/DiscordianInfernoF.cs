@@ -20,8 +20,8 @@ namespace AAMod.Projectiles.Shen
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.aiStyle = 1;
-            projectile.penetrate = -1;
+            projectile.aiStyle = -1;
+            projectile.penetrate = 1;
             projectile.friendly = true;
             projectile.hostile = false;
 			projectile.extraUpdates = 1;

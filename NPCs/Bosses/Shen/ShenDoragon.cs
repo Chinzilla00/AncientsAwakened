@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             #region preamble stuff
-            if (isAwakened && npc.life > npc.lifeMax * 0.2f) //set awakened stats
+            if (isAwakened && npc.life > (int)(npc.lifeMax * 0.2f)) //set awakened stats
             {
                 _normalSpeed = 17f;
                 _chargeSpeed = 50f;
@@ -214,7 +214,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 discordianFirebombPercent = 25;
                 aiTooLongCheck = 50;
             }
-            else if (isAwakened && npc.life <= npc.lifeMax * 0.2f)
+            else if (isAwakened && npc.life <= (int)(npc.lifeMax * 0.2f))
             {
                 _normalSpeed = 20f;
                 _chargeSpeed = 60f;
@@ -394,7 +394,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 3:
-                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
+                                aiChoice = (float)Main.rand.Next(2, isAwakened ? 10 : 7);
                                 if (Main.rand.Next(2) == 0)
                                 {
                                     npc.ai[3] = -1f;
@@ -406,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                             case 6:
                                 npc.ai[3] = -1f;
-                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
+                                aiChoice = (float)Main.rand.Next(2, isAwakened ? 10 : 7);
                                 break;
                         }
                     }
@@ -788,7 +788,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 9f) //Discordian Storm (Awakened Only)
             {
-                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -400);
+                Vector2 playerPoint = player.Center + new Vector2(Math.Sign((npc.Center - player.Center).X) * 500, -200);
                 MoveToPoint(playerPoint);
                 Roar(roarTimerMax, false);
                 if (Main.netMode != 1)

@@ -1145,7 +1145,6 @@ namespace AAMod
             }
         }
 
-
         public static void SpawnRajah(Player player, bool spawnMessage = false, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
         {
             if (npcCenter == default(Vector2))

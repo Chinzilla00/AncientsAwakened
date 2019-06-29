@@ -10,6 +10,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 {
     public class BunnyBattler : ModNPC
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rabbid Rabbit");
@@ -22,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.height = 40;
             npc.aiStyle = -1;
             npc.damage = 90;
-            npc.defense = 40;
+            npc.defense = 30;
             npc.lifeMax = 300;
             npc.knockBackResist = 0f;
             npc.npcSlots = 0f;
@@ -59,19 +60,12 @@ namespace AAMod.NPCs.Bosses.Rajah
             base.ReceiveExtraAI(reader);
             if (Main.netMode == 1)
             {
-                SetLife = reader.ReadBool(); //Set Lifex
+                SetLife = reader.ReadBool();
             }
         }
 
         public override void AI()
         {
-            if (Main.netMode != 1 && !SetLife)
-            {
-                Rajah.ScaleMinionStats(npc);
-                npc.life = npc.lifeMax;
-                SetLife = true;
-                npc.netUpdate = true;
-            }
             npc.TargetClosest(false);
             Player player = Main.player[npc.target];
             if (npc.velocity.Y != 0)
@@ -157,6 +151,50 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.active = false;
                 }
             }
+        }
+    }
+    public class BunnyBattler1 : BunnyBattler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 100;
+            npc.defense = 40;
+            npc.lifeMax = 400;
+        }
+    }
+    public class BunnyBattler2 : BunnyBattler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 130;
+            npc.defense = 50;
+            npc.lifeMax = 600;
+        }
+    }
+    public class BunnyBattler3 : BunnyBattler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 140;
+            npc.defense = 60;
+            npc.lifeMax = 900;
+        }
+    }
+    public class BunnyBattler4 : BunnyBattler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 150;
+            npc.defense = 70;
+            npc.lifeMax = 1200;
         }
     }
 }

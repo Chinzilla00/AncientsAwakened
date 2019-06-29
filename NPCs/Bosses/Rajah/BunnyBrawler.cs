@@ -63,18 +63,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
 
-        public override bool PreAI()
-        {
-            if (Main.netMode != 1 && !SetLife)
-            {
-                Rajah.ScaleMinionStats(npc);
-                npc.life = npc.lifeMax;
-                SetLife = true;
-                npc.netUpdate = true;
-            }
-            return true;
-        }
-
         public override void FindFrame(int frameHeight)
         {
             if (npc.velocity.Y == 0)
@@ -121,6 +109,50 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.active = false;
                 }
             }
+        }
+    }
+    public class BunnyBrawler1 : BunnyBrawler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 120;
+            npc.defense = 70;
+            npc.lifeMax = 600;
+        }
+    }
+    public class BunnyBrawler2 : BunnyBrawler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 140;
+            npc.defense = 70;
+            npc.lifeMax = 800;
+        }
+    }
+    public class BunnyBrawler3 : BunnyBrawler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 155;
+            npc.defense = 90;
+            npc.lifeMax = 1200;
+        }
+    }
+    public class BunnyBrawler4 : BunnyBrawler
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 170;
+            npc.defense = 100;
+            npc.lifeMax = 1600;
         }
     }
 }

@@ -213,6 +213,7 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("TechnoTruffle"));
 
+                #region Rajah Bars
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
                     AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
@@ -227,6 +228,143 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah2"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah3"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah4"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah5"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah6"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah7"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah8"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah9"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Orange,
+                    Color.Orange,
+                    Color.Orange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("SupremeRajah"));
+
+                #endregion
 
                 // Daybringer
                 yabhb.Call("hbStart");

@@ -33,7 +33,7 @@ namespace AAMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			target.immune[projectile.owner] = 5;
+			target.immune[projectile.owner] = 15;
 		}
 
         public override void AI()

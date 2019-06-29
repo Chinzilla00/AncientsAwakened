@@ -22,7 +22,6 @@ namespace AAMod.Projectiles.Akuma
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.hide = true;
             projectile.sentry = true;
         }
 
@@ -66,7 +65,7 @@ namespace AAMod.Projectiles.Akuma
                 int num1059 = Dust.NewDust(center15 - Vector2.One * 8f, 16, 16, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 1f);
                 Main.dust[num1059].velocity *= 2f;
                 Main.dust[num1059].noGravity = true;
-                Main.dust[num1059].scale = Utils.SelectRandom<float>(Main.rand, new float[]
+                Main.dust[num1059].scale = Utils.SelectRandom(Main.rand, new float[]
                 {
                     0.8f,
                     1.65f

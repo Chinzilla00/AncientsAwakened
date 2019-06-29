@@ -98,13 +98,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            if (Main.netMode != 1 && !SetLife)
-            {
-                Rajah.ScaleMinionStats(npc);
-                npc.life = npc.lifeMax;
-                SetLife = true;
-                npc.netUpdate = true;
-            }
             npc.noTileCollide = false;
             npc.knockBackResist = 0.4f * Main.knockBackMultiplier;
             npc.noGravity = true;
@@ -343,6 +336,50 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
+        }
+    }
+    public class RabbitcopterSoldier1 : RabbitcopterSoldier
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 110;
+            npc.defense = 30;
+            npc.lifeMax = 500;
+        }
+    }
+    public class RabbitcopterSoldier2 : RabbitcopterSoldier
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 130;
+            npc.defense = 40;
+            npc.lifeMax = 650;
+        }
+    }
+    public class RabbitcopterSoldier3 : RabbitcopterSoldier
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 150;
+            npc.defense = 50;
+            npc.lifeMax = 750;
+        }
+    }
+    public class RabbitcopterSoldier4 : RabbitcopterSoldier
+    {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.damage = 170;
+            npc.defense = 70;
+            npc.lifeMax = 900;
         }
     }
 }
