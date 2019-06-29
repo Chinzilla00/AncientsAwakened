@@ -4743,7 +4743,7 @@
     <Content Include="Items\Dev\Minions\Squirrel1.png" />
     <Content Include="Items\Dev\Minions\Squirrel2.png" />
     <Content Include="Items\Dev\Placeholder.png" />
-    <Content Include="Items\Dev\SkullShot.png" />
+    <Content Include="Items\Dev\Skullshot.png" />
     <Content Include="Items\Dev\SoccMinion.png" />
     <Content Include="Items\Dev\SoccStaff.png" />
     <Content Include="Items\Dev\SockPuppetEX.png" />
