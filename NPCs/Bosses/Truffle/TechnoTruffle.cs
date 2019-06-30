@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.Truffle
     [AutoloadBossHead]
     public class TechnoTruffle : ModNPC
     {
+        public bool AIType = true;
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			base.SendExtraAI(writer);
@@ -22,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 				writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(AIType);
             }
 		}
 
@@ -34,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 				internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                AIType = reader.ReadBool();
             }	
 		}	
 
@@ -75,7 +78,8 @@ namespace AAMod.NPCs.Bosses.Truffle
         }
 
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2, AISTATE_ROCKET = 3;
-		public float[] internalAI = new float[4];
+        public static int AISTATE_DASH = 0, AISTATE_CHARGE = 1, AISTATE_FLY = 2;
+        public float[] internalAI = new float[4];
         bool HasStopped = false;
         bool SelectPoint = false;
         Vector2 MovePoint = new Vector2(0, 0);
@@ -87,20 +91,28 @@ namespace AAMod.NPCs.Bosses.Truffle
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-                if (internalAI[1] != AISTATE_ROCKET)
-                {
-                    if (npc.frame.Y > (frameHeight * 7))
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y = 0;
-                    }
-                }
-                else
+                if (internalAI[1] == AISTATE_ROCKET || internalAI[3] == AISTATE_FLY)
                 {
                     if (npc.frame.Y > (frameHeight * 11) && npc.frame.Y < (frameHeight * 8))
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y = frameHeight * 8;
+                    }
+                }
+                else if (!AIType)
+                {
+                    if (npc.frame.Y > (frameHeight * 16) && npc.frame.Y < (frameHeight * 12))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = frameHeight * 12;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > (frameHeight * 7))
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y = 0;
                     }
                 }
             }
@@ -112,8 +124,8 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void AI()
         {
+            npc.TargetClosest();
             Player player = Main.player[npc.target];
-
             Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
 
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
@@ -133,47 +145,195 @@ namespace AAMod.NPCs.Bosses.Truffle
                     Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("TruffleBookIt"), 0, 0);
                 }
             }
+            if (Main.netMode != 1)
+            {
+                internalAI[2]++;
+            }
 
+            if (internalAI[2] > 900)
+            {
+                if (!TileBelowEmpty(player))
+                {
+                    if (AIType)
+                    {
+                        AIType = false;
+                    }
+                    else
+                    {
+                        npc.noGravity = true;
+                        AIType = true;
+                    }
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[3] = 0;
+                }
+                else
+                {
+                    AIType = true;
+                }
+                internalAI[2] = 0;
+                npc.netUpdate = true;
+            }
+
+            if (!AIType)
+            {
+                MonarchAI();
+            }
+            else
+            {
+                FungusAI();
+            }
+        }
+
+        public bool TileBelowEmpty(Player player)
+        {
+            int tileX = (int)(player.Center.X / 16f) + player.direction * 2;
+            int tileY = (int)((player.position.Y + player.height) / 16f);
+
+            for (int tY = tileY; tY < tileY + 17; tY++)
+            {
+                if (Main.tile[tileX, tY] == null)
+                {
+                    Main.tile[tileX, tY] = new Tile();
+                }
+                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[Main.tile[tileX, tY].type] && !TileID.Sets.Platforms[Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void MonarchAI()
+        {
+            AIType = false;
+            npc.TargetClosest();
+            Player player = Main.player[npc.target];
+            
+            if (player.Center.X > npc.Center.X) // so it faces the player
+            {
+                npc.spriteDirection = -1;
+            }
+            else
+            {
+                npc.spriteDirection = 1;
+            }
+
+            if (Main.netMode != 1)
+            {
+                if (internalAI[3] != AISTATE_FLY)
+                {
+                    npc.noGravity = false;
+                    internalAI[0]++;
+                }
+                else
+                {
+                    npc.noGravity = true;
+                }
+                if (internalAI[0] >= 180)
+                {
+                    internalAI[0] = 0;
+                    internalAI[3] = Main.rand.Next(3);
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+                else if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                {
+                    internalAI[3] = AISTATE_FLY;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }
+            if (internalAI[3] == AISTATE_DASH)
+            {
+                if (SelectPoint && Main.netMode != 1)
+                {
+                    float Point = 300 * npc.direction;
+                    MovePoint = player.Center + new Vector2(Point, 0);
+                    SelectPoint = false;
+                    npc.netUpdate = true;
+                }
+
+                if (Main.netMode != 1)
+                {
+                    internalAI[0]++;
+                }
+                if (internalAI[0] >= 120)
+                {
+                    MoveToPoint(MovePoint);
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, Color.LightCyan.R / 255, Color.LightCyan.G / 255, Color.LightCyan.B / 255);
+                    if (Vector2.Distance(npc.Center, MovePoint) <= 0 && Main.netMode != 1)
+                    {
+                        npc.rotation = 0;
+                        internalAI[0] = 0;
+                        internalAI[3] = Main.rand.Next(3);
+                        npc.netUpdate = true;
+                    }
+                }
+            }
+            else if (internalAI[3] == AISTATE_FLY)
+            {
+                npc.noTileCollide = true;
+                npc.noGravity = true;
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                npc.rotation = 0;
+                if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                {
+                    npc.rotation = 0;
+                    npc.noGravity = false;
+                    internalAI[0] = 0;
+                    internalAI[3] = Main.rand.Next(3);
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                    npc.noTileCollide = false;
+                }
+                npc.rotation = 0;
+            }
+            else
+            {
+                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);
+                npc.rotation = 0;
+            }
+        }
+
+        public void FungusAI()
+        {
+            AIType = true;
+            npc.TargetClosest();
+            Player player = Main.player[npc.target];
             if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
             {
                 internalAI[0]++;
                 if (internalAI[0] >= 180)
                 {
                     internalAI[0] = 0;
-                    internalAI[1] = Main.rand.Next(4);
+                    internalAI[1] = Main.rand.Next(3);
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
             if (internalAI[1] == AISTATE_HOVER)
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.2f, 6f, 170, 20f, FireMagic);
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, player.Center, 0.15f, 4f, 170, 56f, FireMagic);
             }
             else if (internalAI[1] == AISTATE_FLIER)
             {
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.2f, 0.2f, 6f, 6f, false, 1);
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 5f, 3f, false, 1);
             }
             else if (internalAI[1] == AISTATE_SHOOT)
             {
-
                 if (HasStopped)
                 {
-                    if (Main.netMode != 1)
-                    {
-                        internalAI[0]++;
-                    }
-                    npc.rotation = 0;
+                    internalAI[0]++;
                 }
-                if (Main.netMode != 1)
+                if (internalAI[0] >= 60)
                 {
-                    if (internalAI[0] >= 60)
-                    {
-                        int attack = Main.rand.Next(2);
-                        internalAI[1] = Main.rand.Next(4);
-                        internalAI[0] = 0;
-                        FungusAttack(attack);
-                        npc.netUpdate = true;
-                    }
+                    int attack = Main.rand.Next(4);
+                    internalAI[1] = Main.rand.Next(3);
+                    internalAI[0] = 0;
+                    FungusAttack(attack);
+                    npc.netUpdate = true;
                 }
 
                 npc.velocity *= 0.7f;
@@ -189,45 +349,9 @@ namespace AAMod.NPCs.Bosses.Truffle
                 if (npc.velocity == new Vector2(0, 0))
                 {
                     HasStopped = true;
-                    npc.netUpdate = true;
                 }
             }
-            else if (internalAI[1] == AISTATE_ROCKET)
-            {
-                if (SelectPoint && Main.netMode != 1)
-                {
-                    float Point = 300 * npc.direction;
-                    MovePoint = player.Center + new Vector2(Point, 300f);
-                    SelectPoint = false;
-                    npc.netUpdate = true;
-                }
-
-                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-                float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float NewRotation = (float)Math.Atan2(num2, num1);
-                if (Main.netMode != 1)
-                {
-                    internalAI[0]++;
-                    if (internalAI[0] >= 120)
-                    {
-                        MoveToPoint(MovePoint);
-
-                        Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, Color.LightCyan.R / 255, Color.LightCyan.G / 255, Color.LightCyan.B / 255);
-                        if (Vector2.Distance(npc.Center, MovePoint) <= 0 && Main.netMode != 1)
-                        {
-                            internalAI[1] = Main.rand.Next(3);
-                            internalAI[0] = 0;
-                            npc.netUpdate = true;
-                        }
-                    }
-                }
-            }
-            if (internalAI[1] != AISTATE_ROCKET)
-            {
-                npc.rotation = 0;
-            }
-
+            npc.rotation = 0;
         }
 
         public float[] shootAI = new float[4];

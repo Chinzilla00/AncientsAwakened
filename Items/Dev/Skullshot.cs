@@ -2,6 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
+using System;
 
 namespace AAMod.Items.Dev
 {
@@ -32,7 +33,7 @@ Uses Bullets and Bones as ammo
             item.damage = 30;
             item.shootSpeed = 6f;
             item.noMelee = true;
-            item.value = 700000;
+            item.value = 100000;
             item.rare = 9;
             item.ranged = true;
 
@@ -42,38 +43,42 @@ Uses Bullets and Bones as ammo
 			customNameColor = new Color(255, 128, 0);
         }
 
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse != 2)
+            if (player.altFunctionUse == 2)
             {
-                item.damage = 30;
+                item.damage = 80;
             }
             else
             {
-                item.damage = 80;
+                item.damage = 30;
             }
             return base.CanUseItem(player);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num81 = Main.mouseX + Main.screenPosition.X - vector2.X;
-            float num82 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-            float num176 = num81;
-            float num177 = num82;
             if (player.altFunctionUse != 2)
             {
-                for (int num175 = 0; num175 < 6; num175++)
+                float spread = 20f * 0.0174f;
+                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+                double startAngle = Math.Atan2(speedX, speedY) - .1d;
+                double deltaAngle = spread / 6f;
+                double offsetAngle;
+                for (int i = 0; i < 3; i++)
                 {
-                    num176 += Main.rand.Next(-40, 41) * 0.05f;
-                    num177 += Main.rand.Next(-40, 41) * 0.05f;
-                    Projectile.NewProjectile(vector2.X, vector2.Y, num176, num177, 10, damage, knockBack, Main.myPlayer, 0f, 0f);
+                    offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
                 }
             }
             else
             {
-                int proj = Projectile.NewProjectile(vector2.X, vector2.Y, num176, num177, ProjectileID.BoneGloveProj, damage, knockBack, Main.myPlayer, 0f, 0f);
+                int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BoneGloveProj, damage, knockBack, Main.myPlayer, 0f, 0f);
                 Main.projectile[proj].ranged = true;
             }
             return false;

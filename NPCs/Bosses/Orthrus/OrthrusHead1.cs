@@ -115,18 +115,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 return;
             }			
 		
-            /*if (Body == null)
-            {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Orthrus"), 500f, null);
-                if (npcID != -1)
-                    bodyNPC = Main.npc[npcID];
-                return;
-            }
-            if (!bodyNPC.active)
-            {
-                npc.active = false;
-                return;
-            }*/
             npc.realLife = bodyNPC.whoAmI;
             npc.timeLeft = 100;
 
@@ -153,23 +141,22 @@ namespace AAMod.NPCs.Bosses.Orthrus
                 if (Main.netMode != 1)
                 {
                     npc.localAI[1]++;
-                    int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
-                    aiTimerFire += 30;
-                    if (targetPlayer != null && npc.localAI[1] == aiTimerFire)
+                    int aiTimerFire = 150;
+                    if (targetPlayer != null)
                     {
-                        for (int i = 0; i < 5; ++i)
+                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                        if (leftHead)
                         {
-                            Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
-                            if (leftHead)
+                            dir *= 12f;
+                            if (npc.localAI[1] % 10 == 0)
                             {
-                                dir *= 12f;
-                                for (int num468 = 0; num468 < 15; num468++)
-                                {
-                                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("OrthrusSpark"), (int)(damage * 1.3f), 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("OrthrusSpark"), (int)(damage * 1.3f), 0f, Main.myPlayer);
 
-                                }
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (npc.localAI[1] == aiTimerFire)
                             {
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
                             }

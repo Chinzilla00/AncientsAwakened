@@ -2250,15 +2250,9 @@ namespace AAMod
             }
             if (CapShield)
             {
-                if (AAMod.AccessoryAbilityKey.JustPressed)
+                if (AAMod.AccessoryAbilityKey.JustPressed && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Projectiles.CapShield>()))
                 {
-                    for (int j = 0; j < 1000; ++j)
-                    {
-                        if (!Main.projectile[j].active && Main.projectile[j].owner != Main.myPlayer && Main.projectile[j].type != mod.ProjectileType<Projectiles.CapShield>())
-                        {
-                            BaseAI.FireProjectile(new Vector2(Main.mouseX, Main.mouseY), player.position, mod.ProjectileType("CapShield"), 40, 3, 5, 1, Main.myPlayer);
-                        }
-                    }
+                    BaseAI.FireProjectile(new Vector2(Main.mouseX, Main.mouseY), player.position, mod.ProjectileType("CapShield"), 40, 3, 12, 1, Main.myPlayer);
                 }
             }
             if (AbilityCD != 0)
@@ -3192,15 +3186,9 @@ namespace AAMod
                     BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TaiyangBaoleiA_Shield_Glow"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.White, edi.shadow), drawPlayer.bodyFrame);
                 }
             }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType<Items.Accessories.CapShield>()))
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType<Items.Accessories.CapShield>()) && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Projectiles.CapShield>()))
             {
-                for (int j = 0; j < 1000; ++j)
-                {
-                    if (!Main.projectile[j].active && Main.projectile[j].owner != Main.myPlayer && Main.projectile[j].type != mod.ProjectileType<Projectiles.CapShield>())
-                    {
-                        BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Accessories/CapShield_ShieldTex"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
-                    }
-                }
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Items/Accessories/CapShield_ShieldTex"), edi.shieldShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), edi.shadow), drawPlayer.bodyFrame);
             }
         });
 

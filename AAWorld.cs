@@ -1718,15 +1718,14 @@ namespace AAMod
                     {
                         int type = Main.tile[k, l].type;
                         int wall = Main.tile[k, l].wall;
+                        bool sendNet = false;
                         if (conversionType == 1)
                         {
-                            bool sendNet = false;
                             if (WallID.Sets.Conversion.Stone[wall])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<TorchstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
-
                             }
                             else if (WallID.Sets.Conversion.Sandstone[wall])
                             {
@@ -1782,60 +1781,62 @@ namespace AAMod
                         }
                         else if (conversionType == 2)
                         {
-                            if (WallID.Sets.Conversion.Stone[type])
+                            if (WallID.Sets.Conversion.Stone[wall])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
-                            else if (WallID.Sets.Conversion.Sandstone[type])
+                            else if (WallID.Sets.Conversion.Sandstone[wall])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
-                            else if (WallID.Sets.Conversion.HardenedSand[type])
+                            else if (WallID.Sets.Conversion.HardenedSand[wall])
                             {
                                 Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandHardenedWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
-                            else if (TileID.Sets.Conversion.Stone[type])
+                            if (TileID.Sets.Conversion.Stone[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<Depthstone>();
                                 WorldGen.SquareTileFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
                             else if (type == TileID.JungleGrass)
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<MireGrass>();
                                 WorldGen.SquareTileFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
                             else if (TileID.Sets.Conversion.Ice[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<IndigoIce>();
                                 WorldGen.SquareTileFrame(k, l, true);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
                             else if (TileID.Sets.Conversion.Sand[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<Depthsand>();
                                 WorldGen.SquareTileFrame(k, l);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
                             else if (TileID.Sets.Conversion.HardenedSand[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<DepthsandHardened>();
                                 WorldGen.SquareTileFrame(k, l);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
                             else if (TileID.Sets.Conversion.Sandstone[type])
                             {
                                 Main.tile[k, l].type = (ushort)mod.TileType<Depthsandstone>();
                                 WorldGen.SquareTileFrame(k, l);
-                                NetMessage.SendTileSquare(-1, k, l, 1);
+                                sendNet = true;
                             }
+                            if (sendNet)
+                                NetMessage.SendTileSquare(-1, k, l, 1);
                         }
                         else if (conversionType == 3)
                         {
@@ -2087,7 +2088,11 @@ namespace AAMod
                             }
                             if (type == TileID.SnowBlock)
                             {
-                                if ((WorldGen.InWorld(k, l - 1, 1) && Main.tile[k, l - 1].type == TileID.Trees) || (WorldGen.InWorld(k, l + 1, 1) && Main.tile[k, l + 1].type == TileID.Trees))
+                                if ((WorldGen.InWorld(k, l - 1, 1) && Main.tile[k, l - 1].type == TileID.Trees) || (WorldGen.InWorld(k, l + 1, 1) && Main.tile[k, l + 1].type == TileID.Trees) ||
+                                    (WorldGen.InWorld(k, l - 1, 1) && Main.tile[k, l - 1] == null) ||
+                                    (WorldGen.InWorld(k, l + 1, 1) && Main.tile[k, l + 1] == null) ||
+                                    (WorldGen.InWorld(k - 1, l, 1) && Main.tile[k - 1, l] == null) ||
+                                    (WorldGen.InWorld(k - 1, l, 1) && Main.tile[k - 1, l] == null))
                                 {
                                     Main.tile[k, l].type = 2;
                                 }

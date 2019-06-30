@@ -1099,6 +1099,7 @@
     <Compile Include="Items\Materials\TechneciumBar.cs" />
     <Compile Include="Items\Materials\vulture_feather.cs" />
     <Compile Include="Items\Materials\YtriumBar.cs" />
+    <Compile Include="Items\Melee\Aerodrake.cs" />
     <Compile Include="Items\Melee\ChaosChain.cs" />
     <Compile Include="Items\Melee\ChaosYariEX.cs" />
     <Compile Include="Items\Melee\ChaosYari.cs" />
@@ -1970,12 +1971,14 @@
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\Aerodrake1.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
     <Compile Include="Projectiles\CursedSickleProj.cs" />
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
     <Compile Include="Projectiles\CursedSickle.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
+    <Compile Include="Projectiles\Aerodrake.cs" />
     <Compile Include="Projectiles\VoidWave.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
     <Compile Include="Projectiles\ChaosChain.cs" />
@@ -5246,12 +5249,13 @@
     <Content Include="NPCs\Swarm_Thing.png" />
     <Content Include="NPCs\TownNPCs\StanLee.png" />
     <Content Include="NPCs\TownNPCs\StanLee_Head.png" />
+    <Content Include="Projectiles\Aerodrake.png" />
+    <Content Include="Projectiles\Aerodrake1.png" />
     <Content Include="Projectiles\AH\AbyssBall.png" />
     <Content Include="Projectiles\AH\AbyssClaw.png" />
     <Content Include="Projectiles\AH\MagicBoom.png" />
     <Content Include="Projectiles\AH\BlazeBall.png" />
     <Content Include="Projectiles\AH\BlazeClaw.png" />
-    <Content Include="Projectiles\AH\ChaosBaton.png" />
     <Content Include="Projectiles\AH\FireOrbiter.png" />
     <Content Include="Items\Armor\Witch\WitchBoots.png" />
     <Content Include="Items\Armor\Witch\WitchBoots_Legs.png" />
@@ -6723,7 +6727,6 @@
     <Content Include="Projectiles\Flasks\IcemeltFlask.png" />
     <Content Include="Projectiles\Flasks\JungleFlask.png" />
     <Content Include="Projectiles\Flasks\OrderBottle.png" />
-    <Content Include="Projectiles\Flasks\Flask.png" />
     <Content Include="Projectiles\Flasks\PurityFlask.png" />
     <Content Include="Projectiles\Flasks\SporeSac.png" />
     <Content Include="Projectiles\Flasks\VoidFlask.png" />

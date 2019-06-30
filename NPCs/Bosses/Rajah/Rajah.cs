@@ -212,19 +212,13 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
-                if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-                {
-                    npc.noTileCollide = true;
-                }
-                else
-                {
-                    npc.noTileCollide = false;
-                }
+                npc.noTileCollide = false;
                 npc.noGravity = true;
                 FlyAI();
             }
             else
             {
+                npc.noTileCollide = true;
                 npc.noGravity = false;
                 JumpAI();
             }
@@ -755,6 +749,8 @@ namespace AAMod.NPCs.Bosses.Rajah
                 Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
             }
         }
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -766,11 +762,17 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             RajahTexture();
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
-
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+            if (npc.alpha <= 0)
+            {
+                return false;
+            }
             if (isSupreme)
             {
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
+                BaseDrawing.DrawAura(spriteBatch, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, Main.DiscoColor);
                 BaseDrawing.DrawAfterimage(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, new Vector2[] { npc.velocity }, 1, 0, npc.direction, 9, npc.frame, .3f, 1, 8, true, 0, 0, Main.DiscoColor);
             }
             return false;

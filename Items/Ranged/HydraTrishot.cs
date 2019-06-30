@@ -42,7 +42,7 @@ namespace AAMod.Items.Ranged
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
 		    double deltaAngle = spread / 6f;
 		    double offsetAngle;
-		    for (int i = 0; i < 3; i++)
+		    for (int i = 0; i < Main.rand.Next(3, 8); i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
 		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
