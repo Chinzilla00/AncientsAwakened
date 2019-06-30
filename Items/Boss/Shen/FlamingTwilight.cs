@@ -48,13 +48,13 @@ Consumes gel as ammo
 
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 14;
-                item.useAnimation = 14;
+                item.useTime = 28;
+                item.useAnimation = 28;
             }
             else
             {
-                item.useTime = 28;
-                item.useAnimation = 28;
+                item.useTime = 14;
+                item.useAnimation = 14;
             }
             return base.CanUseItem(player);
         }
@@ -75,7 +75,7 @@ Consumes gel as ammo
             if (player.altFunctionUse != 2)
             {
                 float num72 = item.shootSpeed;
-                int num112 = 4;
+                int num112 = 5;
                 for (int num113 = 0; num113 < num112; num113++)
                 {
                     Vector2 vector2 = new Vector2(player.position.X + (player.width * 0.5f) + (Main.rand.Next(201) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
@@ -103,7 +103,7 @@ Consumes gel as ammo
             }
             else
             {
-                float Angle = Main.rand.Next(30, 46);
+                float Angle = Main.rand.Next(15, 46);
                 float spread = Angle * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
@@ -115,7 +115,7 @@ Consumes gel as ammo
                     Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
                 }
             }
-            return true;
+            return false;
 		}
 		
 		public override void AddRecipes()

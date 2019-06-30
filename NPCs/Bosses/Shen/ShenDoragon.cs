@@ -812,25 +812,13 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        if (npc.ai[2] < 119)
-                        {
-                            for (int LOOP = 0; LOOP < 4; LOOP++)
-                            {
-                                Dust dust1;
-                                dust1 = Main.dust[Dust.NewDust(infernoPos, npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                                dust1.noGravity = true;
-                            }
-                        }
-                        else
-                        {
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 3 , vel.Y * 3, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
-                            Main.projectile[projectile].netUpdate = true;
-                        }
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 2, vel.Y * 2, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        Main.projectile[projectile].netUpdate = true;
                     }
                     
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= 200)
+                if (npc.ai[2] >= 120)
                 {
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }

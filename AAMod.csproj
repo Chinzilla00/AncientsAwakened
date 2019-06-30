@@ -3991,6 +3991,7 @@
     <Content Include="Items\Accessories\CapShield.png" />
     <Content Include="Items\Accessories\CapShield_Shield.png" />
     <Content Include="Items\Accessories\CapShield_ShieldTex.png" />
+    <Content Include="Items\Accessories\CharredEye.png" />
     <Content Include="Items\Accessories\DemonGauntlet.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOff.png" />
     <Content Include="Items\Accessories\DemonGauntlet_HandsOn.png" />

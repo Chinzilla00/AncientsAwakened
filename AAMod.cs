@@ -22,7 +22,6 @@ namespace AAMod
     {
         // Miscellaneous
         public static int GoblinSoul = -1;
-        public static int BoneAmmo = -1;
 
         // Hotkeys
         public static ModHotKey InfinityHotKey;
@@ -216,7 +215,6 @@ namespace AAMod
         {
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
-            BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
 
