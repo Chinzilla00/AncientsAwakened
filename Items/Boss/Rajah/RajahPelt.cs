@@ -1,8 +1,9 @@
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Rajah
 {
-    public abstract class RajahPelt : BaseAAItem
+    public class RajahPelt : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

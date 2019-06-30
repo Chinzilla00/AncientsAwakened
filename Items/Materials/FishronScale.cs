@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Materials
 {
-    public abstract class FishronScale : BaseAAItem
+    public class FishronScale : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
