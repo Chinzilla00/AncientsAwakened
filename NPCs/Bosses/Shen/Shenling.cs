@@ -390,7 +390,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashen Dragon");
+            DisplayName.SetDefault("Discordian Serpent");
             Main.npcFrameCount[npc.type] = 1;
         }
 
@@ -521,7 +521,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashen Dragon");
+            DisplayName.SetDefault("Discordian Serpent");
             Main.npcFrameCount[npc.type] = 1;
         }
 
@@ -652,7 +652,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashen Dragon");
+            DisplayName.SetDefault("Discordian Serpent");
             Main.npcFrameCount[npc.type] = 1;
         }
 

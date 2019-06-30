@@ -769,7 +769,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawAfterimage(spriteBatch, Glow, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, Main.DiscoColor);
+                BaseDrawing.DrawAfterimage(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, new Vector2[] { npc.velocity }, 1, 0, npc.direction, 9, npc.frame, .3f, 1, 8, true, 0, 0, Main.DiscoColor);
             }
             return false;
         }

@@ -30,7 +30,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             int dustType = mod.DustType<Dusts.Discord>();
             if (projectile.localAI[0] == 0f)
             {
@@ -39,13 +39,6 @@ namespace AAMod.Projectiles.Shen
             }
 			if(Main.rand.Next(3) == 0)
 			{
-				for(int m = 0; m < 3; m++)
-				{
-					int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 1.6f);
-					Main.dust[dustID].velocity = -projectile.velocity * 0.5f;
-					Main.dust[dustID].noLight = false;
-					Main.dust[dustID].noGravity = true;
-				}
 				int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 2f);
 				Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
 				Main.dust[dustID2].noLight = false;

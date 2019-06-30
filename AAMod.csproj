@@ -969,6 +969,7 @@
     <Compile Include="Items\Dev\ThunderLord.cs" />
     <Compile Include="Items\Dev\ThunderLordEX.cs" />
     <Compile Include="Items\Dev\TimeTeller.cs" />
+    <Compile Include="Items\Dev\UmbralReaper.cs" />
     <Compile Include="Items\Dev\TitanAxe.cs" />
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
     <Compile Include="Items\Dev\UmbreonSP.cs" />
@@ -1961,8 +1962,7 @@
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
-    <Compile Include="Projectiles\VoidMagicEX.cs" />
-    <Compile Include="Projectiles\VoidMagic.cs" />
+    <Compile Include="Projectiles\VoidWave.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
     <Compile Include="Projectiles\ChaosChain.cs" />
     <Compile Include="Projectiles\ChaosChainEX.cs" />
@@ -3531,6 +3531,7 @@
     <Content Include="Glowmasks\ShroomShirt_Body_Glow.png" />
     <Content Include="Glowmasks\ShroomShirt_Female_Glow.png" />
     <Content Include="Glowmasks\SiegeBox_Glow.png" />
+    <Content Include="Glowmasks\Skullshot.png" />
     <Content Include="Glowmasks\Skyfall_Glow.png" />
     <Content Include="Glowmasks\Sock_Glow.png" />
     <Content Include="Glowmasks\SoC_Glow.png" />
@@ -4754,6 +4755,7 @@
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
     <Content Include="Items\Dev\UmbralReaper.png" />
     <Content Include="Items\Dev\UmbralReaperEX.png" />
+    <Content Include="Items\Magic\BogBombEX.png" />
     <Content Include="Items\Magic\PrismLaser.png" />
     <Content Include="Items\Materials\PhantomSteel.png" />
     <Content Include="Items\Melee\ScytheOfDecayOld.png" />
@@ -6706,9 +6708,8 @@
     <Content Include="Projectiles\ThunderSpark.png" />
     <Content Include="Projectiles\Tools\MiningLaser.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
-    <Content Include="Projectiles\VoidMagic.png" />
-    <Content Include="Projectiles\VoidMagicEX.png" />
     <Content Include="Projectiles\VoidSpear.png" />
+    <Content Include="Projectiles\VoidWave.png" />
     <Content Include="Projectiles\Winterbreak.png" />
     <Content Include="Projectiles\Incapacitator.png" />
     <Content Include="Projectiles\JungleSolution.png" />

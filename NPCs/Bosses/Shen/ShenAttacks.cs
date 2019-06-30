@@ -59,7 +59,7 @@ namespace AAMod
                 float num83 = vector13.Y;
                 float speedX5 = num82;
                 float speedY5 = num83 + Main.rand.Next(-5, 5) * 0.02f;
-                int L = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY5 * 2, mod.ProjectileType<NPCs.Bosses.Shen.ChaosLightning>(), npc.damage / 2, 1, npc.whoAmI, vector13.ToRotation());
+                int L = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY5, mod.ProjectileType<NPCs.Bosses.Shen.ChaosLightning>(), npc.damage / 2, 1, npc.whoAmI, vector13.ToRotation());
                 Main.projectile[L].penetrate = -1;
                 Main.projectile[L].hostile = false;
                 Main.projectile[L].friendly = true;

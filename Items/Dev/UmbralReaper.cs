@@ -6,18 +6,19 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class TitanAxe : BaseAAItem
+    public class UmbralReaper : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Titan Axe");
-            Tooltip.SetDefault("Right clicking throws the axe. \n" + "Left clicking swings the axe. \n" + "'Oof this isn't google' \n'" + "-Welox");
+            DisplayName.SetDefault("Umbral Reaper");
+            Tooltip.SetDefault("Right shoots homing spears. \n" + "Left clicking shoots a wave of void energy. \n" + "'I never touched Valkyrie' \n'" + "-CMD");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 200;
-			item.melee = true;
+			item.damage = 80;
+            item.mana = 8;
+			item.magic = true;
 			item.width = 72;
 			item.height = 72;
 			item.useTime = 26;
@@ -25,9 +26,10 @@ namespace AAMod.Items.Dev
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 100000;
-			item.rare = 11;
-			item.UseSound = SoundID.Item1;
+			item.rare = 9;
+			item.UseSound = SoundID.Item43;
 			item.autoReuse = true;
+            item.noMelee = true;
             item.shootSpeed = 12f;
         }
 
@@ -37,7 +39,7 @@ namespace AAMod.Items.Dev
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(40, 255, 40);
+                    line2.overrideColor = new Color(55, 20, 122);
                 }
             }
         }
@@ -52,15 +54,15 @@ namespace AAMod.Items.Dev
 
             if (player.altFunctionUse == 2)
             {
-                item.shoot = mod.ProjectileType("TitanAxe");
-                item.noMelee = true;
-                item.noUseGraphic = true;
+                Item.staff[item.type] = false;
+                item.useStyle = 1;
+                item.shoot = mod.ProjectileType("VoidWave");
             }
             else
             {
-                item.shoot = 0;
-                item.noMelee = false;
-                item.noUseGraphic = false;
+                Item.staff[item.type] = true;
+                item.useStyle = 5;
+                item.shoot = mod.ProjectileType("VoidSpear");
             }
             return base.CanUseItem(player);
 		}

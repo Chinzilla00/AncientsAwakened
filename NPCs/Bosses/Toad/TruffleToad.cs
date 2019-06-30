@@ -23,6 +23,10 @@ namespace AAMod.NPCs.Bosses.Toad
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+
+                writer.Write(Minion[0]);
+                writer.Write(Minion[1]);
+                writer.Write(Minion[2]);
             }
         }
 
@@ -35,6 +39,10 @@ namespace AAMod.NPCs.Bosses.Toad
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+
+                Minion[0] = reader.ReadBool();
+                Minion[1] = reader.ReadBool();
+                Minion[2] = reader.ReadBool();
             }
         }
 
@@ -72,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_SEED = 4, AISTATE_STOMP = 5, AISTATE_BUBBLES2 = 6;
         public float[] internalAI = new float[4];
-        public int Minions = 0;
+        public bool[] Minion = new bool[3];
         public bool tonguespawned = false;
         public bool TongueAttack = false;
         public float AIChangeRate = 180;
@@ -480,32 +488,29 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (Main.netMode != 1)
+            if (npc.life < (int)(npc.life * .8f) && Minion[0] == false)
             {
-                if (npc.life < (int)(npc.life * .8f) && internalAI[3] == 0)
-                {
-                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    internalAI[3] = 1;
-                    npc.netUpdate = true;
-                }
-                if (npc.life < (int)(npc.life * .5f) && Minions == 1)
-                {
-                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    internalAI[3] = 2;
-                    npc.netUpdate = true;
-                }
-                if (npc.life < (int)(npc.life * .2f) && Minions == 2)
-                {
-                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    internalAI[3] = 3;
-                    npc.netUpdate = true;
-                }
+                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                Minion[0] = true;
+                npc.netUpdate = true;
+            }
+            if (npc.life < (int)(npc.life * .5f) && Minion[1] == false)
+            {
+                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                Minion[1] = true;
+                npc.netUpdate = true;
+            }
+            if (npc.life < (int)(npc.life * .2f) && Minion[2] == false)
+            {
+                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                Minion[2] = true;
+                npc.netUpdate = true;
             }
 
         }

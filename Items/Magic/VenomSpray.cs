@@ -36,7 +36,7 @@ namespace AAMod.Items.Magic
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), item.type, item.damage, item.knockBack, Main.myPlayer);
+            Projectile.NewProjectile(position, new Vector2(speedX, speedY), item.shoot, item.damage, item.knockBack, Main.myPlayer);
             return false;
         }
 

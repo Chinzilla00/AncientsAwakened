@@ -823,7 +823,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                         else
                         {
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 6 , vel.Y * 6, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X * 3 , vel.Y * 3, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                             Main.projectile[projectile].netUpdate = true;
                         }
                     }

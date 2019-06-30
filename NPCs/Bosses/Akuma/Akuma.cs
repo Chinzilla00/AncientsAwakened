@@ -732,6 +732,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 return false;
             }
+            npc.active = false;
             return true;
         }
     }
@@ -842,6 +843,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 return false;
             }
+            npc.active = false;
             return true;
         }
     }
@@ -952,6 +954,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 return false;
             }
+            npc.active = false;
             return true;
         }
     }
@@ -1062,6 +1065,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 return false;
             }
+            npc.active = false;
             return true;
         }
 

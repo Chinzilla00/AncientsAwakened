@@ -36,7 +36,7 @@ Uses Bullets and Bones as ammo
             item.rare = 9;
             item.ranged = true;
 
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
+            glowmaskTexture = "Glowmasks/" + GetType().Name;
 			glowmaskDrawType = GLOWMASKTYPE_GUN;
 			glowmaskDrawColor = Color.White;
 			customNameColor = new Color(255, 128, 0);

@@ -75,7 +75,7 @@ Consumes gel as ammo
             if (player.altFunctionUse != 2)
             {
                 float num72 = item.shootSpeed;
-                int num112 = 3;
+                int num112 = 4;
                 for (int num113 = 0; num113 < num112; num113++)
                 {
                     Vector2 vector2 = new Vector2(player.position.X + (player.width * 0.5f) + (Main.rand.Next(201) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);

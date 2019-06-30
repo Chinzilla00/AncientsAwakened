@@ -1805,6 +1805,13 @@ namespace AAMod
                         player.QuickSpawnItem(ItemID.ReaperRobe);
                         spawnedDevItems = true;
                         break;
+                    case 24:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("UmbralReaper"));
+                        }
+                        spawnedDevItems = true;
+                        break;
                 }
             }
         }
