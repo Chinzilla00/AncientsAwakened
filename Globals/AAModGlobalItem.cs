@@ -158,6 +158,13 @@ namespace AAMod
             return true;
         }
 
+        public override void OpenVanillaBag(string context, Player player, int arg)
+        {
+            if (context == "bossBag" && arg == ItemID.FishronBossBag)
+            {
+                player.QuickSpawnItem(mod.ItemType<Items.Materials.FishronScale>(), Main.rand.Next(15, 31));
+            }
+        }
         public static void OpenAACrate(Player player, int CrateType)
         {
             Mod mod = AAMod.instance;

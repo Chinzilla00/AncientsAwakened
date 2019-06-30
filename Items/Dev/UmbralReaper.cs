@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -66,5 +67,24 @@ namespace AAMod.Items.Dev
             }
             return base.CanUseItem(player);
 		}
-	}
+
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                return true;
+            }
+            float spread = 20f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
+            {
+                offsetAngle = startAngle + (deltaAngle * i);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+            }
+            return false;
+        }
+    }
 }

@@ -256,6 +256,10 @@ namespace AAMod
         {
             bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
 
+            if (npc.type == NPCID.DukeFishron && !Main.expertMode)
+            {
+                npc.DropLoot(mod.ItemType<Items.Materials.FishronScale>(), Main.rand.Next(10, 26));
+            }
             if (npc.type == NPCID.FireImp)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DevilSilk"), Main.rand.Next(2, 3));

@@ -115,6 +115,12 @@
     <Compile Include="Items\Armor\Dev\Tied\TiedsSuitA.cs" />
     <Compile Include="Items\Armor\Doomsday\DoomsdayMask.cs" />
     <Compile Include="Items\Armor\Doomsday\ZeroMini.cs" />
+    <Compile Include="Items\Armor\Hoodlum\HoodlumPants.cs" />
+    <Compile Include="Items\Armor\Hoodlum\HoodlumHood.cs" />
+    <Compile Include="Items\Armor\Hoodlum\HoodlumShirt.cs" />
+    <Compile Include="Items\Armor\Leviathan\LeviathanGreaves.cs" />
+    <Compile Include="Items\Armor\Leviathan\LeviathanHelm.cs" />
+    <Compile Include="Items\Armor\Leviathan\LeviathanPlate.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosGreaves.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosVisor.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosMask.cs" />
@@ -147,6 +153,7 @@
     <Compile Include="Items\Boss\MushroomMonarch\MonarchTrophy.cs" />
     <Compile Include="Items\Boss\MushroomMonarch\FungusTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\CottonCane.cs" />
+    <Compile Include="Items\Boss\Rajah\RajahPelt.cs" />
     <Compile Include="Items\Boss\Rajah\RajahCape.cs" />
     <Compile Include="Items\Boss\Rajah\RajahTrophy.cs" />
     <Compile Include="Items\Boss\Rajah\RoyalScepter.cs" />
@@ -919,6 +926,7 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\CursedSickle.cs" />
     <Compile Include="Items\Dev\Skullshot.cs" />
     <Compile Include="Items\Dev\Demise.cs" />
     <Compile Include="Items\Dev\DeceivingTruthEX.cs" />
@@ -1042,6 +1050,7 @@
     <Compile Include="Items\Materials\Discordium.cs" />
     <Compile Include="Items\Materials\Dracokarp.cs" />
     <Compile Include="Items\Materials\DoomiteScrap.cs" />
+    <Compile Include="Items\Materials\FishronScale.cs" />
     <Compile Include="Items\Materials\OceanWhisper.cs" />
     <Compile Include="Items\Materials\PrimevalSkull.cs" />
     <Compile Include="Items\Materials\Prism.cs" />
@@ -1592,6 +1601,9 @@
     <Compile Include="Items\Vanity\Tied\TiedsLeggings.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsMask.cs" />
     <Compile Include="Items\Vanity\Tied\TiedsSuit.cs" />
+    <Compile Include="Items\Vanity\Universe\CursedPants.cs" />
+    <Compile Include="Items\Vanity\Universe\CursedRobe.cs" />
+    <Compile Include="Items\Vanity\Universe\CursedHood.cs" />
     <Compile Include="Items\Walls\DoomiteWall.cs" />
     <Compile Include="Items\Walls\DoomsdayWall.cs" />
     <Compile Include="Items\Walls\DoomstoneBrickWall.cs" />
@@ -1959,7 +1971,9 @@
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
+    <Compile Include="Projectiles\CursedSickleProj.cs" />
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
+    <Compile Include="Projectiles\CursedSickle.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
     <Compile Include="Projectiles\VoidWave.cs" />
@@ -3072,7 +3086,7 @@
     <Content Include="Glowmasks\BlazenPlate_Arms.png" />
     <Content Include="Glowmasks\BlazenPlate_Body.png" />
     <Content Include="Glowmasks\BlazenPlate_Female.png" />
-    <Content Include="Glowmasks\BlazingDawn_Glow.png" />
+    <Content Include="Glowmasks\BlazingDawn.png" />
     <Content Include="Glowmasks\BogBomb_Glow.png" />
     <Content Include="Glowmasks\Bonesaw_Glow.png" />
     <Content Include="Glowmasks\BrokenCode_Glow.png" />
@@ -3108,6 +3122,10 @@
     <Content Include="Glowmasks\CthulhusBlade_Glow.png" />
     <Content Include="Glowmasks\Cthulhu_Glow.png" />
     <Content Include="Glowmasks\CuriousClaw_Glow.png" />
+    <Content Include="Glowmasks\CursedHood_Head_Glow.png" />
+    <Content Include="Glowmasks\CursedPants_Legs_Glow.png" />
+    <Content Include="Glowmasks\CursedRobe_Arms_Glow.png" />
+    <Content Include="Glowmasks\CursedRobe_Body_Glow.png" />
     <Content Include="Glowmasks\CyberneticBell_Glow.png" />
     <Content Include="Glowmasks\CyberneticClaw_Glow.png" />
     <Content Include="Glowmasks\DarkEnergy_Glow.png" />
@@ -3161,6 +3179,8 @@
     <Content Include="Glowmasks\DBTail_Glow.png" />
     <Content Include="Glowmasks\DBTrophy_Glow.png" />
     <Content Include="Glowmasks\DecayScythe_Glow.png" />
+    <Content Include="Glowmasks\DecayScythe_Glow1.png" />
+    <Content Include="Glowmasks\DecayScythe_Glow2.png" />
     <Content Include="Glowmasks\DeityBrain_Glow.png" />
     <Content Include="Glowmasks\DeityEaterBody_Glow.png" />
     <Content Include="Glowmasks\DeityEaterBody_Glow1.png" />
@@ -3292,6 +3312,7 @@
     <Content Include="Glowmasks\Genocide_Glow.png" />
     <Content Include="Glowmasks\GentlemansLongblade_Glow.png" />
     <Content Include="Glowmasks\GentlemansRapier_Glow.png" />
+    <Content Include="Glowmasks\GibsSkull_Head_Glow.png" />
     <Content Include="Glowmasks\GlitchBlast_Glow.png" />
     <Content Include="Glowmasks\GripMaskRed_Glow.png" />
     <Content Include="Glowmasks\GripMaskRed_Head_Glow.png" />
@@ -3311,6 +3332,7 @@
     <Content Include="Glowmasks\HeartstoneLeggings_Legs_Glow.png" />
     <Content Include="Glowmasks\HellstoneAnvil_Glow.png" />
     <Content Include="Glowmasks\HoloCape_Glow.png" />
+    <Content Include="Glowmasks\HoodlumHood_Head_Glow.png" />
     <Content Include="Glowmasks\HydraBag_Glow.png" />
     <Content Include="Glowmasks\HydraHead1_Glow.png" />
     <Content Include="Glowmasks\HydraHead2_Glow.png" />
@@ -3352,6 +3374,7 @@
     <Content Include="Glowmasks\JungleReaperP_Glow.png" />
     <Content Include="Glowmasks\Lantern_Glow.png" />
     <Content Include="Glowmasks\Laser_Rifle_Glow.png" />
+    <Content Include="Glowmasks\LeviathanHelm_Head_Glow.png" />
     <Content Include="Glowmasks\LizEars_Head_Glow.png" />
     <Content Include="Glowmasks\Lolkat_Glow.png" />
     <Content Include="Glowmasks\LuminiteOre_Glow.png" />
@@ -4261,12 +4284,12 @@
     <Content Include="Items\Armor\Heartstone\HeartstoneLeggings_Legs.png" />
     <Content Include="Items\Armor\Hoodlum\HoodlumHood.png" />
     <Content Include="Items\Armor\Hoodlum\HoodlumHood_Head.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPaws.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPaws_Legs.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPlate.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPlate_Arms.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPlate_Body.png" />
-    <Content Include="Items\Armor\Hoodlum\HoodlumPlate_Female.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumPants.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumPants_Legs.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumShirt.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumShirt_Arms.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumShirt_Body.png" />
+    <Content Include="Items\Armor\Hoodlum\HoodlumShirt_Female.png" />
     <Content Include="Items\Armor\Imp\ImpBoots.png" />
     <Content Include="Items\Armor\Imp\ImpBoots_Legs.png" />
     <Content Include="Items\Armor\Imp\ImpGarb.png" />
@@ -4283,6 +4306,14 @@
     <Content Include="Items\Armor\Kindled\KindledKabuto_Head.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate.png" />
     <Content Include="Items\Armor\Kindled\KindledSuneate_Legs.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanGreaves.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanGreaves_Legs.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanHelm.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanHelm_Head.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanPlate.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanPlate_Arms.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanPlate_Body.png" />
+    <Content Include="Items\Armor\Leviathan\LeviathanPlate_Female.png" />
     <Content Include="Items\Armor\Madness\Madness.png" />
     <Content Include="Items\Armor\Madness\MadnessBoots.png" />
     <Content Include="Items\Armor\Madness\MadnessBoots_Legs.png" />
@@ -4757,7 +4788,9 @@
     <Content Include="Items\Dev\UmbralReaperEX.png" />
     <Content Include="Items\Magic\BogBombEX.png" />
     <Content Include="Items\Magic\PrismLaser.png" />
+    <Content Include="Items\Materials\FishronScale.png" />
     <Content Include="Items\Materials\PhantomSteel.png" />
+    <Content Include="Items\Melee\Aerodrake.png" />
     <Content Include="Items\Melee\ScytheOfDecayOld.png" />
     <Content Include="Items\Melee\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
@@ -4796,8 +4829,6 @@
     <Content Include="Items\Materials\SwampKoi.png" />
     <Content Include="Items\Materials\TerraShard.png" />
     <Content Include="Items\Materials\VikingRelic.png" />
-    <Content Include="Items\Materials\VikingRelic0.png" />
-    <Content Include="Items\Materials\VikingRelic1.png" />
     <Content Include="Items\Melee\AsgardianLance.png" />
     <Content Include="Items\Melee\ChaosChain.png" />
     <Content Include="Items\Melee\ChaosChainEX.png" />
@@ -4917,6 +4948,7 @@
     <Content Include="Items\Usable\VoidBomb.png" />
     <Content Include="Items\Usable\WhiteSolution.png" />
     <Content Include="Items\Usable\YellowSolution.png" />
+    <Content Include="Items\Vanity\Alphakip\AlphaBag.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings.png" />
     <Content Include="Items\Vanity\Alphakip\Shiny\ShinyKipronWings_Wings.png" />
     <Content Include="Items\Vanity\Apawn\ApawnBoots.png" />
@@ -5025,6 +5057,14 @@
     <Content Include="Items\Vanity\Mikpin\MikpinWig_Head.png" />
     <Content Include="Items\Vanity\Moon\MoonWings.png" />
     <Content Include="Items\Vanity\Moon\MoonWings_Wings.png" />
+    <Content Include="Items\Vanity\Universe\CursedHood.png" />
+    <Content Include="Items\Vanity\Universe\CursedHood_Head.png" />
+    <Content Include="Items\Vanity\Universe\CursedPants.png" />
+    <Content Include="Items\Vanity\Universe\CursedPants_Legs.png" />
+    <Content Include="Items\Vanity\Universe\CursedRobe.png" />
+    <Content Include="Items\Vanity\Universe\CursedRobe_Arms.png" />
+    <Content Include="Items\Vanity\Universe\CursedRobe_Body.png" />
+    <Content Include="Items\Vanity\Universe\CursedRobe_Female.png" />
     <Content Include="Items\Walls\DoomiteWall.png" />
     <Content Include="Mounts\KingBunny.png" />
     <Content Include="Mounts\KingCarrot.png" />
@@ -6640,6 +6680,8 @@
     <Content Include="Projectiles\Crystal.png" />
     <Content Include="Projectiles\CrystalP.png" />
     <Content Include="Projectiles\CthulhuTentacle.png" />
+    <Content Include="Projectiles\CursedSickle.png" />
+    <Content Include="Projectiles\CursedSickleProj.png" />
     <Content Include="Projectiles\CyberBaton.png" />
     <Content Include="Projectiles\DarkArrow.png" />
     <Content Include="Projectiles\DarkmatterArrow.png" />
@@ -6693,6 +6735,8 @@
     <Content Include="Projectiles\Mjolnir.png" />
     <Content Include="Projectiles\MjolnirEffect.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
+    <Content Include="Projectiles\Rajah\CarrotArrowMini.png" />
+    <Content Include="Projectiles\Rajah\Excalihare.png" />
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\Ryusei.png" />
     <Content Include="Projectiles\Ryusei_Chain.png" />

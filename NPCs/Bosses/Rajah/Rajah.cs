@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
+using AAMod.Items.Boss.Rajah;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -709,6 +710,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (!Main.expertMode)
             {
+                npc.DropLoot(mod.ItemType<RajahPelt>(), Main.rand.Next(10, 26));
                 string[] lootTableA = { "BaneOfTheBunny", "Bunnyzooka", "RoyalScepter", "Punisher", "RabbitcopterEars"};
                 int lootA = Main.rand.Next(lootTableA.Length);
                 npc.DropLoot(mod.ItemType(lootTableA[lootA]));

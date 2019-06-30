@@ -38,6 +38,7 @@ namespace AAMod.Items.Boss.Rajah
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PPDevArmor();
             }
+            player.QuickSpawnItem(mod.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
             player.QuickSpawnItem(mod.ItemType("RajahPelt"), Main.rand.Next(20, 25));
             player.QuickSpawnItem(mod.ItemType("RajahSash"));
             string[] lootTable = { "BaneOfTheBunny", "Bunzooka", "Punisher", "RabbitcopterEars", "RoyalScepter" };

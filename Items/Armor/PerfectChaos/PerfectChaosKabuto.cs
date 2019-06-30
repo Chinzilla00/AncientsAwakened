@@ -45,25 +45,21 @@ Your attacks raze your oponents with the flames of Chaos";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosMe = true;
             if (player.statLife <= player.statLifeMax2 * .8f)
             {
-                I1 = false;
                 player.endurance *= 1.05f;
                 player.meleeDamage *= 1.1f;
             }
             else if (player.statLife <= player.statLifeMax2 * .6f)
             {
-                I1 = false;
                 player.endurance *= 1.1f;
                 player.meleeDamage *= 1.2f;
             }
             else if (player.statLife <= player.statLifeMax2 * .4f)
             {
-                I3 = false;
                 player.endurance *= 1.12f;
                 player.meleeDamage *= 1.3f;
             }
             else if (player.statLife <= player.statLifeMax2 * .2f)
             {
-                I4 = false;
                 player.endurance *= 1.15f;
                 player.meleeDamage *= 1.4f;
             }

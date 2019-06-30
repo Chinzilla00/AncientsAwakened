@@ -20,7 +20,6 @@ Death Sickle EX");
 
         public override void SetDefaults()
         {
-
             item.damage = 400;  
             item.melee = true; 
             item.width = 80;    

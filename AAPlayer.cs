@@ -3136,7 +3136,6 @@ namespace AAMod
 
         public override void ModifyDrawLayers(List<PlayerLayer> list)
         {
-            AddPlayerLayer(list, glBeforeWings, PlayerLayer.Wings, true);
             AddPlayerLayer(list, glAfterHead, PlayerLayer.Head, false);
             AddPlayerLayer(list, glAfterBody, PlayerLayer.Body, false);
             AddPlayerLayer(list, glAfterArm, PlayerLayer.Arms, false);
@@ -3306,51 +3305,6 @@ namespace AAMod
                 }
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, Glow, edi.handOffShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(GlowColor, edi.shadow), drawPlayer.bodyFrame);
             }
-        });
-
-        public PlayerLayer glBeforeWings = new PlayerLayer("AAMod", "glBeforeWings", PlayerLayer.Wings, delegate (PlayerDrawInfo edi)
-        {
-            Mod mod = AAMod.instance;
-            Player drawPlayer = edi.drawPlayer;
-            if (drawPlayer.mount.Active) return;
-            /*int accSlot = 0;
-            bool social = false;
-            Rectangle frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4);
-            if (HasAndCanDraw(drawPlayer, mod.ItemType("ZeroJet"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ZeroJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("GibsJet"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/GibsJet_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Color.Red, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("DuckstepWings"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DuckstepWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendWings"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueFleshrendWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Ichor, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsWings"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNights_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.CursedInferno, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("RealityStone"), ref social, ref accSlot) || HasAndCanDraw(drawPlayer, mod.ItemType("InfinityGauntlet"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/RealityStone_Wings_Glow"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
-            }
-            else if (HasAndCanDraw(drawPlayer, mod.ItemType("MoonWings"), ref social, ref accSlot))
-            {
-                int dye = BaseDrawing.GetDye(drawPlayer, accSlot);
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/Items/Vanity/Moon/MoonWings_Wings"), dye, drawPlayer, drawPlayer.position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), frame, 0f);
-            }*/
         });
 
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
@@ -3530,6 +3484,22 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/BlazenHelmet_Head"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame, scale);
             }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("GibsSkull")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/GibsSkull_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("CursedHood")))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/CursedHood_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("LeviathanHelm")) && drawPlayer.statLife < (drawPlayer.statLifeMax2 / 2))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/LeviathanHelm_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Ichor, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
+            else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("HoodlumHood")) && drawPlayer.statLife < (drawPlayer.statLifeMax2 / 2))
+            {
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/HoodlumHood_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame, scale);
+            }
         }
         public PlayerLayer glAfterBody = new PlayerLayer("AAMod", "glAfterBody", PlayerLayer.Body, delegate (PlayerDrawInfo edi)
         {
@@ -3620,6 +3590,10 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenPlate_" + (drawPlayer.Male ? "Body" : "Female")), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("CursedRobe")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/CursedRobe_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
+            }
         });
         public PlayerLayer glAfterArm = new PlayerLayer("AAMod", "glAfterArm", PlayerLayer.Arms, delegate (PlayerDrawInfo edi)
         {
@@ -3689,6 +3663,10 @@ namespace AAMod
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("BlazenPlate")))
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenPlate_Arms"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
+            }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("CursedRobe")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/CursedRobe_Arms_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.bodyFrame);
             }
         });
         public PlayerLayer glAfterLegs = new PlayerLayer("AAMod", "glAfterLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo edi)
@@ -3760,8 +3738,11 @@ namespace AAMod
             {
                 BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenBoots_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
             }
+            else if (HasAndCanDraw(drawPlayer, mod.ItemType("CursedPants")))
+            {
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/CursedPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
+            }
         });
-
 
 
         #region grovitelayers

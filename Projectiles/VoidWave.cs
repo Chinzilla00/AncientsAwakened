@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    class VoidMagic : ModProjectile
+    class VoidWave : ModProjectile
     {
         public override void SetDefaults()
         {

@@ -42,10 +42,10 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            projectile.localAI[0] += 1f;
+            projectile.ai[1] += 1f;
             projectile.alpha = (int)projectile.localAI[0] * 2;
            
-            if (projectile.localAI[0] > 60f) 
+            if (projectile.ai[1] > 180f) 
             {
                 projectile.Kill();
             }

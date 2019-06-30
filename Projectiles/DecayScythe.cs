@@ -97,7 +97,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     num23 *= num24;
                     int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, mod.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
                     Main.projectile[a].netUpdate = true;
-
+                    Main.PlaySound(SoundID.Item71, projectile.Center);
                 }
             }
             
