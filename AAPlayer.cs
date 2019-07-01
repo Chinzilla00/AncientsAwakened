@@ -2504,9 +2504,9 @@ namespace AAMod
                 }
             }
 
-            if (shroomed)
+            if (shroomed && player.velocity.Y == 0)
             {
-                player.velocity *= .8f;
+                player.velocity.X *= .8f;
             }
             if (Hunted)
             {

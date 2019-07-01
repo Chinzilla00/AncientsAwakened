@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -17,9 +18,9 @@ namespace AAMod.Items
         public string glowmaskTexture = null;
 		public int glowmaskDrawType = 0;
 		public Color glowmaskDrawColor = Color.White;	//default white	
-		
-		//custom name color
-		public Color? customNameColor = null;
+
+        //custom name color
+        public Color? customNameColor = null;
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -41,7 +42,7 @@ namespace AAMod.Items
 					scale,
 					SpriteEffects.None,
 					0f
-				);		
+				);
 			}
 		}
 
@@ -92,7 +93,7 @@ namespace AAMod.Items
 			newItem.glowmaskDrawType = glowmaskDrawType;
 			newItem.glowmaskDrawColor = glowmaskDrawColor;
 			newItem.customNameColor = customNameColor;
-			return newItem;
+            return newItem;
 		}
 	}
 }

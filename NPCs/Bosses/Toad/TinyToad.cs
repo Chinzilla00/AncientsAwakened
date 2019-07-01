@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void SetDefaults()
         {
-            npc.width = 48;
-            npc.height = 40;
+            npc.width = 30;
+            npc.height = 28;
             npc.aiStyle = -1;
             npc.damage = 20;
             npc.defense = 10;

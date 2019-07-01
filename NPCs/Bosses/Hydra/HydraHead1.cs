@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
 using System.IO;
 using Terraria.ID;
+using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -30,6 +31,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.noGravity = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {

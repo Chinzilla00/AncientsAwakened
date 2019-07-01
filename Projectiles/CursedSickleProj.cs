@@ -24,8 +24,15 @@ namespace AAMod.Projectiles
             projectile.tileCollide = true;
             projectile.melee = true;
         }
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            width = 16;
+            height = 16;
+            return true;
+        }
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(BuffID.CursedInferno, 180);
 			target.immune[projectile.owner] = 1;

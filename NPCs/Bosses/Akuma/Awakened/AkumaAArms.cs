@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
                 return false;
             }

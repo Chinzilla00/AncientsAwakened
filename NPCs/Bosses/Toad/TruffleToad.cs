@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
         }
 
-        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_SEED = 4, AISTATE_STOMP = 5, AISTATE_BUBBLES2 = 6;
+        public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_SEED = 4, AISTATE_STOMP = 5, AISTATE_TOADS = 6, AISTATE_BUBBLES2 = 7;
         public float[] internalAI = new float[4];
         public bool[] Minion = new bool[3];
         public bool tonguespawned = false;
@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 if (internalAI[1] >= AIChangeRate && Main.netMode != 1)
                 {
                     internalAI[1] = 0;
-                    internalAI[0] = Main.rand.Next(Main.expertMode ? 7 : 6);
+                    internalAI[0] = Main.rand.Next(Main.expertMode ? 8 : 7);
                     internalAI[2] = 0;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
@@ -203,11 +203,11 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BARF)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != 1 && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
-                npc.velocity.X = 0;
+                npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
                     if (npc.velocity.Y == 0 && Main.netMode != 1)
@@ -256,11 +256,11 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BUBBLES)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != 1 && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
-                npc.velocity.X = 0;
+                npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
                     if (npc.velocity.Y == 0 && Main.netMode != 1)
@@ -292,11 +292,11 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_SEED)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != 1 && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
-                npc.velocity.X = 0;
+                npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
                     if (npc.velocity.Y == 0 && Main.netMode != 1)
@@ -330,7 +330,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (internalAI[2] == 0)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != 1 && npc.velocity.Y == 0)
                     {
                         npc.TargetClosest(true);
                         npc.velocity.X = 6 * npc.direction;
@@ -410,11 +410,11 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BUBBLES2)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != 1 && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
-                npc.velocity.X = 0;
+                npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
                     if (npc.velocity.Y == 0 && Main.netMode != 1)
@@ -426,14 +426,35 @@ namespace AAMod.NPCs.Bosses.Toad
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
                         }
                         npc.netUpdate = true;
                     }
+                }
+                if (internalAI[1] >= 100)
+                {
+                    internalAI[0] = AISTATE_JUMP;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+            else if (internalAI[0] == AISTATE_TOADS)
+            {
+                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                {
+                    internalAI[1]++;
+                }
+                npc.velocity.X *= .98f;
+                if (internalAI[1] == 35)
+                {
+                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
                 }
                 if (internalAI[1] >= 100)
                 {
@@ -484,35 +505,6 @@ namespace AAMod.NPCs.Bosses.Toad
                     }
                 }
             }
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (npc.life < (int)(npc.life * .8f) && Minion[0] == false)
-            {
-                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                Minion[0] = true;
-                npc.netUpdate = true;
-            }
-            if (npc.life < (int)(npc.life * .5f) && Minion[1] == false)
-            {
-                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                Minion[1] = true;
-                npc.netUpdate = true;
-            }
-            if (npc.life < (int)(npc.life * .2f) && Minion[2] == false)
-            {
-                NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                Minion[2] = true;
-                npc.netUpdate = true;
-            }
-
         }
         public override void BossLoot(ref string name, ref int potionType)
         {

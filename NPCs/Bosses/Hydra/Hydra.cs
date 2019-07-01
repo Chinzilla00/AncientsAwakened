@@ -33,6 +33,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.defense = 10;
             npc.lifeMax = 4000;
             npc.value = Item.sellPrice(0, 2, 0, 0);
+            npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.boss = true;

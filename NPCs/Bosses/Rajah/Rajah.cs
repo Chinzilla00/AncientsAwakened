@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             npc.width = 130;
-            npc.height = 214;
+            npc.height = 220;
             npc.aiStyle = -1;
             npc.damage = 130;
             npc.defense = 90;
@@ -764,10 +764,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            if (npc.alpha <= 0)
-            {
-                return false;
-            }
             if (isSupreme)
             {
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
