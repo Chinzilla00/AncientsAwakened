@@ -212,13 +212,12 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
             {
-                npc.noTileCollide = false;
                 npc.noGravity = true;
                 FlyAI();
             }
             else
             {
-                npc.noTileCollide = true;
+                npc.noTileCollide = false;
                 npc.noGravity = false;
                 JumpAI();
             }
@@ -556,6 +555,14 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void FlyAI()
         {
+            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            {
+                npc.noTileCollide = true;
+            }
+            else
+            {
+                npc.noTileCollide = false;
+            }
             float speed = 10f;
             if (isSupreme)
             {

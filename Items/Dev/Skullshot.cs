@@ -52,15 +52,26 @@ Uses Bullets and Bones as ammo
         {
             if (player.altFunctionUse == 2)
             {
+                item.useAnimation = 15;
+                item.useTime = 5;
+                item.reuseDelay = 17;
                 item.useAmmo = AAMod.BoneAmmo;
                 item.damage = 80;
             }
             else
             {
+                item.useAnimation = 34;
+                item.useTime = 34;
+                item.reuseDelay = 0;
                 item.useAmmo = AmmoID.Bullet;
                 item.damage = 30;
             }
             return base.CanUseItem(player);
+        }
+
+        public override bool ConsumeAmmo(Player player)
+        {
+            return !(player.itemAnimation < item.useAnimation - 2);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -72,7 +83,7 @@ Uses Bullets and Bones as ammo
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
                 double offsetAngle;
-                for (int i = 0; i < Main.rand.Next(3, 7); i++)
+                for (int i = 0; i < Main.rand.Next(5, 11); i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
                     Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);

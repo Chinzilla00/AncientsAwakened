@@ -34,7 +34,6 @@ namespace AAMod.Items.Melee
 
             glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-            glowmaskDrawType = GLOWMASKTYPE_GUN;
             glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
         }
 
