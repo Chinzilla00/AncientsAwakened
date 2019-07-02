@@ -131,7 +131,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                     npc.netUpdate = true;
                 }
             }
-
             if (internalAI[0] == 1)
             {
                 npc.ai[3]++;
@@ -147,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 if (npc.ai[3] == 9)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;
@@ -167,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 if (npc.ai[3] == 36)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;
@@ -187,7 +186,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 if (npc.ai[3] == 72)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;

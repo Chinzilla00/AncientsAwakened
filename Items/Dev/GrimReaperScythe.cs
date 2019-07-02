@@ -14,13 +14,13 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Scythe of the Grim Reaper");
-			Tooltip.SetDefault("Left click to swing and release homing scythe"
-			+"\nRight click to do dashing hit"
-			+"\nYou are immune during the dash and deal 10x damage in true melee"
-			+"\nDashing ability has 5 seconds CD"
-			+"\n'Well, how many Grim Reapers have you met before, mate?'"
-			+"\n-Gregg");
-		}
+            Tooltip.SetDefault(@"Left click to swing and release homing scythe
+Right click to do dashing hit
+You are immune during the dash and deal 10x damage in true melee
+Dashing ability has 5 seconds CD
+'Well, how many Grim Reapers have you met before, mate?'
+-Gregg");
+        }
 
 		public override void SetDefaults()
 		{

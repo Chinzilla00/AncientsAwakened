@@ -2497,13 +2497,13 @@ namespace AAMod
                 {
                     player.mount.Dismount(player);
                 }
-                if (player.wingTimeMax > 30)
+                if (player.wingTimeMax > 20)
                 {
-                    player.wingTimeMax = 30;
+                    player.wingTimeMax = 20;
                 }
                 if (YamataAGravity)
                 {
-                    player.moveSpeed *= .75f;
+                    player.moveSpeed *= .65f;
                 }
             }
 

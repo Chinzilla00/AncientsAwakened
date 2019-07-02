@@ -76,6 +76,7 @@
     <Compile Include="Backgrounds\ShenSky.cs" />
     <Compile Include="Backgrounds\ShenSkyData.cs" />
     <Compile Include="Buffs\ChaosClaw.cs" />
+    <Compile Include="Buffs\ChaosWrath.cs" />
     <Compile Include="Buffs\CrowMinion.cs" />
     <Compile Include="Buffs\CyberClaw.cs" />
     <Compile Include="Buffs\DapperSquirrel.cs" />
@@ -84,6 +85,9 @@
     <Compile Include="Buffs\DynaEnergy2.cs" />
     <Compile Include="Buffs\DynaEnergy1.cs" />
     <Compile Include="Buffs\Glitched.cs" />
+    <Compile Include="Buffs\ReaperCD.cs" />
+    <Compile Include="Buffs\ReaperImmune.cs" />
+    <Compile Include="Buffs\ReaperImmune2.cs" />
     <Compile Include="Buffs\TerraSummon.cs" />
     <Compile Include="Buffs\Squirrel.cs" />
     <Compile Include="Buffs\RabbitcopterSoldier.cs" />
@@ -926,6 +930,8 @@
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
     <Compile Include="Items\Dev\CursedSickle.cs" />
+    <Compile Include="Items\Dev\GrimReaperScythe.cs" />
+    <Compile Include="Items\Dev\GrimReaperScytheEX.cs" />
     <Compile Include="Items\Dev\SkullshotEX.cs" />
     <Compile Include="Items\Dev\Skullshot.cs" />
     <Compile Include="Items\Dev\Demise.cs" />
@@ -1964,6 +1970,7 @@
     <Compile Include="Projectiles\CursedSickleProj.cs" />
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
     <Compile Include="Projectiles\CursedSickle.cs" />
+    <Compile Include="Projectiles\ReaperHitbox.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
     <Compile Include="Projectiles\Aerodrake.cs" />
@@ -2833,6 +2840,7 @@
     <Content Include="Buffs\broodmini.png" />
     <Content Include="Buffs\BurningAsh.png" />
     <Content Include="Buffs\ChaosClaw.png" />
+    <Content Include="Buffs\ChaosWrath.png" />
     <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\CrimeraMinion.png" />
     <Content Include="Buffs\CrowMinion.png" />
@@ -2887,6 +2895,9 @@
     <Content Include="Buffs\RabbitcopterSoldier.png" />
     <Content Include="Buffs\Raidmini.png" />
     <Content Include="Buffs\RealityBent.png" />
+    <Content Include="Buffs\ReaperCD.png" />
+    <Content Include="Buffs\ReaperImmune.png" />
+    <Content Include="Buffs\ReaperImmune2.png" />
     <Content Include="Buffs\RoyalKitten.png" />
     <Content Include="Buffs\SagOrbiter.png" />
     <Content Include="Buffs\SagShield.png" />
@@ -4755,6 +4766,8 @@
     <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\Demise.png" />
     <Content Include="Items\Dev\Doragonburedo.png" />
+    <Content Include="Items\Dev\GrimReaperScythe.png" />
+    <Content Include="Items\Dev\GrimReaperScytheEX.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
     <Content Include="Items\Dev\MagicAcornEX.png" />
     <Content Include="Items\Dev\Minions\Acorn.png" />
@@ -4776,6 +4789,8 @@
     <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
+    <Content Include="Items\Dev\Tools\AlphakipTerratool_Axe.png" />
+    <Content Include="Items\Dev\Tools\AlphakipTerratool_Hammer.png" />
     <Content Include="Items\Dev\UmbralReaper.png" />
     <Content Include="Items\Dev\UmbralReaperEX.png" />
     <Content Include="Items\Magic\BogBombEX.png" />
@@ -5064,8 +5079,6 @@
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
-    <Content Include="NPCs\Bosses\Djinn\MafiaPunch.gif" />
-    <Content Include="NPCs\Bosses\Djinn\MudaMuda.gif" />
     <Content Include="NPCs\Bosses\Djinn\MudaMuda.png" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />
     <Content Include="NPCs\Bosses\GripsShen\AbyssalBomb.png" />
@@ -6227,7 +6240,6 @@
     <Content Include="NPCs\Bosses\Broodmother\Broodmini.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother.png" />
     <Content Include="NPCs\Bosses\Broodmother\Broodmother_Head_Boss.png" />
-    <Content Include="NPCs\Bosses\Djinn\Djinn.gif" />
     <Content Include="NPCs\Bosses\Djinn\Djinn.png" />
     <Content Include="NPCs\Bosses\Djinn\Djinnado.png" />
     <Content Include="NPCs\Bosses\Djinn\Djinn_Head_Boss.png" />
@@ -6707,6 +6719,7 @@
     <Content Include="Projectiles\MjolnirEX.png" />
     <Content Include="Projectiles\Rajah\CarrotArrowMini.png" />
     <Content Include="Projectiles\Rajah\Excalihare.png" />
+    <Content Include="Projectiles\ReaperHitbox.png" />
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />
     <Content Include="Projectiles\Ryusei.png" />
     <Content Include="Projectiles\Ryusei_Chain.png" />

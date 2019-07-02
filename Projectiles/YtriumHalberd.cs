@@ -8,9 +8,6 @@ namespace AAMod.Projectiles
 {
     public class YtriumHalberd : ModProjectile
 	{
-		public static Color lightColor = new Color(82, 138, 206);
-		public static Vector2[] spearPos = new Vector2[]{ new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(150, 0), new Vector2(150, 0), new Vector2(30, 0) };
-	
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Ytrium Halberd");
@@ -18,33 +15,28 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 32;
-            projectile.height = 32;
-            projectile.aiStyle = -1;
-            projectile.timeLeft = 600;
+            projectile.width = 40;  //The width of the .png file in pixels divided by 2.
+            projectile.aiStyle = 19;
+            projectile.melee = true;  //Dictates whether this is a melee-class weapon.
+            projectile.timeLeft = 90;
+            projectile.height = 40;  //The height of the .png file in pixels divided by 2.
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
-            projectile.damage = 1;
+            projectile.ignoreWater = true;
             projectile.penetrate = -1;
-            projectile.hide = true;
             projectile.ownerHitCheck = true;
-            projectile.melee = true;
+            projectile.hide = true;
         }
-
 
         public override void AI()
         {
             Main.player[projectile.owner].direction = projectile.direction;
             Main.player[projectile.owner].heldProj = projectile.whoAmI;
             Main.player[projectile.owner].itemTime = Main.player[projectile.owner].itemAnimation;
-            projectile.position.X = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - (projectile.width / 2);
-            projectile.position.Y = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - (projectile.height / 2);
+            projectile.position.X = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - (float)(projectile.width / 2);
+            projectile.position.Y = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - (float)(projectile.height / 2);
             projectile.position += projectile.velocity * projectile.ai[0];
-            if (Main.rand.Next(5) == 0)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.AkumaDust>() : mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-            }
             if (projectile.ai[0] == 0f)
             {
                 projectile.ai[0] = 3f;
@@ -53,6 +45,10 @@ namespace AAMod.Projectiles
             if (Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
             {
                 projectile.ai[0] -= 2.4f;
+                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
+                {
+                    projectile.localAI[0] = 1f;
+                }
             }
             else
             {
@@ -74,12 +70,6 @@ namespace AAMod.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.immune[projectile.owner] = 10;
-		}
-
-		public override bool PreDraw(SpriteBatch sb, Color dColor)
-		{
-			BaseMod.BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
-			return false;
 		}
 	}
 }

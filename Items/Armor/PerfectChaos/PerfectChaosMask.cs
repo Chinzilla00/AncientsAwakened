@@ -39,22 +39,7 @@ The power of discordian rage radiates from this hood");
 As your health decreases, your minion damage increases
 Your minions raze your oponents with the flames of discordian hell";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosSu = true;
-            if (player.statLife <= player.statLifeMax2 * .2f)
-            {
-                player.minionDamage *= 1.60f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .4f)
-            {
-                player.minionDamage *= 1.45f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .6f)
-            {
-                player.minionDamage *= 1.3f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .8f)
-            {
-                player.minionDamage *= 1.15f;
-            }
+            player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 
         public override void UpdateEquip(Player player)

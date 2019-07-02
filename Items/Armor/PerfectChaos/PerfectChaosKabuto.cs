@@ -31,38 +31,13 @@ The power of discordian rage radiates from this armor");
 		{
 			return body.type == mod.ItemType("PerfectChaosPlate") && legs.type == mod.ItemType("PerfectChaosGreaves");
 		}
-
-        private bool I1 = false;
-        private bool I2 = false;
-        private bool I3 = false;
-        private bool I4 = false;
-
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your melee damage and defense increase
 Your attacks raze your oponents with the flames of Chaos";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosMe = true;
-            if (player.statLife <= player.statLifeMax2 * .8f)
-            {
-                player.endurance *= 1.05f;
-                player.meleeDamage *= 1.1f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .6f)
-            {
-                player.endurance *= 1.1f;
-                player.meleeDamage *= 1.2f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .4f)
-            {
-                player.endurance *= 1.12f;
-                player.meleeDamage *= 1.3f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .2f)
-            {
-                player.endurance *= 1.15f;
-                player.meleeDamage *= 1.4f;
-            }
+            player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 
         public override void UpdateEquip(Player player)

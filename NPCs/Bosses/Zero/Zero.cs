@@ -223,18 +223,25 @@ namespace AAMod.NPCs.Bosses.Zero
 
             RingRoatation += 0.03f;
 
-            if (internalAI[0] == 0 && Main.netMode != 1)
+            if (Main.netMode != 1 && internalAI[2] > 120)
             {
-                for (int m = 0; m < WeaponCount; m++)
+                if (internalAI[0] > 120)
                 {
-                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0);
-                    Main.npc[npcID].Center = npc.Center;
-                    Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                    Main.npc[npcID].velocity *= 8f;
-                    Main.npc[npcID].ai[0] = m;
-                    Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+                    for (int m = 0; m < WeaponCount; m++)
+                    {
+                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0);
+                        Main.npc[npcID].Center = npc.Center;
+                        Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                        Main.npc[npcID].velocity *= 8f;
+                        Main.npc[npcID].ai[0] = m;
+                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+                    }
+                    internalAI[2] = 1;
                 }
-                internalAI[0] = 1;
+                else
+                {
+                    internalAI[0]++;
+                }
             }
 
             if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
@@ -244,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
                 NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
                 NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
-                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()) || internalAI[2] == 0)
             {
                 npc.ai[1] = 0;
             }

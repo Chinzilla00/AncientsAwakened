@@ -40,26 +40,7 @@ The power of discordian rage radiates from this hood");
 As your health decreases, your magic damage increases and your mana consumption decreases
 Your magic attacks raze your oponents with the flames of discordian hell";
             player.GetModPlayer<AAPlayer>(mod).perfectChaosMa = true;
-            if (player.statLife <= player.statLifeMax2 * .2f)
-            {
-                player.manaCost *= 0;
-                player.magicDamage *= 1.4f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .4f)
-            {
-                player.manaCost *= .25f;
-                player.magicDamage *= 1.3f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .6f)
-            {
-                player.manaCost *= .5f;
-                player.magicDamage *= 1.2f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .8f)
-            {
-                player.manaCost *= .75f;
-                player.magicDamage *= 1.1f;
-            }
+            player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 
         public override void UpdateEquip(Player player)

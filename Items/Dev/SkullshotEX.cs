@@ -80,9 +80,9 @@ Super Skullshot EX");
             else
             {
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 90;
-                item.useAnimation = 20;
-                item.useTime = 20;
+                item.damage = 130;
+                item.useAnimation = 24;
+                item.useTime = 24;
                 item.reuseDelay = 0;
                 item.shoot = 10;
             }
@@ -95,7 +95,7 @@ Super Skullshot EX");
             {
                 for (int i = 0; i < Main.rand.Next(6, 13); i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
             }

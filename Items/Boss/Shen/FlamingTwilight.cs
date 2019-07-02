@@ -43,22 +43,6 @@ Consumes gel as ammo
             return true;
         }
 
-        public override bool CanUseItem(Player player)
-        {
-
-            if (player.altFunctionUse == 2)
-            {
-                item.useTime = 14;
-                item.useAnimation = 14;
-            }
-            else
-            {
-                item.useTime = 28;
-                item.useAnimation = 28;
-            }
-            return base.CanUseItem(player);
-        }
-
         public override bool ConsumeAmmo(Player player)
 		{
 			return Main.rand.NextFloat() >= .33;
