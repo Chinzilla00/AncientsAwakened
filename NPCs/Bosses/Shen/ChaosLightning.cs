@@ -110,6 +110,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         Main.dust[num853].noGravity = true;
                         Main.dust[num853].scale = 1.2f;
                     }
+					
                     if (Main.rand.Next(5) == 0)
                     {
                         Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
@@ -144,11 +145,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         flag36 = true;
                     }
-                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] > 40f)
+                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] > 90f)
                     {
                         flag36 = true;
                     }
-                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] < -40f)
+                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] < -90f)
                     {
                         flag36 = true;
                     }
