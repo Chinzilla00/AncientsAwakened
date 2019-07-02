@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AAMod.NPCs.Bosses.Zero2
+namespace AAMod.NPCs.Bosses.Zero
 {
     public class ZeroBeam1 : ModProjectile
     {

@@ -1,3 +1,4 @@
+
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,6 +8,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
 using AAMod.Items.Boss.Rajah;
+using Terraria.Graphics.Shaders;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -97,7 +99,6 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public Vector2 WeaponPos;
         public Vector2 StaffPos;
-        private Projectile CarrotFarmer;
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
@@ -359,13 +360,12 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
                     {
-                        CarrotFarmer = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), npc.damage / 3, 3f, Main.myPlayer, npc.whoAmI)];
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), npc.damage / 3, 3f, Main.myPlayer, npc.whoAmI);
                         npc.netUpdate = true;
                     }
                 }
             }
             
-
             if (Main.expertMode)
             {
                 if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
@@ -388,9 +388,18 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     npc.damage = (int)(npc.defDamage * 1.9f);
                 }
-                if (npc.life < (npc.lifeMax * .1f))
+                if (npc.life < (npc.lifeMax / 7))
                 {
-                    npc.damage = npc.defDamage * 2;
+                    npc.damage = (int)(npc.defDamage * 2.2f);
+                    npc.defense = (int)(npc.defense * 1.5f);
+                }
+            }
+            else
+            {
+                if (npc.life == npc.lifeMax / 7)
+                {
+                    npc.damage = (int)(npc.defDamage * 1.5f);
+                    npc.defense = (int)(npc.defense * 1.5f);
                 }
             }
 
@@ -502,7 +511,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         for (int num623 = 0; num623 < 4; num623++)
                         {
-                            int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + (float)npc.height), npc.width + 20, 4, 31, 0f, 0f, 100, default(Color), 1.5f);
+                            int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + (float)npc.height), npc.width + 20, 4, 31, 0f, 0f, 100);
                             Main.dust[num624].velocity *= 0.2f;
                         }
                         int num625 = Gore.NewGore(new Vector2((float)(num622 - 20), npc.position.Y + (float)npc.height - 8f), default(Vector2), Main.rand.Next(61, 64), 1f);
@@ -774,13 +783,33 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (isSupreme)
             {
                 BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawAura(spriteBatch, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, Main.DiscoColor);
-                BaseDrawing.DrawAfterimage(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, new Vector2[] { npc.velocity }, 1, 0, npc.direction, 9, npc.frame, .3f, 1, 8, true, 0, 0, Main.DiscoColor);
+                BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, Main.DiscoColor);
+                BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc, auraPercent, 1f, 0f, 0f, Main.DiscoColor);
+            }
+            if (!isSupreme && npc.life < npc.lifeMax / 7)
+            {
+                Color RageColor = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Firebrick, drawColor, Color.Firebrick);
+                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, RageColor);
+                int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
+                BaseDrawing.DrawTexture(spriteBatch, Glow, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Color.White, true);
+            }
+            else if (isSupreme && npc.life < npc.lifeMax / 7)
+            {
+                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, Main.DiscoColor);
             }
             return false;
         }
+
+        public override string BossHeadTexture
+        {
+            get
+            {
+                return "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss";
+            }
+        }
     }
+
+    [AutoloadBossHead]
     public class Rajah2 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -792,6 +821,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.lifeMax = 80000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah3 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -804,6 +835,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 100000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah4 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -816,6 +849,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 200000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah5 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -828,6 +863,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 300000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah6 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -840,6 +877,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 500000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah7 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -852,6 +891,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 700000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah8 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -864,6 +905,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 900000;
         }
     }
+
+    [AutoloadBossHead]
     public class Rajah9 : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
@@ -876,6 +919,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.life = 1000000;
         }
     }
+
+    [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }

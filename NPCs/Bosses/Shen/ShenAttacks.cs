@@ -38,7 +38,7 @@ namespace AAMod
         public static void Thunderstrike(NPC npc, Mod mod)
         {
             Player player = Main.player[npc.target];
-            for (int num119 = 0; num119 < 3; num119++)
+            for (int num119 = 0; num119 < 2; num119++)
             {
                 for (int num120 = 0; num120 < 3; num120++)
                 {

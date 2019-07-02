@@ -29,7 +29,7 @@ namespace AAMod.Projectiles.Yamata
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 4; //
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 120;
             projectile.aiStyle = 1; //
             aiType = ProjectileID.Bullet;
         }
@@ -66,7 +66,7 @@ namespace AAMod.Projectiles.Yamata
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 50;
+            const float desiredFlySpeedInPixelsPerFrame = 20;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

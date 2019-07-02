@@ -1,7 +1,9 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -28,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.lifeMax = 6000;
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
-            npc.value = (float)Item.sellPrice(0, 8, 0, 0);
+            npc.value = Item.sellPrice(0, 8, 0, 0);
             npc.HitSound = SoundID.NPCHit23;
             npc.DeathSound = SoundID.NPCDeath39;
             npc.knockBackResist = 0f;
@@ -48,6 +50,32 @@ namespace AAMod.NPCs.Bosses.Djinn
         public int runonce = 0;
         public int FrameHeight = 130;
 
+        public float[] internalAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
+        }
+
+        int MudaMudaFrame = 0;
 
         public override void AI()
         {
@@ -67,36 +95,153 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.spriteDirection = 1;
             }
 
-            if (!player.InZone("Desert"))
+            if (!player.ZoneDesert || player.dead || !Main.dayTime)
             {
                 npc.TargetClosest(true);
-                if (!player.InZone("Desert") || player.dead || !Main.dayTime)
+                if (!player.ZoneDesert || player.dead || !Main.dayTime)
                 {
                     FuriousFlexing();
                     return;
                 }
             }
-            else if (player.dead || !Main.dayTime)
-            {
-                npc.alpha += 6;
-                if (npc.alpha > 255)
-                {
-                    npc.active = false;
-                }
-            }
             else
             {
                 Sandstorm.TimeLeft = 10;
-                npc.alpha -= 2;
                 if (npc.alpha <= 0)
                 {
                     npc.alpha = 0;
                 }
+                else
+                {
+                    npc.alpha -= 2;
+                }
             }
 
-            npc.ai[3]++;
-            if (npc.ai[3] <= 300)
+
+            if (Main.netMode != 1)
             {
+                internalAI[1]++;
+                if (internalAI[1] >= 300)
+                {
+                    MudaMudaFrame = 0;
+                    internalAI[0] = Main.rand.Next(2);
+                    internalAI[1] = 0;
+                    npc.ai[3] = 0;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }
+
+            if (internalAI[0] == 1)
+            {
+                npc.ai[3]++;
+                npc.velocity.X = 0;
+                npc.velocity.Y = 0;
+                if (npc.ai[3] > 0)
+                {
+                    npc.frame.Y = FrameHeight * 6;
+                }
+                if (npc.ai[3] > 9)
+                {
+                    npc.frame.Y = FrameHeight * 7;
+                }
+                if (npc.ai[3] == 9)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        FireProjectile();
+                        npc.netUpdate = true;
+                    }
+                }
+                if (npc.ai[3] > 18)
+                {
+                    npc.frame.Y = FrameHeight * 8;
+                }
+                if (npc.ai[3] > 27)
+                {
+                    npc.frame.Y = FrameHeight * 9;
+                }
+                if (npc.ai[3] > 36)
+                {
+                    npc.frame.Y = FrameHeight * 10;
+                }
+                if (npc.ai[3] == 36)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        FireProjectile();
+                        npc.netUpdate = true;
+                    }
+                }
+                if (npc.ai[3] > 45)
+                {
+                    npc.frame.Y = FrameHeight * 11;
+                }
+                if (npc.ai[3] > 54)
+                {
+                    npc.frame.Y = FrameHeight * 12;
+                }
+                if (npc.ai[3] > 63)
+                {
+                    npc.frame.Y = FrameHeight * 13;
+                }
+                if (npc.ai[3] == 72)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        FireProjectile();
+                        npc.netUpdate = true;
+                    }
+                }
+                if (npc.ai[3] > 72)
+                {
+                    npc.frame.Y = FrameHeight * 14;
+                }
+                if (npc.ai[3] > 81)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        FireProjectile();
+                        npc.netUpdate = true;
+                    }
+                }
+                if (npc.ai[3] > 90 && Main.netMode != 1)
+                {
+                    internalAI[0] = 10;
+                    internalAI[1] = 0;
+                    npc.ai = new float[4];
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+            else if (internalAI[0] == 2)
+            {
+                npc.ai[3]++;
+                npc.frameCounter++;
+                if (npc.frameCounter > 9)
+                {
+                    MudaMudaFrame++;
+                    npc.frameCounter = 0;
+                }
+                if (MudaMudaFrame > FrameHeight * 5)
+                {
+                    MudaMudaFrame = 0;
+                }
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.1f, 6f, 6f, false, 300);
+                npc.damage = 40;
+                if (npc.ai[3] > 200 && Main.netMode != 1)
+                {
+                    MudaMudaFrame = 0;
+                    internalAI[0] = 10;
+                    internalAI[1] = 0;
+                    npc.ai = new float[4];
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+            else
+            {
+                npc.damage = 30;
                 npc.frameCounter++;
                 if (npc.frameCounter > 9)
                 {
@@ -107,64 +252,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     npc.frame.Y = 0;
                 }
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 1.5f, false, 300);
-            }
-            else
-            {
-                npc.velocity.X = 0;
-                npc.velocity.Y = 0;
-                if (npc.ai[3] > 300)
-                {
-                    npc.frame.Y = FrameHeight * 6;
-                }
-                if (npc.ai[3] > 309)
-                {
-                    npc.frame.Y = FrameHeight * 7;
-                }
-                if (npc.ai[3] == 309)
-                {
-                    fireProjectile();
-                }
-                if (npc.ai[3] > 318)
-                {
-                    npc.frame.Y = FrameHeight * 8;
-                }
-                if (npc.ai[3] > 327)
-                {
-                    npc.frame.Y = FrameHeight * 9;
-                }
-                if (npc.ai[3] > 336)
-                {
-                    npc.frame.Y = FrameHeight * 10;
-                }
-                if (npc.ai[3] == 336)
-                {
-                    fireProjectile();
-                }
-                if (npc.ai[3] > 345)
-                {
-                    npc.frame.Y = FrameHeight * 11;
-                }
-                if (npc.ai[3] > 354)
-                {
-                    npc.frame.Y = FrameHeight * 12;
-                }
-                if (npc.ai[3] > 363)
-                {
-                    npc.frame.Y = FrameHeight * 13;
-                }
-                if (npc.ai[3] == 372)
-                {
-                    fireProjectile();
-                }
-                if (npc.ai[3] > 372)
-                {
-                    npc.frame.Y = FrameHeight * 14;
-                }
-                if (npc.ai[3] > 381)
-                {
-                    npc.ai[3] = 0;
-                }
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 2f, false, 300);
             }
         }
 
@@ -192,7 +280,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
         }
 
-        public void fireProjectile()
+        public void FireProjectile()
         {
             List<Point> list4 = new List<Point>();
             Vector2 vec5 = Main.player[npc.target].Center + new Vector2(Main.player[npc.target].velocity.X * 30f, 0f);
@@ -253,6 +341,33 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
         }
 
+        public void MoveToPoint(Vector2 point, float moveSpeed)
+        {
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 1.5f;
@@ -298,6 +413,26 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             npc.value = 0f;
             npc.boss = false;
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D MudaMuda = mod.GetTexture("NPCs/Bosses/Djinn/MudaMuda");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (internalAI[0] != 2)
+            {
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
+            }
+            else
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = MudaMuda.Height / 6;
+                int y6 = num214 * MudaMudaFrame;
+                Main.spriteBatch.Draw(MudaMuda, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, MudaMuda.Width, num214)), drawColor, npc.rotation, new Vector2(MudaMuda.Width / 2f, num214 / 2f), npc.scale, effects, 0f);
+            }
+            
+            return false;
         }
 
         private static void StartSandstorm()

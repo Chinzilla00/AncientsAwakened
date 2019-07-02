@@ -14,7 +14,6 @@ namespace AAMod.Projectiles.Zero
             base.SetDefaults();
             projectile.magic = false;
             projectile.melee = true;
-            projectile.extraUpdates = 2;
         }
     }
 }

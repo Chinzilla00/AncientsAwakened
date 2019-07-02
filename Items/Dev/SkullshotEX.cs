@@ -72,8 +72,9 @@ Super Skullshot EX");
             {
                 item.useAmmo = AAMod.BoneAmmo;
                 item.damage = 300;
-                item.useAnimation = 30;
-                item.useTime = 30;
+                item.useAnimation = 27;
+                item.useTime = 9;
+                item.reuseDelay = 30;
                 item.shoot = mod.ProjectileType<Projectiles.Hellshot>();
             }
             else
@@ -82,6 +83,7 @@ Super Skullshot EX");
                 item.damage = 90;
                 item.useAnimation = 20;
                 item.useTime = 20;
+                item.reuseDelay = 0;
                 item.shoot = 10;
             }
             return base.CanUseItem(player);
@@ -91,19 +93,10 @@ Super Skullshot EX");
         {
             if (player.altFunctionUse != 2)
             {
-                float spread = Main.rand.Next(20, 31) * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                double deltaAngle = spread / 6f;
-                double offsetAngle;
-                
                 for (int i = 0; i < Main.rand.Next(6, 13); i++)
                 {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
-                    }
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
             }
             else

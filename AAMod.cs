@@ -39,8 +39,6 @@ namespace AAMod
 
         // UI
         internal UserInterface UserInterface;
-        private static readonly int UI_ScreenAnchorX = Main.screenWidth - 800;
-        private static int UIDisplay_ManaPerStar = 20;
         public static SpriteFont fontMouseText;
 
         public static int[] SNAKETYPES = new int[0];

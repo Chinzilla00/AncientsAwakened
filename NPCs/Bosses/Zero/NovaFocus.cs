@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.NPCs.Bosses.Zero;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -14,23 +15,24 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nova Focus");
+            DisplayName.SetDefault("Gigataser");
             Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
+
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 54;
-            npc.damage = 30;
-            npc.defense = 70;
-            npc.lifeMax = 37500;
+            npc.height = 70;
+            npc.damage = 80;
+            npc.defense = 90;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
+            npc.lifeMax = 37500;
             npc.noGravity = true;
+            animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.0f;
-            animationType = NPCID.PrimeVice;
             npc.buffImmune[20] = true;
             npc.buffImmune[24] = true;
             npc.buffImmune[39] = true;
@@ -51,29 +53,18 @@ namespace AAMod.NPCs.Bosses.Zero
             return true;
         }
 
-        public float[] internalAI = new float[4];
-        public override void SendExtraAI(BinaryWriter writer)
+
+        public override void FindFrame(int frameHeight)
         {
-            base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (npc.velocity.Y == 0.0)
+                npc.spriteDirection = npc.direction;
+            ++npc.frameCounter;
+            if (npc.frameCounter >= 8.0)
             {
-                writer.Write((short)npc.localAI[0]);
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
-            }
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                npc.localAI[0] = reader.ReadInt16();
-                internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
+                npc.frameCounter = 0.0;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y / frameHeight >= 2)
+                    npc.frame.Y = 0;
             }
         }
 
@@ -82,173 +73,86 @@ namespace AAMod.NPCs.Bosses.Zero
             bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>())));
             if (flag && Main.netMode != 1)
             {
-                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, -1.5f, npc.ai[1], 0f, 0f, byte.MaxValue);
-                Main.npc[ind].life = 1;
-                Main.npc[ind].rotation = npc.rotation;
-                Main.npc[ind].velocity = npc.velocity;
-                Main.npc[ind].netUpdate = true;
-                Main.npc[(int)npc.ai[1]].ai[3]++;
-                Main.npc[(int)npc.ai[1]].netUpdate = true;
+                int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
+                Main.npc[ind].Center = npc.Center;
+                Main.npc[ind].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                Main.npc[ind].velocity *= 8f;
+                Main.npc[ind].netUpdate2 = true; Main.npc[ind].netUpdate = true;
             }
         }
 
-        int LaserTime = 0;
+        public int body = -1;
+        public float rotValue = -1f;
+        public Vector2 pos;
         Projectile laser;
 
         public override void AI()
         {
-            npc.spriteDirection = -(int)npc.ai[0];
-            if (!Main.npc[(int)npc.ai[1]].active)
-            {
-                npc.ai[2] += 10f;
-                if (npc.ai[2] > 50.0 || Main.netMode != 2)
-                {
-                    npc.life = -1;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                }
-            }
-            if (npc.ai[2] == 0.0 || npc.ai[2] == 3.0)
-            {
-                if (Main.npc[(int)npc.ai[1]].ai[1] == 3.0 && npc.timeLeft > 10)
-                    npc.timeLeft = 10;
-                ArmAIs.Focus(npc, (int)npc.ai[1], internalAI[0]);
-                npc.TargetClosest(true);
-                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-                float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float NewRotation = (float)Math.Atan2(num2, num1);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
-                ++npc.localAI[0];
-                if (npc.localAI[0] <= 200.0)
-                    return;
-                if (npc.localAI[0] > 360)
-                {
-                    npc.localAI[0] = 0.0f;
-                    LaserTime = 0; if (Main.netMode != 1) laser.Kill();
-                }
-                LaserTime++;
-                if (LaserTime >= 600)
-                {
-                    internalAI[0] = 0;
-                }
-                else if (LaserTime >= 300)
-                {
-                    internalAI[1] = 100;
+            npc.noGravity = true;
 
-                }
-                else if (LaserTime > 120)
-                {
-                    internalAI[1] -= 400 / 180;
-
-                }
-                else if (LaserTime == 120 && Main.netMode != 1)
-                {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
-                }
-                else
-                {
-                    internalAI[1] = 500;
-                }
-            }
-            else
+            if (body == -1)
             {
-                if (npc.ai[2] != 1.0)
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), -1f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            if (body == -1) return;
+            NPC zero = Main.npc[body];
+            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { BaseAI.KillNPCWithLoot(npc); return; }
+
+            Player player = Main.player[zero.target];
+
+            pos = zero.Center;
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
+            int probeNumber = ((Zero)zero.modNPC).WeaponCount;
+            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            rotValue += 0.04f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+
+            int aiTimerFire = Main.expertMode ? 230 : 280;
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
+
+            if (Main.netMode != 1) { npc.ai[2]++; }
+
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue);
+
+            if (npc.ai[2] == aiTimerFire)
+            {
+                npc.ai[3]++;
+                if (npc.ai[3] >= 210)
                 {
-                    return;
-                }
-                ++npc.ai[3];
-                if (npc.ai[3] >= 200.0)
-                {
-                    npc.localAI[0] = 0.0f;
-                    npc.ai[2] = 0.0f;
-                    npc.ai[3] = 0.0f;
-                    npc.netUpdate = true;
-                }
-                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num1 = (float)(Main.player[npc.target].position.X + (double)(Main.player[npc.target].width / 2) - 350.0) - vector2.X;
-                float num2 = (float)(Main.player[npc.target].position.Y + (double)(Main.player[npc.target].height / 2) - 20.0) - vector2.Y;
-                float num3 = 7f / (float)Math.Sqrt((num1 * (double)num1) + (num2 * (double)num2));
-                float num4 = num1 * num3;
-                float num5 = num2 * num3;
-                if (npc.velocity.X > (double)num4)
-                {
-                    if (npc.velocity.X > 0.0)
-                        npc.velocity.X *= 0.9f;
-                    npc.velocity.X -= 0.1f;
-                }
-                if (npc.velocity.X < (double)num4)
-                {
-                    if (npc.velocity.X < 0.0)
-                        npc.velocity.X *= 0.9f;
-                    npc.velocity.X += 0.1f;
-                }
-                if (npc.velocity.Y > (double)num5)
-                {
-                    if (npc.velocity.Y > 0.0)
-                        npc.velocity.Y *= 0.9f;
-                    npc.velocity.Y -= 0.03f;
-                }
-                if (npc.velocity.Y < (double)num5)
-                {
-                    if (npc.velocity.Y < 0.0)
-                        npc.velocity.Y *= 0.9f;
-                    npc.velocity.Y += 0.03f;
-                }
-                npc.TargetClosest(true);
-                vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num6 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-                float num7 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float NewRotation = (float)Math.Atan2(num7, num6);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
-                if (Main.netMode != 1)
-                    return;
-                ++npc.localAI[0];
-                if (npc.localAI[0] <= 80.0)
-                    return;
-                if (npc.localAI[0] > 200)
-                {
-                    if (Main.netMode != 1) laser.Kill();
-                    npc.localAI[0] = 0.0f;
-                    LaserTime = 0;
-                }
-                LaserTime++;
-                if (LaserTime >= 600)
-                {
-                    internalAI[0] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
                     if (Main.netMode != 1) laser.Kill();
                 }
-                else if (LaserTime >= 300)
-                {
-                    internalAI[1] = 100;
-
-                }
-                else if (LaserTime > 120)
-                {
-                    internalAI[1] -= 400 / 180;
-
-                }
-                else if (LaserTime == 120 && Main.netMode != 1)
+                else if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<NovaRay>()) && Main.netMode != 1)
                 {
                     laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
                     laser.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(14f, 0f), laser.rotation);
                 }
-                else
-                {
-                    internalAI[1] = 500;
-                }
             }
-        }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Zero.DrawArm(mod, npc, spriteBatch, drawColor);
-            return true;
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+            float NewRotation = (float)Math.Atan2(num2, num1);
+            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/NovaFocus_Glow");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/TaserZ");
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 

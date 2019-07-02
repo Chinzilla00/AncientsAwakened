@@ -26,7 +26,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             Player p = Main.player[projectile.owner];
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 20, 0.8f, .8f, false);
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 16f, 20, projectile.ai[0] == 0 ? 0.8f : 1.5f, .8f, false);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

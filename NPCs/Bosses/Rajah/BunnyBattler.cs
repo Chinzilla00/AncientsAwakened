@@ -29,7 +29,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.aiStyle = -1;
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -47,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            npc.TargetClosest(false);
+            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             if (npc.velocity.Y != 0)
             {

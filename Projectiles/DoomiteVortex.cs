@@ -21,8 +21,8 @@ namespace AAMod.Projectiles
 		
 		public override void AI()
 		{
-            int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
-                       -projectile.velocity.Y * 0.2f, 46, default(Color), 1.184211f);
+            int num469 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
+                       -projectile.velocity.Y * 0.2f, 46);
             Main.dust[num469].noGravity = true;
             Main.dust[num469].velocity *= 2f;
             projectile.rotation += .02f;

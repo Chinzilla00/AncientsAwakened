@@ -12,7 +12,6 @@ namespace AAMod.Items.Boss.Zero
         
         public override void SetStaticDefaults()
         {
-            
             DisplayName.SetDefault("Void Star");
             Tooltip.SetDefault("Fires a dark, spinning vortex that homes in on enemies");
             Item.staff[item.type] = true;
@@ -35,6 +34,7 @@ namespace AAMod.Items.Boss.Zero
             item.noMelee = true;
             item.magic = true;
             item.noUseGraphic = true;
+            item.autoReuse = true;
             item.rare = 9; AARarity = 13;
         }
 

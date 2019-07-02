@@ -19,11 +19,11 @@ namespace AAMod.Items.Magic
             item.magic = true;
 			item.useTime = 23;
             item.useAnimation = 23;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 5; 
             item.noMelee = true;
             item.knockBack = 4;
-			item.mana = 8;             //mana use
-            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
+			item.mana = 8;
+            item.UseSound = SoundID.Item21;
             item.autoReuse = true;
             item.shoot = 122;
 			item.shootSpeed = 10f;

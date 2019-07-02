@@ -581,7 +581,7 @@ namespace AAMod
             }
 
 
-            if (Main.hardMode && isBunny)
+            if (Main.hardMode && isBunny && Rajah != -1)
             {
                 Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
                 int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];

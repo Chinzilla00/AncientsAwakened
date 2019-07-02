@@ -1812,6 +1812,9 @@ namespace AAMod
                         }
                         spawnedDevItems = true;
                         break;
+                    default:
+                        spawnedDevItems = false;
+                        break;
                 }
             }
         }

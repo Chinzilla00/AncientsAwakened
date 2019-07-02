@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Zero
 			item.height = 70;
 			item.useTime = 15;
             item.shoot = mod.ProjectileType("Rift");
-            item.shootSpeed = 14f;
+            item.shootSpeed = 10f;
             item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 3;

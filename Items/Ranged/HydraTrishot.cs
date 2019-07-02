@@ -2,6 +2,7 @@ using Terraria;
 using System;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Ranged
 {
@@ -37,17 +38,12 @@ namespace AAMod.Items.Ranged
 
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-		    float spread = 20f * 0.0174f;
-		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-            double startAngle = Math.Atan2(speedX, speedY) - .1d;
-		    double deltaAngle = spread / 6f;
-		    double offsetAngle;
-		    for (int i = 0; i < Main.rand.Next(3, 8); i++)
-		    {
-		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
-		    }
-		    return false;
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
 		}
 
         public override void AddRecipes()

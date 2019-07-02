@@ -260,8 +260,6 @@ namespace AAMod.NPCs.Bosses.Grips
             }
         }
 
-      
-
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
 		{
 			if(moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed

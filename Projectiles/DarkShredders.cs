@@ -8,46 +8,26 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
 {
     public class DarkShredders : ModProjectile
     {
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
-        {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-
-        }
-
         public override void SetDefaults()
         {
-            projectile.width = 130;     //Set the hitbox width
-            projectile.height = 180;       //Set the hitbox height
-            projectile.friendly = true;    //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1;    //Tells the game how many enemies it can hit before being destroyed. -1 = never
-            projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
-            projectile.ignoreWater = true; //Tells the game whether or not projectile will be affected by water        
-            projectile.melee = true;  //Tells the game whether it is a melee projectile or not
-            projectile.scale = 2f;
+            projectile.width = 58;
+            projectile.height = 90;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
+            projectile.melee = true;
+            projectile.scale = 4f;
             
         }
         public override void AI()
         {
-            //-------------------------------------------------------------Sound-------------------------------------------------------
             projectile.soundDelay--;
-            if (projectile.soundDelay <= 0)//this is the proper sound delay for this type of weapon
+            if (projectile.soundDelay <= 0)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15);    //this is the sound when the weapon is used
-                projectile.soundDelay = 45;    //this is the proper sound delay for this type of weapon
+                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15);
+                projectile.soundDelay = 45;
             }
-            //-----------------------------------------------How the projectile works---------------------------------------------------------------------
             Player player = Main.player[projectile.owner];
             if (Main.myPlayer == projectile.owner)
             {
@@ -56,11 +36,11 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     projectile.Kill();
                 }
             }
-            Lighting.AddLight(projectile.Center, 0f, .5f, .100f);     //this is the projectile light color R, G, B (Red, Green, Blue)
+            Lighting.AddLight(projectile.Center, 0f, .1f, .5f); 
             projectile.Center = player.MountedCenter;
-            projectile.position.X += player.width / 2 * player.direction;  //this is the projectile width sptrite direction from the playr
+            projectile.position.X += player.width / 2 * player.direction;
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 1f * player.direction; //this is the projectile rotation/spinning speed
+            projectile.rotation += .3f * player.direction;
             if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;
@@ -73,7 +53,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric);  //this is the dust that this projectile will spawn
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric); 
             Main.dust[dust].velocity /= 1f;
  
         }
@@ -87,7 +67,8 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
         {
             Texture2D texture = Main.projectileTexture[projectile.type];
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, lightColor, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow"), projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             return false;
         }
 

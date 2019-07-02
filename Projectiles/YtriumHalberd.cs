@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -30,20 +30,48 @@ namespace AAMod.Projectiles
             projectile.hide = true;
             projectile.ownerHitCheck = true;
             projectile.melee = true;
-			projectile.alpha = 254;
         }
 
-		public override void AI()
-		{
-			AIArcStabSpear(projectile, ref projectile.ai, false);
-			if (Main.rand.Next(3) != 0)
-			{
-				int dustID = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<Dusts.CthulhuDust>(), 0f, 0f, 0, default(Color), 1f);
-				Main.dust[dustID].noGravity = true;
-			}			
-		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void AI()
+        {
+            Main.player[projectile.owner].direction = projectile.direction;
+            Main.player[projectile.owner].heldProj = projectile.whoAmI;
+            Main.player[projectile.owner].itemTime = Main.player[projectile.owner].itemAnimation;
+            projectile.position.X = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - (projectile.width / 2);
+            projectile.position.Y = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - (projectile.height / 2);
+            projectile.position += projectile.velocity * projectile.ai[0];
+            if (Main.rand.Next(5) == 0)
+            {
+                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.AkumaDust>() : mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+            }
+            if (projectile.ai[0] == 0f)
+            {
+                projectile.ai[0] = 3f;
+                projectile.netUpdate = true;
+            }
+            if (Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
+            {
+                projectile.ai[0] -= 2.4f;
+            }
+            else
+            {
+                projectile.ai[0] += 0.95f;
+            }
+
+            if (Main.player[projectile.owner].itemAnimation == 0)
+            {
+                projectile.Kill();
+            }
+
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
+            if (projectile.spriteDirection == -1)
+            {
+                projectile.rotation -= 1.57f;
+            }
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.immune[projectile.owner] = 10;
 		}
@@ -52,31 +80,6 @@ namespace AAMod.Projectiles
 		{
 			BaseMod.BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
 			return false;
-		}
-
-        public static void AIArcStabSpear(Projectile p, ref float[] ai, bool overrideKill = false)
-        {
-            Player plr = Main.player[p.owner];
-            Item item = plr.inventory[plr.selectedItem];
-            if (Main.myPlayer == p.owner && item != null && item.autoReuse && plr.itemAnimation == 1) { p.Kill(); return; } //prevents a bug with autoReuse and spears
-            Main.player[p.owner].heldProj = p.whoAmI;
-            Main.player[p.owner].itemTime = Main.player[p.owner].itemAnimation;
-			Vector2 gfxOffset = new Vector2(0, plr.gfxOffY);
-            AIArcStabSpear(p, ref ai, plr.Center + gfxOffset, BaseMod.BaseUtility.RotationTo(p.Center, p.Center + p.velocity), plr.direction, plr.itemAnimation, plr.itemAnimationMax, overrideKill, plr.frozen);
-        }
-
-        public static void AIArcStabSpear(Projectile p, ref float[] ai, Vector2 center, float itemRot, int ownerDirection, int itemAnimation, int itemAnimationMax, bool overrideKill = false, bool frozen = false)
-        {
-			if(p.timeLeft < 598) p.alpha -= 70; if(p.alpha < 0) p.alpha = 0;
-            p.direction = ownerDirection;
-			Vector2 oldCenter = p.Center;
-            p.position.X = center.X - (float)(p.width * 0.5f);
-            p.position.Y = center.Y - (float)(p.height * 0.5f);
-			p.position += BaseMod.BaseUtility.RotateVector(default(Vector2), BaseMod.BaseUtility.MultiLerpVector(1f - (float)(itemAnimation / (float)itemAnimationMax), spearPos), itemRot);		
-            if (!overrideKill && Main.player[p.owner].itemAnimation == 0){ p.Kill(); }
-            p.rotation = BaseMod.BaseUtility.RotationTo(center, oldCenter) + 2.355f;				
-			if (p.direction == -1) { p.rotation -= 0f; }else
-			if (p.direction == 1) { p.rotation -= 1.57f; }		
 		}
 	}
 }

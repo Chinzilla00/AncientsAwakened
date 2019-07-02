@@ -48,13 +48,13 @@ Consumes gel as ammo
 
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 28;
-                item.useAnimation = 28;
+                item.useTime = 14;
+                item.useAnimation = 14;
             }
             else
             {
-                item.useTime = 14;
-                item.useAnimation = 14;
+                item.useTime = 28;
+                item.useAnimation = 28;
             }
             return base.CanUseItem(player);
         }
@@ -72,7 +72,7 @@ Consumes gel as ammo
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             type = mod.ProjectileType("DiscordianInfernoF");
-            if (player.altFunctionUse != 2)
+            if (player.altFunctionUse == 2)
             {
                 float num72 = item.shootSpeed;
                 int num112 = 5;

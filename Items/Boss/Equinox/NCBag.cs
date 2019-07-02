@@ -56,7 +56,7 @@ namespace AAMod.Items.Boss.Equinox
             {
                 player.QuickSpawnItem(mod.ItemType("NCMask"));
             }
-            if (Main.rand.NextFloat(20) == 1)
+            if (Main.rand.Next(20) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
                 modPlayer.PMLDevArmor();

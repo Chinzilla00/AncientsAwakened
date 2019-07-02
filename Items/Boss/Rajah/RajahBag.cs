@@ -33,10 +33,10 @@ namespace AAMod.Items.Boss.Rajah
             {
                 player.QuickSpawnItem(mod.ItemType("RajahMask"));
             }
-            if (Main.rand.NextFloat(20) == 1)
+            if (Main.rand.Next(20) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-                modPlayer.PPDevArmor();
+                modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
             player.QuickSpawnItem(mod.ItemType("RajahPelt"), Main.rand.Next(20, 25));

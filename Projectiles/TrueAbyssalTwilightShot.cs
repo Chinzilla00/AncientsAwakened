@@ -29,20 +29,6 @@ namespace AAMod.Projectiles
                 dust.noGravity = true;
                 dust.fadeIn = 1.421053f;
             }
-			{
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 29, 0f, 0f, 60, new Color(0, 255, 92), 1.381579f)];
-                dust.noGravity = true;
-                dust.fadeIn = 1.421053f;
-            }
-			{
-                Dust dust;
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 29, 0f, 0f, 60, new Color(0, 255, 92), 1.381579f)];
-                dust.noGravity = true;
-                dust.fadeIn = 1.421053f;
-            }
 		}
         public short customGlowMask = 0;
         public override void SetStaticDefaults()

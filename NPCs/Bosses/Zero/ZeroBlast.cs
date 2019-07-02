@@ -7,7 +7,7 @@ using Terraria.Localization;
 using System;
 
 
-namespace AAMod.NPCs.Bosses.Zero2
+namespace AAMod.NPCs.Bosses.Zero
 {
     public class ZeroBlast : ModProjectile
     {

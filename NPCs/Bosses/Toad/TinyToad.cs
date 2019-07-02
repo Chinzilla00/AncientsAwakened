@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tiny Toad");
-            Main.npcFrameCount[npc.type] = 6;
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.aiStyle = -1;
             npc.alpha = 255;
         }
 
@@ -47,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Toad
         
         public override void AI()
         {
-            npc.TargetClosest(false);
+            npc.TargetClosest(true);
             if (npc.alpha > 0)
             {
                 npc.alpha -= 4;
@@ -79,7 +78,8 @@ namespace AAMod.NPCs.Bosses.Toad
                     npc.spriteDirection = 1;
                 }
             }
-            BaseAI.AISlime(npc, ref npc.ai, false, 25, 4f, -6f, 6f, -6f);
+            if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+            BaseAI.AISlime(npc, ref npc.ai, false, 30, 6f, -6f, 6f, -8f);
         }
 
         public override void FindFrame(int frameHeight)

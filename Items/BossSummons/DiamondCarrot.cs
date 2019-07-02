@@ -33,7 +33,7 @@ namespace AAMod.Items.BossSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType<Rajah>());
+            return AAModGlobalNPC.Rajah != -1;
         }
 
         public override bool UseItem(Player player)

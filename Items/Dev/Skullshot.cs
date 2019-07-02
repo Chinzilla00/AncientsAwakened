@@ -92,6 +92,7 @@ Uses Bullets and Bones as ammo
             else
             {
                 int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BoneGloveProj, damage, knockBack, Main.myPlayer, 0f, 0f);
+                Main.projectile[proj].thrown = false;
                 Main.projectile[proj].ranged = true;
             }
             return false;
