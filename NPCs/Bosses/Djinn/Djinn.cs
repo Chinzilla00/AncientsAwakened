@@ -76,9 +76,13 @@ namespace AAMod.NPCs.Bosses.Djinn
         }
 
         int MudaMudaFrame = 0;
+        int PunchFrame = 0;
+        bool selectPoint = false;
+        Vector2 MovePoint;
 
         public override void AI()
         {
+            npc.frameCounter++;
             Player player = Main.player[npc.target];
             if (runonce == 0)
             {
@@ -88,11 +92,11 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (player.Center.X > npc.Center.X)
             {
-                npc.spriteDirection = -1;
+                npc.direction = -1;
             }
             else
             {
-                npc.spriteDirection = 1;
+                npc.direction = 1;
             }
 
             if (!player.ZoneDesert || player.dead || !Main.dayTime)
@@ -124,14 +128,17 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (internalAI[1] >= 300)
                 {
                     MudaMudaFrame = 0;
-                    internalAI[0] = Main.rand.Next(2);
+                    PunchFrame = 0;
+                    selectPoint = true; ;
+                    internalAI[0] = Main.rand.Next(3);
                     internalAI[1] = 0;
                     npc.ai[3] = 0;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[0] == 1)
+
+            if (internalAI[0] == 0)
             {
                 npc.ai[3]++;
                 npc.velocity.X = 0;
@@ -213,10 +220,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                     npc.netUpdate = true;
                 }
             }
-            else if (internalAI[0] == 2)
+            else if (internalAI[0] == 1)
             {
                 npc.ai[3]++;
-                npc.frameCounter++;
                 if (npc.frameCounter > 9)
                 {
                     MudaMudaFrame++;
@@ -231,6 +237,81 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (npc.ai[3] > 200 && Main.netMode != 1)
                 {
                     MudaMudaFrame = 0;
+                    internalAI[0] = 10;
+                    internalAI[1] = 0;
+                    npc.ai = new float[4];
+                    npc.ai[3] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+            else if (internalAI[0] == 2)
+            {
+                npc.ai[3]++;
+
+                if (Main.netMode != 1)
+                {
+                    if (selectPoint)
+                    {
+                        float point = 500 * npc.direction;
+                        MovePoint = player.Center + new Vector2(point, 0);
+                        selectPoint = false;
+                        npc.netUpdate = true;
+                    }
+                }
+                
+                if (npc.ai[3] < 180)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        npc.damage = 20;
+                        npc.netUpdate = true;
+                    }
+                    if (npc.frameCounter > 9)
+                    {
+                        PunchFrame++;
+                        npc.frameCounter = 0;
+                    }
+                    if (PunchFrame > FrameHeight * 3)
+                    {
+                        PunchFrame = 0;
+                    }
+                }
+                else
+                {
+                    if (Main.netMode != 1)
+                    {
+                        if (npc.ai[3] == 180)
+                        {
+                            selectPoint = true;
+                        }
+                        npc.damage = 40;
+                        npc.netUpdate = true;
+                    }
+                    if (npc.frameCounter > 9)
+                    {
+                        PunchFrame++;
+                        npc.frameCounter = 0;
+                    }
+                    if (PunchFrame > FrameHeight * 7 || PunchFrame < FrameHeight * 4)
+                    {
+                        PunchFrame = 4;
+                    }
+                    if (Main.netMode != 1)
+                    {
+                        if (selectPoint)
+                        {
+                            float point = 500 * npc.direction;
+                            MovePoint = player.Center + new Vector2(-point, 0);
+                            selectPoint = false;
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+                MoveToPoint(MovePoint, 10f);
+
+                if (npc.ai[3] > 280 && Main.netMode != 1)
+                {
+                    PunchFrame = 0;
                     internalAI[0] = 10;
                     internalAI[1] = 0;
                     npc.ai = new float[4];
@@ -253,6 +334,11 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 2f, false, 300);
             }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            base.FindFrame(frameHeight);
         }
 
         public void FuriousFlexing()
@@ -418,17 +504,26 @@ namespace AAMod.NPCs.Bosses.Djinn
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D MudaMuda = mod.GetTexture("NPCs/Bosses/Djinn/MudaMuda");
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (internalAI[0] != 2)
-            {
-                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
-            }
-            else
+            Texture2D Punch = mod.GetTexture("NPCs/Bosses/Djinn/DjinnPunch");
+            var effects = npc.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            if (internalAI[0] == 1)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = MudaMuda.Height / 6;
                 int y6 = num214 * MudaMudaFrame;
                 Main.spriteBatch.Draw(MudaMuda, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, MudaMuda.Width, num214)), drawColor, npc.rotation, new Vector2(MudaMuda.Width / 2f, num214 / 2f), npc.scale, effects, 0f);
+
+            }
+            else if (internalAI[0] == 2)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = Punch.Height / 8;
+                int y6 = num214 * PunchFrame;
+                Main.spriteBatch.Draw(Punch, drawCenter - Main.screenPosition, new Rectangle?(new Rectangle(0, y6, Punch.Width, num214)), drawColor, npc.rotation, new Vector2(Punch.Width / 2f, num214 / 2f), npc.scale, effects, 0f);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
             }
             
             return false;
