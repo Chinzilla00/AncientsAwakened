@@ -3467,6 +3467,7 @@
     <Content Include="Glowmasks\Protocol_Glow.png" />
     <Content Include="Glowmasks\QuantumFusionAccelerator_Glow.png" />
     <Content Include="Glowmasks\RadiantArcanum_Glow.png" />
+    <Content Include="Glowmasks\RadiantDawnP_Glow.png" />
     <Content Include="Glowmasks\RadiantDawn_Glow.png" />
     <Content Include="Glowmasks\RadiantIncinerite_Glow.png" />
     <Content Include="Glowmasks\RadiantStar_Glow.png" />
@@ -4885,6 +4886,8 @@
     <Content Include="Items\Ranged\AbyssalPentashot.png" />
     <Content Include="Items\Ranged\AbyssalShadowshot.png" />
     <Content Include="Items\Ranged\Ammo\CometBullet.png" />
+    <Content Include="Items\Ranged\Ammo\DaybreakBullet.png" />
+    <Content Include="Items\Ranged\Ammo\EventideBullet.png" />
     <Content Include="Items\Ranged\ChaosJavelin.png" />
     <Content Include="Items\Ranged\ChaosJavelinEX.png" />
     <Content Include="Items\Ranged\ChaosShot.png" />

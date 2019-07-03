@@ -28,8 +28,8 @@ namespace AAMod.Projectiles.Yamata
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;
-			projectile.height = 40;
+			projectile.width = 40;
+			projectile.height = 14;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.hostile = false;

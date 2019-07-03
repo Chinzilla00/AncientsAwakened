@@ -12,7 +12,8 @@ namespace AAMod.Items.Vanity.Moon
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Lunar Wasp Wings");
-            Tooltip.SetDefault("'Great for impersonating Ancients Awakened Devs!'");
+            Tooltip.SetDefault(@"Allows flight and slow fall
+'Great for impersonating Ancients Awakened Devs!'");
 		}
 
 		public override void SetDefaults()
