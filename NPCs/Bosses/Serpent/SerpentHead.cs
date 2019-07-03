@@ -288,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 				attackTimer++;
 				if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
                 {
-                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall>(), npc.damage / 2, 3, 14f, 0, 0, -1);
+                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), npc.damage / 2, 3, 14f, 0, 0, -1);
                     npc.netUpdate = true;
                 }
 				if (attackTimer >= 80)

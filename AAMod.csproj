@@ -1749,7 +1749,7 @@
     <Compile Include="NPCs\Bosses\Sagittarius\SagittariusOrbiter.cs" />
     <Compile Include="NPCs\Bosses\Serpent\IceSpike.cs" />
     <Compile Include="NPCs\Bosses\Serpent\IceCrystal.cs" />
-    <Compile Include="NPCs\Bosses\Serpent\IceBall.cs" />
+    <Compile Include="NPCs\Bosses\Serpent\IceBall2.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentBody.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentHead.cs" />
     <Compile Include="NPCs\Bosses\Serpent\SerpentTail.cs" />
@@ -2698,10 +2698,6 @@
     <Compile Include="Tiles\YtriumOre.cs" />
     <Compile Include="Tiles\Zero2Box.cs" />
     <Compile Include="Tiles\ZeroBox.cs" />
-    <Compile Include="UI\RadialUI.cs" />
-    <Compile Include="UI\ToggableUI.cs" />
-    <Compile Include="UI\UIColorImage.cs" />
-    <Compile Include="UI\UIColorImageButton.cs" />
     <Compile Include="Walls\DoomiteWall.cs" />
     <Compile Include="Walls\BurnedDynastyWall.cs" />
     <Compile Include="Walls\DepthsandHardenedWall.cs" />
@@ -5136,7 +5132,7 @@
     <Content Include="NPCs\Bosses\Sagittarius\SagittariusShield.png" />
     <Content Include="NPCs\Bosses\Sagittarius\Sagittarius_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Sagittarius\SagProj.png" />
-    <Content Include="NPCs\Bosses\Serpent\IceBall.png" />
+    <Content Include="NPCs\Bosses\Serpent\IceBall2.png" />
     <Content Include="NPCs\Bosses\Serpent\IceCrystal.png" />
     <Content Include="NPCs\Bosses\Serpent\IceSpike.png" />
     <Content Include="NPCs\Bosses\Serpent\Snow.png" />
@@ -7450,17 +7446,6 @@
     <Content Include="Tiles\ZerO.png" />
     <Content Include="Tiles\Zero2Box.png" />
     <Content Include="Tiles\ZeroBox.png" />
-    <Content Include="UI\ManaGreen.png" />
-    <Content Include="UI\Rift1.png" />
-    <Content Include="UI\Rift2.png" />
-    <Content Include="UI\Rift3.png" />
-    <Content Include="UI\RiftDungeon.png" />
-    <Content Include="UI\RiftHell.png" />
-    <Content Include="UI\RiftInferno.png" />
-    <Content Include="UI\RiftJungle.png" />
-    <Content Include="UI\RiftMire.png" />
-    <Content Include="UI\RiftOceanLeft.png" />
-    <Content Include="UI\RiftOceanRight.png" />
     <Content Include="Walls\BurnedDynastyWall.png" />
     <Content Include="Walls\DepthsandHardenedWall.png" />
     <Content Include="Walls\DepthsandstoneWall.png" />

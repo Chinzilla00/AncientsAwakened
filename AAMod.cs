@@ -1,5 +1,6 @@
 using AAMod.Backgrounds;
 using AAMod.Globals;
+//using AAMod.UI;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -38,7 +39,8 @@ namespace AAMod
         public static string BLANK_TEX = "AAMod/BlankTex";
 
         // UI
-        internal UserInterface UserInterface;
+        //internal UserInterface TerratoolInterface;
+        //internal TerratoolUI TerratoolState;
         public static SpriteFont fontMouseText;
 
         public static int[] SNAKETYPES = new int[0];
@@ -244,6 +246,10 @@ namespace AAMod
 
         public void LoadClient()
         {
+            //TerratoolInterface = new UserInterface();
+            //TerratoolState = new TerratoolUI();
+            //TerratoolState.Activate();
+
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
             PremultiplyTexture(GetTexture("Backgrounds/Moon"));
             PremultiplyTexture(GetTexture("Backgrounds/Sun"));
@@ -444,6 +450,40 @@ namespace AAMod
         {
             AARecipes.AddRecipes();
         }
+
+        /*private static GameTime lastUpdateUIGameTime;
+
+        public override void UpdateUI(GameTime gameTime)
+        {
+            lastUpdateUIGameTime = gameTime;
+
+            if (TerratoolInterface != null && TerratoolInterface.CurrentState != null)
+            {
+                TerratoolInterface.Update(gameTime);
+            }
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int wireSelectionLayerIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Wire Selection"));
+            if (wireSelectionLayerIndex != -1)
+            {
+                layers.Insert(wireSelectionLayerIndex, new LegacyGameInterfaceLayer(
+                "AAMod: Radial UIs",
+                delegate
+                {
+                    var radialUI = TerratoolInterface.CurrentState as TerratoolUI;
+                    if (radialUI != null && lastUpdateUIGameTime != null
+                    && radialUI.Visible)
+                    {
+                        TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+
+                    return true;
+                },
+                InterfaceScaleType.UI));
+            }
+        }*/
 
         public static Texture2D GetGlowmask(string Name)
         {
@@ -671,56 +711,6 @@ namespace AAMod
         {
             AANet.HandlePacket(bb, whoAmI);
         }
-
-        /*public static void DrawStars()
-        {
-            Mod mod = instance;
-            UIDisplay_ManaPerStar = 20;
-            Texture2D Stars = mod.GetTexture("UI/ManaGreen");
-            if (Main.player[Main.myPlayer].statManaMax > 200)
-            {
-                int arg_30_0 = Main.player[Main.myPlayer].statManaMax2 / 20;
-                Main.spriteBatch.DrawString(fontMouseText, "Mana", new Vector2(750 + UI_ScreenAnchorX, 6f), new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
-                for (int i = 1; i < Main.player[Main.myPlayer].statManaMax2 / UIDisplay_ManaPerStar + 1; i++)
-                {
-                    bool flag = false;
-                    float num = 1f;
-                    int num2;
-                    if (Main.player[Main.myPlayer].statMana >= i * UIDisplay_ManaPerStar)
-                    {
-                        num2 = 255;
-                        if (Main.player[Main.myPlayer].statMana == i * UIDisplay_ManaPerStar)
-                        {
-                            flag = true;
-                        }
-                    }
-                    else
-                    {
-                        float num3 = (float)(Main.player[Main.myPlayer].statMana - (i - 1) * UIDisplay_ManaPerStar) / UIDisplay_ManaPerStar;
-                        num2 = (int)(30f + 225f * num3);
-                        if (num2 < 30)
-                        {
-                            num2 = 30;
-                        }
-                        num = num3 / 4f + 0.75f;
-                        if (num < 0.75)
-                        {
-                            num = 0.75f;
-                        }
-                        if (num3 > 0f)
-                        {
-                            flag = true;
-                        }
-                    }
-                    if (flag)
-                    {
-                        num += Main.cursorScale - 1f;
-                    }
-                    int a = (int)((float)num2 * 0.9);
-                    Main.spriteBatch.Draw(Stars, new Vector2((775 + UI_ScreenAnchorX), (30 + Stars.Height / 2) + (Stars.Height - Stars.Height * num) / 2f + (28 * (i - 1))), new Rectangle?(new Rectangle(0, 0, Stars.Width, Stars.Height)), new Color(num2, num2, num2, a), 0f, new Vector2((Stars.Width / 2), (Stars.Height / 2)), num, SpriteEffects.None, 0f);
-                }
-            }
-        }*/
     }
 
     public enum MPMessageType : byte

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Serpent
 {
-    public class IceBall : ModProjectile
+    public class IceBall2 : ModProjectile
     {
         public override void SetDefaults()
         {
