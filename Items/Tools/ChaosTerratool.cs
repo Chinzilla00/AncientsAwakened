@@ -1,3 +1,4 @@
+using AAMod.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,7 @@ namespace AAMod.Items.Tools
             item.melee = true;
             item.width = 54;
             item.height = 60;
-			item.useStyle = 1;
+            item.useStyle = 1;
             item.useTime = 5;
             item.useAnimation = 20;
             item.tileBoost += 3;
@@ -23,7 +24,6 @@ namespace AAMod.Items.Tools
             item.useTurn = true;
             item.damage = 60;
             item.pick = 215;
-
         }
 
         public override void SetStaticDefaults()
@@ -31,23 +31,28 @@ namespace AAMod.Items.Tools
             DisplayName.SetDefault("Chaos Terratool");
             Tooltip.SetDefault("Right Click to change tool types");
         }
-        public override bool CanRightClick()
+
+        public override bool AltFunctionUse(Player player)
         {
             return true;
         }
 
-        public override void RightClick(Player player)
+        public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse != 2)
+            if (player.altFunctionUse == 2)
             {
-                byte pre = item.prefix;
-                item.TurnToAir();
-                int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("ChaosTerratool_Axe"), 1, false, pre, false, false);
-                if (Main.netMode == 1)
-                {
-                    NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
-                }
+                AAMod.instance.TerratoolCState.ToggleUI(AAMod.instance.TerratoolCInterface);
+                item.pick = TerratoolCUI.Pick;
+                item.axe = TerratoolCUI.Axe;
+                item.hammer = TerratoolCUI.Hammer;
+                return true;
             }
+            else
+            {
+                // do stuff
+            }
+
+            return false;
         }
 
         public override void AddRecipes()  //How to craft this item

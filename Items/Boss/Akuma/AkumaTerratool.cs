@@ -30,24 +30,31 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terratool");
+            DisplayName.SetDefault("Draconian Terratool");
             Tooltip.SetDefault("Right Click to change tool types");
         }
 
-        public override bool CanRightClick()
+        public override bool AltFunctionUse(Player player)
         {
             return true;
         }
 
-        public override void RightClick(Player player)
+        public override bool CanUseItem(Player player)
         {
-            byte pre = item.prefix;
-            item.TurnToAir();
-            int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AkumaTerratool_Axe"), 1, false, pre, false, false);
-            if (Main.netMode == 1)
+            if (player.altFunctionUse == 2)
             {
-                NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
+                AAMod.instance.TerratoolAState.ToggleUI(AAMod.instance.TerratoolAInterface);
+                item.pick = UI.TerratoolAUI.Pick;
+                item.axe = UI.TerratoolAUI.Axe;
+                item.hammer = UI.TerratoolAUI.Hammer;
+                return true;
             }
+            else
+            {
+                // do stuff
+            }
+
+            return false;
         }
     }
 }

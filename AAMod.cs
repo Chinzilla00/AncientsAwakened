@@ -1,5 +1,6 @@
 using AAMod.Backgrounds;
 using AAMod.Globals;
+using AAMod.UI;
 //using AAMod.UI;
 using BaseMod;
 using Microsoft.Xna.Framework;
@@ -39,8 +40,24 @@ namespace AAMod
         public static string BLANK_TEX = "AAMod/BlankTex";
 
         // UI
-        //internal UserInterface TerratoolInterface;
-        //internal TerratoolUI TerratoolState;
+        internal UserInterface TerratoolInterface;
+        internal TerratoolUI TerratoolState;
+
+        internal UserInterface TerratoolCInterface;
+        internal TerratoolCUI TerratoolCState;
+
+        internal UserInterface TerratoolAInterface;
+        internal TerratoolAUI TerratoolAState;
+
+        internal UserInterface TerratoolYInterface;
+        internal TerratoolYUI TerratoolYState;
+
+        internal UserInterface TerratoolZInterface;
+        internal TerratoolZUI TerratoolZState;
+
+        internal UserInterface TerratoolSInterface;
+        internal TerratoolSUI TerratoolSState;
+
         public static SpriteFont fontMouseText;
 
         public static int[] SNAKETYPES = new int[0];
@@ -246,9 +263,30 @@ namespace AAMod
 
         public void LoadClient()
         {
-            //TerratoolInterface = new UserInterface();
-            //TerratoolState = new TerratoolUI();
-            //TerratoolState.Activate();
+            TerratoolInterface = new UserInterface();
+            TerratoolState = new TerratoolUI();
+            TerratoolState.Activate();
+
+            TerratoolCInterface = new UserInterface();
+            TerratoolCState = new TerratoolCUI();
+            TerratoolCState.Activate();
+
+            TerratoolAInterface = new UserInterface();
+            TerratoolAState = new TerratoolAUI();
+            TerratoolAState.Activate();
+
+            TerratoolYInterface = new UserInterface();
+            TerratoolYState = new TerratoolYUI();
+            TerratoolYState.Activate();
+
+            TerratoolZInterface = new UserInterface();
+            TerratoolZState = new TerratoolZUI();
+            TerratoolZState.Activate();
+
+            TerratoolSInterface = new UserInterface();
+            TerratoolSState = new TerratoolSUI();
+            TerratoolSState.Activate();
+
 
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
             PremultiplyTexture(GetTexture("Backgrounds/Moon"));
@@ -451,7 +489,7 @@ namespace AAMod
             AARecipes.AddRecipes();
         }
 
-        /*private static GameTime lastUpdateUIGameTime;
+        private static GameTime lastUpdateUIGameTime;
 
         public override void UpdateUI(GameTime gameTime)
         {
@@ -483,7 +521,7 @@ namespace AAMod
                 },
                 InterfaceScaleType.UI));
             }
-        }*/
+        }
 
         public static Texture2D GetGlowmask(string Name)
         {

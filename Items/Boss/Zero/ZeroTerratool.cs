@@ -10,7 +10,6 @@ namespace AAMod.Items.Boss.Zero
         
         public override void SetDefaults()
         {
-
             item.melee = true;
             item.width = 54;
             item.height = 60;
@@ -27,33 +26,35 @@ namespace AAMod.Items.Boss.Zero
             item.useTurn = true;
             item.damage = 100;
             item.pick = 300;
-
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terratool");
+            DisplayName.SetDefault("Doomsday Terratool");
             Tooltip.SetDefault("Right Click to change tool types");
         }
 
-        public override bool CanRightClick()
+        public override bool AltFunctionUse(Player player)
         {
             return true;
         }
 
-
-        public override void RightClick(Player player)
+        public override bool CanUseItem(Player player)
         {
-            byte pre = item.prefix;
-            item.TurnToAir();
-            int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("ZeroTerratool_Axe"), 1, false, pre, false, false);
-            if (Main.netMode == 1)
+            if (player.altFunctionUse == 2)
             {
-                NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
+                AAMod.instance.TerratoolZState.ToggleUI(AAMod.instance.TerratoolZInterface);
+                item.pick = UI.TerratoolZUI.Pick;
+                item.axe = UI.TerratoolZUI.Axe;
+                item.hammer = UI.TerratoolZUI.Hammer;
+                return true;
             }
+            else
+            {
+                // do stuff
+            }
+
+            return false;
         }
-
-
-
     }
 }
