@@ -82,7 +82,6 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         public override void AI()
         {
-            npc.frameCounter++;
             Player player = Main.player[npc.target];
             if (runonce == 0)
             {
@@ -143,14 +142,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.ai[3]++;
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;
-                if (npc.ai[3] > 0)
-                {
-                    npc.frame.Y = FrameHeight * 6;
-                }
-                if (npc.ai[3] > 9)
-                {
-                    npc.frame.Y = FrameHeight * 7;
-                }
                 if (npc.ai[3] == 9)
                 {
                     if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
@@ -158,18 +149,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                         FireProjectile();
                         npc.netUpdate = true;
                     }
-                }
-                if (npc.ai[3] > 18)
-                {
-                    npc.frame.Y = FrameHeight * 8;
-                }
-                if (npc.ai[3] > 27)
-                {
-                    npc.frame.Y = FrameHeight * 9;
-                }
-                if (npc.ai[3] > 36)
-                {
-                    npc.frame.Y = FrameHeight * 10;
                 }
                 if (npc.ai[3] == 36)
                 {
@@ -179,18 +158,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                         npc.netUpdate = true;
                     }
                 }
-                if (npc.ai[3] > 45)
-                {
-                    npc.frame.Y = FrameHeight * 11;
-                }
-                if (npc.ai[3] > 54)
-                {
-                    npc.frame.Y = FrameHeight * 12;
-                }
-                if (npc.ai[3] > 63)
-                {
-                    npc.frame.Y = FrameHeight * 13;
-                }
                 if (npc.ai[3] == 72)
                 {
                     if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
@@ -199,13 +166,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                         npc.netUpdate = true;
                     }
                 }
-                if (npc.ai[3] > 72)
-                {
-                    npc.frame.Y = FrameHeight * 14;
-                }
                 if (npc.ai[3] > 81)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;
@@ -223,15 +186,6 @@ namespace AAMod.NPCs.Bosses.Djinn
             else if (internalAI[0] == 1)
             {
                 npc.ai[3]++;
-                if (npc.frameCounter > 9)
-                {
-                    MudaMudaFrame++;
-                    npc.frameCounter = 0;
-                }
-                if (MudaMudaFrame > FrameHeight * 5)
-                {
-                    MudaMudaFrame = 0;
-                }
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.1f, 6f, 6f, false, 300);
                 npc.damage = 40;
                 if (npc.ai[3] > 200 && Main.netMode != 1)
@@ -266,15 +220,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                         npc.damage = 20;
                         npc.netUpdate = true;
                     }
-                    if (npc.frameCounter > 9)
-                    {
-                        PunchFrame++;
-                        npc.frameCounter = 0;
-                    }
-                    if (PunchFrame > FrameHeight * 3)
-                    {
-                        PunchFrame = 0;
-                    }
                 }
                 else
                 {
@@ -286,15 +231,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                         }
                         npc.damage = 40;
                         npc.netUpdate = true;
-                    }
-                    if (npc.frameCounter > 9)
-                    {
-                        PunchFrame++;
-                        npc.frameCounter = 0;
-                    }
-                    if (PunchFrame > FrameHeight * 7 || PunchFrame < FrameHeight * 4)
-                    {
-                        PunchFrame = 4;
                     }
                     if (Main.netMode != 1)
                     {
@@ -322,7 +258,95 @@ namespace AAMod.NPCs.Bosses.Djinn
             else
             {
                 npc.damage = 30;
-                npc.frameCounter++;
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 2f, false, 300);
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if(internalAI[0] == 0)
+            {
+                if (npc.ai[3] > 0)
+                {
+                    npc.frame.Y = FrameHeight * 6;
+                }
+                if (npc.ai[3] > 9)
+                {
+                    npc.frame.Y = FrameHeight * 7;
+                }
+                if (npc.ai[3] > 18)
+                {
+                    npc.frame.Y = FrameHeight * 8;
+                }
+                if (npc.ai[3] > 27)
+                {
+                    npc.frame.Y = FrameHeight * 9;
+                }
+                if (npc.ai[3] > 36)
+                {
+                    npc.frame.Y = FrameHeight * 10;
+                }
+                if (npc.ai[3] > 45)
+                {
+                    npc.frame.Y = FrameHeight * 11;
+                }
+                if (npc.ai[3] > 54)
+                {
+                    npc.frame.Y = FrameHeight * 12;
+                }
+                if (npc.ai[3] > 63)
+                {
+                    npc.frame.Y = FrameHeight * 13;
+                }
+                if (npc.ai[3] > 72)
+                {
+                    npc.frame.Y = FrameHeight * 14;
+                }
+            }
+            if (internalAI[0] == 1)
+            {
+                if (npc.frameCounter > 9)
+                {
+                    MudaMudaFrame++;
+                    npc.frameCounter = 0;
+                }
+                if (MudaMudaFrame > FrameHeight * 5)
+                {
+                    MudaMudaFrame = 0;
+                }
+            }
+            else if (internalAI[0] == 2)
+            {
+                npc.ai[3]++;
+
+                if (npc.ai[3] < 180)
+                {
+                    if (npc.frameCounter > 9)
+                    {
+                        PunchFrame++;
+                        npc.frameCounter = 0;
+                    }
+                    if (PunchFrame > FrameHeight * 3)
+                    {
+                        PunchFrame = 0;
+                    }
+                }
+                else
+                {
+                    if (npc.frameCounter > 9)
+                    {
+                        PunchFrame++;
+                        npc.frameCounter = 0;
+                    }
+                    if (PunchFrame < FrameHeight * 4)
+                    {
+                        PunchFrame = 4;
+                    }
+                }
+            }
+            else
+            {
                 if (npc.frameCounter > 9)
                 {
                     npc.frame.Y += 130;
@@ -332,13 +356,20 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     npc.frame.Y = 0;
                 }
-                BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.04f, 4f, 2f, false, 300);
             }
-        }
 
-        public override void FindFrame(int frameHeight)
-        {
-            base.FindFrame(frameHeight);
+            if (MudaMudaFrame > FrameHeight * 5)
+            {
+                MudaMudaFrame = 0;
+            }
+            if (PunchFrame > FrameHeight * 7)
+            {
+                PunchFrame = 4;
+            }
+            if (npc.frame.Y > FrameHeight * 5)
+            {
+                npc.frame.Y = 0;
+            }
         }
 
         public void FuriousFlexing()

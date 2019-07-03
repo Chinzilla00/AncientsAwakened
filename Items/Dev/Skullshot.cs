@@ -60,8 +60,8 @@ Uses Bullets and Bones as ammo
             }
             else
             {
-                item.useAnimation = 34;
-                item.useTime = 34;
+                item.useAnimation = 15;
+                item.useTime = 15;
                 item.reuseDelay = 0;
                 item.useAmmo = AmmoID.Bullet;
                 item.damage = 30;

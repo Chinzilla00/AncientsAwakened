@@ -14,7 +14,9 @@ namespace AAMod.Projectiles
 		}
 
 		public override void SetDefaults()
-		{
+        {
+            projectile.aiStyle = 1;
+            aiType = ProjectileID.Bullet;
             projectile.friendly = true;
             projectile.aiStyle = -1;
 			projectile.width = 14;
@@ -26,6 +28,7 @@ namespace AAMod.Projectiles
 
         public override void PostAI()
         {
+
             projectile.frameCounter++;
             if (projectile.frameCounter > 6)
             {

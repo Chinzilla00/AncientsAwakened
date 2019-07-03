@@ -770,6 +770,17 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            bool RageMode = !isSupreme && npc.life < npc.lifeMax / 7;
+            bool SupremeRageMode = isSupreme && npc.life < npc.lifeMax / 7;
+            if (RageMode)
+            {
+                Color RageColor = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Firebrick, drawColor, Color.Firebrick);
+                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, RageColor);
+            }
+            else if (SupremeRageMode)
+            {
+                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, Main.DiscoColor);
+            }
             if (npc.ai[3] != 0) //No Weapon
             {
                 ArmTex = mod.GetTexture(WeaponTexture());
@@ -786,16 +797,10 @@ namespace AAMod.NPCs.Bosses.Rajah
                 BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, Main.DiscoColor);
                 BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc, auraPercent, 1f, 0f, 0f, Main.DiscoColor);
             }
-            if (!isSupreme && npc.life < npc.lifeMax / 7)
+            if (RageMode)
             {
-                Color RageColor = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Firebrick, drawColor, Color.Firebrick);
-                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, RageColor);
                 int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
                 BaseDrawing.DrawTexture(spriteBatch, Glow, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Color.White, true);
-            }
-            else if (isSupreme && npc.life < npc.lifeMax / 7)
-            {
-                BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, 0f, Main.DiscoColor);
             }
             return false;
         }

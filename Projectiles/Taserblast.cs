@@ -44,10 +44,10 @@ namespace AAMod.Projectiles
             {
                 projectile.Kill();
             }
-            if (++projectile.frameCounter >= 4)
+            if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 5)
+                if (++projectile.frame >= 4)
                 {
                     projectile.frame = 1;
                 }

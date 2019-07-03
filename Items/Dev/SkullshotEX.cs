@@ -71,7 +71,7 @@ Super Skullshot EX");
             if (player.altFunctionUse == 2)
             {
                 item.useAmmo = AAMod.BoneAmmo;
-                item.damage = 300;
+                item.damage = 340;
                 item.useAnimation = 27;
                 item.useTime = 9;
                 item.reuseDelay = 30;
@@ -80,7 +80,7 @@ Super Skullshot EX");
             else
             {
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 130;
+                item.damage = 160;
                 item.useAnimation = 24;
                 item.useTime = 24;
                 item.reuseDelay = 0;
@@ -95,7 +95,7 @@ Super Skullshot EX");
             {
                 for (int i = 0; i < Main.rand.Next(6, 13); i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
             }

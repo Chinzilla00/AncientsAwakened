@@ -12,7 +12,7 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Thunder Lord");
             Tooltip.SetDefault(@"Fires off Thundershots
-Static Rifle EX");
+Storm Rifle EX");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
