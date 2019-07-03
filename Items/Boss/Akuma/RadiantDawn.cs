@@ -14,6 +14,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Radiant Dawn");
+            Tooltip.SetDefault("Hold to fire more arrows");
         }
 
         public override void SetDefaults()
@@ -21,7 +22,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 34;
             item.height = 34;
             item.ranged = true;
-            item.damage = 180;
+            item.damage = 400;
             item.shoot = mod.ProjectileType("RadiantDawn");
             item.useTime = 10;
             item.useAnimation = 10;

@@ -49,7 +49,7 @@ namespace AAMod.Projectiles.Akuma
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 200);
-            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage / 3, projectile.knockBack, projectile.owner, 0f, 0f);
+            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
             Main.projectile[proj].melee = false;
             Main.projectile[proj].ranged = true;
         }
@@ -61,7 +61,7 @@ namespace AAMod.Projectiles.Akuma
             for (int num468 = 0; num468 < 4; num468++)
             {
                 num468 = Dust.NewDust(new Microsoft.Xna.Framework.Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Microsoft.Xna.Framework.Color));
+                    -projectile.velocity.Y * 0.2f, 100, default(Color));
             }
         }
     }

@@ -85,12 +85,10 @@ namespace AAMod.Items.Summoning.Minions.Terra
             {
                 flag67 = true;
                 value67 = Main.projectile[byUUID].Center;
-                Vector2 arg_2D957_0 = Main.projectile[byUUID].velocity;
                 num1052 = Main.projectile[byUUID].rotation;
                 float num1053 = MathHelper.Clamp(Main.projectile[byUUID].scale, 0f, 50f);
                 scaleFactor17 = num1053;
                 scaleFactor16 = 16f;
-                int arg_2D9AD_0 = Main.projectile[byUUID].alpha;
                 Main.projectile[byUUID].localAI[0] = projectile.localAI[0] + 1f;
                 if (Main.projectile[byUUID].type != mod.ProjectileType("Minion4Head")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
             }

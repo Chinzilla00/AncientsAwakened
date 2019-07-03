@@ -56,7 +56,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             }
 
             if (player.dead) modPlayer.TerraSummon = false;
-            if (modPlayer.TerraSummon) projectile.timeLeft = 2;
+            if (modPlayer.TerraSummon) projectile.active = false;
             int num1038 = 30;
 
             Vector2 center = player.Center;

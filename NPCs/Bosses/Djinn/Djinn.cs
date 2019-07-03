@@ -126,8 +126,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                 internalAI[1]++;
                 if (internalAI[1] >= 300)
                 {
-                    MudaMudaFrame = 0;
-                    PunchFrame = 0;
                     selectPoint = true; ;
                     internalAI[0] = Main.rand.Next(3);
                     internalAI[1] = 0;
@@ -190,7 +188,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.damage = 40;
                 if (npc.ai[3] > 200 && Main.netMode != 1)
                 {
-                    MudaMudaFrame = 0;
                     internalAI[0] = 10;
                     internalAI[1] = 0;
                     npc.ai = new float[4];
@@ -207,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     if (selectPoint)
                     {
                         float point = 500 * npc.direction;
-                        MovePoint = player.Center + new Vector2(point, 0);
+                        MovePoint = player.Center + new Vector2(-point, 0);
                         selectPoint = false;
                         npc.netUpdate = true;
                     }
@@ -237,7 +234,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                         if (selectPoint)
                         {
                             float point = 500 * npc.direction;
-                            MovePoint = player.Center + new Vector2(-point, 0);
+                            MovePoint = player.Center + new Vector2(point, 0);
                             selectPoint = false;
                             npc.netUpdate = true;
                         }
@@ -247,7 +244,6 @@ namespace AAMod.NPCs.Bosses.Djinn
 
                 if (npc.ai[3] > 280 && Main.netMode != 1)
                 {
-                    PunchFrame = 0;
                     internalAI[0] = 10;
                     internalAI[1] = 0;
                     npc.ai = new float[4];
@@ -304,7 +300,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     npc.frame.Y = FrameHeight * 14;
                 }
             }
-            if (internalAI[0] == 1)
+            else if (internalAI[0] == 1)
             {
                 if (npc.frameCounter > 9)
                 {
@@ -338,10 +334,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                     {
                         PunchFrame++;
                         npc.frameCounter = 0;
-                    }
-                    if (PunchFrame < FrameHeight * 4)
-                    {
-                        PunchFrame = 4;
                     }
                 }
             }

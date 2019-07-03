@@ -7,8 +7,8 @@ namespace AAMod.Projectiles.Tools
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 22;
-			projectile.height = 22;
+			projectile.width = 16;
+			projectile.height = 16;
 			projectile.aiStyle = 20;
 			projectile.friendly = true;
 			projectile.penetrate = -1;

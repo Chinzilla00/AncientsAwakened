@@ -83,6 +83,14 @@ namespace AAMod.NPCs.Enemies.Snow
             }
         }
 
+        public override bool PreNPCLoot()
+        {
+            if (NPC.AnyNPCs(mod.NPCType<Bosses.Serpent.SerpentHead>()))
+            {
+                return false;
+            }
+            return base.PreNPCLoot();
+        }
         public override void NPCLoot()
         {
             npc.DropLoot(mod.ItemType("SubzeroCrystal"));

@@ -56,7 +56,7 @@ Only 1 terra crawler may be active at a time");
                     shootMe = mod.ProjectileType("Minion4Head");
                     break;
             }
-            if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>())
+            if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>() && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Minions.Terra.Minion4Head>()))
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 
@@ -100,6 +100,10 @@ Only 1 terra crawler may be active at a time");
                     Main.projectile[previous].netUpdate = true;
                 }
                 return false;
+            }
+            if (shootMe == mod.ProjectileType("Minion4Head"))
+            {
+                shootMe = mod.ProjectileType("Minion1");
             }
             int i = Main.myPlayer;
             int num73 = damage;

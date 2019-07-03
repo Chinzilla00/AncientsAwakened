@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
 		public override void SetDefaults()
 		{
-			npc.npcSlots = 5f;
+			npc.npcSlots = 10f;
             npc.width = 38;
             npc.height = 38;
             npc.damage = 35;
@@ -31,7 +31,6 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             animationType = 10;
-            npc.behindTiles = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit5;
@@ -165,6 +164,14 @@ namespace AAMod.NPCs.Bosses.Serpent
                     else
                     {
                         FrostAttack();
+                    }
+
+                    if (internalAI[3]++ > 400 && NPC.CountNPCS(mod.NPCType<Enemies.Snow.SnakeHead>()) < 3)
+                    {
+                        for (int i = 0; i < 3 - NPC.CountNPCS(mod.NPCType<Enemies.Snow.SnakeHead>()); i++)
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
+                        }
                     }
 				}
 
@@ -303,15 +310,13 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public void IceSentry()
         {
-            if (NPC.CountNPCS(mod.NPCType<IceCrystal>()) < 3 && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            Player player = Main.player[npc.target];
+            if (NPC.CountNPCS(mod.NPCType<IceCrystal>()) < 3)
             {
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<IceCrystal>(), 0, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
+                NPC.NewNPC((int)player.position.X, (int)player.position.Y + 60, mod.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
             }
-            if (NPC.CountNPCS(mod.NPCType<IceCrystal>()) >= 3)
-            {
-                internalAI[2] = 0;
-                npc.netUpdate = true;
-            }
+            internalAI[2] = 0;
+            npc.netUpdate = true;
         }
 
         public void FrostAttack()
@@ -425,7 +430,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             }
             if (Main.expertMode)
             {
-                npc.DropBossBags();
+                npc.DropItemInstanced(Main.LocalPlayer.position, Main.LocalPlayer.Size, mod.ItemType<Items.Boss.Serpent.SerpentBag>(), 1, true);
             }
             if (Main.rand.Next(10) == 0)
             {

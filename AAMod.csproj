@@ -1977,6 +1977,7 @@
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
     <Compile Include="Projectiles\Aerodrake.cs" />
+    <Compile Include="Projectiles\Tools\PShadowDrill.cs" />
     <Compile Include="Projectiles\VoidWave.cs" />
     <Compile Include="Projectiles\CapShield.cs" />
     <Compile Include="Projectiles\ChaosChain.cs" />
@@ -3040,6 +3041,7 @@
     <Content Include="Glowmasks\AbyssGrip_Glow.png" />
     <Content Include="Glowmasks\AbyssiumOre_glow.png" />
     <Content Include="Glowmasks\AcidProj_Glow.png" />
+    <Content Include="Glowmasks\Aerodrake_Glow.png" />
     <Content Include="Glowmasks\AFireProjHostile_Glow.png" />
     <Content Include="Glowmasks\AkumaA1_Glow.png" />
     <Content Include="Glowmasks\AkumaAArms_Glow.png" />
@@ -6432,7 +6434,6 @@
     <Content Include="NPCs\Bosses\Zero\Protocol\ZeroDeath1.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\ZeroDeath2.png" />
     <Content Include="NPCs\Bosses\Zero\Protocol\ZeroProtocol1.png" />
-    <Content Include="NPCs\Bosses\Zero\Protocol\ZeroTrail.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder.png" />
     <Content Include="NPCs\Bosses\Zero\SearcherZero.png" />
@@ -6742,6 +6743,7 @@
     <Content Include="Projectiles\ThunderBullet.png" />
     <Content Include="Projectiles\ThunderSpark.png" />
     <Content Include="Projectiles\Tools\MiningLaser.png" />
+    <Content Include="Projectiles\Tools\PShadowDrill.png" />
     <Content Include="Projectiles\Tools\ShadowDrill.png" />
     <Content Include="Projectiles\VoidSpear.png" />
     <Content Include="Projectiles\VoidWave.png" />
@@ -7086,13 +7088,14 @@
     <Content Include="Sounds\Music\Shen.mp3" />
     <Content Include="Sounds\Music\ShenA.mp3" />
     <Content Include="Sounds\Music\ShenIntro.mp3" />
-    <Content Include="Sounds\Music\ShenTransition.mp3" />
     <Content Include="Sounds\Music\Shrines.mp3" />
     <Content Include="Sounds\Music\Shroom.mp3" />
     <Content Include="Sounds\Music\Siege.mp3" />
+    <Content Include="Sounds\Music\silence.mp3" />
     <Content Include="Sounds\Music\SleepingDragon.mp3" />
     <Content Include="Sounds\Music\SleepingGiant.mp3" />
     <Content Include="Sounds\Music\Stars.mp3" />
+    <Content Include="Sounds\Music\SupremeRajah.mp3" />
     <Content Include="Sounds\Music\Terrarium.mp3" />
     <Content Include="Sounds\Music\TODE.mp3" />
     <Content Include="Sounds\Music\UGVoid.mp3" />
@@ -7102,7 +7105,6 @@
     <Content Include="Sounds\Music\Yamata2.mp3" />
     <Content Include="Sounds\Music\Zero.mp3" />
     <Content Include="Sounds\Music\Zero2.mp3" />
-    <Content Include="Sounds\Music\ZeroPinch.mp3" />
     <Content Include="Sounds\Sounds\AkumaRoar.mp3" />
     <Content Include="Sounds\Sounds\Chicken.wav" />
     <Content Include="Sounds\Sounds\FerretNote.mp3" />

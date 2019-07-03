@@ -38,7 +38,6 @@ namespace AAMod.Items.Summoning.Minions.Terra
             bool flag64 = projectile.type == mod.ProjectileType("Minion3");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("TerraSummon"), 3600);
             if (flag64)
             {
                 if (player.dead)

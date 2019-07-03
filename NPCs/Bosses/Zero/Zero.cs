@@ -223,7 +223,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             RingRoatation += 0.03f;
 
-            if (Main.netMode != 1 && internalAI[2] > 120)
+            if (Main.netMode != 1)
             {
                 if (internalAI[0] > 120)
                 {
@@ -264,10 +264,12 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 ShieldScale += .05f;
             }
+
             if (ShieldScale > .5f)
             {
                 ShieldScale = .5f;
             }
+
             if (internalAI[1] == 0)
             {
                 npc.velocity.Y += 0.003f;
@@ -286,6 +288,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.netUpdate = true;
                 }
             }
+
             if (npc.ai[1] == 0)
             {
                 npc.dontTakeDamage = true;
@@ -393,7 +396,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.ai[1] == 0)
+            if (npc.ai[1] != 0)
             {
                 npc.frame.Y = 0;
             }

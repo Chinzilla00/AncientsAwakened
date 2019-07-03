@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
-    //ported from my tAPI mod because I don't want to make more artwork
     public class UraniumChainsaw : BaseAAItem
 	{
 		public override void SetStaticDefaults()
@@ -14,23 +13,23 @@ namespace AAMod.Items.Tools
 		public override void SetDefaults()
         {
             item.useStyle = 5;
-            item.useAnimation = 29;
-            item.useTime = 12;
-            item.knockBack = 5f;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.noUseGraphic = true;
-            item.width = 36;
-            item.height = 36;
-            item.damage = 25;
+            item.useAnimation = 25;
+            item.useTime = 6;
+            item.shootSpeed = 40f;
+            item.knockBack = 4.5f;
+            item.width = 20;
+            item.height = 12;
+            item.damage = 33;
             item.axe = 25;
-            item.UseSound = SoundID.Item1;
-            item.rare = 4;
-            item.value = 81000;
-            item.melee = true;
+            item.UseSound = SoundID.Item23;
             item.shoot = mod.ProjectileType("UraniumChainsaw");
-			item.shootSpeed = 40f;
-		}
+            item.rare = 4;
+            item.value = 108000;
+            item.noMelee = true;
+            item.noUseGraphic = true;
+            item.melee = true;
+            item.channel = true;
+        }
 
         public override void AddRecipes()
         {

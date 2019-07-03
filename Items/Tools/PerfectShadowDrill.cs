@@ -27,7 +27,7 @@ namespace AAMod.Items.Tools
 			item.useStyle = 5;
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 10);
-            item.rare = 4;
+            item.rare = 7;
 			item.UseSound = SoundID.Item23;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("PShadowDrill");
@@ -37,11 +37,9 @@ namespace AAMod.Items.Tools
         public override void AddRecipes()  //How to craft this item
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "HydraTuneller");
-            recipe.AddIngredient(mod, "OceanPick");
-            recipe.AddIngredient(mod, "Icepick");
-            recipe.AddIngredient(mod, "DoomiteMiningLaser");
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(mod, "ShadowDrill");
+            recipe.AddIngredient(mod, "MireCrystal");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

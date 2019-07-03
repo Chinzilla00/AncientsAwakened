@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             DisplayName.SetDefault("Ashe Akuma");
             Main.npcFrameCount[npc.type] = 24;
-            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
 
@@ -33,13 +32,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.knockBackResist = 0f;
             npc.knockBackResist = 0f;
             npc.lavaImmune = true;
-            npc.boss = false;
             npc.netAlways = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
         }
         public int body = -1;
 
@@ -51,19 +48,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
                 Main.npc[DeathAnim].velocity = npc.velocity;
             }
-
-            if (body == -1)
-            {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("AkumaA"), -1, null);
-                if (npcID >= 0) body = npcID;
-            }
-            NPC Akuma = Main.npc[body];
-            if (Akuma.life <= Akuma.lifeMax / 3)
-            {
-                int musicType = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RayOfHope");
-            }
-
             return true;
         }
 
