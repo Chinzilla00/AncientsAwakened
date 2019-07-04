@@ -42,15 +42,17 @@ You may only have a maximum of 2 tool types active");
             if (player.altFunctionUse == 2)
             {
                 AAMod.instance.TerratoolState.ToggleUI(AAMod.instance.TerratoolInterface);
-                item.pick = UI.TerratoolTUI.Pick;
-                item.axe = UI.TerratoolTUI.Axe;
-                item.hammer = UI.TerratoolTUI.Hammer;
-                return false;
+                item.pick = 0;
+                item.axe = 0;
+                item.hammer = 0;
             }
             else
             {
-                return true;
+                item.pick = UI.TerratoolTUI.Pick;
+                item.axe = UI.TerratoolTUI.Axe;
+                item.hammer = UI.TerratoolTUI.Hammer;
             }
+            return true;
         }
 
         public override void AddRecipes()  //How to craft this item
