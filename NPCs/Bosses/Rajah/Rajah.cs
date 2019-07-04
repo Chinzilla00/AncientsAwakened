@@ -754,14 +754,15 @@ namespace AAMod.NPCs.Bosses.Rajah
         public void RajahTexture()
         {
             string IsRoaring = Roaring ? "Roar" : "";
+            string Supreme = isSupreme ? "/Supreme/Supreme" : "";
             if (internalAI[1] == 0)
             {
-                RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring + "_Fly");
+                RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/" + Supreme + "Rajah" + IsRoaring + "_Fly");
                 Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Fly_Glow");
             }
             else
             {
-                RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/Rajah" + IsRoaring);
+                RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/" + Supreme + "Rajah" + IsRoaring);
                 Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
             }
         }
@@ -927,7 +928,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah"; } }
 
         public override void SetStaticDefaults()
         {
