@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), 1000, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), -1, null);
                 if (npcID >= 0) body = npcID;
             }
 
@@ -139,14 +139,17 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.ai[2] >= aiTimerFire)
             {
-                SwordAI(player);
                 if (npc.ai[2] > 560 && Main.netMode != 1)
                 {
-                    MoveToPoint(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue));
-                    if (Vector2.Distance(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue), npc.Center) < 32)
+                    MoveToPoint(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue));
+                    if (Vector2.Distance(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue), npc.Center) < 32)
                     {
                         npc.ai[2] = 0;
                     }
+                }
+                else
+                {
+                    SwordAI(player);
                 }
             }
             else
@@ -157,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 npc.oldPos[0] = npc.position;
 
-                npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue);
+                npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue);
 
                 Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num1 = player.position.X + (player.width / 2) - vector2.X;
@@ -182,8 +185,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 num315 = num312 / num315;
                 num313 *= num315;
                 num314 *= num315;
-                npc.velocity.X = num313;
-                npc.velocity.Y = num314;
+                npc.velocity.X = num313 * 2;
+                npc.velocity.Y = num314 * 2;
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - 1.57f;
                 npc.ai[3] = 1f;
                 internalAI[0] = 0f;
@@ -221,7 +224,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 float num316 = internalAI[0] / 120f;
                 num316 = 0.1f + num316 * 0.4f;
                 npc.rotation += num316 * npc.direction;
-                if (internalAI[0] >= 120f)
+                if (internalAI[0] >= 70f)
                 {
                     npc.netUpdate = true;
                     npc.ai[3] = 0f;
@@ -234,7 +237,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/RiftShredderZ");
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
         }
 
         public override void BossHeadRotation(ref float rotation)

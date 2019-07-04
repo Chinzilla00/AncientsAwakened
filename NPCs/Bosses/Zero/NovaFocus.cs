@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(140f, 0f), rotValue);
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue);
 
             if (Main.netMode != 1) { npc.ai[2]++; }
 
@@ -136,16 +136,16 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+            float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
             float NewRotation = (float)Math.Atan2(num2, num1);
             npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/TaserZ");
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            Texture2D glowTex = mod.GetTexture("Glowmasks/NovaFocus_Glow");
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
         }
 
         public override void BossHeadRotation(ref float rotation)

@@ -227,7 +227,8 @@ namespace AAMod.NPCs.Bosses.Zero
 
             RingRoatation += 0.03f;
 
-            if (Main.netMode != 1)
+            
+            if (Main.netMode != 1 && internalAI[2] != 1)
             {
                 if (internalAI[0] > 120)
                 {
@@ -365,12 +366,15 @@ namespace AAMod.NPCs.Bosses.Zero
                                 }
                             }
                         }
-                        for (int num842 = 0; num842 < num838; num842++)
+                        if (Main.rand.Next(10) == 10)
                         {
-                            Vector2 vector82 = array5[num842] - npc.Center;
-                            float ai = (float)Main.rand.Next(100);
-                            Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 7f;
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<ZeroShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                            for (int num842 = 0; num842 < num838; num842++)
+                            {
+                                Vector2 vector82 = array5[num842] - npc.Center;
+                                float ai = Main.rand.Next(100);
+                                Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<ZeroShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                            }
                         }
                     }
                 }

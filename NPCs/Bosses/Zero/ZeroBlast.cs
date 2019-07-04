@@ -168,7 +168,7 @@ namespace AAMod.NPCs.Bosses.Zero
             spriteBatch.Draw(texture,
                 projectile.position - Main.screenPosition + centre,
                 new Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)),
-                Color.White,
+                AAColor.ZeroShield,
                 projectile.rotation,
                 centre,
                 projectile.scale,

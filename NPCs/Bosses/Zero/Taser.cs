@@ -146,8 +146,8 @@ namespace AAMod.NPCs.Bosses.Zero
                     for (int num842 = 0; num842 < num838; num842++)
                     {
                         Vector2 vector82 = array5[num842] - npc.Center;
-                        float ai = (float)Main.rand.Next(100);
-                        Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 7f;
+                        float ai = Main.rand.Next(100);
+                        Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<ZeroShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                     }
                 }
@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/TaserZ");
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
         }
 
         public override void BossHeadRotation(ref float rotation)

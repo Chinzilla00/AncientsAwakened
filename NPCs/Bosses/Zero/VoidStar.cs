@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(140f, 0f), rotValue);
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue);
 
             int aiTimerFire = Main.expertMode ? 210 : 250;
 
@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/VoidStarZ");
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
         }
 
         public override void BossHeadRotation(ref float rotation)
