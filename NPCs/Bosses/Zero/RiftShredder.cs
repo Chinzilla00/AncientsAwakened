@@ -114,27 +114,24 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), -1f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), 1000, null);
                 if (npcID >= 0) body = npcID;
             }
+
             if (body == -1) return;
+
             NPC zero = Main.npc[body];
-            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { BaseAI.KillNPCWithLoot(npc); return; }
+            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { npc.active = false; return; }
 
-            Player player = Main.player[zero.target];
-
-            pos = zero.Center;
-
-            for (int m = npc.oldPos.Length - 1; m > 0; m--)
-            {
-                npc.oldPos[m] = npc.oldPos[m - 1];
-            }
-            npc.oldPos[0] = npc.position;
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0.04f;
+            rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+
+            if (Main.netMode != 1) { npc.ai[2]++; }
+
+            Player player = Main.player[zero.target];
 
             int aiTimerFire = Main.expertMode ? 350 : 400;
 

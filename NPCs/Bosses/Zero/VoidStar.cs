@@ -85,16 +85,14 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), -1f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), 1000, null);
                 if (npcID >= 0) body = npcID;
             }
+
             if (body == -1) return;
+
             NPC zero = Main.npc[body];
-            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { BaseAI.KillNPCWithLoot(npc); return; }
-
-            Player player = Main.player[zero.target];
-
-            pos = zero.Center;
+            if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { npc.active = false; return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
@@ -104,20 +102,15 @@ namespace AAMod.NPCs.Bosses.Zero
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0.04f;
+            rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(140f, 0f), rotValue);
 
             int aiTimerFire = Main.expertMode ? 210 : 250;
 
-            for (int m = npc.oldPos.Length - 1; m > 0; m--)
-            {
-                npc.oldPos[m] = npc.oldPos[m - 1];
-            }
-            npc.oldPos[0] = npc.position;
-
-            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(300, 0f), rotValue);
-
             if (Main.netMode != 1) { npc.ai[2]++; }
+
+            Player player = Main.player[zero.target];
 
             if (npc.ai[2] == aiTimerFire)
             {
@@ -141,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/VoidStarZ");
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE);
         }
 
         public override void BossHeadRotation(ref float rotation)

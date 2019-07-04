@@ -5,10 +5,9 @@ namespace AAMod.Backgrounds
 {
     public class InfernoSkyData : ScreenShaderData
     {
-        private int DataIndex;
-
         public InfernoSkyData(string passName) : base(passName)
         {
+
         }
 
         private void UpdateInfernoSky()
@@ -18,7 +17,6 @@ namespace AAMod.Backgrounds
             {
                 return;
             }
-            DataIndex = -1;
         }
 
         public override void Apply()

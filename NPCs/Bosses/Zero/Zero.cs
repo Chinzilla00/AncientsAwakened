@@ -6,7 +6,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Zero;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -67,11 +66,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.type == mod.NPCType<Zero>() && (NPC.AnyNPCs(mod.NPCType<VoidStar>()) || NPC.AnyNPCs(mod.NPCType<Taser>()) || NPC.AnyNPCs(mod.NPCType<RealityCannon>()) || NPC.AnyNPCs(mod.NPCType<RiftShredder>())))
-            {
-                npc.dontTakeDamage = true;
-                npc.chaseable = false;
-            }
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
@@ -215,6 +209,16 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void AI()
         {
             npc.TargetClosest();
+
+            bool AnyArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
+                NPC.AnyNPCs(mod.NPCType<Taser>()) ||
+                NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
+                NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
+                NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
+                NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
+                NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
+                NPC.AnyNPCs(mod.NPCType<GenocideCannon>());
+
             if (Main.netMode != 1)
             {
                 AAWorld.zeroUS = false;
@@ -229,11 +233,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     for (int m = 0; m < WeaponCount; m++)
                     {
-                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0);
+                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
                         Main.npc[npcID].Center = npc.Center;
                         Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                         Main.npc[npcID].velocity *= 8f;
-                        Main.npc[npcID].ai[0] = m;
                         Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                     }
                     internalAI[2] = 1;
@@ -244,14 +247,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
-                NPC.AnyNPCs(mod.NPCType<Taser>()) ||
-                NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
-                NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
-                NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
-                NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
-                NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
-                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()) || internalAI[2] == 0)
+            if (AnyArms || internalAI[2] == 0)
             {
                 npc.ai[1] = 0;
             }
@@ -391,7 +387,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     ShieldScale = 0;
                 }
             }
-
         }
 
         public override void FindFrame(int frameHeight)

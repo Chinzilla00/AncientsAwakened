@@ -108,7 +108,7 @@ N0N-C0NSUMABLE");
             {
 				AAWorld.zeroUS = true;
 				if(!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-					NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y + 1200, mod.NPCType("Zero"));
+					NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y - 300, mod.NPCType("Zero"));
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;
