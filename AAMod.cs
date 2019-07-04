@@ -263,7 +263,7 @@ namespace AAMod
 
         public void LoadClient()
         {
-            TerratoolInterface = new UserInterface();
+            /*TerratoolInterface = new UserInterface();
             TerratoolState = new TerratoolUI();
             TerratoolState.Activate();
 
@@ -285,7 +285,7 @@ namespace AAMod
 
             TerratoolSInterface = new UserInterface();
             TerratoolSState = new TerratoolSUI();
-            TerratoolSState.Activate();
+            TerratoolSState.Activate();*/
 
 
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
