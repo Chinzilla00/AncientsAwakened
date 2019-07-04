@@ -216,20 +216,27 @@ namespace AAMod.UI
             {
                 case 0:
                     Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 120 : 0;
-                    Axe = selectedButtons[1] == 2 ? 50 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 1:
                     Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 215 : 0;
-                    Axe = selectedButtons[1] == 2 ? 50 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 215 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 2:
                     Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 215 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 215 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                    }
                     break;
             }
         }
@@ -262,20 +269,27 @@ namespace AAMod.UI
             {
                 case 0:
                     Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 120 : 0;
-                    Axe = selectedButtons[1] == 2 ? 50 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 1:
                     Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 215 : 0;
-                    Axe = selectedButtons[1] == 2 ? 50 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 215 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 2:
                     Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 215 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 215 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 120 : 0;
+                    }
                     break;
             }
         }
@@ -307,21 +321,29 @@ namespace AAMod.UI
             switch (selectedButtons[0])
             {
                 case 0:
-                    Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Pick = 300;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 1:
-                    Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Hammer = 200;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
 
                 case 2:
-                    Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    Axe = 60;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    }
                     break;
             }
         }
@@ -354,21 +376,29 @@ namespace AAMod.UI
             switch (selectedButtons[0])
             {
                 case 0:
-                    Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Pick = 300;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 1:
-                    Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Hammer = 200;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
 
                 case 2:
-                    Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    Axe = 60;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    }
                     break;
             }
         }
@@ -398,24 +428,31 @@ namespace AAMod.UI
         {
             base.ButtonClicked(index);
 
-            switch (selectedButtons[0])
+            switch(selectedButtons[0])
             {
                 case 0:
-                    Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Pick = 300;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 1:
-                    Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    Hammer = 200;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Axe = selectedButtons[1] == 2 ? 60 : 0;
+                    }
                     break;
-
                 case 2:
-                    Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 300 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    Axe = 60;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 200 : 0;
+                    }
                     break;
             }
         }
@@ -448,21 +485,28 @@ namespace AAMod.UI
             switch (selectedButtons[0])
             {
                 case 0:
-                    Pick = 215;
-                    Hammer = selectedButtons[1] == 1 ? 230 : 0;
-                    Axe = selectedButtons[1] == 2 ? 70 : 0;
+                    Pick = 320;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Hammer = selectedButtons[1] == 1 ? 250 : 0;
+                        Axe = selectedButtons[1] == 2 ? 70 : 0;
+                    }
                     break;
-
                 case 1:
-                    Hammer = 120;
-                    Pick = selectedButtons[1] == 0 ? 320 : 0;
-                    Axe = selectedButtons[1] == 2 ? 70 : 0;
+                    Hammer = 250;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Axe = selectedButtons[1] == 2 ? 70 : 0;
+                    }
                     break;
-
                 case 2:
-                    Axe = 50;
-                    Pick = selectedButtons[1] == 0 ? 320 : 0;
-                    Hammer = selectedButtons[1] == 1 ? 230 : 0;
+                    Axe = 70;
+                    if (selectedButtons[1] != -1)
+                    {
+                        Pick = selectedButtons[1] == 0 ? 300 : 0;
+                        Hammer = selectedButtons[1] == 1 ? 250 : 0;
+                    }
                     break;
             }
         }
