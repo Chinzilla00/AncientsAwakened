@@ -2691,7 +2691,13 @@
     <Compile Include="UI\Core\ToggableUI.cs" />
     <Compile Include="UI\Core\UIColorImage.cs" />
     <Compile Include="UI\Core\UIColorImageButton.cs" />
+    <Compile Include="UI\TerratoolAUI.cs" />
+    <Compile Include="UI\TerratoolCUI.cs" />
+    <Compile Include="UI\TerratoolSUI.cs" />
+    <Compile Include="UI\TerratoolTUI.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
+    <Compile Include="UI\TerratoolYUI.cs" />
+    <Compile Include="UI\TerratoolZUI.cs" />
     <Compile Include="Walls\DoomiteWall.cs" />
     <Compile Include="Walls\BurnedDynastyWall.cs" />
     <Compile Include="Walls\DepthsandHardenedWall.cs" />

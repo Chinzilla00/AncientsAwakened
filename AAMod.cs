@@ -41,7 +41,7 @@ namespace AAMod
 
         // UI
         internal UserInterface TerratoolInterface;
-        internal TerratoolUI TerratoolState;
+        internal TerratoolTUI TerratoolState;
 
         internal UserInterface TerratoolCInterface;
         internal TerratoolCUI TerratoolCState;
@@ -498,6 +498,31 @@ namespace AAMod
             if (TerratoolInterface != null && TerratoolInterface.CurrentState != null)
             {
                 TerratoolInterface.Update(gameTime);
+            }
+
+            if (TerratoolCInterface != null && TerratoolCInterface.CurrentState != null)
+            {
+                TerratoolCInterface.Update(gameTime);
+            }
+
+            if (TerratoolAInterface != null && TerratoolAInterface.CurrentState != null)
+            {
+                TerratoolAInterface.Update(gameTime);
+            }
+
+            if (TerratoolYInterface != null && TerratoolYInterface.CurrentState != null)
+            {
+                TerratoolYInterface.Update(gameTime);
+            }
+
+            if (TerratoolZInterface != null && TerratoolZInterface.CurrentState != null)
+            {
+                TerratoolZInterface.Update(gameTime);
+            }
+
+            if (TerratoolSInterface != null && TerratoolSInterface.CurrentState != null)
+            {
+                TerratoolSInterface.Update(gameTime);
             }
         }
 
