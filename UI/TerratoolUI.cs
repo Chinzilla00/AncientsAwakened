@@ -12,7 +12,7 @@ namespace AAMod.UI
     internal abstract class TerratoolUI : ToggableUI
     {
         private static Vector2 circleCenter = Main.MouseScreen - new Vector2(20f, 20f);
-        public static int[] selectedButtons = { -1, -1 };
+        private List<int> selectedButtons;
 
         private List<UIColorImageButton> buttonList;
         private List<UIColorImage> buttonImageList;
@@ -51,6 +51,7 @@ namespace AAMod.UI
         {
             buttonList = new List<UIColorImageButton>();
             buttonImageList = new List<UIColorImage>();
+			selectedButtons = new List<int>();
             buttonFrontFrame = ButtonImages().Frame(1, ButtonAmount());
 
             for (int i = 0; i < ButtonAmount(); i++)
@@ -106,12 +107,12 @@ namespace AAMod.UI
                 for (int i = 0; i < buttonList.Count; i++)
                 {
                     buttonList[i].SetImage(ButtonOffImage());
-
-                    if (Array.IndexOf(selectedButtons, i) < 0)
-                    {
-                        buttonList[i].SetColor(NoHoverColor());
+				
+					if (!selectedButtons.Contains(i))
+					{
+						buttonList[i].SetColor(NoHoverColor());
                         buttonImageList[i].SetColor(NoHoverColor());
-                    }
+					}
                 }
 
                 base.ToggleUI(Interface(), State());
@@ -120,8 +121,11 @@ namespace AAMod.UI
 
         public virtual void ButtonClicked(int index)
         {
-            selectedButtons.SetValue(selectedButtons[0], selectedButtons[1]);
-            selectedButtons.SetValue(index, selectedButtons[0]);
+            if (selectedButtons.Count == 2)
+            {
+                selectedButtons.RemoveAt(1);
+            }
+            selectedButtons.Insert(0, index);
 
             for (int i = 0; i < buttonList.Count; i++)
             {
@@ -131,11 +135,8 @@ namespace AAMod.UI
 
             foreach (int value in selectedButtons)
             {
-                if (value != -1)
-                {
-                    buttonList[index].SetColor(Color.White);
-                    buttonImageList[index].SetColor(Color.White);
-                }
+				buttonList[value].SetColor(Color.White);
+				buttonImageList[value].SetColor(Color.White);
             }
         }
 
@@ -143,7 +144,7 @@ namespace AAMod.UI
         {
             buttonList[index].SetImage(ButtonOnImage());
 
-            if (Array.IndexOf(selectedButtons, index) < 0)
+            if (!selectedButtons.Contains(i))
             {
                 buttonList[index].SetColor(HoverColor());
                 buttonImageList[index].SetColor(HoverColor());
@@ -154,7 +155,7 @@ namespace AAMod.UI
         {
             buttonList[index].SetImage(ButtonOffImage());
 
-            if (Array.IndexOf(selectedButtons, index) < 0)
+            if (!selectedButtons.Contains(i))
             {
                 buttonList[index].SetColor(NoHoverColor());
                 buttonImageList[index].SetColor(NoHoverColor());
