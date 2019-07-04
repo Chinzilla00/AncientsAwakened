@@ -232,7 +232,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
 			pos = (npc.ai[1] == 0 ? -250 : 250);
 
-            
+            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.active = false;
+            }
 
             if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
@@ -259,10 +262,9 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
                 if (internalAI[0] > 300)
                 {
-                    npc.velocity.Y += 0.1f;
+                    npc.velocity.Y -= 0.1f;
                     if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
                     npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
                 }
                 return;
             }

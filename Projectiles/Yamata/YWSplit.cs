@@ -36,7 +36,11 @@ namespace AAMod.Projectiles.Yamata
 
         public override void AI()
         {
-
+            projectile.timeLeft--;
+            if (projectile.timeLeft <= 0)
+            {
+                projectile.Kill();
+            }
             projectile.frameCounter++;
             if (projectile.frameCounter > 5)
             {
@@ -66,7 +70,7 @@ namespace AAMod.Projectiles.Yamata
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
-            const float desiredFlySpeedInPixelsPerFrame = 20;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

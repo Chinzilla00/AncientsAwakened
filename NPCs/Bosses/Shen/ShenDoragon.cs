@@ -514,7 +514,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 InfernoType = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Inferno, damageDiscordianInferno / 2, 0f, Main.myPlayer, InfernoType, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Inferno, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, InfernoType, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -581,7 +581,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                     shootThis = 2;
                                 }
                             }
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Bomb, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Bomb, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, shootThis, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
                         }
@@ -649,7 +649,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                     shootThis = 2;
                                 }
                             }
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Flame, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Flame, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, shootThis, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
                         }
@@ -699,7 +699,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 shootThis = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, Storm, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, shootThis, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, Storm, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, shootThis, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -749,7 +749,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             }
                         }
                         int shootThis = mod.ProjectileType<DiscordianFlare>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, Type, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, Type, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -831,7 +831,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 4, vel.Y * 4, shootThis, damageDiscordianFirebomb / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 4, vel.Y * 4, shootThis, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         Main.projectile[projectile].netUpdate = true;
                     }
 

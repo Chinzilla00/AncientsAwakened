@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee
             item.noUseGraphic = true;
             item.noMelee = true;
             item.shoot = mod.ProjType("YtriumHalberd");
-            item.shootSpeed = 4;			
+            item.shootSpeed = 8;			
         }
 		
 		public override void AddRecipes()

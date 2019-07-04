@@ -1959,6 +1959,8 @@
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\Aerodrake1.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
+    <Compile Include="Projectiles\GrimReaperScythe.cs" />
+    <Compile Include="Projectiles\GrimReaperScytheEX.cs" />
     <Compile Include="Projectiles\Hellshot.cs" />
     <Compile Include="Projectiles\CursedSickleProj.cs" />
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
@@ -2276,7 +2278,6 @@
     <Compile Include="Projectiles\ElecticitySpellP.cs" />
     <Compile Include="Projectiles\EnderSickle.cs" />
     <Compile Include="Projectiles\Energy_Cell_Pro.cs" />
-    <Compile Include="Projectiles\Etheral.cs" />
     <Compile Include="Projectiles\EtheralEX.cs" />
     <Compile Include="Projectiles\Fang_Knife_Pro.cs" />
     <Compile Include="Projectiles\Glass_Kunai_Pro.cs" />
@@ -6706,6 +6707,8 @@
     <Content Include="Projectiles\ForestSolution.png" />
     <Content Include="Projectiles\GlacierBreaker.png" />
     <Content Include="Projectiles\GlacierBreaker_Chain.png" />
+    <Content Include="Projectiles\GrimReaperScythe.png" />
+    <Content Include="Projectiles\GrimReaperScytheEX.png" />
     <Content Include="Projectiles\Gunk.png" />
     <Content Include="Projectiles\Hellshot.png" />
     <Content Include="Projectiles\HoloArrow.png" />
@@ -6837,7 +6840,6 @@
     <Content Include="Projectiles\Energy_Cell_Pro.png" />
     <Content Include="Projectiles\Equinox\DaybringerBody.png" />
     <Content Include="Projectiles\Equinox\DaybringerHead.png" />
-    <Content Include="Projectiles\Etheral.png" />
     <Content Include="Projectiles\EtheralBeam.png" />
     <Content Include="Projectiles\EtheralEX.png" />
     <Content Include="Projectiles\Fang_Knife_Pro.png" />

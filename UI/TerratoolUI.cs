@@ -7,7 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.UI;
-using AAMod;
+
+
 
 namespace AAMod.UI
 {

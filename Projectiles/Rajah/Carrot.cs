@@ -20,7 +20,7 @@ namespace AAMod.Projectiles.Rajah
 			projectile.aiStyle = 1;   
 			projectile.friendly = true; 
 			projectile.hostile = false;  
-			projectile.penetrate = -1;  
+			projectile.penetrate = 1;  
 			projectile.timeLeft = 600;  
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;

@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             base.SetDefaults();
             npc.damage = 300;
-            npc.defense = 270;
+            npc.defense = 230;
             npc.lifeMax = 1000000;
             npc.value = Item.sellPrice(1, 0, 0, 0);
             bossBag = mod.ItemType("ShenCache");

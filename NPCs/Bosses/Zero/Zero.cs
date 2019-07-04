@@ -415,28 +415,28 @@ namespace AAMod.NPCs.Bosses.Zero
                 switch (Arms)
                 {
                     case 0:
-                        Choice = "GenocideCannon2";
+                        Choice = "GenocideCannon";
                         break;
                     case 1:
-                        Choice = "Neutralizer2";
+                        Choice = "Neutralizer";
                         break;
                     case 2:
-                        Choice = "NovaFocus2";
+                        Choice = "NovaFocus";
                         break;
                     case 3:
-                        Choice = "OmegaVolley2";
+                        Choice = "OmegaVolley";
                         break;
                     case 4:
-                        Choice = "RealityCannon2";
+                        Choice = "RealityCannon";
                         break;
                     case 5:
-                        Choice = "RiftShredder2";
+                        Choice = "RiftShredder";
                         break;
                     case 6:
-                        Choice = "Taser2";
+                        Choice = "Taser";
                         break;
                     case 7:
-                        Choice = "VoidStar2";
+                        Choice = "VoidStar";
                         break;
                 }
 

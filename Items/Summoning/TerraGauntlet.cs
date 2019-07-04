@@ -19,6 +19,7 @@ namespace AAMod.Items.Summoning
             item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("Minion1");
+            item.buffType = mod.BuffType<Buffs.TerraSummon>();
             item.knockBack = 2;
             item.rare = 8;
             item.UseSound = SoundID.Item44;
@@ -30,17 +31,12 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
               DisplayName.SetDefault("Terra Gauntlet");
-              Tooltip.SetDefault(@"Summons a Terra Squid, Terra Sphere, Terra Crawler, or Terra Weaver to Fight for you
-Only 1 terra crawler may be active at a time");
+              Tooltip.SetDefault(@"Summons a Terra Squid, Terra Sphere, Terra Crawler, or Terra Weaver to Fight for you");
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int shootMe = Main.rand.Next(4);
-            if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Minions.Terra.Minion4Head>()))
-            {
-                shootMe = Main.rand.Next(3);
-            }
             switch (shootMe)
             {
                 case 0:
@@ -56,7 +52,7 @@ Only 1 terra crawler may be active at a time");
                     shootMe = mod.ProjectileType("Minion4Head");
                     break;
             }
-            if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>() && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Minions.Terra.Minion4Head>()))
+            if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>())
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 
@@ -100,10 +96,6 @@ Only 1 terra crawler may be active at a time");
                     Main.projectile[previous].netUpdate = true;
                 }
                 return false;
-            }
-            if (shootMe == mod.ProjectileType("Minion4Head"))
-            {
-                shootMe = mod.ProjectileType("Minion1");
             }
             int i = Main.myPlayer;
             int num73 = damage;

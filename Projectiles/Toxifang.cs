@@ -12,7 +12,7 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.width = 10;
 			projectile.height = 12;
-			projectile.ranged = true;
+			projectile.ranged = false;
 			projectile.magic = true;
 			projectile.friendly = true;
 			projectile.timeLeft = 300;

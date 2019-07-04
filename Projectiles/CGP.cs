@@ -22,14 +22,6 @@ namespace AAMod.Projectiles
             {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 107, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 107, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-            }
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 107, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-            }
             projectile.rotation += projectile.direction * 0.4f;
             projectile.spriteDirection = projectile.direction;
         }

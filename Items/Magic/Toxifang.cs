@@ -24,7 +24,7 @@ namespace AAMod.Items.Magic
 			item.UseSound = SoundID.Item21;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Toxifang");
-			item.shootSpeed = 12f;
+			item.shootSpeed = 8f;
 		}   
 
 		public override void SetStaticDefaults()

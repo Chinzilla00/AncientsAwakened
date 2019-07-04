@@ -34,7 +34,7 @@ Hold up to rocket faster
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(255, 128, 0);
+                    line2.overrideColor = new Color(0, 0, 255);
                 }
             }
         }

@@ -34,6 +34,7 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("CursedSickle");
             item.shootSpeed = 0.1f;
+            item.melee = true;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)

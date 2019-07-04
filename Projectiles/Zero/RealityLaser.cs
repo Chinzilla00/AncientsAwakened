@@ -23,11 +23,11 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = 1;
             projectile.timeLeft = 600;
             projectile.alpha = 30;
-            projectile.extraUpdates = 3;
+            projectile.extraUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 4;
             projectile.ranged = true;
-            projectile.scale *= 1.5f;
+            projectile.scale *= 2f;
         }
 
         public override void AI()

@@ -28,7 +28,7 @@ It smells like fish.");
 			item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
             AARarity = 14;
-            item.defense = 60;
+            item.defense = 28;
 		}
 
 		public override void UpdateEquip(Player player)
