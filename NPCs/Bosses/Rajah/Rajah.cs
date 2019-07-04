@@ -754,7 +754,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public void RajahTexture()
         {
             string IsRoaring = Roaring ? "Roar" : "";
-            string Supreme = isSupreme ? "/Supreme/Supreme" : "";
+            string Supreme = isSupreme ? "Supreme/Supreme" : "";
             if (internalAI[1] == 0)
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/" + Supreme + "Rajah" + IsRoaring + "_Fly");

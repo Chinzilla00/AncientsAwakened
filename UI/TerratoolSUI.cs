@@ -27,34 +27,9 @@ namespace AAMod.UI
         public override void ButtonClicked(int index)
         {
             base.ButtonClicked(index);
-
-            switch (selectedButtons[0])
-            {
-                case 0:
-                    Pick = 320;
-                    if (selectedButtons[1] != -1)
-                    {
-                        Hammer = selectedButtons[1] == 1 ? 250 : 0;
-                        Axe = selectedButtons[1] == 2 ? 70 : 0;
-                    }
-                    break;
-                case 1:
-                    Hammer = 250;
-                    if (selectedButtons[1] != -1)
-                    {
-                        Pick = selectedButtons[1] == 0 ? 300 : 0;
-                        Axe = selectedButtons[1] == 2 ? 70 : 0;
-                    }
-                    break;
-                case 2:
-                    Axe = 70;
-                    if (selectedButtons[1] != -1)
-                    {
-                        Pick = selectedButtons[1] == 0 ? 300 : 0;
-                        Hammer = selectedButtons[1] == 1 ? 250 : 0;
-                    }
-                    break;
-            }
+            Pick = selectedButtons.Contains(0) ? 320 : 0;
+            Hammer = selectedButtons.Contains(1) ? 200 : 0;
+            Axe = selectedButtons.Contains(2) ? 70 : 0;
         }
     }
 }

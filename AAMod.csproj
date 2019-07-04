@@ -5119,6 +5119,11 @@
     <Content Include="NPCs\Bosses\Rajah\RajahRocket.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Fly.png" />
     <Content Include="NPCs\Bosses\Rajah\Rajah_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Rajah\Supreme Rajah.png" />
+    <Content Include="NPCs\Bosses\Rajah\Supreme\SupremeRajah.png" />
+    <Content Include="NPCs\Bosses\Rajah\Supreme\SupremeRajah_Fly.png" />
+    <Content Include="NPCs\Bosses\Rajah\Supreme\SupremeRajah_Roar.png" />
+    <Content Include="NPCs\Bosses\Rajah\Supreme\SupremeRajah_Roar_Fly.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain1.png" />
     <Content Include="NPCs\Bosses\Sagittarius\OrbiterChain2.png" />
