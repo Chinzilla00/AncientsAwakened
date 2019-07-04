@@ -17,7 +17,7 @@ namespace AAMod.Items.Dev
             Tooltip.SetDefault(@"Left click to swing and release homing scythe
 Right click to do dashing hit
 You are immune during the dash and deal 10x damage in true melee
-Dashing ability has 5 seconds CD
+Dashing ability has 10 seconds CD
 'Well, how many Grim Reapers have you met before, mate?'
 -Gregg");
         }
