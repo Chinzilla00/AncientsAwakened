@@ -29,7 +29,8 @@ namespace AAMod.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Terratool");
-            Tooltip.SetDefault("Right Click to change tool types");
+            Tooltip.SetDefault(@"Right Click to change tool types
+You may only have a maximum of 2 tool types active");
         }
 
         public override bool AltFunctionUse(Player player)

@@ -31,7 +31,8 @@ namespace AAMod.Items.Boss.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dread Terratool");
-            Tooltip.SetDefault("Right Click to change tool types");
+            Tooltip.SetDefault(@"Right Click to change tool types
+You may only have a maximum of 2 tool types active");
         }
 
         public override bool AltFunctionUse(Player player)

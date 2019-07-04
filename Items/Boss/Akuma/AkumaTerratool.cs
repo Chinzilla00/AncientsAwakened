@@ -31,7 +31,8 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Draconian Terratool");
-            Tooltip.SetDefault("Right Click to change tool types");
+            Tooltip.SetDefault(@"Right Click to change tool types
+You may only have a maximum of 2 tool types active");
         }
 
         public override bool AltFunctionUse(Player player)
