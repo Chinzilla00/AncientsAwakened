@@ -263,8 +263,8 @@ namespace AAMod
 
         public void LoadClient()
         {
-            /*TerratoolInterface = new UserInterface();
-            TerratoolState = new TerratoolUI();
+            TerratoolInterface = new UserInterface();
+            TerratoolState = new TerratoolTUI();
             TerratoolState.Activate();
 
             TerratoolCInterface = new UserInterface();
@@ -285,7 +285,7 @@ namespace AAMod
 
             TerratoolSInterface = new UserInterface();
             TerratoolSState = new TerratoolSUI();
-            TerratoolSState.Activate();*/
+            TerratoolSState.Activate();
 
 
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
@@ -510,13 +510,42 @@ namespace AAMod
                 "AAMod: Radial UIs",
                 delegate
                 {
-                    var radialUI = TerratoolInterface.CurrentState as TerratoolUI;
+                    var radialUI = TerratoolInterface.CurrentState as TerratoolTUI;
                     if (radialUI != null && lastUpdateUIGameTime != null
                     && radialUI.Visible)
                     {
                         TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
-
+                    var radialUI1 = TerratoolCInterface.CurrentState as TerratoolCUI;
+                    if (radialUI1 != null && lastUpdateUIGameTime != null
+                    && radialUI1.Visible)
+                    {
+                        TerratoolCInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI2 = TerratoolAInterface.CurrentState as TerratoolAUI;
+                    if (radialUI2 != null && lastUpdateUIGameTime != null
+                    && radialUI2.Visible)
+                    {
+                        TerratoolAInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI3 = TerratoolYInterface.CurrentState as TerratoolYUI;
+                    if (radialUI3 != null && lastUpdateUIGameTime != null
+                    && radialUI3.Visible)
+                    {
+                        TerratoolYInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI4 = TerratoolZInterface.CurrentState as TerratoolZUI;
+                    if (radialUI4 != null && lastUpdateUIGameTime != null
+                    && radialUI4.Visible)
+                    {
+                        TerratoolZInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI5 = TerratoolSInterface.CurrentState as TerratoolSUI;
+                    if (radialUI5 != null && lastUpdateUIGameTime != null
+                    && radialUI5.Visible)
+                    {
+                        TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
                     return true;
                 },
                 InterfaceScaleType.UI));

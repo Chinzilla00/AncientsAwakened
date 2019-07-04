@@ -41,9 +41,9 @@ namespace AAMod.Items.Tools
             if (player.altFunctionUse == 2)
             {
                 AAMod.instance.TerratoolState.ToggleUI(AAMod.instance.TerratoolInterface);
-                item.pick = UI.TerratoolUI.Pick;
-                item.axe = UI.TerratoolUI.Axe;
-                item.hammer = UI.TerratoolUI.Hammer;
+                item.pick = UI.TerratoolTUI.Pick;
+                item.axe = UI.TerratoolTUI.Axe;
+                item.hammer = UI.TerratoolTUI.Hammer;
                 return true;
             }
             else

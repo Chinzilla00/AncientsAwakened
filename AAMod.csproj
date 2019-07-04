@@ -739,8 +739,6 @@
     <Compile Include="Items\Boss\AH\AsheSatchel.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaBag.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTerratool.cs" />
-    <Compile Include="Items\Boss\Akuma\AkumaTerratool_Axe.cs" />
-    <Compile Include="Items\Boss\Akuma\AkumaTerratool_Hammer.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaATrophy.cs" />
     <Compile Include="Items\Boss\Akuma\AkumaTrophy.cs" />
     <Compile Include="Items\Boss\Akuma\CrucibleScale.cs" />
@@ -5445,8 +5443,6 @@
     <Content Include="Items\Boss\Akuma\AkumaATrophy.png" />
     <Content Include="Items\Boss\Akuma\AkumaBag.png" />
     <Content Include="Items\Boss\Akuma\AkumaTerratool.png" />
-    <Content Include="Items\Boss\Akuma\AkumaTerratool_Axe.png" />
-    <Content Include="Items\Boss\Akuma\AkumaTerratool_Hammer.png" />
     <Content Include="Items\Boss\Akuma\AkumaTrophy.png" />
     <Content Include="Items\Boss\Akuma\CrucibleScale.png" />
     <Content Include="Items\Boss\Akuma\Dawnstrike.png" />
