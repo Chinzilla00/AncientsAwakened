@@ -12,7 +12,7 @@ namespace AAMod.UI
     internal abstract class TerratoolUI : ToggableUI
     {
         private static Vector2 circleCenter = Main.MouseScreen - new Vector2(20f, 20f);
-        private List<int> selectedButtons;
+        public List<int> selectedButtons;
 
         private List<UIColorImageButton> buttonList;
         private List<UIColorImage> buttonImageList;
@@ -144,7 +144,7 @@ namespace AAMod.UI
         {
             buttonList[index].SetImage(ButtonOnImage());
 
-            if (!selectedButtons.Contains(i))
+            if (!selectedButtons.Contains(index))
             {
                 buttonList[index].SetColor(HoverColor());
                 buttonImageList[index].SetColor(HoverColor());
@@ -155,7 +155,7 @@ namespace AAMod.UI
         {
             buttonList[index].SetImage(ButtonOffImage());
 
-            if (!selectedButtons.Contains(i))
+            if (!selectedButtons.Contains(index))
             {
                 buttonList[index].SetColor(NoHoverColor());
                 buttonImageList[index].SetColor(NoHoverColor());
