@@ -1553,6 +1553,10 @@ namespace AAMod
                         break;
                     case 1:
                         string addonA = (dropType == 4 ? "A" : "");
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("AlphakipTerratool"));
+                        }
                         if (Main.rand.Next(4000) == 0)
                         {
                             player.QuickSpawnItem(mod.ItemType("MudkipBall"));

@@ -975,6 +975,7 @@
     <Compile Include="Items\Dev\ThunderLord.cs" />
     <Compile Include="Items\Dev\ThunderLordEX.cs" />
     <Compile Include="Items\Dev\TimeTeller.cs" />
+    <Compile Include="Items\Dev\Tools\AlphakipTerratool.cs" />
     <Compile Include="Items\Dev\UmbralReaper.cs" />
     <Compile Include="Items\Dev\TitanAxe.cs" />
     <Compile Include="Items\Dev\TitanAxeEX.cs" />
@@ -2693,6 +2694,7 @@
     <Compile Include="UI\Core\UIColorImageButton.cs" />
     <Compile Include="UI\TerratoolAUI.cs" />
     <Compile Include="UI\TerratoolCUI.cs" />
+    <Compile Include="UI\TerratoolKipUI.cs" />
     <Compile Include="UI\TerratoolSUI.cs" />
     <Compile Include="UI\TerratoolTUI.cs" />
     <Compile Include="UI\TerratoolUI.cs" />
@@ -4792,8 +4794,6 @@
     <Content Include="Items\Dev\ThunderLord.png" />
     <Content Include="Items\Dev\ThunderLordEX.png" />
     <Content Include="Items\Dev\Tools\AlphakipTerratool.png" />
-    <Content Include="Items\Dev\Tools\AlphakipTerratool_Axe.png" />
-    <Content Include="Items\Dev\Tools\AlphakipTerratool_Hammer.png" />
     <Content Include="Items\Dev\UmbralReaper.png" />
     <Content Include="Items\Dev\UmbralReaperEX.png" />
     <Content Include="Items\Magic\BogBombEX.png" />
@@ -7456,6 +7456,8 @@
     <Content Include="UI\RiftOceanLeft.png" />
     <Content Include="UI\RiftOceanRight.png" />
     <Content Include="UI\Tools\ToolButton.png" />
+    <Content Include="UI\Tools\ToolButtonKip.png" />
+    <Content Include="UI\Tools\ToolButtonKipOff.png" />
     <Content Include="UI\Tools\ToolButtonOff.png" />
     <Content Include="UI\Tools\ToolButtonA.png" />
     <Content Include="UI\Tools\ToolButtonAOff.png" />
@@ -7469,6 +7471,7 @@
     <Content Include="UI\Tools\ToolButtonZOff.png" />
     <Content Include="UI\Tools\ToolUIA.png" />
     <Content Include="UI\Tools\ToolUIC.png" />
+    <Content Include="UI\Tools\ToolUIKip.png" />
     <Content Include="UI\Tools\ToolUIS.png" />
     <Content Include="UI\Tools\ToolUIY.png" />
     <Content Include="UI\Tools\ToolUIZ.png" />

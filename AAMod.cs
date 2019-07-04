@@ -58,6 +58,9 @@ namespace AAMod
         internal UserInterface TerratoolSInterface;
         internal TerratoolSUI TerratoolSState;
 
+        internal UserInterface TerratoolKipInterface;
+        internal TerratoolKipUI TerratoolKipState;
+
         public static SpriteFont fontMouseText;
 
         public static int[] SNAKETYPES = new int[0];
@@ -286,6 +289,10 @@ namespace AAMod
             TerratoolSInterface = new UserInterface();
             TerratoolSState = new TerratoolSUI();
             TerratoolSState.Activate();
+
+            TerratoolKipInterface = new UserInterface();
+            TerratoolKipState = new TerratoolKipUI();
+            TerratoolKipState.Activate();
 
 
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
@@ -524,6 +531,11 @@ namespace AAMod
             {
                 TerratoolSInterface.Update(gameTime);
             }
+
+            if (TerratoolKipInterface != null && TerratoolKipInterface.CurrentState != null)
+            {
+                TerratoolKipInterface.Update(gameTime);
+            }
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -570,6 +582,12 @@ namespace AAMod
                     && radialUI5.Visible)
                     {
                         TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI6 = TerratoolKipInterface.CurrentState as TerratoolKipUI;
+                    if (radialUI6 != null && lastUpdateUIGameTime != null
+                    && radialUI6.Visible)
+                    {
+                        TerratoolKipInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
                     return true;
                 },
