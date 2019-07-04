@@ -45,14 +45,12 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolTUI.Pick;
                 item.axe = UI.TerratoolTUI.Axe;
                 item.hammer = UI.TerratoolTUI.Hammer;
-                return true;
+                return false;
             }
             else
             {
-                // do stuff
+                return true;
             }
-
-            return false;
         }
 
         public override void AddRecipes()  //How to craft this item

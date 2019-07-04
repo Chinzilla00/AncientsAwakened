@@ -48,14 +48,12 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolZUI.Pick;
                 item.axe = UI.TerratoolZUI.Axe;
                 item.hammer = UI.TerratoolZUI.Hammer;
-                return true;
+                return false;
             }
             else
             {
-                // do stuff
+                return true;
             }
-
-            return false;
         }
     }
 }
